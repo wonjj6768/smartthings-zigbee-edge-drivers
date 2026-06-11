@@ -1,0 +1,24 @@
+name: thermostats-thermostat-x5h
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.workingDayX5h
+        version: 1
+      - id: concertmirror08464.thermostatPresetX5hProgram
+        version: 1
+      - id: concertmirror08464.temperatureSensorSelectX5hThree
+        version: 1
+      - id: concertmirror08464.tempDeltaXhCToNinetyFive
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat

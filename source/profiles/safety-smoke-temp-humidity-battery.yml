@@ -1,0 +1,64 @@
+name: safety-smoke-temp-humidity-battery
+components:
+  - id: main
+    capabilities:
+      - id: smokeDetector
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmokeDetector
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: smokeDetector
+        version: 1
+        group: main
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: relativeHumidityMeasurement
+        version: 1
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: smokeDetector
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: relativeHumidityMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: smokeDetector
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: relativeHumidityMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

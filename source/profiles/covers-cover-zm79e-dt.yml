@@ -1,0 +1,82 @@
+name: covers-cover-zm79e-dt
+components:
+  - id: main
+    capabilities:
+      - id: windowShade
+        version: 1
+      - id: windowShadeLevel
+        version: 1
+      - id: concertmirror08464.motorDirectionZm79eDtLeftRight
+        version: 1
+      - id: concertmirror08464.coverWorkStateZm79eDtLearning
+        version: 1
+      - id: concertmirror08464.coverPositionReportZm79eDt
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Blind
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: windowShade
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: windowShade
+        version: 1
+        values:
+          - command: "open"
+          - command: "close"
+          - command: "pause"
+        group: main
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: windowShade
+      version: 1
+    - component: main
+      capability: windowShadeLevel
+      version: 1
+    - component: main
+      capability: concertmirror08464.motorDirectionZm79eDtLeftRight
+      version: 1
+    - component: main
+      capability: concertmirror08464.coverWorkStateZm79eDtLearning
+      version: 1
+    - component: main
+      capability: concertmirror08464.coverPositionReportZm79eDt
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: windowShade
+        version: 1
+      - component: main
+        capability: windowShadeLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.motorDirectionZm79eDtLeftRight
+        version: 1
+      - component: main
+        capability: concertmirror08464.coverWorkStateZm79eDtLearning
+        version: 1
+      - component: main
+        capability: concertmirror08464.coverPositionReportZm79eDt
+        version: 1
+    actions:
+      - component: main
+        capability: windowShade
+        version: 1
+      - component: main
+        capability: windowShadeLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.motorDirectionZm79eDtLeftRight
+        version: 1

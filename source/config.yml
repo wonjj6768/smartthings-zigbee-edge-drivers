@@ -1,0 +1,4 @@
+name: "Tuya Universal"
+packageKey: "tuya-universal"
+permissions:
+  zigbee: {}

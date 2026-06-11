@@ -1,0 +1,16 @@
+name: safety-alarm-battery-duration-siren
+components:
+  - id: main
+    capabilities:
+      - id: alarm
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.alarmDurationSirenYxzbslMinutes
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Siren

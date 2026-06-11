@@ -1,0 +1,113 @@
+name: valves-valve-5
+components:
+  - id: main
+    capabilities:
+      - id: valve
+        version: 1
+      - id: concertmirror08464.powerOnBehavior
+        version: 1
+      - id: concertmirror08464.countdownTimerZclTwelveHours
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: WaterValve
+  - id: valve2
+    capabilities:
+      - id: valve
+        version: 1
+    categories:
+      - name: WaterValve
+  - id: valve3
+    capabilities:
+      - id: valve
+        version: 1
+    categories:
+      - name: WaterValve
+  - id: valve4
+    capabilities:
+      - id: valve
+        version: 1
+    categories:
+      - name: WaterValve
+  - id: valve5
+    capabilities:
+      - id: valve
+        version: 1
+    categories:
+      - name: WaterValve
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        values:
+          - command: "open"
+          - command: "close"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: valve
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.countdownTimerZclTwelveHours
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: valve2
+      capability: valve
+      version: 1
+    - component: valve3
+      capability: valve
+      version: 1
+    - component: valve4
+      capability: valve
+      version: 1
+    - component: valve5
+      capability: valve
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: valve
+        version: 1
+      - component: valve2
+        capability: valve
+        version: 1
+      - component: valve3
+        capability: valve
+        version: 1
+      - component: valve4
+        capability: valve
+        version: 1
+      - component: valve5
+        capability: valve
+        version: 1
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+      - component: valve2
+        capability: valve
+        version: 1
+      - component: valve3
+        capability: valve
+        version: 1
+      - component: valve4
+        capability: valve
+        version: 1
+      - component: valve5
+        capability: valve
+        version: 1

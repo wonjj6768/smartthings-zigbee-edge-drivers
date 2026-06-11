@@ -1,0 +1,18 @@
+name: doors-garage-contact-countdown
+components:
+  - id: main
+    capabilities:
+      - id: contactSensor
+        version: 1
+      - id: garageDoorControl
+        version: 1
+      - id: concertmirror08464.garageStatusCountdownOpenerAlarm
+        version: 1
+      - id: concertmirror08464.garageRunTimeCountdownOpener120
+        version: 1
+      - id: concertmirror08464.garageOpenAlarmTimeOpenerDay
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GarageDoor

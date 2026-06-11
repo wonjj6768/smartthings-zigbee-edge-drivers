@@ -1,0 +1,28 @@
+name: din-rail-switch-power-energy-voltage-current-din3
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+      - id: concertmirror08464.producedEnergyDin
+        version: 1
+      - id: concertmirror08464.clearFaultDin3
+        version: 1
+    categories:
+      - name: CurbPowerMeter

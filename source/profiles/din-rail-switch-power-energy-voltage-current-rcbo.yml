@@ -1,0 +1,30 @@
+name: din-rail-switch-power-energy-voltage-current-rcbo
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.currentThresholdRcbo63a
+        version: 1
+      - id: concertmirror08464.clearEnergyRcbo
+        version: 1
+      - id: concertmirror08464.tripTestRcboTripClear
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter

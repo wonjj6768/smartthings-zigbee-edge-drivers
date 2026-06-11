@@ -1,0 +1,16 @@
+name: thermostats-thermostat-basic-twc-r01
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.pilotWireModeTwcR01
+        version: 1
+      - id: concertmirror08464.energyTodayTwcR01
+        version: 1
+      - id: concertmirror08464.energyYesterdayTwcR01
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat

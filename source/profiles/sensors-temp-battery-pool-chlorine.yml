@@ -1,0 +1,87 @@
+name: sensors-temp-battery-pool-chlorine
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.poolPhChlorineMeter
+        version: 1
+      - id: concertmirror08464.poolOrpChlorineMeter
+        version: 1
+      - id: concertmirror08464.freeChlorineChlorineMeter
+        version: 1
+      - id: concertmirror08464.salinityChlorineMeter
+        version: 1
+      - id: concertmirror08464.tdsChlorineMeter
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: TempSensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+        group: main
+        values:
+          - label: "{{temperature.value}}{{temperature.unit}}"
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.poolPhChlorineMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.poolOrpChlorineMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.freeChlorineChlorineMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.salinityChlorineMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.tdsChlorineMeter
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.poolPhChlorineMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.poolOrpChlorineMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.freeChlorineChlorineMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.salinityChlorineMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.tdsChlorineMeter
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

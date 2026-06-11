@@ -1,0 +1,16 @@
+name: sensors-soil-temp-moisture-battery-dry
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.soilMoisture
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.dryDetectionSoilAirDry
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MoistureSensor

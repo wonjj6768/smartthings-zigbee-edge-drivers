@@ -1,0 +1,47 @@
+name: safety-co-detector
+components:
+  - id: main
+    capabilities:
+      - id: carbonMonoxideDetector
+        version: 1
+      - id: carbonMonoxideMeasurement
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: carbonMonoxideDetector
+        version: 1
+        group: main
+      - component: main
+        capability: carbonMonoxideMeasurement
+        version: 1
+        values:
+          - label: "{{carbonMonoxide.value}} {{carbonMonoxide.unit}}"
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: carbonMonoxideDetector
+      version: 1
+    - component: main
+      capability: carbonMonoxideMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: carbonMonoxideDetector
+        version: 1
+      - component: main
+        capability: carbonMonoxideMeasurement
+        version: 1
+    actions: []

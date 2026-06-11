@@ -1,0 +1,20 @@
+name: covers-cover-battery-epj-zb
+components:
+  - id: main
+    capabilities:
+      - id: windowShade
+        version: 1
+      - id: windowShadeLevel
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.motorDirectionEpjZbSide
+        version: 1
+      - id: concertmirror08464.manualModeEpjZbEnableDisable
+        version: 1
+      - id: concertmirror08464.windowDetectionEpjZbState
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Blind

@@ -1,0 +1,72 @@
+name: lights-color-temperature
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: switchLevel
+        version: 1
+      - id: colorTemperature
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Light
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: switchLevel
+        version: 1
+        group: main
+        values:
+          - label: "{{level.value}} {{level.unit}}"
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: switchLevel
+      version: 1
+    - component: main
+      capability: colorTemperature
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: switchLevel
+        version: 1
+      - component: main
+        capability: colorTemperature
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: switchLevel
+        version: 1
+      - component: main
+        capability: colorTemperature
+        version: 1

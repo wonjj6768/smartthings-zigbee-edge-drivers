@@ -1,0 +1,134 @@
+name: switches-switch-6-power-voltage-current
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch5
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch6
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: powerMeter
+        version: 1
+        group: main
+        values:
+          - label: "{{power.value}} {{power.unit}}"
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: switch2
+      capability: switch
+      version: 1
+    - component: switch3
+      capability: switch
+      version: 1
+    - component: switch4
+      capability: switch
+      version: 1
+    - component: switch5
+      capability: switch
+      version: 1
+    - component: switch6
+      capability: switch
+      version: 1
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: voltageMeasurement
+      version: 1
+    - component: main
+      capability: currentMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: powerMeter
+        version: 1
+      - component: main
+        capability: voltageMeasurement
+        version: 1
+      - component: main
+        capability: currentMeasurement
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+      - component: switch4
+        capability: switch
+        version: 1
+      - component: switch5
+        capability: switch
+        version: 1
+      - component: switch6
+        capability: switch
+        version: 1

@@ -1,0 +1,16 @@
+name: meters-power-energy-atms10013z3
+components:
+  - id: main
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: concertmirror08464.reactivePowerAtms10013z3
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter

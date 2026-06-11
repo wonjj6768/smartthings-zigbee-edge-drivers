@@ -1,0 +1,16 @@
+name: thermostats-thermostat-zht002
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.maxTempLimitZhtCToSeventy
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat

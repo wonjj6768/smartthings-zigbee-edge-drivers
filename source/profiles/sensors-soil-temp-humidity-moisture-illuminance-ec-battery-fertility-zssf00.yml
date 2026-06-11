@@ -1,0 +1,31 @@
+name: sensors-soil-temp-humidity-moisture-illuminance-ec-battery-fertility-zssf00
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.soilMoisture
+        version: 1
+      - id: concertmirror08464.soilEc
+        version: 1
+      - id: concertmirror08464.illuminanceCalibrationZsSf00
+        version: 1
+      - id: concertmirror08464.temperatureCalibrationZsSf00
+        version: 1
+      - id: concertmirror08464.soilFertilityWarningZsSf
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SoilMoistureSensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true

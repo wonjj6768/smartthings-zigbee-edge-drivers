@@ -1,0 +1,52 @@
+name: sensors-pressure-temp
+components:
+  - id: main
+    capabilities:
+      - id: atmosphericPressureMeasurement
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: EnvironmentSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: atmosphericPressureMeasurement
+        version: 1
+        group: main
+        values:
+          - label: "{{atmosphericPressure.value}} {{atmosphericPressure.unit}}"
+        composite: true
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+        group: main
+        values:
+          - label: " {{temperature.value}}{{temperature.unit}}"
+        composite: true
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: atmosphericPressureMeasurement
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: atmosphericPressureMeasurement
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+    actions: []

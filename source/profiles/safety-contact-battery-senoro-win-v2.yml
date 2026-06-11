@@ -1,0 +1,20 @@
+name: safety-contact-battery-senoro-win-v2
+components:
+  - id: main
+    capabilities:
+      - id: contactSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.openingStateSenoroWinV23State
+        version: 1
+      - id: concertmirror08464.txPowerSenoroWinLevel
+        version: 1
+      - id: concertmirror08464.vibrationLimitSenoroWinV2
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: ContactSensor

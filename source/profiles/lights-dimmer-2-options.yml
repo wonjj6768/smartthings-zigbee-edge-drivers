@@ -1,0 +1,32 @@
+name: lights-dimmer-2-options
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: switchLevel
+        version: 1
+      - id: concertmirror08464.powerOnBehavior
+        version: 1
+      - id: concertmirror08464.switchType
+        version: 1
+      - id: concertmirror08464.countdownTimerZclTwelveHours
+        version: 1
+      - id: concertmirror08464.minBrightnessZclThousand
+        version: 1
+      - id: concertmirror08464.maxBrightnessZclThousand
+        version: 1
+      - id: concertmirror08464.lightType
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Light
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: switchLevel
+        version: 1
+    categories:
+      - name: Light

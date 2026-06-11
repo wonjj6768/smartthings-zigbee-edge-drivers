@@ -1,0 +1,45 @@
+name: meters-power-energy-voltage-current-clamp3phase
+components:
+  - id: main
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+      - id: concertmirror08464.acFrequencyClamp3Phase
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l1
+    label: L1
+    capabilities:
+      - id: concertmirror08464.powerFactorClamp3PhasePercent
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l2
+    label: L2
+    capabilities:
+      - id: concertmirror08464.powerFactorClamp3PhasePercent
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l3
+    label: L3
+    capabilities:
+      - id: concertmirror08464.powerFactorClamp3PhasePercent
+        version: 1
+    categories:
+      - name: CurbPowerMeter

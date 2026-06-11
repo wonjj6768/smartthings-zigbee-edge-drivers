@@ -1,0 +1,43 @@
+name: sensors-soil-moisture-battery
+components:
+- id: main
+  capabilities:
+  - id: concertmirror08464.soilMoisture
+    version: 1
+  - id: battery
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: TempHumiditySensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: concertmirror08464.soilMoisture
+        version: 1
+        values:
+          - label: "{{soilMoisture.value}}{{soilMoisture.unit}}"
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: concertmirror08464.soilMoisture
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: concertmirror08464.soilMoisture
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

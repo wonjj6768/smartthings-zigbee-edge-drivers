@@ -1,0 +1,23 @@
+name: sensors-temp-humidity-battery-calibration-zg227z
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.temperatureCalibrationZg227z
+        version: 1
+      - id: concertmirror08464.humidityCalibrationZg227z
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: TempHumiditySensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true

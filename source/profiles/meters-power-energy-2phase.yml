@@ -1,0 +1,135 @@
+name: meters-power-energy-2phase
+components:
+  - id: main
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l1
+    label: L1
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l2
+    label: L2
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: powerMeter
+        version: 1
+        group: main
+        values:
+          - label: "{{power.value}}{{power.unit}}"
+        composite: true
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerPollIntervalV2
+      version: 1
+    - component: main
+      capability: concertmirror08464.lastPowerResponseTime
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: l1
+      capability: powerMeter
+      version: 1
+    - component: l1
+      capability: energyMeter
+      version: 1
+    - component: l1
+      capability: voltageMeasurement
+      version: 1
+    - component: l1
+      capability: currentMeasurement
+      version: 1
+    - component: l2
+      capability: powerMeter
+      version: 1
+    - component: l2
+      capability: energyMeter
+      version: 1
+    - component: l2
+      capability: voltageMeasurement
+      version: 1
+    - component: l2
+      capability: currentMeasurement
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: powerMeter
+        version: 1
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: l1
+        capability: powerMeter
+        version: 1
+      - component: l1
+        capability: energyMeter
+        version: 1
+      - component: l1
+        capability: voltageMeasurement
+        version: 1
+      - component: l1
+        capability: currentMeasurement
+        version: 1
+      - component: l2
+        capability: powerMeter
+        version: 1
+      - component: l2
+        capability: energyMeter
+        version: 1
+      - component: l2
+        capability: voltageMeasurement
+        version: 1
+      - component: l2
+        capability: currentMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1

@@ -1,0 +1,36 @@
+name: sensors-aq-co2
+components:
+- id: main
+  capabilities:
+  - id: carbonDioxideMeasurement
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: AirQualityDetector
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: carbonDioxideMeasurement
+        version: 1
+        group: main
+        values:
+          - label: "{{carbonDioxide.value}}{{carbonDioxide.unit}}"
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: carbonDioxideMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: carbonDioxideMeasurement
+        version: 1
+    actions: []

@@ -1,0 +1,61 @@
+name: safety-motion-vibration-illuminance-battery
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: accelerationSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MultiFunctionalSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: motionSensor
+        version: 1
+        group: main
+      - component: main
+        capability: accelerationSensor
+        version: 1
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: motionSensor
+      version: 1
+    - component: main
+      capability: accelerationSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: motionSensor
+        version: 1
+      - component: main
+        capability: accelerationSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

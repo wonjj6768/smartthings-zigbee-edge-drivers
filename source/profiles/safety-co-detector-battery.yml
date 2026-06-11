@@ -1,0 +1,42 @@
+name: safety-co-detector-battery
+components:
+  - id: main
+    capabilities:
+      - id: carbonMonoxideDetector
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: carbonMonoxideDetector
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: carbonMonoxideDetector
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: carbonMonoxideDetector
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

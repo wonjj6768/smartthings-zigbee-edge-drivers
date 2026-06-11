@@ -1,0 +1,65 @@
+name: safety-motion-keep-illuminance-battery
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: concertmirror08464.presenceSensitivity
+        version: 1
+      - id: concertmirror08464.keepTime
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MotionSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: motionSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: motionSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.keepTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: motionSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

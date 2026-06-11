@@ -1,0 +1,12 @@
+name: thermostats-thermostat-mode-setpoint
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat

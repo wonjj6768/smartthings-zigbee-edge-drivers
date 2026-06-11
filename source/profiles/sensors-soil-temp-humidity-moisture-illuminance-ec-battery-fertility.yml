@@ -1,0 +1,26 @@
+name: sensors-soil-temp-humidity-moisture-illuminance-ec-battery-fertility
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: concertmirror08464.soilMoisture
+        version: 1
+      - id: concertmirror08464.soilEc
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.temperatureCalibrationSoilFertility
+        version: 1
+      - id: concertmirror08464.illuminanceCalibrationSoilFertility
+        version: 1
+      - id: concertmirror08464.soilWarningThresholdFertility
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MoistureSensor

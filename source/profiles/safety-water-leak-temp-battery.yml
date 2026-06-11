@@ -1,0 +1,51 @@
+name: safety-water-leak-temp-battery
+components:
+  - id: main
+    capabilities:
+      - id: waterSensor
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: LeakSensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: waterSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: waterSensor
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: waterSensor
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

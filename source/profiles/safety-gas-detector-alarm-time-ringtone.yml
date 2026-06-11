@@ -1,0 +1,67 @@
+name: safety-gas-detector-alarm-time-ringtone
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: concertmirror08464.selfTestGas
+        version: 1
+      - id: concertmirror08464.alarmDurationGas180
+        version: 1
+      - id: concertmirror08464.alarmMelodyGasFive
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: gasDetector
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: gasDetector
+      version: 1
+    - component: main
+      capability: concertmirror08464.selfTestGas
+      version: 1
+    - component: main
+      capability: concertmirror08464.alarmDurationGas180
+      version: 1
+    - component: main
+      capability: concertmirror08464.alarmMelodyGasFive
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: gasDetector
+        version: 1
+      - component: main
+        capability: concertmirror08464.selfTestGas
+        version: 1
+      - component: main
+        capability: concertmirror08464.alarmDurationGas180
+        version: 1
+      - component: main
+        capability: concertmirror08464.alarmMelodyGasFive
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.selfTestGas
+        version: 1
+      - component: main
+        capability: concertmirror08464.alarmDurationGas180
+        version: 1
+      - component: main
+        capability: concertmirror08464.alarmMelodyGasFive
+        version: 1

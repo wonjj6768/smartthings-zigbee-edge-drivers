@@ -1,0 +1,47 @@
+name: safety-presence-illuminance-temp-humidity-battery-zg204zx
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: concertmirror08464.motionDetectionSensitivityZg204zx
+        version: 1
+      - id: concertmirror08464.staticDetectionSensitivityZg204zx
+        version: 1
+      - id: concertmirror08464.presenceDetectionRangeZg204zx
+        version: 1
+      - id: concertmirror08464.presenceFadingTimeZg204zx
+        version: 1
+      - id: concertmirror08464.antiInterferenceZg204zx
+        version: 1
+      - id: concertmirror08464.indicatorZg204zx
+        version: 1
+      - id: concertmirror08464.illuminanceIntervalZg204zx
+        version: 1
+      - id: concertmirror08464.temperatureUnitZg204zx
+        version: 1
+      - id: concertmirror08464.temperatureCalibrationZg204zx
+        version: 1
+      - id: concertmirror08464.humidityCalibrationZg204zx
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true

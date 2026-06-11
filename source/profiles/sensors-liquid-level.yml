@@ -1,0 +1,60 @@
+name: sensors-liquid-level
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.liquidLevelPercent
+        version: 1
+      - id: concertmirror08464.liquidDepth
+        version: 1
+      - id: concertmirror08464.liquidState
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MultiFunctionalSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: concertmirror08464.liquidLevelPercent
+        version: 1
+        group: main
+        values:
+          - label: "{{liquidLevelPercent.value}}{{liquidLevelPercent.unit}}"
+        composite: true
+      - component: main
+        capability: concertmirror08464.liquidState
+        version: 1
+        group: main
+        values:
+          - label: " {{liquidState.value}}"
+        composite: true
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: concertmirror08464.liquidLevelPercent
+      version: 1
+    - component: main
+      capability: concertmirror08464.liquidDepth
+      version: 1
+    - component: main
+      capability: concertmirror08464.liquidState
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: concertmirror08464.liquidLevelPercent
+        version: 1
+      - component: main
+        capability: concertmirror08464.liquidDepth
+        version: 1
+      - component: main
+        capability: concertmirror08464.liquidState
+        version: 1
+    actions: []

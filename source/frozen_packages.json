@@ -1,0 +1,15 @@
+{
+  "packages": [
+    {
+      "name": "ef00-motion-wonjj6768",
+      "reason": "Legacy EF00 Motion package is frozen. Do not rebuild or modify this package; new work must use split packages.",
+      "source_paths": [
+        "source/src/devices/ef00/motion.lua",
+        "source/src/devices/ef00/motion"
+      ],
+      "source_sha256": "b627990410dbf1f9fa659e2730d9c6db0fd8b50ed645fe95a75d2ce0ebd3a63b",
+      "deploy_path": "deploy/ef00-motion-wonjj6768",
+      "deploy_sha256": "a7dee8cd767f3fb16b587c05679e635aed11c423d64d8c66fcfcec62fb66977c"
+    }
+  ]
+}

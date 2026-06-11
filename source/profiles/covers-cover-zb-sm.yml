@@ -1,0 +1,16 @@
+name: covers-cover-zb-sm
+components:
+  - id: main
+    capabilities:
+      - id: windowShade
+        version: 1
+      - id: windowShadeLevel
+        version: 1
+      - id: concertmirror08464.motorDirectionZbSmNormalRev
+        version: 1
+      - id: concertmirror08464.favoritePositionZbSm
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Blind

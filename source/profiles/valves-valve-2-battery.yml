@@ -1,0 +1,70 @@
+name: valves-valve-2-battery
+components:
+  - id: main
+    capabilities:
+      - id: valve
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: WaterValve
+  - id: valve2
+    capabilities:
+      - id: valve
+        version: 1
+    categories:
+      - name: WaterValve
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: battery
+        version: 1
+        group: main
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        values:
+          - command: "open"
+          - command: "close"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: valve
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: valve2
+      capability: valve
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: valve
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: valve2
+        capability: valve
+        version: 1
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+      - component: valve2
+        capability: valve
+        version: 1

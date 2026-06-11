@@ -1,0 +1,14 @@
+name: sensors-temp-battery-heat-water-meter
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.waterConsumedHeatMeter
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: WaterSensor

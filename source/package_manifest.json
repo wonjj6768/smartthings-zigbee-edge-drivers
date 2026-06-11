@@ -1,0 +1,227 @@
+{
+  "common_root_files": [
+    "init.lua",
+    "registry.lua",
+    "emitters.lua"
+  ],
+  "common_dirs": [
+    "app",
+    "core"
+  ],
+  "packages": [
+    {
+      "name": "zcl-switch-wonjj6768",
+      "display_name": "ZCL Switch wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports ZCL switches, plugs, DIN rail relays, and valve-like devices.",
+      "protocol": "zcl",
+      "modules": [
+        "switches",
+        "plugs",
+        "din_rail",
+        "valves",
+        "retail_switches",
+        "easyiot"
+      ]
+    },
+    {
+      "name": "zcl-lights-wonjj6768",
+      "display_name": "ZCL Lights wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports ZCL lights, dimmers, light controllers, and fan devices.",
+      "protocol": "zcl",
+      "modules": [
+        "lights",
+        "dimmers",
+        "miboxer_light_controllers",
+        "fans",
+        "retail_lights",
+        "ikea_retail",
+        "schneider_retail"
+      ]
+    },
+    {
+      "name": "zcl-sensors-wonjj6768",
+      "display_name": "ZCL Sensors wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.",
+      "protocol": "zcl",
+      "modules": [
+        "sensors",
+        "safety",
+        "sirens",
+        "repeaters",
+        "thermostats",
+        "retail_sensors",
+        "aqara_lumi",
+        "shelly_retail"
+      ]
+    },
+    {
+      "name": "zcl-covers-wonjj6768",
+      "display_name": "ZCL Covers wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports ZCL curtains, blinds, shades, and cover controllers.",
+      "protocol": "zcl",
+      "modules": [
+        "covers",
+        "retail_covers"
+      ]
+    },
+    {
+      "name": "zcl-controls-wonjj6768",
+      "display_name": "ZCL Controls wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.",
+      "protocol": "zcl",
+      "modules": [
+        "remotes",
+        "advanced_remotes",
+        "scene_remotes",
+        "excellux_scene_switches",
+        "security_remotes",
+        "doorbell_buttons",
+        "dimming_remotes",
+        "scene_switches",
+        "ir_controllers"
+      ]
+    },
+    {
+      "name": "ef00-controls-wonjj6768",
+      "display_name": "EF00 Controls wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 scene remotes and button controllers.",
+      "protocol": "ef00",
+      "modules": [
+        "scene_remotes"
+      ]
+    },
+    {
+      "name": "ef00-covers-wonjj6768",
+      "display_name": "EF00 Covers wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 curtains, blinds, shades, and cover motors.",
+      "protocol": "ef00",
+      "modules": [
+        "covers"
+      ]
+    },
+    {
+      "name": "ef00-lights-wonjj6768",
+      "display_name": "EF00 Lights wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 dimmers, LED drivers, and lighting devices.",
+      "protocol": "ef00",
+      "modules": [
+        "fans",
+        "lights"
+      ]
+    },
+    {
+      "name": "ef00-switch-wonjj6768",
+      "display_name": "EF00 Switch wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 switches, relay modules, plugs, and garage door devices.",
+      "protocol": "ef00",
+      "modules": [
+        "switches",
+        "garage_doors"
+      ]
+    },
+    {
+      "name": "ef00-energy-wonjj6768",
+      "display_name": "EF00 Energy wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 DIN rail relays and power or energy meters.",
+      "protocol": "ef00",
+      "modules": [
+        "energy"
+      ]
+    },
+    {
+      "name": "ef00-sensors-wonjj6768",
+      "display_name": "EF00 Sensors wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 temperature, humidity, illuminance, air quality, pressure, and soil sensors.",
+      "protocol": "ef00",
+      "modules": [
+        "sensors"
+      ]
+    },
+    {
+      "name": "ef00-motion-wonjj6768",
+      "display_name": "EF00 Motion wonjj6768",
+      "description": "Zigbee EF00 driver. Supports Tuya-based motion and presence sensors.",
+      "protocol": "ef00",
+      "frozen": true,
+      "modules": [
+        "motion"
+      ]
+    },
+    {
+      "name": "ef00-pir-motion-wonjj6768",
+      "display_name": "EF00 PIR Motion wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 PIR motion sensors.",
+      "protocol": "ef00",
+      "modules": [
+        "motion_pir"
+      ],
+      "include_device_files": [
+        "motion/pir.lua"
+      ]
+    },
+    {
+      "name": "ef00-presence-general-wonjj6768",
+      "display_name": "EF00 Presence General wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports general EF00 presence, radar, and mmWave sensors.",
+      "protocol": "ef00",
+      "modules": [
+        "presence_general"
+      ],
+      "include_device_files": [
+        "motion/presence.lua"
+      ]
+    },
+    {
+      "name": "ef00-presence-switch-wonjj6768",
+      "display_name": "EF00 Presence Switch wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 presence sensors with switch endpoints.",
+      "protocol": "ef00",
+      "modules": [
+        "presence_switch"
+      ],
+      "include_device_files": [
+        "motion/presence.lua"
+      ]
+    },
+    {
+      "name": "ef00-presence-advanced-wonjj6768",
+      "display_name": "EF00 Presence Advanced wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports advanced EF00 presence, radar, and mmWave sensors.",
+      "protocol": "ef00",
+      "modules": [
+        "presence_advanced"
+      ],
+      "include_device_files": [
+        "motion/presence.lua"
+      ]
+    },
+    {
+      "name": "ef00-safety-wonjj6768",
+      "display_name": "EF00 Safety wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.",
+      "protocol": "ef00",
+      "modules": [
+        "safety",
+        "excellux_safety"
+      ]
+    },
+    {
+      "name": "ef00-valves-wonjj6768",
+      "display_name": "EF00 Valves wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 water valves, gas valves, and irrigation controllers.",
+      "protocol": "ef00",
+      "modules": [
+        "valves"
+      ]
+    },
+    {
+      "name": "ef00-thermostats-wonjj6768",
+      "display_name": "EF00 Thermostats wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 thermostats and radiator valves.",
+      "protocol": "ef00",
+      "modules": [
+        "thermostats"
+      ]
+    }
+  ]
+}

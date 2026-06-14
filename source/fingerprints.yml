@@ -2060,6 +2060,16 @@ zigbeeManufacturer:
     model: "TS0601"
     deviceProfileName: "safety-motion-zpir10-illuminance-battery"
 
+  # ── 1-5b. Lincukoo SZLM04U: Motion and brightness sensor ──
+  - id: "TZE284_9ovska9w_TS0601"
+    manufacturer: "_TZE284_9ovska9w"
+    model: "TS0601"
+    deviceProfileName: "safety-motion-pir-illuminance-battery"
+  - id: "TZE284_bquwrqh1_TS0601"
+    manufacturer: "_TZE284_bquwrqh1"
+    model: "TS0601"
+    deviceProfileName: "safety-motion-pir-illuminance-battery"
+
   # ── 1-6. pir_solar: 태양광 PIR ──
   - id: "TZE284_tre6haif"
     manufacturer: "_TZE284_tre6haif"

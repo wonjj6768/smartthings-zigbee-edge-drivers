@@ -20,7 +20,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Energy wonjj6768 | `ef00-energy-wonjj6768` | 111 |
 | EF00 Lights wonjj6768 | `ef00-lights-wonjj6768` | 96 |
 | EF00 Motion wonjj6768 | `ef00-motion-wonjj6768` | 151 |
-| EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 21 |
+| EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 23 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 34 |
 | EF00 Presence General wonjj6768 | `ef00-presence-general-wonjj6768` | 88 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 17 |
@@ -601,7 +601,7 @@ Zigbee EF00 driver. Supports Tuya-based motion and presence sensors.
 </details>
 
 <details>
-<summary>EF00 PIR Motion wonjj6768 (21 fingerprints)</summary>
+<summary>EF00 PIR Motion wonjj6768 (23 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 PIR motion sensors.
 
@@ -624,6 +624,8 @@ Development driver; report issues with hub logcat. Supports EF00 PIR motion sens
 | `_TZE200_s6hzw8g2` | `TS0601` | `safety-motion-zg204zl-keep-illuminance-battery` |
 | `_TZE200_seq9cm6u` | `TS0601` | `safety-motion-bed-time-illuminance-battery` |
 | `_TZE200_ttcovulf` | `TS0601` | `safety-motion-zg204zl-keep-illuminance-battery` |
+| `_TZE284_9ovska9w` | `TS0601` | `safety-motion-pir-illuminance-battery` |
+| `_TZE284_bquwrqh1` | `TS0601` | `safety-motion-pir-illuminance-battery` |
 | `_TZE284_tre6haif` | `TS0601` | `safety-motion-pir-solar-battery` |
 | `Conecto` | `COZIGPMS` | `safety-motion-pir-illuminance` |
 | `Immax` | `07527L` | `safety-motion-pir-illuminance-battery` |

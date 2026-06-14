@@ -138,16 +138,6 @@
       ]
     },
     {
-      "name": "ef00-motion-wonjj6768",
-      "display_name": "EF00 Motion wonjj6768",
-      "description": "Zigbee EF00 driver. Supports Tuya-based motion and presence sensors.",
-      "protocol": "ef00",
-      "frozen": true,
-      "modules": [
-        "motion"
-      ]
-    },
-    {
       "name": "ef00-pir-motion-wonjj6768",
       "display_name": "EF00 PIR Motion wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 PIR motion sensors.",

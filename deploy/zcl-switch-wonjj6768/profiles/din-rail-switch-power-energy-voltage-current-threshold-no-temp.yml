@@ -1,0 +1,44 @@
+name: din-rail-switch-power-energy-voltage-current-threshold-no-temp
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: concertmirror08464.indicatorMode
+        version: 1
+      - id: concertmirror08464.powerOnBehavior
+        version: 1
+      - id: concertmirror08464.countdownTimerZclTwelveHours
+        version: 1
+      - id: concertmirror08464.powerThreshold
+        version: 1
+      - id: concertmirror08464.powerBreaker
+        version: 1
+      - id: concertmirror08464.overCurrentThreshold
+        version: 1
+      - id: concertmirror08464.overCurrentBreaker
+        version: 1
+      - id: concertmirror08464.overVoltageThreshold
+        version: 1
+      - id: concertmirror08464.overVoltageBreaker
+        version: 1
+      - id: concertmirror08464.underVoltageThreshold
+        version: 1
+      - id: concertmirror08464.underVoltageBreaker
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch

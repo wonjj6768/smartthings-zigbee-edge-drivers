@@ -1,0 +1,16 @@
+name: safety-smoke-detector-battery-288wz
+components:
+  - id: main
+    capabilities:
+      - id: smokeDetector
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.sensitivitySmoke288wzEnum
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmokeDetector

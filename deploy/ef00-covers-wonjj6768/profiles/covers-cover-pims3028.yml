@@ -1,0 +1,16 @@
+name: covers-cover-pims3028
+components:
+  - id: main
+    capabilities:
+      - id: windowShade
+        version: 1
+      - id: windowShadeLevel
+        version: 1
+      - id: concertmirror08464.coverWorkPimsActual
+        version: 1
+      - id: concertmirror08464.coverCalibrationPims3028StartEnd
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Blind

@@ -1,0 +1,117 @@
+name: safety-presence-mtg075-entry-controls-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: concertmirror08464.presenceSensitivity
+        version: 1
+      - id: concertmirror08464.entrySensitivity
+        version: 1
+      - id: concertmirror08464.shieldRange
+        version: 1
+      - id: concertmirror08464.presenceDetectionRange
+        version: 1
+      - id: concertmirror08464.entryFilterTime
+        version: 1
+      - id: concertmirror08464.entryDistanceIndentation
+        version: 1
+      - id: concertmirror08464.blockTime
+        version: 1
+      - id: concertmirror08464.detectionHoldTime
+        version: 1
+      - id: concertmirror08464.presenceTargetDistance
+        version: 1
+      - id: concertmirror08464.presenceIlluminanceThreshold
+        version: 1
+      - id: concertmirror08464.breakerMode
+        version: 1
+      - id: concertmirror08464.breakerStatus
+        version: 1
+      - id: concertmirror08464.statusIndication
+        version: 1
+      - id: concertmirror08464.sensorStateMode
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.entrySensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.shieldRange
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceDetectionRange
+      version: 1
+    - component: main
+      capability: concertmirror08464.entryFilterTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.entryDistanceIndentation
+      version: 1
+    - component: main
+      capability: concertmirror08464.blockTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.detectionHoldTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceTargetDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceIlluminanceThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.breakerMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.breakerStatus
+      version: 1
+    - component: main
+      capability: concertmirror08464.statusIndication
+      version: 1
+    - component: main
+      capability: concertmirror08464.sensorStateMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+    actions: []

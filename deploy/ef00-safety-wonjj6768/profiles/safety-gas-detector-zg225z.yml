@@ -1,0 +1,14 @@
+name: safety-gas-detector-zg225z
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: concertmirror08464.sensitivityGasZg225zEnum
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor

@@ -1,0 +1,24 @@
+name: safety-acceleration-alarm-battery-zg228z
+components:
+  - id: main
+    capabilities:
+      - id: accelerationSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.alarmDurationSiren
+        version: 1
+      - id: concertmirror08464.alarmVolumeHobeian
+        version: 1
+      - id: concertmirror08464.alarmRingHobeian
+        version: 1
+      - id: concertmirror08464.mufflingSiren
+        version: 1
+      - id: concertmirror08464.vibrationSensitivityZgFifty
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

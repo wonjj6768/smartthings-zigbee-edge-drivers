@@ -1,0 +1,24 @@
+name: safety-water-leak-alarm-battery-zg226z
+components:
+  - id: main
+    capabilities:
+      - id: waterSensor
+        version: 1
+      - id: alarm
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.alarmDurationSiren
+        version: 1
+      - id: concertmirror08464.alarmVolumeHobeian
+        version: 1
+      - id: concertmirror08464.alarmRingHobeian
+        version: 1
+      - id: concertmirror08464.mufflingWaterLeak
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: LeakSensor

@@ -1,0 +1,6 @@
+name: "EF00 Presence General wonjj6768"
+packageKey: "ef00-presence-general-wonjj6768"
+description: "Development driver; report issues with hub logcat. Supports general EF00 presence, radar, and mmWave sensors."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

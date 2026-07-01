@@ -1,0 +1,6 @@
+name: "EF00 Presence Switch wonjj6768"
+packageKey: "ef00-presence-switch-wonjj6768"
+description: "Development driver; report issues with hub logcat. Supports EF00 presence sensors with switch endpoints."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

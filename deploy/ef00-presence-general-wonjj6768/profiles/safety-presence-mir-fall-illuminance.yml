@@ -1,0 +1,72 @@
+name: safety-presence-mir-fall-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: concertmirror08464.presenceSensitivity
+        version: 1
+      - id: concertmirror08464.fallSensitivity
+        version: 1
+      - id: concertmirror08464.tumbleAlarmTime
+        version: 1
+      - id: concertmirror08464.tumbleSwitch
+        version: 1
+      - id: concertmirror08464.radarScene
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.fallSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.tumbleAlarmTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.tumbleSwitch
+      version: 1
+    - component: main
+      capability: concertmirror08464.radarScene
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+    actions: []

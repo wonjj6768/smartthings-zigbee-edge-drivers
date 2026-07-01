@@ -1,0 +1,14 @@
+name: sensors-pressure-temp-display
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: atmosphericPressureMeasurement
+        version: 1
+      - id: concertmirror08464.displayBrightnessPressureLevel8
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: AirQualityDetector

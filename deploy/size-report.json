@@ -1,0 +1,541 @@
+[
+  {
+    "name": "zcl-switch-wonjj6768",
+    "raw_size": 434788,
+    "under_limit": true,
+    "profiles": [
+      "din-rail-switch-power-energy-voltage-current",
+      "din-rail-switch-power-energy-voltage-current-threshold",
+      "din-rail-switch-power-energy-voltage-current-threshold-no-temp",
+      "plugs-switch",
+      "plugs-switch-2",
+      "plugs-switch-2-power-energy-voltage",
+      "plugs-switch-3-power-energy-voltage-current",
+      "plugs-switch-power-energy-voltage",
+      "plugs-switch-power-energy-voltage-current",
+      "sensors-temp-humidity-battery",
+      "switches-switch-1",
+      "switches-switch-1-battery",
+      "switches-switch-1-countdown-switch-type",
+      "switches-switch-1-power-options",
+      "switches-switch-1-poweron-switch-type",
+      "switches-switch-2",
+      "switches-switch-2-countdown-switch-type",
+      "switches-switch-2-power-options",
+      "switches-switch-2-poweron-switch-type",
+      "switches-switch-3",
+      "switches-switch-3-countdown-switch-type",
+      "switches-switch-4",
+      "switches-switch-5",
+      "switches-switch-5-tuya-options",
+      "switches-switch-6-basic",
+      "switches-switch-8",
+      "valves-valve-5",
+      "valves-valve-battery",
+      "valves-valve-battery-countdown-ts0049",
+      "valves-valve-indicator-mode"
+    ],
+    "fingerprints": 703,
+    "custom_capabilities": {
+      "numeric": 8,
+      "enum": 10,
+      "text": 1
+    }
+  },
+  {
+    "name": "zcl-lights-wonjj6768",
+    "raw_size": 435994,
+    "under_limit": true,
+    "profiles": [
+      "fans-fan-light-switch",
+      "fans-switch-fan-mode",
+      "lights-color",
+      "lights-color-temperature",
+      "lights-color-temperature-color",
+      "lights-dimmer",
+      "lights-dimmer-2",
+      "lights-dimmer-2-options",
+      "lights-dimmer-2-options-ts110",
+      "lights-dimmer-options-ts110",
+      "lights-dimmer-options-ts110-countdown30",
+      "lights-dimmer-power-voltage-current"
+    ],
+    "fingerprints": 823,
+    "custom_capabilities": {
+      "numeric": 8,
+      "enum": 4,
+      "text": 1
+    }
+  },
+  {
+    "name": "zcl-sensors-wonjj6768",
+    "raw_size": 400722,
+    "under_limit": true,
+    "profiles": [
+      "lights-dimmer",
+      "lights-dimmer-power-voltage-current",
+      "network-repeater",
+      "plugs-switch-power-energy-voltage-current",
+      "safety-acceleration-battery",
+      "safety-alarm-battery",
+      "safety-alarm-battery-volume",
+      "safety-co-detector-battery",
+      "safety-contact-battery",
+      "safety-contact-tamper-battery",
+      "safety-gas-detector-tamper",
+      "safety-gas-detector-tamper-battery-low",
+      "safety-motion-battery",
+      "safety-motion-illuminance-battery",
+      "safety-motion-illuminance-temp-humidity-battery",
+      "safety-motion-illuminance-temp-humidity-tamper-battery",
+      "safety-motion-tamper-battery",
+      "safety-smoke-detector-battery",
+      "safety-smoke-temp-humidity-battery",
+      "safety-water-leak-battery",
+      "safety-water-leak-temp-battery",
+      "sensors-illuminance-battery",
+      "sensors-illuminance-temp-humidity-battery",
+      "sensors-temp-humidity-battery",
+      "sensors-temp-humidity-pressure-battery-voltage",
+      "switches-switch-1",
+      "thermostats-fcu-thermostat",
+      "thermostats-thermostat",
+      "thermostats-thermostat-battery"
+    ],
+    "fingerprints": 526,
+    "custom_capabilities": {
+      "numeric": 2,
+      "enum": 1,
+      "text": 1
+    }
+  },
+  {
+    "name": "zcl-covers-wonjj6768",
+    "raw_size": 264847,
+    "under_limit": true,
+    "profiles": [
+      "covers-cover",
+      "covers-cover-2",
+      "covers-cover-battery"
+    ],
+    "fingerprints": 54,
+    "custom_capabilities": {
+      "numeric": 0,
+      "enum": 0,
+      "text": 1
+    }
+  },
+  {
+    "name": "zcl-controls-wonjj6768",
+    "raw_size": 370267,
+    "under_limit": true,
+    "profiles": [
+      "buttons-button-1-battery",
+      "buttons-button-1-battery-operation-mode-remote-action",
+      "buttons-button-1-battery-remote-action",
+      "buttons-button-2-battery",
+      "buttons-button-2-battery-remote-action",
+      "buttons-button-3-battery",
+      "buttons-button-4-battery",
+      "buttons-button-4-battery-operation-mode-remote-action",
+      "buttons-button-4-battery-remote-action",
+      "buttons-button-5-battery",
+      "buttons-button-6-battery",
+      "buttons-button-6-battery-operation-mode-remote-action",
+      "buttons-doorbell-battery-tamper-low",
+      "controllers-dimming-remote-action",
+      "controllers-ir-transceiver",
+      "scene-switches-1",
+      "scene-switches-1-advanced",
+      "scene-switches-2",
+      "scene-switches-2-advanced",
+      "scene-switches-3",
+      "scene-switches-3-advanced",
+      "scene-switches-4",
+      "scene-switches-4-advanced",
+      "scene-switches-4-plus-2",
+      "scene-switches-scene-1",
+      "scene-switches-scene-2",
+      "scene-switches-scene-3",
+      "scene-switches-scene-4",
+      "scene-switches-scene-6",
+      "security-remotes-action-battery",
+      "security-remotes-sos-battery"
+    ],
+    "fingerprints": 411,
+    "custom_capabilities": {
+      "numeric": 0,
+      "enum": 7,
+      "text": 4
+    }
+  },
+  {
+    "name": "ef00-controls-wonjj6768",
+    "raw_size": 263219,
+    "under_limit": true,
+    "profiles": [
+      "buttons-button-18",
+      "buttons-button-2-battery",
+      "buttons-button-4",
+      "buttons-button-6-battery",
+      "security-remotes-sos-battery"
+    ],
+    "fingerprints": 11,
+    "custom_capabilities": {
+      "numeric": 0,
+      "enum": 1,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-covers-wonjj6768",
+    "raw_size": 307973,
+    "under_limit": true,
+    "profiles": [
+      "covers-cover",
+      "covers-cover-2",
+      "covers-cover-battery-epj-zb",
+      "covers-cover-battery-mb60l",
+      "covers-cover-battery-rm28-le",
+      "covers-cover-bx82-tyz1",
+      "covers-cover-pims3028",
+      "covers-cover-switch-1",
+      "covers-cover-switch-2",
+      "covers-cover-zb-sm",
+      "covers-cover-zm79e-dt"
+    ],
+    "fingerprints": 144,
+    "custom_capabilities": {
+      "numeric": 4,
+      "enum": 12,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-lights-wonjj6768",
+    "raw_size": 313572,
+    "under_limit": true,
+    "profiles": [
+      "fans-fan-level-light-dimmer",
+      "fans-fan-level-light-switch",
+      "fans-fan-light-switch",
+      "fans-switch-fan-mode-ef00",
+      "lights-color-temperature",
+      "lights-dimmer",
+      "lights-dimmer-2",
+      "lights-dimmer-3",
+      "lights-dimmer-options-ts0601",
+      "lights-dimmer-power-voltage-current"
+    ],
+    "fingerprints": 96,
+    "custom_capabilities": {
+      "numeric": 7,
+      "enum": 4,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-switch-wonjj6768",
+    "raw_size": 369459,
+    "under_limit": true,
+    "profiles": [
+      "doors-garage-contact",
+      "doors-garage-contact-countdown",
+      "switches-switch-1",
+      "switches-switch-1-battery",
+      "switches-switch-1-power-energy-voltage-current",
+      "switches-switch-1-temp-humidity",
+      "switches-switch-1-temperature",
+      "switches-switch-10",
+      "switches-switch-12",
+      "switches-switch-16",
+      "switches-switch-2",
+      "switches-switch-24",
+      "switches-switch-3",
+      "switches-switch-4",
+      "switches-switch-4-energy-voltage-current",
+      "switches-switch-4-temp-humidity",
+      "switches-switch-5",
+      "switches-switch-6",
+      "switches-switch-6-power-voltage-current",
+      "switches-switch-8"
+    ],
+    "fingerprints": 163,
+    "custom_capabilities": {
+      "numeric": 2,
+      "enum": 3,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-energy-wonjj6768",
+    "raw_size": 407060,
+    "under_limit": true,
+    "profiles": [
+      "din-rail-switch-power-energy-voltage-current",
+      "din-rail-switch-power-energy-voltage-current-din1",
+      "din-rail-switch-power-energy-voltage-current-din2",
+      "din-rail-switch-power-energy-voltage-current-din3",
+      "din-rail-switch-power-energy-voltage-current-leakage-protector",
+      "din-rail-switch-power-energy-voltage-current-rcbo",
+      "din-rail-switch-power-energy-voltage-current-toqcb2",
+      "din-rail-switch-power-energy-voltage-current-toqjzt",
+      "meters-power-energy-2phase-sdm02v1",
+      "meters-power-energy-atms10013z3",
+      "meters-power-energy-voltage-current",
+      "meters-power-energy-voltage-current-2ct",
+      "meters-power-energy-voltage-current-bidirectional",
+      "meters-power-energy-voltage-current-clamp3phase",
+      "meters-power-energy-voltage-current-pc311",
+      "meters-power-energy-voltage-current-pj1203a",
+      "meters-power-energy-voltage-current-sdm01",
+      "switch-power-energy"
+    ],
+    "fingerprints": 111,
+    "custom_capabilities": {
+      "numeric": 26,
+      "enum": 7,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-sensors-wonjj6768",
+    "raw_size": 352919,
+    "under_limit": true,
+    "profiles": [
+      "sensors-aq-co2",
+      "sensors-aq-co2-temp-humidity",
+      "sensors-aq-co2-temp-humidity-voc-formaldehyde",
+      "sensors-aq-pm25-co2-temp-humidity-voc-formaldehyde",
+      "sensors-illuminance",
+      "sensors-illuminance-battery",
+      "sensors-illuminance-temp-humidity",
+      "sensors-illuminance-temp-humidity-battery",
+      "sensors-liquid-level",
+      "sensors-pressure-temp-display",
+      "sensors-soil-temp-humidity-moisture-battery-air-illum",
+      "sensors-soil-temp-humidity-moisture-battery-dry",
+      "sensors-soil-temp-humidity-moisture-battery-warning",
+      "sensors-soil-temp-humidity-moisture-battery-warning-legacy",
+      "sensors-soil-temp-humidity-moisture-illuminance-battery-warning",
+      "sensors-soil-temp-humidity-moisture-illuminance-ec-battery-fertility-cal",
+      "sensors-soil-temp-humidity-moisture-illuminance-ec-battery-fertility-zssf00",
+      "sensors-soil-temp-moisture-battery",
+      "sensors-soil-temp-moisture-battery-alarm",
+      "sensors-soil-temp-moisture-battery-dry",
+      "sensors-temp-battery",
+      "sensors-temp-battery-heat-water-meter",
+      "sensors-temp-battery-pool-chlorine",
+      "sensors-temp-humidity-battery",
+      "sensors-temp-humidity-battery-alarm-sensitivity-th-alarm",
+      "sensors-temp-humidity-battery-calibration-zg227z",
+      "sensors-temp-humidity-probe-2aaa-battery",
+      "sensors-temp-humidity-probe-excellux-battery"
+    ],
+    "fingerprints": 159,
+    "custom_capabilities": {
+      "numeric": 25,
+      "enum": 3,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-pir-motion-wonjj6768",
+    "raw_size": 297072,
+    "under_limit": true,
+    "profiles": [
+      "safety-motion-bed-time-illuminance-battery",
+      "safety-motion-legacy-illuminance",
+      "safety-motion-pir-illuminance",
+      "safety-motion-pir-illuminance-battery",
+      "safety-motion-pir-solar-battery",
+      "safety-motion-zg204zl-keep-illuminance-battery",
+      "safety-motion-zpir10-illuminance-battery"
+    ],
+    "fingerprints": 23,
+    "custom_capabilities": {
+      "numeric": 38,
+      "enum": 12,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-presence-general-wonjj6768",
+    "raw_size": 410533,
+    "under_limit": true,
+    "profiles": [
+      "safety-motion-tamper-battery",
+      "safety-presence",
+      "safety-presence-basic",
+      "safety-presence-basic-delay-battery",
+      "safety-presence-gnpflcoq-illuminance-temp-humidity-battery",
+      "safety-presence-illuminance",
+      "safety-presence-illuminance-battery",
+      "safety-presence-illuminance-temp-humidity-battery-zg204zx",
+      "safety-presence-mir-fall-illuminance",
+      "safety-presence-msa201-illuminance",
+      "safety-presence-pir24g-dedicated-illuminance-battery",
+      "safety-presence-range-delay-illuminance",
+      "safety-presence-range-illuminance",
+      "safety-presence-wzm100-range-delay-illuminance",
+      "safety-presence-y1in-dedicated-illuminance",
+      "safety-presence-zf24-move-illuminance",
+      "safety-presence-zg204ze-dedicated-illuminance-battery",
+      "safety-presence-zg204zh-dedicated-mode-illuminance-temp-humidity-battery",
+      "safety-presence-zg204zk-dedicated-illuminance-battery",
+      "safety-presence-zg204zm-dedicated-mode-illuminance-battery",
+      "safety-presence-zg204zq-illuminance-temp-humidity-battery",
+      "safety-presence-zg204zv-dedicated-illuminance-temp-humidity-battery",
+      "safety-presence-zis01p-illuminance-battery",
+      "safety-presence-zp301z-time-cycle-illuminance-battery",
+      "safety-presence-zy-hps01-illuminance",
+      "safety-presence-zym100l-fixed-illuminance",
+      "safety-presence-zym100s1-range-delay-illuminance",
+      "safety-presence-zym100s2-range-delay-illuminance"
+    ],
+    "fingerprints": 88,
+    "custom_capabilities": {
+      "numeric": 53,
+      "enum": 16,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-presence-switch-wonjj6768",
+    "raw_size": 348329,
+    "under_limit": true,
+    "profiles": [
+      "safety-presence-switch-illuminance",
+      "switches-presence-switch-3"
+    ],
+    "fingerprints": 17,
+    "custom_capabilities": {
+      "numeric": 53,
+      "enum": 17,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-presence-advanced-wonjj6768",
+    "raw_size": 377970,
+    "under_limit": true,
+    "profiles": [
+      "safety-presence-ctlr1-threshold-min-delay-illuminance",
+      "safety-presence-mtd085-entry-range-illuminance",
+      "safety-presence-mtg075-entry-controls-illuminance",
+      "safety-presence-rtzcz03z-range-illuminance",
+      "safety-presence-yxzbrb58-range-delay-scene-illuminance",
+      "safety-presence-zg205z-illuminance",
+      "safety-presence-zg205za-illuminance",
+      "safety-presence-zg205zl-illuminance",
+      "safety-presence-zym10024g-move-threshold-min-illuminance",
+      "safety-presence-zym10024gv2-move-range-illuminance",
+      "safety-presence-zym10024gv3-move-range-illuminance",
+      "safety-presence-zym100s3-keep-illuminance"
+    ],
+    "fingerprints": 34,
+    "custom_capabilities": {
+      "numeric": 53,
+      "enum": 16,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-safety-wonjj6768",
+    "raw_size": 334315,
+    "under_limit": true,
+    "profiles": [
+      "safety-acceleration-4cqhd2ha",
+      "safety-acceleration-alarm-battery-zg228z",
+      "safety-acceleration-battery",
+      "safety-acceleration-battery-zg103z",
+      "safety-acceleration-contact-battery-zg102zm",
+      "safety-alarm-battery-duration-volume-ringtone-yxzbsl",
+      "safety-alarm-battery-zg229z",
+      "safety-alarm-duration-volume-ringtone-za03",
+      "safety-co-detector",
+      "safety-contact-battery",
+      "safety-contact-battery-senoro-win-v2",
+      "safety-contact-illuminance-battery",
+      "safety-contact-tamper-battery-opening",
+      "safety-contact-temp-humidity-battery",
+      "safety-contact-temp-humidity-battery-s8",
+      "safety-gas-co-detector",
+      "safety-gas-detector",
+      "safety-gas-detector-alarm-time-ringtone",
+      "safety-gas-detector-self-test",
+      "safety-gas-detector-zg225z",
+      "safety-motion-vibration-illuminance-battery",
+      "safety-smoke-co-detector-battery",
+      "safety-smoke-detector-battery",
+      "safety-smoke-detector-battery-288wz",
+      "safety-smoke-temp-humidity-battery",
+      "safety-vibration-battery",
+      "safety-water-leak",
+      "safety-water-leak-alarm-battery-zg226z",
+      "safety-water-leak-battery",
+      "safety-water-leak-illuminance-battery-zg223z"
+    ],
+    "fingerprints": 92,
+    "custom_capabilities": {
+      "numeric": 11,
+      "enum": 19,
+      "text": 1
+    }
+  },
+  {
+    "name": "ef00-valves-wonjj6768",
+    "raw_size": 262391,
+    "under_limit": true,
+    "profiles": [
+      "valves-valve",
+      "valves-valve-2-battery-status",
+      "valves-valve-battery",
+      "valves-valve-position-hbnfokum",
+      "valves-valve-ultrasonic-meter"
+    ],
+    "fingerprints": 17,
+    "custom_capabilities": {
+      "numeric": 4,
+      "enum": 2,
+      "text": 2
+    }
+  },
+  {
+    "name": "ef00-thermostats-wonjj6768",
+    "raw_size": 395052,
+    "under_limit": true,
+    "profiles": [
+      "thermostats-fcu-thermostat-hhst001",
+      "thermostats-fcu-thermostat-l2-t-f-mf",
+      "thermostats-fcu-thermostat-no-operating",
+      "thermostats-fcu-thermostat-tybac006",
+      "thermostats-thermostat",
+      "thermostats-thermostat-basic",
+      "thermostats-thermostat-basic-twc-r01",
+      "thermostats-thermostat-battery",
+      "thermostats-thermostat-battery-ar331pro",
+      "thermostats-thermostat-battery-bot-r15w",
+      "thermostats-thermostat-battery-no-operating",
+      "thermostats-thermostat-battery-operating",
+      "thermostats-thermostat-battery-setpoint-temp",
+      "thermostats-thermostat-floor",
+      "thermostats-thermostat-mode-setpoint",
+      "thermostats-thermostat-pilot-wire-no-operating",
+      "thermostats-thermostat-pro900z",
+      "thermostats-thermostat-tervix",
+      "thermostats-thermostat-tgm50",
+      "thermostats-thermostat-tv02",
+      "thermostats-thermostat-x5h",
+      "thermostats-thermostat-zg-wk-da",
+      "thermostats-thermostat-zht002",
+      "thermostats-thermostat-zwt07"
+    ],
+    "fingerprints": 203,
+    "custom_capabilities": {
+      "numeric": 12,
+      "enum": 16,
+      "text": 1
+    }
+  }
+]

@@ -1,0 +1,22 @@
+name: valves-valve-2-battery-status
+components:
+  - id: main
+    capabilities:
+      - id: valve
+        version: 1
+      - id: concertmirror08464.valveStatusDualIrrigationMode
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Valve
+  - id: valve2
+    capabilities:
+      - id: valve
+        version: 1
+      - id: concertmirror08464.valveStatusDualIrrigationMode
+        version: 1
+    categories:
+      - name: Valve

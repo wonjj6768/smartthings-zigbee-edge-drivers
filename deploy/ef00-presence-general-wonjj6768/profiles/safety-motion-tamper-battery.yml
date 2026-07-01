@@ -1,0 +1,48 @@
+name: safety-motion-tamper-battery
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MotionSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: motionSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: motionSensor
+      version: 1
+    - component: main
+      capability: tamperAlert
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: motionSensor
+        version: 1
+      - component: main
+        capability: tamperAlert
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

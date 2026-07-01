@@ -1,0 +1,6 @@
+name: "EF00 Controls wonjj6768"
+packageKey: "ef00-controls-wonjj6768"
+description: "Development driver; report issues with hub logcat. Supports EF00 scene remotes and button controllers."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

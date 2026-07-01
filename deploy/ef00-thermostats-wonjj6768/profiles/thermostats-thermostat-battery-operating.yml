@@ -1,0 +1,12 @@
+name: thermostats-thermostat-battery-operating
+components:
+  - id: main
+    capabilities:
+      - id: thermostatOperatingState
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat

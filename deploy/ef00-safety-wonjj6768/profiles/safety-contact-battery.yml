@@ -1,0 +1,42 @@
+name: safety-contact-battery
+components:
+  - id: main
+    capabilities:
+      - id: contactSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: ContactSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: contactSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: contactSensor
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: contactSensor
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

@@ -1,0 +1,41 @@
+name: network-repeater
+components:
+  - id: main
+    capabilities:
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: firmwareUpdate
+        version: 1
+        group: main
+    actions:
+      - component: main
+        capability: refresh
+        version: 1
+        group: main
+        values:
+          - command: "refresh"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: firmwareUpdate
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: firmwareUpdate
+        version: 1
+    actions:
+      - component: main
+        capability: refresh
+        version: 1

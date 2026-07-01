@@ -1,0 +1,78 @@
+name: thermostats-fcu-thermostat
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: fanMode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+        group: main
+        values:
+          - label: "{{temperature.value}}{{temperature.unit}}"
+      - component: main
+        capability: thermostatMode
+        version: 1
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: fanMode
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: fanMode
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: fanMode
+        version: 1

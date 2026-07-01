@@ -1,0 +1,18 @@
+name: safety-alarm-duration-volume-ringtone-za03
+components:
+  - id: main
+    capabilities:
+      - id: alarm
+        version: 1
+      - id: concertmirror08464.alarmDurationSirenZa03Seconds
+        version: 1
+      - id: concertmirror08464.alarmVolumeSirenZa03
+        version: 1
+      - id: concertmirror08464.alarmRingtoneSirenZa03
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Siren

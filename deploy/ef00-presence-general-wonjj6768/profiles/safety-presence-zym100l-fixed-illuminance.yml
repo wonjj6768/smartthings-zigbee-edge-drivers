@@ -1,0 +1,80 @@
+name: safety-presence-zym100l-fixed-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: concertmirror08464.presenceSensitivityZym100l
+        version: 1
+      - id: concertmirror08464.minimumRangeZym100l
+        version: 1
+      - id: concertmirror08464.presenceDetectionRangeZym100l
+        version: 1
+      - id: concertmirror08464.detectionDelayZym100l
+        version: 1
+      - id: concertmirror08464.presenceFadingTimeZym100l
+        version: 1
+      - id: concertmirror08464.selfTestPresence
+        version: 1
+      - id: concertmirror08464.presenceTargetDistanceZym100l
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceSensitivityZym100l
+      version: 1
+    - component: main
+      capability: concertmirror08464.minimumRangeZym100l
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceDetectionRangeZym100l
+      version: 1
+    - component: main
+      capability: concertmirror08464.detectionDelayZym100l
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceFadingTimeZym100l
+      version: 1
+    - component: main
+      capability: concertmirror08464.selfTestPresence
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceTargetDistanceZym100l
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.selfTestPresence
+        version: 1

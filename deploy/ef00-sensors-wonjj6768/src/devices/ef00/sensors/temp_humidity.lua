@@ -1,0 +1,319 @@
+local tuya = require "tuya_common"
+local emit = require "emitters"
+local device_helpers = require "devices.shared.helpers"
+local ef00_helpers = require "devices.ef00.helpers"
+local converter = tuya.converter
+local device_definitions, register_device_definition = device_helpers.definition_registry()
+local function pool_ph_converter()
+return converter.from_only(function(value)
+local numeric = tonumber(value)
+if numeric == nil then
+return nil
+end
+if numeric > 99 then
+return numeric / 100
+end
+return numeric / 10
+end)
+end
+local function register_sensor_definition(definitions_or_table, fingerprint_list)
+if type(definitions_or_table) == "table" then
+local entry = {}
+for key, value in pairs(definitions_or_table) do
+entry[key] = value
+end
+if entry.query_on_configure == nil then
+entry.query_on_configure = true
+end
+register_device_definition(entry, fingerprint_list)
+return
+end
+register_device_definition({
+datapoints = definitions_or_table,
+query_on_configure = true,
+}, fingerprint_list)
+end
+local th_unsigned_h10 = {
+tuya.dp_numeric(1, { name = "temperature", emit = emit.temperature("C"), converter = converter.tuya_unsigned_temp(10) }),
+tuya.dp_humidity(2, { emit = emit.humidity(), scale = 10 }),
+tuya.dp_battery(4, { emit = emit.battery() }),
+}
+register_device_definition(th_unsigned_h10, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_bjawzodf",
+"_TZE200_zl1kmjqx",
+"_TZE284_9ern5sfh",
+}))
+local th_unsigned = {
+tuya.dp_numeric(1, { name = "temperature", emit = emit.temperature("C"), converter = converter.tuya_unsigned_temp(10) }),
+tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1 }),
+tuya.dp_battery(4, { emit = emit.battery() }),
+}
+register_device_definition(th_unsigned, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_bq5c8xfe",
+"_TZE200_qyflbnbj",
+"_TZE204_qyflbnbj",
+"_TZE284_qyflbnbj",
+"_TZE200_44af8vyi",
+}))
+local th = {
+tuya.dp_temperature(1, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1 }),
+tuya.dp_battery(4, { emit = emit.battery() }),
+tuya.dp_temperature_unit(9, {}),                                -- 지원필요없음
+tuya.dp_temperature_calibration(23, { emit = emit.temperatureCalibrationZg227z() }),
+tuya.dp_humidity_calibration(24, { emit = emit.humidityCalibrationZg227z() }),
+}
+register_sensor_definition({
+profile = "sensors-temp-humidity-battery-calibration-zg227z",
+datapoints = th,
+}, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_a8sdabtg",
+"_TZE200_qoy0ekbd",
+"_TZE200_znbl8dj5",
+"_TZE200_zppcgbdj",
+"_TZE204_s139roas",
+"_TZE200_s1xgth2u",
+"_TZE200_t3xd7l44",
+"_TZE284_kdqrazmy",
+"_TZE200_dikkika5",
+"_TZE200_vs0skpuc",
+"_TZE200_3xfjp0ag",
+"_TZE200_ehhrv2e3",
+"_TZE200_lhqtjwax",
+"_TZE200_y8wkaq6w",
+"_TZE200_ysm4dsb1",
+}))
+register_sensor_definition({
+profile = "sensors-temp-humidity-battery-calibration-zg227z",
+datapoints = th,
+}, {
+device_helpers.create_fingerprint("HOBEIAN", "ZG-227Z"),
+device_helpers.create_fingerprint("HOBEIAN", "ZG-227ZL"),
+device_helpers.create_fingerprint("KOJIMA", "KOJIMA-THS-ZG-LCD"),
+device_helpers.create_fingerprint("Tuya", "TZE200_t3xd7l44"),
+})
+local pool_chlorine_meter = {
+profile = "sensors-temp-battery-pool-chlorine",
+datapoints = {
+tuya.dp_numeric(1, { name = "tds", emit = emit.tdsChlorineMeter() }),
+tuya.dp_temperature(2, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_battery(7, { emit = emit.battery() }),
+tuya.dp_numeric(10, { name = "ph", emit = emit.poolPhChlorineMeter(), converter = pool_ph_converter() }),
+tuya.dp_numeric(11, { name = "ec" }),                                 -- profile 미포함
+tuya.dp_numeric(101, { name = "orp", emit = emit.poolOrpChlorineMeter() }),
+tuya.dp_numeric(102, { name = "free_chlorine", scale = 10, emit = emit.freeChlorineChlorineMeter() }),
+tuya.dp_numeric(105, { name = "backlightvalue" }),                    -- profile 미포함
+tuya.dp_numeric(117, { name = "salinity", emit = emit.salinityChlorineMeter() }),
+},
+query_on_configure = true,
+}
+register_device_definition(pool_chlorine_meter, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_d9mzkhoq",
+"_TZE200_v1jqz5cy",
+}))
+register_device_definition(pool_chlorine_meter, {
+device_helpers.create_fingerprint("Tuya", "YK-S03"),
+device_helpers.create_fingerprint("Tuya", "YY-1099L"),
+})
+local heat_water_meter = {
+profile = "sensors-temp-battery-heat-water-meter",
+datapoints = {
+tuya.dp_water_consumed(1, { name = "water_consumed", emit = emit.waterConsumedHeatMeter() }),
+tuya.dp_month_consumption(2, { name = "monthly_water_consumption" }),   -- profile 미포함
+tuya.dp_daily_consumption(3, { name = "daily_water_consumption" }),     -- profile 미포함
+tuya.dp_binary(6, { name = "prepayment_switch" }),                     -- profile 미포함
+tuya.dp_cumulative_heat(7, { name = "cumulative_heat" }),              -- profile 미포함
+tuya.dp_string(16, { name = "meter_id" }),                             -- profile 미포함
+tuya.dp_inlet_water_temperature(21, { name = "temperature", emit = emit.temperature("C") }),
+tuya.dp_outlet_water_temperature(22, { name = "outlet_water_temperature" }), -- profile 미포함
+tuya.dp_battery_voltage(26, { name = "battery_voltage" }),             -- profile 미포함
+},
+query_on_configure = true,
+}
+register_device_definition(heat_water_meter, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_jt50ea5d",
+}))
+local ultrasonic_water_meter = {
+profile = "sensors-temp-battery",
+datapoints = {
+tuya.dp_water_consumed(1, { name = "water_consumed" }),                 -- profile 미포함
+tuya.dp_string(16, { name = "meter_id" }),                             -- profile 미포함
+tuya.dp_temperature(22, { emit = emit.temperature("C"), scale = 100 }),
+tuya.dp_battery_voltage(26, { name = "battery_voltage" }),             -- profile 미포함
+},
+query_on_configure = true,
+}
+register_device_definition(ultrasonic_water_meter, ef00_helpers.ts0601_fingerprints( {
+"_TZE284_ajlu4cud",
+}))
+local th_alarm = {
+tuya.dp_temperature(1, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1 }),
+tuya.dp_battery_state(3, {}),                                          -- 프로파일 미포함
+tuya.dp_battery(4, { emit = emit.battery() }),
+tuya.dp_temperature_unit(9, {}),                                       -- 지원필요없음
+tuya.dp_max_temperature_alarm(10, { scale = 10 }),                     -- 지원필요없음
+tuya.dp_min_temperature_alarm(11, { scale = 10 }),                     -- 지원필요없음
+tuya.dp_max_humidity_alarm(12, {}),                                    -- 지원필요없음
+tuya.dp_min_humidity_alarm(13, {}),                                    -- 지원필요없음
+tuya.dp_temperature_alarm(14, {}),                                     -- 지원필요없음
+tuya.dp_humidity_alarm(15, {}),                                        -- 지원필요없음
+tuya.dp_report_interval(17, { name = "temperature_report_interval" }), -- 프로파일 미포함
+tuya.dp_report_interval(18, { name = "humidity_report_interval" }),    -- 프로파일 미포함
+tuya.dp_numeric(19, {
+name = "temperature_sensitivity",
+scale = 10,
+emit = emit.tempSensitivityThCToOne(),
+}),
+tuya.dp_numeric(20, { name = "humidity_sensitivity", emit = emit.humiditySensitivityThThreeTen() }),
+}
+register_sensor_definition({
+profile = "sensors-temp-humidity-battery-alarm-sensitivity-th-alarm",
+datapoints = th_alarm,
+}, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_lve3dvpy",
+"_TZE200_c7emyjom",
+"_TZE200_locansqn",
+"_TZE200_qrztc3ev",
+"_TZE200_snloy4rw",
+"_TZE200_eanjj2pa",
+"_TZE200_ydrdfkim",
+"_TZE284_locansqn",
+"_TZE200_w6n8jeuu",
+"_TZE200_vvmbj46n",
+"_TZE284_vvmbj46n",
+"_TZE284_4dosadbh",
+"_TZE284_cwyqwqbf",
+"_TZE200_whkgqxse",
+}))
+register_sensor_definition({
+profile = "sensors-temp-humidity-battery-alarm-sensitivity-th-alarm",
+datapoints = th_alarm,
+}, {
+device_helpers.create_fingerprint("ONENUO", "TH05Z"),
+device_helpers.create_fingerprint("Tuya", "TZE284_cwyqwqbf"),
+})
+local th_2aaa = {
+tuya.dp_temperature(1, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1 }),
+tuya.dp_enum(3, { name = "battery", emit = emit.battery(), converter = converter.from_only(converter.lookup_value({ [0] = 25, [1] = 50, [2] = 100 })) }),
+tuya.dp_temperature_unit(9, {}),                                       -- 지원필요없음
+}
+register_device_definition(th_2aaa, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_upagmta9",
+"_TZE204_upagmta9",
+"_TZE284_upagmta9",
+"_TZE200_cirvgep4",
+"_TZE204_cirvgep4",
+"_TZE204_jygvp6fk",
+"_TZE200_yjjdcqsq",
+"_TZE204_yjjdcqsq",
+"_TZE284_yjjdcqsq",
+"_TZE200_9yapgbuv",
+"_TZE204_9yapgbuv",
+"_TZE284_9yapgbuv",
+"_TZE200_utkemkbs",
+"_TZE204_utkemkbs",
+"_TZE284_utkemkbs",
+"_TZE204_ksz749x8",
+"_TZE204_1wnh8bqp",
+"_TZE284_1wnh8bqp",
+"_TZE204_kwi6bbk4",
+"_TZE204_d7lpruvi",
+"_TZE200_d7lpruvi",
+"_TZE284_d7lpruvi",
+"_TZE284_hdyjyqjm",
+}))
+register_device_definition(th_2aaa, {
+device_helpers.create_fingerprint("Tuya", "ZTH01"),
+device_helpers.create_fingerprint("Tuya", "SZTH02"),
+device_helpers.create_fingerprint("Tuya", "ZTH02"),
+device_helpers.create_fingerprint("Tuya", "ZTH05"),
+device_helpers.create_fingerprint("Tuya", "ZTH08-E"),
+device_helpers.create_fingerprint("Tuya", "ZTH08"),
+})
+local th_excellux = {
+tuya.dp_battery(4, { emit = emit.battery() }),
+tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 100 }),
+tuya.dp_humidity(118, { emit = emit.humidity(), scale = 100 }),
+}
+register_device_definition(th_excellux, {
+device_helpers.create_fingerprint("DHT0001", "Excellux"),
+device_helpers.create_fingerprint("DHTA001", "Excellux"),
+device_helpers.create_fingerprint("Excellux", "DHTA001"),
+})
+local th_excellux_probe = {
+tuya.dp_numeric(1, { name = "temperature_probe", emit = emit.temperatureProbeExcellux(), scale = 10 }),
+tuya.dp_battery(4, { emit = emit.battery() }),
+tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 100 }),
+tuya.dp_humidity(118, { emit = emit.humidity(), scale = 100 }),
+}
+register_sensor_definition({
+profile = "sensors-temp-humidity-probe-excellux-battery",
+datapoints = th_excellux_probe,
+}, {
+device_helpers.create_fingerprint("NTCHT01", "Excellux"),
+device_helpers.create_fingerprint("NTCHT02", "Excellux"),
+device_helpers.create_fingerprint("Excellux", "ZG-106NTH"),
+})
+local th_temperature_battery = {
+tuya.dp_temperature(1, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_battery(4, { emit = emit.battery() }),
+}
+register_device_definition(th_temperature_battery, device_helpers.create_fingerprints("TS0201", {
+"_TZE200_iq4ygaai",
+"_TZE200_01fvxamo",
+}))
+register_device_definition(th_temperature_battery, {
+device_helpers.create_fingerprint("OWON", "THS317-ET-EY"),
+})
+local th_alarm_neo = {
+tuya.dp_numeric(101, {
+name = "power_type",
+emit = emit.battery(),
+converter = converter.from_only(converter.lookup_value({
+[0] = 100,
+[1] = 75,
+[2] = 50,
+[3] = 5,
+[4] = 100,
+})),
+}),
+tuya.dp_temperature(105, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(106, { emit = emit.humidity(), scale = 1 }),
+}
+register_device_definition(th_alarm_neo, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_d0yu2xgi",
+}))
+local th_illum = {
+tuya.dp_illuminance(7, { emit = emit.illuminance() }),
+tuya.dp_temperature(8, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(9, { emit = emit.humidity(), scale = 1 }),
+tuya.dp_battery(3, { emit = emit.battery() }),
+}
+register_device_definition(th_illum, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_vzqtvljm",
+}))
+local th_illum_h10 = {
+tuya.dp_illuminance(2, { emit = emit.illuminance() }),
+tuya.dp_temperature(6, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(7, { emit = emit.humidity(), scale = 10 }),
+}
+register_device_definition(th_illum_h10, ef00_helpers.ts0601_fingerprints( {
+"_TZE200_rbbx5mfq",
+"_TZE204_rbbx5mfq",
+}))
+local th_2aaa_probe = {
+tuya.dp_temperature(1, { emit = emit.temperature("C"), scale = 10 }),
+tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1 }),
+tuya.dp_enum(3, { name = "battery_state", emit = emit.battery(), converter = converter.from_only(converter.lookup_value({ [0] = 0, [1] = 50, [2] = 100 })) }),
+tuya.dp_numeric(38, { name = "temperature_probe", emit = emit.temperatureProbe2aaa(), scale = 10 }),
+}
+register_sensor_definition({
+profile = "sensors-temp-humidity-probe-2aaa-battery",
+datapoints = th_2aaa_probe,
+}, ef00_helpers.ts0601_fingerprints( {
+"_TZE284_8se38w3c",
+"_TZE284_hodyryli",
+}))
+return device_definitions

@@ -1,0 +1,47 @@
+name: safety-gas-detector-tamper-battery-low
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: concertmirror08464.batteryLow
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: gasDetector
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: gasDetector
+      version: 1
+    - component: main
+      capability: tamperAlert
+      version: 1
+    - component: main
+      capability: concertmirror08464.batteryLow
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: gasDetector
+        version: 1
+      - component: main
+        capability: tamperAlert
+        version: 1
+    actions: []

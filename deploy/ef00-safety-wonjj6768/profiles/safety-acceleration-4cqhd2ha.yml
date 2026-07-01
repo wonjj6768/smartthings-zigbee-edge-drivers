@@ -1,0 +1,14 @@
+name: safety-acceleration-4cqhd2ha
+components:
+  - id: main
+    capabilities:
+      - id: accelerationSensor
+        version: 1
+      - id: concertmirror08464.vibrationSensitivity4cqhd2haLevel
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MultiFunctionalSensor

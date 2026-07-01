@@ -1,0 +1,10 @@
+name: controllers-dimming-remote-action
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.remoteAction
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

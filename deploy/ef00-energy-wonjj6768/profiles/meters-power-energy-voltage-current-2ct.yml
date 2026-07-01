@@ -1,0 +1,48 @@
+name: meters-power-energy-voltage-current-2ct
+components:
+  - id: main
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+      - id: concertmirror08464.acFrequency2ct
+        version: 1
+      - id: concertmirror08464.updateFrequency2ctSeconds60
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: ct1
+    label: CT1
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.powerFactor2ctPercent
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: ct2
+    label: CT2
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.powerFactor2ctPercent
+        version: 1
+    categories:
+      - name: CurbPowerMeter

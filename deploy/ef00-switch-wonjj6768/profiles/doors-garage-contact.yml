@@ -1,0 +1,52 @@
+name: doors-garage-contact
+components:
+  - id: main
+    capabilities:
+      - id: doorControl
+        version: 1
+      - id: contactSensor
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GarageDoor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: doorControl
+        version: 1
+        group: main
+    actions:
+      - component: main
+        capability: doorControl
+        version: 1
+        group: main
+        values:
+          - command: "open"
+          - command: "close"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: doorControl
+      version: 1
+    - component: main
+      capability: contactSensor
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: doorControl
+        version: 1
+      - component: main
+        capability: contactSensor
+        version: 1
+    actions:
+      - component: main
+        capability: doorControl
+        version: 1

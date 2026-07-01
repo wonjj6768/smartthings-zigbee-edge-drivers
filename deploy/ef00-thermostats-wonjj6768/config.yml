@@ -1,0 +1,6 @@
+name: "EF00 Thermostats wonjj6768"
+packageKey: "ef00-thermostats-wonjj6768"
+description: "Development driver; report issues with hub logcat. Supports EF00 thermostats and radiator valves."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

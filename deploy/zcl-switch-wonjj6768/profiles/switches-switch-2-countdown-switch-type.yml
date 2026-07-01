@@ -1,0 +1,20 @@
+name: switches-switch-2-countdown-switch-type
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.switchType
+        version: 1
+      - id: concertmirror08464.countdownTimerZclTwelveHours
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch

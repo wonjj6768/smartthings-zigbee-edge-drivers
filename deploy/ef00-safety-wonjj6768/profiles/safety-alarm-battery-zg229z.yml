@@ -1,0 +1,24 @@
+name: safety-alarm-battery-zg229z
+components:
+  - id: main
+    capabilities:
+      - id: alarm
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.alarmDurationSiren
+        version: 1
+      - id: concertmirror08464.alarmVolumeHobeian
+        version: 1
+      - id: concertmirror08464.doorbellVolumeHobeian
+        version: 1
+      - id: concertmirror08464.doorbellSirenHobeian
+        version: 1
+      - id: concertmirror08464.mufflingSiren
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Siren

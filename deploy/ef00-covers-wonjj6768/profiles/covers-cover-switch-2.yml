@@ -1,0 +1,85 @@
+name: covers-cover-switch-2
+components:
+  - id: main
+    capabilities:
+      - id: windowShade
+        version: 1
+      - id: windowShadeLevel
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Blind
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: windowShade
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: windowShade
+        version: 1
+        values:
+          - command: "open"
+          - command: "close"
+          - command: "pause"
+        group: main
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: windowShade
+      version: 1
+    - component: main
+      capability: windowShadeLevel
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: switch2
+      capability: switch
+      version: 1
+    - component: switch3
+      capability: switch
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: windowShade
+        version: 1
+      - component: main
+        capability: windowShadeLevel
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+    actions:
+      - component: main
+        capability: windowShade
+        version: 1
+      - component: main
+        capability: windowShadeLevel
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1

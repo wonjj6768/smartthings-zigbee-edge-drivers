@@ -1,0 +1,24 @@
+name: sensors-soil-temp-humidity-moisture-battery-warning-legacy
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: concertmirror08464.soilMoisture
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.tempCalibrationSoilWarnC2
+        version: 1
+      - id: concertmirror08464.humidityCalibrationSoilWarning30
+        version: 1
+      - id: concertmirror08464.waterShortageSoilWarningLegacy
+        version: 1
+      - id: concertmirror08464.soilWarningThresholdLegacy
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MoistureSensor

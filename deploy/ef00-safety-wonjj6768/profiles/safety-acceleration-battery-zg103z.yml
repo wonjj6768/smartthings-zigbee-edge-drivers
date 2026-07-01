@@ -1,0 +1,16 @@
+name: safety-acceleration-battery-zg103z
+components:
+  - id: main
+    capabilities:
+      - id: accelerationSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.vibrationSensitivityZg103zEnum
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MultiFunctionalSensor

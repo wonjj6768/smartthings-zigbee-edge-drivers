@@ -1,0 +1,77 @@
+name: safety-motion-illuminance-temp-humidity-tamper-battery
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MotionSensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: motionSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: motionSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: relativeHumidityMeasurement
+      version: 1
+    - component: main
+      capability: tamperAlert
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: motionSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: relativeHumidityMeasurement
+        version: 1
+      - component: main
+        capability: tamperAlert
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

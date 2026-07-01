@@ -1,0 +1,102 @@
+name: safety-presence-zg205z-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: concertmirror08464.moveSensitivity
+        version: 1
+      - id: concertmirror08464.smallMoveSensitivity
+        version: 1
+      - id: concertmirror08464.breathSensitivity
+        version: 1
+      - id: concertmirror08464.moveDetectionMaxDistance
+        version: 1
+      - id: concertmirror08464.moveDetectionMinDistance
+        version: 1
+      - id: concertmirror08464.smallMoveDetectionMaxDistance
+        version: 1
+      - id: concertmirror08464.smallMoveDetectionMinDistance
+        version: 1
+      - id: concertmirror08464.breathDetectionMaxDistance
+        version: 1
+      - id: concertmirror08464.breathDetectionMinDistance
+        version: 1
+      - id: concertmirror08464.presenceTargetDistance
+        version: 1
+      - id: concertmirror08464.detectionHoldTime
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.moveSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.smallMoveSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.breathSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.moveDetectionMaxDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.moveDetectionMinDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.smallMoveDetectionMaxDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.smallMoveDetectionMinDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.breathDetectionMaxDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.breathDetectionMinDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.presenceTargetDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.detectionHoldTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+    actions: []

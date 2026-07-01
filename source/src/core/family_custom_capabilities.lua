@@ -28,6 +28,8 @@ local ATTRIBUTE_OVERRIDES = {
   indicatorZg204zx = "indicatorZgTwoFour",
   illuminanceIntervalZg204zx = "illumIntervalZgTwoFour",
   leakageThresholdProtector100ma = "leakageThreshProtHundredMa",
+  minBrightnessTs0601 = "minBrightTsZeroSixZeroOne",
+  maxBrightnessTs0601 = "maxBrightTsZeroSixZeroOne",
   motionDetectionSensitivityZg204zx = "motionSensZgTwoFour",
   powerFactor2ctPercent = "powerFactorTwoCtPercent",
   powerFactorPc311Percent = "powerFactorPcThreeElevenPercent",
@@ -264,6 +266,8 @@ local numeric_rows = {
     {"maxBrightnessZclThousand",true,"max_brightness",0,1000,1,nil},
     {"minimumBrightnessTsOneTenMax",true,"min_brightness",1,255,1,nil},
     {"maxBrightnessTsOneTenMax",true,"max_brightness",1,255,1,nil},
+    {"minBrightnessTs0601",true,"min_brightness",0,100,1,nil},
+    {"maxBrightnessTs0601",true,"max_brightness",0,100,1,nil},
 }
 local enum_rows = {
     {"childLock",true,"child_lock",{"off","on"}},

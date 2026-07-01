@@ -33,6 +33,8 @@ local IAS_WARNING_MODE_EMERGENCY = 0x03
 local IAS_WARNING_LEVEL_LOW = 0x00
 local IAS_WARNING_LEVEL_VERY_HIGH = 0x03
 local DEFAULT_IAS_WARNING_DURATION = 300
+local STATELESS_SWITCH_LEVEL_STEP_ID = "statelessSwitchLevelStep"
+local STATELESS_SWITCH_LEVEL_STEP_COMMAND = "stepLevel"
 
 battery_refresh.set_requester(function(device)
   return zcl.read_attribute(device, 0x0001, 0x0020, 1)
@@ -558,6 +560,79 @@ local function after_ef00_switch_command(device, command, value)
   schedule_ef00_state_request(device, 3, "ef00 switch state read 3s")
 end
 
+local function clamp_switch_level(value)
+  local numeric = tonumber(value)
+  if numeric == nil then
+    return nil
+  end
+
+  numeric = math.floor(numeric + 0.5)
+  if numeric < 0 then
+    return 0
+  end
+  if numeric > 100 then
+    return 100
+  end
+  return numeric
+end
+
+local function current_switch_level(device, component_id)
+  if type(device) ~= "table" or type(device.get_latest_state) ~= "function" then
+    return 0
+  end
+
+  local level = device:get_latest_state(component_id or "main", capabilities.switchLevel.ID, "level")
+  return clamp_switch_level(level) or 0
+end
+
+local function emit_switch_level_state(device, component_id, level)
+  local target_component = component_id or "main"
+  if type(device) ~= "table" or not device:supports_capability_by_id(capabilities.switchLevel.ID, target_component) then
+    return
+  end
+
+  device:emit_component_event({ id = target_component }, capabilities.switchLevel.level(level))
+end
+
+local function handle_stateless_switch_level_step(device, command)
+  local component_id = command and command.component or "main"
+  local step_size = command and command.args and command.args.stepSize or nil
+  step_size = tonumber(step_size)
+  if step_size == nil then
+    return
+  end
+
+  step_size = math.floor(step_size + 0.5)
+  if step_size < -100 then
+    step_size = -100
+  elseif step_size > 100 then
+    step_size = 100
+  end
+
+  local target_level = clamp_switch_level(current_switch_level(device, component_id) + step_size)
+  if target_level == nil then
+    return
+  end
+
+  if target_level > 0 then
+    send(device, command, "switch", true)
+  end
+
+  local handled = send(device, command, "brightness", target_level)
+  if target_level == 0 then
+    handled = send(device, command, "switch", false) or handled
+  end
+
+  if handled then
+    emit_switch_level_state(device, component_id, target_level)
+    if target_level == 0 then
+      after_ef00_switch_command(device, command, false)
+    else
+      after_ef00_switch_command(device, command, true)
+    end
+  end
+end
+
 local function build_capability_handlers()
   local handlers = {}
 
@@ -613,6 +688,12 @@ local function build_capability_handlers()
       after_ef00_switch_command(device, command, false)
     end
   end
+
+  handlers[STATELESS_SWITCH_LEVEL_STEP_ID] = {
+    [STATELESS_SWITCH_LEVEL_STEP_COMMAND] = function(_, device, command)
+      handle_stateless_switch_level_step(device, command)
+    end,
+  }
 
   handlers[capabilities.alarm.ID] = {
     [capabilities.alarm.commands.off.NAME] = function(_, device, command)

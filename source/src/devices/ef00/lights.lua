@@ -7,20 +7,24 @@
 local tuya = require "tuya_common"
 local emit = require "emitters"
 local device_helpers = require "devices.shared.helpers"
+local ef00_helpers = require "devices.ef00.helpers"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
 -- TS0601_dimmer_1_gang_1
 local dimmer_model_ts0601_dimmer_1_gang_1 = {
-  profile = "lights-dimmer",
+  profile = "lights-dimmer-options-ts0601",
+  presence_capability_ranges = {
+    indicator_mode = { allowed_values = ef00_helpers.capability_values({ "off", "on" }) },
+  },
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
-  tuya.dp_min_brightness(3, { name = "min_brightness" }),                  -- 프로파일 미포함
-  tuya.dp_light_type(4, { name = "light_type" }),                          -- 프로파일 미포함
-  tuya.dp_max_brightness(5, { name = "max_brightness" }),                  -- 프로파일 미포함
-  tuya.dp_countdown(6, { name = "countdown" }),                            -- 프로파일 미포함
-  tuya.dp_power_on_behavior(14, {}),                                       -- 프로파일 미포함
-  tuya.dp_backlight_mode_off_on(21, { name = "backlight_mode" }),          -- 프로파일 미포함
+  tuya.dp_min_brightness(3, { name = "min_brightness", emit = emit.minBrightnessTs0601() }),
+  tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
+  tuya.dp_max_brightness(5, { name = "max_brightness", emit = emit.maxBrightnessTs0601() }),
+  tuya.dp_countdown(6, { name = "countdown_timer", emit = emit.countdownTsOneTenHours() }),
+  tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
+  tuya.dp_backlight_mode_off_on(21, { name = "indicator_mode", emit = emit.indicator_mode() }),
 }
 
 register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, device_helpers.create_fingerprints("TS0601", {

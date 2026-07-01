@@ -339,102 +339,102 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
-| `_TZE200_0hb4rdnp` | `TS0601` | `lights-dimmer` |
-| `_TZE200_0nauxa0p` | `TS0601` | `lights-dimmer` |
-| `_TZE200_1agwnems` | `TS0601` | `lights-dimmer` |
-| `_TZE200_3p5ydos3` | `TS0601` | `lights-dimmer` |
-| `_TZE200_4mh6tyyo` | `TS0601` | `lights-dimmer` |
-| `_TZE200_579lguh2` | `TS0601` | `lights-dimmer` |
+| `_TZE200_0hb4rdnp` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_0nauxa0p` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_1agwnems` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_3p5ydos3` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_4mh6tyyo` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_579lguh2` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_86nbew0j` | `TS0601` | `lights-dimmer` |
-| `_TZE200_9cxuhakf` | `TS0601` | `lights-dimmer` |
-| `_TZE200_9i9dt8is` | `TS0601` | `lights-dimmer` |
-| `_TZE200_a0syesf5` | `TS0601` | `lights-dimmer` |
+| `_TZE200_9cxuhakf` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_9i9dt8is` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_a0syesf5` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_bxoo2swd` | `TS0601` | `lights-dimmer-2` |
-| `_TZE200_ctq0k47x` | `TS0601` | `lights-dimmer` |
+| `_TZE200_ctq0k47x` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_dcnsggv` | `TS0601` | `lights-dimmer` |
 | `_TZE200_dcnsggvz` | `TS0601` | `lights-dimmer` |
-| `_TZE200_dfxkcots` | `TS0601` | `lights-dimmer` |
+| `_TZE200_dfxkcots` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_drs6j6m5` | `TS0601` | `lights-dimmer` |
 | `_TZE200_e3oitdyu` | `TS0601` | `lights-dimmer-2` |
-| `_TZE200_ebwgzdqq` | `TS0601` | `lights-dimmer` |
+| `_TZE200_ebwgzdqq` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_fjjbhx9d` | `TS0601` | `lights-dimmer-2` |
-| `_TZE200_gne0e6mk` | `TS0601` | `lights-dimmer` |
+| `_TZE200_gne0e6mk` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_gwkapsoq` | `TS0601` | `lights-dimmer-2` |
 | `_TZE200_hmqzfqml` | `TS0601` | `fans-fan-light-switch` |
 | `_TZE200_io0zdqh1` | `TS0601` | `lights-dimmer` |
-| `_TZE200_ip2akl4w` | `TS0601` | `lights-dimmer` |
-| `_TZE200_itp8dt7f` | `TS0601` | `lights-dimmer` |
-| `_TZE200_la2c2uo9` | `TS0601` | `lights-dimmer` |
+| `_TZE200_ip2akl4w` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_itp8dt7f` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_la2c2uo9` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_lawxy9e2` | `TS0601` | `fans-fan-light-switch` |
-| `_TZE200_ojzhk75b` | `TS0601` | `lights-dimmer` |
+| `_TZE200_ojzhk75b` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_p0gzbqct` | `TS0601` | `lights-dimmer` |
 | `_TZE200_qanl25yu` | `TS0601` | `fans-fan-light-switch` |
 | `_TZE200_qyss8gjy` | `TS0601` | `lights-dimmer` |
 | `_TZE200_qzaing2g` | `TS0601` | `lights-dimmer-power-voltage-current` |
 | `_TZE200_r32ctezx` | `TS0601` | `fans-switch-fan-mode-ef00` |
-| `_TZE200_swaamsoy` | `TS0601` | `lights-dimmer` |
+| `_TZE200_swaamsoy` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_tgeqdjgk` | `TS0601` | `lights-color-temperature` |
 | `_TZE200_tsxpl0d0` | `TS0601` | `lights-dimmer-2` |
 | `_TZE200_vizxbhco` | `TS0601` | `lights-dimmer-3` |
 | `_TZE200_vm1gyrso` | `TS0601` | `lights-dimmer-3` |
-| `_TZE200_vucankjx` | `TS0601` | `lights-dimmer` |
-| `_TZE200_w4cryh2i` | `TS0601` | `lights-dimmer` |
+| `_TZE200_vucankjx` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_w4cryh2i` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_whpb9yts` | `TS0601` | `lights-dimmer` |
-| `_TZE200_ykgar0ow` | `TS0601` | `lights-dimmer` |
+| `_TZE200_ykgar0ow` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_ywe90lt0` | `TS0601` | `lights-dimmer` |
 | `_TZE204_1v1dxkck` | `TS0601` | `lights-dimmer-3` |
 | `_TZE204_2jnoy8dj` | `TS0601` | `fans-fan-level-light-switch` |
-| `_TZE204_68utemio` | `TS0601` | `lights-dimmer` |
-| `_TZE204_9qhuzgo0` | `TS0601` | `lights-dimmer` |
+| `_TZE204_68utemio` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE204_9qhuzgo0` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE204_bql5khqx` | `TS0601` | `fans-fan-level-light-switch` |
 | `_TZE204_bxoo2swd` | `TS0601` | `lights-dimmer-2` |
 | `_TZE204_dcnsggvz` | `TS0601` | `lights-dimmer` |
-| `_TZE204_hlx9tnzb` | `TS0601` | `lights-dimmer` |
+| `_TZE204_hlx9tnzb` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE204_lawxy9e2` | `TS0601` | `fans-fan-light-switch` |
-| `_TZE204_n9ctkb6j` | `TS0601` | `lights-dimmer` |
+| `_TZE204_n9ctkb6j` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE204_r32ctezx` | `TS0601` | `fans-switch-fan-mode-ef00` |
-| `_TZE204_vevc4c6g` | `TS0601` | `lights-dimmer` |
+| `_TZE204_vevc4c6g` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE204_zenj4lxv` | `TS0601` | `lights-dimmer-2` |
 | `_TZE204_znvwzxkq` | `TS0601` | `lights-dimmer-3` |
-| `_TZE284_68utemio` | `TS0601` | `lights-dimmer` |
+| `_TZE284_68utemio` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE284_ikul00sx` | `TS0601` | `fans-fan-level-light-dimmer` |
-| `_TZE284_m1cvyneb` | `TS0601` | `lights-dimmer` |
+| `_TZE284_m1cvyneb` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE284_tgeqdjgk` | `TS0601` | `lights-color-temperature` |
 | `_TZE284_z5jz7wpo` | `TS0601` | `fans-switch-fan-mode-ef00` |
 | `_TZE284_znvwzxkq` | `TS0601` | `lights-dimmer-3` |
 | `Coswall` | `X99-G-kbFan-1g-ZG-LN-11` | `fans-fan-level-light-switch` |
-| `Earda` | `EDM-1ZAA-EU` | `lights-dimmer` |
-| `Earda` | `EDM-1ZAB-EU` | `lights-dimmer` |
-| `Earda` | `EDM-1ZBA-EU` | `lights-dimmer` |
-| `ION Industries` | `90.500.040` | `lights-dimmer` |
-| `ION Industries` | `90.500.090` | `lights-dimmer` |
-| `ION Industries` | `ID200W-ZIGB` | `lights-dimmer` |
+| `Earda` | `EDM-1ZAA-EU` | `lights-dimmer-options-ts0601` |
+| `Earda` | `EDM-1ZAB-EU` | `lights-dimmer-options-ts0601` |
+| `Earda` | `EDM-1ZBA-EU` | `lights-dimmer-options-ts0601` |
+| `ION Industries` | `90.500.040` | `lights-dimmer-options-ts0601` |
+| `ION Industries` | `90.500.090` | `lights-dimmer-options-ts0601` |
+| `ION Industries` | `ID200W-ZIGB` | `lights-dimmer-options-ts0601` |
 | `KnockautX` | `FMD2C018` | `lights-dimmer-2` |
-| `Larkkey` | `ZSTY-SM-1DMZG-EU` | `lights-dimmer` |
+| `Larkkey` | `ZSTY-SM-1DMZG-EU` | `lights-dimmer-options-ts0601` |
 | `Lerlink` | `T2-Z67/T2-W67` | `fans-fan-light-switch` |
-| `Lerlink` | `X706U` | `lights-dimmer` |
+| `Lerlink` | `X706U` | `lights-dimmer-options-ts0601` |
 | `Liwokit` | `Fan+Light-01` | `fans-fan-light-switch` |
-| `Lonsonho` | `EDM-1ZBB-EU` | `lights-dimmer` |
-| `Mercator IkuÃ¼` | `SSWD01` | `lights-dimmer` |
-| `Mercator IkuÃ¼` | `SSWM-DIMZ` | `lights-dimmer` |
-| `Mercator IkuÃ¼` | `SSWRM-ZB` | `lights-dimmer` |
-| `Moes` | `EDM-1ZBB-EU` | `lights-dimmer` |
+| `Lonsonho` | `EDM-1ZBB-EU` | `lights-dimmer-options-ts0601` |
+| `Mercator IkuÃ¼` | `SSWD01` | `lights-dimmer-options-ts0601` |
+| `Mercator IkuÃ¼` | `SSWM-DIMZ` | `lights-dimmer-options-ts0601` |
+| `Mercator IkuÃ¼` | `SSWRM-ZB` | `lights-dimmer-options-ts0601` |
+| `Moes` | `EDM-1ZBB-EU` | `lights-dimmer-options-ts0601` |
 | `Moes` | `MS-105-M` | `lights-dimmer` |
 | `Moes` | `MS-105B` | `lights-dimmer-2` |
-| `Moes` | `MS-105Z` | `lights-dimmer` |
+| `Moes` | `MS-105Z` | `lights-dimmer-options-ts0601` |
 | `Moes` | `WS-SY-EURD` | `lights-dimmer` |
 | `Moes` | `WS-SY-EURD-WH-MS` | `lights-dimmer` |
 | `Moes` | `ZM-105B-M` | `lights-dimmer-2` |
-| `Moes` | `ZS-EUD_1gang` | `lights-dimmer` |
+| `Moes` | `ZS-EUD_1gang` | `lights-dimmer-options-ts0601` |
 | `Moes` | `ZS-EUD_2gang` | `lights-dimmer-2` |
 | `Moes` | `ZS-EUD_3gang` | `lights-dimmer-3` |
-| `Moes` | `ZS-SR-EUD-1` | `lights-dimmer` |
+| `Moes` | `ZS-SR-EUD-1` | `lights-dimmer-options-ts0601` |
 | `Moes` | `ZS-SR-EUD-2` | `lights-dimmer-2` |
 | `Moes` | `ZS-SR-EUD-3` | `lights-dimmer-3` |
-| `Moes` | `ZS-USD` | `lights-dimmer` |
+| `Moes` | `ZS-USD` | `lights-dimmer-options-ts0601` |
 | `Zemismart` | `ZN2S-RS1E-FL / ZN2S-US1U-FL` | `fans-fan-level-light-switch` |
 | `Zemismart` | `ZN2S-RS3E-DH` | `lights-dimmer-3` |
-| `Zemismart` | `ZN2S-US1-SD` | `lights-dimmer` |
+| `Zemismart` | `ZN2S-US1-SD` | `lights-dimmer-options-ts0601` |
 
 </details>
 

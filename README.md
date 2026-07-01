@@ -3235,7 +3235,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_4xfqlgqo` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_4zf0crgo` | `TS0012` | `switches-switch-2-countdown-switch-type` |
 | `_TZ3000_54hjn4vs` | `TS0002` | `switches-switch-2` |
-| `_TZ3000_5af5r192` | `TS0049` | `valves-valve-battery` |
+| `_TZ3000_5af5r192` | `TS0049` | `valves-valve-battery-countdown-ts0049` |
 | `_TZ3000_5ajpkyq6` | `TS0004` | `switches-switch-4` |
 | `_TZ3000_5gey1ohx` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_5ksufhqi` | `TS0002` | `switches-switch-2` |
@@ -3288,7 +3288,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_cehuw1lw` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3000_cfnprab5` | `TS011F` | `switches-switch-5-tuya-options` |
 | `_TZ3000_cicwjqth` | `TS011F` | `plugs-switch-power-energy-voltage` |
-| `_TZ3000_cjfmu5he` | `TS0049` | `valves-valve-battery` |
+| `_TZ3000_cjfmu5he` | `TS0049` | `valves-valve-battery-countdown-ts0049` |
 | `_TZ3000_cjrngdr3` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3000_cmcjbqup` | `TS0001` | `valves-valve-indicator-mode` |
 | `_TZ3000_cpozgbrx` | `TS0001` | `switches-switch-1` |
@@ -3394,7 +3394,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_mkhkxx1p` | `TS0001` | `switches-switch-1-power-options` |
 | `_TZ3000_mlswgkc3` | `TS011F` | `switches-switch-2` |
 | `_TZ3000_mmkbptmx` | `TS0004` | `switches-switch-4` |
-| `_TZ3000_mq4wujmp` | `TS0049` | `valves-valve-battery` |
+| `_TZ3000_mq4wujmp` | `TS0049` | `valves-valve-battery-countdown-ts0049` |
 | `_TZ3000_mtnpt6ws` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_mufwv0ry` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_mvn6jl7x` | `TS011F` | `switches-switch-2` |
@@ -3416,7 +3416,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_o4cjetlm` | `TS0001` | `valves-valve-indicator-mode` |
 | `_TZ3000_o4cjetlm` | `TS011F` | `valves-valve-indicator-mode` |
 | `_TZ3000_odzoiovu` | `TS0003` | `switches-switch-3` |
-| `_TZ3000_ogjpfoyn` | `TS0049` | `valves-valve-battery` |
+| `_TZ3000_ogjpfoyn` | `TS0049` | `valves-valve-battery-countdown-ts0049` |
 | `_TZ3000_ogpla3lh` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_oiymh3qu` | `TS011F` | `plugs-switch` |
 | `_TZ3000_ok0ggpk7` | `TS0003` | `switches-switch-3` |

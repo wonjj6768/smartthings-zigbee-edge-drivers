@@ -302,6 +302,14 @@ local function load_mapping_preset(zcl)
       string.char(bit32.rshift(bit32.band(numeric, 0xFF000000), 24))
   end
 
+  local function encode_uint32_be(value)
+    local numeric = math.floor(clamp(tonumber(value) or 0, 0, 0xFFFFFFFF) + 0.5)
+    return string.char(bit32.rshift(bit32.band(numeric, 0xFF000000), 24)) ..
+      string.char(bit32.rshift(bit32.band(numeric, 0xFF0000), 16)) ..
+      string.char(bit32.rshift(bit32.band(numeric, 0xFF00), 8)) ..
+      string.char(bit32.band(numeric, 0xFF))
+  end
+
   local function ts110e_brightness_limit_pair()
     return {
       from = function(value)
@@ -398,6 +406,26 @@ local function load_mapping_preset(zcl)
 
       return entry.value
     end
+  end
+
+  local function ts0049_countdown_command_extractor(zb_rx)
+    local body_bytes = zb_rx and zb_rx.body and zb_rx.body.zcl_body and zb_rx.body.zcl_body.body_bytes or nil
+    if type(body_bytes) ~= "string" or #body_bytes < 12 then
+      return nil
+    end
+
+    local command = string.byte(body_bytes, 3)
+    local data_type = string.byte(body_bytes, 7)
+    local key = string.byte(body_bytes, 8)
+    if command ~= 0x0A or key ~= 0x0B or (data_type ~= 0x05 and data_type ~= 0x06) then
+      return nil
+    end
+
+    local seconds = ((string.byte(body_bytes, 9) or 0) * 0x1000000) +
+      ((string.byte(body_bytes, 10) or 0) * 0x10000) +
+      ((string.byte(body_bytes, 11) or 0) * 0x100) +
+      (string.byte(body_bytes, 12) or 0)
+    return math.floor((seconds / 60) + 0.5)
   end
 
   local function build_threshold_payload(key, state_value, threshold_value)
@@ -777,6 +805,31 @@ local function load_mapping_preset(zcl)
     })
 
     return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF, 0x4001, resolved)
+  end
+
+  zcl.ts0049_countdown_timer = function(name_or_options, options)
+    local resolved = normalize_preset_options(name_or_options, options)
+    apply_defaults(resolved, {
+      name = "countdown_timer",
+      emit = optional_emit("valveCountdownTs0049Minutes", "min"),
+      tx_command_id = 0xFE,
+      command_id = 0x0A,
+      command_extractor = ts0049_countdown_command_extractor,
+      to_device = function(value)
+        local minutes = math.floor(clamp(tonumber(value) or 0, 0, 255) + 0.5)
+        return string.char(0x0B) .. encode_uint32_be(minutes * 60)
+      end,
+      numeric_range = {
+        minimum = 0,
+        maximum = 255,
+        step = 1,
+        unit = "min",
+      },
+      attribute_name = "tuyaTs0049Countdown",
+      read_on_configure = false,
+    })
+
+    return zcl.cluster_attribute(0xE001, 0x006F, resolved)
   end
 
   local function threshold_value_mapping(name_or_options, options, defaults)

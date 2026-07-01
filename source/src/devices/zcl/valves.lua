@@ -38,6 +38,24 @@ local battery_valve = {
   },
 }
 
+local ts0049_countdown_valve = {
+  profile = "valves-valve-battery-countdown-ts0049",
+  zcl_clusters = {
+    zcl.switch("valve", {
+      emit = emit.valve(),
+      from_device = function(value)
+        if value then
+          return "open"
+        end
+
+        return "closed"
+      end,
+    }),
+    zcl.battery(),
+    zcl.ts0049_countdown_timer(),
+  },
+}
+
 local function build_valve_zone(endpoint, component)
   return zcl.switch("valve", {
     endpoint = endpoint,
@@ -91,12 +109,15 @@ register_device_definition(smart_valve, device_helpers.create_fingerprints("TS00
   "_TYZB01_rifa0wlb",
 }))
 
-register_device_definition(battery_valve, device_helpers.create_fingerprints("TS0049", {
+register_device_definition(ts0049_countdown_valve, device_helpers.create_fingerprints("TS0049", {
   "_TZ3000_5af5r192",
   "_TZ3000_cjfmu5he",
-  "_TZ3000_kz1anoi8",
   "_TZ3000_mq4wujmp",
   "_TZ3000_ogjpfoyn",
+}))
+
+register_device_definition(battery_valve, device_helpers.create_fingerprints("TS0049", {
+  "_TZ3000_kz1anoi8",
   "_TZ3290_ixd9mvv4",
 }))
 

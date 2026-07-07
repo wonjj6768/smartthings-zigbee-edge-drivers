@@ -76,6 +76,20 @@ local temp_humidity = {
   },
 }
 
+local temp_humidity_lumi_basic = {
+  profile = "sensors-temp-humidity-battery",
+  zcl_clusters = {
+    zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
+      name = "lumi_basic",
+      emit = lumi_basic_events,
+      read_only = true,
+    }),
+    zcl.temperature(),
+    zcl.humidity(),
+    zcl.battery(),
+  },
+}
+
 local temp_humidity_pressure = {
   profile = "sensors-temp-humidity-pressure-battery-voltage",
   zcl_clusters = {
@@ -104,6 +118,15 @@ local motion = {
   profile = "safety-motion-battery",
   zcl_clusters = {
     zcl.motion(),
+    zcl.battery(),
+  },
+}
+
+local motion_illuminance = {
+  profile = "safety-motion-illuminance-battery",
+  zcl_clusters = {
+    zcl.motion(),
+    zcl.illuminance(),
     zcl.battery(),
   },
 }
@@ -148,13 +171,21 @@ register_device_definition(temp_humidity, {
   device_helpers.create_fingerprint("Xiaomi", "ZHTZ02LM"),
 })
 
+register_device_definition(temp_humidity_lumi_basic, {
+  device_helpers.create_fingerprint("LUMI", "lumi.sens"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_ht"),
+})
+
 register_device_definition(temp_humidity_pressure, {
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_ht.agl02"),
   device_helpers.create_fingerprint("LUMI", "lumi.weather"),
 })
 
 register_device_definition(illuminance, {
   device_helpers.create_fingerprint("Aqara", "RLS-K01D"),
   device_helpers.create_fingerprint("Aqara", "MZTD11LM"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sen_ill.agl01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sen_ill.mgl01"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4040GL"),
 })
 
@@ -163,14 +194,27 @@ register_device_definition(motion, {
   device_helpers.create_fingerprint("Aqara", "MS-S02"),
   device_helpers.create_fingerprint("Aqara", "MZSD11LM"),
   device_helpers.create_fingerprint("Aqara", "MZSD12LM"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_motion"),
   device_helpers.create_fingerprint("Xiaomi", "MZSD11LM"),
   device_helpers.create_fingerprint("Xiaomi", "MZSD12LM"),
+})
+
+register_device_definition(motion_illuminance, {
+  device_helpers.create_fingerprint("LUMI", "lumi.motion.ac02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.motion.acn001"),
+  device_helpers.create_fingerprint("LUMI", "lumi.motion.agl02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_motion.aq2"),
 })
 
 register_device_definition(contact, {
   device_helpers.create_fingerprint("Aqara", "DCM-K01"),
   device_helpers.create_fingerprint("Aqara", "MFCZQ12LM"),
   device_helpers.create_fingerprint("Aqara", "DW-S03D"),
+  device_helpers.create_fingerprint("LUMI", "lumi.magnet.ac01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.magnet.acn001"),
+  device_helpers.create_fingerprint("LUMI", "lumi.magnet.agl02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_magnet"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_magnet.aq2"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4004CN"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4005CN"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4006CN"),
@@ -180,6 +224,9 @@ register_device_definition(contact, {
 register_device_definition(water, {
   device_helpers.create_fingerprint("Aqara", "JT-BZ-03AQ/A"),
   device_helpers.create_fingerprint("Aqara", "SRSC-M01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.flood.acn001"),
+  device_helpers.create_fingerprint("LUMI", "lumi.flood.agl02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_wleak.aq1"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4015CN"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4016CN"),
   device_helpers.create_fingerprint("Xiaomi", "YTC4017CN"),

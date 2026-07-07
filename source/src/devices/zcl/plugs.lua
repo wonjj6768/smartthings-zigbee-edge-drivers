@@ -66,6 +66,17 @@ local dual_usb_socket = build_plug("plugs-switch-2", {
 local metered_plug = build_plug("plugs-switch-power-energy-voltage", build_metering_clusters(false))
 
 local metered_plug_current = build_plug("plugs-switch-power-energy-voltage-current", build_metering_clusters(true))
+local switch_power_energy = build_plug("switch-power-energy", {
+  zcl.switch(),
+  zcl.power(),
+  zcl.energy(),
+})
+local smart_cable_power_energy = build_plug("switch-power-energy",
+  zcl_device_helpers.metering_clusters({
+    endpoint = 2,
+    include_current = false,
+  })
+)
 local metered_strip_three = build_metered_strip("plugs-switch-3-power-energy-voltage-current", { 1, 2, 3 })
 
 local five_switch_plug = {
@@ -139,6 +150,7 @@ register_device_definition(metered_plug, device_helpers.create_fingerprints("TS0
   "_TZ3000_b28wrpvx",
   "_TZ3000_2uollq9d",
   "_TZ3000_cehuw1lw",
+  "_TZ3000_9ni6xxld",
   "_TZ3210_5ct6e7ye",
   "_TZ3000_2putqrmw",
   "_TZ3000_ksw8qtmt",
@@ -191,6 +203,31 @@ register_device_definition(metered_plug, {
   device_helpers.create_fingerprint("MatSee Plus", "PJ-MINI-ZSW01"),
   device_helpers.create_fingerprint("Nedis", "ZBPO130FWT"),
   device_helpers.create_fingerprint("NEO", "NAS-WR01B"),
+})
+
+register_device_definition(metered_plug, {
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_86plug"),
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_86plug.aq1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.aq1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.mitw01"),
+})
+
+register_device_definition(metered_plug_current, {
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.aeu001"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.macn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.maeu01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.maus01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.mmeu01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.sacn02"),
+})
+
+register_device_definition(smart_cable_power_energy, {
+  device_helpers.create_fingerprint("frient A/S", "SMRZB-153"),
+})
+
+register_device_definition(switch_power_energy, {
+  device_helpers.create_fingerprint("Schneider Electric", "SMARTPLUG/1"),
 })
 
 register_device_definition(metered_plug, device_helpers.create_fingerprints("TS011F", {

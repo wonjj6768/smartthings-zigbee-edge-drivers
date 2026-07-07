@@ -432,6 +432,7 @@ register_device_definition(switch_3gang_touch_panel, device_helpers.create_finge
 }))
 register_device_definition(switch_6gang_touch_panel, device_helpers.create_fingerprints("TS0601", {
 "_TZE204_y8ficeai",
+"_TZE284_hyssaqjk",
 }))
 register_device_definition(switch_1gang_stairwell, device_helpers.create_fingerprints("TS0601", {
 "_TZE204_fhv95pf1",
@@ -456,6 +457,50 @@ query_on_configure = true,
 }
 register_device_definition(switch_6gang_dp19, device_helpers.create_fingerprints("TS0601", {
 "_TZE200_raz9qavg",
+}))
+local switch_6gang_dp24_scene_panel = {
+profile = "switches-switch-6",
+datapoints = {
+tuya.dp_enum(1, { name = "action_l1" }),                             -- profile 미포함
+tuya.dp_enum(2, { name = "action_l2" }),                             -- profile 미포함
+tuya.dp_enum(3, { name = "action_l3" }),                             -- profile 미포함
+tuya.dp_enum(4, { name = "action_l4" }),                             -- profile 미포함
+tuya.dp_enum(5, { name = "action_l5" }),                             -- profile 미포함
+tuya.dp_enum(6, { name = "action_l6" }),                             -- profile 미포함
+tuya.dp_enum(18, { name = "mode_l1" }),                              -- profile 미포함
+tuya.dp_enum(19, { name = "mode_l2" }),                              -- profile 미포함
+tuya.dp_enum(20, { name = "mode_l3" }),                              -- profile 미포함
+tuya.dp_enum(21, { name = "mode_l4" }),                              -- profile 미포함
+tuya.dp_enum(22, { name = "mode_l5" }),                              -- profile 미포함
+tuya.dp_enum(23, { name = "mode_l6" }),                              -- profile 미포함
+tuya.dp_on_off(24, { name = "switch", component = "main" }),
+tuya.dp_on_off(25, { name = "switch", component = "switch2" }),
+tuya.dp_on_off(26, { name = "switch", component = "switch3" }),
+tuya.dp_on_off(27, { name = "switch", component = "switch4" }),
+tuya.dp_on_off(28, { name = "switch", component = "switch5" }),
+tuya.dp_on_off(29, { name = "switch", component = "switch6" }),
+tuya.dp_countdown(30, { name = "countdown_l1" }),                    -- profile 미포함
+tuya.dp_countdown(31, { name = "countdown_l2" }),                    -- profile 미포함
+tuya.dp_countdown(32, { name = "countdown_l3" }),                    -- profile 미포함
+tuya.dp_countdown(33, { name = "countdown_l4" }),                    -- profile 미포함
+tuya.dp_countdown(34, { name = "countdown_l5" }),                    -- profile 미포함
+tuya.dp_countdown(35, { name = "countdown_l6" }),                    -- profile 미포함
+tuya.dp_backlight_mode_off_on(36, {}),                               -- profile 미포함
+tuya.dp_indicator_mode_none_relay_pos(37, { name = "indicator_status" }), -- profile 미포함
+tuya.dp_power_on_behavior(38, {}),                                   -- profile 미포함
+tuya.dp_binary(103, { name = "induction" }),                         -- profile 미포함
+tuya.dp_enum(104, { name = "vibration_gear" }),                      -- profile 미포함
+tuya.dp_countdown(105, { name = "inching_l1" }),                     -- profile 미포함
+tuya.dp_countdown(106, { name = "inching_l2" }),                     -- profile 미포함
+tuya.dp_countdown(107, { name = "inching_l3" }),                     -- profile 미포함
+tuya.dp_countdown(108, { name = "inching_l4" }),                     -- profile 미포함
+tuya.dp_countdown(109, { name = "inching_l5" }),                     -- profile 미포함
+tuya.dp_countdown(110, { name = "inching_l6" }),                     -- profile 미포함
+},
+query_on_configure = true,
+}
+register_device_definition(switch_6gang_dp24_scene_panel, device_helpers.create_fingerprints("TS0601", {
+"_TZE200_rqhnxkqu",
 }))
 local switch_8gang_m9_motion_scene = {
 profile = "switches-switch-8",

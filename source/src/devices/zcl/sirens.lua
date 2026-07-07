@@ -106,6 +106,7 @@ register_device_definition(ias_siren_basic, device_helpers.create_fingerprints("
 
 register_device_definition(ias_siren_basic, {
   device_helpers.create_fingerprint("Hejhome", "GKZ-SA141"),
+  device_helpers.create_fingerprint("frient A/S", "SIRZB-112"),
 })
 
 return device_definitions

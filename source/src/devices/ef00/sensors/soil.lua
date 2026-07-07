@@ -89,6 +89,7 @@ register_device_definition(soil_t10_h1, ef00_helpers.ts0601_fingerprints( {
   "_TZE284_aao3yzhs",
 
   "_TZE284_nhgdf6qr",
+  "_TZE2841000000_nhgdf6qr",
 
   "_TZE284_ap9owrsa",
 
@@ -98,6 +99,7 @@ register_device_definition(soil_t10_h1, ef00_helpers.ts0601_fingerprints( {
 
   "_TZE284_3urschql",
   "_TZE284_tgrzpqf4",
+  "_TZE2841000000_tgrzpqf4",
 
 }))
 
@@ -612,6 +614,7 @@ register_sensor_definition({
   "_TZE284_65gzcss7",
 
   "_TZE284_0ints6wl",
+  "_TZE2841000000_0ints6wl",
 
   "_TZE284_yzr43ayq",
 
@@ -739,6 +742,7 @@ register_sensor_definition({
 }, ef00_helpers.ts0601_fingerprints( {
 
   "_TZE284_hdml1aav",
+  "_TZE2841000000_hdml1aav",
 
 }))
 

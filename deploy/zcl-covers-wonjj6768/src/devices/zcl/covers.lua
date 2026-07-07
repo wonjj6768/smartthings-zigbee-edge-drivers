@@ -20,6 +20,15 @@ zcl.window_shade_state({ endpoint = 2, component = "shade2" }),
 zcl.cover_state({ endpoint = 2, component = "shade2" }),
 },
 }
+local cover_battery = {
+profile = "covers-cover-battery",
+zcl_clusters = {
+zcl.cover_position(),
+zcl.window_shade_state(),
+zcl.cover_state(),
+zcl.battery(),
+},
+}
 register_device_definition(ts130f_cover, device_helpers.create_fingerprints("TS130F", {
 "_TZ3000_bs93npae",
 "_TZ3000_dojqjapa",
@@ -37,10 +46,13 @@ register_device_definition(ts130f_cover, device_helpers.create_fingerprints("TS1
 "_TZ3000_fccpjz5z",
 "_TZ3000_vd43bbfq",
 "_TZ3000_zirycpws",
+"_TZE20C_xbexmf8h",
 "_TZ3210_ol1uhvza",
 }))
 register_device_definition(ts130f_cover, {
 device_helpers.create_fingerprint("BSEED", "S-PC86ZPCS11B"),
+device_helpers.create_fingerprint("LUMI", "lumi.curtain.acn04"),
+device_helpers.create_fingerprint("LUMI", "lumi.curtain.acn018"),
 device_helpers.create_fingerprint("Nous", "B4Z"),
 device_helpers.create_fingerprint("Nous", "L12Z"),
 device_helpers.create_fingerprint("LoraTap", "SC400"),
@@ -67,5 +79,11 @@ register_device_definition(ts130f_cover, device_helpers.create_fingerprints("TS0
 register_device_definition(ts130f_cover, {
 device_helpers.create_fingerprint("Yookee", "D10110_1"),
 device_helpers.create_fingerprint("Lidl", "HG09648"),
+})
+register_device_definition(cover_battery, {
+device_helpers.create_fingerprint("IKEA of Sweden", "FYRTUR block-out roller blind"),
+device_helpers.create_fingerprint("IKEA of Sweden", "KADRILJ roller blind"),
+device_helpers.create_fingerprint("IKEA of Sweden", "PRAKTLYSING cellular blind"),
+device_helpers.create_fingerprint("IKEA of Sweden", "TREDANSEN block-out cellul blind"),
 })
 return device_definitions

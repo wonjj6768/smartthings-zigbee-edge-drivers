@@ -246,6 +246,30 @@ local cover_core_alt_position_8 = {
   }),
 }
 
+local cover_model_zsm01 = {
+  profile = "covers-cover",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(9, { write_only = true }),
+  tuya.dp_numeric(8, {
+    name = "cover_position_state",
+    emit = emit.shade_level(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(8, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_enum(11, { name = "control_back_mode" }),                       -- profile 미포함
+  tuya.dp_cover_position(19, { name = "position_best" }),                  -- profile 미포함
+  tuya.dp_enum(20, { name = "click_control" }),                            -- profile 미포함
+}
+
 -- TuyaMoesCover0601_alt_controls
 local cover_core_alt_controls = {
   tuya.dp_enum(1, {
@@ -712,6 +736,7 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
   "_TZE204_m1wl5fvq",
   "_TZE204_nladmfvf",
   "_TZE204_tgl8i2np",
+  "_TZE200_2jwrgrro",
 }))
 
 register_device_definition(cover_core, {
@@ -853,12 +878,14 @@ register_device_definition(cover_core_position_reversed, device_helpers.create_f
   "_TZE200_fzo2pocs",
   "_TZE284_fzo2pocs",
   "_TZE200_9vpe3fl1",
+  "_TZE28C1000000_alh14edn",
 }))
 
 register_device_definition(cover_core_position_reversed, {
   device_helpers.create_fingerprint("Lilistore", "TS0601_lilistore"),
   device_helpers.create_fingerprint("Zemismart", "ZM90E-DT250N/A400"),
   device_helpers.create_fingerprint("Nova Digital", "CMR-1"),
+  device_helpers.create_fingerprint("Tuya", "TS0601_alh14edn"),
 })
 
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
@@ -907,6 +934,10 @@ register_device_definition(cover_core_alt_dp, device_helpers.create_fingerprints
 
 register_device_definition(cover_core_alt_position_8, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_3mzb0sdz",
+}))
+
+register_device_definition(cover_model_zsm01, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_zofmmt9s",
 }))
 
 register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
@@ -1006,14 +1037,21 @@ register_device_definition(cover_core, {
 
 register_device_definition(cover_zb_sm, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_zyrdrmno",
+  "_TZE200_osmxri8y",
 }))
 
 register_device_definition(ts0301_cover_single, device_helpers.create_fingerprints("TS0301", {
   "_TZE210_m6lwazh9",
+  "_TZE200_eatmkx5j",
 }))
+
+register_device_definition(ts0301_cover_single, {
+  device_helpers.create_fingerprint("Yoolax", "Day-Night Shade"),
+})
 
 register_device_definition(ts0301_cover_dual_rail, device_helpers.create_fingerprints("TS0301", {
   "_TZE210_inpjmc0h",
+  "_TZE210_yqwse3h5",
 }))
 
 return device_definitions

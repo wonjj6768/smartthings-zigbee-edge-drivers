@@ -34,6 +34,9 @@ end
 local switch_1 = switch_definition("switches-switch-1", { 1 })
 local switch_2 = switch_definition("switches-switch-2", { 1, 2 })
 local switch_3 = switch_definition("switches-switch-3", { 1, 2, 3 })
+local switch_1_ep10 = switch_definition("switches-switch-1", { 10 })
+local switch_2_ep10 = switch_definition("switches-switch-2", { 10, 11 })
+local switch_3_ep10 = switch_definition("switches-switch-3", { 10, 11, 12 })
 local switch_4 = switch_definition("switches-switch-4", { 1, 2, 3, 4 })
 local switch_5 = switch_definition("switches-switch-5", { 1, 2, 3, 4, 7 })
 local switch_5_ep5 = switch_definition("switches-switch-5", { 1, 2, 3, 4, 5 })
@@ -237,6 +240,7 @@ register_aliases(threshold_din_relay, {
   device_helpers.create_fingerprint("_TZ3000_ibefeicf", "TS011F"),
   device_helpers.create_fingerprint("_TZ3000_lepzuhto", "TS011F"),
   device_helpers.create_fingerprint("_TZ3000_qystbcjg", "TS011F"),
+  device_helpers.create_fingerprint("_TZ3000_yi0n4xfd", "TS011F"),
   device_helpers.create_fingerprint("_TZ3000_zjchz7pd", "TS011F"),
   device_helpers.create_fingerprint("_TZ3000_zrm3oxsh", "TS011F"),
   device_helpers.create_fingerprint("_TZ3000_zv6x8bt2", "TS011F"),
@@ -313,6 +317,34 @@ register_aliases(switch_1, {
   device_helpers.create_fingerprint("Jung", "ZLLHS4"),
   device_helpers.create_fingerprint("Legrand", "199142"),
   device_helpers.create_fingerprint("Sunricher", "SR-ZG9100A-S"),
+})
+
+register_aliases(switch_1, {
+  device_helpers.create_fingerprint("Schneider Electric", "1GANG/SWITCH/1"),
+  device_helpers.create_fingerprint("Schneider Electric", "CH10AX/SWITCH/1"),
+  device_helpers.create_fingerprint("Schneider Electric", "CH2AX/SWITCH/1"),
+  device_helpers.create_fingerprint("Schneider Electric", "NHPB/SWITCH/1"),
+  device_helpers.create_fingerprint("Schneider Electric", "PUCK/SWITCH/1"),
+  device_helpers.create_fingerprint("Schneider Electric", "U201SRY2KWZB"),
+})
+
+register_aliases(switch_1, {
+  device_helpers.create_fingerprint("TERNCY", "TERNCY-LS01"),
+})
+
+register_aliases(switch_1_ep10, {
+  device_helpers.create_fingerprint("Schneider Electric", "A3N31SR800ZB_xx_C1"),
+  device_helpers.create_fingerprint("Schneider Electric", "E8331SRY800ZB"),
+})
+
+register_aliases(switch_2_ep10, {
+  device_helpers.create_fingerprint("Schneider Electric", "A3N32SR800ZB_xx_C1"),
+  device_helpers.create_fingerprint("Schneider Electric", "E8332SRY800ZB"),
+})
+
+register_aliases(switch_3_ep10, {
+  device_helpers.create_fingerprint("Schneider Electric", "A3N33SR800ZB_xx_C1"),
+  device_helpers.create_fingerprint("Schneider Electric", "E8333SRY800ZB"),
 })
 
 register_aliases(switch_1, create_model_fingerprints("Sunricher", {
@@ -436,6 +468,7 @@ register_aliases(switch_4, {
   device_helpers.create_fingerprint("OXT", "SWTZ27"),
   device_helpers.create_fingerprint("TUYATEC", "GDKES-04TZXD"),
   device_helpers.create_fingerprint("MakeGood", "MG-ZG04W/B/G"),
+  device_helpers.create_fingerprint("TERNCY", "TERNCY-WS01-S4"),
   device_helpers.create_fingerprint("_TZ3210_qjvi92wz", "TS0014"),
   device_helpers.create_fingerprint("_TZ3210_w3hl6rao", "TS0014"),
   device_helpers.create_fingerprint("_TZ3210_z4hgsevd", "TS0014"),

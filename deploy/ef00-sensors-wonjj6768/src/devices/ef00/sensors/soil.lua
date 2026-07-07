@@ -31,11 +31,13 @@ tuya.dp_battery(15, { emit = emit.battery() }),
 register_device_definition(soil_t10_h1, ef00_helpers.ts0601_fingerprints( {
 "_TZE284_aao3yzhs",
 "_TZE284_nhgdf6qr",
+"_TZE2841000000_nhgdf6qr",
 "_TZE284_ap9owrsa",
 "_TZE284_33bwcga2",
 "_TZE284_wckqztdq",
 "_TZE284_3urschql",
 "_TZE284_tgrzpqf4",
+"_TZE2841000000_tgrzpqf4",
 }))
 register_device_definition(soil_t10_h1, {
 device_helpers.create_fingerprint("GIEX", "GX04"),
@@ -260,6 +262,7 @@ datapoints = soil_t10_h1_air_illum_warning,
 "_TZE284_k7p2q5d9",
 "_TZE284_65gzcss7",
 "_TZE284_0ints6wl",
+"_TZE2841000000_0ints6wl",
 "_TZE284_yzr43ayq",
 }))
 register_sensor_definition({
@@ -315,5 +318,6 @@ profile = "sensors-soil-temp-humidity-moisture-illuminance-ec-battery-fertility-
 datapoints = soil_t10_h1_air_illum_fertility_cal,
 }, ef00_helpers.ts0601_fingerprints( {
 "_TZE284_hdml1aav",
+"_TZE2841000000_hdml1aav",
 }))
 return device_definitions

@@ -367,3 +367,7 @@ zigbeeManufacturer:
     manufacturer: "_TZE284_rccxox8p"
     model: "TS0601"
     deviceProfileName: "safety-smoke-detector-battery"
+  - id: "fp_b98f8447b8"
+    manufacturer: "_TZE28C1000000_chbyv06x"
+    model: "TS0601"
+    deviceProfileName: "safety-gas-detector-alarm-time-ringtone"

@@ -1,0 +1,66 @@
+name: scene-switches-4-plus-4
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: button
+        version: 1
+      - id: concertmirror08464.powerOnBehavior
+        version: 1
+      - id: concertmirror08464.switchMode
+        version: 1
+      - id: concertmirror08464.indicatorMode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: button
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: button
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - id: switch
+        version: 1
+      - id: button
+        version: 1
+    categories:
+      - name: Switch
+  - id: button5
+    capabilities:
+      - id: button
+        version: 1
+    categories:
+      - name: RemoteController
+  - id: button6
+    capabilities:
+      - id: button
+        version: 1
+    categories:
+      - name: RemoteController
+  - id: button7
+    capabilities:
+      - id: button
+        version: 1
+    categories:
+      - name: RemoteController
+  - id: button8
+    capabilities:
+      - id: button
+        version: 1
+    categories:
+      - name: RemoteController

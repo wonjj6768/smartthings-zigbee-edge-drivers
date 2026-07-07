@@ -28,6 +28,10 @@ register_device_definition(dimming_remote, {
   device_helpers.create_fingerprint("Sunricher", "SR-ZG9001K8-DIM"),
   device_helpers.create_fingerprint("Sunricher", "SR-ZG9001NK8-DIM"),
   device_helpers.create_fingerprint("Sunricher", "SR-ZG9023A(EU)"),
+  device_helpers.create_fingerprint("Sunricher", "ZG2833K8_EU05"),
+  device_helpers.create_fingerprint("Sunricher", "ZGRC-KEY-004"),
+  device_helpers.create_fingerprint("Sunricher", "ZGRC-KEY-007"),
+  device_helpers.create_fingerprint("Sunricher", "ZGRC-KEY-013"),
 })
 
 return device_definitions

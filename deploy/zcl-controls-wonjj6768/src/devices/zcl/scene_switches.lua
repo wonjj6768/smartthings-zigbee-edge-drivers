@@ -62,6 +62,7 @@ local multi_two_gang = build_mixed_scene_switch("scene-switches-2-advanced", 2, 
 local multi_three_gang = build_mixed_scene_switch("scene-switches-3-advanced", 3, 0, true)
 local multi_four_gang = build_mixed_scene_switch("scene-switches-4-advanced", 4, 0, true)
 local four_gang_two_scene = build_mixed_scene_switch("scene-switches-4-plus-2", 4, 2, true)
+local four_gang_four_scene = build_mixed_scene_switch("scene-switches-4-plus-4", 4, 4, true)
 local switch_4g_2s = build_scene_only_switch("scene-switches-scene-6", 6)
 local scene_one = build_scene_only_switch("scene-switches-scene-1", 1)
 local scene_two = build_scene_only_switch("scene-switches-scene-2", 2)
@@ -110,6 +111,7 @@ multi_three_gang.scene_component_map = {
 register_device_definition(one_gang, device_helpers.create_fingerprints("TS0726_1_gang", {
 "_TZ3002_l8bfzlcd",
 "_TZ3002_l8bfzlcd:TS0726",
+"_TZ3000_ovbvmhiq:TS0726",
 }))
 register_device_definition(two_gang, device_helpers.create_fingerprints("TS0726_2_gang", {
 "_TZ3002_1s0vfmtv",
@@ -156,6 +158,9 @@ register_device_definition(four_gang_two_scene, device_helpers.create_fingerprin
 "_TZ3000_cumqn2av:TS0726",
 "_TZ300A_fhbcipep",
 "_TZ300A_fhbcipep:TS0726",
+}))
+register_device_definition(four_gang_four_scene, device_helpers.create_fingerprints("TS0726_4_gang_switch_and_4_scene", {
+"_TZ300A_82iab0pn:TS0726",
 }))
 register_device_definition(three_gang, device_helpers.create_fingerprints("TS0726_3_gang", {
 "_TZ3000_lcjsewlo",

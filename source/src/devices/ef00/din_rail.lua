@@ -619,6 +619,46 @@ register_device_definition(din_rail_model_rmdzb_1pnl63, {
 })
 
 -- ══════════════════════════════════════════════════════════════
+-- 1-10d-1. din_rail_model_zbn_dj_63: smart circuit breaker
+-- Z2M: ZBN-DJ-63
+-- ══════════════════════════════════════════════════════════════
+local din_rail_model_zbn_dj_63 = {
+  profile = "din-rail-switch-power-energy-voltage-current",
+  tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
+  tuya.dp_phase_variant2(6, {
+    emit = emit_metric_bundle({
+      voltage = true,
+      current = true,
+      power = true,
+    }),
+  }),
+  tuya.dp_raw(9, { name = "fault" }),                                    -- profile 미포함
+  tuya.dp_on_off(11, { name = "switch_prepayment" }),                    -- profile 미포함
+  tuya.dp_on_off(12, { name = "clear_energy" }),                         -- profile 미포함
+  tuya.dp_energy(13, { name = "balance_energy", scale = 100 }),          -- profile 미포함
+  tuya.dp_energy(14, { name = "charge_energy", scale = 100 }),           -- profile 미포함
+  tuya.dp_numeric(15, { name = "leakage_current" }),                     -- profile 미포함
+  tuya.dp_on_off(16, { name = "switch", emit = emit.switch() }),
+  tuya.dp_threshold(17, {}),                                              -- profile 미포함
+  tuya.dp_threshold(18, {}),                                              -- profile 미포함
+  tuya.dp_numeric(102, { name = "recover_count" }),                      -- profile 미포함
+  tuya.dp_temperature(103, { name = "temperature", scale = 1 }),         -- profile 미포함
+  tuya.dp_on_off(104, { name = "recover_enable" }),                      -- profile 미포함
+  tuya.dp_numeric(105, { name = "countdown" }),                          -- profile 미포함
+  tuya.dp_numeric(107, { name = "leakage_delay" }),                      -- profile 미포함
+  tuya.dp_energy(110, { name = "reverse_energy", scale = 100 }),         -- profile 미포함
+  tuya.dp_numeric(119, { name = "power_on_delay" }),                     -- profile 미포함
+  tuya.dp_numeric(124, { name = "alarm_over_current_count" }),           -- profile 미포함
+  tuya.dp_numeric(125, { name = "alarm_low_current_count" }),            -- profile 미포함
+  tuya.dp_numeric(127, { name = "status" }),                             -- profile 미포함
+  tuya.dp_power_on_behavior(134, { name = "relay_power_on_state" }),     -- profile 미포함
+}
+
+register_device_definition(din_rail_model_zbn_dj_63, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_lb0fsvba",
+}))
+
+-- ══════════════════════════════════════════════════════════════
 -- 1-10e. din_rail_model_toqcb2_80: Tongou 3-phase smart circuit breaker
 -- Z2M: TOQCB2-80
 -- ══════════════════════════════════════════════════════════════
@@ -657,7 +697,12 @@ register_device_definition(din_rail_model_toqcb2_80, device_helpers.create_finge
   "_TZE284_mrffaamu",
   "_TZE284_tzreobvu",
   "_TZE284_9xstqowh",
+  "_TZE284_kv1nvirl",
 }))
+
+register_device_definition(din_rail_model_toqcb2_80, {
+  device_helpers.create_fingerprint("Tongou", "TOQCB2-80-2P"),
+})
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-10f. power_meter_model_to_q_sa1: Tongou clamp energy meter

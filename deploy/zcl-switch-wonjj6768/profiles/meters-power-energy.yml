@@ -1,0 +1,61 @@
+name: meters-power-energy
+components:
+  - id: main
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: powerMeter
+        version: 1
+        group: main
+        values:
+          - label: "{{power.value}}{{power.unit}}"
+        composite: true
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerPollIntervalV2
+      version: 1
+    - component: main
+      capability: concertmirror08464.lastPowerResponseTime
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: powerMeter
+        version: 1
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1

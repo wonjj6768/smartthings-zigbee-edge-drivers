@@ -121,6 +121,7 @@ local liquid_level_me202wz = {
 
 register_sensor_definition(liquid_level_me202wz, {
   device_helpers.create_fingerprint("_TZE284_mxujdmxo", "TS0601"),
+  device_helpers.create_fingerprint("Tuya", "ME202WZ"),
 })
 
 

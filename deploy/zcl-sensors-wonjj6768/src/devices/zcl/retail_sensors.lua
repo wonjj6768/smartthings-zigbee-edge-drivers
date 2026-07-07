@@ -175,6 +175,7 @@ device_helpers.create_fingerprint("Moes", "ZSS-QT-LS-C"),
 })
 register_aliases(motion_sensor, {
 device_helpers.create_fingerprint("Third Reality, Inc", "3RMS16BZ"),
+device_helpers.create_fingerprint("Third Reality, Inc", "3RPS01083Z"),
 device_helpers.create_fingerprint("Third Reality, Inc", "3RSMR01067Z"),
 })
 register_aliases(contact_sensor, {

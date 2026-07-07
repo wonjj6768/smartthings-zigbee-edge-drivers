@@ -152,6 +152,11 @@ register_aliases(cct_light, {
 })
 
 register_aliases(cct_light, {
+  device_helpers.create_fingerprint("TERNCY", "DL001"),
+  device_helpers.create_fingerprint("TERNCY", "CL001"),
+})
+
+register_aliases(cct_light, {
   device_helpers.create_fingerprint("Philips", "5633030P9"),
   device_helpers.create_fingerprint("Philips", "929003099302"),
   device_helpers.create_fingerprint("Philips", "929003777201"),

@@ -23,6 +23,7 @@ local battery_valve = {
 register_device_definition(battery_valve, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_dsagrkvg",
   "_TZE284_zm8zpwas",
+  "_TZE284_sdvbnmj5",
 }))
 
 local plain_valve = {

@@ -134,6 +134,34 @@ register_device_definition(cct_light, {
 })
 
 register_device_definition(cct_light, {
+  device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn003"),
+  device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn004"),
+  device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn005"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn004"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn006"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn003"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn014"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn023"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn024"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn025"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn026"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn040"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn128"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.aqcn02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwac02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwacn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwjwcn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwjwcn02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwopcn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwopcn02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cwopcn03"),
+})
+
+register_device_definition(dimmer_light, {
+  device_helpers.create_fingerprint("LUMI", "lumi.light.cbacn1"),
+})
+
+register_device_definition(cct_light, {
   device_helpers.create_fingerprint("_TZB210_lmqquxus", "TS0503B"),
 })
 
@@ -158,6 +186,8 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
 }))
 
 register_device_definition(color_cct_light, {
+  device_helpers.create_fingerprint("LUMI", "lumi.light.acn132"),
+  device_helpers.create_fingerprint("LUMI", "lumi.light.rgbac1"),
   device_helpers.create_fingerprint("Mycket", "MS-SP-LE27WRGB"),
   device_helpers.create_fingerprint("Lidl", "HG06106B"),
   device_helpers.create_fingerprint("Lidl", "HG06106A"),
@@ -249,6 +279,9 @@ register_device_definition(color_cct_light, {
   device_helpers.create_fingerprint("Tuya", "A5C-21F7-01"),
   device_helpers.create_fingerprint("Mercator Ikuü", "SMD4106W-RGB-ZB"),
   device_helpers.create_fingerprint("Mercator Ikuü", "S9E27LED9W-RGB-Z"),
+  device_helpers.create_fingerprint("Hatsy", "SDL-312Z"),
+  device_helpers.create_fingerprint("Emos", "GoSmart ZQZ516R"),
+  device_helpers.create_fingerprint("Emos", "GoSmart ZQZ322R"),
   device_helpers.create_fingerprint("Aldi", "C422AC11D41H140.0W"),
   device_helpers.create_fingerprint("Aldi", "C422AC14D41H140.0W"),
   device_helpers.create_fingerprint("UR Lighting", "TH008L10RGBCCT"),

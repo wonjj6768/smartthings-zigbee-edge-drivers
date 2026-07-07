@@ -4,6 +4,14 @@ local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
 local converter = tuya.converter
 local device_definitions, register_device_definition = device_helpers.definition_registry()
+local aaeasoll_report_interval_converter = converter.lookup_from_to({
+["5m"] = 0,
+["10m"] = 1,
+["15m"] = 2,
+["20m"] = 3,
+["30m"] = 4,
+["1h"] = 5,
+})
 local function register_sensor_definition(definitions_or_table, fingerprint_list)
 if type(definitions_or_table) == "table" then
 local entry = {}
@@ -41,6 +49,21 @@ register_device_definition(illum_battery, ef00_helpers.ts0601_fingerprints( {
 register_device_definition(illum_battery, {
 device_helpers.create_fingerprint("_TYST11_pisltm67", "isltm67"),
 })
+local illum_battery_report_interval_aaeasoll = {
+profile = "sensors-illuminance-battery-report-interval-aaeasoll",
+datapoints = {
+tuya.dp_illuminance(2, { emit = emit.illuminance() }),
+tuya.dp_battery(4, { emit = emit.battery() }),
+tuya.dp_enum(101, {
+name = "report_interval",
+emit = emit.aaeasollReportInterval(),
+converter = aaeasoll_report_interval_converter,
+}),
+},
+}
+register_device_definition(illum_battery_report_interval_aaeasoll, ef00_helpers.ts0601_fingerprints( {
+"_TZE284_aaeasoll",
+}))
 local pressure_temp = {
 profile = "sensors-pressure-temp-display",
 datapoints = {

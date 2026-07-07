@@ -157,6 +157,7 @@ register_device_definition(single_power_switch, device_helpers.create_fingerprin
   "_TZ3000_x8mbwtsz",
   "_TZ3000_iktiy8ue",
   "_TZ3000_zojh9vz7",
+  "_TZ3000_gsat0axs",
 }))
 
 register_device_definition(single_power_switch, {
@@ -169,6 +170,7 @@ register_device_definition(dual_power_switch, device_helpers.create_fingerprints
   "_TZ3000_aaifmpuq",
   "_TZ3000_irrmjcgi",
   "_TZ3000_huvxrx4i",
+  "_TZ3000_pxfjrzyj",
 }))
 
 register_device_definition(dual_power_switch, {
@@ -230,6 +232,7 @@ register_device_definition(single_switch, device_helpers.create_fingerprints("TS
   "_TZ3210_9hbau615",
   "_TZ3000_afgzktgb",
   "_TZ3000_qamj2vnn",
+  "_TZ3000_n6fqajob",
 }))
 
 register_device_definition(single_switch, device_helpers.create_fingerprints("TS0001", {
@@ -268,6 +271,7 @@ register_device_definition(single_switch, {
   device_helpers.create_fingerprint("Nous", "B1Z"),
   device_helpers.create_fingerprint("Nous", "B6Z"),
   device_helpers.create_fingerprint("Nous", "LZ3"),
+  device_helpers.create_fingerprint("AVATTO", "ZWSM16-DC-1"),
 })
 
 register_device_definition(wall_switch_module, device_helpers.create_fingerprints("TS0011", {
@@ -338,7 +342,72 @@ register_device_definition(metered_dual_plug, device_helpers.create_fingerprints
 }))
 
 register_device_definition(metered_dual_plug, {
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.acn005"),
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.sacn03"),
   device_helpers.create_fingerprint("Nous", "A4Z"),
+})
+
+register_device_definition(single_switch, {
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln1.aq1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_neutral1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn029"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn048"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn056"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn061"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1laus01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1lacn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1nacn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1nacn02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1naus01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1lc04"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b1nc01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l0acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l0agl1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l1acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l1aeu1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n0acn2"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n0agl1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n1acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n1aeu1"),
+})
+
+register_device_definition(dual_switch, {
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln2"),
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln2.aq1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.ctrl_neutral2"),
+  device_helpers.create_fingerprint("LUMI", "lumi.relay.c2acn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn030"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn047"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn049"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn057"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2laus01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2lacn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2nacn01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2nacn02"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2naus01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2lc04"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b2nc01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l2acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l2aeu1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n2acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n2aeu1"),
+})
+
+register_device_definition(triple_switch, {
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn031"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn040"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn054"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn055"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn058"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.acn059"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b3l01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.b3n01"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l3acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.l3acn3"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n3acn1"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n3acn3"),
+  device_helpers.create_fingerprint("LUMI", "lumi.switch.n4acn4"),
 })
 
 register_device_definition(dual_switch, device_helpers.create_fingerprints("TS011F", {
@@ -482,6 +551,7 @@ register_device_definition(triple_switch, device_helpers.create_fingerprints("TS
   "_TZ3000_ok0ggpk7",
   "_TZ3210_ok0ggpk7",
   "_TZ3000_aknpkt02",
+  "_TZ3210_aksyshpw",
   "_TZ3000_nwidmc4n",
   "_TZ3000_pfc7i3kt",
   "_TZ3000_fawk5xjv",
@@ -559,6 +629,7 @@ register_device_definition(quad_switch, device_helpers.create_fingerprints("TS00
   "_TZ3210_iymfxdis",
   "_TZ3000_nsa76jai",
   "_TZ3000_wwtnshol",
+  "_TZ3210_wts1g2oh",
 }))
 
 register_device_definition(six_switch, device_helpers.create_fingerprints("TS0006", {
@@ -573,10 +644,15 @@ register_device_definition(quad_switch, device_helpers.create_fingerprints("TS01
   "_TZ3000_3zofvcaa",
   "_TZ3000_pvlvoxvt",
   "_TZ3000_lqb7lcq9",
+  "_TZ3210_lqb7lcq9",
   "_TZ3210_urjf5u18",
   "_TZ3210_8n4dn1ne",
   "_TZ3000_qiutut5y",
 }))
+
+register_device_definition(quad_switch, {
+  device_helpers.create_fingerprint("Nova Digital", "SA-WK"),
+})
 
 register_device_definition(triple_switch, device_helpers.create_fingerprints("TS011F", {
   "_TZ3000_wzauvbcs",
@@ -586,7 +662,12 @@ register_device_definition(triple_switch, device_helpers.create_fingerprints("TS
   "_TZ3000_vzopcetz",
   "_TZ3000_vmpbygs5",
   "_TZ3000_dlug3kbc",
+  "_TZ3000_9tg32trw",
 }))
+
+register_device_definition(triple_switch, {
+  device_helpers.create_fingerprint("Mifra", "KS-604S"),
+})
 
 register_device_definition(quint_switch, device_helpers.create_fingerprints("TS011F", {
   "_TZ3000_air9m6af",

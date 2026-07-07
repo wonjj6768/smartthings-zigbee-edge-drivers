@@ -20,6 +20,15 @@ local contact_tamper_sensor = {
   },
 }
 
+local contact_temp_sensor = {
+  profile = "safety-contact-temp-battery",
+  zcl_clusters = {
+    zcl.contact(),
+    zcl.temperature(),
+    zcl.battery(),
+  },
+}
+
 local motion_sensor = {
   profile = "safety-motion-battery",
   zcl_clusters = {
@@ -152,6 +161,7 @@ register_device_definition(contact_sensor, {
   device_helpers.create_fingerprint("Nous", "E3"),
   device_helpers.create_fingerprint("Woox", "R7047"),
   device_helpers.create_fingerprint("Wing", "WZDA1"),
+  device_helpers.create_fingerprint("AOYAN  ", "AY-101Z"),
 })
 
 register_device_definition(contact_sensor, device_helpers.create_fingerprints("TS0203", {
@@ -184,6 +194,10 @@ register_device_definition(contact_tamper_sensor, device_helpers.create_fingerpr
 
 register_device_definition(contact_tamper_sensor, {
   device_helpers.create_fingerprint("Linkoze", "LKDSZ001"),
+})
+
+register_device_definition(contact_temp_sensor, {
+  device_helpers.create_fingerprint("frient A/S", "WISZB-131"),
 })
 
 register_device_definition(motion_sensor, device_helpers.create_fingerprints("TS0203", {
@@ -337,6 +351,8 @@ register_device_definition(water_sensor, {
   device_helpers.create_fingerprint("Tuya", "TS0207_water_leak_detector_3"),
   device_helpers.create_fingerprint("Moes", "ZSS-QY-WL-C-MS"),
   device_helpers.create_fingerprint("Tuya", "899WZ"),
+  device_helpers.create_fingerprint("AOYAN", "AY222Z"),
+  device_helpers.create_fingerprint("AOYAN  ", "AY222Z"),
 })
 
 register_device_definition(water_sensor, {
@@ -366,6 +382,8 @@ register_device_definition(vibration_sensor, {
   device_helpers.create_fingerprint("Niceboy", "ORBIS Vibration Sensor"),
   device_helpers.create_fingerprint("iHseno", "_TZ3000_lzdjjfss"),
   device_helpers.create_fingerprint("ONENUO", "TS0210_5oy7cysk"),
+  device_helpers.create_fingerprint("_TZ3210_kjafhwd2", "TS0210"),
+  device_helpers.create_fingerprint("EKAZA", "EKVZ-T1016"),
 })
 
 register_device_definition(vibration_sensor, {

@@ -126,6 +126,7 @@ register_device_definition(battery_valve, {
   device_helpers.create_fingerprint("SONOFF", "SWV-ZFE"),
   device_helpers.create_fingerprint("SONOFF", "SWV-ZFU"),
   device_helpers.create_fingerprint("SONOFF", "SWV-ZNU"),
+  device_helpers.create_fingerprint("Third Reality, Inc", "3RWK0148Z"),
 })
 
 register_device_definition(multi_zone_valve, device_helpers.create_fingerprints("TS011F", {

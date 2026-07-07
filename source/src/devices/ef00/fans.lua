@@ -109,6 +109,7 @@ local fan_switch_5_speed = {
 register_device_definition(fan_switch_5_speed, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_r32ctezx",
   "_TZE204_r32ctezx",
+  "_TZE28C1000000_z5jz7wpo",
 }))
 
 register_device_definition(fan_and_light_switch, device_helpers.create_fingerprints("TS0601", {

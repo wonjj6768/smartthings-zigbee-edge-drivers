@@ -18,6 +18,18 @@ end
 if options.battery == true then
 clusters[#clusters + 1] = zcl.battery()
 end
+if options.humidity == true then
+clusters[#clusters + 1] = zcl.humidity()
+end
+if options.power == true then
+clusters[#clusters + 1] = zcl.power()
+end
+if options.energy == true then
+clusters[#clusters + 1] = zcl.energy()
+end
+if options.current == true then
+clusters[#clusters + 1] = zcl.current()
+end
 return {
 profile = profile,
 zcl_clusters = clusters,
@@ -25,6 +37,12 @@ zcl_clusters = clusters,
 end
 local thermostat = build_thermostat("thermostats-thermostat")
 local thermostat_battery = build_thermostat("thermostats-thermostat-battery", { battery = true })
+local namron_edge_thermostat = build_thermostat("thermostats-thermostat-humidity-power-energy-current", {
+humidity = true,
+power = true,
+energy = true,
+current = true,
+})
 local fcu_thermostat = build_thermostat("thermostats-fcu-thermostat", { cooling = true, fan = true })
 register_device_definition(thermostat_battery, {
 device_helpers.create_fingerprint("Appartme", "APRM-04-001"),
@@ -87,8 +105,15 @@ device_helpers.create_fingerprint("Danfoss", "0x8041"),
 register_device_definition(thermostat, {
 device_helpers.create_fingerprint("Centralite", "3157100"),
 device_helpers.create_fingerprint("Centralite", "3157100-E"),
+device_helpers.create_fingerprint("Danfoss", "devi_f"),
 device_helpers.create_fingerprint("Schneider Electric", "Thermostat"),
 device_helpers.create_fingerprint("Sinopé", "TH1320ZB-04"),
+})
+register_device_definition(namron_edge_thermostat, {
+device_helpers.create_fingerprint("Namron", "4566702"),
+device_helpers.create_fingerprint("Namron", "4566703"),
+device_helpers.create_fingerprint("Namron", "4512783"),
+device_helpers.create_fingerprint("Namron", "4512784"),
 })
 register_device_definition(fcu_thermostat, {
 device_helpers.create_fingerprint("Hive", "SLR2d"),

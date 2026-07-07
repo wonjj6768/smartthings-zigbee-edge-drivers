@@ -75,6 +75,21 @@ return 0
 end
 return nil
 end
+local function thaleos_thah202001_mode_from_device(value)
+if tonumber(value) == 4 then
+return "off"
+end
+return "heat"
+end
+local function thaleos_thah202001_mode_to_device(value)
+if value == "off" then
+return 4
+end
+if value == "heat" then
+return 0
+end
+return nil
+end
 local function thermostat_gtz10_mode_from_device(value)
 local numeric = tonumber(value)
 local lookup = {
@@ -604,6 +619,36 @@ device_helpers.create_fingerprint("EARU", "TRV06"),
 device_helpers.create_fingerprint("THALEOS", "TRV06-AT"),
 device_helpers.create_fingerprint("Echos", "Eco-4160"),
 })
+local thermostat_thaleos_thah202001 = {
+profile = "thermostats-thermostat-battery",
+tuya.dp_system_mode(2, {
+from_device = thaleos_thah202001_mode_from_device,
+to_device = thaleos_thah202001_mode_to_device,
+}),
+tuya.dp_running_state(3, {
+converter = converter.lookup_from_to({
+heating = 0,
+idle = 1,
+}),
+}),
+tuya.dp_current_heating_setpoint(4, { scale = 10 }),
+tuya.dp_local_temperature(5, { scale = 10 }),
+tuya.dp_battery(6, {}),
+tuya.dp_binary(14, { name = "window_detection" }),                     -- profile 미포함
+tuya.dp_enum(15, { name = "window_open" }),                            -- profile 미포함
+tuya.dp_holiday_temperature(21, { scale = 10 }),                       -- profile 미포함
+tuya.dp_eco_temperature(24, { scale = 10 }),                            -- profile 미포함
+tuya.dp_numeric(25, { name = "away_temperature", scale = 10 }),        -- profile 미포함
+tuya.dp_raw(35, { name = "error_or_battery_low" }),                    -- profile 미포함
+tuya.dp_binary(36, { name = "frost_protection" }),                     -- profile 미포함
+tuya.dp_binary(39, { name = "scale_protection" }),                     -- profile 미포함
+tuya.dp_local_temperature_calibration(47, { scale = 10 }),             -- profile 미포함
+tuya.dp_numeric(101, { name = "operating_time", scale = 10 }),         -- profile 미포함
+tuya.dp_numeric(102, { name = "scale_protection_remaining_time", scale = 10 }), -- profile 미포함
+}
+register_device_definition(thermostat_thaleos_thah202001, ef00_helpers.ts0601_fingerprints( {
+"_TZE204_m5r5nlxc",
+}))
 local thermostat_variant5 = {
 profile = "thermostats-thermostat",
 tuya.dp_system_mode(2, {

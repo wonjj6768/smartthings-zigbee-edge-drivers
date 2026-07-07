@@ -383,3 +383,7 @@ zigbeeManufacturer:
     manufacturer: "_TZE284_znvwzxkq"
     model: "TS0601"
     deviceProfileName: "lights-dimmer-3"
+  - id: "fp_48c5803655"
+    manufacturer: "_TZE28C1000000_z5jz7wpo"
+    model: "TS0601"
+    deviceProfileName: "fans-switch-fan-mode-ef00"

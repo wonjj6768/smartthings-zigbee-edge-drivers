@@ -36,6 +36,10 @@ function zcl.start_runtime(...) return false end
 function zcl.send_named_command(...) return false end
 function zcl.read_named_attribute(...) return false end
 function zcl.read_all_attributes(...) return false end
+function zcl.find_mapping_by_name(...) return nil end
+function zcl.emit_power_polling_state(...) return false end
+function zcl.set_power_poll_interval(...) return false end
+function zcl.begin_power_poll_burst(...) return false end
 function zcl.read_attribute(device, cluster_id, attribute_id, endpoint)
   local request = cluster_base.read_attribute(device, data_types.ClusterId(cluster_id), data_types.AttributeId(attribute_id))
   if endpoint ~= nil and type(request.to_endpoint) == "function" then

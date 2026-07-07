@@ -29,6 +29,8 @@ local ATTRIBUTE_OVERRIDES = {
   indicatorZg204zx = "indicatorZgTwoFour",
   illuminanceIntervalZg204zx = "illumIntervalZgTwoFour",
   leakageThresholdProtector100ma = "leakageThreshProtHundredMa",
+  ef00Ts0601MinimumBrightness = "efTsMinBrightness",
+  ef00Ts0601MaximumBrightness = "efTsMaxBrightness",
   minBrightnessTs0601 = "minBrightTsZeroSixZeroOne",
   maxBrightnessTs0601 = "maxBrightTsZeroSixZeroOne",
   motionDetectionSensitivityZg204zx = "motionSensZgTwoFour",
@@ -268,11 +270,14 @@ local numeric_rows = {
     {"maxBrightnessZclThousand",true,"max_brightness",0,1000,1,nil},
     {"minimumBrightnessTsOneTenMax",true,"min_brightness",1,255,1,nil},
     {"maxBrightnessTsOneTenMax",true,"max_brightness",1,255,1,nil},
+    {"ef00Ts0601MinimumBrightness",true,"min_brightness",0,1000,1,nil},
+    {"ef00Ts0601MaximumBrightness",true,"max_brightness",0,1000,1,nil},
     {"minBrightnessTs0601",true,"min_brightness",0,100,1,nil},
     {"maxBrightnessTs0601",true,"max_brightness",0,100,1,nil},
 }
 local enum_rows = {
     {"childLock",true,"child_lock",{"off","on"}},
+    {"aaeasollReportInterval",true,"report_interval",{"5m","10m","15m","20m","30m","1h"}},
     {"antiInterferenceZg204zx",true,"anti_interference",{"off","on"}},
     {"indicatorZg204zx",true,"indicator",{"off","on"}},
     {"temperatureUnitZg204zx",true,"temperature_unit",{"C","F"}},

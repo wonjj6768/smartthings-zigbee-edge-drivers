@@ -12,9 +12,9 @@ components:
         version: 1
       - id: concertmirror08464.countdownTsOneTenHours
         version: 1
-      - id: concertmirror08464.minBrightnessTs0601
+      - id: concertmirror08464.ef00Ts0601MinimumBrightness
         version: 1
-      - id: concertmirror08464.maxBrightnessTs0601
+      - id: concertmirror08464.ef00Ts0601MaximumBrightness
         version: 1
       - id: concertmirror08464.lightType
         version: 1
@@ -56,10 +56,10 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
-      capability: concertmirror08464.minBrightnessTs0601
+      capability: concertmirror08464.ef00Ts0601MinimumBrightness
       version: 1
     - component: main
-      capability: concertmirror08464.maxBrightnessTs0601
+      capability: concertmirror08464.ef00Ts0601MaximumBrightness
       version: 1
     - component: main
       capability: concertmirror08464.lightType
@@ -85,10 +85,10 @@ deviceConfig:
         capability: switchLevel
         version: 1
       - component: main
-        capability: concertmirror08464.minBrightnessTs0601
+        capability: concertmirror08464.ef00Ts0601MinimumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.maxBrightnessTs0601
+        capability: concertmirror08464.ef00Ts0601MaximumBrightness
         version: 1
       - component: main
         capability: concertmirror08464.lightType
@@ -113,10 +113,10 @@ deviceConfig:
         capability: statelessSwitchLevelStep
         version: 1
       - component: main
-        capability: concertmirror08464.minBrightnessTs0601
+        capability: concertmirror08464.ef00Ts0601MinimumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.maxBrightnessTs0601
+        capability: concertmirror08464.ef00Ts0601MaximumBrightness
         version: 1
       - component: main
         capability: concertmirror08464.lightType

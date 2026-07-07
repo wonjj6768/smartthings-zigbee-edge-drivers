@@ -510,6 +510,7 @@ register_device_definition(gas_value_alarm_time_ringtone, device_helpers.create_
   "_TZE204_chbyv06x",
   "_TZE204_yojqa8xn",
   "_TZE284_chbyv06x",
+  "_TZE28C1000000_chbyv06x",
 }))
 
 register_device_definition(gas_value_alarm_time_ringtone, {

@@ -16,6 +16,8 @@ local TYBAC_POWER_FIELD = "tybac_power_state"
 local TYBAC_MODE_FIELD = "tybac_system_mode_device"
 local HHST_POWER_FIELD = "hhst_power_state"
 local HHST_MODE_FIELD = "hhst_system_mode_device"
+local XIXLAZKG_POWER_FIELD = "xixlazkg_power_state"
+local XIXLAZKG_MODE_FIELD = "xixlazkg_system_mode_device"
 local TV02_HEATING_STOP_FIELD = "tv02_heating_stop"
 local TV02_PRESET_MODE_FIELD = "tv02_preset_mode"
 local function valve_position_to_running_state(value)
@@ -612,6 +614,67 @@ local thermostat_hhst001 = {
 }
 register_device_definition(thermostat_hhst001, ef00_helpers.ts0601_fingerprints( {
   "_TZE204_q12rv9gj",
+}))
+local xixlazkg_setpoint = tuya.dp_current_heating_setpoint(16, {
+  scale = 1,
+  emit = emit.heating_setpoint("C"),
+})
+local xixlazkg_fan_mode = tuya.dp_fan_mode(28, {
+  converter = converter.lookup_from_to({
+    low = 0,
+    medium = 1,
+    high = 2,
+    auto = 3,
+  }),
+  emit = emit.fan_mode(),
+})
+local thermostat_xixlazkg = {
+  profile = "thermostats-fcu-thermostat-no-operating",
+  named_mapping = {
+    named_mappings = {
+      system_mode = power_mode_write(1, 2, {
+        fanonly = 0,
+        fan_only = 0,
+        cool = 1,
+        dryair = 2,
+        heat = 3,
+        auto = 4,
+        ["emergency heat"] = 5,
+      }),
+      current_heating_setpoint = xixlazkg_setpoint,
+      fan_mode = xixlazkg_fan_mode,
+    },
+  },
+  tuya.dp_binary(1, {
+    name = "preset",
+    from_device = power_mode_from_device(XIXLAZKG_POWER_FIELD, XIXLAZKG_MODE_FIELD, "cool"),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_system_mode(2, {
+    from_device = enum_mode_from_device(XIXLAZKG_POWER_FIELD, XIXLAZKG_MODE_FIELD, {
+      [0] = "fanonly",
+      [1] = "cool",
+      [2] = "dryair",
+      [3] = "heat",
+      [4] = "auto",
+      [5] = "emergency heat",
+    }),
+    emit = emit.thermostat_mode(),
+    read_only = true,
+  }),
+  xixlazkg_setpoint,
+  tuya.dp_local_temperature(24, {
+    scale = 10,
+    emit = emit.temperature("C"),
+  }),
+  xixlazkg_fan_mode,
+  tuya.dp_binary(35, { name = "battery_low" }),
+  tuya.dp_child_lock(40, {}),
+  tuya.dp_local_temperature_calibration(44, { scale = 1 }),
+  tuya.dp_numeric(45, { name = "error" }),
+}
+register_device_definition(thermostat_xixlazkg, ef00_helpers.ts0601_fingerprints( {
+  "_TZE200_xixlazkg",
 }))
 
 return device_definitions

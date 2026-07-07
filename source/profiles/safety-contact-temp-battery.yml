@@ -1,0 +1,59 @@
+name: safety-contact-temp-battery
+components:
+  - id: main
+    capabilities:
+      - id: contactSensor
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: ContactSensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: contactSensor
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+        group: main
+        values:
+          - label: " {{temperature.value}}{{temperature.unit}}"
+        composite: true
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: contactSensor
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: contactSensor
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

@@ -234,7 +234,6 @@ register_device_definition(remote_4, {
   device_helpers.create_fingerprint("Moes", "XH-SY-04Z"),
   device_helpers.create_fingerprint("LoraTap", "SS6400ZB"),
   device_helpers.create_fingerprint("Namron", "4512772"),
-  device_helpers.create_fingerprint("Namron", "4566702"),
   device_helpers.create_fingerprint("NodOn", "CWS-4-1-01_HUE"),
   device_helpers.create_fingerprint("Shelly", "BLU RC Button 4 ZB"),
   device_helpers.create_fingerprint("Shelly", "BLU Remote Control ZB"),
@@ -261,6 +260,7 @@ register_device_definition(remote_4, device_helpers.create_fingerprints("TS004F"
   "_TZ3000_b3mgfu0d",
   "_TZ3000_11pg3ima",
   "_TZ3000_et7afzxz",
+  "_TZ3000_pftj0i7z",
 }))
 
 register_device_definition(remote_6, device_helpers.create_fingerprints("TS004F", {

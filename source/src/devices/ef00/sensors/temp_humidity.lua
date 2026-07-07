@@ -236,6 +236,31 @@ register_sensor_definition({
 
 -- ══════════════════════════════════════════════════════════════
 
+local th_battery_state = {
+
+  tuya.dp_temperature(1, { emit = emit.temperature("C"), scale = 10 }),
+
+  tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1 }),
+
+  tuya.dp_enum(3, { name = "battery_state", emit = emit.battery(), converter = converter.from_only(converter.lookup_value({ [0] = 0, [1] = 50, [2] = 100 })) }),
+
+  tuya.dp_temperature_unit(9, {}),
+
+  tuya.dp_temperature_calibration(23, { emit = emit.temperatureCalibrationZg227z() }),
+
+  tuya.dp_humidity_calibration(24, { emit = emit.humidityCalibrationZg227z() }),
+
+}
+
+register_sensor_definition({
+  profile = "sensors-temp-humidity-battery-calibration-zg227z",
+  datapoints = th_battery_state,
+}, ef00_helpers.ts0601_fingerprints( {
+
+  "_TZE284_rjjsib2d",
+
+}))
+
 local pool_chlorine_meter = {
 
   profile = "sensors-temp-battery-pool-chlorine",
@@ -617,7 +642,9 @@ register_sensor_definition({
 
   device_helpers.create_fingerprint("NTCHT01", "Excellux"),
   device_helpers.create_fingerprint("NTCHT02", "Excellux"),
+  device_helpers.create_fingerprint("NTCHT03", "Excellux"),
   device_helpers.create_fingerprint("Excellux", "ZG-106NTH"),
+  device_helpers.create_fingerprint("Excellux", "EZ-L01NTH"),
 
 })
 
@@ -639,6 +666,74 @@ local th_temperature_battery = {
 
 }
 
+
+
+local th_excellux_water_quality = {
+
+  tuya.dp_numeric(1, { name = "temperature_probe", emit = emit.temperatureProbeExcellux(), scale = 10 }),
+
+  tuya.dp_battery(4, { emit = emit.battery() }),
+
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 100 }),
+
+  tuya.dp_numeric(101, { name = "sampling_interval" }),                  -- profile 미포함
+
+  tuya.dp_temperature_calibration(108, { name = "probe_temperature_calibration", scale = 10 }), -- profile 미포함
+
+  tuya.dp_numeric(109, { name = "probe_temperature_v0_set", scale = 10 }), -- profile 미포함
+
+  tuya.dp_numeric(110, { name = "probe_temperature_v1_set", scale = 10 }), -- profile 미포함
+
+  tuya.dp_enum(112, { name = "probe_temperature_warning" }),             -- profile 미포함
+
+  tuya.dp_temperature_calibration(114, { name = "temperature_calibration", scale = 100 }), -- profile 미포함
+
+  tuya.dp_numeric(115, { name = "temperature_v0_set", scale = 100 }),    -- profile 미포함
+
+  tuya.dp_numeric(116, { name = "temperature_v1_set", scale = 100 }),    -- profile 미포함
+
+  tuya.dp_enum(117, { name = "temperature_warning" }),                   -- profile 미포함
+
+  tuya.dp_humidity(118, { emit = emit.humidity(), scale = 100 }),
+
+  tuya.dp_humidity_calibration(119, { name = "humidity_calibration", scale = 100 }), -- profile 미포함
+
+  tuya.dp_numeric(120, { name = "humidity_v0_set", scale = 100 }),       -- profile 미포함
+
+  tuya.dp_numeric(121, { name = "humidity_v1_set", scale = 100 }),       -- profile 미포함
+
+  tuya.dp_enum(122, { name = "humidity_warning" }),                      -- profile 미포함
+
+  tuya.dp_numeric(124, { name = "tds" }),                                -- profile 미포함
+
+  tuya.dp_numeric(125, { name = "tds_warning_set" }),                    -- profile 미포함
+
+  tuya.dp_enum(126, { name = "tds_warning" }),                           -- profile 미포함
+
+  tuya.dp_numeric(127, { name = "ec" }),                                 -- profile 미포함
+
+  tuya.dp_numeric(128, { name = "ec_v0_set" }),                          -- profile 미포함
+
+  tuya.dp_numeric(129, { name = "ec_v1_set" }),                          -- profile 미포함
+
+  tuya.dp_enum(130, { name = "ec_warning" }),                            -- profile 미포함
+
+  tuya.dp_numeric(131, { name = "salinity", scale = 10 }),               -- profile 미포함
+
+  tuya.dp_numeric(132, { name = "specific_gravity", scale = 1000 }),     -- profile 미포함
+
+  tuya.dp_enum(133, { name = "mode" }),                                  -- profile 미포함
+
+}
+
+register_sensor_definition({
+  profile = "sensors-temp-humidity-probe-excellux-battery",
+  datapoints = th_excellux_water_quality,
+}, {
+
+  device_helpers.create_fingerprint("DTS1XM9", "Excellux"),
+
+})
 
 
 register_device_definition(th_temperature_battery, device_helpers.create_fingerprints("TS0201", {

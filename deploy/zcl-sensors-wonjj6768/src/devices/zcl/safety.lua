@@ -145,7 +145,8 @@ device_helpers.create_fingerprint("QA", "QASD1"),
 device_helpers.create_fingerprint("Nous", "E3"),
 device_helpers.create_fingerprint("Woox", "R7047"),
 device_helpers.create_fingerprint("Wing", "WZDA1"),
-device_helpers.create_fingerprint("AOYAN  ", "AY-101Z"),
+device_helpers.create_fingerprint("AOYAN", "AY-101Z"),
+{ manufacturer = "AOYAN  ", model = "AY-101Z" },
 })
 register_device_definition(contact_sensor, device_helpers.create_fingerprints("TS0203", {
 "_TZ3000_26fmupbb",
@@ -314,7 +315,7 @@ device_helpers.create_fingerprint("Tuya", "TS0207_water_leak_detector_3"),
 device_helpers.create_fingerprint("Moes", "ZSS-QY-WL-C-MS"),
 device_helpers.create_fingerprint("Tuya", "899WZ"),
 device_helpers.create_fingerprint("AOYAN", "AY222Z"),
-device_helpers.create_fingerprint("AOYAN  ", "AY222Z"),
+{ manufacturer = "AOYAN  ", model = "AY222Z" },
 })
 register_device_definition(water_sensor, {
 device_helpers.create_fingerprint("HEIMAN", "WaterSensor-N"),

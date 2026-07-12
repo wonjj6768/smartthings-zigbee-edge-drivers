@@ -71,7 +71,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 419287,
+    "raw_size": 419570,
     "under_limit": true,
     "profiles": [
       "lights-dimmer",
@@ -108,7 +108,7 @@
       "thermostats-thermostat-battery",
       "thermostats-thermostat-humidity-power-energy-current"
     ],
-    "fingerprints": 568,
+    "fingerprints": 570,
     "custom_capabilities": {
       "numeric": 4,
       "enum": 2,

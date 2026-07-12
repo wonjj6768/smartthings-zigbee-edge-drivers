@@ -31,7 +31,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 420 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 61 |
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 855 |
-| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 568 |
+| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 570 |
 | ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 819 |
 
 ## Supported Fingerprints
@@ -2824,7 +2824,7 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 </details>
 
 <details>
-<summary>ZCL Sensors wonjj6768 (568 fingerprints)</summary>
+<summary>ZCL Sensors wonjj6768 (570 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.
 
@@ -3008,6 +3008,8 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `Aeotec` | `ZGA008` | `network-repeater` |
 | `AOYAN` | `AY-101Z` | `safety-contact-battery` |
 | `AOYAN` | `AY222Z` | `safety-water-leak-battery` |
+| `AOYAN  ` | `AY-101Z` | `safety-contact-battery` |
+| `AOYAN  ` | `AY222Z` | `safety-water-leak-battery` |
 | `Appartme` | `APRM-04-001` | `thermostats-thermostat-battery` |
 | `Aqara` | `AAQS-S01` | `sensors-temp-humidity-battery` |
 | `Aqara` | `CM-M01` | `sensors-temp-humidity-battery` |

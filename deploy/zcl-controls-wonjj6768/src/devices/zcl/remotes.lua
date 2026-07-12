@@ -222,16 +222,7 @@ register_device_definition(remote_6, device_helpers.create_fingerprints("TS0046"
 "_TZ3000_nrfkrgf4",
 }))
 register_device_definition(remote_4, device_helpers.create_fingerprints("TS004F", {
-"_TZ3000_nuombroo",
-"_TZ3000_xabckq1v",
-"_TZ3000_czuyt8lz",
-"_TZ3000_0ht8dnxj",
-"_TZ3000_b3mgfu0d",
-"_TZ3000_11pg3ima",
-"_TZ3000_et7afzxz",
-"_TZ3000_pftj0i7z",
 }))
 register_device_definition(remote_6, device_helpers.create_fingerprints("TS004F", {
-"_TZ3000_r0o2dahu",
 }))
 return device_definitions

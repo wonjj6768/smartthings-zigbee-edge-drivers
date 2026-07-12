@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 461421,
+    "raw_size": 461108,
     "under_limit": true,
     "profiles": [
       "din-rail-switch-power-energy-voltage-current",
@@ -133,7 +133,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 375116,
+    "raw_size": 374936,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",

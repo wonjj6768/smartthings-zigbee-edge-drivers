@@ -209,6 +209,7 @@ register_device_definition(slacky_remote_1, {
 register_device_definition(slacky_remote_2, {
   device_helpers.create_fingerprint("Slacky-DIY", "TS0042-z-SlD"),
   device_helpers.create_fingerprint("Slacky-DIY", "TS0042-M003-SlD"),
+  device_helpers.create_fingerprint("Slacky-DIY", "TS0042-M006-SlD"),
 })
 
 register_device_definition(slacky_remote_4, {

@@ -254,6 +254,7 @@ register_device_definition(single_switch, device_helpers.create_fingerprints("TS
   "_TZ3000_majwnphg",
   "_TZ3000_qh6qjuan",
   "_TZ3000_t3s9qmmg",
+  "_TZ3000_ehgouyvu",
   "_TZ3000_wrhhi5h2",
   "_TZ3000_zw7yf6yk",
 }))
@@ -335,6 +336,7 @@ register_device_definition(metered_dual_plug, device_helpers.create_fingerprints
   "_TZ3000_jak16dll",
   "_TZ3000_dd8wwzcy",
   "_TZ3210_bep7ccew",
+  "_TZ3210_qlmnxmac",
   "_TZ3210_raqjcxo5",
   "_TZ3210_7jnk7l3k",
   "_TZ3210_yvxjawlt",
@@ -411,6 +413,7 @@ register_device_definition(triple_switch, {
 })
 
 register_device_definition(dual_switch, device_helpers.create_fingerprints("TS011F", {
+  "_TZ3000_46vasa5h",
   "_TZ3000_mvn6jl7x",
   "_TZ3000_raviyuvk",
   "_TYZB01_hlla45kx",
@@ -477,6 +480,7 @@ register_device_definition(dual_switch, device_helpers.create_fingerprints("TS00
   "_TZ3000_ywubfuvt",
   "_TZ3000_wnzoyohq",
   "_TZ3000_5ksufhqi",
+  "_TZ3210_nuenzetq",
   "_TZ3000_zxrfobzw",
   "_TZ3000_criiahcg",
   "_TZ3000_lugaswf8",
@@ -619,6 +623,8 @@ register_device_definition(quad_switch, device_helpers.create_fingerprints("TS00
   "_TZ3000_mdj7kra9",
   "_TZ3000_u3oupgdy",
   "_TZ3000_imaccztn",
+  "_TZ3000_a37eix1s",
+  "_TZ3000_iymfxdis",
   "_TZ3000_nivavasg",
   "_TZ3000_gexniqbq",
   "_TZ3000_r9e2w7dn",
@@ -627,6 +633,7 @@ register_device_definition(quad_switch, device_helpers.create_fingerprints("TS00
   "_TZ3000_3n2minvf",
   "_TZ3000_tyg4yiat",
   "_TZ3210_iymfxdis",
+  "_TZ3210_imaccztn",
   "_TZ3000_nsa76jai",
   "_TZ3000_wwtnshol",
   "_TZ3210_wts1g2oh",

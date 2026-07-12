@@ -512,7 +512,7 @@ local epoch = os.time()
 if type(epoch) ~= "number" then
 return false
 end
-device:set_field(LAST_POWER_RESPONSE_AT_FIELD, epoch, { persist = true })
+device:set_field(LAST_POWER_RESPONSE_AT_FIELD, epoch, { persist = false })
 emit_last_power_response_state(device)
 return true
 end

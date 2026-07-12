@@ -191,10 +191,6 @@ register_device_definition(din_rail_model_ts0601_din_4, device_helpers.create_fi
   "_TZE204_fhvdgeuh",
 }))
 
-register_device_definition(din_rail_model_ts0601_din_4, {
-  device_helpers.create_fingerprint("RTX", "TS0601_RTX_DIN"),
-})
-
 -- ══════════════════════════════════════════════════════════════
 -- 1-6. power_meter_model_sdm01: 3상 에너지 모니터
 -- Z2M: SDM01
@@ -306,10 +302,6 @@ register_device_definition(power_meter_model_ts0601_3_phase_clamp_meter_relay, d
   "_TZE200_x8fp01wi",
   "_TZE204_x8fp01wi",
 }))
-
-register_device_definition(power_meter_model_ts0601_3_phase_clamp_meter_relay, {
-  device_helpers.create_fingerprint("Wenzhou Taiye Electric", "TAC7361C BI"),
-})
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-9. power_meter_model_ts0601_bidirectional_energy_meter: 양방향 에너지 미터

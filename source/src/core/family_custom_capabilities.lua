@@ -16,6 +16,18 @@ local DIGIT_WORDS = {
   ["9"] = "Nine",
 }
 local ATTRIBUTE_OVERRIDES = {
+  heimanHs2aqPm10 = "pm10",
+  heimanHs2aqAqi = "aqi",
+  heimanHs2aqBatteryState = "batteryState",
+  eyzee5gGlobalRestart = "globalRestart",
+  eyzee5gIndicatorMode = "indicatorMode",
+  eyzee5gSwitch1Restart = "switch1Restart",
+  eyzee5gSwitch2Restart = "switch2Restart",
+  eyzee5gSwitch3Restart = "switch3Restart",
+  eyzee5gSwitch4Restart = "switch4Restart",
+  eyzee5gSwitch5Restart = "switch5Restart",
+  alectoSmartHeat10ChildLock = "childLock",
+  alectoSmartHeat10WindowDetection = "windowDetection",
   acFrequency2ct = "acFrequencyTwoCt",
   acFrequencyPc311 = "acFrequencyPcThreeEleven",
   acFrequencySdm01 = "acFrequencySdmOne",
@@ -133,6 +145,8 @@ local function build(rows, factory)
   return definitions
 end
 local numeric_rows = {
+    {"heimanHs2aqPm10",false,"heiman_pm10",0,65535,1,"μg/m^3"},
+    {"heimanHs2aqAqi",false,"heiman_aqi",0,65535,1,nil},
     {"batteryVoltage",false,"battery_voltage",0,10,0.001,"V"},
     {"temperatureProbeExcellux",false,"temperature_probe",-40,125,0.1,"C"},
     {"temperatureProbe2aaa",false,"temperature_probe",-40,125,0.1,"C"},
@@ -276,6 +290,16 @@ local numeric_rows = {
     {"maxBrightnessTs0601",true,"max_brightness",0,100,1,nil},
 }
 local enum_rows = {
+    {"heimanHs2aqBatteryState",false,"heiman_battery_state",{"not_charging","charging","charged"}},
+    {"eyzee5gGlobalRestart",true,"eyzee_global_restart",{"off","on"}},
+    {"eyzee5gIndicatorMode",true,"eyzee_indicator_mode",{"off","on_off_status","switch_position"}},
+    {"eyzee5gSwitch1Restart",true,"eyzee_switch1_restart",{"off","on","previous"}},
+    {"eyzee5gSwitch2Restart",true,"eyzee_switch2_restart",{"off","on","previous"}},
+    {"eyzee5gSwitch3Restart",true,"eyzee_switch3_restart",{"off","on","previous"}},
+    {"eyzee5gSwitch4Restart",true,"eyzee_switch4_restart",{"off","on","previous"}},
+    {"eyzee5gSwitch5Restart",true,"eyzee_switch5_restart",{"off","on","previous"}},
+    {"alectoSmartHeat10ChildLock",true,"alecto_child_lock",{"off","on"}},
+    {"alectoSmartHeat10WindowDetection",true,"alecto_window_detection",{"off","on"}},
     {"childLock",true,"child_lock",{"off","on"}},
     {"aaeasollReportInterval",true,"report_interval",{"5m","10m","15m","20m","30m","1h"}},
     {"antiInterferenceZg204zx",true,"anti_interference",{"off","on"}},

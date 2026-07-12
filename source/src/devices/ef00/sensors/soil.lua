@@ -159,8 +159,6 @@ register_device_definition(soil_t100_h1, {
 
   device_helpers.create_fingerprint("_TZE284_2se8efxh", "TS0601"),
 
-  device_helpers.create_fingerprint("Tuya", "QT-07S"),
-
 })
 
 

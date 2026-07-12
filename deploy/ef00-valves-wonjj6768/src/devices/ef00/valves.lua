@@ -68,6 +68,9 @@ register_device_definition(irrigation_battery_valve, device_helpers.create_finge
 "_TZE200_akjefhj5",
 "_TZE200_2wg5qrjy",
 "_TZE200_81isopgh",
+"_TZE204_qtnjuoae",
+"_TZE284_qtnjuoae",
+"_TZE284_xuflgcnz",
 }))
 local zvl_pro_valve_state = converter.lookup_from_to({
 open = true,

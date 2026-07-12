@@ -105,7 +105,7 @@ end
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-1. smoke: 기본형 (battery_state enum)
--- Z2M: _TZE200_ux5v4dbd (TS0601_smoke_3 / KnockautX SMOAL024)
+-- Z2M: _TZE200_ux5v4dbd (TS0601_smoke_3)
 -- ══════════════════════════════════════════════════════════════
 local smoke = {
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -115,10 +115,6 @@ local smoke = {
 register_device_definition(smoke, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_ux5v4dbd",
 }))
-
-register_device_definition(smoke, {
-  device_helpers.create_fingerprint("KnockautX", "SMOAL024"),
-})
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-2. smoke_tamper_battery_low: tamper + battery_low (bool)
@@ -175,6 +171,7 @@ register_device_definition(smoke_battery, device_helpers.create_fingerprints("TS
 
 -- GSKS-ZB: smoke + tamper + battery
 local smoke_gsks_zb = {
+  profile = "safety-smoke-detector-battery",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
   tuya.dp_tamper(4, {}),                                          -- 프로파일 미포함
   tuya.dp_battery(15, { emit = emit.battery() }),
@@ -276,9 +273,11 @@ local smoke_model_hs2sa_1 = {
 }
 
 register_device_definition(smoke_model_hs2sa_1, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_vawy74yh",
   "_TZE204_ai4rqhky",
   "_TZE204_vawy74yh",
   "_TZE284_ai4rqhky",
+  "_TZE284_vawy74yh",
 }))
 
 -- ══════════════════════════════════════════════════════════════
@@ -297,6 +296,7 @@ local smoke_concentration = {
 register_device_definition(smoke_concentration, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_m9skfctm",
   "_TZE200_rccxox8p",
+  "_TZE2841000000_rccxox8p",
   "_TZE284_rccxox8p",
 }))
 
@@ -865,6 +865,7 @@ register_device_definition(vibration_model_zg_102zm, device_helpers.create_finge
 }))
 
 register_device_definition(vibration_model_zg_102zm, {
+  device_helpers.create_fingerprint("AOYAN", "AY02SZ"),
   device_helpers.create_fingerprint("HOBEIAN", "ZG-102ZM"),
 })
 

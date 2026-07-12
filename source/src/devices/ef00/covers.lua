@@ -741,8 +741,8 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
 
 register_device_definition(cover_core, {
   device_helpers.create_fingerprint("HOBEIAN", "ZG-301Z-MOTO"),
-  device_helpers.create_fingerprint("_TYST11_fzo2pocs", "zo2pocs"),
-  device_helpers.create_fingerprint("_TYST11_udank5zs", "dank5zs"),
+  { manufacturer = "_TYST11_fzo2pocs", model = "zo2pocs" .. string.char(0) },
+  { manufacturer = "_TYST11_udank5zs", model = "dank5zs" .. string.char(0) },
 })
 
 register_device_definition({
@@ -782,18 +782,12 @@ register_device_definition(cover_core, {
   device_helpers.create_fingerprint("Zemismart", "AM43"),
   device_helpers.create_fingerprint("A-OK", "AM25"),
   device_helpers.create_fingerprint("Alutech", "AM/R-Sm"),
-  device_helpers.create_fingerprint("RINNconnect", "RINN WSCMQ20"),
-  device_helpers.create_fingerprint("RINNconnect", "RINN WSER40"),
-  device_helpers.create_fingerprint("Trublockout", "TB25-DC-10/25Z"),
   device_helpers.create_fingerprint("Roximo", "CRTZ01"),
   device_helpers.create_fingerprint("Quoya", "AT8510-TY"),
   device_helpers.create_fingerprint("Somgoms", "ZSTY-SM-1DMZG-US-W_1"),
   device_helpers.create_fingerprint("HUARUI", "CMD900LE"),
   device_helpers.create_fingerprint("Novato", "WPK"),
   device_helpers.create_fingerprint("Zemismart", "ZMS1-TYZ"),
-  device_helpers.create_fingerprint("Zemismart", "M2805EGBZTN"),
-  device_helpers.create_fingerprint("Zemismart", "BCM500DS-TYZ"),
-  device_helpers.create_fingerprint("Zemismart", "BCM100DB"),
 })
 
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
@@ -803,10 +797,6 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0105", {
   "_TZE600_ogyg1y6b",
 }))
-
-register_device_definition(cover_core, {
-  device_helpers.create_fingerprint("Nova Digital", "ZBCMR-01"),
-})
 
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_68nvbio9",
@@ -845,6 +835,9 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
   "_TZE200_hsgrhjpf",
   "_TZE200_ergbiejo",
   "_TZE200_nhyj64w2",
+  "_TZE200_127x7wnl",
+  "_TZE204_5slehgeo",
+  "_TZE284_5slehgeo",
   "_TZE200_fctwhugx",
   "_TZE200_p6vz3wzt",
   "_TZE204_p6vz3wzt",
@@ -862,10 +855,6 @@ register_device_definition(cover_core_position_reversed, device_helpers.create_f
   "_TZE284_libht6ua",
 }))
 
-register_device_definition(cover_core_position_reversed, {
-  device_helpers.create_fingerprint("Tuya", "LY-108"),
-})
-
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_zvo63cmo",
 }))
@@ -882,9 +871,6 @@ register_device_definition(cover_core_position_reversed, device_helpers.create_f
 }))
 
 register_device_definition(cover_core_position_reversed, {
-  device_helpers.create_fingerprint("Lilistore", "TS0601_lilistore"),
-  device_helpers.create_fingerprint("Zemismart", "ZM90E-DT250N/A400"),
-  device_helpers.create_fingerprint("Nova Digital", "CMR-1"),
   device_helpers.create_fingerprint("Tuya", "TS0601_alh14edn"),
 })
 
@@ -953,11 +939,6 @@ register_device_definition(cover_core_reversed, device_helpers.create_fingerprin
   "_TZE284_koxaopnk",
   "_TZE284_clm4gdw4",
 }))
-
-register_device_definition(cover_core_reversed, {
-  device_helpers.create_fingerprint("Nova Digital", "ZC-GM42"),
-  device_helpers.create_fingerprint("Moes", "ZC-LS02"),
-})
 
 register_device_definition(cover_core_reversed, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_cowvfni3",
@@ -1030,10 +1011,6 @@ register_device_definition(cover_model_bx82_tyz1, device_helpers.create_fingerpr
 register_device_definition(cover_model_mb60l, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_2gi1hy8s",
 }))
-
-register_device_definition(cover_core, {
-  device_helpers.create_fingerprint("BSEED", "_TZE284_uqfph8ah"),
-})
 
 register_device_definition(cover_zb_sm, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_zyrdrmno",

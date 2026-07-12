@@ -360,19 +360,25 @@ local function load_ir_session(zcl)
         return false
       end
 
-      return zcl.send_raw_cluster_command(
+      local sent = zcl.send_raw_cluster_command(
         device,
         IR_TRANSMIT_CLUSTER,
         0x05,
         encode_le16(seq) .. encode_le16(0),
         get_endpoint(preset)
       )
+      if sent then
+        get_outgoing_messages(device)[seq] = nil
+      end
+      return sent
     end
 
     if command_id == 0x05 then
       local learned = device:get_field(IR_INCOMING_FIELD) or ""
       local encoded = base64_encode(learned)
       device:set_field(IR_LAST_LEARNED_FIELD, encoded, { persist = false })
+      device:set_field(IR_INCOMING_FIELD, nil, { persist = false })
+      device:set_field(IR_INCOMING_LENGTH_FIELD, nil, { persist = false })
       emit_learned_code(device, encoded)
       zcl.stop_ir_learning(device, preset)
       return true

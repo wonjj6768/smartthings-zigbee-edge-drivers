@@ -340,6 +340,8 @@ device_helpers.create_fingerprint("Niceboy", "ORBIS Vibration Sensor"),
 device_helpers.create_fingerprint("iHseno", "_TZ3000_lzdjjfss"),
 device_helpers.create_fingerprint("ONENUO", "TS0210_5oy7cysk"),
 device_helpers.create_fingerprint("_TZ3210_kjafhwd2", "TS0210"),
+device_helpers.create_fingerprint("_TYZB01_821siati", "TS0210"),
+device_helpers.create_fingerprint("_TZ3000_lzdjjfss", "TS0210"),
 device_helpers.create_fingerprint("EKAZA", "EKVZ-T1016"),
 })
 register_device_definition(vibration_sensor, {

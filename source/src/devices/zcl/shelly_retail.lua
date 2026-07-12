@@ -40,6 +40,16 @@ local temp_humidity = {
   },
 }
 
+local contact_illuminance = {
+  profile = "safety-contact-illuminance-battery",
+  zcl_clusters = { zcl.contact(), zcl.illuminance(), zcl.battery() },
+}
+
+local motion_illuminance = {
+  profile = "safety-motion-illuminance-battery",
+  zcl_clusters = { zcl.motion(), zcl.illuminance(), zcl.battery() },
+}
+
 register_device_definition(metered_plug, {
   device_helpers.create_fingerprint("Shelly", "Plug US"),
   device_helpers.create_fingerprint("Shelly", "Power Strip"),
@@ -47,6 +57,7 @@ register_device_definition(metered_plug, {
 
 register_device_definition(dimmer_light, {
   device_helpers.create_fingerprint("Shelly", "Dimmer"),
+  device_helpers.create_fingerprint("Shelly", "Dimmer US"),
 })
 
 register_device_definition(water_sensor, {
@@ -57,6 +68,14 @@ register_device_definition(temp_humidity, {
   device_helpers.create_fingerprint("Shelly", "BLU H&T Display ZB"),
   device_helpers.create_fingerprint("Shelly", "BLU H&T ZB"),
   device_helpers.create_fingerprint("Shelly", "Ecowitt WS90"),
+})
+
+register_device_definition(contact_illuminance, {
+  device_helpers.create_fingerprint("Shelly", "BLU DoorWindow ZB"),
+})
+
+register_device_definition(motion_illuminance, {
+  device_helpers.create_fingerprint("Shelly", "BLU Motion ZB"),
 })
 
 return device_definitions

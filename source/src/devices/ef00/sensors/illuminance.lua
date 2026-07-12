@@ -101,7 +101,7 @@ register_device_definition(illum_battery, ef00_helpers.ts0601_fingerprints( {
 }))
 
 register_device_definition(illum_battery, {
-  device_helpers.create_fingerprint("_TYST11_pisltm67", "isltm67"),
+  { manufacturer = "_TYST11_pisltm67", model = "isltm67" .. string.char(0) },
 })
 
 -- ══════════════════════════════════════════════════════════════

@@ -60,7 +60,6 @@ device_helpers.create_fingerprint("_TZE200_2se8efxh", "TS0601"),
 device_helpers.create_fingerprint("_TZE284_oitavov2", "TS0601"),
 device_helpers.create_fingerprint("_TZE284_2nhqasjh", "TS0601"),
 device_helpers.create_fingerprint("_TZE284_2se8efxh", "TS0601"),
-device_helpers.create_fingerprint("Tuya", "QT-07S"),
 })
 local soil_t10_h1_ec = {
 tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10 }),

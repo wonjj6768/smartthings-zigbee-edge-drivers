@@ -118,11 +118,19 @@ register_device_definition(switch_only_plug, device_helpers.create_fingerprints(
 }))
 register_device_definition(switch_only_plug, device_helpers.create_fingerprints("TS011F", {
 "_TZ3000_00mk2xzy",
+"_TZ3000_upjrsxh1",
 "_TZ3000_plyvnuf5",
 "_TZ3000_wamqdr3f",
 "_TZ3000_b1q8kwmh",
 }))
 register_device_definition(metered_plug, device_helpers.create_fingerprints("TS011F", {
+"_TZ3000_ko6v90pg",
+"_TZ3008_1a8m8wd6",
+"_TZ3008_reatplte",
+"_TZ3210_2putqrmw",
+"_TZ3210_2uollq9d",
+"_TZ3210_4ux0ondb",
+"_TZ3210_zifx0xoj",
 "_TZ3000_4ux0ondb",
 "_TZ3000_b28wrpvx",
 "_TZ3000_2uollq9d",
@@ -150,6 +158,9 @@ register_device_definition(metered_plug, device_helpers.create_fingerprints("TS0
 "_TZ3000_zloso4jk",
 "_TZ3210_w0qqde0g",
 }))
+register_device_definition(metered_plug, {
+{ manufacturer = "AOYAN  ", model = "TS011F" },
+})
 register_device_definition(metered_plug, {
 device_helpers.create_fingerprint("VIKEFON", "TS011F"),
 device_helpers.create_fingerprint("NEO Coolcam", "PLUG-001SPB2"),

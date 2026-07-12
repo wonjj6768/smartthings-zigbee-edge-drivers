@@ -73,7 +73,7 @@ return nil
 end
 local epoch = os.time()
 if type(epoch) == "number" then
-device:set_field(LAST_POWER_RESPONSE_AT_FIELD, epoch, { persist = true })
+device:set_field(LAST_POWER_RESPONSE_AT_FIELD, epoch, { persist = false })
 end
 return attribute({
 value = format_power_response_time(device:get_field(LAST_POWER_RESPONSE_AT_FIELD)),

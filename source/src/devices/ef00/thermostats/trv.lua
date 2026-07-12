@@ -4,6 +4,32 @@ local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
 local converter = tuya.converter
 local device_definitions, register_device_definition = device_helpers.definition_registry()
+local alecto_on_off = converter.lookup_from_to({ off = false, on = true })
+
+local alecto_smart_heat10 = {
+  profile = "thermostats-alecto-smart-heat10",
+  tuya.dp_current_heating_setpoint(2, { scale = 10 }),
+  tuya.dp_local_temperature(3, { scale = 10 }),
+  tuya.dp_system_mode(4, {
+    converter = converter.lookup_from_to({ off = 0, auto = 1, heat = 2 }),
+  }),
+  tuya.dp_binary(7, {
+    name = "alecto_child_lock",
+    emit = emit.alectoSmartHeat10ChildLock(),
+    converter = alecto_on_off,
+  }),
+  tuya.dp_binary(18, {
+    name = "alecto_window_detection",
+    emit = emit.alectoSmartHeat10WindowDetection(),
+    converter = alecto_on_off,
+  }),
+  tuya.dp_battery(21, { emit = emit.battery() }),
+}
+
+register_device_definition(alecto_smart_heat10, {
+  device_helpers.create_fingerprint("_TYST11_8daqwrsj", "daqwrsj" .. string.char(0)),
+  device_helpers.create_fingerprint("_TZE200_8daqwrsj", "TS0601"),
+})
 local BAC003_POWER_FIELD = "bac003_power_state"
 local BAC003_MODE_FIELD = "bac003_system_mode_device"
 local XZ_AKT101_POWER_FIELD = "xz_akt101_power_state"
@@ -395,6 +421,12 @@ register_device_definition(classic_trv, ef00_helpers.ts0601_fingerprints( {
   "_TZE200_cpmgn2cf",
 }))
 register_device_definition(classic_trv, {
+  device_helpers.create_fingerprint("07732L", "TS0601"),
+  device_helpers.create_fingerprint("Emos", "TS0601"),
+  device_helpers.create_fingerprint("HY368", "TS0601"),
+  device_helpers.create_fingerprint("Immax", "TS0601"),
+  device_helpers.create_fingerprint("P5630S", "TS0601"),
+  device_helpers.create_fingerprint("THALEOS", "TS0601"),
   device_helpers.create_fingerprint("Immax", "07732B"),
   device_helpers.create_fingerprint("Immax", "07732L"),
   device_helpers.create_fingerprint("Moes", "HY368"),
@@ -612,6 +644,14 @@ register_device_definition(thermostat_variant3, ef00_helpers.ts0601_fingerprints
   "_TZE200_d3z1ukqw",
 }))
 register_device_definition(thermostat_variant3, {
+  device_helpers.create_fingerprint("AVATTO", "TS0601"),
+  device_helpers.create_fingerprint("AVATTO_TRV06", "TS0601"),
+  device_helpers.create_fingerprint("Echos", "TS0601"),
+  device_helpers.create_fingerprint("Eco-4160", "TS0601"),
+  device_helpers.create_fingerprint("ME167", "TS0601"),
+  device_helpers.create_fingerprint("ME168", "TS0601"),
+  device_helpers.create_fingerprint("TRV06", "TS0601"),
+  device_helpers.create_fingerprint("TRV06-AT", "TS0601"),
   device_helpers.create_fingerprint("AVATTO", "ME167"),
   device_helpers.create_fingerprint("AVATTO", "ME168_1"),
   device_helpers.create_fingerprint("AVATTO", "AVATTO_TRV06"),
@@ -670,6 +710,8 @@ register_device_definition(thermostat_variant5, ef00_helpers.ts0601_fingerprints
   "_TZE200_hvaxb2tc",
 }))
 register_device_definition(thermostat_variant5, {
+  device_helpers.create_fingerprint("ME167_1", "TS0601"),
+  device_helpers.create_fingerprint("TRV06_1b", "TS0601"),
   device_helpers.create_fingerprint("AVATTO", "ME167_1"),
   device_helpers.create_fingerprint("AVATTO", "TRV06_1b"),
 })
@@ -688,6 +730,8 @@ register_device_definition(thermostat_variant2, ef00_helpers.ts0601_fingerprints
   "_TZE200_0hg58wyk",
 }))
 register_device_definition(thermostat_variant2, {
+  device_helpers.create_fingerprint("Cloud Even", "TS0601"),
+  device_helpers.create_fingerprint("S366", "TS0601"),
   device_helpers.create_fingerprint("S366", "Cloud Even"),
 })
 local thermostat_variant4 = {
@@ -842,6 +886,22 @@ register_device_definition(thermostat_tv02, ef00_helpers.ts0601_fingerprints( {
   "_TZE200_k1tumq4t",
 }))
 register_device_definition(thermostat_tv02, {
+  device_helpers.create_fingerprint("3012732", "TS0601"),
+  device_helpers.create_fingerprint("AlecoAir", "TS0601"),
+  device_helpers.create_fingerprint("EKF", "TS0601"),
+  device_helpers.create_fingerprint("ETT-8", "TS0601"),
+  device_helpers.create_fingerprint("HA-08 THERMO", "TS0601"),
+  device_helpers.create_fingerprint("LSC Smart Connect", "TS0601"),
+  device_helpers.create_fingerprint("Moes", "TS0601"),
+  device_helpers.create_fingerprint("Tesla Smart", "TS0601"),
+  device_helpers.create_fingerprint("TSL-TRV-TV01ZG", "TS0601"),
+  device_helpers.create_fingerprint("TSL-TRV-TV05ZG", "TS0601"),
+  device_helpers.create_fingerprint("TV01-ZB", "TS0601"),
+  device_helpers.create_fingerprint("TV02-Zigbee", "TS0601"),
+  device_helpers.create_fingerprint("TV05-ZG curve", "TS0601"),
+  device_helpers.create_fingerprint("TV06-Zigbee", "TS0601"),
+  device_helpers.create_fingerprint("Tuya", "TS0601"),
+  device_helpers.create_fingerprint("ZTRV-ZX-TV02", "TS0601"),
   device_helpers.create_fingerprint("Moes", "TV01-ZB"),
   device_helpers.create_fingerprint("AVATTO", "TRV06-1"),
   device_helpers.create_fingerprint("Tesla Smart", "TSL-TRV-TV01ZG"),

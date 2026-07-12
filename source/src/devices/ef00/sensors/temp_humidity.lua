@@ -184,6 +184,12 @@ register_sensor_definition({
 
   "_TZE200_zppcgbdj",
 
+  "_TZE200_nnrfa68v",
+
+  "_TZE200_wtikaxzs",
+
+  "_TZE284_wtikaxzs",
+
   "_TZE204_s139roas",
 
   "_TZE200_s1xgth2u",
@@ -468,6 +474,10 @@ register_sensor_definition({
 
   "_TZE284_4dosadbh",
 
+  "_TZE284_mpzuabwk",
+
+  "_TZE284_rs62zxk8",
+
   "_TZE284_cwyqwqbf",
 
   "_TZE200_whkgqxse",
@@ -654,7 +664,7 @@ register_sensor_definition({
 
 -- 1-5c. th_temperature_battery: 온도 + 배터리 전용 (TS0201 non-TS)
 
--- Z2M: THS317-ET-TY / THS317-ET-EY
+-- Z2M: THS317-ET-TY
 
 -- ══════════════════════════════════════════════════════════════
 
@@ -745,12 +755,6 @@ register_device_definition(th_temperature_battery, device_helpers.create_fingerp
 }))
 
 
-
-register_device_definition(th_temperature_battery, {
-
-  device_helpers.create_fingerprint("OWON", "THS317-ET-EY"),
-
-})
 
 
 

@@ -71,6 +71,9 @@ datapoints = th,
 "_TZE200_qoy0ekbd",
 "_TZE200_znbl8dj5",
 "_TZE200_zppcgbdj",
+"_TZE200_nnrfa68v",
+"_TZE200_wtikaxzs",
+"_TZE284_wtikaxzs",
 "_TZE204_s139roas",
 "_TZE200_s1xgth2u",
 "_TZE200_t3xd7l44",
@@ -197,6 +200,8 @@ datapoints = th_alarm,
 "_TZE200_vvmbj46n",
 "_TZE284_vvmbj46n",
 "_TZE284_4dosadbh",
+"_TZE284_mpzuabwk",
+"_TZE284_rs62zxk8",
 "_TZE284_cwyqwqbf",
 "_TZE200_whkgqxse",
 }))
@@ -315,9 +320,6 @@ register_device_definition(th_temperature_battery, device_helpers.create_fingerp
 "_TZE200_iq4ygaai",
 "_TZE200_01fvxamo",
 }))
-register_device_definition(th_temperature_battery, {
-device_helpers.create_fingerprint("OWON", "THS317-ET-EY"),
-})
 local th_alarm_neo = {
 tuya.dp_numeric(101, {
 name = "power_type",

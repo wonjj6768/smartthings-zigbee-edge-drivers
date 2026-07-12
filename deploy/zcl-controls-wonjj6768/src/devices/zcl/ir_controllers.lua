@@ -20,6 +20,8 @@ register_device_definition(ir_controller, device_helpers.create_fingerprints("TS
 "_TZ3290_j37rooaxrcdcqo5n",
 "_TZ3290_nkpxapoz",
 "_TZ3290_u9xac5rv",
+"_TZ3290_lidgqyzu",
+"_TZ3290_yac64inudpovoaba",
 "_TZ3290_acv1iuslxi3shaaj",
 "_TZ3290_gnl5a6a5xvql7c2a",
 "_TZ3290_xjpbcxn92aaxvmlz",

@@ -254,6 +254,10 @@ register_aliases(metered_dimmer_light, create_model_fingerprints("Sunricher", {
 "HK-SL-DIM-EU-A",
 "HK-SL-DIM-AU-R-A",
 }))
+register_aliases(metered_dimmer_light, {
+device_helpers.create_fingerprint("Candeo", "C-ZB-DM204V2"),
+device_helpers.create_fingerprint("Candeo", "C-ZB-DM204v2"),
+})
 register_aliases(dimmer_light, create_model_fingerprints("Sunricher", {
 "HK-SL-DIM-CLN",
 "ZG9101SAC-HP",

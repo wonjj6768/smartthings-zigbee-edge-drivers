@@ -440,6 +440,12 @@ register_presence_definition(presence_model_zf24, ts0601_fingerprints({
 
   "_TZE284_hgeqeyuv",
 
+  "_TZE28C1000000_hgeqeyuv",
+
+  "_TZE28C1000000_pzm3wab5",
+
+  "_TZE28C1000000_twybxdzl",
+
 }), {
 
   move_sensitivity = MOVE_SENSITIVITY_TEN_RANGE,
@@ -1149,6 +1155,8 @@ local presence_model_zg_204zm = {
 
 register_presence_definition(presence_model_zg_204zm, {
 
+  device_helpers.create_fingerprint("AOYAN", "AY205Z"),
+
   device_helpers.create_fingerprint("_TZE200_2aaelwxk", "TS0601"),
 
   device_helpers.create_fingerprint("_TZE200_2aaelwxk", "TS0225"),
@@ -1386,6 +1394,8 @@ register_presence_definition(presence_model_zg_204zh, ts0601_fingerprints({
   "_TZE200_vuqzj1ej",
 
   "_TZE200_hdih4foa",
+
+  "AOYAN:AY208Z",
 
   "HOBEIAN:ZG-204ZH",
 

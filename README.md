@@ -16,23 +16,23 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | Driver | Package key | Fingerprints |
 | --- | --- | ---: |
 | EF00 Controls wonjj6768 | `ef00-controls-wonjj6768` | 11 |
-| EF00 Covers wonjj6768 | `ef00-covers-wonjj6768` | 152 |
+| EF00 Covers wonjj6768 | `ef00-covers-wonjj6768` | 186 |
 | EF00 Energy wonjj6768 | `ef00-energy-wonjj6768` | 114 |
-| EF00 Lights wonjj6768 | `ef00-lights-wonjj6768` | 97 |
+| EF00 Lights wonjj6768 | `ef00-lights-wonjj6768` | 98 |
 | EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 26 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 34 |
-| EF00 Presence General wonjj6768 | `ef00-presence-general-wonjj6768` | 90 |
+| EF00 Presence General wonjj6768 | `ef00-presence-general-wonjj6768` | 95 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 17 |
-| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 93 |
-| EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 169 |
-| EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 165 |
-| EF00 Thermostats wonjj6768 | `ef00-thermostats-wonjj6768` | 205 |
-| EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 18 |
-| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 417 |
+| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 102 |
+| EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 176 |
+| EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 168 |
+| EF00 Thermostats wonjj6768 | `ef00-thermostats-wonjj6768` | 243 |
+| EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 21 |
+| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 420 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 61 |
-| ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 852 |
-| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 556 |
-| ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 802 |
+| ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 855 |
+| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 568 |
+| ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 819 |
 
 ## Supported Fingerprints
 
@@ -58,19 +58,23 @@ Development driver; report issues with hub logcat. Supports EF00 scene remotes a
 </details>
 
 <details>
-<summary>EF00 Covers wonjj6768 (152 fingerprints)</summary>
+<summary>EF00 Covers wonjj6768 (186 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 curtains, blinds, shades, and cover motors.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
+| `_TYST11_fzo2pocs` | `zo2pocs\x00` | `covers-cover` |
+| `_TYST11_udank5zs` | `dank5zs\x00` | `covers-cover` |
 | `_TZ3210_emqmwtym` | `TS0601` | `covers-cover-battery-epj-zb` |
+| `_TZE200_127x7wnl` | `TS0601` | `covers-cover` |
 | `_TZE200_1fuxihti` | `TS0601` | `covers-cover` |
 | `_TZE200_1vxgqfba` | `TS0601` | `covers-cover` |
 | `_TZE200_2jwrgrro` | `TS0601` | `covers-cover` |
 | `_TZE200_2odrmqwq` | `TS0601` | `covers-cover` |
 | `_TZE200_2vfxweng` | `TS0601` | `covers-cover` |
 | `_TZE200_3i3exuay` | `TS0601` | `covers-cover` |
+| `_TZE200_3ylew7b4` | `TS0601` | `covers-cover` |
 | `_TZE200_4vobcgd3` | `TS0601` | `covers-cover` |
 | `_TZE200_5nldle7w` | `TS0601` | `covers-cover-switch-2` |
 | `_TZE200_5sbebbzs` | `TS0601` | `covers-cover` |
@@ -78,6 +82,7 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE200_68nvbi09` | `TS0601` | `covers-cover` |
 | `_TZE200_68nvbio9` | `TS0601` | `covers-cover` |
 | `_TZE200_7eue9vhc` | `TS0601` | `covers-cover` |
+| `_TZE200_7shyddj3` | `TS0601` | `covers-cover` |
 | `_TZE200_9p5xmj5r` | `TS0601` | `covers-cover` |
 | `_TZE200_9vpe3fl1` | `TS0601` | `covers-cover` |
 | `_TZE200_a8z0g46u` | `TS0601` | `covers-cover` |
@@ -86,6 +91,7 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE200_b2u1drdv` | `TS0601` | `covers-cover` |
 | `_TZE200_ba69l9ol` | `TS0601` | `covers-cover` |
 | `_TZE200_bdblidq3` | `TS0601` | `covers-cover` |
+| `_TZE200_bjzrowv2` | `TS0601` | `covers-cover` |
 | `_TZE200_bqcqqjpb` | `TS0601` | `covers-cover` |
 | `_TZE200_bv1jcqqu` | `TS0601` | `covers-cover` |
 | `_TZE200_cf1sl3tj` | `TS0601` | `covers-cover` |
@@ -97,6 +103,7 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE200_eatmkx5j` | `TS0301` | `covers-cover` |
 | `_TZE200_eegnwoyw` | `TS0601` | `covers-cover` |
 | `_TZE200_eevqq1uv` | `TS0601` | `covers-cover` |
+| `_TZE200_en3wvcbx` | `TS0601` | `covers-cover` |
 | `_TZE200_eqpaxqdv` | `TS0601` | `covers-cover-pims3028` |
 | `_TZE200_ergbiejo` | `TS0601` | `covers-cover` |
 | `_TZE200_fctwhugx` | `TS0601` | `covers-cover` |
@@ -104,6 +111,7 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE200_feolm6rk` | `TS0601` | `covers-cover` |
 | `_TZE200_fodv6bkr` | `TS0601` | `covers-cover-battery-rm28-le` |
 | `_TZE200_fzo2pocs` | `TS0601` | `covers-cover` |
+| `_TZE200_g5wdnuow` | `TS0601` | `covers-cover` |
 | `_TZE200_g5xqosu7` | `TS0601` | `covers-cover` |
 | `_TZE200_gaj531w3` | `TS0601` | `covers-cover` |
 | `_TZE200_gnw1rril` | `TS0601` | `covers-cover` |
@@ -114,33 +122,43 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE200_iossyxra` | `TS0601` | `covers-cover` |
 | `_TZE200_jhkttplm` | `TS0601` | `covers-cover-switch-1` |
 | `_TZE200_libht6ua` | `TS0601` | `covers-cover` |
+| `_TZE200_llm0epxg` | `TS0601` | `covers-cover` |
 | `_TZE200_m6lwazh9` | `TS0601` | `covers-cover` |
 | `_TZE200_mlglxwp3` | `TS0601` | `covers-cover` |
+| `_TZE200_n1aauwb4` | `TS0601` | `covers-cover` |
 | `_TZE200_nhyj64w2` | `TS0601` | `covers-cover` |
 | `_TZE200_nkoabg8w` | `TS0601` | `covers-cover` |
 | `_TZE200_nogaemzt` | `TS0601` | `covers-cover` |
 | `_TZE200_nueqqe6k` | `TS0601` | `covers-cover` |
+| `_TZE200_nv6nxo0c` | `TS0601` | `covers-cover` |
 | `_TZE200_nw1r9hp6` | `TS0601` | `covers-cover` |
+| `_TZE200_odlldrxx` | `TS0601` | `covers-cover` |
 | `_TZE200_ol5jlkkr` | `TS0601` | `covers-cover` |
 | `_TZE200_osmxri8y` | `TS0601` | `covers-cover-zb-sm` |
 | `_TZE200_p2qzzazi` | `TS0601` | `covers-cover` |
 | `_TZE200_p6vz3wzt` | `TS0601` | `covers-cover` |
 | `_TZE200_pk0sfzvr` | `TS0601` | `covers-cover` |
 | `_TZE200_pw7mji0l` | `TS0601` | `covers-cover` |
+| `_TZE200_r0jdjrvi` | `TS0601` | `covers-cover` |
 | `_TZE200_rddyvrci` | `TS0601` | `covers-cover` |
 | `_TZE200_rmymn92d` | `TS0601` | `covers-cover` |
+| `_TZE200_rsj5pu8y` | `TS0601` | `covers-cover` |
 | `_TZE200_sfqyhvpv` | `TS0601` | `covers-cover` |
 | `_TZE200_sq6affpe` | `TS0601` | `covers-cover` |
 | `_TZE200_swlgvdlh` | `TS0601` | `covers-cover` |
 | `_TZE200_tvrvdj6o` | `TS0601` | `covers-cover` |
+| `_TZE200_udank5zs` | `TS0601` | `covers-cover` |
 | `_TZE200_vdiuwbkq` | `TS0601` | `covers-cover` |
 | `_TZE200_vexa5o82` | `TS0601` | `covers-cover` |
 | `_TZE200_wdfurkoa` | `TS0601` | `covers-cover` |
 | `_TZE200_wehza30a` | `TS0601` | `covers-cover` |
 | `_TZE200_wmcdj3aq` | `TS0601` | `covers-cover` |
 | `_TZE200_xaabybja` | `TS0601` | `covers-cover` |
+| `_TZE200_xu4a5rhj` | `TS0601` | `covers-cover` |
 | `_TZE200_xuzcvlku` | `TS0601` | `covers-cover` |
 | `_TZE200_yenbr4om` | `TS0601` | `covers-cover` |
+| `_TZE200_yia0p3tr` | `TS0601` | `covers-cover` |
+| `_TZE200_yrugsphv` | `TS0601` | `covers-cover` |
 | `_TZE200_zah67ekd` | `TS0601` | `covers-cover` |
 | `_TZE200_zpzndjez` | `TS0601` | `covers-cover` |
 | `_TZE200_zuz7f94z` | `TS0601` | `covers-cover` |
@@ -150,18 +168,30 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE204_1fuxihti` | `TS0601` | `covers-cover` |
 | `_TZE204_2rvvqjoa` | `TS0601` | `covers-cover-bx82-tyz1` |
 | `_TZE204_57hjqelq` | `TS0601` | `covers-cover` |
+| `_TZE204_5slehgeo` | `TS0601` | `covers-cover` |
+| `_TZE204_a2jcoyuk` | `TS0601` | `covers-cover` |
 | `_TZE204_a8z0g46u` | `TS0601` | `covers-cover` |
 | `_TZE204_bdblidq3` | `TS0601` | `covers-cover` |
+| `_TZE204_bjzrowv2` | `TS0601` | `covers-cover` |
+| `_TZE204_dpqsvdbi` | `TS0601` | `covers-cover` |
 | `_TZE204_ejh6owwz` | `TS0601` | `covers-cover` |
 | `_TZE204_g5xqosu7` | `TS0601` | `covers-cover` |
 | `_TZE204_guvc7pdy` | `TS0601` | `covers-cover` |
+| `_TZE204_ic7jtutb` | `TS0601` | `covers-cover` |
 | `_TZE204_lh3arisb` | `TS0601` | `covers-cover` |
+| `_TZE204_m1wl5fvq` | `TS0601` | `covers-cover` |
+| `_TZE204_nladmfvf` | `TS0601` | `covers-cover` |
+| `_TZE204_odlldrxx` | `TS0601` | `covers-cover` |
 | `_TZE204_p6vz3wzt` | `TS0601` | `covers-cover` |
+| `_TZE204_q9xty0ad` | `TS0601` | `covers-cover` |
 | `_TZE204_r0jdjrvi` | `TS0601` | `covers-cover` |
+| `_TZE204_tgl8i2np` | `TS0601` | `covers-cover` |
 | `_TZE204_trwaxi57` | `TS0601` | `covers-cover-switch-2` |
 | `_TZE204_vvvtcehj` | `TS0601` | `covers-cover` |
+| `_TZE204_wzre8hu2` | `TS0601` | `covers-cover` |
 | `_TZE204_xu4a5rhj` | `TS0601` | `covers-cover` |
 | `_TZE204_ycke4deo` | `TS0601` | `covers-cover` |
+| `_TZE204_yrugsphv` | `TS0601` | `covers-cover` |
 | `_TZE204_zuq5xxib` | `TS0601` | `covers-cover` |
 | `_TZE210_inpjmc0h` | `TS0301` | `covers-cover-2` |
 | `_TZE210_m6lwazh9` | `TS0301` | `covers-cover` |
@@ -170,13 +200,17 @@ Development driver; report issues with hub logcat. Supports EF00 curtains, blind
 | `_TZE284_2gi1hy8s` | `TS0601` | `covers-cover-battery-mb60l` |
 | `_TZE284_3mzb0sdz` | `TS0601` | `covers-cover` |
 | `_TZE284_4vobcgd3` | `TS0601` | `covers-cover` |
+| `_TZE284_5slehgeo` | `TS0601` | `covers-cover` |
 | `_TZE284_6fopvb6v` | `TS0601` | `covers-cover` |
+| `_TZE284_b7kbnl6q` | `TS0601` | `covers-cover` |
+| `_TZE284_bjzrowv2` | `TS0601` | `covers-cover` |
 | `_TZE284_clm4gdw4` | `TS0601` | `covers-cover` |
 | `_TZE284_fzo2pocs` | `TS0601` | `covers-cover` |
 | `_TZE284_gaj531w3` | `TS0601` | `covers-cover` |
 | `_TZE284_koxaopnk` | `TS0601` | `covers-cover` |
 | `_TZE284_libht6ua` | `TS0601` | `covers-cover` |
 | `_TZE284_r3szw0xr` | `TS0601` | `covers-cover` |
+| `_TZE284_udank5zs` | `TS0601` | `covers-cover` |
 | `_TZE284_uqfph8ah` | `TS0601` | `covers-cover` |
 | `_TZE284_waa352qv` | `TS0601` | `covers-cover` |
 | `_TZE284_wdfurkoa` | `TS0601` | `covers-cover` |
@@ -344,7 +378,7 @@ Development driver; report issues with hub logcat. Supports EF00 DIN rail relays
 </details>
 
 <details>
-<summary>EF00 Lights wonjj6768 (97 fingerprints)</summary>
+<summary>EF00 Lights wonjj6768 (98 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 dimmers, LED drivers, and lighting devices.
 
@@ -400,6 +434,7 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 | `_TZE204_bql5khqx` | `TS0601` | `fans-fan-level-light-switch` |
 | `_TZE204_bxoo2swd` | `TS0601` | `lights-dimmer-2` |
 | `_TZE204_dcnsggvz` | `TS0601` | `lights-dimmer` |
+| `_TZE204_drs6j6m5` | `TS0601` | `lights-dimmer` |
 | `_TZE204_hlx9tnzb` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE204_lawxy9e2` | `TS0601` | `fans-fan-light-switch` |
 | `_TZE204_n9ctkb6j` | `TS0601` | `lights-dimmer-options-ts0601` |
@@ -427,9 +462,9 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 | `Lerlink` | `X706U` | `lights-dimmer-options-ts0601` |
 | `Liwokit` | `Fan+Light-01` | `fans-fan-light-switch` |
 | `Lonsonho` | `EDM-1ZBB-EU` | `lights-dimmer-options-ts0601` |
-| `Mercator IkuÃ¼` | `SSWD01` | `lights-dimmer-options-ts0601` |
-| `Mercator IkuÃ¼` | `SSWM-DIMZ` | `lights-dimmer-options-ts0601` |
-| `Mercator IkuÃ¼` | `SSWRM-ZB` | `lights-dimmer-options-ts0601` |
+| `Mercator Ikuü` | `SSWD01` | `lights-dimmer-options-ts0601` |
+| `Mercator Ikuü` | `SSWM-DIMZ` | `lights-dimmer-options-ts0601` |
+| `Mercator Ikuü` | `SSWRM-ZB` | `lights-dimmer-options-ts0601` |
 | `Moes` | `EDM-1ZBB-EU` | `lights-dimmer-options-ts0601` |
 | `Moes` | `MS-105-M` | `lights-dimmer` |
 | `Moes` | `MS-105B` | `lights-dimmer-2` |
@@ -531,7 +566,7 @@ Development driver; report issues with hub logcat. Supports advanced EF00 presen
 </details>
 
 <details>
-<summary>EF00 Presence General wonjj6768 (90 fingerprints)</summary>
+<summary>EF00 Presence General wonjj6768 (95 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports general EF00 presence, radar, and mmWave sensors.
 
@@ -610,7 +645,12 @@ Development driver; report issues with hub logcat. Supports general EF00 presenc
 | `_TZE284_vceqncho` | `TS0601` | `safety-presence-zis01p-illuminance-battery` |
 | `_TZE284_who1jxwd` | `TS0601` | `safety-presence-zis01p-illuminance-battery` |
 | `_TZE284_xpq2rzhq` | `TS0601` | `safety-presence-zym100l-fixed-illuminance` |
+| `_TZE28C1000000_hgeqeyuv` | `TS0601` | `safety-presence-zf24-move-illuminance` |
+| `_TZE28C1000000_pzm3wab5` | `TS0601` | `safety-presence-zf24-move-illuminance` |
+| `_TZE28C1000000_twybxdzl` | `TS0601` | `safety-presence-zf24-move-illuminance` |
 | `AOYAN` | `AY-204ZX` | `safety-presence-battery-zg204zk` |
+| `AOYAN` | `AY205Z` | `safety-presence-zg204zm-dedicated-mode-illuminance-battery` |
+| `AOYAN` | `AY208Z` | `safety-presence-zg204zh-dedicated-mode-illuminance-temp-humidity-battery` |
 | `B3876M9` | `ZP-301Z` | `safety-presence-zp301z-time-cycle-illuminance-battery` |
 | `C6B7KM9` | `Excellux` | `safety-presence-illuminance-battery` |
 | `HOBEIAN` | `ZG-204ZE` | `safety-presence-zg204ze-dedicated-illuminance-battery` |
@@ -658,7 +698,7 @@ Development driver; report issues with hub logcat. Supports EF00 presence sensor
 </details>
 
 <details>
-<summary>EF00 Safety wonjj6768 (93 fingerprints)</summary>
+<summary>EF00 Safety wonjj6768 (102 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.
 
@@ -695,11 +735,13 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE200_kzm5w4iz` | `TS0601` | `safety-vibration-battery` |
 | `_TZE200_m9skfctm` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_mby4kbtq` | `TS0601` | `safety-gas-detector` |
+| `_TZE200_n8dljorx` | `TS0601` | `safety-contact-battery` |
 | `_TZE200_ntcy3xu1` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_nus5kk3n` | `TS0601` | `safety-gas-detector` |
 | `_TZE200_nvups4nh` | `TS0601` | `safety-contact-temp-humidity-battery` |
 | `_TZE200_p6fuhvez` | `TS0225` | `safety-gas-detector-zg225z` |
 | `_TZE200_pay2byax` | `TS0601` | `safety-contact-illuminance-battery` |
+| `_TZE200_qcasmfan` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_qq9mpfhw` | `TS0601` | `safety-water-leak` |
 | `_TZE200_qtbrwrfv` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_rccxox8p` | `TS0601` | `safety-smoke-detector-battery` |
@@ -708,6 +750,7 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE200_u6x1zyv2` | `TS0601` | `safety-water-leak-illuminance-battery-zg223z` |
 | `_TZE200_uebojraa` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_ux5v4dbd` | `TS0601` | `safety-smoke-detector-battery` |
+| `_TZE200_vawy74yh` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_vzekyi4c` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_wzk0x7fq` | `TS0601` | `safety-acceleration-contact-battery-zg102zm` |
 | `_TZE200_yh7aoahi` | `TS0601` | `safety-smoke-detector-battery` |
@@ -717,6 +760,7 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE200_ytibqbra` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE200_ytx9fudw` | `TS0601` | `safety-contact-tamper-battery-opening` |
 | `_TZE204_7bztmfm1` | `TS0601` | `safety-co-detector` |
+| `_TZE204_ai4rqhky` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE204_chbyv06x` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
 | `_TZE204_fncxk3ob` | `TS0601` | `safety-alarm-battery-duration-volume-ringtone-yxzbsl` |
 | `_TZE204_hcxvyxa5` | `TS0601` | `safety-alarm-duration-volume-ringtone-za03` |
@@ -726,11 +770,13 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE204_kvpwq8z7` | `TS0601` | `safety-gas-detector-self-test` |
 | `_TZE204_mby4kbtq` | `TS0601` | `safety-gas-detector` |
 | `_TZE204_ntcy3xu1` | `TS0601` | `safety-smoke-detector-battery` |
+| `_TZE204_qaxkdgyt` | `TS0601` | `safety-gas-co-detector` |
 | `_TZE204_uo8qcagc` | `TS0601` | `safety-gas-detector` |
 | `_TZE204_v6iczj35` | `TS0601` | `safety-gas-detector` |
 | `_TZE204_vawy74yh` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE204_yojqa8xn` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
 | `_TZE204_zougpkpy` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
+| `_TZE2841000000_rccxox8p` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE284_0zaf1cr8` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE284_4cqhd2ha` | `TS0601` | `safety-acceleration-4cqhd2ha` |
 | `_TZE284_6teua268` | `TS0601` | `safety-contact-battery-senoro-win-v2` |
@@ -742,7 +788,10 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE284_gyzlwu5q` | `TS0601` | `safety-smoke-temp-humidity-battery` |
 | `_TZE284_n4ttsck2` | `TS0601` | `safety-smoke-detector-battery-288wz` |
 | `_TZE284_rccxox8p` | `TS0601` | `safety-smoke-detector-battery` |
+| `_TZE284_uo8qcagc` | `TS0601` | `safety-gas-detector` |
+| `_TZE284_vawy74yh` | `TS0601` | `safety-smoke-detector-battery` |
 | `_TZE28C1000000_chbyv06x` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
+| `AOYAN` | `AY02SZ` | `safety-acceleration-contact-battery-zg102zm` |
 | `Aubess` | `1005005194831629` | `safety-contact-temp-humidity-battery` |
 | `CAT0001` | `Excellux` | `safety-vibration-battery` |
 | `Conecto` | `COZIGVS` | `safety-acceleration-4cqhd2ha` |
@@ -761,12 +810,13 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 </details>
 
 <details>
-<summary>EF00 Sensors wonjj6768 (169 fingerprints)</summary>
+<summary>EF00 Sensors wonjj6768 (176 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 temperature, humidity, illuminance, air quality, pressure, and soil sensors.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
+| `_TYST11_pisltm67` | `isltm67\x00` | `sensors-illuminance-battery` |
 | `_TZE200_01fvxamo` | `TS0201` | `sensors-temp-battery` |
 | `_TZE200_2se8efxh` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE200_3ejwxpmu` | `TS0601` | `sensors-aq-co2-temp-humidity` |
@@ -799,6 +849,7 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `_TZE200_lvkk0hdg` | `TS0601` | `sensors-liquid-level` |
 | `_TZE200_mja3fuja` | `TS0601` | `sensors-aq-co2-temp-humidity-voc-formaldehyde` |
 | `_TZE200_myd45weu` | `TS0601` | `sensors-soil-temp-moisture-battery` |
+| `_TZE200_nnrfa68v` | `TS0601` | `sensors-temp-humidity-battery-calibration-zg227z` |
 | `_TZE200_npj9bug3` | `TS0601` | `sensors-soil-temp-humidity-moisture-battery-dry` |
 | `_TZE200_ogkdpgy2` | `TS0601` | `sensors-aq-co2-temp-humidity` |
 | `_TZE200_pisltm67` | `TS0601` | `sensors-illuminance-battery` |
@@ -821,6 +872,7 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `_TZE200_whkgqxse` | `TS0601` | `sensors-temp-humidity-battery-alarm-sensitivity-th-alarm` |
 | `_TZE200_wqashyqo` | `TS0601` | `sensors-soil-temp-humidity-moisture-battery-warning` |
 | `_TZE200_wrmhp6b3` | `TS0601` | `sensors-soil-temp-humidity-moisture-battery-dry` |
+| `_TZE200_wtikaxzs` | `TS0601` | `sensors-temp-humidity-battery-calibration-zg227z` |
 | `_TZE200_xpvamyfz` | `TS0601` | `sensors-aq-co2-temp-humidity` |
 | `_TZE200_y8wkaq6w` | `TS0601` | `sensors-temp-humidity-battery-calibration-zg227z` |
 | `_TZE200_ydrdfkim` | `TS0601` | `sensors-temp-humidity-battery-alarm-sensitivity-th-alarm` |
@@ -859,6 +911,7 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `_TZE2841000000_tgrzpqf4` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE284_0ints6wl` | `TS0601` | `sensors-soil-temp-humidity-moisture-illuminance-battery-warning` |
 | `_TZE284_1wnh8bqp` | `TS0601` | `sensors-temp-humidity-battery` |
+| `_TZE284_2nhqasjh` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE284_2se8efxh` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE284_33bwcga2` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE284_3urschql` | `TS0601` | `sensors-soil-temp-moisture-battery` |
@@ -884,6 +937,7 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `_TZE284_kdqrazmy` | `TS0601` | `sensors-temp-humidity-battery-calibration-zg227z` |
 | `_TZE284_kyyu8rbj` | `TS0601` | `sensors-liquid-level` |
 | `_TZE284_locansqn` | `TS0601` | `sensors-temp-humidity-battery-alarm-sensitivity-th-alarm` |
+| `_TZE284_mpzuabwk` | `TS0601` | `sensors-temp-humidity-battery-alarm-sensitivity-th-alarm` |
 | `_TZE284_mxujdmxo` | `TS0601` | `sensors-liquid-level` |
 | `_TZE284_myd45weu` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE284_nhgdf6qr` | `TS0601` | `sensors-soil-temp-moisture-battery` |
@@ -893,12 +947,14 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `_TZE284_qyflbnbj` | `TS0601` | `sensors-temp-humidity-battery` |
 | `_TZE284_rjjsib2d` | `TS0601` | `sensors-temp-humidity-battery-calibration-zg227z` |
 | `_TZE284_rqcuwlsa` | `TS0601` | `sensors-soil-temp-moisture-battery` |
+| `_TZE284_rs62zxk8` | `TS0601` | `sensors-temp-humidity-battery-alarm-sensitivity-th-alarm` |
 | `_TZE284_sgabhwa6` | `TS0601` | `sensors-soil-temp-moisture-battery-alarm` |
 | `_TZE284_tgrzpqf4` | `TS0601` | `sensors-soil-temp-moisture-battery` |
 | `_TZE284_upagmta9` | `TS0601` | `sensors-temp-humidity-battery` |
 | `_TZE284_utkemkbs` | `TS0601` | `sensors-temp-humidity-battery` |
 | `_TZE284_vvmbj46n` | `TS0601` | `sensors-temp-humidity-battery-alarm-sensitivity-th-alarm` |
 | `_TZE284_wckqztdq` | `TS0601` | `sensors-soil-temp-moisture-battery` |
+| `_TZE284_wtikaxzs` | `TS0601` | `sensors-temp-humidity-battery-calibration-zg227z` |
 | `_TZE284_xc3vwx5a` | `TS0601` | `sensors-soil-temp-humidity-moisture-battery-air-illum` |
 | `_TZE284_xpvamyfz` | `TS0601` | `sensors-aq-co2-temp-humidity` |
 | `_TZE284_yjjdcqsq` | `TS0601` | `sensors-temp-humidity-battery` |
@@ -940,7 +996,7 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 </details>
 
 <details>
-<summary>EF00 Switch wonjj6768 (165 fingerprints)</summary>
+<summary>EF00 Switch wonjj6768 (168 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 switches, relay modules, plugs, and garage door devices.
 
@@ -1061,6 +1117,7 @@ Development driver; report issues with hub logcat. Supports EF00 switches, relay
 | `_TZE204_zqq3cipq` | `TS0601` | `switches-switch-16` |
 | `_TZE21C_dohbhb5k` | `TS0001` | `switches-switch-1-temperature` |
 | `_TZE21C_i2ij4rb3` | `TS0001` | `switches-switch-1-temp-humidity` |
+| `_TZE284_0kihjsys` | `TS0601` | `switches-eyzee-5gang` |
 | `_TZE284_7e6v8u9f` | `TS0601` | `switches-switch-1` |
 | `_TZE284_7zazvlyn` | `TS0601` | `switches-switch-4` |
 | `_TZE284_atuj3i0w` | `TS0601` | `switches-switch-4` |
@@ -1071,6 +1128,7 @@ Development driver; report issues with hub logcat. Supports EF00 switches, relay
 | `_TZE284_hyssaqjk` | `TS0601` | `switches-switch-6` |
 | `_TZE284_idn2htgu` | `TS0601` | `switches-switch-4` |
 | `_TZE284_iwyqtclw` | `TS0601` | `switches-switch-4` |
+| `_TZE284_kow4ok3t` | `TS0601` | `switches-switch-8` |
 | `_TZE284_l8xiyymq` | `TS0601` | `switches-switch-6` |
 | `_TZE284_lbhh5o6z` | `TS0601` | `switches-switch-4` |
 | `_TZE284_mvtclclq` | `TS0601` | `switches-switch-4-energy-voltage-current` |
@@ -1097,7 +1155,7 @@ Development driver; report issues with hub logcat. Supports EF00 switches, relay
 | `Homeetec` | `37022714` | `switches-switch-4` |
 | `LoraTap` | `GDC311ZBQ1` | `doors-garage-contact` |
 | `MatSee Plus` | `PJ-ZGD01` | `doors-garage-contact-countdown` |
-| `Mercator IkuÃ¼` | `SSW06G` | `switches-switch-6` |
+| `Mercator Ikuü` | `SSW06G` | `switches-switch-6` |
 | `Moes` | `WS-EUB1-ZG` | `switches-switch-1` |
 | `Moes` | `ZM-102-M` | `doors-garage-contact-countdown` |
 | `Norklmes` | `MKS-CM-W5` | `switches-switch-1` |
@@ -1110,18 +1168,22 @@ Development driver; report issues with hub logcat. Supports EF00 switches, relay
 | `Somgoms` | `ZSQB-SMB-ZB` | `switches-switch-1` |
 | `Tuya` | `MG-ZG04W` | `switches-switch-4` |
 | `TZE204_7sjncirf` | `TS0601` | `switches-switch-10` |
+| `TZE204_unsxl4ir` | `TS0601` | `switches-switch-4` |
 | `ZYXH` | `TY-04Z` | `switches-switch-4` |
 
 </details>
 
 <details>
-<summary>EF00 Thermostats wonjj6768 (205 fingerprints)</summary>
+<summary>EF00 Thermostats wonjj6768 (243 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 thermostats and radiator valves.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
+| `07732L` | `TS0601` | `thermostats-thermostat` |
+| `3012732` | `TS0601` | `thermostats-thermostat-tv02` |
 | `_TYST11_2dpplnsn` | `dpplnsn` | `thermostats-thermostat` |
+| `_TYST11_8daqwrsj` | `daqwrsj` | `thermostats-alecto-smart-heat10` |
 | `_TYST11_c88teujp` | `88teujp` | `thermostats-thermostat` |
 | `_TYST11_caj4jz0i` | `aj4jz0i` | `thermostats-thermostat` |
 | `_TYST11_KGbxAXL2` | `GbxAXL2` | `thermostats-thermostat` |
@@ -1142,6 +1204,7 @@ Development driver; report issues with hub logcat. Supports EF00 thermostats and
 | `_TZE200_7fqkphoq` | `TS0601` | `thermostats-thermostat` |
 | `_TZE200_7p8ugv8d` | `TS0601` | `thermostats-thermostat` |
 | `_TZE200_7yoranx2` | `TS0601` | `thermostats-thermostat-tv02` |
+| `_TZE200_8daqwrsj` | `TS0601` | `thermostats-alecto-smart-heat10` |
 | `_TZE200_8thwkzxl` | `TS0601` | `thermostats-thermostat` |
 | `_TZE200_8whxpsiw` | `TS0601` | `thermostats-thermostat` |
 | `_TZE200_9gvruqf5` | `TS0601` | `thermostats-thermostat` |
@@ -1222,6 +1285,7 @@ Development driver; report issues with hub logcat. Supports EF00 thermostats and
 | `_TZE204_6kijc7nd` | `TS0601` | `thermostats-thermostat-tervix` |
 | `_TZE204_6vwfjkcj` | `TS0601` | `thermostats-thermostat-pilot-wire-no-operating` |
 | `_TZE204_9mjy74mp` | `TS0601` | `thermostats-thermostat-battery` |
+| `_TZE204_aaeaifez` | `TS0601` | `thermostats-thermostat` |
 | `_TZE204_atdqo4nj` | `TS0601` | `thermostats-thermostat-zg-wk-da` |
 | `_TZE204_cvcu2p6e` | `TS0601` | `thermostats-thermostat-battery` |
 | `_TZE204_cvub6xbb` | `TS0601` | `thermostats-thermostat-tgm50` |
@@ -1283,7 +1347,9 @@ Development driver; report issues with hub logcat. Supports EF00 thermostats and
 | `_TZE284_ymldrmzx` | `TS0601` | `thermostats-thermostat-battery-setpoint-temp` |
 | `_TZE284_zjhoqbrd` | `TS0601` | `thermostats-thermostat` |
 | `_TZE284_znlqjmih` | `TS0601` | `thermostats-thermostat` |
+| `_TZE28C1000000_aaeaifez` | `TS0601` | `thermostats-thermostat` |
 | `AlecoAir` | `HA-08_THERMO` | `thermostats-thermostat-tv02` |
+| `AlecoAir` | `TS0601` | `thermostats-thermostat-tv02` |
 | `AVATTO` | `AVATTO_TRV06` | `thermostats-thermostat` |
 | `AVATTO` | `ME167` | `thermostats-thermostat` |
 | `AVATTO` | `ME167_1` | `thermostats-thermostat` |
@@ -1292,45 +1358,76 @@ Development driver; report issues with hub logcat. Supports EF00 thermostats and
 | `AVATTO` | `TRV06_1` | `thermostats-thermostat` |
 | `AVATTO` | `TRV06_1b` | `thermostats-thermostat` |
 | `AVATTO` | `TRV07` | `thermostats-thermostat` |
+| `AVATTO` | `TS0601` | `thermostats-thermostat` |
 | `AVATTO` | `WT-100-BH` | `thermostats-thermostat` |
 | `AVATTO` | `ZWT-100-16A` | `thermostats-thermostat-x5h` |
+| `AVATTO_TRV06` | `TS0601` | `thermostats-thermostat` |
 | `Beok` | `TGR85-ZB` | `thermostats-thermostat-x5h` |
+| `Cloud Even` | `TS0601` | `thermostats-thermostat-basic` |
 | `EARU` | `TRV06` | `thermostats-thermostat` |
 | `Echos` | `Eco-4160` | `thermostats-thermostat` |
+| `Echos` | `TS0601` | `thermostats-thermostat` |
+| `Eco-4160` | `TS0601` | `thermostats-thermostat` |
 | `EKF` | `ETT-8` | `thermostats-thermostat-tv02` |
+| `EKF` | `TS0601` | `thermostats-thermostat-tv02` |
 | `ELECTSMART` | `EST-120Z` | `thermostats-thermostat-floor` |
 | `Emos` | `P5630S` | `thermostats-thermostat` |
+| `Emos` | `TS0601` | `thermostats-thermostat` |
+| `ETT-8` | `TS0601` | `thermostats-thermostat-tv02` |
 | `Evolveo` | `Heat M30` | `thermostats-thermostat` |
 | `GIEX` | `TV06` | `thermostats-thermostat-tv02` |
+| `HA-08 THERMO` | `TS0601` | `thermostats-thermostat-tv02` |
+| `HY368` | `TS0601` | `thermostats-thermostat` |
 | `id3` | `GTZ06` | `thermostats-thermostat` |
 | `Immax` | `07732B` | `thermostats-thermostat` |
 | `Immax` | `07732L` | `thermostats-thermostat` |
+| `Immax` | `TS0601` | `thermostats-thermostat` |
+| `LSC Smart Connect` | `TS0601` | `thermostats-thermostat-tv02` |
 | `MAZDA` | `MZTE1Z` | `thermostats-thermostat-pilot-wire-no-operating` |
+| `ME167` | `TS0601` | `thermostats-thermostat` |
+| `ME167_1` | `TS0601` | `thermostats-thermostat` |
+| `ME168` | `TS0601` | `thermostats-thermostat` |
 | `Moes` | `HY368` | `thermostats-thermostat` |
 | `Moes` | `HY369RT` | `thermostats-thermostat` |
 | `Moes` | `TRV801` | `thermostats-thermostat-battery` |
 | `Moes` | `TRV801_1` | `thermostats-thermostat-battery` |
 | `Moes` | `TRV801Z` | `thermostats-thermostat-battery` |
+| `Moes` | `TS0601` | `thermostats-thermostat-tv02` |
 | `Moes` | `TV01-ZB` | `thermostats-thermostat-tv02` |
 | `Moes` | `ZTRV-ZX-TV01-MS` | `thermostats-thermostat-tv02` |
 | `Moes` | `ZTRV-ZX-TV02` | `thermostats-thermostat-tv02` |
+| `P5630S` | `TS0601` | `thermostats-thermostat` |
 | `RKHK` | `TH-P0Z` | `thermostats-thermostat-pilot-wire-no-operating` |
 | `S366` | `Cloud Even` | `thermostats-thermostat-basic` |
+| `S366` | `TS0601` | `thermostats-thermostat-basic` |
 | `Sber` | `SBDV-00185` | `thermostats-thermostat-battery` |
 | `SHOJZJ` | `378RT` | `thermostats-thermostat` |
 | `Silvercrest` | `TVR01` | `thermostats-thermostat` |
+| `Tesla Smart` | `TS0601` | `thermostats-thermostat-tv02` |
 | `Tesla Smart` | `TSL-TRV-TV01ZG` | `thermostats-thermostat-tv02` |
 | `Tesla Smart` | `TSL-TRV-TV05ZG` | `thermostats-thermostat-tv02` |
 | `THALEOS` | `HY368` | `thermostats-thermostat` |
 | `THALEOS` | `TH-P1Z` | `thermostats-thermostat-pilot-wire-no-operating` |
 | `THALEOS` | `TRV06-AT` | `thermostats-thermostat` |
+| `THALEOS` | `TS0601` | `thermostats-thermostat` |
+| `TRV06` | `TS0601` | `thermostats-thermostat` |
+| `TRV06-AT` | `TS0601` | `thermostats-thermostat` |
+| `TRV06_1b` | `TS0601` | `thermostats-thermostat` |
+| `TSL-TRV-TV01ZG` | `TS0601` | `thermostats-thermostat-tv02` |
+| `TSL-TRV-TV05ZG` | `TS0601` | `thermostats-thermostat-tv02` |
 | `Tuya` | `BAC-003` | `thermostats-fcu-thermostat-no-operating` |
+| `Tuya` | `TS0601` | `thermostats-thermostat-tv02` |
+| `TV01-ZB` | `TS0601` | `thermostats-thermostat-tv02` |
+| `TV02-Zigbee` | `TS0601` | `thermostats-thermostat-tv02` |
+| `TV05-ZG curve` | `TS0601` | `thermostats-thermostat-tv02` |
+| `TV06-Zigbee` | `TS0601` | `thermostats-thermostat-tv02` |
 | `Unknown/id3.pl` | `GTZ08` | `thermostats-thermostat-tv02` |
+| `ZTRV-ZX-TV02` | `TS0601` | `thermostats-thermostat-tv02` |
 
 </details>
 
 <details>
-<summary>EF00 Valves wonjj6768 (18 fingerprints)</summary>
+<summary>EF00 Valves wonjj6768 (21 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 water valves, gas valves, and irrigation controllers.
 
@@ -1346,19 +1443,22 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 | `_TZE200_vuwtqx0t` | `TS0601` | `valves-valve-ultrasonic-meter` |
 | `_TZE200_wt9agwf3` | `TS0601` | `valves-valve` |
 | `_TZE204_dsagrkvg` | `TS0601` | `valves-valve-battery` |
+| `_TZE204_qtnjuoae` | `TS0601` | `valves-valve-battery` |
 | `_TZE284_8zizsafo` | `TS0601` | `valves-valve-2-battery-status` |
 | `_TZE284_eaet5qt5` | `TS0601` | `valves-valve-2-battery-status` |
 | `_TZE284_fhvpaltk` | `TS0601` | `valves-valve-2-battery-status` |
 | `_TZE284_iilebqoo` | `TS0601` | `valves-valve-2-battery-status` |
+| `_TZE284_qtnjuoae` | `TS0601` | `valves-valve-battery` |
 | `_TZE284_sdvbnmj5` | `TS0601` | `valves-valve-battery` |
 | `_TZE284_vuwtqx0t` | `TS0601` | `valves-valve-ultrasonic-meter` |
+| `_TZE284_xuflgcnz` | `TS0601` | `valves-valve-battery` |
 | `_TZE284_zm8zpwas` | `TS0601` | `valves-valve-battery` |
 | `Nova Digital` | `ZVL-DUAL` | `valves-valve-2-battery-status` |
 
 </details>
 
 <details>
-<summary>ZCL Controls wonjj6768 (417 fingerprints)</summary>
+<summary>ZCL Controls wonjj6768 (420 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.
 
@@ -1646,6 +1746,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `_TZ3290_gnl5a6a5xvql7c2a` | `ZS06` | `controllers-ir-transceiver` |
 | `_TZ3290_j37rooaxrcdcqo5n` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_jxvzqatwgsaqzx1u` | `TS1201` | `controllers-ir-transceiver` |
+| `_TZ3290_lidgqyzu` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_lypnqvlem5eq1ree` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_nba3knpsarkawgnt` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_nba3knpsarkawgnt` | `ZS06` | `controllers-ir-transceiver` |
@@ -1657,6 +1758,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `_TZ3290_u9xac5rv` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_uc8lwbi2` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_xjpbcxn92aaxvmlz` | `TS1201` | `controllers-ir-transceiver` |
+| `_TZ3290_yac64inudpovoaba` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3290_yac64inudpovoaba` | `ZS06` | `controllers-ir-transceiver` |
 | `_TZ3290_yyax9ajf` | `TS1201` | `controllers-ir-transceiver` |
 | `_TZ3400_key8kk7r` | `TS0043` | `buttons-button-3-battery` |
@@ -1697,7 +1799,8 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `HEIMAN` | `RC-EF-3.0` | `security-remotes-action-battery` |
 | `HEIMAN` | `RC-EM` | `security-remotes-action-battery` |
 | `HEIMAN` | `RC-N` | `security-remotes-action-battery` |
-| `HEIMAN` | `SceneSwitch-EM-3.0` | `buttons-button-4-battery-remote-action` |
+| `HEIMAN` | `SceneSwitch-EF-3.0` | `buttons-heiman-scene-battery-remote-action` |
+| `HEIMAN` | `SceneSwitch-EM-3.0` | `buttons-heiman-scene-battery-remote-action` |
 | `HEIMAN` | `SOS-EF-3.0` | `security-remotes-sos-battery` |
 | `HEIMAN` | `SOS-EM` | `security-remotes-sos-battery` |
 | `HOBEIAN` | `TS0044` | `buttons-button-4-battery` |
@@ -1746,6 +1849,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `Slacky-DIY` | `TS0041-M002-SlD` | `buttons-button-1-battery-remote-action` |
 | `Slacky-DIY` | `TS0041-M005-SlD` | `buttons-button-1-battery-remote-action` |
 | `Slacky-DIY` | `TS0042-M003-SlD` | `buttons-button-2-battery-remote-action` |
+| `Slacky-DIY` | `TS0042-M006-SlD` | `buttons-button-2-battery-remote-action` |
 | `Slacky-DIY` | `TS0042-z-SlD` | `buttons-button-2-battery-remote-action` |
 | `Slacky-DIY` | `TS0044-M004-SlD` | `buttons-button-4-battery-remote-action` |
 | `Slacky-DIY` | `TS0044-z-SlD` | `buttons-button-4-battery-remote-action` |
@@ -1759,7 +1863,6 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `Sunricher` | `SR-ZG9001NK8-DIM` | `controllers-dimming-remote-action` |
 | `Sunricher` | `SR-ZG9023A(EU)` | `controllers-dimming-remote-action` |
 | `Sunricher` | `SR-ZGP2801K4-FOH-E` | `buttons-button-4-battery` |
-| `Sunricher` | `TERNCY-DC01` | `buttons-button-4-battery-remote-action` |
 | `Sunricher` | `ZG2833K8_EU05` | `controllers-dimming-remote-action` |
 | `Sunricher` | `ZGRC-KEY-004` | `controllers-dimming-remote-action` |
 | `Sunricher` | `ZGRC-KEY-007` | `controllers-dimming-remote-action` |
@@ -1856,7 +1959,7 @@ Development driver; report issues with hub logcat. Supports ZCL curtains, blinds
 </details>
 
 <details>
-<summary>ZCL Lights wonjj6768 (852 fingerprints)</summary>
+<summary>ZCL Lights wonjj6768 (855 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL lights, dimmers, light controllers, and fan devices.
 
@@ -1945,6 +2048,7 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `_TZ3210_dxroobu3` | `TS0501B` | `lights-dimmer` |
 | `_TZ3210_e5t9bfdv` | `TS0501B` | `lights-dimmer` |
 | `_TZ3210_ebbfkvoy` | `TS110F` | `lights-dimmer` |
+| `_TZ3210_f0byevky` | `TS0503B` | `lights-color-temperature-color` |
 | `_TZ3210_frm6149r` | `TS0502B` | `lights-color-temperature` |
 | `_TZ3210_guijtl8k` | `TS110E` | `lights-dimmer-options-ts110` |
 | `_TZ3210_hicxa0rh` | `TS0505B` | `lights-color-temperature-color` |
@@ -2044,6 +2148,8 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `Astuta/ZB-CCT` | `CCT Light` | `lights-color-temperature` |
 | `BTF-Lighting` | `C03Z` | `lights-color` |
 | `Candeo` | `C-ZB-DM204` | `lights-dimmer` |
+| `Candeo` | `C-ZB-DM204V2` | `lights-dimmer-power-voltage-current` |
+| `Candeo` | `C-ZB-DM204v2` | `lights-dimmer-power-voltage-current` |
 | `Candeo` | `C-ZB-LC20-CCT` | `lights-color-temperature` |
 | `Candeo` | `C-ZB-LC20-Dim` | `lights-dimmer` |
 | `Candeo` | `C-ZB-LC20-RGB` | `lights-color` |
@@ -2092,7 +2198,7 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `Elko` | `EKO07281` | `lights-dimmer` |
 | `Emos` | `GoSmart ZQZ322R` | `lights-color-temperature-color` |
 | `Emos` | `GoSmart ZQZ516R` | `lights-color-temperature-color` |
-| `eWeLi` | `ZB-CL01` | `lights-color-temperature-color` |
+| `eWeLi\x01\x10` | `ZB-CL01` | `lights-color-temperature-color` |
 | `eWeLight` | `ZB-CL01` | `lights-color-temperature-color` |
 | `eWeLight` | `ZB-CL02` | `lights-color-temperature-color` |
 | `eWeLink` | `Z102LG03-1` | `lights-color-temperature-color` |
@@ -2270,8 +2376,8 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `IKEA of Sweden` | `TRADFRI bulb E27 WS globe 1055lm` | `lights-color-temperature` |
 | `IKEA of Sweden` | `TRADFRI bulb E27 WS opal 1000lm` | `lights-color-temperature` |
 | `IKEA of Sweden` | `TRADFRI bulb E27 WS opal 980lm` | `lights-color-temperature` |
-| `IKEA of Sweden` | `TRADFRI bulb E27 WSï¿½clear 950lm` | `lights-color-temperature` |
-| `IKEA of Sweden` | `TRADFRI bulb E27 WSï¿½opal 980lm` | `lights-color-temperature` |
+| `IKEA of Sweden` | `TRADFRI bulb E27 WS�clear 950lm` | `lights-color-temperature` |
+| `IKEA of Sweden` | `TRADFRI bulb E27 WS�opal 980lm` | `lights-color-temperature` |
 | `IKEA of Sweden` | `TRADFRI bulb E27 WW 806lm` | `lights-dimmer` |
 | `IKEA of Sweden` | `TRADFRI bulb E27 WW clear 250lm` | `lights-dimmer` |
 | `IKEA of Sweden` | `TRADFRI bulb E27 WW G95 CL 470lm` | `lights-dimmer` |
@@ -2516,12 +2622,12 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `LUMI` | `lumi.light.rgbac1` | `lights-color-temperature-color` |
 | `LUUMR` | `10010128` | `lights-color-temperature-color` |
 | `LUUMR` | `10024773` | `lights-color-temperature` |
-| `Mercator IkuÃ¼` | `S9E27LED9W-RGB-Z` | `lights-color-temperature-color` |
-| `Mercator IkuÃ¼` | `SMCL01-ZB` | `lights-color-temperature` |
-| `Mercator IkuÃ¼` | `SMD4106W-RGB-ZB` | `lights-color-temperature-color` |
-| `Mercator IkuÃ¼` | `SMD9300` | `lights-color-temperature` |
-| `Mercator IkuÃ¼` | `SMFL20W-ZB` | `lights-dimmer` |
-| `Mercator IkuÃ¼` | `SMI7040` | `lights-color-temperature` |
+| `Mercator Ikuü` | `S9E27LED9W-RGB-Z` | `lights-color-temperature-color` |
+| `Mercator Ikuü` | `SMCL01-ZB` | `lights-color-temperature` |
+| `Mercator Ikuü` | `SMD4106W-RGB-ZB` | `lights-color-temperature-color` |
+| `Mercator Ikuü` | `SMD9300` | `lights-color-temperature` |
+| `Mercator Ikuü` | `SMFL20W-ZB` | `lights-dimmer` |
+| `Mercator Ikuü` | `SMI7040` | `lights-color-temperature` |
 | `MiBoxer` | `E2-ZR` | `lights-color-temperature` |
 | `MiBoxer` | `E3-ZR` | `lights-color-temperature-color` |
 | `MiBoxer` | `FUT035Z+` | `lights-color-temperature` |
@@ -2555,12 +2661,12 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `Moes` | `ZB-TDD6-RCW-4` | `lights-color-temperature-color` |
 | `Moes` | `ZLD-RCW_1` | `lights-color-temperature-color` |
 | `Mycket` | `MS-SP-LE27WRGB` | `lights-color-temperature-color` |
-| `MÃ¼ller Licht` | `404115` | `lights-color-temperature-color` |
-| `MÃ¼ller Licht` | `404116` | `lights-color-temperature-color` |
-| `MÃ¼ller Licht` | `404117` | `lights-color-temperature-color` |
-| `MÃ¼ller Licht` | `404135` | `lights-color-temperature-color` |
-| `MÃ¼ller Licht` | `404136` | `lights-color-temperature-color` |
-| `MÃ¼ller Licht` | `404137` | `lights-color-temperature-color` |
+| `Müller Licht` | `404115` | `lights-color-temperature-color` |
+| `Müller Licht` | `404116` | `lights-color-temperature-color` |
+| `Müller Licht` | `404117` | `lights-color-temperature-color` |
+| `Müller Licht` | `404135` | `lights-color-temperature-color` |
+| `Müller Licht` | `404136` | `lights-color-temperature-color` |
+| `Müller Licht` | `404137` | `lights-color-temperature-color` |
 | `Namron` | `4512751` | `lights-dimmer` |
 | `Namron As` | `DIM Lighting` | `lights-dimmer` |
 | `Nedis` | `ZBLC1E14` | `lights-color-temperature-color` |
@@ -2718,7 +2824,7 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 </details>
 
 <details>
-<summary>ZCL Sensors wonjj6768 (556 fingerprints)</summary>
+<summary>ZCL Sensors wonjj6768 (568 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.
 
@@ -2729,6 +2835,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `_TYZB01_4mdqxxnn` | `TS0222` | `sensors-illuminance-battery` |
 | `_TYZB01_4obovpbi` | `TS0216` | `safety-alarm-battery` |
 | `_TYZB01_5nr7ncpl` | `TS0202` | `safety-motion-battery` |
+| `_TYZB01_821siati` | `TS0210` | `safety-acceleration-battery` |
 | `_TYZB01_8scntis1` | `TS0216` | `safety-alarm-battery` |
 | `_TYZB01_bwsijaty` | `TS0219` | `safety-alarm-battery-volume` |
 | `_TYZB01_cbiezpds` | `SM0201` | `sensors-temp-humidity-battery` |
@@ -2815,10 +2922,12 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `_TZ3000_lf56vpxj` | `TS0202` | `safety-motion-battery` |
 | `_TZ3000_lltemgsf` | `TS0202` | `safety-motion-battery` |
 | `_TZ3000_lqmvrwa2` | `TS0201` | `sensors-temp-humidity-battery` |
+| `_TZ3000_lzdjjfss` | `TS0210` | `safety-acceleration-battery` |
 | `_TZ3000_m0vaazab` | `TS0207` | `network-repeater` |
 | `_TZ3000_mcxw5ehu` | `TS0202` | `safety-motion-battery` |
 | `_TZ3000_mg4dy6z6` | `TS0202` | `safety-motion-battery` |
 | `_TZ3000_misw04hq` | `TS0207` | `network-repeater` |
+| `_TZ3000_mmzmkkd4` | `TS0207` | `network-repeater` |
 | `_TZ3000_mqiev3jk` | `TS0207` | `safety-water-leak-battery` |
 | `_TZ3000_msl6wxk9` | `TS0202` | `safety-motion-battery` |
 | `_TZ3000_mugyhz0q` | `TS0207` | `safety-water-leak-battery` |
@@ -2835,6 +2944,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `_TZ3000_osu834un` | `TS0203` | `safety-contact-battery` |
 | `_TZ3000_otvn3lne` | `TS0202` | `safety-motion-battery` |
 | `_TZ3000_oxslv1c9` | `TS0203` | `safety-contact-battery` |
+| `_TZ3000_piuensvr` | `TS0207` | `network-repeater` |
 | `_TZ3000_pjb1ua0m` | `TS0203` | `safety-motion-battery` |
 | `_TZ3000_qaaysllp` | `TS0201` | `sensors-illuminance-temp-humidity-battery` |
 | `_TZ3000_qomxlryd` | `TS0202` | `safety-motion-battery` |
@@ -3018,7 +3128,8 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HEIMAN` | `HS1SA-E-PLUS` | `safety-smoke-detector-battery` |
 | `HEIMAN` | `HS1SA-EF-3.0` | `safety-smoke-detector-battery` |
 | `HEIMAN` | `HS2AQ-EF-3.0` | `safety-smoke-detector-battery` |
-| `HEIMAN` | `HS2AQ-EM` | `safety-smoke-detector-battery` |
+| `HEIMAN` | `HS2AQ-EM` | `sensors-heiman-hs2aq-air-quality` |
+| `HEIMAN` | `HS2AQ-EM-3.0` | `sensors-heiman-hs2aq-air-quality` |
 | `HEIMAN` | `HS2SA-EF-3.0` | `safety-smoke-detector-battery` |
 | `HEIMAN` | `HS3HT-EFA-3.0` | `sensors-temp-humidity-battery` |
 | `HEIMAN` | `HS8DS-EF2-3.0` | `safety-contact-tamper-battery` |
@@ -3069,6 +3180,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HOBEIAN` | `ZG-222Z` | `safety-water-leak-battery` |
 | `HOBEIAN` | `ZG-222ZA` | `safety-water-leak-battery` |
 | `iHseno` | `_TZ3000_lzdjjfss` | `safety-acceleration-battery` |
+| `Inswift` | `ZBM-MG24` | `network-repeater` |
 | `KnockautX` | `FMS2C017` | `safety-motion-battery` |
 | `LDS` | `ZHA-PirSensor` | `safety-motion-battery` |
 | `Leedarson` | `ZHA-PIRSensor` | `safety-motion-battery` |
@@ -3104,7 +3216,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `Maginon` | `WT-1` | `thermostats-thermostat-battery` |
 | `Marmitek` | `SM0202_1` | `safety-motion-battery` |
 | `Meian` | `SW02` | `safety-water-leak-battery` |
-| `Mercator IkuÃ¼` | `SMA02P` | `safety-motion-battery` |
+| `Mercator Ikuü` | `SMA02P` | `safety-motion-battery` |
 | `MiBoxer` | `PIR1-ZB` | `safety-motion-battery` |
 | `Moes` | `BHT-002/BHT-006` | `thermostats-thermostat-battery` |
 | `Moes` | `ZSS-JM-GWM-C-MS` | `safety-contact-battery` |
@@ -3151,21 +3263,25 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `SDevices` | `SBDV-00205` | `safety-contact-battery` |
 | `SEDEA` | `eTH730` | `sensors-temp-humidity-battery` |
 | `SETTI+` | `TRV001` | `thermostats-thermostat-battery` |
+| `Shelly` | `BLU DoorWindow ZB` | `safety-contact-illuminance-battery` |
 | `Shelly` | `BLU H&T Display ZB` | `sensors-temp-humidity-battery` |
 | `Shelly` | `BLU H&T ZB` | `sensors-temp-humidity-battery` |
+| `Shelly` | `BLU Motion ZB` | `safety-motion-illuminance-battery` |
 | `Shelly` | `Dimmer` | `lights-dimmer-power-voltage-current` |
+| `Shelly` | `Dimmer US` | `lights-dimmer-power-voltage-current` |
 | `Shelly` | `Ecowitt WS90` | `sensors-temp-humidity-battery` |
 | `Shelly` | `Flood` | `safety-water-leak-battery` |
 | `Shelly` | `Plug US` | `plugs-switch-power-energy-voltage-current` |
 | `Shelly` | `Power Strip` | `plugs-switch-power-energy-voltage-current` |
 | `Shyugj` | `DoorSensor-ZB3.0` | `safety-contact-battery` |
-| `SinopÃ©` | `TH1320ZB-04` | `thermostats-thermostat` |
+| `Sinopé` | `TH1320ZB-04` | `thermostats-thermostat` |
 | `SMLIGHT` | `SLZB-06` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06M` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06MG24` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06Mg24` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06MG26` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06Mg26` | `network-repeater` |
+| `SMLIGHT` | `SLZB-06MG26U` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06p10` | `network-repeater` |
 | `SMLIGHT` | `SLZB-06P7` | `network-repeater` |
 | `SMLIGHT` | `SLZB-07` | `network-repeater` |
@@ -3188,9 +3304,11 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `Sunricher` | `HK-SENSOR-SMO` | `safety-smoke-detector-battery` |
 | `Sunricher` | `HK-SENSOR-WT1` | `safety-water-leak-battery` |
 | `Sunricher` | `HK-SENSOR-WT2` | `safety-water-leak-temp-battery` |
+| `Sunricher` | `TERNCY-DC01` | `safety-contact-temp-battery` |
 | `Sunricher` | `ZG9032B` | `sensors-temp-humidity-battery` |
 | `Sygonix` | `SY-6811314` | `thermostats-thermostat-battery` |
 | `TCP Smart` | `TBUWTRV` | `thermostats-thermostat-battery` |
+| `TERNCY` | `TERNCY-DC01` | `safety-contact-temp-battery` |
 | `Tesla Smart` | `TS0202` | `safety-motion-battery` |
 | `Tesla Smart` | `TSL-SEN-DOOR` | `safety-contact-battery` |
 | `Tesla Smart` | `TSL-SEN-GAS` | `safety-gas-detector-tamper` |
@@ -3284,13 +3402,12 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 </details>
 
 <details>
-<summary>ZCL Switch wonjj6768 (802 fingerprints)</summary>
+<summary>ZCL Switch wonjj6768 (819 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL switches, plugs, DIN rail relays, and valve-like devices.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
-| `_TYST11_8daqwrsj` | `daqwrsj` | `switches-switch-1` |
 | `_TYST11_qtbrwrfv` | `tbrwrfv` | `switches-switch-1` |
 | `_TYZB01_4tlksk8a` | `TS0001` | `valves-valve-indicator-mode` |
 | `_TYZB01_4vgantdz` | `TS0001` | `switches-switch-1` |
@@ -3333,6 +3450,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_3uimvkn6` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3000_3zofvcaa` | `TS011F` | `switches-switch-4` |
 | `_TZ3000_46t1rvdu` | `TS0001` | `switches-switch-1-countdown-switch-type` |
+| `_TZ3000_46vasa5h` | `TS011F` | `switches-switch-2` |
 | `_TZ3000_4o16jdca` | `TS0003` | `switches-switch-3` |
 | `_TZ3000_4rbqgcuv` | `TS0001` | `switches-switch-1` |
 | `_TZ3000_4uf3d0ax` | `TS011F` | `switches-switch-3` |
@@ -3364,6 +3482,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_9djocypn` | `TS011F` | `switches-switch-5` |
 | `_TZ3000_9ni6xxld` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3000_9tg32trw` | `TS011F` | `switches-switch-3` |
+| `_TZ3000_a37eix1s` | `TS0004` | `switches-switch-4` |
 | `_TZ3000_aa5t61rh` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_aaifmpuq` | `TS0002` | `switches-switch-2-power-options` |
 | `_TZ3000_abjodzas` | `TS0011` | `switches-switch-1` |
@@ -3412,6 +3531,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_drc9tuqb` | `TS0001` | `switches-switch-1` |
 | `_TZ3000_dyzkbcip` | `TS0003` | `switches-switch-3` |
 | `_TZ3000_eei0ubpy` | `TS0002` | `switches-switch-2` |
+| `_TZ3000_ehgouyvu` | `TS0001` | `switches-switch-1` |
 | `_TZ3000_empogkya` | `TS0003` | `switches-switch-3` |
 | `_TZ3000_eqsair32` | `TS0003` | `switches-switch-3` |
 | `_TZ3000_f09j9qjb` | `TS0003` | `switches-switch-3` |
@@ -3464,6 +3584,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_iv6ph5tr` | `TS011F` | `switches-switch-2` |
 | `_TZ3000_iwtv2jwo` | `TS0002` | `switches-switch-2` |
 | `_TZ3000_iy2c3n6p` | `TS011F` | `switches-switch-2` |
+| `_TZ3000_iymfxdis` | `TS0004` | `switches-switch-4` |
 | `_TZ3000_j0ktmul1` | `TS011F` | `valves-valve-5` |
 | `_TZ3000_j1v25l17` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3000_jak16dll` | `TS011F` | `plugs-switch-2-power-energy-voltage` |
@@ -3474,6 +3595,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_ju82pu2b` | `TS0003` | `switches-switch-3` |
 | `_TZ3000_k6fvknrr` | `TS011F` | `switches-switch-2` |
 | `_TZ3000_knoj8lpk` | `TS0004` | `switches-switch-4` |
+| `_TZ3000_ko6v90pg` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3000_kpatq5pq` | `TS0012` | `switches-switch-2-countdown-switch-type` |
 | `_TZ3000_kqvb5akv` | `TS0001` | `switches-switch-1-power-options` |
 | `_TZ3000_ksw8qtmt` | `TS011F` | `plugs-switch-power-energy-voltage` |
@@ -3595,6 +3717,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_uaa34g7v` | `TS0011` | `switches-switch-1` |
 | `_TZ3000_udl7uyd2` | `TS0001` | `switches-switch-1` |
 | `_TZ3000_uilitwsy` | `TS0003` | `switches-switch-3` |
+| `_TZ3000_upjrsxh1` | `TS011F` | `plugs-switch` |
 | `_TZ3000_uwkja6z1` | `TS011F` | `plugs-switch-2-power-energy-voltage` |
 | `_TZ3000_uyrhiafs` | `TS011F` | `plugs-switch` |
 | `_TZ3000_v1pdxuqq` | `TS011F` | `plugs-switch` |
@@ -3651,8 +3774,13 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3000_zw7yf6yk` | `TS0001` | `switches-switch-1` |
 | `_TZ3000_zwaadvus` | `TS011F` | `switches-switch-2` |
 | `_TZ3000_zxrfobzw` | `TS0002` | `switches-switch-2` |
+| `_TZ3008_1a8m8wd6` | `TS011F` | `plugs-switch-power-energy-voltage` |
+| `_TZ3008_reatplte` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3210_2dfy6tol` | `TS0101` | `plugs-switch` |
+| `_TZ3210_2putqrmw` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3210_2uk4z8ce` | `TS011F` | `switches-switch-2` |
+| `_TZ3210_2uollq9d` | `TS011F` | `plugs-switch-power-energy-voltage` |
+| `_TZ3210_4ux0ondb` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3210_5ct6e7ye` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3210_6cmeijtd` | `TS011F` | `plugs-switch-3-power-energy-voltage-current` |
 | `_TZ3210_6smingw0` | `TS0002` | `switches-switch-2` |
@@ -3669,15 +3797,18 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3210_eymunffl` | `TS0101` | `plugs-switch` |
 | `_TZ3210_fhx7lk3d` | `TS0001` | `switches-switch-1` |
 | `_TZ3210_hjxqqofs` | `TS000F` | `switches-switch-1` |
+| `_TZ3210_imaccztn` | `TS0004` | `switches-switch-4` |
 | `_TZ3210_iymfxdis` | `TS0004` | `switches-switch-4` |
 | `_TZ3210_jlf1nepw` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3210_lqb7lcq9` | `TS011F` | `switches-switch-4` |
 | `_TZ3210_nhqka112` | `TS011F` | `plugs-switch` |
+| `_TZ3210_nuenzetq` | `TS0002` | `switches-switch-2` |
 | `_TZ3210_ok0ggpk7` | `TS0003` | `switches-switch-3` |
 | `_TZ3210_pdnwpnz5` | `TS0002` | `switches-switch-2` |
 | `_TZ3210_pfbzs1an` | `TS011F` | `plugs-switch-2-power-energy-voltage` |
 | `_TZ3210_ph1joc22` | `TS011F` | `switches-switch-2` |
 | `_TZ3210_qjvi92wz` | `TS0014` | `switches-switch-4` |
+| `_TZ3210_qlmnxmac` | `TS011F` | `plugs-switch-2-power-energy-voltage` |
 | `_TZ3210_raqjcxo5` | `TS011F` | `plugs-switch-2-power-energy-voltage` |
 | `_TZ3210_rwmitwj4` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3210_sgb0xhwn` | `TS011F` | `switches-switch-2` |
@@ -3690,6 +3821,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ3210_wts1g2oh` | `TS0004` | `switches-switch-4` |
 | `_TZ3210_yvxjawlt` | `TS011F` | `plugs-switch-2-power-energy-voltage` |
 | `_TZ3210_z4hgsevd` | `TS0014` | `switches-switch-4` |
+| `_TZ3210_zifx0xoj` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `_TZ3218_hdc8bbha` | `TS000F` | `switches-switch-1` |
 | `_TZ3218_n0jsuogs` | `TS000F` | `switches-switch-1-poweron-switch-type` |
 | `_TZ3218_sgbsg6mr` | `TS000F` | `switches-switch-2-poweron-switch-type` |
@@ -3697,6 +3829,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ33000_d9yfgzur` | `TS0003` | `switches-switch-3` |
 | `AduroSmart ERIA` | `ONOFF_METER_RELAY` | `plugs-switch-power-energy-voltage` |
 | `AOYAN` | `TS011F_AOYAN` | `plugs-switch-power-energy-voltage` |
+| `AOYAN  ` | `TS011F` | `plugs-switch-power-energy-voltage` |
 | `Aubess` | `TMZ02` | `switches-switch-2` |
 | `Aubess` | `TMZ02L-16A-B` | `switches-switch-1-countdown-switch-type` |
 | `Aubess` | `TS011F_plug_1` | `plugs-switch` |
@@ -3743,6 +3876,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `BTicino` | `FC80RC` | `switches-switch-1` |
 | `BTicino` | `LN4570CWI` | `switches-switch-1` |
 | `Candeo` | `C-ZB-SM205-2G` | `switches-switch-2` |
+| `Candeo` | `C-ZB-SM30-2G` | `switches-switch-2-power-options` |
 | `Candeo` | `C205` | `switches-switch-1` |
 | `ClickSmart+` | `CMA30035` | `plugs-switch` |
 | `ClickSmart+` | `CMA30036` | `plugs-switch-2` |
@@ -3907,12 +4041,12 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `MatSee Plus` | `ATMS1602Z` | `din-rail-switch-power-energy-voltage-current` |
 | `MatSee Plus` | `PJ-MINI-ZSW01` | `plugs-switch-power-energy-voltage` |
 | `MatSee Plus` | `PJ-ZSW01` | `plugs-switch-power-energy-voltage` |
-| `Mercator IkuÃ¼` | `SISW01` | `plugs-switch` |
-| `Mercator IkuÃ¼` | `SPBS01G` | `plugs-switch` |
-| `Mercator IkuÃ¼` | `SSW01` | `switches-switch-1` |
-| `Mercator IkuÃ¼` | `SSW02` | `switches-switch-2` |
-| `Mercator IkuÃ¼` | `SSW04` | `switches-switch-4` |
-| `Mercator IkuÃ¼` | `SSWM10-ZB` | `switches-switch-1` |
+| `Mercator Ikuü` | `SISW01` | `plugs-switch` |
+| `Mercator Ikuü` | `SPBS01G` | `plugs-switch` |
+| `Mercator Ikuü` | `SSW01` | `switches-switch-1` |
+| `Mercator Ikuü` | `SSW02` | `switches-switch-2` |
+| `Mercator Ikuü` | `SSW04` | `switches-switch-4` |
+| `Mercator Ikuü` | `SSWM10-ZB` | `switches-switch-1` |
 | `MHCOZY` | `TYWB 4ch-RF` | `switches-switch-4` |
 | `Mifra` | `KS-604S` | `switches-switch-3` |
 | `Milfra` | `M11Z` | `switches-switch-5` |
@@ -4012,6 +4146,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `Sibling` | `Powerswitch-ZK(W)` | `switches-switch-1` |
 | `SMATRUL` | `TMZ02L-16A-W` | `switches-switch-1-countdown-switch-type` |
 | `Somfy` | `ON/OFF (2CH)` | `switches-switch-2` |
+| `SONOFF` | `MINI-ZBD` | `switches-switch-1` |
 | `SONOFF` | `S60ZBTPG` | `plugs-switch-power-energy-voltage` |
 | `SONOFF` | `SWV-ZFE` | `valves-valve-battery` |
 | `SONOFF` | `SWV-ZFU` | `valves-valve-battery` |

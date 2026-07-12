@@ -398,6 +398,7 @@ register_device_definition(color_light, {
 })
 
 register_device_definition(color_cct_light, {
+  device_helpers.create_fingerprint("_TZ3210_f0byevky", "TS0503B"),
   device_helpers.create_fingerprint("YSRSAI", "ZB-CL01"),
   device_helpers.create_fingerprint([[eWeLi\u0001\u0010]], "ZB-CL01"),
   device_helpers.create_fingerprint("eWeLight", "ZB-CL01"),

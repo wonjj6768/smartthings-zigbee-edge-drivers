@@ -134,9 +134,6 @@ register_device_definition(din_rail_model_ts0601_din_4, device_helpers.create_fi
 "_TZE204_4bjixefp",
 "_TZE204_fhvdgeuh",
 }))
-register_device_definition(din_rail_model_ts0601_din_4, {
-device_helpers.create_fingerprint("RTX", "TS0601_RTX_DIN"),
-})
 local power_meter_model_sdm01 = {
 profile = "meters-power-energy-voltage-current-sdm01",
 tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
@@ -229,9 +226,6 @@ register_device_definition(power_meter_model_ts0601_3_phase_clamp_meter_relay, d
 "_TZE200_x8fp01wi",
 "_TZE204_x8fp01wi",
 }))
-register_device_definition(power_meter_model_ts0601_3_phase_clamp_meter_relay, {
-device_helpers.create_fingerprint("Wenzhou Taiye Electric", "TAC7361C BI"),
-})
 local power_meter_model_ts0601_bidirectional_energy_meter = {
 profile = "meters-power-energy-voltage-current-bidirectional",
 tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),

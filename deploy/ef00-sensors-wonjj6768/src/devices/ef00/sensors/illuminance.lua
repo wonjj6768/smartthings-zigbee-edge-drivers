@@ -47,7 +47,7 @@ register_device_definition(illum_battery, ef00_helpers.ts0601_fingerprints( {
 "_TZE200_pisltm67",
 }))
 register_device_definition(illum_battery, {
-device_helpers.create_fingerprint("_TYST11_pisltm67", "isltm67"),
+{ manufacturer = "_TYST11_pisltm67", model = "isltm67" .. string.char(0) },
 })
 local illum_battery_report_interval_aaeasoll = {
 profile = "sensors-illuminance-battery-report-interval-aaeasoll",

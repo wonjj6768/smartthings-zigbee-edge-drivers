@@ -1,5 +1,7 @@
 local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
+local emit = require "emitters"
+local data_types = require "st.zigbee.data_types"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -65,6 +67,98 @@ local illuminance_sensor = {
   zcl_clusters = {
     zcl.illuminance(),
     zcl.battery(),
+  },
+}
+
+local heiman_air_quality = {
+  profile = "sensors-heiman-hs2aq-air-quality",
+  zcl_clusters = {
+    zcl.temperature(),
+    zcl.humidity(),
+    zcl.battery(),
+    zcl.cluster_attribute(0x042A, 0x0000, {
+      name = "pm25",
+      emit = emit.pm25(),
+      data_type = data_types.Uint16,
+      minimum_interval = 0,
+      maximum_interval = 3600,
+      reportable_change = 1,
+    }),
+    zcl.cluster_attribute(0x042B, 0x0000, {
+      name = "formaldehyde",
+      emit = emit.formaldehyde(),
+      data_type = data_types.Uint16,
+      scale = 1000,
+      minimum_interval = 0,
+      maximum_interval = 3600,
+      reportable_change = 1,
+    }),
+    zcl.cluster_attribute(0xFC81, 0xF002, {
+      name = "heiman_battery_state",
+      emit = emit.heimanHs2aqBatteryState(),
+      data_type = data_types.Uint8,
+      mfg_code = 0x120B,
+      from_device = function(value)
+        return ({ [0] = "not_charging", [1] = "charging", [2] = "charged" })[value]
+      end,
+      minimum_interval = 0,
+      maximum_interval = 3600,
+      reportable_change = 1,
+    }),
+    zcl.cluster_attribute(0xFC81, 0xF003, {
+      name = "heiman_pm10",
+      emit = emit.heimanHs2aqPm10(),
+      data_type = data_types.Uint16,
+      mfg_code = 0x120B,
+      minimum_interval = 0,
+      maximum_interval = 3600,
+      reportable_change = 1,
+    }),
+    zcl.cluster_attribute(0xFC81, 0xF004, {
+      name = "voc",
+      emit = emit.voc(),
+      data_type = data_types.Uint16,
+      mfg_code = 0x120B,
+      minimum_interval = 0,
+      maximum_interval = 3600,
+      reportable_change = 1,
+    }),
+    zcl.cluster_attribute(0xFC81, 0xF005, {
+      name = "heiman_aqi",
+      emit = emit.heimanHs2aqAqi(),
+      data_type = data_types.Uint16,
+      mfg_code = 0x120B,
+      minimum_interval = 0,
+      maximum_interval = 3600,
+      reportable_change = 1,
+    }),
+  },
+}
+
+local terncy_dc01 = {
+  profile = "safety-contact-temp-battery",
+  zcl_clusters = {
+    zcl.cluster_attribute(0x000F, 0x0055, {
+      name = "contact",
+      emit = emit.contact(),
+      data_type = data_types.SinglePrecisionFloat,
+      from_device = function(value)
+        return value == 0
+      end,
+      minimum_interval = 0,
+      maximum_interval = 300,
+      reportable_change = 1,
+    }),
+    zcl.temperature({ scale = 10 }),
+    zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION, zcl.ATTR_BATTERY_PERCENTAGE_REMAINING, {
+      name = "battery",
+      emit = emit.battery(),
+      data_type = data_types.Uint8,
+      scale = 1,
+      minimum_interval = 300,
+      maximum_interval = 21600,
+      reportable_change = 1,
+    }),
   },
 }
 
@@ -186,9 +280,18 @@ register_aliases(smoke_sensor, {
   device_helpers.create_fingerprint("Frient", "94430"),
   device_helpers.create_fingerprint("Frient", "94431"),
   device_helpers.create_fingerprint("HEIMAN", "HS2AQ-EF-3.0"),
-  device_helpers.create_fingerprint("HEIMAN", "HS2AQ-EM"),
   device_helpers.create_fingerprint("Popp", "701721"),
   device_helpers.create_fingerprint("Trust", "SmokeSensor-EM"),
+})
+
+register_aliases(heiman_air_quality, {
+  device_helpers.create_fingerprint("HEIMAN", "HS2AQ-EM"),
+  device_helpers.create_fingerprint("HEIMAN", "HS2AQ-EM-3.0"),
+})
+
+register_aliases(terncy_dc01, {
+  device_helpers.create_fingerprint("Sunricher", "TERNCY-DC01"),
+  device_helpers.create_fingerprint("TERNCY", "TERNCY-DC01"),
 })
 
 register_aliases(smoke_temp_humidity_sensor, {

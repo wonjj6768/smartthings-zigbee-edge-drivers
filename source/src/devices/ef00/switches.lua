@@ -14,6 +14,7 @@ local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
 
 local converter = tuya.converter
+local emit = require "emitters"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -26,6 +27,43 @@ local backlight_color_converter = converter.lookup_from_to({
   magenta = 5,
   cyan = 6,
 })
+
+local eyzee_restart_converter = converter.lookup_from_to({ off = 0, on = 1, previous = 2 })
+local eyzee_indicator_converter = converter.lookup_from_to({ off = 0, on_off_status = 1, switch_position = 2 })
+local eyzee_global_restart_converter = converter.lookup_from_to({ off = false, on = true })
+
+local switch_eyzee_5gang = {
+  profile = "switches-eyzee-5gang",
+  tuya.dp_on_off(1, { name = "switch", component = "main" }),
+  tuya.dp_on_off(2, { name = "switch", component = "switch2" }),
+  tuya.dp_on_off(3, { name = "switch", component = "switch3" }),
+  tuya.dp_on_off(4, { name = "switch", component = "switch4" }),
+  tuya.dp_on_off(5, { name = "switch", component = "switch5" }),
+  tuya.dp_countdown(7, { name = "countdown_1", component = "main" }),
+  tuya.dp_countdown(8, { name = "countdown_2", component = "switch2" }),
+  tuya.dp_countdown(9, { name = "countdown_3", component = "switch3" }),
+  tuya.dp_countdown(10, { name = "countdown_4", component = "switch4" }),
+  tuya.dp_countdown(11, { name = "countdown_5", component = "switch5" }),
+  tuya.dp_binary(14, {
+    name = "eyzee_global_restart",
+    emit = emit.eyzee5gGlobalRestart(),
+    converter = eyzee_global_restart_converter,
+  }),
+  tuya.dp_enum(15, {
+    name = "eyzee_indicator_mode",
+    emit = emit.eyzee5gIndicatorMode(),
+    converter = eyzee_indicator_converter,
+  }),
+  tuya.dp_enum(29, { name = "eyzee_switch1_restart", emit = emit.eyzee5gSwitch1Restart(), converter = eyzee_restart_converter }),
+  tuya.dp_enum(30, { name = "eyzee_switch2_restart", emit = emit.eyzee5gSwitch2Restart(), converter = eyzee_restart_converter }),
+  tuya.dp_enum(31, { name = "eyzee_switch3_restart", emit = emit.eyzee5gSwitch3Restart(), converter = eyzee_restart_converter }),
+  tuya.dp_enum(32, { name = "eyzee_switch4_restart", emit = emit.eyzee5gSwitch4Restart(), converter = eyzee_restart_converter }),
+  tuya.dp_enum(33, { name = "eyzee_switch5_restart", emit = emit.eyzee5gSwitch5Restart(), converter = eyzee_restart_converter }),
+}
+
+register_device_definition(switch_eyzee_5gang, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_0kihjsys",
+}))
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-1. switch_1gang: 기본 1구
@@ -915,6 +953,7 @@ local switch_model_zs_tyg3_sm_41z = {
 }
 
 register_device_definition(switch_model_zs_tyg3_sm_41z, device_helpers.create_fingerprints("TS0601", {
+  "TZE204_unsxl4ir",
   "_TZE200_k6jhsr0q",
   "_TZE204_unsxl4ir",
 }))
@@ -1163,10 +1202,6 @@ register_device_definition(switch_8gang_dp101, device_helpers.create_fingerprint
   "_TZE204_wktrysab",
   "_TZE284_dvosyycn",
 }))
-
-register_device_definition(switch_8gang_dp101, {
-  device_helpers.create_fingerprint("Nova Digital", "ZTS-8W-B"),
-})
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-23. switch_model_ts0601_switch_8_2: 8구 + countdown + power_on_behavior

@@ -1,0 +1,31 @@
+name: sensors-heiman-hs2aq-air-quality
+components:
+  - id: main
+    capabilities:
+      - id: fineDustSensor
+        version: 1
+      - id: concertmirror08464.heimanHs2aqPm10
+        version: 1
+      - id: concertmirror08464.heimanHs2aqAqi
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: tvocMeasurement
+        version: 1
+      - id: formaldehydeMeasurement
+        version: 1
+      - id: concertmirror08464.heimanHs2aqBatteryState
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: AirQualityDetector
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true

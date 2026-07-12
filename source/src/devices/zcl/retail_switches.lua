@@ -209,6 +209,14 @@ register_aliases(metered_plug, {
   device_helpers.create_fingerprint("SONOFF", "S60ZBTPG"),
 })
 
+register_aliases(switch_1, {
+  device_helpers.create_fingerprint("SONOFF", "MINI-ZBD"),
+})
+
+register_aliases(dual_metered_switch_ep3, {
+  device_helpers.create_fingerprint("Candeo", "C-ZB-SM30-2G"),
+})
+
 register_aliases(metered_plug, {
   device_helpers.create_fingerprint("AduroSmart ERIA", "ONOFF_METER_RELAY"),
   device_helpers.create_fingerprint("HEIMAN", "SmartPlug-N"),
@@ -280,7 +288,6 @@ register_aliases(switch_1, {
   device_helpers.create_fingerprint("OXT", "SWTZ21"),
   device_helpers.create_fingerprint("TUYATEC", "GDKES-01TZXD"),
   device_helpers.create_fingerprint("Vensi", "E321V000A03"),
-  device_helpers.create_fingerprint("_TYST11_8daqwrsj", "daqwrsj"),
   device_helpers.create_fingerprint("_TYST11_qtbrwrfv", "tbrwrfv"),
 })
 

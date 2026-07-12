@@ -372,6 +372,8 @@ register_device_definition(thermostat_zwt198, ef00_helpers.ts0601_fingerprints( 
 "_TZE284_zjhoqbrd",
 "_TZE204_zjhoqbrd",
 "_TZE284_aaeaifez",
+"_TZE204_aaeaifez",
+"_TZE28C1000000_aaeaifez",
 }))
 register_device_definition(thermostat_zwt198, {
 device_helpers.create_fingerprint("AVATTO", "WT-100-BH"),

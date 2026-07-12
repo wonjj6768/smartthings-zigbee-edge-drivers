@@ -224,11 +224,4 @@ register_device_definition(light_model_ts0601_light, device_helpers.create_finge
 "_TZE200_ywe90lt0",
 "_TZE200_qyss8gjy",
 }))
-register_device_definition(light_model_ts0601_light, {
-device_helpers.create_fingerprint("Ltech", "TY-12-100-400-W1Z"),
-device_helpers.create_fingerprint("Ltech", "TY-75-24-G2Z2"),
-device_helpers.create_fingerprint("Lifud", "LF-AAZ012-0400-42"),
-device_helpers.create_fingerprint("Lifud", "LF-GAZ150A6250-24"),
-device_helpers.create_fingerprint("Lifud", "LF-GAZ150B6250-24"),
-})
 return device_definitions

@@ -45,6 +45,15 @@ local motion_tamper_sensor = {
   },
 }
 
+local motion_tamper_battery_low_sensor = {
+  profile = "safety-motion-tamper-battery-low",
+  zcl_clusters = {
+    zcl.motion(),
+    zcl.tamper(),
+    zcl.battery_low(),
+  },
+}
+
 local motion_illuminance_sensor = {
   profile = "safety-motion-illuminance-battery",
   zcl_clusters = {
@@ -315,6 +324,10 @@ register_device_definition(motion_tamper_sensor, {
   device_helpers.create_fingerprint("HEIMAN", "TY0202"),
   device_helpers.create_fingerprint("HEIMAN", "HS9MS-E"),
   device_helpers.create_fingerprint("HEIMAN", "PIR_TPV12"),
+})
+
+register_device_definition(motion_tamper_battery_low_sensor, {
+  device_helpers.create_fingerprint("ClimaxTechnology", "IR-9ZBS-SL"),
 })
 
 register_device_definition(water_sensor, device_helpers.create_fingerprints("TS0207", {

@@ -2,6 +2,8 @@ local zcl = require "zcl_common"
 local emit = require "emitters"
 local device_helpers = require "devices.shared.helpers"
 local zcl_device_helpers = require "devices.zcl.helpers"
+local data_types = require "st.zigbee.data_types"
+local capabilities = require "st.capabilities"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -131,6 +133,115 @@ local smart_valve = {
   },
 }
 
+local SONOFF_CLUSTER = 0xFC11
+local SONOFF_MFG_CODE = 0x1286
+local SONOFF_CAPABILITY = "concertmirror08464.sonoffZbminir2"
+
+local function on_off_from_device(value)
+  return (value == true or value == 1) and "on" or "off"
+end
+
+local function on_off_to_device(value)
+  return value == "on" or value == true
+end
+
+local function sonoff_boolean(attribute_id, name, emit_name, options)
+  options = options or {}
+  return zcl.cluster_attribute(SONOFF_CLUSTER, attribute_id, {
+    name = name,
+    emit = emit[emit_name](),
+    data_type = options.data_type or data_types.Boolean,
+    write_type = options.write_type or data_types.Boolean,
+    from_device = options.from_device or on_off_from_device,
+    to_device = options.to_device or on_off_to_device,
+    read_on_configure = true,
+  })
+end
+
+local function latest_sonoff_state(device, suffix, default)
+  local capability_id = SONOFF_CAPABILITY .. suffix
+  local attribute = suffix:sub(1, 1):lower() .. suffix:sub(2)
+  return device:get_latest_state("main", capability_id, attribute) or default
+end
+
+local function send_sonoff_inching(device, mapping, value, context)
+  local control = latest_sonoff_state(device, "InchingControl", "off")
+  local time = tonumber(latest_sonoff_state(device, "InchingTime", 0.5)) or 0.5
+  local mode = latest_sonoff_state(device, "InchingMode", "off")
+
+  if mapping.name == "sonoff_zbmini_r2_inching_control" then
+    control = value
+  elseif mapping.name == "sonoff_zbmini_r2_inching_time" then
+    time = tonumber(value) or time
+  elseif mapping.name == "sonoff_zbmini_r2_inching_mode" then
+    mode = value
+  end
+
+  local encoded_time = math.floor((math.max(0.5, math.min(3599.5, time)) * 2) + 0.5)
+  local mode_byte = (control == "on" and 0x80 or 0) + (mode == "on" and 0x01 or 0)
+  local bytes = { 0x01, 0x17, 0x07, 0x80, mode_byte, 0x00, encoded_time % 0x100, math.floor(encoded_time / 0x100), 0x00, 0x00 }
+  local checksum = 0
+  for _, byte in ipairs(bytes) do checksum = bit32.bxor(checksum, byte) end
+  bytes[#bytes + 1] = checksum
+
+  return zcl.send_raw_cluster_command(
+    device,
+    SONOFF_CLUSTER,
+    0x01,
+    string.char(table.unpack(bytes)),
+    context.endpoint,
+    nil,
+    SONOFF_MFG_CODE
+  )
+end
+
+local sonoff_zbmini_r2 = {
+  profile = "switches-switch-1-sonoff-zbmini-r2",
+  zcl_clusters = {
+    zcl.switch(),
+    zcl.cluster_attribute(zcl.CLUSTER_ON_OFF, zcl.ATTR_ON_OFF, {
+      name = "sonoff_zbmini_r2_toggle",
+      emit = emit.switch(),
+      read_only = true,
+      command_id = 0x02,
+      command_extractor = function(_, device)
+        return device:get_latest_state("main", capabilities.switch.ID, "switch") ~= "on"
+      end,
+    }),
+    sonoff_boolean(0x0001, "sonoff_zbmini_r2_network_indicator", "sonoffZbminir2NetworkIndicator"),
+    sonoff_boolean(0x0012, "sonoff_zbmini_r2_turbo_mode", "sonoffZbminir2TurboMode", {
+      data_type = data_types.Int16,
+      write_type = data_types.Int16,
+      from_device = function(value) return value == 0x14 and "on" or "off" end,
+      to_device = function(value) return value == "on" and 0x14 or 0x09 end,
+    }),
+    sonoff_boolean(0x0014, "sonoff_zbmini_r2_delayed_power_on_state", "sonoffZbminir2DelayPowerState"),
+    zcl.cluster_attribute(SONOFF_CLUSTER, 0x0015, {
+      name = "sonoff_zbmini_r2_delayed_power_on_time",
+      emit = emit.sonoffZbminir2DelayPowerTime(),
+      data_type = data_types.Uint16,
+      write_type = data_types.Uint16,
+      from_device = function(value) return value / 2 end,
+      to_device = function(value) return value * 2 end,
+      numeric_range = { minimum = 0.5, maximum = 3599.5, step = 0.5, unit = "s" },
+      read_on_configure = true,
+    }),
+    sonoff_boolean(0x0017, "sonoff_zbmini_r2_detach_relay_mode", "sonoffZbminir2DetachRelayMode"),
+    zcl.cluster_attribute(SONOFF_CLUSTER, 0x0016, {
+      name = "sonoff_zbmini_r2_external_trigger_mode",
+      emit = emit.sonoffZbminir2ExtTriggerMode(),
+      data_type = data_types.Uint8,
+      write_type = data_types.Uint8,
+      from_device = function(value) return ({ [0] = "edge", [1] = "pulse", [2] = "following_off", [130] = "following_on" })[value] end,
+      to_device = function(value) return ({ edge = 0, pulse = 1, following_off = 2, following_on = 130 })[value] end,
+      read_on_configure = true,
+    }),
+    zcl.cluster_attribute(SONOFF_CLUSTER, nil, { name = "sonoff_zbmini_r2_inching_control", write_only = true, sender = send_sonoff_inching }),
+    zcl.cluster_attribute(SONOFF_CLUSTER, nil, { name = "sonoff_zbmini_r2_inching_time", write_only = true, sender = send_sonoff_inching }),
+    zcl.cluster_attribute(SONOFF_CLUSTER, nil, { name = "sonoff_zbmini_r2_inching_mode", write_only = true, sender = send_sonoff_inching }),
+  },
+}
+
 register_aliases(plug_1, {
   device_helpers.create_fingerprint("ClickSmart+", "CMA30035"),
   device_helpers.create_fingerprint("Aubess", "TS011F_plug_1"),
@@ -206,8 +317,9 @@ register_aliases(metered_plug, {
   device_helpers.create_fingerprint("SONOFF", "S60ZBTPG"),
 })
 
-register_aliases(switch_1, {
+register_aliases(sonoff_zbmini_r2, {
   device_helpers.create_fingerprint("SONOFF", "MINI-ZBD"),
+  device_helpers.create_fingerprint("SONOFF", "ZBMINIR2"),
 })
 
 register_aliases(dual_metered_switch_ep3, {

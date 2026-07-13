@@ -28,11 +28,11 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 168 |
 | EF00 Thermostats wonjj6768 | `ef00-thermostats-wonjj6768` | 243 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 21 |
-| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 420 |
+| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 419 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 61 |
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 855 |
-| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 570 |
-| ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 819 |
+| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 571 |
+| ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 820 |
 
 ## Supported Fingerprints
 
@@ -1458,7 +1458,7 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 </details>
 
 <details>
-<summary>ZCL Controls wonjj6768 (420 fingerprints)</summary>
+<summary>ZCL Controls wonjj6768 (419 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.
 
@@ -1780,7 +1780,6 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `Candeo` | `C-ZB-SR5BR` | `buttons-button-4-battery-remote-action` |
 | `Cleverio` | `SB100` | `buttons-button-1-battery` |
 | `ClickSmart+` | `CSPGM2075PW` | `buttons-button-2-battery` |
-| `ClimaxTechnology` | `IR-9ZBS-SL` | `controllers-ir-transceiver` |
 | `Datek Wireless` | `EasyCode903G2.1` | `buttons-button-4-battery` |
 | `DSS0010` | `Excellux` | `buttons-button-1-battery-operation-mode-remote-action` |
 | `Easyfit by EnOcean` | `EWSxZ` | `buttons-button-1-battery` |
@@ -2824,7 +2823,7 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 </details>
 
 <details>
-<summary>ZCL Sensors wonjj6768 (570 fingerprints)</summary>
+<summary>ZCL Sensors wonjj6768 (571 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.
 
@@ -3049,6 +3048,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `Centralite` | `3157100-E` | `thermostats-thermostat` |
 | `Cleverio` | `SS100` | `safety-contact-battery` |
 | `Cleverio` | `SS200` | `safety-motion-battery` |
+| `ClimaxTechnology` | `IR-9ZBS-SL` | `safety-motion-tamper-battery-low` |
 | `computime` | `PUMM01102` | `thermostats-thermostat-battery` |
 | `CR Smart Home` | `TS0203` | `safety-contact-battery` |
 | `CR Smart Home` | `TS0207` | `safety-water-leak-battery` |
@@ -3404,7 +3404,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 </details>
 
 <details>
-<summary>ZCL Switch wonjj6768 (819 fingerprints)</summary>
+<summary>ZCL Switch wonjj6768 (820 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL switches, plugs, DIN rail relays, and valve-like devices.
 
@@ -4148,11 +4148,12 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `Sibling` | `Powerswitch-ZK(W)` | `switches-switch-1` |
 | `SMATRUL` | `TMZ02L-16A-W` | `switches-switch-1-countdown-switch-type` |
 | `Somfy` | `ON/OFF (2CH)` | `switches-switch-2` |
-| `SONOFF` | `MINI-ZBD` | `switches-switch-1` |
+| `SONOFF` | `MINI-ZBD` | `switches-switch-1-sonoff-zbmini-r2` |
 | `SONOFF` | `S60ZBTPG` | `plugs-switch-power-energy-voltage` |
 | `SONOFF` | `SWV-ZFE` | `valves-valve-battery` |
 | `SONOFF` | `SWV-ZFU` | `valves-valve-battery` |
 | `SONOFF` | `SWV-ZNU` | `valves-valve-battery` |
+| `SONOFF` | `ZBMINIR2` | `switches-switch-1-sonoff-zbmini-r2` |
 | `Sunricher` | `HK-SL-RELAY-A` | `switches-switch-1` |
 | `Sunricher` | `Micro Smart OnOff` | `switches-switch-1` |
 | `Sunricher` | `ON/OFF` | `switches-switch-1` |

@@ -1,0 +1,28 @@
+name: switches-switch-1-sonoff-zbmini-r2
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2NetworkIndicator
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2TurboMode
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2DelayPowerState
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2DelayPowerTime
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2DetachRelayMode
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2ExtTriggerMode
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2InchingControl
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2InchingTime
+        version: 1
+      - id: concertmirror08464.sonoffZbminir2InchingMode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch

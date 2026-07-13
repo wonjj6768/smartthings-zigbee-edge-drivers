@@ -14,9 +14,9 @@ components:
         version: 1
       - id: battery
         version: 1
-      - id: concertmirror08464.temperatureCalibrationSoilFertility
+      - id: concertmirror08464.tempCalibrationSoilFertility
         version: 1
-      - id: concertmirror08464.illuminanceCalibrationSoilFertility
+      - id: concertmirror08464.illumCalibrationSoilFertility
         version: 1
       - id: concertmirror08464.soilWarningThresholdFertility
         version: 1

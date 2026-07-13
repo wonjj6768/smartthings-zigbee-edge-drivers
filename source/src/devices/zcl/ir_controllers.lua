@@ -41,7 +41,6 @@ register_device_definition(ir_controller, device_helpers.create_fingerprints("ZS
 }))
 
 register_device_definition(ir_controller, {
-  device_helpers.create_fingerprint("ClimaxTechnology", "IR-9ZBS-SL"),
   device_helpers.create_fingerprint("HEIMAN", "IRControl-EM"),
   device_helpers.create_fingerprint("HEIMAN", "IRControl2-EF-3.0"),
   device_helpers.create_fingerprint("Tuya", "UFO-R4Z"),

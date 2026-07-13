@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 461108,
+    "raw_size": 468957,
     "under_limit": true,
     "profiles": [
       "din-rail-switch-power-energy-voltage-current",
@@ -21,6 +21,7 @@
       "switches-switch-1-countdown-switch-type",
       "switches-switch-1-power-options",
       "switches-switch-1-poweron-switch-type",
+      "switches-switch-1-sonoff-zbmini-r2",
       "switches-switch-2",
       "switches-switch-2-countdown-switch-type",
       "switches-switch-2-power-options",
@@ -37,10 +38,10 @@
       "valves-valve-battery-countdown-ts0049",
       "valves-valve-indicator-mode"
     ],
-    "fingerprints": 819,
+    "fingerprints": 820,
     "custom_capabilities": {
-      "numeric": 8,
-      "enum": 10,
+      "numeric": 10,
+      "enum": 17,
       "text": 1
     }
   },
@@ -71,7 +72,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 419570,
+    "raw_size": 421084,
     "under_limit": true,
     "profiles": [
       "lights-dimmer",
@@ -93,6 +94,7 @@
       "safety-motion-illuminance-temp-humidity-battery",
       "safety-motion-illuminance-temp-humidity-tamper-battery",
       "safety-motion-tamper-battery",
+      "safety-motion-tamper-battery-low",
       "safety-smoke-detector-battery",
       "safety-smoke-temp-humidity-battery",
       "safety-water-leak-battery",
@@ -108,7 +110,7 @@
       "thermostats-thermostat-battery",
       "thermostats-thermostat-humidity-power-energy-current"
     ],
-    "fingerprints": 570,
+    "fingerprints": 571,
     "custom_capabilities": {
       "numeric": 4,
       "enum": 2,
@@ -133,7 +135,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 374936,
+    "raw_size": 374730,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -170,7 +172,7 @@
       "security-remotes-action-battery",
       "security-remotes-sos-battery"
     ],
-    "fingerprints": 420,
+    "fingerprints": 419,
     "custom_capabilities": {
       "numeric": 0,
       "enum": 7,
@@ -244,7 +246,7 @@
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 378113,
+    "raw_size": 378155,
     "under_limit": true,
     "profiles": [
       "doors-garage-contact",

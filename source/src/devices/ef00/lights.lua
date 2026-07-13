@@ -11,6 +11,38 @@ local ef00_helpers = require "devices.ef00.helpers"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
+-- Z2M TS0601_dimmer_1_gang_1 contract, narrowed by exact hardware reports.
+local dimmer_model_ts0601_la2c2uo9 = {
+  profile = "lights-dimmer-options-ts0601-la2c2uo9",
+  tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+  tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
+  tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
+  tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
+  tuya.dp_countdown(6, { name = "countdown_timer", emit = emit.countdownTsOneTenHours() }),
+  tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
+  tuya.dp_backlight_mode(21, { name = "la2c2uo9_backlight_mode", emit = emit.la2c2uo9BacklightMode() }),
+}
+
+register_device_definition(dimmer_model_ts0601_la2c2uo9, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_la2c2uo9",
+}))
+
+-- Z2M maps countdown to DP6, but this exact ignores it on reported hardware.
+-- Keep it hidden until a DP log confirms a working mapping; do not guess an alternate DP.
+local dimmer_model_ts0601_dfxkcots = {
+  profile = "lights-dimmer-options-ts0601-dfxkcots",
+  tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+  tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
+  tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
+  tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
+  tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
+  tuya.dp_backlight_mode(21, { name = "dfxkcots_backlight_mode", emit = emit.dfxkcotsBacklightMode() }),
+}
+
+register_device_definition(dimmer_model_ts0601_dfxkcots, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_dfxkcots",
+}))
+
 -- TS0601_dimmer_1_gang_1
 local dimmer_model_ts0601_dimmer_1_gang_1 = {
   profile = "lights-dimmer-options-ts0601",
@@ -30,7 +62,6 @@ local dimmer_model_ts0601_dimmer_1_gang_1 = {
 register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_ip2akl4w",
   "_TZE200_1agwnems",
-  "_TZE200_la2c2uo9",
   "_TZE200_579lguh2",
   "_TZE200_vucankjx",
   "_TZE200_4mh6tyyo",
@@ -43,7 +74,6 @@ register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, device_helpers.c
   "_TZE200_swaamsoy",
   "_TZE200_ojzhk75b",
   "_TZE200_w4cryh2i",
-  "_TZE200_dfxkcots",
   "_TZE204_68utemio",
   "_TZE200_9i9dt8is",
   "_TZE200_ctq0k47x",

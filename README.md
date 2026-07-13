@@ -398,7 +398,7 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 | `_TZE200_ctq0k47x` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_dcnsggv` | `TS0601` | `lights-dimmer` |
 | `_TZE200_dcnsggvz` | `TS0601` | `lights-dimmer` |
-| `_TZE200_dfxkcots` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_dfxkcots` | `TS0601` | `lights-dimmer-options-ts0601-dfxkcots` |
 | `_TZE200_drs6j6m5` | `TS0601` | `lights-dimmer` |
 | `_TZE200_e3oitdyu` | `TS0601` | `lights-dimmer-2` |
 | `_TZE200_ebwgzdqq` | `TS0601` | `lights-dimmer-options-ts0601` |
@@ -409,7 +409,7 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 | `_TZE200_io0zdqh1` | `TS0601` | `lights-dimmer` |
 | `_TZE200_ip2akl4w` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_itp8dt7f` | `TS0601` | `lights-dimmer-options-ts0601` |
-| `_TZE200_la2c2uo9` | `TS0601` | `lights-dimmer-options-ts0601` |
+| `_TZE200_la2c2uo9` | `TS0601` | `lights-dimmer-options-ts0601-la2c2uo9` |
 | `_TZE200_lawxy9e2` | `TS0601` | `fans-fan-light-switch` |
 | `_TZE200_ojzhk75b` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE200_p0gzbqct` | `TS0601` | `lights-dimmer` |

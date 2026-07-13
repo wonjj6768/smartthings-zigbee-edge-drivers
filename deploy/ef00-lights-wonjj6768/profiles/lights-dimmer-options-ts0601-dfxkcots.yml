@@ -1,0 +1,110 @@
+name: lights-dimmer-options-ts0601-dfxkcots
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: switchLevel
+        version: 1
+      - id: statelessSwitchLevelStep
+        version: 1
+      - id: concertmirror08464.powerOnBehavior
+        version: 1
+      - id: concertmirror08464.ef00Ts0601MinimumBrightness
+        version: 1
+      - id: concertmirror08464.lightType
+        version: 1
+      - id: concertmirror08464.dfxkcotsBacklightMode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Light
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: switchLevel
+        version: 1
+        group: main
+        values:
+          - label: "{{level.value}} {{level.unit}}"
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: switchLevel
+      version: 1
+    - component: main
+      capability: concertmirror08464.ef00Ts0601MinimumBrightness
+      version: 1
+    - component: main
+      capability: concertmirror08464.lightType
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.dfxkcotsBacklightMode
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: switchLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.ef00Ts0601MinimumBrightness
+        version: 1
+      - component: main
+        capability: concertmirror08464.lightType
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.dfxkcotsBacklightMode
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: switchLevel
+        version: 1
+      - component: main
+        capability: statelessSwitchLevelStep
+        version: 1
+      - component: main
+        capability: concertmirror08464.ef00Ts0601MinimumBrightness
+        version: 1
+      - component: main
+        capability: concertmirror08464.lightType
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.dfxkcotsBacklightMode
+        version: 1

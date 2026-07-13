@@ -18,6 +18,7 @@ local switch_default_off = require "st.zigbee.defaults.switch_defaults.off"
 local power_poll_interval_metadata = custom_capabilities.by_emit_name.power_poll_interval
 local learn_ir_code_metadata = custom_capabilities.by_emit_name.learn_ir_code
 local ir_code_to_send_metadata = custom_capabilities.by_emit_name.ir_code_to_send
+local ef00_minimum_brightness_metadata = custom_capabilities.by_emit_name.ef00Ts0601MinimumBrightness
 
 local WINDOW_SHADE_PRESET_LEVEL_KEY = "_presetLevel"
 local DEFAULT_WINDOW_SHADE_PRESET_LEVEL = 50
@@ -585,6 +586,29 @@ local function current_switch_level(device, component_id)
   return clamp_switch_level(level) or 0
 end
 
+local function configured_minimum_switch_level(device, component_id)
+  local metadata = ef00_minimum_brightness_metadata
+  local target_component = component_id or "main"
+  if type(device) ~= "table" or type(metadata) ~= "table" then
+    return 0
+  end
+
+  if not device:supports_capability_by_id(metadata.capability_id, target_component) then
+    return 0
+  end
+
+  local raw_minimum = tonumber(device:get_latest_state(
+    target_component,
+    metadata.capability_id,
+    metadata.attribute_name
+  ))
+  if raw_minimum == nil or raw_minimum <= 0 then
+    return 0
+  end
+
+  return clamp_switch_level(math.ceil(raw_minimum / 10)) or 0
+end
+
 local function emit_switch_level_state(device, component_id, level)
   local target_component = component_id or "main"
   if type(device) ~= "table" or not device:supports_capability_by_id(capabilities.switchLevel.ID, target_component) then
@@ -612,6 +636,12 @@ local function handle_stateless_switch_level_step(device, command)
   local target_level = clamp_switch_level(current_switch_level(device, component_id) + step_size)
   if target_level == nil then
     return
+  end
+
+
+  local minimum_level = configured_minimum_switch_level(device, component_id)
+  if target_level < minimum_level then
+    target_level = minimum_level
   end
 
   if target_level > 0 then

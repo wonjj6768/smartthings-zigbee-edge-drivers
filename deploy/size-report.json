@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 468957,
+    "raw_size": 469793,
     "under_limit": true,
     "profiles": [
       "din-rail-switch-power-energy-voltage-current",
@@ -47,7 +47,7 @@
   },
   {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 442371,
+    "raw_size": 443207,
     "under_limit": true,
     "profiles": [
       "fans-fan-light-switch",
@@ -72,7 +72,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 421084,
+    "raw_size": 421920,
     "under_limit": true,
     "profiles": [
       "lights-dimmer",
@@ -119,7 +119,7 @@
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 266485,
+    "raw_size": 267321,
     "under_limit": true,
     "profiles": [
       "covers-cover",
@@ -135,7 +135,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 374730,
+    "raw_size": 375566,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -181,7 +181,7 @@
   },
   {
     "name": "ef00-controls-wonjj6768",
-    "raw_size": 263451,
+    "raw_size": 264287,
     "under_limit": true,
     "profiles": [
       "buttons-button-18",
@@ -199,7 +199,7 @@
   },
   {
     "name": "ef00-covers-wonjj6768",
-    "raw_size": 313357,
+    "raw_size": 314193,
     "under_limit": true,
     "profiles": [
       "covers-cover",
@@ -223,7 +223,7 @@
   },
   {
     "name": "ef00-lights-wonjj6768",
-    "raw_size": 313827,
+    "raw_size": 322838,
     "under_limit": true,
     "profiles": [
       "fans-fan-level-light-dimmer",
@@ -235,18 +235,20 @@
       "lights-dimmer-2",
       "lights-dimmer-3",
       "lights-dimmer-options-ts0601",
+      "lights-dimmer-options-ts0601-dfxkcots",
+      "lights-dimmer-options-ts0601-la2c2uo9",
       "lights-dimmer-power-voltage-current"
     ],
     "fingerprints": 98,
     "custom_capabilities": {
       "numeric": 7,
-      "enum": 4,
+      "enum": 6,
       "text": 1
     }
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 378155,
+    "raw_size": 378991,
     "under_limit": true,
     "profiles": [
       "doors-garage-contact",
@@ -280,7 +282,7 @@
   },
   {
     "name": "ef00-energy-wonjj6768",
-    "raw_size": 409813,
+    "raw_size": 410649,
     "under_limit": true,
     "profiles": [
       "din-rail-switch-power-energy-voltage-current",
@@ -311,7 +313,7 @@
   },
   {
     "name": "ef00-sensors-wonjj6768",
-    "raw_size": 361650,
+    "raw_size": 362486,
     "under_limit": true,
     "profiles": [
       "sensors-aq-co2",
@@ -353,7 +355,7 @@
   },
   {
     "name": "ef00-pir-motion-wonjj6768",
-    "raw_size": 299689,
+    "raw_size": 300525,
     "under_limit": true,
     "profiles": [
       "safety-motion-battery",
@@ -374,7 +376,7 @@
   },
   {
     "name": "ef00-presence-general-wonjj6768",
-    "raw_size": 415548,
+    "raw_size": 416384,
     "under_limit": true,
     "profiles": [
       "safety-motion-tamper-battery",
@@ -416,7 +418,7 @@
   },
   {
     "name": "ef00-presence-switch-wonjj6768",
-    "raw_size": 348712,
+    "raw_size": 349548,
     "under_limit": true,
     "profiles": [
       "safety-presence-switch-illuminance",
@@ -431,7 +433,7 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 378353,
+    "raw_size": 379189,
     "under_limit": true,
     "profiles": [
       "safety-presence-ctlr1-threshold-min-delay-illuminance",
@@ -456,7 +458,7 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 336002,
+    "raw_size": 336838,
     "under_limit": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -499,7 +501,7 @@
   },
   {
     "name": "ef00-valves-wonjj6768",
-    "raw_size": 263211,
+    "raw_size": 264047,
     "under_limit": true,
     "profiles": [
       "valves-valve",
@@ -517,7 +519,7 @@
   },
   {
     "name": "ef00-thermostats-wonjj6768",
-    "raw_size": 407637,
+    "raw_size": 408473,
     "under_limit": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",

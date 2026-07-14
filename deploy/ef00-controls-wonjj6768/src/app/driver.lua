@@ -496,11 +496,12 @@ end
 if not device:supports_capability_by_id(metadata.capability_id, target_component) then
 return 0
 end
-local raw_minimum = tonumber(device:get_latest_state(
+local raw_minimum_state = device:get_latest_state(
 target_component,
 metadata.capability_id,
 metadata.attribute_name
-))
+)
+local raw_minimum = tonumber(raw_minimum_state)
 if raw_minimum == nil or raw_minimum <= 0 then
 return 0
 end

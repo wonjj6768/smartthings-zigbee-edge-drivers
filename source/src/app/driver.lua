@@ -597,11 +597,12 @@ local function configured_minimum_switch_level(device, component_id)
     return 0
   end
 
-  local raw_minimum = tonumber(device:get_latest_state(
+  local raw_minimum_state = device:get_latest_state(
     target_component,
     metadata.capability_id,
     metadata.attribute_name
-  ))
+  )
+  local raw_minimum = tonumber(raw_minimum_state)
   if raw_minimum == nil or raw_minimum <= 0 then
     return 0
   end
@@ -637,8 +638,6 @@ local function handle_stateless_switch_level_step(device, command)
   if target_level == nil then
     return
   end
-
-
   local minimum_level = configured_minimum_switch_level(device, component_id)
   if target_level < minimum_level then
     target_level = minimum_level

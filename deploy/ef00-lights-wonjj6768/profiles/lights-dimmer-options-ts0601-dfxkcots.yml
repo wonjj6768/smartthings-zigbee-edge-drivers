@@ -14,8 +14,6 @@ components:
         version: 1
       - id: concertmirror08464.lightType
         version: 1
-      - id: concertmirror08464.dfxkcotsBacklightMode
-        version: 1
       - id: refresh
         version: 1
     categories:
@@ -61,9 +59,6 @@ deviceConfig:
       capability: concertmirror08464.powerOnBehavior
       version: 1
     - component: main
-      capability: concertmirror08464.dfxkcotsBacklightMode
-      version: 1
-    - component: main
       capability: refresh
       version: 1
   automation:
@@ -83,9 +78,6 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.powerOnBehavior
         version: 1
-      - component: main
-        capability: concertmirror08464.dfxkcotsBacklightMode
-        version: 1
     actions:
       - component: main
         capability: switch
@@ -104,7 +96,4 @@ deviceConfig:
         version: 1
       - component: main
         capability: concertmirror08464.powerOnBehavior
-        version: 1
-      - component: main
-        capability: concertmirror08464.dfxkcotsBacklightMode
         version: 1

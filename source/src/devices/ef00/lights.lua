@@ -36,7 +36,6 @@ local dimmer_model_ts0601_dfxkcots = {
   tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
   tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
   tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
-  tuya.dp_backlight_mode(21, { name = "dfxkcots_backlight_mode", emit = emit.dfxkcotsBacklightMode() }),
 }
 
 register_device_definition(dimmer_model_ts0601_dfxkcots, device_helpers.create_fingerprints("TS0601", {

@@ -17,7 +17,6 @@ local DIGIT_WORDS = {
 }
 local ATTRIBUTE_OVERRIDES = {
   la2c2uo9BacklightMode = "backlightMode",
-  dfxkcotsBacklightMode = "backlightMode",
   sonoffZbminir2NetworkIndicator = "networkIndicator",
   sonoffZbminir2TurboMode = "turboMode",
   sonoffZbminir2DelayPowerState = "delayedPowerOnState",
@@ -306,7 +305,6 @@ local numeric_rows = {
 }
 local enum_rows = {
     {"la2c2uo9BacklightMode",true,"la2c2uo9_backlight_mode",{"off","normal","inverted"}},
-    {"dfxkcotsBacklightMode",true,"dfxkcots_backlight_mode",{"off","normal","inverted"}},
     {"sonoffZbminir2NetworkIndicator",true,"sonoff_zbmini_r2_network_indicator",{"off","on"}},
     {"sonoffZbminir2TurboMode",true,"sonoff_zbmini_r2_turbo_mode",{"off","on"}},
     {"sonoffZbminir2DelayPowerState",true,"sonoff_zbmini_r2_delayed_power_on_state",{"off","on"}},

@@ -235,16 +235,6 @@ zcl.switch(),
 zcl.battery(),
 },
 }
-register_device_definition(switch_1gang_battery, device_helpers.create_fingerprints("TS0001", {
-"_TZ3210_dse8ogfy",
-"_TZ3210_j4pdtz9v",
-"_TZ3210_7vgttna6",
-"_TZ3210_a04acm9s",
-"_TZ3210_cm9mbpr1",
-}))
-register_device_definition(switch_1gang_battery, {
-device_helpers.create_fingerprint("Adaprox", "TS0001_fingerbot_1"),
-})
 local switch_1gang_temperature_humidity = {
 profile = "switches-switch-1-temp-humidity",
 datapoints = {

@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 505949,
+    "raw_size": 505568,
     "under_limit": true,
     "profiles": [
       "controllers-easyiot-sp1000",
@@ -78,7 +78,7 @@
   },
   {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 432877,
+    "raw_size": 432496,
     "under_limit": true,
     "profiles": [
       "fans-fan-light-switch",
@@ -112,7 +112,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 479375,
+    "raw_size": 478994,
     "under_limit": true,
     "profiles": [
       "lights-dimmer-power-voltage-current",
@@ -214,7 +214,7 @@
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 275537,
+    "raw_size": 275156,
     "under_limit": true,
     "profiles": [
       "covers-cover",
@@ -230,7 +230,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 400601,
+    "raw_size": 400220,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -362,11 +362,10 @@
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 431567,
+    "raw_size": 430222,
     "under_limit": true,
     "profiles": [
       "switches-switch-1",
-      "switches-switch-1-battery",
       "switches-switch-1-power-energy-voltage-current-apiu",
       "switches-switch-1-power-voltage-current-mg-zg01w",
       "switches-switch-1-temp-humidity",
@@ -387,7 +386,7 @@
       "switches-switch-6-power-voltage-current",
       "switches-switch-8"
     ],
-    "fingerprints": 117,
+    "fingerprints": 111,
     "custom_capabilities": {
       "numeric": 89,
       "enum": 126,
@@ -396,7 +395,7 @@
   },
   {
     "name": "ef00-switch-panel-wonjj6768",
-    "raw_size": 478691,
+    "raw_size": 478369,
     "under_limit": true,
     "profiles": [
       "switches-eyzee-5gang-countdown",

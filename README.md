@@ -48,7 +48,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 95 |
 | EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 153 |
 | EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 38 |
-| EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 117 |
+| EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 111 |
 | EF00 Thermostat FCU wonjj6768 | `ef00-thermostat-fcu-wonjj6768` | 39 |
 | EF00 Thermostat TRV 1 wonjj6768 | `ef00-thermostat-trv-1-wonjj6768` | 61 |
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
@@ -1068,18 +1068,13 @@ Development driver; report issues with hub logcat. Supports EF00 touch panel and
 </details>
 
 <details>
-<summary>EF00 Switch wonjj6768 (117 fingerprints)</summary>
+<summary>EF00 Switch wonjj6768 (111 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 relay switches and plugs.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
 | `_TZ3000_uim07oem` | `TS0601` | `switches-switch-4` |
-| `_TZ3210_7vgttna6` | `TS0001` | `switches-switch-1-battery` |
-| `_TZ3210_a04acm9s` | `TS0001` | `switches-switch-1-battery` |
-| `_TZ3210_cm9mbpr1` | `TS0001` | `switches-switch-1-battery` |
-| `_TZ3210_dse8ogfy` | `TS0001` | `switches-switch-1-battery` |
-| `_TZ3210_j4pdtz9v` | `TS0001` | `switches-switch-1-battery` |
 | `_TZ3218_7fiyo3kv` | `TS000F` | `switches-switch-1-temp-humidity` |
 | `_TZ3218_ya5d6wth` | `TS000F` | `switches-switch-4-temp-humidity` |
 | `_TZE200_1n2kyphz` | `TS0601` | `switches-switch-4` |
@@ -1174,7 +1169,6 @@ Development driver; report issues with hub logcat. Supports EF00 relay switches 
 | `_TZE284_vmcgja59` | `TS0601` | `switches-switch-24` |
 | `_TZE284_xnwxmj8z` | `TS0601` | `switches-switch-1-power-voltage-current-mg-zg01w` |
 | `_TZE284_zeldawjv` | `TS0601` | `switches-switch-6` |
-| `Adaprox` | `TS0001_fingerbot_1` | `switches-switch-1-battery` |
 | `AVATTO` | `WSMD-4` | `switches-switch-4` |
 | `AVATTO` | `ZGB-WS-EU` | `switches-switch-1` |
 | `AVATTO` | `ZWSMD-4` | `switches-switch-4` |

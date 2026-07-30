@@ -281,12 +281,19 @@ register_device_definition(switch_model_mg_gpo04zslp, device_helpers.create_fing
 }))
 
 -- ══════════════════════════════════════════════════════════════
--- 1-1b. switch_1gang_battery: Fingerbot Plus
--- Z2M: TS0001_fingerbot
+-- 1-1b. switch_1gang_battery: battery-powered single-gang ZCL switch
 -- NOTE:
+--   - Currently registered to no fingerprint, so it is inert at runtime. The
+--     definition is kept because whether this project should claim Fingerbot
+--     hardware at all is still an open decision.
 --   - Switch/battery are standard ZCL.
---   - EF00 option DPs (mode/lower/upper/delay/reverse/touch) are intentionally
---     deferred until we add a dedicated profile/capability surface.
+--   - Fingerbot pairs (_TZ3210_dse8ogfy, _TZ3210_j4pdtz9v, _TZ3210_cm9mbpr1,
+--     _TZ3210_a04acm9s, _TZ3210_7vgttna6, Adaprox/TS0001_fingerbot_1) used to be
+--     registered here. A separate long-standing driver, `tuya-fingerbot-v3`,
+--     already implements the full Z2M contract for those devices (mode, movement
+--     limits, sustain time, reverse, touch). Registering the same pairs here only
+--     made the two drivers compete while exposing switch/battery alone, so they
+--     are no longer claimed by this project.
 -- ══════════════════════════════════════════════════════════════
 local switch_1gang_battery = {
   profile = "switches-switch-1-battery",
@@ -295,18 +302,6 @@ local switch_1gang_battery = {
     zcl.battery(),
   },
 }
-
-register_device_definition(switch_1gang_battery, device_helpers.create_fingerprints("TS0001", {
-  "_TZ3210_dse8ogfy",
-  "_TZ3210_j4pdtz9v",
-  "_TZ3210_7vgttna6",
-  "_TZ3210_a04acm9s",
-  "_TZ3210_cm9mbpr1",
-}))
-
-register_device_definition(switch_1gang_battery, {
-  device_helpers.create_fingerprint("Adaprox", "TS0001_fingerbot_1"),
-})
 
 -- ══════════════════════════════════════════════════════════════
 -- 1-1c. switch_1gang_temperature_humidity: 1구 + 온습도

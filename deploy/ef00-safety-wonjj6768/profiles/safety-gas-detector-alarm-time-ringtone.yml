@@ -4,7 +4,15 @@ components:
     capabilities:
       - id: gasDetector
         version: 1
+      - id: concertmirror08464.gasSensor2GasValue
+        version: 1
       - id: concertmirror08464.selfTestGas
+        version: 1
+      - id: concertmirror08464.gasSensor2SelfTestResult
+        version: 1
+      - id: concertmirror08464.gasSensor2Preheat
+        version: 1
+      - id: concertmirror08464.gasSensor2Silence
         version: 1
       - id: concertmirror08464.alarmDurationGas180
         version: 1
@@ -30,7 +38,19 @@ deviceConfig:
       capability: gasDetector
       version: 1
     - component: main
+      capability: concertmirror08464.gasSensor2GasValue
+      version: 1
+    - component: main
       capability: concertmirror08464.selfTestGas
+      version: 1
+    - component: main
+      capability: concertmirror08464.gasSensor2SelfTestResult
+      version: 1
+    - component: main
+      capability: concertmirror08464.gasSensor2Preheat
+      version: 1
+    - component: main
+      capability: concertmirror08464.gasSensor2Silence
       version: 1
     - component: main
       capability: concertmirror08464.alarmDurationGas180
@@ -47,7 +67,19 @@ deviceConfig:
         capability: gasDetector
         version: 1
       - component: main
+        capability: concertmirror08464.gasSensor2GasValue
+        version: 1
+      - component: main
         capability: concertmirror08464.selfTestGas
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor2SelfTestResult
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor2Preheat
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor2Silence
         version: 1
       - component: main
         capability: concertmirror08464.alarmDurationGas180
@@ -58,6 +90,9 @@ deviceConfig:
     actions:
       - component: main
         capability: concertmirror08464.selfTestGas
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor2Silence
         version: 1
       - component: main
         capability: concertmirror08464.alarmDurationGas180

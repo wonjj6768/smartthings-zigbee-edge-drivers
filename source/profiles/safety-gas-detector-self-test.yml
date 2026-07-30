@@ -6,6 +6,12 @@ components:
         version: 1
       - id: concertmirror08464.selfTestGas
         version: 1
+      - id: concertmirror08464.gasSensor1SelfTestResult
+        version: 1
+      - id: concertmirror08464.gasSensor1FaultAlarm
+        version: 1
+      - id: concertmirror08464.gasSensor1Silence
+        version: 1
       - id: firmwareUpdate
         version: 1
       - id: refresh
@@ -29,6 +35,15 @@ deviceConfig:
       capability: concertmirror08464.selfTestGas
       version: 1
     - component: main
+      capability: concertmirror08464.gasSensor1SelfTestResult
+      version: 1
+    - component: main
+      capability: concertmirror08464.gasSensor1FaultAlarm
+      version: 1
+    - component: main
+      capability: concertmirror08464.gasSensor1Silence
+      version: 1
+    - component: main
       capability: refresh
       version: 1
   automation:
@@ -39,7 +54,19 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.selfTestGas
         version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor1SelfTestResult
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor1FaultAlarm
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor1Silence
+        version: 1
     actions:
       - component: main
         capability: concertmirror08464.selfTestGas
+        version: 1
+      - component: main
+        capability: concertmirror08464.gasSensor1Silence
         version: 1

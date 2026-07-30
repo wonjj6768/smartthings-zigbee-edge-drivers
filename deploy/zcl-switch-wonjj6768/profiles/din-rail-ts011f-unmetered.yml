@@ -1,0 +1,10 @@
+name: din-rail-ts011f-unmetered
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ts011fDinIndicatorMode, version: 1}
+      - {id: concertmirror08464.powerOutageMemory, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

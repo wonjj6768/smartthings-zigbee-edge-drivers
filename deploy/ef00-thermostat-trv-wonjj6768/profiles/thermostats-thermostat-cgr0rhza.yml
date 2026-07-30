@@ -1,0 +1,210 @@
+name: thermostats-thermostat-cgr0rhza
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.cgr0Preset
+        version: 1
+      - id: concertmirror08464.cgr0ChildLock
+        version: 1
+      - id: concertmirror08464.cgr0WindowDetection
+        version: 1
+      - id: concertmirror08464.cgr0OpenWindow
+        version: 1
+      - id: concertmirror08464.cgr0FrostProtection
+        version: 1
+      - id: concertmirror08464.cgr0ScaleProtection
+        version: 1
+      - id: concertmirror08464.cgr0ValveState
+        version: 1
+      - id: concertmirror08464.cgr0ComfortTemperature
+        version: 1
+      - id: concertmirror08464.cgr0EcoTemperature
+        version: 1
+      - id: concertmirror08464.cgr0HolidayTemperature
+        version: 1
+      - id: concertmirror08464.cgr0TempCalibration
+        version: 1
+      - id: concertmirror08464.cgr0BoostHeating
+        version: 1
+      - id: concertmirror08464.cgr0BoostTime
+        version: 1
+      - id: concertmirror08464.cgr0FaultAlarm
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0Preset
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0ChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0WindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0OpenWindow
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0FrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0ScaleProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0ValveState
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0ComfortTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0EcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0HolidayTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0TempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0BoostHeating
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0BoostTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.cgr0FaultAlarm
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0WindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0OpenWindow
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ScaleProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ValveState
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0EcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0HolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0BoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0BoostTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0FaultAlarm
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0WindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0OpenWindow
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ScaleProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0ComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0EcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0HolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0BoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.cgr0BoostTime
+        version: 1

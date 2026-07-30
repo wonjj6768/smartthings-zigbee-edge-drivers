@@ -6,11 +6,17 @@ components:
         version: 1
       - id: relativeHumidityMeasurement
         version: 1
+      - id: illuminanceMeasurement
+        version: 1
       - id: concertmirror08464.soilMoisture
         version: 1
       - id: battery
         version: 1
+      - id: concertmirror08464.zs301BatteryState
+        version: 1
       - id: concertmirror08464.humidityCalibrationZs301z
+        version: 1
+      - id: concertmirror08464.zs301ReportInterval
         version: 1
       - id: refresh
         version: 1

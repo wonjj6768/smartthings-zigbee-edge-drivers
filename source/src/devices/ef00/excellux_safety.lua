@@ -18,39 +18,49 @@ local warning_converter = converter.from_only(converter.lookup_value({
 }))
 
 local motion_vibration_illuminance = {
-  profile = "safety-motion-vibration-illuminance-battery",
+  profile = "safety-motion-vibration-illuminance-battery-excellux",
   datapoints = {
     tuya.dp_enum(1, { name = "motion", emit = emit.motion(), converter = bool_enum_converter }),
     tuya.dp_binary(3, { name = "vibration", emit = emit.acceleration() }),
     tuya.dp_battery(4, { emit = emit.battery() }),
-    tuya.dp_numeric(6, { name = "vibration_sensitivity" }),
+    tuya.dp_numeric(6, { name = "vibration_sensitivity", emit = emit.excelluxPirVibrationSensitivity() }),
     tuya.dp_illuminance(20, { emit = emit.illuminance() }),
-    tuya.dp_numeric(101, { name = "sampling_interval" }),
-    tuya.dp_illuminance(104, { name = "illuminance_v0" }),
-    tuya.dp_illuminance(105, { name = "illuminance_v1" }),
-    tuya.dp_numeric(106, { name = "illuminance_calibration", signed = true }),
-    tuya.dp_enum(107, { name = "illuminance_warning", converter = warning_converter }),
+    tuya.dp_numeric(50, { name = "vibration_count", emit = emit.excelluxPirVibrationCount(), read_only = true }),
+    tuya.dp_numeric(101, { name = "sampling_interval", emit = emit.excelluxPirSamplingInterval() }),
+    tuya.dp_illuminance(104, { name = "illuminance_v0", emit = emit.excelluxPirIlluminanceV0() }),
+    tuya.dp_illuminance(105, { name = "illuminance_v1", emit = emit.excelluxPirIlluminanceV1() }),
+    tuya.dp_numeric(106, {
+      name = "illuminance_calibration",
+      emit = emit.excelluxPirIlluminanceCalibration(),
+      signed = true,
+    }),
+    tuya.dp_enum(107, {
+      name = "illuminance_warning",
+      emit = emit.excelluxPirIlluminanceWarning(),
+      read_only = true,
+      converter = warning_converter,
+    }),
   },
   query_on_configure = true,
 }
 
 local contact_vibration = {
-  profile = "safety-vibration-battery",
+  profile = "safety-contact-vibration-battery-excellux",
   datapoints = {
     tuya.dp_binary(3, { name = "vibration", emit = emit.acceleration() }),
     tuya.dp_battery(4, { emit = emit.battery() }),
-    tuya.dp_numeric(6, { name = "vibration_sensitivity" }),
+    tuya.dp_numeric(6, { name = "vibration_sensitivity", emit = emit.excelluxCatVibrationSensitivity() }),
     tuya.dp_contact(7, { emit = emit.contact(), converter = converter.invert_bool_pair() }),
   },
   query_on_configure = true,
 }
 
 local vibration = {
-  profile = "safety-acceleration-battery",
+  profile = "safety-vibration-battery-excellux",
   datapoints = {
     tuya.dp_binary(3, { name = "vibration", emit = emit.acceleration() }),
     tuya.dp_battery(4, { emit = emit.battery() }),
-    tuya.dp_numeric(6, { name = "vibration_sensitivity" }),
+    tuya.dp_numeric(6, { name = "vibration_sensitivity", emit = emit.excelluxVibrateSensitivity() }),
   },
   query_on_configure = true,
 }

@@ -6,11 +6,23 @@ components:
         version: 1
       - id: temperatureMeasurement
         version: 1
-      - id: concertmirror08464.waterConsumedUltrasonicLiters
+      - id: concertmirror08464.vuwtqx0tWaterConsumed
+        version: 1
+      - id: concertmirror08464.vuwtqx0tReverseConsumed
+        version: 1
+      - id: concertmirror08464.vuwtqx0tMonthConsumption
+        version: 1
+      - id: concertmirror08464.vuwtqx0tDailyConsumption
+        version: 1
+      - id: concertmirror08464.vuwtqx0tFlowRate
+        version: 1
+      - id: concertmirror08464.vuwtqx0tReportPeriod
+        version: 1
+      - id: concertmirror08464.vuwtqx0tFaults
         version: 1
       - id: concertmirror08464.autoCleanUltrasonicValve
         version: 1
-      - id: concertmirror08464.meterId
+      - id: concertmirror08464.vuwtqx0tMeterId
         version: 1
       - id: concertmirror08464.batteryVoltage
         version: 1
@@ -43,13 +55,31 @@ deviceConfig:
       capability: temperatureMeasurement
       version: 1
     - component: main
-      capability: concertmirror08464.waterConsumedUltrasonicLiters
+      capability: concertmirror08464.vuwtqx0tWaterConsumed
+      version: 1
+    - component: main
+      capability: concertmirror08464.vuwtqx0tReverseConsumed
+      version: 1
+    - component: main
+      capability: concertmirror08464.vuwtqx0tMonthConsumption
+      version: 1
+    - component: main
+      capability: concertmirror08464.vuwtqx0tDailyConsumption
+      version: 1
+    - component: main
+      capability: concertmirror08464.vuwtqx0tFlowRate
+      version: 1
+    - component: main
+      capability: concertmirror08464.vuwtqx0tReportPeriod
+      version: 1
+    - component: main
+      capability: concertmirror08464.vuwtqx0tFaults
       version: 1
     - component: main
       capability: concertmirror08464.autoCleanUltrasonicValve
       version: 1
     - component: main
-      capability: concertmirror08464.meterId
+      capability: concertmirror08464.vuwtqx0tMeterId
       version: 1
     - component: main
       capability: concertmirror08464.batteryVoltage
@@ -66,13 +96,28 @@ deviceConfig:
         capability: temperatureMeasurement
         version: 1
       - component: main
-        capability: concertmirror08464.waterConsumedUltrasonicLiters
+        capability: concertmirror08464.vuwtqx0tWaterConsumed
+        version: 1
+      - component: main
+        capability: concertmirror08464.vuwtqx0tReverseConsumed
+        version: 1
+      - component: main
+        capability: concertmirror08464.vuwtqx0tMonthConsumption
+        version: 1
+      - component: main
+        capability: concertmirror08464.vuwtqx0tDailyConsumption
+        version: 1
+      - component: main
+        capability: concertmirror08464.vuwtqx0tFlowRate
+        version: 1
+      - component: main
+        capability: concertmirror08464.vuwtqx0tReportPeriod
         version: 1
       - component: main
         capability: concertmirror08464.autoCleanUltrasonicValve
         version: 1
       - component: main
-        capability: concertmirror08464.meterId
+        capability: concertmirror08464.vuwtqx0tMeterId
         version: 1
       - component: main
         capability: concertmirror08464.batteryVoltage
@@ -83,4 +128,7 @@ deviceConfig:
         version: 1
       - component: main
         capability: concertmirror08464.autoCleanUltrasonicValve
+        version: 1
+      - component: main
+        capability: concertmirror08464.vuwtqx0tReportPeriod
         version: 1

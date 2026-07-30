@@ -1,0 +1,194 @@
+name: thermostats-thermostat-tbgecldg
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.tbgePreset
+        version: 1
+      - id: concertmirror08464.tbgeChildLock
+        version: 1
+      - id: concertmirror08464.tbgeBoostHeating
+        version: 1
+      - id: concertmirror08464.tbgeWindowOpen
+        version: 1
+      - id: concertmirror08464.tbgeComfortTemperature
+        version: 1
+      - id: concertmirror08464.tbgeEcoTemperature
+        version: 1
+      - id: concertmirror08464.tbgeHolidayTemperature
+        version: 1
+      - id: concertmirror08464.tbgeAutoTemperature
+        version: 1
+      - id: concertmirror08464.tbgeTempCalibration
+        version: 1
+      - id: concertmirror08464.tbgeOpenWindowTemperature
+        version: 1
+      - id: concertmirror08464.tbgeOpenWindowTime
+        version: 1
+      - id: concertmirror08464.tbgeBoostTime
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgePreset
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeBoostHeating
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeWindowOpen
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeComfortTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeEcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeHolidayTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeAutoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeOpenWindowTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeOpenWindowTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.tbgeBoostTime
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgePreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeBoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeWindowOpen
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeHolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeAutoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeOpenWindowTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeOpenWindowTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeBoostTime
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgePreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeBoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeWindowOpen
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeHolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeAutoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeOpenWindowTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeOpenWindowTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.tbgeBoostTime
+        version: 1

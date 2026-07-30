@@ -1,5 +1,6 @@
 local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
+local device_management = require "st.zigbee.device_management"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -30,10 +31,26 @@ local metered_dimmer_light = {
     zcl.power(),
     zcl.voltage(),
     zcl.current(),
+    zcl.energy(),
   },
+  configure = function(driver, device)
+    for _, cluster_id in ipairs({
+      zcl.CLUSTER_ON_OFF,
+      zcl.CLUSTER_LEVEL_CONTROL,
+      zcl.CLUSTER_ELECTRICAL_MEASUREMENT,
+      zcl.CLUSTER_SIMPLE_METERING,
+    }) do
+      device:send(device_management.build_bind_request(
+        device,
+        cluster_id,
+        driver.environment_info.hub_zigbee_eui,
+        1
+      ))
+    end
+  end,
 }
 local dual_dimmer = {
-  profile = "lights-dimmer-2-options",
+  profile = "lights-dimmer-2",
   zcl_clusters = {},
 }
 for _, cluster in ipairs(zcl.multi_switch(2, { component_prefix = "switch" })) do
@@ -42,12 +59,6 @@ end
 for _, cluster in ipairs(zcl.multi_level(2, { component_prefix = "switch" })) do
   dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = cluster
 end
-dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = zcl.power_on_behavior()
-dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = zcl.switch_type()
-dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = zcl.countdown_timer()
-dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = zcl.min_brightness()
-dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = zcl.max_brightness()
-dual_dimmer.zcl_clusters[#dual_dimmer.zcl_clusters + 1] = zcl.light_type()
 local cct_light = {
   profile = "lights-color-temperature",
   zcl_clusters = {
@@ -79,12 +90,6 @@ local color_cct_light = {
 }
 
 register_aliases(dimmer_light, {
-  device_helpers.create_fingerprint("Tuya", "FS-05R"),
-  device_helpers.create_fingerprint("Ledron", "YK-16"),
-  device_helpers.create_fingerprint("Ledron", "QS-Zigbee-D06-DC"),
-})
-
-register_aliases(dimmer_light, {
   device_helpers.create_fingerprint("Candeo", "C203"),
   device_helpers.create_fingerprint("Candeo", "C204"),
   device_helpers.create_fingerprint("Candeo", "C210"),
@@ -102,14 +107,6 @@ register_aliases(dimmer_light, {
 })
 
 register_aliases(dimmer_light, {
-  device_helpers.create_fingerprint("EGLO", "12229"),
-})
-
-register_aliases(dimmer_light, {
-  device_helpers.create_fingerprint("Gledopto", "GL-C-009P_mini"),
-})
-
-register_aliases(dimmer_light, {
   device_helpers.create_fingerprint("Paulmann Licht GmbH", "Dimmable"),
   device_helpers.create_fingerprint("Paulmann lamp", "Dimmable Light"),
 })
@@ -120,35 +117,22 @@ register_aliases(dimmer_light, {
 
 register_aliases(dimmer_light, {
   device_helpers.create_fingerprint("Namron", "4512751"),
-  device_helpers.create_fingerprint("Samotech", "SM311"),
-  device_helpers.create_fingerprint("Schneider Electric", "550B1012"),
   device_helpers.create_fingerprint("Sunricher", "SR-ZG9040A-S"),
-  device_helpers.create_fingerprint("YPHIX", "50208695"),
-  device_helpers.create_fingerprint("Yphix", "50208702"),
 })
 
 register_aliases(dimmer_light, {
   device_helpers.create_fingerprint("CTM Lyng", "CTM_DimmerPille"),
-  device_helpers.create_fingerprint("Iluminize", "511.344"),
-  device_helpers.create_fingerprint("L&S Lighting", "756200028"),
-  device_helpers.create_fingerprint("L&S Lighting", "756200031"),
-  device_helpers.create_fingerprint("LED-Trading", "9125"),
-  device_helpers.create_fingerprint("LongLife LED", "3986"),
   device_helpers.create_fingerprint("Paulmann", "984.43"),
   device_helpers.create_fingerprint("Philips", "929003711301"),
   device_helpers.create_fingerprint("Philips", "929003711401"),
-  device_helpers.create_fingerprint("Sunricher", "SR-ZG2835"),
-  device_helpers.create_fingerprint("Sunricher", "SR-ZG9040A"),
+})
+
+register_aliases(metered_dimmer_light, {
+  device_helpers.create_fingerprint("Candeo", "C-ZB-RD1P-DPM"),
 })
 
 register_aliases(dual_dimmer, {
-  device_helpers.create_fingerprint("OXT", "SWTZ25"),
-  device_helpers.create_fingerprint("Candeo", "C-ZB-RD1P-DPM"),
   device_helpers.create_fingerprint("Sunricher", "DIM"),
-})
-
-register_aliases(cct_light, {
-  device_helpers.create_fingerprint("Tuya", "L1(ZW)"),
 })
 
 register_aliases(cct_light, {
@@ -179,36 +163,13 @@ register_aliases(cct_light, {
 })
 
 register_aliases(cct_light, {
-  device_helpers.create_fingerprint("EGLO", "12239"),
-  device_helpers.create_fingerprint("EGLO", "900053"),
-  device_helpers.create_fingerprint("EGLO", "900316"),
-  device_helpers.create_fingerprint("EGLO", "900317"),
-})
-
-register_aliases(cct_light, {
-  device_helpers.create_fingerprint("Gledopto", "GL-C-003P_1"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-006P_mini"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-203P"),
-})
-
-register_aliases(cct_light, {
   device_helpers.create_fingerprint("DOMRAEM", "WW/CW"),
   device_helpers.create_fingerprint("LDS", "ZBT-CCTLight-GU100904"),
-  device_helpers.create_fingerprint("Ltech", "TY-75-24-G2Z2_CCT"),
   device_helpers.create_fingerprint("_TZ3210_6pwpez2j", "TS0502C"),
 })
 
 register_aliases(cct_light, {
   device_helpers.create_fingerprint("Paulmann Licht GmbH", "CCT"),
-})
-
-register_aliases(color_cct_light, {
-  device_helpers.create_fingerprint("Moes", "ZLD-RCW_1"),
-  device_helpers.create_fingerprint("Lidl", "HG08673-BS"),
-  device_helpers.create_fingerprint("TechToy", "_TZ3210_iw0zkcu8"),
-  device_helpers.create_fingerprint("Skydance", "WZ5_dim_2"),
-  device_helpers.create_fingerprint("QA", "QADZC5"),
-  device_helpers.create_fingerprint("LEDEPLY", "SG45-E26"),
 })
 
 register_aliases(color_cct_light, {
@@ -255,15 +216,6 @@ register_aliases(color_cct_light, {
   device_helpers.create_fingerprint("MLI", "Ceiling light"),
   device_helpers.create_fingerprint("MLI", "Desk lamp"),
   device_helpers.create_fingerprint("MLI", "GU10 white+color"),
-})
-
-register_aliases(color_cct_light, {
-  device_helpers.create_fingerprint("Müller Licht", "404115"),
-  device_helpers.create_fingerprint("Müller Licht", "404116"),
-  device_helpers.create_fingerprint("Müller Licht", "404117"),
-  device_helpers.create_fingerprint("Müller Licht", "404135"),
-  device_helpers.create_fingerprint("Müller Licht", "404136"),
-  device_helpers.create_fingerprint("Müller Licht", "404137"),
 })
 
 register_aliases(color_cct_light, {
@@ -417,29 +369,11 @@ register_aliases(color_cct_light, create_model_fingerprints("OSRAM", {
 
 register_aliases(color_cct_light, {
   device_helpers.create_fingerprint("DOMRAEM", "RGBWC"),
-  device_helpers.create_fingerprint("EGLO", "900116"),
   device_helpers.create_fingerprint("Letsleds China", "RGBW Down Light"),
   device_helpers.create_fingerprint("Light", "01F"),
-  device_helpers.create_fingerprint("Ltech", "SE-20-250-1000-W2Z2"),
   device_helpers.create_fingerprint("Seastar Intelligence", "07073L"),
   device_helpers.create_fingerprint("eWeLight", "ZB-CL02"),
   device_helpers.create_fingerprint("eWeLink", "Z102LG03-1"),
-})
-
-register_aliases(color_cct_light, {
-  device_helpers.create_fingerprint("EGLO", "900566"),
-})
-
-register_aliases(color_cct_light, {
-  device_helpers.create_fingerprint("Gledopto", "GL-C-001P"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-002P"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-007P_mini"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-008P_mini"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-011P"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-201P"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-202P"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-204P"),
-  device_helpers.create_fingerprint("Gledopto", "GL-C-301P"),
 })
 
 register_aliases(color_cct_light, {
@@ -449,7 +383,6 @@ register_aliases(color_cct_light, {
 register_aliases(color_cct_light, {
   device_helpers.create_fingerprint("Iluminize", "RGBW-CCT"),
   device_helpers.create_fingerprint("Iluminize", "RGBWW Lighting"),
-  device_helpers.create_fingerprint("Sunricher", "HK-ZD-RGBCCT-A"),
 })
 
 register_aliases(cct_light, {

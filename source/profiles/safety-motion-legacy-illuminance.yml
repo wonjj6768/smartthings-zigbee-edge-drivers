@@ -4,11 +4,27 @@ components:
     capabilities:
       - id: motionSensor
         version: 1
+      - id: concertmirror08464.auin8mzrVSensitivity
+        version: 1
+      - id: concertmirror08464.auin8mzrOSensitivity
+        version: 1
+      - id: concertmirror08464.auin8mzrVacancyDelay
+        version: 1
+      - id: concertmirror08464.auin8mzrMode
+        version: 1
+      - id: concertmirror08464.auin8mzrVacantConfirmTime
+        version: 1
+      - id: concertmirror08464.auin8mzrReferenceLuminance
+        version: 1
+      - id: concertmirror08464.auin8mzrLightOnLuminance
+        version: 1
+      - id: concertmirror08464.auin8mzrLightOffLuminance
+        version: 1
+      - id: concertmirror08464.auin8mzrLuminanceLevel
+        version: 1
+      - id: concertmirror08464.auin8mzrLedStatus
+        version: 1
       - id: concertmirror08464.driverMessage
-        version: 1
-      - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -28,10 +44,37 @@ deviceConfig:
       capability: motionSensor
       version: 1
     - component: main
-      capability: concertmirror08464.driverMessage
+      capability: concertmirror08464.auin8mzrVSensitivity
       version: 1
     - component: main
-      capability: illuminanceMeasurement
+      capability: concertmirror08464.auin8mzrOSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrVacancyDelay
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrVacantConfirmTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrReferenceLuminance
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrLightOnLuminance
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrLightOffLuminance
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrLuminanceLevel
+      version: 1
+    - component: main
+      capability: concertmirror08464.auin8mzrLedStatus
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
       version: 1
     - component: main
       capability: refresh
@@ -42,6 +85,54 @@ deviceConfig:
         capability: motionSensor
         version: 1
       - component: main
-        capability: illuminanceMeasurement
+        capability: concertmirror08464.auin8mzrVSensitivity
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.auin8mzrOSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrVacancyDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrVacantConfirmTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrReferenceLuminance
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLightOnLuminance
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLightOffLuminance
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLuminanceLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLedStatus
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.auin8mzrVSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrOSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrVacancyDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLightOnLuminance
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLightOffLuminance
+        version: 1
+      - component: main
+        capability: concertmirror08464.auin8mzrLedStatus
+        version: 1

@@ -102,7 +102,7 @@ component = "switch3",
 }),
 }
 local cover_switch_2_touch_panel = {
-profile = "covers-cover-switch-2",
+profile = "covers-cover-switch-2-trwaxi57",
 datapoints = {
 tuya.dp_enum(1, {
 name = "cover_state",
@@ -118,20 +118,30 @@ read_only = true,
 }),
 tuya.dp_enum(3, {
 name = "calibration",
+emit = emit.trwaxi57Calibration(),
 converter = converter.lookup_from_to({
-START = 0,
-END = 1,
+start = 0,
+["end"] = 1,
 }),
-}),                                                                 -- profile 미포함
-tuya.dp_backlight_mode_off_on(7, {}),                                -- profile 미포함
+}),
+tuya.dp_backlight_mode_off_on(7, {
+name = "backlight_mode",
+emit = emit.trwaxi57Backlight(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
 tuya.dp_enum(8, {
 name = "motor_steering",
+emit = emit.trwaxi57MotorSteering(),
 converter = converter.lookup_from_to({
-FORWARD = 0,
-BACKWARD = 1,
+forward = 0,
+backward = 1,
 }),
-}),                                                                 -- profile 미포함
-tuya.dp_child_lock(102, { name = "child_lock" }),                    -- profile 미포함
+}),
+tuya.dp_child_lock(102, {
+name = "child_lock",
+emit = emit.trwaxi57ChildLock(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
 tuya.dp_on_off(108, { name = "switch", component = "switch2" }),
 tuya.dp_on_off(107, { name = "switch", component = "switch3" }),
 },
@@ -207,8 +217,47 @@ converter = window_shade_state_from_position(),
 read_only = true,
 }),
 }
-local cover_model_zsm01 = {
+local ts130f_xbexmf8h = {
 profile = "covers-cover",
+datapoints = {
+tuya.dp_enum(1, {
+name = "cover_state",
+converter = cover_state_standard,
+write_only = true,
+}),
+tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+tuya.dp_numeric(2, {
+name = "window_shade_state",
+emit = emit.shade_state(),
+converter = window_shade_state_from_position(),
+read_only = true,
+}),
+tuya.dp_enum(3, {
+name = "calibration",
+converter = converter.lookup_from_to({ on = 0, off = 1 }),
+}),
+tuya.dp_enum(8, {
+name = "motor_reversal",
+converter = converter.lookup_from_to({ on = 1, off = 0 }),
+}),
+tuya.dp_numeric(10, {
+name = "calibration_time",
+scale = 10,
+read_only = true,
+}),
+tuya.dp_enum(12, {
+name = "switch_type",
+converter = converter.lookup_from_to({ momentary = 0, toggle = 1 }),
+}),
+tuya.dp_enum(14, {
+name = "backlight_mode",
+converter = converter.lookup_from_to({ on = 0, off = 1 }),
+}),
+},
+query_on_configure = true,
+}
+local cover_model_zsm01 = {
+profile = "covers-cover-zsm01",
 tuya.dp_enum(1, {
 name = "cover_state",
 converter = cover_state_standard,
@@ -226,9 +275,20 @@ emit = emit.shade_state(),
 converter = window_shade_state_from_position(),
 read_only = true,
 }),
-tuya.dp_enum(11, { name = "control_back_mode" }),                       -- profile 미포함
-tuya.dp_cover_position(19, { name = "position_best" }),                  -- profile 미포함
-tuya.dp_enum(20, { name = "click_control" }),                            -- profile 미포함
+tuya.dp_enum(11, {
+name = "control_back_mode",
+emit = emit.zsm01ControlBackMode(),
+converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+}),
+tuya.dp_numeric(19, {
+name = "position_best",
+emit = emit.zsm01PositionBest(),
+}),
+tuya.dp_enum(20, {
+name = "click_control",
+emit = emit.zsm01ClickControl(),
+converter = converter.lookup_from_to({ up = 0, down = 1 }),
+}),
 }
 local cover_core_alt_controls = {
 tuya.dp_enum(1, {
@@ -258,20 +318,61 @@ emit = emit.shade_state(),
 converter = window_shade_state_from_position(),
 read_only = true,
 }),
-tuya.dp_numeric(3, { name = "arrived_position" }),                      -- profile 미포함
+tuya.dp_numeric(3, { name = "arrived_position" }),
 tuya.dp_enum(5, {
 name = "motor_direction",
 emit = emit.motorDirectionZbSmNormalRev(),
 converter = converter.lookup_from_to({ normal = 0, reversed = 1 }),
 }),
-tuya.dp_numeric(10, { name = "cycle_time" }),                           -- profile 미포함
-tuya.dp_enum(101, { name = "motor_type" }),                             -- profile 미포함
-tuya.dp_numeric(102, { name = "cycle_count" }),                         -- profile 미포함
-tuya.dp_enum(103, { name = "bottom_limit" }),                           -- profile 미포함
-tuya.dp_enum(104, { name = "top_limit" }),                              -- profile 미포함
-tuya.dp_numeric(109, { name = "active_power" }),                        -- profile 미포함
+tuya.dp_numeric(10, {
+name = "cycle_time",
+read_only = true,
+emit = emit.zbSmCycleTime(),
+}),
+tuya.dp_enum(101, {
+name = "motor_type",
+read_only = true,
+emit = emit.zbSmMotorType(),
+converter = converter.from_only(converter.lookup_value({
+[0] = "",
+[1] = "AM0/6-28R-Sm",
+[2] = "AM0/10-19R-Sm",
+[3] = "AM1/10-13R-Sm",
+[4] = "AM1/20-13R-Sm",
+[5] = "AM1/30-13R-Sm",
+})),
+}),
+tuya.dp_numeric(102, {
+name = "cycle_count",
+read_only = true,
+emit = emit.zbSmCycleCount(),
+}),
+tuya.dp_enum(103, {
+name = "bottom_limit",
+emit = emit.zbSmBottomLimit(),
+converter = converter.lookup_from_to({ set = 0, clear = 1 }),
+}),
+tuya.dp_enum(104, {
+name = "top_limit",
+emit = emit.zbSmTopLimit(),
+converter = converter.lookup_from_to({ set = 0, clear = 1 }),
+}),
+tuya.dp_numeric(109, {
+name = "active_power",
+read_only = true,
+emit = emit.zbSmActivePower(),
+}),
 tuya.dp_cover_position(115, { name = "favorite_position", emit = emit.favoritePositionZbSm() }),
-tuya.dp_enum(121, { name = "motor_state" }),                            -- profile 미포함
+tuya.dp_enum(121, {
+name = "motor_state",
+read_only = true,
+emit = emit.zbSmMotorState(),
+converter = converter.from_only(converter.lookup_value({
+[0] = "opening",
+[1] = "stopped",
+[2] = "closing",
+})),
+}),
 }
 local cover_core_reversed = {
 tuya.dp_enum(1, {
@@ -328,10 +429,26 @@ emit = emit.shade_state(),
 converter = window_shade_state_from_position(),
 read_only = true,
 }),
-tuya.dp_cover_position_inverted(3, { name = "position_inverted" }),      -- profile 미포함
-tuya.dp_enum(4, { name = "mode" }),                                      -- profile 미포함
-tuya.dp_enum(5, { name = "control_back" }),                              -- profile 미포함
-tuya.dp_binary(6, { name = "auto_power" }),                              -- profile 미포함
+tuya.dp_cover_position_inverted(3, { name = "position_inverted" }),
+tuya.dp_enum(4, {
+name = "mode",
+emit = emit.pims3028Mode(),
+converter = converter.lookup_from_to({
+up = 0,
+up_delete = 1,
+remove_up_down = 2,
+}),
+}),
+tuya.dp_enum(5, {
+name = "control_back",
+emit = emit.pims3028ControlBack(),
+converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+}),
+tuya.dp_binary(6, {
+name = "auto_power",
+emit = emit.pims3028AutoPower(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
 tuya.dp_enum(7, {
 name = "work_state",
 emit = emit.coverWorkPimsActual(),
@@ -341,12 +458,44 @@ converter = converter.from_only(converter.lookup_value({
 [2] = "value_123",
 })),
 }),
-tuya.dp_numeric(10, { name = "time_total" }),                            -- profile 미포함
-tuya.dp_enum(11, { name = "situation_set" }),                            -- profile 미포함
-tuya.dp_binary(12, { name = "fault" }),                                  -- profile 미포함
-tuya.dp_enum(16, { name = "border" }),                                   -- profile 미포함
-tuya.dp_cover_position(19, { name = "position_best" }),                  -- profile 미포함
-tuya.dp_numeric(21, { name = "angle_horizontal" }),                      -- profile 미포함
+tuya.dp_numeric(10, {
+name = "time_total",
+read_only = true,
+emit = emit.pims3028TimeTotal(),
+}),
+tuya.dp_enum(11, {
+name = "situation_set",
+read_only = true,
+emit = emit.pims3028SituationSet(),
+converter = converter.from_only(converter.lookup_value({
+[0] = "fully_open",
+[1] = "fully_close",
+})),
+}),
+tuya.dp_binary(12, {
+name = "fault",
+read_only = true,
+emit = emit.pims3028Fault(),
+converter = converter.from_only(function(value)
+return value and "fault" or "normal"
+end),
+}),
+tuya.dp_enum(16, {
+name = "border",
+emit = emit.pims3028Border(),
+converter = converter.lookup_from_to({
+down_delete = 0,
+remove_top_bottom = 1,
+}),
+}),
+tuya.dp_numeric(19, {
+name = "position_best",
+emit = emit.pims3028PositionBest(),
+}),
+tuya.dp_numeric(21, {
+name = "angle_horizontal",
+emit = emit.pims3028AngleHorizontal(),
+}),
 tuya.dp_enum(101, {
 name = "calibration",
 emit = emit.coverCalibrationPims3028StartEnd(),
@@ -355,9 +504,20 @@ start = 0,
 ["end"] = 1,
 }),
 }),
-tuya.dp_numeric(102, { name = "quick_calibration" }),                    -- profile 미포함
-tuya.dp_binary(103, { name = "best_position_trigger" }),                 -- profile 미포함
-tuya.dp_enum(104, { name = "reset" }),                                   -- profile 미포함
+tuya.dp_numeric(102, {
+name = "quick_calibration",
+emit = emit.pims3028QuickCalibration(),
+}),
+tuya.dp_binary(103, {
+name = "best_position_trigger",
+emit = emit.pims3028BestTrigger(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
+tuya.dp_enum(104, {
+name = "reset",
+emit = emit.pims3028Reset(),
+converter = converter.lookup_from_to({ reset = 0 }),
+}),
 }
 local cover_rm28_le = {
 profile = "covers-cover-battery-rm28-le",
@@ -374,13 +534,23 @@ converter = window_shade_state_from_position(),
 read_only = true,
 }),
 tuya.dp_numeric(3, { name = "position_report", emit = emit.coverPositionReportRm28Le() }),
+tuya.dp_enum(4, {
+name = "mode",
+emit = emit.rm28leMode(),
+converter = converter.lookup_from_to({ morning = 0, night = 1 }),
+}),
 tuya.dp_enum(5, {
 name = "reverse_direction",
 converter = converter.lookup_from_to({
 forward = 0,
 back = 1,
 }),
-}),                                                                       -- profile 미포함
+}),
+tuya.dp_binary(6, {
+name = "auto_power",
+emit = emit.rm28leAutoPower(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
 tuya.dp_enum(7, {
 name = "work_state",
 emit = emit.coverWorkRmOpeningClosing(),
@@ -389,10 +559,65 @@ converter = converter.from_only(converter.lookup_value({
 [1] = "opening",
 })),
 }),
-tuya.dp_binary(12, { name = "motor_fault" }),                            -- profile 미포함
+tuya.dp_enum(8, {
+name = "countdown",
+emit = emit.rm28leCountdown(),
+converter = converter.lookup_from_to({
+cancel = 0,
+["1h"] = 1,
+["2h"] = 2,
+["3h"] = 3,
+["4h"] = 4,
+}),
+}),
+tuya.dp_numeric(9, {
+name = "countdown_left",
+read_only = true,
+emit = emit.rm28leCountdownLeft(),
+}),
+tuya.dp_numeric(10, {
+name = "time_total",
+read_only = true,
+emit = emit.rm28leTimeTotal(),
+}),
+tuya.dp_enum(11, {
+name = "situation_set",
+read_only = true,
+emit = emit.rm28leSituationSet(),
+converter = converter.from_only(converter.lookup_value({
+[0] = "fully_open",
+[1] = "fully_close",
+})),
+}),
+tuya.dp_numeric(12, {
+name = "motor_fault",
+read_only = true,
+emit = emit.rm28leMotorFault(),
+converter = converter.from_only(function(value)
+return (tonumber(value) or 0) ~= 0 and "fault" or "normal"
+end),
+}),
 tuya.dp_battery(13, { emit = emit.battery() }),
-tuya.dp_enum(16, { name = "border" }),                                   -- profile 미포함
-tuya.dp_enum(20, { name = "click_control" }),                            -- profile 미포함
+tuya.dp_enum(16, {
+name = "border",
+emit = emit.rm28leBorder(),
+converter = converter.lookup_from_to({
+up = 0,
+down = 1,
+up_delete = 2,
+down_delete = 3,
+remove_top_bottom = 4,
+}),
+}),
+tuya.dp_numeric(19, {
+name = "position_best",
+emit = emit.rm28lePositionBest(),
+}),
+tuya.dp_enum(20, {
+name = "click_control",
+emit = emit.rm28leClickControl(),
+converter = converter.lookup_from_to({ up = 0, down = 1 }),
+}),
 }
 local cover_model_zm79e_dt = {
 profile = "covers-cover-zm79e-dt",
@@ -409,7 +634,11 @@ converter = window_shade_state_from_position_inverted(),
 read_only = true,
 }),
 tuya.dp_cover_position_inverted(3, { name = "position_report", emit = emit.coverPositionReportZm79eDt() }),
-tuya.dp_enum(4, { name = "opening_mode" }),                              -- profile 미포함
+tuya.dp_enum(4, {
+name = "opening_mode",
+emit = emit.zm79eOpeningMode(),
+converter = converter.lookup_from_to({ tilt = 0, lift = 1 }),
+}),
 tuya.dp_enum(7, {
 name = "work_state",
 emit = emit.coverWorkStateZm79eDtLearning(),
@@ -427,8 +656,16 @@ left = 0,
 right = 1,
 }),
 }),
-tuya.dp_enum(102, { name = "set_upper_limit" }),                         -- profile 미포함
-tuya.dp_enum(107, { name = "factory_reset" }),                           -- profile 미포함
+tuya.dp_enum(102, {
+name = "set_upper_limit",
+emit = emit.zm79eSetUpperLimit(),
+converter = converter.lookup_from_to({ stop = 0, start = 1 }),
+}),
+tuya.dp_enum(107, {
+name = "factory_reset",
+emit = emit.zm79eFactoryReset(),
+converter = converter.lookup_from_to({ set = 0 }),
+}),
 }
 local cover_model_bx82_tyz1 = {
 profile = "covers-cover-bx82-tyz1",
@@ -471,13 +708,21 @@ emit = emit.motorDirectionMbNormalRev(),
 converter = converter.lookup_from_to({ normal = 0, reversed = 1 }),
 }),
 tuya.dp_battery(13, { emit = emit.battery() }),
-tuya.dp_enum(16, { name = "set_limits" }),                               -- profile 미포함
-tuya.dp_binary(108, {
+tuya.dp_enum(16, {
+name = "set_limits",
+emit = emit.mb60lSetLimits(),
+converter = converter.lookup_from_to({ up = 0, down = 1, reset = 2 }),
+}),
+tuya.dp_binary(101, {
+name = "child_lock",
+emit = emit.mb60lChildLock(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
+tuya.dp_binary(103, {
 name = "tilt_mode",
 emit = emit.tiltModeMb60l(),
 converter = converter.lookup_from_to({ on = true, off = false }),
 }),
-tuya.dp_binary(109, { name = "child_lock" }),                            -- profile 미포함
 }
 local cover_epj_zb = {
 profile = "covers-cover-battery-epj-zb",
@@ -754,6 +999,9 @@ device_helpers.create_fingerprint("Shaman", "25EB-1/30-TYZ"),
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
 "_TZE200_zah67ekd",
 "_TZE200_icka1clh",
+}))
+register_device_definition(ts130f_xbexmf8h, device_helpers.create_fingerprints("TS130F", {
+"_TZE20C_xbexmf8h",
 }))
 register_device_definition(cover_core, {
 device_helpers.create_fingerprint("Moes", "AM43-0.45/40-ES-EB"),

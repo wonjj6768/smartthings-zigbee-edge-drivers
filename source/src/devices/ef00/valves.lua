@@ -6,18 +6,31 @@ local converter = tuya.converter
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
--- Z2M: ZPV-01 battery powered smart valve
+local valve_open_closed_converter = converter.lookup_from_to({
+  open = true,
+  closed = false,
+})
+
+-- Z2M: Novato ZPV-01 battery powered smart valve (tuya.ts:20155)
+-- DP1 state, DP8 read-only valve status enum, DP101 battery
 local battery_valve = {
-  profile = "valves-valve-battery",
+  profile = "valves-valve-battery-state-zpv01",
   tuya.dp_on_off(1, {
     name = "valve",
     emit = emit.valve(),
+    converter = valve_open_closed_converter,
+  }),
+  tuya.dp_enum(8, {
+    name = "valve_state",
+    read_only = true,
+    emit = emit.zpv01ValveState(),
     converter = converter.lookup_from_to({
-      open = true,
-      closed = false,
+      unknown = 0,
+      open = 1,
+      closed = 2,
     }),
   }),
-  tuya.dp_battery(101, {}),
+  tuya.dp_battery(101, { read_only = true, emit = emit.battery() }),
 }
 
 register_device_definition(battery_valve, device_helpers.create_fingerprints("TS0601", {
@@ -26,19 +39,33 @@ register_device_definition(battery_valve, device_helpers.create_fingerprints("TS
   "_TZE284_sdvbnmj5",
 }))
 
-local plain_valve = {
-  profile = "valves-valve",
+-- Z2M: FrankEver FK_V02 (frankever.ts:10)
+-- legacy frankever_valve/threshold/timer: DP1 state, DP9 timer in seconds,
+-- DP101 threshold as a multiple of 10 percent
+local frankever_valve = {
+  profile = "valves-valve-threshold-timer-fkv02",
   tuya.dp_on_off(1, {
     name = "valve",
     emit = emit.valve(),
-    converter = converter.lookup_from_to({
-      open = true,
-      closed = false,
-    }),
+    converter = valve_open_closed_converter,
+  }),
+  tuya.dp_numeric(9, {
+    name = "timer",
+    emit = emit.fkv02Timer(),
+    converter = converter.divide_by_pair(60),
+  }),
+  tuya.dp_numeric(101, {
+    name = "threshold",
+    emit = emit.fkv02Threshold(),
+    -- Z2M clamps writes to a multiple of 10 percent and reports the raw percent.
+    converter = converter.to_only(converter.pipe(
+      converter.clamp(0, 100),
+      converter.round_to_step(10)
+    )),
   }),
 }
 
-register_device_definition(plain_valve, device_helpers.create_fingerprints("TS0601", {
+register_device_definition(frankever_valve, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_wt9agwf3",
   "_TZE200_5uodvhgc",
   "_TZE200_1n2zev06",
@@ -49,10 +76,7 @@ local position_valve = {
   tuya.dp_on_off(1, {
     name = "valve",
     emit = emit.valve(),
-    converter = converter.lookup_from_to({
-      open = true,
-      closed = false,
-    }),
+    converter = valve_open_closed_converter,
   }),
   tuya.dp_numeric(101, { name = "position", emit = emit.valvePositionHbnfokum() }),
   tuya.dp_numeric(102, { name = "position_current", read_only = true, emit = emit.valveCurrentPositionHbnfokum() }),
@@ -62,20 +86,63 @@ register_device_definition(position_valve, device_helpers.create_fingerprints("T
   "_TZE200_hbnfokum",
 }))
 
-local irrigation_battery_valve = {
-  profile = "valves-valve-battery",
+-- Z2M: RTX ZVG1 (rtx.ts:11)
+-- legacy fz.ZVG1: DP1 state, DP5 water consumed in fluid ounces, DP7 battery,
+-- DP10 weather delay, DP11 timer seconds, DP12 timer state, DP15 last open
+-- duration in seconds. DP16/DP17 raw timer programs are not exposed.
+local zvg1_valve = {
+  profile = "valves-valve-battery-timer-zvg1",
   tuya.dp_on_off(1, {
     name = "valve",
     emit = emit.valve(),
+    converter = valve_open_closed_converter,
+  }),
+  tuya.dp_numeric(5, {
+    name = "water_consumed",
+    read_only = true,
+    emit = emit.zvg1WaterConsumed(),
+    converter = converter.divide_by_from_only(33.8140226),
+  }),
+  tuya.dp_battery(7, { read_only = true, emit = emit.battery() }),
+  tuya.dp_enum(10, {
+    name = "weather_delay",
+    emit = emit.zvg1WeatherDelay(),
     converter = converter.lookup_from_to({
-      open = true,
-      closed = false,
+      disabled = 0,
+      ["24h"] = 1,
+      ["48h"] = 2,
+      ["72h"] = 3,
     }),
   }),
-  tuya.dp_battery(7, {}),
+  tuya.dp_numeric(11, {
+    name = "timer",
+    emit = emit.zvg1Timer(),
+    converter = converter.divide_by_pair(60),
+  }),
+  tuya.dp_numeric(11, {
+    name = "timer_time_left",
+    read_only = true,
+    emit = emit.zvg1TimerTimeLeft(),
+    converter = converter.divide_by_from_only(60),
+  }),
+  tuya.dp_enum(12, {
+    name = "timer_state",
+    read_only = true,
+    emit = emit.zvg1TimerState(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "disabled",
+      [1] = "active",
+    }, "enabled")),
+  }),
+  tuya.dp_numeric(15, {
+    name = "last_valve_open_duration",
+    read_only = true,
+    emit = emit.zvg1LastValveDuration(),
+    converter = converter.divide_by_from_only(60),
+  }),
 }
 
-register_device_definition(irrigation_battery_valve, device_helpers.create_fingerprints("TS0601", {
+register_device_definition(zvg1_valve, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_akjefhj5",
   "_TZE200_2wg5qrjy",
   "_TZE200_81isopgh",
@@ -84,93 +151,194 @@ register_device_definition(irrigation_battery_valve, device_helpers.create_finge
   "_TZE284_xuflgcnz",
 }))
 
-local zvl_pro_valve_state = converter.lookup_from_to({
-  open = true,
-  closed = false,
-})
-
+-- Z2M: Nova Digital ZVL-PRO (tuya.ts:26258)
+-- DP1 state, DP4 read-only fault, DP5 last watering volume, DP7 battery,
+-- DP11 countdown seconds, DP12 read-only work state
 local irrigation_zvl_pro = {
-  profile = "valves-valve-battery",
+  profile = "valves-valve-battery-countdown-zvl-pro",
   tuya.dp_on_off(1, {
     name = "valve",
     emit = emit.valve(),
-    converter = zvl_pro_valve_state,
+    converter = valve_open_closed_converter,
   }),
-  tuya.dp_raw(4, { name = "fault" }),                         -- 프로파일 미포함
-  tuya.dp_numeric(5, { name = "water_once" }),                 -- 프로파일 미포함
-  tuya.dp_battery(7, { emit = emit.battery() }),
-  tuya.dp_numeric(11, { name = "countdown" }),                 -- 프로파일 미포함
-  tuya.dp_enum(12, { name = "work_state" }),                   -- 프로파일 미포함
+  -- Z2M parses DP4 but declares no fault expose for this exact, so it stays
+  -- observable in logs without a profile capability.
+  tuya.dp_raw(4, { name = "fault", read_only = true }),
+  tuya.dp_numeric(5, { name = "water_once", read_only = true, emit = emit.zvlProWaterOnce() }),
+  tuya.dp_battery(7, { read_only = true, emit = emit.battery() }),
+  tuya.dp_numeric(11, { name = "countdown", emit = emit.zvlProCountdown() }),
+  tuya.dp_enum(12, {
+    name = "work_state",
+    read_only = true,
+    emit = emit.zvlProWorkState(),
+    converter = converter.lookup_from_to({
+      auto = 0,
+      manual = 1,
+      idle = 2,
+    }),
+  }),
 }
 
 register_device_definition(irrigation_zvl_pro, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_fphxkxue",
 }))
 
-local gx03_valve_state = converter.lookup_from_to({
-  open = true,
-  closed = false,
-})
-local gx03_valve_status = converter.lookup_from_to({
+-- Z2M: GIEX GX03 2-zone watering timer (tuya.ts:21914)
+-- DP1/DP2 valve state, DP13/DP14 timer minutes, DP25/DP26 last open duration
+-- in seconds, DP59 battery, DP104/DP105 read-only zone state
+local gx03_valve_state_converter = converter.lookup_from_to({
   manual = 0,
   auto = 1,
-  idle = 2,
+  closed = 2,
 })
 
-local dual_irrigation_battery_valve = {
-  profile = "valves-valve-2-battery-status",
+local gx03_valve = {
+  profile = "valves-valve-2-battery-timer-gx03",
   tuya.dp_on_off(1, {
     name = "valve",
     component = "main",
     emit = emit.valve(),
-    converter = gx03_valve_state,
+    converter = valve_open_closed_converter,
   }),
   tuya.dp_on_off(2, {
     name = "valve",
     component = "valve2",
     emit = emit.valve(),
-    converter = gx03_valve_state,
+    converter = valve_open_closed_converter,
   }),
-  tuya.dp_numeric(13, { name = "countdown", component = "main" }), -- 프로파일 미포함
-  tuya.dp_numeric(14, { name = "countdown", component = "valve2" }), -- 프로파일 미포함
-  tuya.dp_battery(59, { emit = emit.battery() }),
+  tuya.dp_numeric(13, { name = "timer", component = "main", emit = emit.gx03Timer() }),
+  tuya.dp_numeric(14, { name = "timer", component = "valve2", emit = emit.gx03Timer() }),
+  tuya.dp_numeric(25, {
+    name = "last_duration",
+    component = "main",
+    read_only = true,
+    emit = emit.gx03LastDuration(),
+  }),
+  tuya.dp_numeric(26, {
+    name = "last_duration",
+    component = "valve2",
+    read_only = true,
+    emit = emit.gx03LastDuration(),
+  }),
+  tuya.dp_battery(59, { read_only = true, emit = emit.battery() }),
+  tuya.dp_enum(104, {
+    name = "valve_state",
+    component = "main",
+    emit = emit.gx03ValveState(),
+    converter = gx03_valve_state_converter,
+    read_only = true,
+  }),
+  tuya.dp_enum(105, {
+    name = "valve_state",
+    component = "valve2",
+    emit = emit.gx03ValveState(),
+    converter = gx03_valve_state_converter,
+    read_only = true,
+  }),
+}
+
+register_device_definition(gx03_valve, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_8zizsafo",
+  "_TZE284_iilebqoo",
+}))
+
+-- Z2M: Tuya TS0601_water_switch dual water valve (tuya.ts:15235)
+-- Same DP numbers as GX03 but countdown is writable and the zone status enum is
+-- manual/auto/idle, so it stays a separate runtime family.
+local dual_water_switch_status_converter = converter.lookup_from_to({
+  manual = 0,
+  auto = 1,
+  idle = 2,
+})
+
+local dual_water_switch = {
+  profile = "valves-valve-2-battery-status",
+  tuya.dp_on_off(1, {
+    name = "valve",
+    component = "main",
+    emit = emit.valve(),
+    converter = valve_open_closed_converter,
+  }),
+  tuya.dp_on_off(2, {
+    name = "valve",
+    component = "valve2",
+    emit = emit.valve(),
+    converter = valve_open_closed_converter,
+  }),
+  tuya.dp_numeric(13, { name = "countdown", component = "main", emit = emit.waterSwitchCountdown() }),
+  tuya.dp_numeric(14, { name = "countdown", component = "valve2", emit = emit.waterSwitchCountdown() }),
+  tuya.dp_numeric(25, {
+    name = "valve_duration",
+    component = "main",
+    read_only = true,
+    emit = emit.waterSwitchDuration(),
+  }),
+  tuya.dp_numeric(26, {
+    name = "valve_duration",
+    component = "valve2",
+    read_only = true,
+    emit = emit.waterSwitchDuration(),
+  }),
+  tuya.dp_battery(59, { read_only = true, emit = emit.battery() }),
   tuya.dp_enum(104, {
     name = "valve_status",
     component = "main",
     emit = emit.valveStatusDualIrrigationMode(),
-    converter = gx03_valve_status,
+    converter = dual_water_switch_status_converter,
     read_only = true,
   }),
   tuya.dp_enum(105, {
     name = "valve_status",
     component = "valve2",
     emit = emit.valveStatusDualIrrigationMode(),
-    converter = gx03_valve_status,
+    converter = dual_water_switch_status_converter,
     read_only = true,
   }),
 }
 
-register_device_definition(dual_irrigation_battery_valve, device_helpers.create_fingerprints("TS0601", {
-  "_TZE284_8zizsafo",
+register_device_definition(dual_water_switch, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_eaet5qt5",
   "_TZE284_fhvpaltk",
-  "_TZE284_iilebqoo",
 }))
 
-register_device_definition(dual_irrigation_battery_valve, {
-  device_helpers.create_fingerprint("Nova Digital", "ZVL-DUAL"),
-})
-
+-- Z2M: Tuya TS0601_water_valve ultrasonic water meter valve (tuya.ts:2242)
+-- DP1 water consumed, DP2/DP3 raw month/day totals, DP4 report period,
+-- DP5 fault bitmap, DP13 valve, DP14 auto clean, DP16 meter id,
+-- DP18 reverse total, DP21 flow rate, DP22 temperature, DP26 battery voltage
 local ultrasonic_water_meter_valve = {
   profile = "valves-valve-ultrasonic-meter",
-  tuya.dp_numeric(1, { name = "water_consumed", emit = emit.waterConsumedUltrasonicLiters() }),
+  tuya.dp_numeric(1, {
+    name = "water_consumed",
+    read_only = true,
+    emit = emit.vuwtqx0tWaterConsumed(),
+  }),
+  tuya.dp_month_consumption(2, {
+    raw = true,
+    raw_bytes = 4,
+    raw_from_tail = true,
+    scale = 1,
+    read_only = true,
+    emit = emit.vuwtqx0tMonthConsumption(),
+  }),
+  tuya.dp_daily_consumption(3, {
+    raw = true,
+    raw_bytes = 4,
+    raw_from_tail = true,
+    scale = 1,
+    read_only = true,
+    emit = emit.vuwtqx0tDailyConsumption(),
+  }),
+  -- Z2M lookup returns a plain number, so writes use Tuya VALUE rather than ENUM.
+  tuya.dp_numeric(4, {
+    name = "report_period",
+    converter = converter.report_period_hours(),
+    emit = emit.vuwtqx0tReportPeriod(),
+  }),
+  tuya.dp_water_meter_faults(5, { read_only = true, emit = emit.vuwtqx0tFaults() }),
   tuya.dp_on_off(13, {
     name = "valve",
     emit = emit.valve(),
-    converter = converter.lookup_from_to({
-      open = true,
-      closed = false,
-    }),
+    converter = valve_open_closed_converter,
   }),
   tuya.dp_on_off(14, {
     name = "auto_clean",
@@ -180,9 +348,22 @@ local ultrasonic_water_meter_valve = {
       off = false,
     }),
   }),
-  tuya.dp_string(16, { name = "meter_id", emit = emit.meterId() }),
-  tuya.dp_temperature(22, { name = "temperature", scale = 100, emit = emit.temperature("C") }),
-  tuya.dp_battery_voltage(26, { name = "battery_voltage", emit = emit.batteryVoltage() }),
+  tuya.dp_meter_id(16, { read_only = true, emit = emit.vuwtqx0tMeterId() }),
+  tuya.dp_reverse_water_consumed(18, {
+    raw = true,
+    raw_bytes = 4,
+    read_only = true,
+    emit = emit.vuwtqx0tReverseConsumed(),
+  }),
+  tuya.dp_flow_rate(21, {
+    raw = true,
+    raw_bytes = 4,
+    scale = 1,
+    read_only = true,
+    emit = emit.vuwtqx0tFlowRate(),
+  }),
+  tuya.dp_temperature(22, { name = "temperature", scale = 100, read_only = true, emit = emit.temperature("C") }),
+  tuya.dp_battery_voltage(26, { name = "battery_voltage", read_only = true, emit = emit.batteryVoltage() }),
 }
 
 register_device_definition(ultrasonic_water_meter_valve, device_helpers.create_fingerprints("TS0601", {

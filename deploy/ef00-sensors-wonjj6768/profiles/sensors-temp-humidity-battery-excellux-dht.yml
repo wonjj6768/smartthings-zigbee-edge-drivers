@@ -1,0 +1,39 @@
+name: sensors-temp-humidity-battery-excellux-dht
+components:
+- id: main
+  capabilities:
+  - id: temperatureMeasurement
+    version: 1
+  - id: relativeHumidityMeasurement
+    version: 1
+  - id: battery
+    version: 1
+  - id: concertmirror08464.excelluxDhtSamplingInterval
+    version: 1
+  - id: concertmirror08464.excelluxDhtTemperatureCalibration
+    version: 1
+  - id: concertmirror08464.excelluxDhtTemperatureV0
+    version: 1
+  - id: concertmirror08464.excelluxDhtTemperatureV1
+    version: 1
+  - id: concertmirror08464.excelluxDhtTemperatureWarning
+    version: 1
+  - id: concertmirror08464.excelluxDhtHumidityCalibration
+    version: 1
+  - id: concertmirror08464.excelluxDhtHumidityV0
+    version: 1
+  - id: concertmirror08464.excelluxDhtHumidityV1
+    version: 1
+  - id: concertmirror08464.excelluxDhtHumidityWarning
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: TempHumiditySensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true

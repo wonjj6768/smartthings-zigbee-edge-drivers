@@ -1,0 +1,204 @@
+name: thermostats-thermostat-trv602
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.trv602Preset
+        version: 1
+      - id: concertmirror08464.trv602ChildLock
+        version: 1
+      - id: concertmirror08464.trv602WindowDetection
+        version: 1
+      - id: concertmirror08464.trv602Window
+        version: 1
+      - id: concertmirror08464.trv602AlarmSwitch
+        version: 1
+      - id: concertmirror08464.trv602ScreenOrientation
+        version: 1
+      - id: concertmirror08464.trv602DisplayBrightness
+        version: 1
+      - id: concertmirror08464.trv602Hysteresis
+        version: 1
+      - id: concertmirror08464.trv602MinTemperature
+        version: 1
+      - id: concertmirror08464.trv602MaxTemperature
+        version: 1
+      - id: concertmirror08464.trv602TempCalibration
+        version: 1
+      - id: concertmirror08464.trv602Position
+        version: 1
+      - id: concertmirror08464.trv602SwitchDeviationEco
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602Preset
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602ChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602WindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602Window
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602AlarmSwitch
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602ScreenOrientation
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602DisplayBrightness
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602Hysteresis
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602MinTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602MaxTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602TempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602Position
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602SwitchDeviationEco
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602WindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602Window
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602AlarmSwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602ScreenOrientation
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602DisplayBrightness
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602Hysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602MinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602MaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602Position
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602SwitchDeviationEco
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602WindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602ScreenOrientation
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602DisplayBrightness
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602Hysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602MinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602MaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602SwitchDeviationEco
+        version: 1

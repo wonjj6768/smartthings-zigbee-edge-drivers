@@ -861,6 +861,14 @@ custom_capabilities.enum = {
     read_only = true,
   }),
   make_enum_capability({
+    emit_name = "heiman_rc_partial_security_action",
+    capability_name = "heimanRcPartialSecurityAction",
+    attribute_name = "heimanRcPartialSecurityAction",
+    label = "HEIMAN RC partial security action",
+    supported_values = { "disarm", "arm_partial_zones", "arm_all_zones", "emergency" },
+    read_only = true,
+  }),
+  make_enum_capability({
     emit_name = "liquid_state",
     capability_name = "liquidState",
     attribute_name = "liquidState",

@@ -1,0 +1,251 @@
+name: thermostats-thermostat-trv602z
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.trv602zPreset
+        version: 1
+      - id: concertmirror08464.trv602zChildLock
+        version: 1
+      - id: concertmirror08464.trv602zWindowDetection
+        version: 1
+      - id: concertmirror08464.trv602zWindow
+        version: 1
+      - id: concertmirror08464.trv602zFrostProtection
+        version: 1
+      - id: concertmirror08464.trv602zMotorThrust
+        version: 1
+      - id: concertmirror08464.trv602zDisplayBrightness
+        version: 1
+      - id: concertmirror08464.trv602zScreenOrientation
+        version: 1
+      - id: concertmirror08464.trv602zHysteresis
+        version: 1
+      - id: concertmirror08464.trv602zMinTemperature
+        version: 1
+      - id: concertmirror08464.trv602zMaxTemperature
+        version: 1
+      - id: concertmirror08464.trv602zTempCalibration
+        version: 1
+      - id: concertmirror08464.trv602zPosition
+        version: 1
+      - id: concertmirror08464.trv602zBoostCountdown
+        version: 1
+      - id: concertmirror08464.trv602zComfortTemperature
+        version: 1
+      - id: concertmirror08464.trv602zEcoTemperature
+        version: 1
+      - id: concertmirror08464.trv602zHolidayTemperature
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zPreset
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zWindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zWindow
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zFrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zMotorThrust
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zDisplayBrightness
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zScreenOrientation
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zHysteresis
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zMinTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zMaxTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zPosition
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zBoostCountdown
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zComfortTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zEcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv602zHolidayTemperature
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zWindow
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zFrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zMotorThrust
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zDisplayBrightness
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zScreenOrientation
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zHysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zMinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zPosition
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zBoostCountdown
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zHolidayTemperature
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zFrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zMotorThrust
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zDisplayBrightness
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zScreenOrientation
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zHysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zMinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zBoostCountdown
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv602zHolidayTemperature
+        version: 1

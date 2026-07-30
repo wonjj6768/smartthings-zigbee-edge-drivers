@@ -28,23 +28,6 @@ zcl.color(),
 },
 }
 register_device_definition(dimmer_light, {
-device_helpers.create_fingerprint("IKEA", "E1603"),
-device_helpers.create_fingerprint("IKEA", "E1704"),
-device_helpers.create_fingerprint("IKEA", "E1705"),
-device_helpers.create_fingerprint("IKEA", "E2204"),
-})
-register_device_definition(cct_light, {
-device_helpers.create_fingerprint("IKEA", "E1702/E1703"),
-device_helpers.create_fingerprint("IKEA", "E1902"),
-device_helpers.create_fingerprint("IKEA", "E2206"),
-device_helpers.create_fingerprint("IKEA", "E2214"),
-device_helpers.create_fingerprint("IKEA", "E2220"),
-})
-register_device_definition(color_cct_light, {
-device_helpers.create_fingerprint("IKEA", "E2223"),
-device_helpers.create_fingerprint("IKEA", "E2224"),
-})
-register_device_definition(dimmer_light, {
 device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E27 opal 1000lm"),
 device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E27 W opal 1000lm"),
 device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E26 WW globe 800lm"),

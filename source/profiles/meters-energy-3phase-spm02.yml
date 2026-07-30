@@ -1,0 +1,100 @@
+name: meters-energy-3phase-spm02
+components:
+  - id: main
+    capabilities:
+      - id: energyMeter
+        version: 1
+      - id: concertmirror08464.spm02ProducedEnergy
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l1
+    label: X
+    capabilities:
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: powerMeter
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l2
+    label: Y
+    capabilities:
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: powerMeter
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l3
+    label: Z
+    capabilities:
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: powerMeter
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: energyMeter
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.spm02ProducedEnergy
+      version: 1
+    - component: l1
+      capability: voltageMeasurement
+      version: 1
+    - component: l1
+      capability: currentMeasurement
+      version: 1
+    - component: l1
+      capability: powerMeter
+      version: 1
+    - component: l2
+      capability: voltageMeasurement
+      version: 1
+    - component: l2
+      capability: currentMeasurement
+      version: 1
+    - component: l2
+      capability: powerMeter
+      version: 1
+    - component: l3
+      capability: voltageMeasurement
+      version: 1
+    - component: l3
+      capability: currentMeasurement
+      version: 1
+    - component: l3
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.spm02ProducedEnergy
+        version: 1
+    actions: []

@@ -1,0 +1,120 @@
+name: thermostats-fcu-thermostat-bac003
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: fanMode
+        version: 1
+      - id: concertmirror08464.bac003Preset
+        version: 1
+      - id: concertmirror08464.bac003ChildLock
+        version: 1
+      - id: concertmirror08464.bac003MaxTemperature
+        version: 1
+      - id: concertmirror08464.bac003DeadzoneTemperature
+        version: 1
+      - id: concertmirror08464.bac003TempCalibration
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: fanMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.bac003Preset
+      version: 1
+    - component: main
+      capability: concertmirror08464.bac003ChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.bac003MaxTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.bac003DeadzoneTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.bac003TempCalibration
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: fanMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003MaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003DeadzoneTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003TempCalibration
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: fanMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003MaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003DeadzoneTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.bac003TempCalibration
+        version: 1

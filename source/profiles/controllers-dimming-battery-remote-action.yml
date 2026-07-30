@@ -1,0 +1,12 @@
+name: controllers-dimming-battery-remote-action
+components:
+  - id: main
+    capabilities:
+      - id: battery
+        version: 1
+      - id: concertmirror08464.remoteAction
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

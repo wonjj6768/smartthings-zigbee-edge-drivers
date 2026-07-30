@@ -1,0 +1,119 @@
+name: safety-presence-excellux-zg301a
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: concertmirror08464.zg301aLightTrigger
+        version: 1
+      - id: concertmirror08464.zg301aBrightValue
+        version: 1
+      - id: concertmirror08464.zg301aIlluminanceTrigger
+        version: 1
+      - id: concertmirror08464.zg301aPresenceTime
+        version: 1
+      - id: concertmirror08464.zg301aPresenceDelay
+        version: 1
+      - id: concertmirror08464.zg301aDetectionCycle
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg301aLightTrigger
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg301aBrightValue
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg301aIlluminanceTrigger
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg301aPresenceTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg301aPresenceDelay
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg301aDetectionCycle
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aLightTrigger
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aBrightValue
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aIlluminanceTrigger
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aPresenceTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aPresenceDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aDetectionCycle
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.zg301aLightTrigger
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aBrightValue
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aIlluminanceTrigger
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aPresenceTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aPresenceDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg301aDetectionCycle
+        version: 1

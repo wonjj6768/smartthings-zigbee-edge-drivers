@@ -796,9 +796,6 @@ local function load_datapoint_preset(tuya, shared)
     append_preset(datapoints, group_options.dp, builder, group_options)
     return datapoints
   end
-  function tuya.dp_on_off(dp, name_or_options, options)
-    return tuya.dp_binary(dp, normalize_preset_options(name_or_options, options, "switch"))
-  end
   function tuya.dp_battery(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "battery", 1, name_or_options, options)
   end
@@ -832,9 +829,6 @@ local function load_datapoint_preset(tuya, shared)
   end
   function tuya.dp_fading_time(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "fading_time", 1, name_or_options, options)
-  end
-  function tuya.dp_illuminance_interval(dp, name_or_options, options)
-    return build_divided_numeric_preset(dp, "illuminance_interval", 1, name_or_options, options)
   end
   function tuya.dp_static_detection_distance(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "static_detection_distance", 100, name_or_options, options)

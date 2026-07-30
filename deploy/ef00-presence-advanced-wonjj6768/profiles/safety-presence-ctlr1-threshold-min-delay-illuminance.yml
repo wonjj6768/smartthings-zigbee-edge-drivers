@@ -4,29 +4,27 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceSensitivity
+      - id: concertmirror08464.ctlr1Sensitivity
         version: 1
-      - id: concertmirror08464.presenceDetectionRange
+      - id: concertmirror08464.ctlr1DetectionRange
         version: 1
-      - id: concertmirror08464.presenceIlluminanceThreshold
+      - id: concertmirror08464.ctlr1ThresholdMax
         version: 1
-      - id: concertmirror08464.illuminanceThresholdMin
+      - id: concertmirror08464.ctlr1ThresholdMin
         version: 1
-      - id: concertmirror08464.detectionDelay
+      - id: concertmirror08464.ctlr1DetectionDelay
         version: 1
-      - id: concertmirror08464.lightSwitch
+      - id: concertmirror08464.ctlr1LightSwitch
         version: 1
-      - id: concertmirror08464.lightLinkage
+      - id: concertmirror08464.ctlr1LightLinkage
         version: 1
-      - id: concertmirror08464.presenceIlluminanceSwitch
+      - id: concertmirror08464.ctlr1ThresholdSwitch
         version: 1
-      - id: concertmirror08464.detectionMethod
+      - id: concertmirror08464.ctlr1DetectionMethod
         version: 1
-      - id: concertmirror08464.driverMessage
+      - id: concertmirror08464.ctlr1IndicatorLight
         version: 1
       - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -46,34 +44,34 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceSensitivity
+      capability: concertmirror08464.ctlr1Sensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.ctlr1DetectionRange
       version: 1
     - component: main
-      capability: concertmirror08464.presenceIlluminanceThreshold
+      capability: concertmirror08464.ctlr1ThresholdMax
       version: 1
     - component: main
-      capability: concertmirror08464.illuminanceThresholdMin
+      capability: concertmirror08464.ctlr1ThresholdMin
       version: 1
     - component: main
-      capability: concertmirror08464.detectionDelay
+      capability: concertmirror08464.ctlr1DetectionDelay
       version: 1
     - component: main
-      capability: concertmirror08464.lightSwitch
+      capability: concertmirror08464.ctlr1LightSwitch
       version: 1
     - component: main
-      capability: concertmirror08464.lightLinkage
+      capability: concertmirror08464.ctlr1LightLinkage
       version: 1
     - component: main
-      capability: concertmirror08464.presenceIlluminanceSwitch
+      capability: concertmirror08464.ctlr1ThresholdSwitch
       version: 1
     - component: main
-      capability: concertmirror08464.detectionMethod
+      capability: concertmirror08464.ctlr1DetectionMethod
       version: 1
     - component: main
-      capability: concertmirror08464.driverMessage
+      capability: concertmirror08464.ctlr1IndicatorLight
       version: 1
     - component: main
       capability: illuminanceMeasurement
@@ -89,4 +87,34 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.ctlr1LightSwitch
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.ctlr1Sensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1DetectionRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1ThresholdMax
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1ThresholdMin
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1DetectionDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1LightLinkage
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1ThresholdSwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1DetectionMethod
+        version: 1
+      - component: main
+        capability: concertmirror08464.ctlr1IndicatorLight
+        version: 1

@@ -1,0 +1,251 @@
+name: thermostats-thermostat-classic-trv
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.classicTrvPreset
+        version: 1
+      - id: concertmirror08464.classicTrvChildLock
+        version: 1
+      - id: concertmirror08464.classicTrvWindowDetection
+        version: 1
+      - id: concertmirror08464.classicTrvWindowOpen
+        version: 1
+      - id: concertmirror08464.classicTrvValveDetection
+        version: 1
+      - id: concertmirror08464.classicTrvAutoLock
+        version: 1
+      - id: concertmirror08464.classicTrvForce
+        version: 1
+      - id: concertmirror08464.classicTrvWeek
+        version: 1
+      - id: concertmirror08464.classicTrvTempCalibration
+        version: 1
+      - id: concertmirror08464.classicTrvMinTemperature
+        version: 1
+      - id: concertmirror08464.classicTrvMaxTemperature
+        version: 1
+      - id: concertmirror08464.classicTrvBoostTime
+        version: 1
+      - id: concertmirror08464.classicTrvComfortTemperature
+        version: 1
+      - id: concertmirror08464.classicTrvEcoTemperature
+        version: 1
+      - id: concertmirror08464.classicTrvAwayTemperature
+        version: 1
+      - id: concertmirror08464.classicTrvAwayDays
+        version: 1
+      - id: concertmirror08464.classicTrvPosition
+        version: 1
+      - id: concertmirror08464.classicTrvBatteryLow
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvPreset
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvWindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvWindowOpen
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvValveDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvAutoLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvForce
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvWeek
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvMinTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvMaxTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvBoostTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvComfortTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvEcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvAwayTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvAwayDays
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvPosition
+      version: 1
+    - component: main
+      capability: concertmirror08464.classicTrvBatteryLow
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvWindowOpen
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvValveDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvAutoLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvForce
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvWeek
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvMinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvBoostTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvAwayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvAwayDays
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvPosition
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvBatteryLow
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvValveDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvAutoLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvForce
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvWeek
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvMinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvBoostTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvAwayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.classicTrvAwayDays
+        version: 1

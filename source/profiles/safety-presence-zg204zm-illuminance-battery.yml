@@ -1,0 +1,122 @@
+name: safety-presence-zg204zm-illuminance-battery
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.zg204zmMotionState
+        version: 1
+      - id: concertmirror08464.zg204zmFadingTime
+        version: 1
+      - id: concertmirror08464.zg204zmStaticDistance
+        version: 1
+      - id: concertmirror08464.zg204zmStaticSensitivity
+        version: 1
+      - id: concertmirror08464.zg204zmMotionSensitivity
+        version: 1
+      - id: concertmirror08464.zg204zmMotionDetectionMode
+        version: 1
+      - id: concertmirror08464.zg204zmIndicator
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmMotionState
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmFadingTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmStaticDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmStaticSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmMotionSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmMotionDetectionMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg204zmIndicator
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmMotionState
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmFadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmStaticDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmStaticSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmMotionSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmMotionDetectionMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmIndicator
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.zg204zmFadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmStaticDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmStaticSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmMotionSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmMotionDetectionMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg204zmIndicator
+        version: 1

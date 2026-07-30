@@ -1,0 +1,14 @@
+name: controllers-easyiot-sp1000
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.easyiotSp1000PlayVoice
+        version: 1
+      - id: concertmirror08464.easyiotSp1000Volume
+        version: 1
+      - id: concertmirror08464.easyiotSp1000Status
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

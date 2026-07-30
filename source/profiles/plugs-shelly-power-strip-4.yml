@@ -1,0 +1,60 @@
+name: plugs-shelly-power-strip-4
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmartPlug
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+    categories:
+      - name: SmartPlug
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+    categories:
+      - name: SmartPlug
+  - id: switch4
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+    categories:
+      - name: SmartPlug

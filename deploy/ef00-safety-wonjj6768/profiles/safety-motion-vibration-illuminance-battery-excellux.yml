@@ -1,0 +1,32 @@
+name: safety-motion-vibration-illuminance-battery-excellux
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: accelerationSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.excelluxPirVibrationSensitivity
+        version: 1
+      - id: concertmirror08464.excelluxPirVibrationCount
+        version: 1
+      - id: concertmirror08464.excelluxPirSamplingInterval
+        version: 1
+      - id: concertmirror08464.excelluxPirIlluminanceV0
+        version: 1
+      - id: concertmirror08464.excelluxPirIlluminanceV1
+        version: 1
+      - id: concertmirror08464.excelluxPirIlluminanceCalibration
+        version: 1
+      - id: concertmirror08464.excelluxPirIlluminanceWarning
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MultiFunctionalSensor

@@ -2,6 +2,7 @@ local tuya = require "tuya_common"
 local emit = require "emitters"
 local device_helpers = require "devices.shared.helpers"
 local capabilities = require "st.capabilities"
+local zcl = require "zcl_common"
 
 local converter = tuya.converter
 
@@ -11,6 +12,16 @@ local action_converter = converter.from_only(converter.lookup_value({
   [0] = "pushed",
   [1] = "double",
   [2] = "held",
+}))
+
+local on_off_enum_converter = converter.lookup_from_to({
+  on = 1,
+  off = 0,
+})
+
+local cube_action_converter = converter.from_only(converter.lookup_value({
+  [false] = "pushed",
+  [0] = "pushed",
 }))
 
 local function emit_button_action(_, value)
@@ -135,7 +146,7 @@ local scene_remote_18 = {
 }
 
 local foria_scene_remote_4 = {
-  profile = "buttons-button-4",
+  profile = "buttons-button-4-foria-options",
   button_actions = { "pushed" },
   datapoints = {
     tuya.dp_enum(1, {
@@ -162,10 +173,26 @@ local foria_scene_remote_4 = {
       converter = converter.from_only(converter.lookup_value({ [0] = "pushed" })),
       emit = emit_button_action,
     }),
-    tuya.dp_enum(0x69, { name = "backlight" }),       -- profile 미포함
-    tuya.dp_enum(0x6A, { name = "illumination" }),    -- profile 미포함
-    tuya.dp_enum(0x6B, { name = "approach" }),        -- profile 미포함
-    tuya.dp_enum(0x6C, { name = "vibration" }),       -- profile 미포함
+    tuya.dp_enum(0x69, {
+      name = "foria_scene_backlight",
+      converter = on_off_enum_converter,
+      emit = emit.foriaSceneBacklight(),
+    }),
+    tuya.dp_enum(0x6A, {
+      name = "foria_scene_illumination_detection",
+      converter = on_off_enum_converter,
+      emit = emit.foriaSceneIlluminationDetection(),
+    }),
+    tuya.dp_enum(0x6B, {
+      name = "foria_scene_approach_detection",
+      converter = on_off_enum_converter,
+      emit = emit.foriaSceneApproachDetection(),
+    }),
+    tuya.dp_enum(0x6C, {
+      name = "foria_scene_vibration",
+      converter = on_off_enum_converter,
+      emit = emit.foriaSceneVibration(),
+    }),
   },
   query_on_configure = true,
 }
@@ -188,12 +215,12 @@ local scene_cube_6 = {
   profile = "buttons-button-6-battery",
   button_actions = { "pushed" },
   datapoints = {
-    tuya.dp_binary(1, { name = "side_1", component = "main", converter = converter.from_only(function() return "pushed" end), emit = emit_button_action }),
-    tuya.dp_binary(2, { name = "side_2", component = "button2", converter = converter.from_only(function() return "pushed" end), emit = emit_button_action }),
-    tuya.dp_binary(3, { name = "side_3", component = "button3", converter = converter.from_only(function() return "pushed" end), emit = emit_button_action }),
-    tuya.dp_binary(4, { name = "side_4", component = "button4", converter = converter.from_only(function() return "pushed" end), emit = emit_button_action }),
-    tuya.dp_binary(5, { name = "knock", component = "button5", converter = converter.from_only(function() return "pushed" end), emit = emit_button_action }),
-    tuya.dp_binary(6, { name = "shake", component = "button6", converter = converter.from_only(function() return "pushed" end), emit = emit_button_action }),
+    tuya.dp_binary(1, { name = "side_1", component = "main", converter = cube_action_converter, emit = emit_button_action }),
+    tuya.dp_binary(2, { name = "side_2", component = "button2", converter = cube_action_converter, emit = emit_button_action }),
+    tuya.dp_binary(3, { name = "side_3", component = "button3", converter = cube_action_converter, emit = emit_button_action }),
+    tuya.dp_binary(4, { name = "side_4", component = "button4", converter = cube_action_converter, emit = emit_button_action }),
+    tuya.dp_binary(5, { name = "knock", component = "button5", converter = cube_action_converter, emit = emit_button_action }),
+    tuya.dp_binary(6, { name = "shake", component = "button6", converter = cube_action_converter, emit = emit_button_action }),
     tuya.dp_battery(10, { emit = emit.battery() }),
   },
   query_on_configure = true,
@@ -216,7 +243,7 @@ local sos_remote = {
 }
 
 local zg101z_sos_remote = {
-  profile = "security-remotes-sos-battery",
+  profile = "security-remotes-sos-battery-low",
   button_actions = { "pushed" },
   datapoints = {
     tuya.dp_enum(26, {
@@ -234,6 +261,9 @@ local zg101z_sos_remote = {
       emit = emit_sos_action,
     }),
   },
+  zcl_clusters = {
+    zcl.battery_low(),
+  },
   query_on_configure = true,
 }
 
@@ -244,10 +274,6 @@ register_device_definition(scene_remote_2, device_helpers.create_fingerprints("T
 register_device_definition(scene_remote_6, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_2m38mh6k",
 }))
-
-register_device_definition(scene_remote_6, {
-  device_helpers.create_fingerprint("LoraTap", "SS9600ZB"),
-})
 
 register_device_definition(scene_remote_18, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_dhke3p9w",

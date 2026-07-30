@@ -6,6 +6,16 @@ components:
         version: 1
       - id: switchLevel
         version: 1
+      - id: concertmirror08464.fanDimmerBqlMinimumSpeed
+        version: 1
+      - id: concertmirror08464.fanDimmerBqlPowerOnBehavior
+        version: 1
+      - id: concertmirror08464.fanDimmerBqlIndicator
+        version: 1
+      - id: concertmirror08464.fanDimmerBqlBacklight
+        version: 1
+      - id: concertmirror08464.fanDimmerBqlChildLock
+        version: 1
       - id: refresh
         version: 1
     categories:
@@ -51,6 +61,21 @@ deviceConfig:
       capability: switch
       version: 1
     - component: main
+      capability: concertmirror08464.fanDimmerBqlMinimumSpeed
+      version: 1
+    - component: main
+      capability: concertmirror08464.fanDimmerBqlPowerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.fanDimmerBqlIndicator
+      version: 1
+    - component: main
+      capability: concertmirror08464.fanDimmerBqlBacklight
+      version: 1
+    - component: main
+      capability: concertmirror08464.fanDimmerBqlChildLock
+      version: 1
+    - component: main
       capability: refresh
       version: 1
   automation:
@@ -73,4 +98,19 @@ deviceConfig:
         version: 1
       - component: light
         capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.fanDimmerBqlMinimumSpeed
+        version: 1
+      - component: main
+        capability: concertmirror08464.fanDimmerBqlPowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.fanDimmerBqlIndicator
+        version: 1
+      - component: main
+        capability: concertmirror08464.fanDimmerBqlBacklight
+        version: 1
+      - component: main
+        capability: concertmirror08464.fanDimmerBqlChildLock
         version: 1

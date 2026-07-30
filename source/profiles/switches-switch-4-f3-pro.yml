@@ -1,0 +1,319 @@
+name: switches-switch-4-f3-pro
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.f3proBacklightSwitch
+        version: 1
+      - id: concertmirror08464.f3proLedSwitch1
+        version: 1
+      - id: concertmirror08464.f3proLedBright1
+        version: 1
+      - id: concertmirror08464.f3proLedWarm1
+        version: 1
+      - id: concertmirror08464.f3proCoverState1
+        version: 1
+      - id: concertmirror08464.f3proCoverPosition1
+        version: 1
+      - id: concertmirror08464.f3proLedSwitch2
+        version: 1
+      - id: concertmirror08464.f3proLedBright2
+        version: 1
+      - id: concertmirror08464.f3proLedWarm2
+        version: 1
+      - id: concertmirror08464.f3proCoverState2
+        version: 1
+      - id: concertmirror08464.f3proCoverPosition2
+        version: 1
+      - id: concertmirror08464.f3proLedSwitch3
+        version: 1
+      - id: concertmirror08464.f3proLedBright3
+        version: 1
+      - id: concertmirror08464.f3proLedWarm3
+        version: 1
+      - id: concertmirror08464.f3proCoverState3
+        version: 1
+      - id: concertmirror08464.f3proCoverPosition3
+        version: 1
+      - id: concertmirror08464.f3proLedSwitch4
+        version: 1
+      - id: concertmirror08464.f3proLedBright4
+        version: 1
+      - id: concertmirror08464.f3proLedWarm4
+        version: 1
+      - id: concertmirror08464.f3proCoverState4
+        version: 1
+      - id: concertmirror08464.f3proCoverPosition4
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proBacklightSwitch
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedSwitch1
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedBright1
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedWarm1
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverState1
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverPosition1
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedSwitch2
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedBright2
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedWarm2
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverState2
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverPosition2
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedSwitch3
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedBright3
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedWarm3
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverState3
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverPosition3
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedSwitch4
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedBright4
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proLedWarm4
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverState4
+      version: 1
+    - component: main
+      capability: concertmirror08464.f3proCoverPosition4
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: switch2
+      capability: switch
+      version: 1
+    - component: switch3
+      capability: switch
+      version: 1
+    - component: switch4
+      capability: switch
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proBacklightSwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition4
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+      - component: switch4
+        capability: switch
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proBacklightSwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition1
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition2
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition3
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedSwitch4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedBright4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proLedWarm4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverState4
+        version: 1
+      - component: main
+        capability: concertmirror08464.f3proCoverPosition4
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+      - component: switch4
+        capability: switch
+        version: 1

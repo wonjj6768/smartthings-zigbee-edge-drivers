@@ -1,0 +1,79 @@
+name: safety-motion-nas-ps09b2
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: concertmirror08464.nasps09b2MotionState
+        version: 1
+      - id: concertmirror08464.nasps09b2DepartureDelay
+        version: 1
+      - id: concertmirror08464.nasps09b2RadarRange
+        version: 1
+      - id: concertmirror08464.nasps09b2RadarSensitivity
+        version: 1
+      - id: concertmirror08464.nasps09b2PresenceSensitivity
+        version: 1
+      - id: concertmirror08464.nasps09b2DisCurrent
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MotionSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: motionSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: motionSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.nasps09b2MotionState
+      version: 1
+    - component: main
+      capability: concertmirror08464.nasps09b2DepartureDelay
+      version: 1
+    - component: main
+      capability: concertmirror08464.nasps09b2RadarRange
+      version: 1
+    - component: main
+      capability: concertmirror08464.nasps09b2RadarSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.nasps09b2PresenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.nasps09b2DisCurrent
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: motionSensor
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.nasps09b2DepartureDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.nasps09b2RadarRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.nasps09b2RadarSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.nasps09b2PresenceSensitivity
+        version: 1

@@ -10,6 +10,20 @@ components:
         version: 1
       - id: concertmirror08464.favoritePositionZbSm
         version: 1
+      - id: concertmirror08464.zbSmTopLimit
+        version: 1
+      - id: concertmirror08464.zbSmBottomLimit
+        version: 1
+      - id: concertmirror08464.zbSmMotorState
+        version: 1
+      - id: concertmirror08464.zbSmMotorType
+        version: 1
+      - id: concertmirror08464.zbSmCycleTime
+        version: 1
+      - id: concertmirror08464.zbSmCycleCount
+        version: 1
+      - id: concertmirror08464.zbSmActivePower
+        version: 1
       - id: refresh
         version: 1
     categories:

@@ -1,0 +1,80 @@
+name: meters-energy-1phase-spm01v2
+components:
+  - id: main
+    capabilities:
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.spm01v2ProducedEnergy
+        version: 1
+      - id: concertmirror08464.spm01v2AcFrequency
+        version: 1
+      - id: concertmirror08464.spm01v2PowerFactor
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: powerMeter
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: voltageMeasurement
+      version: 1
+    - component: main
+      capability: currentMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.spm01v2ProducedEnergy
+      version: 1
+    - component: main
+      capability: concertmirror08464.spm01v2AcFrequency
+      version: 1
+    - component: main
+      capability: concertmirror08464.spm01v2PowerFactor
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: powerMeter
+        version: 1
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: main
+        capability: voltageMeasurement
+        version: 1
+      - component: main
+        capability: currentMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.spm01v2ProducedEnergy
+        version: 1
+      - component: main
+        capability: concertmirror08464.spm01v2AcFrequency
+        version: 1
+      - component: main
+        capability: concertmirror08464.spm01v2PowerFactor
+        version: 1
+    actions: []

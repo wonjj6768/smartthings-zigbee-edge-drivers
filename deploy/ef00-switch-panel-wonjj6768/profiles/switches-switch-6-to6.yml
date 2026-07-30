@@ -1,0 +1,371 @@
+name: switches-switch-6-to6
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.to6BacklightMode
+        version: 1
+      - id: concertmirror08464.to6IndicatorStatus
+        version: 1
+      - id: concertmirror08464.to6PowerOnBehavior
+        version: 1
+      - id: concertmirror08464.to6Induction
+        version: 1
+      - id: concertmirror08464.to6VibrationGear
+        version: 1
+      - id: concertmirror08464.to6Mode1
+        version: 1
+      - id: concertmirror08464.to6Mode2
+        version: 1
+      - id: concertmirror08464.to6Mode3
+        version: 1
+      - id: concertmirror08464.to6Mode4
+        version: 1
+      - id: concertmirror08464.to6Mode5
+        version: 1
+      - id: concertmirror08464.to6Mode6
+        version: 1
+      - id: concertmirror08464.to6Countdown1
+        version: 1
+      - id: concertmirror08464.to6Countdown2
+        version: 1
+      - id: concertmirror08464.to6Countdown3
+        version: 1
+      - id: concertmirror08464.to6Countdown4
+        version: 1
+      - id: concertmirror08464.to6Countdown5
+        version: 1
+      - id: concertmirror08464.to6Countdown6
+        version: 1
+      - id: concertmirror08464.to6Inching1
+        version: 1
+      - id: concertmirror08464.to6Inching2
+        version: 1
+      - id: concertmirror08464.to6Inching3
+        version: 1
+      - id: concertmirror08464.to6Inching4
+        version: 1
+      - id: concertmirror08464.to6Inching5
+        version: 1
+      - id: concertmirror08464.to6Inching6
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch5
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch6
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6BacklightMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6IndicatorStatus
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6PowerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Induction
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6VibrationGear
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Mode1
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Mode2
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Mode3
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Mode4
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Mode5
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Mode6
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Countdown1
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Countdown2
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Countdown3
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Countdown4
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Countdown5
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Countdown6
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Inching1
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Inching2
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Inching3
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Inching4
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Inching5
+      version: 1
+    - component: main
+      capability: concertmirror08464.to6Inching6
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: switch2
+      capability: switch
+      version: 1
+    - component: switch3
+      capability: switch
+      version: 1
+    - component: switch4
+      capability: switch
+      version: 1
+    - component: switch5
+      capability: switch
+      version: 1
+    - component: switch6
+      capability: switch
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6BacklightMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6IndicatorStatus
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6PowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Induction
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6VibrationGear
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode1
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode2
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode3
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode4
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode5
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode6
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown1
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown2
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown3
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown4
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown5
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown6
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching1
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching2
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching3
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching4
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching5
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching6
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+      - component: switch4
+        capability: switch
+        version: 1
+      - component: switch5
+        capability: switch
+        version: 1
+      - component: switch6
+        capability: switch
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6BacklightMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6IndicatorStatus
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6PowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Induction
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6VibrationGear
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode1
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode2
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode3
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode4
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode5
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Mode6
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown1
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown2
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown3
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown4
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown5
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Countdown6
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching1
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching2
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching3
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching4
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching5
+        version: 1
+      - component: main
+        capability: concertmirror08464.to6Inching6
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+      - component: switch4
+        capability: switch
+        version: 1
+      - component: switch5
+        capability: switch
+        version: 1
+      - component: switch6
+        capability: switch
+        version: 1

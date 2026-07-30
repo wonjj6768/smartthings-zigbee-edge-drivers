@@ -4,11 +4,11 @@ components:
     capabilities:
       - id: gasDetector
         version: 1
+      - id: concertmirror08464.dcrRqjGasValue
+        version: 1
       - id: carbonMonoxideDetector
         version: 1
       - id: carbonMonoxideMeasurement
-        version: 1
-      - id: battery
         version: 1
       - id: firmwareUpdate
         version: 1
@@ -33,13 +33,13 @@ deviceConfig:
       capability: gasDetector
       version: 1
     - component: main
+      capability: concertmirror08464.dcrRqjGasValue
+      version: 1
+    - component: main
       capability: carbonMonoxideDetector
       version: 1
     - component: main
       capability: carbonMonoxideMeasurement
-      version: 1
-    - component: main
-      capability: battery
       version: 1
     - component: main
       capability: refresh
@@ -50,12 +50,12 @@ deviceConfig:
         capability: gasDetector
         version: 1
       - component: main
+        capability: concertmirror08464.dcrRqjGasValue
+        version: 1
+      - component: main
         capability: carbonMonoxideDetector
         version: 1
       - component: main
         capability: carbonMonoxideMeasurement
-        version: 1
-      - component: main
-        capability: battery
         version: 1
     actions: []

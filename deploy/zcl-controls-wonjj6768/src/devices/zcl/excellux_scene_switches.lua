@@ -1,6 +1,7 @@
 local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
 local emit = require "emitters"
+local device_management = require "st.zigbee.device_management"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local function battery_percent_from_voltage(voltage)
 if type(voltage) ~= "number" then
@@ -25,9 +26,10 @@ zcl_initial_writes = {
 { name = "operation_mode", value = "event" },
 },
 zcl_clusters = {
+zcl.tuya_magic_packet(),
 zcl.battery({ endpoint = 1, read_on_configure = true }),
 zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION, zcl.ATTR_BATTERY_VOLTAGE, {
-name = "battery_voltage",
+name = "battery",
 endpoint = 1,
 emit = emit.battery(),
 scale = 10,
@@ -36,6 +38,16 @@ read_on_configure = true,
 }),
 zcl.operation_mode(),
 },
+configure = function(driver, device)
+for _, cluster_id in ipairs({ zcl.CLUSTER_POWER_CONFIGURATION, zcl.CLUSTER_ON_OFF }) do
+device:send(device_management.build_bind_request(
+device,
+cluster_id,
+driver.environment_info.hub_zigbee_eui,
+1
+))
+end
+end,
 }
 register_device_definition(excellux_scene_switch, {
 device_helpers.create_fingerprint("DSS0010", "Excellux"),

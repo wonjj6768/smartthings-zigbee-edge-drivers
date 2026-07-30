@@ -6,6 +6,10 @@ components:
         version: 1
       - id: concertmirror08464.valveStatusDualIrrigationMode
         version: 1
+      - id: concertmirror08464.waterSwitchCountdown
+        version: 1
+      - id: concertmirror08464.waterSwitchDuration
+        version: 1
       - id: battery
         version: 1
       - id: refresh
@@ -17,6 +21,10 @@ components:
       - id: valve
         version: 1
       - id: concertmirror08464.valveStatusDualIrrigationMode
+        version: 1
+      - id: concertmirror08464.waterSwitchCountdown
+        version: 1
+      - id: concertmirror08464.waterSwitchDuration
         version: 1
     categories:
       - name: Valve

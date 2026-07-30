@@ -1,5 +1,5 @@
 return {
   all = {
-    "devices.ef00.presence_general",
+    "devices.ef00.presence_radar",
   },
 }

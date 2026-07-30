@@ -1,0 +1,207 @@
+name: thermostats-thermostat-tr-m3z
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.trm3zPreset
+        version: 1
+      - id: concertmirror08464.trm3zChildLock
+        version: 1
+      - id: concertmirror08464.trm3zWindowDetection
+        version: 1
+      - id: concertmirror08464.trm3zWindowOpen
+        version: 1
+      - id: concertmirror08464.trm3zFrostProtection
+        version: 1
+      - id: concertmirror08464.trm3zScaleProtection
+        version: 1
+      - id: concertmirror08464.trm3zBatteryLow
+        version: 1
+      - id: concertmirror08464.trm3zTempCalibration
+        version: 1
+      - id: concertmirror08464.trm3zHolidayTemperature
+        version: 1
+      - id: concertmirror08464.trm3zEcoTemperature
+        version: 1
+      - id: concertmirror08464.trm3zComfortTemperature
+        version: 1
+      - id: concertmirror08464.trm3zTemperatureAccuracy
+        version: 1
+      - id: concertmirror08464.trm3zFrostTemperature
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zPreset
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zWindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zWindowOpen
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zFrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zScaleProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zBatteryLow
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zHolidayTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zEcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zComfortTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zTemperatureAccuracy
+      version: 1
+    - component: main
+      capability: concertmirror08464.trm3zFrostTemperature
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zWindowOpen
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zFrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zScaleProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zBatteryLow
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zHolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zTemperatureAccuracy
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zFrostTemperature
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zFrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zScaleProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zHolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zTemperatureAccuracy
+        version: 1
+      - component: main
+        capability: concertmirror08464.trm3zFrostTemperature
+        version: 1

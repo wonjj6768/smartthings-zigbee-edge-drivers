@@ -1,0 +1,22 @@
+name: safety-rain-battery-rb-srain01
+components:
+  - id: main
+    capabilities:
+      - id: waterSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.rbSrain01IlluminanceRaw
+        version: 1
+      - id: concertmirror08464.rbSrain01IlluminanceAverage20min
+        version: 1
+      - id: concertmirror08464.rbSrain01IlluminanceMaximumToday
+        version: 1
+      - id: concertmirror08464.rbSrain01CleaningReminder
+        version: 1
+      - id: concertmirror08464.rbSrain01RainIntensity
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: LeakSensor

@@ -1,6 +1,7 @@
 local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
 local capabilities = require "st.capabilities"
+local emit = require "emitters"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local LUMI_BASIC_CLUSTER = 0x0000
 local LUMI_BASIC_ATTR = 0xFF01
@@ -58,16 +59,8 @@ events[#events + 1] = capabilities.atmosphericPressureMeasurement.atmosphericPre
 end
 return events[1] ~= nil and events or nil
 end
-local temp_humidity = {
-profile = "sensors-temp-humidity-battery",
-zcl_clusters = {
-zcl.temperature(),
-zcl.humidity(),
-zcl.battery(),
-},
-}
 local temp_humidity_lumi_basic = {
-profile = "sensors-temp-humidity-battery",
+profile = "sensors-temp-humidity-battery-voltage",
 zcl_clusters = {
 zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
 name = "lumi_basic",
@@ -95,17 +88,22 @@ zcl.battery_voltage(),
 },
 }
 local illuminance = {
-profile = "sensors-illuminance-battery",
+profile = "sensors-illuminance-battery-voltage-lumi-pending",
 zcl_clusters = {
 zcl.illuminance(),
 zcl.battery(),
+zcl.battery_voltage(),
 },
 }
 local motion = {
-profile = "safety-motion-battery",
+profile = "safety-motion-battery-voltage",
 zcl_clusters = {
-zcl.motion(),
-zcl.battery(),
+zcl.occupancy({ emit = emit.motion() }),
+zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
+name = "lumi_basic",
+emit = lumi_basic_events,
+read_only = true,
+}),
 },
 }
 local motion_illuminance = {
@@ -116,18 +114,81 @@ zcl.illuminance(),
 zcl.battery(),
 },
 }
-local contact = {
-profile = "safety-contact-battery",
+local function lumi_on_off_contact()
+return zcl.switch("contact", {
+emit = emit.contact(),
+read_only = true,
+})
+end
+local old_lumi_contact = {
+profile = "safety-contact-battery-voltage",
+zcl_clusters = {
+lumi_on_off_contact(),
+zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
+name = "lumi_basic",
+emit = lumi_basic_events,
+read_only = true,
+}),
+},
+}
+local lumi_ac01_contact = {
+profile = "safety-contact-tamper-battery-voltage",
+zcl_clusters = {
+lumi_on_off_contact(),
+zcl.tamper(),
+zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
+name = "lumi_basic",
+emit = lumi_basic_events,
+read_only = true,
+}),
+zcl.battery(),
+zcl.battery_voltage(),
+},
+}
+local lumi_acn001_contact = {
+profile = "safety-contact-battery-low-battery-voltage",
+zcl_clusters = {
+zcl.contact(),
+zcl.battery_low(),
+zcl.battery(),
+zcl.battery_voltage(),
+},
+}
+local lumi_agl02_contact = {
+profile = "safety-contact-battery-voltage",
 zcl_clusters = {
 zcl.contact(),
 zcl.battery(),
+zcl.battery_voltage(),
 },
 }
-local water = {
-profile = "safety-water-leak-battery",
+local water_battery_low_battery_voltage = {
+profile = "safety-water-leak-battery-low-battery-voltage",
 zcl_clusters = {
 zcl.water(),
+zcl.battery_low(),
+zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
+name = "lumi_basic",
+emit = lumi_basic_events,
+read_only = true,
+}),
 zcl.battery(),
+zcl.battery_voltage(),
+},
+}
+local water_tamper_battery_low_battery_voltage = {
+profile = "safety-water-leak-tamper-battery-low-battery-voltage",
+zcl_clusters = {
+zcl.water(),
+zcl.tamper(),
+zcl.battery_low(),
+zcl.cluster_attribute(LUMI_BASIC_CLUSTER, LUMI_BASIC_ATTR, {
+name = "lumi_basic",
+emit = lumi_basic_events,
+read_only = true,
+}),
+zcl.battery(),
+zcl.battery_voltage(),
 },
 }
 local dimmer_light = {
@@ -143,14 +204,6 @@ zcl_clusters = {
 zcl.switch(),
 },
 }
-register_device_definition(temp_humidity, {
-device_helpers.create_fingerprint("Aqara", "AAQS-S01"),
-device_helpers.create_fingerprint("Aqara", "CM-M01"),
-device_helpers.create_fingerprint("Aqara", "CM-M01R"),
-device_helpers.create_fingerprint("Aqara", "TH-S02D"),
-device_helpers.create_fingerprint("Aqara", "ZHTZ02LM"),
-device_helpers.create_fingerprint("Xiaomi", "ZHTZ02LM"),
-})
 register_device_definition(temp_humidity_lumi_basic, {
 device_helpers.create_fingerprint("LUMI", "lumi.sens"),
 device_helpers.create_fingerprint("LUMI", "lumi.sensor_ht"),
@@ -160,20 +213,11 @@ device_helpers.create_fingerprint("LUMI", "lumi.sensor_ht.agl02"),
 device_helpers.create_fingerprint("LUMI", "lumi.weather"),
 })
 register_device_definition(illuminance, {
-device_helpers.create_fingerprint("Aqara", "RLS-K01D"),
-device_helpers.create_fingerprint("Aqara", "MZTD11LM"),
 device_helpers.create_fingerprint("LUMI", "lumi.sen_ill.agl01"),
 device_helpers.create_fingerprint("LUMI", "lumi.sen_ill.mgl01"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4040GL"),
 })
 register_device_definition(motion, {
-device_helpers.create_fingerprint("Aqara", "PETC1-M01"),
-device_helpers.create_fingerprint("Aqara", "MS-S02"),
-device_helpers.create_fingerprint("Aqara", "MZSD11LM"),
-device_helpers.create_fingerprint("Aqara", "MZSD12LM"),
 device_helpers.create_fingerprint("LUMI", "lumi.sensor_motion"),
-device_helpers.create_fingerprint("Xiaomi", "MZSD11LM"),
-device_helpers.create_fingerprint("Xiaomi", "MZSD12LM"),
 })
 register_device_definition(motion_illuminance, {
 device_helpers.create_fingerprint("LUMI", "lumi.motion.ac02"),
@@ -181,47 +225,24 @@ device_helpers.create_fingerprint("LUMI", "lumi.motion.acn001"),
 device_helpers.create_fingerprint("LUMI", "lumi.motion.agl02"),
 device_helpers.create_fingerprint("LUMI", "lumi.sensor_motion.aq2"),
 })
-register_device_definition(contact, {
-device_helpers.create_fingerprint("Aqara", "DCM-K01"),
-device_helpers.create_fingerprint("Aqara", "MFCZQ12LM"),
-device_helpers.create_fingerprint("Aqara", "DW-S03D"),
+register_device_definition(lumi_ac01_contact, {
 device_helpers.create_fingerprint("LUMI", "lumi.magnet.ac01"),
+})
+register_device_definition(lumi_acn001_contact, {
 device_helpers.create_fingerprint("LUMI", "lumi.magnet.acn001"),
+})
+register_device_definition(lumi_agl02_contact, {
 device_helpers.create_fingerprint("LUMI", "lumi.magnet.agl02"),
+})
+register_device_definition(old_lumi_contact, {
 device_helpers.create_fingerprint("LUMI", "lumi.sensor_magnet"),
 device_helpers.create_fingerprint("LUMI", "lumi.sensor_magnet.aq2"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4004CN"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4005CN"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4006CN"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4007CN"),
 })
-register_device_definition(water, {
-device_helpers.create_fingerprint("Aqara", "JT-BZ-03AQ/A"),
-device_helpers.create_fingerprint("Aqara", "SRSC-M01"),
+register_device_definition(water_battery_low_battery_voltage, {
 device_helpers.create_fingerprint("LUMI", "lumi.flood.acn001"),
-device_helpers.create_fingerprint("LUMI", "lumi.flood.agl02"),
 device_helpers.create_fingerprint("LUMI", "lumi.sensor_wleak.aq1"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4015CN"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4016CN"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4017CN"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4018CN"),
 })
-register_device_definition(dimmer_light, {
-device_helpers.create_fingerprint("Aqara", "RSD-M01"),
-device_helpers.create_fingerprint("Aqara", "LEDLBT1-L01"),
-})
-register_device_definition(switch_1, {
-device_helpers.create_fingerprint("Aqara", "JY-GZ-03AQ"),
-device_helpers.create_fingerprint("Aqara", "WRS-R02"),
-device_helpers.create_fingerprint("Aqara", "WB-R02D"),
-device_helpers.create_fingerprint("Aqara", "WL-S02D"),
-device_helpers.create_fingerprint("Aqara", "WS-K08D"),
-device_helpers.create_fingerprint("Xiaomi", "MFKZQ01LM"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4019RT"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4020RT"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4039GL"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4041GL"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4042GL"),
-device_helpers.create_fingerprint("Xiaomi", "YTC4043GL"),
+register_device_definition(water_tamper_battery_low_battery_voltage, {
+device_helpers.create_fingerprint("LUMI", "lumi.flood.agl02"),
 })
 return device_definitions

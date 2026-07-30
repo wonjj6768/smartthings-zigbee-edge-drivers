@@ -573,6 +573,28 @@ local function load_mapping_preset(zcl)
     }
   end
 
+  local function shelly_handle_position_pair()
+    return {
+      from = function(value)
+        local alarm1
+        local alarm2
+        if type(value) == "table" then
+          if type(value.is_alarm1_set) == "function" then alarm1 = value:is_alarm1_set() end
+          if type(value.is_alarm2_set) == "function" then alarm2 = value:is_alarm2_set() end
+          if alarm1 == nil and value.value ~= nil then value = value.value end
+        end
+        if type(value) == "number" then
+          alarm1 = bit32.band(value, 0x0001) ~= 0
+          alarm2 = bit32.band(value, 0x0002) ~= 0
+        end
+        if alarm1 == nil or alarm2 == nil then return value end
+        if not alarm1 and not alarm2 then return "closed" end
+        if alarm1 and not alarm2 then return "tilted" end
+        return "open"
+      end,
+    }
+  end
+
   local function extract_zone_status_from_command(zb_rx)
     local zone_status = zb_rx and zb_rx.body and zb_rx.body.zcl_body and zb_rx.body.zcl_body.zone_status or nil
     if zone_status == nil then
@@ -1349,12 +1371,54 @@ local function load_mapping_preset(zcl)
     )
   end)
 
+  define_preset("contact_alarm_1_or_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "contact",
+        emit = emit.contact(),
+        converter = zone_status_pair(0x0003),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(30, 300, nil)
+    )
+  end)
+
+  define_preset("shelly_handle_position", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "shelly_handle_position",
+        emit = emit.shellyBluDoorHandlePosition(),
+        converter = shelly_handle_position_pair(),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(30, 300, nil)
+    )
+  end)
+
   define_preset("water", zcl.ias_zone, function()
     return merge_defaults(
       {
         name = "water",
         emit = emit.water(),
         converter = zone_status_pair(0x0001),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 300, nil)
+    )
+  end)
+
+  define_preset("water_alarm_1_or_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "water",
+        emit = emit.water(),
+        converter = zone_status_pair(0x0003),
         ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
         command_id = 0x00,
         command_extractor = extract_zone_status_from_command,
@@ -1377,6 +1441,20 @@ local function load_mapping_preset(zcl)
     )
   end)
 
+  define_preset("smoke_alarm_1_or_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "smoke",
+        emit = emit.smoke(),
+        converter = zone_status_pair(0x0003),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 300, nil)
+    )
+  end)
+
   define_preset("gas", zcl.ias_zone, function()
     return merge_defaults(
       {
@@ -1391,12 +1469,54 @@ local function load_mapping_preset(zcl)
     )
   end)
 
+  define_preset("gas_alarm_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "gas",
+        emit = emit.gas(),
+        converter = zone_status_pair(0x0002),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 300, nil)
+    )
+  end)
+
+  define_preset("gas_alarm_1_or_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "gas",
+        emit = emit.gas(),
+        converter = zone_status_pair(0x0003),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 300, nil)
+    )
+  end)
+
   define_preset("carbon_monoxide", zcl.ias_zone, function()
     return merge_defaults(
       {
         name = "carbon_monoxide",
         emit = emit.carbon_monoxide(),
         converter = zone_status_pair(0x0001),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 180, nil)
+    )
+  end)
+
+  define_preset("carbon_monoxide_alarm_1_or_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "carbon_monoxide",
+        emit = emit.carbon_monoxide(),
+        converter = zone_status_pair(0x0003),
         ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
         command_id = 0x00,
         command_extractor = extract_zone_status_from_command,
@@ -1453,6 +1573,20 @@ local function load_mapping_preset(zcl)
         name = "alarm",
         emit = emit.alarm(),
         converter = zone_status_pair(0x0001),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 300, nil)
+    )
+  end)
+
+  define_preset("alarm_1_or_2", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "alarm",
+        emit = emit.alarm(),
+        converter = zone_status_pair(0x0003),
         ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
         command_id = 0x00,
         command_extractor = extract_zone_status_from_command,

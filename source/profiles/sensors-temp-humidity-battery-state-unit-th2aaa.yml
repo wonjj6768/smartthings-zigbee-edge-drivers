@@ -1,0 +1,24 @@
+name: sensors-temp-humidity-battery-state-unit-th2aaa
+components:
+- id: main
+  capabilities:
+  - id: temperatureMeasurement
+    version: 1
+  - id: relativeHumidityMeasurement
+    version: 1
+  - id: concertmirror08464.th2aaaBatteryState
+    version: 1
+  - id: concertmirror08464.th2aaaTemperatureUnit
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: TempHumiditySensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true
+

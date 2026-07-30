@@ -24,5 +24,9 @@ components:
         version: 1
       - id: concertmirror08464.clearFaultDin3
         version: 1
+      - id: concertmirror08464.din3Fault
+        version: 1
+      - id: concertmirror08464.din3MeterId
+        version: 1
     categories:
       - name: CurbPowerMeter

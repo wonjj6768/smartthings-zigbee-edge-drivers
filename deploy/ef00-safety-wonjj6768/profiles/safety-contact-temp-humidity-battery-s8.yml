@@ -2,7 +2,7 @@ name: safety-contact-temp-humidity-battery-s8
 components:
   - id: main
     capabilities:
-      - id: contactSensor
+      - id: concertmirror08464.s8OpeningMode
         version: 1
       - id: temperatureMeasurement
         version: 1
@@ -15,6 +15,26 @@ components:
       - id: concertmirror08464.updateFrequencyContactS8Minutes
         version: 1
       - id: concertmirror08464.alarmDurationContactS8Sec300
+        version: 1
+      - id: concertmirror08464.s8AlarmState
+        version: 1
+      - id: concertmirror08464.s8HandlePosition
+        version: 1
+      - id: concertmirror08464.s8LeftButton
+        version: 1
+      - id: concertmirror08464.s8RightButton
+        version: 1
+      - id: concertmirror08464.s8VacationMode
+        version: 1
+      - id: concertmirror08464.s8AlarmSwitch
+        version: 1
+      - id: concertmirror08464.s8KeySound
+        version: 1
+      - id: concertmirror08464.batteryLow
+        version: 1
+      - id: concertmirror08464.s8HandleSound
+        version: 1
+      - id: concertmirror08464.s8Calibrate
         version: 1
       - id: firmwareUpdate
         version: 1

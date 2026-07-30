@@ -1,0 +1,79 @@
+name: thermostats-fcu-thermostat-ae669k
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: fanMode
+        version: 1
+      - id: concertmirror08464.ae669kChildLock
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: fanMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.ae669kChildLock
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: fanMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.ae669kChildLock
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: fanMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.ae669kChildLock
+        version: 1

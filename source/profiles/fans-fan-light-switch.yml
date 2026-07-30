@@ -6,6 +6,8 @@ components:
         version: 1
       - id: fanMode
         version: 1
+      - id: concertmirror08464.fanLightHmqzPowerOnBehavior
+        version: 1
       - id: refresh
         version: 1
     categories:
@@ -47,6 +49,9 @@ deviceConfig:
       capability: switch
       version: 1
     - component: main
+      capability: concertmirror08464.fanLightHmqzPowerOnBehavior
+      version: 1
+    - component: main
       capability: refresh
       version: 1
   automation:
@@ -59,6 +64,9 @@ deviceConfig:
         version: 1
       - component: light
         capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.fanLightHmqzPowerOnBehavior
         version: 1
     actions:
       - component: main

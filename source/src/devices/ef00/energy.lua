@@ -1,3 +1,3 @@
-local entries = require "devices.ef00.din_rail"
+local din_rail_split = require "devices.ef00.din_rail_split"
 
-return entries
+return din_rail_split.select_entries(false)

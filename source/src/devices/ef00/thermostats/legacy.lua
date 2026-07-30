@@ -343,7 +343,7 @@ local enum_heat_idle_inverted = converter.lookup_from_to({
 })
 
 local saswell_legacy = {
-  profile = "thermostats-thermostat",
+  profile = "thermostats-thermostat-saswell",
   named_mapping = {
     named_mappings = {
       system_mode = saswell_system_mode_write,
@@ -355,8 +355,49 @@ local saswell_legacy = {
       idle = 0,
     }),
   }),
+  -- Z2M Saswell SEA801/SEA802 (saswell.ts:38) also exposes window detection,
+  -- frost protection, child lock, away mode, anti-scaling, the low battery flag
+  -- and a -6..6 temperature calibration through legacy.ts dataPoints.saswell*.
+  tuya.dp_binary(8, {
+    name = "window_detection",
+    emit = emit.saswellWindowDetection(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_binary(10, {
+    name = "frost_detection",
+    emit = emit.saswellFrostDetection(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_numeric(27, {
+    name = "local_temperature_calibration",
+    emit = emit.saswellTempCalibration(),
+    converter = converter.signed_number_pair(1),
+  }),
+  tuya.dp_binary(40, {
+    name = "child_lock",
+    emit = emit.saswellChildLock(),
+    converter = converter.lookup_from_to({ unlock = false, lock = true }),
+  }),
   tuya.dp_local_temperature(102, { scale = 10 }),
   tuya.dp_current_heating_setpoint(103, { scale = 10 }),
+  tuya.dp_binary(105, {
+    name = "battery_low",
+    read_only = true,
+    emit = emit.saswellBatteryLow(),
+    converter = converter.from_only(function(value)
+      return value and "low" or "normal"
+    end),
+  }),
+  tuya.dp_binary(106, {
+    name = "away_mode",
+    emit = emit.saswellAwayMode(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_binary(130, {
+    name = "anti_scaling",
+    emit = emit.saswellAntiScaling(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
   tuya.dp_system_mode(101, {
     converter = converter.lookup_from_to({
       heat = true,
@@ -397,12 +438,40 @@ register_device_definition(saswell_legacy, {
   device_helpers.create_fingerprint("_TZE200_7p8ugv8d", "TS0601"),
   device_helpers.create_fingerprint("_TZE284_3yp57tby", "TS0601"),
 })
+-- Z2M legacy.fz.etop_thermostat (legacy.ts:2370) unpacks DP13 as a bitmap of
+-- high/low temperature, internal/external sensor errors, battery low and offline.
+local ETOP_ERROR_BITS = {
+  "high_temperature",
+  "low_temperature",
+  "internal_sensor_error",
+  "external_sensor_error",
+  "battery_low",
+  "device_offline",
+}
+local etop_error_status_converter = converter.from_only(function(value)
+  local bitmap = tonumber(value)
+  if bitmap == nil then
+    return nil
+  end
+
+  local names = {}
+  for index, name in ipairs(ETOP_ERROR_BITS) do
+    if bitmap % (2 ^ index) >= 2 ^ (index - 1) then
+      names[#names + 1] = name
+    end
+  end
+
+  if #names == 0 then
+    return "none"
+  end
+  return table.concat(names, ",")
+end)
 local etop_system_mode = power_mode_write(1, 4, {
   heat = 0,
   auto = 2,
 })
 local thermostat_etop_legacy = {
-  profile = "thermostats-thermostat",
+  profile = "thermostats-thermostat-etop",
   named_mapping = {
     named_mappings = {
       system_mode = etop_system_mode,
@@ -425,8 +494,13 @@ local thermostat_etop_legacy = {
     emit = emit.thermostat_mode(),
     read_only = true,
   }),
-  tuya.dp_child_lock(7, { name = "child_lock" }),                        -- profile 미포함
-  tuya.dp_raw(13, { name = "error_status" }),                            -- profile 미포함
+  tuya.dp_child_lock(7, { name = "child_lock", emit = emit.etopChildLock() }),
+  tuya.dp_numeric(13, {
+    name = "error_status",
+    read_only = true,
+    converter = etop_error_status_converter,
+    emit = emit.etopErrorStatus(),
+  }),
   tuya.dp_running_state(14, {
     converter = converter.lookup_from_to({
       heating = true,
@@ -456,7 +530,7 @@ local tybac_setpoint = tuya.dp_current_heating_setpoint(16, {
 })
 
 local thermostat_sas936 = {
-  profile = "thermostats-thermostat",
+  profile = "thermostats-thermostat-sas936",
   named_mapping = {
     named_mappings = {
       system_mode = function(_, value)
@@ -470,14 +544,19 @@ local thermostat_sas936 = {
       end,
     },
   },
+  -- Z2M SAS936RHB-7-Z03 (tuya.ts:21526) reads DP3 as a heating-demand value that
+  -- may arrive as an array; only the trailing element carries the state.
   tuya.dp_running_state(3, {
-    converter = converter.lookup_from_to({
-      heating = 1,
-      idle = 0,
-    }),
+    from_device = function(value)
+      if type(value) == "table" then
+        value = value[#value]
+      end
+      return (tonumber(value) or 0) == 1 and "heating" or "idle"
+    end,
     emit = emit.thermostat_operating_state(),
+    read_only = true,
   }),
-  tuya.dp_child_lock(40, {}),                                            -- profile 미포함
+  tuya.dp_child_lock(40, { emit = emit.sas936ChildLock() }),
   tuya.dp_system_mode(101, {
     converter = converter.lookup_from_to({
       heat = true,
@@ -487,7 +566,11 @@ local thermostat_sas936 = {
   }),
   tuya.dp_local_temperature(102, { scale = 10 }),
   tuya.dp_current_heating_setpoint(103, { scale = 10 }),
-  tuya.dp_binary(106, { name = "temporary_leaving" }),                   -- profile 미포함
+  tuya.dp_binary(106, {
+    name = "temporary_leaving",
+    emit = emit.sas936TemporaryLeaving(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
 }
 register_device_definition(thermostat_sas936, ef00_helpers.ts0601_fingerprints( {
   "_TZE284_madl8ejv",
@@ -506,17 +589,22 @@ local thermostat_twc_r01 = {
     }),
     emit = emit.pilotWireModeTwcR01(),
   }),
-  tuya.dp_power(11, { name = "power", scale = 10 }),                     -- profile 미포함
+  tuya.dp_power(11, { name = "power", scale = 10, emit = emit.power() }),
   tuya.dp_local_temperature(16, { scale = 10 }),
-  tuya.dp_local_temperature_calibration(19, { scale = 10 }),             -- profile 미포함
-  tuya.dp_raw(20, { name = "fault" }),                                   -- profile 미포함
-  tuya.dp_eco_mode(40, {}),                                              -- profile 미포함
-  tuya.dp_binary(110, { name = "open_window" }),                         -- profile 미포함
-  tuya.dp_temperature(111, { name = "open_window_temperature" }),        -- profile 미포함
-  tuya.dp_binary(114, { name = "device_mode_type" }),                    -- profile 미포함
-  tuya.dp_voltage(115, { name = "voltage", scale = 10 }),                -- profile 미포함
-  tuya.dp_current(116, { name = "current", scale = 10 }),                -- profile 미포함
-  tuya.dp_energy(117, { name = "energy", scale = 10 }),                  -- profile 미포함
+  -- Z2M reads DP19 raw here (tuya.ts:24534), not divided by ten.
+  tuya.dp_local_temperature_calibration(19, { scale = 1, emit = emit.twcr01TempCalibration() }),
+  tuya.dp_numeric(20, { name = "fault", read_only = true, emit = emit.twcr01Fault() }),
+  tuya.dp_eco_mode(40, { emit = emit.twcr01EcoMode() }),
+  tuya.dp_open_window(110, { emit = emit.twcr01OpenWindow() }),
+  tuya.dp_temperature(111, {
+    name = "open_window_temperature",
+    scale = 1,
+    emit = emit.twcr01OpenWindowTemperature(),
+  }),
+  tuya.dp_binary(114, { name = "device_mode_type", emit = emit.twcr01DeviceModeType() }),
+  tuya.dp_voltage(115, { name = "voltage", scale = 10, emit = emit.voltage() }),
+  tuya.dp_current(116, { name = "current", scale = 10, emit = emit.current() }),
+  tuya.dp_energy(117, { name = "energy", scale = 10, emit = emit.energy() }),
   tuya.dp_energy(119, { name = "energy_today", scale = 10, emit = emit.energyTodayTwcR01() }),
   tuya.dp_energy(120, { name = "energy_yesterday", scale = 10, emit = emit.energyYesterdayTwcR01() }),
 }

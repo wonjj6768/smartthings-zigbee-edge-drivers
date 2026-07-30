@@ -809,14 +809,6 @@ local function load_datapoint_preset(tuya, shared)
     local resolved = normalize_preset_options(name_or_options, options, "illuminance")
     return tuya.dp_numeric(dp, resolved)
   end
-  function tuya.dp_battery_state(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "battery_state")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.battery_state()
-    end
-
-    return tuya.dp_enum(dp, resolved)
-  end
   function tuya.dp_temperature_unit(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "temperature_unit")
     if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
@@ -871,6 +863,9 @@ local function load_datapoint_preset(tuya, shared)
   function tuya.dp_soil_calibration(dp, name_or_options, options)
     return build_signed_numeric_preset(dp, "soil_calibration", 1, name_or_options, options)
   end
+  function tuya.dp_temperature_sampling(dp, name_or_options, options)
+    return build_divided_numeric_preset(dp, "temperature_sampling", 1, name_or_options, options)
+  end
   function tuya.dp_report_interval(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "report_interval", 1, name_or_options, options)
   end
@@ -912,6 +907,16 @@ local function load_datapoint_preset(tuya, shared)
       options
     )
   end
+  function tuya.dp_reverse_water_consumed(dp, name_or_options, options)
+    return build_raw_aware_numeric_preset(
+      dp,
+      "reverse_water_consumed",
+      1000,
+      { bytes = 4 },
+      name_or_options,
+      options
+    )
+  end
   function tuya.dp_month_consumption(dp, name_or_options, options)
     return build_raw_aware_numeric_preset(
       dp,
@@ -932,6 +937,26 @@ local function load_datapoint_preset(tuya, shared)
       options
     )
   end
+  function tuya.dp_flow_rate(dp, name_or_options, options)
+    return build_raw_aware_numeric_preset(
+      dp,
+      "flow_rate",
+      1000,
+      { bytes = 4 },
+      name_or_options,
+      options
+    )
+  end
+  function tuya.dp_instantaneous_flow_rate(dp, name_or_options, options)
+    return build_raw_aware_numeric_preset(
+      dp,
+      "instantaneous_flow_rate",
+      1000,
+      { bytes = 4 },
+      name_or_options,
+      options
+    )
+  end
   function tuya.dp_cumulative_heat(dp, name_or_options, options)
     return build_raw_aware_numeric_preset(
       dp,
@@ -944,6 +969,25 @@ local function load_datapoint_preset(tuya, shared)
   end
   function tuya.dp_battery_voltage(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "battery_voltage", 100, name_or_options, options)
+  end
+  function tuya.dp_meter_id(dp, name_or_options, options)
+    local resolved = normalize_preset_options(name_or_options, options, "meter_id")
+    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil then
+      resolved.converter = converter.raw_identifier()
+    end
+
+    return tuya.dp_raw(dp, resolved)
+  end
+  function tuya.dp_water_meter_faults(dp, name_or_options, options)
+    local resolved = normalize_preset_options(name_or_options, options, "faults")
+    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil then
+      resolved.converter = converter.water_meter_faults()
+    end
+
+    return tuya.dp_numeric(dp, resolved)
+  end
+  function tuya.dp_alarm(dp, name_or_options, options)
+    return tuya.dp_binary(dp, normalize_preset_options(name_or_options, options, "alarm"))
   end
   function tuya.dp_co2(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "co2", 1, name_or_options, options)

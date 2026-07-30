@@ -1,0 +1,32 @@
+name: sensors-liquid-level-me202wz
+components:
+- id: main
+  capabilities:
+  - id: concertmirror08464.liquidLevelPercent
+    version: 1
+  - id: concertmirror08464.me202LiquidDepth
+    version: 1
+  - id: concertmirror08464.liquidState
+    version: 1
+  - id: voltageMeasurement
+    version: 1
+  - id: concertmirror08464.me202MaximumPercent
+    version: 1
+  - id: concertmirror08464.me202MinimumPercent
+    version: 1
+  - id: concertmirror08464.me202MaximumDepth
+    version: 1
+  - id: concertmirror08464.me202RelaySwitch
+    version: 1
+  - id: concertmirror08464.me202PumpMode
+    version: 1
+  - id: concertmirror08464.me202PumpControl
+    version: 1
+  - id: concertmirror08464.me202Version
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: MultiFunctionalSensor

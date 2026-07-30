@@ -4,6 +4,8 @@ components:
     capabilities:
       - id: switch
         version: 1
+      - id: concertmirror08464.sonoffZbminir2PowerOnBehavior
+        version: 1
       - id: concertmirror08464.sonoffZbminir2NetworkIndicator
         version: 1
       - id: concertmirror08464.sonoffZbminir2TurboMode

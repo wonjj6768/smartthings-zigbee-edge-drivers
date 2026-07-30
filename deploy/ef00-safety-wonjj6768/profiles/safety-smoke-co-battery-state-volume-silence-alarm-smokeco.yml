@@ -1,0 +1,43 @@
+name: safety-smoke-co-battery-state-volume-silence-alarm-smokeco
+components:
+  - id: main
+    capabilities:
+      - {id: smokeDetector, version: 1}
+      - {id: concertmirror08464.smokeCoSmokeState, version: 1}
+      - {id: carbonMonoxideDetector, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.smokeCoAlarmVolume, version: 1}
+      - {id: concertmirror08464.smokeCoSilence, version: 1}
+      - {id: concertmirror08464.smokeCoAlarmSwitch, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: SmokeDetector
+deviceConfig:
+  dashboard:
+    states:
+      - {component: main, capability: smokeDetector, version: 1, group: main}
+    actions: []
+    basicPlus: []
+  detailView:
+    - {component: main, capability: smokeDetector, version: 1}
+    - {component: main, capability: concertmirror08464.smokeCoSmokeState, version: 1}
+    - {component: main, capability: carbonMonoxideDetector, version: 1}
+    - {component: main, capability: battery, version: 1}
+    - {component: main, capability: concertmirror08464.smokeCoAlarmVolume, version: 1}
+    - {component: main, capability: concertmirror08464.smokeCoSilence, version: 1}
+    - {component: main, capability: concertmirror08464.smokeCoAlarmSwitch, version: 1}
+    - {component: main, capability: refresh, version: 1}
+  automation:
+    conditions:
+      - {component: main, capability: smokeDetector, version: 1}
+      - {component: main, capability: concertmirror08464.smokeCoSmokeState, version: 1}
+      - {component: main, capability: carbonMonoxideDetector, version: 1}
+      - {component: main, capability: battery, version: 1}
+      - {component: main, capability: concertmirror08464.smokeCoAlarmVolume, version: 1}
+      - {component: main, capability: concertmirror08464.smokeCoSilence, version: 1}
+      - {component: main, capability: concertmirror08464.smokeCoAlarmSwitch, version: 1}
+    actions:
+      - {component: main, capability: concertmirror08464.smokeCoAlarmVolume, version: 1}
+      - {component: main, capability: concertmirror08464.smokeCoSilence, version: 1}
+      - {component: main, capability: concertmirror08464.smokeCoAlarmSwitch, version: 1}

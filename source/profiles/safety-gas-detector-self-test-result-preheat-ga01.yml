@@ -1,0 +1,16 @@
+name: safety-gas-detector-self-test-result-preheat-ga01
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: concertmirror08464.ga01SelfTestResult
+        version: 1
+      - id: concertmirror08464.ga01Preheat
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor

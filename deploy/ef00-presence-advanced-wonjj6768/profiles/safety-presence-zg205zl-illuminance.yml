@@ -4,25 +4,31 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.staticDetectionSensitivity
+      - id: concertmirror08464.zg205zlMotionState
         version: 1
-      - id: concertmirror08464.presenceDetectionRange
+      - id: concertmirror08464.zg205zlFadingTime
         version: 1
-      - id: concertmirror08464.largeMotionDetectionSensitivity
+      - id: concertmirror08464.zg205zlLargeDistance
         version: 1
-      - id: concertmirror08464.largeMotionDetectionDistance
+      - id: concertmirror08464.zg205zlLargeSensitivity
         version: 1
-      - id: concertmirror08464.smallMotionDetectionSensitivity
+      - id: concertmirror08464.zg205zlSmallDistance
         version: 1
-      - id: concertmirror08464.smallMotionDetectionDistance
+      - id: concertmirror08464.zg205zlSmallSensitivity
         version: 1
-      - id: concertmirror08464.detectionHoldTime
+      - id: concertmirror08464.zg205zlStaticDistance
         version: 1
-      - id: concertmirror08464.driverMessage
+      - id: concertmirror08464.zg205zlStaticSensitivity
+        version: 1
+      - id: concertmirror08464.zg205zlMode
+        version: 1
+      - id: concertmirror08464.zg205zlAlarmVolume
+        version: 1
+      - id: concertmirror08464.zg205zlAlarmTime
+        version: 1
+      - id: concertmirror08464.zg205zlLightMode
         version: 1
       - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -42,28 +48,40 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.staticDetectionSensitivity
+      capability: concertmirror08464.zg205zlMotionState
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.zg205zlFadingTime
       version: 1
     - component: main
-      capability: concertmirror08464.largeMotionDetectionSensitivity
+      capability: concertmirror08464.zg205zlLargeDistance
       version: 1
     - component: main
-      capability: concertmirror08464.largeMotionDetectionDistance
+      capability: concertmirror08464.zg205zlLargeSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.smallMotionDetectionSensitivity
+      capability: concertmirror08464.zg205zlSmallDistance
       version: 1
     - component: main
-      capability: concertmirror08464.smallMotionDetectionDistance
+      capability: concertmirror08464.zg205zlSmallSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.zg205zlStaticDistance
       version: 1
     - component: main
-      capability: concertmirror08464.driverMessage
+      capability: concertmirror08464.zg205zlStaticSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zlMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zlAlarmVolume
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zlAlarmTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zlLightMode
       version: 1
     - component: main
       capability: illuminanceMeasurement
@@ -79,4 +97,40 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.zg205zlMotionState
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.zg205zlFadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlLargeDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlLargeSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlSmallDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlSmallSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlStaticDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlStaticSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlAlarmVolume
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlAlarmTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zlLightMode
+        version: 1

@@ -1,0 +1,213 @@
+name: thermostats-thermostat-zwt100
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.zwt100Mode
+        version: 1
+      - id: concertmirror08464.zwt100ChildLock
+        version: 1
+      - id: concertmirror08464.zwt100SensorSelection
+        version: 1
+      - id: concertmirror08464.zwt100WorkDays
+        version: 1
+      - id: concertmirror08464.zwt100Backlight
+        version: 1
+      - id: concertmirror08464.zwt100Sound
+        version: 1
+      - id: concertmirror08464.zwt100DirectionMode
+        version: 1
+      - id: concertmirror08464.zwt100FrostProtection
+        version: 1
+      - id: concertmirror08464.zwt100Reset
+        version: 1
+      - id: concertmirror08464.zwt100UpperTempLimit
+        version: 1
+      - id: concertmirror08464.zwt100TempCalibration
+        version: 1
+      - id: concertmirror08464.zwt100TempVariation
+        version: 1
+      - id: concertmirror08464.zwt100SensorTempLimit
+        version: 1
+      - id: concertmirror08464.zwt100Fault
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100Mode
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100ChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100SensorSelection
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100WorkDays
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100Backlight
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100Sound
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100DirectionMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100FrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100Reset
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100UpperTempLimit
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100TempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100TempVariation
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100SensorTempLimit
+      version: 1
+    - component: main
+      capability: concertmirror08464.zwt100Fault
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Mode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100SensorSelection
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100WorkDays
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Backlight
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Sound
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100DirectionMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Reset
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100UpperTempLimit
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100TempVariation
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100SensorTempLimit
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Fault
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Mode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100SensorSelection
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100WorkDays
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Backlight
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Sound
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100DirectionMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100Reset
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100UpperTempLimit
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100TempVariation
+        version: 1
+      - component: main
+        capability: concertmirror08464.zwt100SensorTempLimit
+        version: 1

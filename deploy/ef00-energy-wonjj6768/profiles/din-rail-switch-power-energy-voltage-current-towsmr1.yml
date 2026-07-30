@@ -1,0 +1,314 @@
+name: din-rail-switch-power-energy-voltage-current-towsmr1
+components:
+- id: main
+  capabilities:
+  - id: switch
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: energyMeter
+    version: 1
+  - id: voltageMeasurement
+    version: 1
+  - id: currentMeasurement
+    version: 1
+  - id: temperatureMeasurement
+    version: 1
+  - id: concertmirror08464.towsmr1LeakageCurrent
+    version: 1
+  - id: concertmirror08464.towsmr1Event
+    version: 1
+  - id: concertmirror08464.towsmr1OverVoltageSetting
+    version: 1
+  - id: concertmirror08464.towsmr1OverVoltageThreshold
+    version: 1
+  - id: concertmirror08464.towsmr1UnderVoltageSetting
+    version: 1
+  - id: concertmirror08464.towsmr1UnderVoltageThreshold
+    version: 1
+  - id: concertmirror08464.towsmr1OverCurrentSetting
+    version: 1
+  - id: concertmirror08464.towsmr1OverCurrentThreshold
+    version: 1
+  - id: concertmirror08464.towsmr1OverPowerSetting
+    version: 1
+  - id: concertmirror08464.towsmr1OverPowerThreshold
+    version: 1
+  - id: concertmirror08464.towsmr1TemperatureSetting
+    version: 1
+  - id: concertmirror08464.towsmr1TemperatureThreshold
+    version: 1
+  - id: concertmirror08464.towsmr1LeakageSetting
+    version: 1
+  - id: concertmirror08464.towsmr1LeakageThreshold
+    version: 1
+  - id: concertmirror08464.towsmr1AutoReclosing
+    version: 1
+  - id: concertmirror08464.towsmr1RestoreDefault
+    version: 1
+  - id: concertmirror08464.towsmr1OvercurrentRecloser
+    version: 1
+  - id: concertmirror08464.towsmr1LeakageRecloser
+    version: 1
+  - id: concertmirror08464.towsmr1OverpowerRecloser
+    version: 1
+  - id: concertmirror08464.powerPollIntervalV2
+    version: 1
+  - id: concertmirror08464.lastPowerResponseTime
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: powerMeter
+        version: 1
+        group: main
+        values:
+          - label: "{{power.value}} {{power.unit}}"
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: voltageMeasurement
+      version: 1
+    - component: main
+      capability: currentMeasurement
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1LeakageCurrent
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1Event
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverVoltageSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverVoltageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1UnderVoltageSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1UnderVoltageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverCurrentSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverCurrentThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverPowerSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverPowerThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1TemperatureSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1TemperatureThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1LeakageSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1LeakageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1AutoReclosing
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1RestoreDefault
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OvercurrentRecloser
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1LeakageRecloser
+      version: 1
+    - component: main
+      capability: concertmirror08464.towsmr1OverpowerRecloser
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerPollIntervalV2
+      version: 1
+    - component: main
+      capability: concertmirror08464.lastPowerResponseTime
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: powerMeter
+        version: 1
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: main
+        capability: voltageMeasurement
+        version: 1
+      - component: main
+        capability: currentMeasurement
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageCurrent
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1Event
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1UnderVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1UnderVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverCurrentSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverCurrentThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverPowerSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverPowerThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1TemperatureSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1TemperatureThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1AutoReclosing
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1RestoreDefault
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OvercurrentRecloser
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageRecloser
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverpowerRecloser
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - component: main
+        capability: concertmirror08464.lastPowerResponseTime
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1UnderVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1UnderVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverCurrentSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverCurrentThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverPowerSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverPowerThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1TemperatureSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1TemperatureThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1AutoReclosing
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1RestoreDefault
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OvercurrentRecloser
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1LeakageRecloser
+        version: 1
+      - component: main
+        capability: concertmirror08464.towsmr1OverpowerRecloser
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1

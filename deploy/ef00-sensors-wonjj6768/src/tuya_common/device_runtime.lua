@@ -24,6 +24,7 @@ local time_offset_for_start = shared.time_offset_for_start
 local ACTION_MAGIC_PACKET = "magic_packet"
 local ACTION_QUERY_STATE = "query_state"
 local ACTION_MCU_VERSION = "mcu_version"
+local MCU_VERSION_RESPONSE = shared.MCU_VERSION_RESPONSE
 local ACTION_BIND_BASIC = "bind_basic"
 local ACTION_CONFIG_QUEUE = "config_queue"
 local ACTION_QUERY_TIMER = "query_timer"
@@ -305,6 +306,9 @@ end
 return run_configure_actions(device, actions, step_delay, 1)
 end
 local function handle_time_command(device, message, handlers)
+if type(handlers.time_handler) == "function" then
+return handlers.time_handler(device, message, handlers)
+end
 if handlers.auto_time == false then
 return false
 end
@@ -358,6 +362,9 @@ if command_id == CONNECTION_STATUS then
 if handle_connection_status_command(device, message, handlers) then
 return true
 end
+end
+if command_id == MCU_VERSION_RESPONSE and handlers.respond_to_mcu_version_response == true then
+return tuya.send_mcu_version_request(device, tuya.DEFAULT_MCU_VERSION_TRANSACTION) ~= nil
 end
 if REPORT_COMMANDS[command_id] == true then
 return handle_report_message(device, message, handlers, datapoints, command_id)

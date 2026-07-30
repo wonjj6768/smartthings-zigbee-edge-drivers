@@ -1,0 +1,49 @@
+name: sensors-temp-humidity-probe-excellux-full
+components:
+- id: main
+  capabilities:
+  - id: temperatureMeasurement
+    version: 1
+  - id: relativeHumidityMeasurement
+    version: 1
+  - id: battery
+    version: 1
+  - id: concertmirror08464.excelluxProbeTemperature
+    version: 1
+  - id: concertmirror08464.excelluxProbeSamplingInterval
+    version: 1
+  - id: concertmirror08464.excelluxProbeTempCalibration
+    version: 1
+  - id: concertmirror08464.excelluxProbeTemperatureV0
+    version: 1
+  - id: concertmirror08464.excelluxProbeTemperatureV1
+    version: 1
+  - id: concertmirror08464.excelluxProbeTemperatureWarning
+    version: 1
+  - id: concertmirror08464.excelluxProbeAirTempCalibration
+    version: 1
+  - id: concertmirror08464.excelluxProbeAirTemperatureV0
+    version: 1
+  - id: concertmirror08464.excelluxProbeAirTemperatureV1
+    version: 1
+  - id: concertmirror08464.excelluxProbeAirTempWarning
+    version: 1
+  - id: concertmirror08464.excelluxProbeHumidityCalibration
+    version: 1
+  - id: concertmirror08464.excelluxProbeHumidityV0
+    version: 1
+  - id: concertmirror08464.excelluxProbeHumidityV1
+    version: 1
+  - id: concertmirror08464.excelluxProbeHumidityWarning
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: TempHumiditySensor
+preferences:
+  - preferenceId: tempOffset
+    explicit: true
+  - preferenceId: humidityOffset
+    explicit: true

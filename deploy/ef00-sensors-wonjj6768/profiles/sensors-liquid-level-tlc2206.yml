@@ -1,0 +1,24 @@
+name: sensors-liquid-level-tlc2206
+components:
+- id: main
+  capabilities:
+  - id: concertmirror08464.liquidLevelPercent
+    version: 1
+  - id: concertmirror08464.tlc2206LiquidDepth
+    version: 1
+  - id: concertmirror08464.liquidState
+    version: 1
+  - id: concertmirror08464.tlc2206MaximumPercent
+    version: 1
+  - id: concertmirror08464.tlc2206MinimumPercent
+    version: 1
+  - id: concertmirror08464.tlc2206MaximumDepth
+    version: 1
+  - id: concertmirror08464.tlc2206InstallationHeight
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: MultiFunctionalSensor

@@ -12,6 +12,26 @@ components:
         version: 1
       - id: concertmirror08464.coverWorkRmOpeningClosing
         version: 1
+      - id: concertmirror08464.rm28lePositionBest
+        version: 1
+      - id: concertmirror08464.rm28leClickControl
+        version: 1
+      - id: concertmirror08464.rm28leMode
+        version: 1
+      - id: concertmirror08464.rm28leCountdown
+        version: 1
+      - id: concertmirror08464.rm28leCountdownLeft
+        version: 1
+      - id: concertmirror08464.rm28leBorder
+        version: 1
+      - id: concertmirror08464.rm28leAutoPower
+        version: 1
+      - id: concertmirror08464.rm28leTimeTotal
+        version: 1
+      - id: concertmirror08464.rm28leSituationSet
+        version: 1
+      - id: concertmirror08464.rm28leMotorFault
+        version: 1
       - id: refresh
         version: 1
     categories:

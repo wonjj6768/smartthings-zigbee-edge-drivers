@@ -1,0 +1,240 @@
+name: thermostats-thermostat-trv603wz
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.trv603wzPreset
+        version: 1
+      - id: concertmirror08464.trv603wzChildLock
+        version: 1
+      - id: concertmirror08464.trv603wzWindowDetection
+        version: 1
+      - id: concertmirror08464.trv603wzWindowOpen
+        version: 1
+      - id: concertmirror08464.trv603wzFrostProtection
+        version: 1
+      - id: concertmirror08464.trv603wzAntiScale
+        version: 1
+      - id: concertmirror08464.trv603wzBoostHeating
+        version: 1
+      - id: concertmirror08464.trv603wzScreenOrientation
+        version: 1
+      - id: concertmirror08464.trv603wzValveStatus
+        version: 1
+      - id: concertmirror08464.trv603wzHolidayTemperature
+        version: 1
+      - id: concertmirror08464.trv603wzEcoTemperature
+        version: 1
+      - id: concertmirror08464.trv603wzComfortTemperature
+        version: 1
+      - id: concertmirror08464.trv603wzAntifrostTemperature
+        version: 1
+      - id: concertmirror08464.trv603wzTempCalibration
+        version: 1
+      - id: concertmirror08464.trv603wzBoostTime
+        version: 1
+      - id: concertmirror08464.trv603wzProgrammingMode
+        version: 1
+      - id: concertmirror08464.trv603wzFaultCode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzPreset
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzWindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzWindowOpen
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzFrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzAntiScale
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzBoostHeating
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzScreenOrientation
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzValveStatus
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzHolidayTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzEcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzComfortTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzAntifrostTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzBoostTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzProgrammingMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv603wzFaultCode
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzWindowOpen
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzFrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzAntiScale
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzBoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzScreenOrientation
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzValveStatus
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzHolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzAntifrostTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzBoostTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzProgrammingMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzFaultCode
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzWindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzFrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzAntiScale
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzBoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzScreenOrientation
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzHolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzEcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzComfortTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzAntifrostTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzBoostTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv603wzProgrammingMode
+        version: 1

@@ -231,6 +231,7 @@ local handlers = {
 [tuya.ACTIVE_STATUS_REPORT] = ef00_handler,
 [tuya.SET_TIME] = ef00_handler,
 [tuya.CONNECTION_STATUS] = ef00_handler,
+[tuya.MCU_VERSION_RESPONSE] = ef00_handler,
 },
 }
 local zcl_cluster_handlers = zcl.build_zigbee_cluster_handlers(get_preset)
@@ -388,6 +389,9 @@ local function configure_preset(driver, device, preset)
 if preset == nil then
 return
 end
+if type(preset.configure) == "function" then
+preset.configure(driver, device)
+end
 preset:start_configuration(device, driver)
 if preset.zcl_clusters then
 zcl.start_configuration(device, preset.zcl_clusters)
@@ -415,6 +419,13 @@ end, "zcl initial power polling state")
 end
 else
 start_ef00_power_polling(device, preset)
+end
+if preset ~= nil and preset.configure_options ~= nil and
+preset.configure_options.query_interval_seconds ~= nil then
+preset:start_query_timer(device)
+end
+if preset ~= nil and type(preset.runtime_start) == "function" then
+preset.runtime_start(device, preset)
 end
 end
 local function refresh_runtime_metadata(device, definition, diagnose_bindings)
@@ -605,22 +616,49 @@ end,
 }
 handlers[capabilities.alarm.ID] = {
 [capabilities.alarm.commands.off.NAME] = function(_, device, command)
-if send_ias_warning_command(device, command.component, IAS_WARNING_MODE_STOP, false, IAS_WARNING_LEVEL_LOW, 0) then
+local handled = send_ias_warning_command(
+device, command.component, IAS_WARNING_MODE_STOP, false, IAS_WARNING_LEVEL_LOW, 0
+)
+if not handled then
+handled = send(device, command, "alarm", false)
+end
+if handled then
 emit_alarm_state(device, command.component, "off")
 end
 end,
 [capabilities.alarm.commands.siren.NAME] = function(_, device, command)
-if send_ias_warning_command(device, command.component, IAS_WARNING_MODE_EMERGENCY, false, IAS_WARNING_LEVEL_VERY_HIGH, DEFAULT_IAS_WARNING_DURATION) then
+local handled = send_ias_warning_command(
+device, command.component, IAS_WARNING_MODE_EMERGENCY, false,
+IAS_WARNING_LEVEL_VERY_HIGH, DEFAULT_IAS_WARNING_DURATION
+)
+if not handled then
+handled = send(device, command, "alarm", true)
+end
+if handled then
 emit_alarm_state(device, command.component, "siren")
 end
 end,
 [capabilities.alarm.commands.strobe.NAME] = function(_, device, command)
-if send_ias_warning_command(device, command.component, IAS_WARNING_MODE_EMERGENCY, true, IAS_WARNING_LEVEL_LOW, DEFAULT_IAS_WARNING_DURATION) then
+local handled = send_ias_warning_command(
+device, command.component, IAS_WARNING_MODE_EMERGENCY, true,
+IAS_WARNING_LEVEL_LOW, DEFAULT_IAS_WARNING_DURATION
+)
+if not handled then
+handled = send(device, command, "alarm", true)
+end
+if handled then
 emit_alarm_state(device, command.component, "siren")
 end
 end,
 [capabilities.alarm.commands.both.NAME] = function(_, device, command)
-if send_ias_warning_command(device, command.component, IAS_WARNING_MODE_EMERGENCY, true, IAS_WARNING_LEVEL_VERY_HIGH, DEFAULT_IAS_WARNING_DURATION) then
+local handled = send_ias_warning_command(
+device, command.component, IAS_WARNING_MODE_EMERGENCY, true,
+IAS_WARNING_LEVEL_VERY_HIGH, DEFAULT_IAS_WARNING_DURATION
+)
+if not handled then
+handled = send(device, command, "alarm", true)
+end
+if handled then
 emit_alarm_state(device, command.component, "siren")
 end
 end,

@@ -1,0 +1,28 @@
+name: sensors-liquid-level-872wz
+components:
+- id: main
+  capabilities:
+  - id: concertmirror08464.liquidLevelPercent
+    version: 1
+  - id: concertmirror08464.wls872LiquidDepth
+    version: 1
+  - id: concertmirror08464.liquidState
+    version: 1
+  - id: concertmirror08464.wls872MaximumPercent
+    version: 1
+  - id: concertmirror08464.wls872MinimumPercent
+    version: 1
+  - id: concertmirror08464.wls872MaximumDepth
+    version: 1
+  - id: concertmirror08464.wls872InstallationHeight
+    version: 1
+  - id: concertmirror08464.wls872SilentMode
+    version: 1
+  - id: concertmirror08464.wls872AlarmDuration
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: MultiFunctionalSensor

@@ -1,0 +1,18 @@
+name: safety-gas-detector-preheat-fault-lifecycle-dg03
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: concertmirror08464.dg03Preheat
+        version: 1
+      - id: concertmirror08464.dg03Fault
+        version: 1
+      - id: concertmirror08464.dg03Lifecycle
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor

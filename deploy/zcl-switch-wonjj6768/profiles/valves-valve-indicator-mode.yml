@@ -42,7 +42,13 @@ deviceConfig:
       - component: main
         capability: valve
         version: 1
+      - component: main
+        capability: concertmirror08464.indicatorMode
+        version: 1
     actions:
       - component: main
         capability: valve
+        version: 1
+      - component: main
+        capability: concertmirror08464.indicatorMode
         version: 1

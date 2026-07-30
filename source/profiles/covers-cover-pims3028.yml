@@ -10,6 +10,30 @@ components:
         version: 1
       - id: concertmirror08464.coverCalibrationPims3028StartEnd
         version: 1
+      - id: concertmirror08464.pims3028PositionBest
+        version: 1
+      - id: concertmirror08464.pims3028BestTrigger
+        version: 1
+      - id: concertmirror08464.pims3028AngleHorizontal
+        version: 1
+      - id: concertmirror08464.pims3028Mode
+        version: 1
+      - id: concertmirror08464.pims3028ControlBack
+        version: 1
+      - id: concertmirror08464.pims3028Border
+        version: 1
+      - id: concertmirror08464.pims3028QuickCalibration
+        version: 1
+      - id: concertmirror08464.pims3028AutoPower
+        version: 1
+      - id: concertmirror08464.pims3028TimeTotal
+        version: 1
+      - id: concertmirror08464.pims3028SituationSet
+        version: 1
+      - id: concertmirror08464.pims3028Fault
+        version: 1
+      - id: concertmirror08464.pims3028Reset
+        version: 1
       - id: refresh
         version: 1
     categories:

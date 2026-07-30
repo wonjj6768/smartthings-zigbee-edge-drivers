@@ -1,0 +1,10 @@
+name: switches-switch-1-outage-switch-type
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.powerOutageMemory, version: 1}
+      - {id: concertmirror08464.switchType, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

@@ -8,6 +8,8 @@ components:
         version: 1
       - id: battery
         version: 1
+      - id: concertmirror08464.zg223zSensitivity
+        version: 1
       - id: concertmirror08464.illuminanceSamplingZg223zMinutes
         version: 1
       - id: firmwareUpdate

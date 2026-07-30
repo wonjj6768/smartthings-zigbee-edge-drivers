@@ -1,0 +1,412 @@
+name: safety-presence-mtd285-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: concertmirror08464.mtd285State
+        version: 1
+      - id: concertmirror08464.mtd285MinDistance
+        version: 1
+      - id: concertmirror08464.mtd285MaxDistance
+        version: 1
+      - id: concertmirror08464.mtd285TargetDistance
+        version: 1
+      - id: concertmirror08464.mtd285ConfigurationGate
+        version: 1
+      - id: concertmirror08464.mtd285MoveThreshold
+        version: 1
+      - id: concertmirror08464.mtd285PresenceThreshold
+        version: 1
+      - id: concertmirror08464.mtd285NearestTargetGate
+        version: 1
+      - id: concertmirror08464.mtd285TargetCountdown
+        version: 1
+      - id: concertmirror08464.mtd285TargetVelocity
+        version: 1
+      - id: concertmirror08464.mtd285DelayTime
+        version: 1
+      - id: concertmirror08464.mtd285BlockTime
+        version: 1
+      - id: concertmirror08464.mtd285DebugSwitch
+        version: 1
+      - id: concertmirror08464.mtd285LedMode
+        version: 1
+      - id: concertmirror08464.mtd285JudgeLogic
+        version: 1
+      - id: concertmirror08464.mtd285NoiseCollectStatus
+        version: 1
+      - id: concertmirror08464.mtd285DeviceControl
+        version: 1
+      - id: concertmirror08464.mtd285PresenceSensitivity
+        version: 1
+      - id: concertmirror08464.mtd285MoveSensitivity
+        version: 1
+      - id: concertmirror08464.mtd285SceneMode
+        version: 1
+      - id: concertmirror08464.mtd285IlluminanceReport
+        version: 1
+      - id: concertmirror08464.mtd285MoveDetect
+        version: 1
+      - id: concertmirror08464.mtd285DistanceReport
+        version: 1
+      - id: concertmirror08464.mtd285SpeedReport
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable01
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable02
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable03
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable04
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable05
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable06
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable07
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable08
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable09
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable10
+        version: 1
+      - id: concertmirror08464.mtd285GateEnable11
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285State
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285MinDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285MaxDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285TargetDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285ConfigurationGate
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285MoveThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285PresenceThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285NearestTargetGate
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285TargetCountdown
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285TargetVelocity
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285DelayTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285BlockTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285DebugSwitch
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285LedMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285JudgeLogic
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285NoiseCollectStatus
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285DeviceControl
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285PresenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285MoveSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285SceneMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285IlluminanceReport
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285MoveDetect
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285DistanceReport
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285SpeedReport
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable01
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable02
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable03
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable04
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable05
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable06
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable07
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable08
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable09
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable10
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtd285GateEnable11
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285State
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MinDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MaxDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285TargetDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285ConfigurationGate
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MoveThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285PresenceThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285NearestTargetGate
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285TargetCountdown
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285TargetVelocity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DelayTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285BlockTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DebugSwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285LedMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285JudgeLogic
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285NoiseCollectStatus
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DeviceControl
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285PresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MoveSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285SceneMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285IlluminanceReport
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MoveDetect
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DistanceReport
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285SpeedReport
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable01
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable02
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable03
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable04
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable05
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable06
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable07
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable08
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable09
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable10
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable11
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.mtd285MinDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MaxDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285ConfigurationGate
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MoveThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285PresenceThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DelayTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285BlockTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DebugSwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285LedMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285JudgeLogic
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DeviceControl
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285PresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MoveSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285SceneMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285IlluminanceReport
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285MoveDetect
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285DistanceReport
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285SpeedReport
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable01
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable02
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable03
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable04
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable05
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable06
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable07
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable08
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable09
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable10
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtd285GateEnable11
+        version: 1

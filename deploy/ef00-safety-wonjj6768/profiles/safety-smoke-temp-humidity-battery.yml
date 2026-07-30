@@ -8,7 +8,13 @@ components:
         version: 1
       - id: relativeHumidityMeasurement
         version: 1
-      - id: battery
+      - id: concertmirror08464.smoke228wzhSelfTest
+        version: 1
+      - id: concertmirror08464.smoke228wzhBatteryState
+        version: 1
+      - id: concertmirror08464.smoke228wzhSilence
+        version: 1
+      - id: concertmirror08464.smoke228wzhVersion
         version: 1
       - id: firmwareUpdate
         version: 1
@@ -42,7 +48,16 @@ deviceConfig:
       capability: relativeHumidityMeasurement
       version: 1
     - component: main
-      capability: battery
+      capability: concertmirror08464.smoke228wzhSelfTest
+      version: 1
+    - component: main
+      capability: concertmirror08464.smoke228wzhBatteryState
+      version: 1
+    - component: main
+      capability: concertmirror08464.smoke228wzhSilence
+      version: 1
+    - component: main
+      capability: concertmirror08464.smoke228wzhVersion
       version: 1
     - component: main
       capability: refresh
@@ -59,6 +74,18 @@ deviceConfig:
         capability: relativeHumidityMeasurement
         version: 1
       - component: main
-        capability: battery
+        capability: concertmirror08464.smoke228wzhSelfTest
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.smoke228wzhBatteryState
+        version: 1
+      - component: main
+        capability: concertmirror08464.smoke228wzhSilence
+        version: 1
+      - component: main
+        capability: concertmirror08464.smoke228wzhVersion
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.smoke228wzhSilence
+        version: 1

@@ -1,0 +1,199 @@
+name: thermostats-thermostat-khah2lkr
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.khahPreset
+        version: 1
+      - id: concertmirror08464.khahChildLock
+        version: 1
+      - id: concertmirror08464.khahSensorMode
+        version: 1
+      - id: concertmirror08464.khahHighTempProtection
+        version: 1
+      - id: concertmirror08464.khahHighTempSetting
+        version: 1
+      - id: concertmirror08464.khahLowTempProtection
+        version: 1
+      - id: concertmirror08464.khahLowTempSetting
+        version: 1
+      - id: concertmirror08464.khahTempCalibration
+        version: 1
+      - id: concertmirror08464.khahReturnDifference
+        version: 1
+      - id: concertmirror08464.khahDeadzoneTemperature
+        version: 1
+      - id: concertmirror08464.khahMaxTemperature
+        version: 1
+      - id: concertmirror08464.khahTemperatureSensor
+        version: 1
+      - id: concertmirror08464.khahErrorStatus
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahPreset
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahSensorMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahHighTempProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahHighTempSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahLowTempProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahLowTempSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahReturnDifference
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahDeadzoneTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahMaxTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahTemperatureSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.khahErrorStatus
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahSensorMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahHighTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahHighTempSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahLowTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahLowTempSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahReturnDifference
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahDeadzoneTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahTemperatureSensor
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahErrorStatus
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahPreset
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahSensorMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahHighTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahHighTempSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahLowTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahLowTempSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahReturnDifference
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahDeadzoneTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.khahMaxTemperature
+        version: 1

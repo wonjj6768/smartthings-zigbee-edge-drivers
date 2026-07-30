@@ -1,0 +1,129 @@
+name: meters-switch-power-energy-clamp3phase-relay
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: concertmirror08464.clamp3RelayProducedEnergy
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l1
+    label: L1
+    capabilities:
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: powerMeter
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l2
+    label: L2
+    capabilities:
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: powerMeter
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+  - id: l3
+    label: L3
+    capabilities:
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: powerMeter
+        version: 1
+    categories:
+      - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+      - component: main
+        capability: powerMeter
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: concertmirror08464.clamp3RelayProducedEnergy
+      version: 1
+    - component: l1
+      capability: voltageMeasurement
+      version: 1
+    - component: l1
+      capability: currentMeasurement
+      version: 1
+    - component: l1
+      capability: powerMeter
+      version: 1
+    - component: l2
+      capability: voltageMeasurement
+      version: 1
+    - component: l2
+      capability: currentMeasurement
+      version: 1
+    - component: l2
+      capability: powerMeter
+      version: 1
+    - component: l3
+      capability: voltageMeasurement
+      version: 1
+    - component: l3
+      capability: currentMeasurement
+      version: 1
+    - component: l3
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: powerMeter
+        version: 1
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: main
+        capability: concertmirror08464.clamp3RelayProducedEnergy
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1

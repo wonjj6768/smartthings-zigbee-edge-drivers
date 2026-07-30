@@ -10,6 +10,7 @@ local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
+local converter = tuya.converter
 
 -- Z2M TS0601_dimmer_1_gang_1 contract, narrowed by exact hardware reports.
 local dimmer_model_ts0601_la2c2uo9 = {
@@ -27,14 +28,15 @@ register_device_definition(dimmer_model_ts0601_la2c2uo9, device_helpers.create_f
   "_TZE200_la2c2uo9",
 }))
 
--- Z2M maps countdown to DP6, but this exact ignores it on reported hardware.
--- Keep it hidden until a DP log confirms a working mapping; do not guess an alternate DP.
+-- Z2M TS0601_dimmer_1_gang_1 contract for _TZE200_dfxkcots.
+-- Countdown is DP6 VALUE in seconds (0..43200); do not substitute an inferred DP.
 local dimmer_model_ts0601_dfxkcots = {
   profile = "lights-dimmer-options-ts0601-dfxkcots",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
   tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
   tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
+  tuya.dp_countdown(6, { name = "countdown_timer", emit = emit.countdownTsOneTenHours() }),
   tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
 }
 
@@ -108,28 +110,44 @@ register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, {
   device_helpers.create_fingerprint("ION Industries", "90.500.040"),
 })
 
--- TS0601_dimmer_1_gang_2
+-- Z2M TS0601_dimmer_1_gang_2 (tuya.ts:5033)
+-- Brightness is DP3 on this exact, not DP2.  DP4 light type, DP5 max
+-- brightness, DP6 countdown seconds, DP14 power-on behavior and DP21
+-- backlight mode off/normal/inverted were all parsed but never exposed.
 local dimmer_model_ts0601_dimmer_1_gang_2 = {
+  profile = "lights-dimmer-whpb9yts",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_brightness(3, { name = "brightness", emit = emit.level() }),
-  tuya.dp_light_type(4, { name = "light_type" }),                          -- 프로파일 미포함
-  tuya.dp_max_brightness(5, { name = "max_brightness" }),                  -- 프로파일 미포함
-  tuya.dp_countdown(6, { name = "countdown" }),                            -- 프로파일 미포함
-  tuya.dp_power_on_behavior(14, {}),                                       -- 프로파일 미포함
-  tuya.dp_backlight_mode_off_on(21, { name = "backlight_mode" }),          -- 프로파일 미포함
+  tuya.dp_light_type(4, { name = "light_type", emit = emit.whpb9ytsLightType() }),
+  tuya.dp_max_brightness(5, {
+    name = "max_brightness",
+    value_max = 1000,
+    emit = emit.whpb9ytsMaxBrightness(),
+  }),
+  tuya.dp_countdown(6, { name = "countdown", emit = emit.whpb9ytsCountdown() }),
+  tuya.dp_power_on_behavior(14, { emit = emit.whpb9ytsPowerOnBehavior() }),
+  tuya.dp_backlight_mode(21, { name = "backlight_mode", emit = emit.whpb9ytsBacklightMode() }),
 }
 
 register_device_definition(dimmer_model_ts0601_dimmer_1_gang_2, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_whpb9yts",
 }))
 
--- TS0601_dimmer_1_gang_3
+-- Z2M TS0601_dimmer_1_gang_3 (tuya.ts:5058)
+-- This exact keeps switch/brightness on DP141/DP142 and adds metering:
+-- DP16 backlight off/on, DP21 current /1000, DP22 power /10, DP23 voltage /10
+-- and DP101 child lock.  Z2M keeps DP143/DP144 commented out because the
+-- device does not answer them, so they stay unexposed here as well.
 local dimmer_model_ts0601_dimmer_1_gang_3 = {
-  tuya.dp_backlight_mode_off_on(16, { name = "backlight_mode" }),          -- 프로파일 미포함
+  profile = "lights-dimmer-qzaing2g",
+  tuya.dp_backlight_mode_off_on(16, {
+    name = "backlight_mode",
+    emit = emit.qzaing2gBacklightMode(),
+  }),
   tuya.dp_current(21, { emit = emit.current() }),
   tuya.dp_power(22, { emit = emit.power() }),
   tuya.dp_voltage(23, { emit = emit.voltage() }),
-  tuya.dp_child_lock(101, { name = "child_lock" }),                        -- 프로파일 미포함
+  tuya.dp_child_lock(101, { name = "child_lock", emit = emit.qzaing2gChildLock() }),
   tuya.dp_on_off(141, { name = "switch", emit = emit.switch() }),
   tuya.dp_brightness(142, { name = "brightness", emit = emit.level() }),
 }
@@ -138,22 +156,57 @@ register_device_definition(dimmer_model_ts0601_dimmer_1_gang_3, device_helpers.c
   "_TZE200_qzaing2g",
 }))
 
--- TS0601_dimmer_4
 local dimmer_model_ts0601_dimmer_2_gang = {
   profile = "lights-dimmer-2",
   tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
   tuya.dp_brightness(2, { name = "brightness", component = "main", emit = emit.level() }),
-  tuya.dp_min_brightness(3, { name = "min_brightness", component = "main" }),           -- 프로파일 미포함
-  tuya.dp_light_type(4, { name = "light_type", component = "main" }),                   -- 프로파일 미포함
-  tuya.dp_max_brightness(5, { name = "max_brightness", component = "main" }),           -- 프로파일 미포함
-  tuya.dp_countdown(6, { name = "countdown", component = "main" }),                     -- 프로파일 미포함
+  tuya.dp_min_brightness(3, {
+    name = "min_brightness",
+    component = "main",
+    value_max = 1000,
+    emit = emit.dimmer2gMinBrightnessCh1(),
+  }),
+  tuya.dp_light_type(4, {
+    name = "light_type",
+    component = "main",
+    emit = emit.dimmer2gLightTypeCh1(),
+  }),
+  tuya.dp_max_brightness(5, {
+    name = "max_brightness",
+    component = "main",
+    value_max = 1000,
+    emit = emit.dimmer2gMaxBrightnessCh1(),
+  }),
+  tuya.dp_countdown(6, {
+    name = "countdown",
+    component = "main",
+    emit = emit.dimmer2gCountdownCh1(),
+  }),
   tuya.dp_on_off(7, { name = "switch", component = "switch2", emit = emit.switch() }),
   tuya.dp_brightness(8, { name = "brightness", component = "switch2", emit = emit.level() }),
-  tuya.dp_min_brightness(9, { name = "min_brightness", component = "switch2" }),        -- 프로파일 미포함
-  tuya.dp_light_type(10, { name = "light_type", component = "switch2" }),               -- 프로파일 미포함
-  tuya.dp_max_brightness(11, { name = "max_brightness", component = "switch2" }),       -- 프로파일 미포함
-  tuya.dp_countdown(12, { name = "countdown", component = "switch2" }),                 -- 프로파일 미포함
-  tuya.dp_power_on_behavior(14, {}),                                                     -- 프로파일 미포함
+  tuya.dp_min_brightness(9, {
+    name = "min_brightness",
+    component = "switch2",
+    value_max = 1000,
+    emit = emit.dimmer2gMinBrightnessCh2(),
+  }),
+  tuya.dp_light_type(10, {
+    name = "light_type",
+    component = "switch2",
+    emit = emit.dimmer2gLightTypeCh2(),
+  }),
+  tuya.dp_max_brightness(11, {
+    name = "max_brightness",
+    component = "switch2",
+    value_max = 1000,
+    emit = emit.dimmer2gMaxBrightnessCh2(),
+  }),
+  tuya.dp_countdown(12, {
+    name = "countdown",
+    component = "switch2",
+    emit = emit.dimmer2gCountdownCh2(),
+  }),
+  tuya.dp_power_on_behavior(14, { emit = emit.dimmer2gPowerOnBehavior() }),
 }
 
 register_device_definition(dimmer_model_ts0601_dimmer_2_gang, device_helpers.create_fingerprints("TS0601", {
@@ -164,6 +217,10 @@ register_device_definition(dimmer_model_ts0601_dimmer_2_gang, device_helpers.cre
   "_TZE200_e3oitdyu",
   "_TZE200_gwkapsoq",
   "_TZE204_zenj4lxv",
+}))
+
+register_device_definition(dimmer_model_ts0601_dimmer_2_gang, device_helpers.create_fingerprints("TS110E", {
+  "_TZE200_ubgdwsnr",
 }))
 
 register_device_definition(dimmer_model_ts0601_dimmer_2_gang, {
@@ -179,26 +236,99 @@ local dimmer_model_ts0601_dimmer_3_gang = {
   profile = "lights-dimmer-3",
   tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
   tuya.dp_brightness(2, { name = "brightness", component = "main", emit = emit.level() }),
-  tuya.dp_min_brightness(3, { name = "min_brightness", component = "main" }),           -- 프로파일 미포함
-  tuya.dp_light_type(4, { name = "light_type", component = "main" }),                   -- 프로파일 미포함
-  tuya.dp_max_brightness(5, { name = "max_brightness", component = "main" }),           -- 프로파일 미포함
-  tuya.dp_countdown(6, { name = "countdown", component = "main" }),                     -- 프로파일 미포함
+  tuya.dp_min_brightness(3, {
+    name = "min_brightness",
+    component = "main",
+    value_max = 1000,
+    emit = emit.dimmer3gMinBrightnessCh1(),
+  }),
+  tuya.dp_light_type(4, {
+    name = "light_type",
+    component = "main",
+    emit = emit.dimmer3gLightTypeCh1(),
+  }),
+  tuya.dp_max_brightness(5, {
+    name = "max_brightness",
+    component = "main",
+    value_max = 1000,
+    emit = emit.dimmer3gMaxBrightnessCh1(),
+  }),
+  tuya.dp_countdown(6, {
+    name = "countdown",
+    component = "main",
+    emit = emit.dimmer3gCountdownCh1(),
+  }),
   tuya.dp_on_off(7, { name = "switch", component = "switch2", emit = emit.switch() }),
   tuya.dp_brightness(8, { name = "brightness", component = "switch2", emit = emit.level() }),
-  tuya.dp_min_brightness(9, { name = "min_brightness", component = "switch2" }),        -- 프로파일 미포함
-  tuya.dp_light_type(10, { name = "light_type", component = "switch2" }),               -- 프로파일 미포함
-  tuya.dp_max_brightness(11, { name = "max_brightness", component = "switch2" }),       -- 프로파일 미포함
-  tuya.dp_countdown(12, { name = "countdown", component = "switch2" }),                 -- 프로파일 미포함
-  tuya.dp_power_on_behavior(14, {}),                                                     -- 프로파일 미포함
+  tuya.dp_min_brightness(9, {
+    name = "min_brightness",
+    component = "switch2",
+    value_max = 1000,
+    emit = emit.dimmer3gMinBrightnessCh2(),
+  }),
+  tuya.dp_light_type(10, {
+    name = "light_type",
+    component = "switch2",
+    emit = emit.dimmer3gLightTypeCh2(),
+  }),
+  tuya.dp_max_brightness(11, {
+    name = "max_brightness",
+    component = "switch2",
+    value_max = 1000,
+    emit = emit.dimmer3gMaxBrightnessCh2(),
+  }),
+  tuya.dp_countdown(12, {
+    name = "countdown",
+    component = "switch2",
+    emit = emit.dimmer3gCountdownCh2(),
+  }),
+  tuya.dp_power_on_behavior(14, { emit = emit.dimmer3gPowerOnBehavior() }),
   tuya.dp_on_off(15, { name = "switch", component = "switch3", emit = emit.switch() }),
   tuya.dp_brightness(16, { name = "brightness", component = "switch3", emit = emit.level() }),
-  tuya.dp_min_brightness(17, { name = "min_brightness", component = "switch3" }),       -- 프로파일 미포함
-  tuya.dp_light_type(18, { name = "light_type", component = "switch3" }),               -- 프로파일 미포함
-  tuya.dp_max_brightness(19, { name = "max_brightness", component = "switch3" }),       -- 프로파일 미포함
-  tuya.dp_countdown(20, { name = "countdown", component = "switch3" }),                 -- 프로파일 미포함
-  tuya.dp_backlight_mode(21, { name = "backlight_mode" }),                              -- 프로파일 미포함
-  tuya.dp_enum(101, { name = "backlight_color" }),                                      -- 프로파일 미포함
-  tuya.dp_numeric(103, { name = "backlight_brightness" }),                              -- 프로파일 미포함
+  tuya.dp_min_brightness(17, {
+    name = "min_brightness",
+    component = "switch3",
+    value_max = 1000,
+    emit = emit.dimmer3gMinBrightnessCh3(),
+  }),
+  tuya.dp_light_type(18, {
+    name = "light_type",
+    component = "switch3",
+    emit = emit.dimmer3gLightTypeCh3(),
+  }),
+  tuya.dp_max_brightness(19, {
+    name = "max_brightness",
+    component = "switch3",
+    value_max = 1000,
+    emit = emit.dimmer3gMaxBrightnessCh3(),
+  }),
+  tuya.dp_countdown(20, {
+    name = "countdown",
+    component = "switch3",
+    emit = emit.dimmer3gCountdownCh3(),
+  }),
+  tuya.dp_backlight_mode(21, {
+    name = "backlight_mode",
+    emit = emit.dimmer3gBacklightMode(),
+  }),
+  tuya.dp_enum(101, {
+    name = "backlight_color",
+    emit = emit.dimmer3gBacklightColor(),
+    converter = converter.lookup_from_to({
+      red = 0,
+      blue = 1,
+      green = 2,
+      white = 3,
+      yellow = 4,
+      magenta = 5,
+      cyan = 6,
+      warm_white = 7,
+    }),
+  }),
+  tuya.dp_numeric(103, {
+    name = "backlight_brightness",
+    emit = emit.dimmer3gBacklightBrightness(),
+  }),
 }
 
 register_device_definition(dimmer_model_ts0601_dimmer_3_gang, device_helpers.create_fingerprints("TS0601", {
@@ -215,16 +345,28 @@ register_device_definition(dimmer_model_ts0601_dimmer_3_gang, {
   device_helpers.create_fingerprint("Zemismart", "ZN2S-RS3E-DH"),
 })
 
--- TS0601_dimmer_5
+-- Z2M TS0601_dimmer_5 (tuya.ts:5280)
+-- DP1 state, DP2 brightness, DP3/DP5 min/max brightness, DP4 light type,
+-- DP6 countdown, DP14 power-on behavior off/on/previous and DP57 switch type
+-- toggle/state/momentary.  Everything except state and brightness was hidden.
 local dimmer_model_ts0601_dimmer_1_gang_switch_type = {
+  profile = "lights-dimmer-dcnsggvz",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
-  tuya.dp_min_brightness(3, { name = "min_brightness" }),                  -- 프로파일 미포함
-  tuya.dp_light_type(4, { name = "light_type" }),                          -- 프로파일 미포함
-  tuya.dp_max_brightness(5, { name = "max_brightness" }),                  -- 프로파일 미포함
-  tuya.dp_countdown(6, { name = "countdown" }),                            -- 프로파일 미포함
-  tuya.dp_power_on_behavior(14, {}),                                       -- 프로파일 미포함
-  tuya.dp_switch_type(57, {}),                                             -- 프로파일 미포함
+  tuya.dp_min_brightness(3, {
+    name = "min_brightness",
+    value_max = 1000,
+    emit = emit.dcnsggvzMinBrightness(),
+  }),
+  tuya.dp_light_type(4, { name = "light_type", emit = emit.dcnsggvzLightType() }),
+  tuya.dp_max_brightness(5, {
+    name = "max_brightness",
+    value_max = 1000,
+    emit = emit.dcnsggvzMaxBrightness(),
+  }),
+  tuya.dp_countdown(6, { name = "countdown", emit = emit.dcnsggvzCountdown() }),
+  tuya.dp_power_on_behavior(14, { emit = emit.dcnsggvzPowerOnBehavior() }),
+  tuya.dp_switch_type(57, { emit = emit.dcnsggvzSwitchType() }),
 }
 
 register_device_definition(dimmer_model_ts0601_dimmer_1_gang_switch_type, device_helpers.create_fingerprints("TS0601", {
@@ -233,27 +375,28 @@ register_device_definition(dimmer_model_ts0601_dimmer_1_gang_switch_type, device
   "_TZE200_dcnsggvz",
 }))
 
-register_device_definition(dimmer_model_ts0601_dimmer_1_gang_switch_type, {
-  device_helpers.create_fingerprint("Moes", "MS-105-M"),
-})
-
--- TS0601_dimmer_knob
+-- Z2M TS0601_dimmer_knob (tuya.ts:5332)
+-- DP1 state, DP2 brightness, DP3 min brightness, DP4 light type and DP21
+-- indicator mode none/relay/pos.  This exact has no max brightness DP.
 local dimmer_model_ts0601_dimmer_knob = {
+  profile = "lights-dimmer-knob-p0gzbqct",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
-  tuya.dp_min_brightness(3, { name = "min_brightness" }),                  -- 프로파일 미포함
-  tuya.dp_light_type(4, { name = "light_type" }),                          -- 프로파일 미포함
-  tuya.dp_indicator_mode_none_relay_pos(21, { name = "indicator_mode" }),  -- 프로파일 미포함
+  tuya.dp_min_brightness(3, {
+    name = "min_brightness",
+    value_max = 1000,
+    emit = emit.p0gzbqctMinBrightness(),
+  }),
+  tuya.dp_light_type(4, { name = "light_type", emit = emit.p0gzbqctLightType() }),
+  tuya.dp_indicator_mode_none_relay_pos(21, {
+    name = "indicator_mode",
+    emit = emit.p0gzbqctIndicatorMode(),
+  }),
 }
 
 register_device_definition(dimmer_model_ts0601_dimmer_knob, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_p0gzbqct",
 }))
-
-register_device_definition(dimmer_model_ts0601_dimmer_knob, {
-  device_helpers.create_fingerprint("Moes", "WS-SY-EURD"),
-  device_helpers.create_fingerprint("Moes", "WS-SY-EURD-WH-MS"),
-})
 
 -- TS0601_knob_dimmer_switch: dimmer knob with two light channels
 local dimmer_model_ts0601_knob_dimmer_switch = {
@@ -277,10 +420,12 @@ register_device_definition(dimmer_model_ts0601_knob_dimmer_switch, device_helper
   "_TZE284_tgeqdjgk",
 }))
 
--- TS0601_light
+-- Z2M TS0601_light (tuya.ts:17750)
+-- DP1 state, DP2 power-on behavior and DP3 brightness scale 0..1000.
 local light_model_ts0601_light = {
+  profile = "lights-dimmer-ts0601-light",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
-  tuya.dp_power_on_behavior(2, {}),                                        -- 프로파일 미포함
+  tuya.dp_power_on_behavior(2, { emit = emit.ts0601LightPowerOnBehavior() }),
   tuya.dp_brightness(3, { name = "brightness", emit = emit.level() }),
 }
 

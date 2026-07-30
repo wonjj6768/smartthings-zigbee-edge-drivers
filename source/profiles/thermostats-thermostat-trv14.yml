@@ -1,0 +1,196 @@
+name: thermostats-thermostat-trv14
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.trv14Preset
+        version: 1
+      - id: concertmirror08464.trv14ChildLock
+        version: 1
+      - id: concertmirror08464.trv14WindowDetection
+        version: 1
+      - id: concertmirror08464.trv14WindowOpen
+        version: 1
+      - id: concertmirror08464.trv14FrostProtection
+        version: 1
+      - id: concertmirror08464.trv14ScaleProtection
+        version: 1
+      - id: concertmirror08464.trv14BoostHeating
+        version: 1
+      - id: concertmirror08464.trv14BatteryLow
+        version: 1
+      - id: concertmirror08464.trv14TempCalibration
+        version: 1
+      - id: concertmirror08464.trv14HolidayTemperature
+        version: 1
+      - id: concertmirror08464.trv14EcoTemperature
+        version: 1
+      - id: concertmirror08464.trv14ComfortTemperature
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14Preset
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14ChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14WindowDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14WindowOpen
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14FrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14ScaleProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14BoostHeating
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14BatteryLow
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14TempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14HolidayTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14EcoTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.trv14ComfortTemperature
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14WindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14WindowOpen
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14ScaleProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14BoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14BatteryLow
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14HolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14EcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14ComfortTemperature
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14WindowDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14ScaleProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14BoostHeating
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14HolidayTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14EcoTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.trv14ComfortTemperature
+        version: 1

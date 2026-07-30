@@ -30,7 +30,18 @@ query_on_configure = true,
 }, fingerprint_list)
 end
 local illum_standalone = {
-tuya.dp_enum(1, { name = "brightness_state" }),                 -- 프로파일 미포함 (enum: low/mid/high/strong)
+profile = "sensors-illuminance-brightness-xfy",
+tuya.dp_enum(1, {
+name = "brightness_state",
+emit = emit.xfyBrightnessState(),
+read_only = true,
+converter = converter.from_only(converter.lookup_value({
+[0] = "low",
+[1] = "middle",
+[2] = "high",
+[3] = "strong",
+})),
+}),
 tuya.dp_illuminance(2, { emit = emit.illuminance() }),
 }
 register_device_definition(illum_standalone, ef00_helpers.ts0601_fingerprints( {
@@ -39,7 +50,18 @@ register_device_definition(illum_standalone, ef00_helpers.ts0601_fingerprints( {
 "_TZE204_khx7nnka",
 }))
 local illum_battery = {
-tuya.dp_enum(1, { name = "brightness_level" }),                 -- 프로파일 미포함 (enum: LOW/MEDIUM/HIGH)
+profile = "sensors-illuminance-battery-brightness-slux",
+bind_basic_on_configure = true,
+tuya.dp_enum(1, {
+name = "brightness_level",
+emit = emit.sluxBrightnessLevel(),
+read_only = true,
+converter = converter.from_only(converter.lookup_value({
+[0] = "low",
+[1] = "middle",
+[2] = "high",
+})),
+}),
 tuya.dp_illuminance(2, { emit = emit.illuminance() }),
 tuya.dp_battery(4, { emit = emit.battery() }),
 }

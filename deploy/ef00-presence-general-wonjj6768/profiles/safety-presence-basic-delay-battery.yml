@@ -4,15 +4,13 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceSensitivity
+      - id: concertmirror08464.ihsenoPresenceSensitivity
         version: 1
-      - id: concertmirror08464.presenceDelay
+      - id: concertmirror08464.ihsenoPresenceDelayTime
         version: 1
       - id: concertmirror08464.driverMessage
         version: 1
       - id: battery
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -32,10 +30,10 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceSensitivity
+      capability: concertmirror08464.ihsenoPresenceSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDelay
+      capability: concertmirror08464.ihsenoPresenceDelayTime
       version: 1
     - component: main
       capability: concertmirror08464.driverMessage
@@ -54,4 +52,10 @@ deviceConfig:
       - component: main
         capability: battery
         version: 1
-    actions: []
+    actions:
+      - component: main
+        capability: concertmirror08464.ihsenoPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.ihsenoPresenceDelayTime
+        version: 1

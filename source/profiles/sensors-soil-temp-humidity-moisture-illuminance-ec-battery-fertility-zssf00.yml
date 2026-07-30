@@ -12,13 +12,25 @@ components:
         version: 1
       - id: concertmirror08464.soilMoisture
         version: 1
-      - id: concertmirror08464.soilEc
+      - id: concertmirror08464.zsSf00SoilFertility
+        version: 1
+      - id: concertmirror08464.zsSf00SoilSampling
+        version: 1
+      - id: concertmirror08464.zsSf00SoilCalibration
+        version: 1
+      - id: concertmirror08464.humidityCalibrationZs301z
         version: 1
       - id: concertmirror08464.illuminanceCalibrationZsSf00
         version: 1
       - id: concertmirror08464.temperatureCalibrationZsSf00
         version: 1
+      - id: concertmirror08464.soilWarningThresholdLegacy
+        version: 1
+      - id: concertmirror08464.zsSf00WaterWarning
+        version: 1
       - id: concertmirror08464.soilFertilityWarningZsSf
+        version: 1
+      - id: concertmirror08464.zsSf00FertilityWarning
         version: 1
       - id: refresh
         version: 1

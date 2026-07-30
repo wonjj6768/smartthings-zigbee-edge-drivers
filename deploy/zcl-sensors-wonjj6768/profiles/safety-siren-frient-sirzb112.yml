@@ -1,0 +1,20 @@
+name: safety-siren-frient-sirzb112
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: alarm
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: concertmirror08464.batteryLow
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Siren

@@ -1,6 +1,5 @@
 return {
   all = {
-    "devices.ef00.switches",
-    "devices.ef00.garage_doors",
+    "devices.ef00.switches_basic",
   },
 }

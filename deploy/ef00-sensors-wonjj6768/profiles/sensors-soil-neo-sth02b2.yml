@@ -1,0 +1,42 @@
+name: sensors-soil-neo-sth02b2
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.soilMoisture
+        version: 1
+      - id: concertmirror08464.soilEc
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.neoSth02Fertility
+        version: 1
+      - id: concertmirror08464.neoSth02BatteryState
+        version: 1
+      - id: concertmirror08464.neoSth02TemperatureF
+        version: 1
+      - id: concertmirror08464.tempSensitivitySoilC03To1
+        version: 1
+      - id: concertmirror08464.humiditySensitivitySoilOneFive
+        version: 1
+      - id: concertmirror08464.neoSth02TemperatureAlarm
+        version: 1
+      - id: concertmirror08464.neoSth02HumidityAlarm
+        version: 1
+      - id: concertmirror08464.neoSth02MaximumTemperature
+        version: 1
+      - id: concertmirror08464.neoSth02MinimumTemperature
+        version: 1
+      - id: concertmirror08464.neoSth02MaximumHumidity
+        version: 1
+      - id: concertmirror08464.neoSth02MinimumHumidity
+        version: 1
+      - id: concertmirror08464.neoSth02ReportPeriod
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MoistureSensor

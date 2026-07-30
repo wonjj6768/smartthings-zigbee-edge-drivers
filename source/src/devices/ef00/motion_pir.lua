@@ -3,24 +3,48 @@ local emit = require "emitters"
 local ef00_helpers = require "devices.ef00.helpers"
 
 local converter = tuya.converter
-local presence_sensitivity_numeric_converter = converter.lookup_from_to({
-  [1] = 0,
-  [2] = 1,
-  [3] = 2,
+local szlm04u_on_off_converter = converter.lookup_from_to({
+  ON = true,
+  OFF = false,
+})
+local ay204z_sensitivity_converter = converter.lookup_from_to({
+  low = 0,
+  medium = 1,
+  high = 2,
+})
+local ay204z_keep_time_converter = converter.lookup_from_to({
+  ["10"] = 0,
+  ["30"] = 1,
+  ["60"] = 2,
+  ["120"] = 3,
 })
 
 local device_definitions = require "devices.ef00.motion.pir"
 
 local lincukoo_szlm04u = {
+  profile = "safety-motion-szlm04u-illuminance-battery",
   datapoints = {
-    tuya.dp_occupancy(1, { emit = emit.motion() }),
-    tuya.dp_illuminance(101, { emit = emit.illuminance() }),
-    tuya.dp_battery(4, { emit = emit.battery() }),
-    tuya.dp_on_off(102, { name = "usb_power" }),     -- profile 미포함
-    tuya.dp_on_off(103, { name = "switch" }),        -- profile 미포함
-    tuya.dp_fading_time(104, { name = "fading_time" }), -- profile 미포함, Z2M 5..300s
+    tuya.dp_occupancy(1, { emit = emit.motion(), read_only = true }),
+    tuya.dp_illuminance(101, { emit = emit.illuminance(), read_only = true }),
+    tuya.dp_battery(4, { emit = emit.battery(), read_only = true }),
+    tuya.dp_binary(102, {
+      name = "usb_power",
+      emit = emit.szlm04uUsbPower(),
+      converter = szlm04u_on_off_converter,
+      read_only = true,
+    }),
+    tuya.dp_binary(103, {
+      name = "switch",
+      emit = emit.szlm04uSensorSwitch(),
+      converter = szlm04u_on_off_converter,
+      read_only = true,
+    }),
+    tuya.dp_numeric(104, {
+      name = "fading_time",
+      emit = emit.szlm04uFadingTime(),
+    }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
   fingerprints = ef00_helpers.ts0601_fingerprints({
     "_TZE284_9ovska9w",
     "_TZE284_bquwrqh1",
@@ -30,18 +54,26 @@ local lincukoo_szlm04u = {
 device_definitions[#device_definitions + 1] = lincukoo_szlm04u
 
 local aoyan_ay_204z = {
-  profile = "safety-motion-battery",
+  profile = "safety-motion-ay204z-battery",
   datapoints = {
-    tuya.dp_occupancy(1, { emit = emit.motion(), converter = converter.true_false0() }),
-    tuya.dp_battery(4, { emit = emit.battery() }),
-    tuya.dp_pir_sensitivity(9, {
-      name = "presence_sensitivity",
-      emit = emit.presence_sensitivity(),
-      converter = presence_sensitivity_numeric_converter,
+    tuya.dp_occupancy(1, {
+      emit = emit.motion(),
+      converter = converter.true_false0(),
+      read_only = true,
     }),
-    tuya.dp_keep_time(10, { name = "keep_time" }),
+    tuya.dp_battery(4, { emit = emit.battery(), read_only = true }),
+    tuya.dp_enum(9, {
+      name = "sensitivity",
+      emit = emit.ay204zSensitivity(),
+      converter = ay204z_sensitivity_converter,
+    }),
+    tuya.dp_enum(10, {
+      name = "keep_time",
+      emit = emit.ay204zKeepTime(),
+      converter = ay204z_keep_time_converter,
+    }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
   fingerprints = {
     { manufacturer = "AOYAN", model = "AY-204Z" },
     { manufacturer = "AOYAN ", model = "AY-204Z" },

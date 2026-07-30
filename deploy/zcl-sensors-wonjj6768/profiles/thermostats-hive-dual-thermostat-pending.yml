@@ -1,0 +1,28 @@
+name: thermostats-hive-dual-thermostat-pending
+components:
+  - id: main
+    label: Heating
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+  - id: water
+    label: Hot water
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1

@@ -4,6 +4,14 @@ components:
     capabilities:
       - id: accelerationSensor
         version: 1
+      - id: concertmirror08464.zg103zTilt
+        version: 1
+      - id: concertmirror08464.zg103zXCoordinate
+        version: 1
+      - id: concertmirror08464.zg103zYCoordinate
+        version: 1
+      - id: concertmirror08464.zg103zZCoordinate
+        version: 1
       - id: battery
         version: 1
       - id: concertmirror08464.vibrationSensitivityZg103zEnum

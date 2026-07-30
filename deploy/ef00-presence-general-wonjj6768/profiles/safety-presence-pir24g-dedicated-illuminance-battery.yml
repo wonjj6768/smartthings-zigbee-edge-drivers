@@ -4,21 +4,21 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.staticDetectionSensitivity
+      - id: concertmirror08464.pir24gStaticSensitivity
         version: 1
-      - id: concertmirror08464.motionDetectionSensitivity
+      - id: concertmirror08464.pir24gMotionSensitivity
         version: 1
-      - id: concertmirror08464.presenceDetectionRange
+      - id: concertmirror08464.pir24gDetectionDistance
         version: 1
-      - id: concertmirror08464.detectionHoldTime
+      - id: concertmirror08464.pir24gFadingTime
+        version: 1
+      - id: concertmirror08464.pir24gLastTime
         version: 1
       - id: concertmirror08464.driverMessage
         version: 1
       - id: illuminanceMeasurement
         version: 1
       - id: battery
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -38,16 +38,19 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.staticDetectionSensitivity
+      capability: concertmirror08464.pir24gStaticSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.motionDetectionSensitivity
+      capability: concertmirror08464.pir24gMotionSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.pir24gDetectionDistance
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.pir24gFadingTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.pir24gLastTime
       version: 1
     - component: main
       capability: concertmirror08464.driverMessage
@@ -72,4 +75,19 @@ deviceConfig:
       - component: main
         capability: battery
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.pir24gLastTime
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.pir24gStaticSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pir24gMotionSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pir24gDetectionDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pir24gFadingTime
+        version: 1

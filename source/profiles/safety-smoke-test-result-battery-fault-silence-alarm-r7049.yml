@@ -1,0 +1,43 @@
+name: safety-smoke-test-result-battery-fault-silence-alarm-r7049
+components:
+  - id: main
+    capabilities:
+      - {id: smokeDetector, version: 1}
+      - {id: concertmirror08464.r7049TestAlarm, version: 1}
+      - {id: concertmirror08464.r7049TestAlarmResult, version: 1}
+      - {id: concertmirror08464.r7049FaultAlarm, version: 1}
+      - {id: concertmirror08464.r7049BatteryLevel, version: 1}
+      - {id: concertmirror08464.r7049SilenceSiren, version: 1}
+      - {id: concertmirror08464.r7049Alarm, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: SmokeDetector
+deviceConfig:
+  dashboard:
+    states:
+      - {component: main, capability: smokeDetector, version: 1, group: main}
+    actions: []
+    basicPlus: []
+  detailView:
+    - {component: main, capability: smokeDetector, version: 1}
+    - {component: main, capability: concertmirror08464.r7049TestAlarm, version: 1}
+    - {component: main, capability: concertmirror08464.r7049TestAlarmResult, version: 1}
+    - {component: main, capability: concertmirror08464.r7049FaultAlarm, version: 1}
+    - {component: main, capability: concertmirror08464.r7049BatteryLevel, version: 1}
+    - {component: main, capability: concertmirror08464.r7049SilenceSiren, version: 1}
+    - {component: main, capability: concertmirror08464.r7049Alarm, version: 1}
+    - {component: main, capability: refresh, version: 1}
+  automation:
+    conditions:
+      - {component: main, capability: smokeDetector, version: 1}
+      - {component: main, capability: concertmirror08464.r7049TestAlarm, version: 1}
+      - {component: main, capability: concertmirror08464.r7049TestAlarmResult, version: 1}
+      - {component: main, capability: concertmirror08464.r7049FaultAlarm, version: 1}
+      - {component: main, capability: concertmirror08464.r7049BatteryLevel, version: 1}
+      - {component: main, capability: concertmirror08464.r7049SilenceSiren, version: 1}
+      - {component: main, capability: concertmirror08464.r7049Alarm, version: 1}
+    actions:
+      - {component: main, capability: concertmirror08464.r7049TestAlarm, version: 1}
+      - {component: main, capability: concertmirror08464.r7049SilenceSiren, version: 1}
+      - {component: main, capability: concertmirror08464.r7049Alarm, version: 1}

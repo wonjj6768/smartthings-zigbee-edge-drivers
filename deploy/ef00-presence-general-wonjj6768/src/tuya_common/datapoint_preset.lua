@@ -842,20 +842,6 @@ local function load_datapoint_preset(tuya, shared)
   function tuya.dp_humidity_calibration(dp, name_or_options, options)
     return build_signed_numeric_preset(dp, "humidity_calibration", 1, name_or_options, options)
   end
-  function tuya.dp_alarm_time(dp, name_or_options, options)
-    return apply_default_fixed_send_policy(
-      build_divided_numeric_preset(dp, "alarm_time", 1, name_or_options, options),
-      normalize_preset_options(name_or_options, options, "alarm_time")
-    )
-  end
-  function tuya.dp_alarm_volume(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "alarm_volume")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.alarm_volume()
-    end
-
-    return apply_default_fixed_send_policy(tuya.dp_enum(dp, resolved), resolved)
-  end
   function tuya.dp_pir_sensitivity(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "sensitivity")
     if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then

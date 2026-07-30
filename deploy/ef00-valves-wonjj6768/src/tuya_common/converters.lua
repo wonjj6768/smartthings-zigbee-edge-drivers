@@ -173,6 +173,9 @@ end
 function converter.from_only(from_device)
   return converter.from_to(from_device, nil)
 end
+function converter.to_only(to_device)
+  return converter.from_to(nil, to_device)
+end
 function converter.lookup_from_to(map, default_value)
   local static_map = type_check(map) == "table" and map or nil
   local static_reverse = static_map and build_reverse_lookup(static_map) or nil
@@ -250,6 +253,107 @@ function converter.raw_uint_be(divisor, options)
 
     return parsed / div
   end)
+end
+function converter.raw_identifier()
+  return converter.from_only(function(value)
+    local buffer = raw_bytes(value)
+    if buffer == nil then
+      return value
+    end
+
+    local length = string_len(buffer)
+    local chars = {}
+    local printable = true
+    for index = 1, length do
+      local byte_value = string_byte(buffer, index)
+      if byte_value ~= 0 then
+        if byte_value < 32 or byte_value > 126 then
+          printable = false
+        end
+        chars[#chars + 1] = string_char(byte_value)
+      end
+    end
+
+    if printable and #chars > 0 then
+      return table_concat(chars)
+    end
+
+    if length <= 4 then
+      return parse_uint_be(buffer, 1, length)
+    end
+
+    return raw_buffer_to_hex(buffer)
+  end)
+end
+function converter.bitmap_flags(map, empty_value, separator)
+  local static_map = type_check(map) == "table" and map or nil
+  local static_keys = static_map and numeric_lookup_keys(static_map) or nil
+
+  return converter.from_only(function(value, device, context)
+    local numeric_value = tonumber_check(value)
+    if numeric_value == nil then
+      log.warn(string.format("Tuya bitmap_flags expects number, got %s", type_check(value)))
+      return nil
+    end
+
+    local resolved_map = static_map or resolve_lookup_map(map, device, context)
+    local resolved_keys = static_keys or numeric_lookup_keys(resolved_map)
+    local labels = {}
+    local integer_value = math_floor(numeric_value)
+    for _, bit in ipairs(resolved_keys) do
+      if math_floor(integer_value / bit) % 2 == 1 then
+        local label = resolved_map[bit] or resolved_map[tostring(bit)]
+        if label ~= nil then
+          labels[#labels + 1] = label
+        end
+      end
+    end
+
+    if #labels == 0 then
+      return resolve_lookup_default(empty_value, device, context)
+    end
+
+    local resolved_separator = resolve_converter_arg(separator, device, context)
+    if type_check(resolved_separator) ~= "string" then
+      resolved_separator = ","
+    end
+
+    return table_concat(labels, resolved_separator)
+  end)
+end
+function converter.report_period_hours()
+  return converter.lookup_from_to({
+    ["1h"] = 0,
+    ["2h"] = 1,
+    ["3h"] = 2,
+    ["4h"] = 3,
+    ["6h"] = 4,
+    ["8h"] = 5,
+    ["12h"] = 6,
+    ["24h"] = 7,
+    ["48h"] = 8,
+    ["72h"] = 9,
+  })
+end
+function converter.water_meter_faults()
+  return converter.bitmap_flags({
+    [1] = "battery_alarm",
+    [2] = "magnetism_alarm",
+    [4] = "cover_alarm",
+    [8] = "credit_alarm",
+    [16] = "switch_gaps_alarm",
+    [32] = "meter_body_alarm",
+    [64] = "abnormal_water_alarm",
+    [128] = "arrearage_alarm",
+    [256] = "overflow_alarm",
+    [512] = "revflow_alarm",
+    [1024] = "over_pre_alarm",
+    [2048] = "empty_pipe_alarm",
+    [4096] = "transducer_alarm",
+  }, "no_alarm", ",")
+end
+function converter.divide_by_from_only(divisor)
+  return converter.from_only(converter.divide_by(divisor))
 end
 function converter.power()
   return converter.from_only(function(value)
@@ -378,6 +482,43 @@ function converter.multiply_by(multiplier)
       return nil
     end
     return number_value * factor
+  end
+end
+function converter.clamp(min_value, max_value)
+  return function(value, device, context)
+    local number_value = tonumber_check(value)
+    if number_value == nil then
+      log.warn(string.format("Tuya clamp expects number, got %s", type_check(value)))
+      return nil
+    end
+
+    local low = resolve_numeric_arg(min_value, device, context)
+    local high = resolve_numeric_arg(max_value, device, context)
+
+    if low ~= nil and number_value < low then
+      number_value = low
+    end
+    if high ~= nil and number_value > high then
+      number_value = high
+    end
+
+    return number_value
+  end
+end
+function converter.round_to_step(step)
+  return function(value, device, context)
+    local number_value = tonumber_check(value)
+    local step_value = resolve_numeric_arg(step, device, context)
+    if number_value == nil or step_value == nil then
+      log.warn("Tuya round_to_step expects numeric input and step")
+      return nil
+    end
+    if step_value == 0 then
+      log.warn("Tuya round_to_step step cannot be zero")
+      return nil
+    end
+
+    return math_floor(number_value / step_value + 0.5) * step_value
   end
 end
 function converter.threshold_parser()

@@ -1,0 +1,243 @@
+name: thermostats-thermostat-hy08we
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: thermostatOperatingState
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.hy08weChildLock
+        version: 1
+      - id: concertmirror08464.hy08weSensorType
+        version: 1
+      - id: concertmirror08464.hy08wePowerOnBehavior
+        version: 1
+      - id: concertmirror08464.hy08weWeekFormat
+        version: 1
+      - id: concertmirror08464.hy08weMaxTempProtection
+        version: 1
+      - id: concertmirror08464.hy08weMinTempProtection
+        version: 1
+      - id: concertmirror08464.hy08weAlarm
+        version: 1
+      - id: concertmirror08464.hy08weExternalTemperature
+        version: 1
+      - id: concertmirror08464.hy08weMaxTemperature
+        version: 1
+      - id: concertmirror08464.hy08weMinTemperature
+        version: 1
+      - id: concertmirror08464.hy08weTempCalibration
+        version: 1
+      - id: concertmirror08464.hy08weHysteresis
+        version: 1
+      - id: concertmirror08464.hy08weProtectionHysteresis
+        version: 1
+      - id: concertmirror08464.hy08weProtectionMaxTemp
+        version: 1
+      - id: concertmirror08464.hy08weProtectionMinTemp
+        version: 1
+      - id: concertmirror08464.hy08weAwayDays
+        version: 1
+      - id: concertmirror08464.hy08weAwayTemperature
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: thermostatOperatingState
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weSensorType
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08wePowerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weWeekFormat
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weMaxTempProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weMinTempProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weAlarm
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weExternalTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weMaxTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weMinTemperature
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weHysteresis
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weProtectionHysteresis
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weProtectionMaxTemp
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weProtectionMinTemp
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weAwayDays
+      version: 1
+    - component: main
+      capability: concertmirror08464.hy08weAwayTemperature
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: thermostatOperatingState
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weSensorType
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08wePowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weWeekFormat
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMaxTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMinTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weAlarm
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weExternalTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weHysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weProtectionHysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weProtectionMaxTemp
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weProtectionMinTemp
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weAwayDays
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weAwayTemperature
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weSensorType
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08wePowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weWeekFormat
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMaxTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMinTempProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMaxTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weMinTemperature
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weHysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weProtectionHysteresis
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weProtectionMaxTemp
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weProtectionMinTemp
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weAwayDays
+        version: 1
+      - component: main
+        capability: concertmirror08464.hy08weAwayTemperature
+        version: 1

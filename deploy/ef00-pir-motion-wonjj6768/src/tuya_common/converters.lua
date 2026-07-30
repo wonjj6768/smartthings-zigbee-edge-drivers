@@ -289,6 +289,9 @@ end
 function converter.true_false0()
   return converter.bool_pair(0, 1)
 end
+function converter.true_false1()
+  return converter.bool_pair(1, 0)
+end
 function converter.pir_sensitivity_low_medium_high()
   return converter.lookup_from_to({
     low = 0,

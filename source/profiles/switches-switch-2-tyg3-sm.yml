@@ -1,0 +1,117 @@
+name: switches-switch-2-tyg3-sm
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.tyg21zCountdown1
+        version: 1
+      - id: concertmirror08464.tyg21zCountdown2
+        version: 1
+      - id: concertmirror08464.tyg21zPowerOnBehavior
+        version: 1
+      - id: concertmirror08464.tyg21zBacklightMode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: concertmirror08464.tyg21zCountdown1
+      version: 1
+    - component: main
+      capability: concertmirror08464.tyg21zCountdown2
+      version: 1
+    - component: main
+      capability: concertmirror08464.tyg21zPowerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.tyg21zBacklightMode
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+    - component: switch2
+      capability: switch
+      version: 1
+    - component: switch3
+      capability: switch
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zCountdown1
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zCountdown2
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zPowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zBacklightMode
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zCountdown1
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zCountdown2
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zPowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.tyg21zBacklightMode
+        version: 1
+      - component: switch2
+        capability: switch
+        version: 1
+      - component: switch3
+        capability: switch
+        version: 1

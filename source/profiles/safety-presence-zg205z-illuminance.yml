@@ -4,33 +4,35 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.moveSensitivity
-        version: 1
-      - id: concertmirror08464.smallMoveSensitivity
-        version: 1
-      - id: concertmirror08464.breathSensitivity
-        version: 1
-      - id: concertmirror08464.moveDetectionMaxDistance
-        version: 1
-      - id: concertmirror08464.moveDetectionMinDistance
-        version: 1
-      - id: concertmirror08464.smallMoveDetectionMaxDistance
-        version: 1
-      - id: concertmirror08464.smallMoveDetectionMinDistance
-        version: 1
-      - id: concertmirror08464.breathDetectionMaxDistance
-        version: 1
-      - id: concertmirror08464.breathDetectionMinDistance
-        version: 1
-      - id: concertmirror08464.presenceTargetDistance
-        version: 1
-      - id: concertmirror08464.detectionHoldTime
-        version: 1
-      - id: concertmirror08464.driverMessage
-        version: 1
       - id: illuminanceMeasurement
         version: 1
-      - id: firmwareUpdate
+      - id: concertmirror08464.zg205zPresenceState
+        version: 1
+      - id: concertmirror08464.zg205zTargetDistance
+        version: 1
+      - id: concertmirror08464.zg205zNoneDelayTime
+        version: 1
+      - id: concertmirror08464.zg205zMoveMax
+        version: 1
+      - id: concertmirror08464.zg205zMoveMin
+        version: 1
+      - id: concertmirror08464.zg205zSmallMoveMax
+        version: 1
+      - id: concertmirror08464.zg205zSmallMoveMin
+        version: 1
+      - id: concertmirror08464.zg205zBreathMax
+        version: 1
+      - id: concertmirror08464.zg205zBreathMin
+        version: 1
+      - id: concertmirror08464.zg205zMoveSensitivity
+        version: 1
+      - id: concertmirror08464.zg205zSmallMoveSensitivity
+        version: 1
+      - id: concertmirror08464.zg205zBreathSensitivity
+        version: 1
+      - id: concertmirror08464.zg205zIndicator
+        version: 1
+      - id: concertmirror08464.driverMessage
         version: 1
       - id: refresh
         version: 1
@@ -50,43 +52,49 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.moveSensitivity
+      capability: illuminanceMeasurement
       version: 1
     - component: main
-      capability: concertmirror08464.smallMoveSensitivity
+      capability: concertmirror08464.zg205zPresenceState
       version: 1
     - component: main
-      capability: concertmirror08464.breathSensitivity
+      capability: concertmirror08464.zg205zTargetDistance
       version: 1
     - component: main
-      capability: concertmirror08464.moveDetectionMaxDistance
+      capability: concertmirror08464.zg205zNoneDelayTime
       version: 1
     - component: main
-      capability: concertmirror08464.moveDetectionMinDistance
+      capability: concertmirror08464.zg205zMoveMax
       version: 1
     - component: main
-      capability: concertmirror08464.smallMoveDetectionMaxDistance
+      capability: concertmirror08464.zg205zMoveMin
       version: 1
     - component: main
-      capability: concertmirror08464.smallMoveDetectionMinDistance
+      capability: concertmirror08464.zg205zSmallMoveMax
       version: 1
     - component: main
-      capability: concertmirror08464.breathDetectionMaxDistance
+      capability: concertmirror08464.zg205zSmallMoveMin
       version: 1
     - component: main
-      capability: concertmirror08464.breathDetectionMinDistance
+      capability: concertmirror08464.zg205zBreathMax
       version: 1
     - component: main
-      capability: concertmirror08464.presenceTargetDistance
+      capability: concertmirror08464.zg205zBreathMin
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.zg205zMoveSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zSmallMoveSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zBreathSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zg205zIndicator
       version: 1
     - component: main
       capability: concertmirror08464.driverMessage
-      version: 1
-    - component: main
-      capability: illuminanceMeasurement
       version: 1
     - component: main
       capability: refresh
@@ -99,4 +107,43 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.zg205zPresenceState
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zTargetDistance
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.zg205zNoneDelayTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zMoveMax
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zMoveMin
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zSmallMoveMax
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zSmallMoveMin
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zBreathMax
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zBreathMin
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zMoveSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zSmallMoveSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zBreathSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zg205zIndicator
+        version: 1

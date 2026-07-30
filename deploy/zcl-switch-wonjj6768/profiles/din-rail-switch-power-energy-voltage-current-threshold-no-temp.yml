@@ -16,17 +16,19 @@ components:
         version: 1
       - id: concertmirror08464.lastPowerResponseTime
         version: 1
-      - id: concertmirror08464.indicatorMode
+      - id: concertmirror08464.ts011fDinIndicatorMode
         version: 1
-      - id: concertmirror08464.powerOnBehavior
+      - id: concertmirror08464.powerOutageMemory
         version: 1
       - id: concertmirror08464.countdownTimerZclTwelveHours
+        version: 1
+      - id: concertmirror08464.childLock
         version: 1
       - id: concertmirror08464.powerThreshold
         version: 1
       - id: concertmirror08464.powerBreaker
         version: 1
-      - id: concertmirror08464.overCurrentThreshold
+      - id: concertmirror08464.ts011fDinOverCurrentThreshold
         version: 1
       - id: concertmirror08464.overCurrentBreaker
         version: 1
@@ -34,7 +36,7 @@ components:
         version: 1
       - id: concertmirror08464.overVoltageBreaker
         version: 1
-      - id: concertmirror08464.underVoltageThreshold
+      - id: concertmirror08464.ts011fDinUnderVoltageThreshold
         version: 1
       - id: concertmirror08464.underVoltageBreaker
         version: 1

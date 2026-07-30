@@ -1,0 +1,54 @@
+name: plugs-nous-a11z
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: powerMeter
+        version: 1
+      - id: energyMeter
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: currentMeasurement
+        version: 1
+      - id: concertmirror08464.nousA11zPowerBehavior
+        version: 1
+      - id: concertmirror08464.nousA11zCountdown
+        version: 1
+      - id: concertmirror08464.nousA11zIndicatorMode
+        version: 1
+      - id: concertmirror08464.nousA11zChildLock
+        version: 1
+      - id: concertmirror08464.nousA11zSwitchType
+        version: 1
+      - id: concertmirror08464.nousA11zIdentify
+        version: 1
+      - id: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - id: concertmirror08464.lastPowerResponseTime
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmartPlug
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.nousA11zPowerBehavior
+        version: 1
+      - id: concertmirror08464.nousA11zCountdown
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.nousA11zPowerBehavior
+        version: 1
+      - id: concertmirror08464.nousA11zCountdown
+        version: 1
+    categories:
+      - name: Switch

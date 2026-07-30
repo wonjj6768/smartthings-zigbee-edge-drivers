@@ -173,6 +173,31 @@ end
 function converter.from_only(from_device)
   return converter.from_to(from_device, nil)
 end
+function converter.lookup_from_to(map, default_value)
+  local static_map = type_check(map) == "table" and map or nil
+  local static_reverse = static_map and build_reverse_lookup(static_map) or nil
+
+  return converter.from_to(
+    function(value, device, context)
+      local resolved_map = static_map or resolve_lookup_map(map, device, context)
+      local reverse = static_reverse or build_reverse_lookup(resolved_map)
+
+      local mapped = reverse[value]
+      if mapped ~= nil then
+        return mapped
+      end
+
+      local fallback = resolve_lookup_default(default_value, device, context)
+      if fallback ~= nil then
+        return fallback
+      end
+
+      log.warn(string.format("Tuya lookup_from_to missing value: %s", tostring(value)))
+      return nil
+    end,
+    converter.lookup_value(map, default_value)
+  )
+end
 function converter.lookup_value(map, default_value)
   local static_map = type_check(map) == "table" and map or nil
 

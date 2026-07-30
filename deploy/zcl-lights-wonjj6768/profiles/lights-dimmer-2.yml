@@ -6,6 +6,16 @@ components:
         version: 1
       - id: switchLevel
         version: 1
+      - id: concertmirror08464.dimmer2gMinBrightnessCh1
+        version: 1
+      - id: concertmirror08464.dimmer2gMaxBrightnessCh1
+        version: 1
+      - id: concertmirror08464.dimmer2gLightTypeCh1
+        version: 1
+      - id: concertmirror08464.dimmer2gCountdownCh1
+        version: 1
+      - id: concertmirror08464.dimmer2gPowerOnBehavior
+        version: 1
       - id: refresh
         version: 1
     categories:
@@ -15,6 +25,14 @@ components:
       - id: switch
         version: 1
       - id: switchLevel
+        version: 1
+      - id: concertmirror08464.dimmer2gMinBrightnessCh2
+        version: 1
+      - id: concertmirror08464.dimmer2gMaxBrightnessCh2
+        version: 1
+      - id: concertmirror08464.dimmer2gLightTypeCh2
+        version: 1
+      - id: concertmirror08464.dimmer2gCountdownCh2
         version: 1
     categories:
       - name: Light
@@ -56,6 +74,33 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
+      capability: concertmirror08464.dimmer2gMinBrightnessCh1
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer2gMaxBrightnessCh1
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer2gLightTypeCh1
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer2gCountdownCh1
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer2gMinBrightnessCh2
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer2gMaxBrightnessCh2
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer2gLightTypeCh2
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer2gCountdownCh2
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer2gPowerOnBehavior
+      version: 1
+    - component: main
       capability: refresh
       version: 1
   automation:
@@ -84,4 +129,31 @@ deviceConfig:
         version: 1
       - component: switch2
         capability: switchLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer2gMinBrightnessCh1
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer2gMaxBrightnessCh1
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer2gLightTypeCh1
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer2gCountdownCh1
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer2gMinBrightnessCh2
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer2gMaxBrightnessCh2
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer2gLightTypeCh2
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer2gCountdownCh2
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer2gPowerOnBehavior
         version: 1

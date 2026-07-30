@@ -12,6 +12,24 @@ components:
         version: 1
       - id: concertmirror08464.vibrationLimitSenoroWinV2
         version: 1
+      - id: concertmirror08464.senoroWinV2AlarmState
+        version: 1
+      - id: concertmirror08464.senoroWinV2Vibration
+        version: 1
+      - id: concertmirror08464.senoroWinV2AlarmSiren
+        version: 1
+      - id: concertmirror08464.senoroWinV2CloseSignal
+        version: 1
+      - id: concertmirror08464.senoroWinV2SetupMode
+        version: 1
+      - id: concertmirror08464.senoroWinV2VibrationSiren
+        version: 1
+      - id: concertmirror08464.senoroWinV2AlarmSirenDuration
+        version: 1
+      - id: concertmirror08464.senoroV2VibrationSirenTime
+        version: 1
+      - id: concertmirror08464.senoroWinV2MagneticStatus
+        version: 1
       - id: firmwareUpdate
         version: 1
       - id: refresh

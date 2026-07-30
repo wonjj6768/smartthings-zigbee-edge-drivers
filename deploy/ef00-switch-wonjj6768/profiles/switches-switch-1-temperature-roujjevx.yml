@@ -1,0 +1,169 @@
+name: switches-switch-1-temperature-roujjevx
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.rjvxAutowork
+        version: 1
+      - id: concertmirror08464.rjvxWorkMode
+        version: 1
+      - id: concertmirror08464.rjvxTemperatureUnit
+        version: 1
+      - id: concertmirror08464.rjvxCoolingDelaySwitch
+        version: 1
+      - id: concertmirror08464.rjvxCountdown
+        version: 1
+      - id: concertmirror08464.rjvxTempCSetpoint
+        version: 1
+      - id: concertmirror08464.rjvxTempFSetpoint
+        version: 1
+      - id: concertmirror08464.rjvxTemperatureF
+        version: 1
+      - id: concertmirror08464.rjvxTemperatureRange
+        version: 1
+      - id: concertmirror08464.rjvxTempCalibration
+        version: 1
+      - id: concertmirror08464.rjvxCoolingDelay
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        composite: true
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxAutowork
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxWorkMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxTemperatureUnit
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxCoolingDelaySwitch
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxCountdown
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxTempCSetpoint
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxTempFSetpoint
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxTemperatureF
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxTemperatureRange
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxTempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.rjvxCoolingDelay
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxAutowork
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxWorkMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTemperatureUnit
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxCoolingDelaySwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxCountdown
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTempCSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTempFSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTemperatureF
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTemperatureRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxCoolingDelay
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxAutowork
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxWorkMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTemperatureUnit
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxCoolingDelaySwitch
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxCountdown
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTempCSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTempFSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTemperatureRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxTempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.rjvxCoolingDelay
+        version: 1

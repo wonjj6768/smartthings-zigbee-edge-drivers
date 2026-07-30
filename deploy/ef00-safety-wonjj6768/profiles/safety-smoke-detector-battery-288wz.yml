@@ -4,7 +4,13 @@ components:
     capabilities:
       - id: smokeDetector
         version: 1
+      - id: concertmirror08464.onenuo288wzSmokeState
+        version: 1
       - id: battery
+        version: 1
+      - id: concertmirror08464.onenuo288wzSilence
+        version: 1
+      - id: concertmirror08464.onenuo288wzSelfTestResult
         version: 1
       - id: concertmirror08464.sensitivitySmoke288wzEnum
         version: 1

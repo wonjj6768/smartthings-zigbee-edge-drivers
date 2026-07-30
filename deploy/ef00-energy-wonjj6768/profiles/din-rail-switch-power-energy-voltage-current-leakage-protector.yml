@@ -1,28 +1,182 @@
 name: din-rail-switch-power-energy-voltage-current-leakage-protector
 components:
-  - id: main
-    capabilities:
-      - id: switch
+- id: main
+  capabilities:
+  - id: switch
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: energyMeter
+    version: 1
+  - id: voltageMeasurement
+    version: 1
+  - id: currentMeasurement
+    version: 1
+  - id: temperatureMeasurement
+    version: 1
+  - id: concertmirror08464.leakageCurrentProtector
+    version: 1
+  - id: concertmirror08464.leakageThresholdProtector100ma
+    version: 1
+  - id: concertmirror08464.smkg2knlFaults
+    version: 1
+  - id: concertmirror08464.smkg2knlOverVoltageThreshold
+    version: 1
+  - id: concertmirror08464.smkg2knlUnderVoltageThreshold
+    version: 1
+  - id: concertmirror08464.smkg2knlOverCurrentThreshold
+    version: 1
+  - id: concertmirror08464.smkg2knlTemperatureThreshold
+    version: 1
+  - id: concertmirror08464.powerPollIntervalV2
+    version: 1
+  - id: concertmirror08464.lastPowerResponseTime
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
         version: 1
-      - id: powerMeter
+        group: main
+        composite: true
+      - component: main
+        capability: powerMeter
         version: 1
-      - id: energyMeter
+        group: main
+        values:
+          - label: "{{power.value}} {{power.unit}}"
+        composite: true
+    actions:
+      - component: main
+        capability: switch
         version: 1
-      - id: voltageMeasurement
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: voltageMeasurement
+      version: 1
+    - component: main
+      capability: currentMeasurement
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.leakageCurrentProtector
+      version: 1
+    - component: main
+      capability: concertmirror08464.leakageThresholdProtector100ma
+      version: 1
+    - component: main
+      capability: concertmirror08464.smkg2knlFaults
+      version: 1
+    - component: main
+      capability: concertmirror08464.smkg2knlOverVoltageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.smkg2knlUnderVoltageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.smkg2knlOverCurrentThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.smkg2knlTemperatureThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerPollIntervalV2
+      version: 1
+    - component: main
+      capability: concertmirror08464.lastPowerResponseTime
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
         version: 1
-      - id: currentMeasurement
+      - component: main
+        capability: powerMeter
         version: 1
-      - id: concertmirror08464.powerPollIntervalV2
+      - component: main
+        capability: energyMeter
         version: 1
-      - id: concertmirror08464.lastPowerResponseTime
+      - component: main
+        capability: voltageMeasurement
         version: 1
-      - id: firmwareUpdate
+      - component: main
+        capability: currentMeasurement
         version: 1
-      - id: refresh
+      - component: main
+        capability: temperatureMeasurement
         version: 1
-      - id: concertmirror08464.leakageCurrentProtector
+      - component: main
+        capability: concertmirror08464.leakageCurrentProtector
         version: 1
-      - id: concertmirror08464.leakageThresholdProtector100ma
+      - component: main
+        capability: concertmirror08464.leakageThresholdProtector100ma
         version: 1
-    categories:
-      - name: CurbPowerMeter
+      - component: main
+        capability: concertmirror08464.smkg2knlFaults
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlOverVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlUnderVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlOverCurrentThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlTemperatureThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - component: main
+        capability: concertmirror08464.lastPowerResponseTime
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.leakageThresholdProtector100ma
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlOverVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlUnderVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlOverCurrentThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.smkg2knlTemperatureThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1

@@ -292,14 +292,6 @@ end
 function converter.true_false1()
   return converter.bool_pair(1, 0)
 end
-function converter.alarm_volume()
-  return converter.lookup_from_to({
-    low = 0,
-    medium = 1,
-    high = 2,
-    mute = 3,
-  })
-end
 function converter.pir_sensitivity_low_medium_high()
   return converter.lookup_from_to({
     low = 0,
@@ -342,6 +334,12 @@ function converter.motion_detection_mode()
     pir_or_radar = 1,
     only_radar = 2,
   })
+end
+function converter.true_false(true_value)
+  return converter.from_only(function(value, device, context)
+    local expected = resolve_converter_arg(true_value, device, context)
+    return value == expected
+  end)
 end
 function converter.divide_by_from_only(divisor)
   return converter.from_only(converter.divide_by(divisor))

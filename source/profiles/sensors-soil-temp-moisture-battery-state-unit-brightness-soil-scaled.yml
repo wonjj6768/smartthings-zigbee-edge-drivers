@@ -1,0 +1,22 @@
+name: sensors-soil-temp-moisture-battery-state-unit-brightness-soil-scaled
+components:
+- id: main
+  capabilities:
+  - id: temperatureMeasurement
+    version: 1
+  - id: concertmirror08464.soilMoisture
+    version: 1
+  - id: battery
+    version: 1
+  - id: concertmirror08464.tuyaSoilScaledBatteryState
+    version: 1
+  - id: concertmirror08464.tuyaSoilScaledTemperatureUnit
+    version: 1
+  - id: concertmirror08464.tuyaSoilScaledBrightnessLevel
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: TempHumiditySensor

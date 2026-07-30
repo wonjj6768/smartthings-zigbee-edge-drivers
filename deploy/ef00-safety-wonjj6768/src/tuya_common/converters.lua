@@ -298,29 +298,6 @@ end
 function converter.true_false1()
   return converter.bool_pair(1, 0)
 end
-function converter.self_test_result()
-  return converter.lookup_from_to({
-    checking = 0,
-    success = 1,
-    failure = 2,
-    others = 3,
-  })
-end
-function converter.self_test_state()
-  return converter.lookup_from_to({
-    checking = 0,
-    check_success = 1,
-    check_failure = 2,
-  })
-end
-function converter.alarm_volume()
-  return converter.lookup_from_to({
-    low = 0,
-    medium = 1,
-    high = 2,
-    mute = 3,
-  })
-end
 function converter.alarm_ringtone_melody_five()
   return converter.lookup_from_to({
     melody_1 = 0,
@@ -330,15 +307,8 @@ function converter.alarm_ringtone_melody_five()
     melody_5 = 4,
   })
 end
-function converter.gas_fault_status()
-  return converter.lookup_from_to({
-    none = 0,
-    fault = 1,
-    serious_fault = 2,
-    sensor_fault = 3,
-    probe_fault = 4,
-    power_fault = 5,
-  })
+function converter.divide_by_from_only(divisor)
+  return converter.from_only(converter.divide_by(divisor))
 end
 function converter.power()
   return converter.from_only(function(value)

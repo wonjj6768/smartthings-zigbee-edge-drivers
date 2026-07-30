@@ -1,0 +1,38 @@
+name: sensors-soil-ts0601-soil2
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.soilMoisture
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.soil2BatteryState
+        version: 1
+      - id: concertmirror08464.soil2TemperatureF
+        version: 1
+      - id: concertmirror08464.tempSensitivitySoilC03To1
+        version: 1
+      - id: concertmirror08464.humiditySensitivitySoilOneFive
+        version: 1
+      - id: concertmirror08464.soil2TemperatureAlarm
+        version: 1
+      - id: concertmirror08464.soil2HumidityAlarm
+        version: 1
+      - id: concertmirror08464.soil2MaximumTemperature
+        version: 1
+      - id: concertmirror08464.soil2MinimumTemperature
+        version: 1
+      - id: concertmirror08464.soil2MaximumHumidity
+        version: 1
+      - id: concertmirror08464.soil2MinimumHumidity
+        version: 1
+      - id: concertmirror08464.soil2ReportPeriod
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MoistureSensor

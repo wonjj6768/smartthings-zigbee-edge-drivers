@@ -4,9 +4,17 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceDetectionRange
+      - id: concertmirror08464.msa201zTriggerDistance
         version: 1
-      - id: concertmirror08464.detectionHoldTime
+      - id: concertmirror08464.msa201zHoldDelayTime
+        version: 1
+      - id: concertmirror08464.msa201zForbiddenArea
+        version: 1
+      - id: concertmirror08464.msa201zSensitivity
+        version: 1
+      - id: concertmirror08464.msa201zSensorMode
+        version: 1
+      - id: concertmirror08464.msa201zIndicator
         version: 1
       - id: illuminanceMeasurement
         version: 1
@@ -28,10 +36,22 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.msa201zTriggerDistance
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.msa201zHoldDelayTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.msa201zForbiddenArea
+      version: 1
+    - component: main
+      capability: concertmirror08464.msa201zSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.msa201zSensorMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.msa201zIndicator
       version: 1
     - component: main
       capability: illuminanceMeasurement
@@ -49,8 +69,20 @@ deviceConfig:
         version: 1
     actions:
       - component: main
-        capability: concertmirror08464.presenceDetectionRange
+        capability: concertmirror08464.msa201zTriggerDistance
         version: 1
       - component: main
-        capability: concertmirror08464.detectionHoldTime
+        capability: concertmirror08464.msa201zHoldDelayTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.msa201zForbiddenArea
+        version: 1
+      - component: main
+        capability: concertmirror08464.msa201zSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.msa201zSensorMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.msa201zIndicator
         version: 1

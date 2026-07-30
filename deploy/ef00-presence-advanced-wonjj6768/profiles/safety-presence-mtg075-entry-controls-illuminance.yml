@@ -4,39 +4,39 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceSensitivity
-        version: 1
-      - id: concertmirror08464.entrySensitivity
-        version: 1
-      - id: concertmirror08464.shieldRange
-        version: 1
-      - id: concertmirror08464.presenceDetectionRange
-        version: 1
-      - id: concertmirror08464.entryFilterTime
-        version: 1
-      - id: concertmirror08464.entryDistanceIndentation
-        version: 1
-      - id: concertmirror08464.blockTime
-        version: 1
-      - id: concertmirror08464.detectionHoldTime
-        version: 1
-      - id: concertmirror08464.presenceTargetDistance
-        version: 1
-      - id: concertmirror08464.presenceIlluminanceThreshold
-        version: 1
-      - id: concertmirror08464.breakerMode
-        version: 1
-      - id: concertmirror08464.breakerStatus
-        version: 1
-      - id: concertmirror08464.statusIndication
-        version: 1
-      - id: concertmirror08464.sensorStateMode
-        version: 1
-      - id: concertmirror08464.driverMessage
-        version: 1
       - id: illuminanceMeasurement
         version: 1
-      - id: firmwareUpdate
+      - id: concertmirror08464.mtg075TargetDistance
+        version: 1
+      - id: concertmirror08464.mtg075RadarSensitivity
+        version: 1
+      - id: concertmirror08464.mtg075DetectionRange
+        version: 1
+      - id: concertmirror08464.mtg075ShieldRange
+        version: 1
+      - id: concertmirror08464.mtg075EntrySensitivity
+        version: 1
+      - id: concertmirror08464.mtg075EntryIndentation
+        version: 1
+      - id: concertmirror08464.mtg075EntryFilterTime
+        version: 1
+      - id: concertmirror08464.mtg075DepartureDelay
+        version: 1
+      - id: concertmirror08464.mtg075BlockTime
+        version: 1
+      - id: concertmirror08464.mtg075IlluminanceThreshold
+        version: 1
+      - id: concertmirror08464.mtg075BreakerMode
+        version: 1
+      - id: concertmirror08464.mtg075BreakerStatus
+        version: 1
+      - id: concertmirror08464.mtg075BreakerPolarity
+        version: 1
+      - id: concertmirror08464.mtg075StatusIndication
+        version: 1
+      - id: concertmirror08464.mtg075SensorState
+        version: 1
+      - id: concertmirror08464.driverMessage
         version: 1
       - id: refresh
         version: 1
@@ -56,52 +56,55 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceSensitivity
+      capability: illuminanceMeasurement
       version: 1
     - component: main
-      capability: concertmirror08464.entrySensitivity
+      capability: concertmirror08464.mtg075TargetDistance
       version: 1
     - component: main
-      capability: concertmirror08464.shieldRange
+      capability: concertmirror08464.mtg075RadarSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.mtg075DetectionRange
       version: 1
     - component: main
-      capability: concertmirror08464.entryFilterTime
+      capability: concertmirror08464.mtg075ShieldRange
       version: 1
     - component: main
-      capability: concertmirror08464.entryDistanceIndentation
+      capability: concertmirror08464.mtg075EntrySensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.blockTime
+      capability: concertmirror08464.mtg075EntryIndentation
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.mtg075EntryFilterTime
       version: 1
     - component: main
-      capability: concertmirror08464.presenceTargetDistance
+      capability: concertmirror08464.mtg075DepartureDelay
       version: 1
     - component: main
-      capability: concertmirror08464.presenceIlluminanceThreshold
+      capability: concertmirror08464.mtg075BlockTime
       version: 1
     - component: main
-      capability: concertmirror08464.breakerMode
+      capability: concertmirror08464.mtg075IlluminanceThreshold
       version: 1
     - component: main
-      capability: concertmirror08464.breakerStatus
+      capability: concertmirror08464.mtg075BreakerMode
       version: 1
     - component: main
-      capability: concertmirror08464.statusIndication
+      capability: concertmirror08464.mtg075BreakerStatus
       version: 1
     - component: main
-      capability: concertmirror08464.sensorStateMode
+      capability: concertmirror08464.mtg075BreakerPolarity
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtg075StatusIndication
+      version: 1
+    - component: main
+      capability: concertmirror08464.mtg075SensorState
       version: 1
     - component: main
       capability: concertmirror08464.driverMessage
-      version: 1
-    - component: main
-      capability: illuminanceMeasurement
       version: 1
     - component: main
       capability: refresh
@@ -114,4 +117,52 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.mtg075TargetDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075BreakerStatus
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.mtg075RadarSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075DetectionRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075ShieldRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075EntrySensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075EntryIndentation
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075EntryFilterTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075DepartureDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075BlockTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075IlluminanceThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075BreakerMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075BreakerStatus
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075BreakerPolarity
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075StatusIndication
+        version: 1
+      - component: main
+        capability: concertmirror08464.mtg075SensorState
+        version: 1

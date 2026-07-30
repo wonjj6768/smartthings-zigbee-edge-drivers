@@ -2,7 +2,7 @@ name: safety-alarm-battery-zg229z
 components:
   - id: main
     capabilities:
-      - id: alarm
+      - id: concertmirror08464.zg229zAlarmMode
         version: 1
       - id: battery
         version: 1

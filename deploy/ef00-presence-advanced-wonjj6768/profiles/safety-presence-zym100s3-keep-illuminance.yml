@@ -4,15 +4,11 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceSensitivity
+      - id: concertmirror08464.zym100s3Sensitivity
         version: 1
-      - id: concertmirror08464.keepTime
-        version: 1
-      - id: concertmirror08464.driverMessage
+      - id: concertmirror08464.zym100s3KeepTime
         version: 1
       - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -32,13 +28,10 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceSensitivity
+      capability: concertmirror08464.zym100s3Sensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.keepTime
-      version: 1
-    - component: main
-      capability: concertmirror08464.driverMessage
+      capability: concertmirror08464.zym100s3KeepTime
       version: 1
     - component: main
       capability: illuminanceMeasurement
@@ -54,4 +47,16 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.zym100s3Sensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zym100s3KeepTime
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.zym100s3Sensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zym100s3KeepTime
+        version: 1

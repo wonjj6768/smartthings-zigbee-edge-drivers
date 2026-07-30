@@ -2,6 +2,7 @@ local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
 local capabilities = require "st.capabilities"
 local data_types = require "st.zigbee.data_types"
+local device_management = require "st.zigbee.device_management"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -93,6 +94,16 @@ local ac_fan_controller = {
   zcl_initial_writes = {
     { name = "fan_mode_sequence", value = 0 },
   },
+  configure = function(driver, device)
+    for _, cluster_id in ipairs({ zcl.CLUSTER_ON_OFF, zcl.CLUSTER_FAN_CONTROL }) do
+      device:send(device_management.build_bind_request(
+        device,
+        cluster_id,
+        driver.environment_info.hub_zigbee_eui,
+        1
+      ))
+    end
+  end,
 }
 
 register_device_definition(ac_fan_controller, device_helpers.create_fingerprints("TS0501", {
@@ -113,6 +124,7 @@ local fan_light_switch = {
     [4] = "main",
   },
   zcl_clusters = {
+    zcl.tuya_magic_packet(),
     zcl.switch({ endpoint = 1, component = "light" }),
     fan_speed_mapping("high", 2, "fan_mode", send_fan_mode_command),
     zcl.cluster_attribute(zcl.CLUSTER_ON_OFF, zcl.ATTR_ON_OFF, {
@@ -125,6 +137,16 @@ local fan_light_switch = {
     fan_speed_mapping("low", 3, "fan_speed_low"),
     fan_speed_mapping("medium", 4, "fan_speed_medium"),
   },
+  configure = function(driver, device)
+    for endpoint = 1, 4 do
+      device:send(device_management.build_bind_request(
+        device,
+        zcl.CLUSTER_ON_OFF,
+        driver.environment_info.hub_zigbee_eui,
+        endpoint
+      ))
+    end
+  end,
 }
 
 register_device_definition(fan_light_switch, device_helpers.create_fingerprints("TS0004", {

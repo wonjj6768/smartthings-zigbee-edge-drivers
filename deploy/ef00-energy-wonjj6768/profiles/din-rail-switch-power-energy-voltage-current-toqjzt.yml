@@ -1,26 +1,264 @@
 name: din-rail-switch-power-energy-voltage-current-toqjzt
 components:
-  - id: main
-    capabilities:
-      - id: switch
+- id: main
+  capabilities:
+  - id: switch
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: energyMeter
+    version: 1
+  - id: voltageMeasurement
+    version: 1
+  - id: currentMeasurement
+    version: 1
+  - id: temperatureMeasurement
+    version: 1
+  - id: concertmirror08464.leakageCurrentToqJzt
+    version: 1
+  - id: concertmirror08464.toqjztAcFrequency
+    version: 1
+  - id: concertmirror08464.toqjztPowerFactor
+    version: 1
+  - id: concertmirror08464.toqjztEvent
+    version: 1
+  - id: concertmirror08464.toqjztControlMode
+    version: 1
+  - id: concertmirror08464.toqjztOverVoltageSetting
+    version: 1
+  - id: concertmirror08464.toqjztOverVoltageThreshold
+    version: 1
+  - id: concertmirror08464.toqjztUnderVoltageSetting
+    version: 1
+  - id: concertmirror08464.toqjztUnderVoltageThreshold
+    version: 1
+  - id: concertmirror08464.toqjztOverCurrentSetting
+    version: 1
+  - id: concertmirror08464.toqjztOverCurrentThreshold
+    version: 1
+  - id: concertmirror08464.toqjztOverPowerSetting
+    version: 1
+  - id: concertmirror08464.toqjztOverPowerThreshold
+    version: 1
+  - id: concertmirror08464.toqjztTemperatureSetting
+    version: 1
+  - id: concertmirror08464.toqjztTemperatureThreshold
+    version: 1
+  - id: concertmirror08464.powerPollIntervalV2
+    version: 1
+  - id: concertmirror08464.lastPowerResponseTime
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: CurbPowerMeter
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
         version: 1
-      - id: powerMeter
+        group: main
+        composite: true
+      - component: main
+        capability: powerMeter
         version: 1
-      - id: energyMeter
+        group: main
+        values:
+          - label: "{{power.value}} {{power.unit}}"
+        composite: true
+    actions:
+      - component: main
+        capability: switch
         version: 1
-      - id: voltageMeasurement
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: powerMeter
+      version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: main
+      capability: voltageMeasurement
+      version: 1
+    - component: main
+      capability: currentMeasurement
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.leakageCurrentToqJzt
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztAcFrequency
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztPowerFactor
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztEvent
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztControlMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztOverVoltageSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztOverVoltageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztUnderVoltageSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztUnderVoltageThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztOverCurrentSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztOverCurrentThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztOverPowerSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztOverPowerThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztTemperatureSetting
+      version: 1
+    - component: main
+      capability: concertmirror08464.toqjztTemperatureThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.powerPollIntervalV2
+      version: 1
+    - component: main
+      capability: concertmirror08464.lastPowerResponseTime
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
         version: 1
-      - id: currentMeasurement
+      - component: main
+        capability: powerMeter
         version: 1
-      - id: concertmirror08464.powerPollIntervalV2
+      - component: main
+        capability: energyMeter
         version: 1
-      - id: concertmirror08464.lastPowerResponseTime
+      - component: main
+        capability: voltageMeasurement
         version: 1
-      - id: firmwareUpdate
+      - component: main
+        capability: currentMeasurement
         version: 1
-      - id: refresh
+      - component: main
+        capability: temperatureMeasurement
         version: 1
-      - id: concertmirror08464.leakageCurrentToqJzt
+      - component: main
+        capability: concertmirror08464.leakageCurrentToqJzt
         version: 1
-    categories:
-      - name: CurbPowerMeter
+      - component: main
+        capability: concertmirror08464.toqjztAcFrequency
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztPowerFactor
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztEvent
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztControlMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztUnderVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztUnderVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverCurrentSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverCurrentThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverPowerSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverPowerThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztTemperatureSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztTemperatureThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1
+      - component: main
+        capability: concertmirror08464.lastPowerResponseTime
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztControlMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztUnderVoltageSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztUnderVoltageThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverCurrentSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverCurrentThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverPowerSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztOverPowerThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztTemperatureSetting
+        version: 1
+      - component: main
+        capability: concertmirror08464.toqjztTemperatureThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.powerPollIntervalV2
+        version: 1

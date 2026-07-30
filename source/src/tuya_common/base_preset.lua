@@ -29,6 +29,7 @@ local function load_base_preset(tuya, shared)
   local message_option_keys = {
     "config_queue",
     "queue_delay",
+    "time_handler",
     "auto_time",
     "time_offset",
     "time_start",
@@ -36,6 +37,7 @@ local function load_base_preset(tuya, shared)
     "local_time",
     "auto_connection_status",
     "connection_status_bytes",
+    "respond_to_mcu_version_response",
   }
 
   local preferences_option_keys = {

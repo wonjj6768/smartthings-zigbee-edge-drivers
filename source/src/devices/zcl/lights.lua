@@ -52,13 +52,6 @@ register_device_definition(dimmer_light, device_helpers.create_fingerprints("TS0
   "_TZ3000_nbnmw9nc",
 }))
 
-register_device_definition(dimmer_light, {
-  device_helpers.create_fingerprint("Lidl", "HG06463A"),
-  device_helpers.create_fingerprint("Lidl", "HG06463B"),
-  device_helpers.create_fingerprint("Lidl", "HG06462A"),
-  device_helpers.create_fingerprint("Mercator Ikuü", "SMFL20W-ZB"),
-})
-
 register_device_definition(dimmer_light, device_helpers.create_fingerprints("TS0501B", {
   "_TZ3210_dxroobu3",
   "_TZ3210_dbilpfqk",
@@ -97,14 +90,6 @@ register_device_definition(cct_light, device_helpers.create_fingerprints("TS0502
   "_TZ3000_oh7jddmx",
 }))
 
-register_device_definition(cct_light, {
-  device_helpers.create_fingerprint("Lidl", "14147206L"),
-  device_helpers.create_fingerprint("Lidl", "14153905L"),
-  device_helpers.create_fingerprint("Lidl", "HG06492A/HG08130A"),
-  device_helpers.create_fingerprint("Lidl", "HG06492B/HG08130B"),
-  device_helpers.create_fingerprint("Lidl", "HG06492C/HG08130C/HG09154C"),
-})
-
 register_device_definition(cct_light, device_helpers.create_fingerprints("TS0502B", {
   "_TZ3000_zw7wr5uo",
   "_TZ3000_g1glzzfk",
@@ -121,17 +106,6 @@ register_device_definition(cct_light, device_helpers.create_fingerprints("TS0502
   "_TZ3000_6dwfra5l",
   "_TZ3210_claeh5ds",
 }))
-
-register_device_definition(cct_light, {
-  device_helpers.create_fingerprint("Lidl", "14156408L"),
-  device_helpers.create_fingerprint("EcoDim", "ED-10032"),
-  device_helpers.create_fingerprint("Mercator Ikuü", "SMI7040"),
-  device_helpers.create_fingerprint("Mercator Ikuü", "SMD9300"),
-  device_helpers.create_fingerprint("Mercator Ikuü", "SMCL01-ZB"),
-  device_helpers.create_fingerprint("Aldi", "F122SB62H22A4.5W"),
-  device_helpers.create_fingerprint("Sibling", "Light-ZSLL"),
-  device_helpers.create_fingerprint("LUUMR", "10024773"),
-})
 
 register_device_definition(cct_light, {
   device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn003"),
@@ -188,13 +162,6 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
 register_device_definition(color_cct_light, {
   device_helpers.create_fingerprint("LUMI", "lumi.light.acn132"),
   device_helpers.create_fingerprint("LUMI", "lumi.light.rgbac1"),
-  device_helpers.create_fingerprint("Mycket", "MS-SP-LE27WRGB"),
-  device_helpers.create_fingerprint("Lidl", "HG06106B"),
-  device_helpers.create_fingerprint("Lidl", "HG06106A"),
-  device_helpers.create_fingerprint("Lidl", "HG06106C"),
-  device_helpers.create_fingerprint("Lidl", "14148906L"),
-  device_helpers.create_fingerprint("Lidl", "14149505L/14149506L_1"),
-  device_helpers.create_fingerprint("Lidl", "HG06104A"),
 })
 
 register_device_definition(color_cct_light, device_helpers.create_fingerprints("TS0505B", {
@@ -274,49 +241,6 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
   "_TZ3210_r0vzq1oj",
 }))
 
-register_device_definition(color_cct_light, {
-  device_helpers.create_fingerprint("LUUMR", "10010128"),
-  device_helpers.create_fingerprint("Tuya", "A5C-21F7-01"),
-  device_helpers.create_fingerprint("Mercator Ikuü", "SMD4106W-RGB-ZB"),
-  device_helpers.create_fingerprint("Mercator Ikuü", "S9E27LED9W-RGB-Z"),
-  device_helpers.create_fingerprint("Hatsy", "SDL-312Z"),
-  device_helpers.create_fingerprint("Emos", "GoSmart ZQZ516R"),
-  device_helpers.create_fingerprint("Emos", "GoSmart ZQZ322R"),
-  device_helpers.create_fingerprint("Aldi", "C422AC11D41H140.0W"),
-  device_helpers.create_fingerprint("Aldi", "C422AC14D41H140.0W"),
-  device_helpers.create_fingerprint("UR Lighting", "TH008L10RGBCCT"),
-  device_helpers.create_fingerprint("KOJIMA", "GX53-RGB-WW-CW-7W-ZGB"),
-  device_helpers.create_fingerprint("Moes", "ZB-TD5-RCW-GU10"),
-  device_helpers.create_fingerprint("Moes", "ZB-TDA9-RCW-E27-MS"),
-  device_helpers.create_fingerprint("Moes", "ZB-TDA14-RCW-E27-MS"),
-  device_helpers.create_fingerprint("Moes", "ZB-LZD10-RCW"),
-  device_helpers.create_fingerprint("Moes", "ZB-TDC6-RCW-E14"),
-  device_helpers.create_fingerprint("Moes", "ZB-TDD6-RCW-4"),
-  device_helpers.create_fingerprint("Moes", "ZB-TD6-RCW-GX53-MS"),
-  device_helpers.create_fingerprint("Tuya", "TS0505B_1_1"),
-  device_helpers.create_fingerprint("Tuya", "TS0505B_2_2"),
-  device_helpers.create_fingerprint("Lidl", "14149505L/14149506L_2"),
-  device_helpers.create_fingerprint("Lidl", "14156506L"),
-  device_helpers.create_fingerprint("Lidl", "14158704L"),
-  device_helpers.create_fingerprint("Lidl", "14158804L"),
-  device_helpers.create_fingerprint("Lidl", "HG07834A/HG09155A/HG08131A"),
-  device_helpers.create_fingerprint("Lidl", "HG07834B/HG09155B/HG08131B"),
-  device_helpers.create_fingerprint("Lidl", "HG07834B"),
-  device_helpers.create_fingerprint("Lidl", "HG08131C"),
-  device_helpers.create_fingerprint("Lidl", "HG07834C/HG09155C/HG08131C"),
-  device_helpers.create_fingerprint("Lidl", "HG08383B"),
-  device_helpers.create_fingerprint("Lidl", "HG08383A"),
-  device_helpers.create_fingerprint("Garza Smart", "Garza-Standard-A60"),
-  device_helpers.create_fingerprint("Lidl", "HG08007"),
-  device_helpers.create_fingerprint("Lidl", "399629_2110"),
-  device_helpers.create_fingerprint("Lidl", "HG08008"),
-  device_helpers.create_fingerprint("Lidl", "HG08010"),
-  device_helpers.create_fingerprint("Nedis", "ZBLC1E14"),
-  device_helpers.create_fingerprint("Aldi", "L122FF63H11A5.0W"),
-  device_helpers.create_fingerprint("Aldi", "L122AA63H11A6.5W"),
-  device_helpers.create_fingerprint("Nous", "P3Z"),
-})
-
 -- Z2M exact-only retail/light families not covered by Tuya TS050x model IDs.
 register_device_definition(dimmer_light, {
   device_helpers.create_fingerprint("Candeo", "Dimmer-Switch-ZB3.0"),
@@ -387,7 +311,7 @@ register_device_definition(color_light, {
   device_helpers.create_fingerprint("Paulmann Licht GmbH", "RGBW"),
 })
 
-register_device_definition(color_light, device_helpers.create_fingerprints("TS0504B", {
+register_device_definition(color_cct_light, device_helpers.create_fingerprints("TS0504B", {
   "_TZ3210_sroezl0s",
   "_TZ3210_ttkgurpb",
 }))

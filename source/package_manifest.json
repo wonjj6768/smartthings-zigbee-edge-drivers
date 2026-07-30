@@ -112,20 +112,62 @@
     {
       "name": "ef00-switch-wonjj6768",
       "display_name": "EF00 Switch wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 switches, relay modules, plugs, and garage door devices.",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 relay switches and plugs.",
       "protocol": "ef00",
       "modules": [
-        "switches",
+        "switches_basic"
+      ],
+      "include_device_files": [
+        "switches_split.lua",
+        "switches.lua"
+      ]
+    },
+    {
+      "name": "ef00-switch-panel-wonjj6768",
+      "display_name": "EF00 Switch Panel wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 touch panel and scene panel switches.",
+      "protocol": "ef00",
+      "modules": [
+        "switches_panel"
+      ],
+      "include_device_files": [
+        "switches_split.lua",
+        "switches.lua"
+      ]
+    },
+    {
+      "name": "ef00-garage-door-wonjj6768",
+      "display_name": "EF00 Garage Door wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 garage door openers.",
+      "protocol": "ef00",
+      "modules": [
         "garage_doors"
       ]
     },
     {
       "name": "ef00-energy-wonjj6768",
       "display_name": "EF00 Energy wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 DIN rail relays and power or energy meters.",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 DIN rail breakers and switching energy meters.",
       "protocol": "ef00",
       "modules": [
         "energy"
+      ],
+      "include_device_files": [
+        "din_rail_split.lua",
+        "din_rail.lua"
+      ]
+    },
+    {
+      "name": "ef00-meters-wonjj6768",
+      "display_name": "EF00 Meters wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 single, two and three phase energy meters.",
+      "protocol": "ef00",
+      "modules": [
+        "meters"
+      ],
+      "include_device_files": [
+        "din_rail_split.lua",
+        "din_rail.lua"
       ]
     },
     {
@@ -152,13 +194,29 @@
     {
       "name": "ef00-presence-general-wonjj6768",
       "display_name": "EF00 Presence General wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports general EF00 presence, radar, and mmWave sensors.",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 radar and mmWave presence sensors.",
       "protocol": "ef00",
       "modules": [
-        "presence_general"
+        "presence_radar"
       ],
       "include_device_files": [
-        "motion/presence.lua"
+        "motion/presence.lua",
+        "presence_general_split.lua",
+        "presence_general.lua"
+      ]
+    },
+    {
+      "name": "ef00-presence-zg204z-wonjj6768",
+      "display_name": "EF00 Presence Zg204Z wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 ZG-204Z and ZY-M100 presence sensors.",
+      "protocol": "ef00",
+      "modules": [
+        "presence_zg204z"
+      ],
+      "include_device_files": [
+        "motion/presence.lua",
+        "presence_general_split.lua",
+        "presence_general.lua"
       ]
     },
     {
@@ -205,12 +263,47 @@
       ]
     },
     {
-      "name": "ef00-thermostats-wonjj6768",
-      "display_name": "EF00 Thermostats wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 thermostats and radiator valves.",
+      "name": "ef00-thermostat-trv-wonjj6768",
+      "display_name": "EF00 Thermostat Trv wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves.",
       "protocol": "ef00",
       "modules": [
-        "thermostats"
+        "thermostats_trv"
+      ],
+      "include_device_files": [
+        "thermostats/trv_split.lua",
+        "thermostats/trv.lua"
+      ]
+    },
+    {
+      "name": "ef00-thermostat-trv2-wonjj6768",
+      "display_name": "EF00 Thermostat Trv2 wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 radiator valves with extended preset and schedule datapoints.",
+      "protocol": "ef00",
+      "modules": [
+        "thermostats_trv2"
+      ],
+      "include_device_files": [
+        "thermostats/trv_split.lua",
+        "thermostats/trv.lua"
+      ]
+    },
+    {
+      "name": "ef00-thermostat-wall-wonjj6768",
+      "display_name": "EF00 Thermostat Wall wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 wall and floor thermostats.",
+      "protocol": "ef00",
+      "modules": [
+        "thermostats_wall"
+      ]
+    },
+    {
+      "name": "ef00-thermostat-fcu-wonjj6768",
+      "display_name": "EF00 Thermostat Fcu wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 fan coil unit and legacy thermostats.",
+      "protocol": "ef00",
+      "modules": [
+        "thermostats_fcu"
       ]
     }
   ]

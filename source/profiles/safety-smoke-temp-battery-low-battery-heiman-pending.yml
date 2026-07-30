@@ -1,0 +1,58 @@
+name: safety-smoke-temp-battery-low-battery-heiman-pending
+components:
+  - id: main
+    capabilities:
+      - id: smokeDetector
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.batteryLow
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmokeDetector
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: smokeDetector
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: smokeDetector
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.batteryLow
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: smokeDetector
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.batteryLow
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

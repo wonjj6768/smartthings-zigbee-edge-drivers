@@ -14,6 +14,18 @@ components:
         version: 1
       - id: concertmirror08464.humidityCalibrationSoilWarning30
         version: 1
+      - id: concertmirror08464.zg303WaterWarning
+        version: 1
+      - id: concertmirror08464.zg303TemperatureUnit
+        version: 1
+      - id: concertmirror08464.zg303SoilCalibration
+        version: 1
+      - id: concertmirror08464.zg303TemperatureSampling
+        version: 1
+      - id: concertmirror08464.zg303SoilSampling
+        version: 1
+      - id: concertmirror08464.zg303SoilWarning
+        version: 1
       - id: refresh
         version: 1
     categories:

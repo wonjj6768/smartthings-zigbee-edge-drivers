@@ -26,6 +26,7 @@ local announce_option_keys = {
 local message_option_keys = {
 "config_queue",
 "queue_delay",
+"time_handler",
 "auto_time",
 "time_offset",
 "time_start",
@@ -33,6 +34,7 @@ local message_option_keys = {
 "local_time",
 "auto_connection_status",
 "connection_status_bytes",
+"respond_to_mcu_version_response",
 }
 local preferences_option_keys = {
 "preference_names",

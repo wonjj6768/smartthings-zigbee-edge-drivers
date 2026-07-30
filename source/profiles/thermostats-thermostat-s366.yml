@@ -1,0 +1,125 @@
+name: thermostats-thermostat-s366
+components:
+  - id: main
+    capabilities:
+      - id: thermostatMode
+        version: 1
+      - id: thermostatHeatingSetpoint
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.s366Preset
+        version: 1
+      - id: concertmirror08464.s366ChildLock
+        version: 1
+      - id: concertmirror08464.s366OpenWindow
+        version: 1
+      - id: concertmirror08464.s366FrostProtection
+        version: 1
+      - id: concertmirror08464.s366BatteryLow
+        version: 1
+      - id: concertmirror08464.s366TempCalibration
+        version: 1
+      - id: concertmirror08464.s366ErrorStatus
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Thermostat
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: thermostatMode
+      version: 1
+    - component: main
+      capability: thermostatHeatingSetpoint
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366Preset
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366ChildLock
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366OpenWindow
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366FrostProtection
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366BatteryLow
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366TempCalibration
+      version: 1
+    - component: main
+      capability: concertmirror08464.s366ErrorStatus
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366OpenWindow
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366BatteryLow
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366TempCalibration
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366ErrorStatus
+        version: 1
+    actions:
+      - component: main
+        capability: thermostatMode
+        version: 1
+      - component: main
+        capability: thermostatHeatingSetpoint
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366Preset
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366ChildLock
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366OpenWindow
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366FrostProtection
+        version: 1
+      - component: main
+        capability: concertmirror08464.s366TempCalibration
+        version: 1

@@ -2,21 +2,31 @@ name: scene-switches-scene-3
 components:
   - id: main
     capabilities:
+      - id: switch
+        version: 1
       - id: button
+        version: 1
+      - id: concertmirror08464.powerOnBehavior
+        version: 1
+      - id: concertmirror08464.switchMode
         version: 1
       - id: refresh
         version: 1
     categories:
-      - name: RemoteController
+      - name: Switch
   - id: button2
     capabilities:
+      - id: switch
+        version: 1
       - id: button
         version: 1
     categories:
-      - name: RemoteController
+      - name: Switch
   - id: button3
     capabilities:
+      - id: switch
+        version: 1
       - id: button
         version: 1
     categories:
-      - name: RemoteController
+      - name: Switch

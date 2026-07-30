@@ -1,0 +1,26 @@
+name: sensors-water-meter-ultrasonic-ajlu4cud
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: concertmirror08464.ajlu4cudWaterConsumed
+        version: 1
+      - id: concertmirror08464.ajlu4cudMonthConsumption
+        version: 1
+      - id: concertmirror08464.ajlu4cudDailyConsumption
+        version: 1
+      - id: concertmirror08464.ajlu4cudFlowRate
+        version: 1
+      - id: concertmirror08464.ajlu4cudReportPeriod
+        version: 1
+      - id: concertmirror08464.ajlu4cudFaults
+        version: 1
+      - id: concertmirror08464.ajlu4cudMeterId
+        version: 1
+      - id: concertmirror08464.ajlu4cudReverseWaterConsumed
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: WaterSensor

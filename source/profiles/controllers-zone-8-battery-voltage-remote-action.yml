@@ -1,0 +1,31 @@
+name: controllers-zone-8-battery-voltage-remote-action
+components:
+  - id: main
+    capabilities:
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.remoteAction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button2
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}
+  - id: button3
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}
+  - id: button4
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}
+  - id: button5
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}
+  - id: button6
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}
+  - id: button7
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}
+  - id: button8
+    capabilities:
+      - {id: concertmirror08464.remoteAction, version: 1}

@@ -1,0 +1,24 @@
+name: lights-dimmer-2-ts110-min
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: switchLevel
+        version: 1
+      - id: concertmirror08464.minimumBrightnessTsOneTenMax
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Light
+  - id: switch2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: switchLevel
+        version: 1
+      - id: concertmirror08464.minimumBrightnessTsOneTenMax
+        version: 1
+    categories:
+      - name: Light

@@ -10,6 +10,8 @@ components:
         version: 1
       - id: concertmirror08464.powerOnBehavior
         version: 1
+      - id: concertmirror08464.countdownTsOneTenHours
+        version: 1
       - id: concertmirror08464.ef00Ts0601MinimumBrightness
         version: 1
       - id: concertmirror08464.lightType
@@ -56,6 +58,9 @@ deviceConfig:
       capability: concertmirror08464.lightType
       version: 1
     - component: main
+      capability: concertmirror08464.countdownTsOneTenHours
+      version: 1
+    - component: main
       capability: concertmirror08464.powerOnBehavior
       version: 1
     - component: main
@@ -76,6 +81,9 @@ deviceConfig:
         capability: concertmirror08464.lightType
         version: 1
       - component: main
+        capability: concertmirror08464.countdownTsOneTenHours
+        version: 1
+      - component: main
         capability: concertmirror08464.powerOnBehavior
         version: 1
     actions:
@@ -93,6 +101,9 @@ deviceConfig:
         version: 1
       - component: main
         capability: concertmirror08464.lightType
+        version: 1
+      - component: main
+        capability: concertmirror08464.countdownTsOneTenHours
         version: 1
       - component: main
         capability: concertmirror08464.powerOnBehavior

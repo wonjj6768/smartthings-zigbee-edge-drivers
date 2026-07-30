@@ -1,0 +1,109 @@
+name: valves-valve-battery-timer-zvg1
+components:
+  - id: main
+    capabilities:
+      - id: valve
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.zvg1WaterConsumed
+        version: 1
+      - id: concertmirror08464.zvg1WeatherDelay
+        version: 1
+      - id: concertmirror08464.zvg1Timer
+        version: 1
+      - id: concertmirror08464.zvg1TimerTimeLeft
+        version: 1
+      - id: concertmirror08464.zvg1TimerState
+        version: 1
+      - id: concertmirror08464.zvg1LastValveDuration
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: WaterValve
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        composite: true
+      - component: main
+        capability: battery
+        version: 1
+        group: main
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        values:
+          - command: "open"
+          - command: "close"
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: valve
+      version: 1
+    - component: main
+      capability: concertmirror08464.zvg1Timer
+      version: 1
+    - component: main
+      capability: concertmirror08464.zvg1TimerTimeLeft
+      version: 1
+    - component: main
+      capability: concertmirror08464.zvg1TimerState
+      version: 1
+    - component: main
+      capability: concertmirror08464.zvg1WeatherDelay
+      version: 1
+    - component: main
+      capability: concertmirror08464.zvg1WaterConsumed
+      version: 1
+    - component: main
+      capability: concertmirror08464.zvg1LastValveDuration
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: valve
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1WaterConsumed
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1WeatherDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1Timer
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1TimerTimeLeft
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1TimerState
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1LastValveDuration
+        version: 1
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1WeatherDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.zvg1Timer
+        version: 1

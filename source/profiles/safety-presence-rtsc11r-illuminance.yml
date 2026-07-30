@@ -1,0 +1,90 @@
+name: safety-presence-rtsc11r-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: concertmirror08464.rtsc11rSensitivity
+        version: 1
+      - id: concertmirror08464.rtsc11rKeepTime
+        version: 1
+      - id: concertmirror08464.rtsc11rDetectionDelay
+        version: 1
+      - id: concertmirror08464.rtsc11rMinimumRange
+        version: 1
+      - id: concertmirror08464.rtsc11rMaximumRange
+        version: 1
+      - id: concertmirror08464.rtsc11rDetectionDistance
+        version: 1
+      - id: concertmirror08464.driverMessage
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: concertmirror08464.rtsc11rSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.rtsc11rKeepTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.rtsc11rDetectionDelay
+      version: 1
+    - component: main
+      capability: concertmirror08464.rtsc11rMinimumRange
+      version: 1
+    - component: main
+      capability: concertmirror08464.rtsc11rMaximumRange
+      version: 1
+    - component: main
+      capability: concertmirror08464.rtsc11rDetectionDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.driverMessage
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.rtsc11rSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtsc11rKeepTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtsc11rDetectionDelay
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtsc11rMinimumRange
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtsc11rMaximumRange
+        version: 1

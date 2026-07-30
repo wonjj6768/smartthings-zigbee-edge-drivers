@@ -4,23 +4,23 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceSensitivity
+      - id: concertmirror08464.wzM100Sensitivity
         version: 1
-      - id: concertmirror08464.minimumRange
+      - id: concertmirror08464.wzM100MinimumRange
         version: 1
-      - id: concertmirror08464.presenceDetectionRange
+      - id: concertmirror08464.wzM100MaximumRange
         version: 1
-      - id: concertmirror08464.detectionDelay
+      - id: concertmirror08464.wzM100IntervalTime
         version: 1
-      - id: concertmirror08464.detectionHoldTime
+      - id: concertmirror08464.wzM100DetectionDelay
         version: 1
-      - id: concertmirror08464.presenceTargetDistance
+      - id: concertmirror08464.wzM100FadingTime
+        version: 1
+      - id: concertmirror08464.wzM100TargetDistance
         version: 1
       - id: concertmirror08464.driverMessage
         version: 1
       - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -40,22 +40,25 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceSensitivity
+      capability: concertmirror08464.wzM100Sensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.minimumRange
+      capability: concertmirror08464.wzM100MinimumRange
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.wzM100MaximumRange
       version: 1
     - component: main
-      capability: concertmirror08464.detectionDelay
+      capability: concertmirror08464.wzM100IntervalTime
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.wzM100DetectionDelay
       version: 1
     - component: main
-      capability: concertmirror08464.presenceTargetDistance
+      capability: concertmirror08464.wzM100FadingTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.wzM100TargetDistance
       version: 1
     - component: main
       capability: concertmirror08464.driverMessage

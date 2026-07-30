@@ -12,6 +12,12 @@ components:
         version: 1
       - id: concertmirror08464.coverPositionReportZm79eDt
         version: 1
+      - id: concertmirror08464.zm79eOpeningMode
+        version: 1
+      - id: concertmirror08464.zm79eSetUpperLimit
+        version: 1
+      - id: concertmirror08464.zm79eFactoryReset
+        version: 1
       - id: refresh
         version: 1
     categories:

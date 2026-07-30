@@ -1,0 +1,18 @@
+name: sensors-temp-humidity-battery-alarm-sensitivity-nous-szt04
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.nousSzT04TemperatureSensitivity
+        version: 1
+      - id: concertmirror08464.nousSzT04HumiditySensitivity
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: TempHumiditySensor

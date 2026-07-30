@@ -46,6 +46,15 @@ local function load_cluster_command_handler(zcl)
     return zcl.normalize_endpoint(endpoint)
   end
 
+  local function extract_destination_address(zb_rx)
+    if type(zb_rx) ~= "table" then
+      return nil
+    end
+
+    local destination = zb_rx.address_header and zb_rx.address_header.dest_addr or nil
+    return destination and destination.value or nil
+  end
+
   local function extract_mfg_code(zb_rx)
     if type(zb_rx) ~= "table" then
       return nil
@@ -150,11 +159,15 @@ local function load_cluster_command_handler(zcl)
     return custom_capability_binding.emit_state(device, component_id, remote_action_metadata, action)
   end
 
-  local function emit_security_remote_action(device, action, seqno)
+  local function emit_security_remote_action(device, preset, action, seqno)
     if not should_emit_remote_action(device, "main", action, seqno) then
       return false
     end
-    return custom_capability_binding.emit_state(device, "main", security_remote_action_metadata, action)
+    local metadata = security_remote_action_metadata
+    if type(preset) == "table" and type(preset.security_remote_action_emit_name) == "string" then
+      metadata = custom_capabilities.by_emit_name[preset.security_remote_action_emit_name] or metadata
+    end
+    return custom_capability_binding.emit_state(device, "main", metadata, action)
   end
 
   local function extract_member_value(value)
@@ -186,7 +199,14 @@ local function load_cluster_command_handler(zcl)
       return false
     end
 
-    emit_remote_action(device, component_id or "main", action, extract_seqno(zb_rx))
+    local target_component = component_id or "main"
+    local button_event = type(preset.standard_action_button_events) == "table" and
+      preset.standard_action_button_events[action] or nil
+    if type(button_event) == "string" then
+      emit_button_event(device, target_component, button_event)
+    end
+
+    emit_remote_action(device, target_component, action, extract_seqno(zb_rx))
     send_default_response(device, zb_rx, extract_command_id(zb_rx) or 0)
     return true
   end
@@ -197,7 +217,7 @@ local function load_cluster_command_handler(zcl)
     end
 
     emit_button_event(device, "main", "pushed")
-    emit_security_remote_action(device, action, extract_seqno(zb_rx))
+    emit_security_remote_action(device, preset, action, extract_seqno(zb_rx))
     send_default_response(device, zb_rx, extract_command_id(zb_rx) or 0)
     return true
   end
@@ -208,12 +228,27 @@ local function load_cluster_command_handler(zcl)
     end
 
     local arm_mode = extract_body_member(zb_rx, "armmode", "arm_mode")
-    local action = ARM_MODE_ACTIONS[arm_mode]
+    local action_map = type(preset.arm_mode_action_map) == "table" and preset.arm_mode_action_map or ARM_MODE_ACTIONS
+    local action = action_map[arm_mode]
     if type(action) ~= "string" then
       return false
     end
 
     return handle_security_remote_action(device, preset, zb_rx, action)
+  end
+
+  local function handle_ias_zone_action(device, preset, zb_rx)
+    if type(preset) ~= "table" or preset.advanced_remote ~= true or type(preset.ias_zone_action_map) ~= "table" then
+      return false
+    end
+
+    local zone_status = extract_body_member(zb_rx, "zonestatus", "zone_status")
+    local action = preset.ias_zone_action_map[zone_status]
+    if type(action) ~= "string" then
+      return false
+    end
+
+    return handle_advanced_remote_action(device, preset, zb_rx, action, "main")
   end
 
   local function handle_ias_ace_emergency(device, preset, zb_rx)
@@ -226,6 +261,13 @@ local function load_cluster_command_handler(zcl)
 
   local function resolve_advanced_remote_component(device, preset, zb_rx)
     local src_endpoint = extract_source_endpoint(zb_rx)
+    local destination_address = extract_destination_address(zb_rx)
+    local group_component_map = type(preset) == "table" and preset.group_component_map or nil
+    local group_component = type(group_component_map) == "table" and group_component_map[destination_address] or nil
+    if type(group_component) == "string" and group_component ~= "" then
+      return group_component
+    end
+
     if type(preset) == "table" and preset.knob_remote == true then
       return "main"
     end
@@ -245,13 +287,27 @@ local function load_cluster_command_handler(zcl)
     end
 
     local action = nil
-    if cluster_id == zcl.CLUSTER_ON_OFF then
+    local resolved_component = nil
+    local resolver_handled = false
+    if type(preset.standard_command_action_resolver) == "function" then
+      action, resolved_component, resolver_handled = preset.standard_command_action_resolver(
+        zb_rx,
+        cluster_id,
+        command_id,
+        extract_source_endpoint(zb_rx)
+      )
+      if resolver_handled == true and type(action) ~= "string" then
+        return false
+      end
+    end
+
+    if resolver_handled ~= true and cluster_id == zcl.CLUSTER_ON_OFF then
       action = ({
         [0x00] = "off",
         [0x01] = "on",
         [0x02] = "toggle",
       })[command_id]
-    elseif cluster_id == zcl.CLUSTER_LEVEL_CONTROL then
+    elseif resolver_handled ~= true and cluster_id == zcl.CLUSTER_LEVEL_CONTROL then
       if command_id == 0x00 or command_id == 0x04 then
         action = "brightness_move_to_level"
       elseif command_id == 0x01 or command_id == 0x05 then
@@ -271,8 +327,12 @@ local function load_cluster_command_handler(zcl)
       elseif command_id == 0x03 or command_id == 0x07 then
         action = "brightness_stop"
       end
-    elseif cluster_id == zcl.CLUSTER_COLOR_CONTROL then
-      if command_id == 0x01 then
+    elseif resolver_handled ~= true and cluster_id == zcl.CLUSTER_COLOR_CONTROL then
+      if command_id == 0x06 then
+        action = "move_to_hue_and_saturation"
+      elseif command_id == 0x07 then
+        action = "color_move"
+      elseif command_id == 0x01 then
         local move_mode = extract_body_member(zb_rx, "move_mode", "movemode", "mode")
         if move_mode == 0 or move_mode == "up" then
           action = "hue_move"
@@ -298,7 +358,7 @@ local function load_cluster_command_handler(zcl)
           action = "color_temperature_step_up"
         end
       end
-    elseif cluster_id == CLUSTER_SCENES then
+    elseif resolver_handled ~= true and cluster_id == CLUSTER_SCENES then
       local scene_id = extract_body_member(zb_rx, "sceneid", "scene_id")
       if command_id == 0x00 then
         action = scene_id ~= nil and ("add_" .. tostring(scene_id)) or "add"
@@ -317,7 +377,8 @@ local function load_cluster_command_handler(zcl)
       return false
     end
 
-    local component_id = resolve_advanced_remote_component(device, preset, zb_rx)
+    local component_id = type(resolved_component) == "string" and resolved_component or
+      resolve_advanced_remote_component(device, preset, zb_rx)
     local src_endpoint = extract_source_endpoint(zb_rx)
     if preset.standard_action_endpoint_suffix == true and src_endpoint ~= nil then
       action = action .. "_" .. tostring(src_endpoint)
@@ -540,6 +601,34 @@ local function load_cluster_command_handler(zcl)
 
   function zcl.build_zigbee_global_handlers(get_preset)
     return {
+      [0x0000] = {
+        [0x02] = function(_, device, zb_rx)
+          local preset = get_preset(device)
+          if type(preset) ~= "table" or preset.accept_basic_write_attributes ~= true then
+            return
+          end
+
+          local records = zb_rx and zb_rx.body and zb_rx.body.zcl_body and zb_rx.body.zcl_body.attr_records or nil
+          if type(records) ~= "table" then
+            return
+          end
+
+          local src_endpoint = extract_source_endpoint(zb_rx)
+          for _, record in ipairs(records) do
+            local attribute_id = record.attr_id and record.attr_id.value or nil
+            local data = record.data
+            local raw_value = type(data) == "table" and data.value or data
+            if type(attribute_id) == "number" then
+              zcl.apply_attribute(device, preset.zcl_clusters, 0x0000, attribute_id, raw_value, {
+                zb_rx = zb_rx,
+                endpoint = src_endpoint,
+                src_endpoint = src_endpoint,
+                typed_value = data,
+              })
+            end
+          end
+        end,
+      },
       [zcl.CLUSTER_ON_OFF] = {
         [default_response.DEFAULT_RESPONSE_ID] = function(_, device, zb_rx)
           local preset = get_preset(device)
@@ -719,6 +808,10 @@ local function load_cluster_command_handler(zcl)
     handle_advanced_remote_standard_command(device, preset, zb_rx)
   end)
 
+  zcl.register_cluster_command_handler(zcl.CLUSTER_ON_OFF, 0x03, function(device, preset, zb_rx)
+    handle_advanced_remote_standard_command(device, preset, zb_rx)
+  end)
+
   for _, command_id in ipairs({ 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07 }) do
     zcl.register_cluster_command_handler(zcl.CLUSTER_LEVEL_CONTROL, command_id, function(device, preset, zb_rx)
       handle_advanced_remote_standard_command(device, preset, zb_rx)
@@ -726,6 +819,14 @@ local function load_cluster_command_handler(zcl)
   end
 
   zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x01, function(device, preset, zb_rx)
+    handle_advanced_remote_standard_command(device, preset, zb_rx)
+  end)
+
+  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x06, function(device, preset, zb_rx)
+    handle_advanced_remote_standard_command(device, preset, zb_rx)
+  end)
+
+  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x07, function(device, preset, zb_rx)
     handle_advanced_remote_standard_command(device, preset, zb_rx)
   end)
 
@@ -761,6 +862,12 @@ local function load_cluster_command_handler(zcl)
 
   zcl.register_cluster_command_handler(IASACE.ID, 0x04, function(device, preset, zb_rx)
     handle_ias_ace_emergency(device, preset, zb_rx)
+  end)
+
+  zcl.register_cluster_command_handler(zcl.CLUSTER_IAS_ZONE, 0x00, function(device, preset, zb_rx)
+    if not handle_ias_zone_action(device, preset, zb_rx) then
+      apply_command_mapping(device, preset and preset.zcl_clusters or nil, zcl.CLUSTER_IAS_ZONE, 0x00, zb_rx)
+    end
   end)
 
   for _, command_id in ipairs({ 0x00, 0x02, 0x03, 0x04, 0x05 }) do

@@ -1,0 +1,177 @@
+name: safety-presence-pj3201a-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: motionSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: concertmirror08464.pj3201aClosestTargetDistance
+        version: 1
+      - id: concertmirror08464.pj3201aMovementTimeout
+        version: 1
+      - id: concertmirror08464.pj3201aIdleTimeout
+        version: 1
+      - id: concertmirror08464.pj3201aFarMovementSensitivity
+        version: 1
+      - id: concertmirror08464.pj3201aNearMovementSensitivity
+        version: 1
+      - id: concertmirror08464.pj3201aNearPresenceSensitivity
+        version: 1
+      - id: concertmirror08464.pj3201aFarPresenceSensitivity
+        version: 1
+      - id: concertmirror08464.pj3201aClosestDetectionDistance
+        version: 1
+      - id: concertmirror08464.pj3201aLargestMovementDistance
+        version: 1
+      - id: concertmirror08464.pj3201aLargestPresenceDistance
+        version: 1
+      - id: concertmirror08464.pj3201aRestoreFactory
+        version: 1
+      - id: concertmirror08464.pj3201aLedIndicator
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: motionSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aClosestTargetDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aMovementTimeout
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aIdleTimeout
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aFarMovementSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aNearMovementSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aNearPresenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aFarPresenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aClosestDetectionDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aLargestMovementDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aLargestPresenceDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aRestoreFactory
+      version: 1
+    - component: main
+      capability: concertmirror08464.pj3201aLedIndicator
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: motionSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aClosestTargetDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aMovementTimeout
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aIdleTimeout
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aFarMovementSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aNearMovementSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aNearPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aFarPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aClosestDetectionDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aLargestMovementDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aLargestPresenceDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aRestoreFactory
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aLedIndicator
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.pj3201aMovementTimeout
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aIdleTimeout
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aFarMovementSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aNearMovementSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aNearPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aFarPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aClosestDetectionDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aLargestMovementDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aLargestPresenceDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aRestoreFactory
+        version: 1
+      - component: main
+        capability: concertmirror08464.pj3201aLedIndicator
+        version: 1

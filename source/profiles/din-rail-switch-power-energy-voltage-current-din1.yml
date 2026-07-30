@@ -24,5 +24,15 @@ components:
         version: 1
       - id: concertmirror08464.reactivePowerDin1
         version: 1
+      - id: concertmirror08464.din1TotalEnergy
+        version: 1
+      - id: concertmirror08464.din1EnergyReactive
+        version: 1
+      - id: concertmirror08464.din1AcFrequency
+        version: 1
+      - id: concertmirror08464.din1PowerFactor
+        version: 1
+      - id: concertmirror08464.din1Faults
+        version: 1
     categories:
       - name: CurbPowerMeter

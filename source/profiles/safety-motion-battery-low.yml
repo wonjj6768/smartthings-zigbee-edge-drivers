@@ -1,0 +1,12 @@
+name: safety-motion-battery-low
+components:
+  - id: main
+    capabilities:
+      - id: motionSensor
+        version: 1
+      - id: concertmirror08464.batteryLow
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: MotionSensor

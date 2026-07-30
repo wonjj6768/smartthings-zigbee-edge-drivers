@@ -1,0 +1,16 @@
+name: safety-c3007-pressure-battery-low-battery-voltage
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.c3007Pressure
+        version: 1
+      - id: concertmirror08464.batteryLow
+        version: 1
+      - id: battery
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: ContactSensor

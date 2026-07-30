@@ -4,19 +4,17 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.keepSensitivity
+      - id: concertmirror08464.y1inKeepSensitivity
         version: 1
-      - id: concertmirror08464.triggerSensitivity
+      - id: concertmirror08464.y1inTriggerSensitivity
         version: 1
-      - id: concertmirror08464.detectionHoldTime
+      - id: concertmirror08464.y1inFadingTime
         version: 1
-      - id: concertmirror08464.presenceTargetDistance
+      - id: concertmirror08464.y1inTargetDistance
         version: 1
       - id: concertmirror08464.driverMessage
         version: 1
       - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -36,16 +34,16 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.keepSensitivity
+      capability: concertmirror08464.y1inKeepSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.triggerSensitivity
+      capability: concertmirror08464.y1inTriggerSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.y1inFadingTime
       version: 1
     - component: main
-      capability: concertmirror08464.presenceTargetDistance
+      capability: concertmirror08464.y1inTargetDistance
       version: 1
     - component: main
       capability: concertmirror08464.driverMessage

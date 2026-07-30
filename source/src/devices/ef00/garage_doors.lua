@@ -39,7 +39,9 @@ local garage_door_opener_countdown = {
   profile = "doors-garage-contact-countdown",
   datapoints = {
     tuya.dp_binary(1, { name = "door_control", write_only = true }),
-    tuya.dp_numeric(2, { name = "countdown" }),             -- profile 미포함
+    -- Z2M TS0601_garage_door_opener (tuya.ts:12979) exposes DP2 as a 0..43200 s
+    -- countdown that pulses the output.
+    tuya.dp_numeric(2, { name = "countdown", emit = emit.garageOpenerCountdown() }),
     tuya.dp_binary(3, {
       name = "garage_door_contact",
       converter = converter.invert_bool_pair(),
@@ -80,9 +82,8 @@ register_device_definition(garage_door_opener_countdown, device_helpers.create_f
   "_TZE284_nklqjk62",
 }))
 
-register_device_definition(garage_door_opener_countdown, {
-  device_helpers.create_fingerprint("MatSee Plus", "PJ-ZGD01"),
-  device_helpers.create_fingerprint("Moes", "ZM-102-M"),
-})
+-- Z2M lists MatSee Plus PJ-ZGD01 (_TZE204_nklqjk62, _TZE284_nklqjk62) and Moes
+-- ZM-102-M (_TZE204_jktmrpoj) as whiteLabel retail names (tuya.ts:12964), not as
+-- interviewed manufacturer/model pairs.
 
 return device_definitions

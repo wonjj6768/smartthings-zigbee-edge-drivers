@@ -823,9 +823,6 @@ local function load_datapoint_preset(tuya, shared)
 
     return tuya.dp_binary(dp, resolved)
   end
-  function tuya.dp_gas_value(dp, name_or_options, options)
-    return build_divided_numeric_preset(dp, "gas_value", 1, name_or_options, options)
-  end
   function tuya.dp_smoke(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "smoke")
     if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
@@ -836,30 +833,6 @@ local function load_datapoint_preset(tuya, shared)
   end
   function tuya.dp_smoke_concentration(dp, name_or_options, options)
     return build_divided_numeric_preset(dp, "smoke_concentration", 10, name_or_options, options)
-  end
-  function tuya.dp_self_test_result(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "self_test_result")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.self_test_result()
-    end
-
-    return tuya.dp_enum(dp, resolved)
-  end
-  function tuya.dp_self_test_state(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "self_test")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.self_test_state()
-    end
-
-    return tuya.dp_enum(dp, resolved)
-  end
-  function tuya.dp_fault_alarm(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "fault_alarm")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.true_false1()
-    end
-
-    return tuya.dp_binary(dp, resolved)
   end
   function tuya.dp_silence(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "silence")
@@ -875,14 +848,6 @@ local function load_datapoint_preset(tuya, shared)
       normalize_preset_options(name_or_options, options, "alarm_time")
     )
   end
-  function tuya.dp_alarm_volume(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "alarm_volume")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.alarm_volume()
-    end
-
-    return apply_default_fixed_send_policy(tuya.dp_enum(dp, resolved), resolved)
-  end
   function tuya.dp_alarm_ringtone(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "alarm_ringtone")
     if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
@@ -890,38 +855,6 @@ local function load_datapoint_preset(tuya, shared)
     end
 
     return apply_default_fixed_send_policy(tuya.dp_enum(dp, resolved), resolved)
-  end
-  function tuya.dp_preheat(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "preheat")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.true_false1()
-    end
-
-    return tuya.dp_binary(dp, resolved)
-  end
-  function tuya.dp_alarm_switch(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "alarm_switch")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.true_false1()
-    end
-
-    return apply_default_fixed_send_policy(tuya.dp_binary(dp, resolved), resolved)
-  end
-  function tuya.dp_device_fault(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "device_fault")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.true_false1()
-    end
-
-    return tuya.dp_binary(dp, resolved)
-  end
-  function tuya.dp_gas_fault_status(dp, name_or_options, options)
-    local resolved = normalize_preset_options(name_or_options, options, "fault")
-    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
-      resolved.converter = converter.gas_fault_status()
-    end
-
-    return tuya.dp_enum(dp, resolved)
   end
   function tuya.dp_tamper(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "tamper")
@@ -931,11 +864,13 @@ local function load_datapoint_preset(tuya, shared)
 
     return tuya.dp_binary(dp, resolved)
   end
-  function tuya.dp_alarm(dp, name_or_options, options)
-    return tuya.dp_binary(dp, normalize_preset_options(name_or_options, options, "alarm"))
-  end
-  function tuya.dp_illuminance_interval(dp, name_or_options, options)
-    return build_divided_numeric_preset(dp, "illuminance_interval", 1, name_or_options, options)
+  function tuya.dp_battery_low(dp, name_or_options, options)
+    local resolved = normalize_preset_options(name_or_options, options, "battery_low")
+    if resolved.converter == nil and resolved.from_device == nil and resolved.to_device == nil and resolved.lookup == nil then
+      resolved.converter = converter.true_false0()
+    end
+
+    return tuya.dp_binary(dp, resolved)
   end
   function tuya.dp_carbon_monoxide(dp, name_or_options, options)
     local resolved = normalize_preset_options(name_or_options, options, "carbon_monoxide")

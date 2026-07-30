@@ -85,15 +85,33 @@ local fan_and_light_switch = {
 profile = "fans-fan-light-switch",
 tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
 tuya.dp_fan_mode(101, { component = "main", emit = emit.fan_mode(), converter = three_speed_fan_mode }),
-tuya.dp_power_on_behavior(11, {}),                                      -- profile 미포함
+tuya.dp_power_on_behavior(11, { emit = emit.fanLightHmqzPowerOnBehavior() }),
 tuya.dp_on_off(5, { name = "switch", component = "light", emit = emit.switch() }),
 }
+local fan_switch_r32_speed = converter.from_to(
+function(value)
+local n = tonumber(value)
+if n == nil then return nil end
+return n + 1
+end,
+function(value)
+local n = tonumber(value)
+if n == nil then return nil end
+if n < 1 then n = 1 end
+if n > 5 then n = 5 end
+return n - 1
+end
+)
 local fan_switch_5_speed = {
-profile = "fans-switch-fan-mode-ef00",
+profile = "fans-switch-fan-speed-r32ctezx",
 tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
-tuya.dp_countdown(2, { name = "countdown" }),                           -- profile 미포함
-tuya.dp_fan_mode(3, { component = "main", emit = emit.fan_mode(), converter = five_speed_fan_mode }),
-tuya.dp_power_on_behavior(11, {}),                                      -- profile 미포함
+tuya.dp_countdown(2, { name = "countdown", emit = emit.fanSwitchR32Countdown() }),
+tuya.dp_enum(3, {
+name = "fan_speed",
+emit = emit.fanSwitchR32FanSpeed(),
+converter = fan_switch_r32_speed,
+}),
+tuya.dp_power_on_behavior(11, { emit = emit.fanSwitchR32PowerOnBehavior() }),
 }
 register_device_definition(fan_switch_5_speed, device_helpers.create_fingerprints("TS0601", {
 "_TZE200_r32ctezx",
@@ -109,10 +127,14 @@ device_helpers.create_fingerprint("Liwokit", "Fan+Light-01"),
 device_helpers.create_fingerprint("Lerlink", "T2-Z67/T2-W67"),
 })
 local fan_5_levels_and_light_switch = {
-profile = "fans-fan-light-switch",
+profile = "fans-fan-speed-light-switch-lawxy9e2",
 tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
-tuya.dp_fan_mode(3, { component = "main", emit = emit.fan_mode(), converter = five_speed_fan_mode }),
-tuya.dp_power_on_behavior(11, {}),                                      -- profile 미포함
+tuya.dp_enum(3, {
+name = "fan_speed",
+emit = emit.fanLightLawxFanSpeed(),
+converter = fan_switch_r32_speed,
+}),
+tuya.dp_power_on_behavior(11, { emit = emit.fanLightHmqzPowerOnBehavior() }),
 tuya.dp_on_off(5, { name = "switch", component = "light", emit = emit.switch() }),
 }
 register_device_definition(fan_5_levels_and_light_switch, device_helpers.create_fingerprints("TS0601", {
@@ -124,11 +146,31 @@ profile = "fans-fan-level-light-switch",
 tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
 tuya.dp_numeric(4, { name = "brightness", component = "main", emit = emit.level(), converter = percentage_level }),
 tuya.dp_on_off(5, { name = "switch", component = "light", emit = emit.switch() }),
-tuya.dp_power_on_behavior(11, {}),                                      -- profile 미포함
-tuya.dp_indicator_mode(12, { name = "indicator_mode" }),                -- profile 미포함
-tuya.dp_on_off(13, { name = "backlight" }),                             -- profile 미포함
-tuya.dp_child_lock(104, { name = "child_lock" }),                       -- profile 미포함
-tuya.dp_numeric(105, { name = "minimum_speed", converter = percentage_level }),
+tuya.dp_power_on_behavior(11, { emit = emit.fanDimmerBqlPowerOnBehavior() }),
+tuya.dp_indicator_mode(12, {
+name = "indicator_mode",
+emit = emit.fanDimmerBqlIndicator(),
+converter = converter.lookup_from_to({
+off = 0,
+off_on = 1,
+on = 2,
+}),
+}),
+tuya.dp_on_off(13, {
+name = "backlight",
+emit = emit.fanDimmerBqlBacklight(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
+tuya.dp_child_lock(104, {
+name = "child_lock",
+emit = emit.fanDimmerBqlChildLock(),
+converter = converter.lookup_from_to({ off = false, on = true }),
+}),
+tuya.dp_numeric(105, {
+name = "minimum_speed",
+emit = emit.fanDimmerBqlMinimumSpeed(),
+converter = percentage_level,
+}),
 }
 register_device_definition(fan_dimmer_and_light_switch, device_helpers.create_fingerprints("TS0601", {
 "_TZE204_bql5khqx",
@@ -148,13 +190,35 @@ tuya.dp_numeric(105, { name = "brightness", component = "light", emit = emit.lev
 register_device_definition(fan_5_levels_and_light_5_levels, device_helpers.create_fingerprints("TS0601", {
 "_TZE284_ikul00sx",
 }))
+local ceiling_countdown_hours = converter.from_to(
+function(value)
+local seconds = tonumber(value)
+if seconds == nil then return nil end
+return math.floor(seconds / 3600 * 100 + 0.5) / 100
+end,
+function(value)
+local hours = tonumber(value)
+if hours == nil then return nil end
+local seconds = math.floor(hours * 3600 + 0.5)
+if seconds > 43200 then return 43200 end
+return seconds
+end
+)
 local fan_ceiling_module = {
-profile = "fans-switch-fan-mode-ef00",
+profile = "fans-switch-fan-mode-ceiling-z5jz7wpo",
 tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
-tuya.dp_countdown(2, { name = "countdown_hours" }),                    -- profile 미포함
+tuya.dp_countdown(2, {
+name = "countdown_hours",
+emit = emit.fanCeilingZ5jzCountdownHours(),
+converter = ceiling_countdown_hours,
+}),
 tuya.dp_fan_mode(3, { component = "main", emit = emit.fan_mode(), converter = zero_based_five_speed }),
-tuya.dp_power_on_behavior(11, {}),                                      -- profile 미포함
-tuya.dp_enum(12, { name = "light_mode" }),                              -- profile 미포함
+tuya.dp_power_on_behavior(11, { emit = emit.fanCeilingZ5jzPowerOnBehavior() }),
+tuya.dp_enum(12, {
+name = "light_mode",
+emit = emit.fanCeilingZ5jzLightMode(),
+converter = converter.lookup_from_to({ none = 0, relay = 1, pos = 2 }),
+}),
 }
 register_device_definition(fan_ceiling_module, device_helpers.create_fingerprints("TS0601", {
 "_TZE284_z5jz7wpo",

@@ -12,6 +12,10 @@ components:
         version: 1
       - id: concertmirror08464.tiltModeMb60l
         version: 1
+      - id: concertmirror08464.mb60lSetLimits
+        version: 1
+      - id: concertmirror08464.mb60lChildLock
+        version: 1
       - id: refresh
         version: 1
     categories:

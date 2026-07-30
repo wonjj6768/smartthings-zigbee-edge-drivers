@@ -1,0 +1,50 @@
+name: safety-smoke-battery-state-battery-t5p1vj8r
+components:
+  - id: main
+    capabilities:
+      - id: smokeDetector
+        version: 1
+      - id: concertmirror08464.t5p1vj8rSmokeBatteryState
+        version: 1
+      - id: battery
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmokeDetector
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: smokeDetector
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: smokeDetector
+      version: 1
+    - component: main
+      capability: concertmirror08464.t5p1vj8rSmokeBatteryState
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: smokeDetector
+        version: 1
+      - component: main
+        capability: concertmirror08464.t5p1vj8rSmokeBatteryState
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions: []

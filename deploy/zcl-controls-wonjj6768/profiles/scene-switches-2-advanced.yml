@@ -10,8 +10,6 @@ components:
         version: 1
       - id: concertmirror08464.switchMode
         version: 1
-      - id: concertmirror08464.indicatorMode
-        version: 1
       - id: refresh
         version: 1
     categories:

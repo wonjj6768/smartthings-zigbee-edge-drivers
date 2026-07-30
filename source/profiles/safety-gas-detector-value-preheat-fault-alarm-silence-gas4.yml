@@ -1,0 +1,22 @@
+name: safety-gas-detector-value-preheat-fault-alarm-silence-gas4
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: concertmirror08464.gasSensor4GasValue
+        version: 1
+      - id: concertmirror08464.gasSensor4Preheat
+        version: 1
+      - id: concertmirror08464.gasSensor4FaultAlarm
+        version: 1
+      - id: concertmirror08464.gasSensor4AlarmSwitch
+        version: 1
+      - id: concertmirror08464.gasSensor4Silence
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: GenericSensor

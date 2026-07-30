@@ -6,6 +6,22 @@ components:
         version: 1
       - id: switchLevel
         version: 1
+      - id: concertmirror08464.dimmer3gMinBrightnessCh1
+        version: 1
+      - id: concertmirror08464.dimmer3gMaxBrightnessCh1
+        version: 1
+      - id: concertmirror08464.dimmer3gLightTypeCh1
+        version: 1
+      - id: concertmirror08464.dimmer3gCountdownCh1
+        version: 1
+      - id: concertmirror08464.dimmer3gPowerOnBehavior
+        version: 1
+      - id: concertmirror08464.dimmer3gBacklightMode
+        version: 1
+      - id: concertmirror08464.dimmer3gBacklightColor
+        version: 1
+      - id: concertmirror08464.dimmer3gBacklightBrightness
+        version: 1
       - id: refresh
         version: 1
     categories:
@@ -16,6 +32,14 @@ components:
         version: 1
       - id: switchLevel
         version: 1
+      - id: concertmirror08464.dimmer3gMinBrightnessCh2
+        version: 1
+      - id: concertmirror08464.dimmer3gMaxBrightnessCh2
+        version: 1
+      - id: concertmirror08464.dimmer3gLightTypeCh2
+        version: 1
+      - id: concertmirror08464.dimmer3gCountdownCh2
+        version: 1
     categories:
       - name: Light
   - id: switch3
@@ -23,6 +47,14 @@ components:
       - id: switch
         version: 1
       - id: switchLevel
+        version: 1
+      - id: concertmirror08464.dimmer3gMinBrightnessCh3
+        version: 1
+      - id: concertmirror08464.dimmer3gMaxBrightnessCh3
+        version: 1
+      - id: concertmirror08464.dimmer3gLightTypeCh3
+        version: 1
+      - id: concertmirror08464.dimmer3gCountdownCh3
         version: 1
     categories:
       - name: Light
@@ -70,6 +102,54 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
+      capability: concertmirror08464.dimmer3gMinBrightnessCh1
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gMaxBrightnessCh1
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gLightTypeCh1
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gCountdownCh1
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer3gMinBrightnessCh2
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer3gMaxBrightnessCh2
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer3gLightTypeCh2
+      version: 1
+    - component: switch2
+      capability: concertmirror08464.dimmer3gCountdownCh2
+      version: 1
+    - component: switch3
+      capability: concertmirror08464.dimmer3gMinBrightnessCh3
+      version: 1
+    - component: switch3
+      capability: concertmirror08464.dimmer3gMaxBrightnessCh3
+      version: 1
+    - component: switch3
+      capability: concertmirror08464.dimmer3gLightTypeCh3
+      version: 1
+    - component: switch3
+      capability: concertmirror08464.dimmer3gCountdownCh3
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gPowerOnBehavior
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gBacklightMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gBacklightColor
+      version: 1
+    - component: main
+      capability: concertmirror08464.dimmer3gBacklightBrightness
+      version: 1
+    - component: main
       capability: refresh
       version: 1
   automation:
@@ -91,6 +171,54 @@ deviceConfig:
         version: 1
       - component: switch3
         capability: switchLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gMinBrightnessCh1
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gMaxBrightnessCh1
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gLightTypeCh1
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gCountdownCh1
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer3gMinBrightnessCh2
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer3gMaxBrightnessCh2
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer3gLightTypeCh2
+        version: 1
+      - component: switch2
+        capability: concertmirror08464.dimmer3gCountdownCh2
+        version: 1
+      - component: switch3
+        capability: concertmirror08464.dimmer3gMinBrightnessCh3
+        version: 1
+      - component: switch3
+        capability: concertmirror08464.dimmer3gMaxBrightnessCh3
+        version: 1
+      - component: switch3
+        capability: concertmirror08464.dimmer3gLightTypeCh3
+        version: 1
+      - component: switch3
+        capability: concertmirror08464.dimmer3gCountdownCh3
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gPowerOnBehavior
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gBacklightMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gBacklightColor
+        version: 1
+      - component: main
+        capability: concertmirror08464.dimmer3gBacklightBrightness
         version: 1
     actions:
       - component: main

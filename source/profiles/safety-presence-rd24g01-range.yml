@@ -1,0 +1,87 @@
+name: safety-presence-rd24g01-range
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.rd24g01PresenceState
+        version: 1
+      - id: concertmirror08464.rd24g01TargetDistanceClosest
+        version: 1
+      - id: concertmirror08464.rd24g01NearDetection
+        version: 1
+      - id: concertmirror08464.rd24g01FarDetection
+        version: 1
+      - id: concertmirror08464.rd24g01StaticSensitivity
+        version: 1
+      - id: concertmirror08464.rd24g01MotionSensitivity
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: concertmirror08464.rd24g01PresenceState
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: concertmirror08464.rd24g01PresenceState
+      version: 1
+    - component: main
+      capability: concertmirror08464.rd24g01TargetDistanceClosest
+      version: 1
+    - component: main
+      capability: concertmirror08464.rd24g01NearDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.rd24g01FarDetection
+      version: 1
+    - component: main
+      capability: concertmirror08464.rd24g01StaticSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.rd24g01MotionSensitivity
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: concertmirror08464.rd24g01PresenceState
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01PresenceState
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01TargetDistanceClosest
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01NearDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01FarDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01StaticSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01MotionSensitivity
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.rd24g01NearDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01FarDetection
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01StaticSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.rd24g01MotionSensitivity
+        version: 1

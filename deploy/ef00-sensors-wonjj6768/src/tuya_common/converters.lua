@@ -251,11 +251,72 @@ function converter.raw_uint_be(divisor, options)
     return parsed / div
   end)
 end
-function converter.battery_state()
-  return converter.lookup_from_to({
-    normal = 0,
-    low = 1,
-  })
+function converter.raw_identifier()
+  return converter.from_only(function(value)
+    local buffer = raw_bytes(value)
+    if buffer == nil then
+      return value
+    end
+
+    local length = string_len(buffer)
+    local chars = {}
+    local printable = true
+    for index = 1, length do
+      local byte_value = string_byte(buffer, index)
+      if byte_value ~= 0 then
+        if byte_value < 32 or byte_value > 126 then
+          printable = false
+        end
+        chars[#chars + 1] = string_char(byte_value)
+      end
+    end
+
+    if printable and #chars > 0 then
+      return table_concat(chars)
+    end
+
+    if length <= 4 then
+      return parse_uint_be(buffer, 1, length)
+    end
+
+    return raw_buffer_to_hex(buffer)
+  end)
+end
+function converter.bitmap_flags(map, empty_value, separator)
+  local static_map = type_check(map) == "table" and map or nil
+  local static_keys = static_map and numeric_lookup_keys(static_map) or nil
+
+  return converter.from_only(function(value, device, context)
+    local numeric_value = tonumber_check(value)
+    if numeric_value == nil then
+      log.warn(string.format("Tuya bitmap_flags expects number, got %s", type_check(value)))
+      return nil
+    end
+
+    local resolved_map = static_map or resolve_lookup_map(map, device, context)
+    local resolved_keys = static_keys or numeric_lookup_keys(resolved_map)
+    local labels = {}
+    local integer_value = math_floor(numeric_value)
+    for _, bit in ipairs(resolved_keys) do
+      if math_floor(integer_value / bit) % 2 == 1 then
+        local label = resolved_map[bit] or resolved_map[tostring(bit)]
+        if label ~= nil then
+          labels[#labels + 1] = label
+        end
+      end
+    end
+
+    if #labels == 0 then
+      return resolve_lookup_default(empty_value, device, context)
+    end
+
+    local resolved_separator = resolve_converter_arg(separator, device, context)
+    if type_check(resolved_separator) ~= "string" then
+      resolved_separator = ","
+    end
+
+    return table_concat(labels, resolved_separator)
+  end)
 end
 function converter.alarm_state_lower_upper_cancel()
   return converter.lookup_from_to({
@@ -269,6 +330,37 @@ function converter.temperature_unit()
     C = 0,
     F = 1,
   })
+end
+function converter.report_period_hours()
+  return converter.lookup_from_to({
+    ["1h"] = 0,
+    ["2h"] = 1,
+    ["3h"] = 2,
+    ["4h"] = 3,
+    ["6h"] = 4,
+    ["8h"] = 5,
+    ["12h"] = 6,
+    ["24h"] = 7,
+    ["48h"] = 8,
+    ["72h"] = 9,
+  })
+end
+function converter.water_meter_faults()
+  return converter.bitmap_flags({
+    [1] = "battery_alarm",
+    [2] = "magnetism_alarm",
+    [4] = "cover_alarm",
+    [8] = "credit_alarm",
+    [16] = "switch_gaps_alarm",
+    [32] = "meter_body_alarm",
+    [64] = "abnormal_water_alarm",
+    [128] = "arrearage_alarm",
+    [256] = "overflow_alarm",
+    [512] = "revflow_alarm",
+    [1024] = "over_pre_alarm",
+    [2048] = "empty_pipe_alarm",
+    [4096] = "transducer_alarm",
+  }, "no_alarm", ",")
 end
 function converter.water_warning()
   return converter.lookup_from_to({

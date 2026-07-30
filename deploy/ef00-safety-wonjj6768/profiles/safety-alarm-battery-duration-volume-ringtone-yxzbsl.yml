@@ -4,6 +4,12 @@ components:
     capabilities:
       - id: alarm
         version: 1
+      - id: concertmirror08464.yxzbslAlarmType
+        version: 1
+      - id: concertmirror08464.yxzbslPowerType
+        version: 1
+      - id: concertmirror08464.yxzbslBatteryLevel
+        version: 1
       - id: battery
         version: 1
       - id: concertmirror08464.alarmDurationSirenYxzbslMinutes

@@ -4,21 +4,19 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: concertmirror08464.presenceSensitivity
+      - id: concertmirror08464.rtzcz03zSensitivity
         version: 1
-      - id: concertmirror08464.minimumRange
+      - id: concertmirror08464.rtzcz03zMinDistance
         version: 1
-      - id: concertmirror08464.presenceDetectionRange
+      - id: concertmirror08464.rtzcz03zMaxDistance
         version: 1
-      - id: concertmirror08464.detectionHoldTime
+      - id: concertmirror08464.rtzcz03zFadingTime
         version: 1
-      - id: concertmirror08464.presenceTargetDistance
+      - id: concertmirror08464.rtzcz03zTargetDistance
         version: 1
-      - id: concertmirror08464.driverMessage
+      - id: concertmirror08464.rtzcz03zIndicator
         version: 1
       - id: illuminanceMeasurement
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -38,22 +36,22 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: concertmirror08464.presenceSensitivity
+      capability: concertmirror08464.rtzcz03zSensitivity
       version: 1
     - component: main
-      capability: concertmirror08464.minimumRange
+      capability: concertmirror08464.rtzcz03zMinDistance
       version: 1
     - component: main
-      capability: concertmirror08464.presenceDetectionRange
+      capability: concertmirror08464.rtzcz03zMaxDistance
       version: 1
     - component: main
-      capability: concertmirror08464.detectionHoldTime
+      capability: concertmirror08464.rtzcz03zFadingTime
       version: 1
     - component: main
-      capability: concertmirror08464.presenceTargetDistance
+      capability: concertmirror08464.rtzcz03zTargetDistance
       version: 1
     - component: main
-      capability: concertmirror08464.driverMessage
+      capability: concertmirror08464.rtzcz03zIndicator
       version: 1
     - component: main
       capability: illuminanceMeasurement
@@ -69,4 +67,31 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.rtzcz03zTargetDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zFadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zIndicator
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.rtzcz03zSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zMinDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zMaxDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zFadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.rtzcz03zIndicator
+        version: 1

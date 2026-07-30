@@ -8,6 +8,9 @@ local MAIN_COMPONENT = "main"
 local INITIAL_CUSTOM_STATE_QUERY_KEY = "__initialCustomStateQueryRequested"
 local UNKNOWN_PROFILE_TOKEN = "__unknown_profile__"
 local REFRESHED_PROFILE_CAPABILITIES = {}
+-- The initial state query is scheduled 2 s after init, so placeholders wait long
+-- enough for the device to answer before any fabricated value is published.
+local PLACEHOLDER_STATE_DELAY_S = 30
 
 local numeric_definitions = custom_capabilities.numeric
 local enum_definitions = custom_capabilities.enum
@@ -494,6 +497,24 @@ local function create(options)
     end)
   end
 
+  -- Placeholders exist only so the app can render a control before the device has
+  -- ever reported. They must not race the initial state query: emitting them at
+  -- init time publishes a fabricated minimum that looks like a real reading, and
+  -- it sticks permanently on sleepy devices that answer late or not at all.
+  -- Waiting until after the query has had time to land keeps reported values
+  -- authoritative and leaves placeholders as a last resort.
+  local function schedule_placeholder_states(device, definition)
+    local function run()
+      emit_placeholder_states(device, definition)
+    end
+
+    if schedule_device_task(device, PLACEHOLDER_STATE_DELAY_S, "custom placeholder states", run) then
+      return
+    end
+
+    run()
+  end
+
   local function diagnose_bindings(device)
     if type(device) ~= "table" then
       return
@@ -743,6 +764,7 @@ local function create(options)
     emit_numeric_metadata = emit_numeric_metadata,
     emit_placeholder_states = emit_placeholder_states,
     maybe_request_initial_custom_state = maybe_request_initial_custom_state,
+    schedule_placeholder_states = schedule_placeholder_states,
     refresh_definitions = refresh_profile_definitions,
     register_handlers = register_handlers,
   }

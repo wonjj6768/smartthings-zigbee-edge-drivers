@@ -7,6 +7,7 @@ local MAIN_COMPONENT = "main"
 local INITIAL_CUSTOM_STATE_QUERY_KEY = "__initialCustomStateQueryRequested"
 local UNKNOWN_PROFILE_TOKEN = "__unknown_profile__"
 local REFRESHED_PROFILE_CAPABILITIES = {}
+local PLACEHOLDER_STATE_DELAY_S = 30
 local numeric_definitions = custom_capabilities.numeric
 local enum_definitions = custom_capabilities.enum
 local text_definitions = custom_capabilities.text
@@ -398,6 +399,15 @@ end
 end
 end)
 end
+local function schedule_placeholder_states(device, definition)
+local function run()
+emit_placeholder_states(device, definition)
+end
+if schedule_device_task(device, PLACEHOLDER_STATE_DELAY_S, "custom placeholder states", run) then
+return
+end
+run()
+end
 local function diagnose_bindings(device)
 if type(device) ~= "table" then
 return
@@ -602,6 +612,7 @@ emit_enum_metadata = emit_enum_metadata,
 emit_numeric_metadata = emit_numeric_metadata,
 emit_placeholder_states = emit_placeholder_states,
 maybe_request_initial_custom_state = maybe_request_initial_custom_state,
+schedule_placeholder_states = schedule_placeholder_states,
 refresh_definitions = refresh_profile_definitions,
 register_handlers = register_handlers,
 }

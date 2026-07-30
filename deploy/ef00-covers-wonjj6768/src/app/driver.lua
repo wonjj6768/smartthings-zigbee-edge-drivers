@@ -775,7 +775,7 @@ start_preset_runtime(device, preset)
 battery_refresh.start_daily(device)
 emit_window_shade_preset_state(device)
 custom_capability_runtime.maybe_request_initial_custom_state(device, preset)
-custom_capability_runtime.emit_placeholder_states(device, definition)
+custom_capability_runtime.schedule_placeholder_states(device, definition)
 end,
 doConfigure = function(driver, device)
 configure_preset(driver, device, get_preset(device))

@@ -1066,6 +1066,12 @@ local function load_mapping_preset(zcl)
       {
         emit = emit.power(),
         metering_kind = "power",
+        -- A power mapping without poll_interval makes
+        -- default_power_poll_interval() return nil, and
+        -- set_power_poll_interval() then rejects every user change before it
+        -- reaches the field. Device modules that build cluster lists by hand
+        -- rely on this default; devices/zcl/helpers.lua passes 300 explicitly.
+        poll_interval = 300,
       },
       reporting_defaults(5, 300, 1)
     )
@@ -1077,6 +1083,7 @@ local function load_mapping_preset(zcl)
         emit = emit.current(),
         scale = 1000,
         metering_kind = "current",
+        poll_interval = 300,
       },
       reporting_defaults(5, 300, 1)
     )
@@ -1087,6 +1094,7 @@ local function load_mapping_preset(zcl)
       {
         emit = emit.voltage(),
         metering_kind = "voltage",
+        poll_interval = 300,
       },
       reporting_defaults(5, 300, 1)
     )
@@ -1097,6 +1105,7 @@ local function load_mapping_preset(zcl)
       emit = emit.energy(),
       read_on_configure = true,
       metering_kind = "energy",
+      poll_interval = 900,
     }
   end)
 

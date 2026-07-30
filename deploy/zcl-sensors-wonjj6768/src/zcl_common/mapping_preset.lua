@@ -924,6 +924,7 @@ return merge_defaults(
 {
 emit = emit.power(),
 metering_kind = "power",
+poll_interval = 300,
 },
 reporting_defaults(5, 300, 1)
 )
@@ -934,6 +935,7 @@ return merge_defaults(
 emit = emit.current(),
 scale = 1000,
 metering_kind = "current",
+poll_interval = 300,
 },
 reporting_defaults(5, 300, 1)
 )
@@ -943,6 +945,7 @@ return merge_defaults(
 {
 emit = emit.voltage(),
 metering_kind = "voltage",
+poll_interval = 300,
 },
 reporting_defaults(5, 300, 1)
 )
@@ -952,6 +955,7 @@ return {
 emit = emit.energy(),
 read_on_configure = true,
 metering_kind = "energy",
+poll_interval = 900,
 }
 end)
 define_preset("local_temperature", zcl.thermostat_local_temperature, function()

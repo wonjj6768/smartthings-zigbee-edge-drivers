@@ -439,12 +439,14 @@ end
 local spec = meta.metering_kind and metering_specs[meta.metering_kind] or nil
 if spec ~= nil and type(raw_value) == "number" then
 local endpoint = mapping_context and mapping_context.endpoint or nil
-local multiplier = get_scaler(device, spec, "multiplier", endpoint) or 1
-local divisor = get_scaler(device, spec, "divisor", endpoint) or 1
+local reported_multiplier = get_scaler(device, spec, "multiplier", endpoint)
+local reported_divisor = get_scaler(device, spec, "divisor", endpoint)
+local multiplier = reported_multiplier or 1
+local divisor = reported_divisor or 1
 if divisor == 0 then
 divisor = 1
 end
-if multiplier ~= 1 or divisor ~= 1 then
+if multiplier ~= divisor then
 return raw_value * multiplier / divisor
 end
 end

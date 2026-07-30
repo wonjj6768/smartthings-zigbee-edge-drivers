@@ -544,13 +544,21 @@ local function load_metering(zcl)
     local spec = meta.metering_kind and metering_specs[meta.metering_kind] or nil
     if spec ~= nil and type(raw_value) == "number" then
       local endpoint = mapping_context and mapping_context.endpoint or nil
-      local multiplier = get_scaler(device, spec, "multiplier", endpoint) or 1
-      local divisor = get_scaler(device, spec, "divisor", endpoint) or 1
+      local reported_multiplier = get_scaler(device, spec, "multiplier", endpoint)
+      local reported_divisor = get_scaler(device, spec, "divisor", endpoint)
+
+      local multiplier = reported_multiplier or 1
+      local divisor = reported_divisor or 1
       if divisor == 0 then
         divisor = 1
       end
 
-      if multiplier ~= 1 or divisor ~= 1 then
+      -- A reported pair only carries information when it actually rescales the
+      -- reading. Some plugs report identical multiplier and divisor values
+      -- (1/1, or 1280/1280 seen on a TS011F), which cancel out; treating that
+      -- as a real scaler skipped meta.scale and published the raw counter, so
+      -- one plug reported 239995 kWh where its siblings reported 2399.95.
+      if multiplier ~= divisor then
         return raw_value * multiplier / divisor
       end
     end

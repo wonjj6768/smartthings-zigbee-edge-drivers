@@ -309,8 +309,8 @@ function converter.pir_keep_time_ten_thirty_sixty_one_twenty()
 end
 function converter.temperature_unit()
   return converter.lookup_from_to({
-    C = 0,
-    F = 1,
+    celsius = 0,
+    fahrenheit = 1,
   })
 end
 function converter.power_outage_memory()

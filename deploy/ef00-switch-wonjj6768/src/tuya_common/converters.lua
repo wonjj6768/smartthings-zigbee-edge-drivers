@@ -253,8 +253,8 @@ function converter.raw_uint_be(divisor, options)
 end
 function converter.temperature_unit()
   return converter.lookup_from_to({
-    C = 0,
-    F = 1,
+    celsius = 0,
+    fahrenheit = 1,
   })
 end
 function converter.power_on_behavior()

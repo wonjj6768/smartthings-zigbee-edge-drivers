@@ -4,9 +4,11 @@ local data_types = require "st.zigbee.data_types"
 local zcl = {}
 zcl.CLUSTER_ON_OFF = 0x0006
 zcl.CLUSTER_POWER_CONFIGURATION = 0x0001
+zcl.CLUSTER_IAS_ZONE = 0x0500
 zcl.ATTR_ON_OFF = 0x0000
 zcl.ATTR_BATTERY_VOLTAGE = 0x0020
 zcl.ATTR_BATTERY_PERCENTAGE_REMAINING = 0x0021
+zcl.ATTR_ZONE_STATUS = 0x0002
 function zcl.cluster_attribute(cluster_id, attribute_id, options)
   local mapping = options or {}
   mapping.protocol = "zcl"
@@ -47,5 +49,18 @@ function zcl.read_attribute(device, cluster_id, attribute_id, endpoint)
   end
   device:send(request)
   return true
+end
+
+function zcl.ias_zone(options)
+  local mapping = zcl.cluster_attribute(zcl.CLUSTER_IAS_ZONE, zcl.ATTR_ZONE_STATUS, options or {})
+  if mapping.name == nil then mapping.name = "ias_zone" end
+  return mapping
+end
+
+function zcl.motion(options)
+  local mapping = zcl.ias_zone(options or {})
+  mapping.name = mapping.name or "motion"
+  mapping.zone_status_mask = 0x0001
+  return mapping
 end
 return zcl

@@ -8,6 +8,44 @@ local function load_attribute_handler(zcl)
 
   local battery_refresh = require "app.battery_refresh"
 
+  --- Reports an unchanged attribute value as a duplicate that can be skipped.
+  --- Only plain scalar values are compared; anything structured is always sent
+  --- so richer payloads never get dropped by a shallow comparison.
+  function zcl.is_duplicate_attribute_event(device, event, mapping_context)
+    if type(event) ~= "table" or type(device.get_latest_state) ~= "function" then
+      return false
+    end
+
+    local capability_id = type(event.capability) == "table" and event.capability.ID or nil
+    local attribute_name = type(event.attribute) == "table" and event.attribute.NAME or nil
+    if capability_id == nil or attribute_name == nil then
+      return false
+    end
+
+    -- Only a bare `{ value = ... }` payload is safe to compare. Events carrying
+    -- units or other metadata alongside the value are always emitted.
+    local payload = event.value
+    if type(payload) ~= "table" then
+      return false
+    end
+
+    local value = payload.value
+    for key in pairs(payload) do
+      if key ~= "value" and key ~= "unit" then
+        return false
+      end
+    end
+
+    local value_type = type(value)
+    if value_type ~= "number" and value_type ~= "string" and value_type ~= "boolean" then
+      return false
+    end
+
+    local component_id = mapping_context.component and mapping_context.component.id or "main"
+
+    return device:get_latest_state(component_id, capability_id, attribute_name) == value
+  end
+
   local function apply_scale(value, scale)
     if value == nil or scale == nil or scale == 1 then
       return value
@@ -94,6 +132,15 @@ local function load_attribute_handler(zcl)
     end
 
     battery_refresh.maybe_schedule_after_event(device, event)
+
+    -- Polled meters re-read the same attribute on every cycle, so an unchanged
+    -- reading would otherwise be republished every few seconds. The platform
+    -- discards duplicate values anyway, so dropping them here only removes hub
+    -- and mesh work. State that must advance on every poll, such as the last
+    -- response timestamp, carries a new value and is unaffected.
+    if zcl.is_duplicate_attribute_event(device, event, mapping_context) then
+      return
+    end
 
     if mapping_context.component ~= nil and type(device.emit_component_event) == "function" then
       device:emit_component_event(mapping_context.component, event)

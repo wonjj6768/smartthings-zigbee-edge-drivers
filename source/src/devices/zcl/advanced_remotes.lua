@@ -561,6 +561,9 @@ register_device_definition(remote_1, device_helpers.create_fingerprints("TS004F"
   "_TZ3000_lrfvzq1e",
   "_TZ3000_kaflzta4",
   "_TZ3000_wc3gjyp3",
+  -- Z2M also matches this button by zigbeeModel "ZG-101ZL"; units reporting the
+  -- HOBEIAN brand and that model instead of TS004F need the pair spelled out.
+  "HOBEIAN:ZG-101ZL",
 }))
 
 register_device_definition(standard_action_remote_1, device_helpers.create_fingerprints("TS004F", {

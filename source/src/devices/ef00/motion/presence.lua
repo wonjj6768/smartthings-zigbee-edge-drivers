@@ -502,6 +502,9 @@ local presence_model_zg204zx = {
 }
 register_presence_definition(presence_model_zg204zx, ts0601_fingerprints({
   "_TZE200_w0ap83qu",
+  -- Z2M also matches this sensor by zigbeeModel "ZG-204ZX"; units reporting that
+  -- model instead of TS0601 need the pair spelled out.
+  "_TZE200_w0ap83qu:ZG-204ZX",
 }))
 
 -- ══════════════════════════════════════════════════════════════

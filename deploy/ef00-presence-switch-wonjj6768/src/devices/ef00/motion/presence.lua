@@ -407,6 +407,7 @@ query_on_configure = false,
 }
 register_presence_definition(presence_model_zg204zx, ts0601_fingerprints({
 "_TZE200_w0ap83qu",
+"_TZE200_w0ap83qu:ZG-204ZX",
 }))
 local presence_model_excellux_zg301a = {
 profile = "safety-presence-excellux-zg301a",

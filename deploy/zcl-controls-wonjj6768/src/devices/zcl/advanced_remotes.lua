@@ -511,6 +511,7 @@ register_device_definition(remote_1, device_helpers.create_fingerprints("TS004F"
 "_TZ3000_lrfvzq1e",
 "_TZ3000_kaflzta4",
 "_TZ3000_wc3gjyp3",
+"HOBEIAN:ZG-101ZL",
 }))
 register_device_definition(standard_action_remote_1, device_helpers.create_fingerprints("TS004F", {
 "_TZ3000_rco1yzb1",

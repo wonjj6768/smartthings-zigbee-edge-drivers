@@ -42,7 +42,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Meters wonjj6768 | `ef00-meters-wonjj6768` | 62 |
 | EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 23 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 32 |
-| EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 28 |
+| EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 29 |
 | EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 61 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
 | EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 95 |
@@ -54,7 +54,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
 | EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 34 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 20 |
-| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 309 |
+| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 310 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 40 |
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 674 |
 | ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 375 |
@@ -616,7 +616,7 @@ Development driver; report issues with hub logcat. Supports advanced EF00 presen
 </details>
 
 <details>
-<summary>EF00 Presence General 1 wonjj6768 (28 fingerprints)</summary>
+<summary>EF00 Presence General 1 wonjj6768 (29 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 1 of 2). See the README fingerprint table for the exact device list.
 
@@ -632,6 +632,7 @@ Development driver; report issues with hub logcat. Supports general EF00 presenc
 | `_TZE200_v6ossqfy` | `TS0601` | `safety-presence-hps-duration-led` |
 | `_TZE200_vrfecyku` | `TS0601` | `safety-presence-mirhe200-illuminance-fall` |
 | `_TZE200_w0ap83qu` | `TS0601` | `safety-presence-illuminance-temp-humidity-battery-zg204zx` |
+| `_TZE200_w0ap83qu` | `ZG-204ZX` | `safety-presence-illuminance-temp-humidity-battery-zg204zx` |
 | `_TZE200_ypprdwsl` | `TS0601` | `safety-presence-mirhe200-illuminance-fall` |
 | `_TZE204_aai5grix` | `TS0601` | `safety-presence-mtd285-illuminance` |
 | `_TZE204_bmdsp6bs` | `TS0601` | `safety-presence-y1in-dedicated-illuminance` |
@@ -1432,7 +1433,7 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 </details>
 
 <details>
-<summary>ZCL Controls wonjj6768 (309 fingerprints)</summary>
+<summary>ZCL Controls wonjj6768 (310 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.
 
@@ -1733,6 +1734,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `HEIMAN` | `SceneSwitch-EM-3.0` | `buttons-heiman-scene-battery-remote-action` |
 | `HEIMAN` | `SOS-EF-3.0` | `buttons-button-1-battery-remote-action` |
 | `HEIMAN` | `SOS-EM` | `buttons-button-1-battery-remote-action` |
+| `HOBEIAN` | `ZG-101ZL` | `buttons-button-1-battery-operation-mode-remote-action` |
 | `MLI` | `Remote Control` | `controllers-dimming-remote-action` |
 | `Namron` | `4512772` | `buttons-button-4-battery-remote-action` |
 | `Shelly` | `1` | `buttons-shelly-one-input` |

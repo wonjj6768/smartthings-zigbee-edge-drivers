@@ -192,12 +192,12 @@
       ]
     },
     {
-      "name": "ef00-presence-general-wonjj6768",
-      "display_name": "EF00 Presence General wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 radar and mmWave presence sensors.",
+      "name": "ef00-presence-general-1-wonjj6768",
+      "display_name": "EF00 Presence General 1 wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 1 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
       "modules": [
-        "presence_radar"
+        "presence_general_1"
       ],
       "include_device_files": [
         "motion/presence.lua",
@@ -206,12 +206,12 @@
       ]
     },
     {
-      "name": "ef00-presence-zg204z-wonjj6768",
-      "display_name": "EF00 Presence Zg204Z wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 ZG-204Z and ZY-M100 presence sensors.",
+      "name": "ef00-presence-general-2-wonjj6768",
+      "display_name": "EF00 Presence General 2 wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 2 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
       "modules": [
-        "presence_zg204z"
+        "presence_general_2"
       ],
       "include_device_files": [
         "motion/presence.lua",
@@ -263,12 +263,12 @@
       ]
     },
     {
-      "name": "ef00-thermostat-trv-wonjj6768",
-      "display_name": "EF00 Thermostat Trv wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves.",
+      "name": "ef00-thermostat-trv-1-wonjj6768",
+      "display_name": "EF00 Thermostat TRV 1 wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 1 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
       "modules": [
-        "thermostats_trv"
+        "thermostats_trv_1"
       ],
       "include_device_files": [
         "thermostats/trv_split.lua",
@@ -276,12 +276,12 @@
       ]
     },
     {
-      "name": "ef00-thermostat-trv2-wonjj6768",
-      "display_name": "EF00 Thermostat Trv2 wonjj6768",
-      "description": "Development driver; report issues with hub logcat. Supports EF00 radiator valves with extended preset and schedule datapoints.",
+      "name": "ef00-thermostat-trv-2-wonjj6768",
+      "display_name": "EF00 Thermostat TRV 2 wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 2 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
       "modules": [
-        "thermostats_trv2"
+        "thermostats_trv_2"
       ],
       "include_device_files": [
         "thermostats/trv_split.lua",
@@ -299,7 +299,7 @@
     },
     {
       "name": "ef00-thermostat-fcu-wonjj6768",
-      "display_name": "EF00 Thermostat Fcu wonjj6768",
+      "display_name": "EF00 Thermostat FCU wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 fan coil unit and legacy thermostats.",
       "protocol": "ef00",
       "modules": [

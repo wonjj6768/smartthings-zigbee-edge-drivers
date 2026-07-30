@@ -1,9 +1,15 @@
 -- Splits the general presence registrations into two deploy modules.
 --
 -- `presence_general.lua` already resolves its own include window by profile name,
--- so this reuses that resolved list and partitions it.  The ZG-204Z family plus
--- the ZY-M100 radars carry the largest profile sets, so they move to the second
--- package and the remaining radars stay in the first.
+-- so this reuses that resolved list and partitions it to stay under the platform
+-- size limit.
+--
+-- The split is by size, not by device family: the second group happens to collect
+-- the ZG-204Z, ZY-M100, ZF24, ZD24, ZIS-01P and ZY-HPS01 profiles because they
+-- are the largest contiguous set, while a ZG-204ZX profile remains in the first
+-- group.  Naming a package after one of those families would misrepresent it, so
+-- the packages are numbered and the public README fingerprint tables are the
+-- authoritative list of which device lands where.
 local entries = require "devices.ef00.presence_general"
 
 local SECOND_GROUP_PREFIXES = {

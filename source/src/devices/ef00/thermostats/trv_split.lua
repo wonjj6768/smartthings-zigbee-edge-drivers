@@ -2,9 +2,13 @@
 --
 -- `trv.lua` shares a large block of mode/preset helpers across every family, so
 -- the file itself is not split.  Instead the loaded entries are partitioned by
--- profile name: `thermostats_trv` keeps the radiator valves and `thermostats_trv2`
--- takes the wall/panel style families that also live in this file.  Each deploy
--- package then only carries the profiles its own entries reference.
+-- profile name so each deploy package stays under the platform size limit and
+-- only carries the profiles its own entries reference.
+--
+-- The two groups are size partitions, not device families: `thermostats_trv_1`
+-- and `thermostats_trv_2` both hold radiator valves.  The package names stay
+-- neutral for that reason, and the per-driver fingerprint tables in the public
+-- README are the authoritative list of which device lands where.
 local entries = require "devices.ef00.thermostats.trv"
 
 local SECOND_GROUP_PROFILES = {

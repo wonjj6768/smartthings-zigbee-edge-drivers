@@ -599,8 +599,8 @@
     }
   },
   {
-    "name": "ef00-presence-general-wonjj6768",
-    "raw_size": 495461,
+    "name": "ef00-presence-general-1-wonjj6768",
+    "raw_size": 495553,
     "under_limit": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -629,8 +629,8 @@
     }
   },
   {
-    "name": "ef00-presence-zg204z-wonjj6768",
-    "raw_size": 492238,
+    "name": "ef00-presence-general-2-wonjj6768",
+    "raw_size": 492328,
     "under_limit": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -779,8 +779,8 @@
     }
   },
   {
-    "name": "ef00-thermostat-trv-wonjj6768",
-    "raw_size": 448924,
+    "name": "ef00-thermostat-trv-1-wonjj6768",
+    "raw_size": 449005,
     "under_limit": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",
@@ -806,8 +806,8 @@
     }
   },
   {
-    "name": "ef00-thermostat-trv2-wonjj6768",
-    "raw_size": 441813,
+    "name": "ef00-thermostat-trv-2-wonjj6768",
+    "raw_size": 441859,
     "under_limit": true,
     "profiles": [
       "thermostats-thermostat-battery-ar331",

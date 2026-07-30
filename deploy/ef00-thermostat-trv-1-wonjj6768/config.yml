@@ -1,0 +1,6 @@
+name: "EF00 Thermostat TRV 1 wonjj6768"
+packageKey: "ef00-thermostat-trv-1-wonjj6768"
+description: "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 1 of 2). See the README fingerprint table for the exact device list."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

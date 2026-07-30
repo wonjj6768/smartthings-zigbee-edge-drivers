@@ -1,5 +1,24 @@
 # SmartThings Zigbee Edge Drivers
 
+## Driver Split Notice (2026-07-30)
+
+Four drivers were split because a SmartThings Edge driver package cannot exceed 512 KB.
+Newly exposed device settings pushed these packages past that limit, so each was divided.
+
+| Before | After |
+| --- | --- |
+| `ef00-thermostats-wonjj6768` | `ef00-thermostat-trv-1`, `ef00-thermostat-trv-2`, `ef00-thermostat-wall`, `ef00-thermostat-fcu` |
+| `ef00-switch-wonjj6768` | `ef00-switch`, `ef00-switch-panel`, `ef00-garage-door` |
+| `ef00-energy-wonjj6768` | `ef00-energy`, `ef00-meters` |
+| `ef00-presence-general-wonjj6768` | `ef00-presence-general-1`, `ef00-presence-general-2` |
+
+**If your device stops updating, open it in the SmartThings app and switch it to the new driver.**
+Devices on `ef00-thermostats-wonjj6768` are the most likely to need this, because that name no longer exists.
+
+Names ending in a number, such as `-trv-1` / `-trv-2` and `-general-1` / `-general-2`,
+are size groups rather than device categories: both halves hold the same kind of device.
+Use the fingerprint tables under [Supported Fingerprints](#supported-fingerprints) to find which driver lists your manufacturer and model.
+
 ## Development
 
 This project is under active development. If a device does not work correctly, please open an issue and include the hub logcat.
@@ -23,16 +42,16 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Meters wonjj6768 | `ef00-meters-wonjj6768` | 62 |
 | EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 23 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 32 |
-| EF00 Presence General wonjj6768 | `ef00-presence-general-wonjj6768` | 28 |
+| EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 28 |
+| EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 61 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
-| EF00 Presence Zg204Z wonjj6768 | `ef00-presence-zg204z-wonjj6768` | 61 |
 | EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 95 |
 | EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 153 |
 | EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 38 |
 | EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 117 |
-| EF00 Thermostat Fcu wonjj6768 | `ef00-thermostat-fcu-wonjj6768` | 39 |
-| EF00 Thermostat Trv wonjj6768 | `ef00-thermostat-trv-wonjj6768` | 61 |
-| EF00 Thermostat Trv2 wonjj6768 | `ef00-thermostat-trv2-wonjj6768` | 34 |
+| EF00 Thermostat FCU wonjj6768 | `ef00-thermostat-fcu-wonjj6768` | 39 |
+| EF00 Thermostat TRV 1 wonjj6768 | `ef00-thermostat-trv-1-wonjj6768` | 61 |
+| EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
 | EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 34 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 20 |
 | ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 309 |
@@ -597,9 +616,9 @@ Development driver; report issues with hub logcat. Supports advanced EF00 presen
 </details>
 
 <details>
-<summary>EF00 Presence General wonjj6768 (28 fingerprints)</summary>
+<summary>EF00 Presence General 1 wonjj6768 (28 fingerprints)</summary>
 
-Development driver; report issues with hub logcat. Supports EF00 radar and mmWave presence sensors.
+Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 1 of 2). See the README fingerprint table for the exact device list.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
@@ -635,35 +654,9 @@ Development driver; report issues with hub logcat. Supports EF00 radar and mmWav
 </details>
 
 <details>
-<summary>EF00 Presence Switch wonjj6768 (16 fingerprints)</summary>
+<summary>EF00 Presence General 2 wonjj6768 (61 fingerprints)</summary>
 
-Development driver; report issues with hub logcat. Supports EF00 presence sensors with switch endpoints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_ahpcyzth` | `TS0601` | `switches-presence-switch-3-zg302zm` |
-| `_TZE200_bfmfhxra` | `TS0601` | `switches-presence-switch-3-zg302zm` |
-| `_TZE200_cqtamhh5` | `TS0601` | `switches-presence-switch-3-zg302zl` |
-| `_TZE200_df04ghrb` | `TS0601` | `switches-presence-switch-3-zg302zl` |
-| `_TZE200_kccdzaeo` | `TS0601` | `switches-presence-switch-3-zg302zm` |
-| `_TZE200_khzbklyh` | `TS0601` | `switches-presence-switch-3-zg302zl` |
-| `_TZE200_kijxnb8q` | `TS0601` | `switches-presence-switch-3-zg302zm` |
-| `_TZE200_llvwkkde` | `TS0601` | `switches-presence-switch-3-zg302zl` |
-| `_TZE200_s7rsrtbg` | `TS0601` | `switches-presence-switch-3-zg302zm` |
-| `_TZE200_tmszbtzq` | `TS0601` | `switches-presence-switch-3-zg302zm` |
-| `_TZE200_toeldckg` | `TS0601` | `switches-presence-switch-3-zg302zl` |
-| `_TZE200_xlnzk169` | `TS0601` | `switches-presence-switch-3-zg302zl` |
-| `_TZE204_f2rflfa6` | `TS0601` | `safety-presence-switch-illuminance-zis04` |
-| `_TZE204_izy1g1mb` | `TS0601` | `safety-presence-switch-illuminance-zis03` |
-| `HOBEIAN` | `ZG-302ZL` | `switches-presence-switch-3-zg302zl` |
-| `HOBEIAN` | `ZG-302ZM` | `switches-presence-switch-3-zg302zm` |
-
-</details>
-
-<details>
-<summary>EF00 Presence Zg204Z wonjj6768 (61 fingerprints)</summary>
-
-Development driver; report issues with hub logcat. Supports EF00 ZG-204Z and ZY-M100 presence sensors.
+Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 2 of 2). See the README fingerprint table for the exact device list.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
@@ -728,6 +721,32 @@ Development driver; report issues with hub logcat. Supports EF00 ZG-204Z and ZY-
 | `Tuya` | `ZY-M100-L` | `safety-presence-zym100l-fixed-illuminance` |
 | `Wenzhi` | `WZ-M100-W` | `safety-presence-zym100s1-range-illuminance` |
 | `ZG-204ZE` | `CK-BL702-MWS-01(7016)` | `safety-presence-zg204ze-illuminance-battery` |
+
+</details>
+
+<details>
+<summary>EF00 Presence Switch wonjj6768 (16 fingerprints)</summary>
+
+Development driver; report issues with hub logcat. Supports EF00 presence sensors with switch endpoints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_ahpcyzth` | `TS0601` | `switches-presence-switch-3-zg302zm` |
+| `_TZE200_bfmfhxra` | `TS0601` | `switches-presence-switch-3-zg302zm` |
+| `_TZE200_cqtamhh5` | `TS0601` | `switches-presence-switch-3-zg302zl` |
+| `_TZE200_df04ghrb` | `TS0601` | `switches-presence-switch-3-zg302zl` |
+| `_TZE200_kccdzaeo` | `TS0601` | `switches-presence-switch-3-zg302zm` |
+| `_TZE200_khzbklyh` | `TS0601` | `switches-presence-switch-3-zg302zl` |
+| `_TZE200_kijxnb8q` | `TS0601` | `switches-presence-switch-3-zg302zm` |
+| `_TZE200_llvwkkde` | `TS0601` | `switches-presence-switch-3-zg302zl` |
+| `_TZE200_s7rsrtbg` | `TS0601` | `switches-presence-switch-3-zg302zm` |
+| `_TZE200_tmszbtzq` | `TS0601` | `switches-presence-switch-3-zg302zm` |
+| `_TZE200_toeldckg` | `TS0601` | `switches-presence-switch-3-zg302zl` |
+| `_TZE200_xlnzk169` | `TS0601` | `switches-presence-switch-3-zg302zl` |
+| `_TZE204_f2rflfa6` | `TS0601` | `safety-presence-switch-illuminance-zis04` |
+| `_TZE204_izy1g1mb` | `TS0601` | `safety-presence-switch-illuminance-zis03` |
+| `HOBEIAN` | `ZG-302ZL` | `switches-presence-switch-3-zg302zl` |
+| `HOBEIAN` | `ZG-302ZM` | `switches-presence-switch-3-zg302zm` |
 
 </details>
 
@@ -1175,7 +1194,7 @@ Development driver; report issues with hub logcat. Supports EF00 relay switches 
 </details>
 
 <details>
-<summary>EF00 Thermostat Fcu wonjj6768 (39 fingerprints)</summary>
+<summary>EF00 Thermostat FCU wonjj6768 (39 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 fan coil unit and legacy thermostats.
 
@@ -1224,9 +1243,9 @@ Development driver; report issues with hub logcat. Supports EF00 fan coil unit a
 </details>
 
 <details>
-<summary>EF00 Thermostat Trv wonjj6768 (61 fingerprints)</summary>
+<summary>EF00 Thermostat TRV 1 wonjj6768 (61 fingerprints)</summary>
 
-Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves.
+Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 1 of 2). See the README fingerprint table for the exact device list.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
@@ -1295,9 +1314,9 @@ Development driver; report issues with hub logcat. Supports EF00 thermostatic ra
 </details>
 
 <details>
-<summary>EF00 Thermostat Trv2 wonjj6768 (34 fingerprints)</summary>
+<summary>EF00 Thermostat TRV 2 wonjj6768 (34 fingerprints)</summary>
 
-Development driver; report issues with hub logcat. Supports EF00 radiator valves with extended preset and schedule datapoints.
+Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 2 of 2). See the README fingerprint table for the exact device list.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |

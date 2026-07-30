@@ -786,6 +786,9 @@ converter = motion_detection_mode_zg204zm_converter,
 }),
 tuya.dp_motion_detection_sensitivity(123, { emit = emit.zg204zmMotionSensitivity() }),
 }
+presence_model_zg_204zm.zcl_clusters = {
+zcl.illuminance(),
+}
 register_presence_definition(presence_model_zg_204zm, {
 device_helpers.create_fingerprint("AOYAN", "AY205Z"),
 device_helpers.create_fingerprint("_TZE200_2aaelwxk", "TS0601"),

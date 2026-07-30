@@ -127,7 +127,7 @@ end
 if value <= 0 then
 return 0
 end
-local lux = math.pow(10, (value - 1) / 10000)
+local lux = 10 ^ ((value - 1) / 10000)
 return math.floor(lux + 0.5)
 end,
 to = function(value)

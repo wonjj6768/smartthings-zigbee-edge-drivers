@@ -1237,6 +1237,13 @@ local presence_model_zg_204zm = {
 
 }
 
+-- Z2M notes this model reports illuminance over the standard ZCL cluster in
+-- addition to DP106 (Koenkk/zigbee-herdsman-converters#10897), so both paths
+-- feed the same capability.
+presence_model_zg_204zm.zcl_clusters = {
+  zcl.illuminance(),
+}
+
 
 
 register_presence_definition(presence_model_zg_204zm, {

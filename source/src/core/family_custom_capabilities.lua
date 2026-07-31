@@ -3105,7 +3105,7 @@ local enum_rows = {
     {"aaeasollReportInterval",true,"report_interval",{"5m","10m","15m","20m","30m","1h"}},
     {"antiInterferenceZg204zx",true,"anti_interference",{"off","on"}},
     {"indicatorZg204zx",true,"indicator",{"off","on"}},
-    {"temperatureUnitZg204zx",true,"temperature_unit",{"C","F"}},
+    {"temperatureUnitZg204zx",true,"temperature_unit",{"celsius","fahrenheit"}},
     {"selfTestSmoke",true,"self_test",{"off","on"}},
     {"selfTestGas",true,"self_test",{"off","on"}},
     {"selfTestPresence",true,"self_test",{"off","on"}},

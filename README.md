@@ -42,7 +42,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Meters wonjj6768 | `ef00-meters-wonjj6768` | 62 |
 | EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 23 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 32 |
-| EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 29 |
+| EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 30 |
 | EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 61 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
 | EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 95 |
@@ -616,7 +616,7 @@ Development driver; report issues with hub logcat. Supports advanced EF00 presen
 </details>
 
 <details>
-<summary>EF00 Presence General 1 wonjj6768 (29 fingerprints)</summary>
+<summary>EF00 Presence General 1 wonjj6768 (30 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 1 of 2). See the README fingerprint table for the exact device list.
 
@@ -651,6 +651,7 @@ Development driver; report issues with hub logcat. Supports general EF00 presenc
 | `_TZE284_gnpflcoq` | `TS0601` | `safety-presence-gnpflcoq-illuminance-temp-humidity-battery` |
 | `_TZE284_ozf4e02o` | `TS0601` | `safety-presence-msa201-illuminance` |
 | `C6B7KM9` | `Excellux` | `safety-presence-excellux-zg301a` |
+| `HOBEIAN` | `ZG-204ZX` | `safety-presence-illuminance-temp-humidity-battery-zg204zx` |
 
 </details>
 

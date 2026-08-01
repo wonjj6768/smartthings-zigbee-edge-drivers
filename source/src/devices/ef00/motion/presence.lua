@@ -505,6 +505,7 @@ register_presence_definition(presence_model_zg204zx, ts0601_fingerprints({
   -- Z2M also matches this sensor by zigbeeModel "ZG-204ZX"; units reporting that
   -- model instead of TS0601 need the pair spelled out.
   "_TZE200_w0ap83qu:ZG-204ZX",
+  "HOBEIAN:ZG-204ZX",
 }))
 
 -- ══════════════════════════════════════════════════════════════

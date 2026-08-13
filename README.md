@@ -28,6 +28,8 @@ If you want a device to support an additional feature, please open an issue with
 
 Driver channel invite: https://bestow-regional.api.smartthings.com/invite/d4297OmXrQjo
 
+Search by manufacturer and model: https://wonjj6768.github.io/smartthings-zigbee-edge-drivers/
+
 Open the invite link with the Samsung account used by your SmartThings hub, enroll the hub, then install the needed driver from the channel.
 
 ## Drivers

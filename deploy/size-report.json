@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 507911,
+    "raw_size": 508705,
     "under_limit": true,
     "profiles": [
       "controllers-easyiot-sp1000",
@@ -78,7 +78,7 @@
   },
   {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 435604,
+    "raw_size": 436398,
     "under_limit": true,
     "profiles": [
       "fans-fan-light-switch",
@@ -112,7 +112,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 486917,
+    "raw_size": 487711,
     "under_limit": true,
     "profiles": [
       "lights-dimmer-power-voltage-current",
@@ -215,7 +215,7 @@
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 276340,
+    "raw_size": 277134,
     "under_limit": true,
     "profiles": [
       "covers-cover",
@@ -231,7 +231,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 404939,
+    "raw_size": 405733,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",

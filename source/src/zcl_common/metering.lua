@@ -99,6 +99,22 @@ local function load_metering(zcl)
       device:supports_capability_by_id(capability.ID, "main")
   end
 
+  local function supports_main_capability_id(device, capability_id)
+    if type(device) ~= "table" or type(capability_id) ~= "string" or capability_id == "" then
+      return false
+    end
+
+    local components = device.profile and device.profile.components or nil
+    local main = type(components) == "table" and components.main or nil
+    local capabilities_map = main and main.capabilities or nil
+    if type(capabilities_map) == "table" then
+      return capabilities_map[capability_id] ~= nil
+    end
+
+    return type(device.supports_capability_by_id) == "function" and
+      device:supports_capability_by_id(capability_id, "main")
+  end
+
   local function emit_main_event(device, event)
     if event == nil then
       return false
@@ -130,8 +146,12 @@ local function load_metering(zcl)
     return type(metatable) == "table" and type(metatable.__call) == "function"
   end
 
-  local function resolve_capability_attribute(metadata, attribute_name)
+  local function resolve_capability_attribute(device, metadata, attribute_name)
     if type(metadata) ~= "table" or type(attribute_name) ~= "string" or attribute_name == "" then
+      return nil, nil
+    end
+
+    if not supports_main_capability_id(device, metadata.capability_id) then
       return nil, nil
     end
 
@@ -342,6 +362,7 @@ local function load_metering(zcl)
   local function emit_power_poll_interval_state(device, zcl_clusters)
     local interval = resolved_power_poll_interval(device, zcl_clusters)
     local capability, attribute = resolve_capability_attribute(
+      device,
       POWER_POLL_INTERVAL_METADATA,
       POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.attribute_name or nil
     )
@@ -350,6 +371,7 @@ local function load_metering(zcl)
     end
 
     local _, range_attribute = resolve_capability_attribute(
+      device,
       POWER_POLL_INTERVAL_METADATA,
       POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.range_attribute_name or nil
     )
@@ -375,6 +397,7 @@ local function load_metering(zcl)
 
   local function emit_last_power_response_state(device)
     local capability, attribute = resolve_capability_attribute(
+      device,
       LAST_POWER_RESPONSE_TIME_METADATA,
       LAST_POWER_RESPONSE_TIME_METADATA and LAST_POWER_RESPONSE_TIME_METADATA.attribute_name or nil
     )
@@ -611,6 +634,10 @@ local function load_metering(zcl)
   end
 
   function zcl.emit_power_polling_state(device, zcl_clusters)
+    if select_primary_power_mapping(device, zcl_clusters) == nil then
+      return false
+    end
+
     local emitted = false
 
     emitted = emit_power_poll_interval_state(device, zcl_clusters) or emitted

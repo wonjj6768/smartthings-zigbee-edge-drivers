@@ -9,47 +9,62 @@
     :root{color-scheme:light dark;--bg:#f4f7fb;--card:#fff;--text:#142033;--muted:#64748b;--line:#dce4ee;--accent:#1769e0;--soft:#eaf2ff;--shadow:0 18px 50px rgba(24,42,70,.1)}
     @media(prefers-color-scheme:dark){:root{--bg:#0c1422;--card:#121d2d;--text:#edf4ff;--muted:#9aabc1;--line:#26364c;--accent:#73a9ff;--soft:#182d4b;--shadow:0 18px 50px rgba(0,0,0,.28)}}
     *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,var(--soft),transparent 34rem),var(--bg);color:var(--text);font-family:Inter,Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    main{width:min(960px,calc(100% - 32px));margin:auto;padding:64px 0 80px}header{margin-bottom:28px}h1{margin:0 0 10px;font-size:clamp(2rem,6vw,3.5rem);letter-spacing:-.05em}header p{margin:0;color:var(--muted);line-height:1.65}
+    main{width:min(960px,calc(100% - 32px));margin:auto;padding:64px 0 80px}header{position:relative;margin-bottom:28px;padding-right:130px}h1{margin:0 0 10px;font-size:clamp(2rem,6vw,3.5rem);letter-spacing:-.05em}header p{margin:0;color:var(--muted);line-height:1.65}.language{position:absolute;top:0;right:0;display:flex;padding:4px;border:1px solid var(--line);border-radius:12px;background:var(--card)}.language button{min-height:34px;padding:0 12px;border-radius:8px;background:transparent;color:var(--muted);font-size:.8rem}.language button[aria-pressed="true"]{background:var(--accent);color:#fff}
     .panel{padding:24px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:var(--shadow)}form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px}label{display:grid;gap:7px;color:var(--muted);font-size:.86rem;font-weight:700}
     input,button{min-height:48px;border-radius:12px;font:inherit}input{width:100%;padding:0 14px;border:1px solid var(--line);background:var(--card);color:var(--text);outline:none}input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}button{align-self:end;padding:0 22px;border:0;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}
     .meta{display:flex;justify-content:space-between;gap:16px;margin:18px 2px 0;color:var(--muted);font-size:.86rem}.status{margin:28px 2px 12px;color:var(--muted)}.results{display:grid;gap:12px}
     article{display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(190px,1fr) minmax(180px,.9fr);gap:18px;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}.driver{color:var(--accent);font-weight:850}.identity,.profile{min-width:0;overflow-wrap:anywhere}.identity strong{display:block;margin-bottom:4px}.profile{color:var(--muted);font-size:.88rem}.label{display:block;margin-bottom:5px;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
-    footer{margin-top:30px;color:var(--muted);font-size:.86rem}a{color:var(--accent)}@media(max-width:720px){main{padding-top:40px}form,article{grid-template-columns:1fr}button{width:100%}.meta{flex-direction:column}}
+    footer{margin-top:30px;color:var(--muted);font-size:.86rem}a{color:var(--accent)}@media(max-width:720px){main{padding-top:40px}header{padding:54px 0 0}.language{right:auto;left:0}form,article{grid-template-columns:1fr}form button{width:100%}.meta{flex-direction:column}}
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>Zigbee 드라이버 검색</h1>
-      <p>기기가 보고한 제조사와 모델을 입력하면 설치할 SmartThings Edge 드라이버를 찾습니다.<br>검색 결과는 실제 배포 fingerprint의 exact pair만 사용합니다.</p>
+      <div class="language" aria-label="Language"><button type="button" data-lang="ko" aria-pressed="true">한국어</button><button type="button" data-lang="en" aria-pressed="false">English</button></div>
+      <h1 id="page-title">Zigbee 드라이버 검색</h1>
+      <p id="intro">기기가 보고한 제조사와 모델을 입력하면 설치할 SmartThings Edge 드라이버를 찾습니다.<br>검색 결과는 실제 배포 fingerprint의 exact pair만 사용합니다.</p>
     </header>
     <section class="panel">
       <form id="search-form">
-        <label>제조사<input id="manufacturer" list="manufacturers" autocomplete="off" placeholder="예: HOBEIAN"></label>
-        <label>모델<input id="model" autocomplete="off" placeholder="예: ZG-204ZK"></label>
-        <button type="submit">검색</button>
+        <label><span id="manufacturer-label">제조사</span><input id="manufacturer" list="manufacturers" autocomplete="off" placeholder="예: HOBEIAN"></label>
+        <label><span id="model-label">모델</span><input id="model" autocomplete="off" placeholder="예: ZG-204ZK"></label>
+        <button id="search-button" type="submit">검색</button>
       </form>
       <datalist id="manufacturers"></datalist>
-      <div class="meta"><span id="index-meta">검색 인덱스를 불러오는 중…</span><span>대소문자 구분 없음 · 부분 검색 가능</span></div>
+      <div class="meta"><span id="index-meta">검색 인덱스를 불러오는 중…</span><span id="search-hint">대소문자 구분 없음 · 부분 검색 가능</span></div>
     </section>
     <p id="status" class="status" role="status">제조사 또는 모델을 입력하세요.</p>
     <section id="results" class="results" aria-live="polite"></section>
-    <footer><a href="https://bestow-regional.api.smartthings.com/invite/d4297OmXrQjo">SmartThings 채널 등록</a> · <a href="https://github.com/wonjj6768/smartthings-zigbee-edge-drivers">GitHub 소스</a></footer>
+    <footer><a id="channel-link" href="https://bestow-regional.api.smartthings.com/invite/d4297OmXrQjo">SmartThings 채널 등록</a> · <a id="github-link" href="https://github.com/wonjj6768/smartthings-zigbee-edge-drivers">GitHub 소스</a></footer>
   </main>
   <script>
-    const form=document.querySelector('#search-form'),manufacturerInput=document.querySelector('#manufacturer'),modelInput=document.querySelector('#model'),status=document.querySelector('#status'),results=document.querySelector('#results'),indexMeta=document.querySelector('#index-meta');let index=[];
+    const form=document.querySelector('#search-form'),manufacturerInput=document.querySelector('#manufacturer'),modelInput=document.querySelector('#model'),status=document.querySelector('#status'),results=document.querySelector('#results'),indexMeta=document.querySelector('#index-meta');let index=[],indexData=null;
+    const translations={
+      ko:{title:'Zigbee 드라이버 검색',description:'SmartThings Zigbee Edge 드라이버 제조사·모델 검색',intro:'기기가 보고한 제조사와 모델을 입력하면 설치할 SmartThings Edge 드라이버를 찾습니다.<br>검색 결과는 실제 배포 fingerprint의 exact pair만 사용합니다.',manufacturer:'제조사',model:'모델',manufacturerPlaceholder:'예: HOBEIAN',modelPlaceholder:'예: ZG-204ZK',search:'검색',loading:'검색 인덱스를 불러오는 중…',hint:'대소문자 구분 없음 · 부분 검색 가능',prompt:'제조사 또는 모델을 입력하세요.',none:'일치하는 exact fingerprint가 없습니다.',results:n=>`${n.toLocaleString()}개 결과`,limited:' · 상위 100개 표시',index:(m,p)=>`제조사 ${m.toLocaleString()}개 · exact pair ${p.toLocaleString()}개`,driver:'드라이버',identity:'제조사 / 모델',profile:'프로필',channel:'SmartThings 채널 등록',github:'GitHub 소스',loadError:e=>`검색 인덱스를 불러오지 못했습니다: ${e}`},
+      en:{title:'Zigbee Driver Search',description:'Search SmartThings Zigbee Edge drivers by manufacturer and model',intro:'Enter the manufacturer and model reported by your device to find the correct SmartThings Edge driver.<br>Results use exact pairs from the deployed fingerprints.',manufacturer:'Manufacturer',model:'Model',manufacturerPlaceholder:'e.g. HOBEIAN',modelPlaceholder:'e.g. ZG-204ZK',search:'Search',loading:'Loading the search index…',hint:'Case-insensitive · Partial matches supported',prompt:'Enter a manufacturer or model.',none:'No matching exact fingerprint was found.',results:n=>`${n.toLocaleString()} result${n===1?'':'s'}`,limited:' · Showing the first 100',index:(m,p)=>`${m.toLocaleString()} manufacturers · ${p.toLocaleString()} exact pairs`,driver:'Driver',identity:'Manufacturer / Model',profile:'Profile',channel:'Join SmartThings channel',github:'GitHub source',loadError:e=>`Could not load the search index: ${e}`}
+    };
+    let language=localStorage.getItem('driver-search-language')||((navigator.language||'').toLowerCase().startsWith('ko')?'ko':'en');
+    const t=key=>translations[language][key];
     const normalize=value=>value.trim().toLocaleLowerCase();
     const escapeHtml=value=>String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+    function applyLanguage(){
+      document.documentElement.lang=language;document.title=t('title');document.querySelector('meta[name="description"]').content=t('description');
+      document.querySelector('#page-title').textContent=t('title');document.querySelector('#intro').innerHTML=t('intro');document.querySelector('#manufacturer-label').textContent=t('manufacturer');document.querySelector('#model-label').textContent=t('model');manufacturerInput.placeholder=t('manufacturerPlaceholder');modelInput.placeholder=t('modelPlaceholder');document.querySelector('#search-button').textContent=t('search');document.querySelector('#search-hint').textContent=t('hint');document.querySelector('#channel-link').textContent=t('channel');document.querySelector('#github-link').textContent=t('github');
+      document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===language)));
+      indexMeta.textContent=indexData?t('index')(indexData.manufacturerCount,indexData.exactPairCount):t('loading');render();
+    }
     function render(){
       const manufacturer=normalize(manufacturerInput.value),model=normalize(modelInput.value),params=new URLSearchParams();
       if(manufacturerInput.value.trim())params.set('manufacturer',manufacturerInput.value.trim());if(modelInput.value.trim())params.set('model',modelInput.value.trim());history.replaceState(null,'',params.size?`?${params}`:location.pathname);
-      if(!manufacturer&&!model){status.textContent='제조사 또는 모델을 입력하세요.';results.innerHTML='';return}
+      if(!manufacturer&&!model){status.textContent=t('prompt');results.innerHTML='';return}
       const matches=index.filter(item=>(!manufacturer||item.manufacturer.toLocaleLowerCase().includes(manufacturer))&&(!model||item.model.toLocaleLowerCase().includes(model))).sort((a,b)=>{const ae=normalize(a.manufacturer)===manufacturer&&normalize(a.model)===model,be=normalize(b.manufacturer)===manufacturer&&normalize(b.model)===model;return Number(be)-Number(ae)||a.manufacturer.localeCompare(b.manufacturer)||a.model.localeCompare(b.model)}),visible=matches.slice(0,100);
-      status.textContent=matches.length===0?'일치하는 exact fingerprint가 없습니다.':`${matches.length.toLocaleString()}개 결과${matches.length>visible.length?' · 상위 100개 표시':''}`;
-      results.innerHTML=visible.map(item=>`<article><div><span class="label">Driver</span><span class="driver">${escapeHtml(item.driver)}</span></div><div class="identity"><span class="label">Manufacturer / Model</span><strong>${escapeHtml(item.manufacturer)}</strong>${escapeHtml(item.model)}</div><div class="profile"><span class="label">Profile</span>${escapeHtml(item.profile)}</div></article>`).join('');
+      status.textContent=matches.length===0?t('none'):`${t('results')(matches.length)}${matches.length>visible.length?t('limited'):''}`;
+      results.innerHTML=visible.map(item=>`<article><div><span class="label">${t('driver')}</span><span class="driver">${escapeHtml(item.driver)}</span></div><div class="identity"><span class="label">${t('identity')}</span><strong>${escapeHtml(item.manufacturer)}</strong>${escapeHtml(item.model)}</div><div class="profile"><span class="label">${t('profile')}</span>${escapeHtml(item.profile)}</div></article>`).join('');
     }
     form.addEventListener('submit',event=>{event.preventDefault();render()});manufacturerInput.addEventListener('input',render);modelInput.addEventListener('input',render);
-    fetch('./devices.json').then(response=>{if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json()}).then(data=>{index=data.items;indexMeta.textContent=`제조사 ${data.manufacturerCount.toLocaleString()}개 · exact pair ${data.exactPairCount.toLocaleString()}개`;document.querySelector('#manufacturers').innerHTML=data.manufacturers.map(value=>`<option value="${escapeHtml(value)}"></option>`).join('');const params=new URLSearchParams(location.search);manufacturerInput.value=params.get('manufacturer')||'';modelInput.value=params.get('model')||'';render()}).catch(error=>{status.textContent=`검색 인덱스를 불러오지 못했습니다: ${error.message}`});
+    document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{language=button.dataset.lang;localStorage.setItem('driver-search-language',language);applyLanguage()}));
+    applyLanguage();
+    fetch('./devices.json').then(response=>{if(!response.ok)throw new Error(`HTTP ${response.status}`);return response.json()}).then(data=>{indexData=data;index=data.items;indexMeta.textContent=t('index')(data.manufacturerCount,data.exactPairCount);document.querySelector('#manufacturers').innerHTML=data.manufacturers.map(value=>`<option value="${escapeHtml(value)}"></option>`).join('');const params=new URLSearchParams(location.search);manufacturerInput.value=params.get('manufacturer')||'';modelInput.value=params.get('model')||'';render()}).catch(error=>{status.textContent=t('loadError')(error.message)});
   </script>
 </body>
 </html>

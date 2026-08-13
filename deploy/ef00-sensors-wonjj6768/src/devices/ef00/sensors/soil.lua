@@ -451,6 +451,12 @@ datapoints = soil_t10_h1_air_illum_warning,
 "_TZE2841000000_0ints6wl",
 "_TZE284_yzr43ayq",
 }))
+register_sensor_definition({
+profile = "sensors-soil-temp-humidity-moisture-illuminance-battery-warning",
+datapoints = soil_t10_h1_air_illum_warning,
+}, {
+device_helpers.create_fingerprint("Arteco", "ZS-304Z"),
+})
 local soil_t10_h1_air_illum_fertility = {
 tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
 tuya.dp_humidity(101, { emit = emit.humidity(), scale = 1, read_only = true }),

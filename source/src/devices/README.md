@@ -110,6 +110,14 @@ Explicit fingerprint source of truth:
 3. Do not edit `deploy/**/fingerprints.yml`; run `python source/tools/build_dist.py` to generate it.
 4. Run `python source/tools/build_dist.py --check` for a non-mutating source/runtime consistency check.
 
+Z2M identity evidence must be interpreted per matching route:
+
+1. `zigbeeModel: ["MODEL"]` is model-only even when the same definition also contains `fingerprint`.
+2. `fingerprint: [{modelID: "MODEL"}]` is also model-only because it has no `manufacturerName`.
+3. Only a row containing both `manufacturerName` and `modelID`, or an equivalent helper such as `tuya.fingerprint(...)`, supplies an exact pair.
+4. Coexisting exact and model-only routes do not cancel each other. For example, HOBEIAN `ZG-204ZX` has a model-only `ZG-204ZX` route and an exact `_TZE200_w0ap83qu / TS0601` route.
+5. This driver still registers explicit `manufacturer + model` only. Convert a Z2M model-only route into an alias only after a real interview/database/unsupported-device log or a reliable exact signature confirms the manufacturer string.
+
 Mixed-device rule of thumb:
 
 1. If the primary state/control path is EF00 and only metering or battery comes from ZCL, keep it in `hybrid/`.

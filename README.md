@@ -45,8 +45,8 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 30 |
 | EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 61 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
-| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 95 |
-| EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 153 |
+| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 96 |
+| EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 154 |
 | EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 38 |
 | EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 111 |
 | EF00 Thermostat FCU wonjj6768 | `ef00-thermostat-fcu-wonjj6768` | 39 |
@@ -54,11 +54,11 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
 | EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 34 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 20 |
-| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 310 |
-| ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 40 |
-| ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 674 |
-| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 375 |
-| ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 595 |
+| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 311 |
+| ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 41 |
+| ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 685 |
+| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 390 |
+| ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 602 |
 
 ## Supported Fingerprints
 
@@ -753,7 +753,7 @@ Development driver; report issues with hub logcat. Supports EF00 presence sensor
 </details>
 
 <details>
-<summary>EF00 Safety wonjj6768 (95 fingerprints)</summary>
+<summary>EF00 Safety wonjj6768 (96 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.
 
@@ -849,6 +849,7 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE28C1000000_chbyv06x` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
 | `AOYAN` | `AY02SZ` | `safety-acceleration-contact-battery-zg102zm` |
 | `CAT0001` | `Excellux` | `safety-contact-vibration-battery-excellux` |
+| `HOBEIAN` | `ZG-223Z` | `safety-water-leak-illuminance-battery-zg223z` |
 | `HOBEIAN` | `ZG-226Z` | `safety-water-leak-alarm-battery-zg226z` |
 | `HOBEIAN` | `ZG-228Z` | `safety-acceleration-alarm-battery-zg228z` |
 | `HOBEIAN` | `ZG-229Z` | `safety-alarm-battery-zg229z` |
@@ -858,7 +859,7 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 </details>
 
 <details>
-<summary>EF00 Sensors wonjj6768 (153 fingerprints)</summary>
+<summary>EF00 Sensors wonjj6768 (154 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 temperature, humidity, illuminance, air quality, pressure, and soil sensors.
 
@@ -1010,6 +1011,7 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `A89G12C` | `Arteco` | `sensors-soil-temp-humidity-moisture-illuminance-ec-battery-fertility-zssf00` |
 | `AOYAN  ` | `AY-302Z` | `sensors-soil-temp-moisture-battery-dry` |
 | `AOYAN  ` | `AY-303Z` | `sensors-soil-temp-humidity-moisture-battery-dry` |
+| `Arteco` | `ZS-304Z` | `sensors-soil-temp-humidity-moisture-illuminance-battery-warning` |
 | `DHT0001` | `Excellux` | `sensors-temp-humidity-battery-excellux-dht` |
 | `DHTA001` | `Excellux` | `sensors-temp-humidity-battery-excellux-dht` |
 | `DTS1XM9` | `Excellux` | `sensors-water-quality-excellux-dts1xm9` |
@@ -1428,7 +1430,7 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 </details>
 
 <details>
-<summary>ZCL Controls wonjj6768 (310 fingerprints)</summary>
+<summary>ZCL Controls wonjj6768 (311 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.
 
@@ -1732,6 +1734,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `HOBEIAN` | `ZG-101ZL` | `buttons-button-1-battery-operation-mode-remote-action` |
 | `MLI` | `Remote Control` | `controllers-dimming-remote-action` |
 | `Namron` | `4512772` | `buttons-button-4-battery-remote-action` |
+| `Namron AS` | `4512793` | `buttons-button-3-battery` |
 | `Shelly` | `1` | `buttons-shelly-one-input` |
 | `Shelly` | `BLU Button Tough 1 ZB` | `buttons-button-1-battery-remote-action` |
 | `Shelly` | `BLU RC Button 4 ZB` | `buttons-button-4-battery-remote-action` |
@@ -1748,7 +1751,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 </details>
 
 <details>
-<summary>ZCL Covers wonjj6768 (40 fingerprints)</summary>
+<summary>ZCL Covers wonjj6768 (41 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL curtains, blinds, shades, and cover controllers.
 
@@ -1780,6 +1783,7 @@ Development driver; report issues with hub logcat. Supports ZCL curtains, blinds
 | `_TZ3210_xbpt8ewc` | `TS130F` | `covers-cover` |
 | `_TZB000_42ha4rsc` | `TS030F` | `covers-cover-battery` |
 | `_TZE200_9caxna4s` | `TS0301` | `covers-cover-battery` |
+| `Aqara` | `lumi.curtain.acn04` | `covers-cover` |
 | `eWeLink` | `AM25C-1-25-ES-E-Z` | `covers-cover-battery` |
 | `eWeLink` | `CK-MG22-Z310EE07DOOYA-01(7015)` | `covers-cover-battery` |
 | `eWeLink` | `MYDY25Z-1` | `covers-cover-battery` |
@@ -1798,7 +1802,7 @@ Development driver; report issues with hub logcat. Supports ZCL curtains, blinds
 </details>
 
 <details>
-<summary>ZCL Lights wonjj6768 (674 fingerprints)</summary>
+<summary>ZCL Lights wonjj6768 (685 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL lights, dimmers, light controllers, and fan devices.
 
@@ -1966,6 +1970,13 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `_TZB210_yatkpuha` | `TS0505B` | `lights-color-temperature-color` |
 | `_TZB210_zdvrsts8` | `TS0503B` | `lights-color` |
 | `_TZB210_zmppwawa` | `TS0505B` | `lights-color-temperature-color` |
+| `Aqara` | `lumi.dimmer.acn004` | `lights-color-temperature` |
+| `Aqara` | `lumi.light.acn003` | `lights-color-temperature` |
+| `Aqara` | `lumi.light.acn006` | `lights-color-temperature` |
+| `Aqara` | `lumi.light.acn026` | `lights-color-temperature` |
+| `Aqara` | `lumi.light.acn040` | `lights-color-temperature` |
+| `Aqara` | `lumi.light.acn128` | `lights-color-temperature` |
+| `Aqara` | `lumi.light.acn132` | `lights-color-temperature-color` |
 | `Astuta/ZB-CCT` | `CCT Light` | `lights-color-temperature` |
 | `Candeo` | `C-ZB-DM204` | `lights-dimmer` |
 | `Candeo` | `C-ZB-DM204V2` | `lights-dimmer-power-voltage-current` |
@@ -1986,7 +1997,9 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `Candeo` | `C203` | `lights-dimmer` |
 | `Candeo` | `C204` | `lights-dimmer` |
 | `Candeo` | `C210` | `lights-dimmer` |
+| `Candeo` | `Candeo Zigbee Dimmer` | `lights-dimmer` |
 | `Candeo` | `Dimmer-Switch-ZB3.0` | `lights-dimmer` |
+| `Candeo` | `HK-DIM-A` | `lights-dimmer` |
 | `Candeo` | `HK-LN-DIM-A` | `lights-dimmer` |
 | `CTM Lyng` | `CTM_DimmerPille` | `lights-dimmer` |
 | `DOMRAEM` | `DIMMER` | `lights-dimmer` |
@@ -2268,6 +2281,7 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `Innr` | `RSL 115` | `lights-dimmer` |
 | `Innr` | `ST 110` | `lights-dimmer` |
 | `Innr` | `UC 110` | `lights-dimmer` |
+| `KURVIA` | `ZB-CL01` | `lights-color-temperature-color` |
 | `LDS` | `ZBT-CCTLight-GU100904` | `lights-color-temperature` |
 | `LEDVANCE` | `A60 DIM T` | `lights-dimmer` |
 | `LEDVANCE` | `A60 FIL DIM T` | `lights-dimmer` |
@@ -2476,13 +2490,14 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 | `Third Reality, Inc` | `3RSL011Z` | `lights-color-temperature` |
 | `Third Reality, Inc` | `3RSL012Z` | `lights-color-temperature` |
 | `YSRSAI` | `ZB-CL01` | `lights-color-temperature-color` |
+| `YSRSAI` | `ZB-CL03` | `lights-color-temperature-color` |
 | `ZB/Ajax Online` | `CCT Light` | `lights-color-temperature` |
 | `ZigBee/CCT` | `CCT Light` | `lights-color-temperature` |
 
 </details>
 
 <details>
-<summary>ZCL Sensors wonjj6768 (375 fingerprints)</summary>
+<summary>ZCL Sensors wonjj6768 (390 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.
 
@@ -2691,14 +2706,17 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `easyiot` | `ZB-GW04` | `network-repeater` |
 | `easyiot` | `ZB-GW04-1v1` | `network-repeater` |
 | `easyiot` | `ZB-GW04-1v2` | `network-repeater` |
+| `eCozy` | `Thermostat` | `thermostats-ecozy-thermostat` |
 | `Espressif` | `ZigbeeRangeExtender` | `network-repeater` |
 | `Eurotronic` | `SPZB0001` | `thermostats-thermostat-battery` |
+| `eWeLink` | `CK-BL702-ROUTER-01(7018)` | `network-repeater` |
 | `eWeLink` | `CK-TLSR8656-SS5-01(7002)` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
 | `eWeLink` | `CK-TLSR8656-SS5-01(7003)` | `safety-contact-battery-low-battery-voltage` |
 | `eWeLink` | `CK-TLSR8656-SS5-01(7014)` | `sensors-temp-humidity-battery-voltage` |
 | `eWeLink` | `CK-TLSR8656-SS5-01(7019)` | `safety-water-leak-battery-low-battery` |
 | `eWeLink` | `SNZB-02` | `sensors-temp-humidity-battery-voltage` |
 | `eWeLink` | `SNZB-04` | `safety-contact-battery-low-battery-voltage` |
+| `eWeLink` | `SNZB-05` | `safety-water-leak-battery-low-battery` |
 | `Fireangel` | `Alarm_SD_Device` | `safety-co-detector-tamper-battery-low` |
 | `Frient` | `HMSZB-120` | `sensors-temp-humidity-battery-voltage` |
 | `frient A/S` | `SIRZB-112` | `safety-siren-frient-sirzb112` |
@@ -2707,7 +2725,11 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HEIMAN` | `358e4e3e03c644709905034dae81433e` | `safety-gas-detector-tamper-battery-low` |
 | `HEIMAN` | `98293058552c49f38ad0748541ee96ba` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `b5db59bfd81e4f1f95dc57fdbba17931` | `safety-smoke-battery-low-battery` |
+| `Heiman` | `b5db59bfd81e4f1f95dc57fdbba17931` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `c3442b4ac59b4ba1a83119d938f283ab` | `safety-smoke-battery-low-battery` |
+| `Heiman` | `CO_CTPG` | `safety-co-detector-battery-low-battery` |
+| `Heiman` | `CO_V15` | `safety-co-detector-battery-low-battery` |
+| `Heiman` | `CO_V16` | `safety-co-detector-battery-low-battery` |
 | `HEIMAN` | `COSensor-EF-3.0` | `safety-co-detector-battery-low-battery` |
 | `HEIMAN` | `COSensor-EM` | `safety-co-detector-battery-low-battery` |
 | `HEIMAN` | `COSensor-N` | `safety-co-detector-battery-low-battery` |
@@ -2721,6 +2743,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HEIMAN` | `DoorSensor-N-3.0` | `safety-contact-tamper-battery-low-battery` |
 | `HEIMAN` | `FB56-SMF02HM1.4` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `GAS_V15` | `safety-gas-detector-tamper-battery-low` |
+| `Heiman` | `GAS_V15` | `safety-gas-detector-tamper-battery-low` |
 | `HEIMAN` | `GASSensor-EF-3.0` | `safety-gas-detector-tamper-battery-low` |
 | `HEIMAN` | `GASSensor-EFR-3.0` | `safety-gas-detector-tamper-battery-low` |
 | `HEIMAN` | `GASSensor-EM` | `safety-gas-detector-tamper-battery-low` |
@@ -2742,7 +2765,9 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HEIMAN` | `HY0022` | `safety-gas-detector-tamper-battery-low` |
 | `HEIMAN` | `PIR_TPV12` | `safety-motion-tamper-battery-battery-low` |
 | `HEIMAN` | `PIR_TPV13` | `safety-motion-tamper-battery-low` |
+| `Heiman` | `PIR_TPV13` | `safety-motion-tamper-battery-low` |
 | `HEIMAN` | `PIR_TPV16` | `safety-motion-tamper-battery-low` |
+| `Heiman` | `PIR_TPV16` | `safety-motion-tamper-battery-low` |
 | `HEIMAN` | `PIRILLSensor-EF-3.0` | `safety-motion-battery` |
 | `HEIMAN` | `PIRSensor-EF-3.0` | `safety-motion-tamper-battery-low` |
 | `HEIMAN` | `PIRSensor-EM` | `safety-motion-tamper-battery-low` |
@@ -2750,9 +2775,12 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HEIMAN` | `PIRSensor-N-3.0` | `safety-motion-tamper-battery-low` |
 | `HEIMAN` | `RH3070` | `safety-gas-detector-tamper-battery-low` |
 | `HEIMAN` | `SMOK_HV14` | `safety-smoke-battery-low-battery` |
+| `Heiman` | `SMOK_HV14` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `SMOK_V15` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `SMOK_V16` | `safety-smoke-battery-low-battery` |
+| `Heiman` | `SMOK_V16` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `SMOK_YDLV10` | `safety-smoke-battery-low-battery` |
+| `Heiman` | `SMOK_YDLV10` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `SMOK_YDLV10N` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `SmokeSensor-EF-3.0` | `safety-smoke-battery-low-battery` |
 | `HEIMAN` | `Smokesensor-EF2-3.0` | `safety-smoke-battery-low-battery` |
@@ -2766,6 +2794,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `HEIMAN` | `Vibration-EF-3.0` | `safety-acceleration-tamper-battery-low-battery` |
 | `HEIMAN` | `Vibration-EF_3.0` | `safety-acceleration-tamper-battery-low-battery` |
 | `HEIMAN` | `Vibration-N` | `safety-acceleration-tamper-battery-low-battery` |
+| `Heiman` | `WarningDevice` | `safety-alarm-battery` |
 | `HEIMAN` | `WATER_TPV13` | `safety-water-leak-tamper-battery-low-battery` |
 | `HEIMAN` | `WaterSensor-EF-3.0` | `safety-water-leak-tamper-battery-low-battery` |
 | `HEIMAN` | `WaterSensor-EM` | `safety-water-leak-tamper-battery-low-battery` |
@@ -2855,6 +2884,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `Third Reality, Inc` | `3RWS0218Z` | `safety-water-leak-battery` |
 | `Third Reality, Inc` | `3RWS18BZ` | `safety-water-leak-battery-low-battery-3rws18bz-pending` |
 | `Trust` | `SmokeSensor-EM` | `safety-smoke-battery-low-battery` |
+| `Trust` | `ZSDR-850` | `safety-smoke-battery-low-battery` |
 | `TubesZB` | `BM24` | `network-repeater` |
 | `TubesZB` | `MGM24` | `network-repeater` |
 | `TUYATEC-ktge2vqt` | `RH3001` | `safety-contact-tamper-battery-low-battery` |
@@ -2867,7 +2897,7 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 </details>
 
 <details>
-<summary>ZCL Switch wonjj6768 (595 fingerprints)</summary>
+<summary>ZCL Switch wonjj6768 (602 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL switches, plugs, DIN rail relays, and valve-like devices.
 
@@ -3282,6 +3312,12 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `_TZ33000_d9yfgzur` | `TS0003` | `switches-switch-3` |
 | `AduroSmart ERIA` | `ONOFF_METER_RELAY` | `plugs-switch-power-voltage-current` |
 | `AOYAN  ` | `TS011F` | `plugs-switch-power-energy-voltage-current` |
+| `Aqara` | `lumi.switch.acn047` | `switches-switch-2` |
+| `Aqara` | `lumi.switch.acn048` | `switches-switch-1` |
+| `Aqara` | `lumi.switch.acn049` | `switches-switch-2` |
+| `Aqara` | `lumi.switch.acn055` | `switches-switch-3` |
+| `Aqara` | `lumi.switch.acn057` | `switches-switch-2` |
+| `Aqara` | `lumi.switch.acn059` | `switches-switch-3` |
 | `AVATTO` | `TS0004_1` | `switches-switch-4` |
 | `AVATTO` | `ZBTS60-04` | `switches-switch-4` |
 | `AVATTO` | `ZWOT12` | `switches-switch-4` |
@@ -3320,6 +3356,7 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `HEIMAN` | `HS2SW3A-EF-3.0` | `switches-switch-3-device-temperature` |
 | `HEIMAN` | `HS2SW3A-EFR-3.0` | `switches-switch-3-device-temperature` |
 | `HEIMAN` | `SmartPlug` | `plugs-switch-power-energy-voltage-current` |
+| `Heiman` | `SmartPlug` | `plugs-switch-power-energy-voltage-current` |
 | `HEIMAN` | `SmartPlug-EF-3.0` | `plugs-switch-power-energy-voltage-current` |
 | `HEIMAN` | `SmartPlug-N` | `plugs-switch-power-voltage-current` |
 | `HOBEIAN` | `ZG-301Z-2CH` | `switches-switch-2` |

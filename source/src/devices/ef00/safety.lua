@@ -1433,6 +1433,10 @@ register_device_definition(water_illum_battery_model_zg_223z, device_helpers.cre
   "_TZE200_2pddnnrk",
 }))
 
+register_device_definition(water_illum_battery_model_zg_223z, {
+  device_helpers.create_fingerprint("HOBEIAN", "ZG-223Z"),
+})
+
 -- ══════════════════════════════════════════════════════════════
 -- 6-1. vibration: 진동 + 접점 + 배터리
 -- Z2M: _TZE200_kzm5w4iz (TS0601_vibration_sensor)

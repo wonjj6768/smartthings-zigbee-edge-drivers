@@ -108,6 +108,12 @@ register_device_definition(cct_light, device_helpers.create_fingerprints("TS0502
 }))
 
 register_device_definition(cct_light, {
+  device_helpers.create_fingerprint("Aqara", "lumi.dimmer.acn004"),
+  device_helpers.create_fingerprint("Aqara", "lumi.light.acn003"),
+  device_helpers.create_fingerprint("Aqara", "lumi.light.acn006"),
+  device_helpers.create_fingerprint("Aqara", "lumi.light.acn026"),
+  device_helpers.create_fingerprint("Aqara", "lumi.light.acn040"),
+  device_helpers.create_fingerprint("Aqara", "lumi.light.acn128"),
   device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn003"),
   device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn004"),
   device_helpers.create_fingerprint("LUMI", "lumi.dimmer.acn005"),
@@ -160,6 +166,7 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
 }))
 
 register_device_definition(color_cct_light, {
+  device_helpers.create_fingerprint("Aqara", "lumi.light.acn132"),
   device_helpers.create_fingerprint("LUMI", "lumi.light.acn132"),
   device_helpers.create_fingerprint("LUMI", "lumi.light.rgbac1"),
 })
@@ -243,6 +250,8 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
 
 -- Z2M exact-only retail/light families not covered by Tuya TS050x model IDs.
 register_device_definition(dimmer_light, {
+  device_helpers.create_fingerprint("Candeo", "Candeo Zigbee Dimmer"),
+  device_helpers.create_fingerprint("Candeo", "HK-DIM-A"),
   device_helpers.create_fingerprint("Candeo", "Dimmer-Switch-ZB3.0"),
   device_helpers.create_fingerprint("HZC", "Dimmer-Switch-ZB3.0"),
   device_helpers.create_fingerprint("Heatit Controls AB", "Dimmer-Switch-ZB3.0"),
@@ -323,7 +332,9 @@ register_device_definition(color_light, {
 
 register_device_definition(color_cct_light, {
   device_helpers.create_fingerprint("_TZ3210_f0byevky", "TS0503B"),
+  device_helpers.create_fingerprint("KURVIA", "ZB-CL01"),
   device_helpers.create_fingerprint("YSRSAI", "ZB-CL01"),
+  device_helpers.create_fingerprint("YSRSAI", "ZB-CL03"),
   device_helpers.create_fingerprint([[eWeLi\u0001\u0010]], "ZB-CL01"),
   device_helpers.create_fingerprint("eWeLight", "ZB-CL01"),
   device_helpers.create_fingerprint("eWeLink", "ZB-CL01"),

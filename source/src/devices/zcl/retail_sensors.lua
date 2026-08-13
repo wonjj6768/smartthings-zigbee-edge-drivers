@@ -538,6 +538,7 @@ register_aliases(water_sensor, {
 
 register_aliases(water_battery_low_battery_sensor, {
   device_helpers.create_fingerprint("eWeLink", "CK-TLSR8656-SS5-01(7019)"),
+  device_helpers.create_fingerprint("eWeLink", "SNZB-05"),
 })
 
 register_aliases(temp_humidity_sensor, {

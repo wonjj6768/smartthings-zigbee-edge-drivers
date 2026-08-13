@@ -1,4 +1,8 @@
 zigbeeManufacturer:
+  - id: "fp_edff781e3c"
+    manufacturer: "Aqara"
+    model: "lumi.curtain.acn04"
+    deviceProfileName: "covers-cover"
   - id: "fp_4699c8ed13"
     manufacturer: "IKEA of Sweden"
     model: "FYRTUR block-out roller blind"

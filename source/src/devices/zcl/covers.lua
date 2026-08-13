@@ -97,6 +97,7 @@ register_device_definition(ts130f_cover, device_helpers.create_fingerprints("TS1
 }))
 
 register_device_definition(ts130f_cover, {
+  device_helpers.create_fingerprint("Aqara", "lumi.curtain.acn04"),
   device_helpers.create_fingerprint("LUMI", "lumi.curtain.acn04"),
   device_helpers.create_fingerprint("LUMI", "lumi.curtain.acn018"),
 })

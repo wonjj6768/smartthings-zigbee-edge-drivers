@@ -516,6 +516,7 @@ device_helpers.create_fingerprint("LUMI", "lumi.plug.acn005"),
 device_helpers.create_fingerprint("LUMI", "lumi.plug.sacn03"),
 })
 register_device_definition(single_switch, {
+device_helpers.create_fingerprint("Aqara", "lumi.switch.acn048"),
 device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln1"),
 device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln1.aq1"),
 device_helpers.create_fingerprint("LUMI", "lumi.ctrl_neutral1"),
@@ -540,6 +541,9 @@ device_helpers.create_fingerprint("LUMI", "lumi.switch.n1acn1"),
 device_helpers.create_fingerprint("LUMI", "lumi.switch.n1aeu1"),
 })
 register_device_definition(bound_dual_switch, {
+device_helpers.create_fingerprint("Aqara", "lumi.switch.acn047"),
+device_helpers.create_fingerprint("Aqara", "lumi.switch.acn049"),
+device_helpers.create_fingerprint("Aqara", "lumi.switch.acn057"),
 device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln2"),
 device_helpers.create_fingerprint("LUMI", "lumi.ctrl_ln2.aq1"),
 device_helpers.create_fingerprint("LUMI", "lumi.ctrl_neutral2"),
@@ -561,6 +565,8 @@ device_helpers.create_fingerprint("LUMI", "lumi.switch.n2acn1"),
 device_helpers.create_fingerprint("LUMI", "lumi.switch.n2aeu1"),
 })
 register_device_definition(bound_triple_switch, {
+device_helpers.create_fingerprint("Aqara", "lumi.switch.acn055"),
+device_helpers.create_fingerprint("Aqara", "lumi.switch.acn059"),
 device_helpers.create_fingerprint("LUMI", "lumi.switch.acn031"),
 device_helpers.create_fingerprint("LUMI", "lumi.switch.acn040"),
 device_helpers.create_fingerprint("LUMI", "lumi.switch.acn054"),

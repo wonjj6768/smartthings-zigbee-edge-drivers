@@ -1,5 +1,6 @@
 local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
+local capabilities = require "st.capabilities"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local function build_thermostat(profile, options)
 options = options or {}
@@ -65,6 +66,34 @@ humidity = true,
 system_mode = false,
 temperature_measurement = true,
 })
+local ecozy_thermostat = build_thermostat("thermostats-ecozy-thermostat", {
+battery = true,
+endpoint = 3,
+})
+ecozy_thermostat.thermostat_supported_modes = { "off", "auto", "heat" }
+ecozy_thermostat.heating_setpoint_range = { minimum = 7, maximum = 30, step = 1, unit = "C" }
+ecozy_thermostat.runtime_start = function(device)
+device:emit_component_event(
+{ id = "main" },
+capabilities.thermostatMode.supportedThermostatModes(
+ecozy_thermostat.thermostat_supported_modes,
+{ visibility = { displayed = false } }
+)
+)
+device:emit_component_event(
+{ id = "main" },
+capabilities.thermostatHeatingSetpoint.heatingSetpointRange({
+value = {
+minimum = ecozy_thermostat.heating_setpoint_range.minimum,
+maximum = ecozy_thermostat.heating_setpoint_range.maximum,
+step = ecozy_thermostat.heating_setpoint_range.step,
+},
+unit = ecozy_thermostat.heating_setpoint_range.unit,
+})
+)
+end
+ecozy_thermostat.zcl_clusters[#ecozy_thermostat.zcl_clusters + 1] = zcl.local_temperature_calibration({ endpoint = 3 })
+ecozy_thermostat.zcl_clusters[#ecozy_thermostat.zcl_clusters + 1] = zcl.pi_heating_demand({ endpoint = 3 })
 local namron_edge_thermostat = build_thermostat("thermostats-thermostat-humidity-power-energy-current", {
 humidity = true,
 power = true,
@@ -124,6 +153,9 @@ device_helpers.create_fingerprint("computime", "PUMM01102"),
 })
 register_device_definition(schneider_room_thermostat, {
 device_helpers.create_fingerprint("Schneider Electric", "Thermostat"),
+})
+register_device_definition(ecozy_thermostat, {
+device_helpers.create_fingerprint("eCozy", "Thermostat"),
 })
 register_device_definition(schneider_heating_thermostat, {
 device_helpers.create_fingerprint("Schneider Electric", "CCTFR6700"),

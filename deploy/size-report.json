@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 505568,
+    "raw_size": 507911,
     "under_limit": true,
     "profiles": [
       "controllers-easyiot-sp1000",
@@ -69,7 +69,7 @@
       "valves-valve-battery",
       "valves-valve-indicator-mode"
     ],
-    "fingerprints": 595,
+    "fingerprints": 602,
     "custom_capabilities": {
       "numeric": 14,
       "enum": 28,
@@ -78,7 +78,7 @@
   },
   {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 432496,
+    "raw_size": 435604,
     "under_limit": true,
     "profiles": [
       "fans-fan-light-switch",
@@ -103,7 +103,7 @@
       "lights-dimmer-ts110-power-switch",
       "lights-dimmer-ts110-power-switch-minmax"
     ],
-    "fingerprints": 674,
+    "fingerprints": 685,
     "custom_capabilities": {
       "numeric": 12,
       "enum": 8,
@@ -112,7 +112,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 478994,
+    "raw_size": 486917,
     "under_limit": true,
     "profiles": [
       "lights-dimmer-power-voltage-current",
@@ -197,6 +197,7 @@
       "sensors-temp-humidity-pressure-battery-voltage",
       "sensors-weather-temp-humidity-pressure-illuminance-battery-ws90",
       "thermostats-centralite-thermostat",
+      "thermostats-ecozy-thermostat",
       "thermostats-fcu-thermostat",
       "thermostats-hive-dual-thermostat-pending",
       "thermostats-schneider-heating-power-energy-pending",
@@ -205,23 +206,23 @@
       "thermostats-thermostat-battery",
       "thermostats-thermostat-humidity-power-energy-current"
     ],
-    "fingerprints": 375,
+    "fingerprints": 390,
     "custom_capabilities": {
-      "numeric": 18,
+      "numeric": 20,
       "enum": 7,
       "text": 2
     }
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 275156,
+    "raw_size": 276340,
     "under_limit": true,
     "profiles": [
       "covers-cover",
       "covers-cover-2",
       "covers-cover-battery"
     ],
-    "fingerprints": 40,
+    "fingerprints": 41,
     "custom_capabilities": {
       "numeric": 0,
       "enum": 0,
@@ -230,7 +231,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 400220,
+    "raw_size": 404939,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -277,7 +278,7 @@
       "security-remotes-heiman-partial-action-battery",
       "security-remotes-sos-battery-voltage"
     ],
-    "fingerprints": 310,
+    "fingerprints": 311,
     "custom_capabilities": {
       "numeric": 0,
       "enum": 8,
@@ -513,7 +514,7 @@
   },
   {
     "name": "ef00-sensors-wonjj6768",
-    "raw_size": 457383,
+    "raw_size": 457758,
     "under_limit": true,
     "profiles": [
       "sensors-aq-co2",
@@ -568,7 +569,7 @@
       "sensors-water-meter-ultrasonic-ajlu4cud",
       "sensors-water-quality-excellux-dts1xm9"
     ],
-    "fingerprints": 153,
+    "fingerprints": 154,
     "custom_capabilities": {
       "numeric": 131,
       "enum": 70,
@@ -699,7 +700,7 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 396671,
+    "raw_size": 396938,
     "under_limit": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -749,7 +750,7 @@
       "safety-water-leak-battery",
       "safety-water-leak-illuminance-battery-zg223z"
     ],
-    "fingerprints": 95,
+    "fingerprints": 96,
     "custom_capabilities": {
       "numeric": 35,
       "enum": 105,

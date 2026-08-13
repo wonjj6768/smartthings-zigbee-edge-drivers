@@ -8,7 +8,9 @@ local data_types = require "st.zigbee.data_types"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local CLUSTER_SCENES = 0x0005
 local CLUSTER_MULTI_STATE_INPUT = 0x0012
+local CLUSTER_NAMRON_PRIVATE_E004 = 0xE004
 local ATTR_PRESENT_VALUE = 0x0055
+local NAMRON_SIMPLIFY_PENDING_PRESS_FIELD = "__namron_simplify_pending_press"
 local SLACKY_ACTIONS = {
 [0] = "hold",
 [1] = "single",
@@ -165,6 +167,54 @@ if action == nil then
 return nil, nil, true
 end
 return action .. "_l" .. tostring(source_endpoint), component_for_button(source_endpoint), true
+end
+local function namron_4512793_action(zb_rx, cluster_id, command_id, source_endpoint, device)
+if cluster_id ~= CLUSTER_NAMRON_PRIVATE_E004 or command_id ~= 0x00 or source_endpoint ~= 1 then
+return nil, nil, true
+end
+local body = zb_rx and zb_rx.body and zb_rx.body.zcl_body or nil
+local body_bytes = type(body) == "table" and body.body_bytes or nil
+if type(body_bytes) ~= "string" or #body_bytes < 2 then
+return nil, nil, true
+end
+local physical_button = string.byte(body_bytes, #body_bytes - 1)
+local raw_action = string.byte(body_bytes, #body_bytes)
+if physical_button == nil or physical_button < 1 or physical_button > 6 then
+return nil, nil, true
+end
+local rocker = math.floor((physical_button + 1) / 2)
+local direction = physical_button % 2 == 1 and "up" or "down"
+local component_id = component_for_button(rocker)
+if raw_action == 0 then
+if type(device) == "table" and type(device.set_field) == "function" then
+device:set_field(NAMRON_SIMPLIFY_PENDING_PRESS_FIELD, physical_button, { persist = false })
+end
+return direction .. "_press", component_id, true
+end
+if raw_action == 1 then
+local pending_press = type(device) == "table" and type(device.get_field) == "function" and
+device:get_field(NAMRON_SIMPLIFY_PENDING_PRESS_FIELD) or nil
+if pending_press == physical_button and type(device) == "table" and type(device.set_field) == "function" then
+device:set_field(NAMRON_SIMPLIFY_PENDING_PRESS_FIELD, nil, { persist = false })
+end
+if pending_press == physical_button then
+return nil, component_id, true
+end
+if pending_press ~= nil then
+if type(device) == "table" and type(device.set_field) == "function" then
+device:set_field(NAMRON_SIMPLIFY_PENDING_PRESS_FIELD, nil, { persist = false })
+end
+return nil, component_id, true
+end
+return direction .. "_press", component_id, true
+end
+if raw_action == 2 then
+if type(device) == "table" and type(device.set_field) == "function" then
+device:set_field(NAMRON_SIMPLIFY_PENDING_PRESS_FIELD, nil, { persist = false })
+end
+return direction .. "_hold", component_id, true
+end
+return nil, component_id, true
 end
 local function shelly_button_tough_action(_, cluster_id, command_id, source_endpoint)
 local endpoint_action = {
@@ -358,6 +408,9 @@ button_actions = { "pushed", "double", "held" },
 local namron_4512772 = build_standard_action_remote("buttons-button-4-battery-remote-action", 4, {
 button_actions = { "up", "down", "up_hold", "down_hold" },
 })
+local namron_4512793 = build_standard_action_remote("buttons-button-3-battery", 3, {
+button_actions = { "up", "down", "up_hold", "down_hold" },
+})
 remote_1.configure = bind_on_off_endpoints(1)
 remote_4.configure = bind_on_off_endpoints(4)
 remote_6.configure = bind_on_off_endpoints(6)
@@ -457,6 +510,44 @@ brightness_move_down_l2 = "down_hold",
 brightness_move_down_l3 = "down_hold",
 brightness_move_down_l4 = "down_hold",
 }
+namron_4512793.zcl_clusters = {
+zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION, zcl.ATTR_BATTERY_PERCENTAGE_REMAINING, {
+name = "battery",
+endpoint = 1,
+emit = emit.battery(),
+scale = 2,
+}),
+}
+namron_4512793.standard_command_action_resolver = namron_4512793_action
+namron_4512793.standard_action_button_events = {
+up_press = "up",
+down_press = "down",
+up_hold = "up_hold",
+down_hold = "down_hold",
+}
+zcl.register_cluster_command_handler(CLUSTER_NAMRON_PRIVATE_E004, 0x00, function(device, preset, zb_rx)
+if preset ~= namron_4512793 then
+return
+end
+local action, component_id = namron_4512793_action(
+zb_rx,
+CLUSTER_NAMRON_PRIVATE_E004,
+0x00,
+1,
+device
+)
+local button_value = action and namron_4512793.standard_action_button_events[action] or nil
+local builder = button_value and capabilities.button.button[button_value] or nil
+if type(builder) ~= "function" then
+return
+end
+if type(device.supports_capability_by_id) == "function" and
+not device:supports_capability_by_id(capabilities.button.ID, component_id) then
+return
+end
+device:emit_component_event({ id = component_id }, builder({ state_change = true }))
+battery_refresh.schedule_after_button(device)
+end)
 shelly_remote_control.zcl_clusters = {
 zcl.battery(),
 }
@@ -548,6 +639,9 @@ device_helpers.create_fingerprint("eWeLink", "SNZB-01"),
 })
 register_device_definition(namron_4512772, {
 device_helpers.create_fingerprint("Namron", "4512772"),
+})
+register_device_definition(namron_4512793, {
+device_helpers.create_fingerprint("Namron AS", "4512793"),
 })
 register_device_definition(knob_remote, device_helpers.create_fingerprints("TS004F", {
 "_TZ3000_qja6nq5z",

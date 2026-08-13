@@ -30,6 +30,7 @@ register_device_definition(repeater, device_helpers.create_fingerprints("TS0001"
 }))
 register_device_definition(repeater, {
 device_helpers.create_fingerprint("Aeotec", "ZGA008"),
+device_helpers.create_fingerprint("eWeLink", "CK-BL702-ROUTER-01(7018)"),
 device_helpers.create_fingerprint("Espressif", "ZigbeeRangeExtender"),
 device_helpers.create_fingerprint("NabuCasa", "SkyConnect"),
 device_helpers.create_fingerprint("NabuCasa", "ZBT-2"),

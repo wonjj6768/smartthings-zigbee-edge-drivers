@@ -1209,6 +1209,9 @@ register_device_definition(water_illum_battery_model_zg_223z, device_helpers.cre
 "_TZE200_u6x1zyv2",
 "_TZE200_2pddnnrk",
 }))
+register_device_definition(water_illum_battery_model_zg_223z, {
+device_helpers.create_fingerprint("HOBEIAN", "ZG-223Z"),
+})
 local vibration = {
 profile = "safety-acceleration-contact-battery",
 tuya.dp_contact(1, { emit = emit.contact(), inverted = true }),

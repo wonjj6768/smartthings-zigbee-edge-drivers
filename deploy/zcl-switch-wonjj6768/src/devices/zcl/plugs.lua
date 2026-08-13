@@ -493,6 +493,7 @@ device_helpers.create_fingerprint("Third Reality, Inc", "3RSP02028BZ"),
 device_helpers.create_fingerprint("Third Reality, Inc", "3RSPE01044BZ"),
 })
 register_device_definition(metered_plug_current, {
+device_helpers.create_fingerprint("Heiman", "SmartPlug"),
 device_helpers.create_fingerprint("HEIMAN", "SmartPlug"),
 device_helpers.create_fingerprint("HEIMAN", "SmartPlug-EF-3.0"),
 })

@@ -805,6 +805,13 @@ register_sensor_definition({
 
 }))
 
+register_sensor_definition({
+  profile = "sensors-soil-temp-humidity-moisture-illuminance-battery-warning",
+  datapoints = soil_t10_h1_air_illum_warning,
+}, {
+  device_helpers.create_fingerprint("Arteco", "ZS-304Z"),
+})
+
 
 
 -- ══════════════════════════════════════════════════════════════

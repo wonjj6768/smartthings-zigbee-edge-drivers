@@ -1162,6 +1162,26 @@ local function load_mapping_preset(zcl)
     )
   end)
 
+  define_preset("local_temperature_calibration", zcl.thermostat_local_temperature_calibration, function()
+    return merge_defaults(
+      {
+        emit = emit.ecozyLocalTemperatureCalibration(),
+        scale = 10,
+      },
+      reporting_defaults(1, 300, 1)
+    )
+  end)
+
+  define_preset("pi_heating_demand", zcl.thermostat_pi_heating_demand, function()
+    return merge_defaults(
+      {
+        emit = emit.ecozyPiHeatingDemand(),
+        read_only = true,
+      },
+      reporting_defaults(1, 300, 1)
+    )
+  end)
+
   define_preset("fan_mode", zcl.fan_control_mode, function()
     return merge_defaults(
       {

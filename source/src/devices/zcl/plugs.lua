@@ -551,6 +551,7 @@ register_device_definition(metered_plug_current, {
 })
 
 register_device_definition(metered_plug_current, {
+  device_helpers.create_fingerprint("Heiman", "SmartPlug"),
   device_helpers.create_fingerprint("HEIMAN", "SmartPlug"),
   device_helpers.create_fingerprint("HEIMAN", "SmartPlug-EF-3.0"),
 })

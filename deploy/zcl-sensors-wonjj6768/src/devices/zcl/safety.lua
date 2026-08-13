@@ -655,6 +655,8 @@ register_device_definition(motion_sensor, {
 device_helpers.create_fingerprint("HEIMAN", "PIRILLSensor-EF-3.0"),
 })
 register_device_definition(motion_tamper_battery_low_sensor, {
+device_helpers.create_fingerprint("Heiman", "PIR_TPV13"),
+device_helpers.create_fingerprint("Heiman", "PIR_TPV16"),
 device_helpers.create_fingerprint("HEIMAN", "PIRSensor-N"),
 device_helpers.create_fingerprint("HEIMAN", "PIRSensor-N-3.0"),
 device_helpers.create_fingerprint("HEIMAN", "PIRSensor-EM"),
@@ -734,6 +736,10 @@ register_device_definition(tuya_smoke_sensor, device_helpers.create_fingerprints
 "_TYZB01_wqcac7lo",
 }))
 register_device_definition(smoke_battery_low_battery_sensor, {
+device_helpers.create_fingerprint("Heiman", "b5db59bfd81e4f1f95dc57fdbba17931"),
+device_helpers.create_fingerprint("Heiman", "SMOK_HV14"),
+device_helpers.create_fingerprint("Heiman", "SMOK_V16"),
+device_helpers.create_fingerprint("Heiman", "SMOK_YDLV10"),
 device_helpers.create_fingerprint("HEIMAN", "SMOK_V16"),
 device_helpers.create_fingerprint("HEIMAN", "SMOK_V15"),
 device_helpers.create_fingerprint("HEIMAN", "b5db59bfd81e4f1f95dc57fdbba17931"),
@@ -752,6 +758,7 @@ device_helpers.create_fingerprint("HEIMAN", "HS2SA-EF-3.0"),
 device_helpers.create_fingerprint("HEIMAN", "HS15A-M"),
 device_helpers.create_fingerprint("HEIMAN", "Smokesensor-EF2-3.0"),
 device_helpers.create_fingerprint("Trust", "SmokeSensor-EM"),
+device_helpers.create_fingerprint("Trust", "ZSDR-850"),
 })
 register_device_definition(heiman_plus_smoke_sensor, {
 device_helpers.create_fingerprint("HEIMAN", "HS1SA-EF-3.0"),
@@ -777,6 +784,7 @@ device_helpers.create_fingerprint("HEIMAN", "GASSensor-EM"),
 device_helpers.create_fingerprint("HEIMAN", "358e4e3e03c644709905034dae81433e"),
 })
 register_device_definition(gas_tamper_alarm2_battery_low_sensor, {
+device_helpers.create_fingerprint("Heiman", "GAS_V15"),
 device_helpers.create_fingerprint("HEIMAN", "GASSensor-N"),
 device_helpers.create_fingerprint("HEIMAN", "GASSensor-N-3.0"),
 device_helpers.create_fingerprint("HEIMAN", "d90d7c61c44d468a8e906ca0841e0a0c"),
@@ -803,6 +811,9 @@ device_helpers.create_fingerprint("HEIMAN", "DOOR_TPV12"),
 })
 register_device_definition(co_sensor, {
 device_helpers.create_fingerprint("_TYZB01_wpmo3ja3", "TS0212"),
+device_helpers.create_fingerprint("Heiman", "CO_CTPG"),
+device_helpers.create_fingerprint("Heiman", "CO_V15"),
+device_helpers.create_fingerprint("Heiman", "CO_V16"),
 device_helpers.create_fingerprint("HEIMAN", "COSensor-EM"),
 device_helpers.create_fingerprint("HEIMAN", "COSensor-N"),
 device_helpers.create_fingerprint("HEIMAN", "COSensor-EF-3.0"),

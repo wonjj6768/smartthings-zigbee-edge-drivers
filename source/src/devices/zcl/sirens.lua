@@ -154,6 +154,7 @@ register_device_definition(ias_siren_basic, device_helpers.create_fingerprints("
 
 register_device_definition(ias_siren_basic, {
   device_helpers.create_fingerprint("AduroSmart Eria", "Smart Siren"),
+  device_helpers.create_fingerprint("Heiman", "WarningDevice"),
 })
 
 register_device_definition(frient_sirzb112, {

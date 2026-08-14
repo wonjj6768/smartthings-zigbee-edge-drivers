@@ -622,6 +622,8 @@ register_presence_definition(presence_model_zd24, device_helpers.create_fingerpr
 
   "_TZE284_bw4ayyeh",
 
+  "_TZE2841000000_bw4ayyeh",
+
 }))
 
 
@@ -1412,7 +1414,7 @@ local presence_model_zg_204zv = {
 
 
 
-register_presence_definition(presence_model_zg_204zv, ts0601_fingerprints({
+local presence_model_zg_204zv_fingerprints = ts0601_fingerprints({
 
   "_TZE200_uli8wasj",
 
@@ -1422,7 +1424,15 @@ register_presence_definition(presence_model_zg_204zv, ts0601_fingerprints({
 
   "HOBEIAN:ZG-204ZV",
 
-}))
+})
+
+-- Z2M AY204T is a white-label of ZG-204ZV. Keep the two trailing spaces in
+-- the manufacturer string; create_fingerprints() must not normalize it.
+presence_model_zg_204zv_fingerprints[#presence_model_zg_204zv_fingerprints + 1] = {
+  manufacturer = "AOYAN  ",
+  model = "AY204T",
+}
+register_presence_definition(presence_model_zg_204zv, presence_model_zg_204zv_fingerprints)
 
 
 

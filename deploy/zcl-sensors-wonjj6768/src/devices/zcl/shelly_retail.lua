@@ -63,11 +63,12 @@ zcl.energy(),
 configure = bind_metered_endpoints(1, true),
 }
 local water_sensor = {
-profile = "safety-water-leak-tamper-battery-low-battery-shelly-pending",
+profile = "safety-water-leak-tamper-battery-low-battery-hardware-fault-shelly",
 zcl_clusters = {
 zcl.water(),
 zcl.tamper(),
 zcl.battery_low(),
+zcl.hardware_fault(),
 zcl.battery(),
 },
 }
@@ -190,6 +191,7 @@ device_helpers.create_fingerprint("Shelly", "Dimmer US"),
 })
 register_device_definition(water_sensor, {
 device_helpers.create_fingerprint("Shelly", "Flood"),
+device_helpers.create_fingerprint("Shelly", "Flood S"),
 })
 register_device_definition(temp_humidity, {
 device_helpers.create_fingerprint("Shelly", "BLU H&T ZB"),

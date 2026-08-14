@@ -1,0 +1,20 @@
+name: switches-switch-3-ts0003-module2
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ts0003Module2SwitchType, version: 1}
+      - {id: concertmirror08464.ts0003Module2IndicatorMode, version: 1}
+      - {id: concertmirror08464.ts0003Module2CountdownOne, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ts0003Module2CountdownTwo, version: 1}
+    categories: [{name: Switch}]
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ts0003Module2CountdownThree, version: 1}
+    categories: [{name: Switch}]

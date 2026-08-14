@@ -4,6 +4,12 @@ local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local converter = tuya.converter
+local zdms16_brightness = converter.scale_pair(0, 254, 0, 100)
+local zdms16_switch_type = converter.lookup_from_to({
+toggle = 0,
+state = 1,
+momentary = 2,
+})
 local dimmer_model_ts0601_la2c2uo9 = {
 profile = "lights-dimmer-options-ts0601-la2c2uo9",
 tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
@@ -70,6 +76,7 @@ register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, device_helpers.c
 "_TZE200_gne0e6mk",
 "_TZE200_itp8dt7f",
 "_TZE284_68utemio",
+"_TZE28C1000000_68utemio",
 }))
 register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, {
 device_helpers.create_fingerprint("Lerlink", "X706U"),
@@ -91,6 +98,49 @@ device_helpers.create_fingerprint("ION Industries", "ID200W-ZIGB"),
 device_helpers.create_fingerprint("ION Industries", "90.500.090"),
 device_helpers.create_fingerprint("ION Industries", "90.500.040"),
 })
+local avatto_zdms16_1 = {
+profile = "lights-dimmer-zdms16-1",
+tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+tuya.dp_numeric(2, { name = "brightness", emit = emit.level(), converter = zdms16_brightness }),
+tuya.dp_numeric(3, { name = "zdms161_minimum_brightness", emit = emit.zdmsOneMinimumBrightness(), converter = zdms16_brightness }),
+tuya.dp_enum(4, { name = "zdms161_switch_type", emit = emit.zdmsOneSwitchType(), converter = zdms16_switch_type }),
+tuya.dp_numeric(5, { name = "zdms161_maximum_brightness", emit = emit.zdmsOneMaximumBrightness(), converter = zdms16_brightness }),
+tuya.dp_countdown(6, { name = "zdms161_countdown", emit = emit.zdmsOneCountdown() }),
+tuya.dp_power_on_behavior(14, { name = "zdms161_power_on_behavior", emit = emit.zdmsOnePowerOnBehavior() }),
+}
+register_device_definition(avatto_zdms16_1, device_helpers.create_fingerprints("TS0601", {
+"_TZE204_2cyb66xl",
+"_TZE204_5cuocqty",
+"_TZE204_huu3td85",
+"_TZE204_nqqylykc",
+"_TZE204_tgdnh7pw",
+"_TZE284_huu3td85",
+"_TZE284_nqqylykc",
+}))
+local avatto_zdms16_2 = {
+profile = "lights-dimmer-2-zdms16-2",
+tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
+tuya.dp_numeric(2, { name = "brightness", component = "main", emit = emit.level(), converter = zdms16_brightness }),
+tuya.dp_numeric(3, { name = "zdms162_minimum_brightness", component = "main", emit = emit.zdmsTwoMinimumBrightness(), converter = zdms16_brightness }),
+tuya.dp_enum(4, { name = "zdms162_switch_type", component = "main", emit = emit.zdmsTwoSwitchType(), converter = zdms16_switch_type }),
+tuya.dp_numeric(5, { name = "zdms162_maximum_brightness", component = "main", emit = emit.zdmsTwoMaximumBrightness(), converter = zdms16_brightness }),
+tuya.dp_countdown(6, { name = "zdms162_countdown", component = "main", emit = emit.zdmsTwoCountdown() }),
+tuya.dp_on_off(7, { name = "switch", component = "switch2", emit = emit.switch() }),
+tuya.dp_numeric(8, { name = "brightness", component = "switch2", emit = emit.level(), converter = zdms16_brightness }),
+tuya.dp_numeric(9, { name = "zdms162_minimum_brightness", component = "switch2", emit = emit.zdmsTwoMinimumBrightness(), converter = zdms16_brightness }),
+tuya.dp_enum(10, { name = "zdms162_switch_type", component = "switch2", emit = emit.zdmsTwoSwitchType(), converter = zdms16_switch_type }),
+tuya.dp_numeric(11, { name = "zdms162_maximum_brightness", component = "switch2", emit = emit.zdmsTwoMaximumBrightness(), converter = zdms16_brightness }),
+tuya.dp_countdown(12, { name = "zdms162_countdown", component = "switch2", emit = emit.zdmsTwoCountdown() }),
+tuya.dp_power_on_behavior(14, { name = "zdms162_power_on_behavior", emit = emit.zdmsTwoPowerOnBehavior() }),
+}
+register_device_definition(avatto_zdms16_2, device_helpers.create_fingerprints("TS0601", {
+"_TZE204_fjms2pi9",
+"_TZE204_jtbgusdc",
+"_TZE204_o9gyszw2",
+"_TZE284_fjms2pi9",
+"_TZE284_jtbgusdc",
+"_TZE28C1000000_jtbgusdc",
+}))
 local dimmer_model_ts0601_dimmer_1_gang_2 = {
 profile = "lights-dimmer-whpb9yts",
 tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),

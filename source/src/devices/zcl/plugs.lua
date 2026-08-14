@@ -313,6 +313,39 @@ local function a11z_enum_mapping(name, endpoint, component, cluster_id, attribut
   })
 end
 
+local function build_ts011f_plug1(profile, include_button_type)
+  local definition = build_plug(profile, {
+    zcl.switch(),
+    zcl.power(),
+    zcl.energy({ scale = 100 }),
+    zcl.voltage(),
+    zcl.current(),
+    zcl.tuya_magic_packet(),
+    a11z_enum_mapping("ts011f_plug1_power_outage_memory", 1, "main", zcl.CLUSTER_ON_OFF, 0x8002,
+      emit.ts011fPlug1PowerOutageMemory(), { [0] = "off", [1] = "on", [2] = "restore" }, { off = 0, on = 1, restore = 2 }),
+    a11z_enum_mapping("ts011f_plug1_indicator_mode", 1, "main", zcl.CLUSTER_ON_OFF, 0x8001,
+      emit.ts011fPlug1IndicatorMode(), { [0] = "off", [1] = "off_on", [2] = "on_off", [3] = "on" }, { off = 0, off_on = 1, on_off = 2, on = 3 }),
+    zcl.cluster_attribute(zcl.CLUSTER_ON_OFF, 0x8000, {
+      name = "ts011f_plug1_child_lock", endpoint = 1, component = "main",
+      emit = emit.ts011fPlug1ChildLock(), data_type = data_types.Boolean, write_type = data_types.Boolean,
+      from_device = function(value) return value and "on" or "off" end,
+      to_device = function(value) return value == "on" end, read_on_configure = true,
+    }),
+    zcl.countdown_timer({ name = "ts011f_plug1_countdown", endpoint = 1, component = "main", emit = emit.ts011fPlug1Countdown() }),
+  })
+  if include_button_type then
+    zcl_device_helpers.append_clusters(definition.zcl_clusters,
+      a11z_enum_mapping("ts011f_plug1_switch_type_button", 1, "main", 0xE001, 0xD030,
+        emit.ts011fPlug1SwitchTypeButton(), { [0] = "release", [1] = "press" }, { release = 0, press = 1 })
+    )
+  end
+  definition.configure = tuya_metered_plug_core.configure
+  return definition
+end
+
+local ts011f_plug1 = build_ts011f_plug1("plugs-switch-power-energy-voltage-current-ts011f-plug1", true)
+local ts011f_plug1_no_button = build_ts011f_plug1("plugs-switch-power-energy-voltage-current-ts011f-plug1-no-button", false)
+
 local function a11z_identify_sender(device, _, value, context)
   if value ~= "identify" then
     return false
@@ -496,7 +529,19 @@ register_device_definition(tuya_metered_plug_core, device_helpers.create_fingerp
   "_TZ3210_cjrngdr3",
   "_TZ3000_amdymr7l",
   "_TZ3000_zloso4jk",
+}))
+
+register_device_definition(ts011f_plug1, device_helpers.create_fingerprints("TS011F", {
+  "_TZ3008_tary5dvv",
+  "_TZ3210_iooniers",
+  "_TZ3008_iooniers",
+  "_TZ3008_xvfd3nkp",
+  "_TZ3008_qziabvzj",
   "_TZ3210_w0qqde0g",
+}))
+
+register_device_definition(ts011f_plug1_no_button, device_helpers.create_fingerprints("TS011F", {
+  "_TZ3000_w0qqde0g",
 }))
 
 register_device_definition(tuya_metered_plug_core, {

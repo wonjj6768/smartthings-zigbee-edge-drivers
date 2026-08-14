@@ -1047,6 +1047,7 @@ local function load_mapping_preset(zcl)
     return merge_defaults(
       {
         emit = emit.atmospheric_pressure(),
+        scale = 10,
       },
       reporting_defaults(30, 300, 1)
     )
@@ -1589,6 +1590,20 @@ local function load_mapping_preset(zcl)
         name = "battery_low",
         emit = optional_emit("battery_low"),
         converter = zone_status_pair(0x0008),
+        ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+        command_id = 0x00,
+        command_extractor = extract_zone_status_from_command,
+      },
+      reporting_defaults(0, 300, nil)
+    )
+  end)
+
+  define_preset("hardware_fault", zcl.ias_zone, function()
+    return merge_defaults(
+      {
+        name = "hardware_fault",
+        emit = emit.hardware_fault(),
+        converter = zone_status_pair(0x0040),
         ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
         command_id = 0x00,
         command_extractor = extract_zone_status_from_command,

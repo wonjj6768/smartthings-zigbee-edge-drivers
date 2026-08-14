@@ -56,6 +56,10 @@ Source modules are now organized to match deploy package ownership as closely as
   Owned by the split EF00 presence deploy packages.
   Wrappers around selected entries from `ef00/motion/presence.lua`.
   See `docs/ef00_motion_split.md`.
+- `zcl/switches.lua`, `zcl/din_rail.lua`, `zcl/valves.lua`, `zcl/retail_switches.lua`, `zcl/easyiot.lua`
+  Owned by the `zcl-switch` deploy package.
+- `zcl/plugs.lua`
+  Owned by the `zcl-plugs` deploy package so option-heavy plug profiles remain below the SmartThings package size limit.
 
 Rule of thumb:
 

@@ -196,6 +196,7 @@ register_device_definition(single_dimmer_countdown30, device_helpers.create_fing
 register_device_definition(single_dimmer, device_helpers.create_fingerprints("TS110E", {
 "_TZ3210_weaqkhab",
 "_TZ3210_k1msuvg6",
+"_TZ3210_o235agwx",
 }))
 register_device_definition(single_power_switch, device_helpers.create_fingerprints("TS110E", {
 "_TZ3210_hzdhb62z",

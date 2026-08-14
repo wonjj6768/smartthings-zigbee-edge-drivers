@@ -478,6 +478,7 @@ query_on_configure = true,
 }
 register_presence_definition(presence_model_zd24, device_helpers.create_fingerprints("TS0601", {
 "_TZE284_bw4ayyeh",
+"_TZE2841000000_bw4ayyeh",
 }))
 local presence_model_mir_he200_ty = {
 profile = "safety-presence-mirhe200-illuminance-fall",
@@ -863,12 +864,17 @@ tuya.dp_temperature_unit(109, { emit = emit.zg204zvTemperatureUnit() }),
 tuya.dp_battery(110, { emit = emit.battery() }),
 tuya.dp_temperature(111, { emit = emit.temperature() }),
 }
-register_presence_definition(presence_model_zg_204zv, ts0601_fingerprints({
+local presence_model_zg_204zv_fingerprints = ts0601_fingerprints({
 "_TZE200_uli8wasj",
 "_TZE200_grgol3xp",
 "_TZE200_rhgsbacq",
 "HOBEIAN:ZG-204ZV",
-}))
+})
+presence_model_zg_204zv_fingerprints[#presence_model_zg_204zv_fingerprints + 1] = {
+manufacturer = "AOYAN  ",
+model = "AY204T",
+}
+register_presence_definition(presence_model_zg_204zv, presence_model_zg_204zv_fingerprints)
 local presence_model_zg_204zh = {
 profile = "safety-presence-zg204zh-illuminance-temp-humidity-battery",
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),

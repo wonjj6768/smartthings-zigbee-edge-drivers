@@ -16,11 +16,19 @@
       "protocol": "zcl",
       "modules": [
         "switches",
-        "plugs",
         "din_rail",
         "valves",
         "retail_switches",
         "easyiot"
+      ]
+    },
+    {
+      "name": "zcl-plugs-wonjj6768",
+      "display_name": "ZCL Plugs wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports ZCL plugs, metered outlets, and power strips.",
+      "protocol": "zcl",
+      "modules": [
+        "plugs"
       ]
     },
     {
@@ -133,6 +141,15 @@
       "include_device_files": [
         "switches_split.lua",
         "switches.lua"
+      ]
+    },
+    {
+      "name": "ef00-screen-switch-wonjj6768",
+      "display_name": "EF00 Screen Switch wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EF00 screen switch panels.",
+      "protocol": "ef00",
+      "modules": [
+        "screen_switches"
       ]
     },
     {
@@ -272,7 +289,8 @@
       ],
       "include_device_files": [
         "thermostats/trv_split.lua",
-        "thermostats/trv.lua"
+        "thermostats/trv.lua",
+        "thermostats/metadata.lua"
       ]
     },
     {
@@ -285,7 +303,8 @@
       ],
       "include_device_files": [
         "thermostats/trv_split.lua",
-        "thermostats/trv.lua"
+        "thermostats/trv.lua",
+        "thermostats/metadata.lua"
       ]
     },
     {

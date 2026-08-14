@@ -2,6 +2,7 @@ local tuya = require "tuya_common"
 local emit = require "emitters"
 local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
+local thermostat_metadata = require "devices.ef00.thermostats.metadata"
 local converter = tuya.converter
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local BAC003_POWER_FIELD = "bac003_power_state"
@@ -18,6 +19,134 @@ local HHST_POWER_FIELD = "hhst_power_state"
 local HHST_MODE_FIELD = "hhst_system_mode_device"
 local TV02_HEATING_STOP_FIELD = "tv02_heating_stop"
 local TV02_PRESET_MODE_FIELD = "tv02_preset_mode"
+
+local bht002_on_off = converter.lookup_from_to({ off = false, on = true })
+local bht002_preset_hold = converter.lookup_from_to({ hold = 0, program = 1 })
+local bht002_preset_schedule = converter.lookup_from_to({ program = 0, hold = 1 })
+local bht002_sensor = converter.lookup_from_to({ IN = 0, AL = 1, OU = 2 })
+
+local function bht002_signed_temperature(value)
+  local numeric = tonumber(value)
+  if numeric == nil then return nil end
+  if numeric >= 0x8000 then numeric = numeric - 0xFFFF end
+  return numeric
+end
+
+local function bht002_calibration_from(value)
+  local numeric = tonumber(value)
+  if numeric == nil then return nil end
+  return numeric > 4000 and (numeric - 4096) or numeric
+end
+
+local function bht002_calibration_to(value)
+  local numeric = tonumber(value)
+  if numeric == nil then return nil end
+  return numeric < 0 and (4096 + numeric) or numeric
+end
+
+local function bht002_program_from(value)
+  if type(value) ~= "string" or #value < 36 then return nil end
+  local items = {}
+  for index = 0, 11 do
+    local offset = index * 3
+    local hour, minute, half = string.byte(value, offset + 1, offset + 3)
+    if hour == nil or minute == nil or half == nil then return nil end
+    local temperature = half / 2
+    local text = string.format("%02d:%02d/%.1f", hour, minute, temperature):gsub("%.0$", "")
+    items[#items + 1] = text
+  end
+  return table.concat(items, " ")
+end
+
+local function bht002_program_to(value)
+  if type(value) ~= "string" then return nil end
+  local payload = {}
+  for hour, minute, temperature in value:gmatch("(%d+):(%d+)/([%d%.]+)") do
+    hour, minute, temperature = tonumber(hour), tonumber(minute), tonumber(temperature)
+    if hour == nil or hour < 0 or hour > 23 or minute == nil or minute < 0 or minute > 59 or
+        temperature == nil or temperature < 5 or temperature > 35 then
+      return nil
+    end
+    local half = math.floor((temperature * 2) + 0.5)
+    if math.abs((half / 2) - temperature) > 0.001 then return nil end
+    payload[#payload + 1] = hour
+    payload[#payload + 1] = minute
+    payload[#payload + 1] = half
+  end
+  if #payload ~= 36 then return nil end
+  return string.char(table.unpack(payload))
+end
+
+local function bht002_preset_write(_, value)
+  if value ~= "hold" and value ~= "program" then return nil end
+  return {
+    { dp = 2, datatype = tuya.DP_TYPE_ENUM, value = value == "hold" and 0 or 1 },
+    { dp = 3, datatype = tuya.DP_TYPE_ENUM, value = value == "program" and 0 or 1 },
+  }
+end
+
+local function bht002_definition(profile, setpoint_scale, local_temperature_scale, option_scale, calibration_emit, setpoint_step)
+  local local_converter
+  if local_temperature_scale == 10 and option_scale == 10 then
+    local_converter = converter.divide_by_pair(10)
+  elseif local_temperature_scale == 10 then
+    local_converter = converter.from_to(function(value)
+      local signed = bht002_signed_temperature(value)
+      return signed == nil and nil or signed / 10
+    end, function(value) return tonumber(value) and tonumber(value) * 10 or nil end)
+  else
+    local_converter = converter.from_to(bht002_signed_temperature, function(value) return tonumber(value) end)
+  end
+  local definition = {
+    profile = profile,
+    time_start = "1970",
+    named_mapping = { named_mappings = { bht002_preset = bht002_preset_write } },
+    tuya.dp_binary(1, { name = "system_mode", converter = converter.lookup_from_to({ off = false, heat = true }), emit = emit.thermostat_mode() }),
+    tuya.dp_enum(2, { name = "bht002_preset", read_only = true, converter = bht002_preset_hold, emit = emit.bhtPreset() }),
+    tuya.dp_enum(3, { name = "bht002_preset", read_only = true, converter = bht002_preset_schedule, emit = emit.bhtPreset() }),
+    tuya.dp_current_heating_setpoint(16, { scale = setpoint_scale, emit = emit.heating_setpoint("C") }),
+    tuya.dp_numeric(18, { name = "bht002_maximum_temperature_limit", emit = emit.bhtMaximumTemperatureLimit(), converter = converter.divide_by_pair(option_scale) }),
+    tuya.dp_numeric(20, { name = "bht002_deadzone_temperature", emit = emit.bhtDeadzoneTemperature(), converter = converter.divide_by_pair(option_scale) }),
+    tuya.dp_numeric(24, { name = "local_temperature", read_only = true, emit = emit.temperature("C"), converter = local_converter }),
+    tuya.dp_numeric(26, { name = "bht002_minimum_temperature_limit", emit = emit.bhtMinimumTemperatureLimit(), converter = converter.divide_by_pair(option_scale) }),
+    tuya.dp_numeric(27, { name = "bht002_temperature_calibration", emit = calibration_emit, converter = converter.from_to(bht002_calibration_from, bht002_calibration_to) }),
+    tuya.dp_binary(36, { name = "running_state", read_only = true, emit = emit.thermostat_operating_state(), converter = converter.from_only(function(value) return value == true and "idle" or "heating" end) }),
+    tuya.dp_binary(40, { name = "bht002_child_lock", emit = emit.bhtChildLock(), converter = bht002_on_off }),
+    tuya.dp_enum(43, { name = "bht002_temperature_sensor", emit = emit.bhtTemperatureSensor(), converter = bht002_sensor }),
+    tuya.dp_raw(101, { name = "bht002_program", emit = emit.bhtProgram(), converter = converter.from_to(bht002_program_from, bht002_program_to) }),
+  }
+  return thermostat_metadata.attach(definition, { "off", "heat" }, 5, 90, setpoint_step)
+end
+
+local bht002_fine = bht002_definition("thermostats-bht002-fine", 1, 10, 1, emit.bhtTemperatureCalibrationFine(), 1)
+register_device_definition(bht002_fine, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_u9bfwha0", "_TZE204_u9bfwha0",
+}))
+
+local bht002_fine_unscaled_local = bht002_definition("thermostats-bht002-fine", 1, 1, 1, emit.bhtTemperatureCalibrationFine(), 1)
+register_device_definition(bht002_fine_unscaled_local, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_ztvwu4nk", "_TZE200_ye5jkfsb", "_TZE284_ye5jkfsb",
+}))
+
+local bht002_fine_scaled_options = bht002_definition("thermostats-bht002-fine", 10, 10, 10, emit.bhtTemperatureCalibrationFine(), 1)
+register_device_definition(bht002_fine_scaled_options, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_5toc8efa",
+}))
+
+local bht002_half = bht002_definition("thermostats-bht002-half", 10, 10, 10, emit.bhtTemperatureCalibrationFine(), 0.5)
+register_device_definition(bht002_half, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_5toc8efa",
+}))
+
+local bht002_whole = bht002_definition("thermostats-bht002-whole", 1, 10, 1, emit.bhtTemperatureCalibrationWhole(), 1)
+register_device_definition(bht002_whole, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_aoclfnxz",
+}))
+
+local bht002_no_cool = bht002_definition("thermostats-bht002-fine", 1, 10, 1, emit.bhtTemperatureCalibrationFine(), 1)
+register_device_definition(bht002_no_cool, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_aoclfnxz",
+}))
 local function valve_position_to_running_state(value)
   local numeric = tonumber(value)
   if numeric == nil then

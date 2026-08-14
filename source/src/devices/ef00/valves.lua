@@ -11,6 +11,63 @@ local valve_open_closed_converter = converter.lookup_from_to({
   closed = false,
 })
 
+local naswv03b_status = converter.lookup_from_to({
+  off = 0,
+  on_auto = 1,
+  button_locked = 2,
+  on_manual_app = 3,
+  on_manual_button = 4,
+})
+local naswv03b_on_off = converter.lookup_from_to({ off = false, on = true })
+local naswv03b_trigger = function(value) return value == true and "refresh" or nil end
+local naswv03b_reset_from = function(value) return value == true and "reset" or nil end
+local naswv03b_fault_from = function(value) return tonumber(value) ~= 0 and "fault" or "normal" end
+
+local function naswv03b_definition(profile, unit_kind, include_on_countdown)
+  local suffix = unit_kind == "liters" and "Liters" or "Gallons"
+  local definition = {
+    profile = profile,
+    time_start = "2000",
+    tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+    tuya.dp_enum(3, { name = "naswv03b_status", read_only = true, emit = emit.nasThreeStatus(), converter = naswv03b_status }),
+    tuya.dp_numeric(5, { name = "naswv03b_countdown", emit = emit.nasThreeCountdown() }),
+    tuya.dp_numeric(6, { name = "naswv03b_countdown_left", read_only = true, emit = emit.nasThreeCountdownLeft() }),
+    tuya.dp_numeric(9, { name = "naswv03b_water_current", read_only = true, emit = emit["nasThreeCurrent" .. suffix](), converter = converter.divide_by_pair(1000) }),
+    tuya.dp_battery(11, { read_only = true, emit = emit.battery() }),
+    tuya.dp_numeric(15, { name = "naswv03b_water_total", read_only = true, emit = emit["nasThreeTotal" .. suffix](), converter = converter.divide_by_pair(1000) }),
+    tuya.dp_bitmap(19, { name = "naswv03b_fault", read_only = true, emit = emit.nasThreeFault(), converter = converter.from_only(naswv03b_fault_from) }),
+    tuya.dp_binary(101, { name = "naswv03b_water_total_reset", emit = emit.nasThreeWaterTotalReset(), converter = converter.from_to(naswv03b_reset_from, function(value) return value == "reset" end) }),
+    tuya.dp_numeric(102, { name = "naswv03b_quantitative_watering", emit = emit["nasThreeQuantitative" .. suffix]() }),
+    tuya.dp_binary(103, { name = "naswv03b_flow_switch", emit = emit.nasThreeFlowSwitch(), converter = naswv03b_on_off }),
+    tuya.dp_binary(104, { name = "naswv03b_child_lock", emit = emit.nasThreeChildLock(), converter = naswv03b_on_off }),
+    tuya.dp_numeric(105, { name = "naswv03b_surplus_flow", read_only = true, emit = emit["nasThreeSurplus" .. suffix]() }),
+    tuya.dp_numeric(106, { name = "naswv03b_single_watering_duration", read_only = true, emit = emit.nasThreeSingleWateringDuration() }),
+    tuya.dp_binary(107, { name = "naswv03b_refresh", emit = emit.nasThreeRefresh(), converter = converter.from_to(naswv03b_trigger, function(value) return value == "refresh" end) }),
+    tuya.dp_numeric(108, { name = "naswv03b_single_watering_amount", read_only = true, emit = emit["nasThreeSingleAmount" .. suffix]() }),
+  }
+  if include_on_countdown then
+    definition[#definition + 1] = tuya.dp_numeric(109, { name = "naswv03b_on_with_countdown", emit = emit.nasThreeOnWithCountdown() })
+  end
+  return definition
+end
+
+local naswv03b_gallons = naswv03b_definition("valves-nas-wv03b-gallons", "gallons", true)
+register_device_definition(naswv03b_gallons, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_nnhwcvbk", "_TZE284_nnhwcvbk",
+  "_TZE204_rzrrjkz2", "_TZE284_rzrrjkz2",
+  "_TZE204_uab532m0", "_TZE284_uab532m0",
+}))
+
+local naswv03b_gallons_no_on = naswv03b_definition("valves-nas-wv03b-gallons-no-on-countdown", "gallons", false)
+register_device_definition(naswv03b_gallons_no_on, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_4fblxpma", "_TZE284_4fblxpma",
+}))
+
+local naswv03b_liters = naswv03b_definition("valves-nas-wv03b-liters", "liters", true)
+register_device_definition(naswv03b_liters, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_z7a2jmyy", "_TZE284_z7a2jmyy",
+}))
+
 -- Z2M: Novato ZPV-01 battery powered smart valve (tuya.ts:20155)
 -- DP1 state, DP8 read-only valve status enum, DP101 battery
 local battery_valve = {

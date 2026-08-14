@@ -629,6 +629,7 @@ local thermostat_tybac006 = {
 }
 register_device_definition(thermostat_tybac006, ef00_helpers.ts0601_fingerprints( {
   "_TZE204_mpbki2zm",
+  "_TZE204_qujphad5",
 }))
 local hhst_fan_mode = tuya.dp_fan_mode(28, {
   converter = converter.lookup_from_to({

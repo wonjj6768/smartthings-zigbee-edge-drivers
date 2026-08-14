@@ -1,0 +1,11 @@
+name: switches-switch-1-ts0001-bbeb
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ts0001BbebPowerOnBehavior, version: 1}
+      - {id: concertmirror08464.ts0001BbebBacklightMode, version: 1}
+      - {id: concertmirror08464.ts0001BbebIndicatorMode, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

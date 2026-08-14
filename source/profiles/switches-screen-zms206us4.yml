@@ -1,0 +1,43 @@
+name: switches-screen-zms206us4
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.zmsFourBacklightMode, version: 1}
+      - {id: concertmirror08464.zmsFourBacklightBrightness, version: 1}
+      - {id: concertmirror08464.zmsFourChildLock, version: 1}
+      - {id: concertmirror08464.zmsFourRadarConfig, version: 1}
+      - {id: concertmirror08464.zmsFourSwitchColorOn, version: 1}
+      - {id: concertmirror08464.zmsFourSwitchColorOff, version: 1}
+      - {id: concertmirror08464.zmsFourIndicatorStatus, version: 1}
+      - {id: concertmirror08464.zmsFourDelayOffColor, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch1
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.zmsFourSwitchName, version: 1}
+      - {id: concertmirror08464.zmsFourRelayStatus, version: 1}
+      - {id: concertmirror08464.zmsFourCountdown, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.zmsFourSwitchName, version: 1}
+      - {id: concertmirror08464.zmsFourRelayStatus, version: 1}
+      - {id: concertmirror08464.zmsFourCountdown, version: 1}
+    categories: [{name: Switch}]
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.zmsFourSwitchName, version: 1}
+      - {id: concertmirror08464.zmsFourRelayStatus, version: 1}
+      - {id: concertmirror08464.zmsFourCountdown, version: 1}
+    categories: [{name: Switch}]
+  - id: switch4
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.zmsFourSwitchName, version: 1}
+      - {id: concertmirror08464.zmsFourRelayStatus, version: 1}
+      - {id: concertmirror08464.zmsFourCountdown, version: 1}
+    categories: [{name: Switch}]

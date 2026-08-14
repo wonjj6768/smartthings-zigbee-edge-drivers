@@ -1,0 +1,22 @@
+name: covers-cover-battery-cover-three
+components:
+  - id: main
+    capabilities:
+      - id: windowShade
+        version: 1
+      - id: windowShadeLevel
+        version: 1
+      - id: concertmirror08464.coverThreeReverseDirection
+        version: 1
+      - id: concertmirror08464.coverThreeLimit
+        version: 1
+      - id: concertmirror08464.coverThreeClickControl
+        version: 1
+      - id: concertmirror08464.coverThreeMotorFault
+        version: 1
+      - id: battery
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Blind

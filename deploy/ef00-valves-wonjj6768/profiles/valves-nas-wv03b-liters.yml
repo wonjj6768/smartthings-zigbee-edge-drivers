@@ -1,0 +1,23 @@
+name: valves-nas-wv03b-liters
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.nasThreeStatus, version: 1}
+      - {id: concertmirror08464.nasThreeRefresh, version: 1}
+      - {id: concertmirror08464.nasThreeCountdown, version: 1}
+      - {id: concertmirror08464.nasThreeOnWithCountdown, version: 1}
+      - {id: concertmirror08464.nasThreeCountdownLeft, version: 1}
+      - {id: concertmirror08464.nasThreeSingleWateringDuration, version: 1}
+      - {id: concertmirror08464.nasThreeFlowSwitch, version: 1}
+      - {id: concertmirror08464.nasThreeQuantitativeLiters, version: 1}
+      - {id: concertmirror08464.nasThreeSingleAmountLiters, version: 1}
+      - {id: concertmirror08464.nasThreeSurplusLiters, version: 1}
+      - {id: concertmirror08464.nasThreeCurrentLiters, version: 1}
+      - {id: concertmirror08464.nasThreeTotalLiters, version: 1}
+      - {id: concertmirror08464.nasThreeWaterTotalReset, version: 1}
+      - {id: concertmirror08464.nasThreeFault, version: 1}
+      - {id: concertmirror08464.nasThreeChildLock, version: 1}
+      - {id: battery, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: WaterValve}]

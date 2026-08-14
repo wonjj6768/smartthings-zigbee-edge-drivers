@@ -321,6 +321,7 @@ register_device_definition(smoke_concentration, device_helpers.create_fingerprin
 "_TZE200_rccxox8p",
 "_TZE2841000000_rccxox8p",
 "_TZE284_rccxox8p",
+"_TZE284_qvzsq3s2",
 }))
 local smoke_concentration_fault_alarm = {
 profile = "safety-smoke-battery-concentration-fault-state-silence-test-zss",
@@ -581,6 +582,7 @@ tuya.dp_carbon_monoxide(18, { emit = emit.carbon_monoxide() }),
 }
 register_device_definition(smoke_co, device_helpers.create_fingerprints("TS0601", {
 "_TZE284_6ycgarab",
+"_TZE284_aoah6bv8",
 }))
 local smoke_temp_humidity = {
 profile = "safety-smoke-temp-humidity-battery",

@@ -69,11 +69,12 @@ local dimmer_light = {
 }
 
 local water_sensor = {
-  profile = "safety-water-leak-tamper-battery-low-battery-shelly-pending",
+  profile = "safety-water-leak-tamper-battery-low-battery-hardware-fault-shelly",
   zcl_clusters = {
     zcl.water(),
     zcl.tamper(),
     zcl.battery_low(),
+    zcl.hardware_fault(),
     zcl.battery(),
   },
 }
@@ -205,6 +206,7 @@ register_device_definition(dimmer_light, {
 
 register_device_definition(water_sensor, {
   device_helpers.create_fingerprint("Shelly", "Flood"),
+  device_helpers.create_fingerprint("Shelly", "Flood S"),
 })
 
 register_device_definition(temp_humidity, {

@@ -191,6 +191,19 @@ illuminance = true,
 "_TYZB01_kvwjujy9",
 }))
 register_device_definition(build_temp_humidity_clusters({
+profile = illuminance_temp_humidity_battery_profile,
+illuminance = true,
+tuya_magic = true,
+}), device_helpers.create_fingerprints("TS0222", {
+"_TZ3000_ubuikmgo",
+}))
+register_device_definition(build_temp_humidity_clusters({
+profile = illuminance_temp_humidity_battery_profile,
+illuminance = true,
+}), {
+device_helpers.create_fingerprint("easyiot", "ZB-LTH01"),
+})
+register_device_definition(build_temp_humidity_clusters({
 profile = "sensors-illuminance-temp-humidity-battery-konke-pending",
 illuminance = true,
 }), device_helpers.create_fingerprints("TS0222", {

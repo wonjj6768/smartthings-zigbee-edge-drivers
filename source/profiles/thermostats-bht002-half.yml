@@ -1,0 +1,18 @@
+name: thermostats-bht002-half
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.bhtChildLock, version: 1}
+      - {id: concertmirror08464.bhtDeadzoneTemperature, version: 1}
+      - {id: concertmirror08464.bhtMaximumTemperatureLimit, version: 1}
+      - {id: concertmirror08464.bhtMinimumTemperatureLimit, version: 1}
+      - {id: concertmirror08464.bhtTemperatureCalibrationFine, version: 1}
+      - {id: concertmirror08464.bhtPreset, version: 1}
+      - {id: concertmirror08464.bhtTemperatureSensor, version: 1}
+      - {id: concertmirror08464.bhtProgram, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

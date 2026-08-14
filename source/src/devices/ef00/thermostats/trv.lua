@@ -2,9 +2,44 @@ local tuya = require "tuya_common"
 local emit = require "emitters"
 local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
+local thermostat_metadata = require "devices.ef00.thermostats.metadata"
 local converter = tuya.converter
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local alecto_on_off = converter.lookup_from_to({ off = false, on = true })
+
+local gs361a_on_off = converter.lookup_from_to({ off = false, on = true })
+local siterwell_gs361a = thermostat_metadata.attach({
+  profile = "thermostats-siterwell-gs361a",
+  tuya.dp_current_heating_setpoint(2, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(3, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_system_mode(4, {
+    converter = converter.lookup_from_to({ off = 0, auto = 1, heat = 2 }),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_binary(7, { name = "gs361a_child_lock", emit = emit.gsHFourChildLock(), converter = gs361a_on_off }),
+  tuya.dp_binary(18, { name = "gs361a_window_detection", emit = emit.gsHFourWindowDetection(), converter = gs361a_on_off }),
+  tuya.dp_binary(20, { name = "gs361a_valve_detection", emit = emit.gsHFourValveDetection(), converter = gs361a_on_off }),
+  tuya.dp_battery(21, { read_only = true, emit = emit.battery() }),
+  tuya.dp_numeric(109, {
+    name = "running_state",
+    read_only = true,
+    emit = emit.thermostat_operating_state(),
+    converter = converter.from_only(function(value) return tonumber(value) ~= 0 and "heating" or "idle" end),
+  }),
+}, { "off", "auto", "heat" }, 5, 30, 0.5)
+
+register_device_definition(siterwell_gs361a, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_04yfvweb",
+  "_TZE200_2cs6g9i7",
+  "_TZE200_hhrtiq0x",
+  "_TZE200_jeaxp72v",
+  "_TZE200_kfvq6avy",
+  "_TZE200_lrznf59v",
+  "_TZE200_owwdxjbx",
+  "_TZE200_ps5v5jor",
+  "_TZE200_zivfvd7h",
+  "_TZE204_woww89ip",
+}))
 
 local alecto_smart_heat10 = {
   profile = "thermostats-alecto-smart-heat10",

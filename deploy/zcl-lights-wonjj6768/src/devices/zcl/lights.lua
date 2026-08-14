@@ -1,5 +1,6 @@
 local zcl = require "zcl_common"
 local device_helpers = require "devices.shared.helpers"
+local capabilities = require "st.capabilities"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local dimmer_light = {
 profile = "lights-dimmer",
@@ -16,6 +17,47 @@ zcl.level(),
 zcl.color_temperature(),
 },
 }
+local function build_cct_light(mired_minimum, mired_maximum, options)
+options = options or {}
+local light = {
+profile = "lights-color-temperature",
+zcl_clusters = {
+zcl.switch(),
+zcl.level(),
+zcl.color_temperature(),
+},
+}
+if options.tuya_magic == true then
+table.insert(light.zcl_clusters, 1, zcl.tuya_magic_packet())
+end
+light.color_temperature_range = {
+minimum = math.floor((1000000 / mired_maximum) + 0.5),
+maximum = math.floor((1000000 / mired_minimum) + 0.5),
+}
+light.runtime_start = function(device)
+device:emit_component_event(
+{ id = "main" },
+capabilities.colorTemperature.colorTemperatureRange({
+value = light.color_temperature_range,
+unit = "K",
+})
+)
+return true
+end
+return light
+end
+local function build_color_cct_light(mired_minimum, mired_maximum, options)
+local light = build_cct_light(mired_minimum, mired_maximum, options)
+light.profile = "lights-color-temperature-color"
+light.zcl_clusters[#light.zcl_clusters + 1] = zcl.color_hue()
+light.zcl_clusters[#light.zcl_clusters + 1] = zcl.color_saturation()
+light.zcl_clusters[#light.zcl_clusters + 1] = zcl.color()
+return light
+end
+local domraem_cct_light = build_cct_light(158, 495)
+local paulmann_cct_i_light = build_cct_light(153, 370)
+local qa_cct_light = build_cct_light(153, 500, { tuya_magic = true })
+local tuya_ts0505b_1_light = build_color_cct_light(153, 500)
 local color_light = {
 profile = "lights-color",
 zcl_clusters = {
@@ -121,6 +163,18 @@ device_helpers.create_fingerprint("LUMI", "lumi.light.cwopcn01"),
 device_helpers.create_fingerprint("LUMI", "lumi.light.cwopcn02"),
 device_helpers.create_fingerprint("LUMI", "lumi.light.cwopcn03"),
 })
+register_device_definition(domraem_cct_light, {
+device_helpers.create_fingerprint("DOMRAEM", "CCT"),
+})
+register_device_definition(paulmann_cct_i_light, {
+device_helpers.create_fingerprint("Paulmann Licht GmbH", "CCT-I"),
+})
+register_device_definition(qa_cct_light, device_helpers.create_fingerprints("TS0502B", {
+"_TZ3218_op6ztaju",
+}))
+register_device_definition(dimmer_light, {
+{ manufacturer = "Megaman" .. string.char(0), model = "ZLL-DimmableLight" },
+})
 register_device_definition(dimmer_light, {
 device_helpers.create_fingerprint("LUMI", "lumi.light.cbacn1"),
 })
@@ -156,6 +210,10 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
 "_TZB210_gj0ccsar",
 "_TZ3210_jaap6jeb",
 "_TZ3210_bfwvfyx1",
+}))
+register_device_definition(tuya_ts0505b_1_light, device_helpers.create_fingerprints("TS0505B", {
+"_TZ3210_htdm5hvw",
+"_TZ3210_r3wubmyh",
 }))
 register_device_definition(color_cct_light, device_helpers.create_fingerprints("TS0505B", {
 "_TZ3000_7hcgjxpc",

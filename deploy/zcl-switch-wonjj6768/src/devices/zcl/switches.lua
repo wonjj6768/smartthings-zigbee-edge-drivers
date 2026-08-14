@@ -75,6 +75,63 @@ write_type = data_types.Enum8,
 read_on_configure = true,
 })
 end
+local function tuya_enum_mapping(name, cluster_id, attribute_id, emitter, from_values, to_values, options)
+options = options or {}
+return zcl.cluster_attribute(cluster_id, attribute_id, {
+name = name,
+endpoint = options.endpoint,
+component = options.component,
+emit = emitter,
+from_device = function(value) return from_values[value] end,
+to_device = function(value) return to_values[value] end,
+data_type = options.data_type or data_types.Enum8,
+write_type = options.write_type or options.data_type or data_types.Enum8,
+mfg_code = options.mfg_code,
+read_on_configure = options.read_on_configure ~= false,
+})
+end
+local function latest_state(device, capability_id, attribute, default)
+return device:get_latest_state("main", capability_id, attribute) or default
+end
+local NFZB_INCHING = {
+[1] = { enabled_capability = "concertmirror08464.nfzb03InchingEnabledOne", enabled_attribute = "inchingEnabledOne", time_capability = "concertmirror08464.nfzb03InchingTimeOne", time_attribute = "inchingTimeOne" },
+[2] = { enabled_capability = "concertmirror08464.nfzb03InchingEnabledTwo", enabled_attribute = "inchingEnabledTwo", time_capability = "concertmirror08464.nfzb03InchingTimeTwo", time_attribute = "inchingTimeTwo" },
+[3] = { enabled_capability = "concertmirror08464.nfzb03InchingEnabledThree", enabled_attribute = "inchingEnabledThree", time_capability = "concertmirror08464.nfzb03InchingTimeThree", time_attribute = "inchingTimeThree" },
+}
+local function nfzb_inching_sender(device, mapping, value)
+local channel = mapping.inching_channel
+local contract = NFZB_INCHING[channel]
+local enabled = latest_state(device, contract.enabled_capability, contract.enabled_attribute, "disabled")
+local seconds = tonumber(latest_state(device, contract.time_capability, contract.time_attribute, 1)) or 1
+if mapping.inching_kind == "enabled" then enabled = value end
+if mapping.inching_kind == "time" then seconds = tonumber(value) or seconds end
+seconds = math.max(1, math.min(65535, math.floor(seconds + 0.5)))
+local state = enabled == "enabled" and 1 or 0
+if channel > 1 then state = state + (2 ^ (channel - 1)) end
+return zcl.send_raw_cluster_command(
+device,
+0xE000,
+0xFB,
+string.char(state, math.floor(seconds / 256), seconds % 256),
+1
+)
+end
+local function nfzb_inching_mapping(channel, kind, emitter)
+local names = {
+enabled = "nfzb03_inching_enabled_" .. ({ "one", "two", "three" })[channel],
+time = "nfzb03_inching_time_" .. ({ "one", "two", "three" })[channel],
+}
+local mapping = zcl.cluster_attribute(0xE000, 0xD003, {
+name = names[kind],
+emit = emitter,
+data_type = data_types.CharString,
+write_only = true,
+sender = nfzb_inching_sender,
+})
+mapping.inching_channel = channel
+mapping.inching_kind = kind
+return mapping
+end
 local function lellki_wp33_power_on_behavior()
 local mapping = tuya_power_on_behavior_2()
 mapping.name = "lellki_wp33_power_on_behavior"
@@ -318,6 +375,61 @@ local tuya_single_poweron_countdown_switch_type_indicator = build_tuya_single_sw
 "switches-switch-1-poweron-countdown-switch-type-indicator",
 { power_on_behavior_2 = true, switch_type = true, countdown = true, indicator_mode = true }
 )
+local ts0001_bbeb = build_switch("switches-switch-1-ts0001-bbeb", 1)
+append_option_clusters(ts0001_bbeb.zcl_clusters,
+zcl.tuya_magic_packet(),
+tuya_enum_mapping("ts0001_bbeb_power_on_behavior", 0xE001, 0xD010,
+emit.ts0001BbebPowerOnBehavior(), { [0] = "off", [1] = "on", [2] = "previous" }, { off = 0, on = 1, previous = 2 }),
+tuya_enum_mapping("ts0001_bbeb_backlight_mode", zcl.CLUSTER_ON_OFF, 0x5000,
+emit.ts0001BbebBacklightMode(), { [0] = "off", [1] = "on", [false] = "off", [true] = "on" }, { off = false, on = true },
+{ data_type = data_types.Boolean }),
+tuya_enum_mapping("ts0001_bbeb_indicator_mode", zcl.CLUSTER_ON_OFF, 0x8001,
+emit.ts0001BbebIndicatorMode(), { [0] = "off", [1] = "off_on", [2] = "on_off", [3] = "on" }, { off = 0, off_on = 1, on_off = 2, on = 3 })
+)
+ts0001_bbeb.configure = bind_on_off_endpoints(1)
+local ts0003_module2 = build_switch("switches-switch-3-ts0003-module2", 3)
+append_option_clusters(ts0003_module2.zcl_clusters,
+zcl.tuya_magic_packet(),
+tuya_enum_mapping("ts0003_module2_switch_type", 0xE001, 0xD030,
+emit.ts0003Module2SwitchType(), { [0] = "toggle", [1] = "state", [2] = "momentary" }, { toggle = 0, state = 1, momentary = 2 }, { mfg_code = 0x1141 }),
+tuya_enum_mapping("ts0003_module2_indicator_mode", zcl.CLUSTER_ON_OFF, 0x8001,
+emit.ts0003Module2IndicatorMode(), { [0] = "off", [1] = "off_on", [2] = "on_off", [3] = "on" }, { off = 0, off_on = 1, on_off = 2, on = 3 })
+)
+for endpoint = 1, 3 do
+local word = ({ "One", "Two", "Three" })[endpoint]
+append_option_clusters(ts0003_module2.zcl_clusters, zcl.countdown_timer({
+name = "ts0003_module2_countdown_" .. word:lower(), endpoint = endpoint,
+component = endpoint == 1 and "main" or ("switch" .. endpoint), emit = emit["ts0003Module2Countdown" .. word](),
+}))
+end
+ts0003_module2.configure = bind_on_off_endpoints(3)
+local nfzb03 = build_switch("switches-switch-3-nfzb03", 3)
+append_option_clusters(nfzb03.zcl_clusters,
+zcl.tuya_magic_packet(),
+tuya_enum_mapping("nfzb03_power_outage_memory", zcl.CLUSTER_ON_OFF, 0x8002,
+emit.nfzb03PowerOutageMemory(), { [0] = "off", [1] = "on", [2] = "restore" }, { off = 0, on = 1, restore = 2 }),
+tuya_enum_mapping("nfzb03_switch_type", 0xE001, 0xD030,
+emit.nfzb03SwitchType(), { [0] = "toggle", [1] = "state", [2] = "momentary" }, { toggle = 0, state = 1, momentary = 2 }, { mfg_code = 0x1141 }),
+tuya_enum_mapping("nfzb03_indicator_mode", zcl.CLUSTER_ON_OFF, 0x8001,
+emit.nfzb03IndicatorMode(), { [0] = "off", [1] = "off_on", [2] = "on_off", [3] = "on" }, { off = 0, off_on = 1, on_off = 2, on = 3 }),
+tuya_enum_mapping("nfzb03_backlight_mode", zcl.CLUSTER_ON_OFF, 0x5000,
+emit.nfzb03BacklightMode(), { [0] = "off", [1] = "on", [false] = "off", [true] = "on" }, { off = false, on = true }, { data_type = data_types.Boolean })
+)
+for endpoint = 1, 3 do
+local word = ({ "One", "Two", "Three" })[endpoint]
+append_option_clusters(nfzb03.zcl_clusters,
+zcl.countdown_timer({ name = "nfzb03_countdown_" .. word:lower(), endpoint = endpoint,
+component = endpoint == 1 and "main" or ("switch" .. endpoint), emit = emit["nfzb03Countdown" .. word]() }),
+nfzb_inching_mapping(endpoint, "enabled", emit["nfzb03InchingEnabled" .. word]()),
+nfzb_inching_mapping(endpoint, "time", emit["nfzb03InchingTime" .. word]())
+)
+end
+nfzb03.configure = bind_on_off_endpoints(3)
+register_device_definition(ts0001_bbeb, device_helpers.create_fingerprints("TS0001", { "_TZ3000_bbebkwjk" }))
+register_device_definition(ts0003_module2, device_helpers.create_fingerprints("TS0003", { "_TZ3000_bu47m8pv" }))
+register_device_definition(nfzb03, device_helpers.create_fingerprints("TS0003", {
+"_TZ3000_fawk5xjv", "_TZ3000_bvij6kod", "_TZ3000_aracgljk", "_TZ3210_fawk5xjv",
+}))
 register_device_definition(single_power_switch, device_helpers.create_fingerprints("TS0001", {
 "_TZ3000_xkap8wtb",
 "_TZ3000_qnejhcsu",
@@ -478,6 +590,9 @@ register_device_definition(wall_switch_module, device_helpers.create_fingerprint
 register_device_definition(tuya_single_switch, device_helpers.create_fingerprints("TS000F", {
 "_TZ3210_a2erlvb8",
 }))
+register_device_definition(single_switch, {
+{ manufacturer = "_TZ3210_hjxqqofs" .. string.char(0), model = "TS000F" },
+})
 register_device_definition(tuya_single_switch_type, device_helpers.create_fingerprints("TS000F", {
 "_TZ3000_hdc8bbha",
 }))
@@ -707,9 +822,6 @@ register_device_definition(tuya_triple_switch, device_helpers.create_fingerprint
 "_TZ3210_aksyshpw",
 "_TZ3000_nwidmc4n",
 "_TZ3000_pfc7i3kt",
-"_TZ3000_fawk5xjv",
-"_TZ3000_bvij6kod",
-"_TZ3000_aracgljk",
 "_TZ3000_dyzkbcip",
 "_TZ3000_ouwfc1qj",
 "_TZ3000_eqsair32",

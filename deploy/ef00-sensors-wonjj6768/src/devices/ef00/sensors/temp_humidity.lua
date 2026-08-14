@@ -686,6 +686,7 @@ register_device_definition(th_2aaa, ef00_helpers.ts0601_fingerprints( {
 "_TZE204_utkemkbs",
 "_TZE284_utkemkbs",
 "_TZE204_ksz749x8",
+"_TZE284_ksz749x8",
 "_TZE204_1wnh8bqp",
 "_TZE284_1wnh8bqp",
 "_TZE204_kwi6bbk4",

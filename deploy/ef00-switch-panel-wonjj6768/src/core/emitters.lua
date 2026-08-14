@@ -200,6 +200,14 @@ return capabilities.gasDetector.gas.clear()
 end
 end
 end
+function emit.hardware_fault()
+return function(_, value)
+if value then
+return capabilities.hardwareFault.hardwareFault.detected()
+end
+return capabilities.hardwareFault.hardwareFault.clear()
+end
+end
 function emit.valve()
 return function(_, value)
 if value ~= nil then

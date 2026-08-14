@@ -667,6 +667,7 @@ device_helpers.create_fingerprint("HEIMAN", "TY0202"),
 })
 register_device_definition(motion_illuminance_tamper_battery_low_battery_sensor, {
 device_helpers.create_fingerprint("HEIMAN", "HS9MS-E"),
+device_helpers.create_fingerprint("Shyugj", "MotionSensor-ZB3.0"),
 })
 register_device_definition(whd02_motion_sensor, {
 device_helpers.create_fingerprint("HEIMAN", "PIR_TPV12"),

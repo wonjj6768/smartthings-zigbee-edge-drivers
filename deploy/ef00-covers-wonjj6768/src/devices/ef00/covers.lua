@@ -619,6 +619,89 @@ emit = emit.rm28leClickControl(),
 converter = converter.lookup_from_to({ up = 0, down = 1 }),
 }),
 }
+local cover_three = {
+profile = "covers-cover-battery-cover-three",
+tuya.dp_enum(1, {
+name = "cover_state",
+converter = cover_state_standard,
+write_only = true,
+}),
+tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+tuya.dp_numeric(2, {
+name = "window_shade_state",
+emit = emit.shade_state(),
+converter = window_shade_state_from_position(),
+read_only = true,
+}),
+tuya.dp_cover_position(3, { name = "position_report", emit = emit.shade_level() }),
+tuya.dp_numeric(3, {
+name = "window_shade_state_report",
+emit = emit.shade_state(),
+converter = window_shade_state_from_position(),
+read_only = true,
+}),
+tuya.dp_enum(5, {
+name = "reverse_direction",
+emit = emit.coverThreeReverseDirection(),
+converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+}),
+tuya.dp_numeric(12, {
+name = "motor_fault",
+read_only = true,
+emit = emit.coverThreeMotorFault(),
+converter = converter.from_only(function(value)
+return (tonumber(value) or 0) ~= 0 and "fault" or "normal"
+end),
+}),
+tuya.dp_battery(13, { emit = emit.battery() }),
+tuya.dp_enum(16, {
+name = "cover_limit",
+emit = emit.coverThreeLimit(),
+converter = converter.lookup_from_to({
+set_up = 0,
+set_down = 1,
+delete_up = 2,
+delete_down = 3,
+delete_both = 4,
+}),
+}),
+tuya.dp_enum(20, {
+name = "click_control",
+emit = emit.coverThreeClickControl(),
+converter = converter.lookup_from_to({ up = 0, down = 1 }),
+}),
+}
+local cover_one = {
+profile = "covers-cover-cover-one",
+tuya.dp_enum(1, {
+name = "cover_state",
+converter = cover_state_standard,
+write_only = true,
+}),
+tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+tuya.dp_numeric(2, {
+name = "window_shade_state",
+emit = emit.shade_state(),
+converter = window_shade_state_from_position(),
+read_only = true,
+}),
+tuya.dp_cover_position(3, { name = "position_report", emit = emit.shade_level() }),
+tuya.dp_numeric(3, {
+name = "window_shade_state_report",
+emit = emit.shade_state(),
+converter = window_shade_state_from_position(),
+read_only = true,
+}),
+tuya.dp_enum(5, {
+name = "reverse_direction",
+emit = emit.coverOneReverseDirection(),
+converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+}),
+tuya.dp_numeric(105, {
+name = "motor_speed",
+emit = emit.coverOneMotorSpeed(),
+}),
+}
 local cover_model_zm79e_dt = {
 profile = "covers-cover-zm79e-dt",
 tuya.dp_enum(1, {
@@ -865,7 +948,7 @@ converter = window_shade_state_from_position(),
 read_only = true,
 }),
 }
-register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+register_device_definition(cover_one, device_helpers.create_fingerprints("TS0601", {
 "_TZE200_bqcqqjpb",
 "_TZE200_gaj531w3",
 "_TZE284_gaj531w3",
@@ -882,6 +965,7 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
 "_TZE204_guvc7pdy",
 "_TZE204_57hjqelq",
 "_TZE204_vvvtcehj",
+"_TZE28C1000000_vvvtcehj",
 "_TZE200_axgvo9jh",
 "_TZE200_zxxfv8wi",
 "_TZE204_lh3arisb",
@@ -921,15 +1005,12 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
 "_TZE204_tgl8i2np",
 "_TZE200_2jwrgrro",
 }))
-register_device_definition(cover_core, {
+register_device_definition(cover_one, {
 device_helpers.create_fingerprint("HOBEIAN", "ZG-301Z-MOTO"),
 { manufacturer = "_TYST11_fzo2pocs", model = "zo2pocs" .. string.char(0) },
 { manufacturer = "_TYST11_udank5zs", model = "dank5zs" .. string.char(0) },
 })
-register_device_definition({
-profile = "covers-cover",
-datapoints = cover_core,
-}, device_helpers.create_fingerprints("TS0601", {
+register_device_definition(cover_one, device_helpers.create_fingerprints("TS0601", {
 "_TZE200_1fuxihti",
 "_TZE204_1fuxihti",
 "_TZE284_1fuxihti",
@@ -947,7 +1028,7 @@ datapoints = cover_core,
 "_TZE200_b2u1drdv",
 "_TZE200_ol5jlkkr",
 }))
-register_device_definition(cover_core, {
+register_device_definition(cover_one, {
 device_helpers.create_fingerprint("Yushun", "YS-MT750"),
 device_helpers.create_fingerprint("Yushun", "YS-MT750L"),
 device_helpers.create_fingerprint("Zemismart", "ZM79E-DT"),
@@ -975,7 +1056,7 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0105", {
 "_TZE600_ogyg1y6b",
 }))
-register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+register_device_definition(cover_three, device_helpers.create_fingerprints("TS0601", {
 "_TZE200_68nvbio9",
 "_TZE200_pw7mji0l",
 "_TZE200_cf1sl3tj",
@@ -985,6 +1066,7 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
 "_TZE204_ejh6owwz",
 "_TZE200_ba69l9ol",
 "_TZE200_68nvbi09",
+"_TZE284_n73badib",
 "_TZE200_vexa5o82",
 "_TZE200_sfqyhvpv",
 }))

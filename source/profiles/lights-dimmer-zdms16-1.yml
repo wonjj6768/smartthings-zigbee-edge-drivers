@@ -1,0 +1,13 @@
+name: lights-dimmer-zdms16-1
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.zdmsOneMinimumBrightness, version: 1}
+      - {id: concertmirror08464.zdmsOneMaximumBrightness, version: 1}
+      - {id: concertmirror08464.zdmsOneCountdown, version: 1}
+      - {id: concertmirror08464.zdmsOneSwitchType, version: 1}
+      - {id: concertmirror08464.zdmsOnePowerOnBehavior, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Light}]

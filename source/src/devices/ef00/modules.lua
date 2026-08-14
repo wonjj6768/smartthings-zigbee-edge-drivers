@@ -7,6 +7,7 @@ return {
     "devices.ef00.fans",
     "devices.ef00.lights",
     "devices.ef00.switches",
+    "devices.ef00.screen_switches",
     "devices.ef00.energy",
     "devices.ef00.sensors",
     "devices.ef00.thermostats",

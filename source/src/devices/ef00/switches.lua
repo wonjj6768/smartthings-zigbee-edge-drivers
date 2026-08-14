@@ -806,6 +806,7 @@ register_device_definition(switch_3gang_touch_panel, device_helpers.create_finge
 register_device_definition(switch_6gang_touch_panel, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_y8ficeai",
   "_TZE284_hyssaqjk",
+  "_TZE284_tokhh9pf",
 }))
 
 register_device_definition(switch_1gang_stairwell, device_helpers.create_fingerprints("TS0601", {

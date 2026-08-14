@@ -1,0 +1,22 @@
+name: valves-nas-wv03b-gallons-no-on-countdown
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.nasThreeStatus, version: 1}
+      - {id: concertmirror08464.nasThreeRefresh, version: 1}
+      - {id: concertmirror08464.nasThreeCountdown, version: 1}
+      - {id: concertmirror08464.nasThreeCountdownLeft, version: 1}
+      - {id: concertmirror08464.nasThreeSingleWateringDuration, version: 1}
+      - {id: concertmirror08464.nasThreeFlowSwitch, version: 1}
+      - {id: concertmirror08464.nasThreeQuantitativeGallons, version: 1}
+      - {id: concertmirror08464.nasThreeSingleAmountGallons, version: 1}
+      - {id: concertmirror08464.nasThreeSurplusGallons, version: 1}
+      - {id: concertmirror08464.nasThreeCurrentGallons, version: 1}
+      - {id: concertmirror08464.nasThreeTotalGallons, version: 1}
+      - {id: concertmirror08464.nasThreeWaterTotalReset, version: 1}
+      - {id: concertmirror08464.nasThreeFault, version: 1}
+      - {id: concertmirror08464.nasThreeChildLock, version: 1}
+      - {id: battery, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: WaterValve}]

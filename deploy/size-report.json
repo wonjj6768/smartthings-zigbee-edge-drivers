@@ -1,7 +1,7 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 508705,
+    "raw_size": 471945,
     "under_limit": true,
     "profiles": [
       "controllers-easyiot-sp1000",
@@ -11,26 +11,16 @@
       "din-rail-ts011f-unmetered",
       "meters-power-energy",
       "meters-power-energy-battery",
-      "plugs-bacchus-water-station",
       "plugs-dual-metered",
       "plugs-dual-metered-full-options",
       "plugs-dual-metered-outage",
       "plugs-dual-metered-outage-indicator",
       "plugs-dual-metered-outage-indicator-lock",
       "plugs-dual-outage",
-      "plugs-lidl-hg06337",
-      "plugs-nous-a11z",
       "plugs-switch",
       "plugs-switch-2",
       "plugs-switch-2-power-energy-voltage",
-      "plugs-switch-child-lock",
       "plugs-switch-power-energy-voltage",
-      "plugs-switch-power-energy-voltage-current",
-      "plugs-switch-power-voltage-current",
-      "plugs-switch-tuya-options",
-      "plugs-wp30-power-strip",
-      "plugs-zemismart-zmo606-20a",
-      "switch-power-energy",
       "switches-candeo-sm30-2g",
       "switches-lellki-wp33-5",
       "switches-switch-1",
@@ -41,7 +31,6 @@
       "switches-switch-1-countdown-switch-type-indicator",
       "switches-switch-1-module-options",
       "switches-switch-1-outage-switch-type",
-      "switches-switch-1-power-energy-voltage-current",
       "switches-switch-1-power-options",
       "switches-switch-1-power-outage",
       "switches-switch-1-poweron",
@@ -51,6 +40,7 @@
       "switches-switch-1-poweron-switch-type",
       "switches-switch-1-sonoff-zbmini-r2",
       "switches-switch-1-switch-type",
+      "switches-switch-1-ts0001-bbeb",
       "switches-switch-2",
       "switches-switch-2-countdown-switch-type",
       "switches-switch-2-power-options",
@@ -58,6 +48,8 @@
       "switches-switch-3",
       "switches-switch-3-countdown-switch-type",
       "switches-switch-3-device-temperature",
+      "switches-switch-3-nfzb03",
+      "switches-switch-3-ts0003-module2",
       "switches-switch-4",
       "switches-switch-5",
       "switches-switch-5-tuya-options",
@@ -69,16 +61,45 @@
       "valves-valve-battery",
       "valves-valve-indicator-mode"
     ],
-    "fingerprints": 602,
+    "fingerprints": 505,
     "custom_capabilities": {
-      "numeric": 14,
-      "enum": 28,
+      "numeric": 21,
+      "enum": 33,
       "text": 2
     }
   },
   {
+    "name": "zcl-plugs-wonjj6768",
+    "raw_size": 325471,
+    "under_limit": true,
+    "profiles": [
+      "plugs-bacchus-water-station",
+      "plugs-lidl-hg06337",
+      "plugs-nous-a11z",
+      "plugs-switch",
+      "plugs-switch-2",
+      "plugs-switch-child-lock",
+      "plugs-switch-power-energy-voltage",
+      "plugs-switch-power-energy-voltage-current",
+      "plugs-switch-power-energy-voltage-current-ts011f-plug1",
+      "plugs-switch-power-energy-voltage-current-ts011f-plug1-no-button",
+      "plugs-switch-power-voltage-current",
+      "plugs-switch-tuya-options",
+      "plugs-wp30-power-strip",
+      "plugs-zemismart-zmo606-20a",
+      "switch-power-energy",
+      "switches-switch-1-power-energy-voltage-current"
+    ],
+    "fingerprints": 107,
+    "custom_capabilities": {
+      "numeric": 5,
+      "enum": 14,
+      "text": 1
+    }
+  },
+  {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 436398,
+    "raw_size": 439907,
     "under_limit": true,
     "profiles": [
       "fans-fan-light-switch",
@@ -103,7 +124,7 @@
       "lights-dimmer-ts110-power-switch",
       "lights-dimmer-ts110-power-switch-minmax"
     ],
-    "fingerprints": 685,
+    "fingerprints": 692,
     "custom_capabilities": {
       "numeric": 12,
       "enum": 8,
@@ -112,7 +133,7 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 487711,
+    "raw_size": 489515,
     "under_limit": true,
     "profiles": [
       "lights-dimmer-power-voltage-current",
@@ -177,7 +198,7 @@
       "safety-water-leak-battery-low-battery-3rws18bz-pending",
       "safety-water-leak-battery-low-battery-voltage",
       "safety-water-leak-tamper-battery-low-battery",
-      "safety-water-leak-tamper-battery-low-battery-shelly-pending",
+      "safety-water-leak-tamper-battery-low-battery-hardware-fault-shelly",
       "safety-water-leak-tamper-battery-low-battery-voltage",
       "safety-water-leak-temp-battery-low-battery",
       "safety-water-temp-tamper-battery-low-battery",
@@ -206,7 +227,7 @@
       "thermostats-thermostat-battery",
       "thermostats-thermostat-humidity-power-energy-current"
     ],
-    "fingerprints": 390,
+    "fingerprints": 394,
     "custom_capabilities": {
       "numeric": 20,
       "enum": 7,
@@ -215,7 +236,7 @@
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 277134,
+    "raw_size": 277720,
     "under_limit": true,
     "profiles": [
       "covers-cover",
@@ -231,7 +252,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 405733,
+    "raw_size": 406507,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -278,7 +299,7 @@
       "security-remotes-heiman-partial-action-battery",
       "security-remotes-sos-battery-voltage"
     ],
-    "fingerprints": 311,
+    "fingerprints": 312,
     "custom_capabilities": {
       "numeric": 0,
       "enum": 8,
@@ -287,7 +308,7 @@
   },
   {
     "name": "ef00-controls-wonjj6768",
-    "raw_size": 274027,
+    "raw_size": 274225,
     "under_limit": true,
     "profiles": [
       "buttons-button-18",
@@ -307,15 +328,17 @@
   },
   {
     "name": "ef00-covers-wonjj6768",
-    "raw_size": 338334,
+    "raw_size": 344211,
     "under_limit": true,
     "profiles": [
       "covers-cover",
       "covers-cover-2",
+      "covers-cover-battery-cover-three",
       "covers-cover-battery-epj-zb",
       "covers-cover-battery-mb60l",
       "covers-cover-battery-rm28-le",
       "covers-cover-bx82-tyz1",
+      "covers-cover-cover-one",
       "covers-cover-pims3028",
       "covers-cover-switch-1",
       "covers-cover-switch-2",
@@ -324,16 +347,16 @@
       "covers-cover-zm79e-dt",
       "covers-cover-zsm01"
     ],
-    "fingerprints": 187,
+    "fingerprints": 189,
     "custom_capabilities": {
-      "numeric": 15,
-      "enum": 42,
+      "numeric": 16,
+      "enum": 47,
       "text": 2
     }
   },
   {
     "name": "ef00-lights-wonjj6768",
-    "raw_size": 360075,
+    "raw_size": 369021,
     "under_limit": true,
     "profiles": [
       "fans-fan-level-light-dimmer",
@@ -344,6 +367,7 @@
       "fans-switch-fan-speed-r32ctezx",
       "lights-color-temperature",
       "lights-dimmer-2",
+      "lights-dimmer-2-zdms16-2",
       "lights-dimmer-3",
       "lights-dimmer-dcnsggvz",
       "lights-dimmer-knob-p0gzbqct",
@@ -352,18 +376,19 @@
       "lights-dimmer-options-ts0601-la2c2uo9",
       "lights-dimmer-qzaing2g",
       "lights-dimmer-ts0601-light",
-      "lights-dimmer-whpb9yts"
+      "lights-dimmer-whpb9yts",
+      "lights-dimmer-zdms16-1"
     ],
-    "fingerprints": 96,
+    "fingerprints": 110,
     "custom_capabilities": {
-      "numeric": 33,
-      "enum": 33,
+      "numeric": 39,
+      "enum": 37,
       "text": 1
     }
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 430222,
+    "raw_size": 430440,
     "under_limit": true,
     "profiles": [
       "switches-switch-1",
@@ -396,7 +421,7 @@
   },
   {
     "name": "ef00-switch-panel-wonjj6768",
-    "raw_size": 478369,
+    "raw_size": 478723,
     "under_limit": true,
     "profiles": [
       "switches-eyzee-5gang-countdown",
@@ -426,7 +451,7 @@
       "switches-switch-8-adlblwab",
       "switches-switch-8-m9-sl"
     ],
-    "fingerprints": 38,
+    "fingerprints": 39,
     "custom_capabilities": {
       "numeric": 89,
       "enum": 127,
@@ -434,8 +459,22 @@
     }
   },
   {
+    "name": "ef00-screen-switch-wonjj6768",
+    "raw_size": 264326,
+    "under_limit": true,
+    "profiles": [
+      "switches-screen-zms206us4"
+    ],
+    "fingerprints": 8,
+    "custom_capabilities": {
+      "numeric": 2,
+      "enum": 8,
+      "text": 2
+    }
+  },
+  {
     "name": "ef00-garage-door-wonjj6768",
-    "raw_size": 260926,
+    "raw_size": 261124,
     "under_limit": true,
     "profiles": [
       "doors-garage-contact",
@@ -450,7 +489,7 @@
   },
   {
     "name": "ef00-energy-wonjj6768",
-    "raw_size": 442289,
+    "raw_size": 442487,
     "under_limit": true,
     "profiles": [
       "din-rail-switch-power-energy-3phase-stb3l125zj",
@@ -477,7 +516,7 @@
   },
   {
     "name": "ef00-meters-wonjj6768",
-    "raw_size": 452969,
+    "raw_size": 453167,
     "under_limit": true,
     "profiles": [
       "meters-energy-1phase-spm01",
@@ -514,7 +553,7 @@
   },
   {
     "name": "ef00-sensors-wonjj6768",
-    "raw_size": 457758,
+    "raw_size": 458130,
     "under_limit": true,
     "profiles": [
       "sensors-aq-co2",
@@ -569,7 +608,7 @@
       "sensors-water-meter-ultrasonic-ajlu4cud",
       "sensors-water-quality-excellux-dts1xm9"
     ],
-    "fingerprints": 154,
+    "fingerprints": 155,
     "custom_capabilities": {
       "numeric": 131,
       "enum": 70,
@@ -578,7 +617,7 @@
   },
   {
     "name": "ef00-pir-motion-wonjj6768",
-    "raw_size": 322503,
+    "raw_size": 322701,
     "under_limit": true,
     "profiles": [
       "safety-motion-ay204z-battery",
@@ -600,7 +639,7 @@
   },
   {
     "name": "ef00-presence-general-1-wonjj6768",
-    "raw_size": 501369,
+    "raw_size": 501806,
     "under_limit": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -630,7 +669,7 @@
   },
   {
     "name": "ef00-presence-general-2-wonjj6768",
-    "raw_size": 497821,
+    "raw_size": 498567,
     "under_limit": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -647,7 +686,7 @@
       "safety-presence-zym100s1-range-illuminance",
       "safety-presence-zym100s2-range-illuminance"
     ],
-    "fingerprints": 61,
+    "fingerprints": 63,
     "custom_capabilities": {
       "numeric": 282,
       "enum": 126,
@@ -656,7 +695,7 @@
   },
   {
     "name": "ef00-presence-switch-wonjj6768",
-    "raw_size": 460089,
+    "raw_size": 460526,
     "under_limit": true,
     "profiles": [
       "safety-presence-switch-illuminance-zis03",
@@ -673,7 +712,7 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 493447,
+    "raw_size": 493884,
     "under_limit": true,
     "profiles": [
       "safety-motion-mtd085-illuminance",
@@ -700,7 +739,7 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 396938,
+    "raw_size": 397507,
     "under_limit": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -750,7 +789,7 @@
       "safety-water-leak-battery",
       "safety-water-leak-illuminance-battery-zg223z"
     ],
-    "fingerprints": 96,
+    "fingerprints": 98,
     "custom_capabilities": {
       "numeric": 35,
       "enum": 105,
@@ -759,9 +798,12 @@
   },
   {
     "name": "ef00-valves-wonjj6768",
-    "raw_size": 292320,
+    "raw_size": 305528,
     "under_limit": true,
     "profiles": [
+      "valves-nas-wv03b-gallons",
+      "valves-nas-wv03b-gallons-no-on-countdown",
+      "valves-nas-wv03b-liters",
       "valves-valve-2-battery-status",
       "valves-valve-2-battery-timer-gx03",
       "valves-valve-battery-countdown-zvl-pro",
@@ -771,19 +813,20 @@
       "valves-valve-threshold-timer-fkv02",
       "valves-valve-ultrasonic-meter"
     ],
-    "fingerprints": 20,
+    "fingerprints": 30,
     "custom_capabilities": {
-      "numeric": 20,
-      "enum": 8,
+      "numeric": 34,
+      "enum": 14,
       "text": 3
     }
   },
   {
     "name": "ef00-thermostat-trv-1-wonjj6768",
-    "raw_size": 453746,
+    "raw_size": 458863,
     "under_limit": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",
+      "thermostats-siterwell-gs361a",
       "thermostats-thermostat-cgr0rhza",
       "thermostats-thermostat-classic-trv",
       "thermostats-thermostat-g2ki0ejr",
@@ -798,16 +841,16 @@
       "thermostats-thermostat-zg-wk-da",
       "thermostats-thermostat-zht002"
     ],
-    "fingerprints": 61,
+    "fingerprints": 71,
     "custom_capabilities": {
       "numeric": 124,
-      "enum": 155,
+      "enum": 158,
       "text": 1
     }
   },
   {
     "name": "ef00-thermostat-trv-2-wonjj6768",
-    "raw_size": 446600,
+    "raw_size": 449794,
     "under_limit": true,
     "profiles": [
       "thermostats-thermostat-battery-ar331",
@@ -825,15 +868,18 @@
     "fingerprints": 34,
     "custom_capabilities": {
       "numeric": 124,
-      "enum": 154,
+      "enum": 157,
       "text": 1
     }
   },
   {
     "name": "ef00-thermostat-wall-wonjj6768",
-    "raw_size": 449009,
+    "raw_size": 455025,
     "under_limit": true,
     "profiles": [
+      "thermostats-bht002-fine",
+      "thermostats-bht002-half",
+      "thermostats-bht002-whole",
       "thermostats-thermostat-battery-bot-r15w",
       "thermostats-thermostat-bot-r9v",
       "thermostats-thermostat-floor",
@@ -848,16 +894,16 @@
       "thermostats-thermostat-zwt100",
       "thermostats-thermostat-zwt198"
     ],
-    "fingerprints": 34,
+    "fingerprints": 43,
     "custom_capabilities": {
-      "numeric": 77,
-      "enum": 77,
-      "text": 1
+      "numeric": 82,
+      "enum": 80,
+      "text": 2
     }
   },
   {
     "name": "ef00-thermostat-fcu-wonjj6768",
-    "raw_size": 397932,
+    "raw_size": 398272,
     "under_limit": true,
     "profiles": [
       "thermostats-fcu-thermostat-ae669k",
@@ -875,7 +921,7 @@
       "thermostats-thermostat-sas936",
       "thermostats-thermostat-saswell"
     ],
-    "fingerprints": 39,
+    "fingerprints": 40,
     "custom_capabilities": {
       "numeric": 28,
       "enum": 34,

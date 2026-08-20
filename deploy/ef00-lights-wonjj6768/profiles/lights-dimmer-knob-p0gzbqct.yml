@@ -23,7 +23,14 @@ deviceConfig:
         capability: switch
         version: 1
         group: main
-    actions: []
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+        values:
+          - command: "on"
+          - command: "off"
     basicPlus: []
   detailView:
     - component: main
@@ -53,6 +60,12 @@ deviceConfig:
         capability: switchLevel
         version: 1
     actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: switchLevel
+        version: 1
       - component: main
         capability: concertmirror08464.p0gzbqctMinBrightness
         version: 1

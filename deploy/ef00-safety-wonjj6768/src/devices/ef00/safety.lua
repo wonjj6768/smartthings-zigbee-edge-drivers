@@ -1267,6 +1267,7 @@ register_device_definition(vibration_model_zg_103z, device_helpers.create_finger
 "_TZE200_hggxgsjj",
 "_TZE200_yjryxpot",
 "_TZE200_afycb3cg",
+"HOBEIAN:ZG-103Z",
 }))
 local vibration_model_4cqhd2ha = {
 profile = "safety-acceleration-4cqhd2ha",

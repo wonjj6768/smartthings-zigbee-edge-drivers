@@ -1,9 +1,175 @@
+local capabilities = require "st.capabilities"
 local tuya = require "tuya_common"
 local emit = require "emitters"
 local device_helpers = require "devices.shared.helpers"
 local ef00_helpers = require "devices.ef00.helpers"
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local converter = tuya.converter
+local OA1ODMGA_HUE_FIELD = "oa1odmga_color_hue"
+local OA1ODMGA_SATURATION_FIELD = "oa1odmga_color_saturation"
+local OA1ODMGA_BRIGHTNESS_FIELD = "oa1odmga_color_brightness"
+local OA1ODMGA_COLOR_TEMPERATURE_RANGE = { minimum = 2000, maximum = 6536 }
+local function clamp(value, minimum, maximum)
+if value < minimum then return minimum end
+if value > maximum then return maximum end
+return value
+end
+local function round(value)
+return math.floor(value + 0.5)
+end
+local function oa1odmga_color_part(value, offset)
+if type(value) ~= "string" or #value < 12 then
+return nil
+end
+return tonumber(value:sub(offset, offset + 3), 16)
+end
+local function oa1odmga_hue_from_device(value, device)
+local degrees = oa1odmga_color_part(value, 1)
+if degrees == nil then return nil end
+local hue = clamp(degrees / 3.6, 0, 100)
+device:set_field(OA1ODMGA_HUE_FIELD, hue, { persist = false })
+return hue
+end
+local function oa1odmga_saturation_from_device(value, device)
+local raw = oa1odmga_color_part(value, 5)
+if raw == nil then return nil end
+local saturation = clamp(raw / 10, 0, 100)
+device:set_field(OA1ODMGA_SATURATION_FIELD, saturation, { persist = false })
+return saturation
+end
+local function oa1odmga_brightness_pair()
+return converter.from_to(
+function(value, device)
+local brightness = clamp((tonumber(value) or 0) * 100 / 254, 0, 100)
+device:set_field(OA1ODMGA_BRIGHTNESS_FIELD, brightness, { persist = false })
+return brightness
+end,
+function(value, device)
+local brightness = clamp(tonumber(value) or 0, 0, 100)
+device:set_field(OA1ODMGA_BRIGHTNESS_FIELD, brightness, { persist = false })
+return round(brightness * 254 / 100)
+end
+)
+end
+local function oa1odmga_color_temperature_pair()
+return converter.from_to(
+function(value)
+local mired = tonumber(value)
+if mired == nil or mired <= 0 then return nil end
+return round(1000000 / mired)
+end,
+function(value)
+local kelvin = tonumber(value)
+if kelvin == nil or kelvin <= 0 then return nil end
+return clamp(round(1000000 / kelvin), 153, 500)
+end
+)
+end
+local function oa1odmga_latest(device, field, capability_id, attribute_name, fallback)
+local value = device:get_field(field)
+if value == nil and type(device.get_latest_state) == "function" then
+value = device:get_latest_state("main", capability_id, attribute_name)
+end
+return tonumber(value) or fallback
+end
+local function oa1odmga_color_payload(device, hue, saturation)
+hue = clamp(tonumber(hue) or 0, 0, 100)
+saturation = clamp(tonumber(saturation) or 0, 0, 100)
+local brightness = clamp(oa1odmga_latest(
+device, OA1ODMGA_BRIGHTNESS_FIELD, "switchLevel", "level", 100
+), 0, 100)
+device:set_field(OA1ODMGA_HUE_FIELD, hue, { persist = false })
+device:set_field(OA1ODMGA_SATURATION_FIELD, saturation, { persist = false })
+return string.format("%04x%04x%04x", round(hue * 3.6), round(saturation * 10), round(brightness * 10))
+end
+local function oa1odmga_color_write(device, value)
+if type(value) ~= "table" then return nil end
+local hue = value.hue
+local saturation = value.saturation
+if hue == nil or saturation == nil then return nil end
+return {
+{ dp = 2, datatype = tuya.DP_TYPE_ENUM, value = 1 },
+{ dp = 5, datatype = tuya.DP_TYPE_STRING, value = oa1odmga_color_payload(device, hue, saturation) },
+}
+end
+local function oa1odmga_hue_write(device, value)
+local saturation = oa1odmga_latest(
+device, OA1ODMGA_SATURATION_FIELD, "colorControl", "saturation", 100
+)
+return oa1odmga_color_write(device, { hue = value, saturation = saturation })
+end
+local function oa1odmga_saturation_write(device, value)
+local hue = oa1odmga_latest(device, OA1ODMGA_HUE_FIELD, "colorControl", "hue", 0)
+return oa1odmga_color_write(device, { hue = hue, saturation = value })
+end
+local oa1odmga_color_temperature_converter = oa1odmga_color_temperature_pair()
+local function oa1odmga_color_temperature_write(_, value)
+local encoded = oa1odmga_color_temperature_converter.to(value)
+if encoded == nil then return nil end
+return {
+{ dp = 2, datatype = tuya.DP_TYPE_ENUM, value = 0 },
+{ dp = 4, datatype = tuya.DP_TYPE_VALUE, value = encoded },
+}
+end
+local oa1odmga_switch = tuya.dp_on_off(1, { name = "switch", emit = emit.switch() })
+local oa1odmga_brightness = tuya.dp_numeric(3, {
+name = "brightness",
+emit = emit.level(),
+converter = oa1odmga_brightness_pair(),
+})
+local oa1odmga_color_temperature = tuya.dp_numeric(4, {
+name = "oa1odmga_color_temperature_report",
+read_only = true,
+emit = emit.color_temperature(),
+converter = converter.from_only(oa1odmga_color_temperature_converter.from),
+})
+local oa1odmga_hue = tuya.dp_string(5, {
+name = "oa1odmga_color_hue_report",
+read_only = true,
+emit = emit.color_hue(),
+converter = converter.from_only(oa1odmga_hue_from_device),
+})
+local oa1odmga_saturation = tuya.dp_string(5, {
+name = "oa1odmga_color_saturation_report",
+read_only = true,
+emit = emit.color_saturation(),
+converter = converter.from_only(oa1odmga_saturation_from_device),
+})
+local light_model_oa1odmga = {
+profile = "lights-color-temperature-color",
+color_temperature_range = OA1ODMGA_COLOR_TEMPERATURE_RANGE,
+named_mapping = {
+named_mappings = {
+switch = oa1odmga_switch,
+brightness = oa1odmga_brightness,
+color_temperature = oa1odmga_color_temperature_write,
+color = oa1odmga_color_write,
+color_hue = oa1odmga_hue_write,
+color_saturation = oa1odmga_saturation_write,
+},
+},
+datapoints = {
+oa1odmga_switch,
+tuya.dp_enum(2, { name = "oa1odmga_work_mode", read_only = true }),
+oa1odmga_brightness,
+oa1odmga_color_temperature,
+oa1odmga_hue,
+oa1odmga_saturation,
+},
+runtime_start = function(device)
+device:emit_component_event(
+{ id = "main" },
+capabilities.colorTemperature.colorTemperatureRange({
+value = OA1ODMGA_COLOR_TEMPERATURE_RANGE,
+unit = "K",
+})
+)
+return true
+end,
+}
+register_device_definition(light_model_oa1odmga, device_helpers.create_fingerprints("TS0601", {
+"_TZE284_oa1odmga",
+}))
 local zdms16_brightness = converter.scale_pair(0, 254, 0, 100)
 local zdms16_switch_type = converter.lookup_from_to({
 toggle = 0,

@@ -1,4 +1,4 @@
-name: lights-dimmer-knob-p0gzbqct
+name: lights-color-temperature-color
 components:
   - id: main
     capabilities:
@@ -6,11 +6,9 @@ components:
         version: 1
       - id: switchLevel
         version: 1
-      - id: concertmirror08464.p0gzbqctMinBrightness
+      - id: colorTemperature
         version: 1
-      - id: concertmirror08464.p0gzbqctLightType
-        version: 1
-      - id: concertmirror08464.p0gzbqctIndicatorMode
+      - id: colorControl
         version: 1
       - id: refresh
         version: 1
@@ -23,6 +21,14 @@ deviceConfig:
         capability: switch
         version: 1
         group: main
+        composite: true
+      - component: main
+        capability: switchLevel
+        version: 1
+        group: main
+        values:
+          - label: "{{level.value}} {{level.unit}}"
+        composite: true
     actions:
       - component: main
         capability: switch
@@ -40,13 +46,10 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
-      capability: concertmirror08464.p0gzbqctMinBrightness
+      capability: colorTemperature
       version: 1
     - component: main
-      capability: concertmirror08464.p0gzbqctLightType
-      version: 1
-    - component: main
-      capability: concertmirror08464.p0gzbqctIndicatorMode
+      capability: colorControl
       version: 1
     - component: main
       capability: refresh
@@ -59,6 +62,12 @@ deviceConfig:
       - component: main
         capability: switchLevel
         version: 1
+      - component: main
+        capability: colorTemperature
+        version: 1
+      - component: main
+        capability: colorControl
+        version: 1
     actions:
       - component: main
         capability: switch
@@ -67,11 +76,8 @@ deviceConfig:
         capability: switchLevel
         version: 1
       - component: main
-        capability: concertmirror08464.p0gzbqctMinBrightness
+        capability: colorTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.p0gzbqctLightType
-        version: 1
-      - component: main
-        capability: concertmirror08464.p0gzbqctIndicatorMode
+        capability: colorControl
         version: 1

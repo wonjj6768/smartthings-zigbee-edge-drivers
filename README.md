@@ -40,14 +40,14 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Covers wonjj6768 | `ef00-covers-wonjj6768` | 189 |
 | EF00 Energy wonjj6768 | `ef00-energy-wonjj6768` | 52 |
 | EF00 Garage Door wonjj6768 | `ef00-garage-door-wonjj6768` | 11 |
-| EF00 Lights wonjj6768 | `ef00-lights-wonjj6768` | 110 |
+| EF00 Lights wonjj6768 | `ef00-lights-wonjj6768` | 111 |
 | EF00 Meters wonjj6768 | `ef00-meters-wonjj6768` | 62 |
 | EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 23 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 32 |
 | EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 30 |
 | EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 63 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
-| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 98 |
+| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 99 |
 | EF00 Screen Switch wonjj6768 | `ef00-screen-switch-wonjj6768` | 8 |
 | EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 155 |
 | EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 39 |
@@ -57,7 +57,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
 | EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 43 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 30 |
-| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 312 |
+| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 313 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 41 |
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 692 |
 | ZCL Plugs wonjj6768 | `zcl-plugs-wonjj6768` | 107 |
@@ -369,7 +369,7 @@ Development driver; report issues with hub logcat. Supports EF00 garage door ope
 </details>
 
 <details>
-<summary>EF00 Lights wonjj6768 (110 fingerprints)</summary>
+<summary>EF00 Lights wonjj6768 (111 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 dimmers, LED drivers, and lighting devices.
 
@@ -449,6 +449,7 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 | `_TZE284_jtbgusdc` | `TS0601` | `lights-dimmer-2-zdms16-2` |
 | `_TZE284_m1cvyneb` | `TS0601` | `lights-dimmer-options-ts0601` |
 | `_TZE284_nqqylykc` | `TS0601` | `lights-dimmer-zdms16-1` |
+| `_TZE284_oa1odmga` | `TS0601` | `lights-color-temperature-color` |
 | `_TZE284_tgeqdjgk` | `TS0601` | `lights-color-temperature` |
 | `_TZE284_z5jz7wpo` | `TS0601` | `fans-switch-fan-mode-ceiling-z5jz7wpo` |
 | `_TZE284_znvwzxkq` | `TS0601` | `lights-dimmer-3` |
@@ -775,7 +776,7 @@ Development driver; report issues with hub logcat. Supports EF00 presence sensor
 </details>
 
 <details>
-<summary>EF00 Safety wonjj6768 (98 fingerprints)</summary>
+<summary>EF00 Safety wonjj6768 (99 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.
 
@@ -873,6 +874,7 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE28C1000000_chbyv06x` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
 | `AOYAN` | `AY02SZ` | `safety-acceleration-contact-battery-zg102zm` |
 | `CAT0001` | `Excellux` | `safety-contact-vibration-battery-excellux` |
+| `HOBEIAN` | `ZG-103Z` | `safety-acceleration-battery-zg103z` |
 | `HOBEIAN` | `ZG-223Z` | `safety-water-leak-illuminance-battery-zg223z` |
 | `HOBEIAN` | `ZG-226Z` | `safety-water-leak-alarm-battery-zg226z` |
 | `HOBEIAN` | `ZG-228Z` | `safety-acceleration-alarm-battery-zg228z` |
@@ -1504,7 +1506,7 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 </details>
 
 <details>
-<summary>ZCL Controls wonjj6768 (312 fingerprints)</summary>
+<summary>ZCL Controls wonjj6768 (313 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.
 
@@ -1543,6 +1545,7 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `_TZ3000_8utxxtzr` | `TS0215A` | `security-remotes-action-battery` |
 | `_TZ3000_9orwkl3t` | `TS0044` | `buttons-button-4-battery-voltage` |
 | `_TZ3000_9r5jaajv` | `TS0215A` | `security-remotes-sos-battery-voltage` |
+| `_TZ3000_9zc1limb` | `TS0043` | `buttons-button-3-battery` |
 | `_TZ3000_a4xycprs` | `TS0044` | `buttons-button-4-battery-voltage` |
 | `_TZ3000_a7ouggvs` | `TS0043` | `buttons-button-3-battery` |
 | `_TZ3000_abci1hiu` | `TS0044` | `buttons-button-4-battery-voltage` |

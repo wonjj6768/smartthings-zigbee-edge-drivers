@@ -149,6 +149,7 @@ register_device_definition(remote_2, device_helpers.create_fingerprints("TS0042"
 register_device_definition(remote_3, device_helpers.create_fingerprints("TS0043", {
   "_TZ3000_gbm10jnj",
   "_TZ3000_1kmurvlx",
+  "_TZ3000_9zc1limb",
 }))
 
 register_device_definition(remote_3, device_helpers.create_fingerprints("TS0043", {

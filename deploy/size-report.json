@@ -252,7 +252,7 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 406507,
+    "raw_size": 406658,
     "under_limit": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -299,7 +299,7 @@
       "security-remotes-heiman-partial-action-battery",
       "security-remotes-sos-battery-voltage"
     ],
-    "fingerprints": 312,
+    "fingerprints": 313,
     "custom_capabilities": {
       "numeric": 0,
       "enum": 8,
@@ -356,7 +356,7 @@
   },
   {
     "name": "ef00-lights-wonjj6768",
-    "raw_size": 369021,
+    "raw_size": 377140,
     "under_limit": true,
     "profiles": [
       "fans-fan-level-light-dimmer",
@@ -366,6 +366,7 @@
       "fans-switch-fan-mode-ceiling-z5jz7wpo",
       "fans-switch-fan-speed-r32ctezx",
       "lights-color-temperature",
+      "lights-color-temperature-color",
       "lights-dimmer-2",
       "lights-dimmer-2-zdms16-2",
       "lights-dimmer-3",
@@ -379,7 +380,7 @@
       "lights-dimmer-whpb9yts",
       "lights-dimmer-zdms16-1"
     ],
-    "fingerprints": 110,
+    "fingerprints": 111,
     "custom_capabilities": {
       "numeric": 39,
       "enum": 37,
@@ -639,7 +640,7 @@
   },
   {
     "name": "ef00-presence-general-1-wonjj6768",
-    "raw_size": 501806,
+    "raw_size": 503701,
     "under_limit": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -669,7 +670,7 @@
   },
   {
     "name": "ef00-presence-general-2-wonjj6768",
-    "raw_size": 498567,
+    "raw_size": 500462,
     "under_limit": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -695,7 +696,7 @@
   },
   {
     "name": "ef00-presence-switch-wonjj6768",
-    "raw_size": 460526,
+    "raw_size": 462421,
     "under_limit": true,
     "profiles": [
       "safety-presence-switch-illuminance-zis03",
@@ -712,7 +713,7 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 493884,
+    "raw_size": 495779,
     "under_limit": true,
     "profiles": [
       "safety-motion-mtd085-illuminance",
@@ -739,7 +740,7 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 397507,
+    "raw_size": 397659,
     "under_limit": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -789,7 +790,7 @@
       "safety-water-leak-battery",
       "safety-water-leak-illuminance-battery-zg223z"
     ],
-    "fingerprints": 98,
+    "fingerprints": 99,
     "custom_capabilities": {
       "numeric": 35,
       "enum": 105,

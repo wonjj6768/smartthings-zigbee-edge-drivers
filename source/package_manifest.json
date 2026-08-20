@@ -314,6 +314,10 @@
       "protocol": "ef00",
       "modules": [
         "thermostats_wall"
+      ],
+      "include_device_files": [
+        "thermostats/wall.lua",
+        "thermostats/metadata.lua"
       ]
     },
     {
@@ -323,6 +327,10 @@
       "protocol": "ef00",
       "modules": [
         "thermostats_fcu"
+      ],
+      "include_device_files": [
+        "thermostats/fcu.lua",
+        "thermostats/legacy.lua"
       ]
     }
   ]

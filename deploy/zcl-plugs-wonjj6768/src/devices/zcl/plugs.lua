@@ -79,7 +79,7 @@ zcl.tuya_magic_packet(),
 })
 tuya_switch_only_plug.configure = bind_on_off_endpoints({ 1 }, true)
 local lidl_hg06337_plug = build_plug("plugs-lidl-hg06337", {
-zcl.switch({ endpoint = 11 }),
+zcl.switch({ endpoint = 11, component = "main" }),
 zcl.tuya_magic_packet(),
 zcl.indicator_mode({ endpoint = 11 }),
 })
@@ -253,6 +253,7 @@ zcl.energy(),
 local smart_cable_power_energy = build_plug("switches-switch-1-power-energy-voltage-current",
 zcl_device_helpers.metering_clusters({
 endpoint = 2,
+switch_component = "main",
 include_current = true,
 })
 )

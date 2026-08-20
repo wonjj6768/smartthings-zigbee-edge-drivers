@@ -276,6 +276,29 @@ end
 end
 return selected
 end
+local function select_mapping_entries(candidate, device, context)
+if candidate == nil or not is_mapping_bucket(candidate) then
+return select_mapping_entry(candidate, device, context)
+end
+local selected = {}
+local selected_score = -1
+for _, mapping in ipairs(candidate) do
+local score = mapping_match_score(mapping, device, context)
+if score > selected_score then
+selected = { mapping }
+selected_score = score
+elseif score >= 0 and score == selected_score then
+selected[#selected + 1] = mapping
+end
+end
+if selected_score < 0 or #selected == 0 then
+return nil
+end
+if #selected == 1 then
+return selected[1]
+end
+return selected
+end
 local function resolve_field_name(field, device, context)
 local resolved = field
 if type_check(resolved) == "function" then
@@ -510,14 +533,14 @@ end
 local dp = type_check(context) == "table" and context.dp or context
 if is_mapping_list(mappings) then
 local dp_index = build_mapping_indexes(mappings)
-return select_mapping_entry(dp_index and dp_index[dp] or nil, device, context)
+return select_mapping_entries(dp_index and dp_index[dp] or nil, device, context)
 end
 local direct = mappings[dp]
 if direct ~= nil then
-return select_mapping_entry(direct, device, context)
+return select_mapping_entries(direct, device, context)
 end
 local dp_index = build_mapping_indexes(mappings)
-return select_mapping_entry(dp_index and dp_index[dp] or nil, device, context)
+return select_mapping_entries(dp_index and dp_index[dp] or nil, device, context)
 end
 local function mapping_for_key(mappings, key, device, context)
 if type_check(mappings) ~= "table" or type_check(key) ~= "string" then

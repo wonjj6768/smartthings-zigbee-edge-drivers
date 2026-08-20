@@ -62,7 +62,7 @@ local alecto_smart_heat10 = {
 }
 
 register_device_definition(alecto_smart_heat10, {
-  device_helpers.create_fingerprint("_TYST11_8daqwrsj", "daqwrsj" .. string.char(0)),
+  device_helpers.create_fingerprint("_TYST11_8daqwrsj", "daqwrsj"),
   device_helpers.create_fingerprint("_TZE200_8daqwrsj", "TS0601"),
 })
 local BAC003_POWER_FIELD = "bac003_power_state"

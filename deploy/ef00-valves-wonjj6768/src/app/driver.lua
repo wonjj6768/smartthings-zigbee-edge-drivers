@@ -9,6 +9,7 @@ local generated_clusters = require "st.zigbee.generated.zcl_clusters"
 local component_mapping = require "app.component_mapping"
 local custom_capability_runtime_factory = require "app.custom_capability_runtime"
 local battery_refresh = require "app.battery_refresh"
+local switch_command_router = require "app.switch_command_router"
 local switch_default_on = require "st.zigbee.defaults.switch_defaults.on"
 local switch_default_off = require "st.zigbee.defaults.switch_defaults.off"
 local power_poll_interval_metadata = custom_capabilities.by_emit_name.power_poll_interval
@@ -31,9 +32,6 @@ local IAS_WARNING_LEVEL_VERY_HIGH = 0x03
 local DEFAULT_IAS_WARNING_DURATION = 300
 local STATELESS_SWITCH_LEVEL_STEP_ID = "statelessSwitchLevelStep"
 local STATELESS_SWITCH_LEVEL_STEP_COMMAND = "stepLevel"
-battery_refresh.set_requester(function(device)
-return zcl.read_attribute(device, 0x0001, 0x0020, 1)
-end)
 local preset_cache = setmetatable({}, { __mode = "k" })
 local function register_all_zcl_mappings()
 local all_definitions = registry.all()
@@ -74,6 +72,13 @@ end
 preset_cache[device] = preset
 return preset
 end
+battery_refresh.set_requester(function(device)
+return zcl.read_attribute(device, 0x0001, 0x0020, 1)
+end, function(device)
+local preset = get_preset(device)
+return preset ~= nil and preset.zcl_clusters ~= nil and
+zcl.has_cluster(preset.zcl_clusters, zcl.CLUSTER_POWER_CONFIGURATION)
+end)
 local function is_callable(value)
 if type(value) == "function" then
 return true
@@ -590,24 +595,34 @@ end
 end
 handlers[capabilities.switch.ID] = handlers[capabilities.switch.ID] or {}
 handlers[capabilities.switch.ID][capabilities.switch.commands.on.NAME] = function(driver, device, command)
-if uses_zcl_on_off(device) then
-local preset = get_preset(device)
+switch_command_router.route({
+driver = driver,
+device = device,
+command = command,
+value = true,
+uses_zcl_on_off = uses_zcl_on_off,
+send_named = send,
+begin_power_poll_burst = function(target_device)
+local preset = get_preset(target_device)
 if preset ~= nil and preset.zcl_clusters ~= nil and zcl.begin_power_poll_burst ~= nil then
-zcl.begin_power_poll_burst(device, preset.zcl_clusters)
+zcl.begin_power_poll_burst(target_device, preset.zcl_clusters)
 end
-return switch_default_on(driver, device, command)
-end
-if send(device, command, "switch", true) then
-after_ef00_switch_command(device, command, true)
-end
+end,
+after_ef00_switch_command = after_ef00_switch_command,
+default_handler = switch_default_on,
+})
 end
 handlers[capabilities.switch.ID][capabilities.switch.commands.off.NAME] = function(driver, device, command)
-if uses_zcl_on_off(device) then
-return switch_default_off(driver, device, command)
-end
-if send(device, command, "switch", false) then
-after_ef00_switch_command(device, command, false)
-end
+switch_command_router.route({
+driver = driver,
+device = device,
+command = command,
+value = false,
+uses_zcl_on_off = uses_zcl_on_off,
+send_named = send,
+after_ef00_switch_command = after_ef00_switch_command,
+default_handler = switch_default_off,
+})
 end
 handlers[STATELESS_SWITCH_LEVEL_STEP_ID] = {
 [STATELESS_SWITCH_LEVEL_STEP_COMMAND] = function(_, device, command)

@@ -1,10 +1,5 @@
 local device_registry_helpers = {}
 local function normalize_fingerprint_part(value)
-if type(value) ~= "string" then
-return value
-end
-value = value:gsub("\0", "")
-value = value:gsub("^%s+", ""):gsub("%s+$", "")
 return value
 end
 local function copy_entry_fields(source, target)

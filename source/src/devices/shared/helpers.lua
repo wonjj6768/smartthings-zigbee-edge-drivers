@@ -1,12 +1,8 @@
 local device_registry_helpers = {}
 
 local function normalize_fingerprint_part(value)
-  if type(value) ~= "string" then
-    return value
-  end
-
-  value = value:gsub("\0", "")
-  value = value:gsub("^%s+", ""):gsub("%s+$", "")
+  -- Zigbee interview strings are byte-exact. Trailing spaces and NUL bytes are
+  -- meaningful fingerprint data and must not be normalized implicitly.
   return value
 end
 

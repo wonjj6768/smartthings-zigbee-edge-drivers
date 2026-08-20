@@ -9,53 +9,34 @@ local on_off_bool_converter = converter.lookup_from_to({
   off = false,
 })
 
--- Index ranges are brittle: splitting a family in presence.lua shifts every
--- later entry.  The general package owns the registrations up to the ZG-302ZM
--- presence switch plus the standalone radar block near the end of the file, so
--- the boundaries are expressed as profile names and resolved below.
-local INCLUDED_HEAD_LAST_PROFILE = "safety-presence-gnpflcoq-illuminance-temp-humidity-battery"
-local INCLUDED_TAIL_FIRST_PROFILE = "safety-motion-tamper-battery"
-
-local function entry_profile(entry)
-  local definition = entry.definition or entry
-  return definition.profile
-end
-
-local head_last_index, tail_first_index
-for index, entry in ipairs(entries) do
-  local profile = entry_profile(entry)
-  if profile == INCLUDED_HEAD_LAST_PROFILE then
-    head_last_index = math.max(head_last_index or 0, index)
+local function copy_entry(entry)
+  local copied = {}
+  for key, value in pairs(entry) do
+    copied[key] = value
   end
-  if profile == INCLUDED_TAIL_FIRST_PROFILE and tail_first_index == nil then
-    tail_first_index = index
-  end
-end
-assert(head_last_index ~= nil, "presence_general: head boundary profile not found")
-assert(tail_first_index ~= nil, "presence_general: tail boundary profile not found")
 
-local include = {}
-for index = 1, head_last_index do
-  include[index] = true
-end
-for index = tail_first_index, #entries do
-  include[index] = true
-end
-
-local out = {}
-local zg204zq_entry = nil
-for index, entry in ipairs(entries) do
-  if entry.fingerprints then
-    for _, fingerprint in ipairs(entry.fingerprints) do
-      if fingerprint.manufacturer == "_TZE284_fwondbzy" and fingerprint.model == "TS0601" then
-        entry.fingerprints[#entry.fingerprints + 1] = device_helpers.create_fingerprint("_TZE284_xpq2rzhq", "TS0601")
-      elseif fingerprint.manufacturer == "_TZE200_p9zbdqgs" and fingerprint.model == "TS0601" then
-        zg204zq_entry = entry
-      end
+  if type(entry.fingerprints) == "table" then
+    copied.fingerprints = {}
+    for index, fingerprint in ipairs(entry.fingerprints) do
+      copied.fingerprints[index] = fingerprint
     end
   end
 
-  if include[index] then
+  return copied
+end
+
+local out = {}
+for _, source_entry in ipairs(entries) do
+  if source_entry.package_group == nil or source_entry.package_group == "presence-general" then
+    local entry = copy_entry(source_entry)
+    if entry.fingerprints then
+      for _, fingerprint in ipairs(entry.fingerprints) do
+        if fingerprint.manufacturer == "_TZE284_fwondbzy" and fingerprint.model == "TS0601" then
+          entry.fingerprints[#entry.fingerprints + 1] = device_helpers.create_fingerprint("_TZE284_xpq2rzhq", "TS0601")
+          break
+        end
+      end
+    end
     out[#out + 1] = entry
   end
 end

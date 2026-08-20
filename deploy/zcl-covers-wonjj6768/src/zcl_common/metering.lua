@@ -1,6 +1,7 @@
 local function load_metering(zcl)
 local capabilities = require "st.capabilities"
 local custom_capabilities = require "core.custom_capabilities"
+local capability_support = require "core.capability_support"
 local zigbee_constants = require "st.zigbee.constants"
 local POWER_POLL_INTERVAL_METADATA = custom_capabilities.by_emit_name.power_poll_interval
 local LAST_POWER_RESPONSE_TIME_METADATA = custom_capabilities.by_emit_name.last_power_response_time
@@ -64,30 +65,13 @@ end
 return value
 end
 local function supports_main_capability(device, capability)
-if capability == nil or type(device) ~= "table" then
+if capability == nil then
 return false
 end
-local components = device.profile and device.profile.components or nil
-local main = type(components) == "table" and components.main or nil
-local capabilities_map = main and main.capabilities or nil
-if type(capabilities_map) == "table" and capabilities_map[capability.ID] ~= nil then
-return true
-end
-return type(device.supports_capability_by_id) == "function" and
-device:supports_capability_by_id(capability.ID, "main")
+return capability_support.supports(device, capability.ID, "main")
 end
 local function supports_main_capability_id(device, capability_id)
-if type(device) ~= "table" or type(capability_id) ~= "string" or capability_id == "" then
-return false
-end
-local components = device.profile and device.profile.components or nil
-local main = type(components) == "table" and components.main or nil
-local capabilities_map = main and main.capabilities or nil
-if type(capabilities_map) == "table" then
-return capabilities_map[capability_id] ~= nil
-end
-return type(device.supports_capability_by_id) == "function" and
-device:supports_capability_by_id(capability_id, "main")
+return capability_support.supports(device, capability_id, "main")
 end
 local function emit_main_event(device, event)
 if event == nil then

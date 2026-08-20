@@ -93,7 +93,7 @@ read_on_configure = true,
 local frient_sirzb112 = {
 profile = "safety-siren-frient-sirzb112",
 zcl_clusters = {
-zcl.switch({ endpoint = 43 }),
+zcl.switch({ endpoint = 43, component = "main" }),
 zcl.alarm_1_or_2({ endpoint = 43 }),
 zcl.tamper({ endpoint = 43 }),
 zcl.battery_low({ endpoint = 43 }),

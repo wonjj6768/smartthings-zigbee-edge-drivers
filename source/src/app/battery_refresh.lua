@@ -8,6 +8,7 @@ local LAST_BATTERY_REQUEST_FIELD = "__battery_refresh_last_request_at"
 local BATTERY_REFRESH_TIMER_FIELD = "__battery_refresh_timer"
 
 local requester = nil
+local requester_supports = nil
 
 local function now()
   return os.time()
@@ -23,8 +24,19 @@ local function cancel_timer(device)
   device:set_field(BATTERY_REFRESH_TIMER_FIELD, nil, { persist = false })
 end
 
-function battery_refresh.set_requester(callback)
+function battery_refresh.set_requester(callback, supports)
   requester = callback
+  requester_supports = supports
+end
+
+local function can_request(device)
+  if type(requester) ~= "function" then
+    return false
+  end
+  if type(requester_supports) == "function" then
+    return requester_supports(device) == true
+  end
+  return true
 end
 
 function battery_refresh.has_battery(device)
@@ -59,7 +71,7 @@ function battery_refresh.note_report(device)
 end
 
 function battery_refresh.should_request(device)
-  if type(requester) ~= "function" or not battery_refresh.has_battery(device) then
+  if not can_request(device) or not battery_refresh.has_battery(device) then
     return false
   end
 
@@ -97,7 +109,7 @@ function battery_refresh.schedule_after_button(device)
 
   device:set_field(LAST_BATTERY_REQUEST_FIELD, now(), { persist = true })
   device.thread:call_with_delay(1, function()
-    if type(requester) == "function" and battery_refresh.has_battery(device) then
+    if can_request(device) and battery_refresh.has_battery(device) then
       requester(device)
     end
   end, "battery read after button")
@@ -118,7 +130,7 @@ function battery_refresh.start_daily(device)
     return false
   end
 
-  if not battery_refresh.has_battery(device) then
+  if not battery_refresh.has_battery(device) or not can_request(device) then
     cancel_timer(device)
     return false
   end

@@ -1,25 +1,8 @@
 local entries = require "devices.ef00.motion.presence"
 
-local include = {
-  [31] = true,
-  [32] = true,
-  [33] = true,
-  [34] = true,
-  [35] = true,
-  [36] = true,
-  [37] = true,
-  [38] = true,
-  [39] = true,
-  [40] = true,
-  [41] = true,
-  [42] = true,
-  [43] = true,
-  [44] = true,
-}
-
 local out = {}
-for index, entry in ipairs(entries) do
-  if include[index] then
+for _, entry in ipairs(entries) do
+  if entry.package_group == "presence-advanced" then
     if type(entry.datapoints) == "table" and type(entry.datapoints.datapoints) == "table" then
       local normalized = {}
       for key, value in pairs(entry) do

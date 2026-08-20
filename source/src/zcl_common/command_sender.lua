@@ -256,7 +256,7 @@
     return encoded
   end
 
-  local function normalize_enum_encoded_value(encoded, mapping, mapping_context, meta)
+  local function normalize_enum_encoded_value(device, encoded, mapping, mapping_context, meta)
     local write_type = meta and meta.write_type or nil
     local type_name = write_type_name(write_type)
     if type_name == nil or not tostring(type_name):match("^Enum") then
@@ -448,7 +448,7 @@
       encoded = retry_encoded_with_converter(device, mapping, mapping_context, meta, encoded)
     end
 
-    encoded = normalize_enum_encoded_value(encoded, mapping, mapping_context, meta)
+    encoded = normalize_enum_encoded_value(device, encoded, mapping, mapping_context, meta)
     if encoded == nil then
       return false
     end

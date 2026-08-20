@@ -1,9 +1,9 @@
 # SmartThings Zigbee Edge Drivers
 
-## Driver Split Notice (2026-07-30)
+## Driver Split Notice (updated 2026-08-20)
 
-Four drivers were split because a SmartThings Edge driver package cannot exceed 512 KB.
-Newly exposed device settings pushed these packages past that limit, so each was divided.
+Some drivers were split because a SmartThings Edge driver package cannot exceed 512 KB.
+Newly exposed device settings increased package size, so the affected device definitions were divided.
 
 | Before | After |
 | --- | --- |
@@ -11,9 +11,9 @@ Newly exposed device settings pushed these packages past that limit, so each was
 | `ef00-switch-wonjj6768` | `ef00-switch`, `ef00-switch-panel`, `ef00-garage-door` |
 | `ef00-energy-wonjj6768` | `ef00-energy`, `ef00-meters` |
 | `ef00-presence-general-wonjj6768` | `ef00-presence-general-1`, `ef00-presence-general-2` |
+| `zcl-switch-wonjj6768` | `zcl-switch-wonjj6768`, `zcl-plugs-wonjj6768` |
 
-**If your device stops updating, open it in the SmartThings app and switch it to the new driver.**
-Devices on `ef00-thermostats-wonjj6768` are the most likely to need this, because that name no longer exists.
+**Existing devices are not reassigned automatically. If a device stops updating, or a ZCL plug remains on ZCL Switch, open it in the SmartThings app and switch it to the driver listed for its fingerprint below.**
 
 Names ending in a number, such as `-trv-1` / `-trv-2` and `-general-1` / `-general-2`,
 are size groups rather than device categories: both halves hold the same kind of device.

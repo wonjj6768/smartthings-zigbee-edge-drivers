@@ -1012,6 +1012,7 @@ register_device_definition(presence_model_gnpflcoq, ts0601_fingerprints({
 }))
 local presence_switch_model_zg_302zm = {
 profile = "switches-presence-switch-3-zg302zm",
+package_group = "presence-switch",
 named_datapoints = true,
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
 tuya.dp_numeric(2, { name = "sensitivity", emit = emit.zg302zmSensitivity() }),
@@ -1056,6 +1057,7 @@ register_presence_definition(presence_switch_model_zg_302zm, ts0601_fingerprints
 }))
 local presence_switch_model_zg_302zl = {
 profile = "switches-presence-switch-3-zg302zl",
+package_group = "presence-switch",
 named_datapoints = true,
 tuya.dp_presence(101, { emit = emit.presence(), converter = converter.true_false1() }),
 tuya.dp_numeric(102, { name = "sensitivity", emit = emit.zg302zlSensitivity() }),
@@ -1151,6 +1153,7 @@ return datapoints
 end
 local presence_switch_model_zis03 = {
 profile = "safety-presence-switch-illuminance-zis03",
+package_group = "presence-switch",
 named_datapoints = true,
 datapoints = build_zis03_datapoints({}),
 }
@@ -1159,6 +1162,7 @@ register_presence_definition(presence_switch_model_zis03, ts0601_fingerprints({
 }))
 local presence_switch_model_zis04 = {
 profile = "safety-presence-switch-illuminance-zis04",
+package_group = "presence-switch",
 named_datapoints = true,
 datapoints = build_zis03_datapoints({ detection_distance = true }),
 }
@@ -1167,6 +1171,7 @@ register_presence_definition(presence_switch_model_zis04, ts0601_fingerprints({
 }))
 local presence_model_zy_m100_24g = {
 profile = "safety-presence-zym10024g-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 tuya.dp_numeric(102, { name = "illuminance_threshold_max" }),
 tuya.dp_numeric(103, { name = "illuminance_threshold_min" }),
@@ -1210,6 +1215,7 @@ register_presence_definition(presence_model_zy_m100_24g, ts0601_fingerprints({
 }))
 local presence_model_zy_m100_24gv2 = {
 profile = "safety-presence-zym10024gv2-move-range-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_enum(1, {
@@ -1292,6 +1298,7 @@ tuya.dp_numeric(105, { name = "presence_timeout", emit = emit.zym24gv3Timeout() 
 end
 local presence_model_zy_m100_24gv3_b = {
 profile = "safety-presence-zym10024gv3-move-range-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = build_zym24gv3_datapoints(emit.zym24gv3bMinRange(), emit.zym24gv3bMaxRange()),
 }
@@ -1301,6 +1308,7 @@ register_presence_definition(presence_model_zy_m100_24gv3_b, ts0601_fingerprints
 }))
 local presence_model_zy_m100_24gv3_a = {
 profile = "safety-presence-zym10024gv3a-move-range-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = build_zym24gv3_datapoints(emit.zym24gv3aMinRange(), emit.zym24gv3aMaxRange()),
 }
@@ -1310,6 +1318,7 @@ register_presence_definition(presence_model_zy_m100_24gv3_a, ts0601_fingerprints
 }))
 local presence_model_yxzbrb58 = {
 profile = "safety-presence-yxzbrb58-range-delay-scene-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
@@ -1354,6 +1363,7 @@ register_presence_definition(presence_model_yxzbrb58, ts0601_fingerprints({
 }))
 local presence_model_ctl_r1_ty_zigbee = {
 profile = "safety-presence-ctlr1-threshold-min-delay-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
@@ -1404,6 +1414,7 @@ register_presence_definition(presence_model_ctl_r1_ty_zigbee, ts0601_fingerprint
 }))
 local presence_model_rt_zcz03z = {
 profile = "safety-presence-rtzcz03z-range-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false(4) }),
@@ -1429,6 +1440,7 @@ register_presence_definition(presence_model_rt_zcz03z, ts0601_fingerprints({
 }))
 local presence_model_mtg075_zb_rl = {
 profile = "safety-presence-mtg075-entry-controls-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
@@ -1524,6 +1536,7 @@ local zym100s3_keep_time_converter = converter.lookup_from_to({
 })
 local presence_model_zy_m100_s_3 = {
 profile = "safety-presence-zym100s3-keep-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false0() }),
@@ -1551,6 +1564,7 @@ end
 end
 local presence_model_zg_205z = {
 profile = "safety-presence-zg205z-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_enum(1, {
@@ -1618,6 +1632,7 @@ register_presence_definition(presence_model_zg_205z, ts0601_fingerprints({
 }))
 local presence_model_zg_205za = {
 profile = "safety-presence-zg205za-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
@@ -1688,6 +1703,7 @@ device_helpers.create_fingerprint("_TZE200_crq3r3la", "CK-BL702-MWS-01(7016)"),
 })
 local presence_model_zg_205zl = {
 profile = "safety-presence-zg205zl-illuminance",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
@@ -1791,6 +1807,7 @@ occupancy_detection = 1,
 })
 local presence_model_mtd085_zb = {
 profile = "safety-motion-mtd085-illuminance",
+package_group = "presence-advanced",
 datapoints = {
 tuya.dp_numeric(101, {
 name = "entry_sensitivity",
@@ -1903,6 +1920,7 @@ device_helpers.create_fingerprint("_TZ321C_4slreunp", "TS0225"),
 })
 local presence_model_zp_301z = {
 profile = "safety-presence-zp301z-time-cycle-illuminance-battery",
+package_group = "presence-advanced",
 named_datapoints = true,
 datapoints = {
 tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),

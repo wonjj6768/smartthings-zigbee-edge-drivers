@@ -1,5 +1,6 @@
 local capabilities = require "st.capabilities"
 local custom_capabilities = require "core.custom_capabilities"
+local capability_support = require "core.capability_support"
 local log = require "log"
 
 local binding = {}
@@ -29,19 +30,7 @@ local function is_callable(value)
 end
 
 local function supports_component_capability(device, capability_id, component_id)
-  if type(device) ~= "table" or type(capability_id) ~= "string" or capability_id == "" then
-    return false
-  end
-
-  component_id = component_id or MAIN_COMPONENT
-  if type(device.supports_capability_by_id) == "function" then
-    return device:supports_capability_by_id(capability_id, component_id)
-  end
-
-  local components = device.profile and device.profile.components or nil
-  local component = type(components) == "table" and components[component_id] or nil
-  local capabilities_map = component and component.capabilities or nil
-  return type(capabilities_map) == "table" and capabilities_map[capability_id] ~= nil
+  return capability_support.supports(device, capability_id, component_id or MAIN_COMPONENT)
 end
 
 local function emit_event(device, component_id, event)

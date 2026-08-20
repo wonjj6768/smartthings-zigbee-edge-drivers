@@ -1687,6 +1687,7 @@ register_device_definition(presence_model_gnpflcoq, ts0601_fingerprints({
 local presence_switch_model_zg_302zm = {
 
   profile = "switches-presence-switch-3-zg302zm",
+  package_group = "presence-switch",
 
   named_datapoints = true,
 
@@ -1772,6 +1773,7 @@ register_presence_definition(presence_switch_model_zg_302zm, ts0601_fingerprints
 local presence_switch_model_zg_302zl = {
 
   profile = "switches-presence-switch-3-zg302zl",
+  package_group = "presence-switch",
 
   named_datapoints = true,
 
@@ -1919,6 +1921,7 @@ end
 
 local presence_switch_model_zis03 = {
   profile = "safety-presence-switch-illuminance-zis03",
+  package_group = "presence-switch",
   named_datapoints = true,
   datapoints = build_zis03_datapoints({}),
 }
@@ -1932,6 +1935,7 @@ register_presence_definition(presence_switch_model_zis03, ts0601_fingerprints({
 -- ZIS-04 adds the read-only live distance DP101 that Z2M gates on this exact.
 local presence_switch_model_zis04 = {
   profile = "safety-presence-switch-illuminance-zis04",
+  package_group = "presence-switch",
   named_datapoints = true,
   datapoints = build_zis03_datapoints({ detection_distance = true }),
 }
@@ -1964,6 +1968,7 @@ register_presence_definition(presence_switch_model_zis04, ts0601_fingerprints({
 local presence_model_zy_m100_24g = {
 
   profile = "safety-presence-zym10024g-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2040,6 +2045,7 @@ register_presence_definition(presence_model_zy_m100_24g, ts0601_fingerprints({
 local presence_model_zy_m100_24gv2 = {
 
   profile = "safety-presence-zym10024gv2-move-range-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2176,6 +2182,7 @@ end
 local presence_model_zy_m100_24gv3_b = {
 
   profile = "safety-presence-zym10024gv3-move-range-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2198,6 +2205,7 @@ register_presence_definition(presence_model_zy_m100_24gv3_b, ts0601_fingerprints
 local presence_model_zy_m100_24gv3_a = {
 
   profile = "safety-presence-zym10024gv3a-move-range-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2234,6 +2242,7 @@ register_presence_definition(presence_model_zy_m100_24gv3_a, ts0601_fingerprints
 local presence_model_yxzbrb58 = {
 
   profile = "safety-presence-yxzbrb58-range-delay-scene-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2317,6 +2326,7 @@ register_presence_definition(presence_model_yxzbrb58, ts0601_fingerprints({
 local presence_model_ctl_r1_ty_zigbee = {
 
   profile = "safety-presence-ctlr1-threshold-min-delay-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2407,6 +2417,7 @@ register_presence_definition(presence_model_ctl_r1_ty_zigbee, ts0601_fingerprint
 local presence_model_rt_zcz03z = {
 
   profile = "safety-presence-rtzcz03z-range-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2471,6 +2482,7 @@ register_presence_definition(presence_model_rt_zcz03z, ts0601_fingerprints({
 local presence_model_mtg075_zb_rl = {
 
   profile = "safety-presence-mtg075-entry-controls-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2625,6 +2637,7 @@ local zym100s3_keep_time_converter = converter.lookup_from_to({
 local presence_model_zy_m100_s_3 = {
 
   profile = "safety-presence-zym100s3-keep-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2685,6 +2698,7 @@ end
 local presence_model_zg_205z = {
 
   profile = "safety-presence-zg205z-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2796,6 +2810,7 @@ register_presence_definition(presence_model_zg_205z, ts0601_fingerprints({
 local presence_model_zg_205za = {
 
   profile = "safety-presence-zg205za-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -2909,6 +2924,7 @@ register_presence_definition(presence_model_zg_205za, {
 local presence_model_zg_205zl = {
 
   profile = "safety-presence-zg205zl-illuminance",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 
@@ -3059,6 +3075,7 @@ local distance_report_mode_mtd085_converter = converter.lookup_from_to({
 local presence_model_mtd085_zb = {
 
   profile = "safety-motion-mtd085-illuminance",
+  package_group = "presence-advanced",
 
   datapoints = {
 
@@ -3218,6 +3235,7 @@ register_device_definition(presence_model_mtd085_zb, {
 local presence_model_zp_301z = {
 
   profile = "safety-presence-zp301z-time-cycle-illuminance-battery",
+  package_group = "presence-advanced",
 
   named_datapoints = true,
 

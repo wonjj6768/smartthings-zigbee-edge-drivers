@@ -9,7 +9,6 @@ local protocol_modules = {
 
 local registry = {}
 local fingerprint_index = nil
-local model_only_index = nil
 
 local function copy_entry_without_fingerprints(entry)
   local copied = {}
@@ -32,7 +31,6 @@ local function build_index()
   end
 
   fingerprint_index = {}
-  model_only_index = {}
 
   for _, module_name in ipairs(protocol_modules) do
     local entries = require(module_name)
@@ -45,15 +43,9 @@ local function build_index()
         if model ~= nil and manufacturer ~= nil then
           fingerprint_index[manufacturer] = fingerprint_index[manufacturer] or {}
           fingerprint_index[manufacturer][model] = copy_entry_without_fingerprints(entry)
-        elseif model ~= nil then
-          model_only_index[model] = copy_entry_without_fingerprints(entry)
         end
       end
     end
-  end
-
-  if next(model_only_index) ~= nil then
-    fingerprint_index.__model_only = model_only_index
   end
 
   return fingerprint_index
@@ -66,8 +58,7 @@ function registry.find(manufacturer, model)
     return by_manufacturer[model]
   end
 
-  local by_model_only = index.__model_only
-  return by_model_only and by_model_only[model] or nil
+  return nil
 end
 
 function registry.all()

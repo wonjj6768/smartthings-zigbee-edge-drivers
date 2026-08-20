@@ -1,5 +1,6 @@
 local capabilities = require "st.capabilities"
 local custom_capabilities = require "core.custom_capabilities"
+local capability_support = require "core.capability_support"
 local log = require "log"
 local tuya = require "tuya_common"
 local zcl = require "zcl_common"
@@ -66,14 +67,7 @@ end
 return capability, attribute
 end
 local function profile_supports_capability(device, component_id, capability_id)
-if type(device) ~= "table" or type(capability_id) ~= "string" or capability_id == "" then
-return false
-end
-component_id = component_id or "main"
-local components = device.profile and device.profile.components or nil
-local component = type(components) == "table" and components[component_id] or nil
-local capabilities_map = component and component.capabilities or nil
-return type(capabilities_map) == "table" and capabilities_map[capability_id] ~= nil
+return capability_support.supports(device, capability_id, component_id)
 end
 local function resolve_metadata_range(definition, key, fallback)
 local metadata = custom_capabilities.by_range_key[key]

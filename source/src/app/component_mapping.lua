@@ -128,6 +128,20 @@ local function build_component_maps(device, definition, explicit_component_fn, e
     end
   end
 
+  -- ZCL 매핑에 선언된 component/endpoint를 런타임 라우팅의 기준으로 사용합니다.
+  if type(definition) == "table" and type(definition.zcl_clusters) == "table" then
+    for _, mapping in ipairs(definition.zcl_clusters) do
+      if type(mapping) == "table" then
+        assign_component_mapping(
+          endpoint_to_component,
+          component_to_endpoint,
+          mapping.endpoint,
+          mapping.component
+        )
+      end
+    end
+  end
+
   derive_maps_from_component_fn(device, explicit_component_fn, endpoint_to_component, component_to_endpoint)
   derive_maps_from_endpoint_fn(device, explicit_endpoint_fn, endpoint_to_component, component_to_endpoint)
 

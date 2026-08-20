@@ -1,13 +1,7 @@
 local entries = require "devices.ef00.motion.presence"
-local include = {
-[27] = true,
-[28] = true,
-[29] = true,
-[30] = true,
-}
 local out = {}
-for index, entry in ipairs(entries) do
-if include[index] then
+for _, entry in ipairs(entries) do
+if entry.package_group == "presence-switch" then
 out[#out + 1] = entry
 end
 end

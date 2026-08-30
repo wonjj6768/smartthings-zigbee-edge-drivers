@@ -90,6 +90,15 @@ emit=emit.switch(),
 reporting_defaults(0,300,nil)
 )
 end)
+zcl.tuya_magic_packet=function(name_or_options,options)
+local resolved=normalize_preset_options(name_or_options,options)
+apply_defaults(resolved,{
+name="tuya_magic_packet",
+read_only=true,
+read_on_configure=true,
+})
+return zcl.cluster_attribute(0x0000,0xFFFE,resolved)
+end
 define_preset("power",zcl.electrical_measurement_power,function()
 return merge_defaults(
 {

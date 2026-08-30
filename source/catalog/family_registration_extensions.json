@@ -342,7 +342,7 @@
           "data_types"
         ]
       },
-      "dynamicEventMemberSha256": "d4f795c06984eff55bb006cc8570d31dd19ca44700a10be5bd484969c2177568"
+      "dynamicEventMemberSha256": "cf4f550eaf13963e55d2dffd74e49657b9535d1e36a36181649e8a8fb4eb446a"
     },
     "contracts.families.zcl.lights.z2m_absorption": {
       "id": "zcl.lights.z2m_absorption",
@@ -697,7 +697,7 @@
           "zcl_clusters"
         ]
       },
-      "dynamicEventMemberSha256": "8256869d4ecf7d8618d131cda5a5f1b94eab4a0141b028c9d5ae13eb6bb72add"
+      "dynamicEventMemberSha256": "5d3cf12b564a6c911438d03a36c1a3fe7b7eb357b31e918d69e0c21327f193ea"
     },
     "contracts.families.zcl.bridges_wave19": {
       "id": "zcl.bridges.wave19",

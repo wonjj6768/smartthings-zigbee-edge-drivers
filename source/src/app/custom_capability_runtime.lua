@@ -327,8 +327,30 @@ local function create(options)
     return range
   end
 
+  local function find_mapping(device, component_id, mapping_name)
+    local preset = get_preset(device)
+    local mappings = preset
+      and (preset.named_mappings_by_name or preset.named_mappings or preset.datapoints)
+    local mapping = mappings and mappings[mapping_name]
+    if mapping == nil and preset and preset.datapoints then
+      mapping = tuya.build_named_map(preset.datapoints, "name")[mapping_name]
+    end
+    if mapping == nil and preset and preset.zcl_clusters then
+      mapping = zcl.find_mapping_by_name(preset.zcl_clusters, mapping_name, device, {
+        component_id = component_id or MAIN_COMPONENT,
+      })
+    end
+    return mapping
+  end
+
+  local function suppresses_state(device, component_id, mapping_name)
+    local mapping = find_mapping(device, component_id, mapping_name)
+    return type(mapping) == "table" and mapping.suppress_optimistic_state == true
+  end
+
   local function is_latest_state_missing(device, component_id, metadata)
-    return device:get_latest_state(component_id, metadata.capability_id, metadata.attribute_name) == nil
+    return not suppresses_state(device, component_id, metadata.mapping_name)
+      and device:get_latest_state(component_id, metadata.capability_id, metadata.attribute_name) == nil
   end
 
   -- Event emitters
@@ -500,8 +522,7 @@ local function create(options)
     end)
 
     for_each_supported_metadata(device, enum_definitions, MAIN_COMPONENT, function(metadata)
-      local latest = device:get_latest_state(MAIN_COMPONENT, metadata.capability_id, metadata.attribute_name)
-      if latest == nil then
+      if is_latest_state_missing(device, MAIN_COMPONENT, metadata) then
         local allowed_values = resolve_enum_values(definition, metadata)
         if type(allowed_values) == "table" and allowed_values[1] ~= nil then
           emit_custom_enum_state(device, MAIN_COMPONENT, metadata, allowed_values[1])
@@ -616,59 +637,6 @@ local function create(options)
     return true
   end
 
-  -- Mapping support and rollback helpers
-
-  local function preset_supports_named_mapping(device, component_id, mapping_name)
-    if type(mapping_name) ~= "string" or mapping_name == "" then
-      return false
-    end
-
-    local preset = get_preset(device)
-    if preset == nil then
-      return false
-    end
-
-    local named_mappings = preset.named_mappings or preset.datapoints
-    if type(named_mappings) == "table" then
-      if named_mappings[mapping_name] ~= nil then
-        return true
-      end
-
-      local named_map = preset.named_mappings_by_name
-      if named_map == nil then
-        named_map = tuya.build_named_map(named_mappings, "name")
-        preset.named_mappings_by_name = named_map
-      end
-
-      if type(named_map) == "table" and named_map[mapping_name] ~= nil then
-        return true
-      end
-    end
-
-    if type(preset.zcl_clusters) == "table" then
-      local mapping = zcl.find_mapping_by_name(preset.zcl_clusters, mapping_name, device, {
-        component_id = component_id or "main",
-      })
-      if mapping ~= nil then
-        return true
-      end
-    end
-
-    return false
-  end
-
-  local function mapping_suppresses_optimistic_state(device, component_id, mapping_name)
-    local preset = get_preset(device)
-    if preset == nil or type(preset.zcl_clusters) ~= "table" then
-      return false
-    end
-
-    local mapping = zcl.find_mapping_by_name(preset.zcl_clusters, mapping_name, device, {
-      component_id = component_id or MAIN_COMPONENT,
-    })
-    return type(mapping) == "table" and mapping.suppress_optimistic_state == true
-  end
-
   local function resolve_numeric_optimistic_value(device, component_id, mapping_name, value)
     local preset = get_preset(device)
     local datapoints = preset and preset.datapoints or nil
@@ -731,7 +699,7 @@ local function create(options)
 
     handlers[metadata.capability_id][metadata.command_name] = function(_, device, command)
       local component_id = command.component or MAIN_COMPONENT
-      if not preset_supports_named_mapping(device, component_id, metadata.mapping_name) then
+      if not find_mapping(device, component_id, metadata.mapping_name) then
         reject_numeric_command(device, component_id, metadata, metadata.default_range, "is not supported by this device. Reverted to 0.")
         return
       end
@@ -811,7 +779,12 @@ local function create(options)
         return
       end
 
-      emit_custom_enum_state(device, command.component, metadata, normalized)
+      local component_id = command.component or MAIN_COMPONENT
+      if suppresses_state(device, component_id, metadata.mapping_name) then
+        return
+      end
+
+      emit_custom_enum_state(device, component_id, metadata, normalized)
     end
   end
 
@@ -832,7 +805,7 @@ local function create(options)
         return
       end
 
-      if not preset_supports_named_mapping(device, component_id, metadata.mapping_name) then
+      if not find_mapping(device, component_id, metadata.mapping_name) then
         return
       end
 
@@ -846,7 +819,7 @@ local function create(options)
         return
       end
 
-      if mapping_suppresses_optimistic_state(device, component_id, metadata.mapping_name) then
+      if suppresses_state(device, component_id, metadata.mapping_name) then
         return
       end
 

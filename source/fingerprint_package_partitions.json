@@ -550,7 +550,7 @@
           "id": "zcl.controls.jethome"
         }
       ],
-      "exactCount": 4
+      "exactCount": 5
     },
     {
       "sourcePackage": "ef00-covers-wonjj6768",
@@ -1413,7 +1413,7 @@
           "id": "zcl.controls.jethome"
         }
       ],
-      "exactCount": 4,
+      "exactCount": 5,
       "catalogMigrations": [
         {
           "catalogId": "zcl.controls.z2m_absorption",
@@ -1421,7 +1421,7 @@
           "oldOwner": "z2m-zcl-controls-wonjj6768",
           "newOwner": "z2m-zcl-controls-wonjj6768",
           "moved": false,
-          "exactCount": 3,
+          "exactCount": 4,
           "exacts": [
             {
               "manufacturer": "Candeo",
@@ -1451,6 +1451,17 @@
               "model": "TS0043-z-SlD",
               "modelUtf8Hex": "5453303034332d7a2d536c44",
               "profile": "buttons-button-3-battery-remote-action-slacky",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "z2m-zcl-controls-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3000_9zc1ilmb",
+              "manufacturerUtf8Hex": "5f545a333030305f397a6331696c6d62",
+              "model": "TS0043",
+              "modelUtf8Hex": "545330303433",
+              "profile": "buttons-button-3-battery",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
               "newOwner": "z2m-zcl-controls-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
@@ -5182,7 +5193,7 @@
     "legacyOwnerChangeCount": 0,
     "newPackageCount": 21,
     "newCatalogCount": 79,
-    "newExactCount": 283,
+    "newExactCount": 284,
     "movedCatalogCount": 49,
     "movedExactCount": 167,
     "historicalPartitionCount": 17

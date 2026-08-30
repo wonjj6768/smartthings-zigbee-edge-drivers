@@ -19,13 +19,14 @@ read_only=read_only==true,
 transaction=1,
 })
 end
-local function enum(dp,name,capability_id,values,read_only,write_only)
+local function enum(dp,name,capability_id,values,read_only,write_only,suppress_optimistic_state)
 return tuya.dp_enum(dp,{
 name=name,
 emit=custom(capability_id),
 converter=converter.lookup_from_to(values),
 read_only=read_only==true,
 write_only=write_only==true,
+suppress_optimistic_state=suppress_optimistic_state==true,
 transaction=1,
 })
 end
@@ -218,6 +219,7 @@ datapoints={},
 add(lidl,tuya.dp_binary(1,{
 name="switch",
 emit=emit_watering_state,
+suppress_optimistic_state=true,
 transaction=1,
 }))
 add(lidl,numeric(5,"lidl_psbzs_timer","lidlPsbzsTimer",false))
@@ -238,7 +240,7 @@ name="battery",read_only=true,transaction=1,emit=emit.battery(),
 add(lidl,binary(108,"lidl_psbzs_frost_lock","lidlPsbzsFrostLock",true))
 add(lidl,enum(109,"lidl_psbzs_reset_frost_lock","lidlPsbzsResetFrostLock",{
 RESET=0,
-},false,true))
+},false,true,true))
 add(lidl,tuya.dp_binary(108,{
 name="lidl_psbzs_frost_reset_internal",
 write_only=true,

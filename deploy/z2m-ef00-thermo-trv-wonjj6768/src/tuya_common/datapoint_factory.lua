@@ -27,6 +27,7 @@ local passthrough_mapping_keys={
 "skip",
 "value",
 "optimistic_value",
+"suppress_optimistic_state",
 "converter",
 "from_device",
 "to_device",

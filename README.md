@@ -1,5 +1,11 @@
 # SmartThings Zigbee Edge Drivers
 
+## August 31, 2026 Update
+
+This release expands the public channel to 48 drivers and 3564 exact device fingerprints.
+If a device that worked before no longer works after the August 31 update, please report it in [GitHub Issues](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues).
+Please include the manufacturer, model, current driver name, and hub logcat if available.
+
 ## Driver Split Notice (updated 2026-08-20)
 
 Some drivers were split because a SmartThings Edge driver package cannot exceed 512 KB.
@@ -21,8 +27,8 @@ Use the fingerprint tables under [Supported Fingerprints](#supported-fingerprint
 
 ## Development
 
-This project is under active development. If a device does not work correctly, please open an issue and include the hub logcat.
-If you want a device to support an additional feature, please open an issue with your request.
+This project is under active development. If a device does not work correctly, please [open an issue](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues) and include the hub logcat.
+If you want a device to support an additional feature, please [open an issue](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues) with your request.
 
 ## Install
 
@@ -70,7 +76,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | Z2M EF00 Thermostat TRV wonjj6768 | `z2m-ef00-thermo-trv-wonjj6768` | 34 |
 | Z2M EF00 Valves Category wonjj6768 | `z2m-ef00-valves-wonjj6768` | 19 |
 | Z2M ZCL Bridge wonjj6768 | `z2m-zcl-bridge-wonjj6768` | 3 |
-| Z2M ZCL Controls Category wonjj6768 | `z2m-zcl-controls-wonjj6768` | 4 |
+| Z2M ZCL Controls Category wonjj6768 | `z2m-zcl-controls-wonjj6768` | 5 |
 | Z2M ZCL DALI wonjj6768 | `z2m-zcl-dali-wonjj6768` | 1 |
 | Z2M ZCL Lights Category wonjj6768 | `z2m-zcl-lights-wonjj6768` | 8 |
 | Z2M ZCL Locks wonjj6768 | `z2m-zcl-locks-wonjj6768` | 2 |
@@ -1896,12 +1902,13 @@ Dedicated driver for newly absorbed exact ZCL bridge fingerprints.
 </details>
 
 <details>
-<summary>Z2M ZCL Controls Category wonjj6768 (4 fingerprints)</summary>
+<summary>Z2M ZCL Controls Category wonjj6768 (5 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL remote and control fingerprints.
 
 | Manufacturer | Model | Profile |
 | --- | --- | --- |
+| `_TZ3000_9zc1ilmb` | `TS0043` | `buttons-button-3-battery` |
 | `Candeo` | `C-ZB-RD1Pv2-REM` | `controllers-candeo-rd1p-rem` |
 | `JetHome` | `WS7` | `buttons-jethome-ws7` |
 | `Slacky-DIY` | `TS0043-M007-SlD` | `buttons-button-3-battery-remote-action-slacky` |

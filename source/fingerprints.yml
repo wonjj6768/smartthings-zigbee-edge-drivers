@@ -14251,3 +14251,7 @@ zigbeeManufacturer:
     manufacturer: "'_TZ32101000000_5oy7cysk'"
     model: "TS0210"
     deviceProfileName: "safety-wave19-tuya-ts0210-quoted"
+  - id: "fp_c5fb8ec05a"
+    manufacturer: "_TZ3000_9zc1ilmb"
+    model: "TS0043"
+    deviceProfileName: "buttons-button-3-battery"

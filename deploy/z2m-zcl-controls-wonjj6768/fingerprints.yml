@@ -15,3 +15,7 @@ zigbeeManufacturer:
     manufacturer: "Slacky-DIY"
     model: "TS0043-z-SlD"
     deviceProfileName: "buttons-button-3-battery-remote-action-slacky"
+  - id: "fp_c5fb8ec05a"
+    manufacturer: "_TZ3000_9zc1ilmb"
+    model: "TS0043"
+    deviceProfileName: "buttons-button-3-battery"

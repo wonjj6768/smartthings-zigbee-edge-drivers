@@ -29,6 +29,7 @@ local function load_datapoint_factory(tuya, shared)
     "skip",
     "value",
     "optimistic_value",
+    "suppress_optimistic_state",
     "converter",
     "from_device",
     "to_device",

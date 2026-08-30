@@ -573,7 +573,16 @@ end
 end,label or "ef00 delayed state request")
 end
 local function after_ef00_switch_command(device,command,value)
-emit_ef00_switch_state(device,command and command.component or "main",value)
+local component_id=command and command.component or "main"
+local preset=get_preset(device)
+local named=preset and preset.named_mappings_by_name
+if named==nil and preset and preset.datapoints then
+named=tuya.build_named_map(preset.datapoints,"name")
+end
+local mapping=named and named.switch
+if mapping==nil or mapping.suppress_optimistic_state ~=true then
+emit_ef00_switch_state(device,component_id,value)
+end
 schedule_ef00_state_request(device,1,"ef00 switch state read 1s")
 schedule_ef00_state_request(device,3,"ef00 switch state read 3s")
 end
@@ -821,7 +830,7 @@ handlers[capabilities.energyMeter.ID]=handlers[capabilities.energyMeter.ID]or{}
 handlers[capabilities.energyMeter.ID][capabilities.energyMeter.commands.resetEnergyMeter.NAME]=
 energy_reset.handle_reset
 handlers[capabilities.refresh.ID]={
-[capabilities.refresh.commands.refresh.NAME]=function(_,device)
+[capabilities.refresh.commands.refresh.NAME]=function(driver,device)
 local preset=get_preset(device)
 if preset==nil then
 return
@@ -832,6 +841,10 @@ return
 end
 if not is_child_device(device)and type(preset.parent_refresh)=="function" then
 preset.parent_refresh(device,preset)
+return
+end
+if type(preset.parent_refresh)=="function" then
+preset.parent_refresh(device,preset,driver)
 return
 end
 if preset.datapoints and preset.refresh_state_query ~=false then
@@ -942,7 +955,9 @@ end)
 return
 end
 local definition=resolve_definition(device)
-if definition and definition.profile and device.profile.id ~=definition.profile then
+local valid_parent_profiles=definition and definition.valid_parent_profiles
+if definition and definition.profile and device.profile.id ~=definition.profile and
+(type(valid_parent_profiles)~="table" or valid_parent_profiles[device.profile.id]~=true)then
 device:try_update_metadata({profile=definition.profile})
 end
 component_mapping.apply(device,definition)

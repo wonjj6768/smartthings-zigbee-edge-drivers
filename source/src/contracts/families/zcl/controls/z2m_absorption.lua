@@ -41,6 +41,46 @@ local BUTTON_EVENT_BY_ACTION = {
   hold = "held",
 }
 
+local function issue10_battery_percent_from_voltage(voltage)
+  if type(voltage) ~= "number" then return voltage end
+  local percent = math.floor((((voltage - 2.0) / 1.0) * 100) + 0.5)
+  if percent < 0 then return 0 end
+  if percent > 100 then return 100 end
+  return percent
+end
+
+-- GitHub issue #10 corrected the manufacturer string after the legacy audit
+-- boundary had already frozen the mistyped value. Keep the historical exact
+-- in its legacy package and support only the corrected exact in this new
+-- category package, using the same verified three-button Z2M contract.
+local issue10_remote_3 = {
+  profile = "buttons-button-3-battery",
+  button_actions = { "pushed", "double", "held" },
+  zcl_clusters = {
+    zcl.tuya_magic_packet(),
+    zcl.cluster_attribute(
+      zcl.CLUSTER_POWER_CONFIGURATION,
+      zcl.ATTR_BATTERY_PERCENTAGE_REMAINING,
+      { name = "battery", endpoint = 1, emit = emit.battery(), scale = 2 }
+    ),
+    zcl.cluster_attribute(
+      zcl.CLUSTER_POWER_CONFIGURATION,
+      zcl.ATTR_BATTERY_VOLTAGE,
+      {
+        name = "battery",
+        endpoint = 1,
+        emit = emit.battery(),
+        scale = 10,
+        from_device = issue10_battery_percent_from_voltage,
+      }
+    ),
+  },
+}
+
+register_device_definition(issue10_remote_3, {
+  device_helpers.create_fingerprint("_TZ3000_9zc1ilmb", "TS0043"),
+})
+
 local function component_for_endpoint(endpoint)
   return endpoint == 1 and "main" or ("button" .. tostring(endpoint))
 end

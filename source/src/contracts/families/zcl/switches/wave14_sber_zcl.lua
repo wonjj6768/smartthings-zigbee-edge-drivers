@@ -1,7 +1,6 @@
--- Wave14 Sber source-only candidates.  This catalog lives below the EF00
--- package root only because the dedicated Wave14 package also owns two legacy
--- QA EF00 devices.  Every registration below is classified and executed as
--- ZCL/custom-ZCL, never as a Tuya datapoint device.
+-- Wave14 Sber ZCL switch candidates.  This catalog is owned by the ZCL switch
+-- category package and every registration below executes as ZCL/custom-ZCL,
+-- never as a Tuya datapoint device.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/sber.ts:1463-2300.
 
 local zcl = require "protocol.zcl"
@@ -83,6 +82,60 @@ local function copy_options(options)
   local copied = {}
   for key, value in pairs(options or {}) do copied[key] = value end
   return copied
+end
+
+local function copy_command_context(context)
+  local copied = {}
+  for key, value in pairs(context or {}) do
+    if key ~= "mapping" then copied[key] = value end
+  end
+  return copied
+end
+
+-- Keep the shared ZCL runtime untouched while making a dynamic Sber branch
+-- fail closed.  Inactive RX events are suppressed, and each writable mapping
+-- delegates to an immutable copy of its original sender only after the
+-- endpoint-3 Basic.deviceEnabled probe has selected that branch.  Unknown,
+-- pending, and opposite modes therefore produce no Zigbee packet even if a
+-- stale app/API command reaches the driver.
+local function guard_dynamic_mappings(target, first_index, last_index, branch, allowed)
+  for index = first_index, last_index do
+    local mapping = target[index]
+    mapping.sber_dynamic_branch = branch
+    local original_emit = mapping.emit
+    if type(original_emit) == "function" then
+      mapping.emit = function(device, value, context, current_mapping)
+        if not allowed(device) then return nil end
+        return original_emit(device, value, context, current_mapping)
+      end
+    end
+    local original_handler = mapping.handler
+    if type(original_handler) == "function" then
+      mapping.handler = function(device, value, context, current_mapping)
+        if not allowed(device) then return nil end
+        return original_handler(device, value, context, current_mapping)
+      end
+    end
+    if mapping.read_only ~= true then
+      local delegate = copy_options(mapping)
+      local delegate_list = { delegate }
+      mapping.sender = function(device, _, value, context)
+        if not allowed(device) then
+          -- Consume the command without a packet.  Returning false here would
+          -- make app.switch_command_router fall back to the SDK's generic
+          -- OnOff sender and bypass this family-level gate.
+          return delegate.name == "switch"
+        end
+        return zcl.send_named_command(
+          device,
+          delegate_list,
+          delegate.name,
+          value,
+          copy_command_context(context)
+        )
+      end
+    end
+  end
 end
 
 local function custom_mapping(cluster_id, attribute_id, name, capability_id, data_type, options)
@@ -499,7 +552,7 @@ local function single_definition(model, profile, extras)
   }
 end
 
-local function configure_dynamic_branch(device, hub_eui, cover_enabled, extras)
+local function read_dynamic_branch(device, cover_enabled, extras)
   local endpoint = cover_enabled and 3 or 1
   if cover_enabled then
     read(device, 3, CLUSTER_BASIC, ATTR_SERIAL_NUMBER)
@@ -512,9 +565,6 @@ local function configure_dynamic_branch(device, hub_eui, cover_enabled, extras)
     read_many(device, 3, CLUSTER_SBER, {
       ATTR_LED_OFF_ENABLE, ATTR_LED_OFF_HUE, ATTR_LED_OFF_SATURATION, ATTR_LED_OFF_BRIGHTNESS,
     }, SBER_MFG_CODE)
-    bind(device, hub_eui, 3, { CLUSTER_WINDOW_COVERING })
-    bind(device, hub_eui, 3, { CLUSTER_SBER })
-    bind(device, hub_eui, 3, { CLUSTER_DIAGNOSTICS })
     read(device, 3, CLUSTER_SBER, ATTR_CHILD_LOCK, SBER_MFG_CODE)
   else
     read(device, 1, CLUSTER_BASIC, ATTR_SERIAL_NUMBER)
@@ -526,10 +576,7 @@ local function configure_dynamic_branch(device, hub_eui, cover_enabled, extras)
         ATTR_LED_ON_ENABLE, ATTR_LED_ON_HUE, ATTR_LED_ON_SATURATION, ATTR_LED_ON_BRIGHTNESS,
         ATTR_LED_OFF_ENABLE, ATTR_LED_OFF_HUE, ATTR_LED_OFF_SATURATION, ATTR_LED_OFF_BRIGHTNESS,
       }, SBER_MFG_CODE)
-      bind(device, hub_eui, switch_endpoint, { CLUSTER_ON_OFF, CLUSTER_MULTISTATE_INPUT })
     end
-    bind(device, hub_eui, 1, { CLUSTER_SBER })
-    bind(device, hub_eui, 1, { CLUSTER_DIAGNOSTICS })
     read(device, 1, CLUSTER_SBER, ATTR_CHILD_LOCK, SBER_MFG_CODE)
   end
   if extras then
@@ -539,16 +586,69 @@ local function configure_dynamic_branch(device, hub_eui, cover_enabled, extras)
   end
 end
 
+local function bind_dynamic_branch(device, hub_eui, cover_enabled)
+  if hub_eui == nil then return end
+  if cover_enabled then
+    bind(device, hub_eui, 3, { CLUSTER_WINDOW_COVERING })
+    bind(device, hub_eui, 3, { CLUSTER_SBER })
+    bind(device, hub_eui, 3, { CLUSTER_DIAGNOSTICS })
+    return
+  end
+  for switch_endpoint = 1, 2 do
+    bind(device, hub_eui, switch_endpoint, { CLUSTER_ON_OFF, CLUSTER_MULTISTATE_INPUT })
+  end
+  bind(device, hub_eui, 1, { CLUSTER_SBER })
+  bind(device, hub_eui, 1, { CLUSTER_DIAGNOSTICS })
+end
+
+local function configure_dynamic_branch(device, hub_eui, cover_enabled, extras)
+  read_dynamic_branch(device, cover_enabled, extras)
+  bind_dynamic_branch(device, hub_eui, cover_enabled)
+end
+
 local function dynamic_definition(model, profile, extras)
   local mapping_prefix = "sber_" .. model
   local capability_prefix = "sber" .. model
+  local switch_profile = profile
+  local cover_profile = profile .. "-cover"
   local mode_field = "__wave14_sber_" .. model .. "_cover_enabled"
   local pending_field = "__wave14_sber_" .. model .. "_mode_pending"
   local timer_field = "__wave14_sber_" .. model .. "_mode_timer"
   local hub_field = "__wave14_sber_" .. model .. "_hub_eui"
+  local probe_action_field = "__wave14_sber_" .. model .. "_probe_action"
+  local profile_reconfigure_field = "__wave14_sber_" .. model .. "_profile_reconfigure"
   local mappings = {}
   local commands = {}
 
+  local function branch_allowed(device, cover_enabled)
+    local active_profile = cover_enabled and cover_profile or switch_profile
+    return device:get_field(pending_field) ~= true and
+      device:get_field(mode_field) == cover_enabled and
+      device.profile ~= nil and device.profile.id == active_profile
+  end
+
+  local function apply_mode_profile(device, cover_enabled, force, suppress_reconfigure)
+    local wanted = cover_enabled and cover_profile or switch_profile
+    local current = device.profile and device.profile.id or nil
+    if force or current ~= wanted then
+      if suppress_reconfigure then
+        device:set_field(profile_reconfigure_field, wanted)
+      end
+      device:try_update_metadata({ profile = wanted })
+      return true
+    end
+    return false
+  end
+
+  local function cancel_mode_timer(device)
+    local timer = device:get_field(timer_field)
+    if timer ~= nil and device.thread ~= nil and type(device.thread.cancel_timer) == "function" then
+      device.thread:cancel_timer(timer)
+    end
+    device:set_field(timer_field, nil)
+  end
+
+  local switch_mapping_start = #mappings + 1
   for channel = 1, 2 do
     local word = channel == 1 and "One" or "Two"
     local component = channel == 1 and "main" or "switch2"
@@ -563,7 +663,15 @@ local function dynamic_definition(model, profile, extras)
     add_led_mappings(mappings, ep_prefix, cap_prefix, channel, component, false)
     add_button_action(mappings, channel, component)
   end
+  guard_dynamic_mappings(
+    mappings,
+    switch_mapping_start,
+    #mappings,
+    "switch",
+    function(device) return branch_allowed(device, false) end
+  )
 
+  local cover_mapping_start = #mappings + 1
   append(mappings, zcl.cluster_attribute(CLUSTER_WINDOW_COVERING, ATTR_CURRENT_POSITION, {
     name = "cover_position",
     endpoint = 3,
@@ -650,23 +758,58 @@ local function dynamic_definition(model, profile, extras)
   ))
   add_identify(mappings, commands, mapping_prefix .. "_cover", capability_prefix .. "Cover", 3, "cover", 30)
   add_led_mappings(mappings, mapping_prefix .. "_cover", capability_prefix .. "Cover", 3, "cover", true)
+  guard_dynamic_mappings(
+    mappings,
+    cover_mapping_start,
+    #mappings,
+    "cover",
+    function(device) return branch_allowed(device, true) end
+  )
 
-  -- The frozen definition exposes these as one dynamic item. SmartThings
-  -- profiles are static, so the same family-specific capability is present on
-  -- both possible route components while the mappings remain endpoint exact.
+  -- The frozen definition exposes these as one dynamic item.  The capabilities
+  -- live on the active component in separate SmartThings profiles, while both
+  -- endpoint mappings remain registered so a mode change does not require a
+  -- driver reload.
+  local switch_shared_start = #mappings + 1
   add_shared_mappings(mappings, mapping_prefix, capability_prefix, 1, "main", 3, 2, extras)
+  guard_dynamic_mappings(
+    mappings,
+    switch_shared_start,
+    #mappings,
+    "switch",
+    function(device) return branch_allowed(device, false) end
+  )
+  local cover_shared_start = #mappings + 1
   add_shared_mappings(mappings, mapping_prefix, capability_prefix, 3, "cover", 3, 2, extras)
+  guard_dynamic_mappings(
+    mappings,
+    cover_shared_start,
+    #mappings,
+    "cover",
+    function(device) return branch_allowed(device, true) end
+  )
 
   local function mode_handler(device, value)
+    local previous_mode = device:get_field(mode_field)
+    local action = device:get_field(probe_action_field) or "configure"
     local cover_enabled = value == true or value == 1
     device:set_field(mode_field, cover_enabled, { persist = true })
-    device:set_field(pending_field, false)
-    local timer = device:get_field(timer_field)
-    if timer ~= nil and device.thread ~= nil and type(device.thread.cancel_timer) == "function" then
-      device.thread:cancel_timer(timer)
-      device:set_field(timer_field, nil)
+    device:set_field(probe_action_field, nil)
+    cancel_mode_timer(device)
+    local profile_changed = apply_mode_profile(device, cover_enabled, false, true)
+    if profile_changed then
+      -- SmartThings applies try_update_metadata asynchronously.  Do not read,
+      -- bind, emit, or accept commands for the new branch until infoChanged
+      -- confirms that the selected component profile is active.
+      device:set_field(pending_field, true)
+      return
     end
-    configure_dynamic_branch(device, device:get_field(hub_field), cover_enabled, extras)
+    device:set_field(pending_field, false)
+    if action == "refresh" and previous_mode == cover_enabled then
+      read_dynamic_branch(device, cover_enabled, extras)
+    else
+      configure_dynamic_branch(device, device:get_field(hub_field), cover_enabled, extras)
+    end
   end
 
   append(mappings, zcl.cluster_attribute(CLUSTER_BASIC, ATTR_DEVICE_ENABLED, {
@@ -678,25 +821,90 @@ local function dynamic_definition(model, profile, extras)
     handler = mode_handler,
   }))
 
-  local function configure(driver, device)
-    local hub_eui = driver.environment_info.hub_zigbee_eui
-    device:set_field(hub_field, hub_eui)
+  local function probe_dynamic_mode(device, hub_eui, action)
+    if hub_eui ~= nil then device:set_field(hub_field, hub_eui) end
     device:set_field(pending_field, true)
+    device:set_field(probe_action_field, action)
+    cancel_mode_timer(device)
     read(device, 3, CLUSTER_BASIC, ATTR_DEVICE_ENABLED)
     if device.thread ~= nil and type(device.thread.call_with_delay) == "function" then
-      local timer = device.thread:call_with_delay(3, function()
-        if device:get_field(pending_field) == true then
+      local timer
+      timer = device.thread:call_with_delay(3, function()
+        if device:get_field(pending_field) == true and device:get_field(timer_field) == timer then
+          local retained_mode = device:get_field(mode_field)
+          if type(retained_mode) ~= "boolean" then
+            -- No successful/UNSUPPORTED result has ever established the Z2M
+            -- meta flag.  Only this first-run case uses the safe switch shape.
+            retained_mode = false
+            device:set_field(mode_field, retained_mode, { persist = true })
+          end
+          device:set_field(timer_field, nil)
+          device:set_field(probe_action_field, nil)
+          local profile_changed = apply_mode_profile(device, retained_mode, false, true)
+          if profile_changed then
+            device:set_field(pending_field, true)
+            return
+          end
           device:set_field(pending_field, false)
-          device:set_field(mode_field, false, { persist = true })
-          configure_dynamic_branch(device, hub_eui, false, extras)
+          if action == "refresh" then
+            read_dynamic_branch(device, retained_mode, extras)
+          else
+            configure_dynamic_branch(device, hub_eui, retained_mode, extras)
+          end
         end
       end, "wave14 Sber mode fallback " .. model)
       device:set_field(timer_field, timer)
     end
   end
 
+  local function configure(driver, device)
+    local expected_profile = device:get_field(profile_reconfigure_field)
+    if expected_profile ~= nil and device.profile ~= nil and device.profile.id == expected_profile then
+      -- This is the infoChanged caused by our own asynchronous profile update.
+      -- The new components now exist, so activate the persisted branch exactly
+      -- once without another mode probe or fallback timer.
+      device:set_field(profile_reconfigure_field, nil)
+      local selected_mode = device:get_field(mode_field)
+      if type(selected_mode) == "boolean" then
+        device:set_field(pending_field, false)
+        local hub_eui = driver.environment_info.hub_zigbee_eui
+        if hub_eui ~= nil then device:set_field(hub_field, hub_eui) end
+        configure_dynamic_branch(device, hub_eui or device:get_field(hub_field), selected_mode, extras)
+      end
+      return
+    end
+    probe_dynamic_mode(device, driver.environment_info.hub_zigbee_eui, "configure")
+  end
+
+  local function parent_refresh(device, _, driver)
+    -- The mode probe is the only cross-shape read.  A response (or timeout)
+    -- then reads only the selected branch, so generic read_all_attributes must
+    -- never run for these dynamic registrations.
+    local hub_eui = driver ~= nil and driver.environment_info ~= nil and
+      driver.environment_info.hub_zigbee_eui or device:get_field(hub_field)
+    probe_dynamic_mode(device, hub_eui, "refresh")
+  end
+
+  local function runtime_start(device)
+    local persisted_mode = device:get_field(mode_field)
+    if type(persisted_mode) == "boolean" then
+      -- valid_parent_profiles prevents init from replacing an already active
+      -- cover profile with the fingerprint base.  Request one asynchronous
+      -- correction only when persisted mode and current profile still differ.
+      if apply_mode_profile(device, persisted_mode, false, true) then
+        device:set_field(pending_field, true)
+      end
+    end
+  end
+
   return {
-    profile = profile,
+    profile = switch_profile,
+    auxiliary_profiles = { cover_profile },
+    sber_switch_profile = switch_profile,
+    sber_cover_profile = cover_profile,
+    sber_mode_field = mode_field,
+    sber_pending_field = pending_field,
+    valid_parent_profiles = { [switch_profile] = true, [cover_profile] = true },
     package_group = "wave14-switch",
     transport_classification = "ZCL_DYNAMIC_SWITCH_OR_COVER",
     z2m_converter_source = "local sdevices fz/tz + dynamic exposes(device.meta.window_covering_enabled)",
@@ -707,7 +915,9 @@ local function dynamic_definition(model, profile, extras)
     component_to_endpoint_map = { main = 1, switch2 = 2, cover = 3 },
     endpoint_to_component_map = { [1] = "main", [2] = "switch2", [3] = "cover" },
     placeholder_custom_states = false,
+    runtime_start = runtime_start,
     configure = configure,
+    parent_refresh = parent_refresh,
   }
 end
 

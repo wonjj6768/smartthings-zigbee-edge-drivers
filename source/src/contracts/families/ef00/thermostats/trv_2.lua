@@ -1,0 +1,881 @@
+local tuya = require "protocol.tuya"
+local emit = require "capabilities.events.all"
+local device_helpers = require "contracts.helpers.family"
+local ef00_helpers = require "contracts.helpers.ef00"
+local thermostat_common = require "contracts.helpers.ef00_thermostats"
+local converter = tuya.converter
+local device_definitions, register_device_definition = device_helpers.definition_registry()
+local valve_position_to_running_state = thermostat_common.valve_position_to_running_state
+local thermostat_variant1_mode_from_device = thermostat_common.variant1_mode_from_device
+local thermostat_variant1_mode_to_device = thermostat_common.variant1_mode_to_device
+local thermostat_trv603_minimal = {
+  profile = "thermostats-thermostat-battery-ar331",
+  package_group = "trv-2",
+  -- Z2M AR331 (tuya.ts:4653): DP2 preset auto/manual/leave, DP3 running state,
+  -- DP4 setpoint /10, DP5 signed local temperature /10, DP6 battery raw and
+  -- DP7 child lock with inverted polarity.  DP28..DP34 are schedule frames.
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.ar331Preset(),
+    converter = converter.lookup_from_to({ auto = 0, manual = 1, leave = 2 }),
+  }),
+  tuya.dp_running_state(3, {
+    converter = converter.lookup_from_to({ heating = 1, idle = 0 }),
+    emit = emit.thermostat_operating_state(),
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(5, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, {
+    name = "child_lock",
+    emit = emit.ar331ChildLock(),
+    converter = converter.lookup_from_to({ lock = false, unlock = true }),
+  }),
+}
+register_device_definition(thermostat_trv603_minimal, ef00_helpers.ts0601_fingerprints( {
+  "_TZE284_noixx2uz",
+}))
+local thermostat_variant2 = {
+  profile = "thermostats-thermostat-s366",
+  package_group = "trv-2",
+  -- Z2M TS0601_thermostat_2 (tuya.ts:9136).  DP3 is unknown in Z2M and DP101..
+  -- DP107 are packed schedule frames, so both stay unexposed.
+  tuya.dp_system_mode(1, {
+    converter = converter.lookup_from_to({
+      heat = true,
+      off = false,
+    }),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.s366Preset(),
+    converter = converter.lookup_from_to({ manual = 0, holiday = 1, program = 2 }),
+  }),
+  tuya.dp_open_window(8, { emit = emit.s366OpenWindow() }),
+  tuya.dp_frost_protection(10, { emit = emit.s366FrostProtection() }),
+  tuya.dp_current_heating_setpoint(16, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(24, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_local_temperature_calibration(27, { scale = 10, emit = emit.s366TempCalibration() }),
+  tuya.dp_binary(35, {
+    name = "battery_low",
+    read_only = true,
+    emit = emit.s366BatteryLow(),
+    -- Z2M uses trueFalse0 here (tuya.ts:9153): raw 0 means the battery is low.
+    converter = converter.from_only(function(value)
+      return (value == false or value == 0) and "low" or "normal"
+    end),
+  }),
+  tuya.dp_child_lock(40, { emit = emit.s366ChildLock() }),
+  tuya.dp_numeric(45, {
+    name = "error_status",
+    read_only = true,
+    emit = emit.s366ErrorStatus(),
+  }),
+}
+register_device_definition(thermostat_variant2, ef00_helpers.ts0601_fingerprints( {
+  "_TZE200_0hg58wyk",
+}))
+-- Z2M lists S366 / Cloud Even as a whiteLabel of _TZE200_0hg58wyk (tuya.ts:9133),
+-- not as interviewed manufacturer/model pairs.
+local thermostat_variant4 = {
+  profile = "thermostats-thermostat-trv4",
+  package_group = "trv-2",
+  -- Z2M TS0601_thermostat_4 (tuya.ts:9358).  DP47 calibration is raw, DP35 is the
+  -- error/battery-low bitmap and DP28..DP34 are packed schedule frames.
+  tuya.dp_system_mode(49, {
+    converter = converter.lookup_from_to({
+      off = 0,
+      heat = 1,
+    }),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.trv4Preset(),
+    converter = converter.lookup_from_to({
+      schedule = 0,
+      holiday = 1,
+      manual = 2,
+      comfort = 3,
+      eco = 4,
+    }),
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(5, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, { emit = emit.trv4ChildLock() }),
+  tuya.dp_holiday_temperature(21, { scale = 10, emit = emit.trv4HolidayTemperature() }),
+  tuya.dp_comfort_temperature(24, { scale = 10, emit = emit.trv4ComfortTemperature() }),
+  tuya.dp_eco_temperature(25, { scale = 10, emit = emit.trv4EcoTemperature() }),
+  tuya.dp_bitmap(35, {
+    name = "battery_low",
+    read_only = true,
+    emit = emit.trv4BatteryLow(),
+    converter = converter.from_only(thermostat_common.error_or_battery_low_state),
+  }),
+  tuya.dp_frost_protection(36, { emit = emit.trv4FrostProtection() }),
+  tuya.dp_boost_heating(37, { emit = emit.trv4BoostHeating() }),
+  tuya.dp_scale_protection(39, { emit = emit.trv4ScaleProtection() }),
+  tuya.dp_local_temperature_calibration(47, { scale = 1, emit = emit.trv4TempCalibration() }),
+}
+register_device_definition(thermostat_variant4, ef00_helpers.ts0601_fingerprints( {
+  "_TZE204_pcdmj88b",
+  "_TZE284_pcdmj88b",
+}))
+local function thermostat_variant14_mode_from_preset(value)
+  local numeric = tonumber(value)
+  if numeric == nil then
+    return nil
+  end
+  if numeric == 6 then
+    return "off"
+  end
+  return "heat"
+end
+local function thermostat_variant14_mode_to_preset(value)
+  if value == "off" then
+    return 6
+  end
+  if value == "heat" then
+    return 0
+  end
+  return nil
+end
+local thermostat_variant14 = {
+  profile = "thermostats-thermostat-trv14",
+  package_group = "trv-2",
+  -- Z2M TS0601_thermostat_14 (tuya.ts:25182).  DP2 carries the preset, DP35 is
+  -- the error/battery-low bitmap and DP28..DP34 are packed schedule frames.
+  tuya.dp_system_mode(2, {
+    from_device = thermostat_variant14_mode_from_preset,
+    to_device = thermostat_variant14_mode_to_preset,
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.trv14Preset(),
+    converter = converter.lookup_from_to({
+      manual = 0,
+      schedule = 1,
+      eco = 2,
+      comfort = 3,
+      frostProtection = 4,
+      holiday = 5,
+      off = 6,
+    }),
+  }),
+  tuya.dp_running_state(3, {
+    converter = converter.lookup_from_to({
+      heating = 1,
+      idle = 0,
+    }),
+    emit = emit.thermostat_operating_state(),
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(5, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, { emit = emit.trv14ChildLock() }),
+  tuya.dp_window_detection(14, { emit = emit.trv14WindowDetection() }),
+  tuya.dp_enum(15, {
+    name = "window_open",
+    read_only = true,
+    emit = emit.trv14WindowOpen(),
+    converter = converter.from_only(converter.lookup_value({ [0] = "close", [1] = "open" })),
+  }),
+  tuya.dp_holiday_temperature(21, { scale = 10, emit = emit.trv14HolidayTemperature() }),
+  tuya.dp_bitmap(35, {
+    name = "battery_low",
+    read_only = true,
+    emit = emit.trv14BatteryLow(),
+    converter = converter.from_only(thermostat_common.error_or_battery_low_state),
+  }),
+  tuya.dp_frost_protection(36, { emit = emit.trv14FrostProtection() }),
+  tuya.dp_boost_heating(37, { emit = emit.trv14BoostHeating() }),
+  tuya.dp_scale_protection(39, { emit = emit.trv14ScaleProtection() }),
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.trv14TempCalibration() }),
+  tuya.dp_eco_temperature(103, { scale = 10, emit = emit.trv14EcoTemperature() }),
+  tuya.dp_comfort_temperature(104, { scale = 10, emit = emit.trv14ComfortTemperature() }),
+}
+register_device_definition(thermostat_variant14, ef00_helpers.ts0601_fingerprints( {
+  "_TZE204_vjpaih9f",
+  "_TZE284_vjpaih9f",
+}))
+local function thermostat_gtz10_mode_from_device(value)
+  local numeric = tonumber(value)
+  local lookup = {
+    [0] = "heat",
+    [1] = "auto",
+    [2] = "heat",
+    [3] = "heat",
+    [4] = "heat",
+    [5] = "off",
+  }
+  return lookup[numeric]
+end
+local function thermostat_gtz10_mode_to_device(value)
+  local lookup = {
+    heat = 0,
+    auto = 1,
+    off = 5,
+  }
+  return lookup[value]
+end
+local thermostat_gtz10 = {
+  profile = "thermostats-thermostat-gtz10",
+  package_group = "trv-2",
+  -- Z2M TS0601_GTZ10 (tuya.ts:21596).  DP2 packs system mode and preset, DP49 is
+  -- the valve state exposed as running state and the Z2M "exposed but not used"
+  -- DPs (1, 3, 8, 11, 12, 17, 18, 39..48, 112, 114, 116..121) stay unexposed.
+  tuya.dp_system_mode(2, {
+    from_device = thermostat_gtz10_mode_from_device,
+    to_device = thermostat_gtz10_mode_to_device,
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.gtz10Preset(),
+    converter = converter.lookup_from_to({
+      manual = 0,
+      auto = 1,
+      holiday = 2,
+      comfort = 3,
+      eco = 4,
+      off = 5,
+    }),
+  }),
+  tuya.dp_running_state(49, {
+    from_device = valve_position_to_running_state,
+    emit = emit.thermostat_operating_state(),
+    read_only = true,
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(5, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, { emit = emit.gtz10ChildLock() }),
+  tuya.dp_max_temperature_limit(9, {
+    name = "max_temperature",
+    scale = 10,
+    emit = emit.gtz10MaxTemperature(),
+  }),
+  tuya.dp_min_temperature_limit(10, {
+    name = "min_temperature",
+    scale = 10,
+    emit = emit.gtz10MinTemperature(),
+  }),
+  tuya.dp_window_detection(14, { emit = emit.gtz10WindowDetection() }),
+  tuya.dp_window_open(15, {
+    read_only = true,
+    emit = emit.gtz10WindowOpen(),
+    converter = converter.from_only(function(value)
+      return value and "open" or "close"
+    end),
+  }),
+  tuya.dp_open_window_temperature(16, { scale = 10, emit = emit.gtz10OpenWindowTemperature() }),
+  tuya.dp_numeric(35, {
+    name = "error_status",
+    read_only = true,
+    emit = emit.gtz10ErrorStatus(),
+  }),
+  tuya.dp_frost_protection(36, { emit = emit.gtz10FrostProtection() }),
+  tuya.dp_boost_heating(37, { emit = emit.gtz10BoostHeating() }),
+  tuya.dp_numeric(38, {
+    name = "boost_timeset_countdown",
+    emit = emit.gtz10BoostCountdown(),
+  }),
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.gtz10TempCalibration() }),
+  tuya.dp_binary(113, {
+    name = "switch_type",
+    emit = emit.gtz10SwitchType(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_numeric(115, { name = "position", emit = emit.gtz10Position() }),
+  tuya.dp_enum(119, {
+    name = "screen_orientation",
+    emit = emit.gtz10ScreenOrientation(),
+    converter = converter.lookup_from_to({ up = 0, down = 1, left = 2, right = 3 }),
+  }),
+}
+register_device_definition(thermostat_gtz10, ef00_helpers.ts0601_fingerprints( {
+  "_TZE200_pbo8cj0z",
+  "_TZE200_eo6xhfbo",
+}))
+local thermostat_tr_m3z = {
+  profile = "thermostats-thermostat-tr-m3z",
+  package_group = "trv-2",
+  -- Z2M TR-M3Z (tuya.ts:22563).  DP47 calibration is /10, DP35 is the shared
+  -- error/battery-low bitmap and DP28..DP34 are packed schedule frames.
+  tuya.dp_system_mode(101, {
+    converter = converter.lookup_from_to({
+      off = false,
+      heat = true,
+    }),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.trm3zPreset(),
+    converter = converter.lookup_from_to({
+      manual = 0,
+      schedule = 1,
+      eco = 2,
+      comfort = 3,
+      frostProtection = 4,
+      holiday = 5,
+      off = 6,
+    }),
+  }),
+  tuya.dp_running_state(3, {
+    converter = converter.lookup_from_to({
+      heating = 1,
+      idle = 0,
+    }),
+    emit = emit.thermostat_operating_state(),
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(5, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, { emit = emit.trm3zChildLock() }),
+  tuya.dp_window_detection(14, { emit = emit.trm3zWindowDetection() }),
+  tuya.dp_enum(15, {
+    name = "window_open",
+    read_only = true,
+    emit = emit.trm3zWindowOpen(),
+    converter = converter.from_only(converter.lookup_value({ [0] = "close", [1] = "open" })),
+  }),
+  tuya.dp_holiday_temperature(21, { scale = 10, emit = emit.trm3zHolidayTemperature() }),
+  tuya.dp_bitmap(35, {
+    name = "battery_low",
+    read_only = true,
+    emit = emit.trm3zBatteryLow(),
+    converter = converter.from_only(thermostat_common.error_or_battery_low_state),
+  }),
+  tuya.dp_frost_protection(36, { emit = emit.trm3zFrostProtection() }),
+  tuya.dp_scale_protection(39, { emit = emit.trm3zScaleProtection() }),
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.trm3zTempCalibration() }),
+  tuya.dp_numeric(102, {
+    name = "temperature_accuracy",
+    converter = converter.divide_by_pair(10),
+    emit = emit.trm3zTemperatureAccuracy(),
+  }),
+  tuya.dp_eco_temperature(103, { scale = 10, emit = emit.trm3zEcoTemperature() }),
+  tuya.dp_comfort_temperature(104, { scale = 10, emit = emit.trm3zComfortTemperature() }),
+  tuya.dp_temperature(105, {
+    name = "frost_protection_temperature",
+    scale = 10,
+    emit = emit.trm3zFrostTemperature(),
+  }),
+}
+register_device_definition(thermostat_tr_m3z, ef00_helpers.ts0601_fingerprints( {
+  "_TZE204_eekpf0ft",
+  "_TZE284_eekpf0ft",
+}))
+
+local TV02_HEATING_STOP_FIELD = "tv02_heating_stop"
+local TV02_PRESET_MODE_FIELD = "tv02_preset_mode"
+local function tv02_preset_mode_from_device(value, device)
+  local lookup = {
+    [0] = "auto",
+    [1] = "heat",
+    [2] = "heat",
+    [3] = "heat",
+  }
+  local mode = lookup[tonumber(value)]
+  if mode == nil then
+    return nil
+  end
+  device:set_field(TV02_PRESET_MODE_FIELD, mode, { persist = false })
+  if device:get_field(TV02_HEATING_STOP_FIELD) == true then
+    return "off"
+  end
+  return mode
+end
+local function tv02_system_mode_from_device(value, device)
+  local heating_stop = value == true
+  device:set_field(TV02_HEATING_STOP_FIELD, heating_stop, { persist = false })
+  if heating_stop then
+    return "off"
+  end
+  return device:get_field(TV02_PRESET_MODE_FIELD) or "heat"
+end
+local function tv02_system_mode_write(_, value)
+  if value == "off" then
+    return {
+      { dp = 107, datatype = tuya.DP_TYPE_BOOL, value = true },
+    }
+  end
+  if value == "auto" then
+    return {
+      { dp = 2, datatype = tuya.DP_TYPE_ENUM, value = 0 },
+    }
+  end
+  if value == "heat" then
+    return {
+      { dp = 2, datatype = tuya.DP_TYPE_ENUM, value = 1 },
+    }
+  end
+  return nil
+end
+local tv02_setpoint = tuya.dp_current_heating_setpoint(16, {
+  scale = 10,
+  emit = emit.heating_setpoint("C"),
+})
+local thermostat_tv02 = {
+  profile = "thermostats-thermostat-tv02",
+  package_group = "trv-2",
+  named_mapping = {
+    named_mappings = {
+      system_mode = tv02_system_mode_write,
+      current_heating_setpoint = tv02_setpoint,
+    },
+  },
+  tuya.dp_system_mode(2, {
+    from_device = tv02_preset_mode_from_device,
+    emit = emit.thermostat_mode(),
+    read_only = true,
+  }),
+  tuya.dp_open_window(8, { emit = emit.tv02OpenWindow() }),
+  tuya.dp_frost_protection(10, { emit = emit.tv02FrostProtection() }),
+  tv02_setpoint,
+  tuya.dp_local_temperature(24, {
+    scale = 10,
+    emit = emit.temperature("C"),
+  }),
+  tuya.dp_local_temperature_calibration(27, { scale = 10, emit = emit.tv02TempCalibration() }),
+  tuya.dp_enum(31, {
+    name = "working_day",
+    converter = converter.lookup_from_to({
+      mon_sun = 0,
+      mon_fri_sat_sun = 1,
+      separate = 2,
+    }),
+    emit = emit.workingDayTv02ScheduleMode(),
+  }),
+  tuya.dp_holiday_temperature(32, { scale = 10, emit = emit.tv02HolidayTemperature() }),
+  tuya.dp_binary(35, {
+    name = "battery_low",
+    -- Z2M trueFalse0: raw false/0 means low, raw true/1 means normal.
+    converter = converter.from_only(function(value)
+      if value == false or value == 0 then return "low" end
+      if value == true or value == 1 then return "normal" end
+      return nil
+    end),
+    read_only = true,
+    emit = emit.tv02BatteryLow(),
+  }),
+  tuya.dp_child_lock(40, { emit = emit.tv02ChildLock() }),
+  tuya.dp_numeric(45, { name = "error_status", read_only = true, emit = emit.tv02ErrorStatus() }),
+  tuya.dp_raw(46, { name = "holiday_start_stop" }),
+  tuya.dp_numeric(101, { name = "boost_timeset_countdown", emit = emit.tv02BoostCountdown() }),
+  tuya.dp_open_window_temperature(102, { scale = 10, emit = emit.tv02OpenWindowTemperature() }),
+  tuya.dp_comfort_temperature(104, { scale = 10, emit = emit.tv02ComfortTemperature() }),
+  tuya.dp_eco_temperature(105, { scale = 10, emit = emit.tv02EcoTemperature() }),
+  tuya.dp_raw(106, { name = "schedule" }),
+  tuya.dp_binary(107, {
+    name = "system_mode",
+    from_device = tv02_system_mode_from_device,
+    emit = emit.thermostat_mode(),
+    read_only = true,
+  }),
+  tuya.dp_raw(108, { name = "schedule_monday" }),
+  tuya.dp_raw(109, { name = "schedule_wednesday" }),
+  tuya.dp_raw(110, { name = "schedule_friday" }),
+  tuya.dp_raw(111, { name = "schedule_sunday" }),
+  tuya.dp_raw(112, { name = "schedule_tuesday" }),
+  tuya.dp_raw(113, { name = "schedule_thursday" }),
+  tuya.dp_raw(114, { name = "schedule_saturday" }),
+  tuya.dp_binary(115, {
+    name = "online",
+    read_only = true,
+    emit = emit.tv02Online(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+}
+register_device_definition(thermostat_tv02, ef00_helpers.ts0601_fingerprints( {
+  "_TZE200_sur6q7ko",
+  "_TZE200_hue3yfsn",
+  "_TZE200_e9ba97vf",
+  "_TZE200_husqqvux",
+  "_TZE200_lnbfnyxd",
+  "_TZE200_fsow0qsk",
+  "_TZE200_lllliz3p",
+  "_TZE200_mudxchsu",
+  "_TZE200_7yoranx2",
+  "_TZE200_kds0pmmv",
+  "_TZE200_py4cm3he",
+  "_TZE200_wsbfwodu",
+  "_TZE200_x9axofse",
+  "_TZE200_lhzapfg9",
+  "_TZE200_k1tumq4t",
+}))
+-- Z2M lists Moes TV01-ZB / ZTRV-ZX-TV01-MS / ZTRV-ZX-TV02, AVATTO TRV06-1,
+-- Tesla Smart TSL-TRV-TV01ZG / TSL-TRV-TV05ZG, Unknown/id3.pl GTZ08, AlecoAir
+-- HA-08_THERMO, GIEX TV06, EKF ETT-8 and LSC Smart Connect 3012732 as whiteLabel
+-- retail names for the exacts above (tuya.ts:8999).  They are sales labels, not
+-- interviewed manufacturer/model pairs.
+-- Z2M splits these exacts into three models.  TRV601 (tuya.ts:9807) and TRV602
+-- (tuya.ts:9879) share the DP1/DP2/DP3/DP6/DP13 layout and only differ in DP113
+-- screen orientation plus the DP115 eco deviation TRV602 adds, while TRV602Z
+-- (tuya.ts:9983) uses an entirely different map on DP2/DP4/DP5/DP6/DP7.
+local function trv60x_definition(profile, emits)
+  return {
+    profile = profile,
+    tuya.dp_system_mode(1, {
+      from_device = thermostat_variant1_mode_from_device,
+      to_device = thermostat_variant1_mode_to_device,
+      emit = emit.thermostat_mode(),
+    }),
+    tuya.dp_enum(1, {
+      name = "preset",
+      emit = emits.preset,
+      converter = converter.lookup_from_to({ auto = 0, manual = 1, off = 2, on = 3 }),
+    }),
+    tuya.dp_current_heating_setpoint(2, { scale = 10, emit = emit.heating_setpoint("C") }),
+    tuya.dp_local_temperature(3, { scale = 10, emit = emit.temperature("C") }),
+    tuya.dp_running_state(6, {
+      converter = converter.lookup_from_to({ heating = 1, idle = 0 }),
+      emit = emit.thermostat_operating_state(),
+    }),
+    tuya.dp_enum(7, {
+      name = "window",
+      read_only = true,
+      emit = emits.window,
+      converter = converter.from_only(converter.lookup_value({ [0] = "close", [1] = "open" })),
+    }),
+    tuya.dp_window_detection(8, { emit = emits.window_detection }),
+    tuya.dp_child_lock(12, { emit = emits.child_lock }),
+    tuya.dp_battery(13, { emit = emit.battery() }),
+    tuya.dp_binary(14, {
+      name = "alarm_switch",
+      read_only = true,
+      emit = emits.alarm_switch,
+      converter = converter.lookup_from_to({ off = false, on = true }),
+    }),
+    tuya.dp_min_temperature_limit(15, {
+      name = "min_temperature",
+      scale = 10,
+      emit = emits.min_temperature,
+    }),
+    tuya.dp_max_temperature_limit(16, {
+      name = "max_temperature",
+      scale = 10,
+      emit = emits.max_temperature,
+    }),
+    tuya.dp_local_temperature_calibration(101, { scale = 10, emit = emits.calibration }),
+    tuya.dp_numeric(108, {
+      name = "position",
+      read_only = true,
+      converter = converter.divide_by_pair(10),
+      emit = emits.position,
+    }),
+    tuya.dp_enum(111, {
+      name = "display_brightness",
+      emit = emits.display_brightness,
+      converter = converter.lookup_from_to(emits.brightness_map),
+    }),
+    tuya.dp_enum(113, {
+      name = "screen_orientation",
+      emit = emits.screen_orientation,
+      converter = converter.lookup_from_to(emits.orientation_map),
+    }),
+    tuya.dp_enum(114, {
+      name = "hysteresis_mode",
+      emit = emits.hysteresis,
+      converter = converter.lookup_from_to({ comfort = 0, eco = 1 }),
+    }),
+  }
+end
+local thermostat_trv601 = trv60x_definition("thermostats-thermostat-trv601", {
+  preset = emit.trv601Preset(),
+  window = emit.trv601Window(),
+  window_detection = emit.trv601WindowDetection(),
+  child_lock = emit.trv601ChildLock(),
+  alarm_switch = emit.trv601AlarmSwitch(),
+  min_temperature = emit.trv601MinTemperature(),
+  max_temperature = emit.trv601MaxTemperature(),
+  calibration = emit.trv601TempCalibration(),
+  position = emit.trv601Position(),
+  display_brightness = emit.trv601DisplayBrightness(),
+  brightness_map = { high = 0, medium = 1, low = 2 },
+  screen_orientation = emit.trv601ScreenOrientation(),
+  orientation_map = { up = 0, right = 1, down = 2, left = 3 },
+  hysteresis = emit.trv601Hysteresis(),
+})
+thermostat_trv601.package_group = "trv-2"
+register_device_definition(thermostat_trv601, ef00_helpers.ts0601_fingerprints( {
+  "_TZE204_rtrmfadk",
+  "_TZE204_cvcu2p6e",
+}))
+-- Z2M lists Sber SBDV-00185 (_TZE204_cvcu2p6e) and Moes TRV801_1
+-- (_TZE204_rtrmfadk) as whiteLabel retail names (tuya.ts:9756).
+local thermostat_trv602 = trv60x_definition("thermostats-thermostat-trv602", {
+  preset = emit.trv602Preset(),
+  window = emit.trv602Window(),
+  window_detection = emit.trv602WindowDetection(),
+  child_lock = emit.trv602ChildLock(),
+  alarm_switch = emit.trv602AlarmSwitch(),
+  min_temperature = emit.trv602MinTemperature(),
+  max_temperature = emit.trv602MaxTemperature(),
+  calibration = emit.trv602TempCalibration(),
+  position = emit.trv602Position(),
+  display_brightness = emit.trv602DisplayBrightness(),
+  brightness_map = { high = 0, middle = 1, low = 2 },
+  screen_orientation = emit.trv602ScreenOrientation(),
+  orientation_map = { up = 0, down = 2 },
+  hysteresis = emit.trv602Hysteresis(),
+})
+thermostat_trv602.package_group = "trv-2"
+thermostat_trv602[#thermostat_trv602 + 1] = tuya.dp_numeric(115, {
+  name = "switch_deviation_eco",
+  converter = converter.divide_by_pair(10),
+  emit = emit.trv602SwitchDeviationEco(),
+})
+register_device_definition(thermostat_trv602, ef00_helpers.ts0601_fingerprints( {
+  "_TZE204_9mjy74mp",
+  "_TZE200_rtrmfadk",
+  "_TZE200_9mjy74mp",
+}))
+-- Z2M lists Moes TRV801 as a whiteLabel of _TZE204_9mjy74mp and _TZE200_9mjy74mp
+-- (tuya.ts:9842).
+local thermostat_trv602z = {
+  profile = "thermostats-thermostat-trv602z",
+  package_group = "trv-2",
+  tuya.dp_system_mode(2, {
+    from_device = function(value)
+      local lookup = {
+        [0] = "off",
+        [1] = "auto",
+        [2] = "auto",
+        [3] = "auto",
+        [4] = "auto",
+        [5] = "heat",
+      }
+      return lookup[tonumber(value)]
+    end,
+    to_device = function(value)
+      local lookup = { off = 0, auto = 4, heat = 5 }
+      return lookup[value]
+    end,
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.trv602zPreset(),
+    converter = converter.lookup_from_to({
+      off = 0,
+      antifrost = 1,
+      eco = 2,
+      comfort = 3,
+      auto = 4,
+      on = 5,
+    }),
+  }),
+  tuya.dp_running_state(3, {
+    converter = converter.lookup_from_to({ heating = 1, idle = 0 }),
+    emit = emit.thermostat_operating_state(),
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10, emit = emit.heating_setpoint("C") }),
+  tuya.dp_local_temperature(5, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, { emit = emit.trv602zChildLock() }),
+  tuya.dp_max_temperature_limit(9, {
+    name = "max_temperature",
+    scale = 10,
+    emit = emit.trv602zMaxTemperature(),
+  }),
+  tuya.dp_min_temperature_limit(10, {
+    name = "min_temperature",
+    scale = 10,
+    emit = emit.trv602zMinTemperature(),
+  }),
+  tuya.dp_window_detection(14, { emit = emit.trv602zWindowDetection() }),
+  tuya.dp_enum(15, {
+    name = "window",
+    read_only = true,
+    emit = emit.trv602zWindow(),
+    converter = converter.from_only(converter.lookup_value({ [0] = "close", [1] = "open" })),
+  }),
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.trv602zTempCalibration() }),
+  tuya.dp_enum(110, {
+    name = "motor_thrust",
+    emit = emit.trv602zMotorThrust(),
+    converter = converter.lookup_from_to({ strong = 0, middle = 1, weak = 2 }),
+  }),
+  tuya.dp_enum(111, {
+    name = "display_brightness",
+    emit = emit.trv602zDisplayBrightness(),
+    converter = converter.lookup_from_to({ high = 0, medium = 1, low = 2 }),
+  }),
+  tuya.dp_enum(113, {
+    name = "screen_orientation",
+    emit = emit.trv602zScreenOrientation(),
+    converter = converter.lookup_from_to({ up = 0, down = 1 }),
+  }),
+  tuya.dp_numeric(114, {
+    name = "position",
+    read_only = true,
+    converter = converter.divide_by_pair(10),
+    emit = emit.trv602zPosition(),
+  }),
+  tuya.dp_numeric(118, {
+    name = "boost_timeset_countdown",
+    emit = emit.trv602zBoostCountdown(),
+  }),
+  tuya.dp_comfort_temperature(119, { scale = 10, emit = emit.trv602zComfortTemperature() }),
+  tuya.dp_eco_temperature(120, { scale = 10, emit = emit.trv602zEcoTemperature() }),
+  tuya.dp_holiday_temperature(121, { scale = 10, emit = emit.trv602zHolidayTemperature() }),
+  tuya.dp_frost_protection(122, { emit = emit.trv602zFrostProtection() }),
+  tuya.dp_enum(127, {
+    name = "hysteresis_mode",
+    emit = emit.trv602zHysteresis(),
+    converter = converter.lookup_from_to({ comfort = 0, eco = 1 }),
+  }),
+}
+register_device_definition(thermostat_trv602z, ef00_helpers.ts0601_fingerprints( {
+  "_TZE204_qyr2m29i",
+  "_TZE204_ltwbm23f",
+  "_TZE284_ltwbm23f",
+}))
+-- Z2M lists Moes TRV801Z as a whiteLabel of _TZE204_qyr2m29i and _TZE284_ltwbm23f
+-- (tuya.ts:9937), so Sber SBDV-00185, Moes TRV801, TRV801_1 and TRV801Z are not
+-- registered as interviewed manufacturer/model pairs.
+
+local thermostat_ar331pro = {
+  profile = "thermostats-thermostat-battery-ar331pro",
+  package_group = "trv-2",
+  -- Z2M AR331Pro (tuya.ts:4778).  DP102/105/108 are second counters exposed as
+  -- minutes, DP111 encodes the screen orientation as degrees and DP9/10/12/19/
+  -- 106/112 plus the DP28..DP34 schedule frames stay unexposed.
+  tuya.dp_binary(1, {
+    name = "preheat",
+    read_only = true,
+    emit = emit.ar331proPreheat(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_enum(2, {
+    name = "preset",
+    emit = emit.thermostatPresetAr331proSixMode(),
+    converter = converter.lookup_from_to({
+      auto = 0,
+      manual = 1,
+      holiday = 2,
+      eco = 3,
+      comfort = 4,
+      standby = 5,
+    }),
+  }),
+  tuya.dp_running_state(3, {
+    converter = converter.lookup_from_to({
+      heating = 0,
+      idle = 1,
+    }),
+    emit = emit.thermostat_operating_state(),
+  }),
+  tuya.dp_current_heating_setpoint(4, { scale = 10 }),
+  tuya.dp_local_temperature(5, { scale = 10 }),
+  tuya.dp_battery(6, { emit = emit.battery() }),
+  tuya.dp_child_lock(7, {
+    emit = emit.ar331proChildLock(),
+    converter = converter.lookup_from_to({
+      lock = false,
+      unlock = true,
+    }),
+  }),
+  tuya.dp_window_detection(14, { emit = emit.ar331proWindowDetection() }),
+  tuya.dp_enum(15, {
+    name = "window_open",
+    read_only = true,
+    emit = emit.ar331proWindowOpen(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "open",
+      [1] = "closed",
+    })),
+  }),
+  tuya.dp_temperature(16, {
+    name = "window_temperature",
+    scale = 10,
+    emit = emit.ar331proWindowTemp(),
+  }),
+  tuya.dp_numeric(18, {
+    name = "display_brightness",
+    emit = emit.ar331proDisplayBrightness(),
+  }),
+  tuya.dp_numeric(35, {
+    name = "fault_code",
+    read_only = true,
+    emit = emit.ar331proFaultCode(),
+  }),
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.ar331proTempCalibration() }),
+  tuya.dp_enum(49, {
+    name = "valve_state",
+    read_only = true,
+    emit = emit.ar331proValveState(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "open",
+      [1] = "close",
+    })),
+  }),
+  tuya.dp_boost_heating(101, { emit = emit.ar331proBoostHeating() }),
+  tuya.dp_numeric(102, {
+    name = "boost_time",
+    converter = converter.divide_by_pair(60),
+    emit = emit.ar331proBoostTime(),
+  }),
+  tuya.dp_eco_temperature(103, { scale = 10, emit = emit.ar331proEcoTemperature() }),
+  tuya.dp_comfort_temperature(104, { scale = 10, emit = emit.ar331proComfortTemperature() }),
+  tuya.dp_numeric(105, {
+    name = "window_delay",
+    converter = converter.divide_by_pair(60),
+    emit = emit.ar331proWindowDelay(),
+  }),
+  tuya.dp_temperature(107, {
+    name = "frost_protection_temperature",
+    scale = 10,
+    emit = emit.ar331proFrostTemperature(),
+  }),
+  tuya.dp_numeric(108, {
+    name = "window_close_delay",
+    converter = converter.divide_by_pair(60),
+    emit = emit.ar331proWindowCloseDelay(),
+  }),
+  tuya.dp_binary(109, {
+    name = "heating_cooling_mode",
+    emit = emit.ar331proHeatCoolMode(),
+    converter = converter.lookup_from_to({ heat = false, cool = true }),
+  }),
+  tuya.dp_binary(110, {
+    name = "battery_status",
+    read_only = true,
+    emit = emit.ar331proBatteryStatus(),
+    converter = converter.lookup_from_to({ normal = false, low = true }),
+  }),
+  tuya.dp_enum(111, {
+    name = "screen_orientation",
+    emit = emit.ar331proScreenOrientation(),
+    converter = converter.lookup_from_to({ up = 0, right = 90, down = 180, left = 270 }),
+  }),
+  tuya.dp_binary(113, {
+    name = "summer_mode",
+    emit = emit.ar331proSummerMode(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_temperature(114, {
+    name = "override_temperature",
+    scale = 10,
+    emit = emit.ar331proOverrideTemperature(),
+  }),
+  tuya.dp_binary(115, {
+    name = "override_active",
+    emit = emit.ar331proOverrideActive(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+}
+
+register_device_definition(thermostat_ar331pro, ef00_helpers.ts0601_fingerprints( {
+  "_TZE284_nbv4tdaz",
+}))
+
+return {
+  id = "ef00.thermostats.trv_2",
+  registrations = device_definitions,
+}

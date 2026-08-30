@@ -1,0 +1,11 @@
+name: covers-wave15-box-erc2206z
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: concertmirror08464.ercSixDirection, version: 1}
+      - {id: concertmirror08464.ercSixRecordRf, version: 1}
+      - {id: concertmirror08464.ercSixClearRf, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind

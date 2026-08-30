@@ -1,0 +1,65 @@
+name: safety-water-nous-e13
+components:
+  - id: main
+    capabilities:
+      - id: waterSensor
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.nousE13WaterLeakAlarm
+        version: 1
+      - id: concertmirror08464.nousE13AlarmMode
+        version: 1
+      - id: concertmirror08464.nousE13Ringtone
+        version: 1
+    categories:
+      - name: LeakSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: waterSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: waterSensor
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.nousE13WaterLeakAlarm
+      version: 1
+    - component: main
+      capability: concertmirror08464.nousE13AlarmMode
+      version: 1
+    - component: main
+      capability: concertmirror08464.nousE13Ringtone
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: waterSensor
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.nousE13WaterLeakAlarm
+        version: 1
+      - component: main
+        capability: concertmirror08464.nousE13AlarmMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.nousE13Ringtone
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.nousE13AlarmMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.nousE13Ringtone
+        version: 1

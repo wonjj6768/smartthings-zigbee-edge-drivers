@@ -1,0 +1,78 @@
+name: switches-wave14-sber-sbdv-00200
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sber200OnePowerOnBehavior, version: 1}
+      - {id: concertmirror08464.sber200OneRelayMode, version: 1}
+      - {id: concertmirror08464.sber200OneAllowDoubleClick, version: 1}
+      - {id: concertmirror08464.sber200OneIdentify, version: 1}
+      - {id: concertmirror08464.sber200OneLedOnEnabled, version: 1}
+      - {id: concertmirror08464.sber200OneLedOnHue, version: 1}
+      - {id: concertmirror08464.sber200OneLedOnSaturation, version: 1}
+      - {id: concertmirror08464.sber200OneLedOnBrightness, version: 1}
+      - {id: concertmirror08464.sber200OneLedOffEnabled, version: 1}
+      - {id: concertmirror08464.sber200OneLedOffHue, version: 1}
+      - {id: concertmirror08464.sber200OneLedOffSaturation, version: 1}
+      - {id: concertmirror08464.sber200OneLedOffBrightness, version: 1}
+      - {id: concertmirror08464.sber200ChildLock, version: 1}
+      - {id: concertmirror08464.sber200SerialNumber, version: 1}
+      - {id: concertmirror08464.sber200ResetsCount, version: 1}
+      - {id: concertmirror08464.sber200Uptime, version: 1}
+      - {id: concertmirror08464.sber200ButtonClicksOne, version: 1}
+      - {id: concertmirror08464.sber200ButtonClicksTwo, version: 1}
+      - {id: concertmirror08464.sber200ButtonClicksThree, version: 1}
+      - {id: concertmirror08464.sber200RelaySwitchesOne, version: 1}
+      - {id: concertmirror08464.sber200RelaySwitchesTwo, version: 1}
+      - {id: concertmirror08464.sber200NeutralPresence, version: 1}
+      - {id: concertmirror08464.sber200PowerProfile, version: 1}
+      - {id: concertmirror08464.sber200LedIndicationType, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sber200TwoPowerOnBehavior, version: 1}
+      - {id: concertmirror08464.sber200TwoRelayMode, version: 1}
+      - {id: concertmirror08464.sber200TwoAllowDoubleClick, version: 1}
+      - {id: concertmirror08464.sber200TwoIdentify, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOnEnabled, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOnHue, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOnSaturation, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOnBrightness, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOffEnabled, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOffHue, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOffSaturation, version: 1}
+      - {id: concertmirror08464.sber200TwoLedOffBrightness, version: 1}
+    categories:
+      - name: Switch
+  - id: cover
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: concertmirror08464.sber200CoverMode, version: 1}
+      - {id: concertmirror08464.sber200CalibrationTime, version: 1}
+      - {id: concertmirror08464.sber200MotorTimeout, version: 1}
+      - {id: concertmirror08464.sber200ButtonsMode, version: 1}
+      - {id: concertmirror08464.sber200CoverIdentify, version: 1}
+      - {id: concertmirror08464.sber200CoverLedOffEnabled, version: 1}
+      - {id: concertmirror08464.sber200CoverLedOffHue, version: 1}
+      - {id: concertmirror08464.sber200CoverLedOffSaturation, version: 1}
+      - {id: concertmirror08464.sber200CoverLedOffBrightness, version: 1}
+      - {id: concertmirror08464.sber200ChildLock, version: 1}
+      - {id: concertmirror08464.sber200SerialNumber, version: 1}
+      - {id: concertmirror08464.sber200ResetsCount, version: 1}
+      - {id: concertmirror08464.sber200Uptime, version: 1}
+      - {id: concertmirror08464.sber200ButtonClicksOne, version: 1}
+      - {id: concertmirror08464.sber200ButtonClicksTwo, version: 1}
+      - {id: concertmirror08464.sber200ButtonClicksThree, version: 1}
+      - {id: concertmirror08464.sber200RelaySwitchesOne, version: 1}
+      - {id: concertmirror08464.sber200RelaySwitchesTwo, version: 1}
+      - {id: concertmirror08464.sber200NeutralPresence, version: 1}
+      - {id: concertmirror08464.sber200PowerProfile, version: 1}
+      - {id: concertmirror08464.sber200LedIndicationType, version: 1}
+    categories:
+      - name: Blind

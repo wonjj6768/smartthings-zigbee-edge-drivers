@@ -1,0 +1,25 @@
+name: thermostats-wave12-namron-touch
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: concertmirror08464.namronTouchMode, version: 1}
+      - {id: concertmirror08464.namronTouchRegulatorPeriod, version: 1}
+      - {id: concertmirror08464.namronTouchRegulatorSetpoint, version: 1}
+      - {id: concertmirror08464.namronTouchPreset, version: 1}
+      - {id: concertmirror08464.namronTouchTempCalibration, version: 1}
+      - {id: concertmirror08464.namronTouchFloorTemperature, version: 1}
+      - {id: concertmirror08464.namronTouchSensor, version: 1}
+      - {id: concertmirror08464.namronTouchChildLock, version: 1}
+      - {id: concertmirror08464.namronTouchWindowDetection, version: 1}
+      - {id: concertmirror08464.namronTouchHysteresis, version: 1}
+      - {id: concertmirror08464.namronTouchMaxProtection, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

@@ -1,0 +1,32 @@
+name: switches-wave14-terncy-ws07-d3
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.terncyWs07OperationModeOne, version: 1}
+      - {id: concertmirror08464.terncyWs07WirelessLedStatusOne, version: 1}
+      - {id: concertmirror08464.terncyWs07LedFeedbackModeOne, version: 1}
+      - {id: concertmirror08464.terncyWs07PowerOnBehaviorOne, version: 1}
+      - {id: concertmirror08464.terncyWs07Action, version: 1}
+      - {id: concertmirror08464.terncyWs07ActionDuration, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.terncyWs07OperationModeTwo, version: 1}
+      - {id: concertmirror08464.terncyWs07WirelessLedStatusTwo, version: 1}
+      - {id: concertmirror08464.terncyWs07LedFeedbackModeTwo, version: 1}
+      - {id: concertmirror08464.terncyWs07PowerOnBehaviorTwo, version: 1}
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.terncyWs07OperationModeThree, version: 1}
+      - {id: concertmirror08464.terncyWs07WirelessLedThree, version: 1}
+      - {id: concertmirror08464.terncyWs07LedFeedbackModeThree, version: 1}
+      - {id: concertmirror08464.terncyWs07PowerOnBehaviorThree, version: 1}
+    categories:
+      - name: Switch

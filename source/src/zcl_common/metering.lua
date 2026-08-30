@@ -4,9 +4,10 @@
 local function load_metering(zcl)
 
   local capabilities = require "st.capabilities"
-  local custom_capabilities = require "core.custom_capabilities"
-  local capability_support = require "core.capability_support"
+  local custom_capabilities = require "runtime.capability_metadata"
+  local capability_support = require "runtime.capability_support"
   local zigbee_constants = require "st.zigbee.constants"
+  local device_management = require "st.zigbee.device_management"
 
   local POWER_POLL_INTERVAL_METADATA = custom_capabilities.by_emit_name.power_poll_interval
   local LAST_POWER_RESPONSE_TIME_METADATA = custom_capabilities.by_emit_name.last_power_response_time
@@ -25,6 +26,7 @@ local function load_metering(zcl)
 
   local metering_specs = {}
   local poll_timers = setmetatable({}, { __mode = "k" })
+  local scaler_pair_reports = setmetatable({}, { __mode = "k" })
 
   local function normalize_numeric(value)
     if type(value) == "table" then
@@ -454,6 +456,111 @@ local function load_metering(zcl)
     return nil
   end
 
+  local function exact_raw_reportable_change(device, mapping, meta, spec, endpoint)
+    local physical = meta.physical_reportable_change
+    if type(physical) ~= "number" or physical <= 0 then
+      return nil
+    end
+
+    local multiplier = get_scaler(device, spec, "multiplier", endpoint)
+    local divisor = get_scaler(device, spec, "divisor", endpoint)
+    if type(multiplier) ~= "number" or multiplier <= 0 or type(divisor) ~= "number" or divisor <= 0 then
+      return nil
+    end
+
+    local raw = physical * divisor / multiplier
+    if raw ~= raw or raw == math.huge or raw == -math.huge then
+      return nil
+    end
+
+    local integer = math.floor(raw + 0.5)
+    if integer <= 0 or math.abs(raw - integer) > 0.000000001 then
+      return nil
+    end
+
+    if type(meta.data_type) == "function" then
+      return meta.data_type(integer)
+    end
+    if type(meta.data_type) == "table" then
+      local mt = getmetatable(meta.data_type)
+      if type(mt) == "table" and type(mt.__call) == "function" then
+        return meta.data_type(integer)
+      end
+    end
+    return integer
+  end
+
+  local function send_scaler_aware_reporting(device, spec, endpoint, zcl_clusters)
+    if type(zcl_clusters) ~= "table" or type(device.send) ~= "function" then
+      return false
+    end
+
+    local sent = false
+    local seen = {}
+    for _, mapping in ipairs(zcl_clusters) do
+      local meta = type(mapping) == "table" and zcl.mapping_meta(mapping) or nil
+      if meta ~= nil and meta.metering_kind == spec.kind and meta.physical_reportable_change ~= nil then
+        local context = zcl.build_mapping_context(device, mapping, nil)
+        local mapping_endpoint = normalize_endpoint(context.endpoint)
+        if mapping_endpoint == endpoint and meta.cluster_id ~= nil and meta.attribute_id ~= nil then
+          local key = string.format("%04X:%04X:%d", meta.cluster_id, meta.attribute_id, endpoint)
+          if not seen[key] then
+            seen[key] = true
+            local reportable_change = exact_raw_reportable_change(device, mapping, meta, spec, endpoint)
+            if reportable_change ~= nil then
+              local request = device_management.attr_config(device, {
+                cluster = meta.cluster_id,
+                attribute = meta.attribute_id,
+                minimum_interval = meta.minimum_interval or 0,
+                maximum_interval = meta.maximum_interval or 300,
+                data_type = meta.data_type,
+                reportable_change = reportable_change,
+                mfg_code = meta.mfg_code,
+              })
+              if type(request.to_endpoint) == "function" then
+                request = request:to_endpoint(endpoint)
+              end
+              device:send(request)
+              sent = true
+            end
+          end
+        end
+      end
+    end
+    return sent
+  end
+
+  local function note_scaler_pair_report(device, spec, field_name, endpoint, zcl_clusters)
+    local by_kind = scaler_pair_reports[device]
+    if by_kind == nil then
+      by_kind = {}
+      scaler_pair_reports[device] = by_kind
+    end
+    by_kind[spec.kind] = by_kind[spec.kind] or {}
+    local pair = by_kind[spec.kind][endpoint] or {}
+    by_kind[spec.kind][endpoint] = pair
+    pair[field_name] = true
+
+    if pair.multiplier ~= true or pair.divisor ~= true then
+      return false
+    end
+
+    -- Require a fresh pair for every reconfiguration. This prevents a newly
+    -- reported multiplier from being combined with a stale persisted divisor.
+    by_kind[spec.kind][endpoint] = {}
+    return send_scaler_aware_reporting(device, spec, endpoint, zcl_clusters)
+  end
+
+  local function reset_scaler_pair_report(device, spec, endpoint)
+    local by_kind = scaler_pair_reports[device]
+    if by_kind == nil then
+      by_kind = {}
+      scaler_pair_reports[device] = by_kind
+    end
+    by_kind[spec.kind] = by_kind[spec.kind] or {}
+    by_kind[spec.kind][endpoint] = {}
+  end
+
   local function read_scaler(device, spec, attribute_id, endpoint)
     if zcl.read_attribute == nil then
       return false
@@ -511,6 +618,12 @@ local function load_metering(zcl)
       "ACCurrentMultiplier",
       "ACCurrentDivisor"
     )
+    metering_specs.frequency = build_spec(
+      "frequency",
+      "ElectricalMeasurement",
+      "ACFrequencyMultiplier",
+      "ACFrequencyDivisor"
+    )
 
     for _, spec in pairs(metering_specs) do
       if spec ~= nil then
@@ -523,15 +636,25 @@ local function load_metering(zcl)
   function zcl.handle_internal_attribute(device, cluster_id, attribute_id, raw_value, attribute_info)
     ensure_metering_specs()
 
-    local endpoint = type(attribute_info) == "table" and (attribute_info.endpoint or attribute_info.src_endpoint) or nil
+    local endpoint = normalize_endpoint(type(attribute_info) == "table" and
+      (attribute_info.endpoint or attribute_info.src_endpoint) or nil)
+    local zcl_clusters = type(attribute_info) == "table" and attribute_info.zcl_clusters or nil
     for _, spec in pairs(metering_specs) do
       if spec ~= nil and cluster_id == spec.cluster_id then
         if attribute_id == spec.multiplier_attribute_id then
-          return set_scaler(device, spec, "multiplier", raw_value, endpoint)
+          local applied = set_scaler(device, spec, "multiplier", raw_value, endpoint)
+          if applied then
+            note_scaler_pair_report(device, spec, "multiplier", endpoint, zcl_clusters)
+          end
+          return applied
         end
 
         if attribute_id == spec.divisor_attribute_id then
-          return set_scaler(device, spec, "divisor", raw_value, endpoint)
+          local applied = set_scaler(device, spec, "divisor", raw_value, endpoint)
+          if applied then
+            note_scaler_pair_report(device, spec, "divisor", endpoint, zcl_clusters)
+          end
+          return applied
         end
       end
     end
@@ -586,6 +709,7 @@ local function load_metering(zcl)
 
     local sent = false
     local seen = {}
+    local reset_pairs = {}
 
     for _, mapping in ipairs(zcl_clusters) do
       if type(mapping) == "table" then
@@ -594,6 +718,12 @@ local function load_metering(zcl)
         if spec ~= nil then
           local mapping_context = zcl.build_mapping_context(device, mapping, nil)
           local endpoint = normalize_endpoint(mapping_context.endpoint)
+
+          local pair_key = string.format("%s:%d", spec.kind, endpoint)
+          if not reset_pairs[pair_key] then
+            reset_pairs[pair_key] = true
+            reset_scaler_pair_report(device, spec, endpoint)
+          end
 
           local multiplier_key = string.format("%04X:%04X:%d", spec.cluster_id, spec.multiplier_attribute_id, endpoint)
           if not seen[multiplier_key] then

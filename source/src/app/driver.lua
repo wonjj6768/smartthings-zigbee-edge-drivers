@@ -1,17 +1,18 @@
 -- Tuya Universal Edge Driver
 -- Tuya EF00 + ZCL 표준 클러스터 이중 프로토콜 지원
 
-local tuya = require "tuya_common"
-local zcl = require "zcl_common"
+local tuya = require "protocol.tuya"
+local zcl = require "protocol.zcl"
 local registry = require "core.registry"
-local custom_capabilities = require "core.custom_capabilities"
+local custom_capabilities = require "runtime.capability_metadata"
 local capabilities = require "st.capabilities"
 local device_lib = require "st.device"
 local data_types = require "st.zigbee.data_types"
 local generated_clusters = require "st.zigbee.generated.zcl_clusters"
 local component_mapping = require "app.component_mapping"
 local custom_capability_runtime_factory = require "app.custom_capability_runtime"
-local battery_refresh = require "app.battery_refresh"
+local battery_refresh = require "runtime.battery_refresh"
+local energy_reset = require "runtime.energy_reset"
 local switch_command_router = require "app.switch_command_router"
 local switch_default_on = require "st.zigbee.defaults.switch_defaults.on"
 local switch_default_off = require "st.zigbee.defaults.switch_defaults.off"
@@ -37,6 +38,50 @@ local IAS_WARNING_LEVEL_VERY_HIGH = 0x03
 local DEFAULT_IAS_WARNING_DURATION = 300
 local STATELESS_SWITCH_LEVEL_STEP_ID = "statelessSwitchLevelStep"
 local STATELESS_SWITCH_LEVEL_STEP_COMMAND = "stepLevel"
+-- Zigbee Device_annce ZDO cluster. The SDK parses unknown ZDO bodies as a
+-- GenericBody, but still dispatches them by cluster ID, so the payload is not
+-- needed for this opt-in Tuya state query.
+local DEVICE_ANNOUNCE_CLUSTER_ID = 0x0013
+local PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID =
+  "concertmirror08464.paulmannRgbwwStartupCct"
+local PAULMANN_RGBWW_RESTORE_COLOR_TEMPERATURE_COMMAND =
+  "restorePaulmannRgbwwPreviousCct"
+local CANDEO_ROTARY_DIM_ON_LEVEL_ID =
+  "concertmirror08464.candeoRotaryDimOnLevel"
+local CANDEO_ROTARY_DIM_USE_PREVIOUS_ON_LEVEL_COMMAND =
+  "usePreviousOnLevel"
+local CANDEO_RD1P_DPM_PRESET_COMMANDS = {
+  {
+    capability_id = "concertmirror08464.candeoRd1pDpmOnLevel",
+    command_name = "usePreviousOnLevel",
+    mapping_name = "candeo_rd1p_dpm_on_level",
+    value = "previous",
+  },
+  {
+    capability_id = "concertmirror08464.candeoRd1pDpmStartupLevel",
+    command_name = "useMinimumStartupLevel",
+    mapping_name = "candeo_rd1p_dpm_startup_level",
+    value = "minimum",
+  },
+  {
+    capability_id = "concertmirror08464.candeoRd1pDpmStartupLevel",
+    command_name = "usePreviousStartupLevel",
+    mapping_name = "candeo_rd1p_dpm_startup_level",
+    value = "previous",
+  },
+  {
+    capability_id = "concertmirror08464.candeoRd1pDpmOnTransitionTime",
+    command_name = "disableOnTransitionTime",
+    mapping_name = "candeo_rd1p_dpm_on_transition_time",
+    value = "disabled",
+  },
+  {
+    capability_id = "concertmirror08464.candeoRd1pDpmOffTransitionTime",
+    command_name = "disableOffTransitionTime",
+    mapping_name = "candeo_rd1p_dpm_off_transition_time",
+    value = "disabled",
+  },
+}
 
 -- ── 디바이스 preset 조회 ──
 
@@ -85,6 +130,15 @@ local function get_preset(device)
   end
   preset_cache[device] = preset
   return preset
+end
+
+local function handle_device_announce(_, device)
+  local preset = get_preset(device)
+  if preset == nil then
+    return false
+  end
+
+  return preset:apply_announce(device)
 end
 
 battery_refresh.set_requester(function(device)
@@ -361,24 +415,51 @@ local function is_child_device(device)
   )
 end
 
-local function schedule_unexpected_child_cleanup(driver, device)
+-- BUILD_FEATURE dynamic_endpoint_children BEGIN
+local function schedule_unexpected_child_cleanup(driver, device, revalidate)
   if type(driver) ~= "table" or type(device) ~= "table" or type(driver.try_delete_device) ~= "function" then
     return
   end
 
   if device.thread ~= nil and type(device.thread.call_with_delay) == "function" then
     device.thread:call_with_delay(1, function()
+      if type(revalidate) == "function" and revalidate() then return end
       driver:try_delete_device(device.id)
     end, string.format("delete unexpected child %s", tostring(device.id)))
     return
   end
 
+  if type(revalidate) == "function" and revalidate() then return end
   driver:try_delete_device(device.id)
 end
+-- BUILD_FEATURE dynamic_endpoint_children FALLBACK
+--| local function schedule_unexpected_child_cleanup(driver, device)
+--|   if type(driver) ~= "table" or type(device) ~= "table" or type(driver.try_delete_device) ~= "function" then
+--|     return
+--|   end
+--|
+--|   if device.thread ~= nil and type(device.thread.call_with_delay) == "function" then
+--|     device.thread:call_with_delay(1, function()
+--|       driver:try_delete_device(device.id)
+--|     end, string.format("delete unexpected child %s", tostring(device.id)))
+--|     return
+--|   end
+--|
+--|   driver:try_delete_device(device.id)
+--| end
+-- BUILD_FEATURE dynamic_endpoint_children END
+
+-- BUILD_FEATURE dynamic_endpoint_children BEGIN
+local child_mapping_allowed
+-- BUILD_FEATURE dynamic_endpoint_children END
 
 local function send(device, command, name, value)
   local preset = get_preset(device)
-  if preset == nil then
+  -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+  if preset == nil or not child_mapping_allowed(preset, device, name) then
+  -- BUILD_FEATURE dynamic_endpoint_children FALLBACK
+  --| if preset == nil then
+  -- BUILD_FEATURE dynamic_endpoint_children END
     return false
   end
 
@@ -402,6 +483,62 @@ end
 local function resolve_definition(device)
   return registry.find(device:get_manufacturer(), device:get_model())
 end
+
+-- BUILD_FEATURE dynamic_endpoint_children BEGIN
+local function resolve_expected_child_definition(driver, device)
+  if not is_child_device(device) or type(driver) ~= "table" or
+      type(driver.get_device_info) ~= "function" then
+    return nil
+  end
+
+  local parent = driver:get_device_info(device.parent_device_id)
+  if parent == nil then
+    return nil
+  end
+
+  return resolve_definition(parent), parent
+end
+
+local function activate_expected_child(driver, device)
+  local definition, parent = resolve_expected_child_definition(driver, device)
+  local expected = definition ~= nil and definition.allow_child_devices == true
+  if expected and type(definition.is_expected_child) == "function" then
+    expected = definition.is_expected_child(parent, device, definition) == true
+  end
+  if not expected then return false end
+
+  -- Edge children do not carry a reliable Zigbee manufacturer/model pair.
+  -- Cache the verified parent definition for child commands and refresh.
+  preset_cache[device] = definition
+  if type(definition.child_runtime_start) == "function" then
+    definition.child_runtime_start(device, definition, parent)
+  end
+  return true
+end
+
+child_mapping_allowed = function(preset, device, name)
+  if not is_child_device(device) then return true end
+  return type(preset) == "table" and
+    type(preset.child_command_allowed) == "function" and
+    preset.child_command_allowed(device, name, preset) == true
+end
+
+local function schedule_dynamic_child_creation(driver, device, definition)
+  if type(definition) ~= "table" or type(definition.create_child_devices) ~= "function" then
+    return
+  end
+
+  local create = function()
+    definition.create_child_devices(driver, device, definition)
+  end
+  if device.thread ~= nil and type(device.thread.call_with_delay) == "function" then
+    device.thread:call_with_delay(1, create, "create dynamic endpoint children")
+    return
+  end
+
+  create()
+end
+-- BUILD_FEATURE dynamic_endpoint_children END
 
 local function uses_zcl_on_off(device)
   local preset = get_preset(device)
@@ -699,7 +836,13 @@ local function build_capability_handlers()
         value = command.args[raw_value]
       end
 
-      if turn_on_first then
+      local preset = get_preset(device)
+      -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+      if not child_mapping_allowed(preset, device, map_name) then
+        return
+      end
+      -- BUILD_FEATURE dynamic_endpoint_children END
+      if turn_on_first and (preset == nil or preset.auto_on_before_light_command ~= false) then
         send(device, command, "switch", true)
       end
 
@@ -713,8 +856,40 @@ local function build_capability_handlers()
     end
   end
 
+  -- Some device contracts expose command-only custom capabilities (for
+  -- example a text payload or an explicit apply button).  Keep those commands
+  -- with the family that owns their wire mapping instead of growing another
+  -- global capability catalog.
+  local registered_family_commands = {}
+  for _, definitions_by_model in pairs(registry.all()) do
+    for _, definition in pairs(definitions_by_model) do
+      for _, family_command in ipairs(definition.capability_commands or {}) do
+        local capability_id = family_command.capability_id
+        local command_name = family_command.command_name
+        local registration_key = capability_id .. ":" .. command_name
+        if not registered_family_commands[registration_key] then
+          registered_family_commands[registration_key] = true
+          local mapping_name = family_command.mapping_name
+          local argument_name = family_command.argument_name
+          local fixed_value = family_command.value
+          handlers[capability_id] = handlers[capability_id] or {}
+          handlers[capability_id][command_name] = function(_, device, command)
+            local value = fixed_value
+            if argument_name ~= nil then
+              value = command.args and command.args[argument_name] or nil
+            end
+            send(device, command, mapping_name, value)
+          end
+        end
+      end
+    end
+  end
+
   handlers[capabilities.switch.ID] = handlers[capabilities.switch.ID] or {}
   handlers[capabilities.switch.ID][capabilities.switch.commands.on.NAME] = function(driver, device, command)
+    -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+    if not child_mapping_allowed(get_preset(device), device, "switch") then return end
+    -- BUILD_FEATURE dynamic_endpoint_children END
     switch_command_router.route({
       driver = driver,
       device = device,
@@ -733,6 +908,9 @@ local function build_capability_handlers()
     })
   end
   handlers[capabilities.switch.ID][capabilities.switch.commands.off.NAME] = function(driver, device, command)
+    -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+    if not child_mapping_allowed(get_preset(device), device, "switch") then return end
+    -- BUILD_FEATURE dynamic_endpoint_children END
     switch_command_router.route({
       driver = driver,
       device = device,
@@ -817,22 +995,60 @@ local function build_capability_handlers()
     end,
   }
 
+  handlers[capabilities.energyMeter.ID] = handlers[capabilities.energyMeter.ID] or {}
+  handlers[capabilities.energyMeter.ID][capabilities.energyMeter.commands.resetEnergyMeter.NAME] =
+    energy_reset.handle_reset
+
   handlers[capabilities.refresh.ID] = {
     [capabilities.refresh.commands.refresh.NAME] = function(_, device)
       local preset = get_preset(device)
       if preset == nil then
         return
       end
-      if preset.datapoints then
+      -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+      if is_child_device(device) and type(preset.child_refresh) == "function" then
+        preset.child_refresh(device, preset)
+        return
+      end
+      if not is_child_device(device) and type(preset.parent_refresh) == "function" then
+        preset.parent_refresh(device, preset)
+        return
+      end
+      -- BUILD_FEATURE dynamic_endpoint_children END
+      if preset.datapoints and preset.refresh_state_query ~= false then
         preset:send_state_request(device)
       end
       if preset.zcl_clusters then
+        if type(preset.zcl_refresh_before_read_all) == "function" then
+          preset.zcl_refresh_before_read_all(device, preset)
+        end
         zcl.read_all_attributes(device, preset.zcl_clusters)
       end
     end,
   }
 
   custom_capability_runtime.register_handlers(handlers)
+
+  handlers[PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID] =
+    handlers[PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID] or {}
+  handlers[PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID]
+    [PAULMANN_RGBWW_RESTORE_COLOR_TEMPERATURE_COMMAND] = function(_, device, command)
+      send(device, command, "paulmann_rgbww_startup_color_temperature", 65535)
+    end
+
+  handlers[CANDEO_ROTARY_DIM_ON_LEVEL_ID] =
+    handlers[CANDEO_ROTARY_DIM_ON_LEVEL_ID] or {}
+  handlers[CANDEO_ROTARY_DIM_ON_LEVEL_ID]
+    [CANDEO_ROTARY_DIM_USE_PREVIOUS_ON_LEVEL_COMMAND] = function(_, device, command)
+      send(device, command, "candeoRotaryDim_on_level", 255)
+    end
+
+  for _, preset_command in ipairs(CANDEO_RD1P_DPM_PRESET_COMMANDS) do
+    handlers[preset_command.capability_id] = handlers[preset_command.capability_id] or {}
+    handlers[preset_command.capability_id][preset_command.command_name] = function(_, device, command)
+      send(device, command, preset_command.mapping_name, preset_command.value)
+    end
+  end
 
   if power_poll_interval_metadata ~= nil then
     handlers[power_poll_interval_metadata.capability_id] = handlers[power_poll_interval_metadata.capability_id] or {}
@@ -911,12 +1127,24 @@ local driver_template = {
     cluster = build_cluster_handlers(),
     global = zcl.build_zigbee_global_handlers(get_preset),
     attr = zcl.build_zigbee_attr_handlers(get_preset),
+    zdo = {
+      [DEVICE_ANNOUNCE_CLUSTER_ID] = handle_device_announce,
+    },
   },
   lifecycle_handlers = {
     init = function(driver, device)
       if is_child_device(device) then
-        schedule_unexpected_child_cleanup(driver, device)
+        -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+        if activate_expected_child(driver, device) then return end
+
+        schedule_unexpected_child_cleanup(driver, device, function()
+          return activate_expected_child(driver, device)
+        end)
         return
+        -- BUILD_FEATURE dynamic_endpoint_children FALLBACK
+        --| schedule_unexpected_child_cleanup(driver, device)
+        --| return
+        -- BUILD_FEATURE dynamic_endpoint_children END
       end
 
       local definition = resolve_definition(device)
@@ -933,11 +1161,24 @@ local driver_template = {
       emit_window_shade_preset_state(device)
       custom_capability_runtime.maybe_request_initial_custom_state(device, preset)
       custom_capability_runtime.schedule_placeholder_states(device, definition)
+      -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+      schedule_dynamic_child_creation(driver, device, definition)
+      -- BUILD_FEATURE dynamic_endpoint_children END
     end,
     doConfigure = function(driver, device)
+      -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+      if is_child_device(device) then
+        return
+      end
+      -- BUILD_FEATURE dynamic_endpoint_children END
       configure_preset(driver, device, get_preset(device))
     end,
     infoChanged = function(driver, device, _, args)
+      -- BUILD_FEATURE dynamic_endpoint_children BEGIN
+      if is_child_device(device) then
+        return
+      end
+      -- BUILD_FEATURE dynamic_endpoint_children END
       if not args.old_st_store then
         return
       end

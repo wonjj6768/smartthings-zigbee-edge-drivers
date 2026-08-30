@@ -1,0 +1,17 @@
+name: covers-wave10-moes-zc-lp01
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.zcLpCharging, version: 1}
+      - {id: concertmirror08464.zcLpAutomaticMode, version: 1}
+      - {id: concertmirror08464.zcLpSlowMode, version: 1}
+      - {id: concertmirror08464.zcLpButtonPosition, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind
+preferences:
+  - preferenceId: reverse
+    explicit: true

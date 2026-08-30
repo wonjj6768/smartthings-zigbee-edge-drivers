@@ -1,0 +1,13 @@
+name: safety-wave19-javis-microwave
+components:
+  - id: main
+    capabilities:
+      - {id: motionSensor, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: concertmirror08464.javisMcLedEnable, version: 1}
+      - {id: concertmirror08464.javisMcKeepTime, version: 1}
+      - {id: concertmirror08464.javisMcSensitivity, version: 1}
+      - {id: concertmirror08464.javisMcIlluminanceCalibration, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: MotionSensor

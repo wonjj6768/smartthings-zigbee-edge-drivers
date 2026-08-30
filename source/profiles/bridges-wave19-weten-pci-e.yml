@@ -1,0 +1,14 @@
+name: bridges-wave19-weten-pci-e
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.wetenPciRestartMode, version: 1}
+      - {id: concertmirror08464.wetenPciRfRemoteControl, version: 1}
+      - {id: concertmirror08464.wetenPciRfPairing, version: 1}
+      - {id: concertmirror08464.wetenPciBuzzerFeedback, version: 1}
+      - {id: concertmirror08464.wetenPciPowerOnBehavior, version: 1}
+      - {id: concertmirror08464.wetenPciChildLock, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

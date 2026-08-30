@@ -1,0 +1,17 @@
+name: covers-wave10-tuya-ts0301-cover-two
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.tsCoverTwoMotorState, version: 1}
+      - {id: concertmirror08464.tsCoverTwoSlowMode, version: 1}
+      - {id: concertmirror08464.tsCoverTwoMotorDirection, version: 1}
+      - {id: concertmirror08464.tsCoverTwoCoverType, version: 1}
+      - {id: concertmirror08464.tsCoverTwoCoverLimit, version: 1}
+      - {id: concertmirror08464.tsCoverTwoFavoritePosition, version: 1}
+      - {id: concertmirror08464.tsCoverTwoClickControl, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind

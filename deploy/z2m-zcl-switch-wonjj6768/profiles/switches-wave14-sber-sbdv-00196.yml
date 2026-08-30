@@ -1,0 +1,28 @@
+name: switches-wave14-sber-sbdv-00196
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sber196AllowDoubleClick, version: 1}
+      - {id: concertmirror08464.sber196LedOnEnabled, version: 1}
+      - {id: concertmirror08464.sber196LedOnHue, version: 1}
+      - {id: concertmirror08464.sber196LedOnSaturation, version: 1}
+      - {id: concertmirror08464.sber196LedOnBrightness, version: 1}
+      - {id: concertmirror08464.sber196LedOffEnabled, version: 1}
+      - {id: concertmirror08464.sber196LedOffHue, version: 1}
+      - {id: concertmirror08464.sber196LedOffSaturation, version: 1}
+      - {id: concertmirror08464.sber196LedOffBrightness, version: 1}
+      - {id: concertmirror08464.sber196Identify, version: 1}
+      - {id: concertmirror08464.sber196PowerOnBehavior, version: 1}
+      - {id: concertmirror08464.sber196RelayMode, version: 1}
+      - {id: concertmirror08464.sber196ChildLock, version: 1}
+      - {id: concertmirror08464.sber196SerialNumber, version: 1}
+      - {id: concertmirror08464.sber196ResetsCount, version: 1}
+      - {id: concertmirror08464.sber196Uptime, version: 1}
+      - {id: concertmirror08464.sber196ButtonClicksOne, version: 1}
+      - {id: concertmirror08464.sber196ButtonClicksTwo, version: 1}
+      - {id: concertmirror08464.sber196RelaySwitchesOne, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

@@ -16,9 +16,9 @@ components:
         version: 1
       - id: concertmirror08464.zg302zmPowerOutage
         version: 1
-      - id: concertmirror08464.zg302zmAutoOn
+      - id: concertmirror08464.zg302zmAutoOnV2
         version: 1
-      - id: concertmirror08464.zg302zmAutoOff
+      - id: concertmirror08464.zg302zmAutoOffV2
         version: 1
       - id: concertmirror08464.zg302zmTriggerSwitch
         version: 1
@@ -80,10 +80,10 @@ deviceConfig:
       capability: concertmirror08464.zg302zmTriggerHold
       version: 1
     - component: main
-      capability: concertmirror08464.zg302zmAutoOn
+      capability: concertmirror08464.zg302zmAutoOnV2
       version: 1
     - component: main
-      capability: concertmirror08464.zg302zmAutoOff
+      capability: concertmirror08464.zg302zmAutoOffV2
       version: 1
     - component: main
       capability: concertmirror08464.zg302zmTriggerSwitch
@@ -121,10 +121,10 @@ deviceConfig:
         capability: concertmirror08464.zg302zmTriggerHold
         version: 1
       - component: main
-        capability: concertmirror08464.zg302zmAutoOn
+        capability: concertmirror08464.zg302zmAutoOnV2
         version: 1
       - component: main
-        capability: concertmirror08464.zg302zmAutoOff
+        capability: concertmirror08464.zg302zmAutoOffV2
         version: 1
       - component: main
         capability: concertmirror08464.zg302zmTriggerSwitch
@@ -155,10 +155,10 @@ deviceConfig:
         capability: concertmirror08464.zg302zmTriggerHold
         version: 1
       - component: main
-        capability: concertmirror08464.zg302zmAutoOn
+        capability: concertmirror08464.zg302zmAutoOnV2
         version: 1
       - component: main
-        capability: concertmirror08464.zg302zmAutoOff
+        capability: concertmirror08464.zg302zmAutoOffV2
         version: 1
       - component: main
         capability: concertmirror08464.zg302zmTriggerSwitch

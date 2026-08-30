@@ -1,0 +1,14 @@
+name: covers-wave10-moes-zs-sr-euc
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: concertmirror08464.zsSrCalibration, version: 1}
+      - {id: concertmirror08464.zsSrMotorSteering, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind
+preferences:
+  - preferenceId: reverse
+    explicit: true

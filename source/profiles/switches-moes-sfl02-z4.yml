@@ -1,0 +1,46 @@
+name: switches-moes-sfl02-z4
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sflFourCountdownOne, version: 1}
+      - {id: concertmirror08464.sflFourMomentaryOne, version: 1}
+      - {id: concertmirror08464.sflFourModeOne, version: 1}
+      - {id: concertmirror08464.sflFourPowerOnBehavior, version: 1}
+      - {id: concertmirror08464.sflFourIndicatorStatus, version: 1}
+      - {id: concertmirror08464.sflFourVibrationMode, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sflFourCountdownTwo, version: 1}
+      - {id: concertmirror08464.sflFourMomentaryTwo, version: 1}
+      - {id: concertmirror08464.sflFourModeTwo, version: 1}
+    categories: [{name: Switch}]
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sflFourCountdownThree, version: 1}
+      - {id: concertmirror08464.sflFourMomentaryThree, version: 1}
+      - {id: concertmirror08464.sflFourModeThree, version: 1}
+    categories: [{name: Switch}]
+  - id: switch4
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.sflFourCountdownFour, version: 1}
+      - {id: concertmirror08464.sflFourMomentaryFour, version: 1}
+      - {id: concertmirror08464.sflFourModeFour, version: 1}
+    categories: [{name: Switch}]
+  - id: backlight
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]
+  - id: induction
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]

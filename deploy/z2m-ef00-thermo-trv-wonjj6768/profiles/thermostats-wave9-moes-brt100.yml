@@ -1,0 +1,25 @@
+name: thermostats-wave9-moes-brt100
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.moesBrtPreset, version: 1}
+      - {id: concertmirror08464.moesBrtChildLock, version: 1}
+      - {id: concertmirror08464.moesBrtEcoMode, version: 1}
+      - {id: concertmirror08464.moesBrtEcoTemperature, version: 1}
+      - {id: concertmirror08464.moesBrtMaxTemperature, version: 1}
+      - {id: concertmirror08464.moesBrtMinTemperature, version: 1}
+      - {id: concertmirror08464.moesBrtTempCalibration, version: 1}
+      - {id: concertmirror08464.moesBrtValveState, version: 1}
+      - {id: concertmirror08464.moesBrtPosition, version: 1}
+      - {id: concertmirror08464.moesBrtWindowDetection, version: 1}
+      - {id: concertmirror08464.moesBrtWindow, version: 1}
+      - {id: concertmirror08464.moesBrtProgrammingMode, version: 1}
+      - {id: concertmirror08464.moesBrtBoostHeating, version: 1}
+      - {id: concertmirror08464.moesBrtBoostCountdown, version: 1}
+      - {id: concertmirror08464.moesBrtBoostTimeSetting, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

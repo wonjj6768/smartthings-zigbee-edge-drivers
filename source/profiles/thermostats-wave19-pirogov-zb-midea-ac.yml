@@ -1,0 +1,17 @@
+name: thermostats-wave19-pirogov-zb-midea-ac
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.pirogovMideaPower, version: 1}
+      - {id: concertmirror08464.pirogovMideaSystemMode, version: 1}
+      - {id: concertmirror08464.pirogovMideaFanMode, version: 1}
+      - {id: concertmirror08464.pirogovMideaSwingMode, version: 1}
+      - {id: concertmirror08464.pirogovMideaPreset, version: 1}
+      - {id: concertmirror08464.pirogovMideaDisplay, version: 1}
+      - {id: concertmirror08464.pirogovMideaOutdoorTemperature, version: 1}
+      - {id: concertmirror08464.pirogovMideaFirmwareVersion, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Thermostat

@@ -1,0 +1,16 @@
+name: switches-wave13-avatto-zbs16
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.zbsSixteenCurrentMa, version: 1}
+      - {id: concertmirror08464.zbsSixteenAcFrequency, version: 1}
+      - {id: concertmirror08464.zbsSixteenSwitchOnTime, version: 1}
+      - {id: concertmirror08464.zbsSixteenCountdown, version: 1}
+      - {id: concertmirror08464.zbsSixteenTotalOnTime, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

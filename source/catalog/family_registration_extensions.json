@@ -1,0 +1,1100 @@
+{
+  "schemaVersion": 1,
+  "catalogs": {
+    "contracts.families.ef00.covers.z2m_absorption": {
+      "id": "ef00.covers.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/covers/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "f939f7915ad84d9b8d88a57d10ed26becc84f677c3dff6aa5cbde5cee9da0f68"
+    },
+    "contracts.families.ef00.din_rail.meters_z2m_absorption": {
+      "id": "ef00.din_rail.meters.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/din_rail/meters_z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "5fa554eaaf89ba454cd5650e7b8c32c639564ddcd3b6b51eb657f68998a2b853"
+    },
+    "contracts.families.ef00.lights.z2m_absorption": {
+      "id": "ef00.lights.z2m_absorption",
+      "requiredModules": [
+        "st.capabilities",
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "st.capabilities",
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/lights/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "278601461276d9e6edacbba6660d114727fe5ba131f74028d33a1ded73728c55"
+    },
+    "contracts.families.ef00.presence.z2m_absorption": {
+      "id": "ef00.presence.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.ef00_presence"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/presence/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00_presence.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.ef00_presence": [
+          "common"
+        ]
+      },
+      "dynamicEventMemberSha256": "56667e9303ba09a730f82fe6964e3e5500dd761dd2fd368253e7933fba024812"
+    },
+    "contracts.families.ef00.safety.z2m_absorption": {
+      "id": "ef00.safety.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/safety/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "7bec8967e12b0b54ec0f3eb014d148e66271327d9e637b9495e78f39a008bfe5"
+    },
+    "contracts.families.ef00.screen_switch_z2m_absorption": {
+      "id": "ef00.screen_switch.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya.contract",
+        "capabilities.events.screen_switch_z2m_absorption",
+        "runtime.utf8_text"
+      ],
+      "externalDependencies": [
+        "protocol.tuya.contract",
+        "runtime.utf8_text"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/screen_switch_z2m_absorption.lua",
+      "contractHelpers": [],
+      "aliasBindings": {
+        "protocol.tuya.contract": [
+          "tuya"
+        ],
+        "capabilities.events.screen_switch_z2m_absorption": [
+          "screen_switch_events"
+        ],
+        "runtime.utf8_text": [
+          "utf8_text"
+        ]
+      },
+      "dynamicEventMemberSha256": "935e688a40bcfc231104fd74486680753e41d5a465501f186bb1cf7fec007e0c"
+    },
+    "contracts.families.ef00.sensors.z2m_absorption": {
+      "id": "ef00.sensors.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.ef00"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/sensors/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.ef00": [
+          "ef00_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "5ab581bb2ff6f86741ce69490fd357ae89a03cd7d5b75c276b7c590746037fca"
+    },
+    "contracts.families.ef00.switch_basic_z2m_absorption": {
+      "id": "ef00.switch.basic.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 0,
+      "sourceRelativeToSrc": "contracts/families/ef00/switch_basic_z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "c365da4d6618e5832d40833bdb55984f1f484e05b696aad304bcebc8038fd2df"
+    },
+    "contracts.families.ef00.switch_panel_z2m_absorption": {
+      "id": "ef00.switch.panel.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "contracts.helpers.family",
+        "capabilities.events.all",
+        "st.capabilities"
+      ],
+      "externalDependencies": [
+        "protocol.tuya",
+        "st.capabilities"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/switch_panel_z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ]
+      },
+      "dynamicEventMemberSha256": "16bd01825565948dfbca06e1b655ddc429e6c1e969e92682026db1a7c3411d97"
+    },
+    "contracts.families.ef00.valves.z2m_absorption": {
+      "id": "ef00.valves.z2m_absorption",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/valves/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "004cf22dd2a0779341f11d564c3b97047f15b1df2ca79ec9b8b843d9d0c52347"
+    },
+    "contracts.families.zcl.controls.z2m_absorption": {
+      "id": "zcl.controls.z2m_absorption",
+      "requiredModules": [
+        "protocol.zcl",
+        "contracts.helpers.family",
+        "contracts.helpers.zcl",
+        "capabilities.events.all",
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "converterDeclarations": 0,
+      "sourceRelativeToSrc": "contracts/families/zcl/controls/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/zcl.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.zcl": [
+          "zcl_device_helpers"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "dynamicEventMemberSha256": "d4f795c06984eff55bb006cc8570d31dd19ca44700a10be5bd484969c2177568"
+    },
+    "contracts.families.zcl.lights.z2m_absorption": {
+      "id": "zcl.lights.z2m_absorption",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.zcl",
+        "st.zigbee.device_management",
+        "st.capabilities",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.device_management",
+        "st.capabilities",
+        "st.zigbee.data_types"
+      ],
+      "converterDeclarations": 0,
+      "sourceRelativeToSrc": "contracts/families/zcl/lights/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/zcl.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.zcl": [
+          "zcl_device_helpers"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "dynamicEventMemberSha256": "5daf98ba05aa7daafb8299ed951fb80f3d778188614c012fcde2ae39f5d27e97"
+    },
+    "contracts.families.zcl.switches.z2m_absorption": {
+      "id": "zcl.switches.z2m_absorption",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.zcl",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "converterDeclarations": 0,
+      "sourceRelativeToSrc": "contracts/families/zcl/switches/z2m_absorption.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/zcl.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.zcl": [
+          "zcl_device_helpers"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "dynamicEventMemberSha256": "991656f16a6d99a28456a36b968243384af1baa4d524ef6d6745201cb2fc6720"
+    },
+    "contracts.families.ef00.bridges_wave19": {
+      "id": "ef00.bridges.wave19",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/bridges_wave19.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "d070615dfb9842ce8fefc612cc1379700a0c5919c9436655eafb42f2bbdfb1c8"
+    },
+    "contracts.families.ef00.controls.wave19_remotes": {
+      "id": "ef00.controls.wave19.remotes",
+      "sourceRelativeToSrc": "contracts/families/ef00/controls/wave19_remotes.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.capabilities"
+      ],
+      "externalDependencies": [
+        "protocol.tuya",
+        "st.capabilities"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "d78ed7d9d438ceeaeec106bf1ba5937254a7cbfbdb1474f1a66784228ec0e44f"
+    },
+    "contracts.families.ef00.covers.wave19_legacy": {
+      "id": "ef00.covers.wave19_legacy",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/covers/wave19_legacy.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "dynamicEventMemberSha256": "3e1dfa4f35a1204637534a1869579a240f2cd7adb4aa6cb4c0e39dd06e589b63"
+    },
+    "contracts.families.ef00.din_rail.wave19_energy": {
+      "id": "ef00.din_rail.wave19_energy",
+      "sourceRelativeToSrc": "contracts/families/ef00/din_rail/wave19_energy.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.ef00_din_rail",
+        "st.capabilities"
+      ],
+      "externalDependencies": [
+        "protocol.tuya",
+        "protocol.zcl",
+        "st.capabilities"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00_din_rail.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.ef00_din_rail": [
+          "din_common"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "b1d5bb47059e88a8afd7d9d224a12600eed5de9ecd4215a593f58f9dc79d5ce4"
+    },
+    "contracts.families.ef00.lights.wave19_exact": {
+      "id": "ef00.lights.wave19.exact",
+      "sourceRelativeToSrc": "contracts/families/ef00/lights/wave19_exact.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya",
+        "protocol.zcl"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "cc727c23b645aefbae6541e5557939e97ba306beaa09c7c7c17dfadac8b64e8e"
+    },
+    "contracts.families.ef00.presence.wave19_sensors": {
+      "id": "ef00.presence.wave19.sensors",
+      "sourceRelativeToSrc": "contracts/families/ef00/presence/wave19_sensors.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "c3474c1b443f59e3f4d19a3b4a5720f96cfeccde3fe6b4fa4a627a2f33a2e677"
+    },
+    "contracts.families.ef00.thermostats.wave19_exact": {
+      "id": "ef00.thermostats.wave19.exact",
+      "sourceRelativeToSrc": "contracts/families/ef00/thermostats/wave19_exact.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.ef00_thermostat_metadata"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00_thermostat_metadata.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.ef00_thermostat_metadata": [
+          "thermostat_metadata"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "e3cdb4adb351b1282d9023e9fc2fac4b020a11e81f0162e8fa88eba0c2500973"
+    },
+    "contracts.families.ef00.valves.wave19": {
+      "id": "ef00.valves.wave19",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.zigbee.device_management",
+        "st.zigbee.zcl.clusters"
+      ],
+      "externalDependencies": [
+        "protocol.tuya",
+        "st.zigbee.device_management",
+        "st.zigbee.zcl.clusters"
+      ],
+      "converterDeclarations": 1,
+      "sourceRelativeToSrc": "contracts/families/ef00/valves/wave19.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.zigbee.zcl.clusters": [
+          "zcl_clusters"
+        ]
+      },
+      "dynamicEventMemberSha256": "8256869d4ecf7d8618d131cda5a5f1b94eab4a0141b028c9d5ae13eb6bb72add"
+    },
+    "contracts.families.zcl.bridges_wave19": {
+      "id": "zcl.bridges.wave19",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.zigbee.device_management"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.device_management"
+      ],
+      "converterDeclarations": 0,
+      "sourceRelativeToSrc": "contracts/families/zcl/bridges_wave19.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ]
+      },
+      "dynamicEventMemberSha256": "6eca556eded022a537b193dec886461b0938978e2aba3eed672654ab4dfc9d34"
+    },
+    "contracts.families.zcl.lights.wave19_dali": {
+      "id": "zcl.lights.wave19_dali",
+      "sourceRelativeToSrc": "contracts/families/zcl/lights/wave19_dali.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.capabilities",
+        "st.zigbee.device_management"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.capabilities",
+        "st.zigbee.device_management"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "a249947960dde84bb9bd4913a4559177f5639d4e9e705aa522646b133bd0dd89"
+    },
+    "contracts.families.zcl.lights.wave19_exact": {
+      "id": "zcl.lights.wave19.exact",
+      "sourceRelativeToSrc": "contracts/families/zcl/lights/wave19_exact.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.zcl",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/zcl.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.zcl": [
+          "zcl_device_helpers"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "20268539ed022cdb8029099c9450135c96f08a997ea62e89b6a922af05d5e321"
+    },
+    "contracts.families.zcl.sensors.wave19_environment": {
+      "id": "zcl.sensors.wave19_environment",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.zigbee.data_types",
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.cluster_base"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.data_types",
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.cluster_base"
+      ],
+      "converterDeclarations": 0,
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/wave19_environment.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.zigbee.cluster_base": [
+          "cluster_base"
+        ]
+      },
+      "dynamicEventMemberSha256": "c2620e525a8e294164fccc643af761e7d2b2a022ae0e1c05be9352d12b05bcaa"
+    },
+    "contracts.families.zcl.sensors.wave19_hvac": {
+      "id": "zcl.sensors.wave19_hvac",
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/wave19_hvac.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.capabilities",
+        "st.zigbee.data_types",
+        "st.zigbee.device_management"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.capabilities",
+        "st.zigbee.data_types",
+        "st.zigbee.device_management"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "44ab02e7422efe5f2e58931aa4f06cc06add8ce794fe6c503f1976ba4eb26ae2"
+    },
+    "contracts.families.zcl.sensors.wave19_smoke": {
+      "id": "zcl.sensors.wave19_smoke",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.data_types"
+      ],
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/wave19_smoke.lua",
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "85c3ce2ee05756b310416f91c72bd99908951ffc6668b23ccc6bcb5b042206f7"
+    },
+    "contracts.families.zcl.sensors.wave19_vibration": {
+      "id": "zcl.sensors.wave19_vibration",
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/wave19_vibration.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.zigbee.data_types"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "2b737a1dd3c44cf705b229b99ff2ce81c330fe2e0083502c2a6a3850a6ca8832"
+    },
+    "contracts.families.zcl.thermostats.wave19_sber": {
+      "id": "zcl.thermostats.wave19.sber",
+      "sourceRelativeToSrc": "contracts/families/zcl/thermostats/wave19_sber.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
+        "st.zigbee.device_management": [
+          "device_management"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "5bce787617be72d521286e1508f084250775f17deeedfe81e97474acf91eeeb0"
+    },
+    "contracts.families.ef00.thermostats.wave19_exact_aliases": {
+      "id": "ef00.thermostats.wave19_exact_aliases",
+      "sourceRelativeToSrc": "contracts/families/ef00/thermostats/wave19_exact_aliases.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.ef00_thermostats"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00_thermostats.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.ef00_thermostats": [
+          "thermostat_common"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "ce8c4dd9d2767f86132adb59e6fa4cedc4519e03d0789c41c05042e8799b3d2c"
+    },
+    "contracts.families.zcl.lights.wave19_exact_aliases": {
+      "id": "zcl.lights.wave19_exact_aliases",
+      "sourceRelativeToSrc": "contracts/families/zcl/lights/wave19_exact_aliases.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.zcl"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "670e3021651e24a1dfaa4afe00eb942fd00db033ac8203139b9f5924d9675f6b"
+    },
+    "contracts.families.zcl.sensors.wave19_exact_aliases": {
+      "id": "zcl.sensors.wave19_exact_aliases",
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/wave19_exact_aliases.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.zcl"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "40837c04c50b013947a607a564fff9b75522f00940e574adccfec0405e13f4ff"
+    }
+  },
+  "composers": {
+  }
+}

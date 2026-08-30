@@ -1,0 +1,18 @@
+name: safety-presence-wave11-neo-nas-ps10b2
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: concertmirror08464.nasPsTenMotionState, version: 1}
+      - {id: concertmirror08464.nasPsTenCurrentDistance, version: 1}
+      - {id: concertmirror08464.nasPsTenPresenceTime, version: 1}
+      - {id: concertmirror08464.nasPsTenMotionFar, version: 1}
+      - {id: concertmirror08464.nasPsTenMotionSensitivity, version: 1}
+      - {id: concertmirror08464.nasPsTenStillSensitivity, version: 1}
+      - {id: concertmirror08464.nasPsTenWorkMode, version: 1}
+      - {id: concertmirror08464.nasPsTenOutputSwitch, version: 1}
+      - {id: concertmirror08464.nasPsTenOutputTime, version: 1}
+      - {id: concertmirror08464.nasPsTenLedSwitch, version: 1}
+      - {id: concertmirror08464.nasPsTenLuxValue, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: PresenceSensor}]

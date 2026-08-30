@@ -1,0 +1,24 @@
+name: thermostats-wave12-moes-zht-sr
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.moesZhtSrTempCalibration, version: 1}
+      - {id: concertmirror08464.moesZhtSrPreset, version: 1}
+      - {id: concertmirror08464.moesZhtSrEcoTemperature, version: 1}
+      - {id: concertmirror08464.moesZhtSrChildLock, version: 1}
+      - {id: concertmirror08464.moesZhtSrDeadzone, version: 1}
+      - {id: concertmirror08464.moesZhtSrMaxLimit, version: 1}
+      - {id: concertmirror08464.moesZhtSrMinLimit, version: 1}
+      - {id: concertmirror08464.moesZhtSrSensorMode, version: 1}
+      - {id: concertmirror08464.moesZhtSrFloorTemperature, version: 1}
+      - {id: concertmirror08464.moesZhtSrHighProtection, version: 1}
+      - {id: concertmirror08464.moesZhtSrLowProtection, version: 1}
+      - {id: concertmirror08464.moesZhtSrBacklight, version: 1}
+      - {id: concertmirror08464.moesZhtSrScreenTime, version: 1}
+      - {id: concertmirror08464.moesZhtSrRgbLight, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

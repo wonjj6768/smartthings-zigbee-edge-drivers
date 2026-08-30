@@ -1,9 +1,10 @@
 local capabilities = require "st.capabilities"
-local custom_capabilities = require "core.custom_capabilities"
-local capability_support = require "core.capability_support"
+local custom_capabilities = require "runtime.capability_metadata"
+local capability_support = require "runtime.capability_support"
+local utf8_text = require "runtime.utf8_text"
 local log = require "log"
-local tuya = require "tuya_common"
-local zcl = require "zcl_common"
+local tuya = require "protocol.tuya"
+local zcl = require "protocol.zcl"
 
 local MAIN_COMPONENT = "main"
 local INITIAL_CUSTOM_STATE_QUERY_KEY = "__initialCustomStateQueryRequested"
@@ -25,6 +26,7 @@ local METADATA_GROUPS = {
 local COMMAND_GROUPS = {
   { kind = "numeric", definitions = numeric_definitions },
   { kind = "enum", definitions = enum_definitions },
+  { kind = "text", definitions = text_definitions },
 }
 
 local function device_name(device)
@@ -351,7 +353,10 @@ local function create(options)
     end
 
     local maximum_length = driver_message_definition.maximum_length or 512
-    local normalized = #message > maximum_length and message:sub(1, maximum_length) or message
+    local normalized = utf8_text.truncate(message, maximum_length)
+    if normalized == nil then
+      return
+    end
     log.info(string.format("[%s] Driver message emit requested: %s", device_name(device), normalized))
     emit_event(device, MAIN_COMPONENT, attribute({ value = normalized }))
   end
@@ -382,6 +387,21 @@ local function create(options)
     end
 
     log.info(string.format("[%s] Custom enum emit requested: %s=%s", device_name(device), metadata.capability_id, tostring(value)))
+    emit_event(device, component_id, attribute({ value = value }))
+  end
+
+  local function emit_custom_text_state(device, component_id, metadata, value)
+    if type(metadata) ~= "table" or type(metadata.attribute_name) ~= "string"
+      or type(value) ~= "string" then
+      return
+    end
+
+    local attribute = resolve_attribute_binding(device, metadata, metadata.attribute_name, true)
+    if attribute == nil then
+      return
+    end
+
+    log.info(string.format("[%s] Custom text emit requested: %s=%s", device_name(device), metadata.capability_id, value))
     emit_event(device, component_id, attribute({ value = value }))
   end
 
@@ -497,6 +517,10 @@ local function create(options)
   -- Waiting until after the query has had time to land keeps reported values
   -- authoritative and leaves placeholders as a last resort.
   local function schedule_placeholder_states(device, definition)
+    if type(definition) == "table" and definition.placeholder_custom_states == false then
+      return false
+    end
+
     local function run()
       emit_placeholder_states(device, definition)
     end
@@ -565,13 +589,16 @@ local function create(options)
 
   local function maybe_request_initial_custom_state(device, preset)
     if preset == nil or preset.datapoints == nil then
-      return
+      return false
+    end
+    if preset.initial_custom_state_query == false then
+      return false
     end
     if not device_has_missing_custom_state(device) then
-      return
+      return false
     end
     if device:get_field(INITIAL_CUSTOM_STATE_QUERY_KEY) then
-      return
+      return false
     end
 
     device:set_field(INITIAL_CUSTOM_STATE_QUERY_KEY, true, { persist = false })
@@ -581,11 +608,12 @@ local function create(options)
       preset:send_state_request(device)
       emit_driver_message(device, "Initial custom state query sent.")
     end) then
-      return
+      return true
     end
 
     preset:send_state_request(device)
     emit_driver_message(device, "Initial custom state query sent.")
+    return true
   end
 
   -- Mapping support and rollback helpers
@@ -627,6 +655,47 @@ local function create(options)
     end
 
     return false
+  end
+
+  local function mapping_suppresses_optimistic_state(device, component_id, mapping_name)
+    local preset = get_preset(device)
+    if preset == nil or type(preset.zcl_clusters) ~= "table" then
+      return false
+    end
+
+    local mapping = zcl.find_mapping_by_name(preset.zcl_clusters, mapping_name, device, {
+      component_id = component_id or MAIN_COMPONENT,
+    })
+    return type(mapping) == "table" and mapping.suppress_optimistic_state == true
+  end
+
+  local function resolve_numeric_optimistic_value(device, component_id, mapping_name, value)
+    local preset = get_preset(device)
+    local datapoints = preset and preset.datapoints or nil
+    if type(datapoints) ~= "table" then
+      return value
+    end
+
+    local selected_component = component_id or MAIN_COMPONENT
+    for _, mapping in ipairs(datapoints) do
+      if type(mapping) == "table"
+        and (mapping.name == mapping_name or mapping.key == mapping_name)
+        and (mapping.component == nil or mapping.component == selected_component)
+        and type(mapping.optimistic_value) == "function" then
+        local ok, resolved = pcall(
+          mapping.optimistic_value,
+          value,
+          device,
+          { component_id = selected_component, mapping = mapping }
+        )
+        if ok and type(resolved) == "number" then
+          return resolved
+        end
+        return value
+      end
+    end
+
+    return value
   end
 
   local function emit_numeric_zero_rollback(device, component_id, metadata, range)
@@ -699,7 +768,19 @@ local function create(options)
         return
       end
 
-      emit_custom_numeric_state(device, component_id, metadata, normalized, resolve_numeric_event_unit(metadata, range))
+      local optimistic_value = resolve_numeric_optimistic_value(
+        device,
+        component_id,
+        metadata.mapping_name,
+        normalized
+      )
+      emit_custom_numeric_state(
+        device,
+        component_id,
+        metadata,
+        optimistic_value,
+        resolve_numeric_event_unit(metadata, range)
+      )
     end
   end
 
@@ -734,16 +815,58 @@ local function create(options)
     end
   end
 
+  local function register_text_handler(handlers, metadata)
+    handlers[metadata.capability_id] = handlers[metadata.capability_id] or {}
+
+    handlers[metadata.capability_id][metadata.command_name] = function(_, device, command)
+      local component_id = command.component or MAIN_COMPONENT
+      local raw_value = command.args and command.args[metadata.argument_name] or nil
+      if type(raw_value) ~= "string" then
+        return
+      end
+
+      local maximum_length = metadata.maximum_length
+      local character_length = utf8_text.length(raw_value)
+      if character_length == nil
+        or (type(maximum_length) == "number" and character_length > maximum_length) then
+        return
+      end
+
+      if not preset_supports_named_mapping(device, component_id, metadata.mapping_name) then
+        return
+      end
+
+      local send_ok, handled = pcall(send, device, command, metadata.mapping_name, raw_value)
+      if not send_ok then
+        log.error(string.format("[%s] Failed to send %s: %s", device_name(device), metadata.capability_id, tostring(handled)))
+        return
+      end
+
+      if not handled then
+        return
+      end
+
+      if mapping_suppresses_optimistic_state(device, component_id, metadata.mapping_name) then
+        return
+      end
+
+      emit_custom_text_state(device, component_id, metadata, raw_value)
+    end
+  end
+
   local function register_handlers(handlers)
     for _, group in ipairs(COMMAND_GROUPS) do
       local definitions = group.definitions
       local kind = group.kind
       for _, metadata in ipairs(definitions) do
-        if type(metadata.command_name) == "string" and metadata.command_name ~= "" then
+        if type(metadata.command_name) == "string" and metadata.command_name ~= ""
+          and type(metadata.mapping_name) == "string" and metadata.mapping_name ~= "" then
           if kind == "numeric" then
             register_numeric_handler(handlers, metadata)
-          else
+          elseif kind == "enum" then
             register_enum_handler(handlers, metadata)
+          elseif kind == "text" then
+            register_text_handler(handlers, metadata)
           end
         end
       end

@@ -1,0 +1,26 @@
+name: covers-wave10-moes-adcbzi01
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: battery, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: concertmirror08464.adcbziWorkState, version: 1}
+      - {id: concertmirror08464.adcbziTotalTime, version: 1}
+      - {id: concertmirror08464.adcbziSituationSet, version: 1}
+      - {id: concertmirror08464.adcbziFault, version: 1}
+      - {id: concertmirror08464.adcbziChargingStatus, version: 1}
+      - {id: concertmirror08464.adcbziOpenThreshold, version: 1}
+      - {id: concertmirror08464.adcbziCloseThreshold, version: 1}
+      - {id: concertmirror08464.adcbziCurtainStatus, version: 1}
+      - {id: concertmirror08464.adcbziTotalDistance, version: 1}
+      - {id: concertmirror08464.adcbziFactoryTest, version: 1}
+      - {id: concertmirror08464.adcbziCustomWeekProgOne, version: 1}
+      - {id: concertmirror08464.adcbziCustomWeekProgTwo, version: 1}
+      - {id: concertmirror08464.adcbziCustomWeekProgThree, version: 1}
+      - {id: concertmirror08464.adcbziCustomWeekProgFour, version: 1}
+      - {id: concertmirror08464.adcbziCalibration, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind

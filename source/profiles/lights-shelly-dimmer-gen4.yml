@@ -1,0 +1,31 @@
+name: lights-shelly-dimmer-gen4
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: concertmirror08464.shellyDimmerPowerOnBehavior, version: 1}
+      - {id: concertmirror08464.shellyDimmerEffect, version: 1}
+      - {id: concertmirror08464.shellyDimmerAction, version: 1}
+      - {id: concertmirror08464.shellyDimmerActionGroup, version: 1}
+      - {id: concertmirror08464.shellyDimmerActionLevel, version: 1}
+      - {id: concertmirror08464.shellyDimmerActionTransition, version: 1}
+      - {id: concertmirror08464.shellyDimmerActionRate, version: 1}
+      - {id: concertmirror08464.shellyDimmerActionStepSize, version: 1}
+      - {id: concertmirror08464.shellyDimmerWifiStatus, version: 1}
+      - {id: concertmirror08464.shellyDimmerIpAddress, version: 1}
+      - {id: concertmirror08464.shellyDimmerDhcpEnabled, version: 1}
+      - {id: concertmirror08464.shellyDimmerWifiEnabled, version: 1}
+      - {id: concertmirror08464.shellyDimmerWifiSsid, version: 1}
+      - {id: concertmirror08464.shellyDimmerWifiPassword, version: 1}
+      - {id: concertmirror08464.shellyDimmerStaticIp, version: 1}
+      - {id: concertmirror08464.shellyDimmerNetMask, version: 1}
+      - {id: concertmirror08464.shellyDimmerGateway, version: 1}
+      - {id: concertmirror08464.shellyDimmerNameServer, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light

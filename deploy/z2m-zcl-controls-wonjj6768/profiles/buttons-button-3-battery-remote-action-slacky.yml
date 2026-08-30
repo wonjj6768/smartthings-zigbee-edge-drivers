@@ -1,0 +1,38 @@
+name: buttons-button-3-battery-remote-action-slacky
+components:
+  - id: main
+    capabilities:
+      - {id: button, version: 1}
+      - {id: battery, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: concertmirror08464.remoteAction, version: 1}
+      - {id: concertmirror08464.slackyThreeSwitchActionOne, version: 1}
+      - {id: concertmirror08464.slackyThreeSwitchTypeOne, version: 1}
+      - {id: concertmirror08464.slackyThreeSceneIdOne, version: 1}
+      - {id: concertmirror08464.slackyThreeGroupIdOne, version: 1}
+      - {id: concertmirror08464.slackyThreeMinLevelOne, version: 1}
+      - {id: concertmirror08464.slackyThreeMaxLevelOne, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: RemoteController}]
+  - id: button2
+    capabilities:
+      - {id: button, version: 1}
+      - {id: concertmirror08464.remoteAction, version: 1}
+      - {id: concertmirror08464.slackyThreeSwitchActionTwo, version: 1}
+      - {id: concertmirror08464.slackyThreeSwitchTypeTwo, version: 1}
+      - {id: concertmirror08464.slackyThreeSceneIdTwo, version: 1}
+      - {id: concertmirror08464.slackyThreeGroupIdTwo, version: 1}
+      - {id: concertmirror08464.slackyThreeMinLevelTwo, version: 1}
+      - {id: concertmirror08464.slackyThreeMaxLevelTwo, version: 1}
+    categories: [{name: RemoteController}]
+  - id: button3
+    capabilities:
+      - {id: button, version: 1}
+      - {id: concertmirror08464.remoteAction, version: 1}
+      - {id: concertmirror08464.slackyThreeSwitchActionThree, version: 1}
+      - {id: concertmirror08464.slackyThreeSwitchTypeThree, version: 1}
+      - {id: concertmirror08464.slackyThreeSceneIdThree, version: 1}
+      - {id: concertmirror08464.slackyThreeGroupIdThree, version: 1}
+      - {id: concertmirror08464.slackyThreeMinLevelThree, version: 1}
+      - {id: concertmirror08464.slackyThreeMaxLevelThree, version: 1}
+    categories: [{name: RemoteController}]

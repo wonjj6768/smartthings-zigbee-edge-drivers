@@ -1,0 +1,51 @@
+name: safety-gas-nous-e9
+components:
+  - id: main
+    capabilities:
+      - id: gasDetector
+        version: 1
+      - id: concertmirror08464.nousE9WarmingUp
+        version: 1
+      - id: hardwareFault
+        version: 1
+      - id: concertmirror08464.nousE9EndOfLife
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: gasDetector
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: gasDetector
+      version: 1
+    - component: main
+      capability: concertmirror08464.nousE9WarmingUp
+      version: 1
+    - component: main
+      capability: hardwareFault
+      version: 1
+    - component: main
+      capability: concertmirror08464.nousE9EndOfLife
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: gasDetector
+        version: 1
+      - component: main
+        capability: concertmirror08464.nousE9WarmingUp
+        version: 1
+      - component: main
+        capability: hardwareFault
+        version: 1
+      - component: main
+        capability: concertmirror08464.nousE9EndOfLife
+        version: 1
+    actions: []

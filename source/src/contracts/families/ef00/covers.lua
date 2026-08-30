@@ -1,0 +1,1505 @@
+-- 커버/블라인드 디바이스 정의
+-- ZHA ts0601_cover.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
+--
+-- 현재는 핵심 커버 제어(open/close/pause + position)만 우선 지원합니다.
+-- 캘리브레이션, 행정/중간 리밋, 배터리, 추가 모터 옵션은 기기별 편차가 커서
+-- core capability와 직접 연결되는 DP만 먼저 등록합니다.
+
+local tuya = require "protocol.tuya"
+local emit = require "capabilities.events.all"
+local device_helpers = require "contracts.helpers.family"
+
+local converter = tuya.converter
+
+local device_definitions, register_device_definition = device_helpers.definition_registry()
+
+local function window_shade_state_from_position()
+  return converter.from_only(function(value)
+    local number_value = tonumber(value)
+    if number_value == nil then
+      return nil
+    end
+
+    if number_value <= 0 then
+      return "closed"
+    end
+
+    if number_value >= 100 then
+      return "open"
+    end
+
+    return "partially open"
+  end)
+end
+
+local function window_shade_state_from_position_inverted()
+  return converter.from_only(function(value)
+    local number_value = tonumber(value)
+    if number_value == nil then
+      return nil
+    end
+
+    number_value = 100 - number_value
+
+    if number_value <= 0 then
+      return "closed"
+    end
+
+    if number_value >= 100 then
+      return "open"
+    end
+
+    return "partially open"
+  end)
+end
+
+local cover_state_standard = converter.lookup_from_to({
+  open = 0,
+  stop = 1,
+  close = 2,
+})
+
+-- Z2M coverAction reports OPEN/STOP/CLOSE/CONTINUE through the same DP used
+-- for commands. SmartThings has no STOP/CONTINUE shade state, so those two
+-- reports are represented as the non-terminal "partially open" state until a
+-- position report supplies the exact level.
+local cover_action_shade_state = converter.from_only(function(value)
+  return ({
+    [0] = "open",
+    [1] = "partially open",
+    [2] = "closed",
+    [3] = "partially open",
+  })[tonumber(value)]
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local cover_state_open_close_stop = converter.lookup_from_to({
+  open = 0,
+  close = 1,
+  stop = 2,
+})
+
+local cover_state_reversed = converter.lookup_from_to({
+  open = 2,
+  stop = 1,
+  close = 0,
+})
+
+local cover_state_open_close_stop_reversed = converter.lookup_from_to({
+  open = 1,
+  close = 0,
+  stop = 2,
+})
+
+local cover_state_alt_controls = converter.lookup_from_to({
+  open = 2,
+  stop = 0,
+  close = 1,
+})
+
+local cover_with_1_switch = {
+  profile = "covers-cover-switch-1",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_on_off(101, {
+    name = "switch",
+    component = "switch2",
+  }),
+}
+
+local cover_with_2_switch = {
+  profile = "covers-cover-switch-2",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_on_off(101, {
+    name = "switch",
+    component = "switch2",
+  }),
+  tuya.dp_on_off(102, {
+    name = "switch",
+    component = "switch3",
+  }),
+}
+
+local cover_switch_2_touch_panel = {
+  profile = "covers-cover-switch-2-trwaxi57",
+  datapoints = {
+    tuya.dp_enum(1, {
+      name = "cover_state",
+      converter = cover_state_standard,
+      write_only = true,
+    }),
+    tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+    tuya.dp_numeric(2, {
+      name = "window_shade_state",
+      emit = emit.shade_state(),
+      converter = window_shade_state_from_position(),
+      read_only = true,
+    }),
+    tuya.dp_enum(3, {
+      name = "calibration",
+      emit = emit.trwaxi57Calibration(),
+      converter = converter.lookup_from_to({
+        start = 0,
+        ["end"] = 1,
+      }),
+    }),
+    tuya.dp_backlight_mode_off_on(7, {
+      name = "backlight_mode",
+      emit = emit.trwaxi57Backlight(),
+      converter = converter.lookup_from_to({ off = false, on = true }),
+    }),
+    tuya.dp_enum(8, {
+      name = "motor_steering",
+      emit = emit.trwaxi57MotorSteering(),
+      converter = converter.lookup_from_to({
+        forward = 0,
+        backward = 1,
+      }),
+    }),
+    tuya.dp_child_lock(102, {
+      name = "child_lock",
+      emit = emit.trwaxi57ChildLock(),
+      converter = converter.lookup_from_to({ off = false, on = true }),
+    }),
+    tuya.dp_on_off(108, { name = "switch", component = "switch2" }),
+    tuya.dp_on_off(107, { name = "switch", component = "switch3" }),
+  },
+  query_on_configure = true,
+}
+
+-- TS0601_cover_1 / TS0601_cover_2 / TS0601_cover_3 / TS0601_cover_4 /
+-- TS0601_cover_5 / TS0601_cover_6 / TS0601_cover_7 / TS0601_cover_8 /
+-- TS0601_cover_9 / TS0601_cover_12 / Zemismart ZM25RX-08/30
+local cover_core = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+-- TS0601_cover_6 / TS0601_cover_8 / M3TYW-2.0-13
+local cover_core_position_reversed = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position_inverted(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position_inverted(),
+    read_only = true,
+  }),
+}
+
+-- TS0601_cover_11
+local cover_core_reversed_position_alt = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position_inverted(8, { emit = emit.shade_level() }),
+  tuya.dp_numeric(8, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position_inverted(),
+    read_only = true,
+  }),
+}
+
+-- YY-LT500
+local cover_core_alt_dp = {
+  tuya.dp_enum(2, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(7, { emit = emit.shade_level() }),
+  tuya.dp_numeric(7, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+-- ZM16B
+local cover_core_alt_position_8 = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(8, { emit = emit.shade_level() }),
+  tuya.dp_numeric(8, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+-- TS130F 외형이지만 Window Covering attribute가 아니라 EF00 DP로 동작한다.
+-- Z2M exact 정의의 모든 wire DP를 보존하되, 현재 profile에는 핵심 cover만
+-- 노출하고 설정 DP는 family-specific capability 감사 전까지 내부 매핑으로 둔다.
+local ts130f_xbexmf8h = {
+  profile = "covers-cover",
+  datapoints = {
+    tuya.dp_enum(1, {
+      name = "cover_state",
+      converter = cover_state_standard,
+      write_only = true,
+    }),
+    tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+    tuya.dp_numeric(2, {
+      name = "window_shade_state",
+      emit = emit.shade_state(),
+      converter = window_shade_state_from_position(),
+      read_only = true,
+    }),
+    tuya.dp_enum(3, {
+      name = "calibration",
+      converter = converter.lookup_from_to({ on = 0, off = 1 }),
+    }),
+    tuya.dp_enum(8, {
+      name = "motor_reversal",
+      converter = converter.lookup_from_to({ on = 1, off = 0 }),
+    }),
+    tuya.dp_numeric(10, {
+      name = "calibration_time",
+      scale = 10,
+      read_only = true,
+    }),
+    tuya.dp_enum(12, {
+      name = "switch_type",
+      converter = converter.lookup_from_to({ momentary = 0, toggle = 1 }),
+    }),
+    tuya.dp_enum(14, {
+      name = "backlight_mode",
+      converter = converter.lookup_from_to({ on = 0, off = 1 }),
+    }),
+  },
+  query_on_configure = true,
+}
+
+-- Z2M Novato ZSM-01 (tuya.ts:1978): DP1 state, DP9 set position, DP8 position
+-- report, DP11 motor direction forward/back, DP19 preferred position 0..100%
+-- and DP20 step control up/down.  The last three were parsed but never
+-- exposed, so the dedicated profile now carries them.
+local cover_model_zsm01 = {
+  profile = "covers-cover-zsm01",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(9, { write_only = true }),
+  tuya.dp_numeric(8, {
+    name = "cover_position_state",
+    emit = emit.shade_level(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(8, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_enum(11, {
+    name = "control_back_mode",
+    emit = emit.zsm01ControlBackMode(),
+    converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+  }),
+  tuya.dp_numeric(19, {
+    name = "position_best",
+    emit = emit.zsm01PositionBest(),
+  }),
+  tuya.dp_enum(20, {
+    name = "click_control",
+    emit = emit.zsm01ClickControl(),
+    converter = converter.lookup_from_to({ up = 0, down = 1 }),
+  }),
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- TuyaMoesCover0601_alt_controls
+local cover_core_alt_controls = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_alt_controls,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+-- ZB-Sm tubular motor
+local cover_zb_sm = {
+  profile = "covers-cover-zb-sm",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  -- Z2M legacy fz.zb_sm_cover (legacy.ts:1503) treats DP3 as the arrived
+  -- position report for the same shade level, so it stays internal rather than
+  -- becoming a second exposed position.
+  tuya.dp_numeric(3, { name = "arrived_position" }),
+  tuya.dp_enum(5, {
+    name = "motor_direction",
+    emit = emit.motorDirectionZbSmNormalRev(),
+    converter = converter.lookup_from_to({ normal = 0, reversed = 1 }),
+  }),
+  tuya.dp_numeric(10, {
+    name = "cycle_time",
+    read_only = true,
+    emit = emit.zbSmCycleTime(),
+  }),
+  tuya.dp_enum(101, {
+    name = "motor_type",
+    read_only = true,
+    emit = emit.zbSmMotorType(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "",
+      [1] = "AM0/6-28R-Sm",
+      [2] = "AM0/10-19R-Sm",
+      [3] = "AM1/10-13R-Sm",
+      [4] = "AM1/20-13R-Sm",
+      [5] = "AM1/30-13R-Sm",
+    })),
+  }),
+  tuya.dp_numeric(102, {
+    name = "cycle_count",
+    read_only = true,
+    emit = emit.zbSmCycleCount(),
+  }),
+  tuya.dp_enum(103, {
+    name = "bottom_limit",
+    emit = emit.zbSmBottomLimit(),
+    converter = converter.lookup_from_to({ set = 0, clear = 1 }),
+  }),
+  tuya.dp_enum(104, {
+    name = "top_limit",
+    emit = emit.zbSmTopLimit(),
+    converter = converter.lookup_from_to({ set = 0, clear = 1 }),
+  }),
+  tuya.dp_numeric(109, {
+    name = "active_power",
+    read_only = true,
+    emit = emit.zbSmActivePower(),
+  }),
+  tuya.dp_cover_position(115, { name = "favorite_position", emit = emit.favoritePositionZbSm() }),
+  -- Z2M maps DP121 as 0 opening / 1 stopped / 2 closing (legacy.ts:1568).
+  tuya.dp_enum(121, {
+    name = "motor_state",
+    read_only = true,
+    emit = emit.zbSmMotorState(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "opening",
+      [1] = "stopped",
+      [2] = "closing",
+    })),
+  }),
+}
+
+-- TS0601_cover_10
+local cover_core_reversed = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_reversed,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+-- Zemismart ZM-AM02_cover
+local cover_core_am02 = {
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, {
+    write_only = true,
+  }),
+  tuya.dp_numeric(3, {
+    name = "cover_position_state",
+    emit = emit.shade_level(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(3, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+-- PIMS3028 / cover plug-in receiver multi STAK 3/STAS 3
+local cover_core_pims3028 = {
+  profile = "covers-cover-pims3028",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = converter.lookup_from_to({
+      open = 0,
+      stop = 1,
+      close = 2,
+      lock = 3,
+      unlock = 4,
+    }),
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  -- Z2M maps DP3 to the same inverted position report as DP2 (tuya.ts:25832),
+  -- so it stays internal instead of becoming a second exposed position.
+  tuya.dp_cover_position_inverted(3, { name = "position_inverted" }),
+  tuya.dp_enum(4, {
+    name = "mode",
+    emit = emit.pims3028Mode(),
+    converter = converter.lookup_from_to({
+      up = 0,
+      up_delete = 1,
+      remove_up_down = 2,
+    }),
+  }),
+  tuya.dp_enum(5, {
+    name = "control_back",
+    emit = emit.pims3028ControlBack(),
+    converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+  }),
+  tuya.dp_binary(6, {
+    name = "auto_power",
+    emit = emit.pims3028AutoPower(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_enum(7, {
+    name = "work_state",
+    emit = emit.coverWorkPimsActual(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "opening",
+      [1] = "closing",
+      [2] = "value_123",
+    })),
+  }),
+  tuya.dp_numeric(10, {
+    name = "time_total",
+    read_only = true,
+    emit = emit.pims3028TimeTotal(),
+  }),
+  tuya.dp_enum(11, {
+    name = "situation_set",
+    read_only = true,
+    emit = emit.pims3028SituationSet(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "fully_open",
+      [1] = "fully_close",
+    })),
+  }),
+  tuya.dp_binary(12, {
+    name = "fault",
+    read_only = true,
+    emit = emit.pims3028Fault(),
+    converter = converter.from_only(function(value)
+      return value and "fault" or "normal"
+    end),
+  }),
+  tuya.dp_enum(16, {
+    name = "border",
+    emit = emit.pims3028Border(),
+    converter = converter.lookup_from_to({
+      down_delete = 0,
+      remove_top_bottom = 1,
+    }),
+  }),
+  tuya.dp_numeric(19, {
+    name = "position_best",
+    emit = emit.pims3028PositionBest(),
+  }),
+  tuya.dp_numeric(21, {
+    name = "angle_horizontal",
+    emit = emit.pims3028AngleHorizontal(),
+  }),
+  tuya.dp_enum(101, {
+    name = "calibration",
+    emit = emit.coverCalibrationPims3028StartEnd(),
+    converter = converter.lookup_from_to({
+      start = 0,
+      ["end"] = 1,
+    }),
+  }),
+  tuya.dp_numeric(102, {
+    name = "quick_calibration",
+    emit = emit.pims3028QuickCalibration(),
+  }),
+  tuya.dp_binary(103, {
+    name = "best_position_trigger",
+    emit = emit.pims3028BestTrigger(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_enum(104, {
+    name = "reset",
+    emit = emit.pims3028Reset(),
+    converter = converter.lookup_from_to({ reset = 0 }),
+  }),
+}
+
+-- Z2M Ronco RM28-LE (tuya.ts:25313): DP1 state, DP2/DP3 position, DP4 mode
+-- morning/night, DP5 motor direction, DP6 auto power, DP7 work state,
+-- DP8 countdown cancel/1h..4h, DP9 countdown left, DP10 full travel time,
+-- DP11 situation set, DP12 motor fault (non-zero), DP13 battery, DP16 border
+-- with five values, DP19 favourite position and DP20 jog step.  DP4, DP8,
+-- DP9, DP10, DP11 and DP19 were missing entirely and the rest were hidden.
+local cover_rm28_le = {
+  profile = "covers-cover-battery-rm28-le",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(3, { name = "position_report", emit = emit.coverPositionReportRm28Le() }),
+  tuya.dp_enum(4, {
+    name = "mode",
+    emit = emit.rm28leMode(),
+    converter = converter.lookup_from_to({ morning = 0, night = 1 }),
+  }),
+  tuya.dp_enum(5, {
+    name = "reverse_direction",
+    converter = converter.lookup_from_to({
+      forward = 0,
+      back = 1,
+    }),
+  }),
+  tuya.dp_binary(6, {
+    name = "auto_power",
+    emit = emit.rm28leAutoPower(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_enum(7, {
+    name = "work_state",
+    emit = emit.coverWorkRmOpeningClosing(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "closing",
+      [1] = "opening",
+    })),
+  }),
+  tuya.dp_enum(8, {
+    name = "countdown",
+    emit = emit.rm28leCountdown(),
+    converter = converter.lookup_from_to({
+      cancel = 0,
+      ["1h"] = 1,
+      ["2h"] = 2,
+      ["3h"] = 3,
+      ["4h"] = 4,
+    }),
+  }),
+  tuya.dp_numeric(9, {
+    name = "countdown_left",
+    read_only = true,
+    emit = emit.rm28leCountdownLeft(),
+  }),
+  tuya.dp_numeric(10, {
+    name = "time_total",
+    read_only = true,
+    emit = emit.rm28leTimeTotal(),
+  }),
+  tuya.dp_enum(11, {
+    name = "situation_set",
+    read_only = true,
+    emit = emit.rm28leSituationSet(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "fully_open",
+      [1] = "fully_close",
+    })),
+  }),
+  -- Z2M reports any non-zero DP12 value as a fault (tuya.ts:25398).
+  tuya.dp_numeric(12, {
+    name = "motor_fault",
+    read_only = true,
+    emit = emit.rm28leMotorFault(),
+    converter = converter.from_only(function(value)
+      return (tonumber(value) or 0) ~= 0 and "fault" or "normal"
+    end),
+  }),
+  tuya.dp_battery(13, { emit = emit.battery() }),
+  tuya.dp_enum(16, {
+    name = "border",
+    emit = emit.rm28leBorder(),
+    converter = converter.lookup_from_to({
+      up = 0,
+      down = 1,
+      up_delete = 2,
+      down_delete = 3,
+      remove_top_bottom = 4,
+    }),
+  }),
+  tuya.dp_numeric(19, {
+    name = "position_best",
+    emit = emit.rm28lePositionBest(),
+  }),
+  tuya.dp_enum(20, {
+    name = "click_control",
+    emit = emit.rm28leClickControl(),
+    converter = converter.lookup_from_to({ up = 0, down = 1 }),
+  }),
+}
+
+-- Z2M TS0601_cover_3 (tuya.ts): DP1 state, DP2/DP3 position, DP5 direction,
+-- DP12 motor fault, DP13 battery, DP16 limit command and DP20 jog command.
+-- Keep this contract separate from the generic DP1/DP2 cover core.
+local cover_three = {
+  profile = "covers-cover-battery-cover-three",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_cover_position(3, { name = "position_report", emit = emit.shade_level() }),
+  tuya.dp_numeric(3, {
+    name = "window_shade_state_report",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_enum(5, {
+    name = "reverse_direction",
+    emit = emit.coverThreeReverseDirection(),
+    converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+  }),
+  tuya.dp_numeric(12, {
+    name = "motor_fault",
+    read_only = true,
+    emit = emit.coverThreeMotorFault(),
+    converter = converter.from_only(function(value)
+      return (tonumber(value) or 0) ~= 0 and "fault" or "normal"
+    end),
+  }),
+  tuya.dp_battery(13, { emit = emit.battery() }),
+  tuya.dp_enum(16, {
+    name = "cover_limit",
+    emit = emit.coverThreeLimit(),
+    converter = converter.lookup_from_to({
+      set_up = 0,
+      set_down = 1,
+      delete_up = 2,
+      delete_down = 3,
+      delete_both = 4,
+    }),
+  }),
+  tuya.dp_enum(20, {
+    name = "click_control",
+    emit = emit.coverThreeClickControl(),
+    converter = converter.lookup_from_to({ up = 0, down = 1 }),
+  }),
+}
+
+-- Z2M TS0601_cover_1 legacy contract: DP1 state, DP2/DP3 position,
+-- DP5 reverse direction and DP105 motor speed (0..255).
+local cover_one = {
+  profile = "covers-cover-cover-one",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_cover_position(3, { name = "position_report", emit = emit.shade_level() }),
+  tuya.dp_numeric(3, {
+    name = "window_shade_state_report",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_enum(5, {
+    name = "reverse_direction",
+    emit = emit.coverOneReverseDirection(),
+    converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+  }),
+  tuya.dp_numeric(105, {
+    name = "motor_speed",
+    emit = emit.coverOneMotorSpeed(),
+  }),
+}
+
+-- ZM79E-DT / Pro Line curtain motor
+local cover_model_zm79e_dt = {
+  profile = "covers-cover-zm79e-dt",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_reversed,
+    write_only = true,
+  }),
+  tuya.dp_cover_position_inverted(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position_inverted(),
+    read_only = true,
+  }),
+  tuya.dp_cover_position_inverted(3, { name = "position_report", emit = emit.coverPositionReportZm79eDt() }),
+  tuya.dp_enum(4, {
+    name = "opening_mode",
+    emit = emit.zm79eOpeningMode(),
+    converter = converter.lookup_from_to({ tilt = 0, lift = 1 }),
+  }),
+  tuya.dp_enum(7, {
+    name = "work_state",
+    emit = emit.coverWorkStateZm79eDtLearning(),
+    converter = converter.from_only(converter.lookup_value({
+      [0] = "standby",
+      [1] = "success",
+      [2] = "learning",
+    })),
+  }),
+  tuya.dp_enum(101, {
+    name = "motor_direction",
+    emit = emit.motorDirectionZm79eDtLeftRight(),
+    converter = converter.lookup_from_to({
+      left = 0,
+      right = 1,
+    }),
+  }),
+  -- Z2M inverts these enum values: start is 1 and stop is 0 (tuya.ts:8451).
+  tuya.dp_enum(102, {
+    name = "set_upper_limit",
+    emit = emit.zm79eSetUpperLimit(),
+    converter = converter.lookup_from_to({ stop = 0, start = 1 }),
+  }),
+  tuya.dp_enum(107, {
+    name = "factory_reset",
+    emit = emit.zm79eFactoryReset(),
+    converter = converter.lookup_from_to({ set = 0 }),
+  }),
+}
+
+-- BX82-TYZ1 cover motor
+local cover_model_bx82_tyz1 = {
+  profile = "covers-cover-bx82-tyz1",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_reversed,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_numeric(2, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(3, { name = "position_report", emit = emit.coverPositionReportBx82Tyz1() }),
+  tuya.dp_enum(5, {
+    name = "motor_direction",
+    emit = emit.motorDirectionBxTyzNormalRev(),
+    converter = converter.lookup_from_to({ normal = 0, reversed = 1 }),
+  }),
+}
+
+-- MB60L-ZG-ZT-TY battery blind motor
+local cover_model_mb60l = {
+  profile = "covers-cover-battery-mb60l",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position_inverted(9, { emit = emit.shade_level() }),
+  tuya.dp_numeric(9, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position_inverted(),
+    read_only = true,
+  }),
+  tuya.dp_enum(11, {
+    name = "motor_direction",
+    emit = emit.motorDirectionMbNormalRev(),
+    converter = converter.lookup_from_to({ normal = 0, reversed = 1 }),
+  }),
+  tuya.dp_battery(13, { emit = emit.battery() }),
+  tuya.dp_enum(16, {
+    name = "set_limits",
+    emit = emit.mb60lSetLimits(),
+    converter = converter.lookup_from_to({ up = 0, down = 1, reset = 2 }),
+  }),
+  -- Z2M puts child lock on DP101 and the step/tilt mode on DP103
+  -- (tuya.ts:8541); the previous DP108/DP109 pair did not match this exact.
+  tuya.dp_binary(101, {
+    name = "child_lock",
+    emit = emit.mb60lChildLock(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
+  tuya.dp_binary(103, {
+    name = "tilt_mode",
+    emit = emit.tiltModeMb60l(),
+    converter = converter.lookup_from_to({ on = true, off = false }),
+  }),
+}
+
+-- EPJ-ZB / smart sliding window pusher
+local cover_epj_zb = {
+  profile = "covers-cover-battery-epj-zb",
+  tuya.dp_enum(102, {
+    name = "cover_state",
+    converter = cover_state_open_close_stop,
+    command_id = tuya.SEND_DATA,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(104, {
+    command_id = tuya.SEND_DATA,
+    emit = emit.shade_level(),
+  }),
+  tuya.dp_numeric(104, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+  tuya.dp_battery(4, { emit = emit.battery() }),
+  tuya.dp_binary(105, { name = "charge_state" }),
+  tuya.dp_enum(106, {
+    name = "manual_mode",
+    emit = emit.manualModeEpjZbEnableDisable(),
+    converter = converter.lookup_from_to({
+      enable = 0,
+      disable = 1,
+    }),
+  }),
+  tuya.dp_enum(107, {
+    name = "fault",
+    converter = converter.lookup_from_to({
+      Normal = 0,
+      None = 1,
+      Fault = 2,
+    }),
+  }),
+  tuya.dp_numeric(108, { name = "countdown" }),
+  tuya.dp_enum(109, {
+    name = "motor_direction",
+    emit = emit.motorDirectionEpjZbSide(),
+    converter = converter.lookup_from_to({
+      right_side = 0,
+      left_side = 1,
+    }),
+  }),
+  tuya.dp_enum(110, {
+    name = "mode",
+    converter = converter.lookup_from_to({
+      Disable = 0,
+      Enable = 1,
+    }),
+  }),
+  tuya.dp_enum(112, {
+    name = "fixed_window_sash",
+    converter = converter.lookup_from_to({
+      Down = 0,
+      Up = 1,
+    }),
+  }),
+  tuya.dp_enum(114, {
+    name = "window_detection",
+    emit = emit.windowDetectionEpjZbState(),
+    converter = converter.lookup_from_to({
+      opened = 0,
+      closed = 1,
+      pending = 2,
+    }),
+  }),
+}
+
+local ts0301_cover_single = {
+  profile = "covers-cover",
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    converter = cover_state_standard,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, {
+    write_only = true,
+  }),
+  tuya.dp_numeric(3, {
+    name = "cover_position_state",
+    emit = emit.shade_level(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(3, {
+    name = "window_shade_state",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+local ts0301_cover_dual_rail = {
+  profile = "covers-cover-2",
+  tuya.dp_enum(109, {
+    name = "cover_state",
+    component = "main",
+    converter = cover_state_open_close_stop,
+    write_only = true,
+  }),
+  tuya.dp_cover_position_inverted(101, {
+    component = "main",
+    write_only = true,
+  }),
+  tuya.dp_numeric(102, {
+    name = "cover_position_state",
+    component = "main",
+    emit = emit.shade_level(),
+    converter = converter.cover_position_inverted(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(102, {
+    name = "window_shade_state",
+    component = "main",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position_inverted(),
+    read_only = true,
+  }),
+  tuya.dp_enum(1, {
+    name = "cover_state",
+    component = "shade2",
+    converter = cover_state_open_close_stop_reversed,
+    write_only = true,
+  }),
+  tuya.dp_cover_position(2, {
+    component = "shade2",
+    write_only = true,
+  }),
+  tuya.dp_numeric(3, {
+    name = "cover_position_state",
+    component = "shade2",
+    emit = emit.shade_level(),
+    read_only = true,
+  }),
+  tuya.dp_numeric(3, {
+    name = "window_shade_state",
+    component = "shade2",
+    emit = emit.shade_state(),
+    converter = window_shade_state_from_position(),
+    read_only = true,
+  }),
+}
+
+register_device_definition(cover_one, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_bqcqqjpb",
+  "_TZE200_gaj531w3",
+  "_TZE284_gaj531w3",
+  "_TZE200_en3wvcbx",
+  "_TZE200_g5wdnuow",
+  "_TZE200_udank5zs",
+  "_TZE200_nv6nxo0c",
+  "_TZE200_3ylew7b4",
+  "_TZE200_llm0epxg",
+  "_TZE200_n1aauwb4",
+  "_TZE200_bjzrowv2",
+  "_TZE204_bjzrowv2",
+  "_TZE284_bjzrowv2",
+  "_TZE204_guvc7pdy",
+  "_TZE204_57hjqelq",
+  "_TZE204_vvvtcehj",
+  "_TZE28C1000000_vvvtcehj",
+  "_TZE200_axgvo9jh",
+  "_TZE200_zxxfv8wi",
+  "_TZE204_lh3arisb",
+  "_TZE204_zuq5xxib",
+  "_TZE200_nueqqe6k",
+  "_TZE200_1fuxihti",
+  "_TZE204_1fuxihti",
+  "_TZE284_1fuxihti",
+  "_TZE200_5zbp6j0u",
+  "_TZE200_nkoabg8w",
+  "_TZE200_4vobcgd3",
+  "_TZE284_4vobcgd3",
+  "_TZE200_pk0sfzvr",
+  "_TZE200_m6lwazh9",
+  "_TZE200_swlgvdlh",
+  "_TZE200_fdtjuw7u",
+  "_TZE200_rmymn92d",
+  "_TZE200_feolm6rk",
+  "_TZE200_tvrvdj6o",
+  "_TZE200_b2u1drdv",
+  "_TZE200_ol5jlkkr",
+  "_TZE204_a2jcoyuk",
+  "_TZE200_yia0p3tr",
+  "_TZE200_rsj5pu8y",
+  "_TZE200_yrugsphv",
+  "_TZE204_yrugsphv",
+  "_TZE200_odlldrxx",
+  "_TZE204_odlldrxx",
+  "_TZE200_7shyddj3",
+  "_TZE284_udank5zs",
+  "_TZE284_b7kbnl6q",
+  "_TZE204_wzre8hu2",
+  "_TZE204_dpqsvdbi",
+  "_TZE204_ic7jtutb",
+  "_TZE204_m1wl5fvq",
+  "_TZE204_nladmfvf",
+  "_TZE204_tgl8i2np",
+  "_TZE200_2jwrgrro",
+}))
+
+register_device_definition(cover_one, {
+  device_helpers.create_fingerprint("HOBEIAN", "ZG-301Z-MOTO"),
+  { manufacturer = "_TYST11_fzo2pocs", model = "zo2pocs" .. string.char(0) },
+  { manufacturer = "_TYST11_udank5zs", model = "dank5zs" .. string.char(0) },
+})
+
+register_device_definition(cover_one, {
+  device_helpers.create_fingerprint("Yushun", "YS-MT750"),
+  device_helpers.create_fingerprint("Yushun", "YS-MT750L"),
+  device_helpers.create_fingerprint("Zemismart", "ZM79E-DT"),
+  device_helpers.create_fingerprint("Binthen", "BCM100D"),
+  device_helpers.create_fingerprint("Binthen", "CV01A"),
+  device_helpers.create_fingerprint("Zemismart", "M515EGB"),
+  device_helpers.create_fingerprint("Oz Smart Things", "ZM85EL-1Z"),
+  device_helpers.create_fingerprint("Tuya", "M515EGZT"),
+  device_helpers.create_fingerprint("Tuya", "DT82LEMA-1.2N"),
+  device_helpers.create_fingerprint("Tuya", "ZD82TN"),
+  device_helpers.create_fingerprint("Larkkey", "ZSTY-SM-1SRZG-EU"),
+  device_helpers.create_fingerprint("Zemismart", "AM43"),
+  device_helpers.create_fingerprint("A-OK", "AM25"),
+  device_helpers.create_fingerprint("Alutech", "AM/R-Sm"),
+  device_helpers.create_fingerprint("Roximo", "CRTZ01"),
+  device_helpers.create_fingerprint("Quoya", "AT8510-TY"),
+  device_helpers.create_fingerprint("Somgoms", "ZSTY-SM-1DMZG-US-W_1"),
+  device_helpers.create_fingerprint("HUARUI", "CMD900LE"),
+  device_helpers.create_fingerprint("Novato", "WPK"),
+  device_helpers.create_fingerprint("Zemismart", "ZMS1-TYZ"),
+})
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_eegnwoyw",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0105", {
+  "_TZE600_ogyg1y6b",
+}))
+
+register_device_definition(cover_three, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_68nvbio9",
+  "_TZE200_pw7mji0l",
+  "_TZE200_cf1sl3tj",
+  "_TZE200_nw1r9hp6",
+  "_TZE200_9p5xmj5r",
+  "_TZE200_eevqq1uv",
+  "_TZE204_ejh6owwz",
+  "_TZE200_ba69l9ol",
+  "_TZE200_68nvbi09",
+  "_TZE284_n73badib",
+  "_TZE200_vexa5o82",
+  "_TZE200_sfqyhvpv",
+}))
+
+register_device_definition(cover_core, {
+  device_helpers.create_fingerprint("Zemismart", "ZM16EL-03/33"),
+  device_helpers.create_fingerprint("Zemismart", "ZM25EL"),
+  device_helpers.create_fingerprint("Zemismart", "ZM85EL-2Z"),
+  device_helpers.create_fingerprint("Hiladuo", "B09M3R35GC"),
+  device_helpers.create_fingerprint("Tuya", "MYQ-RM25-1.3/25-BZ"),
+  device_helpers.create_fingerprint("Shaman", "25EB-1/30-TYZ"),
+})
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_zah67ekd",
+  "_TZE200_icka1clh",
+}))
+
+register_device_definition(ts130f_xbexmf8h, device_helpers.create_fingerprints("TS130F", {
+  "_TZE20C_xbexmf8h",
+}))
+
+register_device_definition(cover_core, {
+  device_helpers.create_fingerprint("Moes", "AM43-0.45/40-ES-EB"),
+})
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_5sbebbzs",
+  "_TZE200_hsgrhjpf",
+  "_TZE200_ergbiejo",
+  "_TZE200_nhyj64w2",
+  "_TZE200_127x7wnl",
+  "_TZE204_5slehgeo",
+  "_TZE284_5slehgeo",
+  "_TZE200_fctwhugx",
+  "_TZE200_p6vz3wzt",
+  "_TZE204_p6vz3wzt",
+  "_TZE284_uqfph8ah",
+  "_TZE284_waa352qv",
+}))
+
+register_device_definition(cover_core, {
+  device_helpers.create_fingerprint("Homeetec", "37022483"),
+})
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_cpbo62rn",
+  "_TZE200_libht6ua",
+  "_TZE284_libht6ua",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_zvo63cmo",
+}))
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_r0jdjrvi",
+  "_TZE200_r0jdjrvi",
+  "_TZE200_g5xqosu7",
+  "_TZE204_g5xqosu7",
+  "_TZE200_fzo2pocs",
+  "_TZE284_fzo2pocs",
+  "_TZE200_9vpe3fl1",
+  "_TZE28C1000000_alh14edn",
+}))
+
+register_device_definition(cover_core_position_reversed, {
+  device_helpers.create_fingerprint("Tuya", "TS0601_alh14edn"),
+})
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_7eue9vhc",
+  "_TZE200_bv1jcqqu",
+  "_TZE200_wehza30a",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_p2qzzazi",
+}))
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_xu4a5rhj",
+  "_TZE200_xu4a5rhj",
+  "_TZE204_q9xty0ad",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_1vxgqfba",
+  "_TZE200_wdfurkoa",
+  "_TZE200_sq6affpe",
+  "_TZE284_wdfurkoa",
+  "_TZE284_6fopvb6v",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_gubdgai2",
+  "_TZE200_vdiuwbkq",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_yenbr4om",
+  "_TZE204_bdblidq3",
+  "_TZE200_bdblidq3",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_mlglxwp3",
+}))
+
+register_device_definition(cover_core_alt_dp, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_a8z0g46u",
+  "_TZE204_a8z0g46u",
+}))
+
+register_device_definition(cover_core_alt_position_8, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_3mzb0sdz",
+}))
+
+register_device_definition(cover_model_zsm01, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_zofmmt9s",
+}))
+
+
+
+
+
+
+
+
+
+
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_2odrmqwq",
+  "_TZE200_hojryzzd",
+}))
+
+register_device_definition(cover_core_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_clm4gdw4",
+  "_TZE200_2vfxweng",
+  "_TZE200_gnw1rril",
+  "_TZE204_ycke4deo",
+  "_TZE284_koxaopnk",
+  "_TZE284_clm4gdw4",
+}))
+
+register_device_definition(cover_core_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_cowvfni3",
+}))
+
+register_device_definition(cover_core_alt_controls, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_rddyvrci",
+}))
+
+register_device_definition(cover_core_reversed_position_alt, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_r3szw0xr",
+}))
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_wmcdj3aq",
+  "_TZE200_xuzcvlku",
+  "_TZE200_xaabybja",
+  "_TZE200_zuz7f94z",
+  "_TZE200_3i3exuay",
+  "_TZE200_nogaemzt",
+  "_TZE200_dng9fn0k",
+  "_TZE200_zpzndjez",
+}))
+
+register_device_definition(cover_with_1_switch, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_jhkttplm",
+}))
+
+register_device_definition(cover_with_1_switch, {
+  device_helpers.create_fingerprint("Homeetec", "37022493"),
+})
+
+register_device_definition(cover_with_2_switch, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_5nldle7w",
+}))
+
+register_device_definition(cover_with_2_switch, {
+  device_helpers.create_fingerprint("Homeetec", "37022173"),
+})
+
+register_device_definition(cover_switch_2_touch_panel, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_trwaxi57",
+}))
+
+register_device_definition(cover_core_am02, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_iossyxra",
+  "_TZE200_cxu0jkjk",
+}))
+
+register_device_definition(cover_core_pims3028, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_eqpaxqdv",
+}))
+
+register_device_definition(cover_rm28_le, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_fodv6bkr",
+}))
+
+register_device_definition(cover_epj_zb, {
+  device_helpers.create_fingerprint("_TZ3210_emqmwtym", "TS0601"),
+})
+
+register_device_definition(cover_model_zm79e_dt, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_ax8a8ahx",
+}))
+
+register_device_definition(cover_model_bx82_tyz1, device_helpers.create_fingerprints("TS0601", {
+  "_TZE204_2rvvqjoa",
+}))
+
+register_device_definition(cover_model_mb60l, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_2gi1hy8s",
+}))
+
+register_device_definition(cover_zb_sm, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_zyrdrmno",
+  "_TZE200_osmxri8y",
+}))
+
+register_device_definition(ts0301_cover_single, device_helpers.create_fingerprints("TS0301", {
+  "_TZE210_m6lwazh9",
+  "_TZE200_eatmkx5j",
+}))
+
+register_device_definition(ts0301_cover_single, {
+  device_helpers.create_fingerprint("Yoolax", "Day-Night Shade"),
+})
+
+register_device_definition(ts0301_cover_dual_rail, device_helpers.create_fingerprints("TS0301", {
+  "_TZE210_inpjmc0h",
+  "_TZE210_yqwse3h5",
+}))
+
+return {
+  id = "ef00.covers",
+  registrations = device_definitions,
+}

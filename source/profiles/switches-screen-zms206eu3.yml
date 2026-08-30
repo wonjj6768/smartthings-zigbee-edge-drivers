@@ -1,0 +1,69 @@
+name: switches-screen-zms206eu3
+components:
+  - id: main
+    label: ZMS-206EU-3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206ThreeBacklightMode
+        version: 1
+      - id: concertmirror08464.zms206ThreeBacklightBrightness
+        version: 1
+      - id: concertmirror08464.zms206ThreeChildLock
+        version: 1
+      - id: concertmirror08464.zms206ThreeRadarConfig
+        version: 1
+      - id: concertmirror08464.zms206ThreeSwitchColorOn
+        version: 1
+      - id: concertmirror08464.zms206ThreeSwitchColorOff
+        version: 1
+      - id: concertmirror08464.zms206ThreeIndicatorStatus
+        version: 1
+      - id: concertmirror08464.zms206ThreeDelayOffColor
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch1
+    label: Switch 1
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206ThreeSwitchName
+        version: 1
+      - id: concertmirror08464.zms206ThreeRelayStatus
+        version: 1
+      - id: concertmirror08464.zms206ThreeCountdown
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    label: Switch 2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206ThreeSwitchName
+        version: 1
+      - id: concertmirror08464.zms206ThreeRelayStatus
+        version: 1
+      - id: concertmirror08464.zms206ThreeCountdown
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    label: Switch 3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206ThreeSwitchName
+        version: 1
+      - id: concertmirror08464.zms206ThreeRelayStatus
+        version: 1
+      - id: concertmirror08464.zms206ThreeCountdown
+        version: 1
+    categories:
+      - name: Switch
+metadata:
+  deviceType: Switch
+  ocfDeviceType: oic.d.switch

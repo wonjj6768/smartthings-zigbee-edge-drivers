@@ -1,0 +1,24 @@
+name: lights-wave19-candeo-rd1pv2-dim
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: concertmirror08464.candeoRotaryDimExtraCommands, version: 1}
+      - {id: concertmirror08464.candeoRotaryDimPowerBehavior, version: 1}
+      - {id: concertmirror08464.candeoRotaryDimOnLevel, version: 1}
+      - {id: concertmirror08464.candeoRotaryDimStartupLevel, version: 1}
+      - {id: concertmirror08464.candeoRotaryDimOnTransition, version: 1}
+      - {id: concertmirror08464.candeoRotaryDimOffTransition, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light
+  - id: switch2
+    capabilities:
+      - {id: concertmirror08464.candeoRotaryDimAction, version: 1}
+    categories:
+      - name: Light

@@ -1,0 +1,33 @@
+name: controls-wave15-engo-ecb62zb
+components:
+  - id: main
+    capabilities:
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.ecbPumpDelay, version: 1}
+      - {id: concertmirror08464.ecbZoneOneDemand, version: 1}
+      - {id: concertmirror08464.ecbZoneTwoDemand, version: 1}
+      - {id: concertmirror08464.ecbZoneThreeDemand, version: 1}
+      - {id: concertmirror08464.ecbZoneFourDemand, version: 1}
+      - {id: concertmirror08464.ecbZoneFiveDemand, version: 1}
+      - {id: concertmirror08464.ecbZoneSixDemand, version: 1}
+      - {id: concertmirror08464.ecbZoneADemand, version: 1}
+      - {id: concertmirror08464.ecbZoneBDemand, version: 1}
+      - {id: concertmirror08464.ecbPumpState, version: 1}
+      - {id: concertmirror08464.ecbBoilerState, version: 1}
+      - {id: concertmirror08464.ecbZoneOneLinked, version: 1}
+      - {id: concertmirror08464.ecbZoneTwoLinked, version: 1}
+      - {id: concertmirror08464.ecbZoneThreeLinked, version: 1}
+      - {id: concertmirror08464.ecbZoneFourLinked, version: 1}
+      - {id: concertmirror08464.ecbZoneFiveLinked, version: 1}
+      - {id: concertmirror08464.ecbZoneSixLinked, version: 1}
+      - {id: concertmirror08464.ecbZoneAName, version: 1}
+      - {id: concertmirror08464.ecbZoneBName, version: 1}
+      - {id: concertmirror08464.ecbZoneOneName, version: 1}
+      - {id: concertmirror08464.ecbZoneTwoName, version: 1}
+      - {id: concertmirror08464.ecbZoneThreeName, version: 1}
+      - {id: concertmirror08464.ecbZoneFourName, version: 1}
+      - {id: concertmirror08464.ecbZoneFiveName, version: 1}
+      - {id: concertmirror08464.ecbZoneSixName, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Thermostat

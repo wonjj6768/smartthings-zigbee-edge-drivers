@@ -4,10 +4,10 @@
 local function load_cluster_command_handler(zcl)
 
   local capabilities = require "st.capabilities"
-  local custom_capabilities = require "core.custom_capabilities"
-  local custom_capability_binding = require "core.custom_capability_binding"
-  local battery_refresh = require "app.battery_refresh"
-  local command_dispatch = require "zcl_common.command_dispatch"
+  local custom_capabilities = require "runtime.capability_metadata"
+  local custom_capability_binding = require "runtime.capability_binding"
+  local battery_refresh = require "runtime.battery_refresh"
+  local command_dispatch = require "protocol.zcl.runtime.handlers.command_dispatch"
   local generated_clusters = require "st.zigbee.generated.zcl_clusters"
   local Status = require "st.zigbee.generated.types.ZclStatus"
   local data_types = require "st.zigbee.data_types"
@@ -20,7 +20,7 @@ local function load_cluster_command_handler(zcl)
   local IASACE = generated_clusters.IASACE
   local remote_action_metadata = custom_capabilities.by_emit_name.remote_action
   local security_remote_action_metadata = custom_capabilities.by_emit_name.security_remote_action
-
+  zcl.schedule_battery_refresh_after_button = battery_refresh.schedule_after_button
   local LAST_REMOTE_ACTION_FIELD = "__zcl_last_remote_action"
   local CLUSTER_SCENES = 0x0005
   local ARM_MODE_ACTIONS = {
@@ -153,11 +153,15 @@ local function load_cluster_command_handler(zcl)
     return true
   end
 
-  local function emit_remote_action(device, component_id, action, seqno)
+  local function emit_remote_action(device, preset, component_id, action, seqno)
     if not should_emit_remote_action(device, component_id, action, seqno) then
       return false
     end
-    return custom_capability_binding.emit_state(device, component_id, remote_action_metadata, action)
+    local metadata = remote_action_metadata
+    if type(preset) == "table" and type(preset.remote_action_emit_name) == "string" then
+      metadata = custom_capabilities.by_emit_name[preset.remote_action_emit_name] or metadata
+    end
+    return custom_capability_binding.emit_state(device, component_id, metadata, action)
   end
 
   local function emit_security_remote_action(device, preset, action, seqno)
@@ -195,6 +199,54 @@ local function load_cluster_command_handler(zcl)
     return nil
   end
 
+  local function emit_standard_action_metadata(device, preset, component_id, zb_rx, cluster_id, command_id)
+    local emit_names = type(preset) == "table" and preset.standard_action_metadata_emit_names or nil
+    if type(emit_names) ~= "table" then
+      return false
+    end
+
+    local emitted = false
+    local function emit_value(property, value)
+      local emit_name = emit_names[property]
+      local metadata = type(emit_name) == "string" and custom_capabilities.by_emit_name[emit_name] or nil
+      if metadata ~= nil and type(value) == "number" then
+        emitted = custom_capability_binding.emit_state(device, component_id, metadata, value) or emitted
+      end
+    end
+
+    -- SmartThings RX frames address coordinator unicasts to NWK 0x0000.
+    -- Zigbee group addresses occupy 0x0001..0xFFF7; broadcast/reserved
+    -- addresses start at 0xFFF8. This preserves Z2M addActionGroup's
+    -- truthy-group-only behavior without mistaking a coordinator unicast for
+    -- a group action.
+    local destination = extract_destination_address(zb_rx)
+    if type(destination) == "number" and destination >= 0x0001 and destination <= 0xFFF7 then
+      emit_value("action_group", destination)
+    end
+
+    if cluster_id ~= zcl.CLUSTER_LEVEL_CONTROL then
+      return emitted
+    end
+
+    if command_id == 0x00 or command_id == 0x04 then
+      emit_value("action_level", extract_body_member(zb_rx, "level"))
+      local transition_time = extract_body_member(zb_rx, "transition_time", "transtime")
+      if type(transition_time) == "number" then
+        emit_value("action_transition_time", transition_time / 10)
+      end
+    elseif command_id == 0x01 or command_id == 0x05 then
+      emit_value("action_rate", extract_body_member(zb_rx, "rate"))
+    elseif command_id == 0x02 or command_id == 0x06 then
+      emit_value("action_step_size", extract_body_member(zb_rx, "step_size", "stepsize"))
+      local transition_time = extract_body_member(zb_rx, "transition_time", "transtime")
+      if type(transition_time) == "number" then
+        emit_value("action_transition_time", transition_time / 10)
+      end
+    end
+
+    return emitted
+  end
+
   local function handle_advanced_remote_action(device, preset, zb_rx, action, component_id)
     if type(preset) ~= "table" or preset.advanced_remote ~= true or type(action) ~= "string" then
       return false
@@ -207,7 +259,11 @@ local function load_cluster_command_handler(zcl)
       emit_button_event(device, target_component, button_event)
     end
 
-    emit_remote_action(device, target_component, action, extract_seqno(zb_rx))
+    local action_emitted = emit_remote_action(device, preset, target_component, action, extract_seqno(zb_rx))
+    if action_emitted then
+      local cluster_id = zb_rx and zb_rx.address_header and zb_rx.address_header.cluster and zb_rx.address_header.cluster.value or nil
+      emit_standard_action_metadata(device, preset, target_component, zb_rx, cluster_id, extract_command_id(zb_rx))
+    end
     send_default_response(device, zb_rx, extract_command_id(zb_rx) or 0)
     return true
   end
@@ -703,7 +759,7 @@ local function load_cluster_command_handler(zcl)
 
         local component_id = resolve_scene_component(device, preset, scene_key, src_endpoint)
         emit_button_event(device, component_id, "pushed")
-        emit_remote_action(device, component_id, action, seqno)
+        emit_remote_action(device, preset, component_id, action, seqno)
       end
 
       send_default_response(device, zb_rx, command_id)
@@ -722,7 +778,7 @@ local function load_cluster_command_handler(zcl)
         if type(button_event) == "string" then
           emit_button_event(device, component_id, button_event)
         end
-        emit_remote_action(device, component_id, mapped_action, seqno)
+        emit_remote_action(device, preset, component_id, mapped_action, seqno)
         send_default_response(device, zb_rx, command_id)
         return true
       end
@@ -739,7 +795,7 @@ local function load_cluster_command_handler(zcl)
       if base_action ~= nil then
         local component_id = resolve_endpoint_component(device, src_endpoint, "main")
         if preset.knob_remote == true then
-          emit_remote_action(device, "main", base_action, seqno)
+          emit_remote_action(device, preset, "main", base_action, seqno)
           if base_action == "single" or base_action == "double" or base_action == "hold" then
             local button_event = ({
               single = "pushed",
@@ -764,7 +820,7 @@ local function load_cluster_command_handler(zcl)
           if button_event ~= nil then
             emit_button_event(device, component_id, button_event)
           end
-          emit_remote_action(device, component_id, action, seqno)
+          emit_remote_action(device, preset, component_id, action, seqno)
         end
       end
 
@@ -824,39 +880,30 @@ local function load_cluster_command_handler(zcl)
     return handle_advanced_remote_standard_command(device, preset, zb_rx)
   end)
 
+  zcl.register_cluster_command_handler(zcl.CLUSTER_ON_OFF, 0x40, function(device, preset, zb_rx)
+    return handle_advanced_remote_standard_command(device, preset, zb_rx)
+  end)
+
   for _, command_id in ipairs({ 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07 }) do
     zcl.register_cluster_command_handler(zcl.CLUSTER_LEVEL_CONTROL, command_id, function(device, preset, zb_rx)
       return handle_advanced_remote_standard_command(device, preset, zb_rx)
     end)
   end
 
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x01, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
+  for _, command_id in ipairs({ 0x00, 0x01, 0x02 }) do
+    zcl.register_cluster_command_handler(zcl.CLUSTER_WINDOW_COVERING, command_id, function(device, preset, zb_rx)
+      return handle_advanced_remote_standard_command(device, preset, zb_rx)
+    end)
+  end
 
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x06, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
-
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x07, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
-
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x47, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
-
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x0A, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
-
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x4B, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
-
-  zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, 0x4C, function(device, preset, zb_rx)
-    return handle_advanced_remote_standard_command(device, preset, zb_rx)
-  end)
+  for _, command_id in ipairs({
+    0x00, 0x01, 0x02, 0x03, 0x05, 0x06, 0x07, 0x0A,
+    0x43, 0x44, 0x47, 0x4B, 0x4C,
+  }) do
+    zcl.register_cluster_command_handler(zcl.CLUSTER_COLOR_CONTROL, command_id, function(device, preset, zb_rx)
+      return handle_advanced_remote_standard_command(device, preset, zb_rx)
+    end)
+  end
 
   for _, command_id in ipairs({ 0x00, 0x02, 0x03, 0x04, 0x05 }) do
     zcl.register_cluster_command_handler(CLUSTER_SCENES, command_id, function(device, preset, zb_rx)

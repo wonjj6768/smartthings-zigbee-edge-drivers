@@ -1,0 +1,11 @@
+name: covers-wave10-xenon-x7726
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.xSevenCalibration, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind

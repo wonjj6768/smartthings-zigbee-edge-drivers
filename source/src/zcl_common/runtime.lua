@@ -127,10 +127,13 @@ local function load_runtime(zcl)
       minimum_interval = mapping.minimum_interval,
       maximum_interval = mapping.maximum_interval,
       reportable_change = mapping.reportable_change,
+      physical_reportable_change = type(mapping.physical_reportable_change) == "number" and
+        mapping.physical_reportable_change or nil,
       read_on_configure = mapping.read_on_configure == true,
       poll_interval = type(mapping.poll_interval) == "number" and mapping.poll_interval or nil,
       ias_configure_method = mapping.ias_configure_method,
       mfg_code = type(mapping.mfg_code) == "number" and mapping.mfg_code or nil,
+      profile_id = type(mapping.profile_id) == "number" and mapping.profile_id or nil,
       metering_kind = type(mapping.metering_kind) == "string" and mapping.metering_kind or nil,
       scale = type(mapping.scale) == "number" and mapping.scale or nil,
       attribute_def = attribute_def,

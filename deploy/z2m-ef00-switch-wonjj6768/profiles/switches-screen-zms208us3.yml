@@ -1,0 +1,49 @@
+name: switches-screen-zms208us3
+components:
+  - id: main
+    label: ZMS-208US-3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms208ThreeChildLock
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch1
+    label: Switch 1
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms208ThreeSwitchName
+        version: 1
+      - id: concertmirror08464.zms208ThreeCountdown
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    label: Switch 2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms208ThreeSwitchName
+        version: 1
+      - id: concertmirror08464.zms208ThreeCountdown
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch3
+    label: Switch 3
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms208ThreeSwitchName
+        version: 1
+      - id: concertmirror08464.zms208ThreeCountdown
+        version: 1
+    categories:
+      - name: Switch
+metadata:
+  deviceType: Switch
+  ocfDeviceType: oic.d.switch

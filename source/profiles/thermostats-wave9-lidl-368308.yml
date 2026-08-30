@@ -1,0 +1,27 @@
+name: thermostats-wave9-lidl-368308
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.lidlTrvPreset, version: 1}
+      - {id: concertmirror08464.lidlTrvAwayMode, version: 1}
+      - {id: concertmirror08464.lidlTrvChildLock, version: 1}
+      - {id: concertmirror08464.lidlTrvComfortTemperature, version: 1}
+      - {id: concertmirror08464.lidlTrvEcoTemperature, version: 1}
+      - {id: concertmirror08464.lidlTrvBatteryVoltage, version: 1}
+      - {id: concertmirror08464.lidlTrvAutoSetpoint, version: 1}
+      - {id: concertmirror08464.lidlTrvTempCalibration, version: 1}
+      - {id: concertmirror08464.lidlTrvWindowTemperature, version: 1}
+      - {id: concertmirror08464.lidlTrvWindowTime, version: 1}
+      - {id: concertmirror08464.lidlTrvAwaySetting, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleMonday, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleTuesday, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleWednesday, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleThursday, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleFriday, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleSaturday, version: 1}
+      - {id: concertmirror08464.lidlTrvScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

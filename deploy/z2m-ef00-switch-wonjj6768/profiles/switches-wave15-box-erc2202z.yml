@@ -1,0 +1,16 @@
+name: switches-wave15-box-erc2202z
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ercTwoRecordRf, version: 1}
+      - {id: concertmirror08464.ercTwoClearRf, version: 1}
+      - {id: concertmirror08464.ercTwoRfStatus, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch

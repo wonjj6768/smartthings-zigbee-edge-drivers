@@ -1,0 +1,24 @@
+name: covers-wave15-tuya-semicom-three
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind
+  - id: cover2
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+    categories:
+      - name: Blind
+  - id: cover3
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+    categories:
+      - name: Blind
+preferences:
+  - preferenceId: reverse
+    explicit: true

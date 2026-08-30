@@ -1,0 +1,22 @@
+name: controllers-easyiot-ir01
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.easyiotIr01LastReceivedCommand
+        version: 1
+      - id: concertmirror08464.easyiotIr01SendCommand
+        version: 1
+      - id: concertmirror08464.easyiotIr01AcTemperature
+        version: 1
+      - id: concertmirror08464.easyiotIr01AcMode
+        version: 1
+      - id: concertmirror08464.easyiotIr01AcWindSpeed
+        version: 1
+      - id: concertmirror08464.easyiotIr01AcKfid
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

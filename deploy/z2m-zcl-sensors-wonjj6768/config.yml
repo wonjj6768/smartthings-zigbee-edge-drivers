@@ -1,0 +1,6 @@
+name: "Z2M ZCL Sensors Category wonjj6768"
+packageKey: "z2m-zcl-sensors-wonjj6768"
+description: "Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

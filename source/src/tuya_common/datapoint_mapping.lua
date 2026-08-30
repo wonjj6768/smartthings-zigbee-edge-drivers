@@ -1,8 +1,9 @@
 local function load_mapping(tuya, shared)
   local log = shared.log
   local capabilities = require "st.capabilities"
-  local custom_capabilities = require "core.custom_capabilities"
-  local battery_refresh = require "app.battery_refresh"
+  local custom_capabilities = require "runtime.capability_metadata"
+  local battery_refresh = require "runtime.battery_refresh"
+  local utf8_text = require "runtime.utf8_text"
 
   local type_check = shared.type_check
   local table_insert = shared.table_insert
@@ -71,8 +72,9 @@ local function emit_debug_driver_message(device, mapping_context, dp_info, value
   local dp_label = type_check(dp_info) == "table" and type_check(dp_info.dp) == "number" and string.format("dp=%d", dp_info.dp) or "dp=?"
   local message = string.format("RX %s (%s): %s", label, dp_label, debug_value_to_string(value))
   local maximum_length = driver_message_definition.maximum_length or 512
-  if #message > maximum_length then
-    message = message:sub(1, maximum_length)
+  message = utf8_text.truncate(message, maximum_length)
+  if message == nil then
+    return
   end
 
   device:emit_event(attribute_fn({ value = message }))
@@ -135,9 +137,10 @@ local function mapping_meta(mapping)
   end
 
   local converter_pair = mapping_converter(mapping)
+  local receive_converter = type_check(mapping.converter) == "function" and mapping.converter or nil
   return {
     from_device = type_check(mapping.from_device) == "function" and mapping.from_device or
-      (converter_pair and type_check(converter_pair.from) == "function" and converter_pair.from or nil),
+      (converter_pair and type_check(converter_pair.from) == "function" and converter_pair.from or receive_converter),
     to_device = type_check(mapping.to_device) == "function" and mapping.to_device or
       (converter_pair and type_check(converter_pair.to) == "function" and converter_pair.to or nil),
     read_only = mapping.read_only == true,
@@ -272,6 +275,19 @@ local function build_mapping_context(device, mapping, context, value)
   return mapping_context
 end
 
+local function explicit_context_component_id(context)
+  if type_check(context) ~= "table" then
+    return nil
+  end
+
+  local component_id = context.component_id or context.component
+  if type_check(component_id) == "string" and component_id ~= "" then
+    return component_id
+  end
+
+  return nil
+end
+
 local function mapping_match_score(mapping, device, context)
   if type_check(mapping) ~= "table" then
     return 0
@@ -282,6 +298,7 @@ local function mapping_match_score(mapping, device, context)
   local expected_component_id = resolve_mapping_component_id(meta, device, context)
   local actual_endpoint = resolve_context_endpoint(device, context)
   local actual_component_id = resolve_context_component_id(device, context)
+  local selected_component_id = explicit_context_component_id(context)
 
   if actual_endpoint == nil and actual_component_id ~= nil and type_check(device.get_endpoint_for_component_id) == "function" then
     actual_endpoint = resolve_context_endpoint(device, { component_id = actual_component_id })
@@ -297,8 +314,8 @@ local function mapping_match_score(mapping, device, context)
     end
   end
 
-  if expected_component_id ~= nil then
-    if actual_component_id == nil or actual_component_id ~= expected_component_id then
+  if expected_component_id ~= nil and selected_component_id ~= nil then
+    if selected_component_id ~= expected_component_id then
       return -1
     end
   end
@@ -307,7 +324,7 @@ local function mapping_match_score(mapping, device, context)
   if expected_endpoint ~= nil then
     score = score + 2
   end
-  if expected_component_id ~= nil then
+  if expected_component_id ~= nil and selected_component_id ~= nil then
     score = score + 1
   end
 

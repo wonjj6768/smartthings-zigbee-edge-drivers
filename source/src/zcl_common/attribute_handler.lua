@@ -6,7 +6,7 @@
 
 local function load_attribute_handler(zcl)
 
-  local battery_refresh = require "app.battery_refresh"
+  local battery_refresh = require "runtime.battery_refresh"
 
   --- Reports an unchanged attribute value as a duplicate that can be skipped.
   --- Only plain scalar values are compared; anything structured is always sent

@@ -2,7 +2,7 @@ zigbeeManufacturer:
   - id: "fp_99fd4ae7c2"
     manufacturer: "Candeo"
     model: "C-ZB-RD1P-REM"
-    deviceProfileName: "controllers-dimming-meter-remote-action"
+    deviceProfileName: "controllers-candeo-rd1p-rem"
   - id: "fp_98a92e56a9"
     manufacturer: "Candeo"
     model: "C-ZB-SR5BR"

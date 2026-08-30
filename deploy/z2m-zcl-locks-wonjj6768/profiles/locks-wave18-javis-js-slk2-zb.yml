@@ -1,0 +1,10 @@
+name: locks-wave18-javis-js-slk2-zb
+components:
+  - id: main
+    capabilities:
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.javisSlkAction, version: 1}
+      - {id: concertmirror08464.javisSlkState, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: SmartLock

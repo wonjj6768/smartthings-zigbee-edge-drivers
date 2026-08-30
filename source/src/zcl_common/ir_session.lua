@@ -2,8 +2,8 @@
 
 local function load_ir_session(zcl)
 
-  local custom_capabilities = require "core.custom_capabilities"
-  local custom_capability_binding = require "core.custom_capability_binding"
+  local custom_capabilities = require "runtime.capability_metadata"
+  local custom_capability_binding = require "runtime.capability_binding"
   local log = require "log"
 
   local learn_ir_code_metadata = custom_capabilities.by_emit_name.learn_ir_code

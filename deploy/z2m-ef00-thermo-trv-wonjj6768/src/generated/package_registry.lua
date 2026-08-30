@@ -1,0 +1,39 @@
+local function registrations(catalog,expected_id,module_name)
+assert(type(catalog)=="table","Canonical catalog must return a table: " .. module_name)
+for key in next,catalog do
+assert(key=="id" or key=="registrations","Canonical catalog has extra key: " .. module_name .. ":" .. tostring(key))
+end
+assert(catalog.id==expected_id,"Canonical catalog id mismatch: " .. module_name)
+assert(type(catalog.registrations)=="table","Canonical catalog registrations missing: " .. module_name)
+return catalog.registrations
+end
+local entries={}
+local catalog_1=require "contracts.families.ef00.thermostats.wave6a_trv"
+for _,entry in ipairs(registrations(catalog_1,"ef00.thermostats.wave6a_trv","contracts.families.ef00.thermostats.wave6a_trv"))do
+entries[#entries + 1]=entry
+end
+local catalog_2=require "contracts.families.ef00.thermostats.wave9_mazda"
+for _,entry in ipairs(registrations(catalog_2,"ef00.thermostats.wave9_mazda","contracts.families.ef00.thermostats.wave9_mazda"))do
+entries[#entries + 1]=entry
+end
+local catalog_3=require "contracts.families.ef00.thermostats.wave9_legacy"
+for _,entry in ipairs(registrations(catalog_3,"ef00.thermostats.wave9_legacy","contracts.families.ef00.thermostats.wave9_legacy"))do
+entries[#entries + 1]=entry
+end
+local catalog_4=require "contracts.families.ef00.thermostats.wave12_trv"
+for _,entry in ipairs(registrations(catalog_4,"ef00.thermostats.wave12_trv","contracts.families.ef00.thermostats.wave12_trv"))do
+entries[#entries + 1]=entry
+end
+local catalog_5=require "contracts.families.ef00.thermostats.wave19_exact_aliases"
+for _,entry in ipairs(registrations(catalog_5,"ef00.thermostats.wave19_exact_aliases","contracts.families.ef00.thermostats.wave19_exact_aliases"))do
+entries[#entries + 1]=entry
+end
+local catalog_6=require "contracts.families.ef00.thermostats.wave15_trv"
+for _,entry in ipairs(registrations(catalog_6,"ef00.thermostats.wave15_trv","contracts.families.ef00.thermostats.wave15_trv"))do
+entries[#entries + 1]=entry
+end
+local catalog_7=require "contracts.families.ef00.thermostats.wave19_exact"
+for _,entry in ipairs(registrations(catalog_7,"ef00.thermostats.wave19.exact","contracts.families.ef00.thermostats.wave19_exact"))do
+entries[#entries + 1]=entry
+end
+return entries

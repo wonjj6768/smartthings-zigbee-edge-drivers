@@ -1,0 +1,36 @@
+name: switches-screen-zms206us1
+components:
+  - id: main
+    label: ZMS-206US-1
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206OneBacklightMode
+        version: 1
+      - id: concertmirror08464.zms206OneBacklightBrightness
+        version: 1
+      - id: concertmirror08464.zms206OneChildLock
+        version: 1
+      - id: concertmirror08464.zms206OneRadarConfig
+        version: 1
+      - id: concertmirror08464.zms206OneSwitchColorOn
+        version: 1
+      - id: concertmirror08464.zms206OneSwitchColorOff
+        version: 1
+      - id: concertmirror08464.zms206OneIndicatorStatus
+        version: 1
+      - id: concertmirror08464.zms206OneDelayOffColor
+        version: 1
+      - id: concertmirror08464.zms206OneSwitchName
+        version: 1
+      - id: concertmirror08464.zms206OneRelayStatus
+        version: 1
+      - id: concertmirror08464.zms206OneCountdown
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+metadata:
+  deviceType: Switch
+  ocfDeviceType: oic.d.switch

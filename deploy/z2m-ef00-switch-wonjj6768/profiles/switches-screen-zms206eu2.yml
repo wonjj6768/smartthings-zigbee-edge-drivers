@@ -1,0 +1,56 @@
+name: switches-screen-zms206eu2
+components:
+  - id: main
+    label: ZMS-206EU-2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206TwoBacklightMode
+        version: 1
+      - id: concertmirror08464.zms206TwoBacklightBrightness
+        version: 1
+      - id: concertmirror08464.zms206TwoChildLock
+        version: 1
+      - id: concertmirror08464.zms206TwoRadarConfig
+        version: 1
+      - id: concertmirror08464.zms206TwoSwitchColorOn
+        version: 1
+      - id: concertmirror08464.zms206TwoSwitchColorOff
+        version: 1
+      - id: concertmirror08464.zms206TwoIndicatorStatus
+        version: 1
+      - id: concertmirror08464.zms206TwoDelayOffColor
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch1
+    label: Switch 1
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206TwoSwitchName
+        version: 1
+      - id: concertmirror08464.zms206TwoRelayStatus
+        version: 1
+      - id: concertmirror08464.zms206TwoCountdown
+        version: 1
+    categories:
+      - name: Switch
+  - id: switch2
+    label: Switch 2
+    capabilities:
+      - id: switch
+        version: 1
+      - id: concertmirror08464.zms206TwoSwitchName
+        version: 1
+      - id: concertmirror08464.zms206TwoRelayStatus
+        version: 1
+      - id: concertmirror08464.zms206TwoCountdown
+        version: 1
+    categories:
+      - name: Switch
+metadata:
+  deviceType: Switch
+  ocfDeviceType: oic.d.switch

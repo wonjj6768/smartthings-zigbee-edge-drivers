@@ -1,0 +1,116 @@
+name: safety-presence-szlmr10-illuminance
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: concertmirror08464.szlmr10DetectionDistance
+        version: 1
+      - id: concertmirror08464.szlmr10RadarSensitivity
+        version: 1
+      - id: concertmirror08464.szlmr10FadingTime
+        version: 1
+      - id: concertmirror08464.szlmr10WorkMode
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+  - id: indicator
+    label: LED indicator
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: radarSwitch
+    label: Radar switch
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.szlmr10DetectionDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.szlmr10RadarSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.szlmr10FadingTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.szlmr10WorkMode
+      version: 1
+    - component: indicator
+      capability: switch
+      version: 1
+    - component: radarSwitch
+      capability: switch
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10DetectionDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10RadarSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10FadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10WorkMode
+        version: 1
+      - component: indicator
+        capability: switch
+        version: 1
+      - component: radarSwitch
+        capability: switch
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.szlmr10DetectionDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10RadarSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10FadingTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.szlmr10WorkMode
+        version: 1
+      - component: indicator
+        capability: switch
+        version: 1
+      - component: radarSwitch
+        capability: switch
+        version: 1

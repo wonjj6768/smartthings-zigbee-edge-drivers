@@ -1,0 +1,15 @@
+name: switches-wave13-box-ews1154z
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.boxEwsRecordRf, version: 1}
+      - {id: concertmirror08464.boxEwsClearRf, version: 1}
+      - {id: concertmirror08464.boxEwsRfStatus, version: 1}
+      - {id: concertmirror08464.boxEwsRecordScene, version: 1}
+      - {id: concertmirror08464.boxEwsClearScene, version: 1}
+      - {id: concertmirror08464.boxEwsRfSceneStatus, version: 1}
+      - {id: concertmirror08464.boxEwsSceneAction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

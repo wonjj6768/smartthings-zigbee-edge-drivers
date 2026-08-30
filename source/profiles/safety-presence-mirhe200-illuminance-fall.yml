@@ -4,7 +4,7 @@ components:
     capabilities:
       - id: presenceSensor
         version: 1
-      - id: motionSensor
+      - id: occupancySensor
         version: 1
       - id: illuminanceMeasurement
         version: 1
@@ -44,7 +44,7 @@ deviceConfig:
       capability: presenceSensor
       version: 1
     - component: main
-      capability: motionSensor
+      capability: occupancySensor
       version: 1
     - component: main
       capability: illuminanceMeasurement
@@ -85,7 +85,7 @@ deviceConfig:
         capability: presenceSensor
         version: 1
       - component: main
-        capability: motionSensor
+        capability: occupancySensor
         version: 1
       - component: main
         capability: illuminanceMeasurement

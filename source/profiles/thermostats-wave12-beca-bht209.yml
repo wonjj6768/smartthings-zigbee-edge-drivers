@@ -1,0 +1,15 @@
+name: thermostats-wave12-beca-bht209
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.becaBhtChildLock, version: 1}
+      - {id: concertmirror08464.becaBhtTempCalibration, version: 1}
+      - {id: concertmirror08464.becaBhtMaxLimit, version: 1}
+      - {id: concertmirror08464.becaBhtDeadzone, version: 1}
+      - {id: concertmirror08464.becaBhtHeatingMode, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

@@ -682,7 +682,7 @@ zigbeeManufacturer:
   - id: "fp_ab98cdf27c"
     manufacturer: "Sunricher"
     model: "HK-SENSOR-4IN1-A"
-    deviceProfileName: "safety-motion-illuminance-temp-humidity-battery"
+    deviceProfileName: "safety-occupancy-illuminance-temp-humidity-battery"
   - id: "fp_3d263a8935"
     manufacturer: "Sunricher"
     model: "HK-SENSOR-CO"

@@ -1,0 +1,6 @@
+name: "Z2M EF00 Bridge wonjj6768"
+packageKey: "z2m-ef00-bridge-wonjj6768"
+description: "Dedicated driver for newly absorbed exact EF00 bridge fingerprints."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

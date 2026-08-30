@@ -12,6 +12,8 @@ components:
         version: 1
       - id: battery
         version: 1
+      - id: concertmirror08464.thahBatteryLow
+        version: 1
       - id: concertmirror08464.thahPreset
         version: 1
       - id: concertmirror08464.thahWindowDetection
@@ -64,6 +66,9 @@ deviceConfig:
       version: 1
     - component: main
       capability: battery
+      version: 1
+    - component: main
+      capability: concertmirror08464.thahBatteryLow
       version: 1
     - component: main
       capability: concertmirror08464.thahPreset
@@ -120,6 +125,9 @@ deviceConfig:
         version: 1
       - component: main
         capability: battery
+        version: 1
+      - component: main
+        capability: concertmirror08464.thahBatteryLow
         version: 1
       - component: main
         capability: concertmirror08464.thahPreset

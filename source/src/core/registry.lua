@@ -1,11 +1,7 @@
 -- 제조사 코드 → 디바이스 정의 라우터
--- 프로토콜별 device index 모듈을 하나로 통합합니다.
+-- generated.package_registry가 manifest 순서대로 모든 package registration을 제공합니다.
 
-local protocol_modules = {
-  "devices.ef00",
-  "devices.hybrid",
-  "devices.zcl",
-}
+local registrations = require "generated.package_registry"
 
 local registry = {}
 local fingerprint_index = nil
@@ -32,18 +28,14 @@ local function build_index()
 
   fingerprint_index = {}
 
-  for _, module_name in ipairs(protocol_modules) do
-    local entries = require(module_name)
+  for _, entry in ipairs(registrations) do
+    for _, fp in ipairs(entry.fingerprints) do
+      local manufacturer = fp.manufacturer
+      local model = fp.model
 
-    for _, entry in ipairs(entries) do
-      for _, fp in ipairs(entry.fingerprints) do
-        local manufacturer = fp.manufacturer
-        local model = fp.model
-
-        if model ~= nil and manufacturer ~= nil then
-          fingerprint_index[manufacturer] = fingerprint_index[manufacturer] or {}
-          fingerprint_index[manufacturer][model] = copy_entry_without_fingerprints(entry)
-        end
+      if model ~= nil and manufacturer ~= nil then
+        fingerprint_index[manufacturer] = fingerprint_index[manufacturer] or {}
+        fingerprint_index[manufacturer][model] = copy_entry_without_fingerprints(entry)
       end
     end
   end

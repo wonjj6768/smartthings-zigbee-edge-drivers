@@ -1,0 +1,56 @@
+name: valves-giex-qt06-one
+components:
+  - id: main
+    capabilities:
+      - {id: valve, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.giexQtOneMode, version: 1}
+      - {id: concertmirror08464.giexQtOneTarget, version: 1}
+      - {id: concertmirror08464.giexQtOneCycleCount, version: 1}
+      - {id: concertmirror08464.giexQtOneCycleInterval, version: 1}
+      - {id: concertmirror08464.giexQtOneStartTime, version: 1}
+      - {id: concertmirror08464.giexQtOneEndTime, version: 1}
+      - {id: concertmirror08464.giexQtOneLastDuration, version: 1}
+      - {id: concertmirror08464.giexQtOneWaterConsumed, version: 1}
+    categories: [{name: WaterValve}]
+deviceConfig:
+  dashboard:
+    states:
+      - {component: main, capability: valve, version: 1, group: main, composite: true}
+      - {component: main, capability: battery, version: 1, group: main}
+    actions:
+      - component: main
+        capability: valve
+        version: 1
+        group: main
+        values: [{command: "open"}, {command: "close"}]
+    basicPlus: []
+  detailView:
+    - {component: main, capability: valve, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneMode, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneTarget, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneCycleCount, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneCycleInterval, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneStartTime, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneEndTime, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneLastDuration, version: 1}
+    - {component: main, capability: concertmirror08464.giexQtOneWaterConsumed, version: 1}
+    - {component: main, capability: battery, version: 1}
+  automation:
+    conditions:
+      - {component: main, capability: valve, version: 1}
+      - {component: main, capability: battery, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneMode, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneTarget, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneCycleCount, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneCycleInterval, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneStartTime, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneEndTime, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneLastDuration, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneWaterConsumed, version: 1}
+    actions:
+      - {component: main, capability: valve, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneMode, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneTarget, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneCycleCount, version: 1}
+      - {component: main, capability: concertmirror08464.giexQtOneCycleInterval, version: 1}

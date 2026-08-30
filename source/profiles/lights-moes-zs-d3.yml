@@ -1,0 +1,29 @@
+name: lights-moes-zs-d3
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessOne, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessMinOne, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessMaxOne, version: 1}
+      - {id: concertmirror08464.moesZsDThreeCountdownOne, version: 1}
+      - {id: concertmirror08464.moesZsDThreeRelayStatus, version: 1}
+      - {id: concertmirror08464.moesZsDThreeLightMode, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBacklight, version: 1}
+    categories: [{name: Light}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessTwo, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessMinTwo, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessMaxTwo, version: 1}
+      - {id: concertmirror08464.moesZsDThreeCountdownTwo, version: 1}
+    categories: [{name: Light}]
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessThree, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessMinThree, version: 1}
+      - {id: concertmirror08464.moesZsDThreeBrightnessMaxThree, version: 1}
+      - {id: concertmirror08464.moesZsDThreeCountdownThree, version: 1}
+    categories: [{name: Light}]

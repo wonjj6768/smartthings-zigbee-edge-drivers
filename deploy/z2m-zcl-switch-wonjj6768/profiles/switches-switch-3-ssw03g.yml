@@ -1,0 +1,17 @@
+name: switches-switch-3-ssw03g
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.sswThreePowerOnBehavior, version: 1}
+      - {id: concertmirror08464.sswThreeBacklightMode, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]

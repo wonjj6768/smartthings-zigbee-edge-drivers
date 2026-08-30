@@ -8,11 +8,11 @@ components:
       - {id: concertmirror08464.nfzb03IndicatorMode, version: 1}
       - {id: concertmirror08464.nfzb03BacklightMode, version: 1}
       - {id: concertmirror08464.nfzb03CountdownOne, version: 1}
-      - {id: concertmirror08464.nfzb03InchingEnabledOne, version: 1}
+      - {id: concertmirror08464.nfzb03InchingControlOne, version: 1}
       - {id: concertmirror08464.nfzb03InchingTimeOne, version: 1}
-      - {id: concertmirror08464.nfzb03InchingEnabledTwo, version: 1}
+      - {id: concertmirror08464.nfzb03InchingControlTwo, version: 1}
       - {id: concertmirror08464.nfzb03InchingTimeTwo, version: 1}
-      - {id: concertmirror08464.nfzb03InchingEnabledThree, version: 1}
+      - {id: concertmirror08464.nfzb03InchingControlThree, version: 1}
       - {id: concertmirror08464.nfzb03InchingTimeThree, version: 1}
       - {id: refresh, version: 1}
     categories: [{name: Switch}]

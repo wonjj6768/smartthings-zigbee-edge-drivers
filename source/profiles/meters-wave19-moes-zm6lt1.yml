@@ -1,0 +1,19 @@
+name: meters-wave19-moes-zm6lt1
+components:
+  - id: main
+    capabilities:
+      - {id: energyMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: concertmirror08464.moesZmSixAcFrequency, version: 1}
+      - {id: concertmirror08464.moesZmSixReverseEnergy, version: 1}
+      - {id: concertmirror08464.moesZmSixActiveEnergy, version: 1}
+      - {id: concertmirror08464.moesZmSixFault, version: 1}
+      - {id: concertmirror08464.moesZmSixClearEvent, version: 1}
+      - {id: concertmirror08464.moesZmSixOnlineState, version: 1}
+      - {id: concertmirror08464.moesZmSixCountdown, version: 1}
+      - {id: concertmirror08464.moesZmSixDeviceRestart, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: CurbPowerMeter

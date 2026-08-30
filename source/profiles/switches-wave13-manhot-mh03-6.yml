@@ -1,0 +1,55 @@
+name: switches-wave13-manhot-mh03-6
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.mhSixCountdownOne, version: 1}
+      - {id: concertmirror08464.mhSixCountdownTwo, version: 1}
+      - {id: concertmirror08464.mhSixCountdownThree, version: 1}
+      - {id: concertmirror08464.mhSixCountdownFour, version: 1}
+      - {id: concertmirror08464.mhSixCountdownFive, version: 1}
+      - {id: concertmirror08464.mhSixCountdownSix, version: 1}
+      - {id: concertmirror08464.mhSixChildLock, version: 1}
+      - {id: concertmirror08464.mhSixBacklightSwitch, version: 1}
+      - {id: concertmirror08464.mhSixBacklightLightness, version: 1}
+      - {id: concertmirror08464.mhSixDisplayOffDelay, version: 1}
+      - {id: concertmirror08464.mhSixRelayStatus, version: 1}
+      - {id: concertmirror08464.mhSixLightMode, version: 1}
+      - {id: concertmirror08464.mhSixOnColor, version: 1}
+      - {id: concertmirror08464.mhSixOffColor, version: 1}
+      - {id: concertmirror08464.mhSixSwitchNameOne, version: 1}
+      - {id: concertmirror08464.mhSixSwitchNameTwo, version: 1}
+      - {id: concertmirror08464.mhSixSwitchNameThree, version: 1}
+      - {id: concertmirror08464.mhSixSwitchNameFour, version: 1}
+      - {id: concertmirror08464.mhSixSwitchNameFive, version: 1}
+      - {id: concertmirror08464.mhSixSwitchNameSix, version: 1}
+      - {id: concertmirror08464.mhSixPressOnFunction, version: 1}
+      - {id: concertmirror08464.mhSixPressOffFunction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch5
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch6
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch

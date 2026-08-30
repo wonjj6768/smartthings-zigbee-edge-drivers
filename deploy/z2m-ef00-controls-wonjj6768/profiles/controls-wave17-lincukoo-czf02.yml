@@ -1,0 +1,15 @@
+name: controls-wave17-lincukoo-czf02
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.lincukooCzfMode, version: 1}
+      - {id: concertmirror08464.lincukooCzfButtonHoldDuration, version: 1}
+      - {id: concertmirror08464.lincukooCzfArmEndPosition, version: 1}
+      - {id: concertmirror08464.lincukooCzfArmStartPosition, version: 1}
+      - {id: concertmirror08464.lincukooCzfAutoAdjustment, version: 1}
+      - {id: concertmirror08464.lincukooCzfSwitchStates, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

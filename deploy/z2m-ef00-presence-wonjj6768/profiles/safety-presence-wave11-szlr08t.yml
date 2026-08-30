@@ -1,0 +1,16 @@
+name: safety-presence-wave11-szlr08t
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: concertmirror08464.szlrEightTInstallHeight, version: 1}
+      - {id: concertmirror08464.szlrEightTRadarSensitivity, version: 1}
+      - {id: concertmirror08464.szlrEightTFadingTime, version: 1}
+      - {id: concertmirror08464.szlrEightTRadarSwitch, version: 1}
+      - {id: concertmirror08464.szlrEightTIndicator, version: 1}
+      - {id: concertmirror08464.szlrEightTRelaySwitch, version: 1}
+      - {id: concertmirror08464.szlrEightTRelayMode, version: 1}
+      - {id: concertmirror08464.szlrEightTRadarMode, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: PresenceSensor}]

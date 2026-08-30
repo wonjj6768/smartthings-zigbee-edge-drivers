@@ -1,0 +1,28 @@
+name: switches-wave13-tuya-semicom-two-two
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: cover1
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+    categories:
+      - name: Blind
+  - id: cover2
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+    categories:
+      - name: Blind
+preferences:
+  - preferenceId: reverse
+    explicit: true

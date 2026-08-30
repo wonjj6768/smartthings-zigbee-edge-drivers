@@ -1,0 +1,43 @@
+name: meters-wave19-nous-d5z
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.nousDFiveCountdown, version: 1}
+      - {id: concertmirror08464.nousDFivePowerOnBehavior, version: 1}
+      - {id: concertmirror08464.nousDFiveInchingState, version: 1}
+      - {id: concertmirror08464.nousDFiveInchingMinutes, version: 1}
+      - {id: concertmirror08464.nousDFiveInchingSeconds, version: 1}
+      - {id: concertmirror08464.nousDFiveStatus, version: 1}
+      - {id: concertmirror08464.nousDFiveProducedEnergy, version: 1}
+      - {id: concertmirror08464.nousDFiveLeakageCurrent, version: 1}
+      - {id: concertmirror08464.nousDFiveFaults, version: 1}
+      - {id: concertmirror08464.nousDFiveReclosing, version: 1}
+      - {id: concertmirror08464.nousDFiveReclosingDelay, version: 1}
+      - {id: concertmirror08464.nousDFiveReclosingCount, version: 1}
+      - {id: concertmirror08464.nousDFivePrepayment, version: 1}
+      - {id: concertmirror08464.nousDFiveEnergyBalance, version: 1}
+      - {id: concertmirror08464.nousDFiveEnergyBalanceAdd, version: 1}
+      - {id: concertmirror08464.nousDFiveEnergyBalanceReset, version: 1}
+      - {id: concertmirror08464.nousDFiveLeakageAlarm, version: 1}
+      - {id: concertmirror08464.nousDFiveLeakageThreshold, version: 1}
+      - {id: concertmirror08464.nousDFiveTemperatureAlarm, version: 1}
+      - {id: concertmirror08464.nousDFiveTemperatureThreshold, version: 1}
+      - {id: concertmirror08464.nousDFiveOverCurrentTime, version: 1}
+      - {id: concertmirror08464.nousDFiveOverCurrentAlarm, version: 1}
+      - {id: concertmirror08464.nousDFiveOverCurrentThreshold, version: 1}
+      - {id: concertmirror08464.nousDFiveOverVoltageAlarm, version: 1}
+      - {id: concertmirror08464.nousDFiveOverVoltageThreshold, version: 1}
+      - {id: concertmirror08464.nousDFiveUnderVoltageAlarm, version: 1}
+      - {id: concertmirror08464.nousDFiveUnderVoltageThreshold, version: 1}
+      - {id: concertmirror08464.nousDFiveLostFlowAlarm, version: 1}
+      - {id: concertmirror08464.nousDFiveLostFlowThreshold, version: 1}
+      - {id: concertmirror08464.nousDFiveLostFlowTime, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

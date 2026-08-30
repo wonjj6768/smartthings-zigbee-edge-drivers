@@ -98,7 +98,7 @@ zigbeeManufacturer:
   - id: "fp_e1bfaf1a7d"
     manufacturer: "Candeo"
     model: "C-ZB-RD1P-DPM"
-    deviceProfileName: "lights-dimmer-power-voltage-current"
+    deviceProfileName: "lights-candeo-rd1p-dpm"
   - id: "fp_d5fc9625e2"
     manufacturer: "Candeo"
     model: "C203"

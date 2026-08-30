@@ -1,0 +1,20 @@
+name: lights-wave15-gledopto-gl-spi-206p
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: colorControl, version: 1}
+      - {id: concertmirror08464.glSpiColorTempRaw, version: 1}
+      - {id: concertmirror08464.glSpiScene, version: 1}
+      - {id: concertmirror08464.glSpiMusicMode, version: 1}
+      - {id: concertmirror08464.glSpiMusicSensitivity, version: 1}
+      - {id: concertmirror08464.glSpiCountdown, version: 1}
+      - {id: concertmirror08464.glSpiDoNotDisturb, version: 1}
+      - {id: concertmirror08464.glSpiBeadSequence, version: 1}
+      - {id: concertmirror08464.glSpiChipType, version: 1}
+      - {id: concertmirror08464.glSpiPixelCount, version: 1}
+      - {id: concertmirror08464.glSpiWorkMode, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light

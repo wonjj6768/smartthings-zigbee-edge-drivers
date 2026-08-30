@@ -1,0 +1,226 @@
+name: safety-presence-zf24pro-temp-humidity
+components:
+  - id: main
+    capabilities:
+      - id: presenceSensor
+        version: 1
+      - id: illuminanceMeasurement
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: concertmirror08464.zf24ProDistance
+        version: 1
+      - id: concertmirror08464.zf24ProMoveSensitivity
+        version: 1
+      - id: concertmirror08464.zf24ProPresenceSensitivity
+        version: 1
+      - id: concertmirror08464.zf24ProPresenceTimeout
+        version: 1
+      - id: concertmirror08464.zf24ProDetectionDistanceMax
+        version: 1
+      - id: concertmirror08464.zf24ProTemperatureCorrection
+        version: 1
+      - id: concertmirror08464.zf24ProHumidityCorrection
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor
+  - id: radarFunction
+    label: Function
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: livingRoom
+    label: Living room
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: bedroom
+    label: Bedroom
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: bathroom
+    label: Bathroom
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: sleep
+    label: Sleep
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+  - id: radarSwitch
+    label: Radar switch
+    capabilities:
+      - id: switch
+        version: 1
+    categories:
+      - name: Switch
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: presenceSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: presenceSensor
+      version: 1
+    - component: main
+      capability: illuminanceMeasurement
+      version: 1
+    - component: main
+      capability: temperatureMeasurement
+      version: 1
+    - component: main
+      capability: relativeHumidityMeasurement
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProDistance
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProMoveSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProPresenceSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProPresenceTimeout
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProDetectionDistanceMax
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProTemperatureCorrection
+      version: 1
+    - component: main
+      capability: concertmirror08464.zf24ProHumidityCorrection
+      version: 1
+    - component: radarFunction
+      capability: switch
+      version: 1
+    - component: livingRoom
+      capability: switch
+      version: 1
+    - component: bedroom
+      capability: switch
+      version: 1
+    - component: bathroom
+      capability: switch
+      version: 1
+    - component: sleep
+      capability: switch
+      version: 1
+    - component: radarSwitch
+      capability: switch
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: presenceSensor
+        version: 1
+      - component: main
+        capability: illuminanceMeasurement
+        version: 1
+      - component: main
+        capability: temperatureMeasurement
+        version: 1
+      - component: main
+        capability: relativeHumidityMeasurement
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProDistance
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProMoveSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProPresenceTimeout
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProDetectionDistanceMax
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProTemperatureCorrection
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProHumidityCorrection
+        version: 1
+      - component: radarFunction
+        capability: switch
+        version: 1
+      - component: livingRoom
+        capability: switch
+        version: 1
+      - component: bedroom
+        capability: switch
+        version: 1
+      - component: bathroom
+        capability: switch
+        version: 1
+      - component: sleep
+        capability: switch
+        version: 1
+      - component: radarSwitch
+        capability: switch
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.zf24ProMoveSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProPresenceSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProPresenceTimeout
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProDetectionDistanceMax
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProTemperatureCorrection
+        version: 1
+      - component: main
+        capability: concertmirror08464.zf24ProHumidityCorrection
+        version: 1
+      - component: radarFunction
+        capability: switch
+        version: 1
+      - component: livingRoom
+        capability: switch
+        version: 1
+      - component: bedroom
+        capability: switch
+        version: 1
+      - component: bathroom
+        capability: switch
+        version: 1
+      - component: sleep
+        capability: switch
+        version: 1
+      - component: radarSwitch
+        capability: switch
+        version: 1

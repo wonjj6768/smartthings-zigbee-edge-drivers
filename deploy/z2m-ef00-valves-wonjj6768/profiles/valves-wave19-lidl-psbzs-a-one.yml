@@ -1,0 +1,58 @@
+name: valves-wave19-lidl-psbzs-a-one
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.lidlPsbzsTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsTimeLeft, version: 1}
+      - {id: concertmirror08464.lidlPsbzsFrostLock, version: 1}
+      - {id: concertmirror08464.lidlPsbzsResetFrostLock, version: 1}
+      - {id: concertmirror08464.lidlPsbzsScheduleMode, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSchedulePeriodic, version: 1}
+      - {id: concertmirror08464.lidlPsbzsMonday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsTuesday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsWednesday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsThursday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsFriday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSaturday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSunday, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotOneEnabled, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotOneStartHour, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotOneStartMinute, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotOneTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotOnePause, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotOneIterations, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotTwoEnabled, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotTwoStartHour, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotTwoStartMinute, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotTwoTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotTwoPause, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotTwoIterations, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotThreeEnabled, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotThreeStartHour, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotThreeStartMinute, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotThreeTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotThreePause, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotThreeIterations, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFourEnabled, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFourStartHour, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFourStartMinute, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFourTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFourPause, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFourIterations, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFiveEnabled, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFiveStartHour, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFiveStartMinute, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFiveTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFivePause, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotFiveIterations, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotSixEnabled, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotSixStartHour, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotSixStartMinute, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotSixTimer, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotSixPause, version: 1}
+      - {id: concertmirror08464.lidlPsbzsSlotSixIterations, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: WaterValve

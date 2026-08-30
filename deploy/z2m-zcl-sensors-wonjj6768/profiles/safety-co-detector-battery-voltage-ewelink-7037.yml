@@ -1,0 +1,11 @@
+name: safety-co-detector-battery-voltage-ewelink-7037
+components:
+  - id: main
+    capabilities:
+      - {id: carbonMonoxideDetector, version: 1}
+      - {id: carbonMonoxideMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: GenericSensor}]

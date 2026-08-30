@@ -1,0 +1,6 @@
+name: "Z2M ZCL Bridge wonjj6768"
+packageKey: "z2m-zcl-bridge-wonjj6768"
+description: "Dedicated driver for newly absorbed exact ZCL bridge fingerprints."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

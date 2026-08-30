@@ -1,0 +1,65 @@
+name: thermostats-wave19-sber-sbdv-00205
+components:
+  - id: main
+    capabilities:
+      - {id: temperatureMeasurement, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: concertmirror08464.sberThermEmergencyOvercurrent, version: 1}
+      - {id: concertmirror08464.sberThermEmergencyOverheat, version: 1}
+      - {id: concertmirror08464.sberThermEmergencyNoLoad, version: 1}
+      - {id: concertmirror08464.sberThermRemoteDisconnected, version: 1}
+      - {id: concertmirror08464.sberThermSensorLocalDisconnected, version: 1}
+      - {id: concertmirror08464.sberThermSensorShortCircuit, version: 1}
+      - {id: concertmirror08464.sberThermHeatInefficient, version: 1}
+      - {id: concertmirror08464.sberThermAntifrost, version: 1}
+      - {id: concertmirror08464.sberThermInvalidTime, version: 1}
+      - {id: concertmirror08464.sberThermKeypadLockout, version: 1}
+      - {id: concertmirror08464.sberThermLocalCalibration, version: 1}
+      - {id: concertmirror08464.sberThermControlSequence, version: 1}
+      - {id: concertmirror08464.sberThermRunningMode, version: 1}
+      - {id: concertmirror08464.sberThermProgrammingMode, version: 1}
+      - {id: concertmirror08464.sberThermAbsMinHeatLimit, version: 1}
+      - {id: concertmirror08464.sberThermAbsMaxHeatLimit, version: 1}
+      - {id: concertmirror08464.sberThermMinHeatLimit, version: 1}
+      - {id: concertmirror08464.sberThermMaxHeatLimit, version: 1}
+      - {id: concertmirror08464.sberThermClearSchedule, version: 1}
+      - {id: concertmirror08464.sberThermSundaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermMondaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermTuesdaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermWednesdaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermThursdaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermFridaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermSaturdaySchedule, version: 1}
+      - {id: concertmirror08464.sberThermMinLocalTemperature, version: 1}
+      - {id: concertmirror08464.sberThermMaxLocalTemperature, version: 1}
+      - {id: concertmirror08464.sberThermHeatingHysteresis, version: 1}
+      - {id: concertmirror08464.sberThermRemoteTemperature, version: 1}
+      - {id: concertmirror08464.sberThermRemoteCalibration, version: 1}
+      - {id: concertmirror08464.sberThermRemoteSensorTimeout, version: 1}
+      - {id: concertmirror08464.sberThermSensorType, version: 1}
+      - {id: concertmirror08464.sberThermSensorMode, version: 1}
+      - {id: concertmirror08464.sberThermOutputMode, version: 1}
+      - {id: concertmirror08464.sberThermDeviceTemperature, version: 1}
+      - {id: concertmirror08464.sberThermWiredTemperature, version: 1}
+      - {id: concertmirror08464.sberThermUpperCurrentThreshold, version: 1}
+      - {id: concertmirror08464.sberThermTemperatureThreshold, version: 1}
+      - {id: concertmirror08464.sberThermBrightnessOperations, version: 1}
+      - {id: concertmirror08464.sberThermBrightnessSteady, version: 1}
+      - {id: concertmirror08464.sberThermIdentify, version: 1}
+      - {id: concertmirror08464.sberThermRtcUnavailable, version: 1}
+      - {id: concertmirror08464.sberThermRtcDataNotVaild, version: 1}
+      - {id: concertmirror08464.sberThermSerialNumber, version: 1}
+      - {id: concertmirror08464.sberThermResetsCount, version: 1}
+      - {id: concertmirror08464.sberThermUptime, version: 1}
+      - {id: concertmirror08464.sberThermButtonClicksOne, version: 1}
+      - {id: concertmirror08464.sberThermButtonClicksTwo, version: 1}
+      - {id: concertmirror08464.sberThermButtonClicksThree, version: 1}
+      - {id: concertmirror08464.sberThermRelaySwitchesOne, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Thermostat

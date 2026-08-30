@@ -1,0 +1,20 @@
+name: controllers-easyiot-rs232
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.easyiotRs232LastReceivedCommand
+        version: 1
+      - id: concertmirror08464.easyiotRs232SendCommand
+        version: 1
+      - id: concertmirror08464.easyiotRs232BaudRate
+        version: 1
+      - id: concertmirror08464.easyiotRs232Parity
+        version: 1
+      - id: concertmirror08464.easyiotRs232StopBits
+        version: 1
+      - id: firmwareUpdate
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

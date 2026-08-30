@@ -1,0 +1,81 @@
+name: sensors-shelly-presence-gen4
+components:
+  - id: main
+    capabilities:
+      - {id: occupancySensor, version: 1}
+      - {id: concertmirror08464.shellyPresenceLightLevel, version: 1}
+      - {id: concertmirror08464.shellyPresenceDarkThreshold, version: 1}
+      - {id: concertmirror08464.shellyPresenceBrightThreshold, version: 1}
+      - {id: concertmirror08464.shellyPresencePresenceDelay, version: 1}
+      - {id: concertmirror08464.shellyPresenceAbsenceDelay, version: 1}
+      - {id: concertmirror08464.shellyPresenceInstallationHeight, version: 1}
+      - {id: concertmirror08464.shellyPresenceSensorPosition, version: 1}
+      - {id: concertmirror08464.shellyPresenceSensorFlipped, version: 1}
+      - {id: concertmirror08464.shellyPresenceSensitivity, version: 1}
+      - {id: concertmirror08464.shellyPresenceRadarPower, version: 1}
+      - {id: concertmirror08464.shellyPresenceMinimumRange, version: 1}
+      - {id: concertmirror08464.shellyPresenceMaximumRange, version: 1}
+      - {id: concertmirror08464.shellyPresenceTrackedObjects, version: 1}
+      - {id: concertmirror08464.shellyPresenceLedBrightness, version: 1}
+      - {id: concertmirror08464.shellyPresenceNightMode, version: 1}
+      - {id: concertmirror08464.shellyPresenceNightBrightness, version: 1}
+      - {id: concertmirror08464.shellyPresenceDetectionPoints, version: 1}
+      - {id: concertmirror08464.shellyPresenceVelocityThreshold, version: 1}
+      - {id: concertmirror08464.shellyPresenceSnrThreshold, version: 1}
+      - {id: concertmirror08464.shellyPresenceMaxVelocityDiff, version: 1}
+      - {id: concertmirror08464.shellyPresenceMotionActThreshold, version: 1}
+      - {id: concertmirror08464.shellyPresenceMotionRelThreshold, version: 1}
+      - {id: concertmirror08464.shellyPresenceTrackingLoss, version: 1}
+      - {id: concertmirror08464.shellyPresenceStillTrackLimit, version: 1}
+      - {id: concertmirror08464.shellyPresenceStillTimeoutLimit, version: 1}
+      - {id: concertmirror08464.shellyPresenceEcoMode, version: 1}
+      - {id: concertmirror08464.shellyPresenceIdentify, version: 1}
+      - {id: concertmirror08464.shellyPresenceWifiStatus, version: 1}
+      - {id: concertmirror08464.shellyPresenceIpAddress, version: 1}
+      - {id: concertmirror08464.shellyPresenceDhcpEnabled, version: 1}
+      - {id: concertmirror08464.shellyPresenceWifiEnabled, version: 1}
+      - {id: concertmirror08464.shellyPresenceWifiSsid, version: 1}
+      - {id: concertmirror08464.shellyPresenceWifiPassword, version: 1}
+      - {id: concertmirror08464.shellyPresenceStaticIp, version: 1}
+      - {id: concertmirror08464.shellyPresenceNetMask, version: 1}
+      - {id: concertmirror08464.shellyPresenceGateway, version: 1}
+      - {id: concertmirror08464.shellyPresenceNameServer, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: PresenceSensor
+  - id: person2
+    label: Tracked person 2
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person3
+    label: Tracked person 3
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person4
+    label: Tracked person 4
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person5
+    label: Tracked person 5
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person6
+    label: Tracked person 6
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person7
+    label: Tracked person 7
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person8
+    label: Tracked person 8
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person9
+    label: Tracked person 9
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]
+  - id: person10
+    label: Tracked person 10
+    capabilities: [{id: occupancySensor, version: 1}]
+    categories: [{name: PresenceSensor}]

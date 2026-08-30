@@ -1,12 +1,12 @@
 {
   "common_root_files": [
-    "init.lua",
-    "registry.lua",
-    "emitters.lua"
+    "init.lua"
   ],
   "common_dirs": [
     "app",
-    "core"
+    "core",
+    "protocol",
+    "runtime"
   ],
   "packages": [
     {
@@ -14,12 +14,23 @@
       "display_name": "ZCL Switch wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports ZCL switches, plugs, DIN rail relays, and valve-like devices.",
       "protocol": "zcl",
-      "modules": [
-        "switches",
-        "din_rail",
-        "valves",
-        "retail_switches",
-        "easyiot"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.switches",
+          "id": "zcl.switches"
+        }
+      ]
+    },
+    {
+      "name": "zcl-easyiot-wonjj6768",
+      "display_name": "ZCL EasyIoT wonjj6768",
+      "description": "Development driver; report issues with hub logcat. Supports EasyIoT IR, TTS, serial, lock, and occupancy controllers.",
+      "protocol": "zcl",
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.switches.easyiot_absorption",
+          "id": "zcl.easyiot.absorption"
+        }
       ]
     },
     {
@@ -27,8 +38,11 @@
       "display_name": "ZCL Plugs wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports ZCL plugs, metered outlets, and power strips.",
       "protocol": "zcl",
-      "modules": [
-        "plugs"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.plugs",
+          "id": "zcl.plugs"
+        }
       ]
     },
     {
@@ -36,14 +50,11 @@
       "display_name": "ZCL Lights wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports ZCL lights, dimmers, light controllers, and fan devices.",
       "protocol": "zcl",
-      "modules": [
-        "lights",
-        "dimmers",
-        "miboxer_light_controllers",
-        "fans",
-        "retail_lights",
-        "ikea_retail",
-        "schneider_retail"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.lights",
+          "id": "zcl.lights"
+        }
       ]
     },
     {
@@ -51,15 +62,11 @@
       "display_name": "ZCL Sensors wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.",
       "protocol": "zcl",
-      "modules": [
-        "sensors",
-        "safety",
-        "sirens",
-        "repeaters",
-        "thermostats",
-        "retail_sensors",
-        "aqara_lumi",
-        "shelly_retail"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.sensors",
+          "id": "zcl.sensors"
+        }
       ]
     },
     {
@@ -67,9 +74,11 @@
       "display_name": "ZCL Covers wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports ZCL curtains, blinds, shades, and cover controllers.",
       "protocol": "zcl",
-      "modules": [
-        "covers",
-        "retail_covers"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.covers",
+          "id": "zcl.covers"
+        }
       ]
     },
     {
@@ -77,16 +86,11 @@
       "display_name": "ZCL Controls wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.",
       "protocol": "zcl",
-      "modules": [
-        "remotes",
-        "advanced_remotes",
-        "scene_remotes",
-        "excellux_scene_switches",
-        "security_remotes",
-        "doorbell_buttons",
-        "dimming_remotes",
-        "scene_switches",
-        "ir_controllers"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.controls",
+          "id": "zcl.controls"
+        }
       ]
     },
     {
@@ -94,8 +98,11 @@
       "display_name": "EF00 Controls wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 scene remotes and button controllers.",
       "protocol": "ef00",
-      "modules": [
-        "scene_remotes"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.controls",
+          "id": "ef00.controls"
+        }
       ]
     },
     {
@@ -103,8 +110,11 @@
       "display_name": "EF00 Covers wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 curtains, blinds, shades, and cover motors.",
       "protocol": "ef00",
-      "modules": [
-        "covers"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.covers",
+          "id": "ef00.covers"
+        }
       ]
     },
     {
@@ -112,9 +122,11 @@
       "display_name": "EF00 Lights wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 dimmers, LED drivers, and lighting devices.",
       "protocol": "ef00",
-      "modules": [
-        "fans",
-        "lights"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.lights",
+          "id": "ef00.lights"
+        }
       ]
     },
     {
@@ -122,12 +134,11 @@
       "display_name": "EF00 Switch wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 relay switches and plugs.",
       "protocol": "ef00",
-      "modules": [
-        "switches_basic"
-      ],
-      "include_device_files": [
-        "switches_split.lua",
-        "switches.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.switch_basic",
+          "id": "ef00.switch.basic"
+        }
       ]
     },
     {
@@ -135,12 +146,11 @@
       "display_name": "EF00 Switch Panel wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 touch panel and scene panel switches.",
       "protocol": "ef00",
-      "modules": [
-        "switches_panel"
-      ],
-      "include_device_files": [
-        "switches_split.lua",
-        "switches.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.switch_panel",
+          "id": "ef00.switch.panel"
+        }
       ]
     },
     {
@@ -148,8 +158,11 @@
       "display_name": "EF00 Screen Switch wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 screen switch panels.",
       "protocol": "ef00",
-      "modules": [
-        "screen_switches"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.screen_switches",
+          "id": "ef00.screen_switches"
+        }
       ]
     },
     {
@@ -157,8 +170,11 @@
       "display_name": "EF00 Garage Door wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 garage door openers.",
       "protocol": "ef00",
-      "modules": [
-        "garage_doors"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.garage_doors",
+          "id": "ef00.garage_doors"
+        }
       ]
     },
     {
@@ -166,12 +182,11 @@
       "display_name": "EF00 Energy wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 DIN rail breakers and switching energy meters.",
       "protocol": "ef00",
-      "modules": [
-        "energy"
-      ],
-      "include_device_files": [
-        "din_rail_split.lua",
-        "din_rail.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.din_rail.energy",
+          "id": "ef00.din_rail.energy"
+        }
       ]
     },
     {
@@ -179,12 +194,11 @@
       "display_name": "EF00 Meters wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 single, two and three phase energy meters.",
       "protocol": "ef00",
-      "modules": [
-        "meters"
-      ],
-      "include_device_files": [
-        "din_rail_split.lua",
-        "din_rail.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.din_rail.meters",
+          "id": "ef00.din_rail.meters"
+        }
       ]
     },
     {
@@ -192,8 +206,11 @@
       "display_name": "EF00 Sensors wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 temperature, humidity, illuminance, air quality, pressure, and soil sensors.",
       "protocol": "ef00",
-      "modules": [
-        "sensors"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.sensors",
+          "id": "ef00.sensors"
+        }
       ]
     },
     {
@@ -201,11 +218,11 @@
       "display_name": "EF00 PIR Motion wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 PIR motion sensors.",
       "protocol": "ef00",
-      "modules": [
-        "motion_pir"
-      ],
-      "include_device_files": [
-        "motion/pir.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.motion_pir",
+          "id": "ef00.motion_pir"
+        }
       ]
     },
     {
@@ -213,13 +230,11 @@
       "display_name": "EF00 Presence General 1 wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 1 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
-      "modules": [
-        "presence_general_1"
-      ],
-      "include_device_files": [
-        "motion/presence.lua",
-        "presence_general_split.lua",
-        "presence_general.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.presence.general_1",
+          "id": "ef00.presence.general.1"
+        }
       ]
     },
     {
@@ -227,13 +242,11 @@
       "display_name": "EF00 Presence General 2 wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports general EF00 presence, radar and mmWave sensors (group 2 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
-      "modules": [
-        "presence_general_2"
-      ],
-      "include_device_files": [
-        "motion/presence.lua",
-        "presence_general_split.lua",
-        "presence_general.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.presence.general_2",
+          "id": "ef00.presence.general.2"
+        }
       ]
     },
     {
@@ -241,11 +254,11 @@
       "display_name": "EF00 Presence Switch wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 presence sensors with switch endpoints.",
       "protocol": "ef00",
-      "modules": [
-        "presence_switch"
-      ],
-      "include_device_files": [
-        "motion/presence.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.presence.switch",
+          "id": "ef00.presence.switch"
+        }
       ]
     },
     {
@@ -253,11 +266,11 @@
       "display_name": "EF00 Presence Advanced wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports advanced EF00 presence, radar, and mmWave sensors.",
       "protocol": "ef00",
-      "modules": [
-        "presence_advanced"
-      ],
-      "include_device_files": [
-        "motion/presence.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.presence.advanced",
+          "id": "ef00.presence.advanced"
+        }
       ]
     },
     {
@@ -265,9 +278,11 @@
       "display_name": "EF00 Safety wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.",
       "protocol": "ef00",
-      "modules": [
-        "safety",
-        "excellux_safety"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.safety",
+          "id": "ef00.safety"
+        }
       ]
     },
     {
@@ -275,8 +290,11 @@
       "display_name": "EF00 Valves wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 water valves, gas valves, and irrigation controllers.",
       "protocol": "ef00",
-      "modules": [
-        "valves"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.valves",
+          "id": "ef00.valves"
+        }
       ]
     },
     {
@@ -284,13 +302,11 @@
       "display_name": "EF00 Thermostat TRV 1 wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 1 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
-      "modules": [
-        "thermostats_trv_1"
-      ],
-      "include_device_files": [
-        "thermostats/trv_split.lua",
-        "thermostats/trv.lua",
-        "thermostats/metadata.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.thermostats.trv_1",
+          "id": "ef00.thermostats.trv_1"
+        }
       ]
     },
     {
@@ -298,13 +314,11 @@
       "display_name": "EF00 Thermostat TRV 2 wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 2 of 2). See the README fingerprint table for the exact device list.",
       "protocol": "ef00",
-      "modules": [
-        "thermostats_trv_2"
-      ],
-      "include_device_files": [
-        "thermostats/trv_split.lua",
-        "thermostats/trv.lua",
-        "thermostats/metadata.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.thermostats.trv_2",
+          "id": "ef00.thermostats.trv_2"
+        }
       ]
     },
     {
@@ -312,12 +326,11 @@
       "display_name": "EF00 Thermostat Wall wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 wall and floor thermostats.",
       "protocol": "ef00",
-      "modules": [
-        "thermostats_wall"
-      ],
-      "include_device_files": [
-        "thermostats/wall.lua",
-        "thermostats/metadata.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.thermostats.wall",
+          "id": "ef00.thermostats.wall"
+        }
       ]
     },
     {
@@ -325,12 +338,529 @@
       "display_name": "EF00 Thermostat FCU wonjj6768",
       "description": "Development driver; report issues with hub logcat. Supports EF00 fan coil unit and legacy thermostats.",
       "protocol": "ef00",
-      "modules": [
-        "thermostats_fcu"
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.thermostats.fcu",
+          "id": "ef00.thermostats.fcu"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.legacy",
+          "id": "ef00.thermostats.legacy"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-switch-wonjj6768",
+      "display_name": "Z2M ZCL Switch Category wonjj6768",
+      "description": "Category driver for newly absorbed exact ZCL switch fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.switches.z2m_absorption",
+          "id": "zcl.switches.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.zcl.switches.shelly_em",
+          "id": "zcl.switches.shelly_em"
+        },
+        {
+          "module": "contracts.families.zcl.switches.wave14_sber_zcl",
+          "id": "wave14.sber.zcl_switches"
+        },
+        {
+          "module": "contracts.families.zcl.switches.wave14_terncy_zcl",
+          "id": "wave14.terncy.zcl_switch"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-lights-wonjj6768",
+      "display_name": "Z2M ZCL Lights Category wonjj6768",
+      "description": "Category driver for newly absorbed exact ZCL light fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.lights.z2m_absorption",
+          "id": "zcl.lights.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.zcl.lights.shelly_dimmer",
+          "id": "zcl.lights.shelly_dimmer"
+        },
+        {
+          "module": "contracts.families.zcl.lights.wave19_exact_aliases",
+          "id": "zcl.lights.wave19_exact_aliases"
+        },
+        {
+          "module": "contracts.families.zcl.lights.wave19_exact",
+          "id": "zcl.lights.wave19.exact"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-sensors-wonjj6768",
+      "display_name": "Z2M ZCL Sensors Category wonjj6768",
+      "description": "Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.sensors.z2m_absorption",
+          "id": "zcl.sensors.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.wave19_exact_aliases",
+          "id": "zcl.sensors.wave19_exact_aliases"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.wave19_environment",
+          "id": "zcl.sensors.wave19_environment"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.wave19_smoke",
+          "id": "zcl.sensors.wave19_smoke"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.wave19_vibration",
+          "id": "zcl.sensors.wave19_vibration"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-controls-wonjj6768",
+      "display_name": "Z2M ZCL Controls Category wonjj6768",
+      "description": "Category driver for newly absorbed exact ZCL remote and control fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.controls.z2m_absorption",
+          "id": "zcl.controls.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.zcl.controls.jethome",
+          "id": "zcl.controls.jethome"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-locks-wonjj6768",
+      "display_name": "Z2M ZCL Locks wonjj6768",
+      "description": "Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive handling.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.controls.wave18_javis_lock",
+          "id": "zcl.controls.wave18_javis_lock"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-bridge-wonjj6768",
+      "display_name": "Z2M ZCL Bridge wonjj6768",
+      "description": "Dedicated driver for newly absorbed exact ZCL bridge fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.bridges_wave19",
+          "id": "zcl.bridges.wave19"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-thermostat-wonjj6768",
+      "display_name": "Z2M ZCL Thermostat wonjj6768",
+      "description": "Category driver for newly absorbed exact ZCL HVAC and thermostat fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.sensors.wave19_hvac",
+          "id": "zcl.sensors.wave19_hvac"
+        },
+        {
+          "module": "contracts.families.zcl.thermostats.wave19_sber",
+          "id": "zcl.thermostats.wave19.sber"
+        }
+      ]
+    },
+    {
+      "name": "z2m-zcl-dali-wonjj6768",
+      "display_name": "Z2M ZCL DALI wonjj6768",
+      "description": "Dedicated driver for newly absorbed exact ZCL DALI fingerprints and dynamic endpoint children.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [
+        "dynamic_endpoint_children"
       ],
-      "include_device_files": [
-        "thermostats/fcu.lua",
-        "thermostats/legacy.lua"
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.lights.wave19_dali",
+          "id": "zcl.lights.wave19_dali"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-covers-wonjj6768",
+      "display_name": "Z2M EF00 Covers Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 cover fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.covers.z2m_absorption",
+          "id": "ef00.covers.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.covers.wave10",
+          "id": "ef00.covers.wave10"
+        },
+        {
+          "module": "contracts.families.ef00.covers.wave15",
+          "id": "ef00.covers.wave15"
+        },
+        {
+          "module": "contracts.families.ef00.covers.wave19_legacy",
+          "id": "ef00.covers.wave19_legacy"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-lights-wonjj6768",
+      "display_name": "Z2M EF00 Lights Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 light and dimmer fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.lights.z2m_absorption",
+          "id": "ef00.lights.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.moes_zs_d1",
+          "id": "moes.zs_d1"
+        },
+        {
+          "module": "contracts.families.ef00.moes_zs_d2",
+          "id": "moes.zs_d2"
+        },
+        {
+          "module": "contracts.families.ef00.moes_zs_d3",
+          "id": "moes.zs_d3"
+        },
+        {
+          "module": "contracts.families.ef00.lights.wave15_gledopto",
+          "id": "ef00.lights.wave15_gledopto"
+        },
+        {
+          "module": "contracts.families.ef00.lights.wave19_exact",
+          "id": "ef00.lights.wave19.exact"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-switch-wonjj6768",
+      "display_name": "Z2M EF00 Switch Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 switch, panel, and screen-switch fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.switch_basic_z2m_absorption",
+          "id": "ef00.switch.basic.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.switch_panel_z2m_absorption",
+          "id": "ef00.switch.panel.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.switch_star_feather",
+          "id": "ef00.switch.star_feather"
+        },
+        {
+          "module": "contracts.families.ef00.screen_switch_z2m_absorption",
+          "id": "ef00.screen_switch.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.switches.wave13_avatto",
+          "id": "ef00.switches.wave13.avatto"
+        },
+        {
+          "module": "contracts.families.ef00.switches.wave13_box",
+          "id": "ef00.switches.wave13.box"
+        },
+        {
+          "module": "contracts.families.ef00.switches.wave13_manhot",
+          "id": "ef00.switches.wave13.manhot"
+        },
+        {
+          "module": "contracts.families.ef00.switches.wave13_nova_semicom",
+          "id": "ef00.switches.wave13.nova_semicom"
+        },
+        {
+          "module": "contracts.families.ef00.switches.wave14_qa",
+          "id": "wave14.qa.legacy_switches"
+        },
+        {
+          "module": "contracts.families.ef00.switches.wave15_box",
+          "id": "ef00.switches.wave15_box"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-meters-wonjj6768",
+      "display_name": "Z2M EF00 Meters Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 meter and energy fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.din_rail.meters_z2m_absorption",
+          "id": "ef00.din_rail.meters.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.din_rail.wave19_energy",
+          "id": "ef00.din_rail.wave19_energy"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-sensors-wonjj6768",
+      "display_name": "Z2M EF00 Sensors Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 environment and sensor fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.sensors.z2m_absorption",
+          "id": "ef00.sensors.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.sensors.wave16_excellux",
+          "id": "ef00.sensors.wave16_excellux"
+        },
+        {
+          "module": "contracts.families.ef00.sensors.wave16_lincukoo_air",
+          "id": "ef00.sensors.wave16_lincukoo_air"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-presence-wonjj6768",
+      "display_name": "Z2M EF00 Presence Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 presence and mmWave fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.presence.z2m_absorption",
+          "id": "ef00.presence.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.presence.wave11_general_1",
+          "id": "ef00.presence.wave11.general.1"
+        },
+        {
+          "module": "contracts.families.ef00.presence.wave11_general_2",
+          "id": "ef00.presence.wave11.general.2"
+        },
+        {
+          "module": "contracts.families.ef00.presence.wave11_switch",
+          "id": "ef00.presence.wave11.switch"
+        },
+        {
+          "module": "contracts.families.ef00.presence.wave11_advanced",
+          "id": "ef00.presence.wave11.advanced"
+        },
+        {
+          "module": "contracts.families.ef00.presence.wave19_sensors",
+          "id": "ef00.presence.wave19.sensors"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-safety-wonjj6768",
+      "display_name": "Z2M EF00 Safety Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.safety.z2m_absorption",
+          "id": "ef00.safety.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.safety_neo_nas_ab06b2",
+          "id": "neo.nas_ab06b2"
+        },
+        {
+          "module": "contracts.families.ef00.safety_tuya_vibration_alarm",
+          "id": "tuya.vibration_alarm"
+        },
+        {
+          "module": "contracts.families.ef00.safety_neo_nas_ab02b2",
+          "id": "neo.nas_ab02b2"
+        },
+        {
+          "module": "contracts.families.ef00.safety_lincukoo_w04_z10t",
+          "id": "lincukoo.w04_z10t"
+        },
+        {
+          "module": "contracts.families.ef00.safety_nous_e12",
+          "id": "nous.e12"
+        },
+        {
+          "module": "contracts.families.ef00.safety.wave15_lincukoo",
+          "id": "ef00.safety.wave15_lincukoo"
+        },
+        {
+          "module": "contracts.families.ef00.safety.wave16_lincukoo_siren",
+          "id": "ef00.safety.wave16_lincukoo_siren"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-valves-wonjj6768",
+      "display_name": "Z2M EF00 Valves Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 irrigation and water-valve fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.valves.z2m_absorption",
+          "id": "ef00.valves.z2m_absorption"
+        },
+        {
+          "module": "contracts.families.ef00.valves.neo_nas_wv03b2",
+          "id": "neo.nas_wv03b2"
+        },
+        {
+          "module": "contracts.families.ef00.valves.qoto_qt05m",
+          "id": "qoto.qt_05m"
+        },
+        {
+          "module": "contracts.families.ef00.valves.wave19",
+          "id": "ef00.valves.wave19"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-thermo-trv-wonjj6768",
+      "display_name": "Z2M EF00 Thermostat TRV wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 TRV fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.thermostats.wave6a_trv",
+          "id": "ef00.thermostats.wave6a_trv"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave9_mazda",
+          "id": "ef00.thermostats.wave9_mazda"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave9_legacy",
+          "id": "ef00.thermostats.wave9_legacy"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave12_trv",
+          "id": "ef00.thermostats.wave12_trv"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave19_exact_aliases",
+          "id": "ef00.thermostats.wave19_exact_aliases"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave15_trv",
+          "id": "ef00.thermostats.wave15_trv"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave19_exact",
+          "id": "ef00.thermostats.wave19.exact"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-thermo-hvac-wonjj6768",
+      "display_name": "Z2M EF00 Thermostat Wall FCU wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 wall thermostat and FCU fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.thermostats.wave6a_wall",
+          "id": "ef00.thermostats.wave6a_wall"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave12_wall",
+          "id": "ef00.thermostats.wave12_wall"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.wave12_fcu",
+          "id": "ef00.thermostats.wave12_fcu"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-controls-wonjj6768",
+      "display_name": "Z2M EF00 Controls Category wonjj6768",
+      "description": "Category driver for newly absorbed exact EF00 remotes, keypads, and button-control fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.controls.wave15_engo",
+          "id": "ef00.controls.wave15_engo"
+        },
+        {
+          "module": "contracts.families.ef00.controls.wave17_fingerbot",
+          "id": "ef00.controls.wave17_fingerbot"
+        },
+        {
+          "module": "contracts.families.ef00.controls.wave18_keypads",
+          "id": "ef00.controls.wave18_keypads"
+        },
+        {
+          "module": "contracts.families.ef00.controls.wave19_remotes",
+          "id": "ef00.controls.wave19.remotes"
+        }
+      ]
+    },
+    {
+      "name": "z2m-ef00-bridge-wonjj6768",
+      "display_name": "Z2M EF00 Bridge wonjj6768",
+      "description": "Dedicated driver for newly absorbed exact EF00 bridge fingerprints.",
+      "protocol": "ef00",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.ef00.bridges_wave19",
+          "id": "ef00.bridges.wave19"
+        }
       ]
     }
   ]

@@ -1,0 +1,16 @@
+name: lights-wave19-nova-topazio
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.novaTopazioMinBrightness, version: 1}
+      - {id: concertmirror08464.novaTopazioMaxBrightness, version: 1}
+      - {id: concertmirror08464.novaTopazioLightType, version: 1}
+      - {id: concertmirror08464.novaTopazioPowerBehavior, version: 1}
+      - {id: concertmirror08464.novaTopazioIndicatorMode, version: 1}
+      - {id: concertmirror08464.novaTopazioBacklight, version: 1}
+      - {id: concertmirror08464.novaTopazioCountdown, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light

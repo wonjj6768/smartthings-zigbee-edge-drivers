@@ -1,0 +1,16 @@
+name: controls-wave19-tuya-presence-switch
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.tuyaPsOneCountdown, version: 1}
+      - {id: concertmirror08464.tuyaPsOneRelayStatus, version: 1}
+      - {id: concertmirror08464.tuyaPsOneLightMode, version: 1}
+      - {id: concertmirror08464.tuyaPsOneDelaysTime, version: 1}
+      - {id: concertmirror08464.tuyaPsOneSensitivity, version: 1}
+      - {id: concertmirror08464.tuyaPsOneTurnOnPerson, version: 1}
+      - {id: concertmirror08464.tuyaPsOneTurnOffPerson, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

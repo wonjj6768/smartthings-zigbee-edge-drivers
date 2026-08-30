@@ -1,0 +1,20 @@
+name: switches-presence-wave11-tuya-2gang
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoCountdownOne, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoCountdownTwo, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoRelayStatus, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoLightMode, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoDelaysTime, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoSensitivity, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoTurnOnPerson, version: 1}
+      - {id: concertmirror08464.tuyaPsTwoTurnOffPerson, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]

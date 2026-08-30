@@ -1,0 +1,15 @@
+name: safety-wave15-lincukoo-e04cf-z10t
+components:
+  - id: main
+    capabilities:
+      - {id: gasDetector, version: 1}
+      - {id: carbonMonoxideDetector, version: 1}
+      - {id: carbonMonoxideMeasurement, version: 1}
+      - {id: concertmirror08464.eFourGasLevel, version: 1}
+      - {id: concertmirror08464.eFourMaxGasAlarm, version: 1}
+      - {id: concertmirror08464.eFourMaxCoAlarm, version: 1}
+      - {id: concertmirror08464.eFourSelfChecking, version: 1}
+      - {id: concertmirror08464.eFourCheckingResult, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: GenericSensor

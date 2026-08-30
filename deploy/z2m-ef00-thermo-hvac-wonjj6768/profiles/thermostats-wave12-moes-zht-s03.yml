@@ -1,0 +1,18 @@
+name: thermostats-wave12-moes-zht-s03
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeChildLock, version: 1}
+      - {id: concertmirror08464.moesZhtSthreePreset, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeTempCalibration, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeTemperatureDelta, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeWorkingDay, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeScheduleWeekday, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeScheduleHoliday, version: 1}
+      - {id: concertmirror08464.moesZhtSthreeFrostProtection, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

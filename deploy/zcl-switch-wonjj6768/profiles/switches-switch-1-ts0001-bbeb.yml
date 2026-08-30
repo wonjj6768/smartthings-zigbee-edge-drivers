@@ -5,7 +5,7 @@ components:
       - {id: switch, version: 1}
       - {id: concertmirror08464.ts0001BbebPowerOnBehavior, version: 1}
       - {id: concertmirror08464.ts0001BbebBacklightMode, version: 1}
-      - {id: concertmirror08464.ts0001BbebIndicatorMode, version: 1}
+      - {id: concertmirror08464.ts0001BbebIndicatorPattern, version: 1}
       - {id: refresh, version: 1}
     categories:
       - name: Switch

@@ -24,12 +24,14 @@ local function load_base_preset(tuya, shared)
     "query_on_announce",
     "announce_delay",
     "query_command_id",
+    "announce_handler",
   }
 
   local message_option_keys = {
     "config_queue",
     "queue_delay",
     "time_handler",
+    "force_time_updates",
     "auto_time",
     "time_offset",
     "time_start",
@@ -88,9 +90,35 @@ local function load_base_preset(tuya, shared)
     return normalized
   end
 
+  local function merge_named_mapping_overrides(datapoints, named_mappings)
+    if type_check(datapoints) ~= "table" or
+       type_check(named_mappings) ~= "table" or
+       named_mappings[1] ~= nil then
+      return named_mappings
+    end
+
+    local has_named_override = false
+    for key, _ in pairs(named_mappings) do
+      if type_check(key) == "string" then
+        has_named_override = true
+        break
+      end
+    end
+
+    if not has_named_override then
+      return named_mappings
+    end
+
+    local merged = copy_table(datapoints)
+    for key, mapping in pairs(named_mappings) do
+      merged[key] = mapping
+    end
+    return merged
+  end
+
   local function resolve_named_mappings(named_mapping_options, datapoints)
     if named_mapping_options.named_mappings ~= nil then
-      return named_mapping_options.named_mappings
+      return merge_named_mapping_overrides(datapoints, named_mapping_options.named_mappings)
     end
 
     if named_mapping_options.named_datapoints ~= nil then
@@ -192,6 +220,14 @@ local function load_base_preset(tuya, shared)
     local named_mappings_by_name = nil
     if type_check(named_mappings) == "table" then
       named_mappings_by_name = tuya.build_named_map(named_mappings, "name")
+      -- A keyed writer is an intentional override for the same-name datapoint.
+      -- Reapply it after indexing so pairs() iteration order cannot select the
+      -- receive mapping instead of the custom multi-frame writer.
+      for key, mapping in pairs(named_mappings) do
+        if type_check(key) == "string" then
+          named_mappings_by_name[key] = mapping
+        end
+      end
     end
 
     local configure_options = copy_table(options.configure)

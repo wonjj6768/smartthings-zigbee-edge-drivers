@@ -1,0 +1,36 @@
+name: safety-alarm-neo-nas-ab02b2
+components:
+  - id: main
+    capabilities:
+      - {id: alarm, version: 1}
+      - {id: concertmirror08464.neoAbTwoMelody, version: 1}
+      - {id: concertmirror08464.neoAbTwoDuration, version: 1}
+      - {id: concertmirror08464.neoAbTwoVolume, version: 1}
+      - {id: battery, version: 1}
+    categories: [{name: Siren}]
+deviceConfig:
+  dashboard:
+    states:
+      - {component: main, capability: alarm, version: 1, group: main}
+      - {component: main, capability: battery, version: 1, group: main}
+    actions:
+      - {component: main, capability: alarm, version: 1, group: main}
+    basicPlus: []
+  detailView:
+    - {component: main, capability: alarm, version: 1}
+    - {component: main, capability: concertmirror08464.neoAbTwoMelody, version: 1}
+    - {component: main, capability: concertmirror08464.neoAbTwoDuration, version: 1}
+    - {component: main, capability: concertmirror08464.neoAbTwoVolume, version: 1}
+    - {component: main, capability: battery, version: 1}
+  automation:
+    conditions:
+      - {component: main, capability: alarm, version: 1}
+      - {component: main, capability: concertmirror08464.neoAbTwoMelody, version: 1}
+      - {component: main, capability: concertmirror08464.neoAbTwoDuration, version: 1}
+      - {component: main, capability: concertmirror08464.neoAbTwoVolume, version: 1}
+      - {component: main, capability: battery, version: 1}
+    actions:
+      - {component: main, capability: alarm, version: 1}
+      - {component: main, capability: concertmirror08464.neoAbTwoMelody, version: 1}
+      - {component: main, capability: concertmirror08464.neoAbTwoDuration, version: 1}
+      - {component: main, capability: concertmirror08464.neoAbTwoVolume, version: 1}

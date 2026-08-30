@@ -1,0 +1,25 @@
+name: switches-wave13-nova-to-wk-one
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.novaOneCountdownOne, version: 1}
+      - {id: concertmirror08464.novaOneCountdownTwo, version: 1}
+      - {id: concertmirror08464.novaOnePowerOnBehavior, version: 1}
+      - {id: concertmirror08464.novaOneIndicatorMode, version: 1}
+      - {id: concertmirror08464.novaOneBacklightSwitch, version: 1}
+      - {id: concertmirror08464.novaOneInchingOne, version: 1}
+      - {id: concertmirror08464.novaOneInduction, version: 1}
+      - {id: concertmirror08464.novaOneVibration, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch

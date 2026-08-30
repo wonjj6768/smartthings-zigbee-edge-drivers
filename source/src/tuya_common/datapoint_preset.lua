@@ -1,4 +1,5 @@
-local function load_datapoint_preset(tuya, shared)
+local function load_datapoint_preset(tuya, shared, emit)
+  emit = emit or { switch = function() return nil end }
   local type_check = shared.type_check
   local table_insert = shared.table_insert
   local tonumber_check = shared.tonumber_check
@@ -798,7 +799,11 @@ local function load_datapoint_preset(tuya, shared)
   end
 
   function tuya.dp_on_off(dp, name_or_options, options)
-    return tuya.dp_binary(dp, normalize_preset_options(name_or_options, options, "switch"))
+    local resolved = normalize_preset_options(name_or_options, options, "switch")
+    if resolved.name == "switch" and resolved.emit == nil then
+      resolved.emit = emit.switch()
+    end
+    return tuya.dp_binary(dp, resolved)
   end
 
   function tuya.dp_temperature(dp, name_or_options, options)

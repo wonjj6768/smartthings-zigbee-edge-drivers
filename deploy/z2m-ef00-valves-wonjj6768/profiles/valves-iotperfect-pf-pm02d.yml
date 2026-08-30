@@ -1,0 +1,47 @@
+name: valves-iotperfect-pf-pm02d
+components:
+  - id: main
+    capabilities:
+      - id: switch
+        version: 1
+      - id: hardwareFault
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: WaterValve
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+    actions:
+      - component: main
+        capability: switch
+        version: 1
+        group: main
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: switch
+      version: 1
+    - component: main
+      capability: hardwareFault
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: hardwareFault
+        version: 1
+    actions:
+      - component: main
+        capability: switch
+        version: 1

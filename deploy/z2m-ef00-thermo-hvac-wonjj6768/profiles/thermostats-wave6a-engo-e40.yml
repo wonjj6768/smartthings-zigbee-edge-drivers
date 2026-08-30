@@ -1,0 +1,36 @@
+name: thermostats-wave6a-engo-e40
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.engoEFortyPreset, version: 1}
+      - {id: concertmirror08464.engoEFortyTempCalibration, version: 1}
+      - {id: concertmirror08464.engoEFortyBacklight, version: 1}
+      - {id: concertmirror08464.engoEFortySensorError, version: 1}
+      - {id: concertmirror08464.engoEFortyChildLock, version: 1}
+      - {id: concertmirror08464.engoEFortyTempControlLocked, version: 1}
+      - {id: concertmirror08464.engoEFortyRelayMode, version: 1}
+      - {id: concertmirror08464.engoEFortySensorChoose, version: 1}
+      - {id: concertmirror08464.engoEFortyControlAlgorithm, version: 1}
+      - {id: concertmirror08464.engoEFortyFrostSet, version: 1}
+      - {id: concertmirror08464.engoEFortyValveProtection, version: 1}
+      - {id: concertmirror08464.engoEFortyComfortFloor, version: 1}
+      - {id: concertmirror08464.engoEFortyMaxTemperature, version: 1}
+      - {id: concertmirror08464.engoEFortyMinTemperature, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleMonday, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleTuesday, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleWednesday, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleThursday, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleFriday, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleSaturday, version: 1}
+      - {id: concertmirror08464.engoEFortyScheduleSunday, version: 1}
+      - {id: concertmirror08464.engoEFortyDeltaAlgorithm, version: 1}
+      - {id: concertmirror08464.engoEFortyDevicePairState, version: 1}
+      - {id: concertmirror08464.engoEFortyLatestFirmware, version: 1}
+      - {id: concertmirror08464.engoEFortyCurrentFirmware, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

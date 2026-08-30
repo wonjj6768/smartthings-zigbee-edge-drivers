@@ -1,0 +1,12 @@
+name: covers-wave10-moes-fwjzceh18a001
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.fwjzMotorDirection, version: 1}
+      - {id: concertmirror08464.fwjzCoverLimit, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind

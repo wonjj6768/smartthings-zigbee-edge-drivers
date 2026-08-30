@@ -1,0 +1,27 @@
+name: valves-wave19-frankever-fk-bv05
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.frankBvFiveThreshold, version: 1}
+      - {id: concertmirror08464.frankBvFivePosition, version: 1}
+      - {id: concertmirror08464.frankBvFiveWaterLast, version: 1}
+      - {id: concertmirror08464.frankBvFiveWaterTotal, version: 1}
+      - {id: concertmirror08464.frankBvFiveCountdown, version: 1}
+      - {id: concertmirror08464.frankBvFiveSingleLimitVolume, version: 1}
+      - {id: concertmirror08464.frankBvFiveDailyLimitVolume, version: 1}
+      - {id: concertmirror08464.frankBvFiveVolumeAlarm, version: 1}
+      - {id: concertmirror08464.frankBvFiveTempAlarmMax, version: 1}
+      - {id: concertmirror08464.frankBvFiveTempAlarmMin, version: 1}
+      - {id: concertmirror08464.frankBvFiveWeatherDelay, version: 1}
+      - {id: concertmirror08464.frankBvFiveLeakState, version: 1}
+      - {id: concertmirror08464.frankBvFiveSingleLimitEnabled, version: 1}
+      - {id: concertmirror08464.frankBvFiveDailyLimitEnabled, version: 1}
+      - {id: concertmirror08464.frankBvFiveVolumeAlarmEnabled, version: 1}
+      - {id: concertmirror08464.frankBvFiveTempAlarmEnabled, version: 1}
+      - {id: concertmirror08464.frankBvFivePowerOffState, version: 1}
+      - {id: concertmirror08464.frankBvFiveCreepEnabled, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: WaterValve

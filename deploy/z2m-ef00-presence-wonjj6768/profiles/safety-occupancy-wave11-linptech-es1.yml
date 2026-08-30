@@ -1,0 +1,15 @@
+name: safety-occupancy-wave11-linptech-es1
+components:
+  - id: main
+    capabilities:
+      - {id: occupancySensor, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: concertmirror08464.linptechEsOneTargetDistance, version: 1}
+      - {id: concertmirror08464.linptechEsOneMotionDistance, version: 1}
+      - {id: concertmirror08464.linptechEsOneKeepTime, version: 1}
+      - {id: concertmirror08464.linptechEsOneMotionSensitivity, version: 1}
+      - {id: concertmirror08464.linptechEsOneStaticSensitivity, version: 1}
+      - {id: concertmirror08464.linptechEsOneFadingTime, version: 1}
+      - {id: concertmirror08464.linptechEsOneLedIndicator, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: PresenceSensor}]

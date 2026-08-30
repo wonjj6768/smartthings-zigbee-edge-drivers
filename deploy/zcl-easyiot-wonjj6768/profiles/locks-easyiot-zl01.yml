@@ -1,0 +1,34 @@
+name: locks-easyiot-zl01
+components:
+  - id: main
+    capabilities:
+      - id: battery
+        version: 1
+      - id: concertmirror08464.easyiotZl01UnlockPin
+        version: 1
+      - id: concertmirror08464.easyiotZl01TimeoutDecimal
+        version: 1
+      - id: concertmirror08464.easyiotZl01TimeoutPin
+        version: 1
+      - id: concertmirror08464.easyiotZl01UnlockTimeout
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempStartDecimal
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempEndDecimal
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempUser
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempValid
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempPin
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempApply
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempClearUser
+        version: 1
+      - id: concertmirror08464.easyiotZl01TempClearAll
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: SmartLock

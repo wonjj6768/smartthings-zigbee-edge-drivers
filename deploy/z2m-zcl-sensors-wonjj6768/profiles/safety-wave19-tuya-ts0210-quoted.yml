@@ -1,0 +1,12 @@
+name: safety-wave19-tuya-ts0210-quoted
+components:
+  - id: main
+    capabilities:
+      - {id: accelerationSensor, version: 1}
+      - {id: tamperAlert, version: 1}
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.tuyaTs0210Sensitivity, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: MultiFunctionalSensor

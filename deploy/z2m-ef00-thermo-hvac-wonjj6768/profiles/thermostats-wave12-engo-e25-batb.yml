@@ -1,0 +1,33 @@
+name: thermostats-wave12-engo-e25-batb
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.engoE25BatbTempCalibration, version: 1}
+      - {id: concertmirror08464.engoE25BatbMaxTemperature, version: 1}
+      - {id: concertmirror08464.engoE25BatbMinTemperature, version: 1}
+      - {id: concertmirror08464.engoE25BatbChildLock, version: 1}
+      - {id: concertmirror08464.engoE25BatbBacklight, version: 1}
+      - {id: concertmirror08464.engoE25BatbPreset, version: 1}
+      - {id: concertmirror08464.engoE25BatbControlType, version: 1}
+      - {id: concertmirror08464.engoE25BatbDeltaAlgorithm, version: 1}
+      - {id: concertmirror08464.engoE25BatbPairState, version: 1}
+      - {id: concertmirror08464.engoE25BatbFrostSet, version: 1}
+      - {id: concertmirror08464.engoE25BatbValveProtection, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleMonday, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleTuesday, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleWednesday, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleThursday, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleFriday, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleSaturday, version: 1}
+      - {id: concertmirror08464.engoE25BatbScheduleSunday, version: 1}
+      - {id: concertmirror08464.engoE25BatbTrvWorkState, version: 1}
+      - {id: concertmirror08464.engoE25BatbLatestFirmware, version: 1}
+      - {id: concertmirror08464.engoE25BatbCurrentFirmware, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

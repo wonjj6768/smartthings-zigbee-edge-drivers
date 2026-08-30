@@ -1,0 +1,41 @@
+name: switches-wave13-manhot-mh03-4
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.mhFourCountdownOne, version: 1}
+      - {id: concertmirror08464.mhFourCountdownTwo, version: 1}
+      - {id: concertmirror08464.mhFourCountdownThree, version: 1}
+      - {id: concertmirror08464.mhFourCountdownFour, version: 1}
+      - {id: concertmirror08464.mhFourChildLock, version: 1}
+      - {id: concertmirror08464.mhFourBacklightSwitch, version: 1}
+      - {id: concertmirror08464.mhFourBacklightLightness, version: 1}
+      - {id: concertmirror08464.mhFourDisplayOffDelay, version: 1}
+      - {id: concertmirror08464.mhFourRelayStatus, version: 1}
+      - {id: concertmirror08464.mhFourLightMode, version: 1}
+      - {id: concertmirror08464.mhFourOnColor, version: 1}
+      - {id: concertmirror08464.mhFourOffColor, version: 1}
+      - {id: concertmirror08464.mhFourSwitchNameOne, version: 1}
+      - {id: concertmirror08464.mhFourSwitchNameTwo, version: 1}
+      - {id: concertmirror08464.mhFourSwitchNameThree, version: 1}
+      - {id: concertmirror08464.mhFourSwitchNameFour, version: 1}
+      - {id: concertmirror08464.mhFourPressOnFunction, version: 1}
+      - {id: concertmirror08464.mhFourPressOffFunction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch

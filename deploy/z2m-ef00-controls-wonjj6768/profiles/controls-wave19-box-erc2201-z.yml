@@ -1,0 +1,60 @@
+name: controls-wave19-box-erc2201-z
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: button, version: 1}
+      - {id: concertmirror08464.boxErcRecordRf, version: 1}
+      - {id: concertmirror08464.boxErcClearRf, version: 1}
+      - {id: concertmirror08464.boxErcRfStatus, version: 1}
+      - {id: concertmirror08464.boxErcRecordScene, version: 1}
+      - {id: concertmirror08464.boxErcClearScene, version: 1}
+      - {id: concertmirror08464.boxErcRfSceneStatus, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button2
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button3
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button4
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button5
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button6
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button7
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button8
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button9
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController
+  - id: button10
+    capabilities:
+      - {id: button, version: 1}
+    categories:
+      - name: RemoteController

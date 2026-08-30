@@ -1,0 +1,18 @@
+name: thermostats-wave12-essentials-trv
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.essentialsTrvChildLock, version: 1}
+      - {id: concertmirror08464.essentialsTrvTempCalibration, version: 1}
+      - {id: concertmirror08464.essentialsTrvComfortTemperature, version: 1}
+      - {id: concertmirror08464.essentialsTrvEcoTemperature, version: 1}
+      - {id: concertmirror08464.essentialsTrvAwaySetting, version: 1}
+      - {id: concertmirror08464.essentialsTrvWindowOpen, version: 1}
+      - {id: concertmirror08464.essentialsTrvWindowTemperature, version: 1}
+      - {id: concertmirror08464.essentialsTrvWindowTime, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

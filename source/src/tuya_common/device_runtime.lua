@@ -31,6 +31,8 @@ local function load_runtime(tuya, shared)
   local ACTION_BIND_BASIC = "bind_basic"
   local ACTION_CONFIG_QUEUE = "config_queue"
   local ACTION_QUERY_TIMER = "query_timer"
+  local FORCE_TIME_UPDATE_FIELD = "tuya_next_forced_time_update"
+  local FORCE_TIME_UPDATE_INTERVAL = 60 * 60
   local handle_time_request_with_start_mode
   local run_configure_actions
   local send_next_config_item
@@ -189,8 +191,13 @@ end
 
 function tuya.apply_announce(device, options)
   options = options or {}
+  local handled = false
+  if type_check(options.announce_handler) == "function" then
+    handled = options.announce_handler(device, options) ~= false
+  end
+
   if not options.query_on_announce then
-    return false
+    return handled
   end
 
   local delay = normalize_non_negative_delay(options.announce_delay, 0.5, "announce_delay")
@@ -396,6 +403,59 @@ local function handle_connection_status_command(device, message, handlers)
   return tuya.apply_connection_status_request(device, message, handlers.connection_status_bytes)
 end
 
+local function defer_forced_time_update(device, now)
+  device:set_field(
+    FORCE_TIME_UPDATE_FIELD,
+    (now or os.time()) + FORCE_TIME_UPDATE_INTERVAL,
+    PERSIST_FALSE
+  )
+end
+
+local function maybe_force_time_update(device, message, handlers)
+  if handlers.force_time_updates ~= true or handlers.time_start == "off" then
+    return false
+  end
+
+  local now = os.time()
+  local next_update = device:get_field(FORCE_TIME_UPDATE_FIELD)
+  if next_update ~= nil and next_update >= now then
+    return false
+  end
+
+  -- Match Z2M tuyaBase(forceTimeUpdates): every recognized EF00 command is
+  -- eligible, but the actual sync is rate-limited to once per hour.
+  defer_forced_time_update(device, now)
+
+  if type(handlers.time_handler) == "function" then
+    return handlers.time_handler(device, message, handlers) == true
+  end
+
+  local time_offset = handlers.time_offset
+  if time_offset ~= nil then
+    return tuya.send_time_with_offset(
+      device,
+      time_offset,
+      handlers.utc_time,
+      handlers.local_time
+    ) == true
+  end
+
+  local time_start = handlers.time_start
+  if time_start ~= nil then
+    local offset = time_offset_for_start(time_start)
+    if offset ~= 0 then
+      return tuya.send_time_with_offset(
+        device,
+        offset,
+        handlers.utc_time,
+        handlers.local_time
+      ) == true
+    end
+  end
+
+  return tuya.send_time(device, handlers.utc_time, handlers.local_time) == true
+end
+
 local function handle_report_message(device, message, handlers, datapoints, command_id)
   local frame = tuya.parse_datapoint_report(message)
   if not frame then
@@ -429,13 +489,24 @@ function tuya.apply_message(device, message, handlers)
     return false
   end
 
+  local forced_time_update = maybe_force_time_update(device, message, handlers)
+
   if command_id == SET_TIME then
+    if forced_time_update then
+      return true
+    end
     if handle_time_command(device, message, handlers) then
+      -- Z2M defers the next forced update for one hour after every successful
+      -- explicit MCU time request, not only after the forced-update path.
+      defer_forced_time_update(device)
       return true
     end
   end
 
   if command_id == CONNECTION_STATUS then
+    if forced_time_update then
+      return true
+    end
     if handle_connection_status_command(device, message, handlers) then
       return true
     end

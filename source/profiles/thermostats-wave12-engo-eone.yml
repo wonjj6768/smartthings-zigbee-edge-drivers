@@ -1,0 +1,33 @@
+name: thermostats-wave12-engo-eone
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: relativeHumidityMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkTempCalibration, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkMaxTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkMinTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkChildLock, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkSensorChoose, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkBrightness, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkPreset, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkControlAlgorithm, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkFrostSet, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkHolidayTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkHolidayDays, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkValveProtection, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkWarmFloor, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkSensorError, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleMonday, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleTuesday, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleWednesday, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleThursday, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleFriday, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleSaturday, version: 1}
+      - {id: concertmirror08464.engoEoneDjurkScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

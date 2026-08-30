@@ -2,7 +2,7 @@ name: safety-presence-zy-hps01-illuminance
 components:
   - id: main
     capabilities:
-      - id: motionSensor
+      - id: occupancySensor
         version: 1
       - id: concertmirror08464.zyhps01MoveSensitivity
         version: 1
@@ -32,14 +32,14 @@ deviceConfig:
   dashboard:
     states:
       - component: main
-        capability: motionSensor
+        capability: occupancySensor
         version: 1
         group: main
     actions: []
     basicPlus: []
   detailView:
     - component: main
-      capability: motionSensor
+      capability: occupancySensor
       version: 1
     - component: main
       capability: concertmirror08464.zyhps01MoveSensitivity
@@ -74,7 +74,7 @@ deviceConfig:
   automation:
     conditions:
       - component: main
-        capability: motionSensor
+        capability: occupancySensor
         version: 1
       - component: main
         capability: illuminanceMeasurement

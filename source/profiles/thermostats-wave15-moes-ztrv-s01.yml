@@ -1,0 +1,30 @@
+name: thermostats-wave15-moes-ztrv-s01
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.ztrvPreset, version: 1}
+      - {id: concertmirror08464.ztrvChildLock, version: 1}
+      - {id: concertmirror08464.ztrvMaxTemperature, version: 1}
+      - {id: concertmirror08464.ztrvMinTemperature, version: 1}
+      - {id: concertmirror08464.ztrvWindowDetection, version: 1}
+      - {id: concertmirror08464.ztrvWindowState, version: 1}
+      - {id: concertmirror08464.ztrvScheduleMonday, version: 1}
+      - {id: concertmirror08464.ztrvScheduleTuesday, version: 1}
+      - {id: concertmirror08464.ztrvScheduleWednesday, version: 1}
+      - {id: concertmirror08464.ztrvScheduleThursday, version: 1}
+      - {id: concertmirror08464.ztrvScheduleFriday, version: 1}
+      - {id: concertmirror08464.ztrvScheduleSaturday, version: 1}
+      - {id: concertmirror08464.ztrvScheduleSunday, version: 1}
+      - {id: concertmirror08464.ztrvFrostProtection, version: 1}
+      - {id: concertmirror08464.ztrvTempCalibration, version: 1}
+      - {id: concertmirror08464.ztrvValvePosition, version: 1}
+      - {id: concertmirror08464.ztrvScreenOrientation, version: 1}
+      - {id: concertmirror08464.ztrvEcoTemperature, version: 1}
+      - {id: concertmirror08464.ztrvEcoMode, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Thermostat

@@ -1,0 +1,49 @@
+name: thermostats-wave12-moes-zht-s01
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.moesZhtSoneChildLock, version: 1}
+      - {id: concertmirror08464.moesZhtSonePreset, version: 1}
+      - {id: concertmirror08464.moesZhtSoneTempCalibration, version: 1}
+      - {id: concertmirror08464.moesZhtSoneFloorTemperature, version: 1}
+      - {id: concertmirror08464.moesZhtSoneValveState, version: 1}
+      - {id: concertmirror08464.moesZhtSoneFaultAlarm, version: 1}
+      - {id: concertmirror08464.moesZhtSoneSensor, version: 1}
+      - {id: concertmirror08464.moesZhtSoneTemperatureScale, version: 1}
+      - {id: concertmirror08464.moesZhtSoneBacklight, version: 1}
+      - {id: concertmirror08464.moesZhtSoneAntifreeze, version: 1}
+      - {id: concertmirror08464.moesZhtSoneMinLimit, version: 1}
+      - {id: concertmirror08464.moesZhtSoneMaxLimit, version: 1}
+      - {id: concertmirror08464.moesZhtSoneDeadzone, version: 1}
+      - {id: concertmirror08464.moesZhtSoneEcoTemperature, version: 1}
+      - {id: concertmirror08464.moesZhtSoneProgramMode, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayOneHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayOneMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayOneTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayTwoHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayTwoMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayTwoTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayThreeHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayThreeMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayThreeTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayFourHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayFourMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayFourTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayFiveHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayFiveMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdayFiveTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdaySixHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdaySixMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekdaySixTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekendOneHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekendOneMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekendOneTemp, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekendTwoHour, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekendTwoMinute, version: 1}
+      - {id: concertmirror08464.moesZhtSoneWeekendTwoTemp, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

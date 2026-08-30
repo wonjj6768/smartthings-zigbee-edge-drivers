@@ -574,43 +574,28 @@ function tuya.send_mcu_version_request(device, transaction)
   return packet_id
 end
 
--- gateway connection status 응답 payload 생성
-build_connection_status_payload = function(transaction, status_bytes)
-  local tsn = 0
-  if transaction ~= nil then
-    if type_check(transaction) ~= "number" then
-      log.warn(string.format("Tuya connection status transaction expects number, got %s", type_check(transaction)))
-      return nil
-    end
-
-    local normalized = math_floor(transaction)
-    if normalized ~= transaction then
-      log.warn(string.format("Tuya connection status transaction expects integer, got %s", tostring(transaction)))
-      return nil
-    end
-
-    tsn = normalized % 0x100
-    if tsn < 0 then
-      tsn = tsn + 0x100
-    end
-  end
-
+-- zigbee-herdsman manuSpecificTuya command schema encodes payloadSize as a
+-- little-endian UINT16. The connection-status command has no application
+-- transaction field; its payload is exactly one UINT8 status value.
+build_connection_status_payload = function(status_bytes)
   local status = status_bytes == nil and "\x01" or build_bytes(status_bytes)
   if status == nil then
     return nil
   end
 
-  if string_len(status) > 0xFF then
-    log.warn(string.format("Tuya connection status payload too long: %d", string_len(status)))
+  if string_len(status) ~= 1 then
+    log.warn(string.format("Tuya connection status expects exactly one status byte, got %d", string_len(status)))
     return nil
   end
 
-  return string_char(tsn) .. string_char(string_len(status)) .. status
+  return string_pack("<I2", 1) .. status
 end
 
 -- gateway connection status 응답 전송
 function tuya.send_connection_status(device, transaction, status_bytes)
-  local payload = build_connection_status_payload(transaction, status_bytes)
+  -- Keep the legacy transaction argument for preset API compatibility. Z2M's
+  -- actual 0x25 wire contract does not echo or otherwise encode it.
+  local payload = build_connection_status_payload(status_bytes)
   if payload == nil then
     return false
   end
@@ -629,7 +614,8 @@ build_time_payload = function(utc_time, local_time)
     return nil
   end
 
-  return string_pack(">I4I4", utc_value, local_value)
+  local time_bytes = string_pack(">I4I4", utc_value, local_value)
+  return string_pack("<I2", string_len(time_bytes)) .. time_bytes
 end
 
 -- epoch offset을 반영한 시간 동기화 payload 생성
@@ -705,32 +691,26 @@ function tuya.apply_connection_status_request(device, message, status_bytes)
     return false
   end
 
-  return tuya.send_connection_status(device, info.transaction, status_bytes) == true
+  return tuya.send_connection_status(device, nil, status_bytes) == true
 end
 
 -- connection status 프레임 파싱
 function tuya.parse_connection_status(message)
   local payload = extract_payload(message)
-  if not payload or string_len(payload) < 1 then
+  if not payload or string_len(payload) < 2 then
     return nil
   end
 
-  local transaction = string_byte(payload, 1)
-  local status_length = nil
+  local payload_size = string_byte(payload, 1) + string_byte(payload, 2) * 0x100
+  local available = string_len(payload) - 2
   local status_bytes = ""
-
-  if string_len(payload) >= 2 then
-    status_length = string_byte(payload, 2)
-    if string_len(payload) >= status_length + 2 then
-      status_bytes = string_sub(payload, 3, status_length + 2)
-    else
-      status_bytes = string_sub(payload, 3)
-    end
+  if available > 0 and payload_size > 0 then
+    status_bytes = string_sub(payload, 3, math.min(string_len(payload), payload_size + 2))
   end
 
   return {
-    transaction = transaction,
-    status_length = status_length,
+    payload_size = payload_size,
+    status_length = payload_size,
     status_bytes = status_bytes,
     payload = payload,
   }

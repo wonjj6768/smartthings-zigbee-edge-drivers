@@ -1,0 +1,42 @@
+name: valves-qoto-qt05m
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.qotoQtFiveWaterFlow, version: 1}
+      - {id: concertmirror08464.qotoQtFiveLastDuration, version: 1}
+      - {id: concertmirror08464.qotoQtFiveRemainingTime, version: 1}
+      - {id: concertmirror08464.qotoQtFiveValveState, version: 1}
+      - {id: concertmirror08464.qotoQtFiveValveAutoState, version: 1}
+      - {id: concertmirror08464.qotoQtFiveShutdownTimer, version: 1}
+      - {id: battery, version: 1}
+    categories: [{name: WaterValve}]
+deviceConfig:
+  dashboard:
+    states:
+      - {component: main, capability: concertmirror08464.qotoQtFiveValveState, version: 1, group: main}
+      - {component: main, capability: concertmirror08464.qotoQtFiveWaterFlow, version: 1, group: main}
+      - {component: main, capability: battery, version: 1, group: main}
+    actions:
+      - {component: main, capability: concertmirror08464.qotoQtFiveValveState, version: 1, group: main}
+    basicPlus: []
+  detailView:
+    - {component: main, capability: concertmirror08464.qotoQtFiveValveState, version: 1}
+    - {component: main, capability: concertmirror08464.qotoQtFiveValveAutoState, version: 1}
+    - {component: main, capability: concertmirror08464.qotoQtFiveShutdownTimer, version: 1}
+    - {component: main, capability: concertmirror08464.qotoQtFiveWaterFlow, version: 1}
+    - {component: main, capability: concertmirror08464.qotoQtFiveRemainingTime, version: 1}
+    - {component: main, capability: concertmirror08464.qotoQtFiveLastDuration, version: 1}
+    - {component: main, capability: battery, version: 1}
+  automation:
+    conditions:
+      - {component: main, capability: concertmirror08464.qotoQtFiveValveState, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveValveAutoState, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveShutdownTimer, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveWaterFlow, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveRemainingTime, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveLastDuration, version: 1}
+      - {component: main, capability: battery, version: 1}
+    actions:
+      - {component: main, capability: concertmirror08464.qotoQtFiveValveState, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveValveAutoState, version: 1}
+      - {component: main, capability: concertmirror08464.qotoQtFiveShutdownTimer, version: 1}

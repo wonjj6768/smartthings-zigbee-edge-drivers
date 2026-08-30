@@ -1,0 +1,29 @@
+name: thermostats-wave19-woox-r7067
+components:
+  - id: main
+    capabilities:
+      - {id: temperatureMeasurement, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatMode, version: 1}
+      - {id: concertmirror08464.wooxTrvAwayMode, version: 1}
+      - {id: concertmirror08464.wooxTrvComfortTemperature, version: 1}
+      - {id: concertmirror08464.wooxTrvEcoTemperature, version: 1}
+      - {id: concertmirror08464.wooxTrvTemperatureCalibration, version: 1}
+      - {id: concertmirror08464.wooxTrvChildLock, version: 1}
+      - {id: concertmirror08464.wooxTrvWindowDetection, version: 1}
+      - {id: concertmirror08464.wooxTrvWindowTemperature, version: 1}
+      - {id: concertmirror08464.wooxTrvWindowTime, version: 1}
+      - {id: concertmirror08464.wooxTrvBoostHeating, version: 1}
+      - {id: concertmirror08464.wooxTrvBoostTime, version: 1}
+      - {id: concertmirror08464.wooxTrvErrorStatus, version: 1}
+      - {id: concertmirror08464.wooxTrvHolidaysSchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvMondaySchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvTuesdaySchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvWednesdaySchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvThursdaySchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvFridaySchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvSaturdaySchedule, version: 1}
+      - {id: concertmirror08464.wooxTrvSundaySchedule, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Thermostat

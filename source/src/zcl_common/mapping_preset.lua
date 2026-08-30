@@ -3,7 +3,7 @@
 
 local function load_mapping_preset(zcl)
 
-  local emit = require "emitters"
+  local emit = require "capabilities.events.all"
   local data_types = require "st.zigbee.data_types"
   local zigbee_constants = require "st.zigbee.constants"
 
@@ -628,7 +628,7 @@ local function load_mapping_preset(zcl)
   local function define_preset(name, factory, defaults_builder)
     zcl[name] = function(name_or_options, options)
       local resolved = normalize_preset_options(name_or_options, options)
-      apply_defaults(resolved, defaults_builder())
+      apply_defaults(resolved, defaults_builder(resolved))
       return factory(resolved)
     end
   end
@@ -673,7 +673,15 @@ local function load_mapping_preset(zcl)
     )
   end)
 
-  define_preset("switch", zcl.on_off, function()
+  define_preset("switch", zcl.on_off, function(options)
+    local configure_reporting = options.configure_reporting
+    options.configure_reporting = nil
+    if configure_reporting == false then
+      return {
+        emit = emit.switch(),
+      }
+    end
+
     return merge_defaults(
       {
         emit = emit.switch(),
@@ -992,15 +1000,16 @@ local function load_mapping_preset(zcl)
     })
   end
 
-  define_preset("level", zcl.level_control, function()
-    return merge_defaults(
-      {
-        name = "brightness",
-        emit = emit.level(),
-        converter = level_percent_pair(),
-      },
-      reporting_defaults(1, 3600, 1)
-    )
+  define_preset("level", zcl.level_control, function(options)
+    local configure_reporting = options.configure_reporting
+    options.configure_reporting = nil
+    local defaults = {
+      name = "brightness",
+      emit = emit.level(),
+      converter = level_percent_pair(),
+    }
+    if configure_reporting == false then return defaults end
+    return merge_defaults(defaults, reporting_defaults(1, 3600, 1))
   end)
 
   zcl.tuya_dimmer_level = function(name_or_options, options)
@@ -1033,7 +1042,17 @@ local function load_mapping_preset(zcl)
     return zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0xF000, resolved)
   end
 
-  define_preset("illuminance", zcl.illuminance_measurement, function()
+  define_preset("illuminance", zcl.illuminance_measurement, function(options)
+    local configure_reporting = options.configure_reporting
+    options.configure_reporting = nil
+    if configure_reporting == false then
+      return {
+        emit = emit.illuminance(),
+        converter = illuminance_measurement_pair(),
+        read_on_configure = true,
+      }
+    end
+
     return merge_defaults(
       {
         emit = emit.illuminance(),
@@ -1053,14 +1072,34 @@ local function load_mapping_preset(zcl)
     )
   end)
 
-  define_preset("occupancy", zcl.occupancy_sensing, function()
-    return merge_defaults(
+  zcl.occupancy = function(name_or_options, options)
+    local resolved = normalize_preset_options(name_or_options, options)
+    local ias_zone = resolved.ias_zone == true
+    resolved.ias_zone = nil
+
+    if ias_zone then
+      apply_defaults(resolved, merge_defaults(
+        {
+          name = "occupancy",
+          emit = emit.occupancy(),
+          converter = zone_status_pair(0x0001),
+          ias_configure_method = zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
+          command_id = 0x00,
+          command_extractor = extract_zone_status_from_command,
+        },
+        reporting_defaults(30, 300, nil)
+      ))
+      return zcl.ias_zone(resolved)
+    end
+
+    apply_defaults(resolved, merge_defaults(
       {
         emit = emit.occupancy(),
       },
       reporting_defaults(0, 300, nil)
-    )
-  end)
+    ))
+    return zcl.occupancy_sensing(resolved)
+  end
 
   define_preset("power", zcl.electrical_measurement_power, function()
     return merge_defaults(
@@ -1070,8 +1109,8 @@ local function load_mapping_preset(zcl)
         -- A power mapping without poll_interval makes
         -- default_power_poll_interval() return nil, and
         -- set_power_poll_interval() then rejects every user change before it
-        -- reaches the field. Device modules that build cluster lists by hand
-        -- rely on this default; devices/zcl/helpers.lua passes 300 explicitly.
+        -- reaches the field. Family contracts that build cluster lists by hand
+        -- rely on this canonical default.
         poll_interval = 300,
       },
       reporting_defaults(5, 300, 1)
@@ -1232,16 +1271,17 @@ local function load_mapping_preset(zcl)
     )
   end)
 
-  define_preset("color_temperature", zcl.color_control_temperature, function()
-    return merge_defaults(
-      {
-        name = "color_temperature",
-        emit = emit.color_temperature(),
-        converter = color_temperature_pair(),
-        tx_command_id = 0x0A,
-      },
-      reporting_defaults(1, 300, 1)
-    )
+  define_preset("color_temperature", zcl.color_control_temperature, function(options)
+    local configure_reporting = options.configure_reporting
+    options.configure_reporting = nil
+    local defaults = {
+      name = "color_temperature",
+      emit = emit.color_temperature(),
+      converter = color_temperature_pair(),
+      tx_command_id = 0x0A,
+    }
+    if configure_reporting == false then return defaults end
+    return merge_defaults(defaults, reporting_defaults(1, 300, 1))
   end)
 
   zcl.min_brightness = function(name_or_options, options)
@@ -1331,36 +1371,38 @@ local function load_mapping_preset(zcl)
     return zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0xFC02, resolved)
   end
 
-  define_preset("color_hue", zcl.color_control_hue, function()
-    return merge_defaults(
-      {
-        name = "color_hue",
-        emit = emit.color_hue(),
-        converter = percent_254_pair(),
-        tx_command_id = 0x00,
-        to_device = function(value)
-          local encoded = percent_254_pair().to(value)
-          return { encoded, 0x00, 0x0000, 0x00, 0x00 }
-        end,
-      },
-      reporting_defaults(1, 300, 1)
-    )
+  define_preset("color_hue", zcl.color_control_hue, function(options)
+    local configure_reporting = options.configure_reporting
+    options.configure_reporting = nil
+    local defaults = {
+      name = "color_hue",
+      emit = emit.color_hue(),
+      converter = percent_254_pair(),
+      tx_command_id = 0x00,
+      to_device = function(value)
+        local encoded = percent_254_pair().to(value)
+        return { encoded, 0x00, 0x0000, 0x00, 0x00 }
+      end,
+    }
+    if configure_reporting == false then return defaults end
+    return merge_defaults(defaults, reporting_defaults(1, 300, 1))
   end)
 
-  define_preset("color_saturation", zcl.color_control_saturation, function()
-    return merge_defaults(
-      {
-        name = "color_saturation",
-        emit = emit.color_saturation(),
-        converter = percent_254_pair(),
-        tx_command_id = 0x03,
-        to_device = function(value)
-          local encoded = percent_254_pair().to(value)
-          return { encoded, 0x0000, 0x00, 0x00 }
-        end,
-      },
-      reporting_defaults(1, 300, 1)
-    )
+  define_preset("color_saturation", zcl.color_control_saturation, function(options)
+    local configure_reporting = options.configure_reporting
+    options.configure_reporting = nil
+    local defaults = {
+      name = "color_saturation",
+      emit = emit.color_saturation(),
+      converter = percent_254_pair(),
+      tx_command_id = 0x03,
+      to_device = function(value)
+        local encoded = percent_254_pair().to(value)
+        return { encoded, 0x0000, 0x00, 0x00 }
+      end,
+    }
+    if configure_reporting == false then return defaults end
+    return merge_defaults(defaults, reporting_defaults(1, 300, 1))
   end)
 
   zcl.color = function(name_or_options, options)

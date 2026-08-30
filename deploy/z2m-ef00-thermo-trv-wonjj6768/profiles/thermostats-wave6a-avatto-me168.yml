@@ -1,0 +1,31 @@
+name: thermostats-wave6a-avatto-me168
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.meOneSixEightPreset, version: 1}
+      - {id: concertmirror08464.meOneSixEightRunningMode, version: 1}
+      - {id: concertmirror08464.meOneSixEightChildLock, version: 1}
+      - {id: concertmirror08464.meOneSixEightWindowDetection, version: 1}
+      - {id: concertmirror08464.meOneSixEightWindowOpen, version: 1}
+      - {id: concertmirror08464.meOneSixEightError, version: 1}
+      - {id: concertmirror08464.meOneSixEightFrostProtection, version: 1}
+      - {id: concertmirror08464.meOneSixEightScaleProtection, version: 1}
+      - {id: concertmirror08464.meOneSixEightTempCalibration, version: 1}
+      - {id: concertmirror08464.meOneSixEightBoostTime, version: 1}
+      - {id: concertmirror08464.meOneSixEightBoostCountdown, version: 1}
+      - {id: concertmirror08464.meOneSixEightEcoTemperature, version: 1}
+      - {id: concertmirror08464.meOneSixEightComfortTemperature, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleMonday, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleTuesday, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleWednesday, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleThursday, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleFriday, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleSaturday, version: 1}
+      - {id: concertmirror08464.meOneSixEightScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

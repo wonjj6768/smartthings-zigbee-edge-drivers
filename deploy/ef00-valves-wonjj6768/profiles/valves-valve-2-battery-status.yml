@@ -15,7 +15,7 @@ components:
       - id: refresh
         version: 1
     categories:
-      - name: Valve
+      - name: WaterValve
   - id: valve2
     capabilities:
       - id: valve
@@ -27,4 +27,4 @@ components:
       - id: concertmirror08464.waterSwitchDuration
         version: 1
     categories:
-      - name: Valve
+      - name: WaterValve

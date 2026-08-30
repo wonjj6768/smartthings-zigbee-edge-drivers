@@ -1,0 +1,21 @@
+name: lights-moes-zs-d2
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBrightnessOne, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBrightnessMinOne, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBrightnessMaxOne, version: 1}
+      - {id: concertmirror08464.moesZsDTwoCountdownOne, version: 1}
+      - {id: concertmirror08464.moesZsDTwoRelayStatus, version: 1}
+      - {id: concertmirror08464.moesZsDTwoLightMode, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBacklight, version: 1}
+    categories: [{name: Light}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBrightnessTwo, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBrightnessMinTwo, version: 1}
+      - {id: concertmirror08464.moesZsDTwoBrightnessMaxTwo, version: 1}
+      - {id: concertmirror08464.moesZsDTwoCountdownTwo, version: 1}
+    categories: [{name: Light}]

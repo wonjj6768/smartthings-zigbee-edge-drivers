@@ -1,4 +1,4 @@
--- Thin entrypoint shim.
--- The driver implementation lives in app/driver.lua so the src root stays tidy.
+-- SmartThings Edge runtime entrypoint.
+-- The platform loads this fixed path; the implementation lives in app/driver.lua.
 
 require "app.driver"

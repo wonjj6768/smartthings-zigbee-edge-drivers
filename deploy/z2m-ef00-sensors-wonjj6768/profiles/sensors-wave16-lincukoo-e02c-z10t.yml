@@ -1,0 +1,18 @@
+name: sensors-wave16-lincukoo-e02c-z10t
+components:
+  - id: main
+    capabilities:
+      - {id: temperatureMeasurement, version: 1}
+      - {id: relativeHumidityMeasurement, version: 1}
+      - {id: carbonDioxideMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.eZeroTwoCTemperatureUnit, version: 1}
+      - {id: concertmirror08464.eZeroTwoCAlarmSwitch, version: 1}
+      - {id: concertmirror08464.eZeroTwoCChargeStatus, version: 1}
+      - {id: concertmirror08464.eZeroTwoCResetCoTwo, version: 1}
+      - {id: concertmirror08464.eZeroTwoCScreenSleep, version: 1}
+      - {id: concertmirror08464.eZeroTwoCCoTwoAlarmValue, version: 1}
+      - {id: concertmirror08464.eZeroTwoCCoTwoAlarm, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: AirQualityDetector

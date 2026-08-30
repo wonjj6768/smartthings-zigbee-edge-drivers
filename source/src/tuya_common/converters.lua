@@ -1107,19 +1107,13 @@ end
 function converter.error_or_battery_low()
   return converter.from_only(function(value)
     local number_value = tonumber_check(value)
-    if number_value == nil then
+    if number_value == nil or number_value % 1 ~= 0 or number_value < 0 or number_value > 0xFFFFFFFF then
       return nil
     end
-
-    if number_value == 0 then
-      return { battery_low = false }
-    end
-
-    if number_value == 1 then
-      return { battery_low = true }
-    end
-
-    return { error = number_value }
+    return {
+      error = number_value,
+      battery_low = number_value == 1 and "low" or "normal",
+    }
   end)
 end
 

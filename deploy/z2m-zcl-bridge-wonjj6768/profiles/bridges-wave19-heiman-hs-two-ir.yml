@@ -1,0 +1,18 @@
+name: bridges-wave19-heiman-hs-two-ir
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.heimanHsTwoIrSendKey, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrCreateId, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrLearnKey, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrDeleteKey, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrRequestList, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrAction, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrActionResult, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrActionId, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrActionKeyCode, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrActionModelType, version: 1}
+      - {id: concertmirror08464.heimanHsTwoIrDevices, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController

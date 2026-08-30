@@ -1,0 +1,26 @@
+name: safety-vibration-tuya-battery-state
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.tuyaVibrationAlarmStatus, version: 1}
+      - {id: concertmirror08464.tuyaVibrationSensitivity, version: 1}
+      - {id: concertmirror08464.tuyaVibrationBatteryState, version: 1}
+    categories: [{name: GenericSensor}]
+deviceConfig:
+  dashboard:
+    states:
+      - {component: main, capability: concertmirror08464.tuyaVibrationAlarmStatus, version: 1, group: main}
+      - {component: main, capability: concertmirror08464.tuyaVibrationBatteryState, version: 1, group: main}
+    actions: []
+    basicPlus: []
+  detailView:
+    - {component: main, capability: concertmirror08464.tuyaVibrationAlarmStatus, version: 1}
+    - {component: main, capability: concertmirror08464.tuyaVibrationSensitivity, version: 1}
+    - {component: main, capability: concertmirror08464.tuyaVibrationBatteryState, version: 1}
+  automation:
+    conditions:
+      - {component: main, capability: concertmirror08464.tuyaVibrationAlarmStatus, version: 1}
+      - {component: main, capability: concertmirror08464.tuyaVibrationSensitivity, version: 1}
+      - {component: main, capability: concertmirror08464.tuyaVibrationBatteryState, version: 1}
+    actions:
+      - {component: main, capability: concertmirror08464.tuyaVibrationSensitivity, version: 1}

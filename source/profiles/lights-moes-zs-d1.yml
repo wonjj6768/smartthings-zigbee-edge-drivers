@@ -1,0 +1,13 @@
+name: lights-moes-zs-d1
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsDOneBrightnessOne, version: 1}
+      - {id: concertmirror08464.moesZsDOneBrightnessMinOne, version: 1}
+      - {id: concertmirror08464.moesZsDOneBrightnessMaxOne, version: 1}
+      - {id: concertmirror08464.moesZsDOneCountdownOne, version: 1}
+      - {id: concertmirror08464.moesZsDOneRelayStatus, version: 1}
+      - {id: concertmirror08464.moesZsDOneLightMode, version: 1}
+      - {id: concertmirror08464.moesZsDOneBacklight, version: 1}
+    categories: [{name: Light}]

@@ -1,0 +1,125 @@
+local tuya=require "protocol.tuya"
+local emit=require "capabilities.events.all"
+local device_helpers=require "contracts.helpers.family"
+local common=require "contracts.helpers.ef00_presence"
+local converter=tuya.converter
+local device_definitions,register_device_definition=common.isolated_definition_registry(device_helpers)
+local function register_presence_definition(definition,fingerprint_list)
+return common.register_presence_definition(
+register_device_definition,definition,fingerprint_list
+)
+end
+local ts0601_fingerprints=common.ts0601_fingerprints
+local presence_model_zf24pro={
+profile="safety-presence-zf24pro-temp-humidity",
+package_group="presence-general-2",
+datapoints={
+tuya.dp_presence(1,{
+emit=emit.presence(),
+converter=converter.true_false1(),
+read_only=true,
+}),
+tuya.dp_numeric(2,{
+name="move_sensitivity",
+emit=emit.zf24ProMoveSensitivity(),
+}),
+tuya.dp_static_detection_distance(4,{
+name="detection_distance_max",
+emit=emit.zf24ProDetectionDistanceMax(),
+}),
+tuya.dp_target_distance(9,{
+name="distance",
+emit=emit.zf24ProDistance(),
+read_only=true,
+}),
+tuya.dp_temperature(22,{
+emit=emit.temperature("C"),
+converter=converter.signed_number_pair(10),
+signed=true,
+read_only=true,
+}),
+tuya.dp_humidity(23,{
+emit=emit.humidity(),
+scale=1,
+read_only=true,
+}),
+tuya.dp_numeric(101,{
+name="presence_timeout",
+emit=emit.zf24ProPresenceTimeout(),
+}),
+tuya.dp_illuminance(102,{emit=emit.illuminance(),read_only=true}),
+tuya.dp_numeric(103,{
+name="presence_sensitivity",
+emit=emit.zf24ProPresenceSensitivity(),
+}),
+tuya.dp_on_off(104,{name="switch",component="radarFunction"}),
+tuya.dp_on_off(105,{name="switch",component="livingRoom"}),
+tuya.dp_on_off(106,{name="switch",component="bedroom"}),
+tuya.dp_on_off(107,{name="switch",component="bathroom"}),
+tuya.dp_on_off(108,{name="switch",component="sleep"}),
+tuya.dp_on_off(109,{name="switch",component="radarSwitch"}),
+tuya.dp_temperature_calibration(110,{
+name="temperature_correction",
+scale=10,
+emit=emit.zf24ProTemperatureCorrection(),
+}),
+tuya.dp_humidity_calibration(111,{
+name="humidity_correction",
+scale=1,
+emit=emit.zf24ProHumidityCorrection(),
+}),
+},
+query_on_configure=false,
+time_start="off",
+}
+register_presence_definition(presence_model_zf24pro,ts0601_fingerprints({
+"_TZE28C1000000_vosmoqsg",
+"_TZE28C1000000_ewn672ef",
+}))
+local presence_model_szlmr10={
+profile="safety-presence-szlmr10-illuminance",
+package_group="presence-general-2",
+datapoints={
+tuya.dp_presence(1,{
+emit=emit.presence(),
+converter=converter.true_false0(),
+read_only=true,
+}),
+tuya.dp_illuminance(20,{emit=emit.illuminance(),read_only=true}),
+tuya.dp_numeric(13,{
+name="detection_distance",
+converter=converter.divide_by_pair(100),
+emit=emit.szlmr10DetectionDistance(),
+}),
+tuya.dp_numeric(16,{
+name="radar_sensitivity",
+emit=emit.szlmr10RadarSensitivity(),
+}),
+tuya.dp_numeric(103,{
+name="fading_time",
+emit=emit.szlmr10FadingTime(),
+}),
+tuya.dp_on_off(101,{name="switch",component="indicator"}),
+tuya.dp_on_off(102,{name="switch",component="radarSwitch"}),
+tuya.dp_enum(104,{
+name="work_mode",
+emit=emit.szlmr10WorkMode(),
+converter=converter.lookup_from_to({
+pir_mode=0,
+radar_mode=1,
+combine_mode=2,
+}),
+}),
+},
+query_on_configure=false,
+time_start="off",
+}
+register_presence_definition(presence_model_szlmr10,ts0601_fingerprints({
+"_TZE204_sndkanfr",
+"_TZE204_bjf8qum1",
+"_TZE284_sndkanfr",
+}))
+return{
+id="ef00.presence.z2m_absorption",
+registrations=device_definitions,
+}

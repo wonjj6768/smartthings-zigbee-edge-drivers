@@ -1,0 +1,247 @@
+-- Frozen Z2M v26.99 Wave11 presence families assigned to general package 1.
+
+local tuya = require "protocol.tuya"
+local emit = require "capabilities.events.all"
+local device_helpers = require "contracts.helpers.family"
+local common = require "contracts.helpers.ef00_presence"
+
+local converter = tuya.converter
+local registrations, register_device_definition = common.isolated_definition_registry(device_helpers)
+
+local on_off_converter = converter.lookup_from_to({ ON = true, OFF = false })
+
+local function register(definition, manufacturers)
+  local fingerprints = {}
+  for _, manufacturer in ipairs(manufacturers) do
+    fingerprints[#fingerprints + 1] = device_helpers.create_fingerprint(manufacturer, "TS0601")
+  end
+  register_device_definition(definition, fingerprints)
+end
+
+-- NEO NAS-PS10B2, neo.ts:387.  Frozen Z2M discards DP12's unconfigured
+-- 0xFFFFFF08 sentinel and only publishes valid 3..600 second values.
+local nas_ps_ten_presence_time_converter = converter.from_to(
+  function(value)
+    local numeric = tonumber(value)
+    if numeric == nil or numeric < 3 or numeric > 600 then return nil end
+    return numeric
+  end,
+  function(value) return tonumber(value) end
+)
+
+local nas_ps_ten = {
+  profile = "safety-presence-wave11-neo-nas-ps10b2",
+  package_group = "z2m-ef00-presence",
+  named_datapoints = true,
+  datapoints = {
+    tuya.dp_presence(1, {
+      converter = converter.true_false1(),
+      emit = emit.presence(),
+      read_only = true,
+    }),
+    tuya.dp_enum(11, {
+      name = "nas_ps_ten_human_motion_state",
+      converter = converter.from_only(converter.lookup_value({
+        [0] = "none", [1] = "small", [2] = "large",
+      })),
+      emit = emit.nasPsTenMotionState(),
+      read_only = true,
+    }),
+    tuya.dp_numeric(19, {
+      name = "nas_ps_ten_current_distance",
+      emit = emit.nasPsTenCurrentDistance(),
+      read_only = true,
+    }),
+    tuya.dp_numeric(12, {
+      name = "nas_ps_ten_presence_time",
+      converter = nas_ps_ten_presence_time_converter,
+      emit = emit.nasPsTenPresenceTime(),
+    }),
+    tuya.dp_numeric(13, {
+      name = "nas_ps_ten_motion_far_detection",
+      emit = emit.nasPsTenMotionFar(),
+    }),
+    tuya.dp_numeric(15, {
+      name = "nas_ps_ten_motion_sensitivity",
+      emit = emit.nasPsTenMotionSensitivity(),
+    }),
+    tuya.dp_numeric(16, {
+      name = "nas_ps_ten_motionless_sensitivity",
+      emit = emit.nasPsTenStillSensitivity(),
+    }),
+    tuya.dp_enum(101, {
+      name = "nas_ps_ten_work_mode",
+      converter = converter.lookup_from_to({ manual = 0, auto = 1 }),
+      emit = emit.nasPsTenWorkMode(),
+    }),
+    tuya.dp_binary(104, {
+      name = "nas_ps_ten_output_switch",
+      converter = on_off_converter,
+      emit = emit.nasPsTenOutputSwitch(),
+    }),
+    tuya.dp_numeric(103, {
+      name = "nas_ps_ten_output_time",
+      emit = emit.nasPsTenOutputTime(),
+    }),
+    tuya.dp_binary(105, {
+      name = "nas_ps_ten_led_switch",
+      converter = on_off_converter,
+      emit = emit.nasPsTenLedSwitch(),
+    }),
+    tuya.dp_enum(102, {
+      name = "nas_ps_ten_lux_value",
+      converter = converter.lookup_from_to({
+        ["10_lux"] = 0, ["20_lux"] = 1, ["50_lux"] = 2, ["24h"] = 3,
+      }),
+      emit = emit.nasPsTenLuxValue(),
+    }),
+  },
+  query_on_configure = false,
+  query_on_announce = true,
+}
+
+register(nas_ps_ten, { "_TZE204_1youk3hj", "_TZE284_1youk3hj" })
+
+-- Lincukoo SZR07, lincukoo.ts:280.
+local szr_seven = {
+  profile = "safety-presence-wave11-szr07",
+  package_group = "z2m-ef00-presence",
+  named_datapoints = true,
+  datapoints = {
+    tuya.dp_presence(1, {
+      converter = converter.true_false1(), emit = emit.presence(), read_only = true,
+    }),
+    tuya.dp_illuminance(20, { emit = emit.illuminance(), read_only = true }),
+    tuya.dp_numeric(13, {
+      name = "szr_seven_detection_distance",
+      converter = converter.divide_by_pair(100),
+      emit = emit.szrSevenDetectionDistance(),
+    }),
+    tuya.dp_numeric(16, {
+      name = "szr_seven_radar_sensitivity", emit = emit.szrSevenRadarSensitivity(),
+    }),
+    tuya.dp_numeric(103, {
+      name = "szr_seven_fading_time", emit = emit.szrSevenFadingTime(),
+    }),
+    tuya.dp_binary(102, {
+      name = "szr_seven_radar_switch", converter = on_off_converter,
+      emit = emit.szrSevenRadarSwitch(),
+    }),
+    tuya.dp_binary(101, {
+      name = "szr_seven_indicator", converter = on_off_converter,
+      emit = emit.szrSevenIndicator(),
+    }),
+  },
+  query_on_configure = false,
+}
+
+register(szr_seven, { "_TZE204_khoqss0a" })
+
+-- Lincukoo SZLR08, lincukoo.ts:37.
+local szlr_eight = {
+  profile = "safety-presence-wave11-szlr08",
+  package_group = "z2m-ef00-presence",
+  named_datapoints = true,
+  datapoints = {
+    tuya.dp_presence(1, {
+      converter = converter.true_false1(), emit = emit.presence(), read_only = true,
+    }),
+    tuya.dp_illuminance(20, { emit = emit.illuminance(), read_only = true }),
+    tuya.dp_numeric(13, {
+      name = "szlr_eight_installation_height",
+      converter = converter.divide_by_pair(100),
+      emit = emit.szlrEightInstallHeight(),
+    }),
+    tuya.dp_numeric(16, {
+      name = "szlr_eight_radar_sensitivity", emit = emit.szlrEightRadarSensitivity(),
+    }),
+    tuya.dp_numeric(19, {
+      name = "szlr_eight_detection_distance",
+      emit = emit.szlrEightDetectionDistance(),
+      read_only = true,
+    }),
+    tuya.dp_numeric(103, {
+      name = "szlr_eight_fading_time", emit = emit.szlrEightFadingTime(),
+    }),
+    tuya.dp_binary(101, {
+      name = "szlr_eight_indicator", converter = on_off_converter,
+      emit = emit.szlrEightIndicator(),
+    }),
+    tuya.dp_binary(104, {
+      name = "szlr_eight_relay_switch", converter = on_off_converter,
+      emit = emit.szlrEightRelaySwitch(),
+    }),
+    tuya.dp_binary(102, {
+      name = "szlr_eight_radar_switch", converter = on_off_converter,
+      emit = emit.szlrEightRadarSwitch(),
+    }),
+    tuya.dp_enum(106, {
+      name = "szlr_eight_relay_mode",
+      converter = converter.lookup_from_to({ auto = 0, manual = 1 }),
+      emit = emit.szlrEightRelayMode(),
+    }),
+    tuya.dp_enum(107, {
+      name = "szlr_eight_radar_mode",
+      converter = converter.lookup_from_to({ people_on = 0, people_off = 1 }),
+      emit = emit.szlrEightRadarMode(),
+    }),
+  },
+  query_on_configure = false,
+}
+
+register(szlr_eight, { "_TZE204_lw5ny7tp" })
+
+-- Lincukoo SZLR08T, lincukoo.ts:314.  Presence uses trueFalse0 unlike
+-- SZR07/SZLR08 and must remain a distinct family contract.
+local szlr_eight_t = {
+  profile = "safety-presence-wave11-szlr08t",
+  package_group = "z2m-ef00-presence",
+  named_datapoints = true,
+  datapoints = {
+    tuya.dp_presence(1, {
+      converter = converter.true_false0(), emit = emit.presence(), read_only = true,
+    }),
+    tuya.dp_illuminance(20, { emit = emit.illuminance(), read_only = true }),
+    tuya.dp_numeric(13, {
+      name = "szlr_eight_t_installation_height",
+      converter = converter.divide_by_pair(100),
+      emit = emit.szlrEightTInstallHeight(),
+    }),
+    tuya.dp_numeric(16, {
+      name = "szlr_eight_t_radar_sensitivity", emit = emit.szlrEightTRadarSensitivity(),
+    }),
+    tuya.dp_numeric(103, {
+      name = "szlr_eight_t_fading_time", emit = emit.szlrEightTFadingTime(),
+    }),
+    tuya.dp_binary(102, {
+      name = "szlr_eight_t_radar_switch", converter = on_off_converter,
+      emit = emit.szlrEightTRadarSwitch(),
+    }),
+    tuya.dp_binary(101, {
+      name = "szlr_eight_t_indicator", converter = on_off_converter,
+      emit = emit.szlrEightTIndicator(),
+    }),
+    tuya.dp_binary(104, {
+      name = "szlr_eight_t_relay_switch", converter = on_off_converter,
+      emit = emit.szlrEightTRelaySwitch(),
+    }),
+    tuya.dp_enum(106, {
+      name = "szlr_eight_t_relay_mode",
+      converter = converter.lookup_from_to({ auto = 0, manual = 1 }),
+      emit = emit.szlrEightTRelayMode(),
+    }),
+    tuya.dp_enum(107, {
+      name = "szlr_eight_t_radar_mode",
+      converter = converter.lookup_from_to({ people_on = 0, people_off = 1 }),
+      emit = emit.szlrEightTRadarMode(),
+    }),
+  },
+  query_on_configure = false,
+}
+
+register(szlr_eight_t, { "_TZE204_b8vxct9l" })
+
+return {
+  id = "ef00.presence.wave11.general.1",
+  registrations = registrations,
+}

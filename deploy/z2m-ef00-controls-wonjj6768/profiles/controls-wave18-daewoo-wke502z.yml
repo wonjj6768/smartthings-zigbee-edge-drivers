@@ -1,0 +1,24 @@
+name: controls-wave18-daewoo-wke502z
+components:
+  - id: main
+    capabilities:
+      - {id: battery, version: 1}
+      - {id: tamperAlert, version: 1}
+      - {id: panicAlarm, version: 1}
+      - {id: concertmirror08464.daewooWkeAction, version: 1}
+      - {id: concertmirror08464.daewooWkeArmMode, version: 1}
+      - {id: concertmirror08464.daewooWkeArmed, version: 1}
+      - {id: concertmirror08464.daewooWkeUserId, version: 1}
+      - {id: concertmirror08464.daewooWkeUserLastSeen, version: 1}
+      - {id: concertmirror08464.daewooWkeLastAddedUserCode, version: 1}
+      - {id: concertmirror08464.daewooWkeAdminCode, version: 1}
+      - {id: concertmirror08464.daewooWkeArmDelayTime, version: 1}
+      - {id: concertmirror08464.daewooWkeBeepSoundEnabled, version: 1}
+      - {id: concertmirror08464.daewooWkeArmDelayBeepSound, version: 1}
+      - {id: concertmirror08464.daewooWkeQuickHomeEnabled, version: 1}
+      - {id: concertmirror08464.daewooWkeQuickArmEnabled, version: 1}
+      - {id: concertmirror08464.daewooWkeQuickDisarmEnabled, version: 1}
+      - {id: concertmirror08464.daewooWkeQuickSosEnabled, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController

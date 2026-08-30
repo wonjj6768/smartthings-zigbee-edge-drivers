@@ -1,0 +1,29 @@
+name: thermostats-wave9-mazda-tr-m2z
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.mazdaMtwoPreset, version: 1}
+      - {id: concertmirror08464.mazdaMtwoChildLock, version: 1}
+      - {id: concertmirror08464.mazdaMtwoWindowDetection, version: 1}
+      - {id: concertmirror08464.mazdaMtwoWindowOpen, version: 1}
+      - {id: concertmirror08464.mazdaMtwoFrostProtection, version: 1}
+      - {id: concertmirror08464.mazdaMtwoAlarmSwitch, version: 1}
+      - {id: concertmirror08464.mazdaMtwoComfortTemperature, version: 1}
+      - {id: concertmirror08464.mazdaMtwoEcoTemperature, version: 1}
+      - {id: concertmirror08464.mazdaMtwoHolidayTemperature, version: 1}
+      - {id: concertmirror08464.mazdaMtwoTemperatureSensitivity, version: 1}
+      - {id: concertmirror08464.mazdaMtwoTempCalibration, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleMonday, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleTuesday, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleWednesday, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleThursday, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleFriday, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleSaturday, version: 1}
+      - {id: concertmirror08464.mazdaMtwoScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

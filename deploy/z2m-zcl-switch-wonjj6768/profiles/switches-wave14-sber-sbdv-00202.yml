@@ -1,0 +1,37 @@
+name: switches-wave14-sber-sbdv-00202
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: concertmirror08464.sber202EmergencyOvervoltage, version: 1}
+      - {id: concertmirror08464.sber202EmergencyUndervoltage, version: 1}
+      - {id: concertmirror08464.sber202EmergencyOvercurrent, version: 1}
+      - {id: concertmirror08464.sber202EmergencyOverheat, version: 1}
+      - {id: concertmirror08464.sber202Identify, version: 1}
+      - {id: concertmirror08464.sber202PowerOnBehavior, version: 1}
+      - {id: concertmirror08464.sber202ChildLock, version: 1}
+      - {id: concertmirror08464.sber202SerialNumber, version: 1}
+      - {id: concertmirror08464.sber202ResetsCount, version: 1}
+      - {id: concertmirror08464.sber202Uptime, version: 1}
+      - {id: concertmirror08464.sber202ButtonClicksOne, version: 1}
+      - {id: concertmirror08464.sber202RelaySwitchesOne, version: 1}
+      - {id: concertmirror08464.sber202LedOnEnabled, version: 1}
+      - {id: concertmirror08464.sber202LedOnHue, version: 1}
+      - {id: concertmirror08464.sber202LedOnSaturation, version: 1}
+      - {id: concertmirror08464.sber202LedOnBrightness, version: 1}
+      - {id: concertmirror08464.sber202LedOffEnabled, version: 1}
+      - {id: concertmirror08464.sber202LedOffHue, version: 1}
+      - {id: concertmirror08464.sber202LedOffSaturation, version: 1}
+      - {id: concertmirror08464.sber202LedOffBrightness, version: 1}
+      - {id: concertmirror08464.sber202EmergencyRecovery, version: 1}
+      - {id: concertmirror08464.sber202UpperVoltageThreshold, version: 1}
+      - {id: concertmirror08464.sber202LowerVoltageThreshold, version: 1}
+      - {id: concertmirror08464.sber202UpperCurrentThreshold, version: 1}
+      - {id: concertmirror08464.sber202TemperatureThreshold, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

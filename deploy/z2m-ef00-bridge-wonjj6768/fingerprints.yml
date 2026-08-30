@@ -1,0 +1,9 @@
+zigbeeManufacturer:
+  - id: "fp_20cdda68cb"
+    manufacturer: "_TZE204_6fk3gewc"
+    model: "TS0601"
+    deviceProfileName: "bridges-wave19-weten-pci-e"
+  - id: "fp_c838e389c4"
+    manufacturer: "_TZE284_6fk3gewc"
+    model: "TS0601"
+    deviceProfileName: "bridges-wave19-weten-pci-e"

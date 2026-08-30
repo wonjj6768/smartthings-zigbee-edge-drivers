@@ -1,0 +1,16 @@
+name: lights-wave19-terncy-dim003
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: colorTemperature, version: 1}
+      - {id: concertmirror08464.terncyDimRatedCurrent, version: 1}
+      - {id: concertmirror08464.terncyDimStartupCalibration, version: 1}
+      - {id: concertmirror08464.terncyDimMinKelvin, version: 1}
+      - {id: concertmirror08464.terncyDimMaxKelvin, version: 1}
+      - {id: concertmirror08464.terncyDimIoReversed, version: 1}
+      - {id: concertmirror08464.terncyDimLightCurve, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light

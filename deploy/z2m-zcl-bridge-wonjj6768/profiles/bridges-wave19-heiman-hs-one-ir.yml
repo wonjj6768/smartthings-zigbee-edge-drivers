@@ -1,0 +1,19 @@
+name: bridges-wave19-heiman-hs-one-ir
+components:
+  - id: main
+    capabilities:
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrSendKey, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrCreateId, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrLearnKey, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrDeleteKey, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrRequestList, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrAction, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrActionResult, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrActionId, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrActionKeyCode, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrActionModelType, version: 1}
+      - {id: concertmirror08464.heimanHsOneIrDevices, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController

@@ -1,0 +1,25 @@
+name: switches-presence-wave11-tuya-3gang
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeCountdownOne, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeCountdownTwo, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeCountdownThree, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeRelayStatus, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeLightMode, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeDelaysTime, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeSensitivity, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeTurnOnPerson, version: 1}
+      - {id: concertmirror08464.tuyaPsThreeTurnOffPerson, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]

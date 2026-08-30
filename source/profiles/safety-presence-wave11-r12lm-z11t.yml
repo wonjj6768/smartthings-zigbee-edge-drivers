@@ -1,0 +1,15 @@
+name: safety-presence-wave11-r12lm-z11t
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenScanEnvironment, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenScanResult, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenMode, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenRadarSwitch, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenDetectionDistance, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenBatteryState, version: 1}
+      - {id: concertmirror08464.rTwelveZElevenNightLight, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: PresenceSensor}]

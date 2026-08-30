@@ -37,6 +37,13 @@ local function load_configuration(zcl)
   end
 
   local function build_configured_attribute(meta)
+    -- Scaler-aware meter thresholds are configured only after a fresh
+    -- multiplier/divisor pair has arrived. Sending their physical value as a
+    -- raw Zigbee integer here would configure the wrong threshold.
+    if meta.physical_reportable_change ~= nil then
+      return nil
+    end
+
     local has_reporting = meta.minimum_interval ~= nil or
       meta.maximum_interval ~= nil or
       meta.reportable_change ~= nil

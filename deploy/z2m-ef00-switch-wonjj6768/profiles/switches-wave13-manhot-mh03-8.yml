@@ -1,0 +1,69 @@
+name: switches-wave13-manhot-mh03-8
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.mhEightCountdownOne, version: 1}
+      - {id: concertmirror08464.mhEightCountdownTwo, version: 1}
+      - {id: concertmirror08464.mhEightCountdownThree, version: 1}
+      - {id: concertmirror08464.mhEightCountdownFour, version: 1}
+      - {id: concertmirror08464.mhEightCountdownFive, version: 1}
+      - {id: concertmirror08464.mhEightCountdownSix, version: 1}
+      - {id: concertmirror08464.mhEightCountdownSeven, version: 1}
+      - {id: concertmirror08464.mhEightCountdownEight, version: 1}
+      - {id: concertmirror08464.mhEightChildLock, version: 1}
+      - {id: concertmirror08464.mhEightBacklightSwitch, version: 1}
+      - {id: concertmirror08464.mhEightBacklightLightness, version: 1}
+      - {id: concertmirror08464.mhEightDisplayOffDelay, version: 1}
+      - {id: concertmirror08464.mhEightRelayStatus, version: 1}
+      - {id: concertmirror08464.mhEightLightMode, version: 1}
+      - {id: concertmirror08464.mhEightOnColor, version: 1}
+      - {id: concertmirror08464.mhEightOffColor, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameOne, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameTwo, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameThree, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameFour, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameFive, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameSix, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameSeven, version: 1}
+      - {id: concertmirror08464.mhEightSwitchNameEight, version: 1}
+      - {id: concertmirror08464.mhEightPressOnFunction, version: 1}
+      - {id: concertmirror08464.mhEightPressOffFunction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch4
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch5
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch6
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch7
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch
+  - id: switch8
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch

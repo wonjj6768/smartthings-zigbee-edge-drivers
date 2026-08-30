@@ -1,0 +1,8 @@
+name: bridges-wave19-candeo-rf-hub
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.candeoRfHubAction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController

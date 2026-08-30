@@ -1,0 +1,18 @@
+name: sensors-linknlink-emotion-air
+components:
+  - id: main
+    capabilities:
+      - {id: occupancySensor, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: relativeHumidityMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.linknLinkEmotionAirAction, version: 1}
+      - {id: concertmirror08464.linknLinkEmotionAirActionGroup, version: 1}
+      - {id: concertmirror08464.linknLinkEmotionAirActionLevel, version: 1}
+      - {id: concertmirror08464.linknAirActionTransition, version: 1}
+      - {id: concertmirror08464.linknLinkEmotionAirActionRate, version: 1}
+      - {id: concertmirror08464.linknAirActionStepSize, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: PresenceSensor

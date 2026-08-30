@@ -1,0 +1,12 @@
+name: controllers-easyiot-tts01
+components:
+  - id: main
+    capabilities:
+      - id: concertmirror08464.easyiotTts01LastReceivedStatus
+        version: 1
+      - id: concertmirror08464.easyiotTts01SendTts
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: RemoteController

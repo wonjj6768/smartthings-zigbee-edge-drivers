@@ -76,6 +76,7 @@ local function load_cluster_mapping(zcl)
     "minimum_interval",
     "maximum_interval",
     "reportable_change",
+    "physical_reportable_change",
     "read_on_configure",
     "poll_interval",
     "ias_configure_method",
@@ -86,6 +87,7 @@ local function load_cluster_mapping(zcl)
     "attribute_name",
     "complex_type",
     "mfg_code",
+    "profile_id",
     "metering_kind",
   }
 

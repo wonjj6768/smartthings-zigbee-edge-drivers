@@ -4,7 +4,7 @@ components:
     capabilities:
       - id: contactSensor
         version: 1
-      - id: garageDoorControl
+      - id: doorControl
         version: 1
       - id: concertmirror08464.garageOpenerCountdown
         version: 1

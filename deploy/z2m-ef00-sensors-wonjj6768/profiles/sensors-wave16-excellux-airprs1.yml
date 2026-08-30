@@ -1,0 +1,29 @@
+name: sensors-wave16-excellux-airprs1
+components:
+  - id: main
+    capabilities:
+      - {id: battery, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: atmosphericPressureMeasurement, version: 1}
+      - {id: concertmirror08464.airprsOneSamplingInterval, version: 1}
+      - {id: concertmirror08464.airprsOneIlluminanceVZero, version: 1}
+      - {id: concertmirror08464.airprsOneIlluminanceVOne, version: 1}
+      - {id: concertmirror08464.airprsOneIlluminanceCalibration, version: 1}
+      - {id: concertmirror08464.airprsOneIlluminanceWarning, version: 1}
+      - {id: concertmirror08464.airprsOneUv, version: 1}
+      - {id: concertmirror08464.airprsOneUvLevel, version: 1}
+      - {id: concertmirror08464.airprsOneUvCalibration, version: 1}
+      - {id: concertmirror08464.airprsOneUvWarning, version: 1}
+      - {id: concertmirror08464.airprsOneTemperatureCalibration, version: 1}
+      - {id: concertmirror08464.airprsOneTemperatureVZero, version: 1}
+      - {id: concertmirror08464.airprsOneTemperatureVOne, version: 1}
+      - {id: concertmirror08464.airprsOneTemperatureWarning, version: 1}
+      - {id: concertmirror08464.airprsOnePressureCalibration, version: 1}
+      - {id: concertmirror08464.airprsOnePressureVZero, version: 1}
+      - {id: concertmirror08464.airprsOnePressureVOne, version: 1}
+      - {id: concertmirror08464.airprsOnePressureWarning, version: 1}
+      - {id: concertmirror08464.airprsOnePressureTrend, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: EnvironmentSensor

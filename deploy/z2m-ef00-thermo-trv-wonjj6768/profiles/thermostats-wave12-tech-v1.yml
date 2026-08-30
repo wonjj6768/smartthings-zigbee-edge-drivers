@@ -1,0 +1,29 @@
+name: thermostats-wave12-tech-v1
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.techVoneChildLock, version: 1}
+      - {id: concertmirror08464.techVoneWindowDetection, version: 1}
+      - {id: concertmirror08464.techVoneWindowOpen, version: 1}
+      - {id: concertmirror08464.techVonePreset, version: 1}
+      - {id: concertmirror08464.techVoneTempCalibration, version: 1}
+      - {id: concertmirror08464.techVoneTemperatureSensitivity, version: 1}
+      - {id: concertmirror08464.techVoneComfortTemperature, version: 1}
+      - {id: concertmirror08464.techVoneEcoTemperature, version: 1}
+      - {id: concertmirror08464.techVoneHolidayTemperature, version: 1}
+      - {id: concertmirror08464.techVoneMinLimit, version: 1}
+      - {id: concertmirror08464.techVoneFrostProtection, version: 1}
+      - {id: concertmirror08464.techVoneScheduleMonday, version: 1}
+      - {id: concertmirror08464.techVoneScheduleTuesday, version: 1}
+      - {id: concertmirror08464.techVoneScheduleWednesday, version: 1}
+      - {id: concertmirror08464.techVoneScheduleThursday, version: 1}
+      - {id: concertmirror08464.techVoneScheduleFriday, version: 1}
+      - {id: concertmirror08464.techVoneScheduleSaturday, version: 1}
+      - {id: concertmirror08464.techVoneScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

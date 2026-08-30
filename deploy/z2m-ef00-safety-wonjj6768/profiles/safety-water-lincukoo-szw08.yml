@@ -1,0 +1,57 @@
+name: safety-water-lincukoo-szw08
+components:
+  - id: main
+    capabilities:
+      - id: battery
+        version: 1
+      - id: concertmirror08464.lincukooSzw08AlarmStatus
+        version: 1
+      - id: concertmirror08464.lincukooSzw08Mode
+        version: 1
+      - id: concertmirror08464.lincukooSzw08Ringtone
+        version: 1
+    categories:
+      - name: GenericSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: concertmirror08464.lincukooSzw08AlarmStatus
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: concertmirror08464.lincukooSzw08AlarmStatus
+      version: 1
+    - component: main
+      capability: concertmirror08464.lincukooSzw08Mode
+      version: 1
+    - component: main
+      capability: concertmirror08464.lincukooSzw08Ringtone
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: concertmirror08464.lincukooSzw08AlarmStatus
+        version: 1
+      - component: main
+        capability: concertmirror08464.lincukooSzw08Mode
+        version: 1
+      - component: main
+        capability: concertmirror08464.lincukooSzw08Ringtone
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.lincukooSzw08Mode
+        version: 1
+      - component: main
+        capability: concertmirror08464.lincukooSzw08Ringtone
+        version: 1

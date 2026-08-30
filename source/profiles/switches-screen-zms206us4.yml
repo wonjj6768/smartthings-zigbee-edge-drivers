@@ -3,7 +3,7 @@ components:
   - id: main
     capabilities:
       - {id: switch, version: 1}
-      - {id: concertmirror08464.zmsFourBacklightMode, version: 1}
+      - {id: concertmirror08464.zmsFourBacklightSetting, version: 1}
       - {id: concertmirror08464.zmsFourBacklightBrightness, version: 1}
       - {id: concertmirror08464.zmsFourChildLock, version: 1}
       - {id: concertmirror08464.zmsFourRadarConfig, version: 1}

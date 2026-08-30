@@ -1,0 +1,30 @@
+name: safety-occupancy-easyiot-24gms02
+components:
+  - id: main
+    capabilities:
+      - id: occupancySensor
+        version: 1
+      - id: concertmirror08464.easyiot24gDetectionRange
+        version: 1
+      - id: concertmirror08464.easyiot24gWorkMode
+        version: 1
+      - id: concertmirror08464.easyiot24gPirDelay
+        version: 1
+      - id: concertmirror08464.easyiot24gUltrasonicOccupiedDelay
+        version: 1
+      - id: concertmirror08464.easyiot24gUsUnoccupiedDelay
+        version: 1
+      - id: concertmirror08464.easyiot24gMotionCoefficient
+        version: 1
+      - id: concertmirror08464.easyiot24gHoldCoefficient
+        version: 1
+      - id: concertmirror08464.easyiot24gMicroCoefficient
+        version: 1
+      - id: concertmirror08464.easyiot24gAutoCalibrationProgress
+        version: 1
+      - id: concertmirror08464.easyiot24gAutoCalibration
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: PresenceSensor

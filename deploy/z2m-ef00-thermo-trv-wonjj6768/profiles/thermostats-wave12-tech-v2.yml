@@ -1,0 +1,30 @@
+name: thermostats-wave12-tech-v2
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.techVtwoChildLock, version: 1}
+      - {id: concertmirror08464.techVtwoWindowDetection, version: 1}
+      - {id: concertmirror08464.techVtwoWindowOpen, version: 1}
+      - {id: concertmirror08464.techVtwoPreset, version: 1}
+      - {id: concertmirror08464.techVtwoTempCalibration, version: 1}
+      - {id: concertmirror08464.techVtwoTemperatureSensitivity, version: 1}
+      - {id: concertmirror08464.techVtwoComfortTemperature, version: 1}
+      - {id: concertmirror08464.techVtwoEcoTemperature, version: 1}
+      - {id: concertmirror08464.techVtwoHolidayTemperature, version: 1}
+      - {id: concertmirror08464.techVtwoMinLimit, version: 1}
+      - {id: concertmirror08464.techVtwoFrostProtection, version: 1}
+      - {id: concertmirror08464.techVtwoScaleProtection, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleMonday, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleTuesday, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleWednesday, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleThursday, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleFriday, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleSaturday, version: 1}
+      - {id: concertmirror08464.techVtwoScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

@@ -1,0 +1,12 @@
+name: safety-wave16-lincukoo-a08-z10t
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.aZeroEightAlarmState, version: 1}
+      - {id: concertmirror08464.aZeroEightAlarmVolume, version: 1}
+      - {id: concertmirror08464.aZeroEightAlarmTime, version: 1}
+      - {id: concertmirror08464.aZeroEightMute, version: 1}
+      - {id: concertmirror08464.aZeroEightAlarmRingtone, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Siren

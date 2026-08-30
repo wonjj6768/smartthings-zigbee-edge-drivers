@@ -1,0 +1,15 @@
+name: sensors-wave19-heiman-hs2aq-ef-three
+components:
+  - id: main
+    capabilities:
+      - {id: fineDustSensor, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: relativeHumidityMeasurement, version: 1}
+      - {id: formaldehydeMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.heimanEfThreeChargingStatus, version: 1}
+      - {id: concertmirror08464.heimanEfThreePmTen, version: 1}
+      - {id: concertmirror08464.heimanEfThreeAqi, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: AirQualityDetector

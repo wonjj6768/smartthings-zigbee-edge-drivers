@@ -1,0 +1,16 @@
+name: thermostats-wave6a-nedis-zbhtr20wt
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.nedisHtrOpenWindow, version: 1}
+      - {id: concertmirror08464.nedisHtrFrostProtection, version: 1}
+      - {id: concertmirror08464.nedisHtrTempCalibration, version: 1}
+      - {id: concertmirror08464.nedisHtrChildLock, version: 1}
+      - {id: concertmirror08464.nedisHtrLeaveHome, version: 1}
+      - {id: concertmirror08464.nedisHtrScheduleMode, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

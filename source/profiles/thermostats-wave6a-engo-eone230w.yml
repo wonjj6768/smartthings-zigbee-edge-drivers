@@ -1,0 +1,40 @@
+name: thermostats-wave6a-engo-eone230w
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: relativeHumidityMeasurement, version: 1}
+      - {id: concertmirror08464.engoEonePreset, version: 1}
+      - {id: concertmirror08464.engoEoneTempCalibration, version: 1}
+      - {id: concertmirror08464.engoEoneFloorTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneBacklight, version: 1}
+      - {id: concertmirror08464.engoEoneSensorError, version: 1}
+      - {id: concertmirror08464.engoEoneChildLock, version: 1}
+      - {id: concertmirror08464.engoEoneRelayMode, version: 1}
+      - {id: concertmirror08464.engoEoneSensorChoose, version: 1}
+      - {id: concertmirror08464.engoEoneHolidayTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneHolidayDays, version: 1}
+      - {id: concertmirror08464.engoEoneFrostSet, version: 1}
+      - {id: concertmirror08464.engoEoneMaxFloorHeating, version: 1}
+      - {id: concertmirror08464.engoEoneMinFloorHeating, version: 1}
+      - {id: concertmirror08464.engoEoneMaxFloorCooling, version: 1}
+      - {id: concertmirror08464.engoEoneMinFloorCooling, version: 1}
+      - {id: concertmirror08464.engoEoneControlAlgorithm, version: 1}
+      - {id: concertmirror08464.engoEoneValveProtection, version: 1}
+      - {id: concertmirror08464.engoEoneComfortFloor, version: 1}
+      - {id: concertmirror08464.engoEoneTempResolution, version: 1}
+      - {id: concertmirror08464.engoEoneMaxTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneMinTemperature, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleMonday, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleTuesday, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleWednesday, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleThursday, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleFriday, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleSaturday, version: 1}
+      - {id: concertmirror08464.engoEoneScheduleSunday, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

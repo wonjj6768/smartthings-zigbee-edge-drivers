@@ -1,0 +1,27 @@
+name: switches-wave13-manhot-mh03-2
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.mhTwoCountdownOne, version: 1}
+      - {id: concertmirror08464.mhTwoCountdownTwo, version: 1}
+      - {id: concertmirror08464.mhTwoChildLock, version: 1}
+      - {id: concertmirror08464.mhTwoBacklightSwitch, version: 1}
+      - {id: concertmirror08464.mhTwoBacklightLightness, version: 1}
+      - {id: concertmirror08464.mhTwoDisplayOffDelay, version: 1}
+      - {id: concertmirror08464.mhTwoRelayStatus, version: 1}
+      - {id: concertmirror08464.mhTwoLightMode, version: 1}
+      - {id: concertmirror08464.mhTwoOnColor, version: 1}
+      - {id: concertmirror08464.mhTwoOffColor, version: 1}
+      - {id: concertmirror08464.mhTwoSwitchNameOne, version: 1}
+      - {id: concertmirror08464.mhTwoSwitchNameTwo, version: 1}
+      - {id: concertmirror08464.mhTwoPressOnFunction, version: 1}
+      - {id: concertmirror08464.mhTwoPressOffFunction, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+    categories:
+      - name: Switch

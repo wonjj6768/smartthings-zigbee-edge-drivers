@@ -1,0 +1,40 @@
+name: switches-shelly-em-gen4
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.shellyEmWifiStatus, version: 1}
+      - {id: concertmirror08464.shellyEmIpAddress, version: 1}
+      - {id: concertmirror08464.shellyEmDhcpEnabled, version: 1}
+      - {id: concertmirror08464.shellyEmWifiEnabled, version: 1}
+      - {id: concertmirror08464.shellyEmWifiSsid, version: 1}
+      - {id: concertmirror08464.shellyEmWifiPassword, version: 1}
+      - {id: concertmirror08464.shellyEmStaticIp, version: 1}
+      - {id: concertmirror08464.shellyEmNetMask, version: 1}
+      - {id: concertmirror08464.shellyEmGateway, version: 1}
+      - {id: concertmirror08464.shellyEmNameServer, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch
+  - id: meter2
+    label: Meter 2
+    capabilities:
+      - {id: powerMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: concertmirror08464.shellyEmProducedEnergyTwo, version: 1}
+      - {id: concertmirror08464.shellyEmAcFrequencyTwo, version: 1}
+    categories:
+      - name: CurbPowerMeter
+  - id: meter3
+    label: Meter 3
+    capabilities:
+      - {id: powerMeter, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: concertmirror08464.shellyEmProducedEnergyThree, version: 1}
+      - {id: concertmirror08464.shellyEmAcFrequencyThree, version: 1}
+    categories:
+      - name: CurbPowerMeter

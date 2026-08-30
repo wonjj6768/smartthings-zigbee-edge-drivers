@@ -1,0 +1,24 @@
+name: lights-wave19-avatto-zdms16-us-w2
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.avattoWTwoMinBrightness, version: 1}
+      - {id: concertmirror08464.avattoWTwoMaxBrightness, version: 1}
+      - {id: concertmirror08464.avattoWTwoSwitchType, version: 1}
+      - {id: concertmirror08464.avattoWTwoCountdown, version: 1}
+      - {id: concertmirror08464.avattoWTwoPowerBehavior, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.avattoWTwoMinBrightness, version: 1}
+      - {id: concertmirror08464.avattoWTwoMaxBrightness, version: 1}
+      - {id: concertmirror08464.avattoWTwoSwitchType, version: 1}
+      - {id: concertmirror08464.avattoWTwoCountdown, version: 1}
+    categories:
+      - name: Light

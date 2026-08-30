@@ -3,7 +3,12 @@
 --
 -- 기존 EF00의 send_named_mapping 에 대응하는 ZCL 전송 레이어입니다.
 
-  local function load_command_sender(zcl)
+local function load_command_sender(zcl)
+
+  -- Install the read surface first. This keeps reads available to full
+  -- packages while allowing receive-only packages to load the reader without
+  -- loading this writable module at all.
+  local send_request, build_or_reuse_mapping_context = require "zcl_common.attribute_reader"(zcl)
 
   local cluster_base = require "st.zigbee.cluster_base"
   local data_types = require "st.zigbee.data_types"
@@ -11,22 +16,16 @@
   local zigbee_constants = require "st.zigbee.constants"
   local zcl_clusters = require "st.zigbee.zcl.clusters"
   local zcl_messages = require "st.zigbee.zcl"
-    local FrameCtrl = require "st.zigbee.zcl.frame_ctrl"
-    local generic_body = require "st.zigbee.generic_body"
-    local log = require "log"
+  local FrameCtrl = require "st.zigbee.zcl.frame_ctrl"
+  local generic_body = require "st.zigbee.generic_body"
+  local log = require "log"
 
   local default_sender_key = "__default"
   local sender_registry = {}
 
-  local function send_request(device, request, endpoint)
-    if endpoint ~= nil and type(request.to_endpoint) == "function" then
-      request = request:to_endpoint(endpoint)
-    end
-    device:send(request)
-    return true
-  end
-
-  local function send_cluster_specific_command(device, cluster_id, command_id, payload, endpoint, direction, mfg_code)
+  local function send_cluster_specific_command(
+    device, cluster_id, command_id, payload, endpoint, direction, mfg_code, disable_default_response
+  )
     local frame_ctrl = FrameCtrl(0x00)
     frame_ctrl:set_cluster_specific()
     if direction == "client" then
@@ -34,6 +33,9 @@
     end
     if mfg_code ~= nil then
       frame_ctrl:set_mfg_specific()
+    end
+    if disable_default_response then
+      frame_ctrl:set_disable_default_response()
     end
 
     local zcl_header = {
@@ -85,19 +87,6 @@
     )
   end
 
-  local function read_manufacturer_specific_attribute(device, cluster_id, attribute_id, mfg_code, endpoint)
-    return send_request(
-      device,
-      cluster_base.read_manufacturer_specific_attribute(
-        device,
-        cluster_id,
-        attribute_id,
-        mfg_code
-      ),
-      endpoint
-    )
-  end
-
   local function write_manufacturer_specific_attribute(device, cluster_id, attribute_id, mfg_code, value, write_type, endpoint)
     return send_request(
       device,
@@ -113,20 +102,8 @@
     )
   end
 
-  local function read_generated_attribute(device, attribute_def, endpoint)
-    return send_request(device, attribute_def:read(device), endpoint)
-  end
-
   local function write_generated_attribute(device, attribute_def, value, endpoint)
     return send_request(device, attribute_def:write(device, attribute_def(value)), endpoint)
-  end
-
-  local function read_plain_attribute(device, cluster_id, attribute_id, endpoint)
-    return send_request(
-      device,
-      cluster_base.read_attribute(device, data_types.ClusterId(cluster_id), data_types.AttributeId(attribute_id)),
-      endpoint
-    )
   end
 
   local function clamp_integer(value, min_value, max_value)
@@ -202,14 +179,6 @@
     end
 
     return false
-  end
-
-  local function build_or_reuse_mapping_context(device, mapping, context, value)
-    if type(context) == "table" and context.mapping == mapping then
-      return context
-    end
-
-    return zcl.build_mapping_context(device, mapping, context, value)
   end
 
   local function resolve_write_type(meta, encoded_value)
@@ -392,31 +361,6 @@
       mapping_context.endpoint,
       meta.tx_command_direction
     )
-  end
-
-  local function read_mapping_attribute(device, mapping, context)
-    local meta = zcl.mapping_meta(mapping)
-    if meta == nil or meta.cluster_id == nil or meta.attribute_id == nil then
-      return false
-    end
-
-    local mapping_context = build_or_reuse_mapping_context(device, mapping, context, nil)
-
-    if meta.mfg_code ~= nil then
-      return read_manufacturer_specific_attribute(
-        device,
-        meta.cluster_id,
-        meta.attribute_id,
-        meta.mfg_code,
-        mapping_context.endpoint
-      )
-    end
-
-    if meta.attribute_def ~= nil and type(meta.attribute_def.read) == "function" then
-      return read_generated_attribute(device, meta.attribute_def, mapping_context.endpoint)
-    end
-
-    return read_plain_attribute(device, meta.cluster_id, meta.attribute_id, mapping_context.endpoint)
   end
 
   local function write_mapping_value(device, mapping, value, context)
@@ -657,8 +601,19 @@
     return send_cluster_command(device, zcl.CLUSTER_WINDOW_COVERING, command_id, "", endpoint)
   end
 
-  function zcl.send_raw_cluster_command(device, cluster_id, command_id, payload, endpoint, direction, mfg_code)
-    return send_cluster_specific_command(device, cluster_id, command_id, payload, endpoint, direction, mfg_code)
+  function zcl.send_raw_cluster_command(
+    device, cluster_id, command_id, payload, endpoint, direction, mfg_code, disable_default_response
+  )
+    return send_cluster_specific_command(
+      device,
+      cluster_id,
+      command_id,
+      payload,
+      endpoint,
+      direction,
+      mfg_code,
+      disable_default_response
+    )
   end
 
   local function send_thermostat_setpoint(device, temperature_celsius, endpoint)
@@ -693,72 +648,6 @@
       data_types.Enum8,
       endpoint
     )
-  end
-
-  --- 특정 클러스터/attribute 읽기 요청을 전송합니다.
-  ---@param device table SmartThings device 객체
-  ---@param cluster_id number 클러스터 ID
-  ---@param attribute_id number attribute ID
-  ---@param endpoint number|nil 대상 엔드포인트
-  ---@param mfg_code number|nil 제조사 코드
-  function zcl.read_attribute(device, cluster_id, attribute_id, endpoint, mfg_code)
-    if mfg_code ~= nil then
-      return read_manufacturer_specific_attribute(device, cluster_id, attribute_id, mfg_code, endpoint)
-    end
-
-    local attribute_def = zcl.get_generated_attribute and zcl.get_generated_attribute(cluster_id, attribute_id) or nil
-    if attribute_def ~= nil then
-      return read_generated_attribute(device, attribute_def, endpoint)
-    end
-
-    return read_plain_attribute(device, cluster_id, attribute_id, endpoint)
-  end
-
-  function zcl.read_mapping(device, mapping, context)
-    return read_mapping_attribute(device, mapping, context)
-  end
-
-  function zcl.read_named_attribute(device, zcl_clusters, name, context)
-    local mapping = zcl.find_mapping_by_name(zcl_clusters, name, device, context)
-    if mapping == nil then
-      return false
-    end
-
-    local meta = zcl.mapping_meta(mapping)
-    if meta == nil or meta.write_only then
-      return false
-    end
-
-    return read_mapping_attribute(device, mapping, zcl.build_mapping_context(device, mapping, context, nil))
-  end
-
-  --- zcl_clusters 매핑에 정의된 모든 readable attribute에 대해 읽기 요청을 전송합니다.
-  ---@param device table SmartThings device 객체
-  ---@param zcl_clusters table zcl_clusters 매핑 리스트
-  function zcl.read_all_attributes(device, zcl_clusters)
-    if zcl_clusters == nil then
-      return
-    end
-
-    local seen = {}
-
-    for _, mapping in ipairs(zcl_clusters) do
-      local meta = type(mapping) == "table" and zcl.mapping_meta(mapping) or nil
-      if meta ~= nil and not meta.write_only and meta.cluster_id ~= nil and meta.attribute_id ~= nil then
-        local mapping_context = zcl.build_mapping_context(device, mapping, nil)
-        local key = string.format(
-          "%04X:%04X:%s:%s",
-          meta.cluster_id,
-          meta.attribute_id,
-          tostring(mapping_context.endpoint),
-          tostring(meta.mfg_code)
-        )
-        if not seen[key] then
-          seen[key] = true
-          read_mapping_attribute(device, mapping, mapping_context)
-        end
-      end
-    end
   end
 
   --- cluster/attribute 전용 sender를 등록합니다.

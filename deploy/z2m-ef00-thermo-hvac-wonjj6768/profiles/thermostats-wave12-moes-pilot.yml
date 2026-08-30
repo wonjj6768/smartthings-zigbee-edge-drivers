@@ -1,0 +1,25 @@
+name: thermostats-wave12-moes-pilot
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: concertmirror08464.moesPilotMode, version: 1}
+      - {id: concertmirror08464.moesPilotPreset, version: 1}
+      - {id: concertmirror08464.moesPilotTempCalibration, version: 1}
+      - {id: concertmirror08464.moesPilotWindowOpen, version: 1}
+      - {id: concertmirror08464.moesPilotWindowDetection, version: 1}
+      - {id: concertmirror08464.moesPilotChildLock, version: 1}
+      - {id: concertmirror08464.moesPilotTempUnit, version: 1}
+      - {id: concertmirror08464.moesPilotLowerTemperature, version: 1}
+      - {id: concertmirror08464.moesPilotUpperTemperature, version: 1}
+      - {id: concertmirror08464.moesPilotElectricity, version: 1}
+      - {id: concertmirror08464.moesPilotBoostDuration, version: 1}
+      - {id: concertmirror08464.moesPilotDailyEnergy, version: 1}
+      - {id: concertmirror08464.moesPilotMonthlyEnergy, version: 1}
+      - {id: concertmirror08464.moesPilotYearlyEnergy, version: 1}
+      - {id: concertmirror08464.moesPilotWindowKeepTime, version: 1}
+      - {id: concertmirror08464.moesPilotRunningMode, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

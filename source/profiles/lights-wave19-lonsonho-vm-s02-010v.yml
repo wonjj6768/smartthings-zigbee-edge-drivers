@@ -1,0 +1,24 @@
+name: lights-wave19-lonsonho-vm-s02-010v
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoMinBrightness, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoMaxBrightness, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoSwitchType, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoCountdown, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoPowerBehavior, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoMinBrightness, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoMaxBrightness, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoSwitchType, version: 1}
+      - {id: concertmirror08464.lonsonhoVmTwoCountdown, version: 1}
+    categories:
+      - name: Light

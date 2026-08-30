@@ -1,0 +1,34 @@
+name: lights-wave19-qa-qadz4din
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.qaQadzFourMinBrightness, version: 1}
+      - {id: concertmirror08464.qaQadzFourSwitchType, version: 1}
+      - {id: concertmirror08464.qaQadzFourDimmingSpeed, version: 1}
+      - {id: concertmirror08464.qaQadzFourPowerBehavior, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Light
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.qaQadzFourMinBrightness, version: 1}
+    categories:
+      - name: Light
+  - id: switch3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.qaQadzFourMinBrightness, version: 1}
+    categories:
+      - name: Light
+  - id: switch4
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.qaQadzFourMinBrightness, version: 1}
+    categories:
+      - name: Light

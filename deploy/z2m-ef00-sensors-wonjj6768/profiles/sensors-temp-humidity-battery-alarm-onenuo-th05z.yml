@@ -1,0 +1,38 @@
+name: sensors-temp-humidity-battery-alarm-onenuo-th05z
+components:
+  - id: main
+    capabilities:
+      - id: temperatureMeasurement
+        version: 1
+      - id: relativeHumidityMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: concertmirror08464.th05zTemperatureUnit
+        version: 1
+      - id: concertmirror08464.th05zMaxTempAlarm
+        version: 1
+      - id: concertmirror08464.th05zMinTempAlarm
+        version: 1
+      - id: concertmirror08464.th05zMaxHumidityAlarm
+        version: 1
+      - id: concertmirror08464.th05zMinHumidityAlarm
+        version: 1
+      - id: concertmirror08464.th05zTemperatureAlarm
+        version: 1
+      - id: concertmirror08464.th05zHumidityAlarm
+        version: 1
+      - id: concertmirror08464.th05zTempReportPeriod
+        version: 1
+      - id: concertmirror08464.th05zTempSensitivity
+        version: 1
+      - id: concertmirror08464.th05zHumiditySensitivity
+        version: 1
+      - id: concertmirror08464.th05zTempCalibration
+        version: 1
+      - id: concertmirror08464.th05zHumidityCalibration
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: TempHumiditySensor

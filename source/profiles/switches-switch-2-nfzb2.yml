@@ -1,0 +1,20 @@
+name: switches-switch-2-nfzb2
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.nfzbTwoPowerOutageMemory, version: 1}
+      - {id: concertmirror08464.nfzbTwoIndicatorMode, version: 1}
+      - {id: concertmirror08464.nfzbTwoBacklightMode, version: 1}
+      - {id: concertmirror08464.nfzbTwoCountdownOne, version: 1}
+      - {id: concertmirror08464.nfzbTwoInchingEnabledOne, version: 1}
+      - {id: concertmirror08464.nfzbTwoInchingTimeOne, version: 1}
+      - {id: concertmirror08464.nfzbTwoInchingEnabledTwo, version: 1}
+      - {id: concertmirror08464.nfzbTwoInchingTimeTwo, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Switch}]
+  - id: switch2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.nfzbTwoCountdownTwo, version: 1}
+    categories: [{name: Switch}]

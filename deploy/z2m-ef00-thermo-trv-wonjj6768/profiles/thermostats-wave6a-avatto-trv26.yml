@@ -1,0 +1,30 @@
+name: thermostats-wave6a-avatto-trv26
+components:
+  - id: main
+    capabilities:
+      - {id: thermostatMode, version: 1}
+      - {id: thermostatHeatingSetpoint, version: 1}
+      - {id: thermostatOperatingState, version: 1}
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.trvTwoSixPreset, version: 1}
+      - {id: concertmirror08464.trvTwoSixChildLock, version: 1}
+      - {id: concertmirror08464.trvTwoSixMaxTempLimit, version: 1}
+      - {id: concertmirror08464.trvTwoSixMinTempLimit, version: 1}
+      - {id: concertmirror08464.trvTwoSixWindowDetection, version: 1}
+      - {id: concertmirror08464.trvTwoSixOpenWindowTemp, version: 1}
+      - {id: concertmirror08464.trvTwoSixScheduleTuesday, version: 1}
+      - {id: concertmirror08464.trvTwoSixFactoryReset, version: 1}
+      - {id: concertmirror08464.trvTwoSixScheduleThursday, version: 1}
+      - {id: concertmirror08464.trvTwoSixScheduleSaturday, version: 1}
+      - {id: concertmirror08464.trvTwoSixScheduleSunday, version: 1}
+      - {id: concertmirror08464.trvTwoSixComfortTemperature, version: 1}
+      - {id: concertmirror08464.trvTwoSixEcoTemperature, version: 1}
+      - {id: concertmirror08464.trvTwoSixHolidayTemperature, version: 1}
+      - {id: concertmirror08464.trvTwoSixTempCalibration, version: 1}
+      - {id: concertmirror08464.trvTwoSixFrostProtection, version: 1}
+      - {id: concertmirror08464.trvTwoSixUptime, version: 1}
+      - {id: concertmirror08464.trvTwoSixDescaleCountdown, version: 1}
+      - {id: concertmirror08464.trvTwoSixErrorStatus, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Thermostat}]

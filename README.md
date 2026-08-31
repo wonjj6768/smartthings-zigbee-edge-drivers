@@ -42,56 +42,93 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 
 | Driver | Package key | Fingerprints |
 | --- | --- | ---: |
+| EF00 Bridge wonjj6768 | `ef00-bridge-wonjj6768` | 2 |
+| EF00 Controls 2 wonjj6768 | `ef00-controls-2-wonjj6768` | 15 |
 | EF00 Controls wonjj6768 | `ef00-controls-wonjj6768` | 10 |
+| EF00 Covers 2 wonjj6768 | `ef00-covers-2-wonjj6768` | 18 |
 | EF00 Covers wonjj6768 | `ef00-covers-wonjj6768` | 189 |
 | EF00 Energy wonjj6768 | `ef00-energy-wonjj6768` | 52 |
 | EF00 Garage Door wonjj6768 | `ef00-garage-door-wonjj6768` | 11 |
+| EF00 Lights 2 wonjj6768 | `ef00-lights-2-wonjj6768` | 26 |
 | EF00 Lights wonjj6768 | `ef00-lights-wonjj6768` | 111 |
+| EF00 Meters 2 wonjj6768 | `ef00-meters-2-wonjj6768` | 5 |
 | EF00 Meters wonjj6768 | `ef00-meters-wonjj6768` | 62 |
 | EF00 PIR Motion wonjj6768 | `ef00-pir-motion-wonjj6768` | 23 |
+| EF00 Presence 3 wonjj6768 | `ef00-presence-3-wonjj6768` | 21 |
 | EF00 Presence Advanced wonjj6768 | `ef00-presence-advanced-wonjj6768` | 33 |
 | EF00 Presence General 1 wonjj6768 | `ef00-presence-general-1-wonjj6768` | 30 |
 | EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 62 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
+| EF00 Safety 2 wonjj6768 | `ef00-safety-2-wonjj6768` | 22 |
 | EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 99 |
 | EF00 Screen Switch wonjj6768 | `ef00-screen-switch-wonjj6768` | 8 |
+| EF00 Sensors 2 wonjj6768 | `ef00-sensors-2-wonjj6768` | 8 |
 | EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 155 |
+| EF00 Switch 2 wonjj6768 | `ef00-switch-2-wonjj6768` | 48 |
 | EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 39 |
 | EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 111 |
 | EF00 Thermostat FCU wonjj6768 | `ef00-thermostat-fcu-wonjj6768` | 40 |
+| EF00 Thermostat HVAC 2 wonjj6768 | `ef00-thermostat-hvac-2-wonjj6768` | 18 |
 | EF00 Thermostat TRV 1 wonjj6768 | `ef00-thermostat-trv-1-wonjj6768` | 71 |
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
+| EF00 Thermostat TRV 3 wonjj6768 | `ef00-thermostat-trv-3-wonjj6768` | 34 |
 | EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 43 |
+| EF00 Valves 2 wonjj6768 | `ef00-valves-2-wonjj6768` | 19 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 30 |
-| EF00 Bridge wonjj6768 | `z2m-ef00-bridge-wonjj6768` | 2 |
-| EF00 Controls 2 wonjj6768 | `z2m-ef00-controls-wonjj6768` | 15 |
-| EF00 Covers 2 wonjj6768 | `z2m-ef00-covers-wonjj6768` | 18 |
-| EF00 Lights 2 wonjj6768 | `z2m-ef00-lights-wonjj6768` | 26 |
-| EF00 Meters 2 wonjj6768 | `z2m-ef00-meters-wonjj6768` | 5 |
-| EF00 Presence 3 wonjj6768 | `z2m-ef00-presence-wonjj6768` | 21 |
-| EF00 Safety 2 wonjj6768 | `z2m-ef00-safety-wonjj6768` | 22 |
-| EF00 Sensors 2 wonjj6768 | `z2m-ef00-sensors-wonjj6768` | 8 |
-| EF00 Switch 2 wonjj6768 | `z2m-ef00-switch-wonjj6768` | 48 |
-| EF00 Thermostat HVAC 2 wonjj6768 | `z2m-ef00-thermo-hvac-wonjj6768` | 18 |
-| EF00 Thermostat TRV 3 wonjj6768 | `z2m-ef00-thermo-trv-wonjj6768` | 34 |
-| EF00 Valves 2 wonjj6768 | `z2m-ef00-valves-wonjj6768` | 19 |
-| ZCL Bridge wonjj6768 | `z2m-zcl-bridge-wonjj6768` | 3 |
-| ZCL Controls 2 wonjj6768 | `z2m-zcl-controls-wonjj6768` | 5 |
-| ZCL DALI wonjj6768 | `z2m-zcl-dali-wonjj6768` | 1 |
-| ZCL Lights 2 wonjj6768 | `z2m-zcl-lights-wonjj6768` | 8 |
-| ZCL Locks wonjj6768 | `z2m-zcl-locks-wonjj6768` | 2 |
-| ZCL Sensors 2 wonjj6768 | `z2m-zcl-sensors-wonjj6768` | 9 |
-| ZCL Switch 2 wonjj6768 | `z2m-zcl-switch-wonjj6768` | 12 |
-| ZCL Thermostat wonjj6768 | `z2m-zcl-thermostat-wonjj6768` | 2 |
+| ZCL Bridge wonjj6768 | `zcl-bridge-wonjj6768` | 3 |
+| ZCL Controls 2 wonjj6768 | `zcl-controls-2-wonjj6768` | 5 |
 | ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 313 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 41 |
+| ZCL DALI wonjj6768 | `zcl-dali-wonjj6768` | 1 |
 | ZCL EasyIoT wonjj6768 | `zcl-easyiot-wonjj6768` | 6 |
+| ZCL Lights 2 wonjj6768 | `zcl-lights-2-wonjj6768` | 8 |
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 692 |
+| ZCL Locks wonjj6768 | `zcl-locks-wonjj6768` | 2 |
 | ZCL Plugs wonjj6768 | `zcl-plugs-wonjj6768` | 110 |
+| ZCL Sensors 2 wonjj6768 | `zcl-sensors-2-wonjj6768` | 9 |
 | ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 394 |
+| ZCL Switch 2 wonjj6768 | `zcl-switch-2-wonjj6768` | 12 |
 | ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 501 |
+| ZCL Thermostat wonjj6768 | `zcl-thermostat-wonjj6768` | 2 |
 
 ## Supported Fingerprints
+
+<details>
+<summary>EF00 Bridge wonjj6768 (2 fingerprints)</summary>
+
+Dedicated driver for newly absorbed exact EF00 bridge fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE204_6fk3gewc` | `TS0601` | `bridges-wave19-weten-pci-e` |
+| `_TZE284_6fk3gewc` | `TS0601` | `bridges-wave19-weten-pci-e` |
+
+</details>
+
+<details>
+<summary>EF00 Controls 2 wonjj6768 (15 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 remotes, keypads, and button-control fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_lhpnrfmy` | `TS0601` | `controls-wave19-box-erc2201-z` |
+| `_TZE200_moycceze` | `TS0601` | `controls-wave18-immax-07505l` |
+| `_TZE200_n9clpsht` | `TS0601` | `controls-wave18-immax-07505l` |
+| `_TZE200_nyvavzbj` | `TS0601` | `controls-wave18-immax-07505l` |
+| `_TZE200_oahqgdig` | `TS0601` | `controls-wave15-engo-ecb62zb` |
+| `_TZE200_rt5dklro` | `TS0601` | `controls-wave18-daewoo-wke502z` |
+| `_TZE200_zaabefnt` | `TS0601` | `controls-wave15-engo-ecb62zb` |
+| `_TZE200_zqtiam4u` | `TS0601` | `controls-wave19-zemismart-zm-rm02` |
+| `_TZE284_1aqlsquf` | `TS0601` | `controls-wave19-qa-qat42z2b` |
+| `_TZE284_chcnj5st` | `TS0601` | `controls-wave17-lincukoo-czf02` |
+| `_TZE284_gw05grph` | `TS0601` | `controls-wave17-lincukoo-czf02` |
+| `_TZE284_ms97nkyy` | `TS0601` | `controls-wave19-qa-qat44z6` |
+| `_TZE284_pgxndxp4` | `TS0601` | `controls-wave19-qa-qat42z3b` |
+| `_TZE284_pislt0wa` | `TS0601` | `controls-wave17-lincukoo-czf02` |
+| `_TZE28C1000000_jlbsptkl` | `TS0601` | `controls-wave19-tuya-presence-switch` |
+
+</details>
 
 <details>
 <summary>EF00 Controls wonjj6768 (10 fingerprints)</summary>
@@ -110,6 +147,34 @@ Development driver; report issues with hub logcat. Supports EF00 scene remotes a
 | `_TZE284_5ys44kzo` | `TS0601` | `buttons-button-6-battery` |
 | `_TZE284_dhke3p9w` | `TS0601` | `buttons-button-18` |
 | `_TZE284_nj7sfid2` | `TS0601` | `buttons-button-4` |
+
+</details>
+
+<details>
+<summary>EF00 Covers 2 wonjj6768 (18 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 cover fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZ3210_5rta89nj` | `TS0601` | `covers-wave10-moes-zc-lp01` |
+| `_TZ3210_rundhkxp` | `TS030F` | `covers-wave10-moes-adcbzi01` |
+| `_TZ3210_sxtfesc6` | `TS030F` | `covers-wave10-moes-adcbzi01` |
+| `_TZE200_ra6wrlgv` | `TS0601` | `covers-wave15-box-erc2206z` |
+| `_TZE200_sbordckq` | `TS0601` | `covers-wave19-legacy-tuya` |
+| `_TZE200_swhwv3k3` | `TS0601` | `covers-wave19-legacy-tuya` |
+| `_TZE200_xtrnjaoz` | `TS0601` | `covers-cover-gm25teq` |
+| `_TZE204_7lb6j8wg` | `TS0601` | `covers-wave15-tuya-semicom-three` |
+| `_TZE204_mpg22jc1` | `TS0601` | `covers-wave10-zemismart-zn-usc1u-ht` |
+| `_TZE204_srmahpwl` | `TS0601` | `covers-wave10-moes-zs-sr-euc` |
+| `_TZE204_xtrnjaoz` | `TS0601` | `covers-cover-gm25teq` |
+| `_TZE210_xgzzuerd` | `TS0301` | `covers-wave10-tuya-ts0301-cover-two` |
+| `_TZE284_6hrnp30w` | `TS0601` | `covers-wave10-zemismart-zmp1` |
+| `_TZE284_7qc2wlqr` | `TS0601` | `covers-wave10-manhot-bl82-tyz1` |
+| `_TZE284_8whfphjv` | `TS0601` | `covers-cover-gm25teq` |
+| `_TZE284_hbjwgkdh` | `TS0601` | `covers-wave10-xenon-x7726` |
+| `_TZE284_qoi1aqxg` | `TS0601` | `covers-wave10-moes-fwjzceh18a001` |
+| `_TZE284_upt8lzi0` | `TS0601` | `covers-cover-moes-zs-sf-euc-wh-ms` |
 
 </details>
 
@@ -396,6 +461,42 @@ Development driver; report issues with hub logcat. Supports EF00 garage door ope
 </details>
 
 <details>
+<summary>EF00 Lights 2 wonjj6768 (26 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 light and dimmer fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_2gtsuokt` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
+| `_TZE200_3thxjahu` | `TS0601` | `lights-color-skydance-wz5-rgbw` |
+| `_TZE200_6qoazbre` | `TS0601` | `lights-dimmer-skydance-wz5-dim` |
+| `_TZE200_9hghastn` | `TS0601` | `lights-color-skydance-wz5-rgb` |
+| `_TZE200_9mt3kgn0` | `TS0601` | `lights-color-skydance-wz5-rgb` |
+| `_TZE200_a1ovdobn` | `TS0601` | `lights-moes-zs-d1` |
+| `_TZE200_aa9awrng` | `TS0601` | `lights-color-temperature-color-skydance-wz5-rgbcct` |
+| `_TZE200_fcooykb4` | `TS0601` | `lights-dimmer-skydance-wz5-dim` |
+| `_TZE200_g9jdneiu` | `TS0601` | `lights-color-skydance-wz5-rgbw` |
+| `_TZE200_gz3n0tzf` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
+| `_TZE200_jowqowye` | `TS0601` | `lights-dimmer-mercator-siswd11-zb` |
+| `_TZE200_mde0utnv` | `TS0601` | `lights-color-temperature-color-skydance-wz5-rgbcct` |
+| `_TZE200_na98lvjp` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
+| `_TZE200_nthosjmx` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
+| `_TZE200_rlqamjhp` | `TS0601` | `lights-moes-zs-d2` |
+| `_TZE200_s8gkrkxk` | `TS0601` | `lights-wave19-lidl-hg06467` |
+| `_TZE204_8fffc3kb` | `TS0601` | `lights-wave15-gledopto-gl-spi-206p` |
+| `_TZE204_sdykkwsu` | `TS0601` | `lights-wave19-avatto-zdms16-us-w2` |
+| `_TZE204_zhiqbr7l` | `TS0601` | `lights-color-temperature-color-skydance-wz5-rgbcct` |
+| `_TZE284_5yah8qx4` | `TS0601` | `lights-wave19-nova-topazio` |
+| `_TZE284_a1ovdobn` | `TS0601` | `lights-moes-zs-d1` |
+| `_TZE284_gt5al3bl` | `TS0601` | `lights-wave15-gledopto-gl-spi-206p` |
+| `_TZE284_nthhgkd6` | `TS0601` | `lights-wave19-qa-qadz4din` |
+| `_TZE284_vizxbhco` | `TS0601` | `lights-moes-zs-d3` |
+| `_TZE28C1000000_nqqylykc` | `TS0601` | `lights-dimmer-zdms16-1` |
+| `_TZE600_wxq8dpha\x00` | `TS0603` | `lights-wave19-lonsonho-vm-s02-010v` |
+
+</details>
+
+<details>
 <summary>EF00 Lights wonjj6768 (111 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 dimmers, LED drivers, and lighting devices.
@@ -517,6 +618,21 @@ Development driver; report issues with hub logcat. Supports EF00 dimmers, LED dr
 </details>
 
 <details>
+<summary>EF00 Meters 2 wonjj6768 (5 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 meter and energy fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZ3218_kwht8j5m` | `TS011F` | `meters-wave19-qa-qaszp` |
+| `_TZE204_goecjd1t` | `TS0601` | `meters-zwpm16` |
+| `_TZE204_jrcfsaa3` | `TS0601` | `meters-zwpm16-2` |
+| `_TZE204_t9ffmdin` | `TS0601` | `meters-wave19-nous-d5z` |
+| `_TZE284_2fnssffc` | `TS0601` | `meters-wave19-moes-zm6lt1` |
+
+</details>
+
+<details>
 <summary>EF00 Meters wonjj6768 (62 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 single, two and three phase energy meters.
@@ -618,6 +734,37 @@ Development driver; report issues with hub logcat. Supports EF00 PIR motion sens
 | `AOYAN` | `AY-204Z` | `safety-motion-ay204z-battery` |
 | `AOYAN ` | `AY-204Z` | `safety-motion-ay204z-battery` |
 | `AOYAN  ` | `AY-204Z` | `safety-motion-ay204z-battery` |
+
+</details>
+
+<details>
+<summary>EF00 Presence 3 wonjj6768 (21 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 presence and mmWave fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZ3218_awarhusb` | `TS0225` | `safety-occupancy-wave11-linptech-es1` |
+| `_TZ3218_ewrxirng` | `TS0225` | `safety-occupancy-wave11-linptech-es1` |
+| `_TZ3218_t9ynfz4x` | `TS0225` | `safety-occupancy-wave11-linptech-es1` |
+| `_TZE200_7hfcudw5` | `TS0601` | `safety-wave19-neo-nas-pd07` |
+| `_TZE200_i0b1dbqu` | `TS0601` | `safety-wave19-javis-microwave` |
+| `_TZE200_kagkgk0i` | `TS0601` | `safety-wave19-javis-microwave` |
+| `_TZE200_lgstepha` | `TS0601` | `safety-wave19-javis-microwave` |
+| `_TZE204_1youk3hj` | `TS0601` | `safety-presence-wave11-neo-nas-ps10b2` |
+| `_TZE204_b8vxct9l` | `TS0601` | `safety-presence-wave11-szlr08t` |
+| `_TZE204_bjf8qum1` | `TS0601` | `safety-presence-szlmr10-illuminance` |
+| `_TZE204_khoqss0a` | `TS0601` | `safety-presence-wave11-szr07` |
+| `_TZE204_lw5ny7tp` | `TS0601` | `safety-presence-wave11-szlr08` |
+| `_TZE204_sndkanfr` | `TS0601` | `safety-presence-szlmr10-illuminance` |
+| `_TZE284_1youk3hj` | `TS0601` | `safety-presence-wave11-neo-nas-ps10b2` |
+| `_TZE284_hqys6frs` | `TS0601` | `safety-presence-wave11-r12lm-z10t` |
+| `_TZE284_sndkanfr` | `TS0601` | `safety-presence-szlmr10-illuminance` |
+| `_TZE284_zzm83zpz` | `TS0601` | `safety-presence-wave11-r12lm-z11t` |
+| `_TZE28C1000000_ewn672ef` | `TS0601` | `safety-presence-zf24pro-temp-humidity` |
+| `_TZE28C1000000_jaunkx9g` | `TS0601` | `switches-presence-wave11-tuya-2gang` |
+| `_TZE28C1000000_usmqzgdm` | `TS0601` | `switches-presence-wave11-tuya-3gang` |
+| `_TZE28C1000000_vosmoqsg` | `TS0601` | `safety-presence-zf24pro-temp-humidity` |
 
 </details>
 
@@ -803,6 +950,38 @@ Development driver; report issues with hub logcat. Supports EF00 presence sensor
 </details>
 
 <details>
+<summary>EF00 Safety 2 wonjj6768 (22 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_hr0tdd47` | `TS0601` | `safety-co-moes-zc-hm` |
+| `_TZE200_nlrfgpny` | `TS0601` | `safety-alarm-neo-nas-ab06b2` |
+| `_TZE200_rjxqso4a` | `TS0601` | `safety-co-moes-zc-hm` |
+| `_TZE200_t1blo2bj` | `TS0601` | `safety-alarm-neo-nas-ab02b2` |
+| `_TZE204_l4daccga` | `TS0601` | `safety-wave16-lincukoo-a08-z10t` |
+| `_TZE204_nlrfgpny` | `TS0601` | `safety-alarm-neo-nas-ab06b2` |
+| `_TZE204_q76rtoa9` | `TS0601` | `safety-alarm-neo-nas-ab02b2` |
+| `_TZE204_qvxrkeif` | `TS0601` | `safety-gas-nous-e9` |
+| `_TZE204_ra9zfiwr` | `TS0601` | `safety-wave15-lincukoo-e04cf-z10t` |
+| `_TZE204_t1blo2bj` | `TS0601` | `safety-alarm-neo-nas-ab02b2` |
+| `_TZE204_uc0iv1hb` | `TS0601` | `safety-gas-detector-spacetronik-zb-dg02` |
+| `_TZE284_1di7ujzp` | `TS0601` | `safety-water-nous-e13` |
+| `_TZE284_2qx7sivb` | `TS0601` | `safety-vibration-tuya-battery-state` |
+| `_TZE284_7trh4ihp` | `TS0601` | `safety-vibration-tuya-battery-state-controls` |
+| `_TZE284_8sejxcue` | `TS0601` | `safety-vibration-tuya-battery-state-controls` |
+| `_TZE284_aghfucwi` | `TS0601` | `safety-vibration-tuya-battery` |
+| `_TZE284_ajhu0zqb` | `TS0601` | `safety-water-lincukoo-szw08` |
+| `_TZE284_iunyuzwe` | `TS0601` | `safety-water-lincukoo-w04-z10t-battery-state` |
+| `_TZE284_nlrfgpny` | `TS0601` | `safety-alarm-neo-nas-ab06b2` |
+| `_TZE284_rjxqso4a` | `TS0601` | `safety-co-moes-zc-hm` |
+| `_TZE284_sonkaxrd` | `TS0601` | `safety-co-nous-e12` |
+| `_TZE284_vbgmewta` | `TS0601` | `safety-water-lincukoo-w04-z10t-battery-ringtone` |
+
+</details>
+
+<details>
 <summary>EF00 Safety wonjj6768 (99 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.
@@ -926,6 +1105,24 @@ Development driver; report issues with hub logcat. Supports EF00 screen switch p
 | `_TZE284_xibaabmu` | `TS0601` | `switches-screen-zms206us4` |
 | `_TZE284_y4jqpry8` | `TS0601` | `switches-screen-zms206us4` |
 | `_TZE28C1000000_y4jqpry8` | `TS0601` | `switches-screen-zms206us4` |
+
+</details>
+
+<details>
+<summary>EF00 Sensors 2 wonjj6768 (8 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 environment and sensor fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE204_fpwtjlfh` | `TS0601` | `sensors-wave16-lincukoo-ezcp04` |
+| `_TZE204_hyt4iucb` | `TS0601` | `sensors-wave16-lincukoo-e02c-z10t` |
+| `_TZE204_isvlaage` | `TS0601` | `sensors-wave16-lincukoo-ezc04` |
+| `_TZE204_pkpfn9hc` | `TS0601` | `sensors-aq-co2-temp-humidity` |
+| `_TZE2841000000_qf5mzewi` | `TS0601` | `sensors-temp-humidity-battery-alarm-onenuo-th05z` |
+| `AIRPRS1` | `Excellux` | `sensors-wave16-excellux-airprs1` |
+| `EZ500FL` | `Excellux` | `sensors-wave16-excellux-ez500fl` |
+| `EZ500FS` | `Excellux` | `sensors-wave16-excellux-ez500fs` |
 
 </details>
 
@@ -1091,6 +1288,64 @@ Development driver; report issues with hub logcat. Supports EF00 temperature, hu
 | `NTCHT01` | `Excellux` | `sensors-temp-humidity-probe-excellux-full` |
 | `NTCHT02` | `Excellux` | `sensors-temp-humidity-probe-excellux-full` |
 | `NTCHT03` | `Excellux` | `sensors-temp-humidity-probe-excellux-full` |
+
+</details>
+
+<details>
+<summary>EF00 Switch 2 wonjj6768 (48 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 switch, panel, and screen-switch fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_7a5ob7xq` | `TS0601` | `switches-switch-8` |
+| `_TZE200_9dhenr94` | `TS0601` | `switches-moes-sfl02-z4` |
+| `_TZE200_b0ihkhxh` | `TS0601` | `switches-switch-4` |
+| `_TZE200_dq8bu0pt` | `TS0601` | `switches-moes-sfl02-z4` |
+| `_TZE200_hktk6hze` | `TS0601` | `switches-moes-sfl02-z2` |
+| `_TZE200_hmabvy81` | `TS0601` | `switches-moes-sfl02-z4` |
+| `_TZE200_htj3hcpl` | `TS0601` | `switches-switch-6` |
+| `_TZE200_o7vduidq` | `TS0601` | `switches-wave15-box-erc2202z` |
+| `_TZE200_pcg0rykt` | `TS0601` | `switches-switch-7` |
+| `_TZE200_rd8cdssd` | `TS0601` | `switches-moes-sfl02-z3` |
+| `_TZE200_rgeapp2c` | `TS0601` | `switches-wave13-tuya-semicom-two-two` |
+| `_TZE200_stvgmdjz` | `TS0601` | `switches-moes-sfl02-z1` |
+| `_TZE200_tzyy0rtq` | `TS0601` | `switches-moes-sfl02-z2` |
+| `_TZE200_uenof8jd` | `TS0601` | `switches-moes-sfl02-z2` |
+| `_TZE200_wv9ukqca` | `TS0601` | `switches-moes-sfl02-z3` |
+| `_TZE200_xo3vpoah` | `TS0601` | `switches-switch-10` |
+| `_TZE200_ydkqbmpt` | `TS0601` | `switches-moes-sfl02-z1` |
+| `_TZE200_yp5tsi3y` | `TS0601` | `switches-wave13-box-ews1154z` |
+| `_TZE200_z3u99qxt` | `TS0601` | `switches-moes-sfl02-z1` |
+| `_TZE200_zo0cfekv` | `TS0601` | `switches-moes-sfl02-z3` |
+| `_TZE204_3ctwoaip` | `TS0601` | `switches-screen-zms206eu2` |
+| `_TZE204_4cl0dzt4` | `TS0601` | `switches-wave14-qa-qat44z6h` |
+| `_TZE204_8eazvzo6` | `TS0601` | `switches-switch-6` |
+| `_TZE204_iyki9kjp` | `TS0601` | `switches-screen-zms206eu3` |
+| `_TZE204_k7v0eqke` | `TS0601` | `switches-screen-zms206eu3` |
+| `_TZE204_kyzjsjo3` | `TS0601` | `switches-wave14-qa-qat44z4h` |
+| `_TZE204_sa2ueffe` | `TS0601` | `switches-screen-zms206us1` |
+| `_TZE204_zuepxzck` | `TS0601` | `switches-screen-zms206us1` |
+| `_TZE284_3ctwoaip` | `TS0601` | `switches-screen-zms206eu2` |
+| `_TZE284_3xnyj4ga` | `TS0601` | `switches-wave13-nova-to-wk-one` |
+| `_TZE284_59dz7ioi` | `TS0601` | `switches-wave13-manhot-mh03-3` |
+| `_TZE284_7a5ob7xq` | `TS0601` | `switches-switch-8` |
+| `_TZE284_a2teqi5u` | `TS0601` | `switches-screen-zms208us2` |
+| `_TZE284_dmckrsxg` | `TS0601` | `switches-screen-zms206eu2` |
+| `_TZE284_dnhhp8ew` | `TS0601` | `switches-wave13-manhot-mh03-2` |
+| `_TZE284_e4pf6l87` | `TS0601` | `switches-screen-zms206eu3` |
+| `_TZE284_esnu2jxv` | `TS0601` | `switches-wave13-manhot-mh03-4` |
+| `_TZE284_exfilann` | `TS0601` | `switches-wave13-nova-to-wk-two` |
+| `_TZE284_hwv3by9k` | `TS0601` | `switches-wave13-manhot-mh03-8` |
+| `_TZE284_k7v0eqke` | `TS0601` | `switches-screen-zms206eu3` |
+| `_TZE284_lnyz4a6v` | `TS0601` | `switches-screen-zms206us1` |
+| `_TZE284_ncc7uahd` | `TS0601` | `switches-wave13-manhot-mh03-1` |
+| `_TZE284_nzns7udm` | `TS0601` | `switches-switch-1-scene-qa-qat42z1b` |
+| `_TZE284_udaucpdi` | `TS0601` | `switches-wave13-avatto-zbs16` |
+| `_TZE284_xvywzhmi` | `TS0601` | `switches-screen-zms208us3` |
+| `_TZE284_zykra2yj` | `TS0601` | `switches-wave13-manhot-mh03-6` |
+| `_TZE28C1000000_e4pf6l87` | `TS0601` | `switches-screen-zms206eu3` |
+| `_TZE28C1000000_xvywzhmi` | `TS0601` | `switches-screen-zms208us3` |
 
 </details>
 
@@ -1315,6 +1570,34 @@ Development driver; report issues with hub logcat. Supports EF00 fan coil unit a
 </details>
 
 <details>
+<summary>EF00 Thermostat HVAC 2 wonjj6768 (18 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 wall thermostat and FCU fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_4hbx5cvx` | `TS0601` | `thermostats-wave6a-futurehome` |
+| `_TZE200_awnadkan` | `TS0601` | `thermostats-wave6a-engo-eone230w` |
+| `_TZE200_e5hpkc6d` | `TS0601` | `thermostats-wave6a-futurehome` |
+| `_TZE200_gtouvmvl` | `TS0601` | `thermostats-wave12-engo-eone-batb` |
+| `_TZE204_ca3i8m8p` | `TS0601` | `thermostats-wave6a-engo-eone230w` |
+| `_TZE204_cg8hdnjv` | `TS0601` | `thermostats-wave12-engo-e25-batb` |
+| `_TZE204_cmyc8g5i` | `TS0601` | `thermostats-wave12-engo-e25-230` |
+| `_TZE204_djurk6p5` | `TS0601` | `thermostats-wave12-engo-eone` |
+| `_TZE204_e5hpkc6d` | `TS0601` | `thermostats-wave6a-futurehome` |
+| `_TZE204_glk6viwg` | `TS0601` | `thermostats-wave6a-engo-e40` |
+| `_TZE204_hpkusvom` | `TS0601` | `thermostats-wave12-tuya-bac001` |
+| `_TZE204_lnxdk2ch` | `TS0601` | `thermostats-wave6a-engo-e40` |
+| `_TZE204_lpedvtvr` | `TS0601` | `thermostats-wave12-moes-zht-sr` |
+| `_TZE204_p3lqqy2r` | `TS0601` | `thermostats-wave12-namron-touch` |
+| `_TZE204_x9usygq1` | `TS0601` | `thermostats-wave12-moes-pilot` |
+| `_TZE204_zxkwaztm` | `TS0601` | `thermostats-wave12-moes-zht-s03` |
+| `_TZE284_4cgmagba` | `TS0601` | `thermostats-wave12-beca-bht209` |
+| `_TZE284_rlytpmij` | `TS0601` | `thermostats-wave12-moes-zht-s01` |
+
+</details>
+
+<details>
 <summary>EF00 Thermostat TRV 1 wonjj6768 (71 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 thermostatic radiator valves (group 1 of 2). See the README fingerprint table for the exact device list.
@@ -1440,6 +1723,50 @@ Development driver; report issues with hub logcat. Supports EF00 thermostatic ra
 </details>
 
 <details>
+<summary>EF00 Thermostat TRV 3 wonjj6768 (34 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 TRV fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TYST11_2dpplnsn` | `dpplnsn\x00` | `thermostats-thermostat-etop` |
+| `_TYST11_8daqwrsj` | `daqwrsj\x00` | `thermostats-alecto-smart-heat10` |
+| `_TYST11_c88teujp` | `88teujp\x00` | `thermostats-thermostat-saswell` |
+| `_TYST11_caj4jz0i` | `aj4jz0i\x00` | `thermostats-thermostat-saswell` |
+| `_TYST11_KGbxAXL2` | `GbxAXL2\x00` | `thermostats-thermostat-saswell` |
+| `_TYST11_wv90ladg` | `v90ladg\x00` | `thermostats-thermostat-etop` |
+| `_TYST11_yw7cahqs` | `w7cahqs\x00` | `thermostats-thermostat-saswell` |
+| `_TYST11_zuhszj9s` | `uhszj9s\x00` | `thermostats-thermostat-saswell` |
+| `_TZE200_4aijvczq` | `TS0601` | `thermostats-wave6a-avatto-me168` |
+| `_TZE200_6y7kyjga` | `TS0601` | `thermostats-wave9-moes-brt100` |
+| `_TZE200_b6wax7g0` | `TS0601` | `thermostats-wave9-moes-brt100` |
+| `_TZE200_chyvmhay` | `TS0601` | `thermostats-wave9-lidl-368308` |
+| `_TZE200_cxakecfo` | `TS0601` | `thermostats-wave6a-avatto-me168` |
+| `_TZE200_dmfguuli` | `TS0601` | `thermostats-wave9-evanell-ez200` |
+| `_TZE200_fhn3negr` | `TS0601` | `thermostats-wave12-moes-sh4` |
+| `_TZE200_i48qyn9s` | `TS0601` | `thermostats-wave12-essentials-trv` |
+| `_TZE200_ivdc0kwl` | `TS0601` | `thermostats-wave15-moes-ztrv-s01` |
+| `_TZE200_ne4pikwm` | `TS0601` | `thermostats-wave6a-nedis-zbhtr20wt` |
+| `_TZE200_qsoecqlk` | `TS0601` | `thermostats-wave9-moes-brt100` |
+| `_TZE200_r5ksy7qo` | `TS0601` | `thermostats-wave6a-avatto-me168` |
+| `_TZE200_rxypyjkw` | `TS0601` | `thermostats-wave9-evanell-ez200` |
+| `_TZE200_uiyqstza` | `TS0601` | `thermostats-wave9-lidl-368308` |
+| `_TZE200_wlosfena` | `TS0601` | `thermostats-wave19-immax-07703l` |
+| `_TZE200_wnvhlcgl` | `TS0601` | `thermostats-wave19-woox-r7067` |
+| `_TZE200_ybsqljjg` | `TS0601` | `thermostats-wave6a-avatto-me168` |
+| `_TZE204_k6rdmisz` | `TS0601` | `thermostats-wave9-mazda-tr-m2z` |
+| `_TZE204_p1qrtljn` | `TS0601` | `thermostats-wave12-tech-v2` |
+| `_TZE204_r7brscr6` | `TS0601` | `thermostats-wave12-tech-v1` |
+| `_TZE204_xdtnpp1a` | `TS0601` | `thermostats-wave6a-avatto-trv26` |
+| `_TZE284_hcs66axl` | `TS0601` | `thermostats-wave6a-nedis-zbhtr20wt` |
+| `_TZE284_k6rdmisz` | `TS0601` | `thermostats-wave9-mazda-tr-m2z` |
+| `_TZE284_ne4pikwm` | `TS0601` | `thermostats-wave6a-nedis-zbhtr20wt` |
+| `_TZE284_ty5neqqo` | `TS0601` | `thermostats-wave12-avatto-trv60` |
+| `_TZE284_xdtnpp1a` | `TS0601` | `thermostats-wave6a-avatto-trv26` |
+
+</details>
+
+<details>
 <summary>EF00 Thermostat Wall wonjj6768 (43 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 wall and floor thermostats.
@@ -1493,6 +1820,35 @@ Development driver; report issues with hub logcat. Supports EF00 wall and floor 
 </details>
 
 <details>
+<summary>EF00 Valves 2 wonjj6768 (19 fingerprints)</summary>
+
+Category driver for newly absorbed exact EF00 irrigation and water-valve fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZE200_7ytb3h8u` | `TS0601` | `valves-giex-qt06-two` |
+| `_TZE200_a7sghmms` | `TS0601` | `valves-giex-qt06-two` |
+| `_TZE200_anv5ujhv` | `TS0601` | `valves-qoto-qt05m` |
+| `_TZE200_arge1ptm` | `TS0601` | `valves-qoto-qt05m` |
+| `_TZE200_d0ypnbvn` | `TS0601` | `valves-iotperfect-pf-pm02d` |
+| `_TZE200_htnnfasr` | `TS0601` | `valves-wave19-lidl-psbzs-a-one` |
+| `_TZE200_nbqnmkee` | `TS0601` | `valves-wave19-frankever-fk-bv05` |
+| `_TZE200_sh1btabb` | `TS0601` | `valves-giex-qt06-one` |
+| `_TZE200_vrjkcam9` | `TS0601` | `valves-iotperfect-pf-pm02d` |
+| `_TZE200_xlppj4f5` | `TS0601` | `valves-qoto-qt05m` |
+| `_TZE204_7ytb3h8u` | `TS0601` | `valves-giex-qt06-two` |
+| `_TZE204_a7sghmms` | `TS0601` | `valves-giex-qt06-two` |
+| `_TZE204_a9ojznj8` | `TS0601` | `valves-neo-nas-wv03b2` |
+| `_TZE204_d0ypnbvn` | `TS0601` | `valves-iotperfect-pf-pm02d` |
+| `_TZE204_v5xjyphj` | `TS0601` | `valves-iotperfect-pf-pm02d` |
+| `_TZE284_7ytb3h8u` | `TS0601` | `valves-giex-qt06-two` |
+| `_TZE284_a9ojznj8` | `TS0601` | `valves-neo-nas-wv03b2` |
+| `_TZE284_d0ypnbvn` | `TS0601` | `valves-iotperfect-pf-pm02d` |
+| `_TZE284_v5xjyphj` | `TS0601` | `valves-iotperfect-pf-pm02d` |
+
+</details>
+
+<details>
 <summary>EF00 Valves wonjj6768 (30 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 water valves, gas valves, and irrigation controllers.
@@ -1533,362 +1889,6 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 </details>
 
 <details>
-<summary>EF00 Bridge wonjj6768 (2 fingerprints)</summary>
-
-Dedicated driver for newly absorbed exact EF00 bridge fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE204_6fk3gewc` | `TS0601` | `bridges-wave19-weten-pci-e` |
-| `_TZE284_6fk3gewc` | `TS0601` | `bridges-wave19-weten-pci-e` |
-
-</details>
-
-<details>
-<summary>EF00 Controls 2 wonjj6768 (15 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 remotes, keypads, and button-control fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_lhpnrfmy` | `TS0601` | `controls-wave19-box-erc2201-z` |
-| `_TZE200_moycceze` | `TS0601` | `controls-wave18-immax-07505l` |
-| `_TZE200_n9clpsht` | `TS0601` | `controls-wave18-immax-07505l` |
-| `_TZE200_nyvavzbj` | `TS0601` | `controls-wave18-immax-07505l` |
-| `_TZE200_oahqgdig` | `TS0601` | `controls-wave15-engo-ecb62zb` |
-| `_TZE200_rt5dklro` | `TS0601` | `controls-wave18-daewoo-wke502z` |
-| `_TZE200_zaabefnt` | `TS0601` | `controls-wave15-engo-ecb62zb` |
-| `_TZE200_zqtiam4u` | `TS0601` | `controls-wave19-zemismart-zm-rm02` |
-| `_TZE284_1aqlsquf` | `TS0601` | `controls-wave19-qa-qat42z2b` |
-| `_TZE284_chcnj5st` | `TS0601` | `controls-wave17-lincukoo-czf02` |
-| `_TZE284_gw05grph` | `TS0601` | `controls-wave17-lincukoo-czf02` |
-| `_TZE284_ms97nkyy` | `TS0601` | `controls-wave19-qa-qat44z6` |
-| `_TZE284_pgxndxp4` | `TS0601` | `controls-wave19-qa-qat42z3b` |
-| `_TZE284_pislt0wa` | `TS0601` | `controls-wave17-lincukoo-czf02` |
-| `_TZE28C1000000_jlbsptkl` | `TS0601` | `controls-wave19-tuya-presence-switch` |
-
-</details>
-
-<details>
-<summary>EF00 Covers 2 wonjj6768 (18 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 cover fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZ3210_5rta89nj` | `TS0601` | `covers-wave10-moes-zc-lp01` |
-| `_TZ3210_rundhkxp` | `TS030F` | `covers-wave10-moes-adcbzi01` |
-| `_TZ3210_sxtfesc6` | `TS030F` | `covers-wave10-moes-adcbzi01` |
-| `_TZE200_ra6wrlgv` | `TS0601` | `covers-wave15-box-erc2206z` |
-| `_TZE200_sbordckq` | `TS0601` | `covers-wave19-legacy-tuya` |
-| `_TZE200_swhwv3k3` | `TS0601` | `covers-wave19-legacy-tuya` |
-| `_TZE200_xtrnjaoz` | `TS0601` | `covers-cover-gm25teq` |
-| `_TZE204_7lb6j8wg` | `TS0601` | `covers-wave15-tuya-semicom-three` |
-| `_TZE204_mpg22jc1` | `TS0601` | `covers-wave10-zemismart-zn-usc1u-ht` |
-| `_TZE204_srmahpwl` | `TS0601` | `covers-wave10-moes-zs-sr-euc` |
-| `_TZE204_xtrnjaoz` | `TS0601` | `covers-cover-gm25teq` |
-| `_TZE210_xgzzuerd` | `TS0301` | `covers-wave10-tuya-ts0301-cover-two` |
-| `_TZE284_6hrnp30w` | `TS0601` | `covers-wave10-zemismart-zmp1` |
-| `_TZE284_7qc2wlqr` | `TS0601` | `covers-wave10-manhot-bl82-tyz1` |
-| `_TZE284_8whfphjv` | `TS0601` | `covers-cover-gm25teq` |
-| `_TZE284_hbjwgkdh` | `TS0601` | `covers-wave10-xenon-x7726` |
-| `_TZE284_qoi1aqxg` | `TS0601` | `covers-wave10-moes-fwjzceh18a001` |
-| `_TZE284_upt8lzi0` | `TS0601` | `covers-cover-moes-zs-sf-euc-wh-ms` |
-
-</details>
-
-<details>
-<summary>EF00 Lights 2 wonjj6768 (26 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 light and dimmer fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_2gtsuokt` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
-| `_TZE200_3thxjahu` | `TS0601` | `lights-color-skydance-wz5-rgbw` |
-| `_TZE200_6qoazbre` | `TS0601` | `lights-dimmer-skydance-wz5-dim` |
-| `_TZE200_9hghastn` | `TS0601` | `lights-color-skydance-wz5-rgb` |
-| `_TZE200_9mt3kgn0` | `TS0601` | `lights-color-skydance-wz5-rgb` |
-| `_TZE200_a1ovdobn` | `TS0601` | `lights-moes-zs-d1` |
-| `_TZE200_aa9awrng` | `TS0601` | `lights-color-temperature-color-skydance-wz5-rgbcct` |
-| `_TZE200_fcooykb4` | `TS0601` | `lights-dimmer-skydance-wz5-dim` |
-| `_TZE200_g9jdneiu` | `TS0601` | `lights-color-skydance-wz5-rgbw` |
-| `_TZE200_gz3n0tzf` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
-| `_TZE200_jowqowye` | `TS0601` | `lights-dimmer-mercator-siswd11-zb` |
-| `_TZE200_mde0utnv` | `TS0601` | `lights-color-temperature-color-skydance-wz5-rgbcct` |
-| `_TZE200_na98lvjp` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
-| `_TZE200_nthosjmx` | `TS0601` | `lights-color-temperature-skydance-wz5-cct` |
-| `_TZE200_rlqamjhp` | `TS0601` | `lights-moes-zs-d2` |
-| `_TZE200_s8gkrkxk` | `TS0601` | `lights-wave19-lidl-hg06467` |
-| `_TZE204_8fffc3kb` | `TS0601` | `lights-wave15-gledopto-gl-spi-206p` |
-| `_TZE204_sdykkwsu` | `TS0601` | `lights-wave19-avatto-zdms16-us-w2` |
-| `_TZE204_zhiqbr7l` | `TS0601` | `lights-color-temperature-color-skydance-wz5-rgbcct` |
-| `_TZE284_5yah8qx4` | `TS0601` | `lights-wave19-nova-topazio` |
-| `_TZE284_a1ovdobn` | `TS0601` | `lights-moes-zs-d1` |
-| `_TZE284_gt5al3bl` | `TS0601` | `lights-wave15-gledopto-gl-spi-206p` |
-| `_TZE284_nthhgkd6` | `TS0601` | `lights-wave19-qa-qadz4din` |
-| `_TZE284_vizxbhco` | `TS0601` | `lights-moes-zs-d3` |
-| `_TZE28C1000000_nqqylykc` | `TS0601` | `lights-dimmer-zdms16-1` |
-| `_TZE600_wxq8dpha\x00` | `TS0603` | `lights-wave19-lonsonho-vm-s02-010v` |
-
-</details>
-
-<details>
-<summary>EF00 Meters 2 wonjj6768 (5 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 meter and energy fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZ3218_kwht8j5m` | `TS011F` | `meters-wave19-qa-qaszp` |
-| `_TZE204_goecjd1t` | `TS0601` | `meters-zwpm16` |
-| `_TZE204_jrcfsaa3` | `TS0601` | `meters-zwpm16-2` |
-| `_TZE204_t9ffmdin` | `TS0601` | `meters-wave19-nous-d5z` |
-| `_TZE284_2fnssffc` | `TS0601` | `meters-wave19-moes-zm6lt1` |
-
-</details>
-
-<details>
-<summary>EF00 Presence 3 wonjj6768 (21 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 presence and mmWave fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZ3218_awarhusb` | `TS0225` | `safety-occupancy-wave11-linptech-es1` |
-| `_TZ3218_ewrxirng` | `TS0225` | `safety-occupancy-wave11-linptech-es1` |
-| `_TZ3218_t9ynfz4x` | `TS0225` | `safety-occupancy-wave11-linptech-es1` |
-| `_TZE200_7hfcudw5` | `TS0601` | `safety-wave19-neo-nas-pd07` |
-| `_TZE200_i0b1dbqu` | `TS0601` | `safety-wave19-javis-microwave` |
-| `_TZE200_kagkgk0i` | `TS0601` | `safety-wave19-javis-microwave` |
-| `_TZE200_lgstepha` | `TS0601` | `safety-wave19-javis-microwave` |
-| `_TZE204_1youk3hj` | `TS0601` | `safety-presence-wave11-neo-nas-ps10b2` |
-| `_TZE204_b8vxct9l` | `TS0601` | `safety-presence-wave11-szlr08t` |
-| `_TZE204_bjf8qum1` | `TS0601` | `safety-presence-szlmr10-illuminance` |
-| `_TZE204_khoqss0a` | `TS0601` | `safety-presence-wave11-szr07` |
-| `_TZE204_lw5ny7tp` | `TS0601` | `safety-presence-wave11-szlr08` |
-| `_TZE204_sndkanfr` | `TS0601` | `safety-presence-szlmr10-illuminance` |
-| `_TZE284_1youk3hj` | `TS0601` | `safety-presence-wave11-neo-nas-ps10b2` |
-| `_TZE284_hqys6frs` | `TS0601` | `safety-presence-wave11-r12lm-z10t` |
-| `_TZE284_sndkanfr` | `TS0601` | `safety-presence-szlmr10-illuminance` |
-| `_TZE284_zzm83zpz` | `TS0601` | `safety-presence-wave11-r12lm-z11t` |
-| `_TZE28C1000000_ewn672ef` | `TS0601` | `safety-presence-zf24pro-temp-humidity` |
-| `_TZE28C1000000_jaunkx9g` | `TS0601` | `switches-presence-wave11-tuya-2gang` |
-| `_TZE28C1000000_usmqzgdm` | `TS0601` | `switches-presence-wave11-tuya-3gang` |
-| `_TZE28C1000000_vosmoqsg` | `TS0601` | `safety-presence-zf24pro-temp-humidity` |
-
-</details>
-
-<details>
-<summary>EF00 Safety 2 wonjj6768 (22 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_hr0tdd47` | `TS0601` | `safety-co-moes-zc-hm` |
-| `_TZE200_nlrfgpny` | `TS0601` | `safety-alarm-neo-nas-ab06b2` |
-| `_TZE200_rjxqso4a` | `TS0601` | `safety-co-moes-zc-hm` |
-| `_TZE200_t1blo2bj` | `TS0601` | `safety-alarm-neo-nas-ab02b2` |
-| `_TZE204_l4daccga` | `TS0601` | `safety-wave16-lincukoo-a08-z10t` |
-| `_TZE204_nlrfgpny` | `TS0601` | `safety-alarm-neo-nas-ab06b2` |
-| `_TZE204_q76rtoa9` | `TS0601` | `safety-alarm-neo-nas-ab02b2` |
-| `_TZE204_qvxrkeif` | `TS0601` | `safety-gas-nous-e9` |
-| `_TZE204_ra9zfiwr` | `TS0601` | `safety-wave15-lincukoo-e04cf-z10t` |
-| `_TZE204_t1blo2bj` | `TS0601` | `safety-alarm-neo-nas-ab02b2` |
-| `_TZE204_uc0iv1hb` | `TS0601` | `safety-gas-detector-spacetronik-zb-dg02` |
-| `_TZE284_1di7ujzp` | `TS0601` | `safety-water-nous-e13` |
-| `_TZE284_2qx7sivb` | `TS0601` | `safety-vibration-tuya-battery-state` |
-| `_TZE284_7trh4ihp` | `TS0601` | `safety-vibration-tuya-battery-state-controls` |
-| `_TZE284_8sejxcue` | `TS0601` | `safety-vibration-tuya-battery-state-controls` |
-| `_TZE284_aghfucwi` | `TS0601` | `safety-vibration-tuya-battery` |
-| `_TZE284_ajhu0zqb` | `TS0601` | `safety-water-lincukoo-szw08` |
-| `_TZE284_iunyuzwe` | `TS0601` | `safety-water-lincukoo-w04-z10t-battery-state` |
-| `_TZE284_nlrfgpny` | `TS0601` | `safety-alarm-neo-nas-ab06b2` |
-| `_TZE284_rjxqso4a` | `TS0601` | `safety-co-moes-zc-hm` |
-| `_TZE284_sonkaxrd` | `TS0601` | `safety-co-nous-e12` |
-| `_TZE284_vbgmewta` | `TS0601` | `safety-water-lincukoo-w04-z10t-battery-ringtone` |
-
-</details>
-
-<details>
-<summary>EF00 Sensors 2 wonjj6768 (8 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 environment and sensor fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE204_fpwtjlfh` | `TS0601` | `sensors-wave16-lincukoo-ezcp04` |
-| `_TZE204_hyt4iucb` | `TS0601` | `sensors-wave16-lincukoo-e02c-z10t` |
-| `_TZE204_isvlaage` | `TS0601` | `sensors-wave16-lincukoo-ezc04` |
-| `_TZE204_pkpfn9hc` | `TS0601` | `sensors-aq-co2-temp-humidity` |
-| `_TZE2841000000_qf5mzewi` | `TS0601` | `sensors-temp-humidity-battery-alarm-onenuo-th05z` |
-| `AIRPRS1` | `Excellux` | `sensors-wave16-excellux-airprs1` |
-| `EZ500FL` | `Excellux` | `sensors-wave16-excellux-ez500fl` |
-| `EZ500FS` | `Excellux` | `sensors-wave16-excellux-ez500fs` |
-
-</details>
-
-<details>
-<summary>EF00 Switch 2 wonjj6768 (48 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 switch, panel, and screen-switch fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_7a5ob7xq` | `TS0601` | `switches-switch-8` |
-| `_TZE200_9dhenr94` | `TS0601` | `switches-moes-sfl02-z4` |
-| `_TZE200_b0ihkhxh` | `TS0601` | `switches-switch-4` |
-| `_TZE200_dq8bu0pt` | `TS0601` | `switches-moes-sfl02-z4` |
-| `_TZE200_hktk6hze` | `TS0601` | `switches-moes-sfl02-z2` |
-| `_TZE200_hmabvy81` | `TS0601` | `switches-moes-sfl02-z4` |
-| `_TZE200_htj3hcpl` | `TS0601` | `switches-switch-6` |
-| `_TZE200_o7vduidq` | `TS0601` | `switches-wave15-box-erc2202z` |
-| `_TZE200_pcg0rykt` | `TS0601` | `switches-switch-7` |
-| `_TZE200_rd8cdssd` | `TS0601` | `switches-moes-sfl02-z3` |
-| `_TZE200_rgeapp2c` | `TS0601` | `switches-wave13-tuya-semicom-two-two` |
-| `_TZE200_stvgmdjz` | `TS0601` | `switches-moes-sfl02-z1` |
-| `_TZE200_tzyy0rtq` | `TS0601` | `switches-moes-sfl02-z2` |
-| `_TZE200_uenof8jd` | `TS0601` | `switches-moes-sfl02-z2` |
-| `_TZE200_wv9ukqca` | `TS0601` | `switches-moes-sfl02-z3` |
-| `_TZE200_xo3vpoah` | `TS0601` | `switches-switch-10` |
-| `_TZE200_ydkqbmpt` | `TS0601` | `switches-moes-sfl02-z1` |
-| `_TZE200_yp5tsi3y` | `TS0601` | `switches-wave13-box-ews1154z` |
-| `_TZE200_z3u99qxt` | `TS0601` | `switches-moes-sfl02-z1` |
-| `_TZE200_zo0cfekv` | `TS0601` | `switches-moes-sfl02-z3` |
-| `_TZE204_3ctwoaip` | `TS0601` | `switches-screen-zms206eu2` |
-| `_TZE204_4cl0dzt4` | `TS0601` | `switches-wave14-qa-qat44z6h` |
-| `_TZE204_8eazvzo6` | `TS0601` | `switches-switch-6` |
-| `_TZE204_iyki9kjp` | `TS0601` | `switches-screen-zms206eu3` |
-| `_TZE204_k7v0eqke` | `TS0601` | `switches-screen-zms206eu3` |
-| `_TZE204_kyzjsjo3` | `TS0601` | `switches-wave14-qa-qat44z4h` |
-| `_TZE204_sa2ueffe` | `TS0601` | `switches-screen-zms206us1` |
-| `_TZE204_zuepxzck` | `TS0601` | `switches-screen-zms206us1` |
-| `_TZE284_3ctwoaip` | `TS0601` | `switches-screen-zms206eu2` |
-| `_TZE284_3xnyj4ga` | `TS0601` | `switches-wave13-nova-to-wk-one` |
-| `_TZE284_59dz7ioi` | `TS0601` | `switches-wave13-manhot-mh03-3` |
-| `_TZE284_7a5ob7xq` | `TS0601` | `switches-switch-8` |
-| `_TZE284_a2teqi5u` | `TS0601` | `switches-screen-zms208us2` |
-| `_TZE284_dmckrsxg` | `TS0601` | `switches-screen-zms206eu2` |
-| `_TZE284_dnhhp8ew` | `TS0601` | `switches-wave13-manhot-mh03-2` |
-| `_TZE284_e4pf6l87` | `TS0601` | `switches-screen-zms206eu3` |
-| `_TZE284_esnu2jxv` | `TS0601` | `switches-wave13-manhot-mh03-4` |
-| `_TZE284_exfilann` | `TS0601` | `switches-wave13-nova-to-wk-two` |
-| `_TZE284_hwv3by9k` | `TS0601` | `switches-wave13-manhot-mh03-8` |
-| `_TZE284_k7v0eqke` | `TS0601` | `switches-screen-zms206eu3` |
-| `_TZE284_lnyz4a6v` | `TS0601` | `switches-screen-zms206us1` |
-| `_TZE284_ncc7uahd` | `TS0601` | `switches-wave13-manhot-mh03-1` |
-| `_TZE284_nzns7udm` | `TS0601` | `switches-switch-1-scene-qa-qat42z1b` |
-| `_TZE284_udaucpdi` | `TS0601` | `switches-wave13-avatto-zbs16` |
-| `_TZE284_xvywzhmi` | `TS0601` | `switches-screen-zms208us3` |
-| `_TZE284_zykra2yj` | `TS0601` | `switches-wave13-manhot-mh03-6` |
-| `_TZE28C1000000_e4pf6l87` | `TS0601` | `switches-screen-zms206eu3` |
-| `_TZE28C1000000_xvywzhmi` | `TS0601` | `switches-screen-zms208us3` |
-
-</details>
-
-<details>
-<summary>EF00 Thermostat HVAC 2 wonjj6768 (18 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 wall thermostat and FCU fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_4hbx5cvx` | `TS0601` | `thermostats-wave6a-futurehome` |
-| `_TZE200_awnadkan` | `TS0601` | `thermostats-wave6a-engo-eone230w` |
-| `_TZE200_e5hpkc6d` | `TS0601` | `thermostats-wave6a-futurehome` |
-| `_TZE200_gtouvmvl` | `TS0601` | `thermostats-wave12-engo-eone-batb` |
-| `_TZE204_ca3i8m8p` | `TS0601` | `thermostats-wave6a-engo-eone230w` |
-| `_TZE204_cg8hdnjv` | `TS0601` | `thermostats-wave12-engo-e25-batb` |
-| `_TZE204_cmyc8g5i` | `TS0601` | `thermostats-wave12-engo-e25-230` |
-| `_TZE204_djurk6p5` | `TS0601` | `thermostats-wave12-engo-eone` |
-| `_TZE204_e5hpkc6d` | `TS0601` | `thermostats-wave6a-futurehome` |
-| `_TZE204_glk6viwg` | `TS0601` | `thermostats-wave6a-engo-e40` |
-| `_TZE204_hpkusvom` | `TS0601` | `thermostats-wave12-tuya-bac001` |
-| `_TZE204_lnxdk2ch` | `TS0601` | `thermostats-wave6a-engo-e40` |
-| `_TZE204_lpedvtvr` | `TS0601` | `thermostats-wave12-moes-zht-sr` |
-| `_TZE204_p3lqqy2r` | `TS0601` | `thermostats-wave12-namron-touch` |
-| `_TZE204_x9usygq1` | `TS0601` | `thermostats-wave12-moes-pilot` |
-| `_TZE204_zxkwaztm` | `TS0601` | `thermostats-wave12-moes-zht-s03` |
-| `_TZE284_4cgmagba` | `TS0601` | `thermostats-wave12-beca-bht209` |
-| `_TZE284_rlytpmij` | `TS0601` | `thermostats-wave12-moes-zht-s01` |
-
-</details>
-
-<details>
-<summary>EF00 Thermostat TRV 3 wonjj6768 (34 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 TRV fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TYST11_2dpplnsn` | `dpplnsn\x00` | `thermostats-thermostat-etop` |
-| `_TYST11_8daqwrsj` | `daqwrsj\x00` | `thermostats-alecto-smart-heat10` |
-| `_TYST11_c88teujp` | `88teujp\x00` | `thermostats-thermostat-saswell` |
-| `_TYST11_caj4jz0i` | `aj4jz0i\x00` | `thermostats-thermostat-saswell` |
-| `_TYST11_KGbxAXL2` | `GbxAXL2\x00` | `thermostats-thermostat-saswell` |
-| `_TYST11_wv90ladg` | `v90ladg\x00` | `thermostats-thermostat-etop` |
-| `_TYST11_yw7cahqs` | `w7cahqs\x00` | `thermostats-thermostat-saswell` |
-| `_TYST11_zuhszj9s` | `uhszj9s\x00` | `thermostats-thermostat-saswell` |
-| `_TZE200_4aijvczq` | `TS0601` | `thermostats-wave6a-avatto-me168` |
-| `_TZE200_6y7kyjga` | `TS0601` | `thermostats-wave9-moes-brt100` |
-| `_TZE200_b6wax7g0` | `TS0601` | `thermostats-wave9-moes-brt100` |
-| `_TZE200_chyvmhay` | `TS0601` | `thermostats-wave9-lidl-368308` |
-| `_TZE200_cxakecfo` | `TS0601` | `thermostats-wave6a-avatto-me168` |
-| `_TZE200_dmfguuli` | `TS0601` | `thermostats-wave9-evanell-ez200` |
-| `_TZE200_fhn3negr` | `TS0601` | `thermostats-wave12-moes-sh4` |
-| `_TZE200_i48qyn9s` | `TS0601` | `thermostats-wave12-essentials-trv` |
-| `_TZE200_ivdc0kwl` | `TS0601` | `thermostats-wave15-moes-ztrv-s01` |
-| `_TZE200_ne4pikwm` | `TS0601` | `thermostats-wave6a-nedis-zbhtr20wt` |
-| `_TZE200_qsoecqlk` | `TS0601` | `thermostats-wave9-moes-brt100` |
-| `_TZE200_r5ksy7qo` | `TS0601` | `thermostats-wave6a-avatto-me168` |
-| `_TZE200_rxypyjkw` | `TS0601` | `thermostats-wave9-evanell-ez200` |
-| `_TZE200_uiyqstza` | `TS0601` | `thermostats-wave9-lidl-368308` |
-| `_TZE200_wlosfena` | `TS0601` | `thermostats-wave19-immax-07703l` |
-| `_TZE200_wnvhlcgl` | `TS0601` | `thermostats-wave19-woox-r7067` |
-| `_TZE200_ybsqljjg` | `TS0601` | `thermostats-wave6a-avatto-me168` |
-| `_TZE204_k6rdmisz` | `TS0601` | `thermostats-wave9-mazda-tr-m2z` |
-| `_TZE204_p1qrtljn` | `TS0601` | `thermostats-wave12-tech-v2` |
-| `_TZE204_r7brscr6` | `TS0601` | `thermostats-wave12-tech-v1` |
-| `_TZE204_xdtnpp1a` | `TS0601` | `thermostats-wave6a-avatto-trv26` |
-| `_TZE284_hcs66axl` | `TS0601` | `thermostats-wave6a-nedis-zbhtr20wt` |
-| `_TZE284_k6rdmisz` | `TS0601` | `thermostats-wave9-mazda-tr-m2z` |
-| `_TZE284_ne4pikwm` | `TS0601` | `thermostats-wave6a-nedis-zbhtr20wt` |
-| `_TZE284_ty5neqqo` | `TS0601` | `thermostats-wave12-avatto-trv60` |
-| `_TZE284_xdtnpp1a` | `TS0601` | `thermostats-wave6a-avatto-trv26` |
-
-</details>
-
-<details>
-<summary>EF00 Valves 2 wonjj6768 (19 fingerprints)</summary>
-
-Category driver for newly absorbed exact EF00 irrigation and water-valve fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZE200_7ytb3h8u` | `TS0601` | `valves-giex-qt06-two` |
-| `_TZE200_a7sghmms` | `TS0601` | `valves-giex-qt06-two` |
-| `_TZE200_anv5ujhv` | `TS0601` | `valves-qoto-qt05m` |
-| `_TZE200_arge1ptm` | `TS0601` | `valves-qoto-qt05m` |
-| `_TZE200_d0ypnbvn` | `TS0601` | `valves-iotperfect-pf-pm02d` |
-| `_TZE200_htnnfasr` | `TS0601` | `valves-wave19-lidl-psbzs-a-one` |
-| `_TZE200_nbqnmkee` | `TS0601` | `valves-wave19-frankever-fk-bv05` |
-| `_TZE200_sh1btabb` | `TS0601` | `valves-giex-qt06-one` |
-| `_TZE200_vrjkcam9` | `TS0601` | `valves-iotperfect-pf-pm02d` |
-| `_TZE200_xlppj4f5` | `TS0601` | `valves-qoto-qt05m` |
-| `_TZE204_7ytb3h8u` | `TS0601` | `valves-giex-qt06-two` |
-| `_TZE204_a7sghmms` | `TS0601` | `valves-giex-qt06-two` |
-| `_TZE204_a9ojznj8` | `TS0601` | `valves-neo-nas-wv03b2` |
-| `_TZE204_d0ypnbvn` | `TS0601` | `valves-iotperfect-pf-pm02d` |
-| `_TZE204_v5xjyphj` | `TS0601` | `valves-iotperfect-pf-pm02d` |
-| `_TZE284_7ytb3h8u` | `TS0601` | `valves-giex-qt06-two` |
-| `_TZE284_a9ojznj8` | `TS0601` | `valves-neo-nas-wv03b2` |
-| `_TZE284_d0ypnbvn` | `TS0601` | `valves-iotperfect-pf-pm02d` |
-| `_TZE284_v5xjyphj` | `TS0601` | `valves-iotperfect-pf-pm02d` |
-
-</details>
-
-<details>
 <summary>ZCL Bridge wonjj6768 (3 fingerprints)</summary>
 
 Dedicated driver for newly absorbed exact ZCL bridge fingerprints.
@@ -1913,100 +1913,6 @@ Category driver for newly absorbed exact ZCL remote and control fingerprints.
 | `JetHome` | `WS7` | `buttons-jethome-ws7` |
 | `Slacky-DIY` | `TS0043-M007-SlD` | `buttons-button-3-battery-remote-action-slacky` |
 | `Slacky-DIY` | `TS0043-z-SlD` | `buttons-button-3-battery-remote-action-slacky` |
-
-</details>
-
-<details>
-<summary>ZCL DALI wonjj6768 (1 fingerprints)</summary>
-
-Dedicated driver for newly absorbed exact ZCL DALI fingerprints and dynamic endpoint children.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `Sunricher` | `Light` | `bridge-wave19-sunricher-dali-parent` |
-
-</details>
-
-<details>
-<summary>ZCL Lights 2 wonjj6768 (8 fingerprints)</summary>
-
-Category driver for newly absorbed exact ZCL light fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| ` Legrand\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00` | ` Dimmer switch with neutral\x00\x00\x00\x00` | `lights-dimmer` |
-| `Candeo` | `C-ZB-RD1Pv2-DIM` | `lights-wave19-candeo-rd1pv2-dim` |
-| `Candeo` | `C-ZB-RD1Pv2-DPM` | `lights-candeo-rd1p-dpm` |
-| `eWeLi\x01\x00\x10` | `ZB-CL01` | `lights-color-temperature-color` |
-| `Paulmann lamp ` | `Dimmable Light ` | `lights-dimmer` |
-| `Paulmann Licht GmbH` | `RGBWW` | `lights-paulmann-rgbww` |
-| `Shelly` | `Dimmer 0-1/10` | `lights-shelly-dimmer-gen4` |
-| `Xiaoyan` | `DIM003` | `lights-wave19-terncy-dim003` |
-
-</details>
-
-<details>
-<summary>ZCL Locks wonjj6768 (2 fingerprints)</summary>
-
-Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive handling.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `Lmiot` | `doorlock_5001` | `locks-wave18-javis-js-slk2-zb` |
-| `Vensi` | `E321V000A03` | `locks-wave18-javis-js-slk2-zb` |
-
-</details>
-
-<details>
-<summary>ZCL Sensors 2 wonjj6768 (9 fingerprints)</summary>
-
-Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `'_TZ32101000000_5oy7cysk'` | `TS0210` | `safety-wave19-tuya-ts0210-quoted` |
-| `_TZ3000_eit7p838 ` | `TS0207` | `safety-water-leak-tamper-battery-low-battery` |
-| `eWeLink` | `CK-TLSR8656-Z123SE22DY-01(7035)` | `safety-wave19-ewelink-7035` |
-| `eWeLink` | `CK-TLSR8656-Z123SE24DY-01(7037)` | `safety-co-detector-battery-voltage-ewelink-7037` |
-| `eWeLink` | `CK-TLSR8656-Z23SE11HW-01(7019)` | `safety-water-leak-battery-low-battery` |
-| `HEIMAN` | `HS2AQ-EF-3.0` | `sensors-wave19-heiman-hs2aq-ef-three` |
-| `LinknLink` | `eMotion Air` | `sensors-linknlink-emotion-air` |
-| `PLAID SYSTEMS` | `PS-SPRZMS-SLP3` | `sensors-wave19-plaid-spruce` |
-| `Shelly` | `Presence` | `sensors-shelly-presence-gen4` |
-
-</details>
-
-<details>
-<summary>ZCL Switch 2 wonjj6768 (12 fingerprints)</summary>
-
-Category driver for newly absorbed exact ZCL switch fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `_TZ3000_khtlvdfc` | `TS0013` | `switches-switch-3-ssw03g` |
-| `_TZ3210_5ksufhqi` | `TS0002` | `switches-switch-2-nfzb2` |
-| `AOYAN` | `AY301Z-2CH` | `switches-switch-2-ay301z-two` |
-| `MLI` | `tint Smart Switch` | `switches-switch-1-mli-tint` |
-| `MLI\x00` | `switch01\x00` | `switches-switch-1-mli-tint` |
-| `SDevices` | `SBDV-00196` | `switches-wave14-sber-sbdv-00196` |
-| `SDevices` | `SBDV-00197` | `switches-wave14-sber-sbdv-00197` |
-| `SDevices` | `SBDV-00199` | `switches-wave14-sber-sbdv-00199` |
-| `SDevices` | `SBDV-00200` | `switches-wave14-sber-sbdv-00200` |
-| `SDevices` | `SBDV-00202` | `switches-wave14-sber-sbdv-00202` |
-| `Shelly` | `EM` | `switches-shelly-em-gen4` |
-| `Xiaoyan` | `TERNCY-WS07-D3` | `switches-wave14-terncy-ws07-d3` |
-
-</details>
-
-<details>
-<summary>ZCL Thermostat wonjj6768 (2 fingerprints)</summary>
-
-Category driver for newly absorbed exact ZCL HVAC and thermostat fingerprints.
-
-| Manufacturer | Model | Profile |
-| --- | --- | --- |
-| `PirogovX` | `ZB-MIDEA-AC` | `thermostats-wave19-pirogov-zb-midea-ac` |
-| `SDevices` | `SBDV-00205` | `thermostats-wave19-sber-sbdv-00205` |
 
 </details>
 
@@ -2385,6 +2291,17 @@ Development driver; report issues with hub logcat. Supports ZCL curtains, blinds
 </details>
 
 <details>
+<summary>ZCL DALI wonjj6768 (1 fingerprints)</summary>
+
+Dedicated driver for newly absorbed exact ZCL DALI fingerprints and dynamic endpoint children.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `Sunricher` | `Light` | `bridge-wave19-sunricher-dali-parent` |
+
+</details>
+
+<details>
 <summary>ZCL EasyIoT wonjj6768 (6 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EasyIoT IR, TTS, serial, lock, and occupancy controllers.
@@ -2397,6 +2314,24 @@ Development driver; report issues with hub logcat. Supports EasyIoT IR, TTS, ser
 | `easyiot` | `ZB-RS485` | `controllers-easyiot-rs485` |
 | `easyiot` | `ZB-TTS01` | `controllers-easyiot-tts01` |
 | `easyiot` | `ZB-ZL01` | `locks-easyiot-zl01` |
+
+</details>
+
+<details>
+<summary>ZCL Lights 2 wonjj6768 (8 fingerprints)</summary>
+
+Category driver for newly absorbed exact ZCL light fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| ` Legrand\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00` | ` Dimmer switch with neutral\x00\x00\x00\x00` | `lights-dimmer` |
+| `Candeo` | `C-ZB-RD1Pv2-DIM` | `lights-wave19-candeo-rd1pv2-dim` |
+| `Candeo` | `C-ZB-RD1Pv2-DPM` | `lights-candeo-rd1p-dpm` |
+| `eWeLi\x01\x00\x10` | `ZB-CL01` | `lights-color-temperature-color` |
+| `Paulmann lamp ` | `Dimmable Light ` | `lights-dimmer` |
+| `Paulmann Licht GmbH` | `RGBWW` | `lights-paulmann-rgbww` |
+| `Shelly` | `Dimmer 0-1/10` | `lights-shelly-dimmer-gen4` |
+| `Xiaoyan` | `DIM003` | `lights-wave19-terncy-dim003` |
 
 </details>
 
@@ -3103,6 +3038,18 @@ Development driver; report issues with hub logcat. Supports ZCL lights, dimmers,
 </details>
 
 <details>
+<summary>ZCL Locks wonjj6768 (2 fingerprints)</summary>
+
+Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive handling.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `Lmiot` | `doorlock_5001` | `locks-wave18-javis-js-slk2-zb` |
+| `Vensi` | `E321V000A03` | `locks-wave18-javis-js-slk2-zb` |
+
+</details>
+
+<details>
 <summary>ZCL Plugs wonjj6768 (110 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL plugs, metered outlets, and power strips.
@@ -3219,6 +3166,25 @@ Development driver; report issues with hub logcat. Supports ZCL plugs, metered o
 | `Third Reality, Inc` | `3RSP02028BZ` | `plugs-switch-power-energy-voltage-current` |
 | `Third Reality, Inc` | `3RSPE01044BZ` | `plugs-switch-power-energy-voltage-current` |
 | `Zbeacon` | `TS011F` | `plugs-switch-power-energy-voltage-current` |
+
+</details>
+
+<details>
+<summary>ZCL Sensors 2 wonjj6768 (9 fingerprints)</summary>
+
+Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `'_TZ32101000000_5oy7cysk'` | `TS0210` | `safety-wave19-tuya-ts0210-quoted` |
+| `_TZ3000_eit7p838 ` | `TS0207` | `safety-water-leak-tamper-battery-low-battery` |
+| `eWeLink` | `CK-TLSR8656-Z123SE22DY-01(7035)` | `safety-wave19-ewelink-7035` |
+| `eWeLink` | `CK-TLSR8656-Z123SE24DY-01(7037)` | `safety-co-detector-battery-voltage-ewelink-7037` |
+| `eWeLink` | `CK-TLSR8656-Z23SE11HW-01(7019)` | `safety-water-leak-battery-low-battery` |
+| `HEIMAN` | `HS2AQ-EF-3.0` | `sensors-wave19-heiman-hs2aq-ef-three` |
+| `LinknLink` | `eMotion Air` | `sensors-linknlink-emotion-air` |
+| `PLAID SYSTEMS` | `PS-SPRZMS-SLP3` | `sensors-wave19-plaid-spruce` |
+| `Shelly` | `Presence` | `sensors-shelly-presence-gen4` |
 
 </details>
 
@@ -3623,6 +3589,28 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `Zbeacon` | `TS0201` | `sensors-temp-humidity-battery-voltage` |
 | `Zbeacon` | `TS0202` | `sensors-temp-humidity-battery-legacy-pending` |
 | `Zbeacon` | `TS0203` | `sensors-temp-humidity-battery-legacy-pending` |
+
+</details>
+
+<details>
+<summary>ZCL Switch 2 wonjj6768 (12 fingerprints)</summary>
+
+Category driver for newly absorbed exact ZCL switch fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `_TZ3000_khtlvdfc` | `TS0013` | `switches-switch-3-ssw03g` |
+| `_TZ3210_5ksufhqi` | `TS0002` | `switches-switch-2-nfzb2` |
+| `AOYAN` | `AY301Z-2CH` | `switches-switch-2-ay301z-two` |
+| `MLI` | `tint Smart Switch` | `switches-switch-1-mli-tint` |
+| `MLI\x00` | `switch01\x00` | `switches-switch-1-mli-tint` |
+| `SDevices` | `SBDV-00196` | `switches-wave14-sber-sbdv-00196` |
+| `SDevices` | `SBDV-00197` | `switches-wave14-sber-sbdv-00197` |
+| `SDevices` | `SBDV-00199` | `switches-wave14-sber-sbdv-00199` |
+| `SDevices` | `SBDV-00200` | `switches-wave14-sber-sbdv-00200` |
+| `SDevices` | `SBDV-00202` | `switches-wave14-sber-sbdv-00202` |
+| `Shelly` | `EM` | `switches-shelly-em-gen4` |
+| `Xiaoyan` | `TERNCY-WS07-D3` | `switches-wave14-terncy-ws07-d3` |
 
 </details>
 
@@ -4134,6 +4122,18 @@ Development driver; report issues with hub logcat. Supports ZCL switches, plugs,
 | `Vizo` | `VZ-222S` | `switches-switch-4` |
 | `Vizo` | `VZ-223S` | `switches-switch-4` |
 | `zunzunbee` | `SSWZ8T` | `switches-switch-4` |
+
+</details>
+
+<details>
+<summary>ZCL Thermostat wonjj6768 (2 fingerprints)</summary>
+
+Category driver for newly absorbed exact ZCL HVAC and thermostat fingerprints.
+
+| Manufacturer | Model | Profile |
+| --- | --- | --- |
+| `PirogovX` | `ZB-MIDEA-AC` | `thermostats-wave19-pirogov-zb-midea-ac` |
+| `SDevices` | `SBDV-00205` | `thermostats-wave19-sber-sbdv-00205` |
 
 </details>
 

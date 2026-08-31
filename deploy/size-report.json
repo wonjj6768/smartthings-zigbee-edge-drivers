@@ -3293,7 +3293,7 @@
     }
   },
   {
-    "name": "z2m-zcl-switch-wonjj6768",
+    "name": "zcl-switch-2-wonjj6768",
     "raw_size": 357305,
     "under_limit": true,
     "free_bytes": 166983,
@@ -3449,7 +3449,7 @@
     }
   },
   {
-    "name": "z2m-zcl-lights-wonjj6768",
+    "name": "zcl-lights-2-wonjj6768",
     "raw_size": 291181,
     "under_limit": true,
     "free_bytes": 233107,
@@ -3599,7 +3599,7 @@
     }
   },
   {
-    "name": "z2m-zcl-sensors-wonjj6768",
+    "name": "zcl-sensors-2-wonjj6768",
     "raw_size": 287844,
     "under_limit": true,
     "free_bytes": 236444,
@@ -3753,7 +3753,7 @@
     }
   },
   {
-    "name": "z2m-zcl-controls-wonjj6768",
+    "name": "zcl-controls-2-wonjj6768",
     "raw_size": 261544,
     "under_limit": true,
     "free_bytes": 262744,
@@ -3898,7 +3898,7 @@
     }
   },
   {
-    "name": "z2m-zcl-locks-wonjj6768",
+    "name": "zcl-locks-wonjj6768",
     "raw_size": 237387,
     "under_limit": true,
     "free_bytes": 286901,
@@ -4025,7 +4025,7 @@
     }
   },
   {
-    "name": "z2m-zcl-bridge-wonjj6768",
+    "name": "zcl-bridge-wonjj6768",
     "raw_size": 253129,
     "under_limit": true,
     "free_bytes": 271159,
@@ -4156,7 +4156,7 @@
     }
   },
   {
-    "name": "z2m-zcl-thermostat-wonjj6768",
+    "name": "zcl-thermostat-wonjj6768",
     "raw_size": 276079,
     "under_limit": true,
     "free_bytes": 248209,
@@ -4286,7 +4286,7 @@
     }
   },
   {
-    "name": "z2m-zcl-dali-wonjj6768",
+    "name": "zcl-dali-wonjj6768",
     "raw_size": 246888,
     "under_limit": true,
     "free_bytes": 277400,
@@ -4418,7 +4418,7 @@
     }
   },
   {
-    "name": "z2m-ef00-covers-wonjj6768",
+    "name": "ef00-covers-2-wonjj6768",
     "raw_size": 405021,
     "under_limit": true,
     "free_bytes": 119267,
@@ -4563,7 +4563,7 @@
     }
   },
   {
-    "name": "z2m-ef00-lights-wonjj6768",
+    "name": "ef00-lights-2-wonjj6768",
     "raw_size": 435346,
     "under_limit": true,
     "free_bytes": 88942,
@@ -4705,7 +4705,7 @@
     }
   },
   {
-    "name": "z2m-ef00-switch-wonjj6768",
+    "name": "ef00-switch-2-wonjj6768",
     "raw_size": 380429,
     "under_limit": true,
     "free_bytes": 143859,
@@ -4803,7 +4803,7 @@
     }
   },
   {
-    "name": "z2m-ef00-meters-wonjj6768",
+    "name": "ef00-meters-2-wonjj6768",
     "raw_size": 381204,
     "under_limit": true,
     "free_bytes": 143084,
@@ -4932,7 +4932,7 @@
     }
   },
   {
-    "name": "z2m-ef00-sensors-wonjj6768",
+    "name": "ef00-sensors-2-wonjj6768",
     "raw_size": 296002,
     "under_limit": true,
     "free_bytes": 228286,
@@ -5009,7 +5009,7 @@
     }
   },
   {
-    "name": "z2m-ef00-presence-wonjj6768",
+    "name": "ef00-presence-3-wonjj6768",
     "raw_size": 433824,
     "under_limit": true,
     "free_bytes": 90464,
@@ -5158,7 +5158,7 @@
     }
   },
   {
-    "name": "z2m-ef00-safety-wonjj6768",
+    "name": "ef00-safety-2-wonjj6768",
     "raw_size": 308363,
     "under_limit": true,
     "free_bytes": 215925,
@@ -5242,7 +5242,7 @@
     }
   },
   {
-    "name": "z2m-ef00-valves-wonjj6768",
+    "name": "ef00-valves-2-wonjj6768",
     "raw_size": 315895,
     "under_limit": true,
     "free_bytes": 208393,
@@ -5318,7 +5318,7 @@
     }
   },
   {
-    "name": "z2m-ef00-thermo-trv-wonjj6768",
+    "name": "ef00-thermostat-trv-3-wonjj6768",
     "raw_size": 398091,
     "under_limit": true,
     "free_bytes": 126197,
@@ -5405,7 +5405,7 @@
     }
   },
   {
-    "name": "z2m-ef00-thermo-hvac-wonjj6768",
+    "name": "ef00-thermostat-hvac-2-wonjj6768",
     "raw_size": 367643,
     "under_limit": true,
     "free_bytes": 156645,
@@ -5488,7 +5488,7 @@
     }
   },
   {
-    "name": "z2m-ef00-controls-wonjj6768",
+    "name": "ef00-controls-2-wonjj6768",
     "raw_size": 299598,
     "under_limit": true,
     "free_bytes": 224690,
@@ -5567,7 +5567,7 @@
     }
   },
   {
-    "name": "z2m-ef00-bridge-wonjj6768",
+    "name": "ef00-bridge-wonjj6768",
     "raw_size": 255695,
     "under_limit": true,
     "free_bytes": 268593,

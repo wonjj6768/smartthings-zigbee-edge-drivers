@@ -1,6 +1,0 @@
-name: "EF00 Valves 2 wonjj6768"
-packageKey: "z2m-ef00-valves-wonjj6768"
-description: "Category driver for newly absorbed exact EF00 irrigation and water-valve fingerprints."
-vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
-permissions:
-  zigbee: {}

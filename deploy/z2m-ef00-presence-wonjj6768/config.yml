@@ -1,6 +1,0 @@
-name: "EF00 Presence 3 wonjj6768"
-packageKey: "z2m-ef00-presence-wonjj6768"
-description: "Category driver for newly absorbed exact EF00 presence and mmWave fingerprints."
-vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
-permissions:
-  zigbee: {}

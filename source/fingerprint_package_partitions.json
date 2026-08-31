@@ -6,385 +6,385 @@
       "catalogId": "ef00.bridges.wave19",
       "catalogModule": "contracts.families.ef00.bridges_wave19",
       "oldOwner": "z2m-bridge-ef00-w19-wonjj6768",
-      "newOwner": "z2m-ef00-bridge-wonjj6768"
+      "newOwner": "ef00-bridge-wonjj6768"
     },
     {
       "catalogId": "ef00.controls.wave15_engo",
       "catalogModule": "contracts.families.ef00.controls.wave15_engo",
       "oldOwner": "ef00-wave15-wonjj6768",
-      "newOwner": "z2m-ef00-controls-wonjj6768"
+      "newOwner": "ef00-controls-2-wonjj6768"
     },
     {
       "catalogId": "ef00.controls.wave17_fingerbot",
       "catalogModule": "contracts.families.ef00.controls.wave17_fingerbot",
       "oldOwner": "z2m-ef00-finger-wonjj6768",
-      "newOwner": "z2m-ef00-controls-wonjj6768"
+      "newOwner": "ef00-controls-2-wonjj6768"
     },
     {
       "catalogId": "ef00.controls.wave18_keypads",
       "catalogModule": "contracts.families.ef00.controls.wave18_keypads",
       "oldOwner": "z2m-ef00-keypads-wonjj6768",
-      "newOwner": "z2m-ef00-controls-wonjj6768"
+      "newOwner": "ef00-controls-2-wonjj6768"
     },
     {
       "catalogId": "ef00.controls.wave19.remotes",
       "catalogModule": "contracts.families.ef00.controls.wave19_remotes",
       "oldOwner": "z2m-remote-w19-wonjj6768",
-      "newOwner": "z2m-ef00-controls-wonjj6768"
+      "newOwner": "ef00-controls-2-wonjj6768"
     },
     {
       "catalogId": "ef00.covers.wave10",
       "catalogModule": "contracts.families.ef00.covers.wave10",
       "oldOwner": "z2m-ef00-covers-wonjj6768",
-      "newOwner": "z2m-ef00-covers-wonjj6768"
+      "newOwner": "ef00-covers-2-wonjj6768"
     },
     {
       "catalogId": "ef00.covers.wave15",
       "catalogModule": "contracts.families.ef00.covers.wave15",
       "oldOwner": "ef00-wave15-wonjj6768",
-      "newOwner": "z2m-ef00-covers-wonjj6768"
+      "newOwner": "ef00-covers-2-wonjj6768"
     },
     {
       "catalogId": "ef00.covers.wave19_legacy",
       "catalogModule": "contracts.families.ef00.covers.wave19_legacy",
       "oldOwner": "z2m-cover-w19-wonjj6768",
-      "newOwner": "z2m-ef00-covers-wonjj6768"
+      "newOwner": "ef00-covers-2-wonjj6768"
     },
     {
       "catalogId": "ef00.covers.z2m_absorption",
       "catalogModule": "contracts.families.ef00.covers.z2m_absorption",
       "oldOwner": "z2m-ef00-covers-wonjj6768",
-      "newOwner": "z2m-ef00-covers-wonjj6768"
+      "newOwner": "ef00-covers-2-wonjj6768"
     },
     {
       "catalogId": "ef00.din_rail.meters.z2m_absorption",
       "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption",
       "oldOwner": "z2m-ef00-meters-wonjj6768",
-      "newOwner": "z2m-ef00-meters-wonjj6768"
+      "newOwner": "ef00-meters-2-wonjj6768"
     },
     {
       "catalogId": "ef00.din_rail.wave19_energy",
       "catalogModule": "contracts.families.ef00.din_rail.wave19_energy",
       "oldOwner": "z2m-energy-w19-wonjj6768",
-      "newOwner": "z2m-ef00-meters-wonjj6768"
+      "newOwner": "ef00-meters-2-wonjj6768"
     },
     {
       "catalogId": "ef00.lights.wave15_gledopto",
       "catalogModule": "contracts.families.ef00.lights.wave15_gledopto",
       "oldOwner": "ef00-wave15-wonjj6768",
-      "newOwner": "z2m-ef00-lights-wonjj6768"
+      "newOwner": "ef00-lights-2-wonjj6768"
     },
     {
       "catalogId": "ef00.lights.wave19.exact",
       "catalogModule": "contracts.families.ef00.lights.wave19_exact",
       "oldOwner": "z2m-light-w19-wonjj6768",
-      "newOwner": "z2m-ef00-lights-wonjj6768"
+      "newOwner": "ef00-lights-2-wonjj6768"
     },
     {
       "catalogId": "ef00.lights.z2m_absorption",
       "catalogModule": "contracts.families.ef00.lights.z2m_absorption",
       "oldOwner": "z2m-ef00-lights-wonjj6768",
-      "newOwner": "z2m-ef00-lights-wonjj6768"
+      "newOwner": "ef00-lights-2-wonjj6768"
     },
     {
       "catalogId": "ef00.presence.wave11.advanced",
       "catalogModule": "contracts.families.ef00.presence.wave11_advanced",
       "oldOwner": "z2m-ef00-pres-hyb-wonjj6768",
-      "newOwner": "z2m-ef00-presence-wonjj6768"
+      "newOwner": "ef00-presence-3-wonjj6768"
     },
     {
       "catalogId": "ef00.presence.wave11.general.1",
       "catalogModule": "contracts.families.ef00.presence.wave11_general_1",
       "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-      "newOwner": "z2m-ef00-presence-wonjj6768"
+      "newOwner": "ef00-presence-3-wonjj6768"
     },
     {
       "catalogId": "ef00.presence.wave11.general.2",
       "catalogModule": "contracts.families.ef00.presence.wave11_general_2",
       "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-      "newOwner": "z2m-ef00-presence-wonjj6768"
+      "newOwner": "ef00-presence-3-wonjj6768"
     },
     {
       "catalogId": "ef00.presence.wave11.switch",
       "catalogModule": "contracts.families.ef00.presence.wave11_switch",
       "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-      "newOwner": "z2m-ef00-presence-wonjj6768"
+      "newOwner": "ef00-presence-3-wonjj6768"
     },
     {
       "catalogId": "ef00.presence.wave19.sensors",
       "catalogModule": "contracts.families.ef00.presence.wave19_sensors",
       "oldOwner": "z2m-pres-w19-wonjj6768",
-      "newOwner": "z2m-ef00-presence-wonjj6768"
+      "newOwner": "ef00-presence-3-wonjj6768"
     },
     {
       "catalogId": "ef00.presence.z2m_absorption",
       "catalogModule": "contracts.families.ef00.presence.z2m_absorption",
       "oldOwner": "z2m-ef00-presence-wonjj6768",
-      "newOwner": "z2m-ef00-presence-wonjj6768"
+      "newOwner": "ef00-presence-3-wonjj6768"
     },
     {
       "catalogId": "ef00.safety.wave15_lincukoo",
       "catalogModule": "contracts.families.ef00.safety.wave15_lincukoo",
       "oldOwner": "ef00-wave15-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "ef00.safety.wave16_lincukoo_siren",
       "catalogModule": "contracts.families.ef00.safety.wave16_lincukoo_siren",
       "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "ef00.safety.z2m_absorption",
       "catalogModule": "contracts.families.ef00.safety.z2m_absorption",
       "oldOwner": "z2m-ef00-safety-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "ef00.screen_switch.z2m_absorption",
       "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption",
       "oldOwner": "z2m-ef00-screen-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.sensors.wave16_excellux",
       "catalogModule": "contracts.families.ef00.sensors.wave16_excellux",
       "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-      "newOwner": "z2m-ef00-sensors-wonjj6768"
+      "newOwner": "ef00-sensors-2-wonjj6768"
     },
     {
       "catalogId": "ef00.sensors.wave16_lincukoo_air",
       "catalogModule": "contracts.families.ef00.sensors.wave16_lincukoo_air",
       "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-      "newOwner": "z2m-ef00-sensors-wonjj6768"
+      "newOwner": "ef00-sensors-2-wonjj6768"
     },
     {
       "catalogId": "ef00.sensors.z2m_absorption",
       "catalogModule": "contracts.families.ef00.sensors.z2m_absorption",
       "oldOwner": "z2m-ef00-sensors-wonjj6768",
-      "newOwner": "z2m-ef00-sensors-wonjj6768"
+      "newOwner": "ef00-sensors-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switch.basic.z2m_absorption",
       "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption",
       "oldOwner": "z2m-ef00-switch-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switch.panel.z2m_absorption",
       "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption",
       "oldOwner": "z2m-ef00-panel-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switch.star_feather",
       "catalogModule": "contracts.families.ef00.switch_star_feather",
       "oldOwner": "z2m-ef00-panel-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switches.wave13.avatto",
       "catalogModule": "contracts.families.ef00.switches.wave13_avatto",
       "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switches.wave13.box",
       "catalogModule": "contracts.families.ef00.switches.wave13_box",
       "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switches.wave13.manhot",
       "catalogModule": "contracts.families.ef00.switches.wave13_manhot",
       "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switches.wave13.nova_semicom",
       "catalogModule": "contracts.families.ef00.switches.wave13_nova_semicom",
       "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.switches.wave15_box",
       "catalogModule": "contracts.families.ef00.switches.wave15_box",
       "oldOwner": "ef00-wave15-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave12_fcu",
       "catalogModule": "contracts.families.ef00.thermostats.wave12_fcu",
       "oldOwner": "z2m-ef00-fcu-w12-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-hvac-wonjj6768"
+      "newOwner": "ef00-thermostat-hvac-2-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave12_trv",
       "catalogModule": "contracts.families.ef00.thermostats.wave12_trv",
       "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave12_wall",
       "catalogModule": "contracts.families.ef00.thermostats.wave12_wall",
       "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-hvac-wonjj6768"
+      "newOwner": "ef00-thermostat-hvac-2-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave15_trv",
       "catalogModule": "contracts.families.ef00.thermostats.wave15_trv",
       "oldOwner": "ef00-wave15-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave19.exact",
       "catalogModule": "contracts.families.ef00.thermostats.wave19_exact",
       "oldOwner": "z2m-therm-w19-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave19_exact_aliases",
       "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases",
       "oldOwner": "z2m-trv-alias-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave6a_trv",
       "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv",
       "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave6a_wall",
       "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall",
       "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-hvac-wonjj6768"
+      "newOwner": "ef00-thermostat-hvac-2-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave9_legacy",
       "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy",
       "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.thermostats.wave9_mazda",
       "catalogModule": "contracts.families.ef00.thermostats.wave9_mazda",
       "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-      "newOwner": "z2m-ef00-thermo-trv-wonjj6768"
+      "newOwner": "ef00-thermostat-trv-3-wonjj6768"
     },
     {
       "catalogId": "ef00.valves.wave19",
       "catalogModule": "contracts.families.ef00.valves.wave19",
       "oldOwner": "z2m-valve-w19-wonjj6768",
-      "newOwner": "z2m-ef00-valves-wonjj6768"
+      "newOwner": "ef00-valves-2-wonjj6768"
     },
     {
       "catalogId": "ef00.valves.z2m_absorption",
       "catalogModule": "contracts.families.ef00.valves.z2m_absorption",
       "oldOwner": "z2m-ef00-valves-wonjj6768",
-      "newOwner": "z2m-ef00-valves-wonjj6768"
+      "newOwner": "ef00-valves-2-wonjj6768"
     },
     {
       "catalogId": "lincukoo.w04_z10t",
       "catalogModule": "contracts.families.ef00.safety_lincukoo_w04_z10t",
       "oldOwner": "z2m-ef00-safety-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "moes.zs_d1",
       "catalogModule": "contracts.families.ef00.moes_zs_d1",
       "oldOwner": "z2m-ef00-lights-wonjj6768",
-      "newOwner": "z2m-ef00-lights-wonjj6768"
+      "newOwner": "ef00-lights-2-wonjj6768"
     },
     {
       "catalogId": "moes.zs_d2",
       "catalogModule": "contracts.families.ef00.moes_zs_d2",
       "oldOwner": "z2m-ef00-lights-wonjj6768",
-      "newOwner": "z2m-ef00-lights-wonjj6768"
+      "newOwner": "ef00-lights-2-wonjj6768"
     },
     {
       "catalogId": "moes.zs_d3",
       "catalogModule": "contracts.families.ef00.moes_zs_d3",
       "oldOwner": "z2m-ef00-lights-wonjj6768",
-      "newOwner": "z2m-ef00-lights-wonjj6768"
+      "newOwner": "ef00-lights-2-wonjj6768"
     },
     {
       "catalogId": "neo.nas_ab02b2",
       "catalogModule": "contracts.families.ef00.safety_neo_nas_ab02b2",
       "oldOwner": "z2m-ef00-safety-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "neo.nas_ab06b2",
       "catalogModule": "contracts.families.ef00.safety_neo_nas_ab06b2",
       "oldOwner": "z2m-ef00-safety-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "neo.nas_wv03b2",
       "catalogModule": "contracts.families.ef00.valves.neo_nas_wv03b2",
       "oldOwner": "z2m-ef00-valves-wonjj6768",
-      "newOwner": "z2m-ef00-valves-wonjj6768"
+      "newOwner": "ef00-valves-2-wonjj6768"
     },
     {
       "catalogId": "nous.e12",
       "catalogModule": "contracts.families.ef00.safety_nous_e12",
       "oldOwner": "z2m-ef00-safety-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "qoto.qt_05m",
       "catalogModule": "contracts.families.ef00.valves.qoto_qt05m",
       "oldOwner": "z2m-ef00-valves-wonjj6768",
-      "newOwner": "z2m-ef00-valves-wonjj6768"
+      "newOwner": "ef00-valves-2-wonjj6768"
     },
     {
       "catalogId": "tuya.vibration_alarm",
       "catalogModule": "contracts.families.ef00.safety_tuya_vibration_alarm",
       "oldOwner": "z2m-ef00-safety-wonjj6768",
-      "newOwner": "z2m-ef00-safety-wonjj6768"
+      "newOwner": "ef00-safety-2-wonjj6768"
     },
     {
       "catalogId": "wave14.qa.legacy_switches",
       "catalogModule": "contracts.families.ef00.switches.wave14_qa",
       "oldOwner": "wave14-switch-wonjj6768",
-      "newOwner": "z2m-ef00-switch-wonjj6768"
+      "newOwner": "ef00-switch-2-wonjj6768"
     },
     {
       "catalogId": "wave14.sber.zcl_switches",
       "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl",
       "oldOwner": "wave14-switch-wonjj6768",
-      "newOwner": "z2m-zcl-switch-wonjj6768"
+      "newOwner": "zcl-switch-2-wonjj6768"
     },
     {
       "catalogId": "wave14.terncy.zcl_switch",
       "catalogModule": "contracts.families.zcl.switches.wave14_terncy_zcl",
       "oldOwner": "wave14-switch-wonjj6768",
-      "newOwner": "z2m-zcl-switch-wonjj6768"
+      "newOwner": "zcl-switch-2-wonjj6768"
     },
     {
       "catalogId": "zcl.bridges.wave19",
       "catalogModule": "contracts.families.zcl.bridges_wave19",
       "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
-      "newOwner": "z2m-zcl-bridge-wonjj6768"
+      "newOwner": "zcl-bridge-wonjj6768"
     },
     {
       "catalogId": "zcl.controls.jethome",
       "catalogModule": "contracts.families.zcl.controls.jethome",
       "oldOwner": "z2m-zcl-controls-wonjj6768",
-      "newOwner": "z2m-zcl-controls-wonjj6768"
+      "newOwner": "zcl-controls-2-wonjj6768"
     },
     {
       "catalogId": "zcl.controls.wave18_javis_lock",
       "catalogModule": "contracts.families.zcl.controls.wave18_javis_lock",
       "oldOwner": "z2m-zcl-locks-wonjj6768",
-      "newOwner": "z2m-zcl-locks-wonjj6768"
+      "newOwner": "zcl-locks-wonjj6768"
     },
     {
       "catalogId": "zcl.controls.z2m_absorption",
       "catalogModule": "contracts.families.zcl.controls.z2m_absorption",
       "oldOwner": "z2m-zcl-controls-wonjj6768",
-      "newOwner": "z2m-zcl-controls-wonjj6768"
+      "newOwner": "zcl-controls-2-wonjj6768"
     },
     {
       "catalogId": "zcl.easyiot.absorption",
@@ -396,85 +396,85 @@
       "catalogId": "zcl.lights.shelly_dimmer",
       "catalogModule": "contracts.families.zcl.lights.shelly_dimmer",
       "oldOwner": "z2m-zcl-lights-wonjj6768",
-      "newOwner": "z2m-zcl-lights-wonjj6768"
+      "newOwner": "zcl-lights-2-wonjj6768"
     },
     {
       "catalogId": "zcl.lights.wave19.exact",
       "catalogModule": "contracts.families.zcl.lights.wave19_exact",
       "oldOwner": "z2m-light-zcl-w19-wonjj6768",
-      "newOwner": "z2m-zcl-lights-wonjj6768"
+      "newOwner": "zcl-lights-2-wonjj6768"
     },
     {
       "catalogId": "zcl.lights.wave19_dali",
       "catalogModule": "contracts.families.zcl.lights.wave19_dali",
       "oldOwner": "z2m-dali-w19-wonjj6768",
-      "newOwner": "z2m-zcl-dali-wonjj6768"
+      "newOwner": "zcl-dali-wonjj6768"
     },
     {
       "catalogId": "zcl.lights.wave19_exact_aliases",
       "catalogModule": "contracts.families.zcl.lights.wave19_exact_aliases",
       "oldOwner": "z2m-zcl-alias-light-wonjj6768",
-      "newOwner": "z2m-zcl-lights-wonjj6768"
+      "newOwner": "zcl-lights-2-wonjj6768"
     },
     {
       "catalogId": "zcl.lights.z2m_absorption",
       "catalogModule": "contracts.families.zcl.lights.z2m_absorption",
       "oldOwner": "z2m-zcl-lights-wonjj6768",
-      "newOwner": "z2m-zcl-lights-wonjj6768"
+      "newOwner": "zcl-lights-2-wonjj6768"
     },
     {
       "catalogId": "zcl.sensors.wave19_environment",
       "catalogModule": "contracts.families.zcl.sensors.wave19_environment",
       "oldOwner": "z2m-env-w19-wonjj6768",
-      "newOwner": "z2m-zcl-sensors-wonjj6768"
+      "newOwner": "zcl-sensors-2-wonjj6768"
     },
     {
       "catalogId": "zcl.sensors.wave19_exact_aliases",
       "catalogModule": "contracts.families.zcl.sensors.wave19_exact_aliases",
       "oldOwner": "z2m-zcl-alias-safe-wonjj6768",
-      "newOwner": "z2m-zcl-sensors-wonjj6768"
+      "newOwner": "zcl-sensors-2-wonjj6768"
     },
     {
       "catalogId": "zcl.sensors.wave19_hvac",
       "catalogModule": "contracts.families.zcl.sensors.wave19_hvac",
       "oldOwner": "z2m-hvac-w19-wonjj6768",
-      "newOwner": "z2m-zcl-thermostat-wonjj6768"
+      "newOwner": "zcl-thermostat-wonjj6768"
     },
     {
       "catalogId": "zcl.sensors.wave19_smoke",
       "catalogModule": "contracts.families.zcl.sensors.wave19_smoke",
       "oldOwner": "z2m-safety-w19-wonjj6768",
-      "newOwner": "z2m-zcl-sensors-wonjj6768"
+      "newOwner": "zcl-sensors-2-wonjj6768"
     },
     {
       "catalogId": "zcl.sensors.wave19_vibration",
       "catalogModule": "contracts.families.zcl.sensors.wave19_vibration",
       "oldOwner": "z2m-vibration-w19-wonjj6768",
-      "newOwner": "z2m-zcl-sensors-wonjj6768"
+      "newOwner": "zcl-sensors-2-wonjj6768"
     },
     {
       "catalogId": "zcl.sensors.z2m_absorption",
       "catalogModule": "contracts.families.zcl.sensors.z2m_absorption",
       "oldOwner": "z2m-zcl-sensors-wonjj6768",
-      "newOwner": "z2m-zcl-sensors-wonjj6768"
+      "newOwner": "zcl-sensors-2-wonjj6768"
     },
     {
       "catalogId": "zcl.switches.shelly_em",
       "catalogModule": "contracts.families.zcl.switches.shelly_em",
       "oldOwner": "z2m-zcl-switch-wonjj6768",
-      "newOwner": "z2m-zcl-switch-wonjj6768"
+      "newOwner": "zcl-switch-2-wonjj6768"
     },
     {
       "catalogId": "zcl.switches.z2m_absorption",
       "catalogModule": "contracts.families.zcl.switches.z2m_absorption",
       "oldOwner": "z2m-zcl-switch-wonjj6768",
-      "newOwner": "z2m-zcl-switch-wonjj6768"
+      "newOwner": "zcl-switch-2-wonjj6768"
     },
     {
       "catalogId": "zcl.thermostats.wave19.sber",
       "catalogModule": "contracts.families.zcl.thermostats.wave19_sber",
       "oldOwner": "z2m-therm-zcl-w19-wonjj6768",
-      "newOwner": "z2m-zcl-thermostat-wonjj6768"
+      "newOwner": "zcl-thermostat-wonjj6768"
     }
   ],
   "baseline": {
@@ -488,7 +488,7 @@
       "sourcePackage": "zcl-switch-wonjj6768",
       "historicalTargetPackage": "z2m-zcl-switch-wonjj6768",
       "currentTargetPackages": [
-        "z2m-zcl-switch-wonjj6768"
+        "zcl-switch-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -506,7 +506,7 @@
       "sourcePackage": "zcl-lights-wonjj6768",
       "historicalTargetPackage": "z2m-zcl-lights-wonjj6768",
       "currentTargetPackages": [
-        "z2m-zcl-lights-wonjj6768"
+        "zcl-lights-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -524,7 +524,7 @@
       "sourcePackage": "zcl-sensors-wonjj6768",
       "historicalTargetPackage": "z2m-zcl-sensors-wonjj6768",
       "currentTargetPackages": [
-        "z2m-zcl-sensors-wonjj6768"
+        "zcl-sensors-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -538,7 +538,7 @@
       "sourcePackage": "zcl-controls-wonjj6768",
       "historicalTargetPackage": "z2m-zcl-controls-wonjj6768",
       "currentTargetPackages": [
-        "z2m-zcl-controls-wonjj6768"
+        "zcl-controls-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -556,7 +556,7 @@
       "sourcePackage": "ef00-covers-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-covers-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-covers-wonjj6768"
+        "ef00-covers-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -574,7 +574,7 @@
       "sourcePackage": "ef00-lights-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-lights-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-lights-wonjj6768"
+        "ef00-lights-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -600,7 +600,7 @@
       "sourcePackage": "ef00-switch-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-switch-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-switch-wonjj6768"
+        "ef00-switch-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -614,7 +614,7 @@
       "sourcePackage": "ef00-switch-panel-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-panel-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-switch-wonjj6768"
+        "ef00-switch-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -632,7 +632,7 @@
       "sourcePackage": "ef00-screen-switch-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-screen-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-switch-wonjj6768"
+        "ef00-switch-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -646,7 +646,7 @@
       "sourcePackage": "ef00-meters-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-meters-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-meters-wonjj6768"
+        "ef00-meters-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -660,7 +660,7 @@
       "sourcePackage": "ef00-sensors-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-sensors-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-sensors-wonjj6768"
+        "ef00-sensors-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -674,7 +674,7 @@
       "sourcePackage": "ef00-presence-general-2-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-presence-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-presence-wonjj6768"
+        "ef00-presence-3-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -688,7 +688,7 @@
       "sourcePackage": "ef00-safety-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-safety-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-safety-wonjj6768"
+        "ef00-safety-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -722,7 +722,7 @@
       "sourcePackage": "ef00-valves-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-valves-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-valves-wonjj6768"
+        "ef00-valves-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -744,7 +744,7 @@
       "sourcePackage": "ef00-thermostat-trv-2-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-thermo-trv-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-thermo-trv-wonjj6768"
+        "ef00-thermostat-trv-3-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -762,7 +762,7 @@
       "sourcePackage": "ef00-thermostat-wall-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-thermo-wall-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-thermo-hvac-wonjj6768"
+        "ef00-thermostat-hvac-2-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -776,7 +776,7 @@
       "sourcePackage": "ef00-thermostat-fcu-wonjj6768",
       "historicalTargetPackage": "z2m-ef00-thermo-fcu-wonjj6768",
       "currentTargetPackages": [
-        "z2m-ef00-thermo-trv-wonjj6768"
+        "ef00-thermostat-trv-3-wonjj6768"
       ],
       "targetCatalogs": [
         {
@@ -877,7 +877,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-switch-wonjj6768",
+      "package": "zcl-switch-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.switches.z2m_absorption",
@@ -902,7 +902,7 @@
           "catalogId": "zcl.switches.z2m_absorption",
           "catalogModule": "contracts.families.zcl.switches.z2m_absorption",
           "oldOwner": "z2m-zcl-switch-wonjj6768",
-          "newOwner": "z2m-zcl-switch-wonjj6768",
+          "newOwner": "zcl-switch-2-wonjj6768",
           "moved": false,
           "exactCount": 5,
           "exacts": [
@@ -913,7 +913,7 @@
               "modelUtf8Hex": "41593330315a2d324348",
               "profile": "switches-switch-2-ay301z-two",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             },
@@ -924,7 +924,7 @@
               "modelUtf8Hex": "74696e7420536d61727420537769746368",
               "profile": "switches-switch-1-mli-tint",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             },
@@ -935,7 +935,7 @@
               "modelUtf8Hex": "737769746368303100",
               "profile": "switches-switch-1-mli-tint",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             },
@@ -946,7 +946,7 @@
               "modelUtf8Hex": "545330303133",
               "profile": "switches-switch-3-ssw03g",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             },
@@ -957,7 +957,7 @@
               "modelUtf8Hex": "545330303032",
               "profile": "switches-switch-2-nfzb2",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             }
@@ -967,7 +967,7 @@
           "catalogId": "zcl.switches.shelly_em",
           "catalogModule": "contracts.families.zcl.switches.shelly_em",
           "oldOwner": "z2m-zcl-switch-wonjj6768",
-          "newOwner": "z2m-zcl-switch-wonjj6768",
+          "newOwner": "zcl-switch-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -978,7 +978,7 @@
               "modelUtf8Hex": "454d",
               "profile": "switches-shelly-em-gen4",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.shelly_em",
               "catalogModule": "contracts.families.zcl.switches.shelly_em"
             }
@@ -988,7 +988,7 @@
           "catalogId": "wave14.sber.zcl_switches",
           "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl",
           "oldOwner": "wave14-switch-wonjj6768",
-          "newOwner": "z2m-zcl-switch-wonjj6768",
+          "newOwner": "zcl-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 5,
           "exacts": [
@@ -999,7 +999,7 @@
               "modelUtf8Hex": "534244562d3030313936",
               "profile": "switches-wave14-sber-sbdv-00196",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "wave14.sber.zcl_switches",
               "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl"
             },
@@ -1010,7 +1010,7 @@
               "modelUtf8Hex": "534244562d3030313937",
               "profile": "switches-wave14-sber-sbdv-00197",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "wave14.sber.zcl_switches",
               "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl"
             },
@@ -1021,7 +1021,7 @@
               "modelUtf8Hex": "534244562d3030313939",
               "profile": "switches-wave14-sber-sbdv-00199",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "wave14.sber.zcl_switches",
               "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl"
             },
@@ -1032,7 +1032,7 @@
               "modelUtf8Hex": "534244562d3030323030",
               "profile": "switches-wave14-sber-sbdv-00200",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "wave14.sber.zcl_switches",
               "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl"
             },
@@ -1043,7 +1043,7 @@
               "modelUtf8Hex": "534244562d3030323032",
               "profile": "switches-wave14-sber-sbdv-00202",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "wave14.sber.zcl_switches",
               "catalogModule": "contracts.families.zcl.switches.wave14_sber_zcl"
             }
@@ -1053,7 +1053,7 @@
           "catalogId": "wave14.terncy.zcl_switch",
           "catalogModule": "contracts.families.zcl.switches.wave14_terncy_zcl",
           "oldOwner": "wave14-switch-wonjj6768",
-          "newOwner": "z2m-zcl-switch-wonjj6768",
+          "newOwner": "zcl-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1064,7 +1064,7 @@
               "modelUtf8Hex": "5445524e43592d575330372d4433",
               "profile": "switches-wave14-terncy-ws07-d3",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "wave14.terncy.zcl_switch",
               "catalogModule": "contracts.families.zcl.switches.wave14_terncy_zcl"
             }
@@ -1073,7 +1073,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-lights-wonjj6768",
+      "package": "zcl-lights-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.lights.z2m_absorption",
@@ -1098,7 +1098,7 @@
           "catalogId": "zcl.lights.z2m_absorption",
           "catalogModule": "contracts.families.zcl.lights.z2m_absorption",
           "oldOwner": "z2m-zcl-lights-wonjj6768",
-          "newOwner": "z2m-zcl-lights-wonjj6768",
+          "newOwner": "zcl-lights-2-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -1109,7 +1109,7 @@
               "modelUtf8Hex": "432d5a422d5244315076322d44504d",
               "profile": "lights-candeo-rd1p-dpm",
               "oldOwner": "z2m-zcl-lights-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.z2m_absorption",
               "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
             },
@@ -1120,7 +1120,7 @@
               "modelUtf8Hex": "5247425757",
               "profile": "lights-paulmann-rgbww",
               "oldOwner": "z2m-zcl-lights-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.z2m_absorption",
               "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
             }
@@ -1130,7 +1130,7 @@
           "catalogId": "zcl.lights.shelly_dimmer",
           "catalogModule": "contracts.families.zcl.lights.shelly_dimmer",
           "oldOwner": "z2m-zcl-lights-wonjj6768",
-          "newOwner": "z2m-zcl-lights-wonjj6768",
+          "newOwner": "zcl-lights-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -1141,7 +1141,7 @@
               "modelUtf8Hex": "44696d6d657220302d312f3130",
               "profile": "lights-shelly-dimmer-gen4",
               "oldOwner": "z2m-zcl-lights-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.shelly_dimmer",
               "catalogModule": "contracts.families.zcl.lights.shelly_dimmer"
             }
@@ -1151,7 +1151,7 @@
           "catalogId": "zcl.lights.wave19_exact_aliases",
           "catalogModule": "contracts.families.zcl.lights.wave19_exact_aliases",
           "oldOwner": "z2m-zcl-alias-light-wonjj6768",
-          "newOwner": "z2m-zcl-lights-wonjj6768",
+          "newOwner": "zcl-lights-2-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -1162,7 +1162,7 @@
               "modelUtf8Hex": "2044696d6d6572207377697463682077697468206e65757472616c00000000",
               "profile": "lights-dimmer",
               "oldOwner": "z2m-zcl-alias-light-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.wave19_exact_aliases",
               "catalogModule": "contracts.families.zcl.lights.wave19_exact_aliases"
             },
@@ -1173,7 +1173,7 @@
               "modelUtf8Hex": "44696d6d61626c65204c6967687420",
               "profile": "lights-dimmer",
               "oldOwner": "z2m-zcl-alias-light-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.wave19_exact_aliases",
               "catalogModule": "contracts.families.zcl.lights.wave19_exact_aliases"
             },
@@ -1184,7 +1184,7 @@
               "modelUtf8Hex": "5a422d434c3031",
               "profile": "lights-color-temperature-color",
               "oldOwner": "z2m-zcl-alias-light-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.wave19_exact_aliases",
               "catalogModule": "contracts.families.zcl.lights.wave19_exact_aliases"
             }
@@ -1194,7 +1194,7 @@
           "catalogId": "zcl.lights.wave19.exact",
           "catalogModule": "contracts.families.zcl.lights.wave19_exact",
           "oldOwner": "z2m-light-zcl-w19-wonjj6768",
-          "newOwner": "z2m-zcl-lights-wonjj6768",
+          "newOwner": "zcl-lights-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -1205,7 +1205,7 @@
               "modelUtf8Hex": "432d5a422d5244315076322d44494d",
               "profile": "lights-wave19-candeo-rd1pv2-dim",
               "oldOwner": "z2m-light-zcl-w19-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.wave19.exact",
               "catalogModule": "contracts.families.zcl.lights.wave19_exact"
             },
@@ -1216,7 +1216,7 @@
               "modelUtf8Hex": "44494d303033",
               "profile": "lights-wave19-terncy-dim003",
               "oldOwner": "z2m-light-zcl-w19-wonjj6768",
-              "newOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.wave19.exact",
               "catalogModule": "contracts.families.zcl.lights.wave19_exact"
             }
@@ -1225,7 +1225,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-sensors-wonjj6768",
+      "package": "zcl-sensors-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.sensors.z2m_absorption",
@@ -1254,7 +1254,7 @@
           "catalogId": "zcl.sensors.z2m_absorption",
           "catalogModule": "contracts.families.zcl.sensors.z2m_absorption",
           "oldOwner": "z2m-zcl-sensors-wonjj6768",
-          "newOwner": "z2m-zcl-sensors-wonjj6768",
+          "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": false,
           "exactCount": 4,
           "exacts": [
@@ -1265,7 +1265,7 @@
               "modelUtf8Hex": "654d6f74696f6e20416972",
               "profile": "sensors-linknlink-emotion-air",
               "oldOwner": "z2m-zcl-sensors-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.z2m_absorption",
               "catalogModule": "contracts.families.zcl.sensors.z2m_absorption"
             },
@@ -1276,7 +1276,7 @@
               "modelUtf8Hex": "50726573656e6365",
               "profile": "sensors-shelly-presence-gen4",
               "oldOwner": "z2m-zcl-sensors-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.z2m_absorption",
               "catalogModule": "contracts.families.zcl.sensors.z2m_absorption"
             },
@@ -1287,7 +1287,7 @@
               "modelUtf8Hex": "434b2d544c5352383635362d5a3132335345323444592d3031283730333729",
               "profile": "safety-co-detector-battery-voltage-ewelink-7037",
               "oldOwner": "z2m-zcl-sensors-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.z2m_absorption",
               "catalogModule": "contracts.families.zcl.sensors.z2m_absorption"
             },
@@ -1298,7 +1298,7 @@
               "modelUtf8Hex": "434b2d544c5352383635362d5a32335345313148572d3031283730313929",
               "profile": "safety-water-leak-battery-low-battery",
               "oldOwner": "z2m-zcl-sensors-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.z2m_absorption",
               "catalogModule": "contracts.families.zcl.sensors.z2m_absorption"
             }
@@ -1308,7 +1308,7 @@
           "catalogId": "zcl.sensors.wave19_exact_aliases",
           "catalogModule": "contracts.families.zcl.sensors.wave19_exact_aliases",
           "oldOwner": "z2m-zcl-alias-safe-wonjj6768",
-          "newOwner": "z2m-zcl-sensors-wonjj6768",
+          "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1319,7 +1319,7 @@
               "modelUtf8Hex": "545330323037",
               "profile": "safety-water-leak-tamper-battery-low-battery",
               "oldOwner": "z2m-zcl-alias-safe-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.wave19_exact_aliases",
               "catalogModule": "contracts.families.zcl.sensors.wave19_exact_aliases"
             }
@@ -1329,7 +1329,7 @@
           "catalogId": "zcl.sensors.wave19_environment",
           "catalogModule": "contracts.families.zcl.sensors.wave19_environment",
           "oldOwner": "z2m-env-w19-wonjj6768",
-          "newOwner": "z2m-zcl-sensors-wonjj6768",
+          "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -1340,7 +1340,7 @@
               "modelUtf8Hex": "48533241512d45462d332e30",
               "profile": "sensors-wave19-heiman-hs2aq-ef-three",
               "oldOwner": "z2m-env-w19-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.wave19_environment",
               "catalogModule": "contracts.families.zcl.sensors.wave19_environment"
             },
@@ -1351,7 +1351,7 @@
               "modelUtf8Hex": "50532d5350525a4d532d534c5033",
               "profile": "sensors-wave19-plaid-spruce",
               "oldOwner": "z2m-env-w19-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.wave19_environment",
               "catalogModule": "contracts.families.zcl.sensors.wave19_environment"
             }
@@ -1361,7 +1361,7 @@
           "catalogId": "zcl.sensors.wave19_smoke",
           "catalogModule": "contracts.families.zcl.sensors.wave19_smoke",
           "oldOwner": "z2m-safety-w19-wonjj6768",
-          "newOwner": "z2m-zcl-sensors-wonjj6768",
+          "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1372,7 +1372,7 @@
               "modelUtf8Hex": "434b2d544c5352383635362d5a3132335345323244592d3031283730333529",
               "profile": "safety-wave19-ewelink-7035",
               "oldOwner": "z2m-safety-w19-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.wave19_smoke",
               "catalogModule": "contracts.families.zcl.sensors.wave19_smoke"
             }
@@ -1382,7 +1382,7 @@
           "catalogId": "zcl.sensors.wave19_vibration",
           "catalogModule": "contracts.families.zcl.sensors.wave19_vibration",
           "oldOwner": "z2m-vibration-w19-wonjj6768",
-          "newOwner": "z2m-zcl-sensors-wonjj6768",
+          "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1393,7 +1393,7 @@
               "modelUtf8Hex": "545330323130",
               "profile": "safety-wave19-tuya-ts0210-quoted",
               "oldOwner": "z2m-vibration-w19-wonjj6768",
-              "newOwner": "z2m-zcl-sensors-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.wave19_vibration",
               "catalogModule": "contracts.families.zcl.sensors.wave19_vibration"
             }
@@ -1402,7 +1402,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-controls-wonjj6768",
+      "package": "zcl-controls-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.controls.z2m_absorption",
@@ -1419,7 +1419,7 @@
           "catalogId": "zcl.controls.z2m_absorption",
           "catalogModule": "contracts.families.zcl.controls.z2m_absorption",
           "oldOwner": "z2m-zcl-controls-wonjj6768",
-          "newOwner": "z2m-zcl-controls-wonjj6768",
+          "newOwner": "zcl-controls-2-wonjj6768",
           "moved": false,
           "exactCount": 4,
           "exacts": [
@@ -1430,7 +1430,7 @@
               "modelUtf8Hex": "432d5a422d5244315076322d52454d",
               "profile": "controllers-candeo-rd1p-rem",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
-              "newOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
               "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
             },
@@ -1441,7 +1441,7 @@
               "modelUtf8Hex": "5453303034332d4d3030372d536c44",
               "profile": "buttons-button-3-battery-remote-action-slacky",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
-              "newOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
               "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
             },
@@ -1452,7 +1452,7 @@
               "modelUtf8Hex": "5453303034332d7a2d536c44",
               "profile": "buttons-button-3-battery-remote-action-slacky",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
-              "newOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
               "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
             },
@@ -1463,7 +1463,7 @@
               "modelUtf8Hex": "545330303433",
               "profile": "buttons-button-3-battery",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
-              "newOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
               "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
             }
@@ -1473,7 +1473,7 @@
           "catalogId": "zcl.controls.jethome",
           "catalogModule": "contracts.families.zcl.controls.jethome",
           "oldOwner": "z2m-zcl-controls-wonjj6768",
-          "newOwner": "z2m-zcl-controls-wonjj6768",
+          "newOwner": "zcl-controls-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -1484,7 +1484,7 @@
               "modelUtf8Hex": "575337",
               "profile": "buttons-jethome-ws7",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
-              "newOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.jethome",
               "catalogModule": "contracts.families.zcl.controls.jethome"
             }
@@ -1493,7 +1493,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-locks-wonjj6768",
+      "package": "zcl-locks-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.controls.wave18_javis_lock",
@@ -1506,7 +1506,7 @@
           "catalogId": "zcl.controls.wave18_javis_lock",
           "catalogModule": "contracts.families.zcl.controls.wave18_javis_lock",
           "oldOwner": "z2m-zcl-locks-wonjj6768",
-          "newOwner": "z2m-zcl-locks-wonjj6768",
+          "newOwner": "zcl-locks-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -1517,7 +1517,7 @@
               "modelUtf8Hex": "646f6f726c6f636b5f35303031",
               "profile": "locks-wave18-javis-js-slk2-zb",
               "oldOwner": "z2m-zcl-locks-wonjj6768",
-              "newOwner": "z2m-zcl-locks-wonjj6768",
+              "newOwner": "zcl-locks-wonjj6768",
               "catalogId": "zcl.controls.wave18_javis_lock",
               "catalogModule": "contracts.families.zcl.controls.wave18_javis_lock"
             },
@@ -1528,7 +1528,7 @@
               "modelUtf8Hex": "4533323156303030413033",
               "profile": "locks-wave18-javis-js-slk2-zb",
               "oldOwner": "z2m-zcl-locks-wonjj6768",
-              "newOwner": "z2m-zcl-locks-wonjj6768",
+              "newOwner": "zcl-locks-wonjj6768",
               "catalogId": "zcl.controls.wave18_javis_lock",
               "catalogModule": "contracts.families.zcl.controls.wave18_javis_lock"
             }
@@ -1537,7 +1537,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-bridge-wonjj6768",
+      "package": "zcl-bridge-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.bridges_wave19",
@@ -1550,7 +1550,7 @@
           "catalogId": "zcl.bridges.wave19",
           "catalogModule": "contracts.families.zcl.bridges_wave19",
           "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
-          "newOwner": "z2m-zcl-bridge-wonjj6768",
+          "newOwner": "zcl-bridge-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -1561,7 +1561,7 @@
               "modelUtf8Hex": "432d52465a422d485542",
               "profile": "bridges-wave19-candeo-rf-hub",
               "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
-              "newOwner": "z2m-zcl-bridge-wonjj6768",
+              "newOwner": "zcl-bridge-wonjj6768",
               "catalogId": "zcl.bridges.wave19",
               "catalogModule": "contracts.families.zcl.bridges_wave19"
             },
@@ -1572,7 +1572,7 @@
               "modelUtf8Hex": "4952436f6e74726f6c2d454d",
               "profile": "bridges-wave19-heiman-hs-one-ir",
               "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
-              "newOwner": "z2m-zcl-bridge-wonjj6768",
+              "newOwner": "zcl-bridge-wonjj6768",
               "catalogId": "zcl.bridges.wave19",
               "catalogModule": "contracts.families.zcl.bridges_wave19"
             },
@@ -1583,7 +1583,7 @@
               "modelUtf8Hex": "4952436f6e74726f6c322d45462d332e30",
               "profile": "bridges-wave19-heiman-hs-two-ir",
               "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
-              "newOwner": "z2m-zcl-bridge-wonjj6768",
+              "newOwner": "zcl-bridge-wonjj6768",
               "catalogId": "zcl.bridges.wave19",
               "catalogModule": "contracts.families.zcl.bridges_wave19"
             }
@@ -1592,7 +1592,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-thermostat-wonjj6768",
+      "package": "zcl-thermostat-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.sensors.wave19_hvac",
@@ -1609,7 +1609,7 @@
           "catalogId": "zcl.sensors.wave19_hvac",
           "catalogModule": "contracts.families.zcl.sensors.wave19_hvac",
           "oldOwner": "z2m-hvac-w19-wonjj6768",
-          "newOwner": "z2m-zcl-thermostat-wonjj6768",
+          "newOwner": "zcl-thermostat-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1620,7 +1620,7 @@
               "modelUtf8Hex": "5a422d4d494445412d4143",
               "profile": "thermostats-wave19-pirogov-zb-midea-ac",
               "oldOwner": "z2m-hvac-w19-wonjj6768",
-              "newOwner": "z2m-zcl-thermostat-wonjj6768",
+              "newOwner": "zcl-thermostat-wonjj6768",
               "catalogId": "zcl.sensors.wave19_hvac",
               "catalogModule": "contracts.families.zcl.sensors.wave19_hvac"
             }
@@ -1630,7 +1630,7 @@
           "catalogId": "zcl.thermostats.wave19.sber",
           "catalogModule": "contracts.families.zcl.thermostats.wave19_sber",
           "oldOwner": "z2m-therm-zcl-w19-wonjj6768",
-          "newOwner": "z2m-zcl-thermostat-wonjj6768",
+          "newOwner": "zcl-thermostat-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1641,7 +1641,7 @@
               "modelUtf8Hex": "534244562d3030323035",
               "profile": "thermostats-wave19-sber-sbdv-00205",
               "oldOwner": "z2m-therm-zcl-w19-wonjj6768",
-              "newOwner": "z2m-zcl-thermostat-wonjj6768",
+              "newOwner": "zcl-thermostat-wonjj6768",
               "catalogId": "zcl.thermostats.wave19.sber",
               "catalogModule": "contracts.families.zcl.thermostats.wave19_sber"
             }
@@ -1650,7 +1650,7 @@
       ]
     },
     {
-      "package": "z2m-zcl-dali-wonjj6768",
+      "package": "zcl-dali-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.zcl.lights.wave19_dali",
@@ -1663,7 +1663,7 @@
           "catalogId": "zcl.lights.wave19_dali",
           "catalogModule": "contracts.families.zcl.lights.wave19_dali",
           "oldOwner": "z2m-dali-w19-wonjj6768",
-          "newOwner": "z2m-zcl-dali-wonjj6768",
+          "newOwner": "zcl-dali-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -1674,7 +1674,7 @@
               "modelUtf8Hex": "4c69676874",
               "profile": "bridge-wave19-sunricher-dali-parent",
               "oldOwner": "z2m-dali-w19-wonjj6768",
-              "newOwner": "z2m-zcl-dali-wonjj6768",
+              "newOwner": "zcl-dali-wonjj6768",
               "catalogId": "zcl.lights.wave19_dali",
               "catalogModule": "contracts.families.zcl.lights.wave19_dali"
             }
@@ -1683,7 +1683,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-covers-wonjj6768",
+      "package": "ef00-covers-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.covers.z2m_absorption",
@@ -1708,7 +1708,7 @@
           "catalogId": "ef00.covers.z2m_absorption",
           "catalogModule": "contracts.families.ef00.covers.z2m_absorption",
           "oldOwner": "z2m-ef00-covers-wonjj6768",
-          "newOwner": "z2m-ef00-covers-wonjj6768",
+          "newOwner": "ef00-covers-2-wonjj6768",
           "moved": false,
           "exactCount": 4,
           "exacts": [
@@ -1719,7 +1719,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-cover-gm25teq",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.z2m_absorption",
               "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
             },
@@ -1730,7 +1730,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-cover-gm25teq",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.z2m_absorption",
               "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
             },
@@ -1741,7 +1741,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-cover-gm25teq",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.z2m_absorption",
               "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
             },
@@ -1752,7 +1752,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-cover-moes-zs-sf-euc-wh-ms",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.z2m_absorption",
               "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
             }
@@ -1762,7 +1762,7 @@
           "catalogId": "ef00.covers.wave10",
           "catalogModule": "contracts.families.ef00.covers.wave10",
           "oldOwner": "z2m-ef00-covers-wonjj6768",
-          "newOwner": "z2m-ef00-covers-wonjj6768",
+          "newOwner": "ef00-covers-2-wonjj6768",
           "moved": false,
           "exactCount": 10,
           "exacts": [
@@ -1773,7 +1773,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-moes-zc-lp01",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1784,7 +1784,7 @@
               "modelUtf8Hex": "545330333046",
               "profile": "covers-wave10-moes-adcbzi01",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1795,7 +1795,7 @@
               "modelUtf8Hex": "545330333046",
               "profile": "covers-wave10-moes-adcbzi01",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1806,7 +1806,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-zemismart-zn-usc1u-ht",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1817,7 +1817,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-moes-zs-sr-euc",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1828,7 +1828,7 @@
               "modelUtf8Hex": "545330333031",
               "profile": "covers-wave10-tuya-ts0301-cover-two",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1839,7 +1839,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-zemismart-zmp1",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1850,7 +1850,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-manhot-bl82-tyz1",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1861,7 +1861,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-xenon-x7726",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             },
@@ -1872,7 +1872,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave10-moes-fwjzceh18a001",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave10",
               "catalogModule": "contracts.families.ef00.covers.wave10"
             }
@@ -1882,7 +1882,7 @@
           "catalogId": "ef00.covers.wave15",
           "catalogModule": "contracts.families.ef00.covers.wave15",
           "oldOwner": "ef00-wave15-wonjj6768",
-          "newOwner": "z2m-ef00-covers-wonjj6768",
+          "newOwner": "ef00-covers-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -1893,7 +1893,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave15-box-erc2206z",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave15",
               "catalogModule": "contracts.families.ef00.covers.wave15"
             },
@@ -1904,7 +1904,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave15-tuya-semicom-three",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave15",
               "catalogModule": "contracts.families.ef00.covers.wave15"
             }
@@ -1914,7 +1914,7 @@
           "catalogId": "ef00.covers.wave19_legacy",
           "catalogModule": "contracts.families.ef00.covers.wave19_legacy",
           "oldOwner": "z2m-cover-w19-wonjj6768",
-          "newOwner": "z2m-ef00-covers-wonjj6768",
+          "newOwner": "ef00-covers-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -1925,7 +1925,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave19-legacy-tuya",
               "oldOwner": "z2m-cover-w19-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave19_legacy",
               "catalogModule": "contracts.families.ef00.covers.wave19_legacy"
             },
@@ -1936,7 +1936,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "covers-wave19-legacy-tuya",
               "oldOwner": "z2m-cover-w19-wonjj6768",
-              "newOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.wave19_legacy",
               "catalogModule": "contracts.families.ef00.covers.wave19_legacy"
             }
@@ -1945,7 +1945,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-lights-wonjj6768",
+      "package": "ef00-lights-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.lights.z2m_absorption",
@@ -1978,7 +1978,7 @@
           "catalogId": "ef00.lights.z2m_absorption",
           "catalogModule": "contracts.families.ef00.lights.z2m_absorption",
           "oldOwner": "z2m-ef00-lights-wonjj6768",
-          "newOwner": "z2m-ef00-lights-wonjj6768",
+          "newOwner": "ef00-lights-2-wonjj6768",
           "moved": false,
           "exactCount": 15,
           "exacts": [
@@ -1989,7 +1989,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-skydance-wz5-cct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2000,7 +2000,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-skydance-wz5-rgbw",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2011,7 +2011,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-dimmer-skydance-wz5-dim",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2022,7 +2022,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-skydance-wz5-rgb",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2033,7 +2033,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-skydance-wz5-rgb",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2044,7 +2044,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-color-skydance-wz5-rgbcct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2055,7 +2055,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-dimmer-skydance-wz5-dim",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2066,7 +2066,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-skydance-wz5-rgbw",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2077,7 +2077,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-skydance-wz5-cct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2088,7 +2088,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-dimmer-mercator-siswd11-zb",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2099,7 +2099,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-color-skydance-wz5-rgbcct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2110,7 +2110,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-skydance-wz5-cct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2121,7 +2121,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-skydance-wz5-cct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2132,7 +2132,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-color-temperature-color-skydance-wz5-rgbcct",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             },
@@ -2143,7 +2143,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-dimmer-zdms16-1",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
               "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
             }
@@ -2153,7 +2153,7 @@
           "catalogId": "moes.zs_d1",
           "catalogModule": "contracts.families.ef00.moes_zs_d1",
           "oldOwner": "z2m-ef00-lights-wonjj6768",
-          "newOwner": "z2m-ef00-lights-wonjj6768",
+          "newOwner": "ef00-lights-2-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -2164,7 +2164,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-moes-zs-d1",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "moes.zs_d1",
               "catalogModule": "contracts.families.ef00.moes_zs_d1"
             },
@@ -2175,7 +2175,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-moes-zs-d1",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "moes.zs_d1",
               "catalogModule": "contracts.families.ef00.moes_zs_d1"
             }
@@ -2185,7 +2185,7 @@
           "catalogId": "moes.zs_d2",
           "catalogModule": "contracts.families.ef00.moes_zs_d2",
           "oldOwner": "z2m-ef00-lights-wonjj6768",
-          "newOwner": "z2m-ef00-lights-wonjj6768",
+          "newOwner": "ef00-lights-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -2196,7 +2196,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-moes-zs-d2",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "moes.zs_d2",
               "catalogModule": "contracts.families.ef00.moes_zs_d2"
             }
@@ -2206,7 +2206,7 @@
           "catalogId": "moes.zs_d3",
           "catalogModule": "contracts.families.ef00.moes_zs_d3",
           "oldOwner": "z2m-ef00-lights-wonjj6768",
-          "newOwner": "z2m-ef00-lights-wonjj6768",
+          "newOwner": "ef00-lights-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -2217,7 +2217,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-moes-zs-d3",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "moes.zs_d3",
               "catalogModule": "contracts.families.ef00.moes_zs_d3"
             }
@@ -2227,7 +2227,7 @@
           "catalogId": "ef00.lights.wave15_gledopto",
           "catalogModule": "contracts.families.ef00.lights.wave15_gledopto",
           "oldOwner": "ef00-wave15-wonjj6768",
-          "newOwner": "z2m-ef00-lights-wonjj6768",
+          "newOwner": "ef00-lights-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -2238,7 +2238,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-wave15-gledopto-gl-spi-206p",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave15_gledopto",
               "catalogModule": "contracts.families.ef00.lights.wave15_gledopto"
             },
@@ -2249,7 +2249,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-wave15-gledopto-gl-spi-206p",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave15_gledopto",
               "catalogModule": "contracts.families.ef00.lights.wave15_gledopto"
             }
@@ -2259,7 +2259,7 @@
           "catalogId": "ef00.lights.wave19.exact",
           "catalogModule": "contracts.families.ef00.lights.wave19_exact",
           "oldOwner": "z2m-light-w19-wonjj6768",
-          "newOwner": "z2m-ef00-lights-wonjj6768",
+          "newOwner": "ef00-lights-2-wonjj6768",
           "moved": true,
           "exactCount": 5,
           "exacts": [
@@ -2270,7 +2270,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-wave19-lidl-hg06467",
               "oldOwner": "z2m-light-w19-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave19.exact",
               "catalogModule": "contracts.families.ef00.lights.wave19_exact"
             },
@@ -2281,7 +2281,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-wave19-avatto-zdms16-us-w2",
               "oldOwner": "z2m-light-w19-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave19.exact",
               "catalogModule": "contracts.families.ef00.lights.wave19_exact"
             },
@@ -2292,7 +2292,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-wave19-nova-topazio",
               "oldOwner": "z2m-light-w19-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave19.exact",
               "catalogModule": "contracts.families.ef00.lights.wave19_exact"
             },
@@ -2303,7 +2303,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "lights-wave19-qa-qadz4din",
               "oldOwner": "z2m-light-w19-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave19.exact",
               "catalogModule": "contracts.families.ef00.lights.wave19_exact"
             },
@@ -2314,7 +2314,7 @@
               "modelUtf8Hex": "545330363033",
               "profile": "lights-wave19-lonsonho-vm-s02-010v",
               "oldOwner": "z2m-light-w19-wonjj6768",
-              "newOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.wave19.exact",
               "catalogModule": "contracts.families.ef00.lights.wave19_exact"
             }
@@ -2323,7 +2323,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-switch-wonjj6768",
+      "package": "ef00-switch-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.switch_basic_z2m_absorption",
@@ -2372,7 +2372,7 @@
           "catalogId": "ef00.switch.basic.z2m_absorption",
           "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption",
           "oldOwner": "z2m-ef00-switch-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -2383,7 +2383,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-6",
               "oldOwner": "z2m-ef00-switch-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.basic.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption"
             }
@@ -2393,7 +2393,7 @@
           "catalogId": "ef00.switch.panel.z2m_absorption",
           "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption",
           "oldOwner": "z2m-ef00-panel-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 7,
           "exacts": [
@@ -2404,7 +2404,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-8",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             },
@@ -2415,7 +2415,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-4",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             },
@@ -2426,7 +2426,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-6",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             },
@@ -2437,7 +2437,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-7",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             },
@@ -2448,7 +2448,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-10",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             },
@@ -2459,7 +2459,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-8",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             },
@@ -2470,7 +2470,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-1-scene-qa-qat42z1b",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.panel.z2m_absorption",
               "catalogModule": "contracts.families.ef00.switch_panel_z2m_absorption"
             }
@@ -2480,7 +2480,7 @@
           "catalogId": "ef00.switch.star_feather",
           "catalogModule": "contracts.families.ef00.switch_star_feather",
           "oldOwner": "z2m-ef00-panel-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 12,
           "exacts": [
@@ -2491,7 +2491,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z4",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2502,7 +2502,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z4",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2513,7 +2513,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z2",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2524,7 +2524,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z4",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2535,7 +2535,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z3",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2546,7 +2546,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z1",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2557,7 +2557,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z2",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2568,7 +2568,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z2",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2579,7 +2579,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z3",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2590,7 +2590,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z1",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2601,7 +2601,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z1",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             },
@@ -2612,7 +2612,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-moes-sfl02-z3",
               "oldOwner": "z2m-ef00-panel-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.star_feather",
               "catalogModule": "contracts.families.ef00.switch_star_feather"
             }
@@ -2622,7 +2622,7 @@
           "catalogId": "ef00.screen_switch.z2m_absorption",
           "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption",
           "oldOwner": "z2m-ef00-screen-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 14,
           "exacts": [
@@ -2633,7 +2633,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu2",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2644,7 +2644,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2655,7 +2655,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2666,7 +2666,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206us1",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2677,7 +2677,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206us1",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2688,7 +2688,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu2",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2699,7 +2699,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms208us2",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2710,7 +2710,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu2",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2721,7 +2721,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2732,7 +2732,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2743,7 +2743,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206us1",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2754,7 +2754,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms208us3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2765,7 +2765,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms206eu3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             },
@@ -2776,7 +2776,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-screen-zms208us3",
               "oldOwner": "z2m-ef00-screen-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.screen_switch.z2m_absorption",
               "catalogModule": "contracts.families.ef00.screen_switch_z2m_absorption"
             }
@@ -2786,7 +2786,7 @@
           "catalogId": "ef00.switches.wave13.avatto",
           "catalogModule": "contracts.families.ef00.switches.wave13_avatto",
           "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -2797,7 +2797,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-avatto-zbs16",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.avatto",
               "catalogModule": "contracts.families.ef00.switches.wave13_avatto"
             }
@@ -2807,7 +2807,7 @@
           "catalogId": "ef00.switches.wave13.box",
           "catalogModule": "contracts.families.ef00.switches.wave13_box",
           "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -2818,7 +2818,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-box-ews1154z",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.box",
               "catalogModule": "contracts.families.ef00.switches.wave13_box"
             }
@@ -2828,7 +2828,7 @@
           "catalogId": "ef00.switches.wave13.manhot",
           "catalogModule": "contracts.families.ef00.switches.wave13_manhot",
           "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 6,
           "exacts": [
@@ -2839,7 +2839,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-manhot-mh03-3",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.manhot",
               "catalogModule": "contracts.families.ef00.switches.wave13_manhot"
             },
@@ -2850,7 +2850,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-manhot-mh03-2",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.manhot",
               "catalogModule": "contracts.families.ef00.switches.wave13_manhot"
             },
@@ -2861,7 +2861,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-manhot-mh03-4",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.manhot",
               "catalogModule": "contracts.families.ef00.switches.wave13_manhot"
             },
@@ -2872,7 +2872,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-manhot-mh03-8",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.manhot",
               "catalogModule": "contracts.families.ef00.switches.wave13_manhot"
             },
@@ -2883,7 +2883,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-manhot-mh03-1",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.manhot",
               "catalogModule": "contracts.families.ef00.switches.wave13_manhot"
             },
@@ -2894,7 +2894,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-manhot-mh03-6",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.manhot",
               "catalogModule": "contracts.families.ef00.switches.wave13_manhot"
             }
@@ -2904,7 +2904,7 @@
           "catalogId": "ef00.switches.wave13.nova_semicom",
           "catalogModule": "contracts.families.ef00.switches.wave13_nova_semicom",
           "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -2915,7 +2915,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-tuya-semicom-two-two",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.nova_semicom",
               "catalogModule": "contracts.families.ef00.switches.wave13_nova_semicom"
             },
@@ -2926,7 +2926,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-nova-to-wk-one",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.nova_semicom",
               "catalogModule": "contracts.families.ef00.switches.wave13_nova_semicom"
             },
@@ -2937,7 +2937,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave13-nova-to-wk-two",
               "oldOwner": "z2m-ef00-switch-w13-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave13.nova_semicom",
               "catalogModule": "contracts.families.ef00.switches.wave13_nova_semicom"
             }
@@ -2947,7 +2947,7 @@
           "catalogId": "wave14.qa.legacy_switches",
           "catalogModule": "contracts.families.ef00.switches.wave14_qa",
           "oldOwner": "wave14-switch-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -2958,7 +2958,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave14-qa-qat44z6h",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "wave14.qa.legacy_switches",
               "catalogModule": "contracts.families.ef00.switches.wave14_qa"
             },
@@ -2969,7 +2969,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave14-qa-qat44z4h",
               "oldOwner": "wave14-switch-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "wave14.qa.legacy_switches",
               "catalogModule": "contracts.families.ef00.switches.wave14_qa"
             }
@@ -2979,7 +2979,7 @@
           "catalogId": "ef00.switches.wave15_box",
           "catalogModule": "contracts.families.ef00.switches.wave15_box",
           "oldOwner": "ef00-wave15-wonjj6768",
-          "newOwner": "z2m-ef00-switch-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -2990,7 +2990,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-wave15-box-erc2202z",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switches.wave15_box",
               "catalogModule": "contracts.families.ef00.switches.wave15_box"
             }
@@ -2999,7 +2999,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-meters-wonjj6768",
+      "package": "ef00-meters-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.din_rail.meters_z2m_absorption",
@@ -3016,7 +3016,7 @@
           "catalogId": "ef00.din_rail.meters.z2m_absorption",
           "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption",
           "oldOwner": "z2m-ef00-meters-wonjj6768",
-          "newOwner": "z2m-ef00-meters-wonjj6768",
+          "newOwner": "ef00-meters-2-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -3027,7 +3027,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "meters-zwpm16",
               "oldOwner": "z2m-ef00-meters-wonjj6768",
-              "newOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
               "catalogId": "ef00.din_rail.meters.z2m_absorption",
               "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption"
             },
@@ -3038,7 +3038,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "meters-zwpm16-2",
               "oldOwner": "z2m-ef00-meters-wonjj6768",
-              "newOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
               "catalogId": "ef00.din_rail.meters.z2m_absorption",
               "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption"
             }
@@ -3048,7 +3048,7 @@
           "catalogId": "ef00.din_rail.wave19_energy",
           "catalogModule": "contracts.families.ef00.din_rail.wave19_energy",
           "oldOwner": "z2m-energy-w19-wonjj6768",
-          "newOwner": "z2m-ef00-meters-wonjj6768",
+          "newOwner": "ef00-meters-2-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -3059,7 +3059,7 @@
               "modelUtf8Hex": "545330313146",
               "profile": "meters-wave19-qa-qaszp",
               "oldOwner": "z2m-energy-w19-wonjj6768",
-              "newOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
               "catalogId": "ef00.din_rail.wave19_energy",
               "catalogModule": "contracts.families.ef00.din_rail.wave19_energy"
             },
@@ -3070,7 +3070,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "meters-wave19-nous-d5z",
               "oldOwner": "z2m-energy-w19-wonjj6768",
-              "newOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
               "catalogId": "ef00.din_rail.wave19_energy",
               "catalogModule": "contracts.families.ef00.din_rail.wave19_energy"
             },
@@ -3081,7 +3081,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "meters-wave19-moes-zm6lt1",
               "oldOwner": "z2m-energy-w19-wonjj6768",
-              "newOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
               "catalogId": "ef00.din_rail.wave19_energy",
               "catalogModule": "contracts.families.ef00.din_rail.wave19_energy"
             }
@@ -3090,7 +3090,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-sensors-wonjj6768",
+      "package": "ef00-sensors-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.sensors.z2m_absorption",
@@ -3111,7 +3111,7 @@
           "catalogId": "ef00.sensors.z2m_absorption",
           "catalogModule": "contracts.families.ef00.sensors.z2m_absorption",
           "oldOwner": "z2m-ef00-sensors-wonjj6768",
-          "newOwner": "z2m-ef00-sensors-wonjj6768",
+          "newOwner": "ef00-sensors-2-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -3122,7 +3122,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "sensors-aq-co2-temp-humidity",
               "oldOwner": "z2m-ef00-sensors-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.z2m_absorption",
               "catalogModule": "contracts.families.ef00.sensors.z2m_absorption"
             },
@@ -3133,7 +3133,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "sensors-temp-humidity-battery-alarm-onenuo-th05z",
               "oldOwner": "z2m-ef00-sensors-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.z2m_absorption",
               "catalogModule": "contracts.families.ef00.sensors.z2m_absorption"
             }
@@ -3143,7 +3143,7 @@
           "catalogId": "ef00.sensors.wave16_excellux",
           "catalogModule": "contracts.families.ef00.sensors.wave16_excellux",
           "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-          "newOwner": "z2m-ef00-sensors-wonjj6768",
+          "newOwner": "ef00-sensors-2-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -3154,7 +3154,7 @@
               "modelUtf8Hex": "457863656c6c7578",
               "profile": "sensors-wave16-excellux-airprs1",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.wave16_excellux",
               "catalogModule": "contracts.families.ef00.sensors.wave16_excellux"
             },
@@ -3165,7 +3165,7 @@
               "modelUtf8Hex": "457863656c6c7578",
               "profile": "sensors-wave16-excellux-ez500fl",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.wave16_excellux",
               "catalogModule": "contracts.families.ef00.sensors.wave16_excellux"
             },
@@ -3176,7 +3176,7 @@
               "modelUtf8Hex": "457863656c6c7578",
               "profile": "sensors-wave16-excellux-ez500fs",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.wave16_excellux",
               "catalogModule": "contracts.families.ef00.sensors.wave16_excellux"
             }
@@ -3186,7 +3186,7 @@
           "catalogId": "ef00.sensors.wave16_lincukoo_air",
           "catalogModule": "contracts.families.ef00.sensors.wave16_lincukoo_air",
           "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-          "newOwner": "z2m-ef00-sensors-wonjj6768",
+          "newOwner": "ef00-sensors-2-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -3197,7 +3197,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "sensors-wave16-lincukoo-ezcp04",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.wave16_lincukoo_air",
               "catalogModule": "contracts.families.ef00.sensors.wave16_lincukoo_air"
             },
@@ -3208,7 +3208,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "sensors-wave16-lincukoo-e02c-z10t",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.wave16_lincukoo_air",
               "catalogModule": "contracts.families.ef00.sensors.wave16_lincukoo_air"
             },
@@ -3219,7 +3219,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "sensors-wave16-lincukoo-ezc04",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.wave16_lincukoo_air",
               "catalogModule": "contracts.families.ef00.sensors.wave16_lincukoo_air"
             }
@@ -3228,7 +3228,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-presence-wonjj6768",
+      "package": "ef00-presence-3-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.presence.z2m_absorption",
@@ -3261,7 +3261,7 @@
           "catalogId": "ef00.presence.z2m_absorption",
           "catalogModule": "contracts.families.ef00.presence.z2m_absorption",
           "oldOwner": "z2m-ef00-presence-wonjj6768",
-          "newOwner": "z2m-ef00-presence-wonjj6768",
+          "newOwner": "ef00-presence-3-wonjj6768",
           "moved": false,
           "exactCount": 5,
           "exacts": [
@@ -3272,7 +3272,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-szlmr10-illuminance",
               "oldOwner": "z2m-ef00-presence-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.z2m_absorption",
               "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
             },
@@ -3283,7 +3283,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-szlmr10-illuminance",
               "oldOwner": "z2m-ef00-presence-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.z2m_absorption",
               "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
             },
@@ -3294,7 +3294,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-szlmr10-illuminance",
               "oldOwner": "z2m-ef00-presence-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.z2m_absorption",
               "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
             },
@@ -3305,7 +3305,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-zf24pro-temp-humidity",
               "oldOwner": "z2m-ef00-presence-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.z2m_absorption",
               "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
             },
@@ -3316,7 +3316,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-zf24pro-temp-humidity",
               "oldOwner": "z2m-ef00-presence-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.z2m_absorption",
               "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
             }
@@ -3326,7 +3326,7 @@
           "catalogId": "ef00.presence.wave11.general.1",
           "catalogModule": "contracts.families.ef00.presence.wave11_general_1",
           "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-          "newOwner": "z2m-ef00-presence-wonjj6768",
+          "newOwner": "ef00-presence-3-wonjj6768",
           "moved": true,
           "exactCount": 5,
           "exacts": [
@@ -3337,7 +3337,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-neo-nas-ps10b2",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.1",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_1"
             },
@@ -3348,7 +3348,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-szlr08t",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.1",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_1"
             },
@@ -3359,7 +3359,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-szr07",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.1",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_1"
             },
@@ -3370,7 +3370,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-szlr08",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.1",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_1"
             },
@@ -3381,7 +3381,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-neo-nas-ps10b2",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.1",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_1"
             }
@@ -3391,7 +3391,7 @@
           "catalogId": "ef00.presence.wave11.general.2",
           "catalogModule": "contracts.families.ef00.presence.wave11_general_2",
           "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-          "newOwner": "z2m-ef00-presence-wonjj6768",
+          "newOwner": "ef00-presence-3-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -3402,7 +3402,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-r12lm-z10t",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.2",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_2"
             },
@@ -3413,7 +3413,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-wave11-r12lm-z11t",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.general.2",
               "catalogModule": "contracts.families.ef00.presence.wave11_general_2"
             }
@@ -3423,7 +3423,7 @@
           "catalogId": "ef00.presence.wave11.switch",
           "catalogModule": "contracts.families.ef00.presence.wave11_switch",
           "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-          "newOwner": "z2m-ef00-presence-wonjj6768",
+          "newOwner": "ef00-presence-3-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -3434,7 +3434,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-presence-wave11-tuya-2gang",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.switch",
               "catalogModule": "contracts.families.ef00.presence.wave11_switch"
             },
@@ -3445,7 +3445,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "switches-presence-wave11-tuya-3gang",
               "oldOwner": "z2m-ef00-pres-w11-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.switch",
               "catalogModule": "contracts.families.ef00.presence.wave11_switch"
             }
@@ -3455,7 +3455,7 @@
           "catalogId": "ef00.presence.wave11.advanced",
           "catalogModule": "contracts.families.ef00.presence.wave11_advanced",
           "oldOwner": "z2m-ef00-pres-hyb-wonjj6768",
-          "newOwner": "z2m-ef00-presence-wonjj6768",
+          "newOwner": "ef00-presence-3-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -3466,7 +3466,7 @@
               "modelUtf8Hex": "545330323235",
               "profile": "safety-occupancy-wave11-linptech-es1",
               "oldOwner": "z2m-ef00-pres-hyb-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.advanced",
               "catalogModule": "contracts.families.ef00.presence.wave11_advanced"
             },
@@ -3477,7 +3477,7 @@
               "modelUtf8Hex": "545330323235",
               "profile": "safety-occupancy-wave11-linptech-es1",
               "oldOwner": "z2m-ef00-pres-hyb-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.advanced",
               "catalogModule": "contracts.families.ef00.presence.wave11_advanced"
             },
@@ -3488,7 +3488,7 @@
               "modelUtf8Hex": "545330323235",
               "profile": "safety-occupancy-wave11-linptech-es1",
               "oldOwner": "z2m-ef00-pres-hyb-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave11.advanced",
               "catalogModule": "contracts.families.ef00.presence.wave11_advanced"
             }
@@ -3498,7 +3498,7 @@
           "catalogId": "ef00.presence.wave19.sensors",
           "catalogModule": "contracts.families.ef00.presence.wave19_sensors",
           "oldOwner": "z2m-pres-w19-wonjj6768",
-          "newOwner": "z2m-ef00-presence-wonjj6768",
+          "newOwner": "ef00-presence-3-wonjj6768",
           "moved": true,
           "exactCount": 4,
           "exacts": [
@@ -3509,7 +3509,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-wave19-neo-nas-pd07",
               "oldOwner": "z2m-pres-w19-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave19.sensors",
               "catalogModule": "contracts.families.ef00.presence.wave19_sensors"
             },
@@ -3520,7 +3520,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-wave19-javis-microwave",
               "oldOwner": "z2m-pres-w19-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave19.sensors",
               "catalogModule": "contracts.families.ef00.presence.wave19_sensors"
             },
@@ -3531,7 +3531,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-wave19-javis-microwave",
               "oldOwner": "z2m-pres-w19-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave19.sensors",
               "catalogModule": "contracts.families.ef00.presence.wave19_sensors"
             },
@@ -3542,7 +3542,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-wave19-javis-microwave",
               "oldOwner": "z2m-pres-w19-wonjj6768",
-              "newOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.wave19.sensors",
               "catalogModule": "contracts.families.ef00.presence.wave19_sensors"
             }
@@ -3551,7 +3551,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-safety-wonjj6768",
+      "package": "ef00-safety-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.safety.z2m_absorption",
@@ -3592,7 +3592,7 @@
           "catalogId": "ef00.safety.z2m_absorption",
           "catalogModule": "contracts.families.ef00.safety.z2m_absorption",
           "oldOwner": "z2m-ef00-safety-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
           "exactCount": 7,
           "exacts": [
@@ -3603,7 +3603,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-co-moes-zc-hm",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
@@ -3614,7 +3614,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-co-moes-zc-hm",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
@@ -3625,7 +3625,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-gas-nous-e9",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
@@ -3636,7 +3636,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-gas-detector-spacetronik-zb-dg02",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
@@ -3647,7 +3647,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-water-nous-e13",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
@@ -3658,7 +3658,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-water-lincukoo-szw08",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
@@ -3669,7 +3669,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-co-moes-zc-hm",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             }
@@ -3679,7 +3679,7 @@
           "catalogId": "neo.nas_ab06b2",
           "catalogModule": "contracts.families.ef00.safety_neo_nas_ab06b2",
           "oldOwner": "z2m-ef00-safety-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
           "exactCount": 3,
           "exacts": [
@@ -3690,7 +3690,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-alarm-neo-nas-ab06b2",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "neo.nas_ab06b2",
               "catalogModule": "contracts.families.ef00.safety_neo_nas_ab06b2"
             },
@@ -3701,7 +3701,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-alarm-neo-nas-ab06b2",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "neo.nas_ab06b2",
               "catalogModule": "contracts.families.ef00.safety_neo_nas_ab06b2"
             },
@@ -3712,7 +3712,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-alarm-neo-nas-ab06b2",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "neo.nas_ab06b2",
               "catalogModule": "contracts.families.ef00.safety_neo_nas_ab06b2"
             }
@@ -3722,7 +3722,7 @@
           "catalogId": "tuya.vibration_alarm",
           "catalogModule": "contracts.families.ef00.safety_tuya_vibration_alarm",
           "oldOwner": "z2m-ef00-safety-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
           "exactCount": 4,
           "exacts": [
@@ -3733,7 +3733,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-vibration-tuya-battery-state",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "tuya.vibration_alarm",
               "catalogModule": "contracts.families.ef00.safety_tuya_vibration_alarm"
             },
@@ -3744,7 +3744,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-vibration-tuya-battery-state-controls",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "tuya.vibration_alarm",
               "catalogModule": "contracts.families.ef00.safety_tuya_vibration_alarm"
             },
@@ -3755,7 +3755,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-vibration-tuya-battery-state-controls",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "tuya.vibration_alarm",
               "catalogModule": "contracts.families.ef00.safety_tuya_vibration_alarm"
             },
@@ -3766,7 +3766,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-vibration-tuya-battery",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "tuya.vibration_alarm",
               "catalogModule": "contracts.families.ef00.safety_tuya_vibration_alarm"
             }
@@ -3776,7 +3776,7 @@
           "catalogId": "neo.nas_ab02b2",
           "catalogModule": "contracts.families.ef00.safety_neo_nas_ab02b2",
           "oldOwner": "z2m-ef00-safety-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
           "exactCount": 3,
           "exacts": [
@@ -3787,7 +3787,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-alarm-neo-nas-ab02b2",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "neo.nas_ab02b2",
               "catalogModule": "contracts.families.ef00.safety_neo_nas_ab02b2"
             },
@@ -3798,7 +3798,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-alarm-neo-nas-ab02b2",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "neo.nas_ab02b2",
               "catalogModule": "contracts.families.ef00.safety_neo_nas_ab02b2"
             },
@@ -3809,7 +3809,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-alarm-neo-nas-ab02b2",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "neo.nas_ab02b2",
               "catalogModule": "contracts.families.ef00.safety_neo_nas_ab02b2"
             }
@@ -3819,7 +3819,7 @@
           "catalogId": "lincukoo.w04_z10t",
           "catalogModule": "contracts.families.ef00.safety_lincukoo_w04_z10t",
           "oldOwner": "z2m-ef00-safety-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -3830,7 +3830,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-water-lincukoo-w04-z10t-battery-state",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "lincukoo.w04_z10t",
               "catalogModule": "contracts.families.ef00.safety_lincukoo_w04_z10t"
             },
@@ -3841,7 +3841,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-water-lincukoo-w04-z10t-battery-ringtone",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "lincukoo.w04_z10t",
               "catalogModule": "contracts.families.ef00.safety_lincukoo_w04_z10t"
             }
@@ -3851,7 +3851,7 @@
           "catalogId": "nous.e12",
           "catalogModule": "contracts.families.ef00.safety_nous_e12",
           "oldOwner": "z2m-ef00-safety-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
           "exactCount": 1,
           "exacts": [
@@ -3862,7 +3862,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-co-nous-e12",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "nous.e12",
               "catalogModule": "contracts.families.ef00.safety_nous_e12"
             }
@@ -3872,7 +3872,7 @@
           "catalogId": "ef00.safety.wave15_lincukoo",
           "catalogModule": "contracts.families.ef00.safety.wave15_lincukoo",
           "oldOwner": "ef00-wave15-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -3883,7 +3883,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-wave15-lincukoo-e04cf-z10t",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.wave15_lincukoo",
               "catalogModule": "contracts.families.ef00.safety.wave15_lincukoo"
             }
@@ -3893,7 +3893,7 @@
           "catalogId": "ef00.safety.wave16_lincukoo_siren",
           "catalogModule": "contracts.families.ef00.safety.wave16_lincukoo_siren",
           "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-          "newOwner": "z2m-ef00-safety-wonjj6768",
+          "newOwner": "ef00-safety-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -3904,7 +3904,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "safety-wave16-lincukoo-a08-z10t",
               "oldOwner": "z2m-ef00-env-safe-wonjj6768",
-              "newOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.wave16_lincukoo_siren",
               "catalogModule": "contracts.families.ef00.safety.wave16_lincukoo_siren"
             }
@@ -3913,7 +3913,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-valves-wonjj6768",
+      "package": "ef00-valves-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.valves.z2m_absorption",
@@ -3938,7 +3938,7 @@
           "catalogId": "ef00.valves.z2m_absorption",
           "catalogModule": "contracts.families.ef00.valves.z2m_absorption",
           "oldOwner": "z2m-ef00-valves-wonjj6768",
-          "newOwner": "z2m-ef00-valves-wonjj6768",
+          "newOwner": "ef00-valves-2-wonjj6768",
           "moved": false,
           "exactCount": 12,
           "exacts": [
@@ -3949,7 +3949,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-giex-qt06-two",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -3960,7 +3960,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-giex-qt06-two",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -3971,7 +3971,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-iotperfect-pf-pm02d",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -3982,7 +3982,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-giex-qt06-one",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -3993,7 +3993,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-iotperfect-pf-pm02d",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4004,7 +4004,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-giex-qt06-two",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4015,7 +4015,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-giex-qt06-two",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4026,7 +4026,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-iotperfect-pf-pm02d",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4037,7 +4037,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-iotperfect-pf-pm02d",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4048,7 +4048,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-giex-qt06-two",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4059,7 +4059,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-iotperfect-pf-pm02d",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             },
@@ -4070,7 +4070,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-iotperfect-pf-pm02d",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.z2m_absorption",
               "catalogModule": "contracts.families.ef00.valves.z2m_absorption"
             }
@@ -4080,7 +4080,7 @@
           "catalogId": "neo.nas_wv03b2",
           "catalogModule": "contracts.families.ef00.valves.neo_nas_wv03b2",
           "oldOwner": "z2m-ef00-valves-wonjj6768",
-          "newOwner": "z2m-ef00-valves-wonjj6768",
+          "newOwner": "ef00-valves-2-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -4091,7 +4091,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-neo-nas-wv03b2",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "neo.nas_wv03b2",
               "catalogModule": "contracts.families.ef00.valves.neo_nas_wv03b2"
             },
@@ -4102,7 +4102,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-neo-nas-wv03b2",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "neo.nas_wv03b2",
               "catalogModule": "contracts.families.ef00.valves.neo_nas_wv03b2"
             }
@@ -4112,7 +4112,7 @@
           "catalogId": "qoto.qt_05m",
           "catalogModule": "contracts.families.ef00.valves.qoto_qt05m",
           "oldOwner": "z2m-ef00-valves-wonjj6768",
-          "newOwner": "z2m-ef00-valves-wonjj6768",
+          "newOwner": "ef00-valves-2-wonjj6768",
           "moved": false,
           "exactCount": 3,
           "exacts": [
@@ -4123,7 +4123,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-qoto-qt05m",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "qoto.qt_05m",
               "catalogModule": "contracts.families.ef00.valves.qoto_qt05m"
             },
@@ -4134,7 +4134,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-qoto-qt05m",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "qoto.qt_05m",
               "catalogModule": "contracts.families.ef00.valves.qoto_qt05m"
             },
@@ -4145,7 +4145,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-qoto-qt05m",
               "oldOwner": "z2m-ef00-valves-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "qoto.qt_05m",
               "catalogModule": "contracts.families.ef00.valves.qoto_qt05m"
             }
@@ -4155,7 +4155,7 @@
           "catalogId": "ef00.valves.wave19",
           "catalogModule": "contracts.families.ef00.valves.wave19",
           "oldOwner": "z2m-valve-w19-wonjj6768",
-          "newOwner": "z2m-ef00-valves-wonjj6768",
+          "newOwner": "ef00-valves-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -4166,7 +4166,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-wave19-lidl-psbzs-a-one",
               "oldOwner": "z2m-valve-w19-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.wave19",
               "catalogModule": "contracts.families.ef00.valves.wave19"
             },
@@ -4177,7 +4177,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "valves-wave19-frankever-fk-bv05",
               "oldOwner": "z2m-valve-w19-wonjj6768",
-              "newOwner": "z2m-ef00-valves-wonjj6768",
+              "newOwner": "ef00-valves-2-wonjj6768",
               "catalogId": "ef00.valves.wave19",
               "catalogModule": "contracts.families.ef00.valves.wave19"
             }
@@ -4186,7 +4186,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-thermo-trv-wonjj6768",
+      "package": "ef00-thermostat-trv-3-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.thermostats.wave6a_trv",
@@ -4223,7 +4223,7 @@
           "catalogId": "ef00.thermostats.wave6a_trv",
           "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv",
           "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": false,
           "exactCount": 9,
           "exacts": [
@@ -4234,7 +4234,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-avatto-me168",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4245,7 +4245,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-avatto-me168",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4256,7 +4256,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-nedis-zbhtr20wt",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4267,7 +4267,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-avatto-me168",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4278,7 +4278,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-avatto-me168",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4289,7 +4289,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-avatto-trv26",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4300,7 +4300,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-nedis-zbhtr20wt",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4311,7 +4311,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-nedis-zbhtr20wt",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             },
@@ -4322,7 +4322,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-avatto-trv26",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_trv"
             }
@@ -4332,7 +4332,7 @@
           "catalogId": "ef00.thermostats.wave9_mazda",
           "catalogModule": "contracts.families.ef00.thermostats.wave9_mazda",
           "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": false,
           "exactCount": 2,
           "exacts": [
@@ -4343,7 +4343,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-mazda-tr-m2z",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_mazda",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_mazda"
             },
@@ -4354,7 +4354,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-mazda-tr-m2z",
               "oldOwner": "z2m-ef00-thermo-trv-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_mazda",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_mazda"
             }
@@ -4364,7 +4364,7 @@
           "catalogId": "ef00.thermostats.wave9_legacy",
           "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy",
           "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": true,
           "exactCount": 7,
           "exacts": [
@@ -4375,7 +4375,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-moes-brt100",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             },
@@ -4386,7 +4386,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-moes-brt100",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             },
@@ -4397,7 +4397,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-lidl-368308",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             },
@@ -4408,7 +4408,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-evanell-ez200",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             },
@@ -4419,7 +4419,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-moes-brt100",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             },
@@ -4430,7 +4430,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-evanell-ez200",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             },
@@ -4441,7 +4441,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave9-lidl-368308",
               "oldOwner": "z2m-ef00-thermo-fcu-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave9_legacy",
               "catalogModule": "contracts.families.ef00.thermostats.wave9_legacy"
             }
@@ -4451,7 +4451,7 @@
           "catalogId": "ef00.thermostats.wave12_trv",
           "catalogModule": "contracts.families.ef00.thermostats.wave12_trv",
           "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": true,
           "exactCount": 5,
           "exacts": [
@@ -4462,7 +4462,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-moes-sh4",
               "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_trv"
             },
@@ -4473,7 +4473,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-essentials-trv",
               "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_trv"
             },
@@ -4484,7 +4484,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-tech-v2",
               "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_trv"
             },
@@ -4495,7 +4495,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-tech-v1",
               "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_trv"
             },
@@ -4506,7 +4506,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-avatto-trv60",
               "oldOwner": "z2m-ef00-trv-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_trv"
             }
@@ -4516,7 +4516,7 @@
           "catalogId": "ef00.thermostats.wave19_exact_aliases",
           "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases",
           "oldOwner": "z2m-trv-alias-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": true,
           "exactCount": 8,
           "exacts": [
@@ -4527,7 +4527,7 @@
               "modelUtf8Hex": "6470706c6e736e00",
               "profile": "thermostats-thermostat-etop",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4538,7 +4538,7 @@
               "modelUtf8Hex": "6461717772736a00",
               "profile": "thermostats-alecto-smart-heat10",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4549,7 +4549,7 @@
               "modelUtf8Hex": "47627841584c3200",
               "profile": "thermostats-thermostat-saswell",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4560,7 +4560,7 @@
               "modelUtf8Hex": "38387465756a7000",
               "profile": "thermostats-thermostat-saswell",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4571,7 +4571,7 @@
               "modelUtf8Hex": "616a346a7a306900",
               "profile": "thermostats-thermostat-saswell",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4582,7 +4582,7 @@
               "modelUtf8Hex": "7639306c61646700",
               "profile": "thermostats-thermostat-etop",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4593,7 +4593,7 @@
               "modelUtf8Hex": "7737636168717300",
               "profile": "thermostats-thermostat-saswell",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             },
@@ -4604,7 +4604,7 @@
               "modelUtf8Hex": "7568737a6a397300",
               "profile": "thermostats-thermostat-saswell",
               "oldOwner": "z2m-trv-alias-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19_exact_aliases",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact_aliases"
             }
@@ -4614,7 +4614,7 @@
           "catalogId": "ef00.thermostats.wave15_trv",
           "catalogModule": "contracts.families.ef00.thermostats.wave15_trv",
           "oldOwner": "ef00-wave15-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -4625,7 +4625,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave15-moes-ztrv-s01",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave15_trv",
               "catalogModule": "contracts.families.ef00.thermostats.wave15_trv"
             }
@@ -4635,7 +4635,7 @@
           "catalogId": "ef00.thermostats.wave19.exact",
           "catalogModule": "contracts.families.ef00.thermostats.wave19_exact",
           "oldOwner": "z2m-therm-w19-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+          "newOwner": "ef00-thermostat-trv-3-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -4646,7 +4646,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave19-immax-07703l",
               "oldOwner": "z2m-therm-w19-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19.exact",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact"
             },
@@ -4657,7 +4657,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave19-woox-r7067",
               "oldOwner": "z2m-therm-w19-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-trv-wonjj6768",
+              "newOwner": "ef00-thermostat-trv-3-wonjj6768",
               "catalogId": "ef00.thermostats.wave19.exact",
               "catalogModule": "contracts.families.ef00.thermostats.wave19_exact"
             }
@@ -4666,7 +4666,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-thermo-hvac-wonjj6768",
+      "package": "ef00-thermostat-hvac-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.thermostats.wave6a_wall",
@@ -4687,7 +4687,7 @@
           "catalogId": "ef00.thermostats.wave6a_wall",
           "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall",
           "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+          "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
           "moved": true,
           "exactCount": 7,
           "exacts": [
@@ -4698,7 +4698,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-futurehome",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             },
@@ -4709,7 +4709,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-engo-eone230w",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             },
@@ -4720,7 +4720,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-futurehome",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             },
@@ -4731,7 +4731,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-engo-eone230w",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             },
@@ -4742,7 +4742,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-futurehome",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             },
@@ -4753,7 +4753,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-engo-e40",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             },
@@ -4764,7 +4764,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave6a-engo-e40",
               "oldOwner": "z2m-ef00-thermo-wall-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave6a_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave6a_wall"
             }
@@ -4774,7 +4774,7 @@
           "catalogId": "ef00.thermostats.wave12_wall",
           "catalogModule": "contracts.families.ef00.thermostats.wave12_wall",
           "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+          "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
           "moved": true,
           "exactCount": 10,
           "exacts": [
@@ -4785,7 +4785,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-engo-eone-batb",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4796,7 +4796,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-engo-e25-batb",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4807,7 +4807,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-engo-e25-230",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4818,7 +4818,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-engo-eone",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4829,7 +4829,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-moes-zht-sr",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4840,7 +4840,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-namron-touch",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4851,7 +4851,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-moes-pilot",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4862,7 +4862,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-moes-zht-s03",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4873,7 +4873,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-beca-bht209",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             },
@@ -4884,7 +4884,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-moes-zht-s01",
               "oldOwner": "z2m-ef00-wall-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_wall",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_wall"
             }
@@ -4894,7 +4894,7 @@
           "catalogId": "ef00.thermostats.wave12_fcu",
           "catalogModule": "contracts.families.ef00.thermostats.wave12_fcu",
           "oldOwner": "z2m-ef00-fcu-w12-wonjj6768",
-          "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+          "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
           "moved": true,
           "exactCount": 1,
           "exacts": [
@@ -4905,7 +4905,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-wave12-tuya-bac001",
               "oldOwner": "z2m-ef00-fcu-w12-wonjj6768",
-              "newOwner": "z2m-ef00-thermo-hvac-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.wave12_fcu",
               "catalogModule": "contracts.families.ef00.thermostats.wave12_fcu"
             }
@@ -4914,7 +4914,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-controls-wonjj6768",
+      "package": "ef00-controls-2-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.controls.wave15_engo",
@@ -4939,7 +4939,7 @@
           "catalogId": "ef00.controls.wave15_engo",
           "catalogModule": "contracts.families.ef00.controls.wave15_engo",
           "oldOwner": "ef00-wave15-wonjj6768",
-          "newOwner": "z2m-ef00-controls-wonjj6768",
+          "newOwner": "ef00-controls-2-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -4950,7 +4950,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave15-engo-ecb62zb",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave15_engo",
               "catalogModule": "contracts.families.ef00.controls.wave15_engo"
             },
@@ -4961,7 +4961,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave15-engo-ecb62zb",
               "oldOwner": "ef00-wave15-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave15_engo",
               "catalogModule": "contracts.families.ef00.controls.wave15_engo"
             }
@@ -4971,7 +4971,7 @@
           "catalogId": "ef00.controls.wave17_fingerbot",
           "catalogModule": "contracts.families.ef00.controls.wave17_fingerbot",
           "oldOwner": "z2m-ef00-finger-wonjj6768",
-          "newOwner": "z2m-ef00-controls-wonjj6768",
+          "newOwner": "ef00-controls-2-wonjj6768",
           "moved": true,
           "exactCount": 3,
           "exacts": [
@@ -4982,7 +4982,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave17-lincukoo-czf02",
               "oldOwner": "z2m-ef00-finger-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave17_fingerbot",
               "catalogModule": "contracts.families.ef00.controls.wave17_fingerbot"
             },
@@ -4993,7 +4993,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave17-lincukoo-czf02",
               "oldOwner": "z2m-ef00-finger-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave17_fingerbot",
               "catalogModule": "contracts.families.ef00.controls.wave17_fingerbot"
             },
@@ -5004,7 +5004,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave17-lincukoo-czf02",
               "oldOwner": "z2m-ef00-finger-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave17_fingerbot",
               "catalogModule": "contracts.families.ef00.controls.wave17_fingerbot"
             }
@@ -5014,7 +5014,7 @@
           "catalogId": "ef00.controls.wave18_keypads",
           "catalogModule": "contracts.families.ef00.controls.wave18_keypads",
           "oldOwner": "z2m-ef00-keypads-wonjj6768",
-          "newOwner": "z2m-ef00-controls-wonjj6768",
+          "newOwner": "ef00-controls-2-wonjj6768",
           "moved": true,
           "exactCount": 4,
           "exacts": [
@@ -5025,7 +5025,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave18-immax-07505l",
               "oldOwner": "z2m-ef00-keypads-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave18_keypads",
               "catalogModule": "contracts.families.ef00.controls.wave18_keypads"
             },
@@ -5036,7 +5036,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave18-immax-07505l",
               "oldOwner": "z2m-ef00-keypads-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave18_keypads",
               "catalogModule": "contracts.families.ef00.controls.wave18_keypads"
             },
@@ -5047,7 +5047,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave18-immax-07505l",
               "oldOwner": "z2m-ef00-keypads-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave18_keypads",
               "catalogModule": "contracts.families.ef00.controls.wave18_keypads"
             },
@@ -5058,7 +5058,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave18-daewoo-wke502z",
               "oldOwner": "z2m-ef00-keypads-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave18_keypads",
               "catalogModule": "contracts.families.ef00.controls.wave18_keypads"
             }
@@ -5068,7 +5068,7 @@
           "catalogId": "ef00.controls.wave19.remotes",
           "catalogModule": "contracts.families.ef00.controls.wave19_remotes",
           "oldOwner": "z2m-remote-w19-wonjj6768",
-          "newOwner": "z2m-ef00-controls-wonjj6768",
+          "newOwner": "ef00-controls-2-wonjj6768",
           "moved": true,
           "exactCount": 6,
           "exacts": [
@@ -5079,7 +5079,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave19-box-erc2201-z",
               "oldOwner": "z2m-remote-w19-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave19.remotes",
               "catalogModule": "contracts.families.ef00.controls.wave19_remotes"
             },
@@ -5090,7 +5090,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave19-zemismart-zm-rm02",
               "oldOwner": "z2m-remote-w19-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave19.remotes",
               "catalogModule": "contracts.families.ef00.controls.wave19_remotes"
             },
@@ -5101,7 +5101,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave19-qa-qat42z2b",
               "oldOwner": "z2m-remote-w19-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave19.remotes",
               "catalogModule": "contracts.families.ef00.controls.wave19_remotes"
             },
@@ -5112,7 +5112,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave19-qa-qat44z6",
               "oldOwner": "z2m-remote-w19-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave19.remotes",
               "catalogModule": "contracts.families.ef00.controls.wave19_remotes"
             },
@@ -5123,7 +5123,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave19-qa-qat42z3b",
               "oldOwner": "z2m-remote-w19-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave19.remotes",
               "catalogModule": "contracts.families.ef00.controls.wave19_remotes"
             },
@@ -5134,7 +5134,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "controls-wave19-tuya-presence-switch",
               "oldOwner": "z2m-remote-w19-wonjj6768",
-              "newOwner": "z2m-ef00-controls-wonjj6768",
+              "newOwner": "ef00-controls-2-wonjj6768",
               "catalogId": "ef00.controls.wave19.remotes",
               "catalogModule": "contracts.families.ef00.controls.wave19_remotes"
             }
@@ -5143,7 +5143,7 @@
       ]
     },
     {
-      "package": "z2m-ef00-bridge-wonjj6768",
+      "package": "ef00-bridge-wonjj6768",
       "catalogs": [
         {
           "module": "contracts.families.ef00.bridges_wave19",
@@ -5156,7 +5156,7 @@
           "catalogId": "ef00.bridges.wave19",
           "catalogModule": "contracts.families.ef00.bridges_wave19",
           "oldOwner": "z2m-bridge-ef00-w19-wonjj6768",
-          "newOwner": "z2m-ef00-bridge-wonjj6768",
+          "newOwner": "ef00-bridge-wonjj6768",
           "moved": true,
           "exactCount": 2,
           "exacts": [
@@ -5167,7 +5167,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "bridges-wave19-weten-pci-e",
               "oldOwner": "z2m-bridge-ef00-w19-wonjj6768",
-              "newOwner": "z2m-ef00-bridge-wonjj6768",
+              "newOwner": "ef00-bridge-wonjj6768",
               "catalogId": "ef00.bridges.wave19",
               "catalogModule": "contracts.families.ef00.bridges_wave19"
             },
@@ -5178,7 +5178,7 @@
               "modelUtf8Hex": "545330363031",
               "profile": "bridges-wave19-weten-pci-e",
               "oldOwner": "z2m-bridge-ef00-w19-wonjj6768",
-              "newOwner": "z2m-ef00-bridge-wonjj6768",
+              "newOwner": "ef00-bridge-wonjj6768",
               "catalogId": "ef00.bridges.wave19",
               "catalogModule": "contracts.families.ef00.bridges_wave19"
             }

@@ -3,6 +3,7 @@
 -- 220-314 and 1243-1355.  Scene/music payloads and the extra DP61 color
 -- writer are copied byte-for-byte from that definition.
 
+local capabilities = require "st.capabilities"
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
@@ -126,11 +127,21 @@ local function brightness_write(device, value)
   }
 end
 
+-- DP 61 is write-only on this device (state requests echo it unhandled), so the
+-- driver keeps optimistic colorControl state: without these events the stock app
+-- color picker can hang on null hue/saturation.
+local function emit_color_state(device, hue_value, saturation_value)
+  if type(device.emit_event) ~= "function" then return end
+  device:emit_event(capabilities.colorControl.hue(clamp(round(hue_value), 0, 100)))
+  device:emit_event(capabilities.colorControl.saturation(clamp(round(saturation_value), 0, 100)))
+end
+
 local function color_payload(device, hue, saturation)
   local hue_value = clamp(tonumber(hue) or 0, 0, 100)
   local saturation_value = clamp(tonumber(saturation) or 0, 0, 100)
   store(device, HUE_FIELD, hue_value)
   store(device, SATURATION_FIELD, saturation_value)
+  emit_color_state(device, hue_value, saturation_value)
   local degrees = clamp(round(hue_value * 3.6), 0, 360)
   local saturation_raw = clamp(round(saturation_value * 10), 0, 1000)
   return string.char(
@@ -139,6 +150,17 @@ local function color_payload(device, hue, saturation)
     math.floor(saturation_raw / 256), saturation_raw % 256,
     0x03, 0xE8
   )
+end
+
+-- The device only re-renders white from DP 4 while already in white mode, so the
+-- color temperature slider must switch work mode first, mirroring the
+-- colour/scene/music write paths.
+local function color_temp_raw_write(device, value)
+  if not send_on_and_mode(device, "white") then return nil end
+  return {
+    dp = 4, datatype = tuya.DP_TYPE_VALUE,
+    value = clamp(round(tonumber(value) or 0), 0, 1000),
+  }
 end
 
 local function color_write(device, value)
@@ -213,7 +235,7 @@ local gl_spi = {
     }),
     tuya.dp_numeric(3, {
       name = "brightness", read_only = true, transaction = 1,
-      converter = converter.from_only(function(value) return clamp((tonumber(value) or 0) / 10, 0, 100) end),
+      converter = converter.from_only(function(value) return clamp(round((tonumber(value) or 0) / 10), 0, 100) end),
       emit = emit.level(),
     }),
     tuya.dp_numeric(4, {
@@ -254,10 +276,22 @@ local gl_spi = {
       color = color_write,
       color_hue = hue_write,
       color_saturation = saturation_write,
+      gl_spi_color_temp_raw = color_temp_raw_write,
       gl_spi_music_mode = function(device, value) return music_write(device, "gl_spi_music_mode", value) end,
       gl_spi_music_sensitivity = function(device, value) return music_write(device, "gl_spi_music_sensitivity", value) end,
     },
   },
+  runtime_start = function(device)
+    if type(device.get_latest_state) == "function" and
+        device:get_latest_state("main", "colorControl", "hue") == nil then
+      emit_color_state(
+        device,
+        latest(device, HUE_FIELD, "colorControl", "hue", 0),
+        latest(device, SATURATION_FIELD, "colorControl", "saturation", 100)
+      )
+    end
+    return true
+  end,
 }
 
 register_device_definition(gl_spi, device_helpers.create_fingerprints("TS0601", {

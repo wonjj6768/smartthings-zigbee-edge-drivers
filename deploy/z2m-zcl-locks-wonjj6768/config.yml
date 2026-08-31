@@ -1,4 +1,4 @@
-name: "Z2M ZCL Locks wonjj6768"
+name: "ZCL Locks wonjj6768"
 packageKey: "z2m-zcl-locks-wonjj6768"
 description: "Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive handling."
 vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"

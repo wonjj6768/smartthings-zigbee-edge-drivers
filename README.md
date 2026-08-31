@@ -63,26 +63,26 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
 | EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 43 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 30 |
-| Z2M EF00 Bridge wonjj6768 | `z2m-ef00-bridge-wonjj6768` | 2 |
-| Z2M EF00 Controls Category wonjj6768 | `z2m-ef00-controls-wonjj6768` | 15 |
-| Z2M EF00 Covers Category wonjj6768 | `z2m-ef00-covers-wonjj6768` | 18 |
-| Z2M EF00 Lights Category wonjj6768 | `z2m-ef00-lights-wonjj6768` | 26 |
-| Z2M EF00 Meters Category wonjj6768 | `z2m-ef00-meters-wonjj6768` | 5 |
-| Z2M EF00 Presence Category wonjj6768 | `z2m-ef00-presence-wonjj6768` | 21 |
-| Z2M EF00 Safety Category wonjj6768 | `z2m-ef00-safety-wonjj6768` | 22 |
-| Z2M EF00 Sensors Category wonjj6768 | `z2m-ef00-sensors-wonjj6768` | 8 |
-| Z2M EF00 Switch Category wonjj6768 | `z2m-ef00-switch-wonjj6768` | 48 |
-| Z2M EF00 Thermostat Wall FCU wonjj6768 | `z2m-ef00-thermo-hvac-wonjj6768` | 18 |
-| Z2M EF00 Thermostat TRV wonjj6768 | `z2m-ef00-thermo-trv-wonjj6768` | 34 |
-| Z2M EF00 Valves Category wonjj6768 | `z2m-ef00-valves-wonjj6768` | 19 |
-| Z2M ZCL Bridge wonjj6768 | `z2m-zcl-bridge-wonjj6768` | 3 |
-| Z2M ZCL Controls Category wonjj6768 | `z2m-zcl-controls-wonjj6768` | 5 |
-| Z2M ZCL DALI wonjj6768 | `z2m-zcl-dali-wonjj6768` | 1 |
-| Z2M ZCL Lights Category wonjj6768 | `z2m-zcl-lights-wonjj6768` | 8 |
-| Z2M ZCL Locks wonjj6768 | `z2m-zcl-locks-wonjj6768` | 2 |
-| Z2M ZCL Sensors Category wonjj6768 | `z2m-zcl-sensors-wonjj6768` | 9 |
-| Z2M ZCL Switch Category wonjj6768 | `z2m-zcl-switch-wonjj6768` | 12 |
-| Z2M ZCL Thermostat wonjj6768 | `z2m-zcl-thermostat-wonjj6768` | 2 |
+| EF00 Bridge wonjj6768 | `z2m-ef00-bridge-wonjj6768` | 2 |
+| EF00 Controls 2 wonjj6768 | `z2m-ef00-controls-wonjj6768` | 15 |
+| EF00 Covers 2 wonjj6768 | `z2m-ef00-covers-wonjj6768` | 18 |
+| EF00 Lights 2 wonjj6768 | `z2m-ef00-lights-wonjj6768` | 26 |
+| EF00 Meters 2 wonjj6768 | `z2m-ef00-meters-wonjj6768` | 5 |
+| EF00 Presence 3 wonjj6768 | `z2m-ef00-presence-wonjj6768` | 21 |
+| EF00 Safety 2 wonjj6768 | `z2m-ef00-safety-wonjj6768` | 22 |
+| EF00 Sensors 2 wonjj6768 | `z2m-ef00-sensors-wonjj6768` | 8 |
+| EF00 Switch 2 wonjj6768 | `z2m-ef00-switch-wonjj6768` | 48 |
+| EF00 Thermostat HVAC 2 wonjj6768 | `z2m-ef00-thermo-hvac-wonjj6768` | 18 |
+| EF00 Thermostat TRV 3 wonjj6768 | `z2m-ef00-thermo-trv-wonjj6768` | 34 |
+| EF00 Valves 2 wonjj6768 | `z2m-ef00-valves-wonjj6768` | 19 |
+| ZCL Bridge wonjj6768 | `z2m-zcl-bridge-wonjj6768` | 3 |
+| ZCL Controls 2 wonjj6768 | `z2m-zcl-controls-wonjj6768` | 5 |
+| ZCL DALI wonjj6768 | `z2m-zcl-dali-wonjj6768` | 1 |
+| ZCL Lights 2 wonjj6768 | `z2m-zcl-lights-wonjj6768` | 8 |
+| ZCL Locks wonjj6768 | `z2m-zcl-locks-wonjj6768` | 2 |
+| ZCL Sensors 2 wonjj6768 | `z2m-zcl-sensors-wonjj6768` | 9 |
+| ZCL Switch 2 wonjj6768 | `z2m-zcl-switch-wonjj6768` | 12 |
+| ZCL Thermostat wonjj6768 | `z2m-zcl-thermostat-wonjj6768` | 2 |
 | ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 313 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 41 |
 | ZCL EasyIoT wonjj6768 | `zcl-easyiot-wonjj6768` | 6 |
@@ -1533,7 +1533,7 @@ Development driver; report issues with hub logcat. Supports EF00 water valves, g
 </details>
 
 <details>
-<summary>Z2M EF00 Bridge wonjj6768 (2 fingerprints)</summary>
+<summary>EF00 Bridge wonjj6768 (2 fingerprints)</summary>
 
 Dedicated driver for newly absorbed exact EF00 bridge fingerprints.
 
@@ -1545,7 +1545,7 @@ Dedicated driver for newly absorbed exact EF00 bridge fingerprints.
 </details>
 
 <details>
-<summary>Z2M EF00 Controls Category wonjj6768 (15 fingerprints)</summary>
+<summary>EF00 Controls 2 wonjj6768 (15 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 remotes, keypads, and button-control fingerprints.
 
@@ -1570,7 +1570,7 @@ Category driver for newly absorbed exact EF00 remotes, keypads, and button-contr
 </details>
 
 <details>
-<summary>Z2M EF00 Covers Category wonjj6768 (18 fingerprints)</summary>
+<summary>EF00 Covers 2 wonjj6768 (18 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 cover fingerprints.
 
@@ -1598,7 +1598,7 @@ Category driver for newly absorbed exact EF00 cover fingerprints.
 </details>
 
 <details>
-<summary>Z2M EF00 Lights Category wonjj6768 (26 fingerprints)</summary>
+<summary>EF00 Lights 2 wonjj6768 (26 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 light and dimmer fingerprints.
 
@@ -1634,7 +1634,7 @@ Category driver for newly absorbed exact EF00 light and dimmer fingerprints.
 </details>
 
 <details>
-<summary>Z2M EF00 Meters Category wonjj6768 (5 fingerprints)</summary>
+<summary>EF00 Meters 2 wonjj6768 (5 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 meter and energy fingerprints.
 
@@ -1649,7 +1649,7 @@ Category driver for newly absorbed exact EF00 meter and energy fingerprints.
 </details>
 
 <details>
-<summary>Z2M EF00 Presence Category wonjj6768 (21 fingerprints)</summary>
+<summary>EF00 Presence 3 wonjj6768 (21 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 presence and mmWave fingerprints.
 
@@ -1680,7 +1680,7 @@ Category driver for newly absorbed exact EF00 presence and mmWave fingerprints.
 </details>
 
 <details>
-<summary>Z2M EF00 Safety Category wonjj6768 (22 fingerprints)</summary>
+<summary>EF00 Safety 2 wonjj6768 (22 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerprints.
 
@@ -1712,7 +1712,7 @@ Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerpri
 </details>
 
 <details>
-<summary>Z2M EF00 Sensors Category wonjj6768 (8 fingerprints)</summary>
+<summary>EF00 Sensors 2 wonjj6768 (8 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 environment and sensor fingerprints.
 
@@ -1730,7 +1730,7 @@ Category driver for newly absorbed exact EF00 environment and sensor fingerprint
 </details>
 
 <details>
-<summary>Z2M EF00 Switch Category wonjj6768 (48 fingerprints)</summary>
+<summary>EF00 Switch 2 wonjj6768 (48 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 switch, panel, and screen-switch fingerprints.
 
@@ -1788,7 +1788,7 @@ Category driver for newly absorbed exact EF00 switch, panel, and screen-switch f
 </details>
 
 <details>
-<summary>Z2M EF00 Thermostat Wall FCU wonjj6768 (18 fingerprints)</summary>
+<summary>EF00 Thermostat HVAC 2 wonjj6768 (18 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 wall thermostat and FCU fingerprints.
 
@@ -1816,7 +1816,7 @@ Category driver for newly absorbed exact EF00 wall thermostat and FCU fingerprin
 </details>
 
 <details>
-<summary>Z2M EF00 Thermostat TRV wonjj6768 (34 fingerprints)</summary>
+<summary>EF00 Thermostat TRV 3 wonjj6768 (34 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 TRV fingerprints.
 
@@ -1860,7 +1860,7 @@ Category driver for newly absorbed exact EF00 TRV fingerprints.
 </details>
 
 <details>
-<summary>Z2M EF00 Valves Category wonjj6768 (19 fingerprints)</summary>
+<summary>EF00 Valves 2 wonjj6768 (19 fingerprints)</summary>
 
 Category driver for newly absorbed exact EF00 irrigation and water-valve fingerprints.
 
@@ -1889,7 +1889,7 @@ Category driver for newly absorbed exact EF00 irrigation and water-valve fingerp
 </details>
 
 <details>
-<summary>Z2M ZCL Bridge wonjj6768 (3 fingerprints)</summary>
+<summary>ZCL Bridge wonjj6768 (3 fingerprints)</summary>
 
 Dedicated driver for newly absorbed exact ZCL bridge fingerprints.
 
@@ -1902,7 +1902,7 @@ Dedicated driver for newly absorbed exact ZCL bridge fingerprints.
 </details>
 
 <details>
-<summary>Z2M ZCL Controls Category wonjj6768 (5 fingerprints)</summary>
+<summary>ZCL Controls 2 wonjj6768 (5 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL remote and control fingerprints.
 
@@ -1917,7 +1917,7 @@ Category driver for newly absorbed exact ZCL remote and control fingerprints.
 </details>
 
 <details>
-<summary>Z2M ZCL DALI wonjj6768 (1 fingerprints)</summary>
+<summary>ZCL DALI wonjj6768 (1 fingerprints)</summary>
 
 Dedicated driver for newly absorbed exact ZCL DALI fingerprints and dynamic endpoint children.
 
@@ -1928,7 +1928,7 @@ Dedicated driver for newly absorbed exact ZCL DALI fingerprints and dynamic endp
 </details>
 
 <details>
-<summary>Z2M ZCL Lights Category wonjj6768 (8 fingerprints)</summary>
+<summary>ZCL Lights 2 wonjj6768 (8 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL light fingerprints.
 
@@ -1946,7 +1946,7 @@ Category driver for newly absorbed exact ZCL light fingerprints.
 </details>
 
 <details>
-<summary>Z2M ZCL Locks wonjj6768 (2 fingerprints)</summary>
+<summary>ZCL Locks wonjj6768 (2 fingerprints)</summary>
 
 Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive handling.
 
@@ -1958,7 +1958,7 @@ Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive
 </details>
 
 <details>
-<summary>Z2M ZCL Sensors Category wonjj6768 (9 fingerprints)</summary>
+<summary>ZCL Sensors 2 wonjj6768 (9 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.
 
@@ -1977,7 +1977,7 @@ Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vib
 </details>
 
 <details>
-<summary>Z2M ZCL Switch Category wonjj6768 (12 fingerprints)</summary>
+<summary>ZCL Switch 2 wonjj6768 (12 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL switch fingerprints.
 
@@ -1999,7 +1999,7 @@ Category driver for newly absorbed exact ZCL switch fingerprints.
 </details>
 
 <details>
-<summary>Z2M ZCL Thermostat wonjj6768 (2 fingerprints)</summary>
+<summary>ZCL Thermostat wonjj6768 (2 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL HVAC and thermostat fingerprints.
 

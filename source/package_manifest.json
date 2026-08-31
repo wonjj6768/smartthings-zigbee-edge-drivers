@@ -351,7 +351,7 @@
     },
     {
       "name": "z2m-zcl-switch-wonjj6768",
-      "display_name": "Z2M ZCL Switch Category wonjj6768",
+      "display_name": "ZCL Switch 2 wonjj6768",
       "description": "Category driver for newly absorbed exact ZCL switch fingerprints.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -377,7 +377,7 @@
     },
     {
       "name": "z2m-zcl-lights-wonjj6768",
-      "display_name": "Z2M ZCL Lights Category wonjj6768",
+      "display_name": "ZCL Lights 2 wonjj6768",
       "description": "Category driver for newly absorbed exact ZCL light fingerprints.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -403,7 +403,7 @@
     },
     {
       "name": "z2m-zcl-sensors-wonjj6768",
-      "display_name": "Z2M ZCL Sensors Category wonjj6768",
+      "display_name": "ZCL Sensors 2 wonjj6768",
       "description": "Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -433,7 +433,7 @@
     },
     {
       "name": "z2m-zcl-controls-wonjj6768",
-      "display_name": "Z2M ZCL Controls Category wonjj6768",
+      "display_name": "ZCL Controls 2 wonjj6768",
       "description": "Category driver for newly absorbed exact ZCL remote and control fingerprints.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -451,7 +451,7 @@
     },
     {
       "name": "z2m-zcl-locks-wonjj6768",
-      "display_name": "Z2M ZCL Locks wonjj6768",
+      "display_name": "ZCL Locks wonjj6768",
       "description": "Dedicated driver for newly absorbed exact ZCL lock fingerprints and lock receive handling.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -465,7 +465,7 @@
     },
     {
       "name": "z2m-zcl-bridge-wonjj6768",
-      "display_name": "Z2M ZCL Bridge wonjj6768",
+      "display_name": "ZCL Bridge wonjj6768",
       "description": "Dedicated driver for newly absorbed exact ZCL bridge fingerprints.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -479,7 +479,7 @@
     },
     {
       "name": "z2m-zcl-thermostat-wonjj6768",
-      "display_name": "Z2M ZCL Thermostat wonjj6768",
+      "display_name": "ZCL Thermostat wonjj6768",
       "description": "Category driver for newly absorbed exact ZCL HVAC and thermostat fingerprints.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -497,7 +497,7 @@
     },
     {
       "name": "z2m-zcl-dali-wonjj6768",
-      "display_name": "Z2M ZCL DALI wonjj6768",
+      "display_name": "ZCL DALI wonjj6768",
       "description": "Dedicated driver for newly absorbed exact ZCL DALI fingerprints and dynamic endpoint children.",
       "protocol": "zcl",
       "generic_ids": [],
@@ -513,7 +513,7 @@
     },
     {
       "name": "z2m-ef00-covers-wonjj6768",
-      "display_name": "Z2M EF00 Covers Category wonjj6768",
+      "display_name": "EF00 Covers 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 cover fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -539,7 +539,7 @@
     },
     {
       "name": "z2m-ef00-lights-wonjj6768",
-      "display_name": "Z2M EF00 Lights Category wonjj6768",
+      "display_name": "EF00 Lights 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 light and dimmer fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -573,7 +573,7 @@
     },
     {
       "name": "z2m-ef00-switch-wonjj6768",
-      "display_name": "Z2M EF00 Switch Category wonjj6768",
+      "display_name": "EF00 Switch 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 switch, panel, and screen-switch fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -623,7 +623,7 @@
     },
     {
       "name": "z2m-ef00-meters-wonjj6768",
-      "display_name": "Z2M EF00 Meters Category wonjj6768",
+      "display_name": "EF00 Meters 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 meter and energy fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -641,7 +641,7 @@
     },
     {
       "name": "z2m-ef00-sensors-wonjj6768",
-      "display_name": "Z2M EF00 Sensors Category wonjj6768",
+      "display_name": "EF00 Sensors 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 environment and sensor fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -663,7 +663,7 @@
     },
     {
       "name": "z2m-ef00-presence-wonjj6768",
-      "display_name": "Z2M EF00 Presence Category wonjj6768",
+      "display_name": "EF00 Presence 3 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 presence and mmWave fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -697,7 +697,7 @@
     },
     {
       "name": "z2m-ef00-safety-wonjj6768",
-      "display_name": "Z2M EF00 Safety Category wonjj6768",
+      "display_name": "EF00 Safety 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -739,7 +739,7 @@
     },
     {
       "name": "z2m-ef00-valves-wonjj6768",
-      "display_name": "Z2M EF00 Valves Category wonjj6768",
+      "display_name": "EF00 Valves 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 irrigation and water-valve fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -765,7 +765,7 @@
     },
     {
       "name": "z2m-ef00-thermo-trv-wonjj6768",
-      "display_name": "Z2M EF00 Thermostat TRV wonjj6768",
+      "display_name": "EF00 Thermostat TRV 3 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 TRV fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -803,7 +803,7 @@
     },
     {
       "name": "z2m-ef00-thermo-hvac-wonjj6768",
-      "display_name": "Z2M EF00 Thermostat Wall FCU wonjj6768",
+      "display_name": "EF00 Thermostat HVAC 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 wall thermostat and FCU fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -825,7 +825,7 @@
     },
     {
       "name": "z2m-ef00-controls-wonjj6768",
-      "display_name": "Z2M EF00 Controls Category wonjj6768",
+      "display_name": "EF00 Controls 2 wonjj6768",
       "description": "Category driver for newly absorbed exact EF00 remotes, keypads, and button-control fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],
@@ -851,7 +851,7 @@
     },
     {
       "name": "z2m-ef00-bridge-wonjj6768",
-      "display_name": "Z2M EF00 Bridge wonjj6768",
+      "display_name": "EF00 Bridge wonjj6768",
       "description": "Dedicated driver for newly absorbed exact EF00 bridge fingerprints.",
       "protocol": "ef00",
       "generic_ids": [],

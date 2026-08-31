@@ -1,8 +1,8 @@
-local capabilities=require "st.capabilities"
 local tuya=require "protocol.tuya"
 local emit=require "capabilities.events.all"
 local device_helpers=require "contracts.helpers.family"
 local common=require "contracts.helpers.ef00_presence"
+local temperature_unit=require "contracts.helpers.temperature_unit"
 local converter=tuya.converter
 local device_definitions,register_device_definition=common.isolated_definition_registry(device_helpers)
 local function register_presence_definition(definitions_or_table,fingerprint_list,ranges)
@@ -18,47 +18,12 @@ default=0,area=1,toilet=2,bedroom=3,parlour=4,office=5,hotel=6,
 })
 local HPS_FORCE_TIME_FIELD="hps_force_time_update_timer"
 local HPS_FORCE_TIME_INTERVAL=60 * 60
-local ZG204ZX_TEMPERATURE_UNIT_FIELD="zg204zx_temperature_unit"
-local function zg204zx_temperature_unit_value(value)
-if value==1 or value=="F" or value=="fahrenheit" then return "fahrenheit","F",1 end
-if value==0 or value=="C" or value=="celsius" then return "celsius","C",0 end
-return nil,nil,nil
-end
-local function zg204zx_temperature_unit_converter()
-return converter.from_to(
-function(value,device)
-local capability_value,event_unit=zg204zx_temperature_unit_value(value)
-if capability_value==nil then return nil end
-device:set_field(ZG204ZX_TEMPERATURE_UNIT_FIELD,event_unit,{persist=false})
-return capability_value
-end,
-function(value,device)
-local _,event_unit,raw=zg204zx_temperature_unit_value(value)
-if raw==nil then return nil end
-device:set_field(ZG204ZX_TEMPERATURE_UNIT_FIELD,event_unit,{persist=false})
-return raw
-end
-)
-end
-local zg204zx_unit_capability_emitter=emit.temperatureUnitZg204zx()
-local function zg204zx_temperature_unit_emitter(device,value,dp_info,mapping_context)
-local _,event_unit=zg204zx_temperature_unit_value(value)
-if event_unit ~=nil then
-device:set_field(ZG204ZX_TEMPERATURE_UNIT_FIELD,event_unit,{persist=false})
-end
-return zg204zx_unit_capability_emitter(device,value,dp_info,mapping_context)
-end
-local function zg204zx_temperature_emitter(device,value)
-if value==nil then return nil end
-local unit=device:get_field(ZG204ZX_TEMPERATURE_UNIT_FIELD)
-if unit==nil and type(device.get_latest_state)=="function" then
-local latest=device:get_latest_state(
-"main","concertmirror08464.temperatureUnitZg204zx","tempUnitZgTwoFour"
-)
-_,unit=zg204zx_temperature_unit_value(latest)
-end
-return capabilities.temperatureMeasurement.temperature({value=value,unit=unit or "C"})
-end
+local zg204zx_temperature_binding=temperature_unit.handlers({
+field_name="zg204zx_temperature_unit",
+capability_id="concertmirror08464.temperatureUnitZg204zx",
+capability_attribute="tempUnitZgTwoFour",
+capability_emitter=emit.temperatureUnitZg204zx(),
+})
 local function start_hourly_hps_time_updates(device,preset)
 if device.thread==nil or type(device.thread.call_with_delay)~="function" or
 type(device.get_field)~="function" or type(device.set_field)~="function" then
@@ -159,11 +124,15 @@ emit=emit.indicatorZg204zx(),
 converter=on_off_bool_converter,
 }),
 tuya.dp_temperature_unit(109,{
-emit=zg204zx_temperature_unit_emitter,
-converter=zg204zx_temperature_unit_converter(),
+emit=zg204zx_temperature_binding.unit_emitter,
+converter=zg204zx_temperature_binding.converter,
 }),
 tuya.dp_battery(110,{emit=emit.battery(),read_only=true}),
-tuya.dp_temperature(111,{emit=zg204zx_temperature_emitter,scale=10,read_only=true}),
+tuya.dp_temperature(111,{
+emit=zg204zx_temperature_binding.temperature_emitter,
+scale=10,
+read_only=true,
+}),
 tuya.dp_humidity(101,{emit=emit.humidity(),read_only=true}),
 },
 query_on_configure=false,

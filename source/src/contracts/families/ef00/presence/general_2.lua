@@ -5,6 +5,7 @@ local emit = require "capabilities.events.all"
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
 local common = require "contracts.helpers.ef00_presence"
+local temperature_unit = require "contracts.helpers.temperature_unit"
 
 local converter = tuya.converter
 local device_definitions, register_device_definition = common.isolated_definition_registry(device_helpers)
@@ -23,6 +24,12 @@ local motion_detection_mode_zg204zm_converter = converter.lookup_from_to({
 local function raw_humidity_options()
   return { emit = emit.humidity(), scale = 1 }
 end
+
+local zg204zv_temperature_binding = temperature_unit.handlers({
+  field_name = "zg204zv_temperature_unit",
+  capability_id = "concertmirror08464.zg204zvTemperatureUnit",
+  capability_emitter = emit.zg204zvTemperatureUnit(),
+})
 -- ══════════════════════════════════════════════════════════════
 
 -- 2-3. presence_model_zf24: ZF24 mmWave (AC, 조도 포함)
@@ -789,11 +796,17 @@ local presence_model_zg_204zv = {
     converter = on_off_bool_converter,
   }),
 
-  tuya.dp_temperature_unit(109, { emit = emit.zg204zvTemperatureUnit() }),
+  tuya.dp_temperature_unit(109, {
+    emit = zg204zv_temperature_binding.unit_emitter,
+    converter = zg204zv_temperature_binding.converter,
+  }),
 
   tuya.dp_battery(110, { emit = emit.battery() }),
 
-  tuya.dp_temperature(111, { emit = emit.temperature() }),
+  tuya.dp_temperature(111, {
+    emit = zg204zv_temperature_binding.temperature_emitter,
+    read_only = true,
+  }),
 
 }
 

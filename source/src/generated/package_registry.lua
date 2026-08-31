@@ -171,122 +171,122 @@ for _, entry in ipairs(package_28) do
   entries[#entries + 1] = entry
 end
 
-local package_29 = require "generated.packages.z2m_zcl_switch_wonjj6768"
-assert(type(package_29) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_switch_wonjj6768")
+local package_29 = require "generated.packages.zcl_switch_2_wonjj6768"
+assert(type(package_29) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_switch_2_wonjj6768")
 for _, entry in ipairs(package_29) do
   entries[#entries + 1] = entry
 end
 
-local package_30 = require "generated.packages.z2m_zcl_lights_wonjj6768"
-assert(type(package_30) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_lights_wonjj6768")
+local package_30 = require "generated.packages.zcl_lights_2_wonjj6768"
+assert(type(package_30) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_lights_2_wonjj6768")
 for _, entry in ipairs(package_30) do
   entries[#entries + 1] = entry
 end
 
-local package_31 = require "generated.packages.z2m_zcl_sensors_wonjj6768"
-assert(type(package_31) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_sensors_wonjj6768")
+local package_31 = require "generated.packages.zcl_sensors_2_wonjj6768"
+assert(type(package_31) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_sensors_2_wonjj6768")
 for _, entry in ipairs(package_31) do
   entries[#entries + 1] = entry
 end
 
-local package_32 = require "generated.packages.z2m_zcl_controls_wonjj6768"
-assert(type(package_32) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_controls_wonjj6768")
+local package_32 = require "generated.packages.zcl_controls_2_wonjj6768"
+assert(type(package_32) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_controls_2_wonjj6768")
 for _, entry in ipairs(package_32) do
   entries[#entries + 1] = entry
 end
 
-local package_33 = require "generated.packages.z2m_zcl_locks_wonjj6768"
-assert(type(package_33) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_locks_wonjj6768")
+local package_33 = require "generated.packages.zcl_locks_wonjj6768"
+assert(type(package_33) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_locks_wonjj6768")
 for _, entry in ipairs(package_33) do
   entries[#entries + 1] = entry
 end
 
-local package_34 = require "generated.packages.z2m_zcl_bridge_wonjj6768"
-assert(type(package_34) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_bridge_wonjj6768")
+local package_34 = require "generated.packages.zcl_bridge_wonjj6768"
+assert(type(package_34) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_bridge_wonjj6768")
 for _, entry in ipairs(package_34) do
   entries[#entries + 1] = entry
 end
 
-local package_35 = require "generated.packages.z2m_zcl_thermostat_wonjj6768"
-assert(type(package_35) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_thermostat_wonjj6768")
+local package_35 = require "generated.packages.zcl_thermostat_wonjj6768"
+assert(type(package_35) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_thermostat_wonjj6768")
 for _, entry in ipairs(package_35) do
   entries[#entries + 1] = entry
 end
 
-local package_36 = require "generated.packages.z2m_zcl_dali_wonjj6768"
-assert(type(package_36) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_zcl_dali_wonjj6768")
+local package_36 = require "generated.packages.zcl_dali_wonjj6768"
+assert(type(package_36) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_dali_wonjj6768")
 for _, entry in ipairs(package_36) do
   entries[#entries + 1] = entry
 end
 
-local package_37 = require "generated.packages.z2m_ef00_covers_wonjj6768"
-assert(type(package_37) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_covers_wonjj6768")
+local package_37 = require "generated.packages.ef00_covers_2_wonjj6768"
+assert(type(package_37) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_covers_2_wonjj6768")
 for _, entry in ipairs(package_37) do
   entries[#entries + 1] = entry
 end
 
-local package_38 = require "generated.packages.z2m_ef00_lights_wonjj6768"
-assert(type(package_38) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_lights_wonjj6768")
+local package_38 = require "generated.packages.ef00_lights_2_wonjj6768"
+assert(type(package_38) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_lights_2_wonjj6768")
 for _, entry in ipairs(package_38) do
   entries[#entries + 1] = entry
 end
 
-local package_39 = require "generated.packages.z2m_ef00_switch_wonjj6768"
-assert(type(package_39) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_switch_wonjj6768")
+local package_39 = require "generated.packages.ef00_switch_2_wonjj6768"
+assert(type(package_39) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_switch_2_wonjj6768")
 for _, entry in ipairs(package_39) do
   entries[#entries + 1] = entry
 end
 
-local package_40 = require "generated.packages.z2m_ef00_meters_wonjj6768"
-assert(type(package_40) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_meters_wonjj6768")
+local package_40 = require "generated.packages.ef00_meters_2_wonjj6768"
+assert(type(package_40) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_meters_2_wonjj6768")
 for _, entry in ipairs(package_40) do
   entries[#entries + 1] = entry
 end
 
-local package_41 = require "generated.packages.z2m_ef00_sensors_wonjj6768"
-assert(type(package_41) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_sensors_wonjj6768")
+local package_41 = require "generated.packages.ef00_sensors_2_wonjj6768"
+assert(type(package_41) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_sensors_2_wonjj6768")
 for _, entry in ipairs(package_41) do
   entries[#entries + 1] = entry
 end
 
-local package_42 = require "generated.packages.z2m_ef00_presence_wonjj6768"
-assert(type(package_42) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_presence_wonjj6768")
+local package_42 = require "generated.packages.ef00_presence_3_wonjj6768"
+assert(type(package_42) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_presence_3_wonjj6768")
 for _, entry in ipairs(package_42) do
   entries[#entries + 1] = entry
 end
 
-local package_43 = require "generated.packages.z2m_ef00_safety_wonjj6768"
-assert(type(package_43) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_safety_wonjj6768")
+local package_43 = require "generated.packages.ef00_safety_2_wonjj6768"
+assert(type(package_43) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_safety_2_wonjj6768")
 for _, entry in ipairs(package_43) do
   entries[#entries + 1] = entry
 end
 
-local package_44 = require "generated.packages.z2m_ef00_valves_wonjj6768"
-assert(type(package_44) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_valves_wonjj6768")
+local package_44 = require "generated.packages.ef00_valves_2_wonjj6768"
+assert(type(package_44) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_valves_2_wonjj6768")
 for _, entry in ipairs(package_44) do
   entries[#entries + 1] = entry
 end
 
-local package_45 = require "generated.packages.z2m_ef00_thermo_trv_wonjj6768"
-assert(type(package_45) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_thermo_trv_wonjj6768")
+local package_45 = require "generated.packages.ef00_thermostat_trv_3_wonjj6768"
+assert(type(package_45) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_thermostat_trv_3_wonjj6768")
 for _, entry in ipairs(package_45) do
   entries[#entries + 1] = entry
 end
 
-local package_46 = require "generated.packages.z2m_ef00_thermo_hvac_wonjj6768"
-assert(type(package_46) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_thermo_hvac_wonjj6768")
+local package_46 = require "generated.packages.ef00_thermostat_hvac_2_wonjj6768"
+assert(type(package_46) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_thermostat_hvac_2_wonjj6768")
 for _, entry in ipairs(package_46) do
   entries[#entries + 1] = entry
 end
 
-local package_47 = require "generated.packages.z2m_ef00_controls_wonjj6768"
-assert(type(package_47) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_controls_wonjj6768")
+local package_47 = require "generated.packages.ef00_controls_2_wonjj6768"
+assert(type(package_47) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_controls_2_wonjj6768")
 for _, entry in ipairs(package_47) do
   entries[#entries + 1] = entry
 end
 
-local package_48 = require "generated.packages.z2m_ef00_bridge_wonjj6768"
-assert(type(package_48) == "table", "Canonical package bootstrap must return a table: generated.packages.z2m_ef00_bridge_wonjj6768")
+local package_48 = require "generated.packages.ef00_bridge_wonjj6768"
+assert(type(package_48) == "table", "Canonical package bootstrap must return a table: generated.packages.ef00_bridge_wonjj6768")
 for _, entry in ipairs(package_48) do
   entries[#entries + 1] = entry
 end

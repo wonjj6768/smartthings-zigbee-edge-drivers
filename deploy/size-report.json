@@ -2339,9 +2339,9 @@
   },
   {
     "name": "ef00-presence-general-1-wonjj6768",
-    "raw_size": 363636,
+    "raw_size": 365601,
     "under_limit": true,
-    "free_bytes": 160652,
+    "free_bytes": 158687,
     "meets_headroom": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -2425,9 +2425,9 @@
   },
   {
     "name": "ef00-presence-general-2-wonjj6768",
-    "raw_size": 435640,
+    "raw_size": 439387,
     "under_limit": true,
-    "free_bytes": 88648,
+    "free_bytes": 84901,
     "meets_headroom": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -3294,9 +3294,9 @@
   },
   {
     "name": "zcl-switch-2-wonjj6768",
-    "raw_size": 357305,
+    "raw_size": 357303,
     "under_limit": true,
-    "free_bytes": 166983,
+    "free_bytes": 166985,
     "meets_headroom": true,
     "profiles": [
       "switches-shelly-em-gen4",
@@ -3324,7 +3324,7 @@
       "bytes": 81331
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_switch_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_switch_2_wonjj6768",
       "catalogs": 4,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -3450,9 +3450,9 @@
   },
   {
     "name": "zcl-lights-2-wonjj6768",
-    "raw_size": 291181,
+    "raw_size": 291179,
     "under_limit": true,
-    "free_bytes": 233107,
+    "free_bytes": 233109,
     "meets_headroom": true,
     "profiles": [
       "lights-candeo-rd1p-dpm",
@@ -3474,7 +3474,7 @@
       "bytes": 81329
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_lights_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_lights_2_wonjj6768",
       "catalogs": 4,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -3600,9 +3600,9 @@
   },
   {
     "name": "zcl-sensors-2-wonjj6768",
-    "raw_size": 287844,
+    "raw_size": 287842,
     "under_limit": true,
-    "free_bytes": 236444,
+    "free_bytes": 236446,
     "meets_headroom": true,
     "profiles": [
       "safety-co-detector-battery-voltage-ewelink-7037",
@@ -3626,7 +3626,7 @@
       "bytes": 81593
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_sensors_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_sensors_2_wonjj6768",
       "catalogs": 5,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -3754,9 +3754,9 @@
   },
   {
     "name": "zcl-controls-2-wonjj6768",
-    "raw_size": 261544,
+    "raw_size": 261542,
     "under_limit": true,
-    "free_bytes": 262744,
+    "free_bytes": 262746,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-3-battery",
@@ -3775,7 +3775,7 @@
       "bytes": 80855
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_controls_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_controls_2_wonjj6768",
       "catalogs": 2,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -3899,9 +3899,9 @@
   },
   {
     "name": "zcl-locks-wonjj6768",
-    "raw_size": 237387,
+    "raw_size": 237383,
     "under_limit": true,
-    "free_bytes": 286901,
+    "free_bytes": 286905,
     "meets_headroom": true,
     "profiles": [
       "locks-wave18-javis-js-slk2-zb"
@@ -3917,7 +3917,7 @@
       "bytes": 80651
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_locks_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_locks_wonjj6768",
       "catalogs": 1,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4026,9 +4026,9 @@
   },
   {
     "name": "zcl-bridge-wonjj6768",
-    "raw_size": 253129,
+    "raw_size": 253125,
     "under_limit": true,
-    "free_bytes": 271159,
+    "free_bytes": 271163,
     "meets_headroom": true,
     "profiles": [
       "bridges-wave19-candeo-rf-hub",
@@ -4046,7 +4046,7 @@
       "bytes": 80615
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_bridge_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_bridge_wonjj6768",
       "catalogs": 1,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4157,9 +4157,9 @@
   },
   {
     "name": "zcl-thermostat-wonjj6768",
-    "raw_size": 276079,
+    "raw_size": 276075,
     "under_limit": true,
-    "free_bytes": 248209,
+    "free_bytes": 248213,
     "meets_headroom": true,
     "profiles": [
       "thermostats-wave19-pirogov-zb-midea-ac",
@@ -4176,7 +4176,7 @@
       "bytes": 80864
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_thermostat_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_thermostat_wonjj6768",
       "catalogs": 2,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4287,9 +4287,9 @@
   },
   {
     "name": "zcl-dali-wonjj6768",
-    "raw_size": 246888,
+    "raw_size": 246884,
     "under_limit": true,
-    "free_bytes": 277400,
+    "free_bytes": 277404,
     "meets_headroom": true,
     "profiles": [
       "bridge-wave19-sunricher-dali-cct-child",
@@ -4307,7 +4307,7 @@
       "bytes": 80627
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_zcl_dali_wonjj6768",
+      "source_bootstrap_module": "generated.packages.zcl_dali_wonjj6768",
       "catalogs": 1,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4419,9 +4419,9 @@
   },
   {
     "name": "ef00-covers-2-wonjj6768",
-    "raw_size": 405021,
+    "raw_size": 405019,
     "under_limit": true,
-    "free_bytes": 119267,
+    "free_bytes": 119269,
     "meets_headroom": true,
     "profiles": [
       "covers-cover-gm25teq",
@@ -4450,7 +4450,7 @@
       "bytes": 97817
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_covers_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_covers_2_wonjj6768",
       "catalogs": 4,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4564,9 +4564,9 @@
   },
   {
     "name": "ef00-lights-2-wonjj6768",
-    "raw_size": 435346,
+    "raw_size": 435344,
     "under_limit": true,
-    "free_bytes": 88942,
+    "free_bytes": 88944,
     "meets_headroom": true,
     "profiles": [
       "lights-color-skydance-wz5-rgb",
@@ -4597,7 +4597,7 @@
       "bytes": 98213
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_lights_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_lights_2_wonjj6768",
       "catalogs": 6,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4706,9 +4706,9 @@
   },
   {
     "name": "ef00-switch-2-wonjj6768",
-    "raw_size": 380429,
+    "raw_size": 380427,
     "under_limit": true,
-    "free_bytes": 143859,
+    "free_bytes": 143861,
     "meets_headroom": true,
     "profiles": [
       "switches-moes-sfl02-z1",
@@ -4752,7 +4752,7 @@
       "bytes": 243203
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_switch_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_switch_2_wonjj6768",
       "catalogs": 10,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4804,9 +4804,9 @@
   },
   {
     "name": "ef00-meters-2-wonjj6768",
-    "raw_size": 381204,
+    "raw_size": 381202,
     "under_limit": true,
-    "free_bytes": 143084,
+    "free_bytes": 143086,
     "meets_headroom": true,
     "profiles": [
       "meters-wave19-moes-zm6lt1",
@@ -4826,7 +4826,7 @@
       "bytes": 117666
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_meters_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_meters_2_wonjj6768",
       "catalogs": 2,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -4933,9 +4933,9 @@
   },
   {
     "name": "ef00-sensors-2-wonjj6768",
-    "raw_size": 296002,
+    "raw_size": 296000,
     "under_limit": true,
-    "free_bytes": 228286,
+    "free_bytes": 228288,
     "meets_headroom": true,
     "profiles": [
       "sensors-aq-co2-temp-humidity",
@@ -4958,7 +4958,7 @@
       "bytes": 242746
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_sensors_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_sensors_2_wonjj6768",
       "catalogs": 3,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5010,9 +5010,9 @@
   },
   {
     "name": "ef00-presence-3-wonjj6768",
-    "raw_size": 433824,
+    "raw_size": 433822,
     "under_limit": true,
-    "free_bytes": 90464,
+    "free_bytes": 90466,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-wave11-linptech-es1",
@@ -5040,7 +5040,7 @@
       "bytes": 98378
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_presence_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_presence_3_wonjj6768",
       "catalogs": 6,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5159,9 +5159,9 @@
   },
   {
     "name": "ef00-safety-2-wonjj6768",
-    "raw_size": 308363,
+    "raw_size": 308361,
     "under_limit": true,
-    "free_bytes": 215925,
+    "free_bytes": 215927,
     "meets_headroom": true,
     "profiles": [
       "safety-alarm-neo-nas-ab02b2",
@@ -5191,7 +5191,7 @@
       "bytes": 243847
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_safety_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_safety_2_wonjj6768",
       "catalogs": 8,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5243,9 +5243,9 @@
   },
   {
     "name": "ef00-valves-2-wonjj6768",
-    "raw_size": 315895,
+    "raw_size": 315893,
     "under_limit": true,
-    "free_bytes": 208393,
+    "free_bytes": 208395,
     "meets_headroom": true,
     "profiles": [
       "valves-giex-qt06-one",
@@ -5267,7 +5267,7 @@
       "bytes": 242891
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_valves_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_valves_2_wonjj6768",
       "catalogs": 4,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5319,9 +5319,9 @@
   },
   {
     "name": "ef00-thermostat-trv-3-wonjj6768",
-    "raw_size": 398091,
+    "raw_size": 398093,
     "under_limit": true,
-    "free_bytes": 126197,
+    "free_bytes": 126195,
     "meets_headroom": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",
@@ -5354,7 +5354,7 @@
       "bytes": 243709
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_thermo_trv_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_thermostat_trv_3_wonjj6768",
       "catalogs": 7,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5406,9 +5406,9 @@
   },
   {
     "name": "ef00-thermostat-hvac-2-wonjj6768",
-    "raw_size": 367643,
+    "raw_size": 367645,
     "under_limit": true,
-    "free_bytes": 156645,
+    "free_bytes": 156643,
     "meets_headroom": true,
     "profiles": [
       "thermostats-wave12-beca-bht209",
@@ -5437,7 +5437,7 @@
       "bytes": 242734
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_thermo_hvac_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_thermostat_hvac_2_wonjj6768",
       "catalogs": 3,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5489,9 +5489,9 @@
   },
   {
     "name": "ef00-controls-2-wonjj6768",
-    "raw_size": 299598,
+    "raw_size": 299596,
     "under_limit": true,
-    "free_bytes": 224690,
+    "free_bytes": 224692,
     "meets_headroom": true,
     "profiles": [
       "controls-wave15-engo-ecb62zb",
@@ -5516,7 +5516,7 @@
       "bytes": 242971
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_controls_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_controls_2_wonjj6768",
       "catalogs": 4,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
@@ -5568,9 +5568,9 @@
   },
   {
     "name": "ef00-bridge-wonjj6768",
-    "raw_size": 255695,
+    "raw_size": 255691,
     "under_limit": true,
-    "free_bytes": 268593,
+    "free_bytes": 268597,
     "meets_headroom": true,
     "profiles": [
       "bridges-wave19-weten-pci-e"
@@ -5586,7 +5586,7 @@
       "bytes": 242236
     },
     "canonical_loader": {
-      "source_bootstrap_module": "generated.packages.z2m_ef00_bridge_wonjj6768",
+      "source_bootstrap_module": "generated.packages.ef00_bridge_wonjj6768",
       "catalogs": 1,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,

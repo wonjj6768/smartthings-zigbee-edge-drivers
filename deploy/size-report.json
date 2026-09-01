@@ -4564,9 +4564,9 @@
   },
   {
     "name": "ef00-lights-2-wonjj6768",
-    "raw_size": 435344,
+    "raw_size": 436420,
     "under_limit": true,
-    "free_bytes": 88944,
+    "free_bytes": 87868,
     "meets_headroom": true,
     "profiles": [
       "lights-color-skydance-wz5-rgb",

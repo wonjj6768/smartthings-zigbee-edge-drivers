@@ -282,13 +282,16 @@ local gl_spi = {
     },
   },
   runtime_start = function(device)
-    if type(device.get_latest_state) == "function" and
-        device:get_latest_state("main", "colorControl", "hue") == nil then
-      emit_color_state(
-        device,
-        latest(device, HUE_FIELD, "colorControl", "hue", 0),
-        latest(device, SATURATION_FIELD, "colorControl", "saturation", 100)
-      )
+    if type(device.get_latest_state) == "function" then
+      local hue = device:get_latest_state("main", "colorControl", "hue")
+      local saturation = device:get_latest_state("main", "colorControl", "saturation")
+      if hue == nil or saturation == nil then
+        emit_color_state(
+          device,
+          latest(device, HUE_FIELD, "colorControl", "hue", 0),
+          latest(device, SATURATION_FIELD, "colorControl", "saturation", 100)
+        )
+      end
     end
     return true
   end,

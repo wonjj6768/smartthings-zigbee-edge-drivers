@@ -2767,9 +2767,9 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 384135,
+    "raw_size": 384613,
     "under_limit": true,
-    "free_bytes": 140153,
+    "free_bytes": 139675,
     "meets_headroom": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -2819,7 +2819,7 @@
       "safety-water-leak-battery",
       "safety-water-leak-illuminance-battery-zg223z"
     ],
-    "fingerprints": 99,
+    "fingerprints": 100,
     "custom_capabilities": {
       "numeric": 35,
       "enum": 105,

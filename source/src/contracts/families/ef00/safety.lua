@@ -659,9 +659,15 @@ register_device_definition(smoke_model_288wz, device_helpers.create_fingerprints
 -- ══════════════════════════════════════════════════════════════
 local smoke_co = {
   profile = "safety-smoke-co-battery-state-volume-silence-alarm-smokeco",
+  query_on_configure = true,
+  query_on_announce = true,
+  bind_basic_on_configure = true,
+  force_time_updates = true,
+  time_start = "off",
   tuya.dp_enum(1, {
     name = "smoke_state",
     emit = emit_smoke_state(emit.smokeCoSmokeState()),
+    read_only = true,
     converter = converter.from_only(converter.lookup_value({
       [0] = "alarm",
       [1] = "none",
@@ -679,7 +685,7 @@ local smoke_co = {
       mute = 3,
     }),
   }),
-  tuya.dp_battery(15, { emit = emit.battery() }),
+  tuya.dp_battery(15, { emit = emit.battery(), read_only = true }),
   tuya.dp_binary(16, {
     name = "silence",
     emit = emit.smokeCoSilence(),
@@ -690,10 +696,18 @@ local smoke_co = {
     emit = emit.smokeCoAlarmSwitch(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
-  tuya.dp_carbon_monoxide(18, { emit = emit.carbon_monoxide() }),
+  tuya.dp_enum(18, {
+    name = "carbon_monoxide",
+    emit = emit.carbon_monoxide(),
+    read_only = true,
+    converter = converter.from_only(function(value)
+      return type(value) == "number" and value == 0
+    end),
+  }),
 }
 
 register_device_definition(smoke_co, device_helpers.create_fingerprints("TS0601", {
+  "_TZE2841000000_6ycgarab",
   "_TZE284_6ycgarab",
   "_TZE284_aoah6bv8",
 }))

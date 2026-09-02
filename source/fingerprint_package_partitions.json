@@ -477,6 +477,19 @@
       "newOwner": "zcl-thermostat-wonjj6768"
     }
   ],
+  "approvedFingerprintOnlyAliases": [
+    {
+      "manufacturer": "_TZE2841000000_6ycgarab",
+      "manufacturerUtf8Hex": "5f545a45323834313030303030305f3679636761726162",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-safety-wonjj6768",
+      "catalogId": "ef00.safety",
+      "catalogModule": "contracts.families.ef00.safety",
+      "profile": "safety-smoke-co-battery-state-volume-silence-alarm-smokeco",
+      "auditEvidence": "analysis/z2m_absorption_internal_audit/issue11_issue12_internal_audit.md#issue-11"
+    }
+  ],
   "baseline": {
     "path": "analysis/family_owner_ledger.json",
     "legacyPackageCount": 27,
@@ -5194,6 +5207,8 @@
     "newPackageCount": 21,
     "newCatalogCount": 79,
     "newExactCount": 284,
+    "fingerprintOnlyAliasCount": 1,
+    "runtimeExactCount": 3565,
     "movedCatalogCount": 49,
     "movedExactCount": 167,
     "historicalPartitionCount": 17

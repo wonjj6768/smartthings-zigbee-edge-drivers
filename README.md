@@ -2,7 +2,7 @@
 
 ## August 31, 2026 Update
 
-This release expands the public channel to 48 drivers and 3564 exact device fingerprints.
+This release expands the public channel to 48 drivers and 3565 exact device fingerprints.
 If a device that worked before no longer works after the August 31 update, please report it in [GitHub Issues](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues).
 Please include the manufacturer, model, current driver name, and hub logcat if available.
 
@@ -60,7 +60,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Presence General 2 wonjj6768 | `ef00-presence-general-2-wonjj6768` | 62 |
 | EF00 Presence Switch wonjj6768 | `ef00-presence-switch-wonjj6768` | 16 |
 | EF00 Safety 2 wonjj6768 | `ef00-safety-2-wonjj6768` | 22 |
-| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 99 |
+| EF00 Safety wonjj6768 | `ef00-safety-wonjj6768` | 100 |
 | EF00 Screen Switch wonjj6768 | `ef00-screen-switch-wonjj6768` | 8 |
 | EF00 Sensors 2 wonjj6768 | `ef00-sensors-2-wonjj6768` | 8 |
 | EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 155 |
@@ -982,7 +982,7 @@ Category driver for newly absorbed exact EF00 safety, alarm, and siren fingerpri
 </details>
 
 <details>
-<summary>EF00 Safety wonjj6768 (99 fingerprints)</summary>
+<summary>EF00 Safety wonjj6768 (100 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas, water leak, contact, and vibration sensors.
 
@@ -1061,6 +1061,7 @@ Development driver; report issues with hub logcat. Supports EF00 smoke, CO, gas,
 | `_TZE204_vawy74yh` | `TS0601` | `safety-smoke-battery-state-battery-self-test-silence-hs2sa` |
 | `_TZE204_yojqa8xn` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
 | `_TZE204_zougpkpy` | `TS0601` | `safety-gas-detector-alarm-time-ringtone` |
+| `_TZE2841000000_6ycgarab` | `TS0601` | `safety-smoke-co-battery-state-volume-silence-alarm-smokeco` |
 | `_TZE2841000000_rccxox8p` | `TS0601` | `safety-smoke-battery-concentration-fault-silence-test-pa44z` |
 | `_TZE284_0zaf1cr8` | `TS0601` | `safety-smoke-tamper-battery-low` |
 | `_TZE284_4cqhd2ha` | `TS0601` | `safety-acceleration-4cqhd2ha` |

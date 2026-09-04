@@ -32,7 +32,7 @@ components:
         version: 1
       - id: concertmirror08464.cgr0HolidayTemperature
         version: 1
-      - id: concertmirror08464.cgr0TempCalibration
+      - id: concertmirror08464.cgr0LocalTempCalibration
         version: 1
       - id: concertmirror08464.cgr0BoostHeating
         version: 1
@@ -100,7 +100,7 @@ deviceConfig:
       capability: concertmirror08464.cgr0HolidayTemperature
       version: 1
     - component: main
-      capability: concertmirror08464.cgr0TempCalibration
+      capability: concertmirror08464.cgr0LocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.cgr0BoostHeating
@@ -162,7 +162,7 @@ deviceConfig:
         capability: concertmirror08464.cgr0HolidayTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.cgr0TempCalibration
+        capability: concertmirror08464.cgr0LocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.cgr0BoostHeating
@@ -208,7 +208,7 @@ deviceConfig:
         capability: concertmirror08464.cgr0HolidayTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.cgr0TempCalibration
+        capability: concertmirror08464.cgr0LocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.cgr0BoostHeating

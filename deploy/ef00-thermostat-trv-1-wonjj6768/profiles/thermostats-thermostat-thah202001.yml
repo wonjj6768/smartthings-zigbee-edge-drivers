@@ -30,7 +30,7 @@ components:
         version: 1
       - id: concertmirror08464.thahAwayTemperature
         version: 1
-      - id: concertmirror08464.thahTempCalibration
+      - id: concertmirror08464.thahLocalTempCalibration
         version: 1
       - id: concertmirror08464.thahOperatingTime
         version: 1
@@ -95,7 +95,7 @@ deviceConfig:
       capability: concertmirror08464.thahAwayTemperature
       version: 1
     - component: main
-      capability: concertmirror08464.thahTempCalibration
+      capability: concertmirror08464.thahLocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.thahOperatingTime
@@ -154,7 +154,7 @@ deviceConfig:
         capability: concertmirror08464.thahAwayTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.thahTempCalibration
+        capability: concertmirror08464.thahLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.thahOperatingTime
@@ -194,5 +194,5 @@ deviceConfig:
         capability: concertmirror08464.thahAwayTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.thahTempCalibration
+        capability: concertmirror08464.thahLocalTempCalibration
         version: 1

@@ -35,6 +35,7 @@ register_device_definition(thermostat_trv603_minimal,ef00_helpers.ts0601_fingerp
 local thermostat_variant2={
 profile="thermostats-thermostat-s366",
 package_group="trv-2",
+force_time_updates=true,
 tuya.dp_system_mode(1,{
 converter=converter.lookup_from_to({
 heat=true,
@@ -73,6 +74,7 @@ register_device_definition(thermostat_variant2,ef00_helpers.ts0601_fingerprints(
 local thermostat_variant4={
 profile="thermostats-thermostat-trv4",
 package_group="trv-2",
+force_time_updates=true,
 tuya.dp_system_mode(49,{
 converter=converter.lookup_from_to({
 off=0,
@@ -135,6 +137,7 @@ end
 local thermostat_variant14={
 profile="thermostats-thermostat-trv14",
 package_group="trv-2",
+force_time_updates=true,
 tuya.dp_system_mode(2,{
 from_device=thermostat_variant14_mode_from_preset,
 to_device=thermostat_variant14_mode_to_preset,
@@ -212,6 +215,7 @@ end
 local thermostat_gtz10={
 profile="thermostats-thermostat-gtz10",
 package_group="trv-2",
+force_time_updates=true,
 tuya.dp_system_mode(2,{
 from_device=thermostat_gtz10_mode_from_device,
 to_device=thermostat_gtz10_mode_to_device,
@@ -405,6 +409,7 @@ emit=emit.heating_setpoint("C"),
 local thermostat_tv02={
 profile="thermostats-thermostat-tv02",
 package_group="trv-2",
+force_time_updates=true,
 named_mapping={
 named_mappings={
 system_mode=tv02_system_mode_write,
@@ -574,6 +579,7 @@ orientation_map={up=0,right=1,down=2,left=3},
 hysteresis=emit.trv601Hysteresis(),
 })
 thermostat_trv601.package_group="trv-2"
+thermostat_trv601.force_time_updates=true
 register_device_definition(thermostat_trv601,ef00_helpers.ts0601_fingerprints({
 "_TZE204_rtrmfadk",
 "_TZE204_cvcu2p6e",
@@ -595,6 +601,7 @@ orientation_map={up=0,down=2},
 hysteresis=emit.trv602Hysteresis(),
 })
 thermostat_trv602.package_group="trv-2"
+thermostat_trv602.force_time_updates=true
 thermostat_trv602[#thermostat_trv602 + 1]=tuya.dp_numeric(115,{
 name="switch_deviation_eco",
 converter=converter.divide_by_pair(10),
@@ -608,6 +615,7 @@ register_device_definition(thermostat_trv602,ef00_helpers.ts0601_fingerprints({
 local thermostat_trv602z={
 profile="thermostats-thermostat-trv602z",
 package_group="trv-2",
+time_start="2000",
 tuya.dp_system_mode(2,{
 from_device=function(value)
 local lookup={

@@ -4,7 +4,7 @@ local device_helpers=require "contracts.helpers.family"
 local common=require "contracts.helpers.ef00_presence"
 local temperature_unit=require "contracts.helpers.temperature_unit"
 local converter=tuya.converter
-local device_definitions,register_device_definition=common.isolated_definition_registry(device_helpers)
+local device_definitions,register_device_definition=common.isolated_definition_registry(device_helpers.definition_registry)
 local function register_presence_definition(definitions_or_table,fingerprint_list,ranges)
 return common.register_presence_definition(
 register_device_definition,definitions_or_table,fingerprint_list,ranges
@@ -553,7 +553,7 @@ tuya.dp_presence(104,{emit=emit.presence(),converter=converter.true_false1()}),
 tuya.dp_occupancy(112,{name="occupancy",emit=emit.motion(),converter=converter.true_false0()}),
 tuya.dp_numeric(9,{
 name="closest_target_distance",
-scale=100,
+converter=converter.divide_by_pair(100),
 read_only=true,
 emit=emit.pj3201aClosestTargetDistance(),
 }),
@@ -578,17 +578,17 @@ emit=emit.pj3201aFarPresenceSensitivity(),
 }),
 tuya.dp_numeric(3,{
 name="closest_detection_distance",
-scale=100,
+converter=converter.divide_by_pair(100),
 emit=emit.pj3201aClosestDetectionDistance(),
 }),
 tuya.dp_numeric(4,{
 name="largest_movement_detection_distance",
-scale=100,
+converter=converter.divide_by_pair(100),
 emit=emit.pj3201aLargestMovementDistance(),
 }),
 tuya.dp_numeric(108,{
 name="largest_presence_detection_distance",
-scale=100,
+converter=converter.divide_by_pair(100),
 emit=emit.pj3201aLargestPresenceDistance(),
 }),
 tuya.dp_enum(106,{
@@ -602,7 +602,7 @@ emit=emit.pj3201aLedIndicator(),
 converter=converter.lookup_from_to({on=false,off=true}),
 }),
 },
-query_on_configure=true,
+query_on_configure=false,
 }
 register_device_definition(presence_model_pj3201a,ts0601_fingerprints({
 "_TZE204_eaulras5",

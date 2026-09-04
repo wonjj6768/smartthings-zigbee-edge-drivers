@@ -5,8 +5,8 @@ local ef00_helpers = require "contracts.helpers.ef00"
 
 local converter = tuya.converter
 
-local function isolated_definition_registry(device_helpers)
-  local shared_definitions, shared_register = device_helpers.definition_registry()
+local function isolated_definition_registry(definition_registry)
+  local shared_definitions, shared_register = definition_registry()
   local device_definitions = {}
 
   local function register_device_definition(definition, fingerprints)

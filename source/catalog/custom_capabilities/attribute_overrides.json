@@ -5220,10 +5220,6 @@
     "deviceTemperature"
   ],
   [
-    "floorTempCalibration",
-    "temperatureCalibration"
-  ],
-  [
     "floorDeadzoneTemperature",
     "deadzoneTemperature"
   ],
@@ -5654,10 +5650,6 @@
   [
     "hy08weAwayTemperature",
     "awayTemperature"
-  ],
-  [
-    "hy08weTempCalibration",
-    "temperatureCalibration"
   ],
   [
     "hy08weHysteresis",
@@ -13254,5 +13246,169 @@
   [
     "tuyaTs0210Sensitivity",
     "sensitivity"
+  ],
+  [
+    "tyg21zChannel1Countdown",
+    "countdownOne"
+  ],
+  [
+    "tyg21zChannel2Countdown",
+    "countdownTwo"
+  ],
+  [
+    "tyg31zChannel1Countdown",
+    "countdownOne"
+  ],
+  [
+    "tyg31zChannel2Countdown",
+    "countdownTwo"
+  ],
+  [
+    "tyg31zChannel3Countdown",
+    "countdownThree"
+  ],
+  [
+    "tyg41zChannel1Countdown",
+    "countdownOne"
+  ],
+  [
+    "tyg41zChannel2Countdown",
+    "countdownTwo"
+  ],
+  [
+    "tyg41zChannel3Countdown",
+    "countdownThree"
+  ],
+  [
+    "tyg41zChannel4Countdown",
+    "countdownFour"
+  ],
+  [
+    "tyg61zChannel1Countdown",
+    "countdownOne"
+  ],
+  [
+    "tyg61zChannel2Countdown",
+    "countdownTwo"
+  ],
+  [
+    "tyg61zChannel3Countdown",
+    "countdownThree"
+  ],
+  [
+    "tyg61zChannel4Countdown",
+    "countdownFour"
+  ],
+  [
+    "tyg61zChannel5Countdown",
+    "countdownFive"
+  ],
+  [
+    "tyg61zChannel6Countdown",
+    "countdownSix"
+  ],
+  [
+    "sw82Channel1Countdown",
+    "countdownOne"
+  ],
+  [
+    "sw82Channel2Countdown",
+    "countdownTwo"
+  ],
+  [
+    "sw82Channel3Countdown",
+    "countdownThree"
+  ],
+  [
+    "sw82Channel4Countdown",
+    "countdownFour"
+  ],
+  [
+    "sw82Channel5Countdown",
+    "countdownFive"
+  ],
+  [
+    "sw82Channel6Countdown",
+    "countdownSix"
+  ],
+  [
+    "sw82Channel7Countdown",
+    "countdownSeven"
+  ],
+  [
+    "sw82Channel8Countdown",
+    "countdownEight"
+  ],
+  [
+    "f3proLed1Brightness",
+    "ledBrightnessOne"
+  ],
+  [
+    "f3proLed2Brightness",
+    "ledBrightnessTwo"
+  ],
+  [
+    "f3proLed3Brightness",
+    "ledBrightnessThree"
+  ],
+  [
+    "f3proLed4Brightness",
+    "ledBrightnessFour"
+  ],
+  [
+    "f3proLed1Warmth",
+    "ledWarmthOne"
+  ],
+  [
+    "f3proLed2Warmth",
+    "ledWarmthTwo"
+  ],
+  [
+    "f3proLed3Warmth",
+    "ledWarmthThree"
+  ],
+  [
+    "f3proLed4Warmth",
+    "ledWarmthFour"
+  ],
+  [
+    "tbgeLocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "tbgeWindowOpenStatus",
+    "windowOpenStatus"
+  ],
+  [
+    "cgr0LocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "trv603wzLocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "thahLocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "l2tfLocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "khahLocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "pro900zLocalTempCalibration",
+    "localTemperatureCalibration"
+  ],
+  [
+    "usb4gProducedEnergyStatus",
+    "producedEnergy"
+  ],
+  [
+    "th2aaaBatteryStateV2",
+    "batteryState"
   ]
 ]

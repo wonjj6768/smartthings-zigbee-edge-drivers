@@ -18,7 +18,7 @@ components:
         version: 1
       - id: concertmirror08464.l2tfMaxTemperatureLimit
         version: 1
-      - id: concertmirror08464.l2tfTempCalibration
+      - id: concertmirror08464.l2tfLocalTempCalibration
         version: 1
       - id: concertmirror08464.l2tfDeadzoneTemperature
         version: 1
@@ -65,7 +65,7 @@ deviceConfig:
       capability: concertmirror08464.l2tfMaxTemperatureLimit
       version: 1
     - component: main
-      capability: concertmirror08464.l2tfTempCalibration
+      capability: concertmirror08464.l2tfLocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.l2tfDeadzoneTemperature
@@ -106,7 +106,7 @@ deviceConfig:
         capability: concertmirror08464.l2tfMaxTemperatureLimit
         version: 1
       - component: main
-        capability: concertmirror08464.l2tfTempCalibration
+        capability: concertmirror08464.l2tfLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.l2tfDeadzoneTemperature
@@ -137,7 +137,7 @@ deviceConfig:
         capability: concertmirror08464.l2tfMaxTemperatureLimit
         version: 1
       - component: main
-        capability: concertmirror08464.l2tfTempCalibration
+        capability: concertmirror08464.l2tfLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.l2tfDeadzoneTemperature

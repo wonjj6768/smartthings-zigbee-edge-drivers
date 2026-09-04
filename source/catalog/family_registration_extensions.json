@@ -121,7 +121,7 @@
           "common"
         ]
       },
-      "dynamicEventMemberSha256": "56667e9303ba09a730f82fe6964e3e5500dd761dd2fd368253e7933fba024812"
+      "dynamicEventMemberSha256": "9d3fa7dad20446a05571650a468d4dd369c3a3924e40f163220b134583512c0d"
     },
     "contracts.families.ef00.safety.z2m_absorption": {
       "id": "ef00.safety.z2m_absorption",
@@ -1044,7 +1044,7 @@
         ]
       },
       "converterDeclarations": 1,
-      "dynamicEventMemberSha256": "ce8c4dd9d2767f86132adb59e6fa4cedc4519e03d0789c41c05042e8799b3d2c"
+      "dynamicEventMemberSha256": "344a95c8fb0dc69c6ceca6948bb663dc2cda2aee9dc7c0e460ad192bd1877ceb"
     },
     "contracts.families.zcl.lights.wave19_exact_aliases": {
       "id": "zcl.lights.wave19_exact_aliases",

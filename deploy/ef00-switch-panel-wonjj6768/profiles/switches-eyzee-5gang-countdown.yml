@@ -18,16 +18,6 @@ components:
         version: 1
       - id: concertmirror08464.eyzee5gSwitch5Restart
         version: 1
-      - id: concertmirror08464.eyzee5gCountdown1
-        version: 1
-      - id: concertmirror08464.eyzee5gCountdown2
-        version: 1
-      - id: concertmirror08464.eyzee5gCountdown3
-        version: 1
-      - id: concertmirror08464.eyzee5gCountdown4
-        version: 1
-      - id: concertmirror08464.eyzee5gCountdown5
-        version: 1
       - id: refresh
         version: 1
     categories:
@@ -99,21 +89,6 @@ deviceConfig:
       capability: concertmirror08464.eyzee5gSwitch5Restart
       version: 1
     - component: main
-      capability: concertmirror08464.eyzee5gCountdown1
-      version: 1
-    - component: main
-      capability: concertmirror08464.eyzee5gCountdown2
-      version: 1
-    - component: main
-      capability: concertmirror08464.eyzee5gCountdown3
-      version: 1
-    - component: main
-      capability: concertmirror08464.eyzee5gCountdown4
-      version: 1
-    - component: main
-      capability: concertmirror08464.eyzee5gCountdown5
-      version: 1
-    - component: main
       capability: refresh
       version: 1
     - component: switch2
@@ -154,21 +129,6 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.eyzee5gSwitch5Restart
         version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown1
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown2
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown3
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown4
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown5
-        version: 1
       - component: switch2
         capability: switch
         version: 1
@@ -205,21 +165,6 @@ deviceConfig:
         version: 1
       - component: main
         capability: concertmirror08464.eyzee5gSwitch5Restart
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown1
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown2
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown3
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown4
-        version: 1
-      - component: main
-        capability: concertmirror08464.eyzee5gCountdown5
         version: 1
       - component: switch2
         capability: switch

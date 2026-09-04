@@ -24,7 +24,7 @@ components:
         version: 1
       - id: concertmirror08464.khahLowTempSetting
         version: 1
-      - id: concertmirror08464.khahTempCalibration
+      - id: concertmirror08464.khahLocalTempCalibration
         version: 1
       - id: concertmirror08464.khahReturnDifference
         version: 1
@@ -84,7 +84,7 @@ deviceConfig:
       capability: concertmirror08464.khahLowTempSetting
       version: 1
     - component: main
-      capability: concertmirror08464.khahTempCalibration
+      capability: concertmirror08464.khahLocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.khahReturnDifference
@@ -140,7 +140,7 @@ deviceConfig:
         capability: concertmirror08464.khahLowTempSetting
         version: 1
       - component: main
-        capability: concertmirror08464.khahTempCalibration
+        capability: concertmirror08464.khahLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.khahReturnDifference
@@ -186,7 +186,7 @@ deviceConfig:
         capability: concertmirror08464.khahLowTempSetting
         version: 1
       - component: main
-        capability: concertmirror08464.khahTempCalibration
+        capability: concertmirror08464.khahLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.khahReturnDifference

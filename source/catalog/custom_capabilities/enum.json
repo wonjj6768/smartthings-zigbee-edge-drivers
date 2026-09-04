@@ -1521,7 +1521,7 @@
   [
     "ern9TemperatureUnit",
     true,
-    "ern9_temperature_unit",
+    "temperature_unit",
     [
       "celsius",
       "fahrenheit"
@@ -1550,7 +1550,7 @@
   [
     "th2aaaTemperatureUnit",
     true,
-    "th2aaa_temperature_unit",
+    "temperature_unit",
     [
       "celsius",
       "fahrenheit"
@@ -1569,7 +1569,7 @@
   [
     "tuyaSoilRawTemperatureUnit",
     true,
-    "tuya_soil_raw_temperature_unit",
+    "temperature_unit",
     [
       "celsius",
       "fahrenheit"
@@ -1588,7 +1588,7 @@
   [
     "tuyaSoilScaledTemperatureUnit",
     true,
-    "tuya_soil_scaled_temperature_unit",
+    "temperature_unit",
     [
       "celsius",
       "fahrenheit"
@@ -1621,7 +1621,7 @@
   [
     "sgs02zTemperatureUnit",
     true,
-    "sgs02z_temperature_unit",
+    "temperature_unit",
     [
       "celsius",
       "fahrenheit"
@@ -2783,7 +2783,7 @@
   [
     "mtd085Sensor",
     true,
-    "sensor_state",
+    "sensor",
     [
       "on",
       "occupied",
@@ -5679,7 +5679,7 @@
   [
     "mtd285GateEnable01",
     true,
-    "gate_enable",
+    "gate_enable_01",
     [
       "disable",
       "enable"
@@ -5688,7 +5688,7 @@
   [
     "mtd285GateEnable02",
     true,
-    "gate_enable",
+    "gate_enable_02",
     [
       "disable",
       "enable"
@@ -5697,7 +5697,7 @@
   [
     "mtd285GateEnable03",
     true,
-    "gate_enable",
+    "gate_enable_03",
     [
       "disable",
       "enable"
@@ -5706,7 +5706,7 @@
   [
     "mtd285GateEnable04",
     true,
-    "gate_enable",
+    "gate_enable_04",
     [
       "disable",
       "enable"
@@ -5715,7 +5715,7 @@
   [
     "mtd285GateEnable05",
     true,
-    "gate_enable",
+    "gate_enable_05",
     [
       "disable",
       "enable"
@@ -5724,7 +5724,7 @@
   [
     "mtd285GateEnable06",
     true,
-    "gate_enable",
+    "gate_enable_06",
     [
       "disable",
       "enable"
@@ -5733,7 +5733,7 @@
   [
     "mtd285GateEnable07",
     true,
-    "gate_enable",
+    "gate_enable_07",
     [
       "disable",
       "enable"
@@ -5742,7 +5742,7 @@
   [
     "mtd285GateEnable08",
     true,
-    "gate_enable",
+    "gate_enable_08",
     [
       "disable",
       "enable"
@@ -5751,7 +5751,7 @@
   [
     "mtd285GateEnable09",
     true,
-    "gate_enable",
+    "gate_enable_09",
     [
       "disable",
       "enable"
@@ -5760,7 +5760,7 @@
   [
     "mtd285GateEnable10",
     true,
-    "gate_enable",
+    "gate_enable_10",
     [
       "disable",
       "enable"
@@ -5769,7 +5769,7 @@
   [
     "mtd285GateEnable11",
     true,
-    "gate_enable",
+    "gate_enable_11",
     [
       "disable",
       "enable"
@@ -6466,7 +6466,7 @@
   [
     "khahHighTempProtection",
     true,
-    "high_temperature_protection",
+    "high_temperature_protection_state",
     [
       "off",
       "on"
@@ -6475,7 +6475,7 @@
   [
     "khahLowTempProtection",
     true,
-    "low_temperature_protection",
+    "low_temperature_protection_state",
     [
       "off",
       "on"
@@ -8186,7 +8186,7 @@
   [
     "to6Mode1",
     true,
-    "mode_one",
+    "mode_l1",
     [
       "switch",
       "scene"
@@ -8195,7 +8195,7 @@
   [
     "to6Mode2",
     true,
-    "mode_two",
+    "mode_l2",
     [
       "switch",
       "scene"
@@ -8204,7 +8204,7 @@
   [
     "to6Mode3",
     true,
-    "mode_three",
+    "mode_l3",
     [
       "switch",
       "scene"
@@ -8213,7 +8213,7 @@
   [
     "to6Mode4",
     true,
-    "mode_four",
+    "mode_l4",
     [
       "switch",
       "scene"
@@ -8222,7 +8222,7 @@
   [
     "to6Mode5",
     true,
-    "mode_five",
+    "mode_l5",
     [
       "switch",
       "scene"
@@ -8231,7 +8231,7 @@
   [
     "to6Mode6",
     true,
-    "mode_six",
+    "mode_l6",
     [
       "switch",
       "scene"
@@ -8285,7 +8285,7 @@
   [
     "m9slSwitchMode1",
     true,
-    "switch_mode_one",
+    "switch_mode_l1",
     [
       "switch",
       "scene"
@@ -8294,7 +8294,7 @@
   [
     "m9slSwitchMode2",
     true,
-    "switch_mode_two",
+    "switch_mode_l2",
     [
       "switch",
       "scene"
@@ -8303,7 +8303,7 @@
   [
     "m9slSwitchMode3",
     true,
-    "switch_mode_three",
+    "switch_mode_l3",
     [
       "switch",
       "scene"
@@ -8312,7 +8312,7 @@
   [
     "m9slSwitchMode4",
     true,
-    "switch_mode_four",
+    "switch_mode_l4",
     [
       "switch",
       "scene"
@@ -8321,7 +8321,7 @@
   [
     "m9slPowerOnBehavior0",
     true,
-    "power_on_behavior_zero",
+    "power_on_behavior_l0",
     [
       "off",
       "on",
@@ -8331,7 +8331,7 @@
   [
     "m9slPowerOnBehavior1",
     true,
-    "power_on_behavior_one",
+    "power_on_behavior_l1",
     [
       "off",
       "on",
@@ -8341,7 +8341,7 @@
   [
     "m9slPowerOnBehavior2",
     true,
-    "power_on_behavior_two",
+    "power_on_behavior_l2",
     [
       "off",
       "on",
@@ -8351,7 +8351,7 @@
   [
     "m9slPowerOnBehavior3",
     true,
-    "power_on_behavior_three",
+    "power_on_behavior_l3",
     [
       "off",
       "on",
@@ -8361,7 +8361,7 @@
   [
     "m9slPowerOnBehavior4",
     true,
-    "power_on_behavior_four",
+    "power_on_behavior_l4",
     [
       "off",
       "on",
@@ -8965,7 +8965,7 @@
   [
     "m98gPowerOnBehavior1",
     true,
-    "power_on_behavior_one",
+    "power_on_behavior_l1",
     [
       "off",
       "on",
@@ -8975,7 +8975,7 @@
   [
     "m98gPowerOnBehavior2",
     true,
-    "power_on_behavior_two",
+    "power_on_behavior_l2",
     [
       "off",
       "on",
@@ -8985,7 +8985,7 @@
   [
     "m98gPowerOnBehavior3",
     true,
-    "power_on_behavior_three",
+    "power_on_behavior_l3",
     [
       "off",
       "on",
@@ -8995,7 +8995,7 @@
   [
     "m98gPowerOnBehavior4",
     true,
-    "power_on_behavior_four",
+    "power_on_behavior_l4",
     [
       "off",
       "on",
@@ -9005,7 +9005,7 @@
   [
     "m98gPowerOnBehavior5",
     true,
-    "power_on_behavior_five",
+    "power_on_behavior_l5",
     [
       "off",
       "on",
@@ -9015,7 +9015,7 @@
   [
     "m98gPowerOnBehavior6",
     true,
-    "power_on_behavior_six",
+    "power_on_behavior_l6",
     [
       "off",
       "on",
@@ -9025,7 +9025,7 @@
   [
     "lcd4gMode1",
     true,
-    "mode_one",
+    "mode_l1",
     [
       "switch",
       "scene",
@@ -9035,7 +9035,7 @@
   [
     "lcd4gMode2",
     true,
-    "mode_two",
+    "mode_l2",
     [
       "switch",
       "scene",
@@ -9045,7 +9045,7 @@
   [
     "lcd4gMode3",
     true,
-    "mode_three",
+    "mode_l3",
     [
       "switch",
       "scene",
@@ -9055,7 +9055,7 @@
   [
     "lcd4gMode4",
     true,
-    "mode_four",
+    "mode_l4",
     [
       "switch",
       "scene",
@@ -9094,7 +9094,7 @@
   [
     "usb4gBacklight",
     true,
-    "backlight_switch",
+    "switch_backlight",
     [
       "off",
       "on"
@@ -9150,7 +9150,7 @@
   [
     "pn16SwitchTypeOneToEight",
     true,
-    "switch_type_one_to_eight",
+    "switch_type_l1_l8",
     [
       "momentary",
       "toggle",
@@ -9160,7 +9160,7 @@
   [
     "pn16SwitchTypeNineToSixteen",
     true,
-    "switch_type_nine_to_sixteen",
+    "switch_type_l9_l16",
     [
       "momentary",
       "toggle",
@@ -9170,7 +9170,7 @@
   [
     "pn16SwitchModeElevenTwelve",
     true,
-    "switch_mode_eleven_twelve",
+    "switch_mode_l11_l12",
     [
       "switch",
       "curtain"
@@ -9179,7 +9179,7 @@
   [
     "pn16SwitchModeThirteenFourteen",
     true,
-    "switch_mode_thirteen_fourteen",
+    "switch_mode_l13_l14",
     [
       "switch",
       "curtain"
@@ -9188,7 +9188,7 @@
   [
     "pn16SwitchModeFifteenSixteen",
     true,
-    "switch_mode_fifteen_sixteen",
+    "switch_mode_l15_l16",
     [
       "switch",
       "curtain"
@@ -9235,7 +9235,7 @@
   [
     "f3proLedSwitch1",
     true,
-    "led_switch_one",
+    "led_switch_l1",
     [
       "off",
       "on"
@@ -9244,7 +9244,7 @@
   [
     "f3proCoverState1",
     true,
-    "cover_state_one",
+    "cover_state_l1",
     [
       "open",
       "stop",
@@ -9254,7 +9254,7 @@
   [
     "f3proLedSwitch2",
     true,
-    "led_switch_two",
+    "led_switch_l2",
     [
       "off",
       "on"
@@ -9263,7 +9263,7 @@
   [
     "f3proCoverState2",
     true,
-    "cover_state_two",
+    "cover_state_l2",
     [
       "open",
       "stop",
@@ -9273,7 +9273,7 @@
   [
     "f3proLedSwitch3",
     true,
-    "led_switch_three",
+    "led_switch_l3",
     [
       "off",
       "on"
@@ -9282,7 +9282,7 @@
   [
     "f3proCoverState3",
     true,
-    "cover_state_three",
+    "cover_state_l3",
     [
       "open",
       "stop",
@@ -9292,7 +9292,7 @@
   [
     "f3proLedSwitch4",
     true,
-    "led_switch_four",
+    "led_switch_l4",
     [
       "off",
       "on"
@@ -9301,7 +9301,7 @@
   [
     "f3proCoverState4",
     true,
-    "cover_state_four",
+    "cover_state_l4",
     [
       "open",
       "stop",
@@ -16439,6 +16439,25 @@
     [
       "clear",
       "active"
+    ]
+  ],
+  [
+    "tbgeWindowOpenStatus",
+    false,
+    "window_open",
+    [
+      "off",
+      "on"
+    ]
+  ],
+  [
+    "th2aaaBatteryStateV2",
+    false,
+    "battery_state",
+    [
+      "low",
+      "medium",
+      "high"
     ]
   ]
 ]

@@ -34,6 +34,7 @@ register_device_definition(alecto_smart_heat10, {
 
 local saswell_legacy = {
   profile = "thermostats-thermostat-saswell",
+  bind_basic_on_configure = true,
   named_mapping = {
     named_mappings = {
       system_mode = thermostat_common.binary_power_schedule_mode_write(101, 108),
@@ -56,6 +57,7 @@ local saswell_legacy = {
     name = "local_temperature_calibration",
     emit = emit.saswellTempCalibration(),
     converter = converter.signed_number_pair(1),
+    signed = true,
   }),
   tuya.dp_binary(40, {
     name = "child_lock",

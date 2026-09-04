@@ -2,7 +2,7 @@
 
 ## August 31, 2026 Update
 
-This release expands the public channel to 48 drivers and 3565 exact device fingerprints.
+This release expands the public channel to 48 drivers and 3563 exact device fingerprints.
 If a device that worked before no longer works after the August 31 update, please report it in [GitHub Issues](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues).
 Please include the manufacturer, model, current driver name, and hub logcat if available.
 
@@ -65,14 +65,14 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Sensors 2 wonjj6768 | `ef00-sensors-2-wonjj6768` | 8 |
 | EF00 Sensors wonjj6768 | `ef00-sensors-wonjj6768` | 155 |
 | EF00 Switch 2 wonjj6768 | `ef00-switch-2-wonjj6768` | 48 |
-| EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 39 |
+| EF00 Switch Panel wonjj6768 | `ef00-switch-panel-wonjj6768` | 38 |
 | EF00 Switch wonjj6768 | `ef00-switch-wonjj6768` | 111 |
 | EF00 Thermostat FCU wonjj6768 | `ef00-thermostat-fcu-wonjj6768` | 40 |
 | EF00 Thermostat HVAC 2 wonjj6768 | `ef00-thermostat-hvac-2-wonjj6768` | 18 |
 | EF00 Thermostat TRV 1 wonjj6768 | `ef00-thermostat-trv-1-wonjj6768` | 71 |
 | EF00 Thermostat TRV 2 wonjj6768 | `ef00-thermostat-trv-2-wonjj6768` | 34 |
 | EF00 Thermostat TRV 3 wonjj6768 | `ef00-thermostat-trv-3-wonjj6768` | 34 |
-| EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 43 |
+| EF00 Thermostat Wall wonjj6768 | `ef00-thermostat-wall-wonjj6768` | 42 |
 | EF00 Valves 2 wonjj6768 | `ef00-valves-2-wonjj6768` | 19 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 30 |
 | ZCL Bridge wonjj6768 | `zcl-bridge-wonjj6768` | 3 |
@@ -1351,7 +1351,7 @@ Category driver for newly absorbed exact EF00 switch, panel, and screen-switch f
 </details>
 
 <details>
-<summary>EF00 Switch Panel wonjj6768 (39 fingerprints)</summary>
+<summary>EF00 Switch Panel wonjj6768 (38 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 touch panel and scene panel switches.
 
@@ -1387,7 +1387,6 @@ Development driver; report issues with hub logcat. Supports EF00 touch panel and
 | `_TZE284_atuj3i0w` | `TS0601` | `switches-switch-4-lcd-panel` |
 | `_TZE284_hyssaqjk` | `TS0601` | `switches-switch-6-touch-panel` |
 | `_TZE284_idn2htgu` | `TS0601` | `switches-switch-4-f3-pro` |
-| `_TZE284_iwyqtclw` | `TS0601` | `switches-switch-4-lcd-panel` |
 | `_TZE284_nvodulvi` | `TS0601` | `switches-switch-8-m9-sl` |
 | `_TZE284_tokhh9pf` | `TS0601` | `switches-switch-6-touch-panel` |
 | `_TZE284_yrwmnya3` | `TS0601` | `switches-switch-4-m9-sl` |
@@ -1768,7 +1767,7 @@ Category driver for newly absorbed exact EF00 TRV fingerprints.
 </details>
 
 <details>
-<summary>EF00 Thermostat Wall wonjj6768 (43 fingerprints)</summary>
+<summary>EF00 Thermostat Wall wonjj6768 (42 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports EF00 wall and floor thermostats.
 
@@ -1780,7 +1779,6 @@ Development driver; report issues with hub logcat. Supports EF00 wall and floor 
 | `_TZE200_edl8pz1k` | `TS0601` | `thermostats-thermostat-floor` |
 | `_TZE200_g9a3awaj` | `TS0601` | `thermostats-thermostat-zwt07` |
 | `_TZE200_ha0vwoew` | `TS0601` | `thermostats-thermostat-thermosphere` |
-| `_TZE200_spyvfeti` | `TS0601` | `thermostats-thermostat-floor` |
 | `_TZE200_u9bfwha0` | `TS0601` | `thermostats-bht002-fine` |
 | `_TZE200_viy9ihs7` | `TS0601` | `thermostats-thermostat-zwt198` |
 | `_TZE200_ye5jkfsb` | `TS0601` | `thermostats-bht002-fine` |

@@ -212,6 +212,7 @@ register_device_definition(thermostat_zwt198_swapped_workday,ef00_helpers.ts0601
 }))
 local thermostat_zwt100={
 profile="thermostats-thermostat-zwt100",
+force_time_updates=true,
 tuya.dp_on_off(1,{name="state",emit=emit.switch()}),
 tuya.dp_current_heating_setpoint(2,{scale=10}),
 tuya.dp_local_temperature(3,{scale=10}),
@@ -342,6 +343,7 @@ emit=emit.heating_setpoint("C"),
 })
 local thermostat_hy08we={
 profile="thermostats-thermostat-hy08we",
+time_start="2000",
 named_mapping={
 named_mappings={
 system_mode=hy08we_system_mode_write,
@@ -374,7 +376,7 @@ name="min_temperature_protection",
 emit=emit.hy08weMinTempProtection(),
 converter=converter.lookup_from_to({off=false,on=true}),
 }),
-tuya.dp_local_temperature_calibration(109,{scale=10,emit=emit.hy08weTempCalibration()}),
+tuya.dp_local_temperature_calibration(109,{scale=10,read_only=true}),
 tuya.dp_numeric(110,{
 name="hysteresis",
 converter=converter.divide_by_pair(10),
@@ -565,6 +567,7 @@ register_device_definition(thermostat_tervix,ef00_helpers.ts0601_fingerprints({
 }))
 local thermostat_x5h={
 profile="thermostats-thermostat-x5h",
+time_start="2000",
 tuya.dp_binary(1,{
 name="system_mode",
 converter=converter.lookup_from_to({
@@ -742,7 +745,7 @@ scale=10,
 read_only=true,
 emit=emit.floorDeviceTemperature(),
 }),
-tuya.dp_local_temperature_calibration(27,{scale=1,emit=emit.floorTempCalibration()}),
+tuya.dp_local_temperature_calibration(27,{scale=1,read_only=true}),
 tuya.dp_running_state(36,{
 converter=converter.lookup_from_to({
 heating=0,
@@ -765,7 +768,6 @@ register_device_definition(thermostat_floor,ef00_helpers.ts0601_fingerprints({
 "_TZE200_edl8pz1k",
 "_TZE204_edl8pz1k",
 "_TZE204_6a4vxfnv",
-"_TZE200_spyvfeti",
 }))
 local thermostat_bot_r9v={
 profile="thermostats-thermostat-bot-r9v",
@@ -824,6 +826,7 @@ register_device_definition(thermostat_bot_r9v,ef00_helpers.ts0601_fingerprints({
 }))
 local thermostat_bot_r15w={
 profile="thermostats-thermostat-battery-bot-r15w",
+respond_to_mcu_version_response=true,
 tuya.dp_binary(1,{
 name="system_mode",
 converter=converter.lookup_from_to({
@@ -868,6 +871,7 @@ register_device_definition(thermostat_bot_r15w,ef00_helpers.ts0601_fingerprints(
 }))
 local thermostat_te_1z={
 profile="thermostats-thermostat-khah2lkr",
+time_start="2000",
 tuya.dp_local_temperature(16,{scale=10}),
 tuya.dp_current_heating_setpoint(50,{scale=10}),
 tuya.dp_running_state(102,{
@@ -895,7 +899,7 @@ converter=converter.lookup_from_to({off=false,on=true}),
 }),
 tuya.dp_local_temperature_calibration(109,{
 scale=10,
-emit=emit.khahTempCalibration(),
+emit=emit.khahLocalTempCalibration(),
 }),
 tuya.dp_numeric(110,{
 name="temperature_return_difference",
@@ -1020,6 +1024,7 @@ register_device_definition(thermostat_pilot_wire,ef00_helpers.ts0601_fingerprint
 }))
 local thermostat_pro_900z={
 profile="thermostats-thermostat-pro900z",
+time_start="2000",
 tuya.dp_binary(1,{
 name="system_mode",
 converter=converter.lookup_from_to({
@@ -1040,7 +1045,7 @@ tuya.dp_current_heating_setpoint(16,{scale=10}),
 tuya.dp_max_temperature_limit(19,{name="max_temperature",emit=emit.pro900zMaxTemperature(),scale=10}),-- profile 미포함
 tuya.dp_local_temperature(24,{scale=10}),
 tuya.dp_min_temperature_limit(26,{name="min_temperature",emit=emit.pro900zMinTemperature(),scale=10}),-- profile 미포함
-tuya.dp_local_temperature_calibration(27,{scale=1,emit=emit.pro900zTempCalibration()}),
+tuya.dp_local_temperature_calibration(27,{scale=1,emit=emit.pro900zLocalTempCalibration()}),
 tuya.dp_binary(28,{name="factory_reset",emit=emit.pro900zFactoryReset()}),-- profile 미포함
 tuya.dp_running_state(36,{
 converter=converter.lookup_from_to({
@@ -1052,6 +1057,7 @@ emit=emit.thermostat_operating_state(),
 tuya.dp_child_lock(39,{emit=emit.pro900zChildLock()}),
 tuya.dp_binary(40,{name="eco_mode",emit=emit.pro900zEcoMode()}),-- profile 미포함
 tuya.dp_temperature_sensor_select_internal_external_both(43,{
+name="sensor",
 emit=emit.pro900zSensor(),
 converter=converter.lookup_from_to({
 ["in"]=0,

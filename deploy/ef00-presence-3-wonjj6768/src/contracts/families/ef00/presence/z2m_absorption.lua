@@ -3,7 +3,7 @@ local emit=require "capabilities.events.all"
 local device_helpers=require "contracts.helpers.family"
 local common=require "contracts.helpers.ef00_presence"
 local converter=tuya.converter
-local device_definitions,register_device_definition=common.isolated_definition_registry(device_helpers)
+local device_definitions,register_device_definition=common.isolated_definition_registry(device_helpers.definition_registry)
 local function register_presence_definition(definition,fingerprint_list)
 return common.register_presence_definition(
 register_device_definition,definition,fingerprint_list

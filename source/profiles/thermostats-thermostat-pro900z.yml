@@ -18,7 +18,7 @@ components:
         version: 1
       - id: concertmirror08464.pro900zSensor
         version: 1
-      - id: concertmirror08464.pro900zTempCalibration
+      - id: concertmirror08464.pro900zLocalTempCalibration
         version: 1
       - id: concertmirror08464.pro900zDeadzoneTemperature
         version: 1
@@ -79,7 +79,7 @@ deviceConfig:
       capability: concertmirror08464.pro900zSensor
       version: 1
     - component: main
-      capability: concertmirror08464.pro900zTempCalibration
+      capability: concertmirror08464.pro900zLocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.pro900zDeadzoneTemperature
@@ -141,7 +141,7 @@ deviceConfig:
         capability: concertmirror08464.pro900zSensor
         version: 1
       - component: main
-        capability: concertmirror08464.pro900zTempCalibration
+        capability: concertmirror08464.pro900zLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.pro900zDeadzoneTemperature
@@ -193,7 +193,7 @@ deviceConfig:
         capability: concertmirror08464.pro900zSensor
         version: 1
       - component: main
-        capability: concertmirror08464.pro900zTempCalibration
+        capability: concertmirror08464.pro900zLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.pro900zDeadzoneTemperature

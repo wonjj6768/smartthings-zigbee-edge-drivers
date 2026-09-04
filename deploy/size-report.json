@@ -1584,9 +1584,9 @@
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 459060,
+    "raw_size": 459160,
     "under_limit": true,
-    "free_bytes": 65228,
+    "free_bytes": 65128,
     "meets_headroom": true,
     "profiles": [
       "switches-switch-1",
@@ -1731,9 +1731,9 @@
   },
   {
     "name": "ef00-switch-panel-wonjj6768",
-    "raw_size": 432471,
+    "raw_size": 431499,
     "under_limit": true,
-    "free_bytes": 91817,
+    "free_bytes": 92789,
     "meets_headroom": true,
     "profiles": [
       "switches-eyzee-5gang-countdown",
@@ -1763,9 +1763,9 @@
       "switches-switch-8-adlblwab",
       "switches-switch-8-m9-sl"
     ],
-    "fingerprints": 39,
+    "fingerprints": 38,
     "custom_capabilities": {
-      "numeric": 68,
+      "numeric": 63,
       "enum": 115,
       "text": 1
     },
@@ -2048,9 +2048,9 @@
   },
   {
     "name": "ef00-meters-wonjj6768",
-    "raw_size": 385515,
+    "raw_size": 385730,
     "under_limit": true,
-    "free_bytes": 138773,
+    "free_bytes": 138558,
     "meets_headroom": true,
     "profiles": [
       "meters-energy-1phase-spm01",
@@ -2141,9 +2141,9 @@
   },
   {
     "name": "ef00-sensors-wonjj6768",
-    "raw_size": 433614,
+    "raw_size": 434454,
     "under_limit": true,
-    "free_bytes": 90674,
+    "free_bytes": 89834,
     "meets_headroom": true,
     "profiles": [
       "sensors-aq-co2",
@@ -2339,9 +2339,9 @@
   },
   {
     "name": "ef00-presence-general-1-wonjj6768",
-    "raw_size": 365601,
+    "raw_size": 365925,
     "under_limit": true,
-    "free_bytes": 158687,
+    "free_bytes": 158363,
     "meets_headroom": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -2425,9 +2425,9 @@
   },
   {
     "name": "ef00-presence-general-2-wonjj6768",
-    "raw_size": 439387,
+    "raw_size": 439302,
     "under_limit": true,
-    "free_bytes": 84901,
+    "free_bytes": 84986,
     "meets_headroom": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -2559,9 +2559,9 @@
   },
   {
     "name": "ef00-presence-switch-wonjj6768",
-    "raw_size": 284482,
+    "raw_size": 284492,
     "under_limit": true,
-    "free_bytes": 239806,
+    "free_bytes": 239796,
     "meets_headroom": true,
     "profiles": [
       "safety-presence-switch-illuminance-zis03",
@@ -2632,9 +2632,9 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 439525,
+    "raw_size": 439544,
     "under_limit": true,
-    "free_bytes": 84763,
+    "free_bytes": 84744,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-mtd085-illuminance",
@@ -2767,9 +2767,9 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 384613,
+    "raw_size": 385108,
     "under_limit": true,
-    "free_bytes": 139675,
+    "free_bytes": 139180,
     "meets_headroom": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -2962,9 +2962,9 @@
   },
   {
     "name": "ef00-thermostat-trv-1-wonjj6768",
-    "raw_size": 387345,
+    "raw_size": 387903,
     "under_limit": true,
-    "free_bytes": 136943,
+    "free_bytes": 136385,
     "meets_headroom": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",
@@ -3046,9 +3046,9 @@
   },
   {
     "name": "ef00-thermostat-trv-2-wonjj6768",
-    "raw_size": 370151,
+    "raw_size": 370385,
     "under_limit": true,
-    "free_bytes": 154137,
+    "free_bytes": 153903,
     "meets_headroom": true,
     "profiles": [
       "thermostats-thermostat-battery-ar331",
@@ -3126,9 +3126,9 @@
   },
   {
     "name": "ef00-thermostat-wall-wonjj6768",
-    "raw_size": 401151,
+    "raw_size": 400243,
     "under_limit": true,
-    "free_bytes": 123137,
+    "free_bytes": 124045,
     "meets_headroom": true,
     "profiles": [
       "thermostats-bht002-fine",
@@ -3148,9 +3148,9 @@
       "thermostats-thermostat-zwt100",
       "thermostats-thermostat-zwt198"
     ],
-    "fingerprints": 43,
+    "fingerprints": 42,
     "custom_capabilities": {
-      "numeric": 82,
+      "numeric": 80,
       "enum": 80,
       "text": 2
     },
@@ -3211,9 +3211,9 @@
   },
   {
     "name": "ef00-thermostat-fcu-wonjj6768",
-    "raw_size": 338842,
+    "raw_size": 339002,
     "under_limit": true,
-    "free_bytes": 185446,
+    "free_bytes": 185286,
     "meets_headroom": true,
     "profiles": [
       "thermostats-fcu-thermostat-ae669k",
@@ -5010,9 +5010,9 @@
   },
   {
     "name": "ef00-presence-3-wonjj6768",
-    "raw_size": 433822,
+    "raw_size": 433912,
     "under_limit": true,
-    "free_bytes": 90466,
+    "free_bytes": 90376,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-wave11-linptech-es1",
@@ -5319,9 +5319,9 @@
   },
   {
     "name": "ef00-thermostat-trv-3-wonjj6768",
-    "raw_size": 398093,
+    "raw_size": 398142,
     "under_limit": true,
-    "free_bytes": 126195,
+    "free_bytes": 126146,
     "meets_headroom": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",

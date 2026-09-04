@@ -36,7 +36,7 @@ components:
         version: 1
       - id: concertmirror08464.trv603wzAntifrostTemperature
         version: 1
-      - id: concertmirror08464.trv603wzTempCalibration
+      - id: concertmirror08464.trv603wzLocalTempCalibration
         version: 1
       - id: concertmirror08464.trv603wzBoostTime
         version: 1
@@ -110,7 +110,7 @@ deviceConfig:
       capability: concertmirror08464.trv603wzAntifrostTemperature
       version: 1
     - component: main
-      capability: concertmirror08464.trv603wzTempCalibration
+      capability: concertmirror08464.trv603wzLocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.trv603wzBoostTime
@@ -178,7 +178,7 @@ deviceConfig:
         capability: concertmirror08464.trv603wzAntifrostTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.trv603wzTempCalibration
+        capability: concertmirror08464.trv603wzLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.trv603wzBoostTime
@@ -230,7 +230,7 @@ deviceConfig:
         capability: concertmirror08464.trv603wzAntifrostTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.trv603wzTempCalibration
+        capability: concertmirror08464.trv603wzLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.trv603wzBoostTime

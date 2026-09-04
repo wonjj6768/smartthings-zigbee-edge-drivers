@@ -1442,7 +1442,7 @@
   [
     "tempDeltaXhCToNinetyFive",
     true,
-    "temperature_delta",
+    "deadzone_temperature",
     0.5,
     9.5,
     0.5,
@@ -2288,7 +2288,7 @@
   [
     "soilWarningThresholdLegacy",
     true,
-    "soil_warning_threshold",
+    "soil_warning",
     0,
     100,
     1,
@@ -5483,7 +5483,7 @@
   [
     "twoCtCalibrationCurrentA",
     true,
-    "calibration_current",
+    "calibration_current_a",
     0.5,
     1.5,
     0.01,
@@ -5492,7 +5492,7 @@
   [
     "twoCtCalibrationPowerA",
     true,
-    "calibration_power",
+    "calibration_power_a",
     0.5,
     1.5,
     0.01,
@@ -5501,7 +5501,7 @@
   [
     "twoCtCalibrationCurrentB",
     true,
-    "calibration_current",
+    "calibration_current_b",
     0.5,
     1.5,
     0.01,
@@ -5510,7 +5510,7 @@
   [
     "twoCtCalibrationPowerB",
     true,
-    "calibration_power",
+    "calibration_power_b",
     0.5,
     1.5,
     0.01,
@@ -6311,7 +6311,7 @@
   [
     "pj3201aLargestMovementDistance",
     true,
-    "largest_movement_distance",
+    "largest_movement_detection_distance",
     0.1,
     7,
     0.1,
@@ -6320,7 +6320,7 @@
   [
     "pj3201aLargestPresenceDistance",
     true,
-    "largest_presence_distance",
+    "largest_presence_detection_distance",
     0.1,
     7,
     0.1,
@@ -6608,7 +6608,7 @@
   [
     "saswellTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -6,
     6,
     1,
@@ -6617,7 +6617,7 @@
   [
     "trv06TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -20,
     20,
     1,
@@ -6644,7 +6644,7 @@
   [
     "trv06bTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -20,
     20,
     1,
@@ -6698,7 +6698,7 @@
   [
     "classicTrvTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     0.5,
@@ -6977,7 +6977,7 @@
   [
     "botr9vTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7328,7 +7328,7 @@
   [
     "x5hTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7359,15 +7359,6 @@
     -50,
     120,
     0.1,
-    "C"
-  ],
-  [
-    "floorTempCalibration",
-    true,
-    "temperature_calibration",
-    -9,
-    9,
-    1,
     "C"
   ],
   [
@@ -7445,7 +7436,7 @@
   [
     "pilotWireTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     1,
@@ -7490,7 +7481,7 @@
   [
     "hhstTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7589,7 +7580,7 @@
   [
     "zht002TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     1,
@@ -7616,7 +7607,7 @@
   [
     "botr15wTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7634,7 +7625,7 @@
   [
     "tgm50TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7643,7 +7634,7 @@
   [
     "twcr01TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -8,
     8,
     0.5,
@@ -7670,7 +7661,7 @@
   [
     "xixlTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7697,7 +7688,7 @@
   [
     "zwt198TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7733,7 +7724,7 @@
   [
     "zwt100TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.9,
     9.9,
     0.1,
@@ -7791,15 +7782,6 @@
     5,
     30,
     1,
-    "C"
-  ],
-  [
-    "hy08weTempCalibration",
-    true,
-    "temperature_calibration",
-    -9.9,
-    9.9,
-    0.1,
     "C"
   ],
   [
@@ -7886,7 +7868,7 @@
   [
     "trv1TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -30,
     30,
     0.1,
@@ -7922,7 +7904,7 @@
   [
     "ar331proTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -7,
     7,
     0.5,
@@ -8021,7 +8003,7 @@
   [
     "zgwkdaTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     1,
@@ -8030,7 +8012,7 @@
   [
     "tv02TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -5,
     5,
     0.1,
@@ -8111,7 +8093,7 @@
   [
     "bac003TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     1,
@@ -8120,7 +8102,7 @@
   [
     "tybacTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     0.5,
@@ -8246,7 +8228,7 @@
   [
     "trv601TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -30,
     30,
     0.1,
@@ -8282,7 +8264,7 @@
   [
     "trv602TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -30,
     30,
     0.1,
@@ -8327,7 +8309,7 @@
   [
     "trv602zTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -10,
     10,
     0.1,
@@ -8381,7 +8363,7 @@
   [
     "trm3zTempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.5,
     9.5,
     0.5,
@@ -8417,7 +8399,7 @@
   [
     "trv14TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9.5,
     9.5,
     0.5,
@@ -8498,7 +8480,7 @@
   [
     "gtz10TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -9,
     9,
     0.5,
@@ -8561,7 +8543,7 @@
   [
     "trv4TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -12,
     12,
     1,
@@ -8570,7 +8552,7 @@
   [
     "s366TempCalibration",
     true,
-    "temperature_calibration",
+    "local_temperature_calibration",
     -5,
     5,
     0.1,
@@ -8588,7 +8570,7 @@
   [
     "to6Countdown1",
     true,
-    "countdown_one",
+    "countdown_l1",
     0,
     43200,
     1,
@@ -8597,7 +8579,7 @@
   [
     "to6Countdown2",
     true,
-    "countdown_two",
+    "countdown_l2",
     0,
     43200,
     1,
@@ -8606,7 +8588,7 @@
   [
     "to6Countdown3",
     true,
-    "countdown_three",
+    "countdown_l3",
     0,
     43200,
     1,
@@ -8615,7 +8597,7 @@
   [
     "to6Countdown4",
     true,
-    "countdown_four",
+    "countdown_l4",
     0,
     43200,
     1,
@@ -8624,7 +8606,7 @@
   [
     "to6Countdown5",
     true,
-    "countdown_five",
+    "countdown_l5",
     0,
     43200,
     1,
@@ -8633,7 +8615,7 @@
   [
     "to6Countdown6",
     true,
-    "countdown_six",
+    "countdown_l6",
     0,
     43200,
     1,
@@ -8642,7 +8624,7 @@
   [
     "to6Inching1",
     true,
-    "inching_one",
+    "inching_l1",
     0,
     3600,
     1,
@@ -8651,7 +8633,7 @@
   [
     "to6Inching2",
     true,
-    "inching_two",
+    "inching_l2",
     0,
     3600,
     1,
@@ -8660,7 +8642,7 @@
   [
     "to6Inching3",
     true,
-    "inching_three",
+    "inching_l3",
     0,
     3600,
     1,
@@ -8669,7 +8651,7 @@
   [
     "to6Inching4",
     true,
-    "inching_four",
+    "inching_l4",
     0,
     3600,
     1,
@@ -8678,7 +8660,7 @@
   [
     "to6Inching5",
     true,
-    "inching_five",
+    "inching_l5",
     0,
     3600,
     1,
@@ -8687,7 +8669,7 @@
   [
     "to6Inching6",
     true,
-    "inching_six",
+    "inching_l6",
     0,
     3600,
     1,
@@ -8705,7 +8687,7 @@
   [
     "rjvxTempCSetpoint",
     true,
-    "temperature_celsius_setpoint",
+    "temperature_c_setpoint",
     -20,
     102,
     0.5,
@@ -8714,7 +8696,7 @@
   [
     "rjvxTempFSetpoint",
     true,
-    "temperature_fahrenheit_setpoint",
+    "temperature_f_setpoint",
     -4,
     221,
     0.5,
@@ -8777,7 +8759,7 @@
   [
     "cb2gCountdown1",
     true,
-    "countdown_one",
+    "countdown_l1",
     0,
     86400,
     1,
@@ -8786,7 +8768,7 @@
   [
     "cb2gCountdown2",
     true,
-    "countdown_two",
+    "countdown_l2",
     0,
     86400,
     1,
@@ -8804,7 +8786,7 @@
   [
     "cb3gCountdown1",
     true,
-    "countdown_one",
+    "countdown_l1",
     0,
     86400,
     1,
@@ -8813,7 +8795,7 @@
   [
     "cb3gCountdown2",
     true,
-    "countdown_two",
+    "countdown_l2",
     0,
     86400,
     1,
@@ -8822,7 +8804,7 @@
   [
     "cb3gCountdown3",
     true,
-    "countdown_three",
+    "countdown_l3",
     0,
     86400,
     1,
@@ -8840,7 +8822,7 @@
   [
     "cb4gCountdown1",
     true,
-    "countdown_one",
+    "countdown_l1",
     0,
     86400,
     1,
@@ -8849,7 +8831,7 @@
   [
     "cb4gCountdown2",
     true,
-    "countdown_two",
+    "countdown_l2",
     0,
     86400,
     1,
@@ -8858,7 +8840,7 @@
   [
     "cb4gCountdown3",
     true,
-    "countdown_three",
+    "countdown_l3",
     0,
     86400,
     1,
@@ -8867,7 +8849,7 @@
   [
     "cb4gCountdown4",
     true,
-    "countdown_four",
+    "countdown_l4",
     0,
     86400,
     1,
@@ -9092,7 +9074,7 @@
   [
     "mf1gCountdown1",
     true,
-    "countdown_one",
+    "countdown",
     0,
     86400,
     1,
@@ -9209,7 +9191,7 @@
   [
     "mgzgCountdown1",
     true,
-    "countdown_one",
+    "countdown",
     0,
     86400,
     1,
@@ -9218,7 +9200,7 @@
   [
     "usb4gCountdownUsba",
     true,
-    "countdown_one",
+    "countdown_usb_a",
     0,
     86400,
     1,
@@ -9227,7 +9209,7 @@
   [
     "usb4gCountdownUsbc",
     true,
-    "countdown_two",
+    "countdown_usb_c",
     0,
     86400,
     1,
@@ -9236,7 +9218,7 @@
   [
     "usb4gCountdownPlugOne",
     true,
-    "countdown_three",
+    "countdown_plug_1",
     0,
     86400,
     1,
@@ -9245,7 +9227,7 @@
   [
     "usb4gCountdownPlugTwo",
     true,
-    "countdown_four",
+    "countdown_plug_2",
     0,
     86400,
     1,
@@ -9335,7 +9317,7 @@
   [
     "f3proCoverPosition1",
     true,
-    "cover_position_one",
+    "cover_position_l1",
     0,
     100,
     1,
@@ -9362,7 +9344,7 @@
   [
     "f3proCoverPosition2",
     true,
-    "cover_position_two",
+    "cover_position_l2",
     0,
     100,
     1,
@@ -9389,7 +9371,7 @@
   [
     "f3proCoverPosition3",
     true,
-    "cover_position_three",
+    "cover_position_l3",
     0,
     100,
     1,
@@ -9416,7 +9398,7 @@
   [
     "f3proCoverPosition4",
     true,
-    "cover_position_four",
+    "cover_position_l4",
     0,
     100,
     1,
@@ -15973,5 +15955,356 @@
     50,
     1,
     null
+  ],
+  [
+    "tyg21zChannel1Countdown",
+    true,
+    "countdown_l1",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg21zChannel2Countdown",
+    true,
+    "countdown_l2",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg31zChannel1Countdown",
+    true,
+    "countdown_l1",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg31zChannel2Countdown",
+    true,
+    "countdown_l2",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg31zChannel3Countdown",
+    true,
+    "countdown_l3",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg41zChannel1Countdown",
+    true,
+    "countdown_l1",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg41zChannel2Countdown",
+    true,
+    "countdown_l2",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg41zChannel3Countdown",
+    true,
+    "countdown_l3",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg41zChannel4Countdown",
+    true,
+    "countdown_l4",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg61zChannel1Countdown",
+    true,
+    "countdown_l1",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg61zChannel2Countdown",
+    true,
+    "countdown_l2",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg61zChannel3Countdown",
+    true,
+    "countdown_l3",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg61zChannel4Countdown",
+    true,
+    "countdown_l4",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg61zChannel5Countdown",
+    true,
+    "countdown_l5",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "tyg61zChannel6Countdown",
+    true,
+    "countdown_l6",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel1Countdown",
+    true,
+    "countdown_l1",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel2Countdown",
+    true,
+    "countdown_l2",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel3Countdown",
+    true,
+    "countdown_l3",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel4Countdown",
+    true,
+    "countdown_l4",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel5Countdown",
+    true,
+    "countdown_l5",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel6Countdown",
+    true,
+    "countdown_l6",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel7Countdown",
+    true,
+    "countdown_l7",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "sw82Channel8Countdown",
+    true,
+    "countdown_l8",
+    0,
+    43200,
+    1,
+    "s"
+  ],
+  [
+    "f3proLed1Brightness",
+    true,
+    "led_bright_l1",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed2Brightness",
+    true,
+    "led_bright_l2",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed3Brightness",
+    true,
+    "led_bright_l3",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed4Brightness",
+    true,
+    "led_bright_l4",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed1Warmth",
+    true,
+    "led_warm_l1",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed2Warmth",
+    true,
+    "led_warm_l2",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed3Warmth",
+    true,
+    "led_warm_l3",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "f3proLed4Warmth",
+    true,
+    "led_warm_l4",
+    1,
+    100,
+    1,
+    null
+  ],
+  [
+    "tbgeLocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -5.5,
+    5.5,
+    0.1,
+    "C"
+  ],
+  [
+    "cgr0LocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -12,
+    12,
+    1,
+    "C"
+  ],
+  [
+    "trv603wzLocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -7,
+    7,
+    0.5,
+    "C"
+  ],
+  [
+    "thahLocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -9.5,
+    9.5,
+    0.5,
+    "C"
+  ],
+  [
+    "l2tfLocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -9,
+    9,
+    1,
+    "C"
+  ],
+  [
+    "khahLocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -9,
+    9,
+    1,
+    "C"
+  ],
+  [
+    "pro900zLocalTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -9,
+    9,
+    1,
+    "C"
+  ],
+  [
+    "usb4gProducedEnergyStatus",
+    false,
+    "produced_energy",
+    null,
+    null,
+    null,
+    "kWh"
   ]
 ]

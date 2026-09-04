@@ -74,7 +74,4 @@ deviceConfig:
       - component: main
         capability: illuminanceMeasurement
         version: 1
-    actions:
-      - component: main
-        capability: concertmirror08464.zym100lSelfTest
-        version: 1
+    actions: []

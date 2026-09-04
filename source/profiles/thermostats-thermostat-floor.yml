@@ -14,8 +14,6 @@ components:
         version: 1
       - id: concertmirror08464.floorChildLock
         version: 1
-      - id: concertmirror08464.floorTempCalibration
-        version: 1
       - id: concertmirror08464.floorDeadzoneTemperature
         version: 1
       - id: concertmirror08464.floorDeviceTemperature
@@ -53,9 +51,6 @@ deviceConfig:
       capability: concertmirror08464.floorChildLock
       version: 1
     - component: main
-      capability: concertmirror08464.floorTempCalibration
-      version: 1
-    - component: main
       capability: concertmirror08464.floorDeadzoneTemperature
       version: 1
     - component: main
@@ -85,9 +80,6 @@ deviceConfig:
         capability: concertmirror08464.floorChildLock
         version: 1
       - component: main
-        capability: concertmirror08464.floorTempCalibration
-        version: 1
-      - component: main
         capability: concertmirror08464.floorDeadzoneTemperature
         version: 1
       - component: main
@@ -105,9 +97,6 @@ deviceConfig:
         version: 1
       - component: main
         capability: concertmirror08464.floorChildLock
-        version: 1
-      - component: main
-        capability: concertmirror08464.floorTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.floorDeadzoneTemperature

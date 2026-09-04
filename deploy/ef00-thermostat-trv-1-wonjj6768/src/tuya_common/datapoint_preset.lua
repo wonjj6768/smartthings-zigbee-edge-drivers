@@ -703,6 +703,9 @@ end
 function tuya.dp_open_window(dp,name_or_options,options)
 return tuya.dp_binary(dp,normalize_preset_options(name_or_options,options,"open_window"))
 end
+function tuya.dp_window_open(dp,name_or_options,options)
+return tuya.dp_binary(dp,normalize_preset_options(name_or_options,options,"window_open"))
+end
 function tuya.dp_boost_heating(dp,name_or_options,options)
 return tuya.dp_binary(dp,normalize_preset_options(name_or_options,options,"boost_heating"))
 end

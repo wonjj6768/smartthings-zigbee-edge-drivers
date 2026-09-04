@@ -20,6 +20,7 @@ local power_mode_write = thermostat_common.power_mode_write
 
 local saswell_legacy = {
   profile = "thermostats-thermostat-saswell",
+  bind_basic_on_configure = true,
   named_mapping = {
     named_mappings = {
       system_mode = saswell_system_mode_write,
@@ -48,6 +49,7 @@ local saswell_legacy = {
     name = "local_temperature_calibration",
     emit = emit.saswellTempCalibration(),
     converter = converter.signed_number_pair(1),
+    signed = true,
   }),
   tuya.dp_binary(40, {
     name = "child_lock",

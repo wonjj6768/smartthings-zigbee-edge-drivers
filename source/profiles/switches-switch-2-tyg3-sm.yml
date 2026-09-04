@@ -4,9 +4,9 @@ components:
     capabilities:
       - id: switch
         version: 1
-      - id: concertmirror08464.tyg21zCountdown1
+      - id: concertmirror08464.tyg21zChannel1Countdown
         version: 1
-      - id: concertmirror08464.tyg21zCountdown2
+      - id: concertmirror08464.tyg21zChannel2Countdown
         version: 1
       - id: concertmirror08464.tyg21zPowerOnBehavior
         version: 1
@@ -50,10 +50,10 @@ deviceConfig:
       capability: switch
       version: 1
     - component: main
-      capability: concertmirror08464.tyg21zCountdown1
+      capability: concertmirror08464.tyg21zChannel1Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.tyg21zCountdown2
+      capability: concertmirror08464.tyg21zChannel2Countdown
       version: 1
     - component: main
       capability: concertmirror08464.tyg21zPowerOnBehavior
@@ -76,10 +76,10 @@ deviceConfig:
         capability: switch
         version: 1
       - component: main
-        capability: concertmirror08464.tyg21zCountdown1
+        capability: concertmirror08464.tyg21zChannel1Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.tyg21zCountdown2
+        capability: concertmirror08464.tyg21zChannel2Countdown
         version: 1
       - component: main
         capability: concertmirror08464.tyg21zPowerOnBehavior
@@ -98,10 +98,10 @@ deviceConfig:
         capability: switch
         version: 1
       - component: main
-        capability: concertmirror08464.tyg21zCountdown1
+        capability: concertmirror08464.tyg21zChannel1Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.tyg21zCountdown2
+        capability: concertmirror08464.tyg21zChannel2Countdown
         version: 1
       - component: main
         capability: concertmirror08464.tyg21zPowerOnBehavior

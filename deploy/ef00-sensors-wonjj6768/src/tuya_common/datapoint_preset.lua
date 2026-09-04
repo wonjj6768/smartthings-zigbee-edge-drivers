@@ -715,6 +715,9 @@ end
 function tuya.dp_soil_warning(dp,name_or_options,options)
 return build_divided_numeric_preset(dp,"soil_warning",1,name_or_options,options)
 end
+function tuya.dp_illuminance_calibration(dp,name_or_options,options)
+return build_signed_numeric_preset(dp,"illuminance_calibration",1,name_or_options,options)
+end
 function tuya.dp_water_warning(dp,name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options,"water_warning")
 if resolved.converter==nil and resolved.from_device==nil and resolved.to_device==nil and resolved.lookup==nil then

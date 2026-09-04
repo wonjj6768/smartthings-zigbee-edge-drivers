@@ -490,6 +490,28 @@
       "auditEvidence": "analysis/z2m_absorption_internal_audit/issue11_issue12_internal_audit.md#issue-11"
     }
   ],
+  "approvedFailClosedExacts": [
+    {
+      "manufacturer": "_TZE200_spyvfeti",
+      "manufacturerUtf8Hex": "5f545a453230305f7370797666657469",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "formerOwner": "ef00-thermostat-wall-wonjj6768",
+      "formerProfile": "thermostats-thermostat-floor",
+      "reason": "Z2M HD-T1000 is not an exact alias of the thermostat_floor contract.",
+      "auditEvidence": "analysis/z2m_absorption_internal_audit/named_route_debt_thermostat_lane.md#HD_T1000_FAIL_CLOSED_TOMBSTONE"
+    },
+    {
+      "manufacturer": "_TZE284_iwyqtclw",
+      "manufacturerUtf8Hex": "5f545a453238345f6977797174636c77",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "formerOwner": "ef00-switch-panel-wonjj6768",
+      "formerProfile": "switches-switch-4-lcd-panel",
+      "reason": "Z2M M9Pro is not an exact alias of the switch_4gang_lcd_panel M8Pro contract.",
+      "auditEvidence": "analysis/z2m_absorption_internal_audit/named_route_debt_switch_panel_lane.md#M9PRO_FAIL_CLOSED_TOMBSTONE"
+    }
+  ],
   "baseline": {
     "path": "analysis/family_owner_ledger.json",
     "legacyPackageCount": 27,
@@ -5208,7 +5230,8 @@
     "newCatalogCount": 79,
     "newExactCount": 284,
     "fingerprintOnlyAliasCount": 1,
-    "runtimeExactCount": 3565,
+    "failClosedExactCount": 2,
+    "runtimeExactCount": 3563,
     "movedCatalogCount": 49,
     "movedExactCount": 167,
     "historicalPartitionCount": 17

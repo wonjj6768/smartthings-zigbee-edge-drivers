@@ -38,6 +38,7 @@ register_device_definition(thermostat_trv603_minimal, ef00_helpers.ts0601_finger
 local thermostat_variant2 = {
   profile = "thermostats-thermostat-s366",
   package_group = "trv-2",
+  force_time_updates = true,
   -- Z2M TS0601_thermostat_2 (tuya.ts:9136).  DP3 is unknown in Z2M and DP101..
   -- DP107 are packed schedule frames, so both stay unexposed.
   tuya.dp_system_mode(1, {
@@ -81,6 +82,7 @@ register_device_definition(thermostat_variant2, ef00_helpers.ts0601_fingerprints
 local thermostat_variant4 = {
   profile = "thermostats-thermostat-trv4",
   package_group = "trv-2",
+  force_time_updates = true,
   -- Z2M TS0601_thermostat_4 (tuya.ts:9358).  DP47 calibration is raw, DP35 is the
   -- error/battery-low bitmap and DP28..DP34 are packed schedule frames.
   tuya.dp_system_mode(49, {
@@ -145,6 +147,7 @@ end
 local thermostat_variant14 = {
   profile = "thermostats-thermostat-trv14",
   package_group = "trv-2",
+  force_time_updates = true,
   -- Z2M TS0601_thermostat_14 (tuya.ts:25182).  DP2 carries the preset, DP35 is
   -- the error/battery-low bitmap and DP28..DP34 are packed schedule frames.
   tuya.dp_system_mode(2, {
@@ -224,6 +227,7 @@ end
 local thermostat_gtz10 = {
   profile = "thermostats-thermostat-gtz10",
   package_group = "trv-2",
+  force_time_updates = true,
   -- Z2M TS0601_GTZ10 (tuya.ts:21596).  DP2 packs system mode and preset, DP49 is
   -- the valve state exposed as running state and the Z2M "exposed but not used"
   -- DPs (1, 3, 8, 11, 12, 17, 18, 39..48, 112, 114, 116..121) stay unexposed.
@@ -423,6 +427,7 @@ local tv02_setpoint = tuya.dp_current_heating_setpoint(16, {
 local thermostat_tv02 = {
   profile = "thermostats-thermostat-tv02",
   package_group = "trv-2",
+  force_time_updates = true,
   named_mapping = {
     named_mappings = {
       system_mode = tv02_system_mode_write,
@@ -602,6 +607,7 @@ local thermostat_trv601 = trv60x_definition("thermostats-thermostat-trv601", {
   hysteresis = emit.trv601Hysteresis(),
 })
 thermostat_trv601.package_group = "trv-2"
+thermostat_trv601.force_time_updates = true
 register_device_definition(thermostat_trv601, ef00_helpers.ts0601_fingerprints( {
   "_TZE204_rtrmfadk",
   "_TZE204_cvcu2p6e",
@@ -625,6 +631,7 @@ local thermostat_trv602 = trv60x_definition("thermostats-thermostat-trv602", {
   hysteresis = emit.trv602Hysteresis(),
 })
 thermostat_trv602.package_group = "trv-2"
+thermostat_trv602.force_time_updates = true
 thermostat_trv602[#thermostat_trv602 + 1] = tuya.dp_numeric(115, {
   name = "switch_deviation_eco",
   converter = converter.divide_by_pair(10),
@@ -640,6 +647,7 @@ register_device_definition(thermostat_trv602, ef00_helpers.ts0601_fingerprints( 
 local thermostat_trv602z = {
   profile = "thermostats-thermostat-trv602z",
   package_group = "trv-2",
+  time_start = "2000",
   tuya.dp_system_mode(2, {
     from_device = function(value)
       local lookup = {

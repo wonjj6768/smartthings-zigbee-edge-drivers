@@ -12,7 +12,7 @@ local device_helpers = require "contracts.helpers.family"
 local common = require "contracts.helpers.ef00_presence"
 
 local converter = tuya.converter
-local registrations, register_device_definition = common.isolated_definition_registry(device_helpers)
+local registrations, register_device_definition = common.isolated_definition_registry(device_helpers.definition_registry)
 
 local CLUSTER_TUYA_TWO = 0xE002
 local ATTR_PRESENCE_KEEP_TIME = 0xE001

@@ -3,7 +3,7 @@ local emit=require "capabilities.events.all"
 local device_helpers=require "contracts.helpers.family"
 local common=require "contracts.helpers.ef00_presence"
 local converter=tuya.converter
-local registrations,register_device_definition=common.isolated_definition_registry(device_helpers)
+local registrations,register_device_definition=common.isolated_definition_registry(device_helpers.definition_registry)
 local on_off_converter=converter.lookup_from_to({ON=true,OFF=false})
 local function register(definition,manufacturer)
 register_device_definition(definition,{

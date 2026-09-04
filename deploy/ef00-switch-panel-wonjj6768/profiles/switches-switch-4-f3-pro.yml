@@ -8,9 +8,9 @@ components:
         version: 1
       - id: concertmirror08464.f3proLedSwitch1
         version: 1
-      - id: concertmirror08464.f3proLedBright1
+      - id: concertmirror08464.f3proLed1Brightness
         version: 1
-      - id: concertmirror08464.f3proLedWarm1
+      - id: concertmirror08464.f3proLed1Warmth
         version: 1
       - id: concertmirror08464.f3proCoverState1
         version: 1
@@ -18,9 +18,9 @@ components:
         version: 1
       - id: concertmirror08464.f3proLedSwitch2
         version: 1
-      - id: concertmirror08464.f3proLedBright2
+      - id: concertmirror08464.f3proLed2Brightness
         version: 1
-      - id: concertmirror08464.f3proLedWarm2
+      - id: concertmirror08464.f3proLed2Warmth
         version: 1
       - id: concertmirror08464.f3proCoverState2
         version: 1
@@ -28,9 +28,9 @@ components:
         version: 1
       - id: concertmirror08464.f3proLedSwitch3
         version: 1
-      - id: concertmirror08464.f3proLedBright3
+      - id: concertmirror08464.f3proLed3Brightness
         version: 1
-      - id: concertmirror08464.f3proLedWarm3
+      - id: concertmirror08464.f3proLed3Warmth
         version: 1
       - id: concertmirror08464.f3proCoverState3
         version: 1
@@ -38,9 +38,9 @@ components:
         version: 1
       - id: concertmirror08464.f3proLedSwitch4
         version: 1
-      - id: concertmirror08464.f3proLedBright4
+      - id: concertmirror08464.f3proLed4Brightness
         version: 1
-      - id: concertmirror08464.f3proLedWarm4
+      - id: concertmirror08464.f3proLed4Warmth
         version: 1
       - id: concertmirror08464.f3proCoverState4
         version: 1
@@ -96,10 +96,10 @@ deviceConfig:
       capability: concertmirror08464.f3proLedSwitch1
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedBright1
+      capability: concertmirror08464.f3proLed1Brightness
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedWarm1
+      capability: concertmirror08464.f3proLed1Warmth
       version: 1
     - component: main
       capability: concertmirror08464.f3proCoverState1
@@ -111,10 +111,10 @@ deviceConfig:
       capability: concertmirror08464.f3proLedSwitch2
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedBright2
+      capability: concertmirror08464.f3proLed2Brightness
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedWarm2
+      capability: concertmirror08464.f3proLed2Warmth
       version: 1
     - component: main
       capability: concertmirror08464.f3proCoverState2
@@ -126,10 +126,10 @@ deviceConfig:
       capability: concertmirror08464.f3proLedSwitch3
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedBright3
+      capability: concertmirror08464.f3proLed3Brightness
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedWarm3
+      capability: concertmirror08464.f3proLed3Warmth
       version: 1
     - component: main
       capability: concertmirror08464.f3proCoverState3
@@ -141,10 +141,10 @@ deviceConfig:
       capability: concertmirror08464.f3proLedSwitch4
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedBright4
+      capability: concertmirror08464.f3proLed4Brightness
       version: 1
     - component: main
-      capability: concertmirror08464.f3proLedWarm4
+      capability: concertmirror08464.f3proLed4Warmth
       version: 1
     - component: main
       capability: concertmirror08464.f3proCoverState4
@@ -176,10 +176,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch1
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright1
+        capability: concertmirror08464.f3proLed1Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm1
+        capability: concertmirror08464.f3proLed1Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState1
@@ -191,10 +191,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch2
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright2
+        capability: concertmirror08464.f3proLed2Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm2
+        capability: concertmirror08464.f3proLed2Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState2
@@ -206,10 +206,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch3
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright3
+        capability: concertmirror08464.f3proLed3Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm3
+        capability: concertmirror08464.f3proLed3Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState3
@@ -221,10 +221,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch4
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright4
+        capability: concertmirror08464.f3proLed4Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm4
+        capability: concertmirror08464.f3proLed4Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState4
@@ -252,10 +252,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch1
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright1
+        capability: concertmirror08464.f3proLed1Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm1
+        capability: concertmirror08464.f3proLed1Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState1
@@ -267,10 +267,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch2
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright2
+        capability: concertmirror08464.f3proLed2Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm2
+        capability: concertmirror08464.f3proLed2Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState2
@@ -282,10 +282,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch3
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright3
+        capability: concertmirror08464.f3proLed3Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm3
+        capability: concertmirror08464.f3proLed3Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState3
@@ -297,10 +297,10 @@ deviceConfig:
         capability: concertmirror08464.f3proLedSwitch4
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedBright4
+        capability: concertmirror08464.f3proLed4Brightness
         version: 1
       - component: main
-        capability: concertmirror08464.f3proLedWarm4
+        capability: concertmirror08464.f3proLed4Warmth
         version: 1
       - component: main
         capability: concertmirror08464.f3proCoverState4

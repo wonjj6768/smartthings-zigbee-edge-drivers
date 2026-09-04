@@ -61,11 +61,14 @@ local switch_eyzee_5gang = {
   tuya.dp_on_off(3, { name = "switch", component = "switch3" }),
   tuya.dp_on_off(4, { name = "switch", component = "switch4" }),
   tuya.dp_on_off(5, { name = "switch", component = "switch5" }),
-  tuya.dp_countdown(7, { name = "countdown_1", emit = emit.eyzee5gCountdown1() }),
-  tuya.dp_countdown(8, { name = "countdown_2", emit = emit.eyzee5gCountdown2() }),
-  tuya.dp_countdown(9, { name = "countdown_3", emit = emit.eyzee5gCountdown3() }),
-  tuya.dp_countdown(10, { name = "countdown_4", emit = emit.eyzee5gCountdown4() }),
-  tuya.dp_countdown(11, { name = "countdown_5", emit = emit.eyzee5gCountdown5() }),
+  -- Z2M records DP7~11 as timer datapoints but does not expose them or assign
+  -- read/write access.  Keep the reports internal until hardware evidence
+  -- establishes an exact public contract.
+  tuya.dp_countdown(7, { name = "timer_1", read_only = true }),
+  tuya.dp_countdown(8, { name = "timer_2", read_only = true }),
+  tuya.dp_countdown(9, { name = "timer_3", read_only = true }),
+  tuya.dp_countdown(10, { name = "timer_4", read_only = true }),
+  tuya.dp_countdown(11, { name = "timer_5", read_only = true }),
   tuya.dp_binary(14, {
     name = "eyzee_global_restart",
     emit = emit.eyzee5gGlobalRestart(),
@@ -81,6 +84,8 @@ local switch_eyzee_5gang = {
   tuya.dp_enum(31, { name = "eyzee_switch3_restart", emit = emit.eyzee5gSwitch3Restart(), converter = eyzee_restart_converter }),
   tuya.dp_enum(32, { name = "eyzee_switch4_restart", emit = emit.eyzee5gSwitch4Restart(), converter = eyzee_restart_converter }),
   tuya.dp_enum(33, { name = "eyzee_switch5_restart", emit = emit.eyzee5gSwitch5Restart(), converter = eyzee_restart_converter }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_eyzee_5gang, device_helpers.create_fingerprints("TS0601", {
@@ -132,7 +137,8 @@ local switch_4gang_colored_backlight = {
       converter = backlight_color_warm_converter,
     }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_4gang_colored_backlight, device_helpers.create_fingerprints("TS0601", {
@@ -180,7 +186,8 @@ local switch_3gang_colored_backlight = {
       converter = backlight_color_warm_converter,
     }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_3gang_colored_backlight, device_helpers.create_fingerprints("TS0601", {
@@ -225,7 +232,8 @@ local switch_2gang_colored_backlight = {
       converter = backlight_color_warm_converter,
     }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_2gang_colored_backlight, device_helpers.create_fingerprints("TS0601", {
@@ -368,7 +376,8 @@ local switch_1gang_multifunction = {
       converter = backlight_color_converter,
     }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_1gang_touch_panel, device_helpers.create_fingerprints("TS0601", {
@@ -483,7 +492,8 @@ local switch_6gang_dp24_scene_panel = {
     tuya.dp_countdown(109, { name = "inching_l5", emit = emit.to6Inching5() }),
     tuya.dp_countdown(110, { name = "inching_l6", emit = emit.to6Inching6() }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "1970",
 }
 
 register_device_definition(switch_6gang_dp24_scene_panel, device_helpers.create_fingerprints("TS0601", {
@@ -535,7 +545,8 @@ local switch_8gang_m9_motion_scene = {
     tuya.dp_presence(105, { emit = emit.presence() }),
     tuya.dp_numeric(106, { name = "delay", emit = emit.m98gDelay() }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_8gang_m9_motion_scene, device_helpers.create_fingerprints("TS0601", {
@@ -604,7 +615,8 @@ local switch_4gang_m9_scene = {
     tuya.dp_presence(101, { emit = emit.presence() }),
     tuya.dp_numeric(102, { name = "delay", emit = emit.m9slDelay() }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_4gang_m9_scene, device_helpers.create_fingerprints("TS0601", {
@@ -624,14 +636,14 @@ local switch_4gang_smart_panel = {
     tuya.dp_on_off(122, { name = "switch", component = "switch2" }),
     tuya.dp_on_off(123, { name = "switch", component = "switch3" }),
     tuya.dp_on_off(124, { name = "switch", component = "switch4" }),
-    tuya.dp_numeric(102, { name = "led_bright_l1", emit = emit.f3proLedBright1() }),
-    tuya.dp_numeric(103, { name = "led_bright_l2", emit = emit.f3proLedBright2() }),
-    tuya.dp_numeric(105, { name = "led_bright_l3", emit = emit.f3proLedBright3() }),
-    tuya.dp_numeric(107, { name = "led_bright_l4", emit = emit.f3proLedBright4() }),
-    tuya.dp_numeric(109, { name = "led_warm_l1", emit = emit.f3proLedWarm1() }),
-    tuya.dp_numeric(110, { name = "led_warm_l2", emit = emit.f3proLedWarm2() }),
-    tuya.dp_numeric(111, { name = "led_warm_l3", emit = emit.f3proLedWarm3() }),
-    tuya.dp_numeric(112, { name = "led_warm_l4", emit = emit.f3proLedWarm4() }),
+    tuya.dp_numeric(102, { name = "led_bright_l1", emit = emit.f3proLed1Brightness() }),
+    tuya.dp_numeric(103, { name = "led_bright_l2", emit = emit.f3proLed2Brightness() }),
+    tuya.dp_numeric(105, { name = "led_bright_l3", emit = emit.f3proLed3Brightness() }),
+    tuya.dp_numeric(107, { name = "led_bright_l4", emit = emit.f3proLed4Brightness() }),
+    tuya.dp_numeric(109, { name = "led_warm_l1", emit = emit.f3proLed1Warmth() }),
+    tuya.dp_numeric(110, { name = "led_warm_l2", emit = emit.f3proLed2Warmth() }),
+    tuya.dp_numeric(111, { name = "led_warm_l3", emit = emit.f3proLed3Warmth() }),
+    tuya.dp_numeric(112, { name = "led_warm_l4", emit = emit.f3proLed4Warmth() }),
     tuya.dp_numeric(113, { name = "cover_position_l1", emit = emit.f3proCoverPosition1() }),
     tuya.dp_numeric(114, { name = "cover_position_l2", emit = emit.f3proCoverPosition2() }),
     tuya.dp_numeric(115, { name = "cover_position_l3", emit = emit.f3proCoverPosition3() }),
@@ -683,6 +695,8 @@ local switch_4gang_smart_panel = {
     }),
   },
   query_on_configure = true,
+  force_time_updates = true,
+  time_start = "1970",
 }
 
 register_device_definition(switch_4gang_smart_panel, device_helpers.create_fingerprints("TS0601", {
@@ -698,7 +712,7 @@ local switch_4gang_lcd_panel = {
     tuya.dp_on_off(25, { name = "switch", component = "switch2" }),
     tuya.dp_on_off(26, { name = "switch", component = "switch3" }),
     tuya.dp_on_off(27, { name = "switch", component = "switch4" }),
-    -- Z2M M8Pro (tuya.ts:13764): DP18~21 pick switch/scene/smart_light per button,
+    -- Z2M M8Pro (tuya.ts:14719): DP18~21 pick switch/scene/smart_light per button,
     -- DP36 is the backlight switch, DP37 the indicator mode and DP101 the panel
     -- backlight.  DP1~4 scene actions and DP103~110 name strings stay internal.
     tuya.dp_enum(18, {
@@ -737,12 +751,12 @@ local switch_4gang_lcd_panel = {
       converter = panel_off_on_converter,
     }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "1970",
 }
 
 register_device_definition(switch_4gang_lcd_panel, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_atuj3i0w",
-  "_TZE284_iwyqtclw",
 }))
 
 -- ══════════════════════════════════════════════════════════════
@@ -841,14 +855,16 @@ local switch_model_zs_tyg3_sm_21z = {
   package_group = "switch-panel",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
   tuya.dp_on_off(2, { name = "switch", component = "switch2" }),
-  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg21zCountdown1() }),
-  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg21zCountdown2() }),
+  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg21zChannel1Countdown() }),
+  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg21zChannel2Countdown() }),
   tuya.dp_on_off(13, { name = "switch", component = "switch3" }),
   tuya.dp_power_on_behavior(14, { emit = emit.tyg21zPowerOnBehavior() }),
   tuya.dp_backlight_mode_off_on(16, {
     emit = emit.tyg21zBacklightMode(),
     converter = panel_off_on_converter,
   }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_model_zs_tyg3_sm_21z, device_helpers.create_fingerprints("TS0601", {
@@ -865,15 +881,17 @@ local switch_model_zs_tyg3_sm_31z = {
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
   tuya.dp_on_off(2, { name = "switch", component = "switch2" }),
   tuya.dp_on_off(3, { name = "switch", component = "switch3" }),
-  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg31zCountdown1() }),
-  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg31zCountdown2() }),
-  tuya.dp_countdown(9, { name = "countdown_l3", emit = emit.tyg31zCountdown3() }),
+  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg31zChannel1Countdown() }),
+  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg31zChannel2Countdown() }),
+  tuya.dp_countdown(9, { name = "countdown_l3", emit = emit.tyg31zChannel3Countdown() }),
   tuya.dp_on_off(13, { name = "switch", component = "switch4" }),
   tuya.dp_power_on_behavior(14, { emit = emit.tyg31zPowerOnBehavior() }),
   tuya.dp_backlight_mode_off_on(16, {
     emit = emit.tyg31zBacklightMode(),
     converter = panel_off_on_converter,
   }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_model_zs_tyg3_sm_31z, device_helpers.create_fingerprints("TS0601", {
@@ -891,16 +909,18 @@ local switch_model_zs_tyg3_sm_41z = {
   tuya.dp_on_off(2, { name = "switch", component = "switch2" }),
   tuya.dp_on_off(3, { name = "switch", component = "switch3" }),
   tuya.dp_on_off(4, { name = "switch", component = "switch4" }),
-  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg41zCountdown1() }),
-  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg41zCountdown2() }),
-  tuya.dp_countdown(9, { name = "countdown_l3", emit = emit.tyg41zCountdown3() }),
-  tuya.dp_countdown(10, { name = "countdown_l4", emit = emit.tyg41zCountdown4() }),
+  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg41zChannel1Countdown() }),
+  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg41zChannel2Countdown() }),
+  tuya.dp_countdown(9, { name = "countdown_l3", emit = emit.tyg41zChannel3Countdown() }),
+  tuya.dp_countdown(10, { name = "countdown_l4", emit = emit.tyg41zChannel4Countdown() }),
   tuya.dp_on_off(13, { name = "switch", component = "switch5" }),
   tuya.dp_power_on_behavior(14, { emit = emit.tyg41zPowerOnBehavior() }),
   tuya.dp_backlight_mode_off_on(16, {
     emit = emit.tyg41zBacklightMode(),
     converter = panel_off_on_converter,
   }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_model_zs_tyg3_sm_41z, device_helpers.create_fingerprints("TS0601", {
@@ -926,18 +946,20 @@ local switch_model_zs_tyg3_sm_61z = {
   tuya.dp_on_off(4, { name = "switch", component = "switch4" }),
   tuya.dp_on_off(5, { name = "switch", component = "switch5" }),
   tuya.dp_on_off(6, { name = "switch", component = "switch6" }),
-  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg61zCountdown1() }),
-  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg61zCountdown2() }),
-  tuya.dp_countdown(9, { name = "countdown_l3", emit = emit.tyg61zCountdown3() }),
-  tuya.dp_countdown(10, { name = "countdown_l4", emit = emit.tyg61zCountdown4() }),
-  tuya.dp_countdown(11, { name = "countdown_l5", emit = emit.tyg61zCountdown5() }),
-  tuya.dp_countdown(12, { name = "countdown_l6", emit = emit.tyg61zCountdown6() }),
+  tuya.dp_countdown(7, { name = "countdown_l1", emit = emit.tyg61zChannel1Countdown() }),
+  tuya.dp_countdown(8, { name = "countdown_l2", emit = emit.tyg61zChannel2Countdown() }),
+  tuya.dp_countdown(9, { name = "countdown_l3", emit = emit.tyg61zChannel3Countdown() }),
+  tuya.dp_countdown(10, { name = "countdown_l4", emit = emit.tyg61zChannel4Countdown() }),
+  tuya.dp_countdown(11, { name = "countdown_l5", emit = emit.tyg61zChannel5Countdown() }),
+  tuya.dp_countdown(12, { name = "countdown_l6", emit = emit.tyg61zChannel6Countdown() }),
   tuya.dp_on_off(13, { name = "switch", component = "switch7" }),
   tuya.dp_power_on_behavior(14, { emit = emit.tyg61zPowerOnBehavior() }),
   tuya.dp_backlight_mode_off_on(16, {
     emit = emit.tyg61zBacklightMode(),
     converter = panel_off_on_converter,
   }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_model_zs_tyg3_sm_61z, device_helpers.create_fingerprints("TS0601", {
@@ -1023,6 +1045,8 @@ local switch_16gang_pn16 = {
     emit = emit.pn16SwitchModeFifteenSixteen(),
     converter = pn16_switch_mode_converter,
   }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_16gang_pn16, device_helpers.create_fingerprints("TS0601", {
@@ -1045,15 +1069,17 @@ local switch_model_ts0601_switch_8_2 = {
   tuya.dp_on_off(6, { name = "switch", component = "switch6" }),
   tuya.dp_on_off(7, { name = "switch", component = "switch7" }),
   tuya.dp_on_off(8, { name = "switch", component = "switch8" }),
-  tuya.dp_countdown(9, { name = "countdown_l1", emit = emit.sw82Countdown1() }),
-  tuya.dp_countdown(10, { name = "countdown_l2", emit = emit.sw82Countdown2() }),
-  tuya.dp_countdown(11, { name = "countdown_l3", emit = emit.sw82Countdown3() }),
-  tuya.dp_countdown(12, { name = "countdown_l4", emit = emit.sw82Countdown4() }),
-  tuya.dp_countdown(13, { name = "countdown_l5", emit = emit.sw82Countdown5() }),
-  tuya.dp_countdown(14, { name = "countdown_l6", emit = emit.sw82Countdown6() }),
-  tuya.dp_countdown(15, { name = "countdown_l7", emit = emit.sw82Countdown7() }),
-  tuya.dp_countdown(16, { name = "countdown_l8", emit = emit.sw82Countdown8() }),
+  tuya.dp_countdown(9, { name = "countdown_l1", emit = emit.sw82Channel1Countdown() }),
+  tuya.dp_countdown(10, { name = "countdown_l2", emit = emit.sw82Channel2Countdown() }),
+  tuya.dp_countdown(11, { name = "countdown_l3", emit = emit.sw82Channel3Countdown() }),
+  tuya.dp_countdown(12, { name = "countdown_l4", emit = emit.sw82Channel4Countdown() }),
+  tuya.dp_countdown(13, { name = "countdown_l5", emit = emit.sw82Channel5Countdown() }),
+  tuya.dp_countdown(14, { name = "countdown_l6", emit = emit.sw82Channel6Countdown() }),
+  tuya.dp_countdown(15, { name = "countdown_l7", emit = emit.sw82Channel7Countdown() }),
+  tuya.dp_countdown(16, { name = "countdown_l8", emit = emit.sw82Channel8Countdown() }),
   tuya.dp_power_on_behavior(27, { emit = emit.sw82PowerOnBehavior() }),
+  query_on_configure = false,
+  time_start = "off",
 }
 
 register_device_definition(switch_model_ts0601_switch_8_2, device_helpers.create_fingerprints("TS0601", {

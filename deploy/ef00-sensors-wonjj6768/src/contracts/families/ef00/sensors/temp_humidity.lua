@@ -94,9 +94,9 @@ register_device_definition(th_unsigned_h10,ef00_helpers.ts0601_fingerprints({
 local th_9ern5sfh={
 profile="sensors-temp-humidity-battery-unit-9ern5sfh",
 datapoints={
-tuya.dp_temperature(1,{emit=emit.temperature("C"),scale=10}),
-tuya.dp_humidity(2,{emit=emit.humidity(),scale=10}),
-tuya.dp_battery(4,{emit=emit.battery()}),
+tuya.dp_temperature(1,{emit=emit.temperature("C"),scale=10,read_only=true}),
+tuya.dp_humidity(2,{emit=emit.humidity(),scale=10,read_only=true}),
+tuya.dp_battery(4,{emit=emit.battery(),read_only=true}),
 tuya.dp_enum(9,{
 name="temperature_unit",
 emit=emit.ern9TemperatureUnit(),
@@ -104,6 +104,8 @@ converter=converter.lookup_from_to({celsius=0,fahrenheit=1}),
 }),
 tuya.dp_numeric(19,{name="temperature_sensitivity",read_only=true}),
 },
+force_time_updates=true,
+time_start="off",
 }
 register_sensor_definition(th_9ern5sfh,ef00_helpers.ts0601_fingerprints({
 "_TZE284_9ern5sfh",
@@ -651,15 +653,15 @@ register_device_definition(th_alarm_jm_trh,ef00_helpers.ts0601_fingerprints({
 }))
 local th_2aaa={
 profile="sensors-temp-humidity-battery-state-unit-th2aaa",
-tuya.dp_temperature(1,{emit=emit.temperature("C"),scale=10}),
-tuya.dp_humidity(2,{emit=emit.humidity(),scale=1}),
+tuya.dp_temperature(1,{emit=emit.temperature("C"),scale=10,read_only=true}),
+tuya.dp_humidity(2,{emit=emit.humidity(),scale=1,read_only=true}),
 tuya.dp_enum(3,{
 name="battery_state",
-emit=emit.th2aaaBatteryState(),
+emit=emit.th2aaaBatteryStateV2(),
 read_only=true,
 converter=converter.from_only(converter.lookup_value({
 [0]="low",
-[1]="middle",
+[1]="medium",
 [2]="high",
 })),
 }),
@@ -668,6 +670,10 @@ name="temperature_unit",
 emit=emit.th2aaaTemperatureUnit(),
 converter=converter.lookup_from_to({celsius=0,fahrenheit=1}),
 }),
+query_on_configure=true,
+query_on_announce=true,
+respond_to_mcu_version_response=true,
+time_start="1970",
 }
 register_device_definition(th_2aaa,ef00_helpers.ts0601_fingerprints({
 "_TZE200_upagmta9",

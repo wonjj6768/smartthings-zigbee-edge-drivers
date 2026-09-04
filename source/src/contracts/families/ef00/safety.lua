@@ -207,7 +207,7 @@ register_device_definition(smoke_gsks_zb, device_helpers.create_fingerprints("TS
 local siren_alarm = {
   profile = "safety-alarm-battery-duration-volume-ringtone-yxzbsl",
   tuya.dp_enum(1, {
-    name = "type",
+    name = "yxzbsl_alarm_type",
     emit = emit.yxzbslAlarmType(),
     converter = converter.lookup_from_to({
       sound = 0,
@@ -280,12 +280,12 @@ local vibration_alarm_zg228z = {
   profile = "safety-acceleration-alarm-battery-zg228z",
   tuya.dp_enum(1, { name = "vibration", emit = emit.acceleration(), converter = converter.true_false1() }),
   tuya.dp_enum(101, {
-    name = "vibration_siren",
+    name = "zg228z_vibration_siren",
     emit = emit.zg228zVibrationSiren(),
     converter = converter.lookup_from_to({ off = 0, on = 1 }),
   }),
   tuya.dp_enum(105, {
-    name = "alarm",
+    name = "zg228z_alarm_mode",
     emit = emit.zg228zAlarmMode(),
     converter = converter.lookup_from_to({ beep = 0, ring = 1, stop = 2 }),
   }),
@@ -305,7 +305,7 @@ register_device_definition(vibration_alarm_zg228z, {
 local siren_alarm_zg229z = {
   profile = "safety-alarm-battery-zg229z",
   tuya.dp_enum(1, {
-    name = "alarm",
+    name = "zg229z_alarm_mode",
     emit = emit.zg229zAlarmMode(),
     converter = converter.lookup_from_to({
       alarm_sound = 0,
@@ -318,7 +318,7 @@ local siren_alarm_zg229z = {
   tuya.dp_on_off(16, { name = "muffling", emit = emit.mufflingSiren() }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_numeric(7, { name = "duration", emit = emit.alarmDurationSiren() }),
-  tuya.dp_enum(5, { name = "volume", emit = emit.alarmVolumeHobeian(), converter = hobeian_alarm_volume_converter }),
+  tuya.dp_enum(5, { name = "alarm_volume", emit = emit.alarmVolumeHobeian(), converter = hobeian_alarm_volume_converter }),
   tuya.dp_enum(101, { name = "doorbell_volume", emit = emit.doorbellVolumeHobeian(), converter = hobeian_alarm_volume_converter }),
 }
 
@@ -348,7 +348,11 @@ local smoke_model_hs2sa_1 = {
     converter = converter.from_only(converter.lookup_value({ [0] = "low", [1] = "medium", [2] = "high" })),
   }),
   tuya.dp_battery(15, { emit = emit.battery() }),
-  tuya.dp_silence(16, { emit = emit.hs2saSilence() }),
+  tuya.dp_silence(16, {
+    name = "hs2sa_silence",
+    emit = emit.hs2saSilence(),
+    converter = converter.lookup_from_to({ off = false, on = true }),
+  }),
 }
 
 register_device_definition(smoke_model_hs2sa_1, device_helpers.create_fingerprints("TS0601", {
@@ -376,12 +380,12 @@ local smoke_concentration = {
   }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "pa44z_silence",
     emit = emit.pa44zSilence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(101, {
-    name = "test",
+    name = "pa44z_test",
     emit = emit.pa44zTest(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -417,12 +421,12 @@ local smoke_concentration_fault_alarm = {
   }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "zss_silence",
     emit = emit.zssSilence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(17, {
-    name = "self_test",
+    name = "zss_self_test",
     emit = emit.zssSelfTest(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -451,12 +455,12 @@ local smoke_tamper_alarm = {
   }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "ytibqbra_silence",
     emit = emit.ytibqbraSilence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(17, {
-    name = "alarm_switch",
+    name = "ytibqbra_alarm_switch",
     emit = emit.ytibqbraAlarmSwitch(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -475,12 +479,12 @@ local smoke_legacy = {
   tuya.dp_smoke(1, { emit = emit.smoke() }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "silence_siren",
+    name = "sa12izl_silence_siren",
     emit = emit.sa12izlSilenceSiren(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_enum(20, {
-    name = "alarm",
+    name = "sa12izl_alarm",
     emit = emit.sa12izlAlarm(),
     converter = converter.lookup_from_to({ off = 1, on = 0 }),
   }),
@@ -498,7 +502,7 @@ local smoke_model_r7049 = {
   profile = "safety-smoke-test-result-battery-fault-silence-alarm-r7049",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
   tuya.dp_binary(8, {
-    name = "test_alarm",
+    name = "r7049_test_alarm",
     emit = emit.r7049TestAlarm(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -529,12 +533,12 @@ local smoke_model_r7049 = {
     })),
   }),
   tuya.dp_binary(16, {
-    name = "silence_siren",
+    name = "r7049_silence_siren",
     emit = emit.r7049SilenceSiren(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_enum(20, {
-    name = "alarm",
+    name = "r7049_alarm",
     emit = emit.r7049Alarm(),
     converter = converter.lookup_from_to({ off = 1, on = 0 }),
   }),
@@ -558,7 +562,7 @@ local smoke_model_smart_smoke10 = {
     emit = emit.alectoSmoke10SmokeValue(),
   }),
   tuya.dp_binary(8, {
-    name = "self_checking",
+    name = "alecto_smoke10_self_checking",
     emit = emit.alectoSmoke10SelfChecking(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -594,7 +598,7 @@ local smoke_model_smart_smoke10 = {
   }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "alecto_smoke10_silence",
     emit = emit.alectoSmoke10Silence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -623,7 +627,7 @@ local smoke_model_288wz = {
   }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "onenuo_288wz_silence",
     emit = emit.onenuo288wzSilence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -676,7 +680,7 @@ local smoke_co = {
     })),
   }),
   tuya.dp_enum(5, {
-    name = "alarm_volume",
+    name = "smoke_co_alarm_volume",
     emit = emit.smokeCoAlarmVolume(),
     converter = converter.lookup_from_to({
       low = 0,
@@ -687,12 +691,12 @@ local smoke_co = {
   }),
   tuya.dp_battery(15, { emit = emit.battery(), read_only = true }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "smoke_co_silence",
     emit = emit.smokeCoSilence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(17, {
-    name = "alarm_switch",
+    name = "smoke_co_alarm_switch",
     emit = emit.smokeCoAlarmSwitch(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -738,7 +742,7 @@ local smoke_temp_humidity = {
     })),
   }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "smoke_228wzh_silence",
     emit = emit.smoke228wzhSilence(),
     converter = converter.lookup_from_to({ on = true }),
   }),
@@ -785,7 +789,7 @@ local gas_self_test_fault = {
     end),
   }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "gas_sensor1_silence",
     emit = emit.gasSensor1Silence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -846,7 +850,7 @@ local gas_value_alarm_time_ringtone = {
     end),
   }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "gas_sensor2_silence",
     emit = emit.gasSensor2Silence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -923,12 +927,12 @@ local gas_value_preheat_fault = {
     end),
   }),
   tuya.dp_binary(13, {
-    name = "alarm_switch",
+    name = "gas_sensor4_alarm_switch",
     emit = emit.gasSensor4AlarmSwitch(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "gas_sensor4_silence",
     emit = emit.gasSensor4Silence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -1106,7 +1110,7 @@ local gas_model_zg_225z = {
     read_only = true,
   }),
   tuya.dp_enum(6, {
-    name = "ring",
+    name = "zg225z_ring",
     emit = emit.zg225zRing(),
     converter = converter.lookup_from_to({
       ring1 = 0,
@@ -1266,7 +1270,7 @@ local gas_carbon_monoxide_jkd816 = {
     })),
   }),
   tuya.dp_binary(16, {
-    name = "silence",
+    name = "jkd816_silence",
     emit = emit.jkd816Silence(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -1315,7 +1319,7 @@ local contact_illum = {
   tuya.dp_battery(2, { emit = emit.battery() }),
   tuya.dp_illuminance(101, { emit = emit.illuminance() }),
   tuya.dp_numeric(102, {
-    name = "illuminance_interval",
+    name = "zg102zl_illuminance_interval",
     emit = emit.zg102zlIlluminanceInterval(),
   }),
 }
@@ -1351,7 +1355,7 @@ local contact_opening_tamper = {
   profile = "safety-contact-alarm-battery-opening-senoro",
   tuya.dp_battery(2, { emit = emit.battery() }),
   tuya.dp_binary(16, {
-    name = "alarm",
+    name = "senoro_win_alarm",
     emit = emit.senoroWinAlarm(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -1403,7 +1407,7 @@ local contact_window_handle_s8 = {
     converter = converter.from_only(converter.lookup_value({ [0] = "released", [1] = "pressed" })),
   }),
   tuya.dp_enum(107, {
-    name = "vacation",
+    name = "s8_vacation_mode",
     emit = emit.s8VacationMode(),
     converter = converter.lookup_from_to({ off = 0, on = 1 }),
   }),
@@ -1419,13 +1423,13 @@ local contact_window_handle_s8 = {
     }),
   }),
   tuya.dp_enum(109, {
-    name = "alarm_switch",
+    name = "s8_alarm_switch",
     emit = emit.s8AlarmSwitch(),
     converter = converter.lookup_from_to({ off = 0, on = 1 }),
   }),
   tuya.dp_numeric(110, { name = "update_frequency", emit = emit.updateFrequencyContactS8Minutes() }),
   tuya.dp_enum(111, {
-    name = "keysound",
+    name = "s8_key_sound",
     emit = emit.s8KeySound(),
     converter = converter.lookup_from_to({ off = 0, on = 1 }),
   }),
@@ -1437,12 +1441,12 @@ local contact_window_handle_s8 = {
   }),
   tuya.dp_numeric(113, { name = "duration", emit = emit.alarmDurationContactS8Sec300() }),
   tuya.dp_enum(114, {
-    name = "handlesound",
+    name = "s8_handle_sound",
     emit = emit.s8HandleSound(),
     converter = converter.lookup_from_to({ off = 0, on = 1 }),
   }),
   tuya.dp_enum(120, {
-    name = "calibrate",
+    name = "s8_calibrate",
     emit = emit.s8Calibrate(),
     converter = converter.lookup_from_to({ clear = 0, execute = 1 }),
   }),
@@ -1462,7 +1466,7 @@ local contact_senoro_win_v2 = {
     converter = converter.lookup_from_to({ open = 0, closed = 1, tilted = 2 }),
   }),
   tuya.dp_binary(16, {
-    name = "alarm_state",
+    name = "senoro_win_v2_alarm_state",
     emit = emit.senoroWinV2AlarmState(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
@@ -1472,29 +1476,29 @@ local contact_senoro_win_v2 = {
     read_only = true,
   }),
   tuya.dp_binary(103, {
-    name = "alarm_siren",
+    name = "senoro_win_v2_alarm_siren",
     emit = emit.senoroWinV2AlarmSiren(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(104, {
-    name = "close_signal",
+    name = "senoro_win_v2_close_signal",
     emit = emit.senoroWinV2CloseSignal(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_numeric(105, { name = "transmission_power", emit = emit.txPowerSenoroWinLevel() }),
   tuya.dp_numeric(106, { name = "vibration_limit", emit = emit.vibrationLimitSenoroWinV2() }),
   tuya.dp_binary(107, {
-    name = "setup_mode",
+    name = "senoro_win_v2_setup_mode",
     emit = emit.senoroWinV2SetupMode(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_binary(108, {
-    name = "vibration_siren",
+    name = "senoro_win_v2_vibration_siren",
     emit = emit.senoroWinV2VibrationSiren(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
-  tuya.dp_numeric(109, { name = "alarm_siren_duration", emit = emit.senoroWinV2AlarmSirenDuration() }),
-  tuya.dp_numeric(110, { name = "vibration_siren_duration", emit = emit.senoroV2VibrationSirenTime() }),
+  tuya.dp_numeric(109, { name = "senoro_win_v2_alarm_siren_duration", emit = emit.senoroWinV2AlarmSirenDuration() }),
+  tuya.dp_numeric(110, { name = "senoro_win_v2_vibration_siren_duration", emit = emit.senoroV2VibrationSirenTime() }),
   tuya.dp_binary(111, {
     name = "magnetic_status",
     emit = emit.senoroWinV2MagneticStatus(),
@@ -1648,7 +1652,7 @@ local water_illum_battery_model_zg_223z = {
     })),
   }),
   tuya.dp_numeric(2, {
-    name = "sensitivity",
+    name = "zg223z_sensitivity",
     emit = emit.zg223zSensitivity(),
   }),
   tuya.dp_numeric(101, { name = "illuminance_sampling", emit = emit.illuminanceSamplingZg223zMinutes() }),

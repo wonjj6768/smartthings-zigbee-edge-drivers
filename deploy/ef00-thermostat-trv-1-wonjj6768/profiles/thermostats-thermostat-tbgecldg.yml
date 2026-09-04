@@ -16,7 +16,7 @@ components:
         version: 1
       - id: concertmirror08464.tbgeBoostHeating
         version: 1
-      - id: concertmirror08464.tbgeWindowOpen
+      - id: concertmirror08464.tbgeWindowOpenStatus
         version: 1
       - id: concertmirror08464.tbgeComfortTemperature
         version: 1
@@ -26,7 +26,7 @@ components:
         version: 1
       - id: concertmirror08464.tbgeAutoTemperature
         version: 1
-      - id: concertmirror08464.tbgeTempCalibration
+      - id: concertmirror08464.tbgeLocalTempCalibration
         version: 1
       - id: concertmirror08464.tbgeOpenWindowTemperature
         version: 1
@@ -70,7 +70,7 @@ deviceConfig:
       capability: concertmirror08464.tbgeBoostHeating
       version: 1
     - component: main
-      capability: concertmirror08464.tbgeWindowOpen
+      capability: concertmirror08464.tbgeWindowOpenStatus
       version: 1
     - component: main
       capability: concertmirror08464.tbgeComfortTemperature
@@ -85,7 +85,7 @@ deviceConfig:
       capability: concertmirror08464.tbgeAutoTemperature
       version: 1
     - component: main
-      capability: concertmirror08464.tbgeTempCalibration
+      capability: concertmirror08464.tbgeLocalTempCalibration
       version: 1
     - component: main
       capability: concertmirror08464.tbgeOpenWindowTemperature
@@ -123,7 +123,7 @@ deviceConfig:
         capability: concertmirror08464.tbgeBoostHeating
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeWindowOpen
+        capability: concertmirror08464.tbgeWindowOpenStatus
         version: 1
       - component: main
         capability: concertmirror08464.tbgeComfortTemperature
@@ -138,7 +138,7 @@ deviceConfig:
         capability: concertmirror08464.tbgeAutoTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeTempCalibration
+        capability: concertmirror08464.tbgeLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.tbgeOpenWindowTemperature
@@ -166,9 +166,6 @@ deviceConfig:
         capability: concertmirror08464.tbgeBoostHeating
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeWindowOpen
-        version: 1
-      - component: main
         capability: concertmirror08464.tbgeComfortTemperature
         version: 1
       - component: main
@@ -181,7 +178,7 @@ deviceConfig:
         capability: concertmirror08464.tbgeAutoTemperature
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeTempCalibration
+        capability: concertmirror08464.tbgeLocalTempCalibration
         version: 1
       - component: main
         capability: concertmirror08464.tbgeOpenWindowTemperature

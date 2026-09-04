@@ -4,21 +4,21 @@ components:
     capabilities:
       - id: switch
         version: 1
-      - id: concertmirror08464.sw82Countdown1
+      - id: concertmirror08464.sw82Channel1Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown2
+      - id: concertmirror08464.sw82Channel2Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown3
+      - id: concertmirror08464.sw82Channel3Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown4
+      - id: concertmirror08464.sw82Channel4Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown5
+      - id: concertmirror08464.sw82Channel5Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown6
+      - id: concertmirror08464.sw82Channel6Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown7
+      - id: concertmirror08464.sw82Channel7Countdown
         version: 1
-      - id: concertmirror08464.sw82Countdown8
+      - id: concertmirror08464.sw82Channel8Countdown
         version: 1
       - id: concertmirror08464.sw82PowerOnBehavior
         version: 1
@@ -90,28 +90,28 @@ deviceConfig:
       capability: switch
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown1
+      capability: concertmirror08464.sw82Channel1Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown2
+      capability: concertmirror08464.sw82Channel2Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown3
+      capability: concertmirror08464.sw82Channel3Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown4
+      capability: concertmirror08464.sw82Channel4Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown5
+      capability: concertmirror08464.sw82Channel5Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown6
+      capability: concertmirror08464.sw82Channel6Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown7
+      capability: concertmirror08464.sw82Channel7Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.sw82Countdown8
+      capability: concertmirror08464.sw82Channel8Countdown
       version: 1
     - component: main
       capability: concertmirror08464.sw82PowerOnBehavior
@@ -146,28 +146,28 @@ deviceConfig:
         capability: switch
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown1
+        capability: concertmirror08464.sw82Channel1Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown2
+        capability: concertmirror08464.sw82Channel2Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown3
+        capability: concertmirror08464.sw82Channel3Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown4
+        capability: concertmirror08464.sw82Channel4Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown5
+        capability: concertmirror08464.sw82Channel5Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown6
+        capability: concertmirror08464.sw82Channel6Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown7
+        capability: concertmirror08464.sw82Channel7Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown8
+        capability: concertmirror08464.sw82Channel8Countdown
         version: 1
       - component: main
         capability: concertmirror08464.sw82PowerOnBehavior
@@ -198,28 +198,28 @@ deviceConfig:
         capability: switch
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown1
+        capability: concertmirror08464.sw82Channel1Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown2
+        capability: concertmirror08464.sw82Channel2Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown3
+        capability: concertmirror08464.sw82Channel3Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown4
+        capability: concertmirror08464.sw82Channel4Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown5
+        capability: concertmirror08464.sw82Channel5Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown6
+        capability: concertmirror08464.sw82Channel6Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown7
+        capability: concertmirror08464.sw82Channel7Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.sw82Countdown8
+        capability: concertmirror08464.sw82Channel8Countdown
         version: 1
       - component: main
         capability: concertmirror08464.sw82PowerOnBehavior

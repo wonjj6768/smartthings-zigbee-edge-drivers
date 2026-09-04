@@ -31,6 +31,7 @@ device_helpers.create_fingerprint("_TYST11_8daqwrsj","daqwrsj" .. nul),
 })
 local saswell_legacy={
 profile="thermostats-thermostat-saswell",
+bind_basic_on_configure=true,
 named_mapping={
 named_mappings={
 system_mode=thermostat_common.binary_power_schedule_mode_write(101,108),
@@ -53,6 +54,7 @@ tuya.dp_numeric(27,{
 name="local_temperature_calibration",
 emit=emit.saswellTempCalibration(),
 converter=converter.signed_number_pair(1),
+signed=true,
 }),
 tuya.dp_binary(40,{
 name="child_lock",

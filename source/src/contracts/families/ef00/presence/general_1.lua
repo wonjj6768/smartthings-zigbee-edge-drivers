@@ -7,7 +7,7 @@ local common = require "contracts.helpers.ef00_presence"
 local temperature_unit = require "contracts.helpers.temperature_unit"
 
 local converter = tuya.converter
-local device_definitions, register_device_definition = common.isolated_definition_registry(device_helpers)
+local device_definitions, register_device_definition = common.isolated_definition_registry(device_helpers.definition_registry)
 local function register_presence_definition(definitions_or_table, fingerprint_list, ranges)
   return common.register_presence_definition(
     register_device_definition, definitions_or_table, fingerprint_list, ranges
@@ -908,7 +908,7 @@ local presence_model_pj3201a = {
 
     tuya.dp_numeric(9, {
       name = "closest_target_distance",
-      scale = 100,
+      converter = converter.divide_by_pair(100),
       read_only = true,
       emit = emit.pj3201aClosestTargetDistance(),
     }),
@@ -941,19 +941,19 @@ local presence_model_pj3201a = {
 
     tuya.dp_numeric(3, {
       name = "closest_detection_distance",
-      scale = 100,
+      converter = converter.divide_by_pair(100),
       emit = emit.pj3201aClosestDetectionDistance(),
     }),
 
     tuya.dp_numeric(4, {
       name = "largest_movement_detection_distance",
-      scale = 100,
+      converter = converter.divide_by_pair(100),
       emit = emit.pj3201aLargestMovementDistance(),
     }),
 
     tuya.dp_numeric(108, {
       name = "largest_presence_detection_distance",
-      scale = 100,
+      converter = converter.divide_by_pair(100),
       emit = emit.pj3201aLargestPresenceDistance(),
     }),
 
@@ -972,7 +972,7 @@ local presence_model_pj3201a = {
 
   },
 
-  query_on_configure = true,
+  query_on_configure = false,
 
 }
 

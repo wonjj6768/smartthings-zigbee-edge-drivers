@@ -8,7 +8,7 @@ local common = require "contracts.helpers.ef00_presence"
 local temperature_unit = require "contracts.helpers.temperature_unit"
 
 local converter = tuya.converter
-local device_definitions, register_device_definition = common.isolated_definition_registry(device_helpers)
+local device_definitions, register_device_definition = common.isolated_definition_registry(device_helpers.definition_registry)
 local function register_presence_definition(definitions_or_table, fingerprint_list, ranges)
   return common.register_presence_definition(
     register_device_definition, definitions_or_table, fingerprint_list, ranges

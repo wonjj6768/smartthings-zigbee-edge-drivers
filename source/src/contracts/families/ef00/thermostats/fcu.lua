@@ -33,6 +33,7 @@ local bac003_fan_mode = tuya.dp_fan_mode(28, {
 
 local thermostat_bac003 = {
   profile = "thermostats-fcu-thermostat-bac003",
+  force_time_updates = true,
   named_mapping = {
     named_mappings = {
       system_mode = bac003_system_mode_write,
@@ -102,7 +103,7 @@ local thermostat_l2_t_f_mf = {
   l2_fan_mode,
   tuya.dp_current_heating_setpoint(50, { scale = 10 }),
   tuya.dp_numeric(101, { name = "display_brightness", emit = emit.screenBrightnessL2TFMfLevel9() }),
-  tuya.dp_local_temperature_calibration(102, { scale = 1, emit = emit.l2tfTempCalibration() }),
+  tuya.dp_local_temperature_calibration(102, { scale = 1, emit = emit.l2tfLocalTempCalibration() }),
   tuya.dp_deadzone_temperature(104, { scale = 10, emit = emit.l2tfDeadzoneTemperature() }),
   tuya.dp_eco_temperature(107, {
     name = "eco_temperature_heating",
@@ -291,6 +292,7 @@ local tybac_setpoint = tuya.dp_current_heating_setpoint(16, {
 })
 local thermostat_tybac006 = {
   profile = "thermostats-fcu-thermostat-tybac006",
+  force_time_updates = true,
   named_mapping = {
     named_mappings = {
       system_mode = power_mode_write(1, 2, {

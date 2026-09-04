@@ -127,6 +127,7 @@ end
 local classic_trv = {
   profile = "thermostats-thermostat-classic-trv",
   package_group = "trv-1",
+  force_time_updates = true,
   tuya.dp_current_heating_setpoint(2, { scale = 10 }),
   tuya.dp_local_temperature(3, { scale = 10 }),
   -- Z2M TS0601_thermostat (tuya.ts:8570) drives this family through
@@ -317,6 +318,7 @@ register_device_definition(thermostat_zg_wk_da, ef00_helpers.ts0601_fingerprints
 local thermostat_tgm50 = {
   profile = "thermostats-thermostat-tgm50",
   package_group = "trv-1",
+  respond_to_mcu_version_response = true,
   tuya.dp_binary(1, { name = "system_mode", converter = bool_heat_off }),
   tuya.dp_current_heating_setpoint(2, { scale = 10 }),
   tuya.dp_local_temperature(3, { scale = 10 }),
@@ -357,6 +359,7 @@ register_device_definition(thermostat_tgm50, ef00_helpers.ts0601_fingerprints( {
 local thermostat_po_thco = {
   profile = "thermostats-thermostat-tbgecldg",
   package_group = "trv-1",
+  time_start = "2000",
   tuya.dp_system_mode(1, { converter = converter.lookup_from_to({ auto = 0, heat = 1, off = 2 }) }),
   -- Z2M _TZE204_tbgecldg (tuya.ts:8820) drives every setpoint through divideBy2
   -- and exposes DP2 as an auto/manual/holiday preset.
@@ -372,14 +375,14 @@ local thermostat_po_thco = {
   tuya.dp_comfort_temperature(101, { scale = 2, emit = emit.tbgeComfortTemperature() }),
   tuya.dp_eco_temperature(102, { scale = 2, emit = emit.tbgeEcoTemperature() }),
   tuya.dp_holiday_temperature(103, { scale = 2, emit = emit.tbgeHolidayTemperature() }),
-  tuya.dp_local_temperature_calibration(104, { scale = 10, emit = emit.tbgeTempCalibration() }),
+  tuya.dp_local_temperature_calibration(104, { scale = 10, emit = emit.tbgeLocalTempCalibration() }),
   tuya.dp_current_heating_setpoint(105, {
     name = "auto_temperature",
     scale = 2,
     emit = emit.tbgeAutoTemperature(),
   }),
   tuya.dp_boost_heating(106, { emit = emit.tbgeBoostHeating() }),
-  tuya.dp_open_window(107, { emit = emit.tbgeWindowOpen() }),
+  tuya.dp_window_open(107, { read_only = true, emit = emit.tbgeWindowOpenStatus() }),
   tuya.dp_open_window_temperature(116, { scale = 2, emit = emit.tbgeOpenWindowTemperature() }),
   tuya.dp_open_window_time(117, { emit = emit.tbgeOpenWindowTime() }),
   tuya.dp_boost_time(118, { emit = emit.tbgeBoostTime() }),
@@ -423,6 +426,7 @@ register_device_definition(thermostat_bab_1413, ef00_helpers.ts0601_fingerprints
 local thermostat_variant6 = {
   profile = "thermostats-thermostat-cgr0rhza",
   package_group = "trv-1",
+  force_time_updates = true,
   -- Z2M _TZE284_cgr0rhza (tuya.ts:22658) exposes DP2 as a six-value preset and
   -- reads DP47 raw rather than /10.
   tuya.dp_enum(2, {
@@ -449,7 +453,7 @@ local thermostat_variant6 = {
   error_or_battery_low_dp(emit.cgr0FaultAlarm(), emit.cgr0BatteryLow()),
   tuya.dp_frost_protection(36, { emit = emit.cgr0FrostProtection() }),
   tuya.dp_scale_protection(39, { emit = emit.cgr0ScaleProtection() }),
-  tuya.dp_local_temperature_calibration(47, { scale = 1, emit = emit.cgr0TempCalibration() }),
+  tuya.dp_local_temperature_calibration(47, { scale = 1, emit = emit.cgr0LocalTempCalibration() }),
   tuya.dp_valve_state(49, { emit = emit.cgr0ValveState() }),
   tuya.dp_boost_heating(101, { emit = emit.cgr0BoostHeating() }),
   tuya.dp_boost_time(102, { emit = emit.cgr0BoostTime() }),
@@ -464,6 +468,7 @@ register_device_definition(thermostat_variant6, ef00_helpers.ts0601_fingerprints
 local thermostat_trv603_wz = {
   profile = "thermostats-thermostat-trv603wz",
   package_group = "trv-1",
+  force_time_updates = true,
   tuya.dp_enum(2, {
     name = "preset",
     emit = emit.trv603wzPreset(),
@@ -489,7 +494,9 @@ local thermostat_trv603_wz = {
     emit = emit.trv603wzAntiScale(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
-  tuya.dp_local_temperature_calibration(47, { scale = 10 }),               -- 프로파일 미포함
+  -- Z2M keeps DP47 before DP114 and its generic writer selects the first
+  -- matching property, so DP47 is the TX route while both DPs are RX aliases.
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.trv603wzLocalTempCalibration() }),
   tuya.dp_valve_state(49, { name = "valve_status", emit = emit.trv603wzValveStatus() }),
   tuya.dp_boost_heating(101, { emit = emit.trv603wzBoostHeating() }),
   tuya.dp_boost_time(102, { emit = emit.trv603wzBoostTime() }),
@@ -516,7 +523,7 @@ local thermostat_trv603_wz = {
   }),
   tuya.dp_local_temperature_calibration(114, {
     scale = 10,
-    emit = emit.trv603wzTempCalibration(),
+    emit = emit.trv603wzLocalTempCalibration(),
   }),
   tuya.dp_numeric(115, { name = "programming_mode", emit = emit.trv603wzProgrammingMode() }),
   tuya.dp_eco_temperature(116, { scale = 10, emit = emit.trv603wzEcoTemperature() }),
@@ -533,6 +540,7 @@ register_device_definition(thermostat_trv603_wz, ef00_helpers.ts0601_fingerprint
 local thermostat_zht_002 = {
   profile = "thermostats-thermostat-zht002",
   package_group = "trv-1",
+  time_start = "2000",
   tuya.dp_binary(1, { name = "system_mode", converter = bool_heat_off }),
   tuya.dp_enum(2, {
     name = "programming_mode",
@@ -587,6 +595,7 @@ register_device_definition(thermostat_zht_002, ef00_helpers.ts0601_fingerprints(
 local thermostat_variant1 = {
   profile = "thermostats-thermostat-trv1",
   package_group = "trv-1",
+  force_time_updates = true,
   tuya.dp_system_mode(1, {
     from_device = thermostat_variant1_mode_from_device,
     to_device = thermostat_variant1_mode_to_device,
@@ -679,6 +688,7 @@ register_device_definition(thermostat_variant1, ef00_helpers.ts0601_fingerprints
 local thermostat_variant3 = {
   profile = "thermostats-thermostat-trv06",
   package_group = "trv-1",
+  time_start = "2000",
   tuya.dp_system_mode(2, {
     converter = converter.lookup_from_to({
       auto = 0,
@@ -774,6 +784,7 @@ end
 local thermostat_thaleos_thah202001 = {
   profile = "thermostats-thermostat-thah202001",
   package_group = "trv-1",
+  force_time_updates = true,
   tuya.dp_system_mode(2, {
     from_device = thaleos_thah202001_mode_from_device,
     to_device = thaleos_thah202001_mode_to_device,
@@ -826,7 +837,7 @@ local thermostat_thaleos_thah202001 = {
     emit = emit.thahScaleProtection(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
-  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.thahTempCalibration() }),
+  tuya.dp_local_temperature_calibration(47, { scale = 10, emit = emit.thahLocalTempCalibration() }),
   tuya.dp_numeric(101, {
     name = "operating_time",
     scale = 10,
@@ -846,6 +857,7 @@ register_device_definition(thermostat_thaleos_thah202001, ef00_helpers.ts0601_fi
 local thermostat_variant5 = {
   profile = "thermostats-thermostat-trv06b",
   package_group = "trv-1",
+  time_start = "2000",
   tuya.dp_system_mode(2, {
     converter = converter.lookup_from_to({
       auto = 0,

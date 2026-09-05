@@ -3601,9 +3601,9 @@
   },
   {
     "name": "zcl-sensors-2-wonjj6768",
-    "raw_size": 336878,
+    "raw_size": 336870,
     "under_limit": true,
-    "free_bytes": 187410,
+    "free_bytes": 187418,
     "meets_headroom": true,
     "profiles": [
       "safety-co-detector-battery-voltage-ewelink-7037",

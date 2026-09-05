@@ -9,4 +9,4 @@ components:
       - {id: firmwareUpdate, version: 1}
       - {id: refresh, version: 1}
     categories:
-      - name: TemperatureSensor
+      - name: TempSensor

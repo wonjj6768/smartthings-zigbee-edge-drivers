@@ -4,4 +4,4 @@ components:
     capabilities:
       - {id: precipitationSensor, version: 1}
     categories:
-      - name: WaterSensor
+      - name: RainSensor

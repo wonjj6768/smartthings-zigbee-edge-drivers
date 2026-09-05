@@ -1099,12 +1099,17 @@
       "sourceRelativeToSrc": "contracts/families/zcl/controls/sonoff.lua",
       "requiredModules": [
         "protocol.zcl",
+        "capabilities.events.all",
+        "st.capabilities",
         "contracts.helpers.family",
-        "st.zigbee.device_management"
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
       ],
       "externalDependencies": [
         "protocol.zcl",
-        "st.zigbee.device_management"
+        "st.capabilities",
+        "st.zigbee.device_management",
+        "st.zigbee.data_types"
       ],
       "contractHelpers": [
         "contracts/helpers/family.lua"
@@ -1113,15 +1118,24 @@
         "protocol.zcl": [
           "zcl"
         ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "st.capabilities": [
+          "capabilities"
+        ],
         "contracts.helpers.family": [
           "device_helpers"
         ],
         "st.zigbee.device_management": [
           "device_management"
+        ],
+        "st.zigbee.data_types": [
+          "data_types"
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "ed8ddac6acdbde727d16e8a9aed1663e334c4bc7f3d75b666fae17003843a926"
+      "dynamicEventMemberSha256": "1214bd1e07466021d1b14df034efa0d4e36461458162ef21f3bcf98ac905430e"
     },
     "contracts.families.zcl.sensors.sonoff": {
       "id": "zcl.sensors.sonoff",
@@ -1164,7 +1178,33 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "f855af90f86045fec37d5cc222cea19786b232301d7b2fe0b4420edd87b762b1"
+      "dynamicEventMemberSha256": "674de1f0e57628dd56224021cff553266dc450e190e1e02e63e729eb7f80b1ae"
+    },
+    "contracts.families.zcl.sensors.hobeian": {
+      "id": "zcl.sensors.hobeian",
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/hobeian.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "contracts.helpers.family",
+        "st.capabilities",
+        "st.zigbee.data_types"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.capabilities",
+        "st.zigbee.data_types"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": ["zcl"],
+        "contracts.helpers.family": ["device_helpers"],
+        "st.capabilities": ["capabilities"],
+        "st.zigbee.data_types": ["data_types"]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "b57a421054f34f215cf30e21a22b09e166264166af9d4a1a1cfc50879a25563f"
     },
     "contracts.families.zcl.sensors.sonoff_safety": {
       "id": "zcl.sensors.sonoff_safety",

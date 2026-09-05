@@ -621,6 +621,131 @@ register_device_definition(ws01, {
   device_helpers.create_fingerprint("eWeLink", "WS01"),
 })
 
+-- Classic models have different reporting and GET contracts from the P/D series.
+-- SONOFF manufacturer is user-directed; Basic identity remains hardware-unverified.
+local function classic_refresh(device, preset)
+  return zcl.read_configured_attributes(device, preset.zcl_clusters)
+end
+
+local function classic_battery(maximum_interval, change)
+  return zcl.battery({
+    endpoint = 1,
+    minimum_interval = 3600,
+    maximum_interval = maximum_interval,
+    reportable_change = change,
+    read_on_configure = true,
+    read_only = true,
+    from_device = function(value)
+      -- Conversion runs after /2. ZHC ignores the Uint8 unknown sentinel 255.
+      if type(value) == "number" and value >= 0 and value < 127.5 then return value end
+    end,
+  })
+end
+
+local function classic_voltage(maximum_interval, change)
+  return zcl.battery_voltage({
+    endpoint = 1,
+    minimum_interval = 3600,
+    maximum_interval = maximum_interval,
+    reportable_change = change,
+    read_on_configure = true,
+    read_only = true,
+    from_device = function(value)
+      -- ZHC mV is represented by the standard SmartThings V attribute (/10).
+      if type(value) == "number" and value >= 0 and value < 25.5 then return value end
+    end,
+  })
+end
+
+local snzb02_classic = {
+  profile = "sonoff-snzb02-classic-temp-humidity",
+  magic_packet = false,
+  zcl_clusters = {
+    zcl.temperature({
+      endpoint = 1,
+      minimum_interval = 30,
+      maximum_interval = 3600,
+      reportable_change = 20,
+      read_on_configure = false,
+      read_only = true,
+      from_device = function(value)
+        if type(value) == "number" and value > -33 and value < 100 then return value end
+      end,
+    }),
+    zcl.humidity({
+      endpoint = 1,
+      minimum_interval = 30,
+      maximum_interval = 3600,
+      reportable_change = 100,
+      read_on_configure = false,
+      read_only = true,
+      from_device = function(value)
+        if type(value) == "number" and value >= 0 and value <= 100 then return value end
+      end,
+    }),
+    classic_battery(65000, 0),
+    classic_voltage(65000, 0),
+  },
+  parent_refresh = classic_refresh,
+}
+
+register_device_definition(snzb02_classic, {
+  device_helpers.create_fingerprint("SONOFF", "SNZB-02"),
+  device_helpers.create_fingerprint("SONOFF", "TH01"),
+  device_helpers.create_fingerprint("SONOFF", "CK-TLSR8656-SS5-01(7014)"),
+})
+
+local function classic_zone_bit(bit)
+  return function(value)
+    value = type(value) == "table" and value.value or value
+    if type(value) ~= "number" or value < 0 or value > 65535 or value % 1 ~= 0 then return nil end
+    return math.floor(value / (2 ^ bit)) % 2 == 1
+  end
+end
+
+local snzb04_classic = {
+  profile = "sonoff-snzb04-classic-contact",
+  magic_packet = false,
+  zcl_clusters = {
+    zcl.cluster_attribute(CLUSTER_IAS_ZONE, ATTR_ZONE_STATUS, {
+      name = "contact",
+      endpoint = 1,
+      emit = emit.contact(),
+      data_type = data_types.Bitmap16,
+      from_device = classic_zone_bit(0),
+      command_id = 0x00,
+      command_extractor = extract_zone_status,
+      ias_configure_method = 0, -- SDK CUSTOM: no invented CIE write/enroll or IAS bind.
+      read_only = true,
+      read_on_configure = false,
+    }),
+    zcl.cluster_attribute(CLUSTER_IAS_ZONE, ATTR_ZONE_STATUS, {
+      name = "battery_low",
+      endpoint = 1,
+      emit = function(_, value)
+        return value and capabilities.batteryLevel.battery.critical()
+          or capabilities.batteryLevel.battery.normal()
+      end,
+      data_type = data_types.Bitmap16,
+      from_device = classic_zone_bit(3),
+      command_id = 0x00,
+      command_extractor = extract_zone_status,
+      ias_configure_method = 0,
+      read_only = true,
+      read_on_configure = false,
+    }),
+    classic_battery(7200, 2),
+    classic_voltage(7200, 100),
+  },
+  parent_refresh = classic_refresh,
+}
+
+register_device_definition(snzb04_classic, {
+  device_helpers.create_fingerprint("SONOFF", "SNZB-04"),
+  device_helpers.create_fingerprint("SONOFF", "DS01"),
+  device_helpers.create_fingerprint("SONOFF", "CK-TLSR8656-SS5-01(7003)"),
+})
+
 return {
   id = "zcl.sensors.sonoff",
   registrations = device_definitions,

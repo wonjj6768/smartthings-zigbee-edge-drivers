@@ -440,6 +440,10 @@
         {
           "module": "contracts.families.zcl.sensors.sonoff_presence_advanced",
           "id": "zcl.sensors.sonoff_presence_advanced"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.hobeian",
+          "id": "zcl.sensors.hobeian"
         }
       ]
     },

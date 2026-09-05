@@ -429,6 +429,12 @@
       "newOwner": "zcl-lights-2-wonjj6768"
     },
     {
+      "catalogId": "zcl.sensors.hobeian",
+      "catalogModule": "contracts.families.zcl.sensors.hobeian",
+      "oldOwner": "zcl-sensors-2-wonjj6768",
+      "newOwner": "zcl-sensors-2-wonjj6768"
+    },
+    {
       "catalogId": "zcl.sensors.sonoff",
       "catalogModule": "contracts.families.zcl.sensors.sonoff",
       "oldOwner": "zcl-sensors-2-wonjj6768",
@@ -1449,9 +1455,13 @@
         {
           "module": "contracts.families.zcl.sensors.sonoff_presence_advanced",
           "id": "zcl.sensors.sonoff_presence_advanced"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.hobeian",
+          "id": "zcl.sensors.hobeian"
         }
       ],
-      "exactCount": 29,
+      "exactCount": 36,
       "catalogMigrations": [
         {
           "catalogId": "zcl.sensors.z2m_absorption",
@@ -1608,14 +1618,58 @@
           "oldOwner": "zcl-sensors-2-wonjj6768",
           "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": false,
-          "exactCount": 13,
+          "exactCount": 19,
           "exacts": [
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "CK-TLSR8656-SS5-01(7003)",
+              "modelUtf8Hex": "434b2d544c5352383635362d5353352d3031283730303329",
+              "profile": "sonoff-snzb04-classic-contact",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "CK-TLSR8656-SS5-01(7014)",
+              "modelUtf8Hex": "434b2d544c5352383635362d5353352d3031283730313429",
+              "profile": "sonoff-snzb02-classic-temp-humidity",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "DS01",
+              "modelUtf8Hex": "44533031",
+              "profile": "sonoff-snzb04-classic-contact",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff"
+            },
             {
               "manufacturer": "SONOFF",
               "manufacturerUtf8Hex": "534f4e4f4646",
               "model": "MG1_5RZ",
               "modelUtf8Hex": "4d47315f35525a",
               "profile": "sonoff-mg35rz-occupancy",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "SNZB-02",
+              "modelUtf8Hex": "534e5a422d3032",
+              "profile": "sonoff-snzb02-classic-temp-humidity",
               "oldOwner": "zcl-sensors-2-wonjj6768",
               "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.sonoff",
@@ -1693,6 +1747,28 @@
               "model": "SNZB-03P",
               "modelUtf8Hex": "534e5a422d303350",
               "profile": "sonoff-snzb03p-occupancy",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "SNZB-04",
+              "modelUtf8Hex": "534e5a422d3034",
+              "profile": "sonoff-snzb04-classic-contact",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "TH01",
+              "modelUtf8Hex": "54483031",
+              "profile": "sonoff-snzb02-classic-temp-humidity",
               "oldOwner": "zcl-sensors-2-wonjj6768",
               "newOwner": "zcl-sensors-2-wonjj6768",
               "catalogId": "zcl.sensors.sonoff",
@@ -1851,6 +1927,27 @@
               "catalogModule": "contracts.families.zcl.sensors.sonoff_presence_advanced"
             }
           ]
+        },
+        {
+          "catalogId": "zcl.sensors.hobeian",
+          "catalogModule": "contracts.families.zcl.sensors.hobeian",
+          "oldOwner": "zcl-sensors-2-wonjj6768",
+          "newOwner": "zcl-sensors-2-wonjj6768",
+          "moved": false,
+          "exactCount": 1,
+          "exacts": [
+            {
+              "manufacturer": "HOBEIAN",
+              "manufacturerUtf8Hex": "484f424549414e",
+              "model": "ZG-222Z",
+              "modelUtf8Hex": "5a472d3232325a",
+              "profile": "hobeian-zg222z-water-leak",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.hobeian",
+              "catalogModule": "contracts.families.zcl.sensors.hobeian"
+            }
+          ]
         }
       ]
     },
@@ -1870,7 +1967,7 @@
           "id": "zcl.controls.sonoff"
         }
       ],
-      "exactCount": 7,
+      "exactCount": 10,
       "catalogMigrations": [
         {
           "catalogId": "zcl.controls.z2m_absorption",
@@ -1953,8 +2050,41 @@
           "oldOwner": "zcl-controls-2-wonjj6768",
           "newOwner": "zcl-controls-2-wonjj6768",
           "moved": false,
-          "exactCount": 2,
+          "exactCount": 5,
           "exacts": [
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "KF-01",
+              "modelUtf8Hex": "4b462d3031",
+              "profile": "sonoff-kf-button",
+              "oldOwner": "zcl-controls-2-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.sonoff",
+              "catalogModule": "contracts.families.zcl.controls.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "KF01",
+              "modelUtf8Hex": "4b463031",
+              "profile": "sonoff-kf-button",
+              "oldOwner": "zcl-controls-2-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.sonoff",
+              "catalogModule": "contracts.families.zcl.controls.sonoff"
+            },
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "SNZB-01M",
+              "modelUtf8Hex": "534e5a422d30314d",
+              "profile": "sonoff-snzb01m-button",
+              "oldOwner": "zcl-controls-2-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.sonoff",
+              "catalogModule": "contracts.families.zcl.controls.sonoff"
+            },
             {
               "manufacturer": "SONOFF",
               "manufacturerUtf8Hex": "534f4e4f4646",
@@ -5681,11 +5811,11 @@
     "legacyExactCount": 3280,
     "legacyOwnerChangeCount": 0,
     "newPackageCount": 21,
-    "newCatalogCount": 83,
-    "newExactCount": 306,
+    "newCatalogCount": 84,
+    "newExactCount": 316,
     "fingerprintOnlyAliasCount": 13,
     "failClosedExactCount": 2,
-    "runtimeExactCount": 3597,
+    "runtimeExactCount": 3607,
     "movedCatalogCount": 49,
     "movedExactCount": 167,
     "historicalPartitionCount": 17

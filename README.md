@@ -2,7 +2,7 @@
 
 ## August 31, 2026 Update
 
-This release expands the public channel to 48 drivers and 3597 exact device fingerprints.
+This release expands the public channel to 48 drivers and 3607 exact device fingerprints.
 If a device that worked before no longer works after the August 31 update, please report it in [GitHub Issues](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues).
 Please include the manufacturer, model, current driver name, and hub logcat if available.
 
@@ -76,7 +76,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Valves 2 wonjj6768 | `ef00-valves-2-wonjj6768` | 19 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 30 |
 | ZCL Bridge wonjj6768 | `zcl-bridge-wonjj6768` | 3 |
-| ZCL Controls 2 wonjj6768 | `zcl-controls-2-wonjj6768` | 7 |
+| ZCL Controls 2 wonjj6768 | `zcl-controls-2-wonjj6768` | 10 |
 | ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 318 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 41 |
 | ZCL DALI wonjj6768 | `zcl-dali-wonjj6768` | 1 |
@@ -85,7 +85,7 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 692 |
 | ZCL Locks wonjj6768 | `zcl-locks-wonjj6768` | 2 |
 | ZCL Plugs wonjj6768 | `zcl-plugs-wonjj6768` | 110 |
-| ZCL Sensors 2 wonjj6768 | `zcl-sensors-2-wonjj6768` | 29 |
+| ZCL Sensors 2 wonjj6768 | `zcl-sensors-2-wonjj6768` | 36 |
 | ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 401 |
 | ZCL Switch 2 wonjj6768 | `zcl-switch-2-wonjj6768` | 12 |
 | ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 501 |
@@ -1901,7 +1901,7 @@ Dedicated driver for newly absorbed exact ZCL bridge fingerprints.
 </details>
 
 <details>
-<summary>ZCL Controls 2 wonjj6768 (7 fingerprints)</summary>
+<summary>ZCL Controls 2 wonjj6768 (10 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL remote and control fingerprints.
 
@@ -1913,6 +1913,9 @@ Category driver for newly absorbed exact ZCL remote and control fingerprints.
 | `JetHome` | `WS7` | `buttons-jethome-ws7` |
 | `Slacky-DIY` | `TS0043-M007-SlD` | `buttons-button-3-battery-remote-action-slacky` |
 | `Slacky-DIY` | `TS0043-z-SlD` | `buttons-button-3-battery-remote-action-slacky` |
+| `SONOFF` | `KF-01` | `sonoff-kf-button` |
+| `SONOFF` | `KF01` | `sonoff-kf-button` |
+| `SONOFF` | `SNZB-01M` | `sonoff-snzb01m-button` |
 | `SONOFF` | `SNZB-01P` | `sonoff-snzb01p-button` |
 
 </details>
@@ -3176,7 +3179,7 @@ Development driver; report issues with hub logcat. Supports ZCL plugs, metered o
 </details>
 
 <details>
-<summary>ZCL Sensors 2 wonjj6768 (29 fingerprints)</summary>
+<summary>ZCL Sensors 2 wonjj6768 (36 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.
 
@@ -3194,10 +3197,15 @@ Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vib
 | `eWeLink` | `SNZB-04P` | `sonoff-safety-contact-04p` |
 | `eWeLink` | `WS01` | `sonoff-ws01-rain` |
 | `HEIMAN` | `HS2AQ-EF-3.0` | `sensors-wave19-heiman-hs2aq-ef-three` |
+| `HOBEIAN` | `ZG-222Z` | `hobeian-zg222z-water-leak` |
 | `LinknLink` | `eMotion Air` | `sensors-linknlink-emotion-air` |
 | `PLAID SYSTEMS` | `PS-SPRZMS-SLP3` | `sensors-wave19-plaid-spruce` |
 | `Shelly` | `Presence` | `sensors-shelly-presence-gen4` |
+| `SONOFF` | `CK-TLSR8656-SS5-01(7003)` | `sonoff-snzb04-classic-contact` |
+| `SONOFF` | `CK-TLSR8656-SS5-01(7014)` | `sonoff-snzb02-classic-temp-humidity` |
+| `SONOFF` | `DS01` | `sonoff-snzb04-classic-contact` |
 | `SONOFF` | `MG1_5RZ` | `sonoff-mg35rz-occupancy` |
+| `SONOFF` | `SNZB-02` | `sonoff-snzb02-classic-temp-humidity` |
 | `SONOFF` | `SNZB-02B` | `sonoff-snzb02b-environment` |
 | `SONOFF` | `SNZB-02D` | `sonoff-snzb02d-temp-humidity-display` |
 | `SONOFF` | `SNZB-02LD` | `sonoff-snzb02ld-temperature-display` |
@@ -3206,11 +3214,13 @@ Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vib
 | `SONOFF` | `SNZB-02WD` | `sonoff-snzb02wd-temp-humidity-display` |
 | `SONOFF` | `SNZB-03P` | `sonoff-snzb03p-occupancy` |
 | `SONOFF` | `SNZB-03PR2` | `sonoff-snzb03pr2-occupancy` |
+| `SONOFF` | `SNZB-04` | `sonoff-snzb04-classic-contact` |
 | `SONOFF` | `SNZB-04P` | `sonoff-safety-contact-04p` |
 | `SONOFF` | `SNZB-04PR2` | `sonoff-safety-contact-04p` |
 | `SONOFF` | `SNZB-05P` | `sonoff-safety-water-05p` |
 | `SONOFF` | `SNZB-06P` | `sonoff-safety-occupancy-06p` |
 | `SONOFF` | `SNZB-09P` | `sonoff-safety-siren-09p` |
+| `SONOFF` | `TH01` | `sonoff-snzb02-classic-temp-humidity` |
 
 </details>
 

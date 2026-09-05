@@ -1,0 +1,10 @@
+name: sonoff-kf-button
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.sonoffKfAction, version: 1}
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: RemoteController

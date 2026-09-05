@@ -7,6 +7,18 @@ zigbeeManufacturer:
     manufacturer: "JetHome"
     model: "WS7"
     deviceProfileName: "buttons-jethome-ws7"
+  - id: fp_d887bd5c18
+    manufacturer: "SONOFF"
+    model: "KF-01"
+    deviceProfileName: "sonoff-kf-button"
+  - id: fp_e87735efb4
+    manufacturer: "SONOFF"
+    model: "KF01"
+    deviceProfileName: "sonoff-kf-button"
+  - id: fp_b77dac5fad
+    manufacturer: "SONOFF"
+    model: "SNZB-01M"
+    deviceProfileName: "sonoff-snzb01m-button"
   - id: fp_e5d491985e
     manufacturer: "SONOFF"
     model: "SNZB-01P"

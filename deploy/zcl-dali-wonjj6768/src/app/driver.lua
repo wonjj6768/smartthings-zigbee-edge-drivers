@@ -37,8 +37,12 @@ local DEVICE_ANNOUNCE_CLUSTER_ID=0x0013
 local preset_cache=setmetatable({},{__mode="k"})
 local function register_all_zcl_mappings()
 local all_definitions=registry.all()
+local additional_zcl_profiles={}
 for _,by_model in pairs(all_definitions)do
 for _,definition in pairs(by_model)do
+for _,profile_id in ipairs(definition.additional_zcl_profiles or{})do
+additional_zcl_profiles[profile_id]=true
+end
 if definition.zcl_clusters then
 zcl.register_attributes_from_mappings(definition.zcl_clusters)
 zcl.register_cluster_commands_from_mappings(definition.zcl_clusters)
@@ -46,8 +50,9 @@ zcl.prepare_mappings(definition.zcl_clusters)
 end
 end
 end
+return additional_zcl_profiles
 end
-register_all_zcl_mappings()
+local additional_zcl_profiles=register_all_zcl_mappings()
 local function get_preset(device)
 local cached=preset_cache[device]
 if cached then
@@ -885,6 +890,7 @@ return handlers
 end
 local driver_template={
 supported_capabilities={},
+additional_zcl_profiles=additional_zcl_profiles,
 zigbee_handlers={
 cluster=build_cluster_handlers(),
 global=zcl.build_zigbee_global_handlers(get_preset),

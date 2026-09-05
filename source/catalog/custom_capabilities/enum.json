@@ -16570,5 +16570,14 @@
       "high",
       "max"
     ]
+  ],
+  [
+    "sonoffKfAction",
+    false,
+    "sonoff_kf_action",
+    [
+      "off",
+      "single"
+    ]
   ]
 ]

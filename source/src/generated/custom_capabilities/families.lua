@@ -3405,6 +3405,7 @@ local ATTRIBUTE_OVERRIDES = {
   sonoffSafetyAlarmDuration = "alarmDuration",
   sonoffSnzb03pr2DetectionDuration = "detectionDuration",
   sonoffSnzb03pr2IlluminationOffset = "illuminationOffset",
+  sonoffKfAction = "action",
 }
 
 local function attribute_name(capability_id)
@@ -6931,6 +6932,7 @@ local enum_rows = {
   {"sonoffSafetyAlarmLightEnable",true,"sonoff_safety_alarm_light_enable",{"off","on"}},
   {"sonoffSafetyAlarmSoundType",true,"sonoff_safety_alarm_sound_type",{"siren_classic","siren_steady","siren_rising","siren_warning","siren_rapid","siren_emergency","tone_chirp","tone_hi_lo","tone_intermittent","tone_pulse"}},
   {"sonoffSafetyAlarmVolume",true,"sonoff_safety_alarm_volume",{"low","medium","high","max"}},
+  {"sonoffKfAction",false,"sonoff_kf_action",{"off","single"}},
 }
 local text_rows = {
   {"zmsFourSwitchName",true,"zms206_switch_name",12},

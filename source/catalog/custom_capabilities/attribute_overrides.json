@@ -13554,5 +13554,9 @@
   [
     "sonoffSnzb03pr2IlluminationOffset",
     "illuminationOffset"
+  ],
+  [
+    "sonoffKfAction",
+    "action"
   ]
 ]

@@ -40,4 +40,8 @@ local catalog_8=require "contracts.families.zcl.sensors.sonoff_presence_advanced
 for _,entry in ipairs(registrations(catalog_8,"zcl.sensors.sonoff_presence_advanced","contracts.families.zcl.sensors.sonoff_presence_advanced"))do
 entries[#entries + 1]=entry
 end
+local catalog_9=require "contracts.families.zcl.sensors.hobeian"
+for _,entry in ipairs(registrations(catalog_9,"zcl.sensors.hobeian","contracts.families.zcl.sensors.hobeian"))do
+entries[#entries + 1]=entry
+end
 return entries

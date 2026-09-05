@@ -39,4 +39,19 @@ for _, entry in ipairs(registrations(catalog_5, "zcl.sensors.wave19_vibration", 
   entries[#entries + 1] = entry
 end
 
+local catalog_6 = require "contracts.families.zcl.sensors.sonoff"
+for _, entry in ipairs(registrations(catalog_6, "zcl.sensors.sonoff", "contracts.families.zcl.sensors.sonoff")) do
+  entries[#entries + 1] = entry
+end
+
+local catalog_7 = require "contracts.families.zcl.sensors.sonoff_safety"
+for _, entry in ipairs(registrations(catalog_7, "zcl.sensors.sonoff_safety", "contracts.families.zcl.sensors.sonoff_safety")) do
+  entries[#entries + 1] = entry
+end
+
+local catalog_8 = require "contracts.families.zcl.sensors.sonoff_presence_advanced"
+for _, entry in ipairs(registrations(catalog_8, "zcl.sensors.sonoff_presence_advanced", "contracts.families.zcl.sensors.sonoff_presence_advanced")) do
+  entries[#entries + 1] = entry
+end
+
 return entries

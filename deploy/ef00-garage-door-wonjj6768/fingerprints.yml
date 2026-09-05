@@ -1,45 +1,45 @@
 zigbeeManufacturer:
-  - id: "fp_58b176c076"
+  - id: fp_58b176c076
     manufacturer: "LoraTap"
     model: "GDC311ZBQ1"
     deviceProfileName: "doors-garage-contact"
-  - id: "fp_cd775ec66e"
+  - id: fp_cd775ec66e
     manufacturer: "_TZE200_nklqjk62"
     model: "TS0601"
     deviceProfileName: "doors-garage-contact-countdown"
-  - id: "fp_52339539ce"
+  - id: fp_52339539ce
     manufacturer: "_TZE200_wfxuhoea"
     model: "TS0601"
     deviceProfileName: "doors-garage-contact"
-  - id: "fp_7f16cd8a3b"
+  - id: fp_7f16cd8a3b
     manufacturer: "_TZE204_jktmrpoj"
     model: "TS0601"
     deviceProfileName: "doors-garage-contact-countdown"
-  - id: "fp_b883877734"
+  - id: fp_b883877734
     manufacturer: "_TZE204_nklqjk62"
     model: "TS0601"
     deviceProfileName: "doors-garage-contact-countdown"
-  - id: "fp_3cdcef3e1a"
+  - id: fp_3cdcef3e1a
     manufacturer: "_TZE204_wfxuhoea"
     model: "TS0601"
     deviceProfileName: "doors-garage-contact"
-  - id: "fp_69e9d5270d"
+  - id: fp_69e9d5270d
     manufacturer: "_TZE284_nklqjk62"
     model: "TS0601"
     deviceProfileName: "doors-garage-contact-countdown"
-  - id: "fp_afa7175e2a"
+  - id: fp_afa7175e2a
     manufacturer: "_TZE608_c75zqghm"
     model: "TS0603"
     deviceProfileName: "doors-garage-contact"
-  - id: "fp_98f07d313a"
+  - id: fp_98f07d313a
     manufacturer: "_TZE608_fmemczv1"
     model: "TS0603"
     deviceProfileName: "doors-garage-contact"
-  - id: "fp_5b8d78ebaa"
+  - id: fp_5b8d78ebaa
     manufacturer: "_TZE608_lapuuoke"
     model: "TS0603"
     deviceProfileName: "doors-garage-contact"
-  - id: "fp_3ec2a9ce8e"
+  - id: fp_3ec2a9ce8e
     manufacturer: "_TZE608_xkr8gep3"
     model: "TS0603"
     deviceProfileName: "doors-garage-contact"

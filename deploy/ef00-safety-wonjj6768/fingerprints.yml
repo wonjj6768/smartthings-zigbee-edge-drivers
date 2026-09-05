@@ -1,401 +1,401 @@
 zigbeeManufacturer:
-  - id: "fp_a2d5ea2658"
+  - id: fp_a2d5ea2658
     manufacturer: "AOYAN"
     model: "AY02SZ"
     deviceProfileName: "safety-acceleration-contact-battery-zg102zm"
-  - id: "fp_8fb2e4a718"
+  - id: fp_8fb2e4a718
     manufacturer: "CAT0001"
     model: "Excellux"
     deviceProfileName: "safety-contact-vibration-battery-excellux"
-  - id: "fp_5e5f75d61d"
+  - id: fp_5e5f75d61d
     manufacturer: "HOBEIAN"
     model: "ZG-103Z"
     deviceProfileName: "safety-acceleration-battery-zg103z"
-  - id: "fp_4e51557a2d"
+  - id: fp_4e51557a2d
     manufacturer: "HOBEIAN"
     model: "ZG-223Z"
     deviceProfileName: "safety-water-leak-illuminance-battery-zg223z"
-  - id: "fp_d706096345"
+  - id: fp_d706096345
     manufacturer: "HOBEIAN"
     model: "ZG-226Z"
     deviceProfileName: "safety-water-leak-alarm-battery-zg226z"
-  - id: "fp_067f19cf5f"
+  - id: fp_067f19cf5f
     manufacturer: "HOBEIAN"
     model: "ZG-228Z"
     deviceProfileName: "safety-acceleration-alarm-battery-zg228z"
-  - id: "fp_1d02167be0"
+  - id: fp_1d02167be0
     manufacturer: "HOBEIAN"
     model: "ZG-229Z"
     deviceProfileName: "safety-alarm-battery-zg229z"
-  - id: "fp_3c08ddd703"
+  - id: fp_3c08ddd703
     manufacturer: "PIRIV01"
     model: "Excellux"
     deviceProfileName: "safety-motion-vibration-illuminance-battery-excellux"
-  - id: "fp_ccccce5020"
+  - id: fp_ccccce5020
     manufacturer: "VABRATE"
     model: "Excellux"
     deviceProfileName: "safety-vibration-battery-excellux"
-  - id: "fp_f7a97c1fa2"
+  - id: fp_f7a97c1fa2
     manufacturer: "_TYST11_qtbrwrfv"
     model: "tbrwrfv\x00"
     deviceProfileName: "safety-smoke-value-self-check-result-lifecycle-battery-silence-alecto"
-  - id: "fp_60f75aa06e"
+  - id: fp_60f75aa06e
     manufacturer: "_TZE200_0zaf1cr8"
     model: "TS0601"
     deviceProfileName: "safety-smoke-tamper-battery-low"
-  - id: "fp_43d06794ac"
+  - id: fp_43d06794ac
     manufacturer: "_TZE200_2pddnnrk"
     model: "TS0601"
     deviceProfileName: "safety-water-leak-illuminance-battery-zg223z"
-  - id: "fp_1a0396e369"
+  - id: fp_1a0396e369
     manufacturer: "_TZE200_5d3vhjro"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-silence-alarm-sa12izl"
-  - id: "fp_2790984edf"
+  - id: fp_2790984edf
     manufacturer: "_TZE200_7bztmfm1"
     model: "TS0601"
     deviceProfileName: "safety-co-detector"
-  - id: "fp_e392451f33"
+  - id: fp_e392451f33
     manufacturer: "_TZE200_8isdky6j"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-zg225z"
-  - id: "fp_7cdd1f4c74"
+  - id: fp_7cdd1f4c74
     manufacturer: "_TZE200_8ply8mjj"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-4cqhd2ha"
-  - id: "fp_631fe43191"
+  - id: fp_631fe43191
     manufacturer: "_TZE200_afycb3cg"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-battery-zg103z"
-  - id: "fp_80a7126752"
+  - id: fp_80a7126752
     manufacturer: "_TZE200_aj0oxo1i"
     model: "TS0225"
     deviceProfileName: "safety-gas-detector-zg225z"
-  - id: "fp_4363fe2c98"
+  - id: fp_4363fe2c98
     manufacturer: "_TZE200_aycxwiau"
     model: "TS0601"
     deviceProfileName: "safety-smoke-test-result-battery-fault-silence-alarm-r7049"
-  - id: "fp_15a355683d"
+  - id: fp_15a355683d
     manufacturer: "_TZE200_bxdyeaa9"
     model: "TS0601"
     deviceProfileName: "safety-smoke-test-result-battery-fault-silence-alarm-r7049"
-  - id: "fp_2feb8c9d60"
+  - id: fp_2feb8c9d60
     manufacturer: "_TZE200_dnz6yvl2"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-state-silence-test-zss"
-  - id: "fp_147415b5d5"
+  - id: fp_147415b5d5
     manufacturer: "_TZE200_dq1mfjug"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-t5p1vj8r"
-  - id: "fp_f9fa465508"
+  - id: fp_f9fa465508
     manufacturer: "_TZE200_e2bedvo9"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-state-silence-test-zss"
-  - id: "fp_a00dd31661"
+  - id: fp_a00dd31661
     manufacturer: "_TZE200_ft523twt"
     model: "TS0601"
     deviceProfileName: "safety-smoke-test-result-battery-fault-silence-alarm-r7049"
-  - id: "fp_3b44078ac4"
+  - id: fp_3b44078ac4
     manufacturer: "_TZE200_fwoorn8y"
     model: "TS0601"
     deviceProfileName: "safety-contact-battery"
-  - id: "fp_4c6ee96899"
+  - id: fp_4c6ee96899
     manufacturer: "_TZE200_ggev5fsl"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-self-test"
-  - id: "fp_3ff8103f30"
+  - id: fp_3ff8103f30
     manufacturer: "_TZE200_hggxgsjj"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-battery-zg103z"
-  - id: "fp_604022a8d7"
+  - id: fp_604022a8d7
     manufacturer: "_TZE200_iba1ckek"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-battery-zg103z"
-  - id: "fp_c1634b3454"
+  - id: fp_c1634b3454
     manufacturer: "_TZE200_ijey4q29"
     model: "TS0601"
     deviceProfileName: "safety-contact-illuminance-battery"
-  - id: "fp_f0585ff8d6"
+  - id: fp_f0585ff8d6
     manufacturer: "_TZE200_ioxkjvuz"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-self-test-result-preheat-ga01"
-  - id: "fp_98bfbc917f"
+  - id: fp_98bfbc917f
     manufacturer: "_TZE200_iuk8kupi"
     model: "TS0601"
     deviceProfileName: "safety-gas-co-detector"
-  - id: "fp_6e7cba706b"
+  - id: fp_6e7cba706b
     manufacturer: "_TZE200_j7sgd8po"
     model: "TS0601"
     deviceProfileName: "safety-contact-temp-humidity-battery-s8"
-  - id: "fp_102958bf66"
+  - id: fp_102958bf66
     manufacturer: "_TZE200_jfw0a4aa"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-contact-battery-zg102zm"
-  - id: "fp_05c8dd18f7"
+  - id: fp_05c8dd18f7
     manufacturer: "_TZE200_jsaqgakf"
     model: "TS0601"
     deviceProfileName: "safety-water-leak-illuminance-battery-zg223z"
-  - id: "fp_185c5eaf83"
+  - id: fp_185c5eaf83
     manufacturer: "_TZE200_jthf7vb6"
     model: "TS0601"
     deviceProfileName: "safety-water-leak-battery"
-  - id: "fp_e628d9ad14"
+  - id: fp_e628d9ad14
     manufacturer: "_TZE200_kf2hbko4"
     model: "TS0601"
     deviceProfileName: "safety-contact-illuminance-battery"
-  - id: "fp_4aa75056a0"
+  - id: fp_4aa75056a0
     manufacturer: "_TZE200_kltffuzl"
     model: "TS0601"
     deviceProfileName: "safety-contact-battery"
-  - id: "fp_6118662d5b"
+  - id: fp_6118662d5b
     manufacturer: "_TZE200_kvpwq8z7"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-self-test"
-  - id: "fp_6327f421ea"
+  - id: fp_6327f421ea
     manufacturer: "_TZE200_kzm5w4iz"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-contact-battery"
-  - id: "fp_56c17dbd42"
+  - id: fp_56c17dbd42
     manufacturer: "_TZE200_m9skfctm"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-silence-test-pa44z"
-  - id: "fp_574838288f"
+  - id: fp_574838288f
     manufacturer: "_TZE200_mby4kbtq"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-value-preheat-fault-alarm-silence-gas4"
-  - id: "fp_271886603c"
+  - id: fp_271886603c
     manufacturer: "_TZE200_n8dljorx"
     model: "TS0601"
     deviceProfileName: "safety-contact-battery"
-  - id: "fp_1653b16e33"
+  - id: fp_1653b16e33
     manufacturer: "_TZE200_ntcy3xu1"
     model: "TS0601"
     deviceProfileName: "safety-smoke-tamper-battery-state-ntcy3xu1"
-  - id: "fp_7d6a18233c"
+  - id: fp_7d6a18233c
     manufacturer: "_TZE200_nus5kk3n"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-self-test-result-fault-gas3"
-  - id: "fp_b4f6fe004c"
+  - id: fp_b4f6fe004c
     manufacturer: "_TZE200_nvups4nh"
     model: "TS0601"
     deviceProfileName: "safety-contact-temp-humidity-battery"
-  - id: "fp_20e918b7f0"
+  - id: fp_20e918b7f0
     manufacturer: "_TZE200_p6fuhvez"
     model: "TS0225"
     deviceProfileName: "safety-gas-detector-zg225z"
-  - id: "fp_3d48f41552"
+  - id: fp_3d48f41552
     manufacturer: "_TZE200_pay2byax"
     model: "TS0601"
     deviceProfileName: "safety-contact-illuminance-battery"
-  - id: "fp_2eeec114de"
+  - id: fp_2eeec114de
     manufacturer: "_TZE200_qcasmfan"
     model: "TS0601"
     deviceProfileName: "safety-smoke-tamper-battery"
-  - id: "fp_25e45f16bc"
+  - id: fp_25e45f16bc
     manufacturer: "_TZE200_qq9mpfhw"
     model: "TS0601"
     deviceProfileName: "safety-water-leak"
-  - id: "fp_31da5ec568"
+  - id: fp_31da5ec568
     manufacturer: "_TZE200_qtbrwrfv"
     model: "TS0601"
     deviceProfileName: "safety-smoke-value-self-check-result-lifecycle-battery-silence-alecto"
-  - id: "fp_50546fcbb9"
+  - id: fp_50546fcbb9
     manufacturer: "_TZE200_rccxox8p"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-silence-test-pa44z"
-  - id: "fp_0089335766"
+  - id: fp_0089335766
     manufacturer: "_TZE200_t5p1vj8r"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-t5p1vj8r"
-  - id: "fp_187436162b"
+  - id: fp_187436162b
     manufacturer: "_TZE200_u319yc66"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-self-test"
-  - id: "fp_b25f0f02d8"
+  - id: fp_b25f0f02d8
     manufacturer: "_TZE200_u6x1zyv2"
     model: "TS0601"
     deviceProfileName: "safety-water-leak-illuminance-battery-zg223z"
-  - id: "fp_dc55418866"
+  - id: fp_dc55418866
     manufacturer: "_TZE200_uebojraa"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-t5p1vj8r"
-  - id: "fp_98267af1e0"
+  - id: fp_98267af1e0
     manufacturer: "_TZE200_ux5v4dbd"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-ux5v4dbd"
-  - id: "fp_6ed7653dcd"
+  - id: fp_6ed7653dcd
     manufacturer: "_TZE200_vawy74yh"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-self-test-silence-hs2sa"
-  - id: "fp_48e993b068"
+  - id: fp_48e993b068
     manufacturer: "_TZE200_vzekyi4c"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-t5p1vj8r"
-  - id: "fp_726cf468e2"
+  - id: fp_726cf468e2
     manufacturer: "_TZE200_wzk0x7fq"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-contact-battery-zg102zm"
-  - id: "fp_1c49805e50"
+  - id: fp_1c49805e50
     manufacturer: "_TZE200_yh7aoahi"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-t5p1vj8r"
-  - id: "fp_0d42bd1002"
+  - id: fp_0d42bd1002
     manufacturer: "_TZE200_yjryxpot"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-battery-zg103z"
-  - id: "fp_f519214d84"
+  - id: fp_f519214d84
     manufacturer: "_TZE200_ykglasuj"
     model: "TS0601"
     deviceProfileName: "safety-contact-illuminance-battery"
-  - id: "fp_f1024e8167"
+  - id: fp_f1024e8167
     manufacturer: "_TZE200_yojqa8xn"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-alarm-time-ringtone"
-  - id: "fp_3ac93e0152"
+  - id: fp_3ac93e0152
     manufacturer: "_TZE200_ytibqbra"
     model: "TS0601"
     deviceProfileName: "safety-smoke-tamper-battery-fault-silence-alarm-ytibqbra"
-  - id: "fp_e3f782e882"
+  - id: fp_e3f782e882
     manufacturer: "_TZE200_ytx9fudw"
     model: "TS0601"
     deviceProfileName: "safety-contact-alarm-battery-opening-senoro"
-  - id: "fp_efc3adf43b"
+  - id: fp_efc3adf43b
     manufacturer: "_TZE204_7bztmfm1"
     model: "TS0601"
     deviceProfileName: "safety-co-detector"
-  - id: "fp_439f078146"
+  - id: fp_439f078146
     manufacturer: "_TZE204_ai4rqhky"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-self-test-silence-hs2sa"
-  - id: "fp_b09040ac6d"
+  - id: fp_b09040ac6d
     manufacturer: "_TZE204_chbyv06x"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-alarm-time-ringtone"
-  - id: "fp_4c99330a40"
+  - id: fp_4c99330a40
     manufacturer: "_TZE204_fncxk3ob"
     model: "TS0601"
     deviceProfileName: "safety-alarm-battery-duration-volume-ringtone-yxzbsl"
-  - id: "fp_3d177b87ff"
+  - id: fp_3d177b87ff
     manufacturer: "_TZE204_hcxvyxa5"
     model: "TS0601"
     deviceProfileName: "safety-alarm-duration-volume-ringtone-za03"
-  - id: "fp_7fa1b3db58"
+  - id: fp_7fa1b3db58
     manufacturer: "_TZE204_iuk8kupi"
     model: "TS0601"
     deviceProfileName: "safety-gas-co-detector"
-  - id: "fp_dfaad68269"
+  - id: fp_dfaad68269
     manufacturer: "_TZE204_k7mfgaen"
     model: "TS0601"
     deviceProfileName: "safety-alarm-battery-duration-volume-ringtone-yxzbsl"
-  - id: "fp_96457ae437"
+  - id: fp_96457ae437
     manufacturer: "_TZE204_kgaxpvxr"
     model: "TS0601"
     deviceProfileName: "safety-smoke-detector-battery-288wz"
-  - id: "fp_22275fe5ad"
+  - id: fp_22275fe5ad
     manufacturer: "_TZE204_kvpwq8z7"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-self-test"
-  - id: "fp_ddd909d7b1"
+  - id: fp_ddd909d7b1
     manufacturer: "_TZE204_mby4kbtq"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-value-preheat-fault-alarm-silence-gas4"
-  - id: "fp_dea4279a6d"
+  - id: fp_dea4279a6d
     manufacturer: "_TZE204_ntcy3xu1"
     model: "TS0601"
     deviceProfileName: "safety-smoke-tamper-battery-low"
-  - id: "fp_8765787843"
+  - id: fp_8765787843
     manufacturer: "_TZE204_qaxkdgyt"
     model: "TS0601"
     deviceProfileName: "safety-gas-co-detector-jkd816"
-  - id: "fp_dbcfc30d34"
+  - id: fp_dbcfc30d34
     manufacturer: "_TZE204_uo8qcagc"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-value-preheat-fault-alarm-silence-gas4"
-  - id: "fp_fe02f658ac"
+  - id: fp_fe02f658ac
     manufacturer: "_TZE204_v6iczj35"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-preheat-fault-lifecycle-dg03"
-  - id: "fp_3cd0b6b072"
+  - id: fp_3cd0b6b072
     manufacturer: "_TZE204_vawy74yh"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-self-test-silence-hs2sa"
-  - id: "fp_906140e411"
+  - id: fp_906140e411
     manufacturer: "_TZE204_yojqa8xn"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-alarm-time-ringtone"
-  - id: "fp_c77e77892d"
+  - id: fp_c77e77892d
     manufacturer: "_TZE204_zougpkpy"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-alarm-time-ringtone"
-  - id: "fp_882b56f81f"
+  - id: fp_882b56f81f
     manufacturer: "_TZE2841000000_6ycgarab"
     model: "TS0601"
     deviceProfileName: "safety-smoke-co-battery-state-volume-silence-alarm-smokeco"
-  - id: "fp_93f7a08dcc"
+  - id: fp_93f7a08dcc
     manufacturer: "_TZE2841000000_rccxox8p"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-silence-test-pa44z"
-  - id: "fp_c8e6cef9c4"
+  - id: fp_c8e6cef9c4
     manufacturer: "_TZE284_0zaf1cr8"
     model: "TS0601"
     deviceProfileName: "safety-smoke-tamper-battery-low"
-  - id: "fp_4836f65e1a"
+  - id: fp_4836f65e1a
     manufacturer: "_TZE284_4cqhd2ha"
     model: "TS0601"
     deviceProfileName: "safety-acceleration-4cqhd2ha"
-  - id: "fp_89113f93b8"
+  - id: fp_89113f93b8
     manufacturer: "_TZE284_6teua268"
     model: "TS0601"
     deviceProfileName: "safety-contact-battery-senoro-win-v2"
-  - id: "fp_8bfdcb5249"
+  - id: fp_8bfdcb5249
     manufacturer: "_TZE284_6ycgarab"
     model: "TS0601"
     deviceProfileName: "safety-smoke-co-battery-state-volume-silence-alarm-smokeco"
-  - id: "fp_1a0ac9708f"
+  - id: fp_1a0ac9708f
     manufacturer: "_TZE284_ai4rqhky"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-self-test-silence-hs2sa"
-  - id: "fp_19e8a5e7a1"
+  - id: fp_19e8a5e7a1
     manufacturer: "_TZE284_aoah6bv8"
     model: "TS0601"
     deviceProfileName: "safety-smoke-co-battery-state-volume-silence-alarm-smokeco"
-  - id: "fp_5973485207"
+  - id: fp_5973485207
     manufacturer: "_TZE284_chbyv06x"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-alarm-time-ringtone"
-  - id: "fp_7a5ef5f589"
+  - id: fp_7a5ef5f589
     manufacturer: "_TZE284_e2bedvo9"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-state-silence-test-zss"
-  - id: "fp_b447466296"
+  - id: fp_b447466296
     manufacturer: "_TZE284_fncxk3ob"
     model: "TS0601"
     deviceProfileName: "safety-alarm-battery-duration-volume-ringtone-yxzbsl"
-  - id: "fp_11f1abf66b"
+  - id: fp_11f1abf66b
     manufacturer: "_TZE284_gyzlwu5q"
     model: "TS0601"
     deviceProfileName: "safety-smoke-temp-humidity-battery"
-  - id: "fp_742013d63d"
+  - id: fp_742013d63d
     manufacturer: "_TZE284_n4ttsck2"
     model: "TS0601"
     deviceProfileName: "safety-smoke-detector-battery-288wz"
-  - id: "fp_deafc952e6"
+  - id: fp_deafc952e6
     manufacturer: "_TZE284_qvzsq3s2"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-silence-test-pa44z"
-  - id: "fp_c8e6c8af2d"
+  - id: fp_c8e6c8af2d
     manufacturer: "_TZE284_rccxox8p"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-concentration-fault-silence-test-pa44z"
-  - id: "fp_f60ef12d30"
+  - id: fp_f60ef12d30
     manufacturer: "_TZE284_uo8qcagc"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-value-preheat-fault-alarm-silence-gas4"
-  - id: "fp_dc77cf6db0"
+  - id: fp_dc77cf6db0
     manufacturer: "_TZE284_vawy74yh"
     model: "TS0601"
     deviceProfileName: "safety-smoke-battery-state-battery-self-test-silence-hs2sa"
-  - id: "fp_b98f8447b8"
+  - id: fp_b98f8447b8
     manufacturer: "_TZE28C1000000_chbyv06x"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-alarm-time-ringtone"

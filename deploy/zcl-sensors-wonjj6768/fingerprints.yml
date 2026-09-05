@@ -1,1577 +1,1605 @@
 zigbeeManufacturer:
-  - id: "fp_6293bebbb7"
+  - id: fp_6293bebbb7
     manufacturer: "AOYAN"
     model: "AY222Z"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_0c8a9cecaa"
+  - id: fp_0c8a9cecaa
     manufacturer: "AOYAN  "
     model: "AY-101Z"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_8416720022"
+  - id: fp_8416720022
     manufacturer: "AOYAN  "
     model: "AY222Z"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_cf83796989"
+  - id: fp_cf83796989
     manufacturer: "AduroSmart Eria"
     model: "Smart Siren"
     deviceProfileName: "safety-alarm-battery"
-  - id: "fp_859ce3c349"
+  - id: fp_859ce3c349
     manufacturer: "Aeotec"
     model: "ZGA008"
     deviceProfileName: "network-repeater"
-  - id: "fp_514da1ff87"
+  - id: fp_514da1ff87
     manufacturer: "Candeo"
     model: "C-ZB-SEDC"
     deviceProfileName: "safety-contact-battery"
-  - id: "fp_31fd437d8b"
+  - id: fp_31fd437d8b
     manufacturer: "Candeo"
     model: "C-ZB-SEMO"
     deviceProfileName: "safety-motion-illuminance-battery-candeo-pending"
-  - id: "fp_cb8fb667d4"
+  - id: fp_cb8fb667d4
     manufacturer: "Candeo"
     model: "C-ZB-SETE"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_be1d84758a"
+  - id: fp_be1d84758a
     manufacturer: "Candeo"
     model: "C-ZB-SEWA"
     deviceProfileName: "safety-water-leak-battery"
-  - id: "fp_623aa44391"
+  - id: fp_623aa44391
     manufacturer: "Centralite"
     model: "3157100"
     deviceProfileName: "thermostats-centralite-thermostat"
-  - id: "fp_4faecd7cfd"
+  - id: fp_4faecd7cfd
     manufacturer: "Centralite"
     model: "3157100-E"
     deviceProfileName: "thermostats-centralite-thermostat"
-  - id: "fp_7f3732c0c1"
+  - id: fp_7f3732c0c1
     manufacturer: "Danfoss"
     model: "0x0042"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_89caf71641"
+  - id: fp_89caf71641
     manufacturer: "Danfoss"
     model: "0x0200"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_65b1da2d53"
+  - id: fp_65b1da2d53
     manufacturer: "Danfoss"
     model: "0x0210"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_1c2a5cc390"
+  - id: fp_1c2a5cc390
     manufacturer: "Danfoss"
     model: "0x0211"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_373aab7f74"
+  - id: fp_373aab7f74
     manufacturer: "Danfoss"
     model: "0x8020"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_a93fa0e34e"
+  - id: fp_a93fa0e34e
     manufacturer: "Danfoss"
     model: "0x8021"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_f5b969ec8c"
+  - id: fp_f5b969ec8c
     manufacturer: "Danfoss"
     model: "0x8030"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_d686921d26"
+  - id: fp_d686921d26
     manufacturer: "Danfoss"
     model: "0x8031"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_ed75175c38"
+  - id: fp_ed75175c38
     manufacturer: "Danfoss"
     model: "0x8034"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_38bded73fb"
+  - id: fp_38bded73fb
     manufacturer: "Danfoss"
     model: "0x8035"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_798c9cf1f6"
+  - id: fp_798c9cf1f6
     manufacturer: "Danfoss"
     model: "0x8040"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_738a20ef64"
+  - id: fp_738a20ef64
     manufacturer: "Danfoss"
     model: "0x8041"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_ef93750dbb"
+  - id: fp_ef93750dbb
     manufacturer: "Danfoss"
     model: "devi_f"
     deviceProfileName: "thermostats-thermostat"
-  - id: "fp_472e35c0e9"
+  - id: fp_472e35c0e9
     manufacturer: "Espressif"
     model: "ZigbeeRangeExtender"
     deviceProfileName: "network-repeater"
-  - id: "fp_ccb66324f3"
+  - id: fp_ccb66324f3
     manufacturer: "Eurotronic"
     model: "SPZB0001"
     deviceProfileName: "thermostats-thermostat-battery"
-  - id: "fp_d84a2a17a5"
+  - id: fp_d84a2a17a5
     manufacturer: "Fireangel"
     model: "Alarm_SD_Device"
     deviceProfileName: "safety-co-detector-tamper-battery-low"
-  - id: "fp_e1cedb2a3a"
+  - id: fp_e1cedb2a3a
     manufacturer: "Frient"
     model: "HMSZB-120"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_6a6b6b81ad"
+  - id: fp_6a6b6b81ad
     manufacturer: "HEIMAN"
     model: "319fa36e7384414a9ea62cba8f6e7626"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_e929698acc"
+  - id: fp_e929698acc
     manufacturer: "HEIMAN"
     model: "358e4e3e03c644709905034dae81433e"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_841d82627e"
+  - id: fp_841d82627e
     manufacturer: "HEIMAN"
     model: "98293058552c49f38ad0748541ee96ba"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_2c9040a3d0"
+  - id: fp_2c9040a3d0
     manufacturer: "HEIMAN"
     model: "COSensor-EF-3.0"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_7af29f3219"
+  - id: fp_7af29f3219
     manufacturer: "HEIMAN"
     model: "COSensor-EM"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_1ac3ba8135"
+  - id: fp_1ac3ba8135
     manufacturer: "HEIMAN"
     model: "COSensor-N"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_c6ecfd8078"
+  - id: fp_c6ecfd8078
     manufacturer: "HEIMAN"
     model: "D1-EF2-3.0"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_6066bb116c"
+  - id: fp_6066bb116c
     manufacturer: "HEIMAN"
     model: "DOOR_TPV12"
     deviceProfileName: "safety-contact-tamper-battery-low"
-  - id: "fp_73ed908dbb"
+  - id: fp_73ed908dbb
     manufacturer: "HEIMAN"
     model: "DOOR_TPV13"
     deviceProfileName: "safety-contact-tamper-battery-low"
-  - id: "fp_94308930e3"
+  - id: fp_94308930e3
     manufacturer: "HEIMAN"
     model: "DoorSensor-EF-3.0"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_d545ff823d"
+  - id: fp_d545ff823d
     manufacturer: "HEIMAN"
     model: "DoorSensor-EM"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_b76c14b8e0"
+  - id: fp_b76c14b8e0
     manufacturer: "HEIMAN"
     model: "DoorSensor-N"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_45a4e164cb"
+  - id: fp_45a4e164cb
     manufacturer: "HEIMAN"
     model: "DoorSensor-N-3.0"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_e508bd0d8e"
+  - id: fp_e508bd0d8e
     manufacturer: "HEIMAN"
     model: "FB56-SMF02HM1.4"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_baf2c9878d"
+  - id: fp_baf2c9878d
     manufacturer: "HEIMAN"
     model: "GASSensor-EF-3.0"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_cc7f946770"
+  - id: fp_cc7f946770
     manufacturer: "HEIMAN"
     model: "GASSensor-EFR-3.0"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_3d1377f137"
+  - id: fp_3d1377f137
     manufacturer: "HEIMAN"
     model: "GASSensor-EM"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_aeffdfbbbe"
+  - id: fp_aeffdfbbbe
     manufacturer: "HEIMAN"
     model: "GASSensor-EN"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_308f481591"
+  - id: fp_308f481591
     manufacturer: "HEIMAN"
     model: "GASSensor-N"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_37d2602371"
+  - id: fp_37d2602371
     manufacturer: "HEIMAN"
     model: "GASSensor-N-3.0"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_8c143ba4e3"
+  - id: fp_8c143ba4e3
     manufacturer: "HEIMAN"
     model: "GAS_V15"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_8e79a12974"
+  - id: fp_8e79a12974
     manufacturer: "HEIMAN"
     model: "HS15A-M"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_3a5bfb61d2"
+  - id: fp_3a5bfb61d2
     manufacturer: "HEIMAN"
     model: "HS1SA-E-PLUS"
     deviceProfileName: "safety-smoke-temp-battery-low-battery-heiman-pending"
-  - id: "fp_bfb448e21e"
+  - id: fp_bfb448e21e
     manufacturer: "HEIMAN"
     model: "HS1SA-EF-3.0"
     deviceProfileName: "safety-smoke-temp-battery-low-battery-heiman-pending"
-  - id: "fp_f3faadca15"
+  - id: fp_f3faadca15
     manufacturer: "HEIMAN"
     model: "HS2AQ-EM"
     deviceProfileName: "sensors-heiman-hs2aq-air-quality"
-  - id: "fp_d31bc54ba2"
+  - id: fp_d31bc54ba2
     manufacturer: "HEIMAN"
     model: "HS2AQ-EM-3.0"
     deviceProfileName: "sensors-heiman-hs2aq-air-quality"
-  - id: "fp_a131ebb301"
+  - id: fp_a131ebb301
     manufacturer: "HEIMAN"
     model: "HS2SA-EF-3.0"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_260e7212a5"
+  - id: fp_260e7212a5
     manufacturer: "HEIMAN"
     model: "HS3HT-EFA-3.0"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_c234ae6b62"
+  - id: fp_c234ae6b62
     manufacturer: "HEIMAN"
     model: "HS8DS-EF2-3.0"
     deviceProfileName: "safety-contact-battery-low-battery"
-  - id: "fp_7ff69a929f"
+  - id: fp_7ff69a929f
     manufacturer: "HEIMAN"
     model: "HS9MS-E"
     deviceProfileName: "safety-motion-illuminance-tamper-battery-low-battery"
-  - id: "fp_d978275ddc"
+  - id: fp_d978275ddc
     manufacturer: "HEIMAN"
     model: "HT-EF-3.0"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_b1c794fff6"
+  - id: fp_b1c794fff6
     manufacturer: "HEIMAN"
     model: "HT-EM"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_b73d7ad345"
+  - id: fp_b73d7ad345
     manufacturer: "HEIMAN"
     model: "HT-N"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_09b9369219"
+  - id: fp_09b9369219
     manufacturer: "HEIMAN"
     model: "HY0022"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_152fceff20"
+  - id: fp_152fceff20
     manufacturer: "HEIMAN"
     model: "PIRILLSensor-EF-3.0"
     deviceProfileName: "safety-motion-battery"
-  - id: "fp_c03b094d59"
+  - id: fp_c03b094d59
     manufacturer: "HEIMAN"
     model: "PIRSensor-EF-3.0"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_95bb0bb477"
+  - id: fp_95bb0bb477
     manufacturer: "HEIMAN"
     model: "PIRSensor-EM"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_2a1906c47e"
+  - id: fp_2a1906c47e
     manufacturer: "HEIMAN"
     model: "PIRSensor-N"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_d0ea96624f"
+  - id: fp_d0ea96624f
     manufacturer: "HEIMAN"
     model: "PIRSensor-N-3.0"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_45623f962c"
+  - id: fp_45623f962c
     manufacturer: "HEIMAN"
     model: "PIR_TPV12"
     deviceProfileName: "safety-motion-tamper-battery-battery-low"
-  - id: "fp_86114a07a5"
+  - id: fp_86114a07a5
     manufacturer: "HEIMAN"
     model: "PIR_TPV13"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_22593e04fe"
+  - id: fp_22593e04fe
     manufacturer: "HEIMAN"
     model: "PIR_TPV16"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_6218207741"
+  - id: fp_6218207741
     manufacturer: "HEIMAN"
     model: "RH3070"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_19cf06738b"
+  - id: fp_19cf06738b
     manufacturer: "HEIMAN"
     model: "SMOK_HV14"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_809b0c5a18"
+  - id: fp_809b0c5a18
     manufacturer: "HEIMAN"
     model: "SMOK_V15"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_6a3e6d59d3"
+  - id: fp_6a3e6d59d3
     manufacturer: "HEIMAN"
     model: "SMOK_V16"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_05860552e1"
+  - id: fp_05860552e1
     manufacturer: "HEIMAN"
     model: "SMOK_YDLV10"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_8693bc1ea8"
+  - id: fp_8693bc1ea8
     manufacturer: "HEIMAN"
     model: "SMOK_YDLV10N"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_2811e0f717"
+  - id: fp_2811e0f717
     manufacturer: "HEIMAN"
     model: "SmokeSensor-EF-3.0"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_23134b7897"
+  - id: fp_23134b7897
     manufacturer: "HEIMAN"
     model: "SmokeSensor-EM"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_d5bb776a6a"
+  - id: fp_d5bb776a6a
     manufacturer: "HEIMAN"
     model: "SmokeSensor-N"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_599ddca578"
+  - id: fp_599ddca578
     manufacturer: "HEIMAN"
     model: "SmokeSensor-N-3.0"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_195cec655b"
+  - id: fp_195cec655b
     manufacturer: "HEIMAN"
     model: "Smokesensor-EF2-3.0"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_c8828c229a"
+  - id: fp_c8828c229a
     manufacturer: "HEIMAN"
     model: "TH-EM"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_6d5f26d350"
+  - id: fp_6d5f26d350
     manufacturer: "HEIMAN"
     model: "TH-T_V14"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_02a1993bc4"
+  - id: fp_02a1993bc4
     manufacturer: "HEIMAN"
     model: "TY0202"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_099de751ac"
+  - id: fp_099de751ac
     manufacturer: "HEIMAN"
     model: "TY0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_13e6a52150"
+  - id: fp_13e6a52150
     manufacturer: "HEIMAN"
     model: "Vibration-EF-3.0"
     deviceProfileName: "safety-acceleration-tamper-battery-low-battery"
-  - id: "fp_5e36bb9d78"
+  - id: fp_5e36bb9d78
     manufacturer: "HEIMAN"
     model: "Vibration-EF_3.0"
     deviceProfileName: "safety-acceleration-tamper-battery-low-battery"
-  - id: "fp_25a4299b3e"
+  - id: fp_25a4299b3e
     manufacturer: "HEIMAN"
     model: "Vibration-N"
     deviceProfileName: "safety-acceleration-tamper-battery-low-battery"
-  - id: "fp_06146e7b0b"
+  - id: fp_06146e7b0b
     manufacturer: "HEIMAN"
     model: "WATER_TPV13"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_16de9472b9"
+  - id: fp_16de9472b9
     manufacturer: "HEIMAN"
     model: "WaterSensor-EF-3.0"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_8614fae792"
+  - id: fp_8614fae792
     manufacturer: "HEIMAN"
     model: "WaterSensor-EM"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_19302749d8"
+  - id: fp_19302749d8
     manufacturer: "HEIMAN"
     model: "WaterSensor-N"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_6c3a500214"
+  - id: fp_6c3a500214
     manufacturer: "HEIMAN"
     model: "WaterSensor-N-3.0"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_10cedfb15c"
+  - id: fp_10cedfb15c
     manufacturer: "HEIMAN"
     model: "WaterSensor2-EF-3.0"
     deviceProfileName: "safety-water-leak-temp-battery-low-battery"
-  - id: "fp_6529691e6d"
+  - id: fp_6529691e6d
     manufacturer: "HEIMAN"
     model: "b5db59bfd81e4f1f95dc57fdbba17931"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_82640c69c9"
+  - id: fp_82640c69c9
     manufacturer: "HEIMAN"
     model: "c3442b4ac59b4ba1a83119d938f283ab"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_f8edee82d1"
+  - id: fp_f8edee82d1
     manufacturer: "HEIMAN"
     model: "d90d7c61c44d468a8e906ca0841e0a0c"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_f48c9c4d39"
+  - id: fp_f48c9c4d39
     manufacturer: "Heiman"
     model: "CO_CTPG"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_19f107892f"
+  - id: fp_19f107892f
     manufacturer: "Heiman"
     model: "CO_V15"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_80b8be07d5"
+  - id: fp_80b8be07d5
     manufacturer: "Heiman"
     model: "CO_V16"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_6e555a45a2"
+  - id: fp_6e555a45a2
     manufacturer: "Heiman"
     model: "GAS_V15"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_ad4fffe4bd"
+  - id: fp_ad4fffe4bd
     manufacturer: "Heiman"
     model: "PIR_TPV13"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_3993e6757e"
+  - id: fp_3993e6757e
     manufacturer: "Heiman"
     model: "PIR_TPV16"
     deviceProfileName: "safety-motion-tamper-battery-low"
-  - id: "fp_afa683bbfa"
+  - id: fp_afa683bbfa
     manufacturer: "Heiman"
     model: "SMOK_HV14"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_5261cd38b8"
+  - id: fp_5261cd38b8
     manufacturer: "Heiman"
     model: "SMOK_V16"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_b17e55f9f5"
+  - id: fp_b17e55f9f5
     manufacturer: "Heiman"
     model: "SMOK_YDLV10"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_2abc1cf469"
+  - id: fp_2abc1cf469
     manufacturer: "Heiman"
     model: "WarningDevice"
     deviceProfileName: "safety-alarm-battery"
-  - id: "fp_7058b403cb"
+  - id: fp_7058b403cb
     manufacturer: "Heiman"
     model: "b5db59bfd81e4f1f95dc57fdbba17931"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_a1b5eb78f3"
+  - id: fp_a1b5eb78f3
     manufacturer: "Hive"
     model: "SLR2d"
     deviceProfileName: "thermostats-hive-dual-thermostat-pending"
-  - id: "fp_655ffe067d"
+  - id: fp_655ffe067d
     manufacturer: "Inswift"
     model: "ZBM-MG24"
     deviceProfileName: "network-repeater"
-  - id: "fp_5e3233852c"
+  - id: fp_5e3233852c
     manufacturer: "LDS"
     model: "ZHA-PirSensor"
     deviceProfileName: "safety-motion-tamper-battery-battery-low"
-  - id: "fp_2bb113ce34"
+  - id: fp_2bb113ce34
     manufacturer: "LINCUKOO"
     model: "SZT06"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_32ba91c6a9"
+  - id: fp_32ba91c6a9
     manufacturer: "LUMI"
     model: "lumi.flood.acn001"
     deviceProfileName: "safety-water-leak-battery-low-battery-voltage"
-  - id: "fp_18cb851dbd"
+  - id: fp_18cb851dbd
     manufacturer: "LUMI"
     model: "lumi.flood.agl02"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery-voltage"
-  - id: "fp_e69841bc77"
+  - id: fp_e69841bc77
     manufacturer: "LUMI"
     model: "lumi.magnet.ac01"
     deviceProfileName: "safety-contact-tamper-battery-voltage"
-  - id: "fp_2fec326bdb"
+  - id: fp_2fec326bdb
     manufacturer: "LUMI"
     model: "lumi.magnet.acn001"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_dd9f108300"
+  - id: fp_dd9f108300
     manufacturer: "LUMI"
     model: "lumi.magnet.agl02"
     deviceProfileName: "safety-contact-battery-voltage"
-  - id: "fp_382d435f20"
+  - id: fp_382d435f20
     manufacturer: "LUMI"
     model: "lumi.motion.ac02"
     deviceProfileName: "safety-motion-illuminance-battery"
-  - id: "fp_6df0e6f226"
+  - id: fp_6df0e6f226
     manufacturer: "LUMI"
     model: "lumi.motion.acn001"
     deviceProfileName: "safety-motion-illuminance-battery"
-  - id: "fp_0c323dd5ba"
+  - id: fp_0c323dd5ba
     manufacturer: "LUMI"
     model: "lumi.motion.agl02"
     deviceProfileName: "safety-motion-illuminance-battery"
-  - id: "fp_394d8c1109"
+  - id: fp_394d8c1109
     manufacturer: "LUMI"
     model: "lumi.sen_ill.agl01"
     deviceProfileName: "sensors-illuminance-battery-voltage-lumi-pending"
-  - id: "fp_e562756ce0"
+  - id: fp_e562756ce0
     manufacturer: "LUMI"
     model: "lumi.sen_ill.mgl01"
     deviceProfileName: "sensors-illuminance-battery-voltage-lumi-pending"
-  - id: "fp_81d57864e0"
+  - id: fp_81d57864e0
     manufacturer: "LUMI"
     model: "lumi.sens"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_a892d23ccb"
+  - id: fp_a892d23ccb
     manufacturer: "LUMI"
     model: "lumi.sensor_ht"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_a2e217b421"
+  - id: fp_a2e217b421
     manufacturer: "LUMI"
     model: "lumi.sensor_ht.agl02"
     deviceProfileName: "sensors-temp-humidity-pressure-battery-voltage"
-  - id: "fp_544f0c5e57"
+  - id: fp_544f0c5e57
     manufacturer: "LUMI"
     model: "lumi.sensor_magnet"
     deviceProfileName: "safety-contact-battery-voltage"
-  - id: "fp_28bf003f51"
+  - id: fp_28bf003f51
     manufacturer: "LUMI"
     model: "lumi.sensor_magnet.aq2"
     deviceProfileName: "safety-contact-battery-voltage"
-  - id: "fp_c9da1f5da5"
+  - id: fp_c9da1f5da5
     manufacturer: "LUMI"
     model: "lumi.sensor_motion"
     deviceProfileName: "safety-motion-battery-voltage"
-  - id: "fp_71cf797263"
+  - id: fp_71cf797263
     manufacturer: "LUMI"
     model: "lumi.sensor_motion.aq2"
     deviceProfileName: "safety-motion-illuminance-battery"
-  - id: "fp_7ee33218c0"
+  - id: fp_7ee33218c0
     manufacturer: "LUMI"
     model: "lumi.sensor_wleak.aq1"
     deviceProfileName: "safety-water-leak-battery-low-battery-voltage"
-  - id: "fp_248db8e457"
+  - id: fp_248db8e457
     manufacturer: "LUMI"
     model: "lumi.weather"
     deviceProfileName: "sensors-temp-humidity-pressure-battery-voltage"
-  - id: "fp_48d6e08500"
+  - id: fp_48d6e08500
     manufacturer: "Leedarson"
     model: "ZHA-PIRSensor"
     deviceProfileName: "safety-motion-illuminance"
-  - id: "fp_150379fdd5"
+  - id: fp_150379fdd5
     manufacturer: "NabuCasa"
     model: "SkyConnect"
     deviceProfileName: "network-repeater"
-  - id: "fp_e02e4f3e1f"
+  - id: fp_e02e4f3e1f
     manufacturer: "NabuCasa"
     model: "ZBT-2"
     deviceProfileName: "network-repeater"
-  - id: "fp_135a7da016"
+  - id: fp_135a7da016
     manufacturer: "Namron"
     model: "4512771"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-battery"
-  - id: "fp_0d7d132297"
+  - id: fp_0d7d132297
     manufacturer: "Namron"
     model: "4512783"
     deviceProfileName: "thermostats-thermostat-humidity-power-energy-current"
-  - id: "fp_14410d0982"
+  - id: fp_14410d0982
     manufacturer: "Namron"
     model: "4512784"
     deviceProfileName: "thermostats-thermostat-humidity-power-energy-current"
-  - id: "fp_e284e6e122"
+  - id: fp_e284e6e122
     manufacturer: "Namron"
     model: "4566702"
     deviceProfileName: "thermostats-thermostat-humidity-power-energy-current"
-  - id: "fp_774e7f6f98"
+  - id: fp_774e7f6f98
     manufacturer: "Namron"
     model: "4566703"
     deviceProfileName: "thermostats-thermostat-humidity-power-energy-current"
-  - id: "fp_61c2debbd4"
+  - id: fp_61c2debbd4
     manufacturer: "SMLIGHT"
     model: "SLZB-06M"
     deviceProfileName: "network-repeater"
-  - id: "fp_b704e53435"
+  - id: fp_b704e53435
     manufacturer: "SMLIGHT"
     model: "SLZB-06MG24"
     deviceProfileName: "network-repeater"
-  - id: "fp_4cf3ef517a"
+  - id: fp_4cf3ef517a
     manufacturer: "SMLIGHT"
     model: "SLZB-06MG26"
     deviceProfileName: "network-repeater"
-  - id: "fp_feb058aed8"
+  - id: fp_feb058aed8
     manufacturer: "SMLIGHT"
     model: "SLZB-06MG26U"
     deviceProfileName: "network-repeater"
-  - id: "fp_f80f92694b"
+  - id: fp_f80f92694b
     manufacturer: "SMLIGHT"
     model: "SLZB-07"
     deviceProfileName: "network-repeater"
-  - id: "fp_84d65477fd"
+  - id: fp_84d65477fd
     manufacturer: "SMLIGHT"
     model: "SLZB-07MG24"
     deviceProfileName: "network-repeater"
-  - id: "fp_5f1447bc96"
+  - id: fp_f62d86427b
+    manufacturer: "SONOFF"
+    model: "CK-TLSR8656-SS5-01(7002)"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_5f1447bc96
     manufacturer: "SONOFF"
     model: "DONGLE-E"
     deviceProfileName: "network-repeater"
-  - id: "fp_fb5afae037"
+  - id: fp_fb5afae037
     manufacturer: "SONOFF"
     model: "Dongle-LMG21"
     deviceProfileName: "network-repeater"
-  - id: "fp_5432682501"
+  - id: fp_5432682501
     manufacturer: "SONOFF"
     model: "Dongle-M"
     deviceProfileName: "network-repeater"
-  - id: "fp_5ffd395728"
+  - id: fp_5ffd395728
     manufacturer: "SONOFF"
     model: "Dongle-PMG24"
     deviceProfileName: "network-repeater"
-  - id: "fp_5151323d08"
+  - id: fp_f05f1317bd
+    manufacturer: "SONOFF"
+    model: "MS01"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_c5721f13eb
+    manufacturer: "SONOFF"
+    model: "MSO1"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_eb4d6ec39c
+    manufacturer: "SONOFF"
+    model: "SNZB-03"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_5151323d08
     manufacturer: "Salus Controls"
     model: "FC600NH"
     deviceProfileName: "thermostats-fcu-thermostat"
-  - id: "fp_a0d0743929"
+  - id: fp_a0d0743929
     manufacturer: "Schneider Electric"
     model: "755WSA"
     deviceProfileName: "safety-smoke-temp-tamper-battery-low-battery-voltage-schneider-pending"
-  - id: "fp_9d160be71d"
+  - id: fp_9d160be71d
     manufacturer: "Schneider Electric"
     model: "CCTFR6700"
     deviceProfileName: "thermostats-schneider-heating-power-energy-pending"
-  - id: "fp_008d4f606d"
+  - id: fp_008d4f606d
     manufacturer: "Schneider Electric"
     model: "CCTFR6710"
     deviceProfileName: "thermostats-schneider-heating-power-energy-pending"
-  - id: "fp_07d647acde"
+  - id: fp_07d647acde
     manufacturer: "Schneider Electric"
     model: "Thermostat"
     deviceProfileName: "thermostats-schneider-room-thermostat-pending"
-  - id: "fp_f93bbb1a62"
+  - id: fp_f93bbb1a62
     manufacturer: "Schneider Electric"
     model: "W599501"
     deviceProfileName: "safety-smoke-temp-tamper-battery-low-battery-voltage-schneider-pending"
-  - id: "fp_afb6815920"
+  - id: fp_afb6815920
     manufacturer: "Shelly"
     model: "BLU DoorWindow ZB"
     deviceProfileName: "safety-contact-illuminance-battery-low-handle-shelly"
-  - id: "fp_25b945067a"
+  - id: fp_25b945067a
     manufacturer: "Shelly"
     model: "BLU H&T Display ZB"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_4f1d3dbe67"
+  - id: fp_4f1d3dbe67
     manufacturer: "Shelly"
     model: "BLU H&T ZB"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_8ea14d3947"
+  - id: fp_8ea14d3947
     manufacturer: "Shelly"
     model: "BLU Motion ZB"
     deviceProfileName: "safety-motion-illuminance-battery-low-battery"
-  - id: "fp_18cd835282"
+  - id: fp_18cd835282
     manufacturer: "Shelly"
     model: "Dimmer"
     deviceProfileName: "lights-dimmer-power-voltage-current"
-  - id: "fp_d76580256f"
+  - id: fp_d76580256f
     manufacturer: "Shelly"
     model: "Dimmer US"
     deviceProfileName: "lights-dimmer-power-voltage-current"
-  - id: "fp_9f0a581f2e"
+  - id: fp_9f0a581f2e
     manufacturer: "Shelly"
     model: "Ecowitt WS90"
     deviceProfileName: "sensors-weather-temp-humidity-pressure-illuminance-battery-ws90"
-  - id: "fp_8e288477ab"
+  - id: fp_8e288477ab
     manufacturer: "Shelly"
     model: "Flood"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery-hardware-fault-shelly"
-  - id: "fp_5db7e33cda"
+  - id: fp_5db7e33cda
     manufacturer: "Shelly"
     model: "Flood S"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery-hardware-fault-shelly"
-  - id: "fp_ba5bf4dbdd"
+  - id: fp_ba5bf4dbdd
     manufacturer: "Shelly"
     model: "Plug US"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_98d20311c1"
+  - id: fp_98d20311c1
     manufacturer: "Shelly"
     model: "Power Strip"
     deviceProfileName: "plugs-shelly-power-strip-4"
-  - id: "fp_f62ee1ff12"
+  - id: fp_f62ee1ff12
     manufacturer: "Shyugj"
     model: "DoorSensor-ZB3.0"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_0c70d29c73"
+  - id: fp_0c70d29c73
     manufacturer: "Shyugj"
     model: "MotionSensor-ZB3.0"
     deviceProfileName: "safety-motion-illuminance-tamper-battery-low-battery"
-  - id: "fp_0cdb40ee69"
+  - id: fp_0cdb40ee69
     manufacturer: "Sinopé"
     model: "TH1320ZB-04"
     deviceProfileName: "thermostats-thermostat"
-  - id: "fp_18e39ea0f4"
+  - id: fp_18e39ea0f4
     manufacturer: "SparkFun"
     model: "MGM240P"
     deviceProfileName: "network-repeater"
-  - id: "fp_ab98cdf27c"
+  - id: fp_ab98cdf27c
     manufacturer: "Sunricher"
     model: "HK-SENSOR-4IN1-A"
     deviceProfileName: "safety-occupancy-illuminance-temp-humidity-battery"
-  - id: "fp_3d263a8935"
+  - id: fp_3d263a8935
     manufacturer: "Sunricher"
     model: "HK-SENSOR-CO"
     deviceProfileName: "safety-co-detector-tamper-battery-low-battery"
-  - id: "fp_061b316740"
+  - id: fp_061b316740
     manufacturer: "Sunricher"
     model: "HK-SENSOR-CT-A"
     deviceProfileName: "safety-contact-battery"
-  - id: "fp_fbc58a3355"
+  - id: fp_fbc58a3355
     manufacturer: "Sunricher"
     model: "HK-SENSOR-CT-MINI"
     deviceProfileName: "safety-contact-battery-low-battery"
-  - id: "fp_5951cfbb60"
+  - id: fp_5951cfbb60
     manufacturer: "Sunricher"
     model: "HK-SENSOR-GAS"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_f60cef82c8"
+  - id: fp_f60cef82c8
     manufacturer: "Sunricher"
     model: "HK-SENSOR-SMO"
     deviceProfileName: "safety-smoke-tamper-battery-low-battery"
-  - id: "fp_1bd007eafe"
+  - id: fp_1bd007eafe
     manufacturer: "Sunricher"
     model: "HK-SENSOR-WT1"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_4a44a096f0"
+  - id: fp_4a44a096f0
     manufacturer: "Sunricher"
     model: "HK-SENSOR-WT2"
     deviceProfileName: "safety-water-temp-tamper-battery-low-battery"
-  - id: "fp_8e4ce11aa9"
+  - id: fp_8e4ce11aa9
     manufacturer: "Sunricher"
     model: "TERNCY-DC01"
     deviceProfileName: "safety-contact-battery"
-  - id: "fp_99483526db"
+  - id: fp_99483526db
     manufacturer: "Sunricher"
     model: "ZG9032B"
     deviceProfileName: "sensors-temp-humidity-battery-zg9032b"
-  - id: "fp_25205b7e14"
+  - id: fp_25205b7e14
     manufacturer: "TERNCY"
     model: "TERNCY-DC01"
     deviceProfileName: "safety-contact-temp-battery"
-  - id: "fp_630a8e9196"
+  - id: fp_630a8e9196
     manufacturer: "TUYATEC-ktge2vqt"
     model: "RH3001"
     deviceProfileName: "safety-contact-tamper-battery-low-battery"
-  - id: "fp_477fd25390"
+  - id: fp_477fd25390
     manufacturer: "TUYATEC-smmlguju"
     model: "RH3040"
     deviceProfileName: "safety-motion-battery"
-  - id: "fp_257415b2f6"
+  - id: fp_257415b2f6
     manufacturer: "Third Reality, Inc"
     model: "3RDS17BZ"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_978baa3924"
+  - id: fp_978baa3924
     manufacturer: "Third Reality, Inc"
     model: "3RDTS01056Z"
     deviceProfileName: "safety-contact-battery-low-battery"
-  - id: "fp_6cba60b296"
+  - id: fp_6cba60b296
     manufacturer: "Third Reality, Inc"
     model: "3RMS16BZ"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-3rms-pending"
-  - id: "fp_c36743adea"
+  - id: fp_c36743adea
     manufacturer: "Third Reality, Inc"
     model: "3RPS01083Z"
     deviceProfileName: "safety-motion-battery-3rps-pending"
-  - id: "fp_7d8dc0e1dd"
+  - id: fp_7d8dc0e1dd
     manufacturer: "Third Reality, Inc"
     model: "3RSMR01067Z"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-3rsmr-pending"
-  - id: "fp_404f41eed7"
+  - id: fp_404f41eed7
     manufacturer: "Third Reality, Inc"
     model: "3RTHS0224Z"
     deviceProfileName: "sensors-temp-humidity-battery-3rths-pending"
-  - id: "fp_cbe2819efb"
+  - id: fp_cbe2819efb
     manufacturer: "Third Reality, Inc"
     model: "3RTHS0324Z"
     deviceProfileName: "sensors-temp-humidity-battery-3rths0324-pending"
-  - id: "fp_e9f80e665e"
+  - id: fp_e9f80e665e
     manufacturer: "Third Reality, Inc"
     model: "3RTHS24BZ"
     deviceProfileName: "sensors-temp-humidity-battery-3rths-pending"
-  - id: "fp_dbc809cf02"
+  - id: fp_dbc809cf02
     manufacturer: "Third Reality, Inc"
     model: "3RVS01031Z"
     deviceProfileName: "safety-acceleration-battery-third-reality-pending"
-  - id: "fp_2776e5ab42"
+  - id: fp_2776e5ab42
     manufacturer: "Third Reality, Inc"
     model: "3RWS0218Z"
     deviceProfileName: "safety-water-leak-battery"
-  - id: "fp_0f676946bc"
+  - id: fp_0f676946bc
     manufacturer: "Third Reality, Inc"
     model: "3RWS18BZ"
     deviceProfileName: "safety-water-leak-battery-low-battery-3rws18bz-pending"
-  - id: "fp_a3230cbf46"
+  - id: fp_a3230cbf46
     manufacturer: "Trust"
     model: "SmokeSensor-EM"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_16291fd71a"
+  - id: fp_16291fd71a
     manufacturer: "Trust"
     model: "ZSDR-850"
     deviceProfileName: "safety-smoke-battery-low-battery"
-  - id: "fp_1fad8f4eb1"
+  - id: fp_1fad8f4eb1
     manufacturer: "TubesZB"
     model: "BM24"
     deviceProfileName: "network-repeater"
-  - id: "fp_af4cd5c71a"
+  - id: fp_af4cd5c71a
     manufacturer: "TubesZB"
     model: "MGM24"
     deviceProfileName: "network-repeater"
-  - id: "fp_e595bc04a4"
+  - id: fp_e595bc04a4
     manufacturer: "Zbeacon"
     model: "TH01"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_f20dbe7341"
+  - id: fp_f20dbe7341
     manufacturer: "Zbeacon"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_9603e75b2f"
+  - id: fp_9603e75b2f
     manufacturer: "Zbeacon"
     model: "TS0202"
     deviceProfileName: "sensors-temp-humidity-battery-legacy-pending"
-  - id: "fp_a2724bcd5f"
+  - id: fp_a2724bcd5f
     manufacturer: "Zbeacon"
     model: "TS0203"
     deviceProfileName: "sensors-temp-humidity-battery-legacy-pending"
-  - id: "fp_9835c649e8"
+  - id: fp_9835c649e8
     manufacturer: "_TYZB01_0w3d5uw3"
     model: "TS0204"
     deviceProfileName: "safety-gas-detector-tamper"
-  - id: "fp_6a8a8ccbcc"
+  - id: fp_6a8a8ccbcc
     manufacturer: "_TYZB01_2jzbhomb"
     model: "SM0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_d29fa6bd29"
+  - id: fp_d29fa6bd29
     manufacturer: "_TYZB01_4mdqxxnn"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_ae1061cc9e"
+  - id: fp_ae1061cc9e
     manufacturer: "_TYZB01_4obovpbi"
     model: "TS0216"
     deviceProfileName: "safety-alarm-battery"
-  - id: "fp_06ed2ff12a"
+  - id: fp_06ed2ff12a
     manufacturer: "_TYZB01_5nr7ncpl"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_232bfe500a"
+  - id: fp_232bfe500a
     manufacturer: "_TYZB01_821siati"
     model: "TS0210"
     deviceProfileName: "safety-acceleration-battery-tuya-pending"
-  - id: "fp_405375ab18"
+  - id: fp_405375ab18
     manufacturer: "_TYZB01_8scntis1"
     model: "TS0216"
     deviceProfileName: "safety-alarm-battery"
-  - id: "fp_90184fe549"
+  - id: fp_90184fe549
     manufacturer: "_TYZB01_bwsijaty"
     model: "TS0219"
     deviceProfileName: "safety-alarm-battery-volume"
-  - id: "fp_8a5b83d9c6"
+  - id: fp_8a5b83d9c6
     manufacturer: "_TYZB01_cbiezpds"
     model: "SM0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_6cae4785a6"
+  - id: fp_6cae4785a6
     manufacturer: "_TYZB01_epni2jgy"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_e44b07537b"
+  - id: fp_e44b07537b
     manufacturer: "_TYZB01_fi5yftwv"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery-konke-pending"
-  - id: "fp_f5a69435e1"
+  - id: fp_f5a69435e1
     manufacturer: "_TYZB01_ftdkanlj"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_9dfac784db"
+  - id: fp_9dfac784db
     manufacturer: "_TYZB01_jytabjkb"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_0a6e185016"
+  - id: fp_0a6e185016
     manufacturer: "_TYZB01_kvwjujy9"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_ea819aaeae"
+  - id: fp_ea819aaeae
     manufacturer: "_TYZB01_lzrhtcxu"
     model: "SM0201"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_c0b6965b31"
+  - id: fp_c0b6965b31
     manufacturer: "_TYZB01_m6ec2pgj"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_44d7c6e06d"
+  - id: fp_44d7c6e06d
     manufacturer: "_TYZB01_qjqgmqxr"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_cafe691f5d"
+  - id: fp_cafe691f5d
     manufacturer: "_TYZB01_rs7ff6o7"
     model: "TS0219"
     deviceProfileName: "safety-alarm-battery-volume"
-  - id: "fp_0e82e220be"
+  - id: fp_0e82e220be
     manufacturer: "_TYZB01_sbpc1zrb"
     model: "TS0216"
     deviceProfileName: "safety-alarm-battery"
-  - id: "fp_9948d7c705"
+  - id: fp_9948d7c705
     manufacturer: "_TYZB01_sqmd19i1"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_8b19881f67"
+  - id: fp_8b19881f67
     manufacturer: "_TYZB01_ttvdudvx"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_58ae12c4df"
+  - id: fp_58ae12c4df
     manufacturer: "_TYZB01_ujfk3xd9"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_f8ad61e094"
+  - id: fp_f8ad61e094
     manufacturer: "_TYZB01_vwqnz1sn"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-tamper-battery-low-battery"
-  - id: "fp_17de3a3e77"
+  - id: fp_17de3a3e77
     manufacturer: "_TYZB01_wpmo3ja3"
     model: "TS0212"
     deviceProfileName: "safety-co-detector-battery-low-battery"
-  - id: "fp_4a0a6a5150"
+  - id: fp_4a0a6a5150
     manufacturer: "_TYZB01_wqcac7lo"
     model: "TS0205"
     deviceProfileName: "safety-smoke-tamper-battery"
-  - id: "fp_c43065fd9a"
+  - id: fp_c43065fd9a
     manufacturer: "_TYZB01_ynsiasng"
     model: "TS0219"
     deviceProfileName: "safety-alarm-battery-volume"
-  - id: "fp_1127f6d20c"
+  - id: fp_1127f6d20c
     manufacturer: "_TYZB01_yr95mpib"
     model: "SM0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_52d388d119"
+  - id: fp_52d388d119
     manufacturer: "_TYZB01_z2umiwvq"
     model: "SM0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_b050d607c5"
+  - id: fp_b050d607c5
     manufacturer: "_TYZB01_zqvwka4k"
     model: "SM0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_9000db7318"
+  - id: fp_9000db7318
     manufacturer: "_TZ1800_ejwkn2h2"
     model: "TY0203"
     deviceProfileName: "safety-contact-tamper-battery"
-  - id: "fp_1f99ca870b"
+  - id: fp_1f99ca870b
     manufacturer: "_TZ1800_fcdjzz3s"
     model: "TY0202"
     deviceProfileName: "safety-motion-tamper-battery-battery-low"
-  - id: "fp_0e8b18676e"
+  - id: fp_0e8b18676e
     manufacturer: "_TZ1800_ho6i0zk9"
     model: "TY0203"
     deviceProfileName: "safety-contact-tamper-battery"
-  - id: "fp_84b7492236"
+  - id: fp_84b7492236
     manufacturer: "_TZ3000_0s1izerx"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_a6eb2d83c0"
+  - id: fp_a6eb2d83c0
     manufacturer: "_TZ3000_0s9gukzt"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_436161c190"
+  - id: fp_436161c190
     manufacturer: "_TZ3000_1twfmkcc"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_f922d03dc8"
+  - id: fp_f922d03dc8
     manufacturer: "_TZ3000_26fmupbb"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-voltage"
-  - id: "fp_8f8c9a50d1"
+  - id: fp_8f8c9a50d1
     manufacturer: "_TZ3000_2mbfxlzr"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_14aca1b0d2"
+  - id: fp_14aca1b0d2
     manufacturer: "_TZ3000_45y4bdjb"
     model: "SM0212"
     deviceProfileName: "safety-gas-detector-tamper-battery-low"
-  - id: "fp_7f46f3f670"
+  - id: fp_7f46f3f670
     manufacturer: "_TZ3000_4ugnzsli"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_a7a9382401"
+  - id: fp_a7a9382401
     manufacturer: "_TZ3000_5k5vh43t"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_699ac4b792"
+  - id: fp_699ac4b792
     manufacturer: "_TZ3000_6uzkisv2"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_ec0195a965"
+  - id: fp_ec0195a965
     manufacturer: "_TZ3000_6ygjfyll"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-ih012-pending"
-  - id: "fp_a1fa7735f4"
+  - id: fp_a1fa7735f4
     manufacturer: "_TZ3000_7d8yme6f"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_acee7f0ce1"
+  - id: fp_acee7f0ce1
     manufacturer: "_TZ3000_7kscdesh"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_99d65fc153"
+  - id: fp_99d65fc153
     manufacturer: "_TZ3000_7y90pany"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_64c0e4838b"
+  - id: fp_64c0e4838b
     manufacturer: "_TZ3000_82ptnsd4"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_a7bfe88978"
+  - id: fp_a7bfe88978
     manufacturer: "_TZ3000_8uxxzz4b"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_e43198d531"
+  - id: fp_e43198d531
     manufacturer: "_TZ3000_8ybe88nf"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_99057ece37"
+  - id: fp_99057ece37
     manufacturer: "_TZ3000_8yhypbo7"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_f486e84c37"
+  - id: fp_f486e84c37
     manufacturer: "_TZ3000_996rpfy6"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_705b3053a2"
+  - id: fp_705b3053a2
     manufacturer: "_TZ3000_9kbbfeho"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_8e97c4fd89"
+  - id: fp_8e97c4fd89
     manufacturer: "_TZ3000_abaplimj"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_13798f7053"
+  - id: fp_13798f7053
     manufacturer: "_TZ3000_akqdg6g7"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_a0fbf9bdcd"
+  - id: fp_a0fbf9bdcd
     manufacturer: "_TZ3000_amqudjr0"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_3259b19167"
+  - id: fp_3259b19167
     manufacturer: "_TZ3000_awvmkayh"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_21787b80bb"
+  - id: fp_21787b80bb
     manufacturer: "_TZ3000_bgsigers"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_86a77b5aa9"
+  - id: fp_86a77b5aa9
     manufacturer: "_TZ3000_bguser20"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_df1452cd13"
+  - id: fp_df1452cd13
     manufacturer: "_TZ3000_bjawzodf"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_064d2d634f"
+  - id: fp_064d2d634f
     manufacturer: "_TZ3000_bjawzodf"
     model: "TY0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_337ace91f4"
+  - id: fp_337ace91f4
     manufacturer: "_TZ3000_bpkijo14"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_3a90a2d799"
+  - id: fp_3a90a2d799
     manufacturer: "_TZ3000_bsvqrxru"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_dab9fe0de3"
+  - id: fp_dab9fe0de3
     manufacturer: "_TZ3000_c8bqthpo"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_02e0ceaced"
+  - id: fp_02e0ceaced
     manufacturer: "_TZ3000_ceplrhnu"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_ac06e5b392"
+  - id: fp_ac06e5b392
     manufacturer: "_TZ3000_decxrtwa"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_06b1fc6aa5"
+  - id: fp_06b1fc6aa5
     manufacturer: "_TZ3000_do6txrcw"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_f4fbc5d9d2"
+  - id: fp_f4fbc5d9d2
     manufacturer: "_TZ3000_dowj6gyi"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_e9380ba98d"
+  - id: fp_e9380ba98d
     manufacturer: "_TZ3000_eit7p838"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_5127791603"
+  - id: fp_5127791603
     manufacturer: "_TZ3000_f2bw0b6k"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_2702d09d45"
+  - id: fp_2702d09d45
     manufacturer: "_TZ3000_fie1dpkm"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_9453335c35"
+  - id: fp_9453335c35
     manufacturer: "_TZ3000_fllyghyj"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_77829bb7af"
+  - id: fp_77829bb7af
     manufacturer: "_TZ3000_gdsvhfao"
     model: "TS0001"
     deviceProfileName: "network-repeater"
-  - id: "fp_198caa7534"
+  - id: fp_198caa7534
     manufacturer: "_TZ3000_gntwytxo"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_89aaf9597d"
+  - id: fp_89aaf9597d
     manufacturer: "_TZ3000_gszjt2xx"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_b6abae7fc2"
+  - id: fp_b6abae7fc2
     manufacturer: "_TZ3000_h4wnrtck"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_9307d67008"
+  - id: fp_9307d67008
     manufacturer: "_TZ3000_hgm6k8ku"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_333bd1b8bd"
+  - id: fp_333bd1b8bd
     manufacturer: "_TZ3000_hktqahrq"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_f96c2ad2b3"
+  - id: fp_f96c2ad2b3
     manufacturer: "_TZ3000_hktqahrq"
     model: "WHD02"
     deviceProfileName: "safety-motion-tamper-battery-battery-low"
-  - id: "fp_2e1b9a7834"
+  - id: fp_2e1b9a7834
     manufacturer: "_TZ3000_hy6ncvmw"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_633d52ac52"
+  - id: fp_633d52ac52
     manufacturer: "_TZ3000_isw9u95y"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_71416bf077"
+  - id: fp_71416bf077
     manufacturer: "_TZ3000_itnrsufe"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage-kctw1z-pending"
-  - id: "fp_7acae39e14"
+  - id: fp_7acae39e14
     manufacturer: "_TZ3000_j6adk9id"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_f497967aa0"
+  - id: fp_f497967aa0
     manufacturer: "_TZ3000_jmrgyl7o"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_668e5b79f3"
+  - id: fp_668e5b79f3
     manufacturer: "_TZ3000_k4ej3ww2"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_b7939dcb74"
+  - id: fp_b7939dcb74
     manufacturer: "_TZ3000_kkerjand"
     model: "TS0601"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_ca74428195"
+  - id: fp_ca74428195
     manufacturer: "_TZ3000_kky16aay"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_34ef71f799"
+  - id: fp_34ef71f799
     manufacturer: "_TZ3000_kstbkt6a"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_5cc1f082a5"
+  - id: fp_5cc1f082a5
     manufacturer: "_TZ3000_kxlmv9ag"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_6e7f3ae6c8"
+  - id: fp_6e7f3ae6c8
     manufacturer: "_TZ3000_kyb656no"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_d6d77c0a50"
+  - id: fp_d6d77c0a50
     manufacturer: "_TZ3000_l6rsaipj"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-battery"
-  - id: "fp_b04bad32a4"
+  - id: fp_b04bad32a4
     manufacturer: "_TZ3000_lbtpiody"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_d6bf663882"
+  - id: fp_d6bf663882
     manufacturer: "_TZ3000_lf56vpxj"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_a8fa72b59a"
+  - id: fp_a8fa72b59a
     manufacturer: "_TZ3000_lltemgsf"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_937c98c382"
+  - id: fp_937c98c382
     manufacturer: "_TZ3000_lqmvrwa2"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_0d925d1b7d"
+  - id: fp_0d925d1b7d
     manufacturer: "_TZ3000_lzdjjfss"
     model: "TS0210"
     deviceProfileName: "safety-acceleration-battery-tuya-pending"
-  - id: "fp_bf32f72f1e"
+  - id: fp_bf32f72f1e
     manufacturer: "_TZ3000_m0vaazab"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_438cea15a0"
+  - id: fp_438cea15a0
     manufacturer: "_TZ3000_mcxw5ehu"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-ih012-pending"
-  - id: "fp_adacae2ab5"
+  - id: fp_adacae2ab5
     manufacturer: "_TZ3000_mg4dy6z6"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_a1bf1953fd"
+  - id: fp_a1bf1953fd
     manufacturer: "_TZ3000_misw04hq"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_8887f7d216"
+  - id: fp_8887f7d216
     manufacturer: "_TZ3000_mmzmkkd4"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_b7cbd4b035"
+  - id: fp_b7cbd4b035
     manufacturer: "_TZ3000_mqiev3jk"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_9c43802c57"
+  - id: fp_9c43802c57
     manufacturer: "_TZ3000_msl6wxk9"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-ih012-pending"
-  - id: "fp_597ed1d5e4"
+  - id: fp_597ed1d5e4
     manufacturer: "_TZ3000_mugyhz0q"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_f8073f78f1"
+  - id: fp_f8073f78f1
     manufacturer: "_TZ3000_mwd3c2at"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low"
-  - id: "fp_8f2b94ffe9"
+  - id: fp_8f2b94ffe9
     manufacturer: "_TZ3000_mxzo5rhf"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_6cad60a393"
+  - id: fp_6cad60a393
     manufacturer: "_TZ3000_n0lphcok"
     model: "TS0001"
     deviceProfileName: "network-repeater"
-  - id: "fp_d8e8b3a675"
+  - id: fp_d8e8b3a675
     manufacturer: "_TZ3000_n0lphcok"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_dae349c4e2"
+  - id: fp_dae349c4e2
     manufacturer: "_TZ3000_n2egfsli"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_8ff0336b5b"
+  - id: fp_8ff0336b5b
     manufacturer: "_TZ3000_nkkl7uzv"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_bca8618475"
+  - id: fp_bca8618475
     manufacturer: "_TZ3000_nlsszmzl"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_4d2c1f5557"
+  - id: fp_4d2c1f5557
     manufacturer: "_TZ3000_nss8amz9"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage"
-  - id: "fp_27592314bd"
+  - id: fp_27592314bd
     manufacturer: "_TZ3000_o4mkahkc"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage-ih012-pending"
-  - id: "fp_9d62103c59"
+  - id: fp_9d62103c59
     manufacturer: "_TZ3000_ocjlo4ea"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_8141ddab72"
+  - id: fp_8141ddab72
     manufacturer: "_TZ3000_osu834un"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-voltage"
-  - id: "fp_334595ca74"
+  - id: fp_334595ca74
     manufacturer: "_TZ3000_otvn3lne"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_9b6b53b985"
+  - id: fp_9b6b53b985
     manufacturer: "_TZ3000_oxslv1c9"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-voltage"
-  - id: "fp_cf2ea1f2b5"
+  - id: fp_cf2ea1f2b5
     manufacturer: "_TZ3000_piuensvr"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_4c361e25de"
+  - id: fp_4c361e25de
     manufacturer: "_TZ3000_pjb1ua0m"
     model: "TS0203"
     deviceProfileName: "safety-c3007-pressure-battery-low-battery-voltage"
-  - id: "fp_155db1887a"
+  - id: fp_155db1887a
     manufacturer: "_TZ3000_qaaysllp"
     model: "TS0201"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery-lcz030-pending"
-  - id: "fp_3102be4a27"
+  - id: fp_3102be4a27
     manufacturer: "_TZ3000_qomxlryd"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_89175a77f5"
+  - id: fp_89175a77f5
     manufacturer: "_TZ3000_qrldbmfn"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_1f9c20e136"
+  - id: fp_1f9c20e136
     manufacturer: "_TZ3000_r80pzsb9"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_d05c2997c3"
+  - id: fp_d05c2997c3
     manufacturer: "_TZ3000_rcuyhwe3"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_344349f653"
+  - id: fp_344349f653
     manufacturer: "_TZ3000_rdhukkmi"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_8a949b7ac2"
+  - id: fp_8a949b7ac2
     manufacturer: "_TZ3000_rid8lzvo"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_e785bf0315"
+  - id: fp_e785bf0315
     manufacturer: "_TZ3000_rusu2vzb"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_5d87787440"
+  - id: fp_5d87787440
     manufacturer: "_TZ3000_saiqcn0y"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_ff63e75042"
+  - id: fp_ff63e75042
     manufacturer: "_TZ3000_sgpbz53b"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_f3936144ee"
+  - id: fp_f3936144ee
     manufacturer: "_TZ3000_shopg9ss"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_afe8dafbc7"
+  - id: fp_afe8dafbc7
     manufacturer: "_TZ3000_t3vvhrmh"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_1cb7868342"
+  - id: fp_1cb7868342
     manufacturer: "_TZ3000_t6jriawg"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_e262858d22"
+  - id: fp_e262858d22
     manufacturer: "_TZ3000_t9qqxn70"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_13ec96db1e"
+  - id: fp_13ec96db1e
     manufacturer: "_TZ3000_timx9ivq"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-voltage"
-  - id: "fp_c74acd7e70"
+  - id: fp_c74acd7e70
     manufacturer: "_TZ3000_trdx8uxs"
     model: "TS0001"
     deviceProfileName: "network-repeater"
-  - id: "fp_abd805901e"
+  - id: fp_abd805901e
     manufacturer: "_TZ3000_ubuikmgo"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_c604dd0ba5"
+  - id: fp_c604dd0ba5
     manufacturer: "_TZ3000_udyjylt7"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_8bcc6ada9f"
+  - id: fp_8bcc6ada9f
     manufacturer: "_TZ3000_ufttklsz"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_e8665ab1dd"
+  - id: fp_e8665ab1dd
     manufacturer: "_TZ3000_upgcbody"
     model: "TS0207"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_95ab3b5a8d"
+  - id: fp_95ab3b5a8d
     manufacturer: "_TZ3000_utwgoauk"
     model: "SNZB-02"
     deviceProfileName: "sensors-temp-humidity-battery"
-  - id: "fp_6c14cae604"
+  - id: fp_6c14cae604
     manufacturer: "_TZ3000_v1w2k9dd"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_e8fa9fe284"
+  - id: fp_e8fa9fe284
     manufacturer: "_TZ3000_v7chgqso"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_4c11d4c2d2"
+  - id: fp_4c11d4c2d2
     manufacturer: "_TZ3000_vdfwjopk"
     model: "TS0219"
     deviceProfileName: "safety-alarm-volume"
-  - id: "fp_04876b58d1"
+  - id: fp_04876b58d1
     manufacturer: "_TZ3000_wbrlnkm9"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-voltage"
-  - id: "fp_98ee83cabf"
+  - id: fp_98ee83cabf
     manufacturer: "_TZ3000_wlquqiiz"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_803c69049f"
+  - id: fp_803c69049f
     manufacturer: "_TZ3000_wmlc9p9z"
     model: "TS0207"
     deviceProfileName: "network-repeater"
-  - id: "fp_f02294b9c3"
+  - id: fp_f02294b9c3
     manufacturer: "_TZ3000_wn65ixz9"
     model: "TS0001"
     deviceProfileName: "network-repeater"
-  - id: "fp_23a623f22a"
+  - id: fp_23a623f22a
     manufacturer: "_TZ3000_xr3htd96"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_9b93af44af"
+  - id: fp_9b93af44af
     manufacturer: "_TZ3000_yd2e749y"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_9def5f1d1d"
+  - id: fp_9def5f1d1d
     manufacturer: "_TZ3000_yfekcy3n"
     model: "TS0203"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_395756b360"
+  - id: fp_395756b360
     manufacturer: "_TZ3000_yujem9ee"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_665252c3b7"
+  - id: fp_665252c3b7
     manufacturer: "_TZ3000_yupc0pb7"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_7f7bfa2287"
+  - id: fp_7f7bfa2287
     manufacturer: "_TZ3000_ywagc4rj"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_c7146a77dd"
+  - id: fp_c7146a77dd
     manufacturer: "_TZ3000_zfirri2d"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_4c7d75496e"
+  - id: fp_4c7d75496e
     manufacturer: "_TZ3000_zl1kmjqx"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_861b291db7"
+  - id: fp_861b291db7
     manufacturer: "_TZ3000_zl1kmjqx"
     model: "TY0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_cf1e447f6b"
+  - id: fp_cf1e447f6b
     manufacturer: "_TZ3040_6ygjfyll"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-ih012-pending"
-  - id: "fp_cac0d0b5b0"
+  - id: fp_cac0d0b5b0
     manufacturer: "_TZ3040_bb6xaihh"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_c926ae1a8e"
+  - id: fp_c926ae1a8e
     manufacturer: "_TZ3040_fwxuzcf4"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery"
-  - id: "fp_aa130dc6af"
+  - id: fp_aa130dc6af
     manufacturer: "_TZ3040_msl6wxk9"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-low-battery"
-  - id: "fp_15200c0824"
+  - id: fp_15200c0824
     manufacturer: "_TZ3040_wqmtjsyk"
     model: "TS0202"
     deviceProfileName: "safety-motion-tamper-battery-low-battery-voltage"
-  - id: "fp_118cc5a6d1"
+  - id: fp_118cc5a6d1
     manufacturer: "_TZ3210_0aqbrnts"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_7f41cc6eff"
+  - id: fp_7f41cc6eff
     manufacturer: "_TZ3210_alxkwn0h"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_940f15f549"
+  - id: fp_940f15f549
     manufacturer: "_TZ3210_cwamkvua"
     model: "TS0202"
     deviceProfileName: "safety-motion-battery-voltage"
-  - id: "fp_86832c25e0"
+  - id: fp_86832c25e0
     manufacturer: "_TZ3210_jijr1sss"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_a0b6dd443e"
+  - id: fp_a0b6dd443e
     manufacturer: "_TZ3210_jowhpxop"
     model: "TS0203"
     deviceProfileName: "safety-contact-tamper-battery-low-battery-tuya-scene-pending"
-  - id: "fp_fa02abefc4"
+  - id: fp_fa02abefc4
     manufacturer: "_TZ3210_kjafhwd2"
     model: "TS0210"
     deviceProfileName: "safety-acceleration-battery-tuya-pending"
-  - id: "fp_371f575266"
+  - id: fp_371f575266
     manufacturer: "_TZ3210_m3mxv66l"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_eda70bd45c"
+  - id: fp_eda70bd45c
     manufacturer: "_TZ3210_ncw88jfq"
     model: "TS0201"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_2bb4b76e70"
+  - id: fp_2bb4b76e70
     manufacturer: "_TZ3210_oekbi7o4"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_89ef39330a"
+  - id: fp_89ef39330a
     manufacturer: "_TZ3210_ohvnwamm"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_264246156a"
+  - id: fp_264246156a
     manufacturer: "_TZ3210_p68kms0l"
     model: "TS0207"
     deviceProfileName: "safety-rain-battery-rb-srain01"
-  - id: "fp_af72a36a04"
+  - id: fp_af72a36a04
     manufacturer: "_TZ3210_rxqls8v0"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_0861276d5b"
+  - id: fp_0861276d5b
     manufacturer: "_TZ3210_tgvtvdoc"
     model: "TS0207"
     deviceProfileName: "safety-rain-battery-rb-srain01"
-  - id: "fp_7056fe9105"
+  - id: fp_7056fe9105
     manufacturer: "_TZ3210_up3pngle"
     model: "TS0205"
     deviceProfileName: "safety-smoke-tamper-battery"
-  - id: "fp_573dd45b91"
+  - id: fp_573dd45b91
     manufacturer: "_TZ3210_wuhzzfqg"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_2022c87b71"
+  - id: fp_2022c87b71
     manufacturer: "_TZ3210_zmy9hjay"
     model: "TS0202"
     deviceProfileName: "safety-motion-illuminance-temp-humidity-tamper-battery"
-  - id: "fp_52f2ecf248"
+  - id: fp_52f2ecf248
     manufacturer: "_TZE204_myd45weu"
     model: "TS0222"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_a8cc0e1c3d"
+  - id: fp_a8cc0e1c3d
     manufacturer: "computime"
     model: "PUMM01102"
     deviceProfileName: "thermostats-thermostat"
-  - id: "fp_adf80b5f6f"
+  - id: fp_adf80b5f6f
     manufacturer: "eCozy"
     model: "Thermostat"
     deviceProfileName: "thermostats-ecozy-thermostat"
-  - id: "fp_db841c7137"
+  - id: fp_db841c7137
     manufacturer: "eWeLink"
     model: "CK-BL702-ROUTER-01(7018)"
     deviceProfileName: "network-repeater"
-  - id: "fp_a396dc288c"
+  - id: fp_a396dc288c
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-SS5-01(7002)"
     deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
-  - id: "fp_e3c1386583"
+  - id: fp_e3c1386583
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-SS5-01(7003)"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_e4ed2a7133"
+  - id: fp_e4ed2a7133
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-SS5-01(7014)"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_e01b8b15bd"
+  - id: fp_e01b8b15bd
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-SS5-01(7019)"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_d4cf054106"
+  - id: fp_41df707c5f
+    manufacturer: "eWeLink"
+    model: "MS01"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_ecc048b02f
+    manufacturer: "eWeLink"
+    model: "MSO1"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_d4cf054106
     manufacturer: "eWeLink"
     model: "SNZB-02"
     deviceProfileName: "sensors-temp-humidity-battery-voltage"
-  - id: "fp_339ce3bf47"
+  - id: fp_3b0a2cce10
+    manufacturer: "eWeLink"
+    model: "SNZB-03"
+    deviceProfileName: "safety-motion-battery-low-battery-voltage-ewelink-pending"
+  - id: fp_339ce3bf47
     manufacturer: "eWeLink"
     model: "SNZB-04"
     deviceProfileName: "safety-contact-battery-low-battery-voltage"
-  - id: "fp_071ea1b2c7"
+  - id: fp_071ea1b2c7
     manufacturer: "eWeLink"
     model: "SNZB-05"
     deviceProfileName: "safety-water-leak-battery-low-battery"
-  - id: "fp_690d6a925e"
+  - id: fp_690d6a925e
     manufacturer: "easyiot"
     model: "ZB-GW04"
     deviceProfileName: "network-repeater"
-  - id: "fp_84d39c4c9c"
+  - id: fp_84d39c4c9c
     manufacturer: "easyiot"
     model: "ZB-GW04-1v1"
     deviceProfileName: "network-repeater"
-  - id: "fp_6a1a3d3b1a"
+  - id: fp_6a1a3d3b1a
     manufacturer: "easyiot"
     model: "ZB-GW04-1v2"
     deviceProfileName: "network-repeater"
-  - id: "fp_d4fcc06f80"
+  - id: fp_d4fcc06f80
     manufacturer: "easyiot"
     model: "ZB-LTH01"
     deviceProfileName: "sensors-illuminance-temp-humidity-battery"
-  - id: "fp_210e792b14"
+  - id: fp_210e792b14
     manufacturer: "frient A/S"
     model: "SIRZB-112"
     deviceProfileName: "safety-siren-frient-sirzb112"
-  - id: "fp_baf61acbae"
+  - id: fp_baf61acbae
     manufacturer: "frient A/S"
     model: "WISZB-131"
     deviceProfileName: "safety-contact-temp-battery-low-battery"

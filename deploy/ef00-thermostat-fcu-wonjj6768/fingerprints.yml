@@ -1,161 +1,161 @@
 zigbeeManufacturer:
-  - id: "fp_e045ede621"
+  - id: fp_e045ede621
     manufacturer: "Tuya"
     model: "BAC-003"
     deviceProfileName: "thermostats-fcu-thermostat-bac003"
-  - id: "fp_1b88c015d9"
+  - id: fp_1b88c015d9
     manufacturer: "_TYST11_2dpplnsn"
     model: "dpplnsn"
     deviceProfileName: "thermostats-thermostat-etop"
-  - id: "fp_0268e1bd16"
+  - id: fp_0268e1bd16
     manufacturer: "_TYST11_KGbxAXL2"
     model: "GbxAXL2"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_8dfb9fdda4"
+  - id: fp_8dfb9fdda4
     manufacturer: "_TYST11_c88teujp"
     model: "88teujp"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_f88a786b00"
+  - id: fp_f88a786b00
     manufacturer: "_TYST11_caj4jz0i"
     model: "aj4jz0i"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_f2fb9ca08d"
+  - id: fp_f2fb9ca08d
     manufacturer: "_TYST11_wv90ladg"
     model: "v90ladg"
     deviceProfileName: "thermostats-thermostat-etop"
-  - id: "fp_599e2b4dbc"
+  - id: fp_599e2b4dbc
     manufacturer: "_TYST11_yw7cahqs"
     model: "w7cahqs"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_048652f3ca"
+  - id: fp_048652f3ca
     manufacturer: "_TYST11_zuhszj9s"
     model: "uhszj9s"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_214cf18c63"
+  - id: fp_214cf18c63
     manufacturer: "_TZE200_0dvm9mva"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_4e6e8245b3"
+  - id: fp_4e6e8245b3
     manufacturer: "_TZE200_1drr8tab"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-xz-akt101"
-  - id: "fp_194e023a47"
+  - id: fp_194e023a47
     manufacturer: "_TZE200_2dpplnsn"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-etop"
-  - id: "fp_61d6cb8075"
+  - id: fp_61d6cb8075
     manufacturer: "_TZE200_3yp57tby"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_717f959d19"
+  - id: fp_717f959d19
     manufacturer: "_TZE200_7p8ugv8d"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_5a9b060ea5"
+  - id: fp_5a9b060ea5
     manufacturer: "_TZE200_9gvruqf5"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_69e27bcf98"
+  - id: fp_69e27bcf98
     manufacturer: "_TZE200_9m4kmbfu"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_9e2f76418c"
+  - id: fp_9e2f76418c
     manufacturer: "_TZE200_azqp6ssj"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_be852fe52e"
+  - id: fp_be852fe52e
     manufacturer: "_TZE200_c88teujp"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_28c35cbbb7"
+  - id: fp_28c35cbbb7
     manufacturer: "_TZE200_dzuqwsyg"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-bac003"
-  - id: "fp_e3d4622a98"
+  - id: fp_e3d4622a98
     manufacturer: "_TZE200_exfrnlow"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_a048e4cce5"
+  - id: fp_a048e4cce5
     manufacturer: "_TZE200_gd4rvykv"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_67810df0ff"
+  - id: fp_67810df0ff
     manufacturer: "_TZE200_h4cgnbzg"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_16d06daa3d"
+  - id: fp_16d06daa3d
     manufacturer: "_TZE200_snfdqllf"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-aetz01-ac"
-  - id: "fp_59a9e155af"
+  - id: fp_59a9e155af
     manufacturer: "_TZE200_wem3gxyx"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-ae940k"
-  - id: "fp_32ac18f653"
+  - id: fp_32ac18f653
     manufacturer: "_TZE200_wv90ladg"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-etop"
-  - id: "fp_16bc5f2b45"
+  - id: fp_16bc5f2b45
     manufacturer: "_TZE200_xixlazkg"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-xixlazkg"
-  - id: "fp_bb194553f6"
+  - id: fp_bb194553f6
     manufacturer: "_TZE200_yw7cahqs"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_596c6baddd"
+  - id: fp_596c6baddd
     manufacturer: "_TZE200_zr9c0day"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_9a038fab94"
+  - id: fp_9a038fab94
     manufacturer: "_TZE200_zuhszj9s"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_7d659e96a5"
+  - id: fp_7d659e96a5
     manufacturer: "_TZE204_dzuqwsyg"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-bac003"
-  - id: "fp_4fe06b7407"
+  - id: fp_4fe06b7407
     manufacturer: "_TZE204_ilzkxrav"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-basic-twc-r01"
-  - id: "fp_3e25d4ccd5"
+  - id: fp_3e25d4ccd5
     manufacturer: "_TZE204_mpbki2zm"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-tybac006"
-  - id: "fp_b37c6dc1eb"
+  - id: fp_b37c6dc1eb
     manufacturer: "_TZE204_mul9abs3"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-ae669k"
-  - id: "fp_6140a7e6b8"
+  - id: fp_6140a7e6b8
     manufacturer: "_TZE204_q12rv9gj"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-hhst001"
-  - id: "fp_c386ec1edc"
+  - id: fp_c386ec1edc
     manufacturer: "_TZE204_qujphad5"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-tybac006"
-  - id: "fp_d42b2609f7"
+  - id: fp_d42b2609f7
     manufacturer: "_TZE284_0dvm9mva"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_82c1bc5acf"
+  - id: fp_82c1bc5acf
     manufacturer: "_TZE284_3yp57tby"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_5bd655ff00"
+  - id: fp_5bd655ff00
     manufacturer: "_TZE284_4vbj3fxh"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-l2-t-f-mf"
-  - id: "fp_07c7ce4eea"
+  - id: fp_07c7ce4eea
     manufacturer: "_TZE284_9m4kmbfu"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-saswell"
-  - id: "fp_ada913865e"
+  - id: fp_ada913865e
     manufacturer: "_TZE284_madl8ejv"
     model: "TS0601"
     deviceProfileName: "thermostats-thermostat-sas936"
-  - id: "fp_fa50d33ff5"
+  - id: fp_fa50d33ff5
     manufacturer: "_TZE284_mul9abs3"
     model: "TS0601"
     deviceProfileName: "thermostats-fcu-thermostat-ae720k"

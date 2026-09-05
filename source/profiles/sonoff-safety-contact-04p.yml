@@ -1,0 +1,59 @@
+name: sonoff-safety-contact-04p
+components:
+  - id: main
+    capabilities:
+      - id: contactSensor
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: batteryLevel
+        version: 1
+      - id: battery
+        version: 1
+      - id: voltageMeasurement
+        version: 1
+    categories:
+      - name: ContactSensor
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: contactSensor
+        version: 1
+        group: main
+    actions: []
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: contactSensor
+      version: 1
+    - component: main
+      capability: tamperAlert
+      version: 1
+    - component: main
+      capability: batteryLevel
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: voltageMeasurement
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: contactSensor
+        version: 1
+      - component: main
+        capability: tamperAlert
+        version: 1
+      - component: main
+        capability: batteryLevel
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+      - component: main
+        capability: voltageMeasurement
+        version: 1
+    actions: []

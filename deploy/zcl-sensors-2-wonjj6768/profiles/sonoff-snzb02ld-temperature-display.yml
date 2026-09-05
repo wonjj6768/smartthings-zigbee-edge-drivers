@@ -1,0 +1,12 @@
+name: sonoff-snzb02ld-temperature-display
+components:
+  - id: main
+    capabilities:
+      - {id: temperatureMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.sonoffSnzb02ldTemperatureUnits, version: 1}
+      - {id: concertmirror08464.sonoffSnzb02ldTemperatureCal, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: TemperatureSensor

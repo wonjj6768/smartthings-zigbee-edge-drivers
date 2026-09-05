@@ -1,0 +1,118 @@
+name: sonoff-safety-siren-09p
+components:
+  - id: main
+    capabilities:
+      - id: alarm
+        version: 1
+      - id: powerSource
+        version: 1
+      - id: battery
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: concertmirror08464.sonoffSafetyAlarmSoundEnable
+        version: 1
+      - id: concertmirror08464.sonoffSafetyAlarmLightEnable
+        version: 1
+      - id: concertmirror08464.sonoffSafetyAlarmSoundType
+        version: 1
+      - id: concertmirror08464.sonoffSafetyAlarmVolume
+        version: 1
+      - id: concertmirror08464.sonoffSafetyAlarmDuration
+        version: 1
+      - id: refresh
+        version: 1
+    categories:
+      - name: Siren
+deviceConfig:
+  dashboard:
+    states:
+      - component: main
+        capability: alarm
+        version: 1
+        group: main
+    actions:
+      - component: main
+        capability: alarm
+        version: 1
+        group: main
+    basicPlus: []
+  detailView:
+    - component: main
+      capability: alarm
+      version: 1
+    - component: main
+      capability: concertmirror08464.sonoffSafetyAlarmSoundEnable
+      version: 1
+    - component: main
+      capability: concertmirror08464.sonoffSafetyAlarmLightEnable
+      version: 1
+    - component: main
+      capability: concertmirror08464.sonoffSafetyAlarmSoundType
+      version: 1
+    - component: main
+      capability: concertmirror08464.sonoffSafetyAlarmVolume
+      version: 1
+    - component: main
+      capability: concertmirror08464.sonoffSafetyAlarmDuration
+      version: 1
+    - component: main
+      capability: powerSource
+      version: 1
+    - component: main
+      capability: tamperAlert
+      version: 1
+    - component: main
+      capability: battery
+      version: 1
+    - component: main
+      capability: refresh
+      version: 1
+  automation:
+    conditions:
+      - component: main
+        capability: alarm
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmSoundEnable
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmLightEnable
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmSoundType
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmVolume
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmDuration
+        version: 1
+      - component: main
+        capability: powerSource
+        version: 1
+      - component: main
+        capability: tamperAlert
+        version: 1
+      - component: main
+        capability: battery
+        version: 1
+    actions:
+      - component: main
+        capability: alarm
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmSoundEnable
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmLightEnable
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmSoundType
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmVolume
+        version: 1
+      - component: main
+        capability: concertmirror08464.sonoffSafetyAlarmDuration
+        version: 1

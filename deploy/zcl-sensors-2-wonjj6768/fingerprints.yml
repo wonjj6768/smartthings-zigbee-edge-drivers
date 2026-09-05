@@ -1,37 +1,117 @@
 zigbeeManufacturer:
-  - id: "fp_8e35866676"
+  - id: fp_8e35866676
     manufacturer: "'_TZ32101000000_5oy7cysk'"
     model: "TS0210"
     deviceProfileName: "safety-wave19-tuya-ts0210-quoted"
-  - id: "fp_73929d3d0f"
+  - id: fp_73929d3d0f
     manufacturer: "HEIMAN"
     model: "HS2AQ-EF-3.0"
     deviceProfileName: "sensors-wave19-heiman-hs2aq-ef-three"
-  - id: "fp_5852d6dd82"
+  - id: fp_5852d6dd82
     manufacturer: "LinknLink"
     model: "eMotion Air"
     deviceProfileName: "sensors-linknlink-emotion-air"
-  - id: "fp_874cbd971f"
+  - id: fp_874cbd971f
     manufacturer: "PLAID SYSTEMS"
     model: "PS-SPRZMS-SLP3"
     deviceProfileName: "sensors-wave19-plaid-spruce"
-  - id: "fp_3a4d979ba1"
+  - id: fp_651def7d40
+    manufacturer: "SONOFF"
+    model: "MG1_5RZ"
+    deviceProfileName: "sonoff-mg35rz-occupancy"
+  - id: fp_c1bb0dde58
+    manufacturer: "SONOFF"
+    model: "SNZB-02B"
+    deviceProfileName: "sonoff-snzb02b-environment"
+  - id: fp_0dcc1753fa
+    manufacturer: "SONOFF"
+    model: "SNZB-02D"
+    deviceProfileName: "sonoff-snzb02d-temp-humidity-display"
+  - id: fp_26675c10cd
+    manufacturer: "SONOFF"
+    model: "SNZB-02LD"
+    deviceProfileName: "sonoff-snzb02ld-temperature-display"
+  - id: fp_4a66712aa0
+    manufacturer: "SONOFF"
+    model: "SNZB-02M"
+    deviceProfileName: "sonoff-snzb02m-environment"
+  - id: fp_8fc7403818
+    manufacturer: "SONOFF"
+    model: "SNZB-02P"
+    deviceProfileName: "sonoff-snzb02p-temp-humidity"
+  - id: fp_dfbd20c465
+    manufacturer: "SONOFF"
+    model: "SNZB-02WD"
+    deviceProfileName: "sonoff-snzb02wd-temp-humidity-display"
+  - id: fp_67d196415e
+    manufacturer: "SONOFF"
+    model: "SNZB-03P"
+    deviceProfileName: "sonoff-snzb03p-occupancy"
+  - id: fp_a2703a63a8
+    manufacturer: "SONOFF"
+    model: "SNZB-03PR2"
+    deviceProfileName: "sonoff-snzb03pr2-occupancy"
+  - id: fp_133e383c82
+    manufacturer: "SONOFF"
+    model: "SNZB-04P"
+    deviceProfileName: "sonoff-safety-contact-04p"
+  - id: fp_b9005892bf
+    manufacturer: "SONOFF"
+    model: "SNZB-04PR2"
+    deviceProfileName: "sonoff-safety-contact-04p"
+  - id: fp_19de94046a
+    manufacturer: "SONOFF"
+    model: "SNZB-05P"
+    deviceProfileName: "sonoff-safety-water-05p"
+  - id: fp_60989fe4ae
+    manufacturer: "SONOFF"
+    model: "SNZB-06P"
+    deviceProfileName: "sonoff-safety-occupancy-06p"
+  - id: fp_57b421fc92
+    manufacturer: "SONOFF"
+    model: "SNZB-09P"
+    deviceProfileName: "sonoff-safety-siren-09p"
+  - id: fp_3a4d979ba1
     manufacturer: "Shelly"
     model: "Presence"
     deviceProfileName: "sensors-shelly-presence-gen4"
-  - id: "fp_ffb5dec29a"
+  - id: fp_ffb5dec29a
     manufacturer: "_TZ3000_eit7p838 "
     model: "TS0207"
     deviceProfileName: "safety-water-leak-tamper-battery-low-battery"
-  - id: "fp_4cc27816a0"
+  - id: fp_d7609f4d10
+    manufacturer: "eWeLink"
+    model: "CK-BL702-MWS-01(7016)"
+    deviceProfileName: "sonoff-mg35rz-occupancy"
+  - id: fp_3b85491d4e
+    manufacturer: "eWeLink"
+    model: "CK-TLSR8656-SS5-02(7014)"
+    deviceProfileName: "sonoff-ewelink-7014-temp-humidity"
+  - id: fp_4cc27816a0
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-Z123SE22DY-01(7035)"
     deviceProfileName: "safety-wave19-ewelink-7035"
-  - id: "fp_9c9c0cfe23"
+  - id: fp_9c9c0cfe23
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-Z123SE24DY-01(7037)"
     deviceProfileName: "safety-co-detector-battery-voltage-ewelink-7037"
-  - id: "fp_bcbb35d4d4"
+  - id: fp_bcbb35d4d4
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-Z23SE11HW-01(7019)"
     deviceProfileName: "safety-water-leak-battery-low-battery"
+  - id: fp_52bab12ad9
+    manufacturer: "eWeLink"
+    model: "SNZB-02P"
+    deviceProfileName: "sonoff-snzb02p-temp-humidity"
+  - id: fp_3b874745ed
+    manufacturer: "eWeLink"
+    model: "SNZB-03P"
+    deviceProfileName: "sonoff-snzb03p-occupancy"
+  - id: fp_425b8b102d
+    manufacturer: "eWeLink"
+    model: "SNZB-04P"
+    deviceProfileName: "sonoff-safety-contact-04p"
+  - id: fp_02f3cf13af
+    manufacturer: "eWeLink"
+    model: "WS01"
+    deviceProfileName: "sonoff-ws01-rain"

@@ -1,441 +1,441 @@
 zigbeeManufacturer:
-  - id: "fp_208f29a6dd"
+  - id: fp_208f29a6dd
     manufacturer: "AOYAN  "
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_ce10d36224"
+  - id: fp_ce10d36224
     manufacturer: "AduroSmart ERIA"
     model: "ONOFF_METER_RELAY"
     deviceProfileName: "plugs-switch-power-voltage-current"
-  - id: "fp_607e89f67e"
+  - id: fp_607e89f67e
     manufacturer: "Bacchus"
     model: "Water_Station"
     deviceProfileName: "plugs-bacchus-water-station"
-  - id: "fp_a2098ecc03"
+  - id: fp_a2098ecc03
     manufacturer: "Bacchus"
     model: "Water_Station.Modkam"
     deviceProfileName: "plugs-bacchus-water-station"
-  - id: "fp_b69159b03c"
+  - id: fp_b69159b03c
     manufacturer: "HEIMAN"
     model: "SmartPlug"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_fa372b5265"
+  - id: fp_fa372b5265
     manufacturer: "HEIMAN"
     model: "SmartPlug-EF-3.0"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_3d27560b00"
+  - id: fp_3d27560b00
     manufacturer: "HEIMAN"
     model: "SmartPlug-N"
     deviceProfileName: "plugs-switch-power-voltage-current"
-  - id: "fp_7873d33893"
+  - id: fp_7873d33893
     manufacturer: "Heiman"
     model: "SmartPlug"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_83edc2f159"
+  - id: fp_83edc2f159
     manufacturer: "Innr"
     model: "SP 242"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_4bf2149371"
+  - id: fp_4bf2149371
     manufacturer: "Innr"
     model: "SP 244"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_269f56dd9e"
+  - id: fp_269f56dd9e
     manufacturer: "LEDVANCE"
     model: "Outdoor Plug"
     deviceProfileName: "plugs-switch"
-  - id: "fp_6486ac2fc8"
+  - id: fp_6486ac2fc8
     manufacturer: "LEDVANCE"
     model: "PLUG COMPACT EU EM T"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_3b6f7b6b43"
+  - id: fp_3b6f7b6b43
     manufacturer: "LEDVANCE"
     model: "PLUG COMPACT EU T"
     deviceProfileName: "plugs-switch"
-  - id: "fp_6c056ee8c5"
+  - id: fp_6c056ee8c5
     manufacturer: "LEDVANCE"
     model: "PLUG COMPACT OUTDOOR EU EM T"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_75a5c6d256"
+  - id: fp_75a5c6d256
     manufacturer: "LEDVANCE"
     model: "PLUG OUTDOOR EU T"
     deviceProfileName: "plugs-switch"
-  - id: "fp_37f4dbd840"
+  - id: fp_37f4dbd840
     manufacturer: "LEDVANCE"
     model: "Plug Value"
     deviceProfileName: "plugs-switch"
-  - id: "fp_f929fd8c80"
+  - id: fp_f929fd8c80
     manufacturer: "LUMI"
     model: "lumi.ctrl_86plug"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_3d730ce709"
+  - id: fp_3d730ce709
     manufacturer: "LUMI"
     model: "lumi.ctrl_86plug.aq1"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_b3af9219d3"
+  - id: fp_b3af9219d3
     manufacturer: "LUMI"
     model: "lumi.plug"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_9cf2d99749"
+  - id: fp_9cf2d99749
     manufacturer: "LUMI"
     model: "lumi.plug.aeu001"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_89542fe21e"
+  - id: fp_89542fe21e
     manufacturer: "LUMI"
     model: "lumi.plug.aq1"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_2e42bbfc8c"
+  - id: fp_2e42bbfc8c
     manufacturer: "LUMI"
     model: "lumi.plug.macn01"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_63c01a22f5"
+  - id: fp_63c01a22f5
     manufacturer: "LUMI"
     model: "lumi.plug.maeu01"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_441fcdcd10"
+  - id: fp_441fcdcd10
     manufacturer: "LUMI"
     model: "lumi.plug.maus01"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_4c50c25589"
+  - id: fp_4c50c25589
     manufacturer: "LUMI"
     model: "lumi.plug.mitw01"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_2f3e87b9d1"
+  - id: fp_2f3e87b9d1
     manufacturer: "LUMI"
     model: "lumi.plug.mmeu01"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_54e2073529"
+  - id: fp_54e2073529
     manufacturer: "LUMI"
     model: "lumi.plug.sacn02"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_f7f961a875"
+  - id: fp_f7f961a875
     manufacturer: "OSRAM"
     model: "Plug 01"
     deviceProfileName: "plugs-switch"
-  - id: "fp_ad600b1da5"
+  - id: fp_ad600b1da5
     manufacturer: "OSRAM"
     model: "Plug Z3"
     deviceProfileName: "plugs-switch"
-  - id: "fp_13a81aac41"
+  - id: fp_13a81aac41
     manufacturer: "SONOFF"
     model: "S60ZBTPG"
     deviceProfileName: "plugs-switch-power-energy-voltage"
-  - id: "fp_90a245499f"
+  - id: fp_90a245499f
     manufacturer: "Schneider Electric"
     model: "SMARTPLUG/1"
     deviceProfileName: "switch-power-energy"
-  - id: "fp_3fa7f3d6a9"
+  - id: fp_3fa7f3d6a9
     manufacturer: "Third Reality, Inc"
     model: "3RSP019BZ"
     deviceProfileName: "plugs-switch"
-  - id: "fp_daa5b34b30"
+  - id: fp_daa5b34b30
     manufacturer: "Third Reality, Inc"
     model: "3RSP02028BZ"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_5e24d8595a"
+  - id: fp_5e24d8595a
     manufacturer: "Third Reality, Inc"
     model: "3RSPE01044BZ"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_3a0d626e6e"
+  - id: fp_3a0d626e6e
     manufacturer: "Zbeacon"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_69282e81f3"
+  - id: fp_69282e81f3
     manufacturer: "_TYZB01_7yidyqxd"
     model: "TS0108"
     deviceProfileName: "plugs-switch-2"
-  - id: "fp_52b1791718"
+  - id: fp_52b1791718
     manufacturer: "_TYZB01_ijihzffk"
     model: "TS0101"
     deviceProfileName: "plugs-switch"
-  - id: "fp_e817284d8a"
+  - id: fp_e817284d8a
     manufacturer: "_TYZB01_mtunwanm"
     model: "TS011F"
     deviceProfileName: "plugs-switch-child-lock"
-  - id: "fp_8b2666d893"
+  - id: fp_8b2666d893
     manufacturer: "_TZ3000_00mk2xzy"
     model: "TS011F"
     deviceProfileName: "plugs-lidl-hg06337"
-  - id: "fp_0abb2d5c42"
+  - id: fp_0abb2d5c42
     manufacturer: "_TZ3000_0yxeawjt"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_839fdb13d1"
+  - id: fp_839fdb13d1
     manufacturer: "_TZ3000_1hwjutgo"
     model: "TS011F"
     deviceProfileName: "plugs-switch"
-  - id: "fp_ad9e6be5d6"
+  - id: fp_ad9e6be5d6
     manufacturer: "_TZ3000_266azbg3"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_eb0ff6eb3a"
+  - id: fp_eb0ff6eb3a
     manufacturer: "_TZ3000_2putqrmw"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_99a23b8183"
+  - id: fp_99a23b8183
     manufacturer: "_TZ3000_2uollq9d"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_e03992980d"
+  - id: fp_e03992980d
     manufacturer: "_TZ3000_3ias4w4o"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_7773a85ef5"
+  - id: fp_7773a85ef5
     manufacturer: "_TZ3000_3uimvkn6"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_461c422c8e"
+  - id: fp_461c422c8e
     manufacturer: "_TZ3000_4ux0ondb"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_08d4d524bd"
+  - id: fp_08d4d524bd
     manufacturer: "_TZ3000_8a833yls"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_48f6135e6f"
+  - id: fp_48f6135e6f
     manufacturer: "_TZ3000_8fdayfch"
     model: "TS011F"
     deviceProfileName: "plugs-switch"
-  - id: "fp_93009279bb"
+  - id: fp_93009279bb
     manufacturer: "_TZ3000_9ni6xxld"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_9e22510572"
+  - id: fp_9e22510572
     manufacturer: "_TZ3000_amdymr7l"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_4fb38f7390"
+  - id: fp_4fb38f7390
     manufacturer: "_TZ3000_b1q8kwmh"
     model: "TS011F"
     deviceProfileName: "plugs-zemismart-zmo606-20a"
-  - id: "fp_f83f25cfeb"
+  - id: fp_f83f25cfeb
     manufacturer: "_TZ3000_b28wrpvx"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_4930e2b717"
+  - id: fp_4930e2b717
     manufacturer: "_TZ3000_bfn1w0mm"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_175708d234"
+  - id: fp_175708d234
     manufacturer: "_TZ3000_br3laukf"
     model: "TS0101"
     deviceProfileName: "plugs-switch"
-  - id: "fp_e83602b62b"
+  - id: fp_e83602b62b
     manufacturer: "_TZ3000_c7nc9w3c"
     model: "TS011F"
     deviceProfileName: "plugs-wp30-power-strip"
-  - id: "fp_f519d5f27f"
+  - id: fp_f519d5f27f
     manufacturer: "_TZ3000_cehuw1lw"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_67e143f068"
+  - id: fp_67e143f068
     manufacturer: "_TZ3000_cicwjqth"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_ab0555741f"
+  - id: fp_ab0555741f
     manufacturer: "_TZ3000_cjrngdr3"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_f46e283abd"
+  - id: fp_f46e283abd
     manufacturer: "_TZ3000_gjnozsaz"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_fe3d136eac"
+  - id: fp_fe3d136eac
     manufacturer: "_TZ3000_hyfvrar3"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_7efe7bae5a"
+  - id: fp_7efe7bae5a
     manufacturer: "_TZ3000_j1v25l17"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_20d1922f8d"
+  - id: fp_20d1922f8d
     manufacturer: "_TZ3000_ko6v90pg"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_28a462d8eb"
+  - id: fp_28a462d8eb
     manufacturer: "_TZ3000_ksw8qtmt"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_43a16b3299"
+  - id: fp_43a16b3299
     manufacturer: "_TZ3000_lnggrqqi"
     model: "TS011F"
     deviceProfileName: "plugs-switch"
-  - id: "fp_350108f8cc"
+  - id: fp_350108f8cc
     manufacturer: "_TZ3000_nzkqcvvs"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_731291eaa9"
+  - id: fp_731291eaa9
     manufacturer: "_TZ3000_o1jzcxou"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_97bb9572bb"
+  - id: fp_97bb9572bb
     manufacturer: "_TZ3000_oiymh3qu"
     model: "TS011F"
     deviceProfileName: "plugs-switch"
-  - id: "fp_5c57ce7279"
+  - id: fp_5c57ce7279
     manufacturer: "_TZ3000_okaz9tjs"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_6241f0d144"
+  - id: fp_6241f0d144
     manufacturer: "_TZ3000_plyvnuf5"
     model: "TS011F"
     deviceProfileName: "plugs-lidl-hg06337"
-  - id: "fp_00c4e5cfa1"
+  - id: fp_00c4e5cfa1
     manufacturer: "_TZ3000_pnzfdr9y"
     model: "TS0101"
     deviceProfileName: "plugs-switch"
-  - id: "fp_26c8697128"
+  - id: fp_26c8697128
     manufacturer: "_TZ3000_rtcrrvia"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_08c436859a"
+  - id: fp_08c436859a
     manufacturer: "_TZ3000_ss98ec5d"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_a7c73d828c"
+  - id: fp_a7c73d828c
     manufacturer: "_TZ3000_tvuarksa"
     model: "TS011F"
     deviceProfileName: "plugs-switch"
-  - id: "fp_60634bba6e"
+  - id: fp_60634bba6e
     manufacturer: "_TZ3000_upjrsxh1"
     model: "TS011F"
     deviceProfileName: "plugs-lidl-hg06337"
-  - id: "fp_e7bf87db2a"
+  - id: fp_e7bf87db2a
     manufacturer: "_TZ3000_uyrhiafs"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_57a06c546b"
+  - id: fp_57a06c546b
     manufacturer: "_TZ3000_v1pdxuqq"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_2075d148f8"
+  - id: fp_2075d148f8
     manufacturer: "_TZ3000_w0qqde0g"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1-no-button"
-  - id: "fp_e93ee9a0de"
+  - id: fp_e93ee9a0de
     manufacturer: "_TZ3000_wamqdr3f"
     model: "TS011F"
     deviceProfileName: "plugs-lidl-hg06337"
-  - id: "fp_4a16ce7b49"
+  - id: fp_4a16ce7b49
     manufacturer: "_TZ3000_ww6drja5"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_c1b7735ea3"
+  - id: fp_c1b7735ea3
     manufacturer: "_TZ3000_wxtp7c5y"
     model: "TS011F"
     deviceProfileName: "plugs-switch-child-lock"
-  - id: "fp_4a0181adb2"
+  - id: fp_4a0181adb2
     manufacturer: "_TZ3000_y4ona9me"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_9ccf4fd7dd"
+  - id: fp_9ccf4fd7dd
     manufacturer: "_TZ3000_ynmowqk2"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_e660ac7102"
+  - id: fp_e660ac7102
     manufacturer: "_TZ3000_ysiog9xi"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_67aa956f90"
+  - id: fp_67aa956f90
     manufacturer: "_TZ3000_yujkchbz"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_4ea4bd3229"
+  - id: fp_4ea4bd3229
     manufacturer: "_TZ3000_zloso4jk"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_a7796e4deb"
+  - id: fp_a7796e4deb
     manufacturer: "_TZ3008_1a8m8wd6"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_baa48b7800"
+  - id: fp_baa48b7800
     manufacturer: "_TZ3008_iooniers"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1"
-  - id: "fp_2c2b0849c4"
+  - id: fp_2c2b0849c4
     manufacturer: "_TZ3008_qziabvzj"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1"
-  - id: "fp_3e21090272"
+  - id: fp_3e21090272
     manufacturer: "_TZ3008_reatplte"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_92fbc8dd09"
+  - id: fp_92fbc8dd09
     manufacturer: "_TZ3008_tary5dvv"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1"
-  - id: "fp_2236d221be"
+  - id: fp_2236d221be
     manufacturer: "_TZ3008_xvfd3nkp"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1"
-  - id: "fp_88b0f42f7b"
+  - id: fp_88b0f42f7b
     manufacturer: "_TZ3210_2dfy6tol"
     model: "TS0101"
     deviceProfileName: "plugs-switch"
-  - id: "fp_1c4334bced"
+  - id: fp_1c4334bced
     manufacturer: "_TZ3210_2putqrmw"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_33e8ee36f9"
+  - id: fp_33e8ee36f9
     manufacturer: "_TZ3210_2uollq9d"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_fb32d236e2"
+  - id: fp_fb32d236e2
     manufacturer: "_TZ3210_4ux0ondb"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_5076df00ba"
+  - id: fp_5076df00ba
     manufacturer: "_TZ3210_5ct6e7ye"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_a1e9999a9f"
+  - id: fp_a1e9999a9f
     manufacturer: "_TZ3210_6cmeijtd"
     model: "TS011F"
     deviceProfileName: "plugs-nous-a11z"
-  - id: "fp_2dc035e598"
+  - id: fp_2dc035e598
     manufacturer: "_TZ3210_c7nc9w3c"
     model: "TS011F"
     deviceProfileName: "plugs-wp30-power-strip"
-  - id: "fp_c4b4ee664a"
+  - id: fp_c4b4ee664a
     manufacturer: "_TZ3210_cjrngdr3"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_ab6a98e39b"
+  - id: fp_ab6a98e39b
     manufacturer: "_TZ3210_ddigca5n"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_3a5ef250f7"
+  - id: fp_3a5ef250f7
     manufacturer: "_TZ3210_eymunffl"
     model: "TS0101"
     deviceProfileName: "plugs-switch"
-  - id: "fp_5e378a8191"
+  - id: fp_5e378a8191
     manufacturer: "_TZ3210_iooniers"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1"
-  - id: "fp_3bd6a2e853"
+  - id: fp_3bd6a2e853
     manufacturer: "_TZ3210_jlf1nepw"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_7eec463b38"
+  - id: fp_7eec463b38
     manufacturer: "_TZ3210_nhqka112"
     model: "TS011F"
     deviceProfileName: "plugs-switch-tuya-options"
-  - id: "fp_5c3417a600"
+  - id: fp_5c3417a600
     manufacturer: "_TZ3210_rwmitwj4"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_653449a40d"
+  - id: fp_653449a40d
     manufacturer: "_TZ3210_tfxwxklq"
     model: "TS0101"
     deviceProfileName: "plugs-switch"
-  - id: "fp_8596d944c7"
+  - id: fp_8596d944c7
     manufacturer: "_TZ3210_w0qqde0g"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current-ts011f-plug1"
-  - id: "fp_7cf6cede51"
+  - id: fp_7cf6cede51
     manufacturer: "_TZ3210_zifx0xoj"
     model: "TS011F"
     deviceProfileName: "plugs-switch-power-energy-voltage-current"
-  - id: "fp_baa11e2bdd"
+  - id: fp_baa11e2bdd
     manufacturer: "frient A/S"
     model: "SMRZB-153"
     deviceProfileName: "switches-switch-1-power-energy-voltage-current"

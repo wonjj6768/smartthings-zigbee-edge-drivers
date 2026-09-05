@@ -1,9 +1,9 @@
 zigbeeManufacturer:
-  - id: "fp_d602edb18d"
+  - id: fp_d602edb18d
     manufacturer: "Lmiot"
     model: "doorlock_5001"
     deviceProfileName: "locks-wave18-javis-js-slk2-zb"
-  - id: "fp_a2238cce21"
+  - id: fp_a2238cce21
     manufacturer: "Vensi"
     model: "E321V000A03"
     deviceProfileName: "locks-wave18-javis-js-slk2-zb"

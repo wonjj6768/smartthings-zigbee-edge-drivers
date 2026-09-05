@@ -1,85 +1,85 @@
 zigbeeManufacturer:
-  - id: "fp_9019e249ee"
+  - id: fp_9019e249ee
     manufacturer: "_TZ3218_awarhusb"
     model: "TS0225"
     deviceProfileName: "safety-occupancy-wave11-linptech-es1"
-  - id: "fp_08e1225fd3"
+  - id: fp_08e1225fd3
     manufacturer: "_TZ3218_ewrxirng"
     model: "TS0225"
     deviceProfileName: "safety-occupancy-wave11-linptech-es1"
-  - id: "fp_8a95e2debe"
+  - id: fp_8a95e2debe
     manufacturer: "_TZ3218_t9ynfz4x"
     model: "TS0225"
     deviceProfileName: "safety-occupancy-wave11-linptech-es1"
-  - id: "fp_08cf39b246"
+  - id: fp_08cf39b246
     manufacturer: "_TZE200_7hfcudw5"
     model: "TS0601"
     deviceProfileName: "safety-wave19-neo-nas-pd07"
-  - id: "fp_4f63e334ec"
+  - id: fp_4f63e334ec
     manufacturer: "_TZE200_i0b1dbqu"
     model: "TS0601"
     deviceProfileName: "safety-wave19-javis-microwave"
-  - id: "fp_0ed650d461"
+  - id: fp_0ed650d461
     manufacturer: "_TZE200_kagkgk0i"
     model: "TS0601"
     deviceProfileName: "safety-wave19-javis-microwave"
-  - id: "fp_95fd000241"
+  - id: fp_95fd000241
     manufacturer: "_TZE200_lgstepha"
     model: "TS0601"
     deviceProfileName: "safety-wave19-javis-microwave"
-  - id: "fp_af2067e698"
+  - id: fp_af2067e698
     manufacturer: "_TZE204_1youk3hj"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-neo-nas-ps10b2"
-  - id: "fp_a8d420d983"
+  - id: fp_a8d420d983
     manufacturer: "_TZE204_b8vxct9l"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-szlr08t"
-  - id: "fp_f8ba6252f1"
+  - id: fp_f8ba6252f1
     manufacturer: "_TZE204_bjf8qum1"
     model: "TS0601"
     deviceProfileName: "safety-presence-szlmr10-illuminance"
-  - id: "fp_50a6fc1156"
+  - id: fp_50a6fc1156
     manufacturer: "_TZE204_khoqss0a"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-szr07"
-  - id: "fp_d3171297eb"
+  - id: fp_d3171297eb
     manufacturer: "_TZE204_lw5ny7tp"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-szlr08"
-  - id: "fp_ceeb7990d3"
+  - id: fp_ceeb7990d3
     manufacturer: "_TZE204_sndkanfr"
     model: "TS0601"
     deviceProfileName: "safety-presence-szlmr10-illuminance"
-  - id: "fp_394ff96014"
+  - id: fp_394ff96014
     manufacturer: "_TZE284_1youk3hj"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-neo-nas-ps10b2"
-  - id: "fp_7beb71708f"
+  - id: fp_7beb71708f
     manufacturer: "_TZE284_hqys6frs"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-r12lm-z10t"
-  - id: "fp_20c86bd7bc"
+  - id: fp_20c86bd7bc
     manufacturer: "_TZE284_sndkanfr"
     model: "TS0601"
     deviceProfileName: "safety-presence-szlmr10-illuminance"
-  - id: "fp_ed642fee0d"
+  - id: fp_ed642fee0d
     manufacturer: "_TZE284_zzm83zpz"
     model: "TS0601"
     deviceProfileName: "safety-presence-wave11-r12lm-z11t"
-  - id: "fp_39ed9ed6c3"
+  - id: fp_39ed9ed6c3
     manufacturer: "_TZE28C1000000_ewn672ef"
     model: "TS0601"
     deviceProfileName: "safety-presence-zf24pro-temp-humidity"
-  - id: "fp_f9ff35f82c"
+  - id: fp_f9ff35f82c
     manufacturer: "_TZE28C1000000_jaunkx9g"
     model: "TS0601"
     deviceProfileName: "switches-presence-wave11-tuya-2gang"
-  - id: "fp_1cda9b2a5b"
+  - id: fp_1cda9b2a5b
     manufacturer: "_TZE28C1000000_usmqzgdm"
     model: "TS0601"
     deviceProfileName: "switches-presence-wave11-tuya-3gang"
-  - id: "fp_57dd44f2c9"
+  - id: fp_57dd44f2c9
     manufacturer: "_TZE28C1000000_vosmoqsg"
     model: "TS0601"
     deviceProfileName: "safety-presence-zf24pro-temp-humidity"

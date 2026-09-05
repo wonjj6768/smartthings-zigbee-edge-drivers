@@ -39,6 +39,38 @@ end
 -- dedicated preset buttons for previous/minimum/disabled.
 local candeo_rd1p_dpm = {
   profile = "lights-candeo-rd1p-dpm",
+  capability_commands = {
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmOnLevel",
+      command_name = "usePreviousOnLevel",
+      mapping_name = "candeo_rd1p_dpm_on_level",
+      value = "previous",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmStartupLevel",
+      command_name = "useMinimumStartupLevel",
+      mapping_name = "candeo_rd1p_dpm_startup_level",
+      value = "minimum",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmStartupLevel",
+      command_name = "usePreviousStartupLevel",
+      mapping_name = "candeo_rd1p_dpm_startup_level",
+      value = "previous",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmOnTransitionTime",
+      command_name = "disableOnTransitionTime",
+      mapping_name = "candeo_rd1p_dpm_on_transition_time",
+      value = "disabled",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmOffTransitionTime",
+      command_name = "disableOffTransitionTime",
+      mapping_name = "candeo_rd1p_dpm_off_transition_time",
+      value = "disabled",
+    },
+  },
   advanced_remote = true,
   unprefixed_remote_actions = true,
   remote_action_emit_name = "candeoRd1pDpmAction",
@@ -201,6 +233,14 @@ end
 local paulmann_rgbww
 paulmann_rgbww = {
   profile = "lights-paulmann-rgbww",
+  capability_commands = {
+    {
+      capability_id = "concertmirror08464.paulmannRgbwwStartupCct",
+      command_name = "restorePaulmannRgbwwPreviousCct",
+      mapping_name = "paulmann_rgbww_startup_color_temperature",
+      value = 65535,
+    },
+  },
   color_temperature_range = {
     minimum = math.floor((1000000 / 454) + 0.5),
     maximum = math.floor((1000000 / 153) + 0.5),

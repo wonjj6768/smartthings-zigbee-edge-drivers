@@ -1,21 +1,21 @@
 zigbeeManufacturer:
-  - id: "fp_830d5302e4"
+  - id: fp_830d5302e4
     manufacturer: "_TZ3218_kwht8j5m"
     model: "TS011F"
     deviceProfileName: "meters-wave19-qa-qaszp"
-  - id: "fp_574b3e16c5"
+  - id: fp_574b3e16c5
     manufacturer: "_TZE204_goecjd1t"
     model: "TS0601"
     deviceProfileName: "meters-zwpm16"
-  - id: "fp_bb2a929c7e"
+  - id: fp_bb2a929c7e
     manufacturer: "_TZE204_jrcfsaa3"
     model: "TS0601"
     deviceProfileName: "meters-zwpm16-2"
-  - id: "fp_b4de6467f3"
+  - id: fp_b4de6467f3
     manufacturer: "_TZE204_t9ffmdin"
     model: "TS0601"
     deviceProfileName: "meters-wave19-nous-d5z"
-  - id: "fp_9a7ff64dde"
+  - id: fp_9a7ff64dde
     manufacturer: "_TZE284_2fnssffc"
     model: "TS0601"
     deviceProfileName: "meters-wave19-moes-zm6lt1"

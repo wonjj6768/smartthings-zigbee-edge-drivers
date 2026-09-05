@@ -1,0 +1,13 @@
+name: sonoff-snzb03pr2-occupancy
+components:
+  - id: main
+    capabilities:
+      - {id: occupancySensor, version: 1}
+      - {id: illuminanceMeasurement, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.sonoffSnzb03pr2DetectionDuration, version: 1}
+      - {id: concertmirror08464.sonoffSnzb03pr2IlluminationOffset, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: PresenceSensor

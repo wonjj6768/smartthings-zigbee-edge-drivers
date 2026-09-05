@@ -1,2005 +1,2005 @@
 zigbeeManufacturer:
-  - id: "fp_cee72e18ec"
+  - id: fp_cee72e18ec
     manufacturer: "AVATTO"
     model: "TS0004_1"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_6bebcd6eef"
+  - id: fp_6bebcd6eef
     manufacturer: "AVATTO"
     model: "ZBTS60-04"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_1ed14e7520"
+  - id: fp_1ed14e7520
     manufacturer: "AVATTO"
     model: "ZWOT12"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_da4c5f7892"
+  - id: fp_da4c5f7892
     manufacturer: "AVATTO"
     model: "ZWSM16-4"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_14399c7f90"
+  - id: fp_14399c7f90
     manufacturer: "Aqara"
     model: "lumi.switch.acn047"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_0a03989089"
+  - id: fp_0a03989089
     manufacturer: "Aqara"
     model: "lumi.switch.acn048"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_4086df1720"
+  - id: fp_4086df1720
     manufacturer: "Aqara"
     model: "lumi.switch.acn049"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_e3cad72408"
+  - id: fp_e3cad72408
     manufacturer: "Aqara"
     model: "lumi.switch.acn055"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_feff5c6d4e"
+  - id: fp_feff5c6d4e
     manufacturer: "Aqara"
     model: "lumi.switch.acn057"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_8dc2bbd31a"
+  - id: fp_8dc2bbd31a
     manufacturer: "Aqara"
     model: "lumi.switch.acn059"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_97f468d29a"
+  - id: fp_97f468d29a
     manufacturer: "BTicino"
     model: "3577C"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_a8c35d27f4"
+  - id: fp_a8c35d27f4
     manufacturer: "BTicino"
     model: "3584C"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_c8063af07f"
+  - id: fp_c8063af07f
     manufacturer: "BTicino"
     model: "FC80AC"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_10f7f2742e"
+  - id: fp_10f7f2742e
     manufacturer: "BTicino"
     model: "FC80CC"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_42fe1179a0"
+  - id: fp_42fe1179a0
     manufacturer: "BTicino"
     model: "FC80RC"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_a62aa58e7f"
+  - id: fp_a62aa58e7f
     manufacturer: "BTicino"
     model: "LN4570CWI"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_abb0b6180e"
+  - id: fp_abb0b6180e
     manufacturer: "Candeo"
     model: "C-ZB-SM205-2G"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_7316d18d8d"
+  - id: fp_7316d18d8d
     manufacturer: "Candeo"
     model: "C-ZB-SM30-2G"
     deviceProfileName: "switches-candeo-sm30-2g"
-  - id: "fp_6a7bb2a33c"
+  - id: fp_6a7bb2a33c
     manufacturer: "Candeo"
     model: "C205"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_dae9a3a1ca"
+  - id: fp_dae9a3a1ca
     manufacturer: "Coibeu"
     model: "ZB414"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_5b8a4b128c"
+  - id: fp_5b8a4b128c
     manufacturer: "Elko"
     model: "EKO07250"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_642983b2b8"
+  - id: fp_642983b2b8
     manufacturer: "Elko"
     model: "EKO07251"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_116ec609f2"
+  - id: fp_116ec609f2
     manufacturer: "Elko"
     model: "EKO07252"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_4a730303e9"
+  - id: fp_4a730303e9
     manufacturer: "Elko"
     model: "EKO07253"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_adea1f1033"
+  - id: fp_adea1f1033
     manufacturer: "Elko"
     model: "EKO20004"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_758a26998d"
+  - id: fp_758a26998d
     manufacturer: "Elko"
     model: "EKO30198"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_fddabdc0a4"
+  - id: fp_fddabdc0a4
     manufacturer: "Elko"
     model: "EKO30199"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_61b9c950b4"
+  - id: fp_61b9c950b4
     manufacturer: "Gira"
     model: "2430-100"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_d5829ce6f5"
+  - id: fp_d5829ce6f5
     manufacturer: "Gira"
     model: "2435-10"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_06c897370d"
+  - id: fp_06c897370d
     manufacturer: "HEIMAN"
     model: "HS2SW1A-EF-3.0"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_3a12f84a0f"
+  - id: fp_3a12f84a0f
     manufacturer: "HEIMAN"
     model: "HS2SW1A-EFR-3.0"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_9218971b40"
+  - id: fp_9218971b40
     manufacturer: "HEIMAN"
     model: "HS2SW2A-EF-3.0"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_774b59dc66"
+  - id: fp_774b59dc66
     manufacturer: "HEIMAN"
     model: "HS2SW2A-EFR-3.0"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_da8b75cafb"
+  - id: fp_da8b75cafb
     manufacturer: "HEIMAN"
     model: "HS2SW3A-EF-3.0"
     deviceProfileName: "switches-switch-3-device-temperature"
-  - id: "fp_df560b25c9"
+  - id: fp_df560b25c9
     manufacturer: "HEIMAN"
     model: "HS2SW3A-EFR-3.0"
     deviceProfileName: "switches-switch-3-device-temperature"
-  - id: "fp_4bcf9b515a"
+  - id: fp_4bcf9b515a
     manufacturer: "HOBEIAN"
     model: "ZG-301Z-2CH"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_3159fb2417"
+  - id: fp_3159fb2417
     manufacturer: "HOBEIAN"
     model: "ZG-301Z-3CH"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_50a4570768"
+  - id: fp_50a4570768
     manufacturer: "HOBEIAN"
     model: "ZG-305Z"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_c25541f4a3"
+  - id: fp_c25541f4a3
     manufacturer: "IKEA"
     model: "E2006"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_4c71e0f076"
+  - id: fp_4c71e0f076
     manufacturer: "Jung"
     model: "ZLLHS4"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_1ca1ad31ff"
+  - id: fp_1ca1ad31ff
     manufacturer: "KlikAanKlikUit"
     model: "Built-in Switch"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_a938e51019"
+  - id: fp_a938e51019
     manufacturer: "LED-Trading"
     model: "UP-SA-9127D"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_d3e702b10b"
+  - id: fp_d3e702b10b
     manufacturer: "LELLKI"
     model: "WP33-EU"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_edbd7ca22e"
+  - id: fp_edbd7ca22e
     manufacturer: "LUMI"
     model: "lumi.ctrl_ln1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2075b108e1"
+  - id: fp_2075b108e1
     manufacturer: "LUMI"
     model: "lumi.ctrl_ln1.aq1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2b4fb6ea2d"
+  - id: fp_2b4fb6ea2d
     manufacturer: "LUMI"
     model: "lumi.ctrl_ln2"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_60dbd140bd"
+  - id: fp_60dbd140bd
     manufacturer: "LUMI"
     model: "lumi.ctrl_ln2.aq1"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_ae76c6874e"
+  - id: fp_ae76c6874e
     manufacturer: "LUMI"
     model: "lumi.ctrl_neutral1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_f9198b33b6"
+  - id: fp_f9198b33b6
     manufacturer: "LUMI"
     model: "lumi.ctrl_neutral2"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_32a8cff494"
+  - id: fp_32a8cff494
     manufacturer: "LUMI"
     model: "lumi.plug.acn005"
     deviceProfileName: "plugs-switch-2-power-energy-voltage"
-  - id: "fp_2495527fd7"
+  - id: fp_2495527fd7
     manufacturer: "LUMI"
     model: "lumi.plug.sacn03"
     deviceProfileName: "plugs-switch-2-power-energy-voltage"
-  - id: "fp_be5c34a999"
+  - id: fp_be5c34a999
     manufacturer: "LUMI"
     model: "lumi.relay.c2acn01"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_d49c20bc36"
+  - id: fp_d49c20bc36
     manufacturer: "LUMI"
     model: "lumi.switch.acn029"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_32cff72e82"
+  - id: fp_32cff72e82
     manufacturer: "LUMI"
     model: "lumi.switch.acn030"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_0fa1eda890"
+  - id: fp_0fa1eda890
     manufacturer: "LUMI"
     model: "lumi.switch.acn031"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_ec875cbe10"
+  - id: fp_ec875cbe10
     manufacturer: "LUMI"
     model: "lumi.switch.acn040"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_0a2a7eaf3c"
+  - id: fp_0a2a7eaf3c
     manufacturer: "LUMI"
     model: "lumi.switch.acn047"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_867b95bd71"
+  - id: fp_867b95bd71
     manufacturer: "LUMI"
     model: "lumi.switch.acn048"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_c1c95bc983"
+  - id: fp_c1c95bc983
     manufacturer: "LUMI"
     model: "lumi.switch.acn049"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_cddadf9e63"
+  - id: fp_cddadf9e63
     manufacturer: "LUMI"
     model: "lumi.switch.acn054"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_4be7247fbf"
+  - id: fp_4be7247fbf
     manufacturer: "LUMI"
     model: "lumi.switch.acn055"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_c9a2554d4d"
+  - id: fp_c9a2554d4d
     manufacturer: "LUMI"
     model: "lumi.switch.acn056"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_b05a24bc58"
+  - id: fp_b05a24bc58
     manufacturer: "LUMI"
     model: "lumi.switch.acn057"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_ff0a5012fa"
+  - id: fp_ff0a5012fa
     manufacturer: "LUMI"
     model: "lumi.switch.acn058"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_450ce3c3d5"
+  - id: fp_450ce3c3d5
     manufacturer: "LUMI"
     model: "lumi.switch.acn059"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_128185fdea"
+  - id: fp_128185fdea
     manufacturer: "LUMI"
     model: "lumi.switch.acn061"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_17c8e23ca6"
+  - id: fp_17c8e23ca6
     manufacturer: "LUMI"
     model: "lumi.switch.b1lacn01"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_bd4815b385"
+  - id: fp_bd4815b385
     manufacturer: "LUMI"
     model: "lumi.switch.b1laus01"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_d1012440f5"
+  - id: fp_d1012440f5
     manufacturer: "LUMI"
     model: "lumi.switch.b1lc04"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_cd9580b425"
+  - id: fp_cd9580b425
     manufacturer: "LUMI"
     model: "lumi.switch.b1nacn01"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_a6b4a53e9b"
+  - id: fp_a6b4a53e9b
     manufacturer: "LUMI"
     model: "lumi.switch.b1nacn02"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_0e15238973"
+  - id: fp_0e15238973
     manufacturer: "LUMI"
     model: "lumi.switch.b1naus01"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_011d49ad16"
+  - id: fp_011d49ad16
     manufacturer: "LUMI"
     model: "lumi.switch.b1nc01"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_092d6ac8a9"
+  - id: fp_092d6ac8a9
     manufacturer: "LUMI"
     model: "lumi.switch.b2lacn01"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_bb1e721b39"
+  - id: fp_bb1e721b39
     manufacturer: "LUMI"
     model: "lumi.switch.b2laus01"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_4edd65cc2e"
+  - id: fp_4edd65cc2e
     manufacturer: "LUMI"
     model: "lumi.switch.b2lc04"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_fbc58d4ba9"
+  - id: fp_fbc58d4ba9
     manufacturer: "LUMI"
     model: "lumi.switch.b2nacn01"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_a813fef14e"
+  - id: fp_a813fef14e
     manufacturer: "LUMI"
     model: "lumi.switch.b2nacn02"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_f336260476"
+  - id: fp_f336260476
     manufacturer: "LUMI"
     model: "lumi.switch.b2naus01"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_7b22f90014"
+  - id: fp_7b22f90014
     manufacturer: "LUMI"
     model: "lumi.switch.b2nc01"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_44aee5c6cc"
+  - id: fp_44aee5c6cc
     manufacturer: "LUMI"
     model: "lumi.switch.b3l01"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_23299ec96e"
+  - id: fp_23299ec96e
     manufacturer: "LUMI"
     model: "lumi.switch.b3n01"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_b8d5acf5b9"
+  - id: fp_b8d5acf5b9
     manufacturer: "LUMI"
     model: "lumi.switch.l0acn1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_d054517f3b"
+  - id: fp_d054517f3b
     manufacturer: "LUMI"
     model: "lumi.switch.l0agl1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_755651c131"
+  - id: fp_755651c131
     manufacturer: "LUMI"
     model: "lumi.switch.l1acn1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_5585a36a72"
+  - id: fp_5585a36a72
     manufacturer: "LUMI"
     model: "lumi.switch.l1aeu1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_32c92874e8"
+  - id: fp_32c92874e8
     manufacturer: "LUMI"
     model: "lumi.switch.l2acn1"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_41a8ad4a05"
+  - id: fp_41a8ad4a05
     manufacturer: "LUMI"
     model: "lumi.switch.l2aeu1"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_3e3bf52532"
+  - id: fp_3e3bf52532
     manufacturer: "LUMI"
     model: "lumi.switch.l3acn1"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_46dc7824c0"
+  - id: fp_46dc7824c0
     manufacturer: "LUMI"
     model: "lumi.switch.l3acn3"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_55cf868790"
+  - id: fp_55cf868790
     manufacturer: "LUMI"
     model: "lumi.switch.n0acn2"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_3324773519"
+  - id: fp_3324773519
     manufacturer: "LUMI"
     model: "lumi.switch.n0agl1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2efe08b75b"
+  - id: fp_2efe08b75b
     manufacturer: "LUMI"
     model: "lumi.switch.n1acn1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_66d87e7f46"
+  - id: fp_66d87e7f46
     manufacturer: "LUMI"
     model: "lumi.switch.n1aeu1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_38f9d9a63a"
+  - id: fp_38f9d9a63a
     manufacturer: "LUMI"
     model: "lumi.switch.n2acn1"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_bf6d0ce236"
+  - id: fp_bf6d0ce236
     manufacturer: "LUMI"
     model: "lumi.switch.n2aeu1"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_c95faa8ed9"
+  - id: fp_c95faa8ed9
     manufacturer: "LUMI"
     model: "lumi.switch.n3acn1"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_0a1dc88eeb"
+  - id: fp_0a1dc88eeb
     manufacturer: "LUMI"
     model: "lumi.switch.n3acn3"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f05124e12c"
+  - id: fp_f05124e12c
     manufacturer: "LUMI"
     model: "lumi.switch.n4acn4"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_d4bfee9553"
+  - id: fp_d4bfee9553
     manufacturer: "Legrand"
     model: "199142"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_4c807f6e09"
+  - id: fp_4c807f6e09
     manufacturer: "MHCOZY"
     model: "TYWB 4ch-RF"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_5709081212"
+  - id: fp_5709081212
     manufacturer: "MakeGood"
     model: "MG-ZG04W/B/G"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_178d56cb28"
+  - id: fp_178d56cb28
     manufacturer: "Mercator Ikuü"
     model: "SSW04"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_cc23ac3a74"
+  - id: fp_cc23ac3a74
     manufacturer: "Moes"
     model: "ZM4LT4"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_736408c446"
+  - id: fp_736408c446
     manufacturer: "Nova Digital"
     model: "SA-4"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_a686e92844"
+  - id: fp_a686e92844
     manufacturer: "Nova Digital"
     model: "TPZ-4"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_5c91a2090b"
+  - id: fp_5c91a2090b
     manufacturer: "OXT"
     model: "SWTZ27"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_c5859a9479"
+  - id: fp_c5859a9479
     manufacturer: "Oz Smart Things"
     model: "WSP403"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_d4263938cc"
+  - id: fp_d4263938cc
     manufacturer: "RSH"
     model: "SB04-Zigbee"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_349f43a905"
+  - id: fp_349f43a905
     manufacturer: "SONOFF"
     model: "MINI-ZBD"
     deviceProfileName: "switches-switch-1-sonoff-zbmini-r2"
-  - id: "fp_b559a77ed8"
+  - id: fp_b559a77ed8
     manufacturer: "SONOFF"
     model: "ZBMINIR2"
     deviceProfileName: "switches-switch-1-sonoff-zbmini-r2"
-  - id: "fp_b7702b8bda"
+  - id: fp_b7702b8bda
     manufacturer: "Schneider Electric"
     model: "1GANG/SWITCH/1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2fbb313afd"
+  - id: fp_2fbb313afd
     manufacturer: "Schneider Electric"
     model: "A3N31SR800ZB_xx_C1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_44a8137629"
+  - id: fp_44a8137629
     manufacturer: "Schneider Electric"
     model: "A3N32SR800ZB_xx_C1"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_3eff07aa28"
+  - id: fp_3eff07aa28
     manufacturer: "Schneider Electric"
     model: "A3N33SR800ZB_xx_C1"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_099af1e1b6"
+  - id: fp_099af1e1b6
     manufacturer: "Schneider Electric"
     model: "CH10AX/SWITCH/1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_63fdf7a4f3"
+  - id: fp_63fdf7a4f3
     manufacturer: "Schneider Electric"
     model: "CH2AX/SWITCH/1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2e415bfbb6"
+  - id: fp_2e415bfbb6
     manufacturer: "Schneider Electric"
     model: "E8331SRY800ZB"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_c215a64ba0"
+  - id: fp_c215a64ba0
     manufacturer: "Schneider Electric"
     model: "E8332SRY800ZB"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_80688c0d6b"
+  - id: fp_80688c0d6b
     manufacturer: "Schneider Electric"
     model: "E8333SRY800ZB"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_1bfd03ac20"
+  - id: fp_1bfd03ac20
     manufacturer: "Schneider Electric"
     model: "NHPB/SWITCH/1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_103534141d"
+  - id: fp_103534141d
     manufacturer: "Schneider Electric"
     model: "PUCK/SWITCH/1"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_374107775b"
+  - id: fp_374107775b
     manufacturer: "Schneider Electric"
     model: "U201SRY2KWZB"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_025881fe96"
+  - id: fp_025881fe96
     manufacturer: "Sibling"
     model: "Powerswitch-ZK(W)"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_726a950a4f"
+  - id: fp_726a950a4f
     manufacturer: "Somfy"
     model: "ON/OFF (2CH)"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_68d7b8a44f"
+  - id: fp_68d7b8a44f
     manufacturer: "Sunricher"
     model: "HK-SL-RELAY-A"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_e0123b61fb"
+  - id: fp_e0123b61fb
     manufacturer: "Sunricher"
     model: "Micro Smart OnOff"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_01ff981026"
+  - id: fp_01ff981026
     manufacturer: "Sunricher"
     model: "ON/OFF"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_134c66808b"
+  - id: fp_134c66808b
     manufacturer: "Sunricher"
     model: "ON/OFF (2CH)"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_d3f3a42f5a"
+  - id: fp_d3f3a42f5a
     manufacturer: "Sunricher"
     model: "ON/OFF(2CH)"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_832b00ad9b"
+  - id: fp_832b00ad9b
     manufacturer: "Sunricher"
     model: "SR-ZG9023A-EU"
     deviceProfileName: "switches-switch-5"
-  - id: "fp_ef15e9e662"
+  - id: fp_ef15e9e662
     manufacturer: "Sunricher"
     model: "SR-ZG9100A-S"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_82f9e2dee4"
+  - id: fp_82f9e2dee4
     manufacturer: "Sunricher"
     model: "SR-ZG9101SAC-HP-SWITCH-2CH"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_8080c21204"
+  - id: fp_8080c21204
     manufacturer: "Sunricher"
     model: "SR-ZG9101SAC-HP-SWITCH-B"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_63b6f9f736"
+  - id: fp_63b6f9f736
     manufacturer: "Sunricher"
     model: "ZIGBEE-SWITCH"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_19e7178c33"
+  - id: fp_19e7178c33
     manufacturer: "TERNCY"
     model: "TERNCY-LS01"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_0157c14a72"
+  - id: fp_0157c14a72
     manufacturer: "TERNCY"
     model: "TERNCY-WS01-S4"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_293da83697"
+  - id: fp_293da83697
     manufacturer: "TUYATEC"
     model: "GDKES-04TZXD"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_6fc27473b5"
+  - id: fp_6fc27473b5
     manufacturer: "Third Reality"
     model: "3RSP0186Z"
     deviceProfileName: "plugs-switch"
-  - id: "fp_da8b19334e"
+  - id: fp_da8b19334e
     manufacturer: "Third Reality"
     model: "3RSPE02065Z"
     deviceProfileName: "plugs-switch"
-  - id: "fp_eb226bfea2"
+  - id: fp_eb226bfea2
     manufacturer: "Third Reality"
     model: "3RSPJ0187Z"
     deviceProfileName: "plugs-switch"
-  - id: "fp_320ec68b2e"
+  - id: fp_320ec68b2e
     manufacturer: "Third Reality"
     model: "3RSPU01080Z"
     deviceProfileName: "plugs-switch"
-  - id: "fp_4e2c620956"
+  - id: fp_4e2c620956
     manufacturer: "Third Reality"
     model: "3RWP01073Z"
     deviceProfileName: "plugs-switch-2"
-  - id: "fp_04b9599978"
+  - id: fp_04b9599978
     manufacturer: "Third Reality, Inc"
     model: "3RSS007Z"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_5565e89ff8"
+  - id: fp_5565e89ff8
     manufacturer: "Third Reality, Inc"
     model: "3RSS008Z"
     deviceProfileName: "switches-switch-1-battery"
-  - id: "fp_a7f001b63e"
+  - id: fp_a7f001b63e
     manufacturer: "Third Reality, Inc"
     model: "3RSS009Z"
     deviceProfileName: "switches-switch-1-battery"
-  - id: "fp_c2a44461d1"
+  - id: fp_c2a44461d1
     manufacturer: "Tuya"
     model: "DS-111"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_8db3c486d3"
+  - id: fp_8db3c486d3
     manufacturer: "UHome"
     model: "TWV"
     deviceProfileName: "valves-valve-battery"
-  - id: "fp_4908d31143"
+  - id: fp_4908d31143
     manufacturer: "Vizo"
     model: "VZ-221S"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_46123ea8fb"
+  - id: fp_46123ea8fb
     manufacturer: "Vizo"
     model: "VZ-222S"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_d3cba6423b"
+  - id: fp_d3cba6423b
     manufacturer: "Vizo"
     model: "VZ-223S"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_b7b40c06f7"
+  - id: fp_b7b40c06f7
     manufacturer: "_TYZB01_4tlksk8a"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_63a946ae96"
+  - id: fp_63a946ae96
     manufacturer: "_TYZB01_4vgantdz"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_829b9545c0"
+  - id: fp_829b9545c0
     manufacturer: "_TYZB01_aneiicmq"
     model: "TS0003"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_f451db3fe3"
+  - id: fp_f451db3fe3
     manufacturer: "_TYZB01_digziiav"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_092a6e4539"
+  - id: fp_092a6e4539
     manufacturer: "_TYZB01_digziiav"
     model: "TS0003"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_b69ec12293"
+  - id: fp_b69ec12293
     manufacturer: "_TYZB01_hlla45kx"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_2ead8579a9"
+  - id: fp_2ead8579a9
     manufacturer: "_TYZB01_iuepbmpv"
     model: "TS0121"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_6ab7cd5a72"
+  - id: fp_6ab7cd5a72
     manufacturer: "_TYZB01_ncutbjdi"
     model: "TS0003"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_f62bc9232b"
+  - id: fp_f62bc9232b
     manufacturer: "_TYZB01_reyozfcg"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_460648f06b"
+  - id: fp_460648f06b
     manufacturer: "_TYZB01_rifa0wlb"
     model: "TS0011"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_652595054c"
+  - id: fp_652595054c
     manufacturer: "_TYZB01_u9kkqh5o"
     model: "TS0003"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_83938c2c65"
+  - id: fp_83938c2c65
     manufacturer: "_TYZB01_uqkphoed"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_cf2eb17671"
+  - id: fp_cf2eb17671
     manufacturer: "_TYZB01_uqkphoed"
     model: "TS0003"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_bcb2e90286"
+  - id: fp_bcb2e90286
     manufacturer: "_TYZB01_ymcdbl3u"
     model: "TS0111"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_7616da9def"
+  - id: fp_7616da9def
     manufacturer: "_TYZB01_zsl6z0pw"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_55e8c49f3b"
+  - id: fp_55e8c49f3b
     manufacturer: "_TYZB01_zsl6z0pw"
     model: "TS0003"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_13e90ee697"
+  - id: fp_13e90ee697
     manufacturer: "_TZ3000_01gpyda5"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_38c41ccd59"
+  - id: fp_38c41ccd59
     manufacturer: "_TZ3000_0ghwhypc"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_871b23ee74"
+  - id: fp_871b23ee74
     manufacturer: "_TZ3000_0q5fjqgw"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_d9082efdbd"
+  - id: fp_d9082efdbd
     manufacturer: "_TZ3000_18ejxno0"
     model: "TS0012"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_9d2fd7d879"
+  - id: fp_9d2fd7d879
     manufacturer: "_TZ3000_1adss9de"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_429ee4b0fd"
+  - id: fp_429ee4b0fd
     manufacturer: "_TZ3000_1obwwnmq"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_36abc947f3"
+  - id: fp_36abc947f3
     manufacturer: "_TZ3000_2iiimqs9"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_ae3f3c2da2"
+  - id: fp_ae3f3c2da2
     manufacturer: "_TZ3000_2xlvlnez"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_975accefe6"
+  - id: fp_975accefe6
     manufacturer: "_TZ3000_303avxxt"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold-no-temp"
-  - id: "fp_7a005b24c8"
+  - id: fp_7a005b24c8
     manufacturer: "_TZ3000_3a9beq8a"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_343e341f39"
+  - id: fp_343e341f39
     manufacturer: "_TZ3000_3n2minvf"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_61ad40e7ec"
+  - id: fp_61ad40e7ec
     manufacturer: "_TZ3000_3zofvcaa"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_9cc66efec9"
+  - id: fp_9cc66efec9
     manufacturer: "_TZ3000_46t1rvdu"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_b245500465"
+  - id: fp_b245500465
     manufacturer: "_TZ3000_46vasa5h"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_0c5ee13afa"
+  - id: fp_0c5ee13afa
     manufacturer: "_TZ3000_4o16jdca"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_36bd50d853"
+  - id: fp_36bd50d853
     manufacturer: "_TZ3000_4rbqgcuv"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_5b6890bf54"
+  - id: fp_5b6890bf54
     manufacturer: "_TZ3000_4uf3d0ax"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f95d025e44"
+  - id: fp_f95d025e44
     manufacturer: "_TZ3000_4xfqlgqo"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5f01c2787f"
+  - id: fp_5f01c2787f
     manufacturer: "_TZ3000_4zf0crgo"
     model: "TS0012"
     deviceProfileName: "switches-switch-2-countdown-switch-type"
-  - id: "fp_5fde84989a"
+  - id: fp_5fde84989a
     manufacturer: "_TZ3000_54hjn4vs"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5647a265bb"
+  - id: fp_5647a265bb
     manufacturer: "_TZ3000_5af5r192"
     model: "TS0049"
     deviceProfileName: "valves-valve-battery"
-  - id: "fp_77f6ebf55f"
+  - id: fp_77f6ebf55f
     manufacturer: "_TZ3000_5ajpkyq6"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_48d51ac297"
+  - id: fp_48d51ac297
     manufacturer: "_TZ3000_5gey1ohx"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_b8fa6352b9"
+  - id: fp_b8fa6352b9
     manufacturer: "_TZ3000_5ksufhqi"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_35507878fa"
+  - id: fp_35507878fa
     manufacturer: "_TZ3000_5ng23zjs"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_79e394a520"
+  - id: fp_79e394a520
     manufacturer: "_TZ3000_5rpu3r0d"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron-countdown-switch-type-indicator"
-  - id: "fp_ff48017405"
+  - id: fp_ff48017405
     manufacturer: "_TZ3000_5ucujjts"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_341bf3c1eb"
+  - id: fp_341bf3c1eb
     manufacturer: "_TZ3000_65ajyxua"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron-indicator"
-  - id: "fp_077e9fea4a"
+  - id: fp_077e9fea4a
     manufacturer: "_TZ3000_66fekqhh"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_13f80a6b54"
+  - id: fp_13f80a6b54
     manufacturer: "_TZ3000_6axxqqi2"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-switch-type"
-  - id: "fp_07394f09d0"
+  - id: fp_07394f09d0
     manufacturer: "_TZ3000_6l1pjfqe"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_fd4373ed0e"
+  - id: fp_fd4373ed0e
     manufacturer: "_TZ3000_6s5dc9lx"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_381bd8f5e7"
+  - id: fp_381bd8f5e7
     manufacturer: "_TZ3000_785olaiq"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_de412af390"
+  - id: fp_de412af390
     manufacturer: "_TZ3000_7ed9cqgi"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_1300727e0a"
+  - id: fp_1300727e0a
     manufacturer: "_TZ3000_7issjl2q"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-unmetered"
-  - id: "fp_fd782d33ed"
+  - id: fp_fd782d33ed
     manufacturer: "_TZ3000_8bxrzyxz"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_4b25ce1f67"
+  - id: fp_4b25ce1f67
     manufacturer: "_TZ3000_8n7lqbm0"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_1766ea5097"
+  - id: fp_1766ea5097
     manufacturer: "_TZ3000_8nyaanzb"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_8203832ca1"
+  - id: fp_8203832ca1
     manufacturer: "_TZ3000_92qd4sqa"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5e37174949"
+  - id: fp_5e37174949
     manufacturer: "_TZ3000_9djocypn"
     model: "TS011F"
     deviceProfileName: "switches-lellki-wp33-5"
-  - id: "fp_450f44fbfd"
+  - id: fp_450f44fbfd
     manufacturer: "_TZ3000_9tg32trw"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_c838c0e013"
+  - id: fp_c838c0e013
     manufacturer: "_TZ3000_a37eix1s"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_6ca3e74751"
+  - id: fp_6ca3e74751
     manufacturer: "_TZ3000_aa5t61rh"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_6c28bee22c"
+  - id: fp_6c28bee22c
     manufacturer: "_TZ3000_aaifmpuq"
     model: "TS0002"
     deviceProfileName: "switches-switch-2-power-options"
-  - id: "fp_80fbd324ff"
+  - id: fp_80fbd324ff
     manufacturer: "_TZ3000_abjodzas"
     model: "TS0011"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_109f814533"
+  - id: fp_109f814533
     manufacturer: "_TZ3000_afgzktgb"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_5272e1d7ec"
+  - id: fp_5272e1d7ec
     manufacturer: "_TZ3000_air9m6af"
     model: "TS011F"
     deviceProfileName: "switches-lellki-wp33-5"
-  - id: "fp_02574e1f86"
+  - id: fp_02574e1f86
     manufacturer: "_TZ3000_aknpkt02"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_65c9f98d41"
+  - id: fp_65c9f98d41
     manufacturer: "_TZ3000_aracgljk"
     model: "TS0003"
     deviceProfileName: "switches-switch-3-nfzb03"
-  - id: "fp_3b91fe9847"
+  - id: fp_3b91fe9847
     manufacturer: "_TZ3000_ark8nv4y"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_70d290302e"
+  - id: fp_70d290302e
     manufacturer: "_TZ3000_avky2mvc"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f43b158c71"
+  - id: fp_f43b158c71
     manufacturer: "_TZ3000_avotanj3"
     model: "TS0013"
     deviceProfileName: "switches-switch-3-countdown-switch-type"
-  - id: "fp_26ec29e31b"
+  - id: fp_26ec29e31b
     manufacturer: "_TZ3000_bbebkwjk"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-ts0001-bbeb"
-  - id: "fp_94491bc9aa"
+  - id: fp_94491bc9aa
     manufacturer: "_TZ3000_bep7ccew"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered"
-  - id: "fp_9c8f96077e"
+  - id: fp_9c8f96077e
     manufacturer: "_TZ3000_bezfthwc"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_15e5466019"
+  - id: fp_15e5466019
     manufacturer: "_TZ3000_bhcpnvud"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_93ca22052c"
+  - id: fp_93ca22052c
     manufacturer: "_TZ3000_biakwrag"
     model: "TS0012"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_a266bdae0e"
+  - id: fp_a266bdae0e
     manufacturer: "_TZ3000_bkfe0bab"
     model: "TS011F"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_a6bb6ffdb9"
+  - id: fp_a6bb6ffdb9
     manufacturer: "_TZ3000_blhvsaqf"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron-indicator"
-  - id: "fp_e0e15e41d4"
+  - id: fp_e0e15e41d4
     manufacturer: "_TZ3000_bmqxalil"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron"
-  - id: "fp_c83265c3bd"
+  - id: fp_c83265c3bd
     manufacturer: "_TZ3000_bppxj3sf"
     model: "TS011F"
     deviceProfileName: "switches-lellki-wp33-5"
-  - id: "fp_c0d88b214d"
+  - id: fp_c0d88b214d
     manufacturer: "_TZ3000_bu47m8pv"
     model: "TS0003"
     deviceProfileName: "switches-switch-3-ts0003-module2"
-  - id: "fp_b34687e7a1"
+  - id: fp_b34687e7a1
     manufacturer: "_TZ3000_bvij6kod"
     model: "TS0003"
     deviceProfileName: "switches-switch-3-nfzb03"
-  - id: "fp_a8ee3f51d4"
+  - id: fp_a8ee3f51d4
     manufacturer: "_TZ3000_bvrlqyj7"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_f6d6a9065c"
+  - id: fp_f6d6a9065c
     manufacturer: "_TZ3000_cayepv1a"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold"
-  - id: "fp_5dafa5a396"
+  - id: fp_5dafa5a396
     manufacturer: "_TZ3000_cfnprab5"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_957bb2a266"
+  - id: fp_957bb2a266
     manufacturer: "_TZ3000_cjfmu5he"
     model: "TS0049"
     deviceProfileName: "valves-valve-battery"
-  - id: "fp_03e4747247"
+  - id: fp_03e4747247
     manufacturer: "_TZ3000_cmcjbqup"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_63efb5a957"
+  - id: fp_63efb5a957
     manufacturer: "_TZ3000_cpozgbrx"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-indicator"
-  - id: "fp_a0e5b03072"
+  - id: fp_a0e5b03072
     manufacturer: "_TZ3000_criiahcg"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_bd825e7b10"
+  - id: fp_bd825e7b10
     manufacturer: "_TZ3000_ctftgjwb"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_d55278728a"
+  - id: fp_d55278728a
     manufacturer: "_TZ3000_cvis4qmw"
     model: "TS0006"
     deviceProfileName: "switches-switch-6-basic"
-  - id: "fp_4cf6667033"
+  - id: fp_4cf6667033
     manufacturer: "_TZ3000_cymsnfvf"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_a2fb8086cd"
+  - id: fp_a2fb8086cd
     manufacturer: "_TZ3000_dd8wwzcy"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage-indicator"
-  - id: "fp_29e4473905"
+  - id: fp_29e4473905
     manufacturer: "_TZ3000_dershnvx"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_abe32136e8"
+  - id: fp_abe32136e8
     manufacturer: "_TZ3000_djgzdba9"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_7f04c51b82"
+  - id: fp_7f04c51b82
     manufacturer: "_TZ3000_dlhhrhs8"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_9d90efe852"
+  - id: fp_9d90efe852
     manufacturer: "_TZ3000_dlug3kbc"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_014c13141a"
+  - id: fp_014c13141a
     manufacturer: "_TZ3000_dov0a3p1"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2e2497526a"
+  - id: fp_2e2497526a
     manufacturer: "_TZ3000_drc9tuqb"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-indicator"
-  - id: "fp_84c5db3579"
+  - id: fp_84c5db3579
     manufacturer: "_TZ3000_dyzkbcip"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_74f83508ce"
+  - id: fp_74f83508ce
     manufacturer: "_TZ3000_eei0ubpy"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_084b5b2f88"
+  - id: fp_084b5b2f88
     manufacturer: "_TZ3000_ehgouyvu"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_9533410981"
+  - id: fp_9533410981
     manufacturer: "_TZ3000_empogkya"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_20e49de22b"
+  - id: fp_20e49de22b
     manufacturer: "_TZ3000_eqsair32"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_09850d25b5"
+  - id: fp_09850d25b5
     manufacturer: "_TZ3000_f09j9qjb"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_1c919a8ef2"
+  - id: fp_1c919a8ef2
     manufacturer: "_TZ3000_fawk5xjv"
     model: "TS0003"
     deviceProfileName: "switches-switch-3-nfzb03"
-  - id: "fp_351419970b"
+  - id: fp_351419970b
     manufacturer: "_TZ3000_fbjdkph9"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_52c350a408"
+  - id: fp_52c350a408
     manufacturer: "_TZ3000_fdxihpp7"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_3cf9bb5a3a"
+  - id: fp_3cf9bb5a3a
     manufacturer: "_TZ3000_fdxihpp7"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_e1893470ba"
+  - id: fp_e1893470ba
     manufacturer: "_TZ3000_fisb3ajo"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_d71ce7c952"
+  - id: fp_d71ce7c952
     manufacturer: "_TZ3000_g8n1n7lg"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_8f046301bb"
+  - id: fp_8f046301bb
     manufacturer: "_TZ3000_g92baclx"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_8e7b3ff3fb"
+  - id: fp_8e7b3ff3fb
     manufacturer: "_TZ3000_g9chy2ib"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_37b019acbf"
+  - id: fp_37b019acbf
     manufacturer: "_TZ3000_gazjngjl"
     model: "TS011F"
     deviceProfileName: "plugs-dual-outage"
-  - id: "fp_21703c76be"
+  - id: fp_21703c76be
     manufacturer: "_TZ3000_gbshwgag"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron-indicator"
-  - id: "fp_2523a65da6"
+  - id: fp_2523a65da6
     manufacturer: "_TZ3000_gdyjfvgm"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_3dbcd79c6c"
+  - id: fp_3dbcd79c6c
     manufacturer: "_TZ3000_gexniqbq"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_e4bfd0d646"
+  - id: fp_e4bfd0d646
     manufacturer: "_TZ3000_gjrubzje"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_d01071a93f"
+  - id: fp_d01071a93f
     manufacturer: "_TZ3000_gkesadus"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_9fb175fea4"
+  - id: fp_9fb175fea4
     manufacturer: "_TZ3000_gsat0axs"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_7167a293b7"
+  - id: fp_7167a293b7
     manufacturer: "_TZ3000_gtdswg8k"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-switch-type"
-  - id: "fp_95412a9ee2"
+  - id: fp_95412a9ee2
     manufacturer: "_TZ3000_gzvniqjb"
     model: "TS0011"
     deviceProfileName: "din-rail-ts011f-unmetered"
-  - id: "fp_565e7942fb"
+  - id: fp_565e7942fb
     manufacturer: "_TZ3000_h1ipgkwn"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_874c1549b9"
+  - id: fp_874c1549b9
     manufacturer: "_TZ3000_h3noz0a5"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_f54abdcd56"
+  - id: fp_f54abdcd56
     manufacturer: "_TZ3000_h8ngtlxy"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_6fc81b3592"
+  - id: fp_6fc81b3592
     manufacturer: "_TZ3000_hbic3ka3"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_b8c34bad58"
+  - id: fp_b8c34bad58
     manufacturer: "_TZ3000_hbxsdd6k"
     model: "TS0011"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_77fe242153"
+  - id: fp_77fe242153
     manufacturer: "_TZ3000_hdc8bbha"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-switch-type"
-  - id: "fp_de02d8f00f"
+  - id: fp_de02d8f00f
     manufacturer: "_TZ3000_helyqdvs"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_31911b93ec"
+  - id: fp_31911b93ec
     manufacturer: "_TZ3000_hhiodade"
     model: "TS0011"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_302b55649c"
+  - id: fp_302b55649c
     manufacturer: "_TZ3000_hktqahrq"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_d1ffe908ac"
+  - id: fp_d1ffe908ac
     manufacturer: "_TZ3000_hktqahrq"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_628fa4f8ef"
+  - id: fp_628fa4f8ef
     manufacturer: "_TZ3000_hojntt34"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_f725d4365b"
+  - id: fp_f725d4365b
     manufacturer: "_TZ3000_huvxrx4i"
     model: "TS0002"
     deviceProfileName: "switches-switch-2-power-options"
-  - id: "fp_431cd45ee5"
+  - id: fp_431cd45ee5
     manufacturer: "_TZ3000_hzlsaltw"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_631879d602"
+  - id: fp_631879d602
     manufacturer: "_TZ3000_hznzbl0x"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_895ddc40de"
+  - id: fp_895ddc40de
     manufacturer: "_TZ3000_i9oy2rdq"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_98d2229900"
+  - id: fp_98d2229900
     manufacturer: "_TZ3000_i9w5mehz"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_503da3fcce"
+  - id: fp_503da3fcce
     manufacturer: "_TZ3000_ibefeicf"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold-no-temp"
-  - id: "fp_075f7c2350"
+  - id: fp_075f7c2350
     manufacturer: "_TZ3000_iedbgyxt"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_1d4fda7925"
+  - id: fp_1d4fda7925
     manufacturer: "_TZ3000_iktiy8ue"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_9cf9377b76"
+  - id: fp_9cf9377b76
     manufacturer: "_TZ3000_ikuxinvo"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_031666832c"
+  - id: fp_031666832c
     manufacturer: "_TZ3000_imaccztn"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_a06114bd7f"
+  - id: fp_a06114bd7f
     manufacturer: "_TZ3000_in5qxhtt"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_232735c12b"
+  - id: fp_232735c12b
     manufacturer: "_TZ3000_in5s3wn1"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_8123d8e9e6"
+  - id: fp_8123d8e9e6
     manufacturer: "_TZ3000_irrmjcgi"
     model: "TS0002"
     deviceProfileName: "switches-switch-2-power-options"
-  - id: "fp_25e07dc387"
+  - id: fp_25e07dc387
     manufacturer: "_TZ3000_iv4eq7eh"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_943d4f4b24"
+  - id: fp_943d4f4b24
     manufacturer: "_TZ3000_iv6ph5tr"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_ddc85b19d0"
+  - id: fp_ddc85b19d0
     manufacturer: "_TZ3000_iwtv2jwo"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_98c404cb96"
+  - id: fp_98c404cb96
     manufacturer: "_TZ3000_iy2c3n6p"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_2e37496024"
+  - id: fp_2e37496024
     manufacturer: "_TZ3000_iymfxdis"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_b4fd385dcf"
+  - id: fp_b4fd385dcf
     manufacturer: "_TZ3000_j0ktmul1"
     model: "TS011F"
     deviceProfileName: "valves-valve-5"
-  - id: "fp_9edb6304dd"
+  - id: fp_9edb6304dd
     manufacturer: "_TZ3000_jak16dll"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage-indicator-lock"
-  - id: "fp_d76cf2addb"
+  - id: fp_d76cf2addb
     manufacturer: "_TZ3000_jcqs2mrv"
     model: "SM0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_3d5b694c2e"
+  - id: fp_3d5b694c2e
     manufacturer: "_TZ3000_ji4araar"
     model: "TS0011"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_32fe123064"
+  - id: fp_32fe123064
     manufacturer: "_TZ3000_jl7qyupf"
     model: "TS0012"
     deviceProfileName: "switches-switch-2-countdown-switch-type"
-  - id: "fp_570e339197"
+  - id: fp_570e339197
     manufacturer: "_TZ3000_jsfzkftc"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_46ce7d612c"
+  - id: fp_46ce7d612c
     manufacturer: "_TZ3000_ju82pu2b"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_fccfd93376"
+  - id: fp_fccfd93376
     manufacturer: "_TZ3000_k6fvknrr"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_6f120f4fad"
+  - id: fp_6f120f4fad
     manufacturer: "_TZ3000_knoj8lpk"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_30889ebb43"
+  - id: fp_30889ebb43
     manufacturer: "_TZ3000_kpatq5pq"
     model: "TS0012"
     deviceProfileName: "switches-switch-2-countdown-switch-type"
-  - id: "fp_8e9779d551"
+  - id: fp_8e9779d551
     manufacturer: "_TZ3000_kqvb5akv"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_d2934f6552"
+  - id: fp_d2934f6552
     manufacturer: "_TZ3000_ky0fq4ho"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_9f36e37967"
+  - id: fp_9f36e37967
     manufacturer: "_TZ3000_kycczpw8"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_e1488b04e5"
+  - id: fp_e1488b04e5
     manufacturer: "_TZ3000_kz1anoi8"
     model: "TS0049"
     deviceProfileName: "valves-haozee-hz-wt02"
-  - id: "fp_9aad644b99"
+  - id: fp_9aad644b99
     manufacturer: "_TZ3000_l8fsgo6p"
     model: "TS0011"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_c47443686f"
+  - id: fp_c47443686f
     manufacturer: "_TZ3000_lepzuhto"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold"
-  - id: "fp_4f2585c2af"
+  - id: fp_4f2585c2af
     manufacturer: "_TZ3000_liygxtcq"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_96100165ff"
+  - id: fp_96100165ff
     manufacturer: "_TZ3000_ljhbw1c9"
     model: "TS0012"
     deviceProfileName: "switches-switch-2-countdown-switch-type"
-  - id: "fp_5f6d14f5f4"
+  - id: fp_5f6d14f5f4
     manufacturer: "_TZ3000_lmlsduws"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_25f9eba701"
+  - id: fp_25f9eba701
     manufacturer: "_TZ3000_lqb7lcq9"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_c847a35755"
+  - id: fp_c847a35755
     manufacturer: "_TZ3000_lsunm46z"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_c6a9def0f0"
+  - id: fp_c6a9def0f0
     manufacturer: "_TZ3000_ltt60asa"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_a0e7c9195e"
+  - id: fp_a0e7c9195e
     manufacturer: "_TZ3000_lubfc1t5"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_e6e5ad8708"
+  - id: fp_e6e5ad8708
     manufacturer: "_TZ3000_lugaswf8"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_1f4776f1a9"
+  - id: fp_1f4776f1a9
     manufacturer: "_TZ3000_lvhy15ix"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_4f97f8a97f"
+  - id: fp_4f97f8a97f
     manufacturer: "_TZ3000_m8f3z8ju"
     model: "TS000F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_c3ee7e03c0"
+  - id: fp_c3ee7e03c0
     manufacturer: "_TZ3000_m9af2l6g"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_290d9e57af"
+  - id: fp_290d9e57af
     manufacturer: "_TZ3000_ma3mhpx2"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron"
-  - id: "fp_e404e90125"
+  - id: fp_e404e90125
     manufacturer: "_TZ3000_majwnphg"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-switch-type"
-  - id: "fp_0cadba71b3"
+  - id: fp_0cadba71b3
     manufacturer: "_TZ3000_mdj7kra9"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_32f8bd7b71"
+  - id: fp_32f8bd7b71
     manufacturer: "_TZ3000_mhhxxjrs"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_ca53c294c2"
+  - id: fp_ca53c294c2
     manufacturer: "_TZ3000_mkhkxx1p"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_41b9303bb9"
+  - id: fp_41b9303bb9
     manufacturer: "_TZ3000_mlswgkc3"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5b6cc809ba"
+  - id: fp_5b6cc809ba
     manufacturer: "_TZ3000_mmkbptmx"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_c71157d506"
+  - id: fp_c71157d506
     manufacturer: "_TZ3000_mq4wujmp"
     model: "TS0049"
     deviceProfileName: "valves-valve-battery"
-  - id: "fp_52f4ea0ce4"
+  - id: fp_52f4ea0ce4
     manufacturer: "_TZ3000_mtnpt6ws"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_3c25e9caa8"
+  - id: fp_3c25e9caa8
     manufacturer: "_TZ3000_mufwv0ry"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_edfcf04e17"
+  - id: fp_edfcf04e17
     manufacturer: "_TZ3000_mvn6jl7x"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_b54d006059"
+  - id: fp_b54d006059
     manufacturer: "_TZ3000_mw1pqqqt"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_926eaf1061"
+  - id: fp_926eaf1061
     manufacturer: "_TZ3000_mx3vgyea"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_2e9088ca58"
+  - id: fp_2e9088ca58
     manufacturer: "_TZ3000_mx3vgyea"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_d55ab2fb22"
+  - id: fp_d55ab2fb22
     manufacturer: "_TZ3000_myaaknbq"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-indicator"
-  - id: "fp_37bca56e27"
+  - id: fp_37bca56e27
     manufacturer: "_TZ3000_mzcp0of6"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_4096a6674c"
+  - id: fp_4096a6674c
     manufacturer: "_TZ3000_n6fqajob"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_40eea9b5ee"
+  - id: fp_40eea9b5ee
     manufacturer: "_TZ3000_nPGIPl5D"
     model: "TS0012"
     deviceProfileName: "switches-switch-2-countdown-switch-type"
-  - id: "fp_3bcabe5659"
+  - id: fp_3bcabe5659
     manufacturer: "_TZ3000_nivavasg"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_6ca63a68bd"
+  - id: fp_6ca63a68bd
     manufacturer: "_TZ3000_nnwehhst"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_4feba8cf94"
+  - id: fp_4feba8cf94
     manufacturer: "_TZ3000_npzfdcof"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_09c6c8c4ff"
+  - id: fp_09c6c8c4ff
     manufacturer: "_TZ3000_nsa76jai"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_fb606f668b"
+  - id: fp_fb606f668b
     manufacturer: "_TZ3000_nuenzetq"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_660826884b"
+  - id: fp_660826884b
     manufacturer: "_TZ3000_nwidmc4n"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f90cf342ea"
+  - id: fp_f90cf342ea
     manufacturer: "_TZ3000_o005nuxx"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_eeb535935d"
+  - id: fp_eeb535935d
     manufacturer: "_TZ3000_o4cjetlm"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_a62bd690cc"
+  - id: fp_a62bd690cc
     manufacturer: "_TZ3000_o4cjetlm"
     model: "TS011F"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_ce62cc8489"
+  - id: fp_ce62cc8489
     manufacturer: "_TZ3000_odzoiovu"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f93f12d759"
+  - id: fp_f93f12d759
     manufacturer: "_TZ3000_ogjpfoyn"
     model: "TS0049"
     deviceProfileName: "valves-valve-battery"
-  - id: "fp_328771ebd2"
+  - id: fp_328771ebd2
     manufacturer: "_TZ3000_ogpla3lh"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_44f48ceb1b"
+  - id: fp_44f48ceb1b
     manufacturer: "_TZ3000_ok0ggpk7"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_bee961e4bb"
+  - id: fp_bee961e4bb
     manufacturer: "_TZ3000_ouwfc1qj"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_4c89cbe0d6"
+  - id: fp_4c89cbe0d6
     manufacturer: "_TZ3000_oznonj5q"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_e0d32a4c79"
+  - id: fp_e0d32a4c79
     manufacturer: "_TZ3000_pf7swkqp"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_c5963887c0"
+  - id: fp_c5963887c0
     manufacturer: "_TZ3000_pfc7i3kt"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_79f273846c"
+  - id: fp_79f273846c
     manufacturer: "_TZ3000_pgq7ormg"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type-indicator"
-  - id: "fp_58b1a11736"
+  - id: fp_58b1a11736
     manufacturer: "_TZ3000_pl5v1yyy"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_11285211b8"
+  - id: fp_11285211b8
     manufacturer: "_TZ3000_pmsxmttq"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_c13520d40d"
+  - id: fp_c13520d40d
     manufacturer: "_TZ3000_pmz6mjyu"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_7680182593"
+  - id: fp_7680182593
     manufacturer: "_TZ3000_prits6g4"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_a1ba182358"
+  - id: fp_a1ba182358
     manufacturer: "_TZ3000_pv4puuxi"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_6c73711eb6"
+  - id: fp_6c73711eb6
     manufacturer: "_TZ3000_pvlvoxvt"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_c9656185cf"
+  - id: fp_c9656185cf
     manufacturer: "_TZ3000_pxfjrzyj"
     model: "TS0002"
     deviceProfileName: "switches-switch-2-power-options"
-  - id: "fp_73354ecc44"
+  - id: fp_73354ecc44
     manufacturer: "_TZ3000_q6a3tepg"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_b04300cd6b"
+  - id: fp_b04300cd6b
     manufacturer: "_TZ3000_q8r0bbvy"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_8cd3772170"
+  - id: fp_8cd3772170
     manufacturer: "_TZ3000_qaa59zqd"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_f621300cde"
+  - id: fp_f621300cde
     manufacturer: "_TZ3000_qaabwu5c"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_e93466c396"
+  - id: fp_e93466c396
     manufacturer: "_TZ3000_qamj2vnn"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_bf0ff717f9"
+  - id: fp_bf0ff717f9
     manufacturer: "_TZ3000_qeuvnohg"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_9420435ec5"
+  - id: fp_9420435ec5
     manufacturer: "_TZ3000_qh6qjuan"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-switch-type"
-  - id: "fp_a89b51ca93"
+  - id: fp_a89b51ca93
     manufacturer: "_TZ3000_qiutut5y"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_66ba595a01"
+  - id: fp_66ba595a01
     manufacturer: "_TZ3000_qlai3277"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_50949695dc"
+  - id: fp_50949695dc
     manufacturer: "_TZ3000_qlmnxmac"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5117b9feab"
+  - id: fp_5117b9feab
     manufacturer: "_TZ3000_qmi1cfuq"
     model: "TS0011"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_3bec98009e"
+  - id: fp_3bec98009e
     manufacturer: "_TZ3000_qnejhcsu"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_2b07baa110"
+  - id: fp_2b07baa110
     manufacturer: "_TZ3000_qorepo2x"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_8ac55d2d7d"
+  - id: fp_8ac55d2d7d
     manufacturer: "_TZ3000_qq9ahj6z"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron-indicator"
-  - id: "fp_e2f2387115"
+  - id: fp_e2f2387115
     manufacturer: "_TZ3000_qsp2pwtf"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_cb84bd29f8"
+  - id: fp_cb84bd29f8
     manufacturer: "_TZ3000_qvmiyxuk"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron-countdown"
-  - id: "fp_c8b4932259"
+  - id: fp_c8b4932259
     manufacturer: "_TZ3000_qxcnwv26"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_e5536353e9"
+  - id: fp_e5536353e9
     manufacturer: "_TZ3000_qystbcjg"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold"
-  - id: "fp_8f9ac9867b"
+  - id: fp_8f9ac9867b
     manufacturer: "_TZ3000_r9e2w7dn"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_78cce654f2"
+  - id: fp_78cce654f2
     manufacturer: "_TZ3000_raviyuvk"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_f3f1ed03a9"
+  - id: fp_f3f1ed03a9
     manufacturer: "_TZ3000_rfjctviq"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_bc85c94323"
+  - id: fp_bc85c94323
     manufacturer: "_TZ3000_rgpqqmbj"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_036f21dfce"
+  - id: fp_036f21dfce
     manufacturer: "_TZ3000_rhkfbfcv"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_541c2d6286"
+  - id: fp_541c2d6286
     manufacturer: "_TZ3000_rk2yzt0u"
     model: "TS011F"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_3ce22bcabf"
+  - id: fp_3ce22bcabf
     manufacturer: "_TZ3000_rmjr4ufz"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_5fd387ddef"
+  - id: fp_5fd387ddef
     manufacturer: "_TZ3000_rqbjepe8"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage-indicator-lock"
-  - id: "fp_a11087d9b2"
+  - id: fp_a11087d9b2
     manufacturer: "_TZ3000_rul9yxcc"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_2130c10496"
+  - id: fp_2130c10496
     manufacturer: "_TZ3000_ruldv5dt"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5f7b52909b"
+  - id: fp_5f7b52909b
     manufacturer: "_TZ3000_ruxexjfz"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_18c49aa640"
+  - id: fp_18c49aa640
     manufacturer: "_TZ3000_sgb0xhwn"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_ddcfb8f4c6"
+  - id: fp_ddcfb8f4c6
     manufacturer: "_TZ3000_skueekg3"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_fac33c7018"
+  - id: fp_fac33c7018
     manufacturer: "_TZ3000_skueekg3"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_8522391f35"
+  - id: fp_8522391f35
     manufacturer: "_TZ3000_sznawwyw"
     model: "TS0013"
     deviceProfileName: "switches-switch-3-countdown-switch-type"
-  - id: "fp_fe1e3e803b"
+  - id: fp_fe1e3e803b
     manufacturer: "_TZ3000_t3s9qmmg"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_6e22d6a4d6"
+  - id: fp_6e22d6a4d6
     manufacturer: "_TZ3000_t7ugva7q"
     model: "TS0013"
     deviceProfileName: "switches-switch-3-countdown-switch-type"
-  - id: "fp_707b08059d"
+  - id: fp_707b08059d
     manufacturer: "_TZ3000_tas0zemd"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_8cc6032055"
+  - id: fp_8cc6032055
     manufacturer: "_TZ3000_tgddllx4"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_9e3838ce63"
+  - id: fp_9e3838ce63
     manufacturer: "_TZ3000_tqlv4ug4"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_3269270ca6"
+  - id: fp_3269270ca6
     manufacturer: "_TZ3000_tw4ztbp4"
     model: "TS0011"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_88a11776b9"
+  - id: fp_88a11776b9
     manufacturer: "_TZ3000_twqctvna"
     model: "TS011F"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_dc86d3a42d"
+  - id: fp_dc86d3a42d
     manufacturer: "_TZ3000_txpirhfq"
     model: "TS0011"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_73831566af"
+  - id: fp_73831566af
     manufacturer: "_TZ3000_tyg4yiat"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_86744b5976"
+  - id: fp_86744b5976
     manufacturer: "_TZ3000_tygpxwqa"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_155cfd4060"
+  - id: fp_155cfd4060
     manufacturer: "_TZ3000_u3oupgdy"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_1365bc55bb"
+  - id: fp_1365bc55bb
     manufacturer: "_TZ3000_uaa34g7v"
     model: "TS0011"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_d69c59833d"
+  - id: fp_d69c59833d
     manufacturer: "_TZ3000_udl7uyd2"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_369f7e6518"
+  - id: fp_369f7e6518
     manufacturer: "_TZ3000_uilitwsy"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_95ec0abeea"
+  - id: fp_95ec0abeea
     manufacturer: "_TZ3000_uwkja6z1"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage-indicator-lock"
-  - id: "fp_df08101bcb"
+  - id: fp_df08101bcb
     manufacturer: "_TZ3000_v4l4b0lp"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_c2423e5b2c"
+  - id: fp_c2423e5b2c
     manufacturer: "_TZ3000_v4mevirn"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_51173d7a5b"
+  - id: fp_51173d7a5b
     manufacturer: "_TZ3000_v7gnj3ad"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown-switch-type"
-  - id: "fp_0931d570cd"
+  - id: fp_0931d570cd
     manufacturer: "_TZ3000_veu2v775"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_e7a0be4e07"
+  - id: fp_e7a0be4e07
     manufacturer: "_TZ3000_viqwamhn"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_4ae1ac6787"
+  - id: fp_4ae1ac6787
     manufacturer: "_TZ3000_vjhcenzo"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_bcebc6a5f3"
+  - id: fp_bcebc6a5f3
     manufacturer: "_TZ3000_vmpbygs5"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_d0d439134b"
+  - id: fp_d0d439134b
     manufacturer: "_TZ3000_vsasbzkf"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_22be3df5da"
+  - id: fp_22be3df5da
     manufacturer: "_TZ3000_vzopcetz"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_ec3de50885"
+  - id: fp_ec3de50885
     manufacturer: "_TZ3000_w0ypwa1f"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_620f54c8b3"
+  - id: fp_620f54c8b3
     manufacturer: "_TZ3000_w1tcofu8"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron"
-  - id: "fp_252d3d8f08"
+  - id: fp_252d3d8f08
     manufacturer: "_TZ3000_wbloefbf"
     model: "TS011F"
     deviceProfileName: "switches-switch-5-tuya-options"
-  - id: "fp_365dd4ba1b"
+  - id: fp_365dd4ba1b
     manufacturer: "_TZ3000_wijoqjk1"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-poweron"
-  - id: "fp_fa1ecfe567"
+  - id: fp_fa1ecfe567
     manufacturer: "_TZ3000_wnzoyohq"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5f478e2aa8"
+  - id: fp_5f478e2aa8
     manufacturer: "_TZ3000_wpueorev"
     model: "TS0001"
     deviceProfileName: "valves-valve-indicator-mode"
-  - id: "fp_4b63d26daf"
+  - id: fp_4b63d26daf
     manufacturer: "_TZ3000_wrhhi5h2"
     model: "TS0001"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_2ab4eeb298"
+  - id: fp_2ab4eeb298
     manufacturer: "_TZ3000_wwtnshol"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_0456375283"
+  - id: fp_0456375283
     manufacturer: "_TZ3000_wzauvbcs"
     model: "TS011F"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_bd21e1e6ae"
+  - id: fp_bd21e1e6ae
     manufacturer: "_TZ3000_x3ewpzyr"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_8804249716"
+  - id: fp_8804249716
     manufacturer: "_TZ3000_x8mbwtsz"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_161d55cbea"
+  - id: fp_161d55cbea
     manufacturer: "_TZ3000_xeumnff9"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_d1be0244f4"
+  - id: fp_d1be0244f4
     manufacturer: "_TZ3000_xfxpoxe0"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-outage-switch-type"
-  - id: "fp_8fb7e25972"
+  - id: fp_8fb7e25972
     manufacturer: "_TZ3000_xkap8wtb"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_fd9057e56e"
+  - id: fp_fd9057e56e
     manufacturer: "_TZ3000_xkap8wtb"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_f88fe0489c"
+  - id: fp_f88fe0489c
     manufacturer: "_TZ3000_yi0n4xfd"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold"
-  - id: "fp_7bdab7c046"
+  - id: fp_7bdab7c046
     manufacturer: "_TZ3000_ypgri8yz"
     model: "TS0013"
     deviceProfileName: "switches-switch-3-countdown-switch-type"
-  - id: "fp_a75651732d"
+  - id: fp_a75651732d
     manufacturer: "_TZ3000_ywubfuvt"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_6a78073b46"
+  - id: fp_6a78073b46
     manufacturer: "_TZ3000_yxmafzmd"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_d545c15b00"
+  - id: fp_d545c15b00
     manufacturer: "_TZ3000_z6fgd73r"
     model: "TS011F"
     deviceProfileName: "switches-switch-1-power-outage"
-  - id: "fp_8fcc9c4f60"
+  - id: fp_8fcc9c4f60
     manufacturer: "_TZ3000_zbfya6h0"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_c3ade1dec7"
+  - id: fp_c3ade1dec7
     manufacturer: "_TZ3000_zeuulson"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f74d5c5d1d"
+  - id: fp_f74d5c5d1d
     manufacturer: "_TZ3000_zigisuyh"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5dfc1a4a68"
+  - id: fp_5dfc1a4a68
     manufacturer: "_TZ3000_zjchz7pd"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold-no-temp"
-  - id: "fp_eb4e6b7a2d"
+  - id: fp_eb4e6b7a2d
     manufacturer: "_TZ3000_zmy1waw6"
     model: "TS011F"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_9d01d30d00"
+  - id: fp_9d01d30d00
     manufacturer: "_TZ3000_zmy4lslw"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_0deafa6fbd"
+  - id: fp_0deafa6fbd
     manufacturer: "_TZ3000_zojh9vz7"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-power-options"
-  - id: "fp_cce28bda62"
+  - id: fp_cce28bda62
     manufacturer: "_TZ3000_zrm3oxsh"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold"
-  - id: "fp_a86abeba54"
+  - id: fp_a86abeba54
     manufacturer: "_TZ3000_zv6x8bt2"
     model: "TS011F"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-threshold"
-  - id: "fp_ceb4465966"
+  - id: fp_ceb4465966
     manufacturer: "_TZ3000_zw7yf6yk"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-switch-type"
-  - id: "fp_92887a26dc"
+  - id: fp_92887a26dc
     manufacturer: "_TZ3000_zwaadvus"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5cba7f79c3"
+  - id: fp_5cba7f79c3
     manufacturer: "_TZ3000_zxrfobzw"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_f689c59db5"
+  - id: fp_f689c59db5
     manufacturer: "_TZ3210_2uk4z8ce"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_87d9ef39c3"
+  - id: fp_87d9ef39c3
     manufacturer: "_TZ3210_6smingw0"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_1292b21130"
+  - id: fp_1292b21130
     manufacturer: "_TZ3210_7jnk7l3k"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage"
-  - id: "fp_dfddb70c5d"
+  - id: fp_dfddb70c5d
     manufacturer: "_TZ3210_8n4dn1ne"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_3c5a5bcdc7"
+  - id: fp_3c5a5bcdc7
     manufacturer: "_TZ3210_9hbau615"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_75acc39a26"
+  - id: fp_75acc39a26
     manufacturer: "_TZ3210_a2erlvb8"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_5b75d08f04"
+  - id: fp_5b75d08f04
     manufacturer: "_TZ3210_a2erlvb8"
     model: "TS000F"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_5c89899a18"
+  - id: fp_5c89899a18
     manufacturer: "_TZ3210_aksyshpw"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f6d2f2fe21"
+  - id: fp_f6d2f2fe21
     manufacturer: "_TZ3210_bep7ccew"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-full-options"
-  - id: "fp_c78e6b7cb0"
+  - id: fp_c78e6b7cb0
     manufacturer: "_TZ3210_fawk5xjv"
     model: "TS0003"
     deviceProfileName: "switches-switch-3-nfzb03"
-  - id: "fp_39096ef4c4"
+  - id: fp_39096ef4c4
     manufacturer: "_TZ3210_fhx7lk3d"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-countdown"
-  - id: "fp_3693841784"
+  - id: fp_3693841784
     manufacturer: "_TZ3210_hjxqqofs\x00"
     model: "TS000F"
     deviceProfileName: "switches-switch-1"
-  - id: "fp_02cabab963"
+  - id: fp_02cabab963
     manufacturer: "_TZ3210_imaccztn"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_e3ba619e94"
+  - id: fp_e3ba619e94
     manufacturer: "_TZ3210_iymfxdis"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_b72ab9f462"
+  - id: fp_b72ab9f462
     manufacturer: "_TZ3210_lqb7lcq9"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_c7ba4893a3"
+  - id: fp_c7ba4893a3
     manufacturer: "_TZ3210_nuenzetq"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_c97c674fe9"
+  - id: fp_c97c674fe9
     manufacturer: "_TZ3210_ok0ggpk7"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_f5de486976"
+  - id: fp_f5de486976
     manufacturer: "_TZ3210_pdnwpnz5"
     model: "TS0002"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_ac0c6daaaf"
+  - id: fp_ac0c6daaaf
     manufacturer: "_TZ3210_pfbzs1an"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage"
-  - id: "fp_c28d5a93ba"
+  - id: fp_c28d5a93ba
     manufacturer: "_TZ3210_ph1joc22"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_9895ea2c28"
+  - id: fp_9895ea2c28
     manufacturer: "_TZ3210_qjvi92wz"
     model: "TS0014"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_f5d2382725"
+  - id: fp_f5d2382725
     manufacturer: "_TZ3210_qlmnxmac"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-full-options"
-  - id: "fp_c8c123fd25"
+  - id: fp_c8c123fd25
     manufacturer: "_TZ3210_raqjcxo5"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage"
-  - id: "fp_d867daebe3"
+  - id: fp_d867daebe3
     manufacturer: "_TZ3210_sgb0xhwn"
     model: "TS011F"
     deviceProfileName: "switches-switch-2"
-  - id: "fp_4f9397d6c1"
+  - id: fp_4f9397d6c1
     manufacturer: "_TZ3210_tqlv4ug4"
     model: "TS0001"
     deviceProfileName: "switches-switch-1-module-options"
-  - id: "fp_e5d6790d57"
+  - id: fp_e5d6790d57
     manufacturer: "_TZ3210_urjf5u18"
     model: "TS011F"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_d327235ec6"
+  - id: fp_d327235ec6
     manufacturer: "_TZ3210_vbfp8eyv"
     model: "TS011F"
     deviceProfileName: "din-rail-ts011f-metered"
-  - id: "fp_6aa25f4d1e"
+  - id: fp_6aa25f4d1e
     manufacturer: "_TZ3210_w3hl6rao"
     model: "TS0014"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_991faa0136"
+  - id: fp_991faa0136
     manufacturer: "_TZ3210_wts1g2oh"
     model: "TS0004"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_621c3193bb"
+  - id: fp_621c3193bb
     manufacturer: "_TZ3210_yvxjawlt"
     model: "TS011F"
     deviceProfileName: "plugs-dual-metered-outage"
-  - id: "fp_8a2fd2b8f0"
+  - id: fp_8a2fd2b8f0
     manufacturer: "_TZ3210_z4hgsevd"
     model: "TS0014"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_7d01d2ec71"
+  - id: fp_7d01d2ec71
     manufacturer: "_TZ3218_hdc8bbha"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-outage-switch-type"
-  - id: "fp_05fb677ad6"
+  - id: fp_05fb677ad6
     manufacturer: "_TZ3218_n0jsuogs"
     model: "TS000F"
     deviceProfileName: "switches-switch-1-poweron-switch-type"
-  - id: "fp_9ee7e64ab2"
+  - id: fp_9ee7e64ab2
     manufacturer: "_TZ3218_sgbsg6mr"
     model: "TS000F"
     deviceProfileName: "switches-switch-2-poweron-switch-type"
-  - id: "fp_363a95f929"
+  - id: fp_363a95f929
     manufacturer: "_TZ3290_ixd9mvv4"
     model: "TS0049"
     deviceProfileName: "valves-lyai14-minimal"
-  - id: "fp_45acb4a158"
+  - id: fp_45acb4a158
     manufacturer: "_TZ33000_d9yfgzur"
     model: "TS0003"
     deviceProfileName: "switches-switch-3"
-  - id: "fp_169f60462e"
+  - id: fp_169f60462e
     manufacturer: "easyiot"
     model: "ZB-PSW04"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_92a47b1e70"
+  - id: fp_92a47b1e70
     manufacturer: "easyiot"
     model: "ZB-SP1000"
     deviceProfileName: "controllers-easyiot-sp1000"
-  - id: "fp_c74e0b0805"
+  - id: fp_c74e0b0805
     manufacturer: "easyiot"
     model: "ZB-SW08"
     deviceProfileName: "switches-switch-8"
-  - id: "fp_2f0f2d9cba"
+  - id: fp_2f0f2d9cba
     manufacturer: "frient A/S"
     model: "EMIZB-141"
     deviceProfileName: "meters-power-energy-battery"
-  - id: "fp_3535ead56b"
+  - id: fp_3535ead56b
     manufacturer: "frient A/S"
     model: "EMIZB-151"
     deviceProfileName: "meters-power-energy"
-  - id: "fp_a28d892ded"
+  - id: fp_a28d892ded
     manufacturer: "iHseno"
     model: "_TZ3000_knoj8lpk"
     deviceProfileName: "switches-switch-4"
-  - id: "fp_2d9e90f7f1"
+  - id: fp_2d9e90f7f1
     manufacturer: "zunzunbee"
     model: "SSWZ8T"
     deviceProfileName: "switches-switch-4"

@@ -1,61 +1,61 @@
 zigbeeManufacturer:
-  - id: "fp_53808a7250"
+  - id: fp_53808a7250
     manufacturer: "_TZE200_lhpnrfmy"
     model: "TS0601"
     deviceProfileName: "controls-wave19-box-erc2201-z"
-  - id: "fp_23f426acf7"
+  - id: fp_23f426acf7
     manufacturer: "_TZE200_moycceze"
     model: "TS0601"
     deviceProfileName: "controls-wave18-immax-07505l"
-  - id: "fp_8a3317f293"
+  - id: fp_8a3317f293
     manufacturer: "_TZE200_n9clpsht"
     model: "TS0601"
     deviceProfileName: "controls-wave18-immax-07505l"
-  - id: "fp_d22febf2c3"
+  - id: fp_d22febf2c3
     manufacturer: "_TZE200_nyvavzbj"
     model: "TS0601"
     deviceProfileName: "controls-wave18-immax-07505l"
-  - id: "fp_436dc9a0f1"
+  - id: fp_436dc9a0f1
     manufacturer: "_TZE200_oahqgdig"
     model: "TS0601"
     deviceProfileName: "controls-wave15-engo-ecb62zb"
-  - id: "fp_0de2f98958"
+  - id: fp_0de2f98958
     manufacturer: "_TZE200_rt5dklro"
     model: "TS0601"
     deviceProfileName: "controls-wave18-daewoo-wke502z"
-  - id: "fp_aa26895fb3"
+  - id: fp_aa26895fb3
     manufacturer: "_TZE200_zaabefnt"
     model: "TS0601"
     deviceProfileName: "controls-wave15-engo-ecb62zb"
-  - id: "fp_45ca2360c8"
+  - id: fp_45ca2360c8
     manufacturer: "_TZE200_zqtiam4u"
     model: "TS0601"
     deviceProfileName: "controls-wave19-zemismart-zm-rm02"
-  - id: "fp_daefc78450"
+  - id: fp_daefc78450
     manufacturer: "_TZE284_1aqlsquf"
     model: "TS0601"
     deviceProfileName: "controls-wave19-qa-qat42z2b"
-  - id: "fp_1246f4bc90"
+  - id: fp_1246f4bc90
     manufacturer: "_TZE284_chcnj5st"
     model: "TS0601"
     deviceProfileName: "controls-wave17-lincukoo-czf02"
-  - id: "fp_d5a7700513"
+  - id: fp_d5a7700513
     manufacturer: "_TZE284_gw05grph"
     model: "TS0601"
     deviceProfileName: "controls-wave17-lincukoo-czf02"
-  - id: "fp_f013912240"
+  - id: fp_f013912240
     manufacturer: "_TZE284_ms97nkyy"
     model: "TS0601"
     deviceProfileName: "controls-wave19-qa-qat44z6"
-  - id: "fp_af828cdf19"
+  - id: fp_af828cdf19
     manufacturer: "_TZE284_pgxndxp4"
     model: "TS0601"
     deviceProfileName: "controls-wave19-qa-qat42z3b"
-  - id: "fp_ba9267347d"
+  - id: fp_ba9267347d
     manufacturer: "_TZE284_pislt0wa"
     model: "TS0601"
     deviceProfileName: "controls-wave17-lincukoo-czf02"
-  - id: "fp_d1a03a3860"
+  - id: fp_d1a03a3860
     manufacturer: "_TZE28C1000000_jlbsptkl"
     model: "TS0601"
     deviceProfileName: "controls-wave19-tuya-presence-switch"

@@ -81,6 +81,38 @@ end
 -- dedicated preset buttons for previous/minimum/disabled.
 local candeo_rd1p_dpm = {
   profile = "lights-candeo-rd1p-dpm",
+  capability_commands = {
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmOnLevel",
+      command_name = "usePreviousOnLevel",
+      mapping_name = "candeo_rd1p_dpm_on_level",
+      value = "previous",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmStartupLevel",
+      command_name = "useMinimumStartupLevel",
+      mapping_name = "candeo_rd1p_dpm_startup_level",
+      value = "minimum",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmStartupLevel",
+      command_name = "usePreviousStartupLevel",
+      mapping_name = "candeo_rd1p_dpm_startup_level",
+      value = "previous",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmOnTransitionTime",
+      command_name = "disableOnTransitionTime",
+      mapping_name = "candeo_rd1p_dpm_on_transition_time",
+      value = "disabled",
+    },
+    {
+      capability_id = "concertmirror08464.candeoRd1pDpmOffTransitionTime",
+      command_name = "disableOffTransitionTime",
+      mapping_name = "candeo_rd1p_dpm_off_transition_time",
+      value = "disabled",
+    },
+  },
   advanced_remote = true,
   unprefixed_remote_actions = true,
   remote_action_emit_name = "candeoRd1pDpmAction",

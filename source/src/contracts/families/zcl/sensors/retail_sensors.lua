@@ -4,6 +4,7 @@ local emit = require "capabilities.events.all"
 local data_types = require "st.zigbee.data_types"
 local device_management = require "st.zigbee.device_management"
 local shared_definitions = require "contracts.helpers.zcl_sensor_definitions"
+local fp = device_helpers.create_fingerprint
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -26,6 +27,16 @@ local function bind_clusters_by_endpoint(bindings)
   end
 end
 
+local function notification_only_ias(mapping)
+  -- ZHC m.iasZoneAlarm receives ZoneStatus notifications without configuring
+  -- attribute reporting or an initial read; SmartThings auto-enroll stays set.
+  mapping.minimum_interval = nil
+  mapping.maximum_interval = nil
+  mapping.reportable_change = nil
+  mapping.read_on_configure = false
+  return mapping
+end
+
 local motion_sensor = {
   profile = "safety-motion-battery",
   zcl_clusters = {
@@ -45,10 +56,20 @@ local motion_battery_low_battery_voltage_sensor = {
 local ewelink_motion_sensor = {
   profile = "safety-motion-battery-low-battery-voltage-ewelink-pending",
   zcl_clusters = {
-    zcl.motion(),
-    zcl.battery_low(),
-    zcl.battery(),
-    zcl.battery_voltage(),
+    notification_only_ias(zcl.motion()),
+    notification_only_ias(zcl.battery_low()),
+    zcl.battery({
+      minimum_interval = 3600,
+      maximum_interval = 7200,
+      reportable_change = 2,
+      read_on_configure = true,
+    }),
+    zcl.battery_voltage({
+      minimum_interval = 3600,
+      maximum_interval = 7200,
+      reportable_change = 100,
+      read_on_configure = true,
+    }),
   },
 }
 local third_reality_3rms_motion_sensor = {
@@ -482,133 +503,142 @@ local sunricher_terncy_dc01 = {
 }
 
 register_aliases(motion_tamper_battery_low_battery_sensor, {
-  device_helpers.create_fingerprint("LDS", "ZHA-PirSensor"),
+  fp("LDS", "ZHA-PirSensor"),
 })
 
 register_aliases(occupancy_motion_illuminance_sensor, {
-  device_helpers.create_fingerprint("Leedarson", "ZHA-PIRSensor"),
+  fp("Leedarson", "ZHA-PIRSensor"),
 })
 
 register_aliases(ewelink_motion_sensor, {
-  device_helpers.create_fingerprint("eWeLink", "CK-TLSR8656-SS5-01(7002)"),
+  fp("eWeLink", "CK-TLSR8656-SS5-01(7002)"),
+  fp("eWeLink", "MS01"),
+  fp("eWeLink", "MSO1"),
+  fp("eWeLink", "SNZB-03"),
+  -- User-directed SONOFF manufacturer exacts for the same ZHC definition.
+  -- The observed eWeLink identities remain registered alongside them.
+  fp("SONOFF", "CK-TLSR8656-SS5-01(7002)"),
+  fp("SONOFF", "MS01"),
+  fp("SONOFF", "MSO1"),
+  fp("SONOFF", "SNZB-03"),
 })
 
 register_aliases(candeo_motion_illuminance_sensor, {
-  device_helpers.create_fingerprint("Candeo", "C-ZB-SEMO"),
+  fp("Candeo", "C-ZB-SEMO"),
 })
 
 register_aliases(contact_sensor, {
-  device_helpers.create_fingerprint("Candeo", "C-ZB-SEDC"),
+  fp("Candeo", "C-ZB-SEDC"),
 })
 
 register_aliases(contact_sensor, {
-  device_helpers.create_fingerprint("Sunricher", "HK-SENSOR-CT-A"),
+  fp("Sunricher", "HK-SENSOR-CT-A"),
 })
 
 register_aliases(contact_battery_low_sensor, {
-  device_helpers.create_fingerprint("Sunricher", "HK-SENSOR-CT-MINI"),
+  fp("Sunricher", "HK-SENSOR-CT-MINI"),
 })
 
 register_aliases(shyugj_contact_sensor, {
-  device_helpers.create_fingerprint("Shyugj", "DoorSensor-ZB3.0"),
+  fp("Shyugj", "DoorSensor-ZB3.0"),
 })
 
 register_aliases(ewelink_contact_sensor, {
-  device_helpers.create_fingerprint("eWeLink", "CK-TLSR8656-SS5-01(7003)"),
-  device_helpers.create_fingerprint("eWeLink", "SNZB-04"),
+  fp("eWeLink", "CK-TLSR8656-SS5-01(7003)"),
+  fp("eWeLink", "SNZB-04"),
 })
 
 register_aliases(water_sensor, {
-  device_helpers.create_fingerprint("Candeo", "C-ZB-SEWA"),
+  fp("Candeo", "C-ZB-SEWA"),
 })
 
 register_aliases(third_reality_water_sensor_pending, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RWS18BZ"),
+  fp("Third Reality, Inc", "3RWS18BZ"),
 })
 
 register_aliases(water_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RWS0218Z"),
+  fp("Third Reality, Inc", "3RWS0218Z"),
 })
 
 register_aliases(water_battery_low_battery_sensor, {
-  device_helpers.create_fingerprint("eWeLink", "CK-TLSR8656-SS5-01(7019)"),
-  device_helpers.create_fingerprint("eWeLink", "SNZB-05"),
+  fp("eWeLink", "CK-TLSR8656-SS5-01(7019)"),
+  fp("eWeLink", "SNZB-05"),
 })
 
 register_aliases(temp_humidity_sensor, {
-  device_helpers.create_fingerprint("Candeo", "C-ZB-SETE"),
+  fp("Candeo", "C-ZB-SETE"),
 })
 
 register_aliases(frient_temp_humidity_sensor, {
-  device_helpers.create_fingerprint("Frient", "HMSZB-120"),
+  fp("Frient", "HMSZB-120"),
 })
 
 register_aliases(third_reality_3rths_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RTHS24BZ"),
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RTHS0224Z"),
+  fp("Third Reality, Inc", "3RTHS24BZ"),
+  fp("Third Reality, Inc", "3RTHS0224Z"),
 })
 
 register_aliases(third_reality_3rths0324_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RTHS0324Z"),
+  fp("Third Reality, Inc", "3RTHS0324Z"),
 })
 
 register_aliases(heiman_ht_em_sensor, {
-  device_helpers.create_fingerprint("HEIMAN", "HT-EM"),
-  device_helpers.create_fingerprint("HEIMAN", "TH-EM"),
-  device_helpers.create_fingerprint("HEIMAN", "TH-T_V14"),
+  fp("HEIMAN", "HT-EM"),
+  fp("HEIMAN", "TH-EM"),
+  fp("HEIMAN", "TH-T_V14"),
 })
 
 register_aliases(heiman_ht_n_sensor, {
-  device_helpers.create_fingerprint("HEIMAN", "HT-N"),
-  device_helpers.create_fingerprint("HEIMAN", "HT-EF-3.0"),
-  device_helpers.create_fingerprint("HEIMAN", "HS3HT-EFA-3.0"),
+  fp("HEIMAN", "HT-N"),
+  fp("HEIMAN", "HT-EF-3.0"),
+  fp("HEIMAN", "HS3HT-EFA-3.0"),
 })
 
 register_aliases(sunricher_zg9032b_sensor, {
-  device_helpers.create_fingerprint("Sunricher", "ZG9032B"),
+  fp("Sunricher", "ZG9032B"),
 })
 
 register_aliases(temp_humidity_voltage_sensor, {
-  device_helpers.create_fingerprint("eWeLink", "CK-TLSR8656-SS5-01(7014)"),
-  device_helpers.create_fingerprint("Zbeacon", "TH01"),
+  fp("eWeLink", "CK-TLSR8656-SS5-01(7014)"),
+  fp("Zbeacon", "TH01"),
 })
 
 register_aliases(heiman_air_quality, {
-  device_helpers.create_fingerprint("HEIMAN", "HS2AQ-EM"),
-  device_helpers.create_fingerprint("HEIMAN", "HS2AQ-EM-3.0"),
+  fp("HEIMAN", "HS2AQ-EM"),
+  fp("HEIMAN", "HS2AQ-EM-3.0"),
 })
 
 register_aliases(terncy_dc01, {
-  device_helpers.create_fingerprint("TERNCY", "TERNCY-DC01"),
+  fp("TERNCY", "TERNCY-DC01"),
 })
 
 register_aliases(sunricher_terncy_dc01, {
-  device_helpers.create_fingerprint("Sunricher", "TERNCY-DC01"),
+  fp("Sunricher", "TERNCY-DC01"),
 })
 
 register_aliases(schneider_smoke_sensor, {
-  device_helpers.create_fingerprint("Schneider Electric", "755WSA"),
-  device_helpers.create_fingerprint("Schneider Electric", "W599501"),
+  fp("Schneider Electric", "755WSA"),
+  fp("Schneider Electric", "W599501"),
 })
 
 register_aliases(third_reality_3rms_motion_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RMS16BZ"),
+  fp("Third Reality, Inc", "3RMS16BZ"),
 })
 
 register_aliases(third_reality_3rsmr_motion_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RSMR01067Z"),
+  fp("Third Reality, Inc", "3RSMR01067Z"),
 })
 
 register_aliases(third_reality_3rps_presence_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RPS01083Z"),
+  fp("Third Reality, Inc", "3RPS01083Z"),
 })
 
 register_aliases(third_reality_door_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RDS17BZ"),
+  fp("Third Reality, Inc", "3RDS17BZ"),
 })
 
 register_aliases(third_reality_tilt_sensor, {
-  device_helpers.create_fingerprint("Third Reality, Inc", "3RDTS01056Z"),
+  fp("Third Reality, Inc", "3RDTS01056Z"),
 })
 
 return {

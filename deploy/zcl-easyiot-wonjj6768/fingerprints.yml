@@ -1,25 +1,25 @@
 zigbeeManufacturer:
-  - id: "fp_74444475cf"
+  - id: fp_74444475cf
     manufacturer: "easyiot"
     model: "ZB-24GMS02"
     deviceProfileName: "safety-occupancy-easyiot-24gms02"
-  - id: "fp_afd4b4083e"
+  - id: fp_afd4b4083e
     manufacturer: "easyiot"
     model: "ZB-IR01"
     deviceProfileName: "controllers-easyiot-ir01"
-  - id: "fp_7fd4f59257"
+  - id: fp_7fd4f59257
     manufacturer: "easyiot"
     model: "ZB-RS232"
     deviceProfileName: "controllers-easyiot-rs232"
-  - id: "fp_d55cb708e7"
+  - id: fp_d55cb708e7
     manufacturer: "easyiot"
     model: "ZB-RS485"
     deviceProfileName: "controllers-easyiot-rs485"
-  - id: "fp_d6cf471fc8"
+  - id: fp_d6cf471fc8
     manufacturer: "easyiot"
     model: "ZB-TTS01"
     deviceProfileName: "controllers-easyiot-tts01"
-  - id: "fp_ea676e8298"
+  - id: fp_ea676e8298
     manufacturer: "easyiot"
     model: "ZB-ZL01"
     deviceProfileName: "locks-easyiot-zl01"

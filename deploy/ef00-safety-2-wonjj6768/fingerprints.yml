@@ -1,89 +1,89 @@
 zigbeeManufacturer:
-  - id: "fp_66b7686547"
+  - id: fp_66b7686547
     manufacturer: "_TZE200_hr0tdd47"
     model: "TS0601"
     deviceProfileName: "safety-co-moes-zc-hm"
-  - id: "fp_b8814935a4"
+  - id: fp_b8814935a4
     manufacturer: "_TZE200_nlrfgpny"
     model: "TS0601"
     deviceProfileName: "safety-alarm-neo-nas-ab06b2"
-  - id: "fp_a90f664d5d"
+  - id: fp_a90f664d5d
     manufacturer: "_TZE200_rjxqso4a"
     model: "TS0601"
     deviceProfileName: "safety-co-moes-zc-hm"
-  - id: "fp_2cdf854d75"
+  - id: fp_2cdf854d75
     manufacturer: "_TZE200_t1blo2bj"
     model: "TS0601"
     deviceProfileName: "safety-alarm-neo-nas-ab02b2"
-  - id: "fp_0809922925"
+  - id: fp_0809922925
     manufacturer: "_TZE204_l4daccga"
     model: "TS0601"
     deviceProfileName: "safety-wave16-lincukoo-a08-z10t"
-  - id: "fp_5170d5311e"
+  - id: fp_5170d5311e
     manufacturer: "_TZE204_nlrfgpny"
     model: "TS0601"
     deviceProfileName: "safety-alarm-neo-nas-ab06b2"
-  - id: "fp_5a3c0c6b2a"
+  - id: fp_5a3c0c6b2a
     manufacturer: "_TZE204_q76rtoa9"
     model: "TS0601"
     deviceProfileName: "safety-alarm-neo-nas-ab02b2"
-  - id: "fp_9d398e4023"
+  - id: fp_9d398e4023
     manufacturer: "_TZE204_qvxrkeif"
     model: "TS0601"
     deviceProfileName: "safety-gas-nous-e9"
-  - id: "fp_76ca6f15e8"
+  - id: fp_76ca6f15e8
     manufacturer: "_TZE204_ra9zfiwr"
     model: "TS0601"
     deviceProfileName: "safety-wave15-lincukoo-e04cf-z10t"
-  - id: "fp_1110eee2bd"
+  - id: fp_1110eee2bd
     manufacturer: "_TZE204_t1blo2bj"
     model: "TS0601"
     deviceProfileName: "safety-alarm-neo-nas-ab02b2"
-  - id: "fp_9ead5f3334"
+  - id: fp_9ead5f3334
     manufacturer: "_TZE204_uc0iv1hb"
     model: "TS0601"
     deviceProfileName: "safety-gas-detector-spacetronik-zb-dg02"
-  - id: "fp_7979d2e55c"
+  - id: fp_7979d2e55c
     manufacturer: "_TZE284_1di7ujzp"
     model: "TS0601"
     deviceProfileName: "safety-water-nous-e13"
-  - id: "fp_70c7cf5e21"
+  - id: fp_70c7cf5e21
     manufacturer: "_TZE284_2qx7sivb"
     model: "TS0601"
     deviceProfileName: "safety-vibration-tuya-battery-state"
-  - id: "fp_fbbf493cac"
+  - id: fp_fbbf493cac
     manufacturer: "_TZE284_7trh4ihp"
     model: "TS0601"
     deviceProfileName: "safety-vibration-tuya-battery-state-controls"
-  - id: "fp_48c6199a45"
+  - id: fp_48c6199a45
     manufacturer: "_TZE284_8sejxcue"
     model: "TS0601"
     deviceProfileName: "safety-vibration-tuya-battery-state-controls"
-  - id: "fp_57c4f0505c"
+  - id: fp_57c4f0505c
     manufacturer: "_TZE284_aghfucwi"
     model: "TS0601"
     deviceProfileName: "safety-vibration-tuya-battery"
-  - id: "fp_35531e1297"
+  - id: fp_35531e1297
     manufacturer: "_TZE284_ajhu0zqb"
     model: "TS0601"
     deviceProfileName: "safety-water-lincukoo-szw08"
-  - id: "fp_4e4f22d58e"
+  - id: fp_4e4f22d58e
     manufacturer: "_TZE284_iunyuzwe"
     model: "TS0601"
     deviceProfileName: "safety-water-lincukoo-w04-z10t-battery-state"
-  - id: "fp_d2b4d035f7"
+  - id: fp_d2b4d035f7
     manufacturer: "_TZE284_nlrfgpny"
     model: "TS0601"
     deviceProfileName: "safety-alarm-neo-nas-ab06b2"
-  - id: "fp_20d8b64e97"
+  - id: fp_20d8b64e97
     manufacturer: "_TZE284_rjxqso4a"
     model: "TS0601"
     deviceProfileName: "safety-co-moes-zc-hm"
-  - id: "fp_3458f389fe"
+  - id: fp_3458f389fe
     manufacturer: "_TZE284_sonkaxrd"
     model: "TS0601"
     deviceProfileName: "safety-co-nous-e12"
-  - id: "fp_1b57aca338"
+  - id: fp_1b57aca338
     manufacturer: "_TZE284_vbgmewta"
     model: "TS0601"
     deviceProfileName: "safety-water-lincukoo-w04-z10t-battery-ringtone"

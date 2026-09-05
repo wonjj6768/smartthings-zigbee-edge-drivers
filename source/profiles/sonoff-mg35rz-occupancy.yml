@@ -1,0 +1,11 @@
+name: sonoff-mg35rz-occupancy
+components:
+  - id: main
+    capabilities:
+      - {id: occupancySensor, version: 1}
+      - {id: concertmirror08464.sonoffMg35rzOccupiedDelay, version: 1}
+      - {id: concertmirror08464.sonoffMg35rzUnoccupiedDelay, version: 1}
+      - {id: concertmirror08464.sonoffMg35rzSensitivity, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: PresenceSensor

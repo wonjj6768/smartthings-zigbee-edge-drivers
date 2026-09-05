@@ -1,33 +1,33 @@
 zigbeeManufacturer:
-  - id: "fp_2835a5c0cc"
+  - id: fp_2835a5c0cc
     manufacturer: "_TZE204_08qc13ct"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_ffd1840a28"
+  - id: fp_ffd1840a28
     manufacturer: "_TZE204_wwaeqnrf"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_b0815b771d"
+  - id: fp_b0815b771d
     manufacturer: "_TZE204_xibaabmu"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_6fa480f6c0"
+  - id: fp_6fa480f6c0
     manufacturer: "_TZE204_y4jqpry8"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_6401f3ac6b"
+  - id: fp_6401f3ac6b
     manufacturer: "_TZE284_wwaeqnrf"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_e8c17d1800"
+  - id: fp_e8c17d1800
     manufacturer: "_TZE284_xibaabmu"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_976caa50a8"
+  - id: fp_976caa50a8
     manufacturer: "_TZE284_y4jqpry8"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"
-  - id: "fp_847496018d"
+  - id: fp_847496018d
     manufacturer: "_TZE28C1000000_y4jqpry8"
     model: "TS0601"
     deviceProfileName: "switches-screen-zms206us4"

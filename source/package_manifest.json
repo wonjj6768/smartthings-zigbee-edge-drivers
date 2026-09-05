@@ -428,6 +428,18 @@
         {
           "module": "contracts.families.zcl.sensors.wave19_vibration",
           "id": "zcl.sensors.wave19_vibration"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.sonoff",
+          "id": "zcl.sensors.sonoff"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.sonoff_safety",
+          "id": "zcl.sensors.sonoff_safety"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.sonoff_presence_advanced",
+          "id": "zcl.sensors.sonoff_presence_advanced"
         }
       ]
     },
@@ -446,6 +458,10 @@
         {
           "module": "contracts.families.zcl.controls.jethome",
           "id": "zcl.controls.jethome"
+        },
+        {
+          "module": "contracts.families.zcl.controls.sonoff",
+          "id": "zcl.controls.sonoff"
         }
       ]
     },

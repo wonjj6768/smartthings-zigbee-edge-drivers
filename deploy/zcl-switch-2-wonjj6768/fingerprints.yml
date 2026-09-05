@@ -1,49 +1,49 @@
 zigbeeManufacturer:
-  - id: "fp_75271c3dc8"
+  - id: fp_75271c3dc8
     manufacturer: "AOYAN"
     model: "AY301Z-2CH"
     deviceProfileName: "switches-switch-2-ay301z-two"
-  - id: "fp_289405b6f3"
+  - id: fp_289405b6f3
     manufacturer: "MLI"
     model: "tint Smart Switch"
     deviceProfileName: "switches-switch-1-mli-tint"
-  - id: "fp_a1c29fcca4"
+  - id: fp_a1c29fcca4
     manufacturer: "MLI\x00"
     model: "switch01\x00"
     deviceProfileName: "switches-switch-1-mli-tint"
-  - id: "fp_57f4f9d437"
+  - id: fp_57f4f9d437
     manufacturer: "SDevices"
     model: "SBDV-00196"
     deviceProfileName: "switches-wave14-sber-sbdv-00196"
-  - id: "fp_7cb148875c"
+  - id: fp_7cb148875c
     manufacturer: "SDevices"
     model: "SBDV-00197"
     deviceProfileName: "switches-wave14-sber-sbdv-00197"
-  - id: "fp_2670554838"
+  - id: fp_2670554838
     manufacturer: "SDevices"
     model: "SBDV-00199"
     deviceProfileName: "switches-wave14-sber-sbdv-00199"
-  - id: "fp_33d624fa0b"
+  - id: fp_33d624fa0b
     manufacturer: "SDevices"
     model: "SBDV-00200"
     deviceProfileName: "switches-wave14-sber-sbdv-00200"
-  - id: "fp_d7a6b66430"
+  - id: fp_d7a6b66430
     manufacturer: "SDevices"
     model: "SBDV-00202"
     deviceProfileName: "switches-wave14-sber-sbdv-00202"
-  - id: "fp_12a578aa26"
+  - id: fp_12a578aa26
     manufacturer: "Shelly"
     model: "EM"
     deviceProfileName: "switches-shelly-em-gen4"
-  - id: "fp_90192c17c7"
+  - id: fp_90192c17c7
     manufacturer: "Xiaoyan"
     model: "TERNCY-WS07-D3"
     deviceProfileName: "switches-wave14-terncy-ws07-d3"
-  - id: "fp_2df043c523"
+  - id: fp_2df043c523
     manufacturer: "_TZ3000_khtlvdfc"
     model: "TS0013"
     deviceProfileName: "switches-switch-3-ssw03g"
-  - id: "fp_59b2267fe0"
+  - id: fp_59b2267fe0
     manufacturer: "_TZ3210_5ksufhqi"
     model: "TS0002"
     deviceProfileName: "switches-switch-2-nfzb2"

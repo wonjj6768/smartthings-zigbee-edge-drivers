@@ -1,5 +1,5 @@
 zigbeeManufacturer:
-  - id: "fp_aed944577d"
+  - id: fp_aed944577d
     manufacturer: "Sunricher"
     model: "Light"
     deviceProfileName: "bridge-wave19-sunricher-dali-parent"

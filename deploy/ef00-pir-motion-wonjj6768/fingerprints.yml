@@ -1,93 +1,93 @@
 zigbeeManufacturer:
-  - id: "fp_56b111a7ba"
+  - id: fp_56b111a7ba
     manufacturer: "AOYAN"
     model: "AY-204Z"
     deviceProfileName: "safety-motion-ay204z-battery"
-  - id: "fp_4fd440cbd1"
+  - id: fp_4fd440cbd1
     manufacturer: "AOYAN "
     model: "AY-204Z"
     deviceProfileName: "safety-motion-ay204z-battery"
-  - id: "fp_7ee5e5e584"
+  - id: fp_7ee5e5e584
     manufacturer: "AOYAN  "
     model: "AY-204Z"
     deviceProfileName: "safety-motion-ay204z-battery"
-  - id: "fp_a0ad98b303"
+  - id: fp_a0ad98b303
     manufacturer: "_TZE200_1ibpyhdc"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_b883196048"
+  - id: fp_b883196048
     manufacturer: "_TZE200_3towulqd"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_03ffd660c8"
+  - id: fp_03ffd660c8
     manufacturer: "_TZE200_auin8mzr"
     model: "TS0601"
     deviceProfileName: "safety-motion-legacy-illuminance"
-  - id: "fp_2616939986"
+  - id: fp_2616939986
     manufacturer: "_TZE200_bh3n6gk8"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_cd52966be7"
+  - id: fp_cd52966be7
     manufacturer: "_TZE200_f1pvdgoh"
     model: "\x00B"
     deviceProfileName: "safety-motion-pir-illuminance-battery"
-  - id: "fp_bbfd70aa32"
+  - id: fp_bbfd70aa32
     manufacturer: "_TZE200_f1pvdgoh"
     model: "TS0601"
     deviceProfileName: "safety-motion-pir-illuminance-battery"
-  - id: "fp_febadcbfc1"
+  - id: fp_febadcbfc1
     manufacturer: "_TZE200_ghynnvos"
     model: "TS0601"
     deviceProfileName: "safety-motion-pir-illuminance"
-  - id: "fp_382afbde1b"
+  - id: fp_382afbde1b
     manufacturer: "_TZE200_gjldowol"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_46438bde40"
+  - id: fp_46438bde40
     manufacturer: "_TZE200_jxyhl4eq"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_1dab3b9deb"
+  - id: fp_1dab3b9deb
     manufacturer: "_TZE200_me6wtiqs"
     model: "TS0601"
     deviceProfileName: "safety-motion-pir-illuminance-battery"
-  - id: "fp_5be81a196f"
+  - id: fp_5be81a196f
     manufacturer: "_TZE200_na5qlzow"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_6e6ab020d8"
+  - id: fp_6e6ab020d8
     manufacturer: "_TZE200_oc7xqqbs"
     model: "TS0601"
     deviceProfileName: "safety-motion-zpir10-illuminance-battery"
-  - id: "fp_d747adcf85"
+  - id: fp_d747adcf85
     manufacturer: "_TZE200_ppuj1vem"
     model: "TS0601"
     deviceProfileName: "safety-motion-zpir10-illuminance-battery"
-  - id: "fp_c5d7c2944e"
+  - id: fp_c5d7c2944e
     manufacturer: "_TZE200_qxyh4r7g"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_1a063c3faa"
+  - id: fp_1a063c3faa
     manufacturer: "_TZE200_s6hzw8g2"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_e6adbee10e"
+  - id: fp_e6adbee10e
     manufacturer: "_TZE200_seq9cm6u"
     model: "TS0601"
     deviceProfileName: "safety-motion-bed-time-illuminance-battery"
-  - id: "fp_94ede12c70"
+  - id: fp_94ede12c70
     manufacturer: "_TZE200_ttcovulf"
     model: "TS0601"
     deviceProfileName: "safety-motion-zg204zl-keep-illuminance-battery"
-  - id: "fp_02fd1684d7"
+  - id: fp_02fd1684d7
     manufacturer: "_TZE284_9ovska9w"
     model: "TS0601"
     deviceProfileName: "safety-motion-szlm04u-illuminance-battery"
-  - id: "fp_703f43ebcd"
+  - id: fp_703f43ebcd
     manufacturer: "_TZE284_bquwrqh1"
     model: "TS0601"
     deviceProfileName: "safety-motion-szlm04u-illuminance-battery"
-  - id: "fp_aba2a981fc"
+  - id: fp_aba2a981fc
     manufacturer: "_TZE284_tre6haif"
     model: "TS0601"
     deviceProfileName: "safety-motion-pir-solar-battery"

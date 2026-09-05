@@ -35,6 +35,14 @@ return action,"switch2",handled
 end
 local candeo={
 profile="lights-wave19-candeo-rd1pv2-dim",
+capability_commands={
+{
+capability_id="concertmirror08464.candeoRotaryDimOnLevel",
+command_name="usePreviousOnLevel",
+mapping_name="candeoRotaryDim_on_level",
+value=255,
+},
+},
 package_group="wave19-light",
 transport_classification="ZCL",
 z2m_converter_source="modernExtend.light/electricityMeter + rd1p local converters",

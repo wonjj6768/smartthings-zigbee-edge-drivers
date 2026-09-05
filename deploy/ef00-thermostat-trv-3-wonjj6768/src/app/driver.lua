@@ -34,46 +34,6 @@ local DEFAULT_IAS_WARNING_DURATION=300
 local STATELESS_SWITCH_LEVEL_STEP_ID="statelessSwitchLevelStep"
 local STATELESS_SWITCH_LEVEL_STEP_COMMAND="stepLevel"
 local DEVICE_ANNOUNCE_CLUSTER_ID=0x0013
-local PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID=
-"concertmirror08464.paulmannRgbwwStartupCct"
-local PAULMANN_RGBWW_RESTORE_COLOR_TEMPERATURE_COMMAND=
-"restorePaulmannRgbwwPreviousCct"
-local CANDEO_ROTARY_DIM_ON_LEVEL_ID=
-"concertmirror08464.candeoRotaryDimOnLevel"
-local CANDEO_ROTARY_DIM_USE_PREVIOUS_ON_LEVEL_COMMAND=
-"usePreviousOnLevel"
-local CANDEO_RD1P_DPM_PRESET_COMMANDS={
-{
-capability_id="concertmirror08464.candeoRd1pDpmOnLevel",
-command_name="usePreviousOnLevel",
-mapping_name="candeo_rd1p_dpm_on_level",
-value="previous",
-},
-{
-capability_id="concertmirror08464.candeoRd1pDpmStartupLevel",
-command_name="useMinimumStartupLevel",
-mapping_name="candeo_rd1p_dpm_startup_level",
-value="minimum",
-},
-{
-capability_id="concertmirror08464.candeoRd1pDpmStartupLevel",
-command_name="usePreviousStartupLevel",
-mapping_name="candeo_rd1p_dpm_startup_level",
-value="previous",
-},
-{
-capability_id="concertmirror08464.candeoRd1pDpmOnTransitionTime",
-command_name="disableOnTransitionTime",
-mapping_name="candeo_rd1p_dpm_on_transition_time",
-value="disabled",
-},
-{
-capability_id="concertmirror08464.candeoRd1pDpmOffTransitionTime",
-command_name="disableOffTransitionTime",
-mapping_name="candeo_rd1p_dpm_off_transition_time",
-value="disabled",
-},
-}
 local preset_cache=setmetatable({},{__mode="k"})
 local function register_all_zcl_mappings()
 local all_definitions=registry.all()
@@ -377,6 +337,7 @@ end
 if preset.zcl_clusters then
 handled=zcl.send_named_command(device,preset.zcl_clusters,name,value,{
 component_id=command.component,
+zcl_clusters=preset.zcl_clusters,
 })or handled
 end
 return handled
@@ -410,10 +371,15 @@ local target_component=component_id or "main"
 if type(device)~="table" or not device:supports_capability_by_id(capabilities.alarm.ID,target_component)then
 return
 end
-local event=value=="off"
-and capabilities.alarm.alarm.off()
-or capabilities.alarm.alarm.siren()
-device:emit_component_event({id=target_component},event)
+device:emit_component_event({id=target_component},capabilities.alarm.alarm[value]())
+end
+local function send_alarm_mapping(device,command,mode)
+local preset=get_preset(device)
+local value=mode ~="off"
+if preset ~=nil and preset.alarm_command_modes==true then
+value=mode
+end
+return send(device,command,"alarm",value)
 end
 local function send_ias_warning_command(device,component_id,warning_mode,strobe_enabled,siren_level,duration)
 if not supports_ias_warning_device(device)then
@@ -718,7 +684,7 @@ local handled=send_ias_warning_command(
 device,command.component,IAS_WARNING_MODE_STOP,false,IAS_WARNING_LEVEL_LOW,0
 )
 if not handled then
-handled=send(device,command,"alarm",false)
+handled=send_alarm_mapping(device,command,"off")
 end
 if handled then
 emit_alarm_state(device,command.component,"off")
@@ -730,7 +696,7 @@ device,command.component,IAS_WARNING_MODE_EMERGENCY,false,
 IAS_WARNING_LEVEL_VERY_HIGH,DEFAULT_IAS_WARNING_DURATION
 )
 if not handled then
-handled=send(device,command,"alarm",true)
+handled=send_alarm_mapping(device,command,"siren")
 end
 if handled then
 emit_alarm_state(device,command.component,"siren")
@@ -742,10 +708,10 @@ device,command.component,IAS_WARNING_MODE_EMERGENCY,true,
 IAS_WARNING_LEVEL_LOW,DEFAULT_IAS_WARNING_DURATION
 )
 if not handled then
-handled=send(device,command,"alarm",true)
+handled=send_alarm_mapping(device,command,"strobe")
 end
 if handled then
-emit_alarm_state(device,command.component,"siren")
+emit_alarm_state(device,command.component,"strobe")
 end
 end,
 [capabilities.alarm.commands.both.NAME]=function(_,device,command)
@@ -754,10 +720,10 @@ device,command.component,IAS_WARNING_MODE_EMERGENCY,true,
 IAS_WARNING_LEVEL_VERY_HIGH,DEFAULT_IAS_WARNING_DURATION
 )
 if not handled then
-handled=send(device,command,"alarm",true)
+handled=send_alarm_mapping(device,command,"both")
 end
 if handled then
-emit_alarm_state(device,command.component,"siren")
+emit_alarm_state(device,command.component,"both")
 end
 end,
 }
@@ -800,24 +766,6 @@ end
 end,
 }
 custom_capability_runtime.register_handlers(handlers)
-handlers[PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID]=
-handlers[PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID]or{}
-handlers[PAULMANN_RGBWW_STARTUP_COLOR_TEMPERATURE_ID]
-[PAULMANN_RGBWW_RESTORE_COLOR_TEMPERATURE_COMMAND]=function(_,device,command)
-send(device,command,"paulmann_rgbww_startup_color_temperature",65535)
-end
-handlers[CANDEO_ROTARY_DIM_ON_LEVEL_ID]=
-handlers[CANDEO_ROTARY_DIM_ON_LEVEL_ID]or{}
-handlers[CANDEO_ROTARY_DIM_ON_LEVEL_ID]
-[CANDEO_ROTARY_DIM_USE_PREVIOUS_ON_LEVEL_COMMAND]=function(_,device,command)
-send(device,command,"candeoRotaryDim_on_level",255)
-end
-for _,preset_command in ipairs(CANDEO_RD1P_DPM_PRESET_COMMANDS)do
-handlers[preset_command.capability_id]=handlers[preset_command.capability_id]or{}
-handlers[preset_command.capability_id][preset_command.command_name]=function(_,device,command)
-send(device,command,preset_command.mapping_name,preset_command.value)
-end
-end
 if power_poll_interval_metadata ~=nil then
 handlers[power_poll_interval_metadata.capability_id]=handlers[power_poll_interval_metadata.capability_id]or{}
 handlers[power_poll_interval_metadata.capability_id][power_poll_interval_metadata.command_name]=function(_,device,command)

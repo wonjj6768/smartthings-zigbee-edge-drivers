@@ -1,0 +1,13 @@
+name: sonoff-snzb03p-occupancy
+components:
+  - id: main
+    capabilities:
+      - {id: occupancySensor, version: 1}
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.sonoffSnzb03pMotionTimeout, version: 1}
+      - {id: concertmirror08464.sonoffSnzb03pIllumination, version: 1}
+      - {id: firmwareUpdate, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: PresenceSensor

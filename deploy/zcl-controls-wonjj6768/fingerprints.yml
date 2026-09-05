@@ -1,1253 +1,1273 @@
 zigbeeManufacturer:
-  - id: "fp_99fd4ae7c2"
+  - id: fp_99fd4ae7c2
     manufacturer: "Candeo"
     model: "C-ZB-RD1P-REM"
     deviceProfileName: "controllers-candeo-rd1p-rem"
-  - id: "fp_98a92e56a9"
+  - id: fp_98a92e56a9
     manufacturer: "Candeo"
     model: "C-ZB-SR5BR"
     deviceProfileName: "buttons-button-5-battery-remote-action"
-  - id: "fp_24a0c4dc7a"
+  - id: fp_24a0c4dc7a
     manufacturer: "DSS0010"
     model: "Excellux"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_7f92861752"
+  - id: fp_7f92861752
     manufacturer: "HEIMAN"
     model: "ColorDimmerSw-EM-3.0"
     deviceProfileName: "controllers-dimming-battery-remote-action"
-  - id: "fp_be6fc0b2ba"
+  - id: fp_be6fc0b2ba
     manufacturer: "HEIMAN"
     model: "DoorBell-EF-3.0"
     deviceProfileName: "buttons-doorbell-battery-tamper-low"
-  - id: "fp_01be1b95a1"
+  - id: fp_01be1b95a1
     manufacturer: "HEIMAN"
     model: "DoorBell-EM"
     deviceProfileName: "buttons-doorbell-battery-tamper-low"
-  - id: "fp_97e7f1979a"
+  - id: fp_97e7f1979a
     manufacturer: "HEIMAN"
     model: "RC-EF-3.0"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_cc6c3c4a28"
+  - id: fp_cc6c3c4a28
     manufacturer: "HEIMAN"
     model: "RC-EM"
     deviceProfileName: "security-remotes-heiman-partial-action-battery"
-  - id: "fp_84279df299"
+  - id: fp_84279df299
     manufacturer: "HEIMAN"
     model: "RC-N"
     deviceProfileName: "security-remotes-heiman-partial-action-battery"
-  - id: "fp_afb337f64b"
+  - id: fp_afb337f64b
     manufacturer: "HEIMAN"
     model: "SOS-EF-3.0"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_d72d1d5817"
+  - id: fp_d72d1d5817
     manufacturer: "HEIMAN"
     model: "SOS-EM"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_2c1a176e92"
+  - id: fp_2c1a176e92
     manufacturer: "HEIMAN"
     model: "SceneSwitch-EF-3.0"
     deviceProfileName: "buttons-heiman-scene-battery-remote-action"
-  - id: "fp_ef7d9b8970"
+  - id: fp_ef7d9b8970
     manufacturer: "HEIMAN"
     model: "SceneSwitch-EM-3.0"
     deviceProfileName: "buttons-heiman-scene-battery-remote-action"
-  - id: "fp_7cdcefbec7"
+  - id: fp_7cdcefbec7
     manufacturer: "HOBEIAN"
     model: "ZG-101ZL"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_0ec9d92882"
+  - id: fp_0ec9d92882
     manufacturer: "MLI"
     model: "Remote Control"
     deviceProfileName: "controllers-dimming-remote-action"
-  - id: "fp_c535e122bc"
+  - id: fp_c535e122bc
     manufacturer: "Namron"
     model: "4512772"
     deviceProfileName: "buttons-button-4-battery-remote-action"
-  - id: "fp_475cc848dd"
+  - id: fp_475cc848dd
     manufacturer: "Namron AS"
     model: "4512793"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_d8dae118d5"
+  - id: fp_b5155de35b
+    manufacturer: "SONOFF"
+    model: "CK-TLSR8656-SS5-01(7000)"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"
+  - id: fp_8ca080bcc7
+    manufacturer: "SONOFF"
+    model: "SNZB-01"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"
+  - id: fp_177fe4b102
+    manufacturer: "SONOFF"
+    model: "WB-01"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"
+  - id: fp_999de41fd4
+    manufacturer: "SONOFF"
+    model: "WB01"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"
+  - id: fp_d8dae118d5
     manufacturer: "Shelly"
     model: "1"
     deviceProfileName: "buttons-shelly-one-input"
-  - id: "fp_e21791c17b"
+  - id: fp_e21791c17b
     manufacturer: "Shelly"
     model: "BLU Button Tough 1 ZB"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_8d3db10261"
+  - id: fp_8d3db10261
     manufacturer: "Shelly"
     model: "BLU RC Button 4 ZB"
     deviceProfileName: "buttons-button-4-battery-remote-action"
-  - id: "fp_0cfd16f9b9"
+  - id: fp_0cfd16f9b9
     manufacturer: "Shelly"
     model: "BLU Remote Control ZB"
     deviceProfileName: "buttons-button-4-battery-remote-action"
-  - id: "fp_9cdf8e50bb"
+  - id: fp_9cdf8e50bb
     manufacturer: "Slacky-DIY"
     model: "TS0041-M001-SlD"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_93e9764c93"
+  - id: fp_93e9764c93
     manufacturer: "Slacky-DIY"
     model: "TS0041-M002-SlD"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_31685de50b"
+  - id: fp_31685de50b
     manufacturer: "Slacky-DIY"
     model: "TS0041-M005-SlD"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_1af6ccb528"
+  - id: fp_1af6ccb528
     manufacturer: "Slacky-DIY"
     model: "TS0042-M003-SlD"
     deviceProfileName: "buttons-button-2-battery-remote-action"
-  - id: "fp_b6263ec6b1"
+  - id: fp_b6263ec6b1
     manufacturer: "Slacky-DIY"
     model: "TS0042-M006-SlD"
     deviceProfileName: "buttons-button-2-battery-remote-action"
-  - id: "fp_98de66bcd5"
+  - id: fp_98de66bcd5
     manufacturer: "Slacky-DIY"
     model: "TS0042-z-SlD"
     deviceProfileName: "buttons-button-2-battery-remote-action"
-  - id: "fp_d824c4a833"
+  - id: fp_d824c4a833
     manufacturer: "Slacky-DIY"
     model: "TS0044-M004-SlD"
     deviceProfileName: "buttons-button-4-battery-remote-action"
-  - id: "fp_9ae661dc0d"
+  - id: fp_9ae661dc0d
     manufacturer: "Slacky-DIY"
     model: "TS0044-z-SlD"
     deviceProfileName: "buttons-button-4-battery-remote-action"
-  - id: "fp_c22a3caac6"
+  - id: fp_c22a3caac6
     manufacturer: "_TYZB01_1xktopx6"
     model: "TS0041A"
     deviceProfileName: "buttons-button-1-battery-voltage"
-  - id: "fp_bd2683b146"
+  - id: fp_bd2683b146
     manufacturer: "_TYZB01_4qw4rl1u"
     model: "TS0041A"
     deviceProfileName: "buttons-button-1-battery-voltage"
-  - id: "fp_6b62ae0c2a"
+  - id: fp_6b62ae0c2a
     manufacturer: "_TYZB01_bngwdjsr"
     model: "TS1001"
     deviceProfileName: "controllers-dimming-remote-action"
-  - id: "fp_47319e4a90"
+  - id: fp_47319e4a90
     manufacturer: "_TYZB01_cnlmkhbk"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_db7943c211"
+  - id: fp_db7943c211
     manufacturer: "_TYZB01_hww2py6b"
     model: "TS1001"
     deviceProfileName: "controllers-dimming-remote-action"
-  - id: "fp_bbdabaa491"
+  - id: fp_bbdabaa491
     manufacturer: "_TYZB01_ub7urdza"
     model: "TS0041A"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_c8aea206a4"
+  - id: fp_c8aea206a4
     manufacturer: "_TYZB02_key8kk7r"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_c6783eb0c4"
+  - id: fp_c6783eb0c4
     manufacturer: "_TYZB02_keyjhapk"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_bca2426cd2"
+  - id: fp_bca2426cd2
     manufacturer: "_TZ1800_akzvkzqq"
     model: "TS0211"
     deviceProfileName: "buttons-doorbell-battery-tamper-low"
-  - id: "fp_1336b94b90"
+  - id: fp_1336b94b90
     manufacturer: "_TZ1800_ladpngdx"
     model: "TS0211"
     deviceProfileName: "buttons-doorbell-battery-tamper-low"
-  - id: "fp_3e6130e3ea"
+  - id: fp_3e6130e3ea
     manufacturer: "_TZ3000_0dumfk2z"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_43f3abc3c1"
+  - id: fp_43f3abc3c1
     manufacturer: "_TZ3000_0ht8dnxj"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_39e5c1055d"
+  - id: fp_39e5c1055d
     manufacturer: "_TZ3000_0zrccfgx"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_5bcdfc7e0e"
+  - id: fp_5bcdfc7e0e
     manufacturer: "_TZ3000_11pg3ima"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_52e5ea7398"
+  - id: fp_52e5ea7398
     manufacturer: "_TZ3000_1fqpj6qz"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_c70ea5721d"
+  - id: fp_c70ea5721d
     manufacturer: "_TZ3000_1hypixdr"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_dbb2d0dc49"
+  - id: fp_dbb2d0dc49
     manufacturer: "_TZ3000_1kmurvlx"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_c68ac40c50"
+  - id: fp_c68ac40c50
     manufacturer: "_TZ3000_1yyjhvwd"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_c7cb149512"
+  - id: fp_c7cb149512
     manufacturer: "_TZ3000_22ugzkme"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_2185163b2f"
+  - id: fp_2185163b2f
     manufacturer: "_TZ3000_2izubafb"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_bdb30a9722"
+  - id: fp_bdb30a9722
     manufacturer: "_TZ3000_402vrq2i"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_87ef518064"
+  - id: fp_87ef518064
     manufacturer: "_TZ3000_4fjiwweb"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_cf28e59f25"
+  - id: fp_cf28e59f25
     manufacturer: "_TZ3000_4fsgukof"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_49863083b7"
+  - id: fp_49863083b7
     manufacturer: "_TZ3000_4upl1fcj"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_10e7a88f94"
+  - id: fp_10e7a88f94
     manufacturer: "_TZ3000_5bpeda8u"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_9f87e1e362"
+  - id: fp_9f87e1e362
     manufacturer: "_TZ3000_5e235jpa"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_54fb05ed8e"
+  - id: fp_54fb05ed8e
     manufacturer: "_TZ3000_5kxl9esg"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_9a319766d5"
+  - id: fp_9a319766d5
     manufacturer: "_TZ3000_5kxl9esg"
     model: "TS0726_1_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_7b37315d42"
+  - id: fp_7b37315d42
     manufacturer: "_TZ3000_5tqxpine"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_c08afeaadb"
+  - id: fp_c08afeaadb
     manufacturer: "_TZ3000_6km7djcm"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_609bccc757"
+  - id: fp_609bccc757
     manufacturer: "_TZ3000_8utxxtzr"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_b29b6528a1"
+  - id: fp_b29b6528a1
     manufacturer: "_TZ3000_9orwkl3t"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_cbae517a47"
+  - id: fp_cbae517a47
     manufacturer: "_TZ3000_9r5jaajv"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_5b52bd6ff6"
+  - id: fp_5b52bd6ff6
     manufacturer: "_TZ3000_9zc1limb"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_61d1d45627"
+  - id: fp_61d1d45627
     manufacturer: "_TZ3000_a4xycprs"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_3f5a66fabd"
+  - id: fp_3f5a66fabd
     manufacturer: "_TZ3000_a7ouggvs"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_b1861c8dc0"
+  - id: fp_b1861c8dc0
     manufacturer: "_TZ3000_abci1hiu"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_7742528d84"
+  - id: fp_7742528d84
     manufacturer: "_TZ3000_abrsvsou"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_100cb04db6"
+  - id: fp_100cb04db6
     manufacturer: "_TZ3000_adkvzooy"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_d75052b35b"
+  - id: fp_d75052b35b
     manufacturer: "_TZ3000_adndolvx"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_270910c182"
+  - id: fp_270910c182
     manufacturer: "_TZ3000_an5rjiwd"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_f529001a72"
+  - id: fp_f529001a72
     manufacturer: "_TZ3000_axpdxqgu"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_986d53a08f"
+  - id: fp_986d53a08f
     manufacturer: "_TZ3000_b3mgfu0d"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_6d5bfd3e4f"
+  - id: fp_6d5bfd3e4f
     manufacturer: "_TZ3000_b4awzgct"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_a04d591e78"
+  - id: fp_a04d591e78
     manufacturer: "_TZ3000_bgtzm4ny"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_400a9dbc11"
+  - id: fp_400a9dbc11
     manufacturer: "_TZ3000_bi6lpsew"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_4bc15a1623"
+  - id: fp_4bc15a1623
     manufacturer: "_TZ3000_cllghx1k"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_2694b724a6"
+  - id: fp_2694b724a6
     manufacturer: "_TZ3000_csflgqj2"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_19994b468c"
+  - id: fp_19994b468c
     manufacturer: "_TZ3000_cumqn2av"
     model: "TS0726"
     deviceProfileName: "scene-switches-4-plus-2"
-  - id: "fp_d4e06801e1"
+  - id: fp_d4e06801e1
     manufacturer: "_TZ3000_cumqn2av"
     model: "TS0726_4_gang_switch_and_2_scene"
     deviceProfileName: "scene-switches-4-plus-2"
-  - id: "fp_370e00ec34"
+  - id: fp_370e00ec34
     manufacturer: "_TZ3000_cziew6eu"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_15b3313b59"
+  - id: fp_15b3313b59
     manufacturer: "_TZ3000_czuyt8lz"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_f6d7f8ee93"
+  - id: fp_f6d7f8ee93
     manufacturer: "_TZ3000_dfgbtub0"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_7f95f39a07"
+  - id: fp_7f95f39a07
     manufacturer: "_TZ3000_dku2cfsc"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_4c08e99ff1"
+  - id: fp_4c08e99ff1
     manufacturer: "_TZ3000_dziaict4"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_de1e8b0283"
+  - id: fp_de1e8b0283
     manufacturer: "_TZ3000_ee8nrt2l"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_2ea545f3cd"
+  - id: fp_2ea545f3cd
     manufacturer: "_TZ3000_egvb1p2g"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_a601402dbf"
+  - id: fp_a601402dbf
     manufacturer: "_TZ3000_eo3dttwe"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_1ed680b213"
+  - id: fp_1ed680b213
     manufacturer: "_TZ3000_et7afzxz"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_761372605e"
+  - id: fp_761372605e
     manufacturer: "_TZ3000_etufnltx"
     model: "TS1002"
     deviceProfileName: "buttons-button-4-battery-voltage-remote-action"
-  - id: "fp_71f0ebc616"
+  - id: fp_71f0ebc616
     manufacturer: "_TZ3000_ezqbvrqz"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_c2da38406f"
+  - id: fp_c2da38406f
     manufacturer: "_TZ3000_ezqbvrqz"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_5457a5781f"
+  - id: fp_5457a5781f
     manufacturer: "_TZ3000_fa9mlvja"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery-voltage"
-  - id: "fp_98615137e1"
+  - id: fp_98615137e1
     manufacturer: "_TZ3000_famkxci2"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_3b985a9e0d"
+  - id: fp_3b985a9e0d
     manufacturer: "_TZ3000_filhl5b7"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_de01ae429e"
+  - id: fp_de01ae429e
     manufacturer: "_TZ3000_fkvaniuu"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_bb542b5c90"
+  - id: fp_bb542b5c90
     manufacturer: "_TZ3000_fsiepnrh"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_5ddba2d60e"
+  - id: fp_5ddba2d60e
     manufacturer: "_TZ3000_g7eeean4"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_2200ae954c"
+  - id: fp_2200ae954c
     manufacturer: "_TZ3000_g9g2xnch"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-operation-mode-remote-action"
-  - id: "fp_fd9dd48417"
+  - id: fp_fd9dd48417
     manufacturer: "_TZ3000_gbm10jnj"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_3d462db2cf"
+  - id: fp_3d462db2cf
     manufacturer: "_TZ3000_gwkzibhs"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_89a2b95fda"
+  - id: fp_89a2b95fda
     manufacturer: "_TZ3000_h1c2eamp"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_f7f94d91e3"
+  - id: fp_f7f94d91e3
     manufacturer: "_TZ3000_hurauima"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_9fab9af4cc"
+  - id: fp_9fab9af4cc
     manufacturer: "_TZ3000_hurauima"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_6380ca3973"
+  - id: fp_6380ca3973
     manufacturer: "_TZ3000_i3rjdrwu"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_c87afe1fc8"
+  - id: fp_c87afe1fc8
     manufacturer: "_TZ3000_icoxotza"
     model: "TS0726"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_8959718ac7"
+  - id: fp_8959718ac7
     manufacturer: "_TZ3000_icoxotza"
     model: "TS0726_2_gang"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_dbbbb78a6f"
+  - id: fp_dbbbb78a6f
     manufacturer: "_TZ3000_imnwsek2"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_62700c095c"
+  - id: fp_62700c095c
     manufacturer: "_TZ3000_irwuzilv"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_7b03da6b0e"
+  - id: fp_7b03da6b0e
     manufacturer: "_TZ3000_iszegwpd"
     model: "TS0046"
     deviceProfileName: "buttons-button-6-battery"
-  - id: "fp_c80c2df2cc"
+  - id: fp_c80c2df2cc
     manufacturer: "_TZ3000_ixla93vd"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_d5fe515dfd"
+  - id: fp_d5fe515dfd
     manufacturer: "_TZ3000_j61x9rxn"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_34781d87ef"
+  - id: fp_34781d87ef
     manufacturer: "_TZ3000_j70oanab"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_2e57e846d5"
+  - id: fp_2e57e846d5
     manufacturer: "_TZ3000_ja5osu5g"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_f499dadfb9"
+  - id: fp_f499dadfb9
     manufacturer: "_TZ3000_jwcixnrz"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_d62b9d8486"
+  - id: fp_d62b9d8486
     manufacturer: "_TZ3000_kaflzta4"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_1b750c52f7"
+  - id: fp_1b750c52f7
     manufacturer: "_TZ3000_kccru4oi"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_0537cf4cbe"
+  - id: fp_0537cf4cbe
     manufacturer: "_TZ3000_kfkqkjqe"
     model: "TS0726"
     deviceProfileName: "scene-switches-3"
-  - id: "fp_bf2e4017d1"
+  - id: fp_bf2e4017d1
     manufacturer: "_TZ3000_kfkqkjqe"
     model: "TS0726_3_gang"
     deviceProfileName: "scene-switches-3"
-  - id: "fp_1be2ba6109"
+  - id: fp_1be2ba6109
     manufacturer: "_TZ3000_kfu8zapd"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_cb9d88e395"
+  - id: fp_cb9d88e395
     manufacturer: "_TZ3000_kjfzuycl"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_277786d5c7"
+  - id: fp_277786d5c7
     manufacturer: "_TZ3000_krwtzhfd"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_3d870b17e4"
+  - id: fp_3d870b17e4
     manufacturer: "_TZ3000_kt6xxa4o"
     model: "TS0726"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_27624efd94"
+  - id: fp_27624efd94
     manufacturer: "_TZ3000_kt6xxa4o"
     model: "TS0726_multi_3_gang"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_fb98c31280"
+  - id: fp_fb98c31280
     manufacturer: "_TZ3000_kt7obmnn"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_c7a6f47417"
+  - id: fp_c7a6f47417
     manufacturer: "_TZ3000_kxaow5ki"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_bb5aac8f2e"
+  - id: fp_bb5aac8f2e
     manufacturer: "_TZ3000_laeia8fo"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_f3b99cb9ec"
+  - id: fp_f3b99cb9ec
     manufacturer: "_TZ3000_lcjsewlo"
     model: "TS0726"
     deviceProfileName: "scene-switches-3"
-  - id: "fp_ac6633b418"
+  - id: fp_ac6633b418
     manufacturer: "_TZ3000_lcjsewlo"
     model: "TS0726_3_gang"
     deviceProfileName: "scene-switches-3"
-  - id: "fp_91535f8bdb"
+  - id: fp_91535f8bdb
     manufacturer: "_TZ3000_lrfvzq1e"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_fa845f764b"
+  - id: fp_fa845f764b
     manufacturer: "_TZ3000_m3pafcnk"
     model: "TS0726"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_d8593a353f"
+  - id: fp_d8593a353f
     manufacturer: "_TZ3000_m3pafcnk"
     model: "TS0726_multi_3_gang"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_f0a349ef06"
+  - id: fp_f0a349ef06
     manufacturer: "_TZ3000_m4ah6bcz"
     model: "TS0726"
     deviceProfileName: "scene-switches-1-advanced"
-  - id: "fp_3342349e15"
+  - id: fp_3342349e15
     manufacturer: "_TZ3000_m4ah6bcz"
     model: "TS0726_multi_1_gang"
     deviceProfileName: "scene-switches-1-advanced"
-  - id: "fp_3939c7ac27"
+  - id: fp_3939c7ac27
     manufacturer: "_TZ3000_mh9px7cq"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_e6398601d7"
+  - id: fp_e6398601d7
     manufacturer: "_TZ3000_mrpevh8p"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_8dcb589207"
+  - id: fp_8dcb589207
     manufacturer: "_TZ3000_mutfmn4u"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_ba0f50c494"
+  - id: fp_ba0f50c494
     manufacturer: "_TZ3000_ngsph3oj"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_f657722f17"
+  - id: fp_f657722f17
     manufacturer: "_TZ3000_noru9tix"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_4081f418b2"
+  - id: fp_4081f418b2
     manufacturer: "_TZ3000_noru9tix"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_3d61f04bd7"
+  - id: fp_3d61f04bd7
     manufacturer: "_TZ3000_nrfkrgf4"
     model: "TS0046"
     deviceProfileName: "buttons-button-6-battery"
-  - id: "fp_407420b95d"
+  - id: fp_407420b95d
     manufacturer: "_TZ3000_nuombroo"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_499f274b42"
+  - id: fp_499f274b42
     manufacturer: "_TZ3000_nxdziqzc"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_46ae15c0a9"
+  - id: fp_46ae15c0a9
     manufacturer: "_TZ3000_ovbvmhiq"
     model: "TS0726"
     deviceProfileName: "scene-switches-1"
-  - id: "fp_cc77ede421"
+  - id: fp_cc77ede421
     manufacturer: "_TZ3000_owgcnkrh"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_fa0d96f829"
+  - id: fp_fa0d96f829
     manufacturer: "_TZ3000_p3fph1go"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_c2c75527d4"
+  - id: fp_c2c75527d4
     manufacturer: "_TZ3000_p6ju8myv"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_7104699311"
+  - id: fp_7104699311
     manufacturer: "_TZ3000_pcqjmcud"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-operation-mode-remote-action"
-  - id: "fp_ab2034af3c"
+  - id: fp_ab2034af3c
     manufacturer: "_TZ3000_pd9mpyh4"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_0877d73cf3"
+  - id: fp_0877d73cf3
     manufacturer: "_TZ3000_peszejy7"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_80f1bbfbed"
+  - id: fp_80f1bbfbed
     manufacturer: "_TZ3000_pftj0i7z"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_f093988bb0"
+  - id: fp_f093988bb0
     manufacturer: "_TZ3000_piyhhake"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_0eafc374ad"
+  - id: fp_0eafc374ad
     manufacturer: "_TZ3000_pkfazisv"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_0daf2003c9"
+  - id: fp_0daf2003c9
     manufacturer: "_TZ3000_qfhhb5y4"
     model: "TS0045"
     deviceProfileName: "buttons-button-5-battery"
-  - id: "fp_8d3f6ed52d"
+  - id: fp_8d3f6ed52d
     manufacturer: "_TZ3000_qgwcxxws"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_3281fb4ac2"
+  - id: fp_3281fb4ac2
     manufacturer: "_TZ3000_qhyadm57"
     model: "TS0726"
     deviceProfileName: "scene-switches-4-plus-2"
-  - id: "fp_4d451dbb0b"
+  - id: fp_4d451dbb0b
     manufacturer: "_TZ3000_qhyadm57"
     model: "TS0726_4_gang_switch_and_2_scene"
     deviceProfileName: "scene-switches-4-plus-2"
-  - id: "fp_eddab30395"
+  - id: fp_eddab30395
     manufacturer: "_TZ3000_qja6nq5z"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_e007618f46"
+  - id: fp_e007618f46
     manufacturer: "_TZ3000_qzjcsmar"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_df3d2ae305"
+  - id: fp_df3d2ae305
     manufacturer: "_TZ3000_r0o2dahu"
     model: "TS004F"
     deviceProfileName: "buttons-button-6-battery-operation-mode-remote-action"
-  - id: "fp_bace4238a8"
+  - id: fp_bace4238a8
     manufacturer: "_TZ3000_r2fgo9ks"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_8a7cf255cb"
+  - id: fp_8a7cf255cb
     manufacturer: "_TZ3000_r2fgo9ks"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_d8419899b8"
+  - id: fp_d8419899b8
     manufacturer: "_TZ3000_rco1yzb1"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_bf66582635"
+  - id: fp_bf66582635
     manufacturer: "_TZ3000_rrjr1q0u"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_d3a8d3011e"
+  - id: fp_d3a8d3011e
     manufacturer: "_TZ3000_rsqqkdxv"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_6e1364aaf1"
+  - id: fp_6e1364aaf1
     manufacturer: "_TZ3000_rsylfthg"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_a91c147fea"
+  - id: fp_a91c147fea
     manufacturer: "_TZ3000_rsylfthg"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_b5eaea122e"
+  - id: fp_b5eaea122e
     manufacturer: "_TZ3000_s678wazd"
     model: "TS0726"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_c790c8cd1f"
+  - id: fp_c790c8cd1f
     manufacturer: "_TZ3000_s678wazd"
     model: "TS0726_4_gang"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_398d7bd5c0"
+  - id: fp_398d7bd5c0
     manufacturer: "_TZ3000_sj7jbgks"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_6b5d89f852"
+  - id: fp_6b5d89f852
     manufacturer: "_TZ3000_ssp0maqm"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_7b03301eb3"
+  - id: fp_7b03301eb3
     manufacturer: "_TZ3000_ssup6h68"
     model: "TS0726"
     deviceProfileName: "scene-switches-2-advanced"
-  - id: "fp_723c62bc6c"
+  - id: fp_723c62bc6c
     manufacturer: "_TZ3000_ssup6h68"
     model: "TS0726_multi_2_gang"
     deviceProfileName: "scene-switches-2-advanced"
-  - id: "fp_8e138624e2"
+  - id: fp_8e138624e2
     manufacturer: "_TZ3000_t8hzpgnd"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_1a9914a450"
+  - id: fp_1a9914a450
     manufacturer: "_TZ3000_tj4pwzzm"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_c20de86835"
+  - id: fp_c20de86835
     manufacturer: "_TZ3000_tk3s5tyg"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_c499b1c8e2"
+  - id: fp_c499b1c8e2
     manufacturer: "_TZ3000_tzvbimpq"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_1c7c676111"
+  - id: fp_1c7c676111
     manufacturer: "_TZ3000_u2bbagu4"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_165d59093d"
+  - id: fp_165d59093d
     manufacturer: "_TZ3000_u3nv1jwk"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_64310920cf"
+  - id: fp_64310920cf
     manufacturer: "_TZ3000_uaa99arv"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_6752cc5d9a"
+  - id: fp_6752cc5d9a
     manufacturer: "_TZ3000_ufhtxr59"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_6185315de5"
+  - id: fp_6185315de5
     manufacturer: "_TZ3000_ug1vtuzn"
     model: "TS0215A"
     deviceProfileName: "security-remotes-action-battery"
-  - id: "fp_2308755afa"
+  - id: fp_2308755afa
     manufacturer: "_TZ3000_ugi8ky6u"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_75b856760a"
+  - id: fp_75b856760a
     manufacturer: "_TZ3000_uri7ongn"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_f4f0f9c65f"
+  - id: fp_f4f0f9c65f
     manufacturer: "_TZ3000_v8jvcwsx"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_64834b72a6"
+  - id: fp_64834b72a6
     manufacturer: "_TZ3000_vm5gcsdq"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_754bd8f7eb"
+  - id: fp_754bd8f7eb
     manufacturer: "_TZ3000_vn88ezar"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_d4b41b1c6e"
+  - id: fp_d4b41b1c6e
     manufacturer: "_TZ3000_vp6clf9d"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_57eeda9a5f"
+  - id: fp_57eeda9a5f
     manufacturer: "_TZ3000_w4thianr"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_b50e183273"
+  - id: fp_b50e183273
     manufacturer: "_TZ3000_w8jwkczz"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_1e1598075d"
+  - id: fp_1e1598075d
     manufacturer: "_TZ3000_wbfgbpxq"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_24215000c6"
+  - id: fp_24215000c6
     manufacturer: "_TZ3000_wc3gjyp3"
     model: "TS004F"
     deviceProfileName: "buttons-button-1-battery-operation-mode-remote-action"
-  - id: "fp_1ca599e4a6"
+  - id: fp_1ca599e4a6
     manufacturer: "_TZ3000_wkai4ga5"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_04c83099eb"
+  - id: fp_04c83099eb
     manufacturer: "_TZ3000_wopf2sox"
     model: "TS0726"
     deviceProfileName: "scene-switches-1-advanced"
-  - id: "fp_746012d23d"
+  - id: fp_746012d23d
     manufacturer: "_TZ3000_wopf2sox"
     model: "TS0726_multi_1_gang"
     deviceProfileName: "scene-switches-1-advanced"
-  - id: "fp_ecd0baabeb"
+  - id: fp_ecd0baabeb
     manufacturer: "_TZ3000_wr2ucaj9"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_30a394b98c"
+  - id: fp_30a394b98c
     manufacturer: "_TZ3000_wsspgtcd"
     model: "TS0726"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_b35943e13e"
+  - id: fp_b35943e13e
     manufacturer: "_TZ3000_wsspgtcd"
     model: "TS0726_4_gang"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_653a997f21"
+  - id: fp_653a997f21
     manufacturer: "_TZ3000_xabckq1v"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_e7c6acf75a"
+  - id: fp_e7c6acf75a
     manufacturer: "_TZ3000_xffhmvhv"
     model: "TS004F"
     deviceProfileName: "buttons-button-4-battery-voltage-operation-mode-remote-action"
-  - id: "fp_2c8c363225"
+  - id: fp_2c8c363225
     manufacturer: "_TZ3000_xr7itfxq"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_80adf179b6"
+  - id: fp_80adf179b6
     manufacturer: "_TZ3000_xrqsdxq6"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_b713181032"
+  - id: fp_b713181032
     manufacturer: "_TZ3000_xwh1e22x"
     model: "TS1002"
     deviceProfileName: "controllers-zone-8-battery-voltage-remote-action"
-  - id: "fp_89c57810d5"
+  - id: fp_89c57810d5
     manufacturer: "_TZ3000_xwuveizv"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_c4949da718"
+  - id: fp_c4949da718
     manufacturer: "_TZ3000_yj6k7vfo"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_6aed8bb1ff"
+  - id: fp_6aed8bb1ff
     manufacturer: "_TZ3000_yw5tvzsk"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_65086798e5"
+  - id: fp_65086798e5
     manufacturer: "_TZ3000_zgyzgdua"
     model: "TS0044"
     deviceProfileName: "buttons-button-4-battery-voltage"
-  - id: "fp_35b98c003b"
+  - id: fp_35b98c003b
     manufacturer: "_TZ3000_zsh6uat3"
     model: "TS0215A"
     deviceProfileName: "security-remotes-sos-battery-voltage"
-  - id: "fp_d716b1283b"
+  - id: fp_d716b1283b
     manufacturer: "_TZ3000_ztrfrcsu"
     model: "TS1001"
     deviceProfileName: "controllers-dimming-remote-action"
-  - id: "fp_4c68e012bf"
+  - id: fp_4c68e012bf
     manufacturer: "_TZ3000_zwszqdpy"
     model: "TS1002"
     deviceProfileName: "controllers-zone-8-battery-voltage-remote-action"
-  - id: "fp_f1119e02a8"
+  - id: fp_f1119e02a8
     manufacturer: "_TZ3002_1s0vfmtv"
     model: "TS0726"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_d1f7906099"
+  - id: fp_d1f7906099
     manufacturer: "_TZ3002_1s0vfmtv"
     model: "TS0726_2_gang"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_0d6aa3bf19"
+  - id: fp_0d6aa3bf19
     manufacturer: "_TZ3002_6ahhkwyh"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_c2fa5401c7"
+  - id: fp_c2fa5401c7
     manufacturer: "_TZ3002_6ahhkwyh"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_5857deec27"
+  - id: fp_5857deec27
     manufacturer: "_TZ3002_9vcekkp1"
     model: "TS0726"
     deviceProfileName: "scene-switches-1-advanced"
-  - id: "fp_2b83f718e2"
+  - id: fp_2b83f718e2
     manufacturer: "_TZ3002_9vcekkp1"
     model: "TS0726_multi_1_gang"
     deviceProfileName: "scene-switches-1-advanced"
-  - id: "fp_fc76d1455a"
+  - id: fp_fc76d1455a
     manufacturer: "_TZ3002_a4kvf6zd"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_7db9746286"
+  - id: fp_7db9746286
     manufacturer: "_TZ3002_a4kvf6zd"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_58e1c739b5"
+  - id: fp_58e1c739b5
     manufacturer: "_TZ3002_aewsvjcu"
     model: "TS0726"
     deviceProfileName: "scene-switches-4-advanced"
-  - id: "fp_3112294331"
+  - id: fp_3112294331
     manufacturer: "_TZ3002_aewsvjcu"
     model: "TS0726_multi_4_gang"
     deviceProfileName: "scene-switches-4-advanced"
-  - id: "fp_f1cfc3419a"
+  - id: fp_f1cfc3419a
     manufacturer: "_TZ3002_eda6eitk"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_f2e76d1075"
+  - id: fp_f2e76d1075
     manufacturer: "_TZ3002_eda6eitk"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_cd8bddc020"
+  - id: fp_cd8bddc020
     manufacturer: "_TZ3002_gdwja9a7"
     model: "TS0726"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_4cc2bcf102"
+  - id: fp_4cc2bcf102
     manufacturer: "_TZ3002_gdwja9a7"
     model: "TS0726_2_gang"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_26ad92d1b6"
+  - id: fp_26ad92d1b6
     manufacturer: "_TZ3002_hkaktryd"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_992eaf4cfa"
+  - id: fp_992eaf4cfa
     manufacturer: "_TZ3002_hkaktryd"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_db7c6e2d32"
+  - id: fp_db7c6e2d32
     manufacturer: "_TZ3002_iedhxgyi"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_0b720fcc8a"
+  - id: fp_0b720fcc8a
     manufacturer: "_TZ3002_iedhxgyi"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_4661b7e8b6"
+  - id: fp_4661b7e8b6
     manufacturer: "_TZ3002_jn2x20tg"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_83bb0128d7"
+  - id: fp_83bb0128d7
     manufacturer: "_TZ3002_jn2x20tg"
     model: "TS0726_1_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_94b3f0de57"
+  - id: fp_94b3f0de57
     manufacturer: "_TZ3002_kq3kqwjt"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_a9d832ebd6"
+  - id: fp_a9d832ebd6
     manufacturer: "_TZ3002_kq3kqwjt"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_3f7800ed18"
+  - id: fp_3f7800ed18
     manufacturer: "_TZ3002_l8bfzlcd"
     model: "TS0726"
     deviceProfileName: "scene-switches-1"
-  - id: "fp_f407510aea"
+  - id: fp_f407510aea
     manufacturer: "_TZ3002_l8bfzlcd"
     model: "TS0726_1_gang"
     deviceProfileName: "scene-switches-1"
-  - id: "fp_44fc3f9228"
+  - id: fp_44fc3f9228
     manufacturer: "_TZ3002_m3pafcnk"
     model: "TS0726"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_9b2ddf4b5a"
+  - id: fp_9b2ddf4b5a
     manufacturer: "_TZ3002_m3pafcnk"
     model: "TS0726_multi_3_gang"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_4a65c9929e"
+  - id: fp_4a65c9929e
     manufacturer: "_TZ3002_phu8ygaw"
     model: "TS0726"
     deviceProfileName: "scene-switches-4-advanced"
-  - id: "fp_9e0599b535"
+  - id: fp_9e0599b535
     manufacturer: "_TZ3002_phu8ygaw"
     model: "TS0726_multi_4_gang"
     deviceProfileName: "scene-switches-4-advanced"
-  - id: "fp_284c1da1a4"
+  - id: fp_284c1da1a4
     manufacturer: "_TZ3002_pw4ad2xa"
     model: "TS0726"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_cffb3339a9"
+  - id: fp_cffb3339a9
     manufacturer: "_TZ3002_pw4ad2xa"
     model: "TS0726_4_gang"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_eac6bad4c0"
+  - id: fp_eac6bad4c0
     manufacturer: "_TZ3002_pzao9ls1"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_f880f477c9"
+  - id: fp_f880f477c9
     manufacturer: "_TZ3002_pzao9ls1"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_396f06bcb6"
+  - id: fp_396f06bcb6
     manufacturer: "_TZ3002_rbnycsav"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_0f74a886f0"
+  - id: fp_0f74a886f0
     manufacturer: "_TZ3002_rbnycsav"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_289b47c781"
+  - id: fp_289b47c781
     manufacturer: "_TZ3002_sal078g8"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-6"
-  - id: "fp_1801f8b7b6"
+  - id: fp_1801f8b7b6
     manufacturer: "_TZ3002_sal078g8"
     model: "TS0726_switch_4g_2s"
     deviceProfileName: "scene-switches-scene-6"
-  - id: "fp_2ff1449401"
+  - id: fp_2ff1449401
     manufacturer: "_TZ3002_sfh0jtz0"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-6"
-  - id: "fp_e752fe05b5"
+  - id: fp_e752fe05b5
     manufacturer: "_TZ3002_sfh0jtz0"
     model: "TS0726_switch_4g_2s"
     deviceProfileName: "scene-switches-scene-6"
-  - id: "fp_1cc9bd2a59"
+  - id: fp_1cc9bd2a59
     manufacturer: "_TZ3002_tdf2m4ch"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_aaa6d83913"
+  - id: fp_aaa6d83913
     manufacturer: "_TZ3002_tdf2m4ch"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_b4614f415c"
+  - id: fp_b4614f415c
     manufacturer: "_TZ3002_tlsvxhxc"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_665e612387"
+  - id: fp_665e612387
     manufacturer: "_TZ3002_tlsvxhxc"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_7240281fbe"
+  - id: fp_7240281fbe
     manufacturer: "_TZ3002_u7d3nes3"
     model: "TS0726"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_3d3bd63c69"
+  - id: fp_3d3bd63c69
     manufacturer: "_TZ3002_u7d3nes3"
     model: "TS0726_2_gang"
     deviceProfileName: "scene-switches-2"
-  - id: "fp_4d088c6806"
+  - id: fp_4d088c6806
     manufacturer: "_TZ3002_umdkr64x"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_08c0a37112"
+  - id: fp_08c0a37112
     manufacturer: "_TZ3002_umdkr64x"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_f9623f297f"
+  - id: fp_f9623f297f
     manufacturer: "_TZ3002_uu4uircb"
     model: "TS0726"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_db0f242afb"
+  - id: fp_db0f242afb
     manufacturer: "_TZ3002_uu4uircb"
     model: "TS0726_4_gang"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_5b28abdfa2"
+  - id: fp_5b28abdfa2
     manufacturer: "_TZ3002_vaq2bfcu"
     model: "TS0726"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_b632718a3a"
+  - id: fp_b632718a3a
     manufacturer: "_TZ3002_vaq2bfcu"
     model: "TS0726_multi_3_gang"
     deviceProfileName: "scene-switches-3-advanced"
-  - id: "fp_9c8690a3eb"
+  - id: fp_9c8690a3eb
     manufacturer: "_TZ3002_vsom92pp"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_abf6f9233b"
+  - id: fp_abf6f9233b
     manufacturer: "_TZ3002_vsom92pp"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_c242c8bedd"
+  - id: fp_c242c8bedd
     manufacturer: "_TZ3002_xkxgfxsg"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_37b4137464"
+  - id: fp_37b4137464
     manufacturer: "_TZ3002_xkxgfxsg"
     model: "TS0726_1_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_acff446c09"
+  - id: fp_acff446c09
     manufacturer: "_TZ3002_ybtqbyk3"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_17a3f3f319"
+  - id: fp_17a3f3f319
     manufacturer: "_TZ3002_ybtqbyk3"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_5db2370bae"
+  - id: fp_5db2370bae
     manufacturer: "_TZ3002_ymv5vytn"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_2fe4f63206"
+  - id: fp_2fe4f63206
     manufacturer: "_TZ3002_ymv5vytn"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_220e9db1df"
+  - id: fp_220e9db1df
     manufacturer: "_TZ3002_yptomml1"
     model: "TS0726"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_e06101ce70"
+  - id: fp_e06101ce70
     manufacturer: "_TZ3002_yptomml1"
     model: "TS0726_4_gang"
     deviceProfileName: "scene-switches-4"
-  - id: "fp_e036e5596d"
+  - id: fp_e036e5596d
     manufacturer: "_TZ3002_zjuvw9zf"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_544ce30cc6"
+  - id: fp_544ce30cc6
     manufacturer: "_TZ3002_zjuvw9zf"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_7ad6205588"
+  - id: fp_7ad6205588
     manufacturer: "_TZ300A_82iab0pn"
     model: "TS0726"
     deviceProfileName: "scene-switches-4-plus-4"
-  - id: "fp_315f99be37"
+  - id: fp_315f99be37
     manufacturer: "_TZ300A_fhbcipep"
     model: "TS0726"
     deviceProfileName: "scene-switches-4-plus-2"
-  - id: "fp_f83aeee8c8"
+  - id: fp_f83aeee8c8
     manufacturer: "_TZ300A_fhbcipep"
     model: "TS0726_4_gang_switch_and_2_scene"
     deviceProfileName: "scene-switches-4-plus-2"
-  - id: "fp_61e0ab176a"
+  - id: fp_61e0ab176a
     manufacturer: "_TZ300A_ohjmifiz"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_a35ed8729a"
+  - id: fp_a35ed8729a
     manufacturer: "_TZ300A_ohjmifiz"
     model: "TS0726_2_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-2"
-  - id: "fp_d52aad5fcf"
+  - id: fp_d52aad5fcf
     manufacturer: "_TZ300A_rncj86af"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_35b7a5ae8a"
+  - id: fp_35b7a5ae8a
     manufacturer: "_TZ300A_rncj86af"
     model: "TS0726_1_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-1"
-  - id: "fp_8c9f46d6a1"
+  - id: fp_8c9f46d6a1
     manufacturer: "_TZ300A_vkflnsl0"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_bcc87d94a5"
+  - id: fp_bcc87d94a5
     manufacturer: "_TZ300A_vkflnsl0"
     model: "TS0726_4_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-4"
-  - id: "fp_4c6d101b1b"
+  - id: fp_4c6d101b1b
     manufacturer: "_TZ300A_vqrs45nj"
     model: "TS0726"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_1563923d91"
+  - id: fp_1563923d91
     manufacturer: "_TZ300A_vqrs45nj"
     model: "TS0726_3_gang_scene_switch"
     deviceProfileName: "scene-switches-scene-3"
-  - id: "fp_1f40f23781"
+  - id: fp_1f40f23781
     manufacturer: "_TZ3290_785fbxik"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_b252608c02"
+  - id: fp_b252608c02
     manufacturer: "_TZ3290_7v1k4vufotpowp9z"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_476a1a7801"
+  - id: fp_476a1a7801
     manufacturer: "_TZ3290_7v1k4vufotpowp9z"
     model: "ZS06"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_bbbe35dc90"
+  - id: fp_bbbe35dc90
     manufacturer: "_TZ3290_8xzb2ghn"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_8b6e23009e"
+  - id: fp_8b6e23009e
     manufacturer: "_TZ3290_acv1iuslxi3shaaj"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_d1aebac4f8"
+  - id: fp_d1aebac4f8
     manufacturer: "_TZ3290_acv1iuslxi3shaaj"
     model: "ZS06"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_ebbbde1a89"
+  - id: fp_ebbbde1a89
     manufacturer: "_TZ3290_gnl5a6a5xvql7c2a"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_14928628a9"
+  - id: fp_14928628a9
     manufacturer: "_TZ3290_gnl5a6a5xvql7c2a"
     model: "ZS06"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_a3d3604691"
+  - id: fp_a3d3604691
     manufacturer: "_TZ3290_j37rooaxrcdcqo5n"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_d38495cb5e"
+  - id: fp_d38495cb5e
     manufacturer: "_TZ3290_jxvzqatwgsaqzx1u"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_398e74ca46"
+  - id: fp_398e74ca46
     manufacturer: "_TZ3290_lidgqyzu"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver-battery"
-  - id: "fp_050251a2f7"
+  - id: fp_050251a2f7
     manufacturer: "_TZ3290_lypnqvlem5eq1ree"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_60565a0147"
+  - id: fp_60565a0147
     manufacturer: "_TZ3290_nba3knpsarkawgnt"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_99b42fe752"
+  - id: fp_99b42fe752
     manufacturer: "_TZ3290_nba3knpsarkawgnt"
     model: "ZS06"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_0861d58e55"
+  - id: fp_0861d58e55
     manufacturer: "_TZ3290_nkpxapoz"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_7894526442"
+  - id: fp_7894526442
     manufacturer: "_TZ3290_ot6ewjvmejq5ekhl"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_2297910770"
+  - id: fp_2297910770
     manufacturer: "_TZ3290_rlkmy85q4pzoxobl"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_6d80ba48fe"
+  - id: fp_6d80ba48fe
     manufacturer: "_TZ3290_rlkmy85q4pzoxobl"
     model: "ZS06"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_12e8760637"
+  - id: fp_12e8760637
     manufacturer: "_TZ3290_s6ezpa3j"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_e34c450822"
+  - id: fp_e34c450822
     manufacturer: "_TZ3290_u9xac5rv"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver-battery"
-  - id: "fp_0dbc92b3d7"
+  - id: fp_0dbc92b3d7
     manufacturer: "_TZ3290_uc8lwbi2"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_346da6760f"
+  - id: fp_346da6760f
     manufacturer: "_TZ3290_xjpbcxn92aaxvmlz"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_6b3dc49245"
+  - id: fp_6b3dc49245
     manufacturer: "_TZ3290_yac64inudpovoaba"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_65835277de"
+  - id: fp_65835277de
     manufacturer: "_TZ3290_yac64inudpovoaba"
     model: "ZS06"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_ec66b85c65"
+  - id: fp_ec66b85c65
     manufacturer: "_TZ3290_yyax9ajf"
     model: "TS1201"
     deviceProfileName: "controllers-ir-transceiver"
-  - id: "fp_8e84c4aaf9"
+  - id: fp_8e84c4aaf9
     manufacturer: "_TZ3400_key8kk7r"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
-  - id: "fp_1633728677"
+  - id: fp_1633728677
     manufacturer: "_TZ3400_keyjhapk"
     model: "TS0042"
     deviceProfileName: "buttons-button-2-battery"
-  - id: "fp_d535e6edfc"
+  - id: fp_d535e6edfc
     manufacturer: "_TZ3400_keyjqthh"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_169781e06d"
+  - id: fp_169781e06d
     manufacturer: "_TZ3400_tk3s5tyg"
     model: "TS0041"
     deviceProfileName: "buttons-button-1-battery"
-  - id: "fp_4709a76e87"
+  - id: fp_4709a76e87
     manufacturer: "eWeLink"
     model: "CK-TLSR8656-SS5-01(7000)"
-    deviceProfileName: "buttons-button-1-battery-remote-action"
-  - id: "fp_312b061152"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"
+  - id: fp_312b061152
     manufacturer: "eWeLink"
     model: "SNZB-01"
-    deviceProfileName: "buttons-button-1-battery-remote-action"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"
+  - id: fp_96b081f213
+    manufacturer: "eWeLink"
+    model: "WB-01"
+    deviceProfileName: "buttons-ewelink-button-1-battery-voltage-remote-action"

@@ -1,9 +1,9 @@
 zigbeeManufacturer:
-  - id: "fp_0aac76a6b7"
+  - id: fp_0aac76a6b7
     manufacturer: "PirogovX"
     model: "ZB-MIDEA-AC"
     deviceProfileName: "thermostats-wave19-pirogov-zb-midea-ac"
-  - id: "fp_6261d4b67f"
+  - id: fp_6261d4b67f
     manufacturer: "SDevices"
     model: "SBDV-00205"
     deviceProfileName: "thermostats-wave19-sber-sbdv-00205"

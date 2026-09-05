@@ -1,121 +1,121 @@
 zigbeeManufacturer:
-  - id: "fp_e5c0a21f93"
+  - id: fp_e5c0a21f93
     manufacturer: "_TZE200_1n2zev06"
     model: "TS0601"
     deviceProfileName: "valves-valve-threshold-timer-fkv02"
-  - id: "fp_b5b612c798"
+  - id: fp_b5b612c798
     manufacturer: "_TZE200_2wg5qrjy"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-timer-zvg1"
-  - id: "fp_534188ca9a"
+  - id: fp_534188ca9a
     manufacturer: "_TZE200_5uodvhgc"
     model: "TS0601"
     deviceProfileName: "valves-valve-threshold-timer-fkv02"
-  - id: "fp_104be22140"
+  - id: fp_104be22140
     manufacturer: "_TZE200_81isopgh"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-timer-zvg1"
-  - id: "fp_dadaf9b837"
+  - id: fp_dadaf9b837
     manufacturer: "_TZE200_akjefhj5"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-timer-zvg1"
-  - id: "fp_cf45817f25"
+  - id: fp_cf45817f25
     manufacturer: "_TZE200_fphxkxue"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-countdown-zvl-pro"
-  - id: "fp_8b9073afb0"
+  - id: fp_8b9073afb0
     manufacturer: "_TZE200_hbnfokum"
     model: "TS0601"
     deviceProfileName: "valves-valve-position-hbnfokum"
-  - id: "fp_ec9ef698b4"
+  - id: fp_ec9ef698b4
     manufacturer: "_TZE200_vuwtqx0t"
     model: "TS0601"
     deviceProfileName: "valves-valve-ultrasonic-meter"
-  - id: "fp_b0de2b1cc7"
+  - id: fp_b0de2b1cc7
     manufacturer: "_TZE200_wt9agwf3"
     model: "TS0601"
     deviceProfileName: "valves-valve-threshold-timer-fkv02"
-  - id: "fp_82b0ba7662"
+  - id: fp_82b0ba7662
     manufacturer: "_TZE204_4fblxpma"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons-no-on-countdown"
-  - id: "fp_5ab971f9de"
+  - id: fp_5ab971f9de
     manufacturer: "_TZE204_dsagrkvg"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-state-zpv01"
-  - id: "fp_cb097462e0"
+  - id: fp_cb097462e0
     manufacturer: "_TZE204_nnhwcvbk"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons"
-  - id: "fp_e477f7bf89"
+  - id: fp_e477f7bf89
     manufacturer: "_TZE204_qtnjuoae"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-timer-zvg1"
-  - id: "fp_5cf9580b53"
+  - id: fp_5cf9580b53
     manufacturer: "_TZE204_rzrrjkz2"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons"
-  - id: "fp_d7c5fea76e"
+  - id: fp_d7c5fea76e
     manufacturer: "_TZE204_uab532m0"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons"
-  - id: "fp_9c4436d66f"
+  - id: fp_9c4436d66f
     manufacturer: "_TZE204_z7a2jmyy"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-liters"
-  - id: "fp_7fb3cb6440"
+  - id: fp_7fb3cb6440
     manufacturer: "_TZE284_4fblxpma"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons-no-on-countdown"
-  - id: "fp_dffb506fcc"
+  - id: fp_dffb506fcc
     manufacturer: "_TZE284_8zizsafo"
     model: "TS0601"
     deviceProfileName: "valves-valve-2-battery-timer-gx03"
-  - id: "fp_b5ca1a2cb7"
+  - id: fp_b5ca1a2cb7
     manufacturer: "_TZE284_eaet5qt5"
     model: "TS0601"
     deviceProfileName: "valves-valve-2-battery-status"
-  - id: "fp_c8e85c014a"
+  - id: fp_c8e85c014a
     manufacturer: "_TZE284_fhvpaltk"
     model: "TS0601"
     deviceProfileName: "valves-valve-2-battery-status"
-  - id: "fp_e49badadfb"
+  - id: fp_e49badadfb
     manufacturer: "_TZE284_iilebqoo"
     model: "TS0601"
     deviceProfileName: "valves-valve-2-battery-timer-gx03"
-  - id: "fp_cf62b23476"
+  - id: fp_cf62b23476
     manufacturer: "_TZE284_nnhwcvbk"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons"
-  - id: "fp_808be103d9"
+  - id: fp_808be103d9
     manufacturer: "_TZE284_qtnjuoae"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-timer-zvg1"
-  - id: "fp_6c4e195b51"
+  - id: fp_6c4e195b51
     manufacturer: "_TZE284_rzrrjkz2"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons"
-  - id: "fp_6882d67601"
+  - id: fp_6882d67601
     manufacturer: "_TZE284_sdvbnmj5"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-state-zpv01"
-  - id: "fp_cc2e7fcf0b"
+  - id: fp_cc2e7fcf0b
     manufacturer: "_TZE284_uab532m0"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-gallons"
-  - id: "fp_d9df11c7bb"
+  - id: fp_d9df11c7bb
     manufacturer: "_TZE284_vuwtqx0t"
     model: "TS0601"
     deviceProfileName: "valves-valve-ultrasonic-meter"
-  - id: "fp_28ac273d39"
+  - id: fp_28ac273d39
     manufacturer: "_TZE284_xuflgcnz"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-timer-zvg1"
-  - id: "fp_18b02eaed5"
+  - id: fp_18b02eaed5
     manufacturer: "_TZE284_z7a2jmyy"
     model: "TS0601"
     deviceProfileName: "valves-nas-wv03b-liters"
-  - id: "fp_ef75d4b859"
+  - id: fp_ef75d4b859
     manufacturer: "_TZE284_zm8zpwas"
     model: "TS0601"
     deviceProfileName: "valves-valve-battery-state-zpv01"

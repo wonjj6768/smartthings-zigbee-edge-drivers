@@ -1,209 +1,209 @@
 zigbeeManufacturer:
-  - id: "fp_68ef6690ca"
+  - id: fp_68ef6690ca
     manufacturer: "HOCH"
     model: "ZJSBL7-100Z"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-rcbo"
-  - id: "fp_bcc98f906c"
+  - id: fp_bcc98f906c
     manufacturer: "Hiking"
     model: "DDS238-2"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din1"
-  - id: "fp_d5adb5cc34"
+  - id: fp_d5adb5cc34
     manufacturer: "MatSee Plus"
     model: "DAC2161C"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din2"
-  - id: "fp_e5ad9d32f8"
+  - id: fp_e5ad9d32f8
     manufacturer: "SUTON"
     model: "STB3L-125/ZJ"
     deviceProfileName: "din-rail-switch-power-energy-3phase-stb3l125zj"
-  - id: "fp_24e30cf9e4"
+  - id: fp_24e30cf9e4
     manufacturer: "TNCE"
     model: "RMDZB-1PNL63"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-rmdzb1pnl63"
-  - id: "fp_964d1716f1"
+  - id: fp_964d1716f1
     manufacturer: "Tongou"
     model: "TOQCB2-80-2P"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_fbf5e4c5d2"
+  - id: fp_fbf5e4c5d2
     manufacturer: "Tongou"
     model: "TOWSMR1-20A-AC"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_0cb77c96f4"
+  - id: fp_0cb77c96f4
     manufacturer: "Tongou"
     model: "TOWSMR1-40A-A"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_e340aa8e42"
+  - id: fp_e340aa8e42
     manufacturer: "Tongou"
     model: "TOWSMR1-40A-AC"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_d17b921603"
+  - id: fp_d17b921603
     manufacturer: "Tuya"
     model: "RC-MCB"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din1"
-  - id: "fp_86019a4356"
+  - id: fp_86019a4356
     manufacturer: "WDYK"
     model: "ZJSBL7-100Z"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-rcbo"
-  - id: "fp_98f8573a21"
+  - id: fp_98f8573a21
     manufacturer: "XOCA"
     model: "DAC2161C"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din3"
-  - id: "fp_e9c51cfe3c"
+  - id: fp_e9c51cfe3c
     manufacturer: "_TZE200_abatw3kj"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din4"
-  - id: "fp_4db48c175a"
+  - id: fp_4db48c175a
     manufacturer: "_TZE200_bkkmqmyo"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din1"
-  - id: "fp_f56276c075"
+  - id: fp_f56276c075
     manufacturer: "_TZE200_byzdayie"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current"
-  - id: "fp_7ea9aea9a9"
+  - id: fp_7ea9aea9a9
     manufacturer: "_TZE200_eaac7dkw"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din1"
-  - id: "fp_1552f0ac3c"
+  - id: fp_1552f0ac3c
     manufacturer: "_TZE200_ewxhg6o9"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current"
-  - id: "fp_2b9b5933c2"
+  - id: fp_2b9b5933c2
     manufacturer: "_TZE200_fsb6zw01"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current"
-  - id: "fp_a59ce332c6"
+  - id: fp_a59ce332c6
     manufacturer: "_TZE200_hkdl5fmv"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-rcbo"
-  - id: "fp_1f38afa435"
+  - id: fp_1f38afa435
     manufacturer: "_TZE200_lsanae15"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din2"
-  - id: "fp_24bfeaeed2"
+  - id: fp_24bfeaeed2
     manufacturer: "_TZE200_rhblgy0z"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din3"
-  - id: "fp_8c4e64f0a4"
+  - id: fp_8c4e64f0a4
     manufacturer: "_TZE200_wbhaespm"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-3phase-stb3l125zj"
-  - id: "fp_3d85649805"
+  - id: fp_3d85649805
     manufacturer: "_TZE204_432zhuwe"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_ecb3b81694"
+  - id: fp_ecb3b81694
     manufacturer: "_TZE204_4bjixefp"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din4"
-  - id: "fp_eeea88b560"
+  - id: fp_eeea88b560
     manufacturer: "_TZE204_bkkmqmyo"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din1"
-  - id: "fp_161a7df4fa"
+  - id: fp_161a7df4fa
     manufacturer: "_TZE204_byzdayie"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current"
-  - id: "fp_262b8ccf3c"
+  - id: fp_262b8ccf3c
     manufacturer: "_TZE204_fhvdgeuh"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din4"
-  - id: "fp_37153c7038"
+  - id: fp_37153c7038
     manufacturer: "_TZE204_jcwbwckh"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-zbnjt63"
-  - id: "fp_e4fc92450f"
+  - id: fp_e4fc92450f
     manufacturer: "_TZE204_kobbcyum"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_48ea2597c0"
+  - id: fp_48ea2597c0
     manufacturer: "_TZE204_l6llgoxq"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din2"
-  - id: "fp_a069d09ff7"
+  - id: fp_a069d09ff7
     manufacturer: "_TZE204_lb0fsvba"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-zbndj63"
-  - id: "fp_a1e8e6a15a"
+  - id: fp_a1e8e6a15a
     manufacturer: "_TZE204_lsanae15"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din2"
-  - id: "fp_65949066b6"
+  - id: fp_65949066b6
     manufacturer: "_TZE204_m64smti7"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-rmdzb1pnl63"
-  - id: "fp_5414c87cd5"
+  - id: fp_5414c87cd5
     manufacturer: "_TZE204_mrffaamu"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_2fa660c083"
+  - id: fp_2fa660c083
     manufacturer: "_TZE204_q22avxbv"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_3147a60e58"
+  - id: fp_3147a60e58
     manufacturer: "_TZE204_rhblgy0z"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-din3"
-  - id: "fp_2d6a81ecaa"
+  - id: fp_2d6a81ecaa
     manufacturer: "_TZE204_tuhfx7tf"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_846d7f0910"
+  - id: fp_846d7f0910
     manufacturer: "_TZE204_tzreobvu"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_00201f89de"
+  - id: fp_00201f89de
     manufacturer: "_TZE204_wbhaespm"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-3phase-stb3l125zj"
-  - id: "fp_9a0f40a85e"
+  - id: fp_9a0f40a85e
     manufacturer: "_TZE284_432zhuwe"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_436f19ed44"
+  - id: fp_436f19ed44
     manufacturer: "_TZE284_5m4nchbm"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-leakage-protector"
-  - id: "fp_152f900a42"
+  - id: fp_152f900a42
     manufacturer: "_TZE284_6ocnqlhn"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqjzt"
-  - id: "fp_a085be7b98"
+  - id: fp_a085be7b98
     manufacturer: "_TZE284_9xstqowh"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_fdecda579f"
+  - id: fp_fdecda579f
     manufacturer: "_TZE284_hecsejsb"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_d1ba2d6b38"
+  - id: fp_d1ba2d6b38
     manufacturer: "_TZE284_kobbcyum"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_6f6fd73ce0"
+  - id: fp_6f6fd73ce0
     manufacturer: "_TZE284_kv1nvirl"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_62c2177443"
+  - id: fp_62c2177443
     manufacturer: "_TZE284_mrffaamu"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_993a1e636b"
+  - id: fp_993a1e636b
     manufacturer: "_TZE284_q22avxbv"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_6f5e9c4700"
+  - id: fp_6f5e9c4700
     manufacturer: "_TZE284_s5vuaadg"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_a522a0e384"
+  - id: fp_a522a0e384
     manufacturer: "_TZE284_tuhfx7tf"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-towsmr1"
-  - id: "fp_7f10397965"
+  - id: fp_7f10397965
     manufacturer: "_TZE284_tzreobvu"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-voltage-current-toqcb2"
-  - id: "fp_7974a98e0d"
+  - id: fp_7974a98e0d
     manufacturer: "_TZE284_wbhaespm"
     model: "TS0601"
     deviceProfileName: "din-rail-switch-power-energy-3phase-stb3l125zj"

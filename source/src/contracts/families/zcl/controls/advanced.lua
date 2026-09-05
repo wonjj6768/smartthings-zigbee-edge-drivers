@@ -76,6 +76,21 @@ local function passive_battery_voltage_cluster()
   })
 end
 
+local function ewelink_battery_voltage_cluster()
+  return zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION, zcl.ATTR_BATTERY_VOLTAGE, {
+    name = "battery_voltage",
+    endpoint = 1,
+    emit = emit.voltage(),
+    scale = 10,
+    data_type = data_types.Uint8,
+    minimum_interval = 3600,
+    maximum_interval = 7200,
+    reportable_change = 100,
+    read_on_configure = true,
+    read_only = true,
+  })
+end
+
 local function component_for_endpoint(endpoint)
   return endpoint == 1 and "main" or ("button" .. tostring(endpoint))
 end
@@ -679,7 +694,7 @@ shelly_one_input.configure = function(driver, device)
     ))
   end
 end
-local ewelink_button = build_standard_action_remote("buttons-button-1-battery-remote-action", 1, {
+local ewelink_button = build_standard_action_remote("buttons-ewelink-button-1-battery-voltage-remote-action", 1, {
   button_actions = { "pushed", "double", "held" },
 })
 local namron_4512772 = build_standard_action_remote("buttons-button-4-battery-remote-action", 4, {
@@ -753,6 +768,7 @@ ewelink_button.zcl_clusters = {
     maximum_interval = 7200,
     reportable_change = 2,
   }),
+  ewelink_battery_voltage_cluster(),
 }
 ewelink_button.standard_command_action_resolver = ewelink_button_action
 ewelink_button.standard_action_button_events = {
@@ -937,7 +953,16 @@ register_device_definition(shelly_one_input, {
 
 register_device_definition(ewelink_button, {
   device_helpers.create_fingerprint("eWeLink", "CK-TLSR8656-SS5-01(7000)"),
+  -- Actual WB-01 hardware reports this literal model on the same On/Off
+  -- command and Power Configuration contract.
+  device_helpers.create_fingerprint("eWeLink", "WB-01"),
   device_helpers.create_fingerprint("eWeLink", "SNZB-01"),
+  -- User-directed SONOFF manufacturer exacts for the same ZHC definition.
+  -- Keep the observed eWeLink identities above; these are additive aliases.
+  device_helpers.create_fingerprint("SONOFF", "CK-TLSR8656-SS5-01(7000)"),
+  device_helpers.create_fingerprint("SONOFF", "WB01"),
+  device_helpers.create_fingerprint("SONOFF", "WB-01"),
+  device_helpers.create_fingerprint("SONOFF", "SNZB-01"),
 })
 
 register_device_definition(namron_4512772, {

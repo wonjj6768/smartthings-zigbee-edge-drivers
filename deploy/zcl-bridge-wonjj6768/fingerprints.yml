@@ -1,13 +1,13 @@
 zigbeeManufacturer:
-  - id: "fp_acc3c410b9"
+  - id: fp_acc3c410b9
     manufacturer: "Candeo"
     model: "C-RFZB-HUB"
     deviceProfileName: "bridges-wave19-candeo-rf-hub"
-  - id: "fp_43a4edfb61"
+  - id: fp_43a4edfb61
     manufacturer: "HEIMAN"
     model: "IRControl-EM"
     deviceProfileName: "bridges-wave19-heiman-hs-one-ir"
-  - id: "fp_4d20685ea5"
+  - id: fp_4d20685ea5
     manufacturer: "HEIMAN"
     model: "IRControl2-EF-3.0"
     deviceProfileName: "bridges-wave19-heiman-hs-two-ir"

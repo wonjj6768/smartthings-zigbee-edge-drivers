@@ -1,121 +1,121 @@
 zigbeeManufacturer:
-  - id: "fp_4667c009da"
+  - id: fp_4667c009da
     manufacturer: "C6B7KM9"
     model: "Excellux"
     deviceProfileName: "safety-presence-excellux-zg301a"
-  - id: "fp_15be1c84b5"
+  - id: fp_15be1c84b5
     manufacturer: "HOBEIAN"
     model: "ZG-204ZX"
     deviceProfileName: "safety-presence-illuminance-temp-humidity-battery-zg204zx"
-  - id: "fp_3e9d3975ec"
+  - id: fp_3e9d3975ec
     manufacturer: "_TZE200_0u3bj3rc"
     model: "TS0601"
     deviceProfileName: "safety-presence-hps-duration-led"
-  - id: "fp_a7d2037033"
+  - id: fp_a7d2037033
     manufacturer: "_TZE200_hyhl5y36"
     model: "TS0601"
     deviceProfileName: "safety-presence-msa201-illuminance"
-  - id: "fp_e16538df7b"
+  - id: fp_e16538df7b
     manufacturer: "_TZE200_jkbljri7"
     model: "TS0601"
     deviceProfileName: "safety-presence-mirhe200-illuminance-fall"
-  - id: "fp_d62f7a34b8"
+  - id: fp_d62f7a34b8
     manufacturer: "_TZE200_juzago6i"
     model: "TS0601"
     deviceProfileName: "safety-presence-pir24g-dedicated-illuminance-battery"
-  - id: "fp_3662aa8190"
+  - id: fp_3662aa8190
     manufacturer: "_TZE200_lu01t0zl"
     model: "TS0601"
     deviceProfileName: "safety-presence-mirhe200-illuminance-fall"
-  - id: "fp_42cb4a08a8"
+  - id: fp_42cb4a08a8
     manufacturer: "_TZE200_mgxy2d9f"
     model: "TS0601"
     deviceProfileName: "safety-motion-tamper-battery"
-  - id: "fp_cf095db716"
+  - id: fp_cf095db716
     manufacturer: "_TZE200_mx6u6l4y"
     model: "TS0601"
     deviceProfileName: "safety-presence-hps-duration-led"
-  - id: "fp_b939071276"
+  - id: fp_b939071276
     manufacturer: "_TZE200_v6ossqfy"
     model: "TS0601"
     deviceProfileName: "safety-presence-hps-duration-led"
-  - id: "fp_e6fb4b611d"
+  - id: fp_e6fb4b611d
     manufacturer: "_TZE200_vrfecyku"
     model: "TS0601"
     deviceProfileName: "safety-presence-mirhe200-illuminance-fall"
-  - id: "fp_a26ad4ab35"
+  - id: fp_a26ad4ab35
     manufacturer: "_TZE200_w0ap83qu"
     model: "TS0601"
     deviceProfileName: "safety-presence-illuminance-temp-humidity-battery-zg204zx"
-  - id: "fp_455c389ef4"
+  - id: fp_455c389ef4
     manufacturer: "_TZE200_w0ap83qu"
     model: "ZG-204ZX"
     deviceProfileName: "safety-presence-illuminance-temp-humidity-battery-zg204zx"
-  - id: "fp_a08d56dfb7"
+  - id: fp_a08d56dfb7
     manufacturer: "_TZE200_ypprdwsl"
     model: "TS0601"
     deviceProfileName: "safety-presence-mirhe200-illuminance-fall"
-  - id: "fp_5d612a8500"
+  - id: fp_5d612a8500
     manufacturer: "_TZE204_aai5grix"
     model: "TS0601"
     deviceProfileName: "safety-presence-mtd285-illuminance"
-  - id: "fp_2e41c841d3"
+  - id: fp_2e41c841d3
     manufacturer: "_TZE204_bmdsp6bs"
     model: "TS0601"
     deviceProfileName: "safety-presence-y1in-dedicated-illuminance"
-  - id: "fp_482fde187d"
+  - id: fp_482fde187d
     manufacturer: "_TZE204_bvfld3xc"
     model: "TS0601"
     deviceProfileName: "safety-presence-mirhe200-illuminance-fall"
-  - id: "fp_0dbdd00869"
+  - id: fp_0dbdd00869
     manufacturer: "_TZE204_debczeci"
     model: "TS0601"
     deviceProfileName: "safety-presence-basic-delay-battery"
-  - id: "fp_805c37cee9"
+  - id: fp_805c37cee9
     manufacturer: "_TZE204_eaulras5"
     model: "TS0601"
     deviceProfileName: "safety-presence-pj3201a-illuminance"
-  - id: "fp_a20b714db7"
+  - id: fp_a20b714db7
     manufacturer: "_TZE204_kyhbrfyl"
     model: "TS0601"
     deviceProfileName: "safety-motion-nas-ps09b2"
-  - id: "fp_38254f9980"
+  - id: fp_38254f9980
     manufacturer: "_TZE204_laokfqwu"
     model: "TS0601"
     deviceProfileName: "safety-presence-wzm100-range-delay-illuminance"
-  - id: "fp_38f17783e3"
+  - id: fp_38f17783e3
     manufacturer: "_TZE204_mhxn2jso"
     model: "TS0601"
     deviceProfileName: "safety-presence-rtsc11r-illuminance"
-  - id: "fp_016b53edf7"
+  - id: fp_016b53edf7
     manufacturer: "_TZE204_muvkrjr5"
     model: "TS0601"
     deviceProfileName: "safety-presence-szr07u-range-delay"
-  - id: "fp_aa8424cd6b"
+  - id: fp_aa8424cd6b
     manufacturer: "_TZE204_no6qtgtl"
     model: "TS0601"
     deviceProfileName: "safety-presence-rd24g01-range"
-  - id: "fp_207011ef20"
+  - id: fp_207011ef20
     manufacturer: "_TZE284_1lvln0x6"
     model: "TS0601"
     deviceProfileName: "safety-presence-basic-delay-battery"
-  - id: "fp_8af1f2f69e"
+  - id: fp_8af1f2f69e
     manufacturer: "_TZE284_aai5grix"
     model: "TS0601"
     deviceProfileName: "safety-presence-mtd285-illuminance"
-  - id: "fp_084eb08c22"
+  - id: fp_084eb08c22
     manufacturer: "_TZE284_ajuasrmx"
     model: "TS0601"
     deviceProfileName: "safety-presence-msa201-illuminance"
-  - id: "fp_5aae260531"
+  - id: fp_5aae260531
     manufacturer: "_TZE284_debczeci"
     model: "TS0601"
     deviceProfileName: "safety-presence-basic-delay-battery"
-  - id: "fp_04ee75df31"
+  - id: fp_04ee75df31
     manufacturer: "_TZE284_gnpflcoq"
     model: "TS0601"
     deviceProfileName: "safety-presence-gnpflcoq-illuminance-temp-humidity-battery"
-  - id: "fp_50d11cba27"
+  - id: fp_50d11cba27
     manufacturer: "_TZE284_ozf4e02o"
     model: "TS0601"
     deviceProfileName: "safety-presence-msa201-illuminance"

@@ -2,7 +2,7 @@
 
 ## August 31, 2026 Update
 
-This release expands the public channel to 48 drivers and 3563 exact device fingerprints.
+This release expands the public channel to 48 drivers and 3597 exact device fingerprints.
 If a device that worked before no longer works after the August 31 update, please report it in [GitHub Issues](https://github.com/wonjj6768/smartthings-zigbee-edge-drivers/issues).
 Please include the manufacturer, model, current driver name, and hub logcat if available.
 
@@ -76,8 +76,8 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | EF00 Valves 2 wonjj6768 | `ef00-valves-2-wonjj6768` | 19 |
 | EF00 Valves wonjj6768 | `ef00-valves-wonjj6768` | 30 |
 | ZCL Bridge wonjj6768 | `zcl-bridge-wonjj6768` | 3 |
-| ZCL Controls 2 wonjj6768 | `zcl-controls-2-wonjj6768` | 5 |
-| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 313 |
+| ZCL Controls 2 wonjj6768 | `zcl-controls-2-wonjj6768` | 7 |
+| ZCL Controls wonjj6768 | `zcl-controls-wonjj6768` | 318 |
 | ZCL Covers wonjj6768 | `zcl-covers-wonjj6768` | 41 |
 | ZCL DALI wonjj6768 | `zcl-dali-wonjj6768` | 1 |
 | ZCL EasyIoT wonjj6768 | `zcl-easyiot-wonjj6768` | 6 |
@@ -85,8 +85,8 @@ Open the invite link with the Samsung account used by your SmartThings hub, enro
 | ZCL Lights wonjj6768 | `zcl-lights-wonjj6768` | 692 |
 | ZCL Locks wonjj6768 | `zcl-locks-wonjj6768` | 2 |
 | ZCL Plugs wonjj6768 | `zcl-plugs-wonjj6768` | 110 |
-| ZCL Sensors 2 wonjj6768 | `zcl-sensors-2-wonjj6768` | 9 |
-| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 394 |
+| ZCL Sensors 2 wonjj6768 | `zcl-sensors-2-wonjj6768` | 29 |
+| ZCL Sensors wonjj6768 | `zcl-sensors-wonjj6768` | 401 |
 | ZCL Switch 2 wonjj6768 | `zcl-switch-2-wonjj6768` | 12 |
 | ZCL Switch wonjj6768 | `zcl-switch-wonjj6768` | 501 |
 | ZCL Thermostat wonjj6768 | `zcl-thermostat-wonjj6768` | 2 |
@@ -1901,7 +1901,7 @@ Dedicated driver for newly absorbed exact ZCL bridge fingerprints.
 </details>
 
 <details>
-<summary>ZCL Controls 2 wonjj6768 (5 fingerprints)</summary>
+<summary>ZCL Controls 2 wonjj6768 (7 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL remote and control fingerprints.
 
@@ -1909,14 +1909,16 @@ Category driver for newly absorbed exact ZCL remote and control fingerprints.
 | --- | --- | --- |
 | `_TZ3000_9zc1ilmb` | `TS0043` | `buttons-button-3-battery` |
 | `Candeo` | `C-ZB-RD1Pv2-REM` | `controllers-candeo-rd1p-rem` |
+| `eWeLink` | `SNZB-01P` | `sonoff-snzb01p-button` |
 | `JetHome` | `WS7` | `buttons-jethome-ws7` |
 | `Slacky-DIY` | `TS0043-M007-SlD` | `buttons-button-3-battery-remote-action-slacky` |
 | `Slacky-DIY` | `TS0043-z-SlD` | `buttons-button-3-battery-remote-action-slacky` |
+| `SONOFF` | `SNZB-01P` | `sonoff-snzb01p-button` |
 
 </details>
 
 <details>
-<summary>ZCL Controls wonjj6768 (313 fingerprints)</summary>
+<summary>ZCL Controls wonjj6768 (318 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL remotes, scene switches, security remotes, and IR controllers.
 
@@ -2207,8 +2209,9 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `Candeo` | `C-ZB-RD1P-REM` | `controllers-candeo-rd1p-rem` |
 | `Candeo` | `C-ZB-SR5BR` | `buttons-button-5-battery-remote-action` |
 | `DSS0010` | `Excellux` | `buttons-button-1-battery-operation-mode-remote-action` |
-| `eWeLink` | `CK-TLSR8656-SS5-01(7000)` | `buttons-button-1-battery-remote-action` |
-| `eWeLink` | `SNZB-01` | `buttons-button-1-battery-remote-action` |
+| `eWeLink` | `CK-TLSR8656-SS5-01(7000)` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
+| `eWeLink` | `SNZB-01` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
+| `eWeLink` | `WB-01` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
 | `HEIMAN` | `ColorDimmerSw-EM-3.0` | `controllers-dimming-battery-remote-action` |
 | `HEIMAN` | `DoorBell-EF-3.0` | `buttons-doorbell-battery-tamper-low` |
 | `HEIMAN` | `DoorBell-EM` | `buttons-doorbell-battery-tamper-low` |
@@ -2235,6 +2238,10 @@ Development driver; report issues with hub logcat. Supports ZCL remotes, scene s
 | `Slacky-DIY` | `TS0042-z-SlD` | `buttons-button-2-battery-remote-action` |
 | `Slacky-DIY` | `TS0044-M004-SlD` | `buttons-button-4-battery-remote-action` |
 | `Slacky-DIY` | `TS0044-z-SlD` | `buttons-button-4-battery-remote-action` |
+| `SONOFF` | `CK-TLSR8656-SS5-01(7000)` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
+| `SONOFF` | `SNZB-01` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
+| `SONOFF` | `WB-01` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
+| `SONOFF` | `WB01` | `buttons-ewelink-button-1-battery-voltage-remote-action` |
 
 </details>
 
@@ -3169,7 +3176,7 @@ Development driver; report issues with hub logcat. Supports ZCL plugs, metered o
 </details>
 
 <details>
-<summary>ZCL Sensors 2 wonjj6768 (9 fingerprints)</summary>
+<summary>ZCL Sensors 2 wonjj6768 (29 fingerprints)</summary>
 
 Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vibration fingerprints.
 
@@ -3177,18 +3184,38 @@ Category driver for newly absorbed exact ZCL sensor, environment, smoke, and vib
 | --- | --- | --- |
 | `'_TZ32101000000_5oy7cysk'` | `TS0210` | `safety-wave19-tuya-ts0210-quoted` |
 | `_TZ3000_eit7p838 ` | `TS0207` | `safety-water-leak-tamper-battery-low-battery` |
+| `eWeLink` | `CK-BL702-MWS-01(7016)` | `sonoff-mg35rz-occupancy` |
+| `eWeLink` | `CK-TLSR8656-SS5-02(7014)` | `sonoff-ewelink-7014-temp-humidity` |
 | `eWeLink` | `CK-TLSR8656-Z123SE22DY-01(7035)` | `safety-wave19-ewelink-7035` |
 | `eWeLink` | `CK-TLSR8656-Z123SE24DY-01(7037)` | `safety-co-detector-battery-voltage-ewelink-7037` |
 | `eWeLink` | `CK-TLSR8656-Z23SE11HW-01(7019)` | `safety-water-leak-battery-low-battery` |
+| `eWeLink` | `SNZB-02P` | `sonoff-snzb02p-temp-humidity` |
+| `eWeLink` | `SNZB-03P` | `sonoff-snzb03p-occupancy` |
+| `eWeLink` | `SNZB-04P` | `sonoff-safety-contact-04p` |
+| `eWeLink` | `WS01` | `sonoff-ws01-rain` |
 | `HEIMAN` | `HS2AQ-EF-3.0` | `sensors-wave19-heiman-hs2aq-ef-three` |
 | `LinknLink` | `eMotion Air` | `sensors-linknlink-emotion-air` |
 | `PLAID SYSTEMS` | `PS-SPRZMS-SLP3` | `sensors-wave19-plaid-spruce` |
 | `Shelly` | `Presence` | `sensors-shelly-presence-gen4` |
+| `SONOFF` | `MG1_5RZ` | `sonoff-mg35rz-occupancy` |
+| `SONOFF` | `SNZB-02B` | `sonoff-snzb02b-environment` |
+| `SONOFF` | `SNZB-02D` | `sonoff-snzb02d-temp-humidity-display` |
+| `SONOFF` | `SNZB-02LD` | `sonoff-snzb02ld-temperature-display` |
+| `SONOFF` | `SNZB-02M` | `sonoff-snzb02m-environment` |
+| `SONOFF` | `SNZB-02P` | `sonoff-snzb02p-temp-humidity` |
+| `SONOFF` | `SNZB-02WD` | `sonoff-snzb02wd-temp-humidity-display` |
+| `SONOFF` | `SNZB-03P` | `sonoff-snzb03p-occupancy` |
+| `SONOFF` | `SNZB-03PR2` | `sonoff-snzb03pr2-occupancy` |
+| `SONOFF` | `SNZB-04P` | `sonoff-safety-contact-04p` |
+| `SONOFF` | `SNZB-04PR2` | `sonoff-safety-contact-04p` |
+| `SONOFF` | `SNZB-05P` | `sonoff-safety-water-05p` |
+| `SONOFF` | `SNZB-06P` | `sonoff-safety-occupancy-06p` |
+| `SONOFF` | `SNZB-09P` | `sonoff-safety-siren-09p` |
 
 </details>
 
 <details>
-<summary>ZCL Sensors wonjj6768 (394 fingerprints)</summary>
+<summary>ZCL Sensors wonjj6768 (401 fingerprints)</summary>
 
 Development driver; report issues with hub logcat. Supports ZCL sensors, safety devices, sirens, and repeaters.
 
@@ -3407,7 +3434,10 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `eWeLink` | `CK-TLSR8656-SS5-01(7003)` | `safety-contact-battery-low-battery-voltage` |
 | `eWeLink` | `CK-TLSR8656-SS5-01(7014)` | `sensors-temp-humidity-battery-voltage` |
 | `eWeLink` | `CK-TLSR8656-SS5-01(7019)` | `safety-water-leak-battery-low-battery` |
+| `eWeLink` | `MS01` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
+| `eWeLink` | `MSO1` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
 | `eWeLink` | `SNZB-02` | `sensors-temp-humidity-battery-voltage` |
+| `eWeLink` | `SNZB-03` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
 | `eWeLink` | `SNZB-04` | `safety-contact-battery-low-battery-voltage` |
 | `eWeLink` | `SNZB-05` | `safety-water-leak-battery-low-battery` |
 | `Fireangel` | `Alarm_SD_Device` | `safety-co-detector-tamper-battery-low` |
@@ -3551,10 +3581,14 @@ Development driver; report issues with hub logcat. Supports ZCL sensors, safety 
 | `SMLIGHT` | `SLZB-06MG26U` | `network-repeater` |
 | `SMLIGHT` | `SLZB-07` | `network-repeater` |
 | `SMLIGHT` | `SLZB-07MG24` | `network-repeater` |
+| `SONOFF` | `CK-TLSR8656-SS5-01(7002)` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
 | `SONOFF` | `DONGLE-E` | `network-repeater` |
 | `SONOFF` | `Dongle-LMG21` | `network-repeater` |
 | `SONOFF` | `Dongle-M` | `network-repeater` |
 | `SONOFF` | `Dongle-PMG24` | `network-repeater` |
+| `SONOFF` | `MS01` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
+| `SONOFF` | `MSO1` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
+| `SONOFF` | `SNZB-03` | `safety-motion-battery-low-battery-voltage-ewelink-pending` |
 | `SparkFun` | `MGM240P` | `network-repeater` |
 | `Sunricher` | `HK-SENSOR-4IN1-A` | `safety-occupancy-illuminance-temp-humidity-battery` |
 | `Sunricher` | `HK-SENSOR-CO` | `safety-co-detector-tamper-battery-low-battery` |

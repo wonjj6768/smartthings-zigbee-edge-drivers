@@ -1,21 +1,29 @@
 zigbeeManufacturer:
-  - id: "fp_0499878fa4"
+  - id: fp_0499878fa4
     manufacturer: "Candeo"
     model: "C-ZB-RD1Pv2-REM"
     deviceProfileName: "controllers-candeo-rd1p-rem"
-  - id: "fp_69d0fc7384"
+  - id: fp_69d0fc7384
     manufacturer: "JetHome"
     model: "WS7"
     deviceProfileName: "buttons-jethome-ws7"
-  - id: "fp_83a4f9adc9"
+  - id: fp_e5d491985e
+    manufacturer: "SONOFF"
+    model: "SNZB-01P"
+    deviceProfileName: "sonoff-snzb01p-button"
+  - id: fp_83a4f9adc9
     manufacturer: "Slacky-DIY"
     model: "TS0043-M007-SlD"
     deviceProfileName: "buttons-button-3-battery-remote-action-slacky"
-  - id: "fp_7970af4c70"
+  - id: fp_7970af4c70
     manufacturer: "Slacky-DIY"
     model: "TS0043-z-SlD"
     deviceProfileName: "buttons-button-3-battery-remote-action-slacky"
-  - id: "fp_c5fb8ec05a"
+  - id: fp_c5fb8ec05a
     manufacturer: "_TZ3000_9zc1ilmb"
     model: "TS0043"
     deviceProfileName: "buttons-button-3-battery"
+  - id: fp_3259c17560
+    manufacturer: "eWeLink"
+    model: "SNZB-01P"
+    deviceProfileName: "sonoff-snzb01p-button"

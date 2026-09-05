@@ -1,9 +1,9 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 462616,
+    "raw_size": 459702,
     "under_limit": true,
-    "free_bytes": 61672,
+    "free_bytes": 64586,
     "meets_headroom": true,
     "profiles": [
       "controllers-easyiot-sp1000",
@@ -214,9 +214,9 @@
   },
   {
     "name": "zcl-easyiot-wonjj6768",
-    "raw_size": 318455,
+    "raw_size": 316531,
     "under_limit": true,
-    "free_bytes": 205833,
+    "free_bytes": 207757,
     "meets_headroom": true,
     "profiles": [
       "controllers-easyiot-ir01",
@@ -350,9 +350,9 @@
   },
   {
     "name": "zcl-plugs-wonjj6768",
-    "raw_size": 304396,
+    "raw_size": 302264,
     "under_limit": true,
-    "free_bytes": 219892,
+    "free_bytes": 222024,
     "meets_headroom": true,
     "profiles": [
       "plugs-bacchus-water-station",
@@ -508,9 +508,9 @@
   },
   {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 429608,
+    "raw_size": 427196,
     "under_limit": true,
-    "free_bytes": 94680,
+    "free_bytes": 97092,
     "meets_headroom": true,
     "profiles": [
       "fans-fan-light-switch",
@@ -685,9 +685,9 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 484849,
+    "raw_size": 482628,
     "under_limit": true,
-    "free_bytes": 39439,
+    "free_bytes": 41660,
     "meets_headroom": true,
     "profiles": [
       "lights-dimmer-power-voltage-current",
@@ -782,7 +782,7 @@
       "thermostats-thermostat-battery",
       "thermostats-thermostat-humidity-power-energy-current"
     ],
-    "fingerprints": 394,
+    "fingerprints": 401,
     "custom_capabilities": {
       "numeric": 20,
       "enum": 7,
@@ -953,9 +953,9 @@
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 250499,
+    "raw_size": 248505,
     "under_limit": true,
-    "free_bytes": 273789,
+    "free_bytes": 275783,
     "meets_headroom": true,
     "profiles": [
       "covers-cover",
@@ -1086,9 +1086,9 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 383825,
+    "raw_size": 383145,
     "under_limit": true,
-    "free_bytes": 140463,
+    "free_bytes": 141143,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -1108,6 +1108,7 @@
       "buttons-button-6-battery",
       "buttons-button-6-battery-operation-mode-remote-action",
       "buttons-doorbell-battery-tamper-low",
+      "buttons-ewelink-button-1-battery-voltage-remote-action",
       "buttons-heiman-scene-battery-remote-action",
       "buttons-shelly-one-input",
       "controllers-candeo-rd1p-rem",
@@ -1135,7 +1136,7 @@
       "security-remotes-heiman-partial-action-battery",
       "security-remotes-sos-battery-voltage"
     ],
-    "fingerprints": 313,
+    "fingerprints": 318,
     "custom_capabilities": {
       "numeric": 0,
       "enum": 9,
@@ -1283,9 +1284,9 @@
   },
   {
     "name": "ef00-controls-wonjj6768",
-    "raw_size": 358104,
+    "raw_size": 356172,
     "under_limit": true,
-    "free_bytes": 166184,
+    "free_bytes": 168116,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-18",
@@ -1411,9 +1412,9 @@
   },
   {
     "name": "ef00-covers-wonjj6768",
-    "raw_size": 335750,
+    "raw_size": 333460,
     "under_limit": true,
-    "free_bytes": 188538,
+    "free_bytes": 190828,
     "meets_headroom": true,
     "profiles": [
       "covers-cover",
@@ -1495,9 +1496,9 @@
   },
   {
     "name": "ef00-lights-wonjj6768",
-    "raw_size": 365376,
+    "raw_size": 363242,
     "under_limit": true,
-    "free_bytes": 158912,
+    "free_bytes": 161046,
     "meets_headroom": true,
     "profiles": [
       "fans-fan-level-light-dimmer",
@@ -1584,9 +1585,9 @@
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 459160,
+    "raw_size": 457026,
     "under_limit": true,
-    "free_bytes": 65128,
+    "free_bytes": 67262,
     "meets_headroom": true,
     "profiles": [
       "switches-switch-1",
@@ -1731,9 +1732,9 @@
   },
   {
     "name": "ef00-switch-panel-wonjj6768",
-    "raw_size": 431499,
+    "raw_size": 429511,
     "under_limit": true,
-    "free_bytes": 92789,
+    "free_bytes": 94777,
     "meets_headroom": true,
     "profiles": [
       "switches-eyzee-5gang-countdown",
@@ -1826,9 +1827,9 @@
   },
   {
     "name": "ef00-screen-switch-wonjj6768",
-    "raw_size": 262225,
+    "raw_size": 260297,
     "under_limit": true,
-    "free_bytes": 262063,
+    "free_bytes": 263991,
     "meets_headroom": true,
     "profiles": [
       "switches-screen-zms206us4"
@@ -1894,9 +1895,9 @@
   },
   {
     "name": "ef00-garage-door-wonjj6768",
-    "raw_size": 262058,
+    "raw_size": 260124,
     "under_limit": true,
-    "free_bytes": 262230,
+    "free_bytes": 264164,
     "meets_headroom": true,
     "profiles": [
       "doors-garage-contact",
@@ -1965,9 +1966,9 @@
   },
   {
     "name": "ef00-energy-wonjj6768",
-    "raw_size": 371084,
+    "raw_size": 369068,
     "under_limit": true,
-    "free_bytes": 153204,
+    "free_bytes": 155220,
     "meets_headroom": true,
     "profiles": [
       "din-rail-switch-power-energy-3phase-stb3l125zj",
@@ -2048,9 +2049,9 @@
   },
   {
     "name": "ef00-meters-wonjj6768",
-    "raw_size": 385730,
+    "raw_size": 383694,
     "under_limit": true,
-    "free_bytes": 138558,
+    "free_bytes": 140594,
     "meets_headroom": true,
     "profiles": [
       "meters-energy-1phase-spm01",
@@ -2141,9 +2142,9 @@
   },
   {
     "name": "ef00-sensors-wonjj6768",
-    "raw_size": 434454,
+    "raw_size": 432232,
     "under_limit": true,
-    "free_bytes": 89834,
+    "free_bytes": 92056,
     "meets_headroom": true,
     "profiles": [
       "sensors-aq-co2",
@@ -2261,9 +2262,9 @@
   },
   {
     "name": "ef00-pir-motion-wonjj6768",
-    "raw_size": 313439,
+    "raw_size": 311481,
     "under_limit": true,
-    "free_bytes": 210849,
+    "free_bytes": 212807,
     "meets_headroom": true,
     "profiles": [
       "safety-motion-ay204z-battery",
@@ -2339,9 +2340,9 @@
   },
   {
     "name": "ef00-presence-general-1-wonjj6768",
-    "raw_size": 365925,
+    "raw_size": 363953,
     "under_limit": true,
-    "free_bytes": 158363,
+    "free_bytes": 160335,
     "meets_headroom": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -2425,9 +2426,9 @@
   },
   {
     "name": "ef00-presence-general-2-wonjj6768",
-    "raw_size": 439302,
+    "raw_size": 437266,
     "under_limit": true,
-    "free_bytes": 84986,
+    "free_bytes": 87022,
     "meets_headroom": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -2559,9 +2560,9 @@
   },
   {
     "name": "ef00-presence-switch-wonjj6768",
-    "raw_size": 284492,
+    "raw_size": 282548,
     "under_limit": true,
-    "free_bytes": 239796,
+    "free_bytes": 241740,
     "meets_headroom": true,
     "profiles": [
       "safety-presence-switch-illuminance-zis03",
@@ -2632,9 +2633,9 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 439544,
+    "raw_size": 437566,
     "under_limit": true,
-    "free_bytes": 84744,
+    "free_bytes": 86722,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-mtd085-illuminance",
@@ -2767,9 +2768,9 @@
   },
   {
     "name": "ef00-safety-wonjj6768",
-    "raw_size": 385108,
+    "raw_size": 382996,
     "under_limit": true,
-    "free_bytes": 139180,
+    "free_bytes": 141292,
     "meets_headroom": true,
     "profiles": [
       "safety-acceleration-4cqhd2ha",
@@ -2882,9 +2883,9 @@
   },
   {
     "name": "ef00-valves-wonjj6768",
-    "raw_size": 298741,
+    "raw_size": 296769,
     "under_limit": true,
-    "free_bytes": 225547,
+    "free_bytes": 227519,
     "meets_headroom": true,
     "profiles": [
       "valves-nas-wv03b-gallons",
@@ -2962,9 +2963,9 @@
   },
   {
     "name": "ef00-thermostat-trv-1-wonjj6768",
-    "raw_size": 387903,
+    "raw_size": 385849,
     "under_limit": true,
-    "free_bytes": 136385,
+    "free_bytes": 138439,
     "meets_headroom": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",
@@ -3046,9 +3047,9 @@
   },
   {
     "name": "ef00-thermostat-trv-2-wonjj6768",
-    "raw_size": 370385,
+    "raw_size": 368405,
     "under_limit": true,
-    "free_bytes": 153903,
+    "free_bytes": 155883,
     "meets_headroom": true,
     "profiles": [
       "thermostats-thermostat-battery-ar331",
@@ -3126,9 +3127,9 @@
   },
   {
     "name": "ef00-thermostat-wall-wonjj6768",
-    "raw_size": 400243,
+    "raw_size": 398247,
     "under_limit": true,
-    "free_bytes": 124045,
+    "free_bytes": 126041,
     "meets_headroom": true,
     "profiles": [
       "thermostats-bht002-fine",
@@ -3211,9 +3212,9 @@
   },
   {
     "name": "ef00-thermostat-fcu-wonjj6768",
-    "raw_size": 339002,
+    "raw_size": 337010,
     "under_limit": true,
-    "free_bytes": 185286,
+    "free_bytes": 187278,
     "meets_headroom": true,
     "profiles": [
       "thermostats-fcu-thermostat-ae669k",
@@ -3294,9 +3295,9 @@
   },
   {
     "name": "zcl-switch-2-wonjj6768",
-    "raw_size": 357303,
+    "raw_size": 355367,
     "under_limit": true,
-    "free_bytes": 166985,
+    "free_bytes": 168921,
     "meets_headroom": true,
     "profiles": [
       "switches-shelly-em-gen4",
@@ -3450,9 +3451,9 @@
   },
   {
     "name": "zcl-lights-2-wonjj6768",
-    "raw_size": 291179,
+    "raw_size": 290519,
     "under_limit": true,
-    "free_bytes": 233109,
+    "free_bytes": 233769,
     "meets_headroom": true,
     "profiles": [
       "lights-candeo-rd1p-dpm",
@@ -3600,9 +3601,9 @@
   },
   {
     "name": "zcl-sensors-2-wonjj6768",
-    "raw_size": 287842,
+    "raw_size": 336878,
     "under_limit": true,
-    "free_bytes": 236446,
+    "free_bytes": 187410,
     "meets_headroom": true,
     "profiles": [
       "safety-co-detector-battery-voltage-ewelink-7037",
@@ -3613,21 +3614,36 @@
       "sensors-linknlink-emotion-air",
       "sensors-shelly-presence-gen4",
       "sensors-wave19-heiman-hs2aq-ef-three",
-      "sensors-wave19-plaid-spruce"
+      "sensors-wave19-plaid-spruce",
+      "sonoff-ewelink-7014-temp-humidity",
+      "sonoff-mg35rz-occupancy",
+      "sonoff-safety-contact-04p",
+      "sonoff-safety-occupancy-06p",
+      "sonoff-safety-siren-09p",
+      "sonoff-safety-water-05p",
+      "sonoff-snzb02b-environment",
+      "sonoff-snzb02d-temp-humidity-display",
+      "sonoff-snzb02ld-temperature-display",
+      "sonoff-snzb02m-environment",
+      "sonoff-snzb02p-temp-humidity",
+      "sonoff-snzb02wd-temp-humidity-display",
+      "sonoff-snzb03p-occupancy",
+      "sonoff-snzb03pr2-occupancy",
+      "sonoff-ws01-rain"
     ],
-    "fingerprints": 9,
+    "fingerprints": 29,
     "custom_capabilities": {
-      "numeric": 27,
-      "enum": 13,
+      "numeric": 52,
+      "enum": 24,
       "text": 9
     },
     "pruned_lua": {
       "files": 15,
-      "bytes": 81593
+      "bytes": 82289
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_sensors_2_wonjj6768",
-      "catalogs": 5,
+      "catalogs": 8,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
       "device_files": 0
@@ -3660,7 +3676,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "61a6e185623cb461e506abeec6c2ad3ea3a1585ea320648a84668026ea6e7b81",
-      "closure_sha256": "95232327b443c928e4a3502f422f39010fce12312179b0e245653faa8eb68c45",
+      "closure_sha256": "3001760e7bff82ce0c05e6aa12676f9c7172521b5adb339b6f05d7f84d7c4dc0",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -3714,8 +3730,8 @@
         },
         {
           "path": "zcl_common/mapping_preset.lua",
-          "bytes": 6762,
-          "sha256": "81c1acec0651f72f7ae9223a5f0de8172a65f7af46a49a5e587c993906fb5b68"
+          "bytes": 7102,
+          "sha256": "c439605137c03402c09b83d7fe2ea9662b21e962601a4ab10cb95ae35edd8ea0"
         },
         {
           "path": "zcl_common/metering.lua",
@@ -3739,11 +3755,17 @@
         "battery_voltage",
         "carbon_monoxide",
         "cluster_attribute",
+        "contact",
         "humidity",
         "illuminance",
         "motion",
         "occupancy",
+        "occupancy_sensing",
+        "power_configuration_battery_voltage",
         "read_attribute",
+        "read_named_attribute",
+        "register_cluster_command_handler",
+        "send_named_command",
         "send_raw_cluster_command",
         "smoke",
         "tamper",
@@ -3754,17 +3776,18 @@
   },
   {
     "name": "zcl-controls-2-wonjj6768",
-    "raw_size": 261542,
+    "raw_size": 261789,
     "under_limit": true,
-    "free_bytes": 262746,
+    "free_bytes": 262499,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-3-battery",
       "buttons-button-3-battery-remote-action-slacky",
       "buttons-jethome-ws7",
-      "controllers-candeo-rd1p-rem"
+      "controllers-candeo-rd1p-rem",
+      "sonoff-snzb01p-button"
     ],
-    "fingerprints": 5,
+    "fingerprints": 7,
     "custom_capabilities": {
       "numeric": 12,
       "enum": 8,
@@ -3772,11 +3795,11 @@
     },
     "pruned_lua": {
       "files": 15,
-      "bytes": 80855
+      "bytes": 81065
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_controls_2_wonjj6768",
-      "catalogs": 2,
+      "catalogs": 3,
       "registry_module": "generated.package_registry",
       "bootstrap_files": 0,
       "device_files": 0
@@ -3899,9 +3922,9 @@
   },
   {
     "name": "zcl-locks-wonjj6768",
-    "raw_size": 237383,
+    "raw_size": 235467,
     "under_limit": true,
-    "free_bytes": 286905,
+    "free_bytes": 288821,
     "meets_headroom": true,
     "profiles": [
       "locks-wave18-javis-js-slk2-zb"
@@ -4026,9 +4049,9 @@
   },
   {
     "name": "zcl-bridge-wonjj6768",
-    "raw_size": 253125,
+    "raw_size": 251207,
     "under_limit": true,
-    "free_bytes": 271163,
+    "free_bytes": 273081,
     "meets_headroom": true,
     "profiles": [
       "bridges-wave19-candeo-rf-hub",
@@ -4157,9 +4180,9 @@
   },
   {
     "name": "zcl-thermostat-wonjj6768",
-    "raw_size": 276075,
+    "raw_size": 274159,
     "under_limit": true,
-    "free_bytes": 248213,
+    "free_bytes": 250129,
     "meets_headroom": true,
     "profiles": [
       "thermostats-wave19-pirogov-zb-midea-ac",
@@ -4287,9 +4310,9 @@
   },
   {
     "name": "zcl-dali-wonjj6768",
-    "raw_size": 246884,
+    "raw_size": 244970,
     "under_limit": true,
-    "free_bytes": 277404,
+    "free_bytes": 279318,
     "meets_headroom": true,
     "profiles": [
       "bridge-wave19-sunricher-dali-cct-child",
@@ -4419,9 +4442,9 @@
   },
   {
     "name": "ef00-covers-2-wonjj6768",
-    "raw_size": 405019,
+    "raw_size": 403071,
     "under_limit": true,
-    "free_bytes": 119269,
+    "free_bytes": 121217,
     "meets_headroom": true,
     "profiles": [
       "covers-cover-gm25teq",
@@ -4564,9 +4587,9 @@
   },
   {
     "name": "ef00-lights-2-wonjj6768",
-    "raw_size": 436420,
+    "raw_size": 434456,
     "under_limit": true,
-    "free_bytes": 87868,
+    "free_bytes": 89832,
     "meets_headroom": true,
     "profiles": [
       "lights-color-skydance-wz5-rgb",
@@ -4706,9 +4729,9 @@
   },
   {
     "name": "ef00-switch-2-wonjj6768",
-    "raw_size": 380427,
+    "raw_size": 378419,
     "under_limit": true,
-    "free_bytes": 143861,
+    "free_bytes": 145869,
     "meets_headroom": true,
     "profiles": [
       "switches-moes-sfl02-z1",
@@ -4804,9 +4827,9 @@
   },
   {
     "name": "ef00-meters-2-wonjj6768",
-    "raw_size": 381202,
+    "raw_size": 379280,
     "under_limit": true,
-    "free_bytes": 143086,
+    "free_bytes": 145008,
     "meets_headroom": true,
     "profiles": [
       "meters-wave19-moes-zm6lt1",
@@ -4933,9 +4956,9 @@
   },
   {
     "name": "ef00-sensors-2-wonjj6768",
-    "raw_size": 296000,
+    "raw_size": 294072,
     "under_limit": true,
-    "free_bytes": 228288,
+    "free_bytes": 230216,
     "meets_headroom": true,
     "profiles": [
       "sensors-aq-co2-temp-humidity",
@@ -5010,9 +5033,9 @@
   },
   {
     "name": "ef00-presence-3-wonjj6768",
-    "raw_size": 433912,
+    "raw_size": 431958,
     "under_limit": true,
-    "free_bytes": 90376,
+    "free_bytes": 92330,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-wave11-linptech-es1",
@@ -5159,9 +5182,9 @@
   },
   {
     "name": "ef00-safety-2-wonjj6768",
-    "raw_size": 308361,
+    "raw_size": 306405,
     "under_limit": true,
-    "free_bytes": 215927,
+    "free_bytes": 217883,
     "meets_headroom": true,
     "profiles": [
       "safety-alarm-neo-nas-ab02b2",
@@ -5243,9 +5266,9 @@
   },
   {
     "name": "ef00-valves-2-wonjj6768",
-    "raw_size": 315893,
+    "raw_size": 313943,
     "under_limit": true,
-    "free_bytes": 208395,
+    "free_bytes": 210345,
     "meets_headroom": true,
     "profiles": [
       "valves-giex-qt06-one",
@@ -5319,9 +5342,9 @@
   },
   {
     "name": "ef00-thermostat-trv-3-wonjj6768",
-    "raw_size": 398142,
+    "raw_size": 396162,
     "under_limit": true,
-    "free_bytes": 126146,
+    "free_bytes": 128126,
     "meets_headroom": true,
     "profiles": [
       "thermostats-alecto-smart-heat10",
@@ -5406,9 +5429,9 @@
   },
   {
     "name": "ef00-thermostat-hvac-2-wonjj6768",
-    "raw_size": 367645,
+    "raw_size": 365697,
     "under_limit": true,
-    "free_bytes": 156643,
+    "free_bytes": 158591,
     "meets_headroom": true,
     "profiles": [
       "thermostats-wave12-beca-bht209",
@@ -5489,9 +5512,9 @@
   },
   {
     "name": "ef00-controls-2-wonjj6768",
-    "raw_size": 299596,
+    "raw_size": 297654,
     "under_limit": true,
-    "free_bytes": 224692,
+    "free_bytes": 226634,
     "meets_headroom": true,
     "profiles": [
       "controls-wave15-engo-ecb62zb",
@@ -5568,9 +5591,9 @@
   },
   {
     "name": "ef00-bridge-wonjj6768",
-    "raw_size": 255691,
+    "raw_size": 253775,
     "under_limit": true,
-    "free_bytes": 268597,
+    "free_bytes": 270513,
     "meets_headroom": true,
     "profiles": [
       "bridges-wave19-weten-pci-e"

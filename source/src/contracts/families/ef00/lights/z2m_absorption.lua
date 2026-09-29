@@ -351,6 +351,9 @@ end
   -- DP14 power-on behavior. All option capabilities are family-specific.
   local avatto_zdms16_1 = {
     profile = "lights-dimmer-zdms16-1",
+    -- Current tuyaBase always requests the MCU firmware identifier during
+    -- configure. Keep the exact family lifecycle aligned with that contract.
+    mcu_version_request_on_configure = true,
     tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
     tuya.dp_numeric(2, { name = "brightness", emit = emit.level(), converter = zdms16_brightness }),
     tuya.dp_numeric(3, { name = "zdms161_minimum_brightness", emit = emit.zdmsOneMinimumBrightness(), converter = zdms16_brightness }),
@@ -362,7 +365,75 @@ end
 
 register_device_definition(avatto_zdms16_1, device_helpers.create_fingerprints("TS0601", {
   "_TZE28C1000000_nqqylykc",
+  "_TZE28C1000000_huu3td85",
 }))
+
+  -- MakeGood MG-DIM02Z. Current Z2M tuya.ts maps DP141 state, DP142
+  -- brightness (raw 0..1000), and readonly DP21/22/23 current/power/voltage.
+  -- Its brightness writer turns the relay off for zero and sends ON before a
+  -- positive level, so preserve that ordered two-frame wire contract here.
+  local mg_dim02z_brightness = converter.from_only(function(value)
+    return clamp(round((tonumber(value) or 0) / 10), 0, 100)
+  end)
+  local function mg_dim02z_brightness_write(_, value)
+    local level = clamp(round(tonumber(value) or 0), 0, 100)
+    if level <= 0 then
+      return {
+        { dp = 141, datatype = tuya.DP_TYPE_BOOL, value = false, transaction = 1 },
+      }
+    end
+    return {
+      { dp = 141, datatype = tuya.DP_TYPE_BOOL, value = true, transaction = 1 },
+      { dp = 142, datatype = tuya.DP_TYPE_VALUE, value = level * 10, transaction = 2 },
+    }
+  end
+  local mg_dim02z = {
+    profile = "lights-dimmer-power-voltage-current-core",
+    magic_packet = true,
+    mcu_version_request_on_configure = true,
+    query_on_configure = false,
+    time_start = "off",
+    named_mapping = {
+      named_mappings = {
+        brightness = mg_dim02z_brightness_write,
+      },
+    },
+    datapoints = {
+      tuya.dp_on_off(141, { name = "switch", emit = emit.switch() }),
+      tuya.dp_numeric(142, {
+        name = "brightness",
+        read_only = true,
+        emit = emit.level(),
+        converter = mg_dim02z_brightness,
+      }),
+      tuya.dp_current(21, { name = "current", scale = 1000, read_only = true, emit = emit.current() }),
+      tuya.dp_power(22, { name = "power", scale = 10, read_only = true, emit = emit.power() }),
+      tuya.dp_voltage(23, { name = "voltage", scale = 10, read_only = true, emit = emit.voltage() }),
+    },
+  }
+
+  register_device_definition(mg_dim02z, device_helpers.create_fingerprints("TS0601", {
+    "_TZE284_da26abzz",
+  }))
+
+  -- Moes SFD02-Z Star Feather dimmer core. The current hardware-confirmed Z2M
+  -- definition uses the standard Tuya dimmer DP1 state and DP2 brightness
+  -- (raw 0..1000). Its remaining nine settings are intentionally deferred to
+  -- separate family-specific capability audits.
+  local sfd02_brightness = converter.scale_pair(0, 1000, 0, 100)
+  local moes_sfd02_core = {
+    profile = "lights-dimmer-moes-sfd02-core",
+    magic_packet = true,
+    mcu_version_request_on_configure = true,
+    query_on_configure = false,
+    time_start = "off",
+    tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+    tuya.dp_numeric(2, { name = "brightness", emit = emit.level(), converter = sfd02_brightness }),
+  }
+
+  register_device_definition(moes_sfd02_core, device_helpers.create_fingerprints("TS0601", {
+    "_TZE284_t88bjhfu",
+  }))
 
   -- Mercator Ikuü SISWD11-ZB. Z2M v26.99.0 mercator.ts:191-204 uses
   -- BOOL DP1 and VALUE DP2 raw 0..1000. Z2M represents the latter as 0..254;
@@ -385,6 +456,41 @@ register_device_definition(avatto_zdms16_1, device_helpers.create_fingerprints("
 
   register_device_definition(light_model_mercator_siswd11_zb, device_helpers.create_fingerprints("TS0601", {
     "_TZE200_jowqowye",
+  }))
+
+  -- Tuya MS032Z stair-light controller core. Current Z2M maps DP1 to the
+  -- light relay and DP127 to brightness. The controller firmware uses a
+  -- native 0..100 value on DP127, which matches SmartThings switchLevel.
+  -- Hardware traffic captured for Z2M confirms DP128/129 are the separately
+  -- paired upper/lower stair motion channels. Strip layout, effects and
+  -- timing remain deferred until their own family-specific capability audit.
+  local tuya_ms032z_core = {
+    profile = "lights-stair-ms032z-core",
+    magic_packet = true,
+    mcu_version_request_on_configure = true,
+    query_on_configure = true,
+    query_on_announce = true,
+    time_start = "off",
+    datapoints = {
+      tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+      tuya.dp_numeric(127, { name = "brightness", emit = emit.level() }),
+      tuya.dp_occupancy(128, {
+        name = "motion_up",
+        component = "motionUp",
+        read_only = true,
+        emit = emit.motion(),
+      }),
+      tuya.dp_occupancy(129, {
+        name = "motion_down",
+        component = "motionDown",
+        read_only = true,
+        emit = emit.motion(),
+      }),
+    },
+  }
+
+  register_device_definition(tuya_ms032z_core, device_helpers.create_fingerprints("TS0601", {
+    "_TZE284_rovbuqdo",
   }))
 
 return {

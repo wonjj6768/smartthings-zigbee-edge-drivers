@@ -174,7 +174,12 @@ profile="switches-screen-zms206eu2",
 event_factory=screen_switch_events.zms206eu2,
 mapping_prefix="zms206_two",
 gang_count=2,
-manufacturers={"_TZE284_3ctwoaip","_TZE204_3ctwoaip","_TZE284_dmckrsxg"},
+manufacturers={
+"_TZE284_3ctwoaip",
+"_TZE204_3ctwoaip",
+"_TZE284_dmckrsxg",
+"_TZE28C1000000_dmckrsxg",
+},
 })
 local zms206eu3=build_zms206({
 profile="switches-screen-zms206eu3",
@@ -191,7 +196,7 @@ profile="switches-screen-zms208us2",
 event_factory=screen_switch_events.zms208us2,
 mapping_prefix="zms208_two",
 gang_count=2,
-manufacturers={"_TZE284_a2teqi5u"},
+manufacturers={"_TZE284_a2teqi5u","_TZE28C1000000_a2teqi5u"},
 })
 local zms208us3=build_zms208({
 profile="switches-screen-zms208us3",

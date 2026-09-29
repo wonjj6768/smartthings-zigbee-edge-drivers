@@ -163,6 +163,112 @@ local function body_member_value(zb_rx, ...)
   return nil
 end
 
+local LINXURA_ACTIONS = {
+  [0] = { name = "click", button_event = "pushed" },
+  [2] = { name = "double_click", button_event = "double" },
+  [4] = { name = "hold", button_event = "held" },
+}
+
+local function decode_linxura_zone_status(zone_status, button_count)
+  if type(zone_status) == "table" and zone_status.value ~= nil then
+    zone_status = zone_status.value
+  end
+  if type(zone_status) ~= "number" or zone_status % 1 ~= 0 or
+      zone_status < 1 or zone_status > (button_count * 6) - 1 then
+    return nil
+  end
+
+  local offset = (zone_status - 1) % 6
+  local action = LINXURA_ACTIONS[offset]
+  if action == nil then
+    return nil
+  end
+
+  local button_number = math.floor((zone_status - 1) / 6) + 1
+  return {
+    action = "button_" .. tostring(button_number) .. "_" .. action.name,
+    button_event = action.button_event,
+    component = button_number == 1 and "main" or ("button" .. tostring(button_number)),
+  }
+end
+
+local function linxura_action_mapping(button_count, has_battery)
+  return zcl.cluster_attribute(zcl.CLUSTER_IAS_ZONE, zcl.ATTR_ZONE_STATUS, {
+    name = "linxura_button_action_" .. tostring(button_count),
+    endpoint = 1,
+    read_only = true,
+    command_id = 0x00,
+    command_extractor = function(zb_rx)
+      return body_member_value(zb_rx, "zonestatus", "zone_status")
+    end,
+    from_device = function(value)
+      return decode_linxura_zone_status(value, button_count)
+    end,
+    handler = function(device, decoded)
+      if type(decoded) ~= "table" then
+        return
+      end
+
+      if type(device.supports_capability_by_id) == "function" and
+          not device:supports_capability_by_id(capabilities.button.ID, decoded.component) then
+        return
+      end
+
+      device:emit_component_event(
+        { id = decoded.component },
+        capabilities.button.button(decoded.button_event, { state_change = true })
+      )
+      if has_battery then
+        zcl.schedule_battery_refresh_after_button(device)
+      end
+    end,
+  })
+end
+
+local function configure_linxura_ias(driver, device)
+  device:send(device_management.build_bind_request(
+    device,
+    zcl.CLUSTER_IAS_ZONE,
+    driver.environment_info.hub_zigbee_eui,
+    1
+  ))
+end
+
+local linxura_aura_12 = {
+  profile = "buttons-button-12-battery",
+  button_actions = { "pushed", "double", "held" },
+  button_count = 12,
+  zcl_clusters = {
+    linxura_action_mapping(12, true),
+    zcl.battery({
+      endpoint = 1,
+      minimum_interval = 3600,
+      maximum_interval = 0,
+      reportable_change = 1,
+      read_on_configure = true,
+    }),
+  },
+  configure = configure_linxura_ias,
+}
+
+local linxura_smart_4 = {
+  profile = "buttons-button-4",
+  button_actions = { "pushed", "double", "held" },
+  button_count = 4,
+  zcl_clusters = {
+    linxura_action_mapping(4, false),
+  },
+  configure = configure_linxura_ias,
+}
+
+register_device_definition(linxura_aura_12, {
+  device_helpers.create_fingerprint("Linxura", "Aura Smart Button"),
+})
+
+register_device_definition(linxura_smart_4, {
+  device_helpers.create_fingerprint("Linxura", "Smart Controller"),
+})
+
 local function component_for_button(button_number)
   return button_number == 1 and "main" or ("button" .. tostring(button_number))
 end

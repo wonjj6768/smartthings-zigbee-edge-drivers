@@ -51,7 +51,11 @@ function tuya.build_base_preset(options)
   end
   function preset:apply_preferences_changed(...) return false end
   function preset:apply_announce(device)
-    if options.query_on_announce ~= true then return false end
+    local handled = false
+    if type(options.announce_handler) == "function" then
+      handled = options.announce_handler(device, options) ~= false
+    end
+    if options.query_on_announce ~= true then return handled end
     device.thread:call_with_delay(options.announce_delay or 0.5, function() self:send_state_request(device) end)
     return true
   end

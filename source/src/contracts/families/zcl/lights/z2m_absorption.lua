@@ -8,9 +8,67 @@ local data_types = require "st.zigbee.data_types"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
+local ADUROSMART_MANUFACTURERS = {
+  "AduroSmart ERIA",
+  "ERIA",
+  "AduroSmart Eria",
+}
+
 local function register_aliases(definition, aliases)
   register_device_definition(definition, aliases)
 end
+
+local function adurosmart_fingerprints(models)
+  local fingerprints = {}
+  for _, model in ipairs(models) do
+    for _, manufacturer in ipairs(ADUROSMART_MANUFACTURERS) do
+      fingerprints[#fingerprints + 1] = device_helpers.create_fingerprint(manufacturer, model)
+    end
+  end
+  return fingerprints
+end
+
+local function build_adurosmart_light(profile, color)
+  local definition
+  definition = {
+    profile = profile,
+    color_temperature_range = {
+      minimum = math.floor((1000000 / 500) + 0.5),
+      maximum = math.floor((1000000 / 153) + 0.5),
+    },
+    zcl_clusters = {
+      zcl.switch({ endpoint = 1, configure_reporting = false }),
+      zcl.level({ endpoint = 1, configure_reporting = false }),
+      zcl.color_temperature({ endpoint = 1, configure_reporting = false }),
+    },
+    runtime_start = function(device)
+      device:emit_component_event(
+        { id = "main" },
+        capabilities.colorTemperature.colorTemperatureRange({
+          value = definition.color_temperature_range,
+          unit = "K",
+        })
+      )
+      return true
+    end,
+  }
+
+  if color then
+    definition.zcl_clusters[#definition.zcl_clusters + 1] =
+      zcl.color_hue({ endpoint = 1, configure_reporting = false })
+    definition.zcl_clusters[#definition.zcl_clusters + 1] =
+      zcl.color_saturation({ endpoint = 1, configure_reporting = false })
+    definition.zcl_clusters[#definition.zcl_clusters + 1] = zcl.color({ endpoint = 1 })
+  end
+
+  return definition
+end
+
+-- Current ZHC adurosmart.ts uses the same standard endpoint-1 light contract
+-- for these new ERIA identities.  Z2M leaves reporting disabled and explicitly
+-- omits power-on behavior, so this family does the same.
+local adurosmart_tunable_white = build_adurosmart_light("lights-color-temperature", false)
+local adurosmart_color_light = build_adurosmart_light("lights-color-temperature-color", true)
 
 local function clamp_round(value, minimum, maximum)
   value = tonumber(value)
@@ -299,6 +357,44 @@ paulmann_rgbww = {
   end,
 }
 
+-- ZHC 764f7d10: Hejhome GKZ-LB431RGBCW-E26. This firmware leaves the
+-- network after roughly ten minutes unless endpoint 1 receives periodic
+-- Basic/appVersion reads, so the keepalive is part of this exact contract.
+local hejhome_z26
+hejhome_z26 = {
+  profile = "lights-color-temperature-color",
+  color_temperature_range = {
+    minimum = math.floor((1000000 / 500) + 0.5),
+    maximum = math.floor((1000000 / 153) + 0.5),
+  },
+  zcl_clusters = {
+    zcl.switch({ endpoint = 1 }),
+    zcl.level({ endpoint = 1 }),
+    zcl.color_temperature({ endpoint = 1 }),
+    zcl.color_hue({ endpoint = 1 }),
+    zcl.color_saturation({ endpoint = 1 }),
+    zcl.color({ endpoint = 1 }),
+    zcl.cluster_attribute(0x0000, 0x0001, {
+      name = "hejhome_z26_app_version_keepalive",
+      endpoint = 1,
+      read_only = true,
+      data_type = data_types.Uint8,
+      read_on_configure = true,
+      poll_interval = 120,
+    }),
+  },
+  runtime_start = function(device)
+    device:emit_component_event(
+      { id = "main" },
+      capabilities.colorTemperature.colorTemperatureRange({
+        value = hejhome_z26.color_temperature_range,
+        unit = "K",
+      })
+    )
+    return true
+  end,
+}
+
 register_aliases(candeo_rd1p_dpm, {
   device_helpers.create_fingerprint("Candeo", "C-ZB-RD1Pv2-DPM"),
 })
@@ -306,6 +402,25 @@ register_aliases(candeo_rd1p_dpm, {
 register_aliases(paulmann_rgbww, {
   device_helpers.create_fingerprint("Paulmann Licht GmbH", "RGBWW"),
 })
+
+register_aliases(hejhome_z26, {
+  device_helpers.create_fingerprint("_TZ3210_cnicaghm", "TS0505B"),
+})
+
+register_aliases(adurosmart_tunable_white, adurosmart_fingerprints({
+  "AD-DL4CT3001",
+  "AD-DL4CTW3001",
+  "AD-DL6CT3001",
+  "AD-DL6CTW3001",
+  "AD-FLMCT3001",
+}))
+
+register_aliases(adurosmart_color_light, adurosmart_fingerprints({
+  "AD-DL4RGBW3001",
+  "AD-DL6RGBW3001",
+  "AD-GU10RGB3001",
+  "AD-GU10RGBW3001",
+}))
 
 return {
   id = "zcl.lights.z2m_absorption",

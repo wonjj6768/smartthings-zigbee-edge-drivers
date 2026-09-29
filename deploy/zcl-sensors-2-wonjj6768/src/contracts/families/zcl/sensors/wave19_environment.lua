@@ -594,13 +594,36 @@ fp("Namron AS","4512765"),
 local namron_4512763_core={
 profile="safety-motion-namron-4512763-core",
 zcl_clusters={
-without_reporting(zcl.occupancy({ias_zone=true,endpoint=1,read_only=true,emit=emit.motion()})),
+notification(zcl.motion({endpoint=1}),emit.motion()),
+notification(zcl.tamper({endpoint=1}),emit.tamper()),
+notification(zcl.battery_low({endpoint=1}),low_battery_event),
 core_battery({endpoint=1,minimum_interval=3600,maximum_interval=65000,reportable_change=10}),
 without_reporting(core_voltage({endpoint=1})),
 },
 }
 register_device_definition(namron_4512763_core,{
 fp("Namron AS","4512763"),
+})
+local openlumi_router_temperature_core={
+profile="sensors-openlumi-router-temperature-core",
+magic_packet=false,
+zcl_clusters={
+zcl.cluster_attribute(0x0002,0x0000,{
+name="openlumi_device_temperature",
+endpoint=1,
+data_type=data_types.Int16,
+read_only=true,
+read_on_configure=true,
+minimum_interval=300,
+maximum_interval=3600,
+reportable_change=1,
+emit=emit.temperature("C"),
+}),
+},
+}
+register_device_definition(openlumi_router_temperature_core,{
+fp("OpenLumi","openlumi.gw_router.dgnwg05lm"),
+fp("OpenLumi","openlumi.gw_router.zhwg11lm"),
 })
 local salus_ss909zb_core={
 profile="sensors-salus-ss909zb-core",
@@ -1112,19 +1135,42 @@ zcl_clusters={ias_notification_motion(1,false)},
 register_device_definition(adeo_ldsenk10_core,{
 fp("ADEO","LDSENK10"),
 })
-local function standard_presence_core_clusters()
+local function standard_presence_core_clusters(configure_reporting)
+local reporting_options=configure_reporting==false and{
+configure_reporting=false,
+read_on_configure=true,
+}or{
+minimum_interval=0,
+maximum_interval=3600,
+reportable_change=0,
+}
+local illuminance_options=configure_reporting==false and{
+endpoint=1,
+configure_reporting=false,
+read_on_configure=true,
+}or{
+endpoint=1,
+minimum_interval=10,
+maximum_interval=3600,
+reportable_change=5,
+}
 return{
-zcl.occupancy({endpoint=1,emit=emit.presence(),minimum_interval=0,maximum_interval=3600,
-reportable_change=0,from_device=function(value)
+zcl.occupancy({endpoint=1,emit=emit.presence(),
+configure_reporting=reporting_options.configure_reporting,
+read_on_configure=reporting_options.read_on_configure,
+minimum_interval=reporting_options.minimum_interval,
+maximum_interval=reporting_options.maximum_interval,
+reportable_change=reporting_options.reportable_change,
+from_device=function(value)
 if type(value)=="table" then value=value.value end
 return(value & 1)~=0
 end}),
-zcl.illuminance({endpoint=1,minimum_interval=10,maximum_interval=3600,reportable_change=5}),
+zcl.illuminance(illuminance_options),
 }
 end
 local sonoff_snzb06p24_core={
 profile="safety-presence-sonoff-snzb06p24-core",
-zcl_clusters=standard_presence_core_clusters(),
+zcl_clusters=standard_presence_core_clusters(false),
 configure=function(driver,device)
 for _,cluster in ipairs({0x0001,0x0500})do
 device:send(device_management.build_bind_request(
@@ -1825,10 +1871,12 @@ local universal_xhs1_core={
 profile="safety-motion-universal-xhs1-core",magic_packet=false,
 zcl_clusters={
 ias_notification_motion(1,false),
+notification_tamper_core(),
+notification_low_core(),
 standard_temp(),
 zcl.cluster_attribute(1,0x20,{
 name="universal_xhs1_battery",endpoint=1,data_type=data_types.Uint8,read_only=true,
-minimum_interval=3600,maximum_interval=65000,reportable_change=0,
+minimum_interval=3600,maximum_interval=65000,reportable_change=0,read_on_configure=true,
 emit=function(_,value)
 if type(value)=="table" then value=value.value end
 if value==255 then return end
@@ -1840,6 +1888,55 @@ end,
 }
 register_device_definition(universal_xhs1_core,{
 fp("Universal Electronics Inc","URC4470BC0-X-R"),
+})
+local function uint32_le(value)
+return string.char(
+value & 0xFF,
+(value >> 8)& 0xFF,
+(value >> 16)& 0xFF,
+(value >> 24)& 0xFF
+)
+end
+local function configure_universal_xhs2_poll_control(device)
+zcl.send_raw_cluster_command(device,0x0020,0x02,uint32_le(24),1)
+local request=cluster_base.write_attribute(
+device,
+data_types.ClusterId(0x0020),
+data_types.AttributeId(0x0000),
+data_types.Uint32(13200)
+)
+device:send(request:to_endpoint(1))
+return true
+end
+local universal_xhs2_core={
+profile="safety-contact-universal-xhs2-core",magic_packet=false,
+announce_handler=configure_universal_xhs2_poll_control,
+configure=function(_,device)
+configure_universal_xhs2_poll_control(device)
+end,
+zcl_clusters={
+without_reporting(zcl.contact({endpoint=1,read_on_configure=false,
+emit=function(device,value,context)
+if context.command_id==0 then return emit.contact()(device,value)end
+end,
+})),
+notification_tamper_core(),
+notification_low_core(),
+standard_temp(),
+zcl.cluster_attribute(1,0x20,{
+name="universal_xhs2_battery",endpoint=1,data_type=data_types.Uint8,read_only=true,
+minimum_interval=3600,maximum_interval=65000,reportable_change=0,read_on_configure=true,
+emit=function(_,value)
+if type(value)=="table" then value=value.value end
+if value==255 then return end
+return{caps.battery.battery(iris_3326_battery(value)),
+caps.voltageMeasurement.voltage({value=value/10,unit="V"})}
+end,
+}),
+},
+}
+register_device_definition(universal_xhs2_core,{
+fp("Universal Electronics Inc","URC4460BC0-X-R"),
 })
 local namron_4512770_core={
 profile="safety-motion-namron-4512770-core",magic_packet=false,

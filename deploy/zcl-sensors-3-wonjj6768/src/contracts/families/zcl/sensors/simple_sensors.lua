@@ -18,6 +18,166 @@ local function battery_value(value,_,context)
 if context.raw_value==255 then return nil end
 return value
 end
+local adurosmart_81910_core={
+profile="safety-contact-temp-humidity-battery",magic_packet=false,
+parent_refresh=function(device)
+zcl.read_attribute(device,0x0402,0,1)
+zcl.read_attribute(device,0x0405,0,1)
+zcl.read_attribute(device,1,0x21,1)
+end,
+zcl_clusters={
+passive(zcl.contact({endpoint=1})),
+zcl.temperature({endpoint=1,minimum_interval=10,maximum_interval=3600,
+reportable_change=100,read_on_configure=true}),
+zcl.humidity({endpoint=1,minimum_interval=10,maximum_interval=3600,
+reportable_change=100,read_on_configure=true}),
+zcl.battery({endpoint=1,minimum_interval=3600,maximum_interval=65000,
+reportable_change=2,read_on_configure=true,from_device=battery_value}),
+},
+configure=function(driver,device)
+device:send(device_management.build_bind_request(
+device,0x0500,driver.environment_info.hub_zigbee_eui,1))
+end,
+}
+register_device_definition(adurosmart_81910_core,{
+device_helpers.create_fingerprint("AduroSmart ERIA","CSW_81909"),
+device_helpers.create_fingerprint("ERIA","CSW_81909"),
+device_helpers.create_fingerprint("AduroSmart Eria","CSW_81909"),
+})
+local trust_zcts808_core={
+profile="safety-contact-tamper-battery-low-battery",magic_packet=false,
+parent_refresh=function(device)
+zcl.read_attribute(device,1,0x21,1)
+end,
+zcl_clusters={
+passive(zcl.contact({endpoint=1,from_device=function(value)
+if type(value)=="table" then
+if type(value.is_alarm1_set)=="function" then return value:is_alarm1_set()end
+value=value.value
+end
+if type(value)~="number" then return nil end
+return(value&1)~=0
+end})),
+passive(zcl.tamper({endpoint=1})),
+passive(zcl.battery_low({endpoint=1})),
+zcl.battery({endpoint=1,minimum_interval=3600,maximum_interval=65000,
+reportable_change=0,read_on_configure=true,from_device=battery_value}),
+},
+}
+register_device_definition(trust_zcts808_core,{
+device_helpers.create_fingerprint("Trust International B.V.","CSW_ADUROLIGHT"),
+device_helpers.create_fingerprint("Trust International B.V.\0","CSW_ADUROLIGHT"),
+})
+local rtitek_sthzb_core={
+profile="sensors-rtitek-sthzb-core",magic_packet=false,
+zcl_clusters={
+zcl.cluster_attribute(0x0402,0,{name="temperature",endpoint=1,data_type=data_types.Int16,
+scale=100,read_only=true,read_on_configure=true,emit=emit.temperature()}),
+zcl.cluster_attribute(0x0405,0,{name="humidity",endpoint=1,data_type=data_types.Uint16,
+scale=100,read_only=true,read_on_configure=true,emit=emit.humidity()}),
+zcl.cluster_attribute(1,0x21,{name="battery",endpoint=1,data_type=data_types.Uint8,
+scale=2,read_only=true,read_on_configure=true,from_device=battery_value,emit=emit.battery()}),
+},
+configure=function(_,device)zcl.read_attribute(device,1,0x20,1)end,
+parent_refresh=function(device)
+zcl.read_attribute(device,0x0402,0,1)
+zcl.read_attribute(device,0x0405,0,1)
+zcl.read_attribute(device,1,0x21,1)
+zcl.read_attribute(device,1,0x20,1)
+end,
+}
+register_device_definition(rtitek_sthzb_core,{
+device_helpers.create_fingerprint("Rti-Tek","STHZB"),
+})
+local ezviz_cst10c_core={
+profile="safety-water-ezviz-cst10c-core",magic_packet=false,
+zcl_clusters={
+passive(zcl.water({endpoint=1,from_device=function(value)
+if type(value)=="table" then value=value.value end
+return(value&1)~=0
+end})),
+passive(zcl.tamper({endpoint=1})),
+passive(zcl.battery_low({endpoint=1,emit=function(_,value)
+return value and capabilities.batteryLevel.battery.critical()or capabilities.batteryLevel.battery.normal()
+end})),
+zcl.battery({endpoint=1,minimum_interval=3600,maximum_interval=65000,
+reportable_change=10,read_on_configure=true,from_device=battery_value}),
+},
+parent_refresh=function(device)
+zcl.read_attribute(device,1,0x21,1)
+zcl.read_attribute(device,1,0x20,1)
+end,
+}
+register_device_definition(ezviz_cst10c_core,{
+device_helpers.create_fingerprint("EZVIZ","CS-T10C-A0-BG"),
+device_helpers.create_fingerprint("EZVIZ","CS-T10C-A0-BG\000\000\000\000"),
+})
+local owon_ocp305_core={
+profile="safety-presence-owon-ocp305-core",magic_packet=false,
+zcl_clusters={
+zcl.cluster_attribute(0x0406,0,{name="owon_ocp305_presence",endpoint=1,data_type=data_types.Bitmap8,
+read_only=true,read_on_configure=true,minimum_interval=0,maximum_interval=3600,reportable_change=0,
+from_device=function(value)
+if type(value)=="table" then value=value.value end
+return(value&1)~=0
+end,emit=emit.presence()}),
+},
+}
+register_device_definition(owon_ocp305_core,{
+device_helpers.create_fingerprint("OWON","OCP305"),
+})
+local multir_he300_core={
+profile="safety-presence-multir-he300-core",magic_packet=false,
+parent_refresh=function(device)
+zcl.read_attribute(device,0x0400,0,1)
+end,
+zcl_clusters={
+passive(zcl.occupancy({name="multir_he300_presence",endpoint=1,emit=emit.presence(),
+from_device=function(value)
+if type(value)=="table" then value=value.value end
+return(value&0x03)~=0
+end})),
+zcl.illuminance({name="multir_he300_illuminance",endpoint=1,
+minimum_interval=10,maximum_interval=3600,reportable_change=5,read_on_configure=true}),
+},
+}
+register_device_definition(multir_he300_core,{
+device_helpers.create_fingerprint("MultIR","HE300_ZB"),
+})
+local zigbeetlc_zg303z_core={
+profile="sensors-zigbeetlc-zg303z-core",magic_packet=false,
+zcl_clusters={
+zcl.temperature({endpoint=1,minimum_interval=10,maximum_interval=3600,
+reportable_change=10,read_on_configure=true}),
+zcl.humidity({endpoint=1,minimum_interval=10,maximum_interval=3600,
+reportable_change=100,read_on_configure=true}),
+zcl.cluster_attribute(0x0405,0,{name="zg303z_soil_moisture",endpoint=2,component="main",
+data_type=data_types.Uint16,scale=100,read_only=true,read_on_configure=true,
+minimum_interval=10,maximum_interval=3600,reportable_change=100,
+from_device=function(value,_,context)if context.raw_value~=65535 then return value end end,
+emit=emit.zg303zSoilMoisture()}),
+zcl.battery({endpoint=1,minimum_interval=3600,maximum_interval=65000,
+reportable_change=10,read_on_configure=true,from_device=battery_value}),
+passive(zcl.battery_voltage({endpoint=1,from_device=battery_value})),
+},
+}
+register_device_definition(zigbeetlc_zg303z_core,{
+device_helpers.create_fingerprint("Sonoff","ZG-303Z-z"),
+})
+local ekaza_ts0225_core={
+profile="safety-presence-ekaza-ts0225-core",magic_packet=true,
+query_on_configure=false,query_on_announce=false,time_start="off",
+parent_refresh=function()end,
+zcl_clusters={
+passive(zcl.motion({name="ekaza_presence",endpoint=1,emit=emit.presence()})),
+},
+configure=function(_,device)
+zcl.read_attribute(device,0x0500,0x0002,1)
+end,
+}
+register_device_definition(ekaza_ts0225_core,{
+device_helpers.create_fingerprint("_TZ3210_eep3fewj","TS0225"),
+})
 local smartthings_tagv4_core={
 profile="sensors-smartthings-tagv4-core",magic_packet=false,parent_refresh=function()end,
 zcl_clusters={
@@ -2455,6 +2615,57 @@ end}),
 }
 register_device_definition(efekta_eair_core,{
 device_helpers.create_fingerprint("EfektaLab","EFEKTA_eAir_Monitor"),
+})
+local aircube_common_core={
+profile="sensors-aircube-common-core",magic_packet=false,
+parent_refresh=function(device)
+zcl.read_attribute(device,0x0402,0,10)
+zcl.read_attribute(device,0x0405,0,10)
+zcl.read_attribute(device,0xFC01,0,10)
+zcl.read_attribute(device,0xFC01,1,10)
+zcl.read_attribute(device,0xFC01,2,10)
+end,
+zcl_clusters={
+zcl.temperature({endpoint=10,minimum_interval=10,maximum_interval=60,
+reportable_change=50,read_on_configure=true}),
+zcl.humidity({endpoint=10,minimum_interval=10,maximum_interval=60,
+reportable_change=100,read_on_configure=true}),
+zcl.cluster_attribute(0xFC01,0,{name="aircube_equivalent_co2",endpoint=10,
+data_type=data_types.Uint16,read_only=true,read_on_configure=true,
+minimum_interval=10,maximum_interval=60,reportable_change=50,
+emit=emit.airCubeEquivalentCo2()}),
+zcl.cluster_attribute(0xFC01,1,{name="voc",endpoint=10,
+data_type=data_types.Uint16,read_only=true,read_on_configure=true,
+minimum_interval=10,maximum_interval=60,reportable_change=10,
+emit=emit.voc("ppb")}),
+zcl.cluster_attribute(0xFC01,2,{name="aircube_voc_level",endpoint=10,
+data_type=data_types.Uint16,read_only=true,read_on_configure=true,
+minimum_interval=10,maximum_interval=60,reportable_change=5,
+emit=emit.airCubeVocLevel()}),
+},
+}
+register_device_definition(aircube_common_core,{
+device_helpers.create_fingerprint("StuckAtPrototype","AirCube"),
+})
+local nodieby_nd01_motion_core={
+profile="safety-motion-nodieby-nd01-core",magic_packet=false,
+parent_refresh=function(device)
+zcl.read_attribute(device,0x0500,2,1)
+end,
+configure=function(_,device)
+zcl.read_attribute(device,0x0500,2,1)
+end,
+zcl_clusters={
+passive(zcl.occupancy({endpoint=1,ias_zone=true,read_only=true,emit=emit.motion(),
+from_device=function(value)
+if type(value)=="table" then value=value.value end
+if type(value)~="number" then return nil end
+return(value&1)~=0
+end})),
+},
+}
+register_device_definition(nodieby_nd01_motion_core,{
+device_helpers.create_fingerprint("NoDieby","ND-01"),
 })
 return{
 id="zcl.sensors.simple_sensors",

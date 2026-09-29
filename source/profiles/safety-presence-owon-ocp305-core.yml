@@ -1,0 +1,8 @@
+name: safety-presence-owon-ocp305-core
+components:
+  - id: main
+    capabilities:
+      - {id: presenceSensor, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - {name: PresenceSensor}

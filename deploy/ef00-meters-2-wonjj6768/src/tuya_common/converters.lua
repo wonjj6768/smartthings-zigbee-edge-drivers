@@ -326,6 +326,11 @@ end
 return number_value * factor
 end
 end
+function converter.phase_variant2_parser(phase,signed_power)
+return function(value)
+return tuya.parse_phase_variant2(value,phase,signed_power)
+end
+end
 function converter.threshold_parser()
 return function(value)
 return tuya.parse_threshold(value)

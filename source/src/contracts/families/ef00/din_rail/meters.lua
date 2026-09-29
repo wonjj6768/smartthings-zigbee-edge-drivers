@@ -178,6 +178,7 @@ local power_meter_model_nous_d4z = {
 }
 
 register_device_definition(power_meter_model_nous_d4z, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_loejka0i",
   "_TZE204_loejka0i",
   "_TZE284_loejka0i",
 }))

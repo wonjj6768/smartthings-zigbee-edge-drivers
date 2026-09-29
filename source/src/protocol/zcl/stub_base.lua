@@ -22,6 +22,16 @@ local function build_stub()
   zcl.ATTR_MEASURED_VALUE = 0x0000
   zcl.ATTR_OCCUPANCY = 0x0000
 
+  function zcl.bind_cluster(device, cluster_id, hub_eui, endpoint)
+    device:send(device_management.build_bind_request(
+      device,
+      cluster_id,
+      hub_eui,
+      endpoint
+    ))
+    return true
+  end
+
   function zcl.cluster_attribute(cluster_id, attribute_id, options)
     local mapping = options or {}
     mapping.protocol = "zcl"

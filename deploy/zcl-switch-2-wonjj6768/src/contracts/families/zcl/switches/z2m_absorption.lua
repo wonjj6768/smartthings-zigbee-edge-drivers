@@ -34,6 +34,11 @@ end
 local function append_option_clusters(clusters,...)
 return zcl_device_helpers.append_clusters(clusters,...)
 end
+local function fixed_metering(mapping,scale)
+mapping.metering_kind=nil
+mapping.scale=scale
+return mapping
+end
 local function tuya_enum_mapping(name,cluster_id,attribute_id,emitter,from_values,to_values,options)
 options=options or{}
 return zcl.cluster_attribute(cluster_id,attribute_id,{
@@ -46,6 +51,7 @@ to_device=function(value)return to_values[value]end,
 data_type=options.data_type or data_types.Enum8,
 write_type=options.write_type or options.data_type or data_types.Enum8,
 mfg_code=options.mfg_code,
+prefer_plain_attribute_write=options.prefer_plain_attribute_write==true,
 read_on_configure=options.read_on_configure ~=false,
 })
 end
@@ -335,6 +341,102 @@ enabled_values={enabled="ENABLE",disabled="DISABLE"},
 )
 end
 nfzb2.configure=bind_on_off_endpoints(2)
+local candeo_ssfs_switch_delegate=zcl.switch({
+endpoint=1,
+minimum_interval=0,
+maximum_interval=0xFFFF,
+reportable_change=1,
+})
+local candeo_ssfs_switch=zcl.switch({
+endpoint=1,
+minimum_interval=0,
+maximum_interval=0xFFFF,
+reportable_change=1,
+})
+candeo_ssfs_switch.sender=function(device,_,value,context)
+local endpoint=context.endpoint or 1
+local sent=zcl.send_named_command(
+device,
+{candeo_ssfs_switch_delegate},
+"switch",
+value,
+{component_id=context.component_id,endpoint=endpoint}
+)
+if sent then
+zcl.read_attribute(device,zcl.CLUSTER_ON_OFF,0x8000,endpoint)
+end
+return sent
+end
+local candeo_ssfs={
+profile="switches-candeo-ssfs",
+zcl_clusters={
+candeo_ssfs_switch,
+fixed_metering(zcl.power({
+endpoint=1,
+minimum_interval=5,
+maximum_interval=300,
+reportable_change=10,
+}),1),
+fixed_metering(zcl.voltage({
+endpoint=1,
+minimum_interval=5,
+maximum_interval=600,
+reportable_change=5,
+}),1),
+fixed_metering(zcl.current({
+endpoint=1,
+minimum_interval=5,
+maximum_interval=900,
+reportable_change=10,
+}),1000),
+fixed_metering(zcl.energy({
+endpoint=1,
+minimum_interval=5,
+maximum_interval=1800,
+reportable_change=50,
+}),100),
+zcl.power_on_behavior({
+name="candeo_ssfs_power_on_behavior",
+endpoint=1,
+emit=emit.candeoSsfsPowerBehavior(),
+read_on_configure=true,
+}),
+zcl.child_lock({
+name="candeo_ssfs_child_lock",
+endpoint=1,
+emit=emit.candeoSsfsChildLock(),
+from_device=function(value)
+return(value==true or value==1)and "LOCK" or "UNLOCK"
+end,
+to_device=function(value)
+return value=="LOCK"
+end,
+read_on_configure=true,
+}),
+},
+}
+local moes_zsus1_ln=build_switch("switches-moes-zsus1-ln",1)
+append_option_clusters(moes_zsus1_ln.zcl_clusters,
+zcl.tuya_magic_packet(),
+tuya_enum_mapping("moes_zsus1_power_on_behavior",0xE001,0xD010,
+emit.moesZsus1PowerBehavior(),
+{[0]="off",[1]="on",[2]="previous"},
+{off=0,on=1,previous=2}),
+tuya_enum_mapping("moes_zsus1_switch_type",0xE001,0xD030,
+emit.moesZsus1SwitchType(),
+{[0]="toggle",[1]="state",[2]="momentary"},
+{toggle=0,state=1,momentary=2}),
+tuya_enum_mapping("moes_zsus1_backlight_mode",zcl.CLUSTER_ON_OFF,0x5000,
+emit.moesZsus1BacklightMode(),
+{[0]="off",[1]="on"},
+{off=0,on=1},
+{
+data_type=data_types.Enum8,
+write_type=data_types.Enum8,
+prefer_plain_attribute_write=true,
+})
+)
+moes_zsus1_ln.configure=bind_on_off_endpoints(1)
 register_device_definition(mercator_ssw03g,device_helpers.create_fingerprints("TS0013",{
 "_TZ3000_khtlvdfc",
 }))
@@ -347,6 +449,12 @@ device_helpers.create_fingerprint("AOYAN","AY301Z-2CH"),
 register_device_definition(mli_tint_smart_switch,{
 device_helpers.create_fingerprint("MLI","tint Smart Switch"),
 device_helpers.create_fingerprint("MLI\0","switch01\0"),
+})
+register_device_definition(candeo_ssfs,{
+device_helpers.create_fingerprint("Candeo","C-ZB-SSFS"),
+})
+register_device_definition(moes_zsus1_ln,{
+device_helpers.create_fingerprint("_TZ3000_bzzgvet0","TS0001"),
 })
 return{
 id="zcl.switches.z2m_absorption",

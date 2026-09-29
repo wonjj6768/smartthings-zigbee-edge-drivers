@@ -121,6 +121,7 @@ register_device_definition(sos_remote,device_helpers.create_fingerprints("TS0215
 "_TZ3000_9r5jaajv",
 "_TZ3000_nxdziqzc",
 "_TZ3000_irwuzilv",
+"_TZ3000_gjiggmio",
 }))
 register_device_definition(heiman_sos_remote,{
 device_helpers.create_fingerprint("HEIMAN","SOS-EF-3.0"),

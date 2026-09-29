@@ -212,7 +212,10 @@ register_device_definition(color_cct_light,device_helpers.create_fingerprints("T
 "_TZ3210_bfwvfyx1",
 }))
 register_device_definition(tuya_ts0505b_1_light,device_helpers.create_fingerprints("TS0505B",{
+"_TZ3210_8etggm4u",
+"_TZ3210_cqqb61yo",
 "_TZ3210_htdm5hvw",
+"_TZ3210_o4vasvef",
 "_TZ3210_r3wubmyh",
 }))
 register_device_definition(color_cct_light,device_helpers.create_fingerprints("TS0505B",{

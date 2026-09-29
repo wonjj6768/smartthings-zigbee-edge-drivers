@@ -74,6 +74,7 @@ register_device_definition(ts130f_cover,device_helpers.create_fingerprints("TS13
 "_TZ3000_jwv3cwak",
 "_TZ3000_74hsp7qy",
 "_TZ3210_dwytrmda",
+"_TZ3210_jrhczaaa",
 "_TZ3000_vw8pawxa",
 "_TZ3210_xbpt8ewc",
 "_TZ3000_egq7y6pr",
@@ -96,6 +97,7 @@ register_device_definition(ts130f_dual_cover,device_helpers.create_fingerprints(
 "_TZ3000_j1xl73iw",
 "_TZ3000_kmsbwdol",
 "_TZ3000_l6iqph4f",
+"_TZ3000_wvedmwyp",
 "_TZ3000_xdo0hj1k",
 }))
 register_device_definition(standard_cover_battery,device_helpers.create_fingerprints("TS0301",{

@@ -32,20 +32,16 @@ local catalog_6=require "contracts.families.zcl.sensors.sonoff"
 for _,entry in ipairs(registrations(catalog_6,"zcl.sensors.sonoff","contracts.families.zcl.sensors.sonoff"))do
 entries[#entries + 1]=entry
 end
-local catalog_7=require "contracts.families.zcl.sensors.sonoff_safety"
-for _,entry in ipairs(registrations(catalog_7,"zcl.sensors.sonoff_safety","contracts.families.zcl.sensors.sonoff_safety"))do
+local catalog_7=require "contracts.families.zcl.sensors.sonoff_presence_advanced"
+for _,entry in ipairs(registrations(catalog_7,"zcl.sensors.sonoff_presence_advanced","contracts.families.zcl.sensors.sonoff_presence_advanced"))do
 entries[#entries + 1]=entry
 end
-local catalog_8=require "contracts.families.zcl.sensors.sonoff_presence_advanced"
-for _,entry in ipairs(registrations(catalog_8,"zcl.sensors.sonoff_presence_advanced","contracts.families.zcl.sensors.sonoff_presence_advanced"))do
+local catalog_8=require "contracts.families.zcl.sensors.hobeian"
+for _,entry in ipairs(registrations(catalog_8,"zcl.sensors.hobeian","contracts.families.zcl.sensors.hobeian"))do
 entries[#entries + 1]=entry
 end
-local catalog_9=require "contracts.families.zcl.sensors.hobeian"
-for _,entry in ipairs(registrations(catalog_9,"zcl.sensors.hobeian","contracts.families.zcl.sensors.hobeian"))do
-entries[#entries + 1]=entry
-end
-local catalog_10=require "contracts.families.zcl.sensors.zg204zl"
-for _,entry in ipairs(registrations(catalog_10,"zcl.sensors.zg204zl","contracts.families.zcl.sensors.zg204zl"))do
+local catalog_9=require "contracts.families.zcl.sensors.zg204zl"
+for _,entry in ipairs(registrations(catalog_9,"zcl.sensors.zg204zl","contracts.families.zcl.sensors.zg204zl"))do
 entries[#entries + 1]=entry
 end
 return entries

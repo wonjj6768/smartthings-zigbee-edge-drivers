@@ -77,6 +77,7 @@ add(enum(21, "a_zero_eight_alarm_ringtone", "aZeroEightAlarmRingtone", ringtones
 
 register_device_definition(a_zero_eight, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_l4daccga",
+  "_TZE28C1000000_l4daccga",
 }))
 
 return {

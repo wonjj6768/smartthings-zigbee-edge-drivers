@@ -16,12 +16,16 @@ local catalog_2=require "contracts.families.ef00.controls.wave17_fingerbot"
 for _,entry in ipairs(registrations(catalog_2,"ef00.controls.wave17_fingerbot","contracts.families.ef00.controls.wave17_fingerbot"))do
 entries[#entries + 1]=entry
 end
-local catalog_3=require "contracts.families.ef00.controls.wave18_keypads"
-for _,entry in ipairs(registrations(catalog_3,"ef00.controls.wave18_keypads","contracts.families.ef00.controls.wave18_keypads"))do
+local catalog_3=require "contracts.families.ef00.controls.tuya_fingerbot_plus"
+for _,entry in ipairs(registrations(catalog_3,"ef00.controls.tuya_fingerbot_plus","contracts.families.ef00.controls.tuya_fingerbot_plus"))do
 entries[#entries + 1]=entry
 end
-local catalog_4=require "contracts.families.ef00.controls.wave19_remotes"
-for _,entry in ipairs(registrations(catalog_4,"ef00.controls.wave19.remotes","contracts.families.ef00.controls.wave19_remotes"))do
+local catalog_4=require "contracts.families.ef00.controls.wave18_keypads"
+for _,entry in ipairs(registrations(catalog_4,"ef00.controls.wave18_keypads","contracts.families.ef00.controls.wave18_keypads"))do
+entries[#entries + 1]=entry
+end
+local catalog_5=require "contracts.families.ef00.controls.wave19_remotes"
+for _,entry in ipairs(registrations(catalog_5,"ef00.controls.wave19.remotes","contracts.families.ef00.controls.wave19_remotes"))do
 entries[#entries + 1]=entry
 end
 return entries

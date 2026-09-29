@@ -467,6 +467,66 @@ register_device_definition(eone, ef00_helpers.ts0601_fingerprints({
   "_TZE200_awnadkan",
 }))
 
+-- Current Z2M 2b949fe (2026-09-18): AE-5503-S-H-ZIGBEE sauna
+-- thermostat. Keep the first pass on its standard thermostat surface; DP40
+-- child lock remains separate until its family-specific capability is authored.
+local ae5503_sauna_core = {
+  profile = "thermostats-sauna-ae5503-core",
+  package_group = "wall",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  time_start = "1970",
+  tuya.dp_binary(1, {
+    name = "system_mode",
+    converter = converter.lookup_from_to({ off = false, heat = true }),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_current_heating_setpoint(16, {
+    name = "current_heating_setpoint",
+    scale = 1,
+    emit = emit.heating_setpoint("C"),
+  }),
+  tuya.dp_local_temperature(24, {
+    name = "local_temperature",
+    scale = 1,
+    read_only = true,
+    emit = emit.temperature("C"),
+  }),
+}
+thermostat_metadata.attach(ae5503_sauna_core, { "off", "heat" }, 0, 120, 1)
+register_device_definition(ae5503_sauna_core, ef00_helpers.ts0601_fingerprints({
+  "_TZE204_eaasry7v",
+}))
+
+-- Current Z2M 2d5e292 (2026-09-18): TS0601_wsek35um radiator
+-- thermostat. Z2M exposes DP4 setpoint as writable and DP5 temperature as
+-- readonly. DP2's five readonly vendor modes and DP7 child lock remain
+-- separate follow-up items instead of being collapsed into standard modes.
+local wsek35um_radiator_core = {
+  profile = "thermostats-radiator-wsek35um-core",
+  package_group = "wall",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  time_start = "1970",
+  tuya.dp_current_heating_setpoint(4, {
+    name = "current_heating_setpoint",
+    scale = 10,
+    emit = emit.heating_setpoint("C"),
+  }),
+  tuya.dp_local_temperature(5, {
+    name = "local_temperature",
+    scale = 10,
+    read_only = true,
+    emit = emit.temperature("C"),
+  }),
+}
+thermostat_metadata.attach_setpoint_only(wsek35um_radiator_core, 5, 30, 0.5)
+register_device_definition(wsek35um_radiator_core, ef00_helpers.ts0601_fingerprints({
+  "_TZE204_wsek35um",
+}))
+
 return {
   id = "ef00.thermostats.wave6a_wall",
   registrations = device_definitions,

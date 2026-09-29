@@ -59,6 +59,7 @@ binary(106,"weten_pci_child_lock","wetenPciChildLock","LOCK","UNLOCK"),
 register_device_definition(weten_pci,{
 device_helpers.create_fingerprint("_TZE204_6fk3gewc","TS0601"),
 device_helpers.create_fingerprint("_TZE284_6fk3gewc","TS0601"),
+device_helpers.create_fingerprint("_TZE28C1000000_6fk3gewc","TS0601"),
 })
 return{
 id="ef00.bridges.wave19",

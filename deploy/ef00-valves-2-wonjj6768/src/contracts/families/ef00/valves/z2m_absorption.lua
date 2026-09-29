@@ -190,6 +190,7 @@ register_device_definition(iotperfect_pf_pm02d,device_helpers.create_fingerprint
 "_TZE200_vrjkcam9",
 "_TZE200_d0ypnbvn",
 "_TZE204_v5xjyphj",
+"_TZE28C1000000_v5xjyphj",
 "_TZE204_d0ypnbvn",
 "_TZE284_v5xjyphj",
 "_TZE284_d0ypnbvn",

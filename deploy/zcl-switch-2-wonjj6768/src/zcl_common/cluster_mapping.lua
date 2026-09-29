@@ -74,6 +74,7 @@ local mapping_option_keys={
 "write_type",
 "numeric_range",
 "prefer_typed_value",
+"prefer_plain_attribute_write",
 "attribute_name",
 "complex_type",
 "mfg_code",

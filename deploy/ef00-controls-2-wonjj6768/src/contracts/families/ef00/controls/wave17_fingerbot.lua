@@ -95,6 +95,9 @@ register_device_definition(czf_zero_two,device_helpers.create_fingerprints("TS06
 "_TZE284_gw05grph",
 "_TZE284_chcnj5st",
 "_TZE284_pislt0wa",
+"_TZE2841000000_gw05grph",
+"_TZE2841000000_chcnj5st",
+"_TZE2841000000_pislt0wa",
 }))
 return{
 id="ef00.controls.wave17_fingerbot",

@@ -313,7 +313,10 @@ bl82.datapoints[#bl82.datapoints + 1] = tuya.dp_binary(6, {
   converter = converter.lookup_from_to({ ON = true, OFF = false }),
   emit = emit.blTyzAutoPower(),
 })
-register_device_definition(bl82, exacts("TS0601", { "_TZE284_7qc2wlqr" }))
+register_device_definition(bl82, exacts("TS0601", {
+  "_TZE284_7qc2wlqr",
+  "_TZE2841000000_7qc2wlqr",
+}))
 
 local zs_sr = base_definition("covers-wave10-moes-zs-sr-euc")
 append_cover_action(zs_sr, 1)

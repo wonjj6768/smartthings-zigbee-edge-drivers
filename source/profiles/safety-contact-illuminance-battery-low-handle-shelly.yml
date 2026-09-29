@@ -8,7 +8,11 @@ components:
         version: 1
       - id: concertmirror08464.batteryLow
         version: 1
-      - id: illuminanceMeasurement
+      - id: concertmirror08464.shellyBluDoorLightLevel
+        version: 1
+      - id: concertmirror08464.shellyBluDoorDarkThreshold
+        version: 1
+      - id: concertmirror08464.shellyBluDoorBrightThreshold
         version: 1
       - id: battery
         version: 1

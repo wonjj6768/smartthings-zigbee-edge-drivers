@@ -208,27 +208,6 @@ return bit32.band(value,mask)~=0
 end,
 }
 end
-local function shelly_handle_position_pair()
-return{
-from=function(value)
-local alarm1
-local alarm2
-if type(value)=="table" then
-if type(value.is_alarm1_set)=="function" then alarm1=value:is_alarm1_set()end
-if type(value.is_alarm2_set)=="function" then alarm2=value:is_alarm2_set()end
-if alarm1==nil and value.value ~=nil then value=value.value end
-end
-if type(value)=="number" then
-alarm1=bit32.band(value,0x0001)~=0
-alarm2=bit32.band(value,0x0002)~=0
-end
-if alarm1==nil or alarm2==nil then return value end
-if not alarm1 and not alarm2 then return "closed" end
-if alarm1 and not alarm2 then return "tilted" end
-return "open"
-end,
-}
-end
 local function extract_zone_status_from_command(zb_rx)
 local zone_status=zb_rx and zb_rx.body and zb_rx.body.zcl_body and zb_rx.body.zcl_body.zone_status or nil
 if zone_status==nil then
@@ -362,7 +341,9 @@ end)
 zcl.occupancy=function(name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options)
 local ias_zone=resolved.ias_zone==true
+local configure_reporting=resolved.configure_reporting
 resolved.ias_zone=nil
+resolved.configure_reporting=nil
 if ias_zone then
 apply_defaults(resolved,merge_defaults(
 {
@@ -376,6 +357,13 @@ command_extractor=extract_zone_status_from_command,
 reporting_defaults(30,300,nil)
 ))
 return zcl.ias_zone(resolved)
+end
+if configure_reporting==false then
+apply_defaults(resolved,{
+emit=emit.occupancy(),
+read_on_configure=true,
+})
+return zcl.occupancy_sensing(resolved)
 end
 apply_defaults(resolved,merge_defaults(
 {
@@ -519,19 +507,6 @@ return merge_defaults(
 name="contact",
 emit=emit.contact(),
 converter=zone_status_pair(0x0003),
-ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
-command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(30,300,nil)
-)
-end)
-define_preset("shelly_handle_position",zcl.ias_zone,function()
-return merge_defaults(
-{
-name="shelly_handle_position",
-emit=emit.shellyBluDoorHandlePosition(),
-converter=shelly_handle_position_pair(),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
 command_extractor=extract_zone_status_from_command,

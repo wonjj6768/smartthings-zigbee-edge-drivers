@@ -111,6 +111,7 @@ local function load_runtime(zcl)
       custom_from_device = custom_from_device ~= nil,
       converter_from_device = converter_from_device ~= nil,
       prefer_typed_value = prefer_typed_value,
+      prefer_plain_attribute_write = mapping.prefer_plain_attribute_write == true,
       to_device = type(mapping.to_device) == "function" and mapping.to_device or
         (converter and type(converter.to) == "function" and converter.to or nil),
       emit = type(mapping.emit) == "function" and mapping.emit or nil,

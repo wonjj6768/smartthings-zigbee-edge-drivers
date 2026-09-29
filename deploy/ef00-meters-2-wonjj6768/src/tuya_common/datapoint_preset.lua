@@ -661,5 +661,17 @@ end
 function tuya.dp_energy(dp,name_or_options,options)
 return build_divided_numeric_preset(dp,"energy",100,name_or_options,options)
 end
+function tuya.dp_phase_variant2(dp,name_or_options,options)
+return build_phase_raw_preset(
+dp,
+"phase",
+function(resolved)
+return converter.phase_variant2_parser(resolved.phase,resolved.signed_power)
+end,
+{"voltage","current","power"},
+name_or_options,
+options
+)
+end
 end
 return load_datapoint_preset

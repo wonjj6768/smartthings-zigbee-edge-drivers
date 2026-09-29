@@ -210,6 +210,80 @@ local water_model_lincukoo_szw08 = {
 
 register_device_definition(water_model_lincukoo_szw08, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_ajhu0zqb",
+  "_TZE2841000000_ajhu0zqb",
+}))
+
+-- Z2M v26.108.0: Immax 07519L / NEO smart water leak sensor.
+-- The contributor-tested contract is DP1 enum 0=wet/1=dry, DP4 raw battery,
+-- DP101 enum silent mode ON=0/OFF=1 and DP102 enum tone_1=0..tone_3=2.
+local water_model_immax_07519l = {
+  profile = "safety-water-leak-battery-immax-07519l",
+  query_on_configure = false,
+  time_start = "off",
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  tuya.dp_enum(1, {
+    name = "water_leak",
+    emit = emit.water(),
+    converter = converter.true_false0(),
+    read_only = true,
+  }),
+  tuya.dp_battery(4, {
+    emit = emit.battery(),
+    read_only = true,
+  }),
+  tuya.dp_enum(101, {
+    name = "immax_07519l_silent_mode",
+    emit = emit.immax07519lSilentMode(),
+    converter = converter.lookup_from_to({
+      ON = 0,
+      OFF = 1,
+    }),
+  }),
+  tuya.dp_enum(102, {
+    name = "immax_07519l_ringtone",
+    emit = emit.immax07519lRingtone(),
+    converter = converter.lookup_from_to({
+      tone_1 = 0,
+      tone_2 = 1,
+      tone_3 = 2,
+    }),
+  }),
+}
+
+register_device_definition(water_model_immax_07519l, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_rhocfd6y",
+}))
+
+-- ZHC 8fbd03b (2026-09-16): Moes MG-BJQ002 plug-in siren.
+-- Keep the first pass on the two standard SmartThings surfaces: alarm mode
+-- (DP1) and night-light power (DP22).  Volume, duration, ringtone and RGB
+-- light mode stay deferred until their family-specific controls are audited.
+local siren_model_moes_mg_bjq002_core = {
+  profile = "safety-siren-moes-mg-bjq002-core",
+  query_on_configure = false,
+  time_start = "off",
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  alarm_command_modes = true,
+  tuya.dp_enum(1, {
+    name = "alarm",
+    emit = emit.alarm(),
+    converter = converter.lookup_from_to({
+      siren = 0,
+      strobe = 1,
+      both = 2,
+      off = 3,
+    }),
+  }),
+  tuya.dp_on_off(22, {
+    name = "switch",
+    emit = emit.switch(),
+  }),
+}
+
+register_device_definition(siren_model_moes_mg_bjq002_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE20C_tjz9ad5g",
 }))
 
 return {

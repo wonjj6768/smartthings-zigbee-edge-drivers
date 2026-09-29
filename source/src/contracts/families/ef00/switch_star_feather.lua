@@ -139,6 +139,7 @@ register_device_definition(moes_sfl02_z2, device_helpers.create_fingerprints("TS
   "_TZE200_uenof8jd",
   "_TZE200_tzyy0rtq",
   "_TZE200_hktk6hze",
+  "_TZE284_uenof8jd",
 }))
 
 local moes_sfl02_z3 = build_star_feather_family("Three", 3, "switches-moes-sfl02-z3")

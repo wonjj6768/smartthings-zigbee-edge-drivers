@@ -639,6 +639,13 @@ local datapoints={}
 append_preset(datapoints,group_options.dp,builder,group_options)
 return datapoints
 end
+function tuya.dp_on_off(dp,name_or_options,options)
+local resolved=normalize_preset_options(name_or_options,options,"switch")
+if resolved.name=="switch" and resolved.emit==nil then
+resolved.emit=emit.switch()
+end
+return tuya.dp_binary(dp,resolved)
+end
 function tuya.dp_battery(dp,name_or_options,options)
 return build_divided_numeric_preset(dp,"battery",1,name_or_options,options)
 end

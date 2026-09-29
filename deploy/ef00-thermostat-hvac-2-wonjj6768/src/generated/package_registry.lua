@@ -20,4 +20,8 @@ local catalog_3=require "contracts.families.ef00.thermostats.wave12_fcu"
 for _,entry in ipairs(registrations(catalog_3,"ef00.thermostats.wave12_fcu","contracts.families.ef00.thermostats.wave12_fcu"))do
 entries[#entries + 1]=entry
 end
+local catalog_4=require "contracts.families.ef00.thermostats.z2m_absorption_wall"
+for _,entry in ipairs(registrations(catalog_4,"ef00.thermostats.z2m_absorption_wall","contracts.families.ef00.thermostats.z2m_absorption_wall"))do
+entries[#entries + 1]=entry
+end
 return entries

@@ -310,49 +310,87 @@ tuya.dp_on_off(6,{name="switch",component="switch6"}),
 }
 register_device_definition(switch_6gang,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_9mahtqtg",
+"_TZE200_r731zlxk",
+"_TZE204_l8xiyymq",
+"_TZE204_ncti2pro",
+"_TZE204_r731zlxk",
+"_TZE284_l8xiyymq",
+"_TZE284_zeldawjv",
+}))
+local switch_6gang_tuya_options={
+profile="switches-switch-6-tuya-options",
+package_group="switch-basic",
+switch_6gang[1],
+switch_6gang[2],
+switch_6gang[3],
+switch_6gang[4],
+switch_6gang[5],
+switch_6gang[6],
+tuya.dp_enum(14,{
+name="power_on_behavior",
+emit=emit.ts6gPowerOnBehavior(),
+converter=converter.lookup_from_to({off=0,on=1,memory=2}),
+}),
+tuya.dp_indicator_mode_none_relay_pos(15,{
+name="indicator_mode",
+emit=emit.ts6gIndicatorMode(),
+}),
+magic_packet=true,
+query_on_configure=false,
+configure=function(driver,device)
+zcl.bind_cluster(
+device,
+zcl.CLUSTER_ON_OFF,
+driver.environment_info.hub_zigbee_eui,
+1
+)
+end,
+}
+local switch_6gang_tuya_option_fingerprints=device_helpers.create_fingerprints("TS0601",{
+"_TZE200_mwvfvw8g",
+"_TZE200_wnp4d4va",
 "_TZE200_cduqh1l0",
 "_TZE204_cduqh1l0",
 "_TZE200_emxxanvi",
-"_TZE200_mwvfvw8g",
-"_TZE200_r731zlxk",
-"_TZE200_wnp4d4va",
 "_TZE204_g4au0afs",
-"_TZE204_gxbdnfrh",
-"_TZE204_l8xiyymq",
-"_TZE204_lmgrbuwf",
-"_TZE204_ncti2pro",
-"_TZE204_r731zlxk",
-"_TZE284_r731zlxk",
 "_TZE204_w1wwxoja",
-"_TZE204_wskr3up8",
-"_TZE284_g1enhdsi",
-"_TZE284_l8xiyymq",
+"_TZE204_lmgrbuwf",
 "_TZE284_tdhnhhiy",
-"_TZE284_zeldawjv",
-}))
-register_device_definition(switch_6gang,{
+"_TZE204_wskr3up8",
+"_TZE204_gxbdnfrh",
+"_TZE284_g1enhdsi",
+"_TZE284_r731zlxk",
+"_TZE284_znkkcauq",
+})
+for _,fingerprint in ipairs({
 device_helpers.create_fingerprint("Mercator Ikuü","SSW06G"),
 device_helpers.create_fingerprint("Nova Digital","NTZB-04-W-B"),
 device_helpers.create_fingerprint("Nova Digital","SYZB-6W"),
 device_helpers.create_fingerprint("Nova Digital","FZB-6"),
 device_helpers.create_fingerprint("Nova Digital","SA-6"),
 device_helpers.create_fingerprint("Ekaza","EKAT-T3074-6WZ"),
-})
+})do
+switch_6gang_tuya_option_fingerprints[#switch_6gang_tuya_option_fingerprints + 1]=fingerprint
+end
+register_device_definition(switch_6gang_tuya_options,switch_6gang_tuya_option_fingerprints)
 local switch_1gang_power_monitoring={
 profile="switches-switch-1-power-energy-voltage-current-apiu",
 package_group="switch-basic",
 datapoints={
 tuya.dp_on_off(1,{name="switch",component="main"}),
 tuya.dp_countdown(7,{name="countdown",emit=emit.apiuCountdown()}),
-tuya.dp_energy(20,{}),
-tuya.dp_current(21,{}),
-tuya.dp_power(22,{scale=1}),
-tuya.dp_voltage(23,{scale=1}),
+tuya.dp_energy(20,{read_only=true}),
+tuya.dp_current(21,{read_only=true}),
+tuya.dp_power(22,{scale=1,read_only=true}),
+tuya.dp_voltage(23,{scale=1,read_only=true}),
 },
-query_on_configure=true,
+magic_packet=true,
+query_on_configure=false,
+time_start="off",
 }
 register_device_definition(switch_1gang_power_monitoring,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_apiu8k13",
+"_TZE284_q9qytwfa",
 }))
 local switch_6gang_dp19={
 profile="switches-switch-6",

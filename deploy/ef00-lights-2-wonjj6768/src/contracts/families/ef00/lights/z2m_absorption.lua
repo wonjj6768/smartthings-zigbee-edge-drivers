@@ -300,6 +300,7 @@ momentary=2,
 })
 local avatto_zdms16_1={
 profile="lights-dimmer-zdms16-1",
+mcu_version_request_on_configure=true,
 tuya.dp_on_off(1,{name="switch",emit=emit.switch()}),
 tuya.dp_numeric(2,{name="brightness",emit=emit.level(),converter=zdms16_brightness}),
 tuya.dp_numeric(3,{name="zdms161_minimum_brightness",emit=emit.zdmsOneMinimumBrightness(),converter=zdms16_brightness}),
@@ -310,6 +311,62 @@ tuya.dp_power_on_behavior(14,{name="zdms161_power_on_behavior",emit=emit.zdmsOne
 }
 register_device_definition(avatto_zdms16_1,device_helpers.create_fingerprints("TS0601",{
 "_TZE28C1000000_nqqylykc",
+"_TZE28C1000000_huu3td85",
+}))
+local mg_dim02z_brightness=converter.from_only(function(value)
+return clamp(round((tonumber(value)or 0)/ 10),0,100)
+end)
+local function mg_dim02z_brightness_write(_,value)
+local level=clamp(round(tonumber(value)or 0),0,100)
+if level <=0 then
+return{
+{dp=141,datatype=tuya.DP_TYPE_BOOL,value=false,transaction=1},
+}
+end
+return{
+{dp=141,datatype=tuya.DP_TYPE_BOOL,value=true,transaction=1},
+{dp=142,datatype=tuya.DP_TYPE_VALUE,value=level * 10,transaction=2},
+}
+end
+local mg_dim02z={
+profile="lights-dimmer-power-voltage-current-core",
+magic_packet=true,
+mcu_version_request_on_configure=true,
+query_on_configure=false,
+time_start="off",
+named_mapping={
+named_mappings={
+brightness=mg_dim02z_brightness_write,
+},
+},
+datapoints={
+tuya.dp_on_off(141,{name="switch",emit=emit.switch()}),
+tuya.dp_numeric(142,{
+name="brightness",
+read_only=true,
+emit=emit.level(),
+converter=mg_dim02z_brightness,
+}),
+tuya.dp_current(21,{name="current",scale=1000,read_only=true,emit=emit.current()}),
+tuya.dp_power(22,{name="power",scale=10,read_only=true,emit=emit.power()}),
+tuya.dp_voltage(23,{name="voltage",scale=10,read_only=true,emit=emit.voltage()}),
+},
+}
+register_device_definition(mg_dim02z,device_helpers.create_fingerprints("TS0601",{
+"_TZE284_da26abzz",
+}))
+local sfd02_brightness=converter.scale_pair(0,1000,0,100)
+local moes_sfd02_core={
+profile="lights-dimmer-moes-sfd02-core",
+magic_packet=true,
+mcu_version_request_on_configure=true,
+query_on_configure=false,
+time_start="off",
+tuya.dp_on_off(1,{name="switch",emit=emit.switch()}),
+tuya.dp_numeric(2,{name="brightness",emit=emit.level(),converter=sfd02_brightness}),
+}
+register_device_definition(moes_sfd02_core,device_helpers.create_fingerprints("TS0601",{
+"_TZE284_t88bjhfu",
 }))
 local siswd11_brightness=converter.from_to(
 function(value)
@@ -328,6 +385,33 @@ tuya.dp_numeric(2,{name="brightness",emit=emit.level(),converter=siswd11_brightn
 }
 register_device_definition(light_model_mercator_siswd11_zb,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_jowqowye",
+}))
+local tuya_ms032z_core={
+profile="lights-stair-ms032z-core",
+magic_packet=true,
+mcu_version_request_on_configure=true,
+query_on_configure=true,
+query_on_announce=true,
+time_start="off",
+datapoints={
+tuya.dp_on_off(1,{name="switch",emit=emit.switch()}),
+tuya.dp_numeric(127,{name="brightness",emit=emit.level()}),
+tuya.dp_occupancy(128,{
+name="motion_up",
+component="motionUp",
+read_only=true,
+emit=emit.motion(),
+}),
+tuya.dp_occupancy(129,{
+name="motion_down",
+component="motionDown",
+read_only=true,
+emit=emit.motion(),
+}),
+},
+}
+register_device_definition(tuya_ms032z_core,device_helpers.create_fingerprints("TS0601",{
+"_TZE284_rovbuqdo",
 }))
 return{
 id="ef00.lights.z2m_absorption",

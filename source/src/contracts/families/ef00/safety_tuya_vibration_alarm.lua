@@ -72,6 +72,7 @@ local vibration_battery = {
 
 register_device_definition(vibration_battery, {
   { manufacturer = "_TZE284_aghfucwi", model = "TS0601" },
+  { manufacturer = "_TZE2841000000_aghfucwi", model = "TS0601" },
 })
 
 local vibration_battery_state_only = {
@@ -103,6 +104,7 @@ local vibration_battery_state_only = {
 
 register_device_definition(vibration_battery_state_only, {
   { manufacturer = "_TZE284_2qx7sivb", model = "TS0601" },
+  { manufacturer = "_TZE2841000000_2qx7sivb", model = "TS0601" },
 })
 
 local vibration_battery_state_controls = {
@@ -145,6 +147,8 @@ local vibration_battery_state_controls = {
 register_device_definition(vibration_battery_state_controls, {
   { manufacturer = "_TZE284_8sejxcue", model = "TS0601" },
   { manufacturer = "_TZE284_7trh4ihp", model = "TS0601" },
+  { manufacturer = "_TZE2841000000_8sejxcue", model = "TS0601" },
+  { manufacturer = "_TZE2841000000_7trh4ihp", model = "TS0601" },
 })
 
 return {

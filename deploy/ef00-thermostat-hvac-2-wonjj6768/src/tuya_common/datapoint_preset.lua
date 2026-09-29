@@ -667,5 +667,8 @@ end
 function tuya.dp_running_state(dp,name_or_options,options)
 return tuya.dp_enum(dp,normalize_preset_options(name_or_options,options,"running_state"))
 end
+function tuya.dp_fan_mode(dp,name_or_options,options)
+return tuya.dp_enum(dp,normalize_preset_options(name_or_options,options,"fan_mode"))
+end
 end
 return load_datapoint_preset

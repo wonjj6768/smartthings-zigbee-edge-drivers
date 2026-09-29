@@ -379,6 +379,7 @@ register_device_definition(switch_1gang_stairwell,device_helpers.create_fingerpr
 }))
 register_device_definition(switch_1gang_multifunction,device_helpers.create_fingerprints("TS0601",{
 "_TZE284_7e6v8u9f",
+"_TZE28C1000000_rzdkn5rx",
 }))
 local switch_6gang_dp24_scene_panel={
 profile="switches-switch-6-to6",

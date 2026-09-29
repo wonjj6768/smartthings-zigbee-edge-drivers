@@ -666,6 +666,18 @@ function tuya.dp_illuminance(dp,name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options,"illuminance")
 return tuya.dp_numeric(dp,resolved)
 end
+function tuya.dp_voltage(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"voltage",10,name_or_options,options)
+end
+function tuya.dp_current(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"current",1000,name_or_options,options)
+end
+function tuya.dp_power(dp,name_or_options,options)
+return build_power_numeric_preset(dp,"power",10,name_or_options,options)
+end
+function tuya.dp_energy(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"energy",100,name_or_options,options)
+end
 function tuya.dp_countdown(dp,name_or_options,options)
 return build_divided_numeric_preset(dp,"countdown",1,name_or_options,options)
 end

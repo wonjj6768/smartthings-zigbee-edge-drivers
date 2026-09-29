@@ -1,0 +1,1 @@
+{name: switches-zemismart-zmz609-2-core,components:[{id: main,capabilities:[{id: switch,version: 1},{id: energyMeter,version: 1},{id: currentMeasurement,version: 1},{id: powerMeter,version: 1},{id: voltageMeasurement,version: 1}],categories:[{name: Switch}]},{id: switch2,capabilities:[{id: switch,version: 1}],categories:[{name: Switch}]}]}

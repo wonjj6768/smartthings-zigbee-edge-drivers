@@ -80,15 +80,6 @@ zcl.humidity(),
 zcl.battery(),
 },
 }
-local temp_humidity_illuminance={
-profile="sensors-illuminance-temp-humidity-battery",
-zcl_clusters={
-zcl.temperature(),
-zcl.humidity(),
-zcl.illuminance(),
-zcl.battery(),
-},
-}
 local weather_station={
 profile="sensors-weather-temp-humidity-pressure-illuminance-battery-ws90",
 zcl_clusters={
@@ -165,29 +156,6 @@ read_on_configure=true,
 }),
 },
 }
-local contact_illuminance={
-profile="safety-contact-illuminance-battery-low-handle-shelly",
-zcl_clusters={
-zcl.contact(),
-zcl.shelly_handle_position(),
-zcl.battery_low(),
-zcl.illuminance(),
-zcl.battery(),
-},
-}
-local motion_illuminance={
-profile="safety-motion-illuminance-battery-low-battery",
-zcl_clusters={
-zcl.motion(),zcl.illuminance(),zcl.battery_low(),zcl.battery(),
-zcl.cluster_attribute(0x0500,0x0013,{
-name="shelly_blu_motion_sensitivity",endpoint=1,
-data_type=data_types.Uint8,write_type=data_types.Uint8,
-read_on_configure=true,emit=emit.shellyBluSensitivity(),
-from_device=function(value)return({"low","medium","high"})[value]end,
-to_device=function(value)return({low=1,medium=2,high=3})[value]end,
-}),
-},
-}
 register_device_definition(metered_plug,{
 device_helpers.create_fingerprint("Shelly","Plug US"),
 })
@@ -205,17 +173,8 @@ device_helpers.create_fingerprint("Shelly","Flood S"),
 register_device_definition(temp_humidity,{
 device_helpers.create_fingerprint("Shelly","BLU H&T ZB"),
 })
-register_device_definition(temp_humidity_illuminance,{
-device_helpers.create_fingerprint("Shelly","BLU H&T Display ZB"),
-})
 register_device_definition(weather_station,{
 device_helpers.create_fingerprint("Shelly","Ecowitt WS90"),
-})
-register_device_definition(contact_illuminance,{
-device_helpers.create_fingerprint("Shelly","BLU DoorWindow ZB"),
-})
-register_device_definition(motion_illuminance,{
-device_helpers.create_fingerprint("Shelly","BLU Motion ZB"),
 })
 return{
 id="zcl.sensors.shelly_retail",

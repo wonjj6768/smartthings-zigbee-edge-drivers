@@ -1,0 +1,1 @@
+{name: safety-motion-nodieby-nd01-core,components:[{id: main,capabilities:[{id: motionSensor,version: 1},{id: refresh,version: 1}],categories:[{name: MotionSensor}]}]}

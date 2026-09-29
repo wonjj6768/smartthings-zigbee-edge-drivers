@@ -190,7 +190,9 @@ end)
 zcl.occupancy=function(name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options)
 local ias_zone=resolved.ias_zone==true
+local configure_reporting=resolved.configure_reporting
 resolved.ias_zone=nil
+resolved.configure_reporting=nil
 if ias_zone then
 apply_defaults(resolved,merge_defaults(
 {
@@ -204,6 +206,13 @@ command_extractor=extract_zone_status_from_command,
 reporting_defaults(30,300,nil)
 ))
 return zcl.ias_zone(resolved)
+end
+if configure_reporting==false then
+apply_defaults(resolved,{
+emit=emit.occupancy(),
+read_on_configure=true,
+})
+return zcl.occupancy_sensing(resolved)
 end
 apply_defaults(resolved,merge_defaults(
 {

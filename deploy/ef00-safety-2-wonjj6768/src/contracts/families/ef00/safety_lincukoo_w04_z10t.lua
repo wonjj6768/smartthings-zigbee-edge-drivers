@@ -48,6 +48,7 @@ converter=battery_state_converter,
 }
 register_device_definition(water_alarm_battery_state,{
 {manufacturer="_TZE284_iunyuzwe",model="TS0601"},
+{manufacturer="_TZE2841000000_iunyuzwe",model="TS0601"},
 })
 local water_alarm_battery_ringtone={
 profile="safety-water-lincukoo-w04-z10t-battery-ringtone",
@@ -79,6 +80,7 @@ emit=emit.battery(),
 }
 register_device_definition(water_alarm_battery_ringtone,{
 {manufacturer="_TZE284_vbgmewta",model="TS0601"},
+{manufacturer="_TZE2841000000_vbgmewta",model="TS0601"},
 })
 return{
 id="lincukoo.w04_z10t",

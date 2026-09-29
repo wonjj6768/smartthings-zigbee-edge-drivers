@@ -455,6 +455,9 @@ local gx03_valve_state_converter = converter.lookup_from_to({
 
 local gx03_valve = {
   profile = "valves-valve-2-battery-timer-gx03",
+  magic_packet = true,
+  query_on_configure = true,
+  time_start = "off",
   tuya.dp_on_off(1, {
     name = "valve",
     component = "main",
@@ -501,6 +504,7 @@ local gx03_valve = {
 register_device_definition(gx03_valve, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_8zizsafo",
   "_TZE284_iilebqoo",
+  "_TZE284_n41i9jyt",
 }))
 
 -- Z2M: Tuya TS0601_water_switch dual water valve (tuya.ts:15235)

@@ -632,6 +632,7 @@ register_device_definition(single_power_switch,device_helpers.create_fingerprint
 "_TZ3000_iktiy8ue",
 "_TZ3000_zojh9vz7",
 "_TZ3000_gsat0axs",
+"_TZ3000_olo5jhjk",
 }))
 register_device_definition(dual_power_switch,device_helpers.create_fingerprints("TS0002",{
 "_TZ3000_aaifmpuq",
@@ -668,6 +669,7 @@ register_device_definition(wall_switch_module,device_helpers.create_fingerprints
 }))
 register_device_definition(tuya_single_switch,device_helpers.create_fingerprints("TS0001",{
 "_TZ3000_8n7lqbm0",
+"_TZ3000_cb3aangp",
 "_TZ3000_ctftgjwb",
 "_TZ3000_g8n1n7lg",
 "_TZ3000_udl7uyd2",

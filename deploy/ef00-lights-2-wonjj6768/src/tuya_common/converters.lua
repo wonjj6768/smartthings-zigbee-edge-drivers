@@ -144,6 +144,36 @@ end
 function converter.from_only(from_device)
 return converter.from_to(from_device,nil)
 end
+function converter.to_bool(true_value,false_value)
+return function(value)
+if type_check(value)=="boolean" then
+return value
+end
+if value==true_value then
+return true
+end
+if value==false_value then
+return false
+end
+log.warn(string.format("Tuya to_bool expected %s or %s, got %s",tostring(true_value),tostring(false_value),tostring(value)))
+return nil
+end
+end
+function converter.bool_pair(true_value,false_value)
+return converter.from_to(
+converter.to_bool(true_value,false_value),
+function(value)
+if value==true then
+return true_value
+end
+if value==false then
+return false_value
+end
+log.warn(string.format("Tuya bool_pair expected boolean, got %s",type_check(value)))
+return nil
+end
+)
+end
 function converter.lookup_from_to(map,default_value)
 local static_map=type_check(map)=="table" and map or nil
 local static_reverse=static_map and build_reverse_lookup(static_map)or nil
@@ -208,6 +238,9 @@ return nil
 end
 return parsed / div
 end)
+end
+function converter.true_false0()
+return converter.bool_pair(0,1)
 end
 function converter.power_on_behavior()
 return converter.lookup_from_to({

@@ -1,0 +1,15 @@
+name: controls-tuya-fingerbot-plus
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.tuyaFingerbotMode, version: 1}
+      - {id: concertmirror08464.tuyaFingerbotLowerLimit, version: 1}
+      - {id: concertmirror08464.tuyaFingerbotUpperLimit, version: 1}
+      - {id: concertmirror08464.tuyaFingerbotDelay, version: 1}
+      - {id: concertmirror08464.tuyaFingerbotReverse, version: 1}
+      - {id: concertmirror08464.tuyaFingerbotTouch, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Switch

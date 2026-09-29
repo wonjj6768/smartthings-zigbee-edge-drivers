@@ -685,6 +685,13 @@ function tuya.dp_backlight_mode_off_on(dp,name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options,"backlight_mode")
 return apply_default_fixed_send_policy(tuya.dp_binary(dp,resolved),resolved)
 end
+function tuya.dp_indicator_mode_none_relay_pos(dp,name_or_options,options)
+local resolved=normalize_preset_options(name_or_options,options,"indicator_mode")
+if resolved.converter==nil and resolved.from_device==nil and resolved.to_device==nil and resolved.lookup==nil then
+resolved.converter=converter.indicator_mode_none_relay_pos()
+end
+return apply_default_fixed_send_policy(tuya.dp_enum(dp,resolved),resolved)
+end
 function tuya.dp_countdown(dp,name_or_options,options)
 return build_divided_numeric_preset(dp,"countdown",1,name_or_options,options)
 end

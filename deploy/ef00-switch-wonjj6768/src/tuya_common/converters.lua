@@ -222,6 +222,13 @@ on=1,
 previous=2,
 })
 end
+function converter.indicator_mode_none_relay_pos()
+return converter.lookup_from_to({
+none=0,
+relay=1,
+pos=2,
+})
+end
 function converter.power()
 return converter.from_only(function(value)
 local number_value=tonumber_check(value)

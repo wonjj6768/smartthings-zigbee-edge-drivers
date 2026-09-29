@@ -113,8 +113,10 @@ register_device_definition(saswell_legacy, {
   device_helpers.create_fingerprint("_TZE200_9m4kmbfu", "TS0601"),
   device_helpers.create_fingerprint("_TZE284_9m4kmbfu", "TS0601"),
   device_helpers.create_fingerprint("_TZE200_3yp57tby", "TS0601"),
+  device_helpers.create_fingerprint("_TZE204_3yp57tby", "TS0601"),
   device_helpers.create_fingerprint("_TZE200_7p8ugv8d", "TS0601"),
   device_helpers.create_fingerprint("_TZE284_3yp57tby", "TS0601"),
+  device_helpers.create_fingerprint("_TZE2841000000_3yp57tby", "TS0601"),
 })
 -- Z2M legacy.fz.etop_thermostat (legacy.ts:2370) unpacks DP13 as a bitmap of
 -- high/low temperature, internal/external sensor errors, battery low and offline.

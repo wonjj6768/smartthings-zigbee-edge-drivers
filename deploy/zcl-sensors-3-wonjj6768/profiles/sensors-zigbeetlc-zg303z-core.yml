@@ -1,0 +1,1 @@
+{name: sensors-zigbeetlc-zg303z-core,components:[{id: main,capabilities:[{id: concertmirror08464.zg303zSoilMoisture,version: 1},{id: temperatureMeasurement,version: 1},{id: relativeHumidityMeasurement,version: 1},{id: battery,version: 1},{id: voltageMeasurement,version: 1},{id: refresh,version: 1}],categories:[{name: TempHumiditySensor}]}]}

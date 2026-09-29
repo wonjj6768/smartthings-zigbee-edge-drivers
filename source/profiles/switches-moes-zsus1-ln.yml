@@ -1,0 +1,11 @@
+name: switches-moes-zsus1-ln
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.moesZsus1PowerBehavior, version: 1}
+      - {id: concertmirror08464.moesZsus1SwitchType, version: 1}
+      - {id: concertmirror08464.moesZsus1BacklightMode, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - {name: Switch}

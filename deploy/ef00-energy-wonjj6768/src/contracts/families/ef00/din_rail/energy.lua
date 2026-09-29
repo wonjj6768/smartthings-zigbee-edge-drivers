@@ -869,6 +869,8 @@ register_device_definition(din_rail_model_toqcb2_80,device_helpers.create_finger
 "_TZE284_tzreobvu",
 "_TZE284_9xstqowh",
 "_TZE284_kv1nvirl",
+"_TZE284_lyqazpe6",
+"_TZE204_lyqazpe6",
 }))
 register_device_definition(din_rail_model_toqcb2_80,{
 device_helpers.create_fingerprint("Tongou","TOQCB2-80-2P"),

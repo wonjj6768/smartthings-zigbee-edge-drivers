@@ -420,6 +420,7 @@ register_device_definition(switch_1gang_stairwell, device_helpers.create_fingerp
 
 register_device_definition(switch_1gang_multifunction, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_7e6v8u9f",
+  "_TZE28C1000000_rzdkn5rx",
 }))
 
 -- TO-6 W/B (Z2M tuya.ts:6074): 6 relay outputs are DP24~29.  DP1~6 report the

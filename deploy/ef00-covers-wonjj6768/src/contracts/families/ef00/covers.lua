@@ -1127,10 +1127,12 @@ register_device_definition(cover_one,device_helpers.create_fingerprints("TS0601"
 "_TZE200_zxxfv8wi",
 "_TZE204_lh3arisb",
 "_TZE204_zuq5xxib",
+"_TZE284_zuq5xxib",
 "_TZE200_nueqqe6k",
 "_TZE200_1fuxihti",
 "_TZE204_1fuxihti",
 "_TZE284_1fuxihti",
+"_TZE28C1000000_1fuxihti",
 "_TZE200_5zbp6j0u",
 "_TZE200_nkoabg8w",
 "_TZE200_4vobcgd3",
@@ -1191,6 +1193,7 @@ device_helpers.create_fingerprint("Zemismart","ZMS1-TYZ"),
 })
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_eegnwoyw",
+"_TZE200_fu14oapz",
 }))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0105",{
 "_TZE600_ogyg1y6b",
@@ -1303,6 +1306,7 @@ register_device_definition(cover_core_alt_dp,device_helpers.create_fingerprints(
 }))
 register_device_definition(cover_core_alt_position_8,device_helpers.create_fingerprints("TS0601",{
 "_TZE284_3mzb0sdz",
+"_TZE2841000000_3mzb0sdz",
 }))
 register_device_definition(cover_model_zsm01,device_helpers.create_fingerprints("TS0601",{
 "_TZE284_zofmmt9s",
@@ -1373,6 +1377,7 @@ register_device_definition(cover_model_bx82_tyz1,device_helpers.create_fingerpri
 }))
 register_device_definition(cover_model_mb60l,device_helpers.create_fingerprints("TS0601",{
 "_TZE284_2gi1hy8s",
+"_TZE2841000000_2gi1hy8s",
 }))
 register_device_definition(cover_zb_sm,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_zyrdrmno",

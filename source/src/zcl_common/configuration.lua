@@ -4,8 +4,19 @@
 local function load_configuration(zcl)
 
   local zigbee_constants = require "st.zigbee.constants"
+  local device_management = require "st.zigbee.device_management"
   local BASIC_CLUSTER = 0x0000
   local BASIC_MAGIC_ATTRIBUTES = { 0x0004, 0x0000, 0x0001, 0x0005, 0x0007, 0xFFFE }
+
+  function zcl.bind_cluster(device, cluster_id, hub_eui, endpoint)
+    device:send(device_management.build_bind_request(
+      device,
+      cluster_id,
+      hub_eui,
+      endpoint
+    ))
+    return true
+  end
 
   local function is_callable_type(value)
     if type(value) == "function" then

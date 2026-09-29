@@ -109,8 +109,10 @@ device_helpers.create_fingerprint("_TZE200_exfrnlow","TS0601"),
 device_helpers.create_fingerprint("_TZE200_9m4kmbfu","TS0601"),
 device_helpers.create_fingerprint("_TZE284_9m4kmbfu","TS0601"),
 device_helpers.create_fingerprint("_TZE200_3yp57tby","TS0601"),
+device_helpers.create_fingerprint("_TZE204_3yp57tby","TS0601"),
 device_helpers.create_fingerprint("_TZE200_7p8ugv8d","TS0601"),
 device_helpers.create_fingerprint("_TZE284_3yp57tby","TS0601"),
+device_helpers.create_fingerprint("_TZE2841000000_3yp57tby","TS0601"),
 })
 local ETOP_ERROR_BITS={
 "high_temperature",

@@ -322,6 +322,17 @@ local snzb_09p = {
       write_only = true,
       sender = sonoff_alert_sender,
     }),
+    -- Firmware 1.1.9+ reports the current alert origin here in addition to
+    -- command 0x0F. Keep this report-only so older firmware is never probed
+    -- for an attribute it does not implement.
+    zcl.cluster_attribute(SONOFF_CLUSTER, 0x202E, {
+      name = "sonoff_safety_alarm_status",
+      emit = emit.alarm(),
+      converter = enum_converter({ [0] = "off", [1] = "siren", [2] = "siren" }),
+      data_type = data_types.Uint8,
+      read_only = true,
+      read_on_configure = false,
+    }),
     zcl.cluster_attribute(SONOFF_CLUSTER, 0x0024, {
       name = "sonoff_safety_power_source",
       emit = power_source_emit,

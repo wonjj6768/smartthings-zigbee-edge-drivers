@@ -4,15 +4,17 @@ components:
     capabilities:
       - id: motionSensor
         version: 1
-      - id: illuminanceMeasurement
+      - id: concertmirror08464.shellyBluMotionLightLevel
+        version: 1
+      - id: concertmirror08464.shellyBluMotionDarkThreshold
+        version: 1
+      - id: concertmirror08464.shellyBluMotionBrightThreshold
         version: 1
       - id: concertmirror08464.batteryLow
         version: 1
       - id: battery
         version: 1
       - id: concertmirror08464.shellyBluSensitivity
-        version: 1
-      - id: firmwareUpdate
         version: 1
       - id: refresh
         version: 1
@@ -35,7 +37,13 @@ deviceConfig:
       capability: motionSensor
       version: 1
     - component: main
-      capability: illuminanceMeasurement
+      capability: concertmirror08464.shellyBluMotionLightLevel
+      version: 1
+    - component: main
+      capability: concertmirror08464.shellyBluMotionDarkThreshold
+      version: 1
+    - component: main
+      capability: concertmirror08464.shellyBluMotionBrightThreshold
       version: 1
     - component: main
       capability: concertmirror08464.batteryLow
@@ -55,7 +63,13 @@ deviceConfig:
         capability: motionSensor
         version: 1
       - component: main
-        capability: illuminanceMeasurement
+        capability: concertmirror08464.shellyBluMotionLightLevel
+        version: 1
+      - component: main
+        capability: concertmirror08464.shellyBluMotionDarkThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.shellyBluMotionBrightThreshold
         version: 1
       - component: main
         capability: concertmirror08464.batteryLow
@@ -66,4 +80,10 @@ deviceConfig:
     actions:
       - component: main
         capability: concertmirror08464.shellyBluSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.shellyBluMotionDarkThreshold
+        version: 1
+      - component: main
+        capability: concertmirror08464.shellyBluMotionBrightThreshold
         version: 1

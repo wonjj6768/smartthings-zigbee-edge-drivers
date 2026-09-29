@@ -187,13 +187,17 @@ register_device_definition(blitzwolf_bw_is3_core,{
   device_helpers.create_fingerprint("_TYST11_i5j6ifxj","5j6ifxj\0"),
 })
 
--- ZHC 1d549d8 PR13168: core measurements; VOC/HCHO kept pending.
+-- ZHC 1d549d8 PR13168: complete public measurement surface.
 local dak2k10o_air_core = {
   profile="sensors-dak2k10o-air-core",magic_packet=true,query_on_configure=false,
   datapoints={
     tuya.dp_co2(2,{emit=emit.co2(),read_only=true}),
     tuya.dp_temperature(18,{emit=emit.temperature("C"),scale=10,read_only=true}),
     tuya.dp_humidity(19,{emit=emit.humidity(),scale=10,read_only=true}),
+    tuya.dp_voc(21,{emit=emit.voc("ppb"),read_only=true}),
+    -- Z2M exposes the raw value as ug/m3; SmartThings formaldehydeMeasurement
+    -- accepts mg/m^3, so preserve the physical value with a /1000 conversion.
+    tuya.dp_formaldehyde(22,{emit=emit.formaldehyde("mg/m^3"),scale=1000,read_only=true}),
   },
 }
 register_device_definition(dak2k10o_air_core,{

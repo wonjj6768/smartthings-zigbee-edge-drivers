@@ -215,7 +215,8 @@ local zms206us4 = build_zms206({
   legacy_backlight_mode = false,
   manufacturers = {
     "_TZE204_08qc13ct", "_TZE204_wwaeqnrf", "_TZE204_xibaabmu", "_TZE204_y4jqpry8",
-    "_TZE284_wwaeqnrf", "_TZE284_xibaabmu", "_TZE284_y4jqpry8", "_TZE28C1000000_y4jqpry8",
+    "_TZE284_wwaeqnrf", "_TZE284_xibaabmu", "_TZE284_y4jqpry8", "_TZE28C1000000_xibaabmu",
+    "_TZE28C1000000_y4jqpry8",
   },
 })
 

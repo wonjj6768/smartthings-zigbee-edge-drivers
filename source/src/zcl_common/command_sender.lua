@@ -170,6 +170,10 @@ local function load_command_sender(zcl)
       return false
     end
 
+    if meta.prefer_plain_attribute_write == true then
+      return true
+    end
+
     if meta.mfg_code ~= nil then
       return true
     end

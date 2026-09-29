@@ -207,7 +207,7 @@ device_helpers.create_fingerprint("SONOFF","SNZB-02D"),
 local snzb02ld={
 profile="sonoff-snzb02ld-temperature-display",
 zcl_clusters={
-temperature(),
+temperature({minimum_interval=5,maximum_interval=3600,reportable_change=20}),
 battery(),
 temperature_units("sonoff_snzb02ld_temperature_units","sonoffSnzb02ldTemperatureUnits"),
 numeric_setting(
@@ -228,8 +228,8 @@ device_helpers.create_fingerprint("SONOFF","SNZB-02LD"),
 local snzb02wd={
 profile="sonoff-snzb02wd-temp-humidity-display",
 zcl_clusters={
-temperature(),
-humidity(),
+temperature({minimum_interval=5,maximum_interval=3600,reportable_change=20}),
+humidity({minimum_interval=5,maximum_interval=3600,reportable_change=100}),
 battery(),
 battery_voltage(),
 temperature_units("sonoff_snzb02wd_temperature_units","sonoffSnzb02wdTemperatureUnits"),

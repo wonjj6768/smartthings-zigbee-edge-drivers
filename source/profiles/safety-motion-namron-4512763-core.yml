@@ -4,6 +4,10 @@ components:
     capabilities:
       - id: motionSensor
         version: 1
+      - id: tamperAlert
+        version: 1
+      - id: batteryLevel
+        version: 1
       - id: battery
         version: 1
       - id: voltageMeasurement

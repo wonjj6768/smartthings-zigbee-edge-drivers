@@ -86,6 +86,15 @@ return max_value
 end
 return value
 end
+local function power_on_behavior_pair()
+return build_lookup_pair({
+[0]="off",
+[1]="on",
+[2]="previous",
+},nil,nil,{
+restore="previous",
+})
+end
 local function switch_type_pair()
 return build_lookup_pair({
 [0]="toggle",
@@ -155,6 +164,30 @@ emit=emit.switch(),
 reporting_defaults(0,300,nil)
 )
 end)
+zcl.power_on_behavior=define_enum_attribute(zcl.CLUSTER_ON_OFF,0x8002,{
+name="power_on_behavior",
+emit=optional_emit("power_on_behavior"),
+attribute_name="tuyaPowerOnBehavior",
+converter_factory=power_on_behavior_pair,
+})
+zcl.child_lock=function(name_or_options,options)
+local resolved=normalize_preset_options(name_or_options,options)
+apply_defaults(resolved,{
+name="child_lock",
+emit=optional_emit("childLock"),
+from_device=function(value)
+return value and "on" or "off"
+end,
+to_device=function(value)
+return value==true or value=="on" or value=="lock" or value=="LOCK"
+end,
+data_type=data_types.Boolean,
+write_type=data_types.Boolean,
+attribute_name="tuyaChildLock",
+read_on_configure=true,
+})
+return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF,0x8000,resolved)
+end
 zcl.tuya_magic_packet=function(name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options)
 apply_defaults(resolved,{

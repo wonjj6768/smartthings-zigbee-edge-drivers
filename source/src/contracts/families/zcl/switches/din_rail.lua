@@ -178,6 +178,7 @@ register_device_definition(threshold_din_relay, device_helpers.create_fingerprin
   "_TZ3000_zrm3oxsh",
   "_TZ3000_zv6x8bt2",
   "_TZ3000_yi0n4xfd",
+  "_TZ3000_3o7r0mno",
 }))
 
 register_device_definition(threshold_din_relay_no_temp, device_helpers.create_fingerprints("TS011F", {

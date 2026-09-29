@@ -385,6 +385,55 @@ register_device_definition(nedis, ef00_helpers.ts0601_fingerprints({
   "_TZE284_hcs66axl",
 }))
 
+-- Current Z2M 89b451f (2026-09-08): CBE 1443ZK radiator valve.
+-- The first pass keeps the standard sensor/thermostat core. DP2's six vendor
+-- presets and DP7 child lock stay separate until their exact capabilities are
+-- audited; the upstream invalid DP4 sentinels are discarded before emission.
+local cbe_1443zk_core = {
+  profile = "thermostats-radiator-cbe-1443zk-core",
+  package_group = "trv-2",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  time_start = "2000",
+  force_time_updates = true,
+  tuya.dp_running_state(3, {
+    name = "running_state",
+    read_only = true,
+    converter = converter.lookup_from_to({ idle = 1, heating = 0 }),
+    emit = emit.thermostat_operating_state(),
+  }),
+  tuya.dp_current_heating_setpoint(4, {
+    name = "current_heating_setpoint",
+    from_device = function(value)
+      local numeric = tonumber(value)
+      if numeric == nil or numeric == -1 or numeric == 0xffffffff then return nil end
+      return numeric / 10
+    end,
+    to_device = function(value)
+      local numeric = tonumber(value)
+      if numeric == nil then return nil end
+      return math.floor(numeric * 10 + 0.5)
+    end,
+    emit = emit.heating_setpoint("C"),
+  }),
+  tuya.dp_local_temperature(5, {
+    name = "local_temperature",
+    scale = 10,
+    read_only = true,
+    emit = emit.temperature("C"),
+  }),
+  tuya.dp_battery(6, {
+    name = "battery",
+    read_only = true,
+    emit = emit.battery(),
+  }),
+}
+thermostat_metadata.attach_setpoint_only(cbe_1443zk_core, 5, 35, 0.5)
+register_device_definition(cbe_1443zk_core, ef00_helpers.ts0601_fingerprints({
+  "_TZE284_16m4bgsv",
+}))
+
 return {
   id = "ef00.thermostats.wave6a_trv",
   registrations = device_definitions,

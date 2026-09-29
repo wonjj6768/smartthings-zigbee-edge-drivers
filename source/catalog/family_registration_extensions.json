@@ -27,14 +27,15 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "e3d3a62f4ad1fa2da87d9b4006c38f955323c0970273f96588175f8edac6dbb0"
+      "dynamicEventMemberSha256": "c3213d036e6090310a04ebd53d8828f59a30e1c7f5613f9227bf9a4b6ff8dc03"
     },
     "contracts.families.ef00.din_rail.meters_z2m_absorption": {
       "id": "ef00.din_rail.meters.z2m_absorption",
       "requiredModules": [
         "protocol.tuya",
         "capabilities.events.all",
-        "contracts.helpers.family"
+        "contracts.helpers.family",
+        "contracts.helpers.ef00_din_rail"
       ],
       "externalDependencies": [
         "protocol.tuya"
@@ -42,7 +43,8 @@
       "converterDeclarations": 1,
       "sourceRelativeToSrc": "contracts/families/ef00/din_rail/meters_z2m_absorption.lua",
       "contractHelpers": [
-        "contracts/helpers/family.lua"
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00_din_rail.lua"
       ],
       "aliasBindings": {
         "protocol.tuya": [
@@ -53,9 +55,12 @@
         ],
         "contracts.helpers.family": [
           "device_helpers"
+        ],
+        "contracts.helpers.ef00_din_rail": [
+          "din_common"
         ]
       },
-      "dynamicEventMemberSha256": "5fa554eaaf89ba454cd5650e7b8c32c639564ddcd3b6b51eb657f68998a2b853"
+      "dynamicEventMemberSha256": "4b43637e6840841d4591d69b66d6ee85005a5aa0e99c2005802ad6f8c20cc8c9"
     },
     "contracts.families.ef00.lights.z2m_absorption": {
       "id": "ef00.lights.z2m_absorption",
@@ -88,7 +93,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "278601461276d9e6edacbba6660d114727fe5ba131f74028d33a1ded73728c55"
+      "dynamicEventMemberSha256": "52aaf626c315ee237eef83d909aad4c0cdacaafc659e563937767631bf8a495f"
     },
     "contracts.families.ef00.presence.z2m_absorption": {
       "id": "ef00.presence.z2m_absorption",
@@ -149,7 +154,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "7bec8967e12b0b54ec0f3eb014d148e66271327d9e637b9495e78f39a008bfe5"
+      "dynamicEventMemberSha256": "e9961ee32f16aeb5883b3c58c67dfc10a99f4cd647616c7ae33ceea04d7ef2aa"
     },
     "contracts.families.ef00.screen_switch_z2m_absorption": {
       "id": "ef00.screen_switch.z2m_absorption",
@@ -176,7 +181,7 @@
           "utf8_text"
         ]
       },
-      "dynamicEventMemberSha256": "935e688a40bcfc231104fd74486680753e41d5a465501f186bb1cf7fec007e0c"
+      "dynamicEventMemberSha256": "4078d475b778f6a76499580ea83fc570d5cf0e958aab5746db9e547173babfba"
     },
     "contracts.families.ef00.sensors.z2m_absorption": {
       "id": "ef00.sensors.z2m_absorption",
@@ -209,7 +214,7 @@
           "ef00_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "acf259794a75171eb1cd1812281baaec775bd24faf1209371fb7e4c9ec938c06"
+      "dynamicEventMemberSha256": "6e1815060ae07c167165c716a289110663a5460a066a1aa0ec7be1ae3c656dc4"
     },
     "contracts.families.ef00.switch_basic_z2m_absorption": {
       "id": "ef00.switch.basic.z2m_absorption",
@@ -221,7 +226,7 @@
       "externalDependencies": [
         "protocol.tuya"
       ],
-      "converterDeclarations": 0,
+      "converterDeclarations": 1,
       "sourceRelativeToSrc": "contracts/families/ef00/switch_basic_z2m_absorption.lua",
       "contractHelpers": [
         "contracts/helpers/family.lua"
@@ -237,7 +242,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "82f0955605ccb34258830e8b9f8c7a5d4ed239c3d9c7185b8f0a0eea273810c5"
+      "dynamicEventMemberSha256": "7cb9d96d15f293f4fec800967fde1428bd3ce50688e0b9b3f3f96be9cb397aef"
     },
     "contracts.families.ef00.switch_panel_z2m_absorption": {
       "id": "ef00.switch.panel.z2m_absorption",
@@ -298,7 +303,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "004cf22dd2a0779341f11d564c3b97047f15b1df2ca79ec9b8b843d9d0c52347"
+      "dynamicEventMemberSha256": "7fc55fa864871da54f6bf87e8720c24bd5d1abd0745df5373f96b9d3327a74df"
     },
     "contracts.families.zcl.controls.z2m_absorption": {
       "id": "zcl.controls.z2m_absorption",
@@ -346,7 +351,7 @@
           "data_types"
         ]
       },
-      "dynamicEventMemberSha256": "cf4f550eaf13963e55d2dffd74e49657b9535d1e36a36181649e8a8fb4eb446a"
+      "dynamicEventMemberSha256": "94dd3cb8091d0ffbfaa8563514c84154c5646a66fdfd2a6a9d99551ecca5471c"
     },
     "contracts.families.zcl.lights.z2m_absorption": {
       "id": "zcl.lights.z2m_absorption",
@@ -394,7 +399,7 @@
           "data_types"
         ]
       },
-      "dynamicEventMemberSha256": "fc58099fb3c773e53872106082d98f8735e442a273790df3b0e62ff33457e9b3"
+      "dynamicEventMemberSha256": "09d85e2aa2057e5cd3d627ce20a201778c8b1bef9282325139f7324459f4f39c"
     },
     "contracts.families.zcl.switches.z2m_absorption": {
       "id": "zcl.switches.z2m_absorption",
@@ -437,7 +442,7 @@
           "data_types"
         ]
       },
-      "dynamicEventMemberSha256": "991656f16a6d99a28456a36b968243384af1baa4d524ef6d6745201cb2fc6720"
+      "dynamicEventMemberSha256": "85b84c4f53ef9c6380e75ad151a45445ca21e4254ccdcd039659c0bcee6d923a"
     },
     "contracts.families.ef00.bridges_wave19": {
       "id": "ef00.bridges.wave19",
@@ -465,7 +470,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "d070615dfb9842ce8fefc612cc1379700a0c5919c9436655eafb42f2bbdfb1c8"
+      "dynamicEventMemberSha256": "7ef1bc4a579f803d51c24d7046fffe22621cae8283d541c5f94c542c9e3c2127"
     },
     "contracts.families.ef00.controls.wave19_remotes": {
       "id": "ef00.controls.wave19.remotes",
@@ -499,6 +504,39 @@
       },
       "converterDeclarations": 1,
       "dynamicEventMemberSha256": "d78ed7d9d438ceeaeec106bf1ba5937254a7cbfbdb1474f1a66784228ec0e44f"
+    },
+    "contracts.families.ef00.controls.tuya_fingerbot_plus": {
+      "id": "ef00.controls.tuya_fingerbot_plus",
+      "sourceRelativeToSrc": "contracts/families/ef00/controls/tuya_fingerbot_plus.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya",
+        "protocol.zcl"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "085fc84a45e78a3e000ad15dfe8900ae44d9b014acfd3ac1479917aabf460d68"
     },
     "contracts.families.ef00.covers.wave19_legacy": {
       "id": "ef00.covers.wave19_legacy",
@@ -868,7 +906,7 @@
           "buf"
         ]
       },
-      "dynamicEventMemberSha256": "198245c6443218dbf64d2517be86b4f1eefb2f07d882169558f3840c2fef0319"
+      "dynamicEventMemberSha256": "d1054663e13cd3e3e2cdab374e5059c9541eb3e0e17e721782bec7843322e9a3"
     },
     "contracts.families.zcl.sensors.wave19_hvac": {
       "id": "zcl.sensors.wave19_hvac",
@@ -1197,7 +1235,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "5635e1eb973b276df5f29f843052bad4208e2baacdae455f8f40924c28f81d88"
+      "dynamicEventMemberSha256": "bdd65b4699bc60581eadd6d6d0be557f61d49c9b72aa56b0cc066502a3fd3a20"
     },
     "contracts.families.zcl.sensors.hobeian": {
       "id": "zcl.sensors.hobeian",
@@ -1298,7 +1336,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "e850822c44ef0a4fc9ec40ceadd459aa282b79b7dff1d8832cece54e7c2aceb4"
+      "dynamicEventMemberSha256": "75e211bd713f5bb6d7f76c0ed385476a1022a87f45871c144ab64c8b717410e3"
     },
     "contracts.families.zcl.sensors.sonoff_presence_advanced": {
       "id": "zcl.sensors.sonoff_presence_advanced",
@@ -1384,7 +1422,73 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "ce0c70508fc2e4adfeb8176b3639611962a54b84befcf820a7b7c56b39489e6f"
+      "dynamicEventMemberSha256": "a08306bc6a8d745f023c38cf872e0ab256e08cbd8d28ce59724f151f7af47af6"
+    },
+    "contracts.families.ef00.presence.simple_sensors": {
+      "id": "ef00.presence.simple_sensors",
+      "sourceRelativeToSrc": "contracts/families/ef00/presence/simple_sensors.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "2762ce2492ba2557288a2913d7e395f034b7a7be704b711c125c2f0997386ce6"
+    },
+    "contracts.families.ef00.thermostats.z2m_absorption_wall": {
+      "id": "ef00.thermostats.z2m_absorption_wall",
+      "sourceRelativeToSrc": "contracts/families/ef00/thermostats/z2m_absorption_wall.lua",
+      "requiredModules": [
+        "protocol.tuya",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "contracts.helpers.ef00",
+        "contracts.helpers.ef00_thermostat_metadata"
+      ],
+      "externalDependencies": [
+        "protocol.tuya"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua",
+        "contracts/helpers/ef00.lua",
+        "contracts/helpers/ef00_thermostat_metadata.lua"
+      ],
+      "aliasBindings": {
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "device_helpers"
+        ],
+        "contracts.helpers.ef00": [
+          "ef00_helpers"
+        ],
+        "contracts.helpers.ef00_thermostat_metadata": [
+          "thermostat_metadata"
+        ]
+      },
+      "converterDeclarations": 1,
+      "dynamicEventMemberSha256": "5e4493a278464a0c347e43a8b6a616dc3db21e635ec449a75e708beb6fcbb1b3"
     }
   },
   "composers": {}

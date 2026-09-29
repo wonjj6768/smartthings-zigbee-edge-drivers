@@ -1,1 +1,1 @@
-{name: safety-motion-namron-4512763-core,components:[{id: main,capabilities:[{id: motionSensor,version: 1},{id: battery,version: 1},{id: voltageMeasurement,version: 1},{id: refresh,version: 1}],categories:[{name: MotionSensor}]}]}
+{name: safety-motion-namron-4512763-core,components:[{id: main,capabilities:[{id: motionSensor,version: 1},{id: tamperAlert,version: 1},{id: batteryLevel,version: 1},{id: battery,version: 1},{id: voltageMeasurement,version: 1},{id: refresh,version: 1}],categories:[{name: MotionSensor}]}]}

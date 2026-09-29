@@ -175,6 +175,73 @@ register_device_definition(cover_model_moes_zs_sf_euc_wh_ms, device_helpers.crea
   "_TZE28C1000000_i8sdouy0",
 }))
 
+-- Current Z2M: Nova Digital ZCMR-1 roller blind motor standard core.
+local cover_model_nova_zcmr_one_core = {
+  profile = "covers-nova-zcmr1-core",
+  package_group = "covers",
+  transport_classification = "EF00_DP",
+  z2m_converter_source = "meta.tuyaDatapoints",
+  wire_cluster = "manuSpecificTuya",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = true,
+  named_datapoints = true,
+  time_start = "off",
+  placeholder_custom_states = false,
+  datapoints = {
+    tuya.dp_enum(1, {
+      name = "cover_state",
+      converter = cover_state_standard,
+      write_only = true,
+      transaction = 1,
+    }),
+    tuya.dp_enum(1, {
+      name = "cover_action_state",
+      converter = cover_action_shade_state,
+      read_only = true,
+      transaction = 1,
+      emit = emit.shade_state(),
+    }),
+    tuya.dp_cover_position(2, {
+      name = "cover_position",
+      transaction = 1,
+      emit = emit.shade_level(),
+    }),
+    tuya.dp_numeric(2, {
+      name = "cover_position_shade_state",
+      converter = converter.from_only(function(value)
+        if value <= 0 then return "closed" end
+        if value >= 100 then return "open" end
+        return "partially open"
+      end),
+      read_only = true,
+      transaction = 1,
+      emit = emit.shade_state(),
+    }),
+    tuya.dp_cover_position(3, {
+      name = "cover_position_report",
+      read_only = true,
+      transaction = 1,
+      emit = emit.shade_level(),
+    }),
+    tuya.dp_numeric(3, {
+      name = "cover_position_report_shade_state",
+      converter = converter.from_only(function(value)
+        if value <= 0 then return "closed" end
+        if value >= 100 then return "open" end
+        return "partially open"
+      end),
+      read_only = true,
+      transaction = 1,
+      emit = emit.shade_state(),
+    }),
+  },
+}
+
+register_device_definition(cover_model_nova_zcmr_one_core, {
+  device_helpers.create_fingerprint("_TZE204_dqy15zxy", "TS0601"),
+})
+
 return {
   id = "ef00.covers.z2m_absorption",
   registrations = device_definitions,

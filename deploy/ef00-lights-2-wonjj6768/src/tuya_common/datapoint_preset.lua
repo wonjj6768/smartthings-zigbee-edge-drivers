@@ -646,6 +646,22 @@ resolved.emit=emit.switch()
 end
 return tuya.dp_binary(dp,resolved)
 end
+function tuya.dp_occupancy(dp,name_or_options,options)
+local resolved=normalize_preset_options(name_or_options,options,"occupancy")
+if resolved.converter==nil and resolved.from_device==nil and resolved.to_device==nil and resolved.lookup==nil then
+resolved.converter=converter.true_false0()
+end
+return tuya.dp_binary(dp,resolved)
+end
+function tuya.dp_voltage(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"voltage",10,name_or_options,options)
+end
+function tuya.dp_current(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"current",1000,name_or_options,options)
+end
+function tuya.dp_power(dp,name_or_options,options)
+return build_power_numeric_preset(dp,"power",10,name_or_options,options)
+end
 function tuya.dp_power_on_behavior(dp,name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options,"power_on_behavior")
 if resolved.converter==nil and resolved.from_device==nil and resolved.to_device==nil and resolved.lookup==nil then

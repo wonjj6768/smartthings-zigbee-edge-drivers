@@ -657,5 +657,11 @@ end
 function tuya.dp_co2(dp,name_or_options,options)
 return build_divided_numeric_preset(dp,"co2",1,name_or_options,options)
 end
+function tuya.dp_voc(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"voc",1,name_or_options,options)
+end
+function tuya.dp_formaldehyde(dp,name_or_options,options)
+return build_divided_numeric_preset(dp,"formaldehyde",1,name_or_options,options)
+end
 end
 return load_datapoint_preset

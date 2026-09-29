@@ -32,4 +32,8 @@ local catalog_6=require "contracts.families.ef00.presence.wave19_sensors"
 for _,entry in ipairs(registrations(catalog_6,"ef00.presence.wave19.sensors","contracts.families.ef00.presence.wave19_sensors"))do
 entries[#entries + 1]=entry
 end
+local catalog_7=require "contracts.families.ef00.presence.simple_sensors"
+for _,entry in ipairs(registrations(catalog_7,"ef00.presence.simple_sensors","contracts.families.ef00.presence.simple_sensors"))do
+entries[#entries + 1]=entry
+end
 return entries

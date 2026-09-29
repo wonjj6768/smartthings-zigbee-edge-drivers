@@ -434,10 +434,6 @@
           "id": "zcl.sensors.sonoff"
         },
         {
-          "module": "contracts.families.zcl.sensors.sonoff_safety",
-          "id": "zcl.sensors.sonoff_safety"
-        },
-        {
           "module": "contracts.families.zcl.sensors.sonoff_presence_advanced",
           "id": "zcl.sensors.sonoff_presence_advanced"
         },
@@ -716,6 +712,10 @@
         {
           "module": "contracts.families.ef00.presence.wave19_sensors",
           "id": "ef00.presence.wave19.sensors"
+        },
+        {
+          "module": "contracts.families.ef00.presence.simple_sensors",
+          "id": "ef00.presence.simple_sensors"
         }
       ]
     },
@@ -844,6 +844,10 @@
         {
           "module": "contracts.families.ef00.thermostats.wave12_fcu",
           "id": "ef00.thermostats.wave12_fcu"
+        },
+        {
+          "module": "contracts.families.ef00.thermostats.z2m_absorption_wall",
+          "id": "ef00.thermostats.z2m_absorption_wall"
         }
       ]
     },
@@ -862,6 +866,10 @@
         {
           "module": "contracts.families.ef00.controls.wave17_fingerbot",
           "id": "ef00.controls.wave17_fingerbot"
+        },
+        {
+          "module": "contracts.families.ef00.controls.tuya_fingerbot_plus",
+          "id": "ef00.controls.tuya_fingerbot_plus"
         },
         {
           "module": "contracts.families.ef00.controls.wave18_keypads",
@@ -898,6 +906,14 @@
         {
           "module": "contracts.families.zcl.sensors.simple_sensors",
           "id": "zcl.sensors.simple_sensors"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.shelly_environment",
+          "id": "zcl.sensors.shelly_environment"
+        },
+        {
+          "module": "contracts.families.zcl.sensors.sonoff_safety",
+          "id": "zcl.sensors.sonoff_safety"
         }
       ]
     }

@@ -1,0 +1,9 @@
+name: covers-nova-zcmr1-core
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - name: Blind

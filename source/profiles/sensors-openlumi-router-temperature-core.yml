@@ -1,0 +1,8 @@
+name: sensors-openlumi-router-temperature-core
+components:
+  - id: main
+    capabilities:
+      - {id: temperatureMeasurement, version: 1}
+      - {id: refresh, version: 1}
+    categories:
+      - {name: TempHumiditySensor}

@@ -285,7 +285,13 @@ end
 
 function emit.alarm()
   return function(_, value)
-    if value then
+    if value == "strobe" then
+      return capabilities.alarm.alarm.strobe()
+    elseif value == "both" then
+      return capabilities.alarm.alarm.both()
+    elseif value == "off" then
+      return capabilities.alarm.alarm.off()
+    elseif value == "siren" or value then
       return capabilities.alarm.alarm.siren()
     else
       return capabilities.alarm.alarm.off()

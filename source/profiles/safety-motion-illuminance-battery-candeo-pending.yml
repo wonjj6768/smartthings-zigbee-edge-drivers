@@ -40,6 +40,15 @@ deviceConfig:
       capability: battery
       version: 1
     - component: main
+      capability: concertmirror08464.candeoMotionSensitivity
+      version: 1
+    - component: main
+      capability: concertmirror08464.candeoMotionKeepTime
+      version: 1
+    - component: main
+      capability: concertmirror08464.candeoLightInterval
+      version: 1
+    - component: main
       capability: refresh
       version: 1
   automation:
@@ -53,4 +62,22 @@ deviceConfig:
       - component: main
         capability: battery
         version: 1
-    actions: []
+      - component: main
+        capability: concertmirror08464.candeoMotionSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.candeoMotionKeepTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.candeoLightInterval
+        version: 1
+    actions:
+      - component: main
+        capability: concertmirror08464.candeoMotionSensitivity
+        version: 1
+      - component: main
+        capability: concertmirror08464.candeoMotionKeepTime
+        version: 1
+      - component: main
+        capability: concertmirror08464.candeoLightInterval
+        version: 1

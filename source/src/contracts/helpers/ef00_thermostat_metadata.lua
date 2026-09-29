@@ -33,4 +33,27 @@ function metadata.attach(definition, modes, minimum, maximum, step)
   return definition
 end
 
+function metadata.attach_setpoint_only(definition, minimum, maximum, step)
+  definition.heating_setpoint_range = {
+    minimum = minimum,
+    maximum = maximum,
+    step = step,
+    unit = "C",
+  }
+  definition.runtime_start = function(device)
+    device:emit_component_event(
+      { id = "main" },
+      capabilities.thermostatHeatingSetpoint.heatingSetpointRange({
+        value = {
+          minimum = definition.heating_setpoint_range.minimum,
+          maximum = definition.heating_setpoint_range.maximum,
+          step = definition.heating_setpoint_range.step,
+        },
+        unit = definition.heating_setpoint_range.unit,
+      })
+    )
+  end
+  return definition
+end
+
 return metadata

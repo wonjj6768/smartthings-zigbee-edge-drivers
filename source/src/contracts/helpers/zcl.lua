@@ -65,6 +65,7 @@ function zcl_device_helpers.metering_clusters(options)
   append_cluster(clusters, zcl.energy({
     endpoint = endpoint,
     scale = energy_scale,
+    ignore_reported_scaler = options.energy_ignore_reported_scaler,
     poll_interval = energy_poll,
   }))
 

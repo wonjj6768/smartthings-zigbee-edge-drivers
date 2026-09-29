@@ -63,6 +63,7 @@ local function load_cluster_mapping(zcl)
     "from_device",
     "to_device",
     "scale",
+    "ignore_reported_scaler",
     "component",
     "endpoint",
     "read_only",

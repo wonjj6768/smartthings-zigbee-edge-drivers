@@ -137,6 +137,7 @@ local function load_runtime(zcl)
       profile_id = type(mapping.profile_id) == "number" and mapping.profile_id or nil,
       metering_kind = type(mapping.metering_kind) == "string" and mapping.metering_kind or nil,
       scale = type(mapping.scale) == "number" and mapping.scale or nil,
+      ignore_reported_scaler = mapping.ignore_reported_scaler == true,
       attribute_def = attribute_def,
       data_type = configured_data_type or
         (attribute_def and attribute_def.base_type or nil),

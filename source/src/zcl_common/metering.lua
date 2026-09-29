@@ -668,7 +668,11 @@ local function load_metering(zcl)
     end
 
     local spec = meta.metering_kind and metering_specs[meta.metering_kind] or nil
-    if spec ~= nil and type(raw_value) == "number" then
+    -- Some plugs report a SimpleMetering multiplier/divisor pair that is simply
+    -- wrong (the Mercator Ikuu SPP02GIP reports a 0x200010 ratio, so 61.63 kWh
+    -- became 12,924,846,384 kWh). Mappings flagged ignore_reported_scaler always
+    -- use their fixed meta.scale instead, as Zigbee2MQTT does for that plug.
+    if spec ~= nil and type(raw_value) == "number" and not meta.ignore_reported_scaler then
       local endpoint = mapping_context and mapping_context.endpoint or nil
       local reported_multiplier = get_scaler(device, spec, "multiplier", endpoint)
       local reported_divisor = get_scaler(device, spec, "divisor", endpoint)

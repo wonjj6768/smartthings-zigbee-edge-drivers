@@ -1,8 +1,20 @@
 # SmartThings Zigbee Edge Drivers
 
+SmartThings Edge drivers are Lua programs that run locally on a compatible SmartThings hub and translate Zigbee messages into SmartThings controls and states.
+This project ports selected Zigbee2MQTT device support into native SmartThings Edge drivers; it does not cover the full Zigbee2MQTT catalog.
+
 **[Open the driver search →](https://wonjj6768.github.io/smartthings-zigbee-edge-drivers/)**
 
 Search 4,206 exact manufacturer/model fingerprints across 49 SmartThings Edge drivers.
+
+## Install
+
+1. [Search for your device](https://wonjj6768.github.io/smartthings-zigbee-edge-drivers/) by its manufacturer and model, and note the matching driver name.
+2. [Accept the SmartThings channel invitation](https://bestow-regional.api.smartthings.com/invite/d4297OmXrQjo) with the Samsung account used by your hub, then enroll that hub in the channel.
+3. Under the enrolled hub, open **Available Drivers** and install the matching driver.
+4. Remove the device from SmartThings and pair it again so the installed driver can handle it.
+
+For the channel screens, see the [SmartThings installation guide](https://developer.smartthings.com/docs/devices/hub-connected/enroll-in-a-shared-channel).
 
 ## Caution: Re-pair the device
 

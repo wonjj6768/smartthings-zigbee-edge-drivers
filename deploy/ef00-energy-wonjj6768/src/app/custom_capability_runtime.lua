@@ -275,6 +275,9 @@ mapping=zcl.find_mapping_by_name(preset.zcl_clusters,mapping_name,device,{
 component_id=component_id or MAIN_COMPONENT,
 })
 end
+if mapping==nil and preset and preset.protocol_writers then
+mapping=preset.protocol_writers[mapping_name]
+end
 return mapping
 end
 local function suppresses_state(device,component_id,mapping_name)

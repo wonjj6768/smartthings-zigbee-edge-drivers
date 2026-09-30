@@ -68,6 +68,10 @@
     "temperatureCalibration"
   ],
   [
+    "bht002TimeZone",
+    "timeZone"
+  ],
+  [
     "bhtPreset",
     "preset"
   ],

@@ -348,6 +348,9 @@ component_id=command.component,
 zcl_clusters=preset.zcl_clusters,
 })or handled
 end
+if not handled and preset.protocol_writers and preset.protocol_writers[name]then
+handled=preset.protocol_writers[name](device,value,command)==true
+end
 return handled
 end
 local function resolve_definition(device)

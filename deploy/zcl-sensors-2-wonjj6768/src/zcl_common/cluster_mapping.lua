@@ -53,6 +53,7 @@ local mapping_option_keys={
 "from_device",
 "to_device",
 "scale",
+"ignore_reported_scaler",
 "component",
 "endpoint",
 "read_only",

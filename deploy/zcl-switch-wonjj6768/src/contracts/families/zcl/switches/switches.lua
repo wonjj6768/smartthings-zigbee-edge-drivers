@@ -413,6 +413,7 @@ endpoint=1,
 include_switch=false,
 include_current=true,
 energy_scale=100,
+energy_ignore_reported_scaler=options.energy_ignore_reported_scaler,
 }),
 zcl.tuya_magic_packet()
 )
@@ -429,6 +430,10 @@ end
 local tuya_dual_metered=build_tuya_dual_metered_plug("plugs-dual-metered")
 local tuya_dual_metered_outage=build_tuya_dual_metered_plug("plugs-dual-metered-outage",{
 outage_memory=true,
+})
+local mercator_spp02gip=build_tuya_dual_metered_plug("plugs-dual-metered-outage",{
+outage_memory=true,
+energy_ignore_reported_scaler=true,
 })
 local tuya_dual_metered_outage_indicator=build_tuya_dual_metered_plug("plugs-dual-metered-outage-indicator",{
 outage_memory=true,
@@ -788,9 +793,11 @@ register_device_definition(relay_1_poweron_switch_type,device_helpers.create_fin
 register_device_definition(tuya_dual_metered,device_helpers.create_fingerprints("TS011F",{
 "_TZ3000_bep7ccew",
 }))
+register_device_definition(mercator_spp02gip,device_helpers.create_fingerprints("TS011F",{
+"_TZ3210_7jnk7l3k",
+}))
 register_device_definition(tuya_dual_metered_outage,device_helpers.create_fingerprints("TS011F",{
 "_TZ3210_raqjcxo5",
-"_TZ3210_7jnk7l3k",
 "_TZ3210_yvxjawlt",
 "_TZ3210_pfbzs1an",
 }))

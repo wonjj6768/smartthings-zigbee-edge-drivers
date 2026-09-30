@@ -550,7 +550,7 @@ if raw_value==nil or meta==nil then
 return raw_value
 end
 local spec=meta.metering_kind and metering_specs[meta.metering_kind]or nil
-if spec ~=nil and type(raw_value)=="number" then
+if spec ~=nil and type(raw_value)=="number" and not meta.ignore_reported_scaler then
 local endpoint=mapping_context and mapping_context.endpoint or nil
 local reported_multiplier=get_scaler(device,spec,"multiplier",endpoint)
 local reported_divisor=get_scaler(device,spec,"divisor",endpoint)

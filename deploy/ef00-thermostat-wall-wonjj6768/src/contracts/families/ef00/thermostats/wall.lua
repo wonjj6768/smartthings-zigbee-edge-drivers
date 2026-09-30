@@ -115,6 +115,30 @@ register_device_definition(bht002_half,device_helpers.create_fingerprints("TS060
 "_TZE204_5toc8efa",
 }))
 local bht002_whole=bht002_definition("thermostats-bht002-whole",1,10,1,emit.bhtTemperatureCalibrationWhole(),1)
+local BHT002_TIME_ZONE_FIELD="_bht002_time_zone_hours"
+local function bht002_send_time(device,offset_hours)
+local utc_time=os.time()
+return tuya.send_time(device,utc_time,utc_time + offset_hours * 3600)
+end
+bht002_whole.force_time_updates=true
+bht002_whole.time_handler=function(device)
+return bht002_send_time(device,device:get_field(BHT002_TIME_ZONE_FIELD)or 0)
+end
+bht002_whole.protocol_writers={
+bht002_time_zone=function(device,offset_hours)
+if not bht002_send_time(device,offset_hours)then return false end
+device:set_field(BHT002_TIME_ZONE_FIELD,offset_hours,{persist=true})
+return true
+end,
+}
+local bht002_whole_runtime_start=bht002_whole.runtime_start
+bht002_whole.runtime_start=function(device)
+bht002_whole_runtime_start(device)
+device:emit_component_event(
+{id="main"},
+emit.bht002TimeZone()(device,device:get_field(BHT002_TIME_ZONE_FIELD)or 0)
+)
+end
 register_device_definition(bht002_whole,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_aoclfnxz",
 }))

@@ -11,6 +11,7 @@ components:
       - {id: concertmirror08464.bhtMaximumTemperatureLimit, version: 1}
       - {id: concertmirror08464.bhtMinimumTemperatureLimit, version: 1}
       - {id: concertmirror08464.bhtTemperatureCalibrationWhole, version: 1}
+      - {id: concertmirror08464.bht002TimeZone, version: 1}
       - {id: concertmirror08464.bhtPreset, version: 1}
       - {id: concertmirror08464.bhtTemperatureSensor, version: 1}
       - {id: concertmirror08464.bhtProgram, version: 1}

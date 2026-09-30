@@ -340,6 +340,9 @@ local function create(options)
         component_id = component_id or MAIN_COMPONENT,
       })
     end
+    if mapping == nil and preset and preset.protocol_writers then
+      mapping = preset.protocol_writers[mapping_name]
+    end
     return mapping
   end
 

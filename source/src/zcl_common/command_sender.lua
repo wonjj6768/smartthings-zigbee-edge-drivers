@@ -331,7 +331,7 @@ local function load_command_sender(zcl)
         zcl.get_generated_server_command(meta.cluster_id, meta.tx_command_id) or nil
     end
 
-    if generated_command ~= nil then
+    if generated_command ~= nil and type(encoded) ~= "string" then
       return send_request(device, generated_command(device, table.unpack(normalize_command_args(encoded))), mapping_context.endpoint)
     end
 

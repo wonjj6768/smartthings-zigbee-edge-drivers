@@ -1,5 +1,5 @@
 local function load_cluster_mapping(zcl)
-local log=require "log"
+local log=require"log"
 local cluster_specs={
 ON_OFF="OnOff",
 LEVEL_CONTROL="Level",
@@ -15,8 +15,7 @@ OCCUPANCY_SENSING="OccupancySensing",
 THERMOSTAT="Thermostat",
 FAN_CONTROL="FanControl",
 WINDOW_COVERING="WindowCovering",
-COLOR_CONTROL="ColorControl",
-}
+COLOR_CONTROL="ColorControl",}
 local attribute_specs={
 ON_OFF={cluster_name="OnOff",attribute_name="OnOff"},
 LEVEL_CURRENT_LEVEL={cluster_name="Level",attribute_name="CurrentLevel"},
@@ -44,8 +43,7 @@ CURRENT_POSITION_LIFT_PERCENTAGE={cluster_name="WindowCovering",attribute_name="
 CURRENT_POSITION_TILT_PERCENTAGE={cluster_name="WindowCovering",attribute_name="CurrentPositionTiltPercentage"},
 COLOR_TEMPERATURE_MIREDS={cluster_name="ColorControl",attribute_name="ColorTemperatureMireds"},
 CURRENT_HUE={cluster_name="ColorControl",attribute_name="CurrentHue"},
-CURRENT_SATURATION={cluster_name="ColorControl",attribute_name="CurrentSaturation"},
-}
+CURRENT_SATURATION={cluster_name="ColorControl",attribute_name="CurrentSaturation"},}
 local mapping_option_keys={
 "name",
 "emit",
@@ -58,6 +56,7 @@ local mapping_option_keys={
 "endpoint",
 "read_only",
 "write_only",
+"suppress_optimistic_state",
 "handler",
 "sender",
 "command_id",
@@ -80,8 +79,7 @@ local mapping_option_keys={
 "complex_type",
 "mfg_code",
 "profile_id",
-"metering_kind",
-}
+"metering_kind",}
 local default_mappings={
 {factory_name="temperature_measurement",default_name="temperature",cluster="TEMPERATURE",attribute="TEMPERATURE_MEASURED_VALUE"},
 {factory_name="relative_humidity",default_name="humidity",cluster="RELATIVE_HUMIDITY",attribute="HUMIDITY_MEASURED_VALUE"},
@@ -109,8 +107,7 @@ local default_mappings={
 {factory_name="window_covering_tilt",default_name="cover_tilt",cluster="WINDOW_COVERING",attribute="CURRENT_POSITION_TILT_PERCENTAGE"},
 {factory_name="color_control_temperature",default_name="color_temperature",cluster="COLOR_CONTROL",attribute="COLOR_TEMPERATURE_MIREDS"},
 {factory_name="color_control_hue",default_name="color_hue",cluster="COLOR_CONTROL",attribute="CURRENT_HUE"},
-{factory_name="color_control_saturation",default_name="color_saturation",cluster="COLOR_CONTROL",attribute="CURRENT_SATURATION"},
-}
+{factory_name="color_control_saturation",default_name="color_saturation",cluster="COLOR_CONTROL",attribute="CURRENT_SATURATION"},}
 local cluster_constants={}
 local attribute_constants={}
 local registered_attributes={}
@@ -118,7 +115,7 @@ local registered_attribute_keys={}
 local registered_mappings={}
 local function export_constants(target,prefix,definitions)
 for name,value in pairs(definitions)do
-target[prefix .. name]=value
+target[prefix..name]=value
 end
 end
 local function resolve_cluster_id(cluster_key)
@@ -137,7 +134,7 @@ end
 if attribute_constants[attribute_key]~=nil then
 return attribute_constants[attribute_key]
 end
-if cluster_name ~=nil then
+if cluster_name~=nil then
 local attribute=zcl.get_generated_attribute_by_name(cluster_name,attribute_key)
 return attribute and attribute.ID or nil
 end
@@ -152,16 +149,14 @@ if registered_attribute_keys[key]then
 return false
 end
 registered_attribute_keys[key]=true
-registered_attributes[#registered_attributes + 1]={
+registered_attributes[#registered_attributes+1]={
 cluster_id=cluster_id,
-attribute_id=attribute_id,
-}
+attribute_id=attribute_id,}
 return true
 end
 local function copy_mapping_options(options)
 local mapping={
-protocol="zcl",
-}
+protocol="zcl",}
 for _,key in ipairs(mapping_option_keys)do
 mapping[key]=options[key]
 end
@@ -200,11 +195,11 @@ function zcl.register_attribute(cluster_id,attribute_id)
 return add_registered_attribute(cluster_id,attribute_id)
 end
 function zcl.register_attributes_from_mappings(zcl_clusters)
-if type(zcl_clusters)~="table" then
+if type(zcl_clusters)~="table"then
 return zcl_clusters
 end
 for _,mapping in ipairs(zcl_clusters)do
-if type(mapping)=="table" then
+if type(mapping)=="table"then
 add_registered_attribute(mapping.cluster_id,mapping.attribute_id)
 end
 end
@@ -221,8 +216,7 @@ log.warn(string.format(
 "skip invalid zcl mapping definition factory=%s cluster=%s attribute=%s",
 tostring(definition.factory_name),
 tostring(cluster_name),
-tostring(definition.attribute_name or definition.attribute)
-))
+tostring(definition.attribute_name or definition.attribute)))
 return nil
 end
 local normalized={
@@ -233,9 +227,8 @@ attribute_id=attribute_id,
 cluster_name=cluster_name,
 attribute_name=definition.attribute_name or
 (attribute_specs[definition.attribute]and attribute_specs[definition.attribute].attribute_name)or
-definition.attribute,
-}
-registered_mappings[#registered_mappings + 1]=normalized
+definition.attribute,}
+registered_mappings[#registered_mappings+1]=normalized
 add_registered_attribute(cluster_id,attribute_id)
 zcl[normalized.factory_name]=function(options)
 local mapping=zcl.cluster_attribute(cluster_id,attribute_id,options)

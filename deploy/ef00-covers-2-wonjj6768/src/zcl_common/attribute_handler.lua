@@ -1,42 +1,42 @@
 local function load_attribute_handler(zcl)
-local battery_refresh=require "runtime.battery_refresh"
+local battery_refresh=require"runtime.battery_refresh"
 function zcl.is_duplicate_attribute_event(device,event,mapping_context)
-if type(event)~="table" or type(device.get_latest_state)~="function" then
+if type(event)~="table"or type(device.get_latest_state)~="function"then
 return false
 end
-local capability_id=type(event.capability)=="table" and event.capability.ID or nil
-local attribute_name=type(event.attribute)=="table" and event.attribute.NAME or nil
+local capability_id=type(event.capability)=="table"and event.capability.ID or nil
+local attribute_name=type(event.attribute)=="table"and event.attribute.NAME or nil
 if capability_id==nil or attribute_name==nil then
 return false
 end
 local payload=event.value
-if type(payload)~="table" then
+if type(payload)~="table"then
 return false
 end
 local value=payload.value
 for key in pairs(payload)do
-if key ~="value" and key ~="unit" then
+if key~="value"and key~="unit"then
 return false
 end
 end
 local value_type=type(value)
-if value_type ~="number" and value_type ~="string" and value_type ~="boolean" then
+if value_type~="number"and value_type~="string"and value_type~="boolean"then
 return false
 end
-local component_id=mapping_context.component and mapping_context.component.id or "main"
+local component_id=mapping_context.component and mapping_context.component.id or"main"
 return device:get_latest_state(component_id,capability_id,attribute_name)==value
 end
 local function apply_scale(value,scale)
 if value==nil or scale==nil or scale==1 then
 return value
 end
-if type(value)=="number" and type(scale)=="number" and scale ~=0 then
-return value / scale
+if type(value)=="number"and type(scale)=="number"and scale~=0 then
+return value/scale
 end
 return value
 end
 local function apply_converter(value,fallback_value,meta,device,mapping_context,mapping)
-if meta.from_device ~=nil then
+if meta.from_device~=nil then
 return meta.from_device(value,device,mapping_context,mapping)
 end
 return fallback_value
@@ -44,28 +44,28 @@ end
 local function base_type_name(meta)
 local attribute_def=meta and meta.attribute_def or nil
 local base_type=attribute_def and attribute_def.base_type or nil
-return type(base_type)=="table" and base_type.NAME or nil
+return type(base_type)=="table"and base_type.NAME or nil
 end
 local function is_scalar_base_type(name)
-if type(name)~="string" then
+if type(name)~="string"then
 return false
 end
-return name=="Boolean" or
-name=="SemiPrecisionFloat" or
-name=="SinglePrecisionFloat" or
-name=="DoublePrecisionFloat" or
-name=="TimeOfDay" or
-name=="Date" or
-name=="UtcTime" or
-name=="IeeeAddress" or
-name=="SecurityKey" or
+return name=="Boolean"or
+name=="SemiPrecisionFloat"or
+name=="SinglePrecisionFloat"or
+name=="DoublePrecisionFloat"or
+name=="TimeOfDay"or
+name=="Date"or
+name=="UtcTime"or
+name=="IeeeAddress"or
+name=="SecurityKey"or
 name:match("^Uint%d+$")~=nil or
 name:match("^Int%d+$")~=nil or
 name:match("String$")~=nil
 end
 local function should_prefer_typed_value(raw_value,meta,mapping_context)
 local typed_value=mapping_context.typed_value
-if typed_value==nil or typed_value==raw_value or type(typed_value)~="table" then
+if typed_value==nil or typed_value==raw_value or type(typed_value)~="table"then
 return false
 end
 if meta.prefer_typed_value then
@@ -75,10 +75,10 @@ if not meta.custom_from_device then
 return false
 end
 local type_name=base_type_name(meta)
-if type_name ~=nil then
+if type_name~=nil then
 return not is_scalar_base_type(type_name)
 end
-return type(raw_value)~="number" and type(raw_value)~="boolean" and type(raw_value)~="string"
+return type(raw_value)~="number"and type(raw_value)~="boolean"and type(raw_value)~="string"
 end
 local function transform_value(raw_value,meta,device,mapping_context,mapping)
 local scaled_value=zcl.scale_mapping_value and
@@ -98,11 +98,11 @@ battery_refresh.maybe_schedule_after_event(device,event)
 if zcl.is_duplicate_attribute_event(device,event,mapping_context)then
 return
 end
-if mapping_context.component ~=nil and type(device.emit_component_event)=="function" then
+if mapping_context.component~=nil and type(device.emit_component_event)=="function"then
 device:emit_component_event(mapping_context.component,event)
 return
 end
-if mapping_context.endpoint ~=nil and type(device.emit_event_for_endpoint)=="function" then
+if mapping_context.endpoint~=nil and type(device.emit_event_for_endpoint)=="function"then
 device:emit_event_for_endpoint(mapping_context.endpoint,event)
 return
 end
@@ -112,7 +112,7 @@ local function emit_events(device,events,mapping_context)
 if events==nil then
 return
 end
-if type(events)=="table" and events[1]~=nil then
+if type(events)=="table"and events[1]~=nil then
 for _,event in ipairs(events)do
 emit_event(device,event,mapping_context)
 end
@@ -121,7 +121,7 @@ end
 emit_event(device,events,mapping_context)
 end
 local function extract_source_endpoint(message)
-if type(message)~="table" then
+if type(message)~="table"then
 return nil
 end
 local endpoint=message.address_header and
@@ -130,19 +130,19 @@ message.address_header.src_endpoint.value or nil
 return zcl.normalize_endpoint(endpoint)
 end
 local function extract_mfg_code(message)
-if type(message)~="table" then
+if type(message)~="table"then
 return nil
 end
 local zcl_header=message.body and message.body.zcl_header or nil
 local frame_ctrl=zcl_header and zcl_header.frame_ctrl or nil
-if frame_ctrl==nil or type(frame_ctrl.is_mfg_specific_set)~="function" or not frame_ctrl:is_mfg_specific_set()then
+if frame_ctrl==nil or type(frame_ctrl.is_mfg_specific_set)~="function"or not frame_ctrl:is_mfg_specific_set()then
 return nil
 end
 local mfg_code=zcl_header.mfg_code and zcl_header.mfg_code.value or nil
-return type(mfg_code)=="number" and mfg_code or nil
+return type(mfg_code)=="number"and mfg_code or nil
 end
 local function extract_raw_attribute_value(value)
-if type(value)=="table" and value.value ~=nil then
+if type(value)=="table"and value.value~=nil then
 return value.value
 end
 return value
@@ -163,16 +163,16 @@ if value==nil then
 return nil
 end
 mapping_context.value=value
-if zcl.handle_metering_value ~=nil then
+if zcl.handle_metering_value~=nil then
 zcl.handle_metering_value(device,mapping,value,meta,mapping_context)
 end
-if zcl.handle_switch_state ~=nil and meta.cluster_id==zcl.CLUSTER_ON_OFF and meta.attribute_id==zcl.ATTR_ON_OFF then
+if zcl.handle_switch_state~=nil and meta.cluster_id==zcl.CLUSTER_ON_OFF and meta.attribute_id==zcl.ATTR_ON_OFF then
 zcl.handle_switch_state(device,mapping_context.zcl_clusters or nil,value)
 end
-if meta.handler ~=nil then
+if meta.handler~=nil then
 meta.handler(device,value,mapping_context,mapping)
 end
-if meta.emit ~=nil then
+if meta.emit~=nil then
 emit_events(device,meta.emit(device,value,mapping_context,mapping),mapping_context)
 end
 return value
@@ -213,8 +213,7 @@ src_endpoint=src_endpoint,
 endpoint=src_endpoint,
 mfg_code=mfg_code,
 typed_value=value,
-zcl_clusters=preset.zcl_clusters,
-}
+zcl_clusters=preset.zcl_clusters,}
 zcl.handle_internal_attribute(device,cluster_id,attribute_id,value,attribute_info)
 zcl.apply_attribute(device,preset.zcl_clusters,cluster_id,attribute_id,raw_value,attribute_info)
 end

@@ -468,17 +468,21 @@ local function load_cluster_command_handler(zcl)
     if frame_ctrl ~= nil and type(frame_ctrl.is_disable_default_response_set) == "function" and frame_ctrl:is_disable_default_response_set() then
       return false
     end
+    local destination = extract_destination_address(zb_rx)
+    if destination ~= nil and destination >= 0xFFF8 then
+      return false
+    end
 
     local cluster_id = zb_rx.address_header and zb_rx.address_header.cluster and zb_rx.address_header.cluster.value or nil
     local src_addr = zb_rx.address_header and zb_rx.address_header.src_addr and zb_rx.address_header.src_addr.value or nil
     local src_endpoint = zb_rx.address_header and zb_rx.address_header.src_endpoint and zb_rx.address_header.src_endpoint.value or nil
-    local dst_endpoint = zb_rx.address_header and zb_rx.address_header.dst_endpoint and zb_rx.address_header.dst_endpoint.value or zigbee_constants.HUB.ENDPOINT
+    local dst_endpoint = zb_rx.address_header and zb_rx.address_header.dest_endpoint and zb_rx.address_header.dest_endpoint.value or zigbee_constants.HUB.ENDPOINT
     if cluster_id == nil or src_addr == nil or src_endpoint == nil then
       return false
     end
 
-    local response_frame_ctrl = FrameCtrl(0x00)
-    if frame_ctrl ~= nil and type(frame_ctrl.get_direction) == "function" and frame_ctrl:get_direction() == 1 then
+    local response_frame_ctrl = FrameCtrl(0x10)
+    if frame_ctrl ~= nil and type(frame_ctrl.get_direction) == "function" and frame_ctrl:get_direction() == 0 then
       response_frame_ctrl:set_direction()
     end
     if frame_ctrl ~= nil and type(frame_ctrl.is_mfg_specific_set) == "function" and frame_ctrl:is_mfg_specific_set() then
@@ -514,6 +518,8 @@ local function load_cluster_command_handler(zcl)
     return true
   end
 
+  zcl.send_default_response = send_default_response
+
   local function normalize_extracted_value(extracted)
     if type(extracted) == "table" and (
       extracted.raw_value ~= nil or
@@ -534,15 +540,31 @@ local function load_cluster_command_handler(zcl)
     local src_endpoint = extract_source_endpoint(zb_rx)
     local mfg_code = extract_mfg_code(zb_rx)
     local pending = {}
+    local applied = false
+
+    for _, mapping in ipairs(zcl_clusters) do
+      if mapping.cluster_id == cluster_id and mapping.attribute_id == nil then
+        for _, candidate in ipairs(zcl.collect_matching_entries(mapping, device, {
+          zb_rx = zb_rx, endpoint = src_endpoint, src_endpoint = src_endpoint,
+          command_id = command_id, mfg_code = mfg_code,
+        })) do
+          local meta = zcl.mapping_meta(candidate)
+          if meta.command_id == command_id and meta.command_extractor ~= nil then
+            meta.command_extractor(zb_rx, device, candidate)
+            applied = true
+          end
+        end
+      end
+    end
 
     local index = zcl.build_mapping_index(zcl_clusters)
     if index == nil then
-      return false
+      return applied
     end
 
     local cluster_index = index.by_cluster_attribute[cluster_id]
     if cluster_index == nil then
-      return false
+      return applied
     end
 
     local visited = {}
@@ -570,7 +592,6 @@ local function load_cluster_command_handler(zcl)
       end
     end
 
-    local applied = false
     for attribute_id, extracted in pairs(pending) do
       if zcl.apply_attribute(device, zcl_clusters, cluster_id, attribute_id, extracted.raw_value, {
         zb_rx = zb_rx,

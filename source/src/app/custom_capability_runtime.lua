@@ -739,6 +739,10 @@ local function create(options)
         return
       end
 
+      if suppresses_state(device, component_id, metadata.mapping_name) then
+        return
+      end
+
       local optimistic_value = resolve_numeric_optimistic_value(
         device,
         component_id,

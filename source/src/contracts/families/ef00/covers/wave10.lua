@@ -372,12 +372,27 @@ zc_lp.datapoints[#zc_lp.datapoints + 1] = tuya.dp_numeric(112, {
 register_device_definition(zc_lp, exacts("TS0601", { "_TZ3210_5rta89nj" }))
 
 local fwjz = base_definition("covers-wave10-moes-fwjzceh18a001")
+fwjz.mcu_version_request_on_configure = true
+fwjz.query_on_configure = false
+fwjz.query_on_announce = false
+fwjz.initial_custom_states = false
+fwjz.refresh_state = false
+fwjz.refresh_state_query = false
+fwjz.time_start = "off"
 append_cover_action(fwjz, 1)
+fwjz.datapoints[1].from_device = function(value)
+  return ({[0] = "open", [1] = "partially open", [2] = "closed", [3] = "partially open"})[value]
+end
 append_position(fwjz, 9)
 append_position(fwjz, 8, { name = "position_report", read_only = true })
 fwjz.datapoints[#fwjz.datapoints + 1] = tuya.dp_enum(11, {
   name = "fwjz_motor_direction",
   converter = converter.lookup_from_to({ normal = 0, reversed = 1 }),
+  receive_datatypes = {4, 3},
+  from_device = function(value)
+    if type(value) == "string" then return value == "back" and "reversed" or "normal" end
+    return ({[0] = "normal", [1] = "reversed"})[value]
+  end,
   emit = emit.fwjzMotorDirection(),
 })
 fwjz.datapoints[#fwjz.datapoints + 1] = tuya.dp_raw(13, {

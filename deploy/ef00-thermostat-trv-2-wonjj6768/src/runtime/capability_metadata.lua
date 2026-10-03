@@ -1,21 +1,21 @@
 local custom_capabilities={}
 local strings={"C","ar331proTempCalibration","temperatureCalibration","local_temperature_calibration","Ar331pro Temp Calibration","ar331proEcoTemperature","ecoTemperature","eco_temperature","Ar331pro Eco Temperature","ar331proComfortTemperature","comfortTemperature","comfort_temperature","Ar331pro Comfort Temperature","ar331proFrostTemperature","frostProtectionTemperature","frost_protection_temperature","Ar331pro Frost Temperature","min","ar331proBoostTime","boostTime","boost_time","Ar331pro Boost Time","ar331proWindowTemp","windowTemperature","window_temperature","Ar331pro Window Temp","ar331proWindowDelay","windowDelay","window_delay","Ar331pro Window Delay","ar331proWindowCloseDelay","windowCloseDelay","window_close_delay","Ar331pro Window Close Delay","ar331proDisplayBrightness","displayBrightness","display_brightness","Ar331pro Display Brightness","ar331proOverrideTemperature","overrideTemperature","override_temperature","Ar331pro Override Temperature","ar331proFaultCode","faultCode","fault_code","Ar331pro Fault Code","tv02TempCalibration","Tv02Temp Calibration","tv02HolidayTemperature","holidayTemperature","holiday_temperature","Tv02Holiday Temperature","tv02OpenWindowTemperature","openWindowTemperature","open_window_temperature","Tv02Open Window Temperature","tv02ComfortTemperature","Tv02Comfort Temperature","tv02EcoTemperature","Tv02Eco Temperature","s","tv02BoostCountdown","boostTimesetCountdown","boost_timeset_countdown","Tv02Boost Countdown","tv02ErrorStatus","errorStatus","error_status","Tv02Error Status","trv601MinTemperature","minTemperature","min_temperature","Trv601Min Temperature","trv601MaxTemperature","maxTemperature","max_temperature","Trv601Max Temperature","trv601TempCalibration","Trv601Temp Calibration","%","trv601Position","position","Trv601Position","trv602MinTemperature","Trv602Min Temperature","trv602MaxTemperature","Trv602Max Temperature","trv602TempCalibration","Trv602Temp Calibration","trv602Position","Trv602Position","trv602SwitchDeviationEco","switchDeviationEco","switch_deviation_eco","Trv602Switch Deviation Eco","trv602zMinTemperature","Trv602z Min Temperature","trv602zMaxTemperature","Trv602z Max Temperature","trv602zTempCalibration","Trv602z Temp Calibration","trv602zPosition","Trv602z Position","trv602zBoostCountdown","Trv602z Boost Countdown","trv602zComfortTemperature","Trv602z Comfort Temperature","trv602zEcoTemperature","Trv602z Eco Temperature","trv602zHolidayTemperature","Trv602z Holiday Temperature","trm3zTempCalibration","Trm3z Temp Calibration","trm3zHolidayTemperature","Trm3z Holiday Temperature","trm3zEcoTemperature","Trm3z Eco Temperature","trm3zComfortTemperature","Trm3z Comfort Temperature","trv14TempCalibration","Trv14Temp Calibration","trv14HolidayTemperature","Trv14Holiday Temperature","trv14EcoTemperature","Trv14Eco Temperature","trv14ComfortTemperature","Trv14Comfort Temperature","trm3zTemperatureAccuracy","temperatureAccuracy","temperature_accuracy","Trm3z Temperature Accuracy","trm3zFrostTemperature","Trm3z Frost Temperature","gtz10MaxTemperature","Gtz10Max Temperature","gtz10MinTemperature","Gtz10Min Temperature","gtz10OpenWindowTemperature","Gtz10Open Window Temperature","gtz10TempCalibration","Gtz10Temp Calibration","gtz10BoostCountdown","Gtz10Boost Countdown","gtz10Position","Gtz10Position","trv4HolidayTemperature","Trv4Holiday Temperature","trv4ComfortTemperature","Trv4Comfort Temperature","trv4EcoTemperature","Trv4Eco Temperature","trv4TempCalibration","Trv4Temp Calibration","s366TempCalibration","S366Temp Calibration","s366ErrorStatus","S366Error Status","gtzFault","Gtz Fault","trmFault","fault_alarm","Trm Fault","battery_low","batteryLow","Battery low","normal","low","switch_type","switchType","supportedSwitchTypes","Switch type","toggle","state","momentary","thermostatPresetAr331proSixMode","capnfdjacfllfzxkmgyzkot","preset","Thermostat Preset Ar331pro Six Mode","auto","manual","holiday","comfort","eco","standby","workingDayTv02ScheduleMode","workingDayTvZeroTwoScheduleMode","working_day","Working Day Tv02Schedule Mode","mon_sun","mon_fri_sat_sun","separate","ar331proChildLock","childLock","child_lock","Ar331pro Child Lock","unlock","lock","ar331proPreheat","preheat","Ar331pro Preheat","off","on","ar331proWindowDetection","windowDetection","window_detection","Ar331pro Window Detection","ar331proWindowOpen","windowOpen","window_open","Ar331pro Window Open","open","closed","ar331proValveState","valveState","valve_state","Ar331pro Valve State","close","ar331proBoostHeating","boostHeating","boost_heating","Ar331pro Boost Heating","ar331proSummerMode","summerMode","summer_mode","Ar331pro Summer Mode","ar331proHeatCoolMode","heatingCoolingMode","heating_cooling_mode","Ar331pro Heat Cool Mode","heat","cool","ar331proBatteryStatus","batteryStatus","battery_status","Ar331pro Battery Status","ar331proScreenOrientation","screenOrientation","screen_orientation","Ar331pro Screen Orientation","up","right","down","left","ar331proOverrideActive","overrideActive","override_active","Ar331pro Override Active","ar331Preset","Ar331Preset","leave","ar331ChildLock","Ar331Child Lock","tv02OpenWindow","openWindow","open_window","Tv02Open Window","tv02FrostProtection","frostProtection","frost_protection","Tv02Frost Protection","tv02ChildLock","Tv02Child Lock","tv02BatteryLow","Tv02Battery Low","tv02Online","online","Tv02Online","trv601Preset","Trv601Preset","trv601ChildLock","Trv601Child Lock","trv601WindowDetection","Trv601Window Detection","trv601Window","window","Trv601Window","trv601AlarmSwitch","alarmSwitch","alarm_switch","Trv601Alarm Switch","trv601ScreenOrientation","Trv601Screen Orientation","trv601DisplayBrightness","Trv601Display Brightness","high","medium","trv601Hysteresis","hysteresisMode","hysteresis_mode","Trv601Hysteresis","trv602Preset","Trv602Preset","trv602ChildLock","Trv602Child Lock","trv602WindowDetection","Trv602Window Detection","trv602Window","Trv602Window","trv602AlarmSwitch","Trv602Alarm Switch","trv602ScreenOrientation","Trv602Screen Orientation","trv602DisplayBrightness","Trv602Display Brightness","middle","trv602Hysteresis","Trv602Hysteresis","trv602zPreset","Trv602z Preset","antifrost","trv602zChildLock","Trv602z Child Lock","trv602zWindowDetection","Trv602z Window Detection","trv602zWindow","Trv602z Window","trv602zFrostProtection","Trv602z Frost Protection","trv602zMotorThrust","motorThrust","motor_thrust","Trv602z Motor Thrust","strong","weak","trv602zDisplayBrightness","Trv602z Display Brightness","trv602zScreenOrientation","Trv602z Screen Orientation","trv602zHysteresis","Trv602z Hysteresis","trm3zPreset","Trm3z Preset","schedule","trm3zChildLock","Trm3z Child Lock","trm3zWindowDetection","Trm3z Window Detection","trm3zWindowOpen","Trm3z Window Open","trm3zFrostProtection","Trm3z Frost Protection","trm3zScaleProtection","scaleProtection","scale_protection","Trm3z Scale Protection","trm3zBatteryLow","Trm3z Battery Low","trv14Preset","Trv14Preset","trv14ChildLock","Trv14Child Lock","trv14WindowDetection","Trv14Window Detection","trv14WindowOpen","Trv14Window Open","trv14FrostProtection","Trv14Frost Protection","trv14ScaleProtection","Trv14Scale Protection","trv14BatteryLow","Trv14Battery Low","trv14BoostHeating","Trv14Boost Heating","gtz10Preset","Gtz10Preset","gtz10ChildLock","Gtz10Child Lock","gtz10WindowDetection","Gtz10Window Detection","gtz10WindowOpen","Gtz10Window Open","gtz10FrostProtection","Gtz10Frost Protection","gtz10BoostHeating","Gtz10Boost Heating","gtz10SwitchType","Gtz10Switch Type","gtz10ScreenOrientation","Gtz10Screen Orientation","trv4Preset","Trv4Preset","trv4ChildLock","Trv4Child Lock","trv4FrostProtection","Trv4Frost Protection","trv4ScaleProtection","Trv4Scale Protection","trv4BoostHeating","Trv4Boost Heating","trv4BatteryLow","Trv4Battery Low","s366Preset","S366Preset","program","s366ChildLock","S366Child Lock","s366OpenWindow","S366Open Window","s366FrostProtection","S366Frost Protection","s366BatteryLow","S366Battery Low","last_power_response_time","lastPowerResponseTime","Last power response time","gtzMonday","gtz_schedule_1","Gtz Monday","gtzTuesday","gtz_schedule_2","Gtz Tuesday","gtzWednesday","gtz_schedule_3","Gtz Wednesday","gtzThursday","gtz_schedule_4","Gtz Thursday","gtzFriday","gtz_schedule_5","Gtz Friday","gtzSaturday","gtz_schedule_6","Gtz Saturday","gtzSunday","gtz_schedule_7","Gtz Sunday","trmMonday","trm_schedule_1","Trm Monday","trmTuesday","trm_schedule_2","Trm Tuesday","trmWednesday","trm_schedule_3","Trm Wednesday","trmThursday","trm_schedule_4","Trm Thursday","trmFriday","trm_schedule_5","Trm Friday","trmSaturday","trm_schedule_6","Trm Saturday","trmSunday","trm_schedule_7","Trm Sunday"}
 local function string_value(value)
-if type(value)=="number" then return strings[value]end
+if type(value)=="number"then return strings[value]end
 return value
 end
-local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return "concertmirror08464." .. suffix end
+local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
 local table_groups={}
 local function grouped_table(group_id)
-if type(group_id)~="number" then return{}end
+if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
-if existing ~=nil then return existing end
+if existing~=nil then return existing end
 local out={}
 table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
-if type(values)~="table" then return nil end
+if type(values)~="table"then return nil end
 local out=grouped_table(group_id)
 for index,value in ipairs(values)do out[index]=string_value(value)end
 return out
@@ -26,11 +26,11 @@ if value==0 then return nil end
 return string_value(value)
 end
 local function command_default(attribute_name)
-if type(attribute_name)~="string" or attribute_name=="" then return nil end
-return "set" .. attribute_name:sub(1,1):upper().. attribute_name:sub(2)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
-if type(value)~="table" then return nil end
+if type(value)~="table"then return nil end
 local out=grouped_table(value[6])
 out.minimum=value[1]
 out.maximum=value[2]
@@ -62,7 +62,7 @@ return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(ro
 end
 local function build(rows,factory)
 local out={}
-for _,row in ipairs(rows)do out[#out + 1]=factory(row)end
+for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
 custom_capabilities.numeric=build({{2,nil,2,3,nil,nil,nil,4,5,{-7,7,0.5,1,nil,1,nil},nil,nil,1},{6,nil,6,7,nil,nil,nil,8,9,{5,20,0.5,1,nil,2,nil},nil,nil,1},{10,nil,10,11,nil,nil,nil,12,13,{5,40,0.5,1,nil,3,nil},nil,nil,1},{14,nil,14,15,nil,nil,nil,16,17,{0,15,0.5,1,nil,4,nil},nil,nil,1},{19,nil,19,20,nil,nil,nil,21,22,{0,1440,30,18,nil,5,nil},nil,nil,18},{23,nil,23,24,nil,nil,nil,25,26,{5,40,0.5,1,nil,6,nil},nil,nil,1},{27,nil,27,28,nil,nil,nil,29,30,{0,1440,1,18,nil,7,nil},nil,nil,18},{31,nil,31,32,nil,nil,nil,33,34,{0,1440,1,18,nil,8,nil},nil,nil,18},{35,nil,35,36,nil,nil,nil,37,38,{1,7,1,nil,nil,9,nil},nil,nil,nil},{39,nil,39,40,nil,nil,nil,41,42,{5,40,0.5,1,nil,10,nil},nil,nil,1},{43,nil,43,44,nil,0,0,45,46,{0,255,1,nil,nil,11,nil},nil,nil,nil},{47,nil,47,3,nil,nil,nil,4,48,{-5,5,0.1,1,nil,12,nil},nil,nil,1},{49,nil,49,50,nil,nil,nil,51,52,{5,30,0.5,1,nil,13,nil},nil,nil,1},{53,nil,53,54,nil,nil,nil,55,56,{5,30,0.5,1,nil,14,nil},nil,nil,1},{57,nil,57,11,nil,nil,nil,12,58,{5,30,0.5,1,nil,15,nil},nil,nil,1},{59,nil,59,7,nil,nil,nil,8,60,{5,30,0.5,1,nil,16,nil},nil,nil,1},{62,nil,62,63,nil,nil,nil,64,65,{0,465,1,61,nil,17,nil},nil,nil,61},{66,nil,66,67,nil,0,0,68,69,{0,255,1,nil,nil,18,nil},nil,nil,nil},{70,nil,70,71,nil,nil,nil,72,73,{5,15,0.5,1,nil,19,nil},nil,nil,1},{74,nil,74,75,nil,nil,nil,76,77,{15,35,0.5,1,nil,20,nil},nil,nil,1},{78,nil,78,3,nil,nil,nil,4,79,{-30,30,0.1,1,nil,21,nil},nil,nil,1},{81,nil,81,82,nil,0,0,82,83,{0,100,1,80,nil,22,nil},nil,nil,80},{84,nil,84,71,nil,nil,nil,72,85,{5,15,0.5,1,nil,23,nil},nil,nil,1},{86,nil,86,75,nil,nil,nil,76,87,{15,35,0.5,1,nil,24,nil},nil,nil,1},{88,nil,88,3,nil,nil,nil,4,89,{-30,30,0.1,1,nil,25,nil},nil,nil,1},{90,nil,90,82,nil,0,0,82,91,{0,100,1,80,nil,26,nil},nil,nil,80},{92,nil,92,93,nil,nil,nil,94,95,{0.5,5,0.1,1,nil,27,nil},nil,nil,1},{96,nil,96,71,nil,nil,nil,72,97,{5,15,0.5,1,nil,28,nil},nil,nil,1},{98,nil,98,75,nil,nil,nil,76,99,{15,35,0.5,1,nil,29,nil},nil,nil,1},{100,nil,100,3,nil,nil,nil,4,101,{-10,10,0.1,1,nil,30,nil},nil,nil,1},{102,nil,102,82,nil,0,0,82,103,{0,100,1,80,nil,31,nil},nil,nil,80},{104,nil,104,63,nil,nil,nil,64,105,{0,120,1,18,nil,32,nil},nil,nil,18},{106,nil,106,11,nil,nil,nil,12,107,{5,30,0.5,1,nil,33,nil},nil,nil,1},{108,nil,108,7,nil,nil,nil,8,109,{5,30,0.5,1,nil,34,nil},nil,nil,1},{110,nil,110,50,nil,nil,nil,51,111,{5,30,0.5,1,nil,35,nil},nil,nil,1},{112,nil,112,3,nil,nil,nil,4,113,{-9.5,9.5,0.5,1,nil,36,nil},nil,nil,1},{114,nil,114,50,nil,nil,nil,51,115,{5,35,0.5,1,nil,37,nil},nil,nil,1},{116,nil,116,7,nil,nil,nil,8,117,{5,35,0.5,1,nil,38,nil},nil,nil,1},{118,nil,118,11,nil,nil,nil,12,119,{5,35,0.5,1,nil,39,nil},nil,nil,1},{120,nil,120,3,nil,nil,nil,4,121,{-9.5,9.5,0.5,1,nil,40,nil},nil,nil,1},{122,nil,122,50,nil,nil,nil,51,123,{5,35,0.5,1,nil,41,nil},nil,nil,1},{124,nil,124,7,nil,nil,nil,8,125,{5,35,0.5,1,nil,42,nil},nil,nil,1},{126,nil,126,11,nil,nil,nil,12,127,{5,35,0.5,1,nil,43,nil},nil,nil,1},{128,nil,128,129,nil,nil,nil,130,131,{0.5,5,0.5,1,nil,44,nil},nil,nil,1},{132,nil,132,15,nil,nil,nil,16,133,{5,35,0.5,1,nil,45,nil},nil,nil,1},{134,nil,134,75,nil,nil,nil,76,135,{15,45,0.5,1,nil,46,nil},nil,nil,1},{136,nil,136,71,nil,nil,nil,72,137,{5,15,0.5,1,nil,47,nil},nil,nil,1},{138,nil,138,54,nil,nil,nil,55,139,{5,30,0.5,1,nil,48,nil},nil,nil,1},{140,nil,140,3,nil,nil,nil,4,141,{-9,9,0.5,1,nil,49,nil},nil,nil,1},{142,nil,142,63,nil,nil,nil,64,143,{0,90,1,18,nil,50,nil},nil,nil,18},{144,nil,144,82,nil,nil,nil,82,145,{0,100,1,80,nil,51,nil},nil,nil,80},{146,nil,146,50,nil,nil,nil,51,147,{5,45,0.5,1,nil,52,nil},nil,nil,1},{148,nil,148,11,nil,nil,nil,12,149,{5,45,0.5,1,nil,53,nil},nil,nil,1},{150,nil,150,7,nil,nil,nil,8,151,{5,45,0.5,1,nil,54,nil},nil,nil,1},{152,nil,152,3,nil,nil,nil,4,153,{-12,12,1,1,nil,55,nil},nil,nil,1},{154,nil,154,3,nil,nil,nil,4,155,{-5,5,0.1,1,nil,56,nil},nil,nil,1},{156,nil,156,67,nil,0,0,68,157,{0,255,1,nil,nil,57,nil},nil,nil,nil},{158,nil,158,67,nil,0,0,68,159,{nil,nil,nil,nil,nil,58,nil},nil,nil,nil},{160,nil,160,67,nil,0,0,161,162,{nil,nil,nil,nil,nil,59,nil},nil,nil,nil}},numeric)
@@ -75,8 +75,8 @@ custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
-if type(metadata.capability_id)=="string" and metadata.capability_id ~="" then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
-if type(metadata.range_key)=="string" and metadata.range_key ~="" then custom_capabilities.by_range_key[metadata.range_key]=metadata end
+if type(metadata.capability_id)=="string"and metadata.capability_id~=""then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
+if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
 index_metadata(custom_capabilities.numeric)
@@ -85,24 +85,23 @@ index_metadata(custom_capabilities.text)
 custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
-if type(allowed_values)~="table" then return nil end
+if type(allowed_values)~="table"then return nil end
 local copied={}
 for index,value in ipairs(allowed_values)do copied[index]=value end
 return copied
 end
 function custom_capabilities.resolve_range(definition,metadata)
-if type(metadata)~="table" then return nil end
-local default_range=type(metadata.default_range)=="table" and metadata.default_range or nil
-local ranges=type(definition)=="table" and definition.presence_capability_ranges or nil
-local resolved=type(ranges)=="table" and ranges[metadata.range_key]or nil
-if type(resolved)~="table" then resolved=default_range end
-if type(resolved)~="table" then return nil end
+if type(metadata)~="table"then return nil end
+local default_range=type(metadata.default_range)=="table"and metadata.default_range or nil
+local ranges=type(definition)=="table"and definition.presence_capability_ranges or nil
+local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
+if type(resolved)~="table"then resolved=default_range end
+if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number" and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number" and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number" and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string" and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table" and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),
-}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
+maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
+step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
+unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
+allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

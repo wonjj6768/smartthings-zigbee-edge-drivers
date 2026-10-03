@@ -8,17 +8,17 @@ components:
         version: 1
       - id: statelessSwitchLevelStep
         version: 1
-      - id: concertmirror08464.powerOnBehavior
+      - id: concertmirror08464.tsd1PowerOnBehavior
         version: 1
-      - id: concertmirror08464.countdownTsOneTenHours
+      - id: concertmirror08464.tsd1Countdown
         version: 1
-      - id: concertmirror08464.ef00Ts0601MinimumBrightness
+      - id: concertmirror08464.tsd1MinimumBrightness
         version: 1
-      - id: concertmirror08464.ef00Ts0601MaximumBrightness
+      - id: concertmirror08464.tsd1MaximumBrightness
         version: 1
-      - id: concertmirror08464.lightType
+      - id: concertmirror08464.tsd1LightType
         version: 1
-      - id: concertmirror08464.tsDimmerBacklight
+      - id: concertmirror08464.tsd1BacklightMode
         version: 1
       - id: refresh
         version: 1
@@ -56,22 +56,22 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
-      capability: concertmirror08464.ef00Ts0601MinimumBrightness
+      capability: concertmirror08464.tsd1MinimumBrightness
       version: 1
     - component: main
-      capability: concertmirror08464.ef00Ts0601MaximumBrightness
+      capability: concertmirror08464.tsd1MaximumBrightness
       version: 1
     - component: main
-      capability: concertmirror08464.lightType
+      capability: concertmirror08464.tsd1LightType
       version: 1
     - component: main
-      capability: concertmirror08464.countdownTsOneTenHours
+      capability: concertmirror08464.tsd1Countdown
       version: 1
     - component: main
-      capability: concertmirror08464.powerOnBehavior
+      capability: concertmirror08464.tsd1PowerOnBehavior
       version: 1
     - component: main
-      capability: concertmirror08464.tsDimmerBacklight
+      capability: concertmirror08464.tsd1BacklightMode
       version: 1
     - component: main
       capability: refresh
@@ -85,22 +85,22 @@ deviceConfig:
         capability: switchLevel
         version: 1
       - component: main
-        capability: concertmirror08464.ef00Ts0601MinimumBrightness
+        capability: concertmirror08464.tsd1MinimumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.ef00Ts0601MaximumBrightness
+        capability: concertmirror08464.tsd1MaximumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.lightType
+        capability: concertmirror08464.tsd1LightType
         version: 1
       - component: main
-        capability: concertmirror08464.countdownTsOneTenHours
+        capability: concertmirror08464.tsd1Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.powerOnBehavior
+        capability: concertmirror08464.tsd1PowerOnBehavior
         version: 1
       - component: main
-        capability: concertmirror08464.tsDimmerBacklight
+        capability: concertmirror08464.tsd1BacklightMode
         version: 1
     actions:
       - component: main
@@ -113,20 +113,20 @@ deviceConfig:
         capability: statelessSwitchLevelStep
         version: 1
       - component: main
-        capability: concertmirror08464.ef00Ts0601MinimumBrightness
+        capability: concertmirror08464.tsd1MinimumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.ef00Ts0601MaximumBrightness
+        capability: concertmirror08464.tsd1MaximumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.lightType
+        capability: concertmirror08464.tsd1LightType
         version: 1
       - component: main
-        capability: concertmirror08464.countdownTsOneTenHours
+        capability: concertmirror08464.tsd1Countdown
         version: 1
       - component: main
-        capability: concertmirror08464.powerOnBehavior
+        capability: concertmirror08464.tsd1PowerOnBehavior
         version: 1
       - component: main
-        capability: concertmirror08464.tsDimmerBacklight
+        capability: concertmirror08464.tsd1BacklightMode
         version: 1

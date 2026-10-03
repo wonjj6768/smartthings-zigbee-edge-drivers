@@ -1,13 +1,13 @@
-local registrations=require "generated.package_registry"
+local registrations=require"generated.package_registry"
 local registry={}
 local fingerprint_index=nil
 local function copy_entry_without_fingerprints(entry)
 local copied={}
-if type(entry)~="table" then
+if type(entry)~="table"then
 return copied
 end
 for key,value in pairs(entry)do
-if key ~="fingerprints" then
+if key~="fingerprints"then
 copied[key]=value
 end
 end
@@ -22,7 +22,7 @@ for _,entry in ipairs(registrations)do
 for _,fp in ipairs(entry.fingerprints)do
 local manufacturer=fp.manufacturer
 local model=fp.model
-if model ~=nil and manufacturer ~=nil then
+if model~=nil and manufacturer~=nil then
 fingerprint_index[manufacturer]=fingerprint_index[manufacturer]or{}
 fingerprint_index[manufacturer][model]=copy_entry_without_fingerprints(entry)
 end

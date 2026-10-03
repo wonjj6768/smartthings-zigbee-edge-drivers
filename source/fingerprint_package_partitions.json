@@ -541,6 +541,42 @@
       "catalogModule": "contracts.families.ef00.controls.tuya_fingerbot_plus",
       "oldOwner": "ef00-controls-2-wonjj6768",
       "newOwner": "ef00-controls-2-wonjj6768"
+    },
+    {
+      "catalogId": "zcl.covers.z2m_absorption",
+      "catalogModule": "contracts.families.zcl.covers.z2m_absorption",
+      "oldOwner": "zcl-covers-2-wonjj6768",
+      "newOwner": "zcl-covers-2-wonjj6768"
+    },
+    {
+      "catalogId": "zcl.thermostats.aqara_w500",
+      "catalogModule": "contracts.families.zcl.thermostats.aqara_w500",
+      "oldOwner": "zcl-thermostat-wonjj6768",
+      "newOwner": "zcl-thermostat-wonjj6768"
+    },
+    {
+      "catalogId": "zcl.thermostats.namron_edge",
+      "catalogModule": "contracts.families.zcl.thermostats.namron_edge",
+      "oldOwner": "zcl-thermostat-wonjj6768",
+      "newOwner": "zcl-thermostat-wonjj6768"
+    },
+    {
+      "catalogId": "zcl.plugs.futurehome",
+      "catalogModule": "contracts.families.zcl.plugs.futurehome",
+      "oldOwner": "zcl-chargers-wonjj6768",
+      "newOwner": "zcl-chargers-wonjj6768"
+    },
+    {
+      "catalogId": "ef00.switch.oxt4",
+      "catalogModule": "contracts.families.ef00.switches.oxt",
+      "oldOwner": "ef00-switch-2-wonjj6768",
+      "newOwner": "ef00-switch-2-wonjj6768"
+    },
+    {
+      "catalogId": "zcl.lights.philips_flux",
+      "catalogModule": "contracts.families.zcl.lights.philips_flux",
+      "oldOwner": "zcl-lights-2-wonjj6768",
+      "newOwner": "zcl-lights-2-wonjj6768"
     }
   ],
   "approvedFingerprintOnlyAliases": [
@@ -1401,6 +1437,94 @@
       "catalogModule": "contracts.families.ef00.thermostats.legacy",
       "profile": "thermostats-thermostat-saswell",
       "auditEvidence": "analysis/latest_z2m_sensor_additions_20260920.md#wave261--nous-d4z-and-saswell-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE28C1000000_1youk3hj",
+      "manufacturerUtf8Hex": "5f545a45323843313030303030305f31796f756b33686a",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-presence-3-wonjj6768",
+      "catalogId": "ef00.presence.wave11.general.1",
+      "catalogModule": "contracts.families.ef00.presence.wave11_general_1",
+      "profile": "safety-presence-wave11-neo-nas-ps10b2",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave312--nas-ps10b2-rtx-zps4-exact-alias"
+    },
+    {
+      "manufacturer": "_TZE284_z98viqa6",
+      "manufacturerUtf8Hex": "5f545a453238345f7a39387669716136",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-lights-2-wonjj6768",
+      "catalogId": "ef00.lights.z2m_absorption",
+      "catalogModule": "contracts.families.ef00.lights.z2m_absorption",
+      "profile": "lights-dimmer-moes-sfd02-core",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave314--moes-sfd02-z-full-contract-and-exact-alias"
+    },
+    {
+      "manufacturer": "_TZ300A_57kqwetw",
+      "manufacturerUtf8Hex": "5f545a333030415f35376b7177657477",
+      "model": "TS0726",
+      "modelUtf8Hex": "545330373236",
+      "owner": "zcl-controls-wonjj6768",
+      "catalogId": "zcl.controls",
+      "catalogModule": "contracts.families.zcl.controls",
+      "profile": "scene-switches-4-plus-4",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave321--ts0726-four-relays-and-eight-scenes"
+    },
+    {
+      "manufacturer": "_TZE284_adlblwab",
+      "manufacturerUtf8Hex": "5f545a453238345f61646c626c776162",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-switch-panel-wonjj6768",
+      "catalogId": "ef00.switch.panel",
+      "catalogModule": "contracts.families.ef00.switch_panel",
+      "profile": "switches-switch-8-adlblwab",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave330--tuya-eight-gang-exact-alias"
+    },
+    {
+      "manufacturer": "_TZE284_xc7dve2g",
+      "manufacturerUtf8Hex": "5f545a453238345f7863376476653267",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-lights-wonjj6768",
+      "catalogId": "ef00.lights",
+      "catalogModule": "contracts.families.ef00.lights",
+      "profile": "lights-dimmer-options-ts0601",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave331--ts0601-single-dimmer-contracts"
+    },
+    {
+      "manufacturer": "_TZE2841000000_n4ttsck2",
+      "manufacturerUtf8Hex": "5f545a45323834313030303030305f6e34747473636b32",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-safety-wonjj6768",
+      "catalogId": "ef00.safety",
+      "catalogModule": "contracts.families.ef00.safety",
+      "profile": "safety-smoke-detector-battery-288wz",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave342--onenuo-288wz-exact-alias-and-contract"
+    },
+    {
+      "manufacturer": "JM720ES-EF-3.0",
+      "manufacturerUtf8Hex": "4a4d37323045532d45462d332e30",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-safety-2-wonjj6768",
+      "catalogId": "ef00.safety.z2m_absorption",
+      "catalogModule": "contracts.families.ef00.safety.z2m_absorption",
+      "profile": "safety-co-moes-zc-hm",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave343--moes-zc-hm-co-alarm-contract-and-alias"
+    },
+    {
+      "manufacturer": "_TZE28C1000000_pmbxyf97",
+      "manufacturerUtf8Hex": "5f545a45323843313030303030305f706d627879663937",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-screen-switch-wonjj6768",
+      "catalogId": "ef00.screen_switches",
+      "catalogModule": "contracts.families.ef00.screen_switches",
+      "profile": "switches-screen-zms206us4",
+      "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave344--zemismart-zms-206us-4-contract-and-status-response"
     }
   ],
   "approvedFailClosedExacts": [
@@ -1496,7 +1620,7 @@
           "id": "zcl.switches.shelly_em"
         }
       ],
-      "exactCount": 8
+      "exactCount": 12
     },
     {
       "sourcePackage": "zcl-lights-wonjj6768",
@@ -1514,7 +1638,7 @@
           "id": "zcl.lights.shelly_dimmer"
         }
       ],
-      "exactCount": 31
+      "exactCount": 35
     },
     {
       "sourcePackage": "zcl-sensors-wonjj6768",
@@ -1546,7 +1670,7 @@
           "id": "zcl.controls.jethome"
         }
       ],
-      "exactCount": 7
+      "exactCount": 21
     },
     {
       "sourcePackage": "ef00-covers-wonjj6768",
@@ -1564,7 +1688,7 @@
           "id": "ef00.covers.wave10"
         }
       ],
-      "exactCount": 15
+      "exactCount": 19
     },
     {
       "sourcePackage": "ef00-lights-wonjj6768",
@@ -1590,7 +1714,7 @@
           "id": "moes.zs_d3"
         }
       ],
-      "exactCount": 23
+      "exactCount": 24
     },
     {
       "sourcePackage": "ef00-switch-wonjj6768",
@@ -1604,7 +1728,7 @@
           "id": "ef00.switch.basic.z2m_absorption"
         }
       ],
-      "exactCount": 8
+      "exactCount": 11
     },
     {
       "sourcePackage": "ef00-switch-panel-wonjj6768",
@@ -1650,7 +1774,7 @@
           "id": "ef00.din_rail.meters.z2m_absorption"
         }
       ],
-      "exactCount": 6
+      "exactCount": 10
     },
     {
       "sourcePackage": "ef00-sensors-wonjj6768",
@@ -1664,7 +1788,7 @@
           "id": "ef00.sensors.z2m_absorption"
         }
       ],
-      "exactCount": 11
+      "exactCount": 12
     },
     {
       "sourcePackage": "ef00-presence-general-2-wonjj6768",
@@ -1678,7 +1802,7 @@
           "id": "ef00.presence.z2m_absorption"
         }
       ],
-      "exactCount": 7
+      "exactCount": 9
     },
     {
       "sourcePackage": "ef00-safety-wonjj6768",
@@ -1712,7 +1836,7 @@
           "id": "nous.e12"
         }
       ],
-      "exactCount": 22
+      "exactCount": 27
     },
     {
       "sourcePackage": "ef00-valves-wonjj6768",
@@ -1892,7 +2016,7 @@
           "id": "wave14.terncy.zcl_switch"
         }
       ],
-      "exactCount": 14,
+      "exactCount": 18,
       "catalogMigrations": [
         {
           "catalogId": "zcl.switches.z2m_absorption",
@@ -1900,7 +2024,7 @@
           "oldOwner": "z2m-zcl-switch-wonjj6768",
           "newOwner": "zcl-switch-2-wonjj6768",
           "moved": false,
-          "exactCount": 7,
+          "exactCount": 11,
           "exacts": [
             {
               "manufacturer": "AOYAN",
@@ -1947,6 +2071,17 @@
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             },
             {
+              "manufacturer": "_TZ3000_ahvrgyac",
+              "manufacturerUtf8Hex": "5f545a333030305f6168767267796163",
+              "model": "TS0001",
+              "modelUtf8Hex": "545330303031",
+              "profile": "switches-nous-b2z",
+              "oldOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
+              "catalogId": "zcl.switches.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
+            },
+            {
               "manufacturer": "_TZ3000_bzzgvet0",
               "manufacturerUtf8Hex": "5f545a333030305f627a7a6776657430",
               "model": "TS0001",
@@ -1958,11 +2093,44 @@
               "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
             },
             {
+              "manufacturer": "_TZ3000_f6pgzqob",
+              "manufacturerUtf8Hex": "5f545a333030305f663670677a716f62",
+              "model": "TS0003",
+              "modelUtf8Hex": "545330303033",
+              "profile": "switches-ekaza-ts0003",
+              "oldOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
+              "catalogId": "zcl.switches.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
+            },
+            {
               "manufacturer": "_TZ3000_khtlvdfc",
               "manufacturerUtf8Hex": "5f545a333030305f6b68746c76646663",
               "model": "TS0013",
               "modelUtf8Hex": "545330303133",
               "profile": "switches-switch-3-ssw03g",
+              "oldOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
+              "catalogId": "zcl.switches.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3000_p26flek3",
+              "manufacturerUtf8Hex": "5f545a333030305f703236666c656b33",
+              "model": "TS0001",
+              "modelUtf8Hex": "545330303031",
+              "profile": "switches-tuya-p26",
+              "oldOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
+              "catalogId": "zcl.switches.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3000_w5s3mbyn",
+              "manufacturerUtf8Hex": "5f545a333030305f773573336d62796e",
+              "model": "TS0001",
+              "modelUtf8Hex": "545330303031",
+              "profile": "switches-zemismart-kes606",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
               "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
@@ -2108,9 +2276,13 @@
         {
           "module": "contracts.families.zcl.lights.wave19_exact",
           "id": "zcl.lights.wave19.exact"
+        },
+        {
+          "module": "contracts.families.zcl.lights.philips_flux",
+          "id": "zcl.lights.philips_flux"
         }
       ],
-      "exactCount": 36,
+      "exactCount": 41,
       "catalogMigrations": [
         {
           "catalogId": "zcl.lights.z2m_absorption",
@@ -2118,7 +2290,7 @@
           "oldOwner": "z2m-zcl-lights-wonjj6768",
           "newOwner": "zcl-lights-2-wonjj6768",
           "moved": false,
-          "exactCount": 30,
+          "exactCount": 34,
           "exacts": [
             {
               "manufacturer": "AduroSmart ERIA",
@@ -2449,6 +2621,50 @@
               "newOwner": "zcl-lights-2-wonjj6768",
               "catalogId": "zcl.lights.z2m_absorption",
               "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3210_ffuna0nr",
+              "manufacturerUtf8Hex": "5f545a333231305f6666756e61306e72",
+              "model": "TS0505B",
+              "modelUtf8Hex": "54533035303542",
+              "profile": "lights-tuya-ts0505b-hs",
+              "oldOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
+              "catalogId": "zcl.lights.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3210_rbixajyp",
+              "manufacturerUtf8Hex": "5f545a333231305f72626978616a7970",
+              "model": "TS0503B",
+              "modelUtf8Hex": "54533035303342",
+              "profile": "lights-tuya-ts0503b-hs",
+              "oldOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
+              "catalogId": "zcl.lights.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3210_tqwyiitv",
+              "manufacturerUtf8Hex": "5f545a333231305f7471777969697476",
+              "model": "TS0502B",
+              "modelUtf8Hex": "54533035303242",
+              "profile": "lights-luumr-g9",
+              "oldOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
+              "catalogId": "zcl.lights.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3210_w7ge4ldo",
+              "manufacturerUtf8Hex": "5f545a333231305f77376765346c646f",
+              "model": "TS0503B",
+              "modelUtf8Hex": "54533035303342",
+              "profile": "lights-tuya-ts0503b-hs",
+              "oldOwner": "z2m-zcl-lights-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
+              "catalogId": "zcl.lights.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.lights.z2m_absorption"
             }
           ]
         },
@@ -2547,6 +2763,27 @@
               "catalogModule": "contracts.families.zcl.lights.wave19_exact"
             }
           ]
+        },
+        {
+          "catalogId": "zcl.lights.philips_flux",
+          "catalogModule": "contracts.families.zcl.lights.philips_flux",
+          "oldOwner": "zcl-lights-2-wonjj6768",
+          "newOwner": "zcl-lights-2-wonjj6768",
+          "moved": false,
+          "exactCount": 1,
+          "exacts": [
+            {
+              "manufacturer": "Signify Netherlands B.V.",
+              "manufacturerUtf8Hex": "5369676e696679204e65746865726c616e647320422e562e",
+              "model": "929004610603",
+              "modelUtf8Hex": "393239303034363130363033",
+              "profile": "lights-philips-flux",
+              "oldOwner": "zcl-lights-2-wonjj6768",
+              "newOwner": "zcl-lights-2-wonjj6768",
+              "catalogId": "zcl.lights.philips_flux",
+              "catalogModule": "contracts.families.zcl.lights.philips_flux"
+            }
+          ]
         }
       ]
     },
@@ -2590,7 +2827,7 @@
           "id": "zcl.sensors.zg204zl"
         }
       ],
-      "exactCount": 337,
+      "exactCount": 338,
       "catalogMigrations": [
         {
           "catalogId": "zcl.sensors.z2m_absorption",
@@ -6353,8 +6590,19 @@
           "oldOwner": "zcl-sensors-2-wonjj6768",
           "newOwner": "zcl-sensors-2-wonjj6768",
           "moved": false,
-          "exactCount": 1,
+          "exactCount": 2,
           "exacts": [
+            {
+              "manufacturer": "HOBEIAN",
+              "manufacturerUtf8Hex": "484f424549414e",
+              "model": "ZG-102Z",
+              "modelUtf8Hex": "5a472d3130325a",
+              "profile": "hobeian-zg102z-contact",
+              "oldOwner": "zcl-sensors-2-wonjj6768",
+              "newOwner": "zcl-sensors-2-wonjj6768",
+              "catalogId": "zcl.sensors.hobeian",
+              "catalogModule": "contracts.families.zcl.sensors.hobeian"
+            },
             {
               "manufacturer": "HOBEIAN",
               "manufacturerUtf8Hex": "484f424549414e",
@@ -6407,7 +6655,7 @@
           "id": "zcl.controls.sonoff"
         }
       ],
-      "exactCount": 12,
+      "exactCount": 26,
       "catalogMigrations": [
         {
           "catalogId": "zcl.controls.z2m_absorption",
@@ -6415,7 +6663,7 @@
           "oldOwner": "z2m-zcl-controls-wonjj6768",
           "newOwner": "zcl-controls-2-wonjj6768",
           "moved": false,
-          "exactCount": 6,
+          "exactCount": 20,
           "exacts": [
             {
               "manufacturer": "Candeo",
@@ -6423,6 +6671,17 @@
               "model": "C-ZB-RD1Pv2-REM",
               "modelUtf8Hex": "432d5a422d5244315076322d52454d",
               "profile": "controllers-candeo-rd1p-rem",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "LUMI",
+              "manufacturerUtf8Hex": "4c554d49",
+              "model": "lumi.remote.rkba01",
+              "modelUtf8Hex": "6c756d692e72656d6f74652e726b62613031",
+              "profile": "controllers-aqara-h1",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
               "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
@@ -6467,6 +6726,149 @@
               "model": "TS0043-z-SlD",
               "modelUtf8Hex": "5453303034332d7a2d536c44",
               "profile": "buttons-button-3-battery-remote-action-slacky",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "BN0-S-03/PW",
+              "modelUtf8Hex": "424e302d532d30332f5057",
+              "profile": "controllers-streda-bn0s",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "BN0-T-03/PW",
+              "modelUtf8Hex": "424e302d542d30332f5057",
+              "profile": "controllers-streda-bn0t",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "BN1-1-03/PW",
+              "modelUtf8Hex": "424e312d312d30332f5057",
+              "profile": "controllers-streda-led1",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "BN1-C-03/PW",
+              "modelUtf8Hex": "424e312d432d30332f5057",
+              "profile": "controllers-streda-ceiling",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "BN3-110-03/PW",
+              "modelUtf8Hex": "424e332d3131302d30332f5057",
+              "profile": "controllers-streda-led1",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "DF3-11R-03/PW",
+              "modelUtf8Hex": "4446332d3131522d30332f5057",
+              "profile": "controllers-streda-led2",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "HN1-CW-4-03/PW",
+              "modelUtf8Hex": "484e312d43572d342d30332f5057",
+              "profile": "controllers-streda-ceiling",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "HNB-W-1TB5-03/PW",
+              "modelUtf8Hex": "484e422d572d315442352d30332f5057",
+              "profile": "controllers-streda-sn3",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "HNB-W-1TB5K-03/PW",
+              "modelUtf8Hex": "484e422d572d315442354b2d30332f5057",
+              "profile": "controllers-streda-sn3k",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "SN2-E-03/PW",
+              "modelUtf8Hex": "534e322d452d30332f5057",
+              "profile": "controllers-streda-sn2",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "SN3-1TB5-03/PW",
+              "modelUtf8Hex": "534e332d315442352d30332f5057",
+              "profile": "controllers-streda-sn3",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "TKHTechnology",
+              "manufacturerUtf8Hex": "544b48546563686e6f6c6f6779",
+              "model": "SN3-1TB5K-03/PW",
+              "modelUtf8Hex": "534e332d315442354b2d30332f5057",
+              "profile": "controllers-streda-sn3k",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "Third Reality, Inc",
+              "manufacturerUtf8Hex": "5468697264205265616c6974792c20496e63",
+              "model": "3RSB22BZ",
+              "modelUtf8Hex": "335253423232425a",
+              "profile": "buttons-third-reality-3rsb22bz",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
               "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
@@ -6625,7 +7027,7 @@
           "id": "zcl.bridges.wave19"
         }
       ],
-      "exactCount": 3,
+      "exactCount": 4,
       "catalogMigrations": [
         {
           "catalogId": "zcl.bridges.wave19",
@@ -6633,7 +7035,7 @@
           "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
           "newOwner": "zcl-bridge-wonjj6768",
           "moved": true,
-          "exactCount": 3,
+          "exactCount": 4,
           "exacts": [
             {
               "manufacturer": "Candeo",
@@ -6667,6 +7069,17 @@
               "newOwner": "zcl-bridge-wonjj6768",
               "catalogId": "zcl.bridges.wave19",
               "catalogModule": "contracts.families.zcl.bridges_wave19"
+            },
+            {
+              "manufacturer": "TexasInstruments",
+              "manufacturerUtf8Hex": "5465786173496e737472756d656e7473",
+              "model": "ti.router",
+              "modelUtf8Hex": "74692e726f75746572",
+              "profile": "bridges-ti-router",
+              "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
+              "newOwner": "zcl-bridge-wonjj6768",
+              "catalogId": "zcl.bridges.wave19",
+              "catalogModule": "contracts.families.zcl.bridges_wave19"
             }
           ]
         }
@@ -6682,9 +7095,17 @@
         {
           "module": "contracts.families.zcl.thermostats.wave19_sber",
           "id": "zcl.thermostats.wave19.sber"
+        },
+        {
+          "module": "contracts.families.zcl.thermostats.aqara_w500",
+          "id": "zcl.thermostats.aqara_w500"
+        },
+        {
+          "module": "contracts.families.zcl.thermostats.namron_edge",
+          "id": "zcl.thermostats.namron_edge"
         }
       ],
-      "exactCount": 2,
+      "exactCount": 5,
       "catalogMigrations": [
         {
           "catalogId": "zcl.sensors.wave19_hvac",
@@ -6725,6 +7146,59 @@
               "newOwner": "zcl-thermostat-wonjj6768",
               "catalogId": "zcl.thermostats.wave19.sber",
               "catalogModule": "contracts.families.zcl.thermostats.wave19_sber"
+            }
+          ]
+        },
+        {
+          "catalogId": "zcl.thermostats.aqara_w500",
+          "catalogModule": "contracts.families.zcl.thermostats.aqara_w500",
+          "oldOwner": "zcl-thermostat-wonjj6768",
+          "newOwner": "zcl-thermostat-wonjj6768",
+          "moved": false,
+          "exactCount": 1,
+          "exacts": [
+            {
+              "manufacturer": "Aqara",
+              "manufacturerUtf8Hex": "4171617261",
+              "model": "lumi.airrtc.aeu001",
+              "modelUtf8Hex": "6c756d692e6169727274632e616575303031",
+              "profile": "thermostats-aqara-w500",
+              "oldOwner": "zcl-thermostat-wonjj6768",
+              "newOwner": "zcl-thermostat-wonjj6768",
+              "catalogId": "zcl.thermostats.aqara_w500",
+              "catalogModule": "contracts.families.zcl.thermostats.aqara_w500"
+            }
+          ]
+        },
+        {
+          "catalogId": "zcl.thermostats.namron_edge",
+          "catalogModule": "contracts.families.zcl.thermostats.namron_edge",
+          "oldOwner": "zcl-thermostat-wonjj6768",
+          "newOwner": "zcl-thermostat-wonjj6768",
+          "moved": false,
+          "exactCount": 2,
+          "exacts": [
+            {
+              "manufacturer": "Namron AS",
+              "manufacturerUtf8Hex": "4e616d726f6e204153",
+              "model": "4512783",
+              "modelUtf8Hex": "34353132373833",
+              "profile": "thermostats-namron-edge",
+              "oldOwner": "zcl-thermostat-wonjj6768",
+              "newOwner": "zcl-thermostat-wonjj6768",
+              "catalogId": "zcl.thermostats.namron_edge",
+              "catalogModule": "contracts.families.zcl.thermostats.namron_edge"
+            },
+            {
+              "manufacturer": "Namron AS",
+              "manufacturerUtf8Hex": "4e616d726f6e204153",
+              "model": "4566702",
+              "modelUtf8Hex": "34353636373032",
+              "profile": "thermostats-namron-edge",
+              "oldOwner": "zcl-thermostat-wonjj6768",
+              "newOwner": "zcl-thermostat-wonjj6768",
+              "catalogId": "zcl.thermostats.namron_edge",
+              "catalogModule": "contracts.families.zcl.thermostats.namron_edge"
             }
           ]
         }
@@ -6783,7 +7257,7 @@
           "id": "ef00.covers.wave19_legacy"
         }
       ],
-      "exactCount": 19,
+      "exactCount": 23,
       "catalogMigrations": [
         {
           "catalogId": "ef00.covers.z2m_absorption",
@@ -6791,7 +7265,7 @@
           "oldOwner": "z2m-ef00-covers-wonjj6768",
           "newOwner": "ef00-covers-2-wonjj6768",
           "moved": false,
-          "exactCount": 5,
+          "exactCount": 9,
           "exacts": [
             {
               "manufacturer": "_TZE200_xtrnjaoz",
@@ -6816,6 +7290,17 @@
               "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
             },
             {
+              "manufacturer": "_TZE204_pxbjch8m",
+              "manufacturerUtf8Hex": "5f545a453230345f7078626a6368386d",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "covers-tuya-limited-switch",
+              "oldOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
+              "catalogId": "ef00.covers.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
+            },
+            {
               "manufacturer": "_TZE204_xtrnjaoz",
               "manufacturerUtf8Hex": "5f545a453230345f7874726e6a616f7a",
               "model": "TS0601",
@@ -6827,11 +7312,44 @@
               "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
             },
             {
+              "manufacturer": "_TZE2841000000_u68q868h",
+              "manufacturerUtf8Hex": "5f545a45323834313030303030305f7536387138363868",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "covers-moes-fwjz-16eb",
+              "oldOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
+              "catalogId": "ef00.covers.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
+            },
+            {
               "manufacturer": "_TZE284_8whfphjv",
               "manufacturerUtf8Hex": "5f545a453238345f3877686670686a76",
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "covers-cover-gm25teq",
+              "oldOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
+              "catalogId": "ef00.covers.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_a0hirjnh",
+              "manufacturerUtf8Hex": "5f545a453238345f61306869726a6e68",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "covers-tuya-cover14-a0",
+              "oldOwner": "z2m-ef00-covers-wonjj6768",
+              "newOwner": "ef00-covers-2-wonjj6768",
+              "catalogId": "ef00.covers.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.covers.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_pxwixtky",
+              "manufacturerUtf8Hex": "5f545a453238345f7078776978746b79",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "covers-tuya-cover5-px",
               "oldOwner": "z2m-ef00-covers-wonjj6768",
               "newOwner": "ef00-covers-2-wonjj6768",
               "catalogId": "ef00.covers.z2m_absorption",
@@ -7064,7 +7582,7 @@
           "id": "ef00.lights.wave19.exact"
         }
       ],
-      "exactCount": 30,
+      "exactCount": 31,
       "catalogMigrations": [
         {
           "catalogId": "ef00.lights.z2m_absorption",
@@ -7072,7 +7590,7 @@
           "oldOwner": "z2m-ef00-lights-wonjj6768",
           "newOwner": "ef00-lights-2-wonjj6768",
           "moved": false,
-          "exactCount": 19,
+          "exactCount": 20,
           "exacts": [
             {
               "manufacturer": "_TZE200_2gtsuokt",
@@ -7256,6 +7774,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "lights-dimmer-moes-sfd02-core",
+              "oldOwner": "z2m-ef00-lights-wonjj6768",
+              "newOwner": "ef00-lights-2-wonjj6768",
+              "catalogId": "ef00.lights.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.lights.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE28C1000000_brx4eku5",
+              "manufacturerUtf8Hex": "5f545a45323843313030303030305f62727834656b7535",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "lights-qa-qadz1lr",
               "oldOwner": "z2m-ef00-lights-wonjj6768",
               "newOwner": "ef00-lights-2-wonjj6768",
               "catalogId": "ef00.lights.z2m_absorption",
@@ -7500,9 +8029,13 @@
         {
           "module": "contracts.families.ef00.switches.wave15_box",
           "id": "ef00.switches.wave15_box"
+        },
+        {
+          "module": "contracts.families.ef00.switches.oxt",
+          "id": "ef00.switch.oxt4"
         }
       ],
-      "exactCount": 55,
+      "exactCount": 60,
       "catalogMigrations": [
         {
           "catalogId": "ef00.switch.basic.z2m_absorption",
@@ -7510,7 +8043,7 @@
           "oldOwner": "z2m-ef00-switch-wonjj6768",
           "newOwner": "ef00-switch-2-wonjj6768",
           "moved": false,
-          "exactCount": 8,
+          "exactCount": 11,
           "exacts": [
             {
               "manufacturer": "_TZE200_4jvmbiph",
@@ -7540,6 +8073,28 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "switches-switch-6",
+              "oldOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
+              "catalogId": "ef00.switch.basic.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE204_rfpyqax9",
+              "manufacturerUtf8Hex": "5f545a453230345f7266707971617839",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "switches-tervix-x10",
+              "oldOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
+              "catalogId": "ef00.switch.basic.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_1oft6qso",
+              "manufacturerUtf8Hex": "5f545a453238345f316f66743671736f",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "switches-automaton-ch8z",
               "oldOwner": "z2m-ef00-switch-wonjj6768",
               "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.basic.z2m_absorption",
@@ -7584,6 +8139,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "switches-zemismart-zmz609-2-core",
+              "oldOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
+              "catalogId": "ef00.switch.basic.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_rfpyqax9",
+              "manufacturerUtf8Hex": "5f545a453238345f7266707971617839",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "switches-tervix-x10",
               "oldOwner": "z2m-ef00-switch-wonjj6768",
               "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.basic.z2m_absorption",
@@ -8208,6 +8774,38 @@
               "catalogModule": "contracts.families.ef00.switches.wave15_box"
             }
           ]
+        },
+        {
+          "catalogId": "ef00.switch.oxt4",
+          "catalogModule": "contracts.families.ef00.switches.oxt",
+          "oldOwner": "ef00-switch-2-wonjj6768",
+          "newOwner": "ef00-switch-2-wonjj6768",
+          "moved": false,
+          "exactCount": 2,
+          "exacts": [
+            {
+              "manufacturer": "_TZE204_m9dzckna",
+              "manufacturerUtf8Hex": "5f545a453230345f6d39647a636b6e61",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "switches-oxt-four",
+              "oldOwner": "ef00-switch-2-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
+              "catalogId": "ef00.switch.oxt4",
+              "catalogModule": "contracts.families.ef00.switches.oxt"
+            },
+            {
+              "manufacturer": "_TZE28C1000000_f5efvtbv",
+              "manufacturerUtf8Hex": "5f545a45323843313030303030305f6635656676746276",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "switches-oxt-four",
+              "oldOwner": "ef00-switch-2-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
+              "catalogId": "ef00.switch.oxt4",
+              "catalogModule": "contracts.families.ef00.switches.oxt"
+            }
+          ]
         }
       ]
     },
@@ -8223,7 +8821,7 @@
           "id": "ef00.din_rail.wave19_energy"
         }
       ],
-      "exactCount": 9,
+      "exactCount": 13,
       "catalogMigrations": [
         {
           "catalogId": "ef00.din_rail.meters.z2m_absorption",
@@ -8231,8 +8829,41 @@
           "oldOwner": "z2m-ef00-meters-wonjj6768",
           "newOwner": "ef00-meters-2-wonjj6768",
           "moved": false,
-          "exactCount": 6,
+          "exactCount": 10,
           "exacts": [
+            {
+              "manufacturer": "_TZ3218_fv20refe",
+              "manufacturerUtf8Hex": "5f545a333231385f6676323072656665",
+              "model": "TS011F",
+              "modelUtf8Hex": "545330313146",
+              "profile": "meters-avatto-zot60",
+              "oldOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
+              "catalogId": "ef00.din_rail.meters.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3218_o1slgs0r",
+              "manufacturerUtf8Hex": "5f545a333231385f6f31736c67733072",
+              "model": "TS011F",
+              "modelUtf8Hex": "545330313146",
+              "profile": "meters-avatto-zot60",
+              "oldOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
+              "catalogId": "ef00.din_rail.meters.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3218_pfnjjx6a",
+              "manufacturerUtf8Hex": "5f545a333231385f70666e6a6a783661",
+              "model": "TS011F",
+              "modelUtf8Hex": "545330313146",
+              "profile": "meters-avatto-zot60",
+              "oldOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
+              "catalogId": "ef00.din_rail.meters.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption"
+            },
             {
               "manufacturer": "_TZE200_agjqiu4h",
               "manufacturerUtf8Hex": "5f545a453230305f61676a7169753468",
@@ -8294,6 +8925,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "meters-nous-d4z-m-core",
+              "oldOwner": "z2m-ef00-meters-wonjj6768",
+              "newOwner": "ef00-meters-2-wonjj6768",
+              "catalogId": "ef00.din_rail.meters.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.din_rail.meters_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_goecjd1t",
+              "manufacturerUtf8Hex": "5f545a453238345f676f65636a643174",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "meters-zwpm16",
               "oldOwner": "z2m-ef00-meters-wonjj6768",
               "newOwner": "ef00-meters-2-wonjj6768",
               "catalogId": "ef00.din_rail.meters.z2m_absorption",
@@ -8362,7 +9004,7 @@
           "id": "ef00.sensors.wave16_lincukoo_air"
         }
       ],
-      "exactCount": 20,
+      "exactCount": 21,
       "catalogMigrations": [
         {
           "catalogId": "ef00.sensors.z2m_absorption",
@@ -8370,7 +9012,7 @@
           "oldOwner": "z2m-ef00-sensors-wonjj6768",
           "newOwner": "ef00-sensors-2-wonjj6768",
           "moved": false,
-          "exactCount": 11,
+          "exactCount": 12,
           "exacts": [
             {
               "manufacturer": "HOBEIAN",
@@ -8433,6 +9075,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "sensors-aq-co2-temp-humidity",
+              "oldOwner": "z2m-ef00-sensors-wonjj6768",
+              "newOwner": "ef00-sensors-2-wonjj6768",
+              "catalogId": "ef00.sensors.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.sensors.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE204_r6kfl9ta",
+              "manufacturerUtf8Hex": "5f545a453230345f72366b666c397461",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "sensors-tuya-zyn1",
               "oldOwner": "z2m-ef00-sensors-wonjj6768",
               "newOwner": "ef00-sensors-2-wonjj6768",
               "catalogId": "ef00.sensors.z2m_absorption",
@@ -8648,7 +9301,7 @@
           "id": "ef00.presence.simple_sensors"
         }
       ],
-      "exactCount": 34,
+      "exactCount": 36,
       "catalogMigrations": [
         {
           "catalogId": "ef00.presence.z2m_absorption",
@@ -8656,8 +9309,19 @@
           "oldOwner": "z2m-ef00-presence-wonjj6768",
           "newOwner": "ef00-presence-3-wonjj6768",
           "moved": false,
-          "exactCount": 7,
+          "exactCount": 9,
           "exacts": [
+            {
+              "manufacturer": "_TZD200_sjjp9bti",
+              "manufacturerUtf8Hex": "5f545a443230305f736a6a7039627469",
+              "model": "TS0202",
+              "modelUtf8Hex": "545330323032",
+              "profile": "safety-presence-hs208z",
+              "oldOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
+              "catalogId": "ef00.presence.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
+            },
             {
               "manufacturer": "_TZE204_bjf8qum1",
               "manufacturerUtf8Hex": "5f545a453230345f626a663871756d31",
@@ -8675,6 +9339,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "safety-presence-szlmr10-illuminance",
+              "oldOwner": "z2m-ef00-presence-wonjj6768",
+              "newOwner": "ef00-presence-3-wonjj6768",
+              "catalogId": "ef00.presence.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.presence.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_5qfrnbqs",
+              "manufacturerUtf8Hex": "5f545a453238345f357166726e627173",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "safety-presence-ctl-mini",
               "oldOwner": "z2m-ef00-presence-wonjj6768",
               "newOwner": "ef00-presence-3-wonjj6768",
               "catalogId": "ef00.presence.z2m_absorption",
@@ -9132,7 +9807,7 @@
           "id": "ef00.safety.wave16_lincukoo_siren"
         }
       ],
-      "exactCount": 24,
+      "exactCount": 29,
       "catalogMigrations": [
         {
           "catalogId": "ef00.safety.z2m_absorption",
@@ -9140,8 +9815,30 @@
           "oldOwner": "z2m-ef00-safety-wonjj6768",
           "newOwner": "ef00-safety-2-wonjj6768",
           "moved": false,
-          "exactCount": 9,
+          "exactCount": 14,
           "exacts": [
+            {
+              "manufacturer": "HYSYIOT",
+              "manufacturerUtf8Hex": "48595359494f54",
+              "model": "HS118Z",
+              "modelUtf8Hex": "48533131385a",
+              "profile": "safety-rain-hs118z-hysyiot",
+              "oldOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
+              "catalogId": "ef00.safety.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE200_gt1gge3x",
+              "manufacturerUtf8Hex": "5f545a453230305f6774316767653378",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "safety-rain-hs118z-tuya",
+              "oldOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
+              "catalogId": "ef00.safety.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
+            },
             {
               "manufacturer": "_TZE200_hr0tdd47",
               "manufacturerUtf8Hex": "5f545a453230305f6872307464643437",
@@ -9198,6 +9895,17 @@
               "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
             },
             {
+              "manufacturer": "_TZE20C_ycab9txf",
+              "manufacturerUtf8Hex": "5f545a453230435f7963616239747866",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "safety-novato-zas01p",
+              "oldOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
+              "catalogId": "ef00.safety.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
+            },
+            {
               "manufacturer": "_TZE284_1di7ujzp",
               "manufacturerUtf8Hex": "5f545a453238345f31646937756a7a70",
               "model": "TS0601",
@@ -9236,6 +9944,28 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "safety-co-moes-zc-hm",
+              "oldOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
+              "catalogId": "ef00.safety.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_uqzwwjas",
+              "manufacturerUtf8Hex": "5f545a453238345f75717a77776a6173",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "safety-avatto-zsd20",
+              "oldOwner": "z2m-ef00-safety-wonjj6768",
+              "newOwner": "ef00-safety-2-wonjj6768",
+              "catalogId": "ef00.safety.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.safety.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE284_zeeqkb0p",
+              "manufacturerUtf8Hex": "5f545a453238345f7a6565716b623070",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "safety-avatto-zsd20",
               "oldOwner": "z2m-ef00-safety-wonjj6768",
               "newOwner": "ef00-safety-2-wonjj6768",
               "catalogId": "ef00.safety.z2m_absorption",
@@ -10264,7 +10994,7 @@
           "id": "ef00.thermostats.z2m_absorption_wall"
         }
       ],
-      "exactCount": 23,
+      "exactCount": 24,
       "catalogMigrations": [
         {
           "catalogId": "ef00.thermostats.wave6a_wall",
@@ -10544,7 +11274,7 @@
           "oldOwner": "ef00-thermostat-wall-wonjj6768",
           "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
           "moved": true,
-          "exactCount": 1,
+          "exactCount": 2,
           "exacts": [
             {
               "manufacturer": "_TZE200_spyvfeti",
@@ -10552,6 +11282,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "thermostats-floor-hd-t1000-core",
+              "oldOwner": "ef00-thermostat-wall-wonjj6768",
+              "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
+              "catalogId": "ef00.thermostats.z2m_absorption_wall",
+              "catalogModule": "contracts.families.ef00.thermostats.z2m_absorption_wall"
+            },
+            {
+              "manufacturer": "_TZE204_6ewjlefg",
+              "manufacturerUtf8Hex": "5f545a453230345f3665776a6c656667",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "thermostats-beca-bvrf-l001",
               "oldOwner": "ef00-thermostat-wall-wonjj6768",
               "newOwner": "ef00-thermostat-hvac-2-wonjj6768",
               "catalogId": "ef00.thermostats.z2m_absorption_wall",
@@ -10898,6 +11639,61 @@
               "newOwner": "ef00-bridge-wonjj6768",
               "catalogId": "ef00.bridges.wave19",
               "catalogModule": "contracts.families.ef00.bridges_wave19"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "zcl-covers-2-wonjj6768",
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.covers.z2m_absorption",
+          "id": "zcl.covers.z2m_absorption"
+        }
+      ],
+      "exactCount": 3,
+      "catalogMigrations": [
+        {
+          "catalogId": "zcl.covers.z2m_absorption",
+          "catalogModule": "contracts.families.zcl.covers.z2m_absorption",
+          "oldOwner": "zcl-covers-2-wonjj6768",
+          "newOwner": "zcl-covers-2-wonjj6768",
+          "moved": false,
+          "exactCount": 3,
+          "exacts": [
+            {
+              "manufacturer": "Aubor",
+              "manufacturerUtf8Hex": "4175626f72",
+              "model": "TLSR82xx",
+              "modelUtf8Hex": "544c535238327878",
+              "profile": "covers-allesin-roller-shade",
+              "oldOwner": "zcl-covers-2-wonjj6768",
+              "newOwner": "zcl-covers-2-wonjj6768",
+              "catalogId": "zcl.covers.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.covers.z2m_absorption"
+            },
+            {
+              "manufacturer": "SOMFY",
+              "manufacturerUtf8Hex": "534f4d4659",
+              "model": "Glydea 2 Ultra WF Curtain",
+              "modelUtf8Hex": "476c79646561203220556c747261205746204375727461696e",
+              "profile": "covers-somfy-glydea2",
+              "oldOwner": "zcl-covers-2-wonjj6768",
+              "newOwner": "zcl-covers-2-wonjj6768",
+              "catalogId": "zcl.covers.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.covers.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3210_mldzab8w",
+              "manufacturerUtf8Hex": "5f545a333231305f6d6c647a61623877",
+              "model": "TS130F",
+              "modelUtf8Hex": "545331333046",
+              "profile": "covers-moes-zm108m",
+              "oldOwner": "zcl-covers-2-wonjj6768",
+              "newOwner": "zcl-covers-2-wonjj6768",
+              "catalogId": "zcl.covers.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.covers.z2m_absorption"
             }
           ]
         }
@@ -12602,21 +13398,54 @@
           ]
         }
       ]
+    },
+    {
+      "package": "zcl-chargers-wonjj6768",
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.plugs.futurehome",
+          "id": "zcl.plugs.futurehome"
+        }
+      ],
+      "exactCount": 1,
+      "catalogMigrations": [
+        {
+          "catalogId": "zcl.plugs.futurehome",
+          "catalogModule": "contracts.families.zcl.plugs.futurehome",
+          "oldOwner": "zcl-chargers-wonjj6768",
+          "newOwner": "zcl-chargers-wonjj6768",
+          "moved": false,
+          "exactCount": 1,
+          "exacts": [
+            {
+              "manufacturer": "Futurehome",
+              "manufacturerUtf8Hex": "467574757265686f6d65",
+              "model": "Charge",
+              "modelUtf8Hex": "436861726765",
+              "profile": "plugs-futurehome-charge",
+              "oldOwner": "zcl-chargers-wonjj6768",
+              "newOwner": "zcl-chargers-wonjj6768",
+              "catalogId": "zcl.plugs.futurehome",
+              "catalogModule": "contracts.families.zcl.plugs.futurehome"
+            }
+          ]
+        }
+      ]
     }
   ],
   "summary": {
     "legacyPackageCount": 27,
     "legacyExactCount": 3280,
     "legacyOwnerChangeCount": 0,
-    "newPackageCount": 22,
-    "newCatalogCount": 90,
-    "newExactCount": 853,
-    "fingerprintOnlyAliasCount": 78,
+    "newPackageCount": 24,
+    "newCatalogCount": 96,
+    "newExactCount": 908,
+    "fingerprintOnlyAliasCount": 86,
     "failClosedExactCount": 1,
     "restoredLegacyExactCount": 4,
-    "runtimeExactCount": 4206,
+    "runtimeExactCount": 4269,
     "movedCatalogCount": 52,
-    "movedExactCount": 498,
+    "movedExactCount": 500,
     "historicalPartitionCount": 17
   }
 }

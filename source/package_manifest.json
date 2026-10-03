@@ -398,6 +398,10 @@
         {
           "module": "contracts.families.zcl.lights.wave19_exact",
           "id": "zcl.lights.wave19.exact"
+        },
+        {
+          "module": "contracts.families.zcl.lights.philips_flux",
+          "id": "zcl.lights.philips_flux"
         }
       ]
     },
@@ -512,6 +516,14 @@
         {
           "module": "contracts.families.zcl.thermostats.wave19_sber",
           "id": "zcl.thermostats.wave19.sber"
+        },
+        {
+          "module": "contracts.families.zcl.thermostats.aqara_w500",
+          "id": "zcl.thermostats.aqara_w500"
+        },
+        {
+          "module": "contracts.families.zcl.thermostats.namron_edge",
+          "id": "zcl.thermostats.namron_edge"
         }
       ]
     },
@@ -638,6 +650,10 @@
         {
           "module": "contracts.families.ef00.switches.wave15_box",
           "id": "ef00.switches.wave15_box"
+        },
+        {
+          "module": "contracts.families.ef00.switches.oxt",
+          "id": "ef00.switch.oxt4"
         }
       ]
     },
@@ -896,6 +912,20 @@
       ]
     },
     {
+      "name": "zcl-covers-2-wonjj6768",
+      "display_name": "ZCL Covers 2 wonjj6768",
+      "description": "Curtains, blinds and shades with explicit device fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.covers.z2m_absorption",
+          "id": "zcl.covers.z2m_absorption"
+        }
+      ]
+    },
+    {
       "name": "zcl-sensors-3-wonjj6768",
       "display_name": "ZCL Sensors 3 wonjj6768",
       "description": "Basic temperature, humidity, motion and safety sensors with explicit device fingerprints.",
@@ -914,6 +944,20 @@
         {
           "module": "contracts.families.zcl.sensors.sonoff_safety",
           "id": "zcl.sensors.sonoff_safety"
+        }
+      ]
+    },
+    {
+      "name": "zcl-chargers-wonjj6768",
+      "display_name": "ZCL EV Chargers wonjj6768",
+      "description": "Zigbee EV chargers with explicit device fingerprints.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.plugs.futurehome",
+          "id": "zcl.plugs.futurehome"
         }
       ]
     }

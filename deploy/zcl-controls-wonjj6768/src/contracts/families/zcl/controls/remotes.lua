@@ -1,17 +1,17 @@
-local zcl=require "protocol.zcl"
-local device_helpers=require "contracts.helpers.family"
-local emit=require "capabilities.events.all"
-local capabilities=require "st.capabilities"
+local zcl=require"protocol.zcl"
+local device_helpers=require"contracts.helpers.family"
+local emit=require"capabilities.events.all"
+local capabilities=require"st.capabilities"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function battery_percent_from_voltage(voltage)
-if type(voltage)~="number" then
+if type(voltage)~="number"then
 return voltage
 end
-local percent=math.floor((((voltage - 2.0)/ 1.0)* 100)+ 0.5)
-if percent < 0 then
+local percent=math.floor((((voltage-2.0)/1.0)*100)+0.5)
+if percent<0 then
 return 0
 end
-if percent > 100 then
+if percent>100 then
 return 100
 end
 return percent
@@ -22,24 +22,20 @@ zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION,zcl.ATTR_BATTERY_PERCENTAG
 name="battery",
 endpoint=1,
 emit=emit.battery(),
-scale=2,
-}),
+scale=2,}),
 zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION,zcl.ATTR_BATTERY_VOLTAGE,{
 name="battery",
 endpoint=1,
 emit=emit.battery(),
 scale=10,
-from_device=battery_percent_from_voltage,
-}),
-}
+from_device=battery_percent_from_voltage,}),}
 end
 local function passive_battery_voltage_cluster()
 return zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION,zcl.ATTR_BATTERY_VOLTAGE,{
 name="battery_voltage",
 endpoint=1,
 emit=emit.voltage(),
-scale=10,
-})
+scale=10,})
 end
 local function build_remote_definition(profile,include_voltage)
 local battery_clusters=passive_battery_clusters()
@@ -49,11 +45,9 @@ button_actions={"pushed","double","held"},
 zcl_clusters={
 zcl.tuya_magic_packet(),
 battery_clusters[1],
-battery_clusters[2],
-},
-}
+battery_clusters[2],},}
 if include_voltage==true then
-definition.zcl_clusters[#definition.zcl_clusters + 1]=passive_battery_voltage_cluster()
+definition.zcl_clusters[#definition.zcl_clusters+1]=passive_battery_voltage_cluster()
 end
 return definition
 end
@@ -74,8 +68,7 @@ register_device_definition(remote_1,device_helpers.create_fingerprints("TS0041",
 "_TZ3000_6km7djcm",
 "_TZ3000_4upl1fcj",
 "_TZ3000_filhl5b7",
-"_TZ3000_yj6k7vfo",
-}))
+"_TZ3000_yj6k7vfo",}))
 register_device_definition(remote_1,device_helpers.create_fingerprints("TS0041",{
 "_TZ3000_rsqqkdxv",
 "_TZ3000_22ugzkme",
@@ -89,25 +82,19 @@ register_device_definition(remote_1,device_helpers.create_fingerprints("TS0041",
 "_TZ3000_xrqsdxq6",
 "_TZ3000_peszejy7",
 "_TZ3000_vn88ezar",
-"_TZ3000_kccru4oi",
-}))
+"_TZ3000_kccru4oi",}))
 register_device_definition(remote_1_voltage,device_helpers.create_fingerprints("TS0041A",{
 "_TYZB01_4qw4rl1u",
-"_TYZB01_1xktopx6",
-}))
+"_TYZB01_1xktopx6",}))
 register_device_definition(remote_1,device_helpers.create_fingerprints("TS0041A",{
-"_TYZB01_ub7urdza",
-}))
+"_TYZB01_ub7urdza",}))
 register_device_definition(remote_1,device_helpers.create_fingerprints("TS004F",{
-"_TZ3000_krwtzhfd",
-}))
+"_TZ3000_krwtzhfd",}))
 register_device_definition(remote_1_double_only_voltage,device_helpers.create_fingerprints("TS0041",{
-"_TZ3000_fa9mlvja",
-}))
+"_TZ3000_fa9mlvja",}))
 register_device_definition(remote_2,device_helpers.create_fingerprints("TS0042",{
 "_TZ3000_dfgbtub0",
-"_TZ3000_cllghx1k",
-}))
+"_TZ3000_cllghx1k",}))
 register_device_definition(remote_2,device_helpers.create_fingerprints("TS0042",{
 "_TZ3000_kt7obmnn",
 "_TZ3000_adkvzooy",
@@ -121,12 +108,10 @@ register_device_definition(remote_2,device_helpers.create_fingerprints("TS0042",
 "_TZ3000_owgcnkrh",
 "_TZ3000_v8jvcwsx",
 "_TZ3000_xr7itfxq",
-"_TZ3000_1yyjhvwd",
-}))
+"_TZ3000_1yyjhvwd",}))
 register_device_definition(remote_3,device_helpers.create_fingerprints("TS0043",{
 "_TZ3000_1kmurvlx",
-"_TZ3000_9zc1limb",
-}))
+"_TZ3000_9zc1limb",}))
 register_device_definition(remote_3,device_helpers.create_fingerprints("TS0043",{
 "_TZ3000_vm5gcsdq",
 "_TZ3000_mutfmn4u",
@@ -141,8 +126,7 @@ register_device_definition(remote_3,device_helpers.create_fingerprints("TS0043",
 "_TZ3000_rrjr1q0u",
 "_TZ3000_w4thianr",
 "_TZ3000_a7ouggvs",
-"_TZ3000_yw5tvzsk",
-}))
+"_TZ3000_yw5tvzsk",}))
 register_device_definition(remote_4_voltage,device_helpers.create_fingerprints("TS0044",{
 "_TZ3000_a4xycprs",
 "_TZ3000_dziaict4",
@@ -153,8 +137,7 @@ register_device_definition(remote_4_voltage,device_helpers.create_fingerprints("
 "_TZ3000_bgtzm4ny",
 "_TZ3000_kfu8zapd",
 "_TZ3000_ee8nrt2l",
-"_TZ3000_xwuveizv",
-}))
+"_TZ3000_xwuveizv",}))
 register_device_definition(remote_4_voltage,device_helpers.create_fingerprints("TS0044",{
 "_TZ3000_g7eeean4",
 "_TZ3000_j70oanab",
@@ -170,32 +153,29 @@ register_device_definition(remote_4_voltage,device_helpers.create_fingerprints("
 "_TYZB01_cnlmkhbk",
 "_TZ3000_uaa99arv",
 "_TZ3000_laeia8fo",
-"_TZ3000_1hypixdr",
-}))
+"_TZ3000_1hypixdr",}))
 register_device_definition(remote_5,device_helpers.create_fingerprints("TS0045",{
-"_TZ3000_qfhhb5y4",
-}))
+"_TZ3000_qfhhb5y4",}))
 register_device_definition(remote_6,device_helpers.create_fingerprints("TS0046",{
 "_TZ3000_iszegwpd",
-"_TZ3000_nrfkrgf4",
-}))
+"_TZ3000_nrfkrgf4",}))
 local function build_moes_remote(profile,button_count)
 local definition=build_remote_definition(profile)
 definition.zcl_clusters[2]=zcl.cluster_attribute(0x0001,0x0021,{
 name="battery",endpoint=1,read_only=true,read_on_configure=false,
 emit=emit.battery(),
 from_device=function(value)
-value=type(value)=="table" and value.value or value
-if value < 255 then return math.floor(value / 2 + 0.5)end
+value=type(value)=="table"and value.value or value
+if value<255 then return math.floor(value/2+0.5)end
 end,
 })
-definition.zcl_clusters[3]=nil -- Z2M has no voltage-to-percentage fallback for these exacts.
+definition.zcl_clusters[3]=nil
 definition.datapoints={}
 for button=1,button_count do
-definition.datapoints[#definition.datapoints + 1]={
+definition.datapoints[#definition.datapoints+1]={
 dp=button,datatype=2,receive_datatypes={2,4},read_only=true,
-name="moes_button_" .. button,
-component=button==1 and "main" or "button" .. button,
+name="moes_button_"..button,
+component=button==1 and"main"or"button"..button,
 from_device=function(value)return({[0]="pushed",[1]="double",[2]="held"})[value]end,
 emit=function(_,value)return capabilities.button.button(value,{state_change=true})end,
 }
@@ -210,5 +190,4 @@ register_device_definition(moes_remote_2,device_helpers.create_fingerprints("TS0
 register_device_definition(moes_remote_3,device_helpers.create_fingerprints("TS0043",{"_TZ3000_gbm10jnj","_TZ3000_sj7jbgks"}))
 return{
 id="zcl.controls.remotes",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

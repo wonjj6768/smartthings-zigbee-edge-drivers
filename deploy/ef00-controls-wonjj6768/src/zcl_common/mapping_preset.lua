@@ -1,12 +1,13 @@
 local function load_mapping_preset(zcl)
-local emit=require "capabilities.events.all"
-local data_types=require "st.zigbee.data_types"
-local zigbee_constants=require "st.zigbee.constants"
+local emit=require"capabilities.events.all"
+local data_types=require"st.zigbee.data_types"
+local zigbee_constants=require"st.zigbee.constants"
+local safe_xy_to_hsv=require"st.utils.safe_xy_to_hsv"
 local function merge_options(target,source)
-if type(target)~="table" then
+if type(target)~="table"then
 target={}
 end
-if type(source)~="table" then
+if type(source)~="table"then
 return target
 end
 for key,value in pairs(source)do
@@ -15,7 +16,7 @@ end
 return target
 end
 local function apply_defaults(target,defaults)
-if type(target)~="table" or type(defaults)~="table" then
+if type(target)~="table"or type(defaults)~="table"then
 return target
 end
 for key,value in pairs(defaults)do
@@ -27,14 +28,14 @@ return target
 end
 local function optional_emit(name,...)
 local factory=emit[name]
-if type(factory)=="function" then
+if type(factory)=="function"then
 return factory(...)
 end
 return nil
 end
 local function normalize_preset_options(name_or_options,options)
 local resolved={}
-if type(name_or_options)=="string" then
+if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
@@ -45,23 +46,23 @@ end
 local function zone_status_pair(mask)
 return{
 from=function(value)
-if type(value)=="table" then
+if type(value)=="table"then
 if mask==0x0001 then
-if type(value.is_alarm1_set)=="function" and value:is_alarm1_set()then
+if type(value.is_alarm1_set)=="function"and value:is_alarm1_set()then
 return true
 end
-if type(value.is_alarm2_set)=="function" and value:is_alarm2_set()then
+if type(value.is_alarm2_set)=="function"and value:is_alarm2_set()then
 return true
 end
-elseif mask==0x0004 and type(value.is_tamper_set)=="function" then
+elseif mask==0x0004 and type(value.is_tamper_set)=="function"then
 return value:is_tamper_set()
-elseif value.value ~=nil then
+elseif value.value~=nil then
 value=value.value
 else
 return value
 end
 end
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
 return bit32.band(value,mask)~=0
@@ -75,16 +76,14 @@ return nil
 end
 return{
 raw_value=zone_status.value or zone_status,
-typed_value=zone_status,
-}
+typed_value=zone_status,}
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
 minimum_interval=minimum_interval,
 maximum_interval=maximum_interval,
 reportable_change=reportable_change,
-read_on_configure=true,
-}
+read_on_configure=true,}
 end
 local function merge_defaults(...)
 local merged={}
@@ -108,10 +107,8 @@ emit=optional_emit("battery_low"),
 converter=zone_status_pair(0x0008),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,300,nil))
 end)
 end
 return load_mapping_preset

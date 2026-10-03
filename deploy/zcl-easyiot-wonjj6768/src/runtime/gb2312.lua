@@ -496,8 +496,7 @@ local encoded_table=table.concat({
 "60s#U60s#U70s#U60s#U70s#U60s#U60s#U60s#U60s#a80s#U60s#U70s#U60s#V+0nHZy0s#U6_XYv{1_1&A0s#U60s#U6",
 "0s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60",
 "s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s#U60s",
-"#U60s#U60s#U60s*55f&qL10s+_^0k0JSvK0a4761SM",
-})
+"#U60s#U60s#U60s*55f&qL10s+_^0k0JSvK0a4761SM",})
 local B85_ALPHABET="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+-;<=>?@^_`{|}~"
 local CJK_FIRST=0x4E00
 local CJK_COUNT=20902
@@ -507,69 +506,67 @@ local other_bytes=nil
 local function decode_base85(value)
 local index={}
 for position=1,#B85_ALPHABET do
-index[string.byte(B85_ALPHABET,position)]=position - 1
+index[string.byte(B85_ALPHABET,position)]=position-1
 end
 local output={}
 for position=1,#value,5 do
 local number=0
 for offset=0,4 do
-number=(number * 85)+ index[string.byte(value,position + offset)]
+number=(number*85)+index[string.byte(value,position+offset)]
 end
-output[#output + 1]=string.char(
-math.floor(number / 0x1000000)% 0x100,
-math.floor(number / 0x10000)% 0x100,
-math.floor(number / 0x100)% 0x100,
-number % 0x100
-)
+output[#output+1]=string.char(
+math.floor(number/0x1000000)%0x100,
+math.floor(number/0x10000)%0x100,
+math.floor(number/0x100)%0x100,
+number%0x100)
 end
 return table.concat(output)
 end
 local function read_uint32_be(value,position)
-local a,b,c,d=string.byte(value,position,position + 3)
-return(((a * 0x100)+ b)* 0x100 + c)* 0x100 + d
+local a,b,c,d=string.byte(value,position,position+3)
+return(((a*0x100)+b)*0x100+c)*0x100+d
 end
 local function read_uleb128(value,position)
 local result=0
 local multiplier=1
 while true do
 local byte=string.byte(value,position)
-position=position + 1
-result=result +((byte % 0x80)* multiplier)
-if byte < 0x80 then
+position=position+1
+result=result+((byte%0x80)*multiplier)
+if byte<0x80 then
 return result,position
 end
-multiplier=multiplier * 0x80
+multiplier=multiplier*0x80
 end
 end
 local function unzigzag(value)
-if value % 2==0 then
-return value / 2
+if value%2==0 then
+return value/2
 end
-return -((value + 1)/ 2)
+return-((value+1)/2)
 end
 local function ensure_decoded()
-if cjk_bytes ~=nil then
+if cjk_bytes~=nil then
 return
 end
 local payload=decode_base85(encoded_table)
 local cjk_length=read_uint32_be(payload,1)
 local other_length=read_uint32_be(payload,5)
 local position=9
-local cjk_end=position + cjk_length
+local cjk_end=position+cjk_length
 local cjk_output={}
 local previous_gb=0
 for _=1,CJK_COUNT do
 local delta
 delta,position=read_uleb128(payload,position)
-previous_gb=previous_gb + unzigzag(delta)
-cjk_output[#cjk_output + 1]=string.char(
-math.floor(previous_gb / 0x100),
-previous_gb % 0x100
-)
+previous_gb=previous_gb+unzigzag(delta)
+cjk_output[#cjk_output+1]=string.char(
+math.floor(previous_gb/0x100),
+previous_gb%0x100)
 end
 assert(position==cjk_end,"EasyIoT GB2312 CJK table length mismatch")
 cjk_bytes=table.concat(cjk_output)
-local other_end=position + other_length
+local other_end=position+other_length
 local codepoint=0
 previous_gb=0
 other_bytes={}
@@ -577,12 +574,11 @@ for _=1,OTHER_COUNT do
 local codepoint_delta,gb_delta
 codepoint_delta,position=read_uleb128(payload,position)
 gb_delta,position=read_uleb128(payload,position)
-codepoint=codepoint + codepoint_delta
-previous_gb=previous_gb + unzigzag(gb_delta)
+codepoint=codepoint+codepoint_delta
+previous_gb=previous_gb+unzigzag(gb_delta)
 other_bytes[codepoint]=string.char(
-math.floor(previous_gb / 0x100),
-previous_gb % 0x100
-)
+math.floor(previous_gb/0x100),
+previous_gb%0x100)
 end
 assert(position==other_end,"EasyIoT GB2312 extension table length mismatch")
 encoded_table=nil
@@ -592,15 +588,15 @@ function gb2312.encode(value)
 ensure_decoded()
 local output={}
 for _,codepoint in utf8.codes(value)do
-if codepoint < 0x80 then
-output[#output + 1]=string.char(codepoint)
+if codepoint<0x80 then
+output[#output+1]=string.char(codepoint)
 elseif codepoint==0x20AC then
-output[#output + 1]=string.char(0x80)
-elseif codepoint >=CJK_FIRST and codepoint < CJK_FIRST + CJK_COUNT then
-local position=((codepoint - CJK_FIRST)* 2)+ 1
-output[#output + 1]=string.sub(cjk_bytes,position,position + 1)
+output[#output+1]=string.char(0x80)
+elseif codepoint>=CJK_FIRST and codepoint<CJK_FIRST+CJK_COUNT then
+local position=((codepoint-CJK_FIRST)*2)+1
+output[#output+1]=string.sub(cjk_bytes,position,position+1)
 else
-output[#output + 1]=other_bytes[codepoint]or "?"
+output[#output+1]=other_bytes[codepoint]or"?"
 end
 end
 return table.concat(output)

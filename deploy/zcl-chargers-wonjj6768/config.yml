@@ -1,0 +1,6 @@
+name: "ZCL EV Chargers wonjj6768"
+packageKey: "zcl-chargers-wonjj6768"
+description: "Zigbee EV chargers with explicit device fingerprints."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

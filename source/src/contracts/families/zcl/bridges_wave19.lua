@@ -8,6 +8,8 @@ local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local device_management = require "st.zigbee.device_management"
+local data_types = require "st.zigbee.data_types"
+local capabilities = require "st.capabilities"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -417,6 +419,34 @@ register_device_definition(heiman_hs_one, {
 register_device_definition(heiman_hs_two, {
   device_helpers.create_fingerprint("HEIMAN", "IRControl2-EF-3.0"),
 })
+
+local ti_router_power_emit = emit.tiRouterTransmitPower()
+local ti_router = {
+  profile = "bridges-ti-router",
+  zcl_clusters = {
+    zcl.cluster_attribute(0x0000, 0x1337, {
+      name = "ti_router_transmit_power", endpoint = 8,
+      data_type = data_types.Int8, write_type = data_types.Int8,
+      prefer_plain_attribute_write = true,
+      emit = function(device, value, context)
+        return { ti_router_power_emit(device, value), capabilities.signalStrength.lqi({ value = context.zb_rx.lqi.value }) }
+      end,
+    }),
+    zcl.cluster_attribute(0x0000, 0x0000, {
+      name = "ti_router_heartbeat", endpoint = 8, read_only = true,
+      data_type = data_types.Uint8,
+      minimum_interval = 0, maximum_interval = 3600, reportable_change = 0,
+      emit = function(_, _, context) return capabilities.signalStrength.lqi({ value = context.zb_rx.lqi.value }) end,
+    }),
+  },
+  configure = function(driver, device)
+    device:send(device_management.build_bind_request(device, 0x0000, driver.environment_info.hub_zigbee_eui, 8))
+  end,
+  parent_refresh = function(device)
+    return zcl.read_mapping(device, zcl.cluster_attribute(0x0000, 0x1337, { endpoint = 8 }))
+  end,
+}
+register_device_definition(ti_router, { device_helpers.create_fingerprint("TexasInstruments", "ti.router") })
 
 return {
   id = "zcl.bridges.wave19",

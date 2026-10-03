@@ -1,0 +1,1 @@
+{name: safety-avatto-zsd20,components:[{id: main,capabilities:[{id: smokeDetector,version: 1},{id: battery,version: 1},{id: concertmirror08464.zsd20SelfCheck,version: 1},{id: concertmirror08464.zsd20Muffling,version: 1}],categories:[{name: SmokeDetector}]}]}

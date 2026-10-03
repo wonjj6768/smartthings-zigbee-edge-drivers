@@ -1,24 +1,23 @@
-local tuya=require "protocol.tuya"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
+local tuya=require"protocol.tuya"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function custom(capability_id)
-return assert(emit[capability_id],"missing Wave16 Lincukoo air emitter: " .. capability_id)()
+return assert(emit[capability_id],"missing Wave16 Lincukoo air emitter: "..capability_id)()
 end
 local function options(name,event,read_only)
 return{
 name=name,
 emit=event,
 read_only=read_only==true,
-transaction=1,
-}
+transaction=1,}
 end
 local function standard_numeric(dp,name,event,scale,signed)
 local mapping=options(name,event,true)
 if signed then
 mapping.signed=true
 mapping.converter=tuya.converter.signed_number_pair(scale or 1)
-elseif scale ~=nil and scale ~=1 then
+elseif scale~=nil and scale~=1 then
 mapping.converter=tuya.converter.divide_by_pair(scale)
 end
 return tuya.dp_numeric(dp,mapping)
@@ -28,7 +27,7 @@ local mapping=options(name,custom(capability_id),read_only)
 if signed then
 mapping.signed=true
 mapping.converter=tuya.converter.signed_number_pair(scale or 1)
-elseif scale ~=nil and scale ~=1 then
+elseif scale~=nil and scale~=1 then
 mapping.converter=tuya.converter.divide_by_pair(scale)
 end
 return tuya.dp_numeric(dp,mapping)
@@ -58,11 +57,10 @@ wire_cluster="manuSpecificTuya",
 magic_packet=true,
 query_on_configure=false,
 time_start="off",
-datapoints={},
-}
+datapoints={},}
 end
 local function add(entry,mapping)
-entry.datapoints[#entry.datapoints + 1]=mapping
+entry.datapoints[#entry.datapoints+1]=mapping
 end
 local temperature_units={celsius=0,fahrenheit=1}
 local e_zero_two_c=definition("sensors-wave16-lincukoo-e02c-z10t")
@@ -93,8 +91,7 @@ add(e_zero_two_c,numeric(106,"e_zero_two_c_co_two_alarm_value","eZeroTwoCCoTwoAl
 add(e_zero_two_c,binary(107,"e_zero_two_c_co_two_alarm","eZeroTwoCCoTwoAlarm",true))
 register_device_definition(e_zero_two_c,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_hyt4iucb",
-"_TZE28C1000000_hyt4iucb",
-}))
+"_TZE28C1000000_hyt4iucb",}))
 local ezc_zero_four=definition("sensors-wave16-lincukoo-ezc04")
 add(ezc_zero_four,value_enum(1,"ezc_zero_four_co_two_state","ezcZeroFourCoTwoState",{
 alarm=0,
@@ -116,8 +113,7 @@ reset_co2=0,
 },false))
 register_device_definition(ezc_zero_four,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_isvlaage",
-"_TZE28C1000000_isvlaage",
-}))
+"_TZE28C1000000_isvlaage",}))
 local ezcp_zero_four=definition("sensors-wave16-lincukoo-ezcp04")
 add(ezcp_zero_four,value_enum(1,"ezcp_zero_four_alarm_state","ezcpZeroFourAlarmState",{
 normal=0,
@@ -139,9 +135,7 @@ add(ezcp_zero_four,standard_numeric(20,"pm25",emit.pm25(),1,false))
 add(ezcp_zero_four,numeric(101,"ezcp_zero_four_pm_two_five_alarm_value","ezcpZeroFourPm25AlarmValue",1,false,false))
 register_device_definition(ezcp_zero_four,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_fpwtjlfh",
-"_TZE28C1000000_fpwtjlfh",
-}))
+"_TZE28C1000000_fpwtjlfh",}))
 return{
 id="ef00.sensors.wave16_lincukoo_air",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

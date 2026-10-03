@@ -1,0 +1,48 @@
+name: switches-oxt-four
+components:
+- id: main
+  label: Channel 1
+  capabilities:
+  - id: switch
+    version: 1
+  - id: concertmirror08464.oxt4ChannelOneCountdown
+    version: 1
+  - id: concertmirror08464.oxt4ChannelOnePowerOnBehavior
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: Switch
+- id: switch2
+  label: Channel 2
+  capabilities:
+  - id: switch
+    version: 1
+  - id: concertmirror08464.oxt4ChannelTwoCountdown
+    version: 1
+  - id: concertmirror08464.oxt4ChannelTwoPowerOnBehavior
+    version: 1
+  categories:
+  - name: Switch
+- id: switch3
+  label: Channel 3
+  capabilities:
+  - id: switch
+    version: 1
+  - id: concertmirror08464.oxt4ChannelThreeCountdown
+    version: 1
+  - id: concertmirror08464.oxt4ChannelThreePowerOnBehavior
+    version: 1
+  categories:
+  - name: Switch
+- id: switch4
+  label: Channel 4
+  capabilities:
+  - id: switch
+    version: 1
+  - id: concertmirror08464.oxt4ChannelFourCountdown
+    version: 1
+  - id: concertmirror08464.oxt4ChannelFourPowerOnBehavior
+    version: 1
+  categories:
+  - name: Switch

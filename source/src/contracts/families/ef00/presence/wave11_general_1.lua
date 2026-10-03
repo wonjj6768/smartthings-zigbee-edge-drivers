@@ -34,13 +34,15 @@ local nas_ps_ten = {
   package_group = "z2m-ef00-presence",
   named_datapoints = true,
   datapoints = {
-    tuya.dp_presence(1, {
-      converter = converter.true_false1(),
+    tuya.dp_numeric(1, {
+      name = "presence", receive_datatypes = {2, 4},
+      converter = converter.from_only(function(value) return value == 1 end),
       emit = emit.presence(),
       read_only = true,
     }),
-    tuya.dp_enum(11, {
+    tuya.dp_numeric(11, {
       name = "nas_ps_ten_human_motion_state",
+      receive_datatypes = {2, 4},
       converter = converter.from_only(converter.lookup_value({
         [0] = "none", [1] = "small", [2] = "large",
       })),
@@ -98,9 +100,14 @@ local nas_ps_ten = {
   },
   query_on_configure = false,
   query_on_announce = true,
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  time_start = "off",
+  initial_custom_states = false,
+  refresh_state_query = false,
 }
 
-register(nas_ps_ten, { "_TZE204_1youk3hj", "_TZE284_1youk3hj" })
+register(nas_ps_ten, { "_TZE204_1youk3hj", "_TZE284_1youk3hj", "_TZE28C1000000_1youk3hj" })
 
 -- Lincukoo SZR07, lincukoo.ts:280.
 local szr_seven = {

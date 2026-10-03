@@ -1,12 +1,13 @@
 local function load_mapping_preset(zcl)
-local emit=require "capabilities.events.all"
-local data_types=require "st.zigbee.data_types"
-local zigbee_constants=require "st.zigbee.constants"
+local emit=require"capabilities.events.all"
+local data_types=require"st.zigbee.data_types"
+local zigbee_constants=require"st.zigbee.constants"
+local safe_xy_to_hsv=require"st.utils.safe_xy_to_hsv"
 local function merge_options(target,source)
-if type(target)~="table" then
+if type(target)~="table"then
 target={}
 end
-if type(source)~="table" then
+if type(source)~="table"then
 return target
 end
 for key,value in pairs(source)do
@@ -15,7 +16,7 @@ end
 return target
 end
 local function apply_defaults(target,defaults)
-if type(target)~="table" or type(defaults)~="table" then
+if type(target)~="table"or type(defaults)~="table"then
 return target
 end
 for key,value in pairs(defaults)do
@@ -27,14 +28,14 @@ return target
 end
 local function optional_emit(name,...)
 local factory=emit[name]
-if type(factory)=="function" then
+if type(factory)=="function"then
 return factory(...)
 end
 return nil
 end
 local function normalize_preset_options(name_or_options,options)
 local resolved={}
-if type(name_or_options)=="string" then
+if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
@@ -45,47 +46,47 @@ end
 local function illuminance_measurement_pair()
 return{
 from=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-if value <=0 then
+if value<=0 then
 return 0
 end
-local lux=10 ^((value - 1)/ 10000)
-return math.floor(lux + 0.5)
+local lux=10 ^((value-1)/10000)
+return math.floor(lux+0.5)
 end,
 to=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-if value <=0 then
+if value<=0 then
 return 0
 end
-local raw=10000 *(math.log(value)/ math.log(10))+ 1
-return math.floor(raw + 0.5)
+local raw=10000*(math.log(value)/math.log(10))+1
+return math.floor(raw+0.5)
 end,
 }
 end
 local function zone_status_pair(mask)
 return{
 from=function(value)
-if type(value)=="table" then
+if type(value)=="table"then
 if mask==0x0001 then
-if type(value.is_alarm1_set)=="function" and value:is_alarm1_set()then
+if type(value.is_alarm1_set)=="function"and value:is_alarm1_set()then
 return true
 end
-if type(value.is_alarm2_set)=="function" and value:is_alarm2_set()then
+if type(value.is_alarm2_set)=="function"and value:is_alarm2_set()then
 return true
 end
-elseif mask==0x0004 and type(value.is_tamper_set)=="function" then
+elseif mask==0x0004 and type(value.is_tamper_set)=="function"then
 return value:is_tamper_set()
-elseif value.value ~=nil then
+elseif value.value~=nil then
 value=value.value
 else
 return value
 end
 end
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
 return bit32.band(value,mask)~=0
@@ -97,19 +98,19 @@ return{
 from=function(value)
 local alarm1
 local alarm2
-if type(value)=="table" then
-if type(value.is_alarm1_set)=="function" then alarm1=value:is_alarm1_set()end
-if type(value.is_alarm2_set)=="function" then alarm2=value:is_alarm2_set()end
-if alarm1==nil and value.value ~=nil then value=value.value end
+if type(value)=="table"then
+if type(value.is_alarm1_set)=="function"then alarm1=value:is_alarm1_set()end
+if type(value.is_alarm2_set)=="function"then alarm2=value:is_alarm2_set()end
+if alarm1==nil and value.value~=nil then value=value.value end
 end
-if type(value)=="number" then
+if type(value)=="number"then
 alarm1=bit32.band(value,0x0001)~=0
 alarm2=bit32.band(value,0x0002)~=0
 end
 if alarm1==nil or alarm2==nil then return value end
-if not alarm1 and not alarm2 then return "closed" end
-if alarm1 and not alarm2 then return "tilted" end
-return "open"
+if not alarm1 and not alarm2 then return"closed"end
+if alarm1 and not alarm2 then return"tilted"end
+return"open"
 end,
 }
 end
@@ -120,16 +121,14 @@ return nil
 end
 return{
 raw_value=zone_status.value or zone_status,
-typed_value=zone_status,
-}
+typed_value=zone_status,}
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
 minimum_interval=minimum_interval,
 maximum_interval=maximum_interval,
 reportable_change=reportable_change,
-read_on_configure=true,
-}
+read_on_configure=true,}
 end
 local function merge_defaults(...)
 local merged={}
@@ -149,37 +148,29 @@ define_preset("temperature",zcl.temperature_measurement,function()
 return merge_defaults(
 {
 emit=emit.temperature("C"),
-scale=100,
-},
-reporting_defaults(30,300,50)
-)
+scale=100,},
+reporting_defaults(30,300,50))
 end)
 define_preset("humidity",zcl.relative_humidity,function()
 return merge_defaults(
 {
 emit=emit.humidity(),
-scale=100,
-},
-reporting_defaults(30,300,100)
-)
+scale=100,},
+reporting_defaults(30,300,100))
 end)
 define_preset("battery",zcl.power_configuration_battery,function()
 return merge_defaults(
 {
 emit=emit.battery(),
-scale=2,
-},
-reporting_defaults(300,21600,2)
-)
+scale=2,},
+reporting_defaults(300,21600,2))
 end)
 define_preset("battery_voltage",zcl.power_configuration_battery_voltage,function()
 return merge_defaults(
 {
 emit=emit.voltage(),
-scale=10,
-},
-reporting_defaults(300,21600,1)
-)
+scale=10,},
+reporting_defaults(300,21600,1))
 end)
 define_preset("illuminance",zcl.illuminance_measurement,function(options)
 local configure_reporting=options.configure_reporting
@@ -188,25 +179,20 @@ if configure_reporting==false then
 return{
 emit=emit.illuminance(),
 converter=illuminance_measurement_pair(),
-read_on_configure=true,
-}
+read_on_configure=true,}
 end
 return merge_defaults(
 {
 emit=emit.illuminance(),
-converter=illuminance_measurement_pair(),
-},
-reporting_defaults(30,300,100)
-)
+converter=illuminance_measurement_pair(),},
+reporting_defaults(30,300,100))
 end)
 define_preset("pressure",zcl.pressure_measurement,function()
 return merge_defaults(
 {
 emit=emit.atmospheric_pressure(),
-scale=10,
-},
-reporting_defaults(30,300,1)
-)
+scale=10,},
+reporting_defaults(30,300,1))
 end)
 zcl.occupancy=function(name_or_options,options)
 local resolved=normalize_preset_options(name_or_options,options)
@@ -222,25 +208,20 @@ emit=emit.occupancy(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(30,300,nil)
-))
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(30,300,nil)))
 return zcl.ias_zone(resolved)
 end
 if configure_reporting==false then
 apply_defaults(resolved,{
 emit=emit.occupancy(),
-read_on_configure=true,
-})
+read_on_configure=true,})
 return zcl.occupancy_sensing(resolved)
 end
 apply_defaults(resolved,merge_defaults(
 {
-emit=emit.occupancy(),
-},
-reporting_defaults(0,300,nil)
-))
+emit=emit.occupancy(),},
+reporting_defaults(0,300,nil)))
 return zcl.occupancy_sensing(resolved)
 end
 define_preset("contact",zcl.ias_zone,function()
@@ -251,10 +232,8 @@ emit=emit.contact(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(30,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(30,300,nil))
 end)
 define_preset("shelly_handle_position",zcl.ias_zone,function()
 return merge_defaults(
@@ -264,10 +243,8 @@ emit=emit.shellyBluDoorHandlePosition(),
 converter=shelly_handle_position_pair(),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(30,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(30,300,nil))
 end)
 define_preset("water",zcl.ias_zone,function()
 return merge_defaults(
@@ -277,10 +254,8 @@ emit=emit.water(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,300,nil))
 end)
 define_preset("smoke",zcl.ias_zone,function()
 return merge_defaults(
@@ -290,10 +265,8 @@ emit=emit.smoke(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,180,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,180,nil))
 end)
 define_preset("gas",zcl.ias_zone,function()
 return merge_defaults(
@@ -303,10 +276,8 @@ emit=emit.gas(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,300,nil))
 end)
 define_preset("gas_alarm_2",zcl.ias_zone,function()
 return merge_defaults(
@@ -316,10 +287,8 @@ emit=emit.gas(),
 converter=zone_status_pair(0x0002),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,300,nil))
 end)
 define_preset("carbon_monoxide",zcl.ias_zone,function()
 return merge_defaults(
@@ -329,10 +298,8 @@ emit=emit.carbon_monoxide(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,180,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,180,nil))
 end)
 define_preset("motion",zcl.ias_zone,function()
 return merge_defaults(
@@ -342,10 +309,8 @@ emit=emit.motion(),
 converter=zone_status_pair(0x0001),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(30,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(30,300,nil))
 end)
 define_preset("tamper",zcl.ias_zone,function()
 return merge_defaults(
@@ -355,10 +320,8 @@ emit=emit.tamper(),
 converter=zone_status_pair(0x0004),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,300,nil))
 end)
 define_preset("battery_low",zcl.ias_zone,function()
 return merge_defaults(
@@ -368,10 +331,8 @@ emit=optional_emit("battery_low"),
 converter=zone_status_pair(0x0008),
 ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
 command_id=0x00,
-command_extractor=extract_zone_status_from_command,
-},
-reporting_defaults(0,300,nil)
-)
+command_extractor=extract_zone_status_from_command,},
+reporting_defaults(0,300,nil))
 end)
 end
 return load_mapping_preset

@@ -1,8 +1,8 @@
-local internal=require "protocol.tuya.contract.internal"
+local internal=require"protocol.tuya.contract.internal"
 local function dp_on_off(dp,name_or_options,options)
 local explicit_emit=
-type(name_or_options)=="table" and name_or_options.emit or
-type(options)=="table" and options.emit or
+type(name_or_options)=="table"and name_or_options.emit or
+type(options)=="table"and options.emit or
 nil
 if explicit_emit==nil then
 error("protocol.tuya.contract.dp_on_off requires an explicit emit option",2)
@@ -23,7 +23,5 @@ converter={
 from_to=internal.converter.from_to,
 lookup_from_to=internal.converter.lookup_from_to,
 invert_bool_pair=internal.converter.invert_bool_pair,
-true_false0=internal.converter.true_false0,
-},
-}
+true_false0=internal.converter.true_false0,},}
 return contract

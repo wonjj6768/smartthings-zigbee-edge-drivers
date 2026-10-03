@@ -64,4 +64,9 @@ for _, entry in ipairs(registrations(catalog_10, "ef00.switches.wave15_box", "co
   entries[#entries + 1] = entry
 end
 
+local catalog_11 = require "contracts.families.ef00.switches.oxt"
+for _, entry in ipairs(registrations(catalog_11, "ef00.switch.oxt4", "contracts.families.ef00.switches.oxt")) do
+  entries[#entries + 1] = entry
+end
+
 return entries

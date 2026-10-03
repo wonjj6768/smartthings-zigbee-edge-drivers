@@ -1,6 +1,6 @@
-local zcl=require "protocol.zcl"
-local types=require "st.zigbee.data_types"
-local cluster_base=require "st.zigbee.cluster_base"
+local zcl=require"protocol.zcl"
+local types=require"st.zigbee.data_types"
+local cluster_base=require"st.zigbee.cluster_base"
 local M={}
 function M.passive(mapping)
 mapping.minimum_interval=nil
@@ -36,14 +36,14 @@ return zcl.cluster_attribute(0x0001,0x003E,{
 name="battery_alarm_state",endpoint=1,data_type=types.Bitmap32,
 read_only=true,read_on_configure=false,emit=emitter,
 from_device=function(value)
-if type(value)=="table" then value=value.value end
+if type(value)=="table"then value=value.value end
 return bit32.band(value,0x00F03C0F)~=0
 end,
 })
 end
 function M.keep_alive(emitter)
 return function(device,active,context)
-if context.command_id ~=0x00 then return end
+if context.command_id~=0x00 then return end
 local key="__ih012_rt01_keep_alive"
 local previous=device:get_field(key)
 if previous then previous:cancel()end
@@ -68,13 +68,13 @@ to_device=function(value)return encoded[value]end,
 end
 function M.vibration_timeout(emitter)
 return function(device,_,context)
-if context.command_id ~=0x00 then return end
+if context.command_id~=0x00 then return end
 local key="__ts0210_vibration_timeout"
 local previous=device:get_field(key)
 if previous then previous:cancel()end
 device:set_field(key,nil)
 local timeout=tonumber(device.preferences.vibrationTimeout)or 90
-if timeout > 0 then
+if timeout>0 then
 device:set_field(key,device.thread:call_with_delay(timeout,function()
 device:set_field(key,nil)
 device:emit_event(emitter(device,false))
@@ -97,7 +97,7 @@ function M.magic_packet(device)
 local tx=cluster_base.read_attribute(device,types.ClusterId(0x0000),types.AttributeId(0x0004))
 tx.body.zcl_body.attr_ids={}
 for _,id in ipairs({0x0004,0x0000,0x0001,0x0005,0x0007,0xFFFE})do
-tx.body.zcl_body.attr_ids[#tx.body.zcl_body.attr_ids + 1]=types.AttributeId(id)
+tx.body.zcl_body.attr_ids[#tx.body.zcl_body.attr_ids+1]=types.AttributeId(id)
 end
 device:send(tx:to_endpoint(1))
 end

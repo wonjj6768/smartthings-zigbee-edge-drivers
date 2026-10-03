@@ -1,0 +1,12 @@
+name: safety-novato-zas01p
+components:
+  - id: main
+    capabilities:
+      - {id: alarm, version: 1}
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.zas01pVolume, version: 1}
+      - {id: concertmirror08464.zas01pDuration, version: 1}
+      - {id: concertmirror08464.zas01pMelody, version: 1}
+      - {id: concertmirror08464.zas01pLightMode, version: 1}
+    categories:
+      - {name: Siren}

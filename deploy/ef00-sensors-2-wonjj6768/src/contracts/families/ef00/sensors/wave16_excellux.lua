@@ -1,24 +1,23 @@
-local tuya=require "protocol.tuya"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
+local tuya=require"protocol.tuya"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function custom(capability_id)
-return assert(emit[capability_id],"missing Wave16 Excellux emitter: " .. capability_id)()
+return assert(emit[capability_id],"missing Wave16 Excellux emitter: "..capability_id)()
 end
 local function options(name,event,read_only)
 return{
 name=name,
 emit=event,
 read_only=read_only==true,
-transaction=1,
-}
+transaction=1,}
 end
 local function numeric(dp,name,capability_id,scale,read_only,signed)
 local mapping=options(name,custom(capability_id),read_only)
 if signed then
 mapping.signed=true
 mapping.converter=tuya.converter.signed_number_pair(scale or 1)
-elseif scale ~=nil and scale ~=1 then
+elseif scale~=nil and scale~=1 then
 mapping.converter=tuya.converter.divide_by_pair(scale)
 end
 return tuya.dp_numeric(dp,mapping)
@@ -28,7 +27,7 @@ local mapping=options(name,event,true)
 if signed then
 mapping.signed=true
 mapping.converter=tuya.converter.signed_number_pair(scale or 1)
-elseif scale ~=nil and scale ~=1 then
+elseif scale~=nil and scale~=1 then
 mapping.converter=tuya.converter.divide_by_pair(scale)
 end
 return tuya.dp_numeric(dp,mapping)
@@ -48,11 +47,10 @@ wire_cluster="manuSpecificTuya",
 magic_packet=true,
 query_on_configure=false,
 time_start="off",
-datapoints={},
-}
+datapoints={},}
 end
 local function add(entry,mapping)
-entry.datapoints[#entry.datapoints + 1]=mapping
+entry.datapoints[#entry.datapoints+1]=mapping
 end
 local none_low_high={none=0,low=1,high=2}
 local airprs_one=definition("sensors-wave16-excellux-airprs1","environment-sensor")
@@ -89,15 +87,14 @@ rise=1,
 fall=2,
 },true))
 register_device_definition(airprs_one,device_helpers.create_fingerprints("Excellux",{
-"AIRPRS1",
-}))
+"AIRPRS1",}))
 local function build_soil(profile,prefix,capability_prefix,include_fertility)
 local entry=definition(profile,"soil-sensor")
 local function cap(suffix)
-return capability_prefix .. suffix
+return capability_prefix..suffix
 end
 local function name(suffix)
-return prefix .. suffix
+return prefix..suffix
 end
 add(entry,numeric(1,name("probe_temperature"),cap("ProbeTemperature"),10,true,true))
 add(entry,standard_numeric(4,"battery",emit.battery(),1,false))
@@ -134,21 +131,16 @@ local ez_five_hundred_fl=build_soil(
 "sensors-wave16-excellux-ez500fl",
 "ez_fl_",
 "ezFl",
-true
-)
+true)
 register_device_definition(ez_five_hundred_fl,device_helpers.create_fingerprints("Excellux",{
-"EZ500FL",
-}))
+"EZ500FL",}))
 local ez_five_hundred_fs=build_soil(
 "sensors-wave16-excellux-ez500fs",
 "ez_fs_",
 "ezFs",
-false
-)
+false)
 register_device_definition(ez_five_hundred_fs,device_helpers.create_fingerprints("Excellux",{
-"EZ500FS",
-}))
+"EZ500FS",}))
 return{
 id="ef00.sensors.wave16_excellux",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

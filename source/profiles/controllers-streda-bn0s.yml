@@ -1,0 +1,17 @@
+name: controllers-streda-bn0s
+components:
+  - id: main
+    label: "Button 1 upper"
+    capabilities:
+      - {id: button, version: 1}
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: batteryLevel, version: 1}
+      - {id: concertmirror08464.stredaBn0sAction, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Button}]
+  - id: button1Down
+    label: "Button 1 lower"
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]

@@ -416,23 +416,54 @@ register_device_definition(avatto_zdms16_1, device_helpers.create_fingerprints("
     "_TZE284_da26abzz",
   }))
 
-  -- Moes SFD02-Z Star Feather dimmer core. The current hardware-confirmed Z2M
-  -- definition uses the standard Tuya dimmer DP1 state and DP2 brightness
-  -- (raw 0..1000). Its remaining nine settings are intentionally deferred to
-  -- separate family-specific capability audits.
+  local tuya_brightness_limit = converter.from_to(
+    function(value) return round(value * 254 / 1000) end,
+    function(value) return round(value * 1000 / 254) end
+  )
   local sfd02_brightness = converter.scale_pair(0, 1000, 0, 100)
   local moes_sfd02_core = {
     profile = "lights-dimmer-moes-sfd02-core",
     magic_packet = true,
     mcu_version_request_on_configure = true,
     query_on_configure = false,
+    query_on_announce = false,
+    initial_custom_states = false,
+    refresh_state_query = false,
     time_start = "off",
-    tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+    tuya.dp_on_off(1, { name = "switch", emit = emit.switch(), skip = tuya.skip.state_on_and_brightness_present() }),
     tuya.dp_numeric(2, { name = "brightness", emit = emit.level(), converter = sfd02_brightness }),
+    tuya.dp_numeric(3, { name = "moes_sfd02_min_brightness", emit = emit.moesSfd02MinBrightness(), converter = tuya_brightness_limit }),
+    tuya.dp_numeric(5, { name = "moes_sfd02_max_brightness", emit = emit.moesSfd02MaxBrightness(), converter = tuya_brightness_limit }),
+    tuya.dp_numeric(4, {
+      name = "moes_sfd02_light_type", emit = emit.moesSfd02LightType(), receive_datatypes = {2, 4},
+      converter = converter.lookup_from_to({led = 0, incandescent = 1, halogen = 2}),
+    }),
+    tuya.dp_countdown(6, { name = "moes_sfd02_countdown", emit = emit.moesSfd02Countdown() }),
+    tuya.dp_numeric(14, {
+      name = "moes_sfd02_power_behavior", emit = emit.moesSfd02PowerBehavior(), receive_datatypes = {2, 4},
+      converter = converter.lookup_from_to({off = 0, on = 1, previous = 2}),
+    }),
+    tuya.dp_enum(21, {
+      name = "moes_sfd02_backlight_mode", emit = emit.moesSfd02BacklightMode(),
+      converter = converter.lookup_from_to({off = 0, normal = 1, inverted = 2}),
+    }),
+    tuya.dp_binary(26, {
+      name = "moes_sfd02_induction_mode", emit = emit.moesSfd02InductionMode(),
+      converter = converter.lookup_from_to({ON = true, OFF = false}),
+    }),
+    tuya.dp_enum(101, {
+      name = "moes_sfd02_indicator_status", emit = emit.moesSfd02IndicatorStatus(),
+      converter = converter.lookup_from_to({off = 0, relay = 1, invert = 2}),
+    }),
+    tuya.dp_enum(102, {
+      name = "moes_sfd02_vibration_mode", emit = emit.moesSfd02VibrationMode(),
+      converter = converter.lookup_from_to({["Gear 0"] = 0, ["Gear 1"] = 1, ["Gear 2"] = 2, ["Gear 3"] = 3}),
+    }),
   }
 
   register_device_definition(moes_sfd02_core, device_helpers.create_fingerprints("TS0601", {
     "_TZE284_t88bjhfu",
+    "_TZE284_z98viqa6",
   }))
 
   -- Mercator Ikuü SISWD11-ZB. Z2M v26.99.0 mercator.ts:191-204 uses
@@ -492,6 +523,36 @@ register_device_definition(avatto_zdms16_1, device_helpers.create_fingerprints("
   register_device_definition(tuya_ms032z_core, device_helpers.create_fingerprints("TS0601", {
     "_TZE284_rovbuqdo",
   }))
+
+local qadz1lr_brightness = converter.from_to(
+  function(value) return round(value/10) end,
+  function(value) return round(value*10) end
+)
+local qadz1lr = {
+  profile="lights-qa-qadz1lr",
+  magic_packet=true,
+  mcu_version_request_on_configure=true,
+  query_on_configure=false,
+  query_on_announce=false,
+  time_start="off",
+  datapoints={
+    tuya.dp_on_off(1,{name="switch",emit=emit.switch(),skip=tuya.skip.state_on_and_brightness_present()}),
+    tuya.dp_numeric(2,{name="brightness",emit=emit.level(),converter=qadz1lr_brightness}),
+    tuya.dp_numeric(3,{name="qadz1lr_min_brightness",emit=emit.qadz1lrMinBrightness(),converter=tuya_brightness_limit}),
+    tuya.dp_numeric(5,{name="qadz1lr_max_brightness",emit=emit.qadz1lrMaxBrightness(),converter=tuya_brightness_limit}),
+    tuya.dp_countdown(6,{name="qadz1lr_countdown",emit=emit.qadz1lrCountdown()}),
+    tuya.dp_enum(14,{
+      name="qadz1lr_power_on_behavior",emit=emit.qadz1lrPowerBehavior(),
+      converter=converter.lookup_from_to({off=0,on=1,previous=2}),
+    }),
+    tuya.dp_enum(101,{
+      name="qadz1lr_switch_type",emit=emit.qadz1lrSwitchType(),
+      converter=converter.lookup_from_to({toggle=0,momentary=1}),
+    }),
+    tuya.dp_numeric(102,{name="qadz1lr_dimming_time",emit=emit.qadz1lrDimmingTime()}),
+  },
+}
+register_device_definition(qadz1lr,device_helpers.create_fingerprints("TS0601",{"_TZE28C1000000_brx4eku5"}))
 
 return {
   id = "ef00.lights.z2m_absorption",

@@ -1,1 +1,1 @@
-return require "protocol.zcl.stub_base"()
+return require"protocol.zcl.stub_base"()

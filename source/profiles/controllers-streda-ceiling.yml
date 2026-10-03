@@ -1,0 +1,22 @@
+name: controllers-streda-ceiling
+components:
+  - id: main
+    label: "Indicator"
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: colorControl, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Light}]
+  - id: led2
+    label: "Second indicator"
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: colorControl, version: 1}
+    categories: [{name: Light}]
+  - id: outlet
+    label: "Outlet"
+    capabilities:
+      - {id: switch, version: 1}
+    categories: [{name: Switch}]

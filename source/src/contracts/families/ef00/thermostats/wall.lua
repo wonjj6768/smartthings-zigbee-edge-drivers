@@ -498,10 +498,12 @@ local tervix_program_emit = emit.thermostatPresetTervixProgram()
 local tervix_mode_emit = emit.tervixMode()
 local thermostat_tervix = {
   profile = "thermostats-thermostat-tervix",
-  tuya.dp_system_mode(1, {
+  tuya.dp_binary(1, {
+    name = "system_mode",
+    emit = emit.thermostat_mode(),
     converter = converter.lookup_from_to({
-      off = 0,
-      heat = 1,
+      off = false,
+      heat = true,
     }),
   }),
   tuya.dp_enum(2, {

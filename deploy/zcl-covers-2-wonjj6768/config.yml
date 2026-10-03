@@ -1,0 +1,6 @@
+name: "ZCL Covers 2 wonjj6768"
+packageKey: "zcl-covers-2-wonjj6768"
+description: "Curtains, blinds and shades with explicit device fingerprints."
+vendorSupportInformation: "Report issues with hub logcat: <a href=\"https://github.com/wonjj6768/smartthings-zigbee-edge-drivers\">GitHub</a> | URL: https://github.com/wonjj6768/smartthings-zigbee-edge-drivers"
+permissions:
+  zigbee: {}

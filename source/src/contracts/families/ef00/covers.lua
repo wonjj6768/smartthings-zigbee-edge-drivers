@@ -971,6 +971,127 @@ local cover_one = {
   }),
 }
 
+local function rinn_position(value, device)
+  return device.preferences.invertCover and (100 - value) or value
+end
+local rinn_position_converter = converter.from_to(rinn_position, rinn_position)
+local rinn_shade_state = converter.from_only(function(value, device)
+  local position = rinn_position(value, device)
+  return position == 0 and "closed" or position == 100 and "open" or "partially open"
+end)
+local rinn_wser40 = {
+  profile = "covers-rinn-wser40",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  query_on_announce = false,
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_enum(1, {name = "cover_state", write_only = true, converter = cover_state_open_close_stop}),
+    tuya.dp_enum(1, {name = "cover_action_state", read_only = true, emit = emit.shade_state(),
+      converter = converter.from_only(function(value)
+        return ({[0] = "open", [1] = "closed", [2] = "partially open"})[value]
+      end)}),
+    tuya.dp_cover_position(102, {emit = emit.shade_level(), converter = rinn_position_converter}),
+    tuya.dp_numeric(102, {name = "window_shade_state", read_only = true, emit = emit.shade_state(), converter = rinn_shade_state}),
+    tuya.dp_cover_position(103, {name = "position_report", read_only = true, emit = emit.shade_level(), converter = rinn_position_converter}),
+    tuya.dp_numeric(103, {name = "window_shade_state_report", read_only = true, emit = emit.shade_state(), converter = rinn_shade_state}),
+  },
+}
+
+local function zm25rx_lookup(normal, inverted)
+  local maps = {converter.lookup_from_to(normal), converter.lookup_from_to(inverted)}
+  return converter.from_to(function(value, device)
+    return maps[device.preferences.invertCover and 2 or 1].from(value)
+  end, function(value, device)
+    return maps[device.preferences.invertCover and 2 or 1].to(value)
+  end)
+end
+local zm25rx_direction = converter.lookup_from_to({normal = 0, reversed = 1})
+local zm25rx = {
+  profile = "covers-zm25rx",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  query_on_announce = false,
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_enum(1, {name = "cover_state", write_only = true,
+      converter = zm25rx_lookup({open = 0, stop = 1, close = 2}, {open = 2, stop = 1, close = 0})}),
+    tuya.dp_cover_position(2, {emit = emit.shade_level(), converter = rinn_position_converter}),
+    tuya.dp_numeric(2, {name = "window_shade_state", read_only = true, emit = emit.shade_state(), converter = rinn_shade_state}),
+    tuya.dp_cover_position(3, {name = "position_report", read_only = true, emit = emit.shade_level(), converter = rinn_position_converter}),
+    tuya.dp_numeric(3, {name = "window_shade_state_report", read_only = true, emit = emit.shade_state(), converter = rinn_shade_state}),
+    tuya.dp_enum(5, {name = "zm25rx_motor_direction", emit = emit.zm25rxMotorDirection(), receive_datatypes = {4, 3},
+      converter = converter.from_to(function(value)
+        if type(value) == "string" then return value == "back" and "reversed" or "normal" end
+        return zm25rx_direction.from(value)
+      end, zm25rx_direction.to)}),
+    tuya.dp_enum(7, {name = "zm25rx_motor_state", read_only = true, emit = emit.zm25rxMotorState(),
+      converter = zm25rx_lookup({opening = 0, closing = 1, stopped = 2}, {opening = 1, closing = 0, stopped = 2})}),
+    tuya.dp_battery(13, {read_only = true, emit = emit.battery()}),
+    tuya.dp_enum(101, {name = "zm25rx_program", write_only = true, suppress_optimistic_state = true,
+      converter = zm25rx_lookup({set_bottom = 1, set_upper = 0, reset = 4}, {set_bottom = 0, set_upper = 1, reset = 4})}),
+    tuya.dp_enum(101, {name = "zm25rx_click_control", write_only = true, suppress_optimistic_state = true,
+      converter = zm25rx_lookup({upper = 2, upper_micro = 5, lower = 3, lower_micro = 6}, {upper = 3, upper_micro = 6, lower = 2, lower_micro = 5})}),
+    tuya.dp_battery(103, {name = "battery_report", read_only = true, emit = emit.battery()}),
+  },
+}
+
+local dream_blinds_position = {
+  from = function(value)
+    local position = value % 256
+    if position <= 100 then return position end
+  end,
+  to = function(value) return value end,
+}
+local dream_blinds_shade_state = converter.from_only(function(value)
+  local position = dream_blinds_position.from(value)
+  if position == nil then return nil end
+  return position == 0 and "closed" or position == 100 and "open" or "partially open"
+end)
+
+local dream_blinds_tilt = {
+  profile = "covers-dream-blinds-tilt",
+  magic_packet = false,
+  mcu_version_request_on_configure = false,
+  query_on_configure = false,
+  query_on_announce = false,
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_enum(1, {name="cover_state",write_only=true,converter=cover_state_standard}),
+    tuya.dp_cover_position(2, {emit=emit.shade_level(),converter=dream_blinds_position}),
+    tuya.dp_numeric(2, {name="window_shade_state",read_only=true,emit=emit.shade_state(),converter=dream_blinds_shade_state}),
+    tuya.dp_cover_position(3, {name="position_report",read_only=true,emit=emit.shade_level(),converter=dream_blinds_position}),
+    tuya.dp_numeric(3, {name="window_shade_state_report",read_only=true,emit=emit.shade_state(),converter=dream_blinds_shade_state}),
+    tuya.dp_enum(5, {
+      name="dream_blinds_reverse_direction",write_only=true,emit=emit.dreamBlindsReverseDirection(),
+      converter=converter.lookup_from_to({forward=0,back=1}),
+    }),
+    tuya.dp_numeric(105, {name="dream_blinds_motor_speed",emit=emit.dreamBlindsMotorSpeed()}),
+    tuya.dp_numeric(21, {
+      name="cover_tilt",emit=emit.shade_tilt_level(),
+      converter={
+        from=function(value) return math.floor(math.min(180,value)*100/180+0.5) end,
+        to=function(value) return math.min(180,math.max(0,math.floor(value*180/100+0.5))) end,
+      },
+    }),
+    tuya.dp_numeric(21, {
+      name="dream_blinds_flip_angle",emit=emit.dreamBlindsFlipAngle(),
+      converter={
+        from=function(value) return math.min(180,value) end,
+        to=function(value) return math.min(180,math.max(0,math.floor(value+0.5))) end,
+      },
+    }),
+  },
+}
+
 -- ZM79E-DT / Pro Line curtain motor
 local cover_model_zm79e_dt = {
   profile = "covers-cover-zm79e-dt",
@@ -1353,7 +1474,6 @@ register_device_definition(cover_one, device_helpers.create_fingerprints("TS0601
   "_TZE200_nkoabg8w",
   "_TZE200_4vobcgd3",
   "_TZE284_4vobcgd3",
-  "_TZE200_pk0sfzvr",
   "_TZE200_m6lwazh9",
   "_TZE200_swlgvdlh",
   "_TZE200_fdtjuw7u",
@@ -1372,7 +1492,6 @@ register_device_definition(cover_one, device_helpers.create_fingerprints("TS0601
   "_TZE200_7shyddj3",
   "_TZE284_udank5zs",
   "_TZE284_b7kbnl6q",
-  "_TZE204_wzre8hu2",
   "_TZE204_dpqsvdbi",
   "_TZE204_ic7jtutb",
   "_TZE204_m1wl5fvq",
@@ -1500,7 +1619,7 @@ register_device_definition(cover_core_position_reversed, {
   device_helpers.create_fingerprint("Tuya", "TS0601_alh14edn"),
 })
 
-register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+register_device_definition(zm25rx, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_7eue9vhc",
   "_TZE200_bv1jcqqu",
   "_TZE200_wehza30a",
@@ -1669,6 +1788,14 @@ register_device_definition(ts0301_cover_dual_rail, device_helpers.create_fingerp
   "_TZE210_inpjmc0h",
   "_TZE210_yqwse3h5",
 }))
+
+register_device_definition(dream_blinds_tilt, {
+  device_helpers.create_fingerprint("_TZE204_wzre8hu2", "TS0601"),
+})
+
+register_device_definition(rinn_wser40, {
+  device_helpers.create_fingerprint("_TZE200_pk0sfzvr", "TS0601"),
+})
 
 return {
   id = "ef00.covers",

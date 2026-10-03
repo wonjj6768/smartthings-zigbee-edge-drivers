@@ -1,7 +1,7 @@
-local zcl=require "protocol.zcl"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
-local data_types=require "st.zigbee.data_types"
+local zcl=require"protocol.zcl"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
+local data_types=require"st.zigbee.data_types"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local VIBRATION_TIMEOUT_SECONDS=90
 local TIMER_FIELD="__wave19_ts0210_vibration_timer"
@@ -15,18 +15,18 @@ return mapping
 end
 local function reject_zcl_unknown(value,_,context)
 local raw_value=context and context.raw_value or nil
-if type(raw_value)=="number" and raw_value >=0xFF then return nil end
+if type(raw_value)=="number"and raw_value>=0xFF then return nil end
 return value
 end
 local function sensitivity_to_device(value)
-if type(value)~="number" or value % 1 ~=0 or value < 0 or value > 50 then
+if type(value)~="number"or value%1~=0 or value<0 or value>50 then
 return nil
 end
 return value
 end
 local function schedule_vibration_clear(device,value)
 local previous=device:get_field(TIMER_FIELD)
-if previous ~=nil and type(previous.cancel)=="function" then
+if previous~=nil and type(previous.cancel)=="function"then
 previous:cancel()
 end
 device:set_field(TIMER_FIELD,nil,{persist=false})
@@ -36,7 +36,7 @@ timer=device.thread:call_with_delay(VIBRATION_TIMEOUT_SECONDS,function()
 if device:get_field(TIMER_FIELD)~=timer then return end
 device:set_field(TIMER_FIELD,nil,{persist=false})
 local event=acceleration_emitter(device,false)
-if event ~=nil then device:emit_event(event)end
+if event~=nil then device:emit_event(event)end
 end,"wave19 TS0210 vibration clear")
 device:set_field(TIMER_FIELD,timer,{persist=false})
 end
@@ -49,8 +49,7 @@ wire_cluster="Power Configuration 0x0001 + IAS Zone 0x0500",
 zcl_clusters={
 passive_rx(zcl.motion({
 emit=acceleration_emitter,
-handler=schedule_vibration_clear,
-})),
+handler=schedule_vibration_clear,})),
 passive_rx(zcl.tamper()),
 passive_rx(zcl.battery({from_device=reject_zcl_unknown})),
 passive_rx(zcl.battery_voltage({from_device=reject_zcl_unknown})),
@@ -63,15 +62,9 @@ to_device=sensitivity_to_device,
 numeric_range={
 minimum=0,
 maximum=50,
-step=1,
-},
-}),
-},
-}
+step=1,},}),},}
 register_device_definition(ts0210,{
-device_helpers.create_fingerprint("'_TZ32101000000_5oy7cysk'","TS0210"),
-})
+device_helpers.create_fingerprint("'_TZ32101000000_5oy7cysk'","TS0210"),})
 return{
 id="zcl.sensors.wave19_vibration",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

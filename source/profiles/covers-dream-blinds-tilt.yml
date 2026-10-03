@@ -1,0 +1,11 @@
+name: covers-dream-blinds-tilt
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: windowShadeTiltLevel, version: 1}
+      - {id: concertmirror08464.dreamBlindsFlipAngle, version: 1}
+      - {id: concertmirror08464.dreamBlindsMotorSpeed, version: 1}
+      - {id: concertmirror08464.dreamBlindsReverseDirection, version: 1}
+    categories: [{name: Blind}]

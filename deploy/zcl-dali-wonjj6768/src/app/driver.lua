@@ -1,18 +1,18 @@
-local tuya=require "protocol.tuya"
-local zcl=require "protocol.zcl"
-local registry=require "core.registry"
-local custom_capabilities=require "runtime.capability_metadata"
-local capabilities=require "st.capabilities"
-local device_lib=require "st.device"
-local data_types=require "st.zigbee.data_types"
-local generated_clusters=require "st.zigbee.generated.zcl_clusters"
-local component_mapping=require "app.component_mapping"
-local custom_capability_runtime_factory=require "app.custom_capability_runtime"
-local battery_refresh=require "runtime.battery_refresh"
-local energy_reset=require "runtime.energy_reset"
-local switch_command_router=require "app.switch_command_router"
-local switch_default_on=require "st.zigbee.defaults.switch_defaults.on"
-local switch_default_off=require "st.zigbee.defaults.switch_defaults.off"
+local tuya=require"protocol.tuya"
+local zcl=require"protocol.zcl"
+local registry=require"core.registry"
+local custom_capabilities=require"runtime.capability_metadata"
+local capabilities=require"st.capabilities"
+local device_lib=require"st.device"
+local data_types=require"st.zigbee.data_types"
+local generated_clusters=require"st.zigbee.generated.zcl_clusters"
+local component_mapping=require"app.component_mapping"
+local custom_capability_runtime_factory=require"app.custom_capability_runtime"
+local battery_refresh=require"runtime.battery_refresh"
+local energy_reset=require"runtime.energy_reset"
+local switch_command_router=require"app.switch_command_router"
+local switch_default_on=require"st.zigbee.defaults.switch_defaults.on"
+local switch_default_off=require"st.zigbee.defaults.switch_defaults.off"
 local power_poll_interval_metadata=custom_capabilities.by_emit_name.power_poll_interval
 local learn_ir_code_metadata=custom_capabilities.by_emit_name.learn_ir_code
 local ir_code_to_send_metadata=custom_capabilities.by_emit_name.ir_code_to_send
@@ -69,7 +69,7 @@ return nil
 end
 local preset=tuya.build_base_preset(definition)
 for key,value in pairs(definition)do
-if key ~="fingerprints" and preset[key]==nil then
+if key~="fingerprints"and preset[key]==nil then
 preset[key]=value
 end
 end
@@ -90,31 +90,31 @@ battery_refresh.set_requester(function(device)
 return zcl.read_attribute(device,0x0001,0x0020,1)
 end,function(device)
 local preset=get_preset(device)
-return preset ~=nil and preset.zcl_clusters ~=nil and
+return preset~=nil and preset.zcl_clusters~=nil and
 zcl.has_cluster(preset.zcl_clusters,zcl.CLUSTER_POWER_CONFIGURATION)
 end)
 local function is_callable(value)
-if type(value)=="function" then
+if type(value)=="function"then
 return true
 end
-if type(value)~="table" then
+if type(value)~="table"then
 return false
 end
 local metatable=getmetatable(value)
-return type(metatable)=="table" and type(metatable.__call)=="function"
+return type(metatable)=="table"and type(metatable.__call)=="function"
 end
 local function profile_supports_main_capability(device,capability_id)
-if type(device)~="table" or type(capability_id)~="string" then
+if type(device)~="table"or type(capability_id)~="string"then
 return false
 end
 local components=device.profile and device.profile.components or nil
-local main=type(components)=="table" and components.main or nil
-local capability_list=type(main)=="table" and main.capabilities or nil
-if type(capability_list)~="table" then
+local main=type(components)=="table"and components.main or nil
+local capability_list=type(main)=="table"and main.capabilities or nil
+if type(capability_list)~="table"then
 return false
 end
 for _,capability in ipairs(capability_list)do
-if type(capability)=="table" and capability.id==capability_id then
+if type(capability)=="table"and capability.id==capability_id then
 return true
 end
 end
@@ -125,16 +125,16 @@ local numeric=tonumber(value)
 if numeric==nil then
 return nil
 end
-numeric=math.floor(numeric + 0.5)
-if numeric < EF00_POWER_POLL_INTERVAL_MIN then
+numeric=math.floor(numeric+0.5)
+if numeric<EF00_POWER_POLL_INTERVAL_MIN then
 numeric=EF00_POWER_POLL_INTERVAL_MIN
-elseif numeric > EF00_POWER_POLL_INTERVAL_MAX then
+elseif numeric>EF00_POWER_POLL_INTERVAL_MAX then
 numeric=EF00_POWER_POLL_INTERVAL_MAX
 end
-local remainder=numeric % EF00_POWER_POLL_INTERVAL_STEP
-if remainder ~=0 then
-numeric=numeric - remainder
-if numeric < EF00_POWER_POLL_INTERVAL_MIN then
+local remainder=numeric%EF00_POWER_POLL_INTERVAL_STEP
+if remainder~=0 then
+numeric=numeric-remainder
+if numeric<EF00_POWER_POLL_INTERVAL_MIN then
 numeric=EF00_POWER_POLL_INTERVAL_MIN
 end
 end
@@ -144,7 +144,7 @@ local function supports_ef00_power_polling(device,preset)
 return type(preset)=="table"
 and preset.zcl_clusters==nil
 and type(preset.datapoints)=="table"
-and power_poll_interval_metadata ~=nil
+and power_poll_interval_metadata~=nil
 and profile_supports_main_capability(device,power_poll_interval_metadata.capability_id)
 end
 local function resolved_ef00_power_poll_interval(device)
@@ -157,14 +157,14 @@ return false
 end
 local capability=capabilities[power_poll_interval_metadata.capability_id]
 local attribute=capability and capability[power_poll_interval_metadata.attribute_name]or nil
-if not is_callable(attribute)and capability and type(capability.attributes)=="table" then
+if not is_callable(attribute)and capability and type(capability.attributes)=="table"then
 attribute=capability.attributes[power_poll_interval_metadata.attribute_name]
 end
 if not is_callable(attribute)then
 return false
 end
 local range_attribute=capability and capability[power_poll_interval_metadata.range_attribute_name]or nil
-if not is_callable(range_attribute)and capability and type(capability.attributes)=="table" then
+if not is_callable(range_attribute)and capability and type(capability.attributes)=="table"then
 range_attribute=capability.attributes[power_poll_interval_metadata.range_attribute_name]
 end
 if is_callable(range_attribute)then
@@ -172,15 +172,12 @@ device:emit_event(range_attribute({
 value={
 minimum=EF00_POWER_POLL_INTERVAL_MIN,
 maximum=EF00_POWER_POLL_INTERVAL_MAX,
-step=EF00_POWER_POLL_INTERVAL_STEP,
-},
-unit=EF00_POWER_POLL_INTERVAL_UNIT,
-}))
+step=EF00_POWER_POLL_INTERVAL_STEP,},
+unit=EF00_POWER_POLL_INTERVAL_UNIT,}))
 end
 device:emit_event(attribute({
 value=resolved_ef00_power_poll_interval(device),
-unit=EF00_POWER_POLL_INTERVAL_UNIT,
-}))
+unit=EF00_POWER_POLL_INTERVAL_UNIT,}))
 return true
 end
 local function start_ef00_power_polling(device,preset)
@@ -192,23 +189,23 @@ emit_ef00_power_polling_state(device,preset)
 return true
 end
 local function shade_preset_field_key(component_id)
-return string.format("%s:%s",WINDOW_SHADE_PRESET_LEVEL_KEY,tostring(component_id or "main"))
+return string.format("%s:%s",WINDOW_SHADE_PRESET_LEVEL_KEY,tostring(component_id or"main"))
 end
 local function resolve_window_shade_preset_level(device,component_id)
-component_id=component_id or "main"
+component_id=component_id or"main"
 local latest=device:get_latest_state(component_id,capabilities.windowShadePreset.ID,"position")
-if type(latest)=="number" then
+if type(latest)=="number"then
 return latest
 end
 local stored=device:get_field(shade_preset_field_key(component_id))
-if type(stored)~="number" then
+if type(stored)~="number"then
 stored=device:get_field(WINDOW_SHADE_PRESET_LEVEL_KEY)
 end
-if type(stored)=="number" then
+if type(stored)=="number"then
 return stored
 end
 local preference=device.preferences and device.preferences.presetPosition or nil
-if type(preference)=="number" then
+if type(preference)=="number"then
 return preference
 end
 return DEFAULT_WINDOW_SHADE_PRESET_LEVEL
@@ -218,13 +215,12 @@ for _,component_id in ipairs(component_mapping.sorted_profile_component_ids(devi
 if device:supports_capability_by_id(capabilities.windowShadePreset.ID,component_id)then
 device:emit_component_event(
 {id=component_id},
-capabilities.windowShadePreset.position(resolve_window_shade_preset_level(device,component_id))
-)
+capabilities.windowShadePreset.position(resolve_window_shade_preset_level(device,component_id)))
 end
 end
 end
 local function emit_button_metadata(device,definition)
-if type(definition)~="table" or type(definition.button_actions)~="table" then
+if type(definition)~="table"or type(definition.button_actions)~="table"then
 return
 end
 local supported_values=definition.button_actions
@@ -250,9 +246,7 @@ local handlers={
 [tuya.ACTIVE_STATUS_REPORT]=ef00_handler,
 [tuya.SET_TIME]=ef00_handler,
 [tuya.CONNECTION_STATUS]=ef00_handler,
-[tuya.MCU_VERSION_RESPONSE]=ef00_handler,
-},
-}
+[tuya.MCU_VERSION_RESPONSE]=ef00_handler,},}
 local zcl_cluster_handlers=zcl.build_zigbee_cluster_handlers(get_preset)
 for cluster_id,command_handlers in pairs(zcl_cluster_handlers)do
 handlers[cluster_id]=handlers[cluster_id]or{}
@@ -293,41 +287,34 @@ return command.args and command.args.color or nil
 end,true},
 }
 local delayed_read_definitions={
-[capabilities.audioVolume.ID .. ":" .. capabilities.audioVolume.commands.setVolume.NAME]={
-"volume",
-},
-[capabilities.colorTemperature.ID .. ":" .. capabilities.colorTemperature.commands.setColorTemperature.NAME]={
-"color_temperature",
-},
-[capabilities.colorControl.ID .. ":" .. capabilities.colorControl.commands.setHue.NAME]={
+[capabilities.audioVolume.ID ..":"..capabilities.audioVolume.commands.setVolume.NAME]={
+"volume",},
+[capabilities.colorTemperature.ID ..":"..capabilities.colorTemperature.commands.setColorTemperature.NAME]={
+"color_temperature",},
+[capabilities.colorControl.ID ..":"..capabilities.colorControl.commands.setHue.NAME]={
+"color_hue",},
+[capabilities.colorControl.ID ..":"..capabilities.colorControl.commands.setSaturation.NAME]={
+"color_saturation",},
+[capabilities.colorControl.ID ..":"..capabilities.colorControl.commands.setColor.NAME]={
 "color_hue",
-},
-[capabilities.colorControl.ID .. ":" .. capabilities.colorControl.commands.setSaturation.NAME]={
-"color_saturation",
-},
-[capabilities.colorControl.ID .. ":" .. capabilities.colorControl.commands.setColor.NAME]={
-"color_hue",
-"color_saturation",
-},
-}
+"color_saturation",},}
 local function is_child_device(device)
-return type(device)=="table" and(
+return type(device)=="table"and(
 device.network_type==device_lib.NETWORK_TYPE_CHILD or
-type(device.parent_assigned_child_key)=="string"
-)
+type(device.parent_assigned_child_key)=="string")
 end
 local function schedule_unexpected_child_cleanup(driver,device,revalidate)
-if type(driver)~="table" or type(device)~="table" or type(driver.try_delete_device)~="function" then
+if type(driver)~="table"or type(device)~="table"or type(driver.try_delete_device)~="function"then
 return
 end
-if device.thread ~=nil and type(device.thread.call_with_delay)=="function" then
+if device.thread~=nil and type(device.thread.call_with_delay)=="function"then
 device.thread:call_with_delay(1,function()
-if type(revalidate)=="function" and revalidate()then return end
+if type(revalidate)=="function"and revalidate()then return end
 driver:try_delete_device(device.id)
 end,string.format("delete unexpected child %s",tostring(device.id)))
 return
 end
-if type(revalidate)=="function" and revalidate()then return end
+if type(revalidate)=="function"and revalidate()then return end
 driver:try_delete_device(device.id)
 end
 local child_mapping_allowed
@@ -357,8 +344,8 @@ local function resolve_definition(device)
 return registry.find(device:get_manufacturer(),device:get_model())
 end
 local function resolve_expected_child_definition(driver,device)
-if not is_child_device(device)or type(driver)~="table" or
-type(driver.get_device_info)~="function" then
+if not is_child_device(device)or type(driver)~="table"or
+type(driver.get_device_info)~="function"then
 return nil
 end
 local parent=driver:get_device_info(device.parent_device_id)
@@ -369,31 +356,31 @@ return resolve_definition(parent),parent
 end
 local function activate_expected_child(driver,device)
 local definition,parent=resolve_expected_child_definition(driver,device)
-local expected=definition ~=nil and definition.allow_child_devices==true
-if expected and type(definition.is_expected_child)=="function" then
+local expected=definition~=nil and definition.allow_child_devices==true
+if expected and type(definition.is_expected_child)=="function"then
 expected=definition.is_expected_child(parent,device,definition)==true
 end
 if not expected then return false end
 preset_cache[device]=definition
-if type(definition.child_runtime_start)=="function" then
+if type(definition.child_runtime_start)=="function"then
 definition.child_runtime_start(device,definition,parent)
 end
 return true
 end
 child_mapping_allowed=function(preset,device,name)
 if not is_child_device(device)then return true end
-return type(preset)=="table" and
-type(preset.child_command_allowed)=="function" and
+return type(preset)=="table"and
+type(preset.child_command_allowed)=="function"and
 preset.child_command_allowed(device,name,preset)==true
 end
 local function schedule_dynamic_child_creation(driver,device,definition)
-if type(definition)~="table" or type(definition.create_child_devices)~="function" then
+if type(definition)~="table"or type(definition.create_child_devices)~="function"then
 return
 end
 local create=function()
 definition.create_child_devices(driver,device,definition)
 end
-if device.thread ~=nil and type(device.thread.call_with_delay)=="function" then
+if device.thread~=nil and type(device.thread.call_with_delay)=="function"then
 device.thread:call_with_delay(1,create,"create dynamic endpoint children")
 return
 end
@@ -401,36 +388,36 @@ create()
 end
 local function uses_zcl_on_off(device)
 local preset=get_preset(device)
-return preset ~=nil and preset.zcl_clusters ~=nil and zcl.has_cluster(preset.zcl_clusters,zcl.CLUSTER_ON_OFF)
+return preset~=nil and preset.zcl_clusters~=nil and zcl.has_cluster(preset.zcl_clusters,zcl.CLUSTER_ON_OFF)
 end
 local function resolve_component_endpoint(device,component_id)
-if type(device)~="table" or type(device.get_endpoint_for_component_id)~="function" then
+if type(device)~="table"or type(device.get_endpoint_for_component_id)~="function"then
 return 1
 end
-local endpoint=device:get_endpoint_for_component_id(component_id or "main")
-if type(endpoint)=="table" then
+local endpoint=device:get_endpoint_for_component_id(component_id or"main")
+if type(endpoint)=="table"then
 endpoint=endpoint[1]
 end
-if type(endpoint)~="number" then
+if type(endpoint)~="number"then
 return 1
 end
 return endpoint
 end
 local function supports_ias_warning_device(device)
 local preset=get_preset(device)
-return preset ~=nil and preset.zcl_clusters ~=nil and zcl.has_cluster(preset.zcl_clusters,IAS_WARNING_DEVICE_CLUSTER)
+return preset~=nil and preset.zcl_clusters~=nil and zcl.has_cluster(preset.zcl_clusters,IAS_WARNING_DEVICE_CLUSTER)
 end
 local function emit_alarm_state(device,component_id,value)
-local target_component=component_id or "main"
-if type(device)~="table" or not device:supports_capability_by_id(capabilities.alarm.ID,target_component)then
+local target_component=component_id or"main"
+if type(device)~="table"or not device:supports_capability_by_id(capabilities.alarm.ID,target_component)then
 return
 end
 device:emit_component_event({id=target_component},capabilities.alarm.alarm[value]())
 end
 local function send_alarm_mapping(device,command,mode)
 local preset=get_preset(device)
-local value=mode ~="off"
-if preset ~=nil and preset.alarm_command_modes==true then
+local value=mode~="off"
+if preset~=nil and preset.alarm_command_modes==true then
 value=mode
 end
 return send(device,command,"alarm",value)
@@ -449,28 +436,26 @@ device,
 siren_configuration,
 data_types.Uint16(duration or 0),
 data_types.Uint8(0),
-generated_clusters.IASWD.types.IaswdLevel(strobe_enabled and IAS_WARNING_LEVEL_VERY_HIGH or IAS_WARNING_LEVEL_LOW)
-)
+generated_clusters.IASWD.types.IaswdLevel(strobe_enabled and IAS_WARNING_LEVEL_VERY_HIGH or IAS_WARNING_LEVEL_LOW))
 device:send(command:to_endpoint(endpoint))
 return true
 end
 local custom_capability_runtime=custom_capability_runtime_factory.create({
 get_preset=get_preset,
 send=send,
-resolve_definition=resolve_definition,
-})
+resolve_definition=resolve_definition,})
 local function configure_preset(driver,device,preset)
 if preset==nil then
 return
 end
-if type(preset.configure)=="function" then
+if type(preset.configure)=="function"then
 preset.configure(driver,device)
 end
 preset:start_configuration(device,driver)
 if preset.zcl_clusters then
 zcl.start_configuration(device,preset.zcl_clusters)
 end
-if type(preset.zcl_initial_writes)=="table" then
+if type(preset.zcl_initial_writes)=="table"then
 for _,item in ipairs(preset.zcl_initial_writes)do
 zcl.send_named_command(device,preset.zcl_clusters,item.name,item.value)
 end
@@ -480,13 +465,13 @@ local function start_preset_runtime(device,preset)
 if preset and preset.zcl_clusters then
 zcl.start_runtime(device,preset.zcl_clusters)
 zcl.emit_power_polling_state(device,preset.zcl_clusters)
-if zcl.emit_ir_state ~=nil then
+if zcl.emit_ir_state~=nil then
 zcl.emit_ir_state(device,preset)
 end
-if device.thread ~=nil and type(device.thread.call_with_delay)=="function" then
+if device.thread~=nil and type(device.thread.call_with_delay)=="function"then
 device.thread:call_with_delay(2,function()
 zcl.emit_power_polling_state(device,preset.zcl_clusters)
-if zcl.emit_ir_state ~=nil then
+if zcl.emit_ir_state~=nil then
 zcl.emit_ir_state(device,preset)
 end
 end,"zcl initial power polling state")
@@ -494,11 +479,11 @@ end
 else
 start_ef00_power_polling(device,preset)
 end
-if preset ~=nil and preset.configure_options ~=nil and
-preset.configure_options.query_interval_seconds ~=nil then
+if preset~=nil and preset.configure_options~=nil and
+preset.configure_options.query_interval_seconds~=nil then
 preset:start_query_timer(device)
 end
-if preset ~=nil and type(preset.runtime_start)=="function" then
+if preset~=nil and type(preset.runtime_start)=="function"then
 preset.runtime_start(device,preset)
 end
 end
@@ -512,7 +497,7 @@ custom_capability_runtime.emit_numeric_metadata(device,definition)
 custom_capability_runtime.emit_enum_metadata(device,definition)
 end
 local function schedule_follow_up_reads(device,component_id,mapping_names,delay_s)
-if type(mapping_names)~="table" or mapping_names[1]==nil or device.thread==nil or type(device.thread.call_with_delay)~="function" then
+if type(mapping_names)~="table"or mapping_names[1]==nil or device.thread==nil or type(device.thread.call_with_delay)~="function"then
 return
 end
 local preset=get_preset(device)
@@ -522,39 +507,38 @@ end
 device.thread:call_with_delay(delay_s or 2,function()
 for _,mapping_name in ipairs(mapping_names)do
 zcl.read_named_attribute(device,preset.zcl_clusters,mapping_name,{
-component_id=component_id,
-})
+component_id=component_id,})
 end
-end,string.format("zcl delayed read %s",tostring(component_id or "main")))
+end,string.format("zcl delayed read %s",tostring(component_id or"main")))
 end
 local function emit_ef00_switch_state(device,component_id,value)
-local target_component=component_id or "main"
-if type(device)~="table" or not device:supports_capability_by_id(capabilities.switch.ID,target_component)then
+local target_component=component_id or"main"
+if type(device)~="table"or not device:supports_capability_by_id(capabilities.switch.ID,target_component)then
 return
 end
 local event=value and capabilities.switch.switch.on()or capabilities.switch.switch.off()
 device:emit_component_event({id=target_component},event)
 end
 local function schedule_ef00_state_request(device,delay_s,label)
-if type(device)~="table" or device.thread==nil or type(device.thread.call_with_delay)~="function" then
+if type(device)~="table"or device.thread==nil or type(device.thread.call_with_delay)~="function"then
 return
 end
 device.thread:call_with_delay(delay_s,function()
 local preset=get_preset(device)
-if preset ~=nil and preset.datapoints ~=nil then
+if preset~=nil and preset.datapoints~=nil then
 preset:send_state_request(device)
 end
-end,label or "ef00 delayed state request")
+end,label or"ef00 delayed state request")
 end
 local function after_ef00_switch_command(device,command,value)
-local component_id=command and command.component or "main"
+local component_id=command and command.component or"main"
 local preset=get_preset(device)
 local named=preset and preset.named_mappings_by_name
 if named==nil and preset and preset.datapoints then
 named=tuya.build_named_map(preset.datapoints,"name")
 end
 local mapping=named and named.switch
-if mapping==nil or mapping.suppress_optimistic_state ~=true then
+if mapping==nil or mapping.suppress_optimistic_state~=true then
 emit_ef00_switch_state(device,component_id,value)
 end
 schedule_ef00_state_request(device,1,"ef00 switch state read 1s")
@@ -565,26 +549,26 @@ local numeric=tonumber(value)
 if numeric==nil then
 return nil
 end
-numeric=math.floor(numeric + 0.5)
-if numeric < 0 then
+numeric=math.floor(numeric+0.5)
+if numeric<0 then
 return 0
 end
-if numeric > 100 then
+if numeric>100 then
 return 100
 end
 return numeric
 end
 local function current_switch_level(device,component_id)
-if type(device)~="table" or type(device.get_latest_state)~="function" then
+if type(device)~="table"or type(device.get_latest_state)~="function"then
 return 0
 end
-local level=device:get_latest_state(component_id or "main",capabilities.switchLevel.ID,"level")
+local level=device:get_latest_state(component_id or"main",capabilities.switchLevel.ID,"level")
 return clamp_switch_level(level)or 0
 end
 local function configured_minimum_switch_level(device,component_id)
 local metadata=ef00_minimum_brightness_metadata
-local target_component=component_id or "main"
-if type(device)~="table" or type(metadata)~="table" then
+local target_component=component_id or"main"
+if type(device)~="table"or type(metadata)~="table"then
 return 0
 end
 if not device:supports_capability_by_id(metadata.capability_id,target_component)then
@@ -593,43 +577,42 @@ end
 local raw_minimum_state=device:get_latest_state(
 target_component,
 metadata.capability_id,
-metadata.attribute_name
-)
+metadata.attribute_name)
 local raw_minimum=tonumber(raw_minimum_state)
-if raw_minimum==nil or raw_minimum <=0 then
+if raw_minimum==nil or raw_minimum<=0 then
 return 0
 end
-return clamp_switch_level(math.ceil(raw_minimum / 10))or 0
+return clamp_switch_level(math.ceil(raw_minimum/10))or 0
 end
 local function emit_switch_level_state(device,component_id,level)
-local target_component=component_id or "main"
-if type(device)~="table" or not device:supports_capability_by_id(capabilities.switchLevel.ID,target_component)then
+local target_component=component_id or"main"
+if type(device)~="table"or not device:supports_capability_by_id(capabilities.switchLevel.ID,target_component)then
 return
 end
 device:emit_component_event({id=target_component},capabilities.switchLevel.level(level))
 end
 local function handle_stateless_switch_level_step(device,command)
-local component_id=command and command.component or "main"
+local component_id=command and command.component or"main"
 local step_size=command and command.args and command.args.stepSize or nil
 step_size=tonumber(step_size)
 if step_size==nil then
 return
 end
-step_size=math.floor(step_size + 0.5)
-if step_size < -100 then
+step_size=math.floor(step_size+0.5)
+if step_size<-100 then
 step_size=-100
-elseif step_size > 100 then
+elseif step_size>100 then
 step_size=100
 end
-local target_level=clamp_switch_level(current_switch_level(device,component_id)+ step_size)
+local target_level=clamp_switch_level(current_switch_level(device,component_id)+step_size)
 if target_level==nil then
 return
 end
 local minimum_level=configured_minimum_switch_level(device,component_id)
-if target_level < minimum_level then
+if target_level<minimum_level then
 target_level=minimum_level
 end
-if target_level > 0 then
+if target_level>0 then
 send(device,command,"switch",true)
 end
 local handled=send(device,command,"brightness",target_level)
@@ -654,22 +637,22 @@ handlers[cap_id]={}
 end
 handlers[cap_id][cmd_name]=function(_,device,command)
 local value=raw_value
-if type(raw_value)=="function" then
+if type(raw_value)=="function"then
 value=raw_value(command)
-elseif type(raw_value)=="string" and command.args and command.args[raw_value]~=nil then
+elseif type(raw_value)=="string"and command.args and command.args[raw_value]~=nil then
 value=command.args[raw_value]
 end
 local preset=get_preset(device)
 if not child_mapping_allowed(preset,device,map_name)then
 return
 end
-if turn_on_first and(preset==nil or preset.auto_on_before_light_command ~=false)then
+if turn_on_first and(preset==nil or preset.auto_on_before_light_command~=false)then
 send(device,command,"switch",true)
 end
 local handled=send(device,command,map_name,value)
 if handled then
-local follow_up=delayed_read_definitions[cap_id .. ":" .. cmd_name]
-if follow_up ~=nil then
+local follow_up=delayed_read_definitions[cap_id ..":"..cmd_name]
+if follow_up~=nil then
 schedule_follow_up_reads(device,command.component,follow_up,2)
 end
 end
@@ -681,7 +664,7 @@ for _,definition in pairs(definitions_by_model)do
 for _,family_command in ipairs(definition.capability_commands or{})do
 local capability_id=family_command.capability_id
 local command_name=family_command.command_name
-local registration_key=capability_id .. ":" .. command_name
+local registration_key=capability_id ..":"..command_name
 if not registered_family_commands[registration_key]then
 registered_family_commands[registration_key]=true
 local mapping_name=family_command.mapping_name
@@ -690,7 +673,7 @@ local fixed_value=family_command.value
 handlers[capability_id]=handlers[capability_id]or{}
 handlers[capability_id][command_name]=function(_,device,command)
 local value=fixed_value
-if argument_name ~=nil then
+if argument_name~=nil then
 value=command.args and command.args[argument_name]or nil
 end
 send(device,command,mapping_name,value)
@@ -711,13 +694,12 @@ uses_zcl_on_off=uses_zcl_on_off,
 send_named=send,
 begin_power_poll_burst=function(target_device)
 local preset=get_preset(target_device)
-if preset ~=nil and preset.zcl_clusters ~=nil and zcl.begin_power_poll_burst ~=nil then
+if preset~=nil and preset.zcl_clusters~=nil and zcl.begin_power_poll_burst~=nil then
 zcl.begin_power_poll_burst(target_device,preset.zcl_clusters)
 end
 end,
 after_ef00_switch_command=after_ef00_switch_command,
-default_handler=switch_default_on,
-})
+default_handler=switch_default_on,})
 end
 handlers[capabilities.switch.ID][capabilities.switch.commands.off.NAME]=function(driver,device,command)
 if not child_mapping_allowed(get_preset(device),device,"switch")then return end
@@ -729,8 +711,7 @@ value=false,
 uses_zcl_on_off=uses_zcl_on_off,
 send_named=send,
 after_ef00_switch_command=after_ef00_switch_command,
-default_handler=switch_default_off,
-})
+default_handler=switch_default_off,})
 end
 handlers[STATELESS_SWITCH_LEVEL_STEP_ID]={
 [STATELESS_SWITCH_LEVEL_STEP_COMMAND]=function(_,device,command)
@@ -740,8 +721,7 @@ end,
 handlers[capabilities.alarm.ID]={
 [capabilities.alarm.commands.off.NAME]=function(_,device,command)
 local handled=send_ias_warning_command(
-device,command.component,IAS_WARNING_MODE_STOP,false,IAS_WARNING_LEVEL_LOW,0
-)
+device,command.component,IAS_WARNING_MODE_STOP,false,IAS_WARNING_LEVEL_LOW,0)
 if not handled then
 handled=send_alarm_mapping(device,command,"off")
 end
@@ -752,8 +732,7 @@ end,
 [capabilities.alarm.commands.siren.NAME]=function(_,device,command)
 local handled=send_ias_warning_command(
 device,command.component,IAS_WARNING_MODE_EMERGENCY,false,
-IAS_WARNING_LEVEL_VERY_HIGH,DEFAULT_IAS_WARNING_DURATION
-)
+IAS_WARNING_LEVEL_VERY_HIGH,DEFAULT_IAS_WARNING_DURATION)
 if not handled then
 handled=send_alarm_mapping(device,command,"siren")
 end
@@ -764,8 +743,7 @@ end,
 [capabilities.alarm.commands.strobe.NAME]=function(_,device,command)
 local handled=send_ias_warning_command(
 device,command.component,IAS_WARNING_MODE_EMERGENCY,true,
-IAS_WARNING_LEVEL_LOW,DEFAULT_IAS_WARNING_DURATION
-)
+IAS_WARNING_LEVEL_LOW,DEFAULT_IAS_WARNING_DURATION)
 if not handled then
 handled=send_alarm_mapping(device,command,"strobe")
 end
@@ -776,8 +754,7 @@ end,
 [capabilities.alarm.commands.both.NAME]=function(_,device,command)
 local handled=send_ias_warning_command(
 device,command.component,IAS_WARNING_MODE_EMERGENCY,true,
-IAS_WARNING_LEVEL_VERY_HIGH,DEFAULT_IAS_WARNING_DURATION
-)
+IAS_WARNING_LEVEL_VERY_HIGH,DEFAULT_IAS_WARNING_DURATION)
 if not handled then
 handled=send_alarm_mapping(device,command,"both")
 end
@@ -789,7 +766,7 @@ end,
 handlers[capabilities.windowShadePreset.ID]={
 [capabilities.windowShadePreset.commands.setPresetPosition.NAME]=function(_,device,command)
 local level=command.args and command.args.position or nil
-if type(level)~="number" then
+if type(level)~="number"then
 return
 end
 device:set_field(shade_preset_field_key(command.component),level,{persist=true})
@@ -809,23 +786,23 @@ local preset=get_preset(device)
 if preset==nil then
 return
 end
-if is_child_device(device)and type(preset.child_refresh)=="function" then
+if is_child_device(device)and type(preset.child_refresh)=="function"then
 preset.child_refresh(device,preset)
 return
 end
-if not is_child_device(device)and type(preset.parent_refresh)=="function" then
+if not is_child_device(device)and type(preset.parent_refresh)=="function"then
 preset.parent_refresh(device,preset)
 return
 end
-if type(preset.parent_refresh)=="function" then
+if type(preset.parent_refresh)=="function"then
 preset.parent_refresh(device,preset,driver)
 return
 end
-if preset.datapoints and preset.refresh_state_query ~=false then
+if preset.datapoints and preset.refresh_state_query~=false then
 preset:send_state_request(device)
 end
 if preset.zcl_clusters then
-if type(preset.zcl_refresh_before_read_all)=="function" then
+if type(preset.zcl_refresh_before_read_all)=="function"then
 preset.zcl_refresh_before_read_all(device,preset)
 end
 zcl.read_all_attributes(device,preset.zcl_clusters)
@@ -833,7 +810,7 @@ end
 end,
 }
 custom_capability_runtime.register_handlers(handlers)
-if power_poll_interval_metadata ~=nil then
+if power_poll_interval_metadata~=nil then
 handlers[power_poll_interval_metadata.capability_id]=handlers[power_poll_interval_metadata.capability_id]or{}
 handlers[power_poll_interval_metadata.capability_id][power_poll_interval_metadata.command_name]=function(_,device,command)
 local preset=get_preset(device)
@@ -841,7 +818,7 @@ if preset==nil then
 return
 end
 local value=command.args and command.args[power_poll_interval_metadata.argument_name]or nil
-if preset.zcl_clusters ~=nil then
+if preset.zcl_clusters~=nil then
 zcl.set_power_poll_interval(device,preset.zcl_clusters,value)
 return
 end
@@ -856,34 +833,34 @@ device:set_field(EF00_POWER_POLL_INTERVAL_FIELD,interval,{persist=true})
 start_ef00_power_polling(device,preset)
 end
 end
-if learn_ir_code_metadata ~=nil then
+if learn_ir_code_metadata~=nil then
 handlers[learn_ir_code_metadata.capability_id]=handlers[learn_ir_code_metadata.capability_id]or{}
 handlers[learn_ir_code_metadata.capability_id][learn_ir_code_metadata.command_name]=function(_,device,command)
 local preset=get_preset(device)
-if preset==nil or preset.ir_controller ~=true then
+if preset==nil or preset.ir_controller~=true then
 return
 end
 local value=command.args and command.args[learn_ir_code_metadata.argument_name]or nil
-if value=="start" then
+if value=="start"then
 zcl.start_ir_learning(device,preset)
-elseif value=="stop" then
+elseif value=="stop"then
 zcl.stop_ir_learning(device,preset)
 end
 end
 end
-if ir_code_to_send_metadata ~=nil then
+if ir_code_to_send_metadata~=nil then
 handlers[ir_code_to_send_metadata.capability_id]=handlers[ir_code_to_send_metadata.capability_id]or{}
 handlers[ir_code_to_send_metadata.capability_id][ir_code_to_send_metadata.command_name]=function(_,device,command)
 local preset=get_preset(device)
-if preset==nil or preset.ir_controller ~=true then
+if preset==nil or preset.ir_controller~=true then
 return
 end
 local args=command.args or{}
 local value=args[ir_code_to_send_metadata.argument_name]
-if type(value)~="string" and type(args.value)=="string" then
+if type(value)~="string"and type(args.value)=="string"then
 value=args.value
 end
-if type(value)~="string" or value=="" then
+if type(value)~="string"or value==""then
 return
 end
 zcl.send_ir_code(device,preset,value)
@@ -899,9 +876,7 @@ cluster=build_cluster_handlers(),
 global=zcl.build_zigbee_global_handlers(get_preset),
 attr=zcl.build_zigbee_attr_handlers(get_preset),
 zdo={
-[DEVICE_ANNOUNCE_CLUSTER_ID]=handle_device_announce,
-},
-},
+[DEVICE_ANNOUNCE_CLUSTER_ID]=handle_device_announce,},},
 lifecycle_handlers={
 init=function(driver,device)
 if is_child_device(device)then
@@ -913,8 +888,8 @@ return
 end
 local definition=resolve_definition(device)
 local valid_parent_profiles=definition and definition.valid_parent_profiles
-if definition and definition.profile and device.profile.id ~=definition.profile and
-(type(valid_parent_profiles)~="table" or valid_parent_profiles[device.profile.id]~=true)then
+if definition and definition.profile and device.profile.id~=definition.profile and
+(type(valid_parent_profiles)~="table"or valid_parent_profiles[device.profile.id]~=true)then
 device:try_update_metadata({profile=definition.profile})
 end
 component_mapping.apply(device,definition)
@@ -942,7 +917,7 @@ if not args.old_st_store then
 return
 end
 local definition=resolve_definition(device)
-local profile_changed=device.profile.id ~=args.old_st_store.profile.id
+local profile_changed=device.profile.id~=args.old_st_store.profile.id
 if profile_changed then
 component_mapping.apply(device,definition)
 configure_preset(driver,device,get_preset(device))
@@ -962,7 +937,6 @@ refresh_runtime_metadata(device,definition,profile_changed)
 end,
 },
 capability_handlers=build_capability_handlers(),
-health_check=false,
-}
-local ZigbeeDriver=require "st.zigbee"
+health_check=false,}
+local ZigbeeDriver=require"st.zigbee"
 ZigbeeDriver("tuya-universal",driver_template):run()

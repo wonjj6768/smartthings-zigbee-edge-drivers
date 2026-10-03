@@ -616,8 +616,17 @@ register_device_definition(smoke_model_smart_smoke10, {
 -- ══════════════════════════════════════════════════════════════
 local smoke_model_288wz = {
   profile = "safety-smoke-detector-battery-288wz",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  query_on_announce = false,
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  time_start = "off",
+  placeholder_custom_states = false,
   tuya.dp_enum(1, {
     name = "smoke_state",
+    read_only = true,
     emit = emit_smoke_state(emit.onenuo288wzSmokeState()),
     converter = converter.from_only(converter.lookup_value({
       [0] = "alarm",
@@ -626,7 +635,7 @@ local smoke_model_288wz = {
       [3] = "unknown",
     })),
   }),
-  tuya.dp_battery(15, { emit = emit.battery() }),
+  tuya.dp_battery(15, { emit = emit.battery(), read_only = true }),
   tuya.dp_binary(16, {
     name = "onenuo_288wz_silence",
     emit = emit.onenuo288wzSilence(),
@@ -634,6 +643,7 @@ local smoke_model_288wz = {
   }),
   tuya.dp_binary(101, {
     name = "self_test_result",
+    read_only = true,
     emit = emit.onenuo288wzSelfTestResult(),
     converter = converter.from_only(converter.lookup_value({
       [false] = "failure",
@@ -656,6 +666,7 @@ local smoke_model_288wz = {
 register_device_definition(smoke_model_288wz, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_kgaxpvxr",
   "_TZE284_n4ttsck2",
+  "_TZE2841000000_n4ttsck2",
 }))
 
 -- ══════════════════════════════════════════════════════════════

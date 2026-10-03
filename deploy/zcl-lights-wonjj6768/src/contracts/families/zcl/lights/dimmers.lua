@@ -1,13 +1,13 @@
-local zcl=require "protocol.zcl"
-local device_helpers=require "contracts.helpers.family"
-local emit=require "capabilities.events.all"
-local device_management=require "st.zigbee.device_management"
-local data_types=require "st.zigbee.data_types"
+local zcl=require"protocol.zcl"
+local device_helpers=require"contracts.helpers.family"
+local emit=require"capabilities.events.all"
+local device_management=require"st.zigbee.device_management"
+local data_types=require"st.zigbee.data_types"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function copy_list(items)
 local copied={}
 for _,item in ipairs(items or{})do
-copied[#copied + 1]=item
+copied[#copied+1]=item
 end
 return copied
 end
@@ -19,8 +19,7 @@ device:send(device_management.build_bind_request(
 device,
 cluster_id,
 driver.environment_info.hub_zigbee_eui,
-endpoint
-))
+endpoint))
 end
 end
 end
@@ -30,33 +29,29 @@ options=options or{}
 local clusters={
 zcl.tuya_magic_packet(),
 zcl.switch(),
-zcl.tuya_dimmer_level(),
-}
-if options.power_on_behavior then clusters[#clusters + 1]=zcl.power_on_behavior()end
-if options.switch_type then clusters[#clusters + 1]=zcl.ts110e_switch_type({write_only=true})end
+zcl.tuya_dimmer_level(),}
+if options.power_on_behavior then clusters[#clusters+1]=zcl.power_on_behavior()end
+if options.switch_type then clusters[#clusters+1]=zcl.ts110e_switch_type({write_only=true})end
 if options.countdown then
-clusters[#clusters + 1]=options.countdown_step==30
+clusters[#clusters+1]=options.countdown_step==30
 and zcl.ts110e_countdown_timer({emit=emit.countdownTsOneTenHalfMinute("s")})
 or zcl.ts110e_countdown_timer()
 end
-if options.min_brightness then clusters[#clusters + 1]=zcl.ts110e_min_brightness()end
-if options.max_brightness then clusters[#clusters + 1]=zcl.ts110e_max_brightness()end
-if options.light_type then clusters[#clusters + 1]=zcl.light_type()end
+if options.min_brightness then clusters[#clusters+1]=zcl.ts110e_min_brightness()end
+if options.max_brightness then clusters[#clusters+1]=zcl.ts110e_max_brightness()end
+if options.light_type then clusters[#clusters+1]=zcl.light_type()end
 return{
 profile=profile,
 zcl_clusters=clusters,
-configure=bind_light_endpoints(1),
-}
+configure=bind_light_endpoints(1),}
 end
 local function build_basic_single_dimmer(profile)
 return{
 profile=profile,
 zcl_clusters={
 zcl.switch(),
-zcl.level(),
-},
-configure=bind_light_endpoints(1),
-}
+zcl.level(),},
+configure=bind_light_endpoints(1),}
 end
 local function build_basic_single_dimmer_min(profile)
 return{
@@ -64,81 +59,74 @@ profile=profile,
 zcl_clusters={
 zcl.switch(),
 zcl.level(),
-zcl.min_brightness(),
-},
-configure=bind_light_endpoints(1),
-}
+zcl.min_brightness(),},
+configure=bind_light_endpoints(1),}
 end
 local function build_basic_dual_dimmer(profile)
 local zcl_clusters=copy_list(zcl.multi_switch(2,{component_prefix="switch"}))
 for _,cluster in ipairs(zcl.multi_level(2,{component_prefix="switch"}))do
-zcl_clusters[#zcl_clusters + 1]=cluster
+zcl_clusters[#zcl_clusters+1]=cluster
 end
 return{
 profile=profile,
 zcl_clusters=zcl_clusters,
-configure=bind_light_endpoints(2),
-}
+configure=bind_light_endpoints(2),}
 end
 local function build_basic_dual_dimmer_min(profile)
 local zcl_clusters=copy_list(zcl.multi_switch(2,{component_prefix="switch"}))
 for _,cluster in ipairs(zcl.multi_level(2,{component_prefix="switch"}))do
-zcl_clusters[#zcl_clusters + 1]=cluster
+zcl_clusters[#zcl_clusters+1]=cluster
 end
 for endpoint=1,2 do
-zcl_clusters[#zcl_clusters + 1]=zcl.min_brightness({
+zcl_clusters[#zcl_clusters+1]=zcl.min_brightness({
 endpoint=endpoint,
-component=endpoint==1 and "main" or "switch2",
-})
+component=endpoint==1 and"main"or"switch2",})
 end
 return{
 profile=profile,
 zcl_clusters=zcl_clusters,
-configure=bind_light_endpoints(2),
-}
+configure=bind_light_endpoints(2),}
 end
 local function build_dual_dimmer(profile,options)
 options=options or{}
 local zcl_clusters=copy_list(zcl.multi_switch(2,{component_prefix="switch"}))
 for _,cluster in ipairs(zcl.multi_level(2,{component_prefix="switch"}))do
-zcl_clusters[#zcl_clusters + 1]=cluster
+zcl_clusters[#zcl_clusters+1]=cluster
 end
 table.insert(zcl_clusters,1,zcl.tuya_magic_packet())
-if options.power_on_behavior then zcl_clusters[#zcl_clusters + 1]=zcl.power_on_behavior()end
+if options.power_on_behavior then zcl_clusters[#zcl_clusters+1]=zcl.power_on_behavior()end
 for endpoint=1,2 do
-local component=endpoint==1 and "main" or "switch2"
+local component=endpoint==1 and"main"or"switch2"
 if options.switch_type then
-zcl_clusters[#zcl_clusters + 1]=zcl.ts110e_switch_type({
+zcl_clusters[#zcl_clusters+1]=zcl.ts110e_switch_type({
 endpoint=endpoint,
 component=component,
-write_only=true,
-})
+write_only=true,})
 end
 if options.min_brightness then
-zcl_clusters[#zcl_clusters + 1]=zcl.ts110e_min_brightness({endpoint=endpoint,component=component})
+zcl_clusters[#zcl_clusters+1]=zcl.ts110e_min_brightness({endpoint=endpoint,component=component})
 end
 if options.max_brightness then
-zcl_clusters[#zcl_clusters + 1]=zcl.ts110e_max_brightness({endpoint=endpoint,component=component})
+zcl_clusters[#zcl_clusters+1]=zcl.ts110e_max_brightness({endpoint=endpoint,component=component})
 end
 end
 return{
 profile=profile,
 zcl_clusters=zcl_clusters,
-configure=bind_light_endpoints(2),
-}
+configure=bind_light_endpoints(2),}
 end
 local basic_single_dimmer=build_basic_single_dimmer("lights-dimmer")
 local basic_single_dimmer_min=build_basic_single_dimmer_min("lights-dimmer-min")
 local basic_dual_dimmer=build_basic_dual_dimmer("lights-dimmer-2-zcl-basic")
 local lonsonho_dual_dimmer=build_basic_dual_dimmer("lights-dimmer-2-lonsonho")
 for endpoint,spec in ipairs({{"One",emit.lonD2PowerOne()},{"Two",emit.lonD2PowerTwo()}})do
-lonsonho_dual_dimmer.zcl_clusters[#lonsonho_dual_dimmer.zcl_clusters + 1]=zcl.cluster_attribute(0x0006,0x4003,{
-name="lon_d_two_power_" .. spec[1]:lower(),endpoint=endpoint,
-component=endpoint==1 and "main" or "switch2",
+lonsonho_dual_dimmer.zcl_clusters[#lonsonho_dual_dimmer.zcl_clusters+1]=zcl.cluster_attribute(0x0006,0x4003,{
+name="lon_d_two_power_"..spec[1]:lower(),endpoint=endpoint,
+component=endpoint==1 and"main"or"switch2",
 data_type=data_types.Enum8,write_type=data_types.Enum8,read_on_configure=true,
 emit=spec[2],
 from_device=function(value)
-if type(value)=="table" then value=value.value end
+if type(value)=="table"then value=value.value end
 return({[0]="off",[1]="on",[2]="toggle",[255]="previous"})[value]
 end,
 to_device=function(value)return({off=0,on=1,toggle=2,previous=255})[value]end,
@@ -151,8 +139,7 @@ switch_type=true,
 countdown=true,
 min_brightness=true,
 max_brightness=true,
-light_type=true,
-})
+light_type=true,})
 local single_dimmer_countdown30=build_single_dimmer("lights-dimmer-options-ts110-countdown30",{
 power_on_behavior=true,
 switch_type=true,
@@ -160,97 +147,71 @@ countdown=true,
 countdown_step=30,
 min_brightness=true,
 max_brightness=true,
-light_type=true,
-})
+light_type=true,})
 local single_power_switch_minmax=build_single_dimmer("lights-dimmer-ts110-power-switch-minmax",{
-power_on_behavior=true,switch_type=true,min_brightness=true,max_brightness=true,
-})
+power_on_behavior=true,switch_type=true,min_brightness=true,max_brightness=true,})
 local single_power_switch=build_single_dimmer("lights-dimmer-ts110-power-switch",{
-power_on_behavior=true,switch_type=true,
-})
+power_on_behavior=true,switch_type=true,})
 local single_minmax=build_single_dimmer("lights-dimmer-ts110-minmax",{
-min_brightness=true,max_brightness=true,
-})
+min_brightness=true,max_brightness=true,})
 local single_power_minmax=build_single_dimmer("lights-dimmer-ts110-power-minmax",{
-power_on_behavior=true,min_brightness=true,max_brightness=true,
-})
+power_on_behavior=true,min_brightness=true,max_brightness=true,})
 local single_min=build_single_dimmer("lights-dimmer-ts110-min",{min_brightness=true})
 local dual_power_switch_minmax=build_dual_dimmer("lights-dimmer-2-options-ts110",{
-power_on_behavior=true,switch_type=true,min_brightness=true,max_brightness=true,
-})
+power_on_behavior=true,switch_type=true,min_brightness=true,max_brightness=true,})
 local dual_power_switch=build_dual_dimmer("lights-dimmer-2-ts110-power-switch",{
-power_on_behavior=true,switch_type=true,
-})
+power_on_behavior=true,switch_type=true,})
 local dual_power_switch_min=build_dual_dimmer("lights-dimmer-2-ts110-power-switch-min",{
-power_on_behavior=true,switch_type=true,min_brightness=true,
-})
+power_on_behavior=true,switch_type=true,min_brightness=true,})
 local dual_min=build_dual_dimmer("lights-dimmer-2-ts110-min",{min_brightness=true})
 register_device_definition(basic_single_dimmer,device_helpers.create_fingerprints("TS110F",{
 "_TZ3000_estfrmup",
 "_TZ3000_ktuoyvt5",
 "_TZ3210_lfbz816s",
-"_TZ3210_ebbfkvoy",
-}))
+"_TZ3210_ebbfkvoy",}))
 register_device_definition(basic_dual_dimmer,device_helpers.create_fingerprints("TS110F",{
-"_TZ3000_hexqj6ls",
-}))
+"_TZ3000_hexqj6ls",}))
 register_device_definition(lonsonho_dual_dimmer,device_helpers.create_fingerprints("TS110F",{
-"_TZ3000_92chsky7",
-}))
+"_TZ3000_92chsky7",}))
 register_device_definition(basic_single_dimmer_min,device_helpers.create_fingerprints("TS110F",{
-"_TYZB01_qezuin6k",
-}))
+"_TYZB01_qezuin6k",}))
 register_device_definition(basic_dual_dimmer_min,device_helpers.create_fingerprints("TS110F",{
-"_TYZB01_v8gtiaed",
-}))
+"_TYZB01_v8gtiaed",}))
 register_device_definition(single_power_switch_minmax,device_helpers.create_fingerprints("TS110E",{
 "_TZ3210_zxbtub8r",
-"_TZ3210_cyuyd5az",
-}))
+"_TZ3210_cyuyd5az",}))
 register_device_definition(single_dimmer_countdown30,device_helpers.create_fingerprints("TS110E",{
-"_TZ3210_ngqk6jia",
-}))
+"_TZ3210_ngqk6jia",}))
 register_device_definition(single_dimmer,device_helpers.create_fingerprints("TS110E",{
 "_TZ3210_weaqkhab",
 "_TZ3210_k1msuvg6",
-"_TZ3210_o235agwx",
-}))
+"_TZ3210_o235agwx",}))
 register_device_definition(single_power_switch,device_helpers.create_fingerprints("TS110E",{
 "_TZ3210_hzdhb62z",
-"_TZ3210_v5yquxma",
-}))
+"_TZ3210_v5yquxma",}))
 register_device_definition(single_power_minmax,device_helpers.create_fingerprints("TS110E",{
-"_TZ3210_ysfo0wla",
-}))
+"_TZ3210_ysfo0wla",}))
 register_device_definition(single_minmax,device_helpers.create_fingerprints("TS110E",{
 "_TZ3210_guijtl8k",
-"_TZ3210_hquixjeg",
-}))
+"_TZ3210_hquixjeg",}))
 register_device_definition(single_min,device_helpers.create_fingerprints("TS1101",{
-"_TZ3000_xfs39dbf",
-}))
+"_TZ3000_xfs39dbf",}))
 register_device_definition(dual_power_switch_minmax,device_helpers.create_fingerprints("TS110E",{
-"_TZ3210_wdexaypg",
-}))
+"_TZ3210_wdexaypg",}))
 register_device_definition(dual_power_switch_minmax,device_helpers.create_fingerprints("TS110E",{
 "_TZ3210_pagajpog",
 "_TZ3210_4ubylghk",
 "_TZ3210_vfwhhldz",
 "_TZ3210_3mpwqzuu",
-"_TZ3210_mt5xjoy6",
-}))
+"_TZ3210_mt5xjoy6",}))
 register_device_definition(dual_power_switch,device_helpers.create_fingerprints("TS110E",{
-"_TZ3210_tkkb1ym8",
-}))
+"_TZ3210_tkkb1ym8",}))
 register_device_definition(dual_min,device_helpers.create_fingerprints("TS1101",{
-"_TZ3000_7ysdnebc",
-}))
+"_TZ3000_7ysdnebc",}))
 register_device_definition(dual_power_switch_min,device_helpers.create_fingerprints("TS0052",{
 "_TZ3000_zjtxnoft",
 "_TZ3000_kvwrdf47",
-"_TZ3000_sfibawtr",
-}))
+"_TZ3000_sfibawtr",}))
 return{
 id="zcl.lights.dimmers",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

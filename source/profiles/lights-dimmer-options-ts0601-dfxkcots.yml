@@ -8,13 +8,13 @@ components:
         version: 1
       - id: statelessSwitchLevelStep
         version: 1
-      - id: concertmirror08464.powerOnBehavior
+      - id: concertmirror08464.dfxDimmerPowerOnBehavior
         version: 1
-      - id: concertmirror08464.countdownTsOneTenHours
+      - id: concertmirror08464.dfxDimmerCountdown
         version: 1
-      - id: concertmirror08464.ef00Ts0601MinimumBrightness
+      - id: concertmirror08464.dfxDimmerMinimumBrightness
         version: 1
-      - id: concertmirror08464.lightType
+      - id: concertmirror08464.dfxDimmerLightType
         version: 1
       - id: refresh
         version: 1
@@ -52,16 +52,16 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
-      capability: concertmirror08464.ef00Ts0601MinimumBrightness
+      capability: concertmirror08464.dfxDimmerMinimumBrightness
       version: 1
     - component: main
-      capability: concertmirror08464.lightType
+      capability: concertmirror08464.dfxDimmerLightType
       version: 1
     - component: main
-      capability: concertmirror08464.countdownTsOneTenHours
+      capability: concertmirror08464.dfxDimmerCountdown
       version: 1
     - component: main
-      capability: concertmirror08464.powerOnBehavior
+      capability: concertmirror08464.dfxDimmerPowerOnBehavior
       version: 1
     - component: main
       capability: refresh
@@ -75,16 +75,16 @@ deviceConfig:
         capability: switchLevel
         version: 1
       - component: main
-        capability: concertmirror08464.ef00Ts0601MinimumBrightness
+        capability: concertmirror08464.dfxDimmerMinimumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.lightType
+        capability: concertmirror08464.dfxDimmerLightType
         version: 1
       - component: main
-        capability: concertmirror08464.countdownTsOneTenHours
+        capability: concertmirror08464.dfxDimmerCountdown
         version: 1
       - component: main
-        capability: concertmirror08464.powerOnBehavior
+        capability: concertmirror08464.dfxDimmerPowerOnBehavior
         version: 1
     actions:
       - component: main
@@ -97,14 +97,14 @@ deviceConfig:
         capability: statelessSwitchLevelStep
         version: 1
       - component: main
-        capability: concertmirror08464.ef00Ts0601MinimumBrightness
+        capability: concertmirror08464.dfxDimmerMinimumBrightness
         version: 1
       - component: main
-        capability: concertmirror08464.lightType
+        capability: concertmirror08464.dfxDimmerLightType
         version: 1
       - component: main
-        capability: concertmirror08464.countdownTsOneTenHours
+        capability: concertmirror08464.dfxDimmerCountdown
         version: 1
       - component: main
-        capability: concertmirror08464.powerOnBehavior
+        capability: concertmirror08464.dfxDimmerPowerOnBehavior
         version: 1

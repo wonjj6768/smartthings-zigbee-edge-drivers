@@ -4,7 +4,7 @@ components:
     capabilities:
       - id: carbonMonoxideDetector
         version: 1
-      - id: carbonMonoxideMeasurement
+      - id: concertmirror08464.moesZcHmCo
         version: 1
       - id: battery
         version: 1
@@ -22,10 +22,10 @@ deviceConfig:
         version: 1
         group: main
       - component: main
-        capability: carbonMonoxideMeasurement
+        capability: concertmirror08464.moesZcHmCo
         version: 1
         values:
-          - label: "{{carbonMonoxideLevel.value}} {{carbonMonoxideLevel.unit}}"
+          - label: "{{co.value}} {{co.unit}}"
     actions: []
     basicPlus: []
   detailView:
@@ -33,7 +33,7 @@ deviceConfig:
       capability: carbonMonoxideDetector
       version: 1
     - component: main
-      capability: carbonMonoxideMeasurement
+      capability: concertmirror08464.moesZcHmCo
       version: 1
     - component: main
       capability: battery
@@ -50,7 +50,7 @@ deviceConfig:
         capability: carbonMonoxideDetector
         version: 1
       - component: main
-        capability: carbonMonoxideMeasurement
+        capability: concertmirror08464.moesZcHmCo
         version: 1
       - component: main
         capability: battery

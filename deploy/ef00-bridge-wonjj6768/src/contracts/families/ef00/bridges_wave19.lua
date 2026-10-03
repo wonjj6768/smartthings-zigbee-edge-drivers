@@ -1,10 +1,10 @@
-local tuya=require "protocol.tuya"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
+local tuya=require"protocol.tuya"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local converter=tuya.converter
 local function custom(capability_id)
-return assert(emit[capability_id],"missing Wave19 WETEN emitter: " .. capability_id)()
+return assert(emit[capability_id],"missing Wave19 WETEN emitter: "..capability_id)()
 end
 local function enum(dp,name,capability_id,lookup)
 return tuya.dp_enum(dp,{
@@ -41,27 +41,20 @@ tuya.dp_on_off(1,{name="switch",emit=emit.switch(),transaction=1}),
 enum(101,"weten_pci_restart_mode","wetenPciRestartMode",{
 restart=0,
 ["force restart"]=1,
-["–"]=2,
-}),
+["–"]=2,}),
 enum(102,"weten_pci_rf_remote_control","wetenPciRfRemoteControl",{
 ON=0,
-OFF=1,
-}),
+OFF=1,}),
 binary(103,"weten_pci_rf_pairing","wetenPciRfPairing","ON","OFF"),
 binary(104,"weten_pci_buzzer_feedback","wetenPciBuzzerFeedback","ON","OFF"),
 enum(105,"weten_pci_power_on_behavior","wetenPciPowerOnBehavior",{
 off=0,
-on=1,
-}),
-binary(106,"weten_pci_child_lock","wetenPciChildLock","LOCK","UNLOCK"),
-},
-}
+on=1,}),
+binary(106,"weten_pci_child_lock","wetenPciChildLock","LOCK","UNLOCK"),},}
 register_device_definition(weten_pci,{
 device_helpers.create_fingerprint("_TZE204_6fk3gewc","TS0601"),
 device_helpers.create_fingerprint("_TZE284_6fk3gewc","TS0601"),
-device_helpers.create_fingerprint("_TZE28C1000000_6fk3gewc","TS0601"),
-})
+device_helpers.create_fingerprint("_TZE28C1000000_6fk3gewc","TS0601"),})
 return{
 id="ef00.bridges.wave19",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

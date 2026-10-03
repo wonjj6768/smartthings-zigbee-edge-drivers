@@ -204,6 +204,56 @@ register_device_definition(dak2k10o_air_core,{
   device_helpers.create_fingerprint("_TZE204_dak2k10o","TS0601"),
 })
 
+local capabilities = require "st.capabilities"
+local zy_n1_noise_states = {
+  "noise", "no_noise", "noise_2min", "noise_5min", "no_noise_2min",
+  "no_noise_5min", "no_noise_10min", "noise_normal", "noise_normal_2min", "noise_normal_5min",
+}
+local zy_n1 = {
+  profile = "sensors-tuya-zyn1",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = true,
+  query_on_announce = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_numeric(1, {name="zy_n1_noise_level",read_only=true,emit=emit.zyN1NoiseLevel()}),
+    tuya.dp_enum(8, {
+      name="zy_n1_noise_status",read_only=true,emit=emit.zyN1NoiseStatus(),
+      converter=converter.lookup_from_to({no_noise=0,noise_normal=1,noise=2}),
+    }),
+    tuya.dp_enum(13, {
+      name="zy_n1_report_mode",emit=emit.zyN1ReportMode(),
+      converter=converter.lookup_from_to({collect_noise_floor=0,realtime=1,threshold=2}),
+    }),
+    tuya.dp_numeric(16, {name="zy_n1_noise_lower_limit",emit=emit.zyN1NoiseLowerLimit()}),
+    tuya.dp_numeric(18, {name="zy_n1_collect_time",emit=emit.zyN1CollectTime()}),
+    tuya.dp_numeric(20, {name="zy_n1_noise_upper_limit",emit=emit.zyN1NoiseUpperLimit()}),
+    tuya.dp_numeric(22, {name="zy_n1_noise_hold_time",emit=emit.zyN1NoiseHoldTime()}),
+    tuya.dp_binary(23, {
+      name="zy_n1_indicator",emit=emit.zyN1Indicator(),
+      converter=converter.lookup_from_to({ON=true,OFF=false}),
+    }),
+    tuya.dp_enum(101, {
+      name="zy_n1_noise_state",read_only=true,
+      emit=function(device,value)
+        return {
+          capabilities.soundSensor.sound((value==0 or value==2 or value==3) and "detected" or "not detected"),
+          emit.zyN1NoiseState()(device,zy_n1_noise_states[value+1]),
+        }
+      end,
+    }),
+    tuya.dp_enum(102, {
+      name="zy_n1_report_threshold",emit=emit.zyN1ReportThreshold(),
+      converter=converter.lookup_from_to({["1_db"]=0,["3_db"]=1,["5_db"]=2,["10_db"]=3,["20_db"]=4,no_report=5}),
+    }),
+    tuya.dp_numeric(103, {name="zy_n1_noise_delay",emit=emit.zyN1NoiseDelay()}),
+  },
+}
+register_device_definition(zy_n1,{
+  device_helpers.create_fingerprint("_TZE204_r6kfl9ta","TS0601"),
+})
+
 return {
   id = "ef00.sensors.z2m_absorption",
   registrations = device_definitions,

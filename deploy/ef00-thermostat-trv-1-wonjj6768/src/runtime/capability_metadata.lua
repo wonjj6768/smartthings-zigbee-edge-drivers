@@ -1,21 +1,21 @@
 local custom_capabilities={}
 local strings={"C","tempDeltaTgmCToTen","capmxioiznwtyipfnfgvqta","temperature_delta","Temp Delta Tgm CTo Ten","maxTempLimitZhtCToSeventy","captpspguaydpwcwsllmxjd","max_temperature_limit","Max Temp Limit Zht CTo Seventy","trv06TempCalibration","temperatureCalibration","local_temperature_calibration","Trv06Temp Calibration","%","trv06PiHeatingDemand","piHeatingDemand","pi_heating_demand","Trv06Pi Heating Demand","trv06Error","error","Trv06Error","trv06bTempCalibration","Trv06b Temp Calibration","trv06bPiHeatingDemand","Trv06b Pi Heating Demand","trv06bError","Trv06b Error","classicTrvPosition","position","Classic Trv Position","classicTrvTempCalibration","Classic Trv Temp Calibration","classicTrvMinTemperature","minTemperature","min_temperature","Classic Trv Min Temperature","classicTrvMaxTemperature","maxTemperature","max_temperature","Classic Trv Max Temperature","s","classicTrvBoostTime","boostTime","boost_time","Classic Trv Boost Time","classicTrvComfortTemperature","comfortTemperature","comfort_temperature","Classic Trv Comfort Temperature","classicTrvEcoTemperature","ecoTemperature","eco_temperature","Classic Trv Eco Temperature","classicTrvAwayTemperature","awayTemperature","away_temperature","Classic Trv Away Temperature","classicTrvAwayDays","awayDays","away_days","Classic Trv Away Days","g2kiMaxTemperatureLimit","maxTemperatureLimit","G2ki Max Temperature Limit","g2kiMinTemperatureLimit","minTemperatureLimit","min_temperature_limit","G2ki Min Temperature Limit","g2kiOpenWindowTemperature","openWindowTemperature","open_window_temperature","G2ki Open Window Temperature","min","g2kiOpenWindowTime","openWindowTime","open_window_time","G2ki Open Window Time","g2kiHolidayTemperature","holidayTemperature","holiday_temperature","G2ki Holiday Temperature","g2kiComfortTemperature","G2ki Comfort Temperature","g2kiEcoTemperature","G2ki Eco Temperature","tbgeComfortTemperature","Tbge Comfort Temperature","tbgeEcoTemperature","Tbge Eco Temperature","tbgeHolidayTemperature","Tbge Holiday Temperature","tbgeAutoTemperature","autoTemperature","auto_temperature","Tbge Auto Temperature","tbgeOpenWindowTemperature","Tbge Open Window Temperature","tbgeOpenWindowTime","Tbge Open Window Time","tbgeBoostTime","Tbge Boost Time","cgr0FaultAlarm","faultAlarm","fault_alarm","Cgr0Fault Alarm","cgr0ComfortTemperature","Cgr0Comfort Temperature","cgr0EcoTemperature","Cgr0Eco Temperature","cgr0HolidayTemperature","Cgr0Holiday Temperature","cgr0BoostTime","Cgr0Boost Time","trv603wzHolidayTemperature","Trv603wz Holiday Temperature","trv603wzEcoTemperature","Trv603wz Eco Temperature","trv603wzComfortTemperature","Trv603wz Comfort Temperature","trv603wzAntifrostTemperature","antifrostTemperature","antifrost_temperature","Trv603wz Antifrost Temperature","trv603wzBoostTime","Trv603wz Boost Time","trv603wzProgrammingMode","programmingMode","programming_mode","Trv603wz Programming Mode","trv603wzFaultCode","faultCode","fault_code","Trv603wz Fault Code","thahHolidayTemperature","Thah Holiday Temperature","thahEcoTemperature","Thah Eco Temperature","thahAwayTemperature","Thah Away Temperature","h","thahOperatingTime","operatingTime","operating_time","Thah Operating Time","thahScaleRemainingTime","scaleProtectionRemainingTime","scale_protection_remaining_time","Thah Scale Remaining Time","thahErrorStatus","errorStatus","error_status","Thah Error Status","zht002MinTemperature","Zht002Min Temperature","zht002MaxTemperature","Zht002Max Temperature","zht002TempCalibration","Zht002Temp Calibration","zht002DeadzoneTemperature","deadzoneTemperature","deadzone_temperature","Zht002Deadzone Temperature","tgm50MaxTemperatureLimit","Tgm50Max Temperature Limit","tgm50TempCalibration","Tgm50Temp Calibration","trv1BoostTime","Trv1Boost Time","trv1MinTemperature","Trv1Min Temperature","trv1MaxTemperature","Trv1Max Temperature","trv1TempCalibration","Trv1Temp Calibration","trv1Position","Trv1Position","trv1SwitchDeviationEco","switchDeviationEco","switch_deviation_eco","Trv1Switch Deviation Eco","zgwkdaTempCalibration","Zgwkda Temp Calibration","tbgeLocalTempCalibration","localTemperatureCalibration","Tbge Local Temp Calibration","cgr0LocalTempCalibration","Cgr0Local Temp Calibration","trv603wzLocalTempCalibration","Trv603wz Local Temp Calibration","thahLocalTempCalibration","Thah Local Temp Calibration","battery_low","batteryLow","Battery low","normal","low","gsHFourChildLock","childLock","gs361a_child_lock","Gs HFour Child Lock","off","on","gsHFourWindowDetection","windowDetection","gs361a_window_detection","Gs HFour Window Detection","gsHFourValveDetection","valveDetection","gs361a_valve_detection","Gs HFour Valve Detection","alectoSmartHeat10ChildLock","alecto_child_lock","Alecto Smart Heat10Child Lock","alectoSmartHeat10WindowDetection","alecto_window_detection","Alecto Smart Heat10Window Detection","thermostatPresetZgWkDaAuto","preset","Thermostat Preset Zg Wk Da Auto","manual","auto","trv06ChildLock","child_lock","Trv06Child Lock","unlock","lock","trv06FrostProtection","frostProtection","frost_protection","Trv06Frost Protection","trv06ScaleProtection","scaleProtection","scale_protection","Trv06Scale Protection","trv06BatteryLow","Trv06Battery Low","trv06bChildLock","Trv06b Child Lock","trv06bFrostProtection","Trv06b Frost Protection","trv06bScaleProtection","Trv06b Scale Protection","trv06bBatteryLow","Trv06b Battery Low","classicTrvPreset","Classic Trv Preset","schedule","boost","complex","comfort","eco","away","classicTrvChildLock","Classic Trv Child Lock","classicTrvValveDetection","valve_detection","Classic Trv Valve Detection","classicTrvAutoLock","autoLock","auto_lock","Classic Trv Auto Lock","classicTrvWindowDetection","window_detection","Classic Trv Window Detection","classicTrvWindowOpen","windowOpen","window_open","Classic Trv Window Open","closed","open","classicTrvForce","force","Classic Trv Force","close","classicTrvWeek","week","Classic Trv Week","5_2","6_1","7","classicTrvBatteryLow","Classic Trv Battery Low","g2kiPreset","G2ki Preset","holiday","g2kiChildLock","G2ki Child Lock","g2kiWindowDetection","G2ki Window Detection","g2kiFrostProtection","G2ki Frost Protection","g2kiFactoryReset","factoryReset","factory_reset","G2ki Factory Reset","g2kiValveState","valveState","valve_state","G2ki Valve State","tbgePreset","Tbge Preset","tbgeChildLock","Tbge Child Lock","tbgeBoostHeating","boostHeating","boost_heating","Tbge Boost Heating","cgr0Preset","Cgr0Preset","antifrost","cgr0ChildLock","Cgr0Child Lock","cgr0WindowDetection","Cgr0Window Detection","cgr0OpenWindow","openWindow","open_window","Cgr0Open Window","cgr0FrostProtection","Cgr0Frost Protection","cgr0ScaleProtection","Cgr0Scale Protection","cgr0ValveState","Cgr0Valve State","cgr0BatteryLow","Cgr0Battery Low","cgr0BoostHeating","Cgr0Boost Heating","trv603wzPreset","Trv603wz Preset","trv603wzChildLock","Trv603wz Child Lock","trv603wzWindowDetection","Trv603wz Window Detection","trv603wzWindowOpen","Trv603wz Window Open","trv603wzFrostProtection","Trv603wz Frost Protection","trv603wzAntiScale","antiScale","anti_scale","Trv603wz Anti Scale","trv603wzBoostHeating","Trv603wz Boost Heating","trv603wzScreenOrientation","screenOrientation","screen_orientation","Trv603wz Screen Orientation","up","right","down","left","trv603wzValveStatus","valveStatus","valve_status","Trv603wz Valve Status","thahPreset","Thah Preset","thahWindowDetection","Thah Window Detection","thahWindowOpen","Thah Window Open","thahFrostProtection","Thah Frost Protection","thahScaleProtection","Thah Scale Protection","thahBatteryLow","Thah Battery Low","zht002ChildLock","Zht002Child Lock","zht002EcoMode","ecoMode","eco_mode","Zht002Eco Mode","zht002ProgrammingMode","Zht002Programming Mode","zht002WorkingDay","workingDay","working_day","Zht002Working Day","disabled","fiveTwo","sixOne","seven","zht002Sensor","sensor","Zht002Sensor","in","ou","al","zht002ValveState","Zht002Valve State","tgm50ChildLock","Tgm50Child Lock","tgm50FrostProtection","Tgm50Frost Protection","tgm50FactoryReset","Tgm50Factory Reset","tgm50Preset","Tgm50Preset","tgm50Sensor","Tgm50Sensor","internal","external","both","tgm50BacklightMode","backlightMode","backlight_mode","Tgm50Backlight Mode","alwaysLow","alwaysMid","alwaysHigh","trv1Preset","Trv1Preset","trv1ChildLock","Trv1Child Lock","trv1WindowDetection","Trv1Window Detection","trv1Window","window","Trv1Window","trv1AlarmSwitch","alarmSwitch","alarm_switch","Trv1Alarm Switch","trv1BoostHeating","Trv1Boost Heating","trv1ScreenOrientation","Trv1Screen Orientation","trv1DisplayBrightness","displayBrightness","display_brightness","Trv1Display Brightness","high","middle","trv1Hysteresis","hysteresisMode","hysteresis_mode","Trv1Hysteresis","hy607wModeState","modeState","mode_state","Hy607w Mode State","tempOverride","zgwkdaChildLock","Zgwkda Child Lock","tbgeWindowOpenStatus","windowOpenStatus","Tbge Window Open Status","last_power_response_time","lastPowerResponseTime","Last power response time","trv603Monday","schedule_monday","Trv603Monday","trv603Tuesday","schedule_tuesday","Trv603Tuesday","trv603Wednesday","schedule_wednesday","Trv603Wednesday","trv603Thursday","schedule_thursday","Trv603Thursday","trv603Friday","schedule_friday","Trv603Friday","trv603Saturday","schedule_saturday","Trv603Saturday","trv603Sunday","schedule_sunday","Trv603Sunday","trv603Holiday","holidayPeriod","holiday_time","Trv603Holiday"}
 local function string_value(value)
-if type(value)=="number" then return strings[value]end
+if type(value)=="number"then return strings[value]end
 return value
 end
-local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return "concertmirror08464." .. suffix end
+local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
 local table_groups={}
 local function grouped_table(group_id)
-if type(group_id)~="number" then return{}end
+if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
-if existing ~=nil then return existing end
+if existing~=nil then return existing end
 local out={}
 table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
-if type(values)~="table" then return nil end
+if type(values)~="table"then return nil end
 local out=grouped_table(group_id)
 for index,value in ipairs(values)do out[index]=string_value(value)end
 return out
@@ -26,11 +26,11 @@ if value==0 then return nil end
 return string_value(value)
 end
 local function command_default(attribute_name)
-if type(attribute_name)~="string" or attribute_name=="" then return nil end
-return "set" .. attribute_name:sub(1,1):upper().. attribute_name:sub(2)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
-if type(value)~="table" then return nil end
+if type(value)~="table"then return nil end
 local out=grouped_table(value[6])
 out.minimum=value[1]
 out.maximum=value[2]
@@ -62,7 +62,7 @@ return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(ro
 end
 local function build(rows,factory)
 local out={}
-for _,row in ipairs(rows)do out[#out + 1]=factory(row)end
+for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
 custom_capabilities.numeric=build({{2,nil,2,3,nil,nil,nil,4,5,{0.5,10,0.5,1,nil,1,nil},nil,nil,1},{6,nil,6,7,nil,nil,nil,8,9,{25,70,1,1,nil,2,nil},nil,nil,1},{10,nil,10,11,nil,nil,nil,12,13,{-20,20,1,1,nil,3,nil},nil,nil,1},{15,nil,15,16,nil,0,0,17,18,{0,100,1,14,nil,4,nil},nil,nil,14},{19,nil,19,20,nil,0,0,20,21,{0,255,1,nil,nil,5,nil},nil,nil,nil},{22,nil,22,11,nil,nil,nil,12,23,{-20,20,1,1,nil,6,nil},nil,nil,1},{24,nil,24,16,nil,0,0,17,25,{0,100,1,14,nil,7,nil},nil,nil,14},{26,nil,26,20,nil,0,0,20,27,{0,255,1,nil,nil,8,nil},nil,nil,nil},{28,nil,28,29,nil,0,0,29,30,{0,100,1,14,nil,9,nil},nil,nil,14},{31,nil,31,11,nil,nil,nil,12,32,{-9,9,0.5,1,nil,10,nil},nil,nil,1},{33,nil,33,34,nil,nil,nil,35,36,{5,15,1,1,nil,11,nil},nil,nil,1},{37,nil,37,38,nil,nil,nil,39,40,{16,70,1,1,nil,12,nil},nil,nil,1},{42,nil,42,43,nil,nil,nil,44,45,{0,900,1,41,nil,13,nil},nil,nil,41},{46,nil,46,47,nil,nil,nil,48,49,{5,35,1,1,nil,14,nil},nil,nil,1},{50,nil,50,51,nil,nil,nil,52,53,{5,35,1,1,nil,15,nil},nil,nil,1},{54,nil,54,55,nil,nil,nil,56,57,{5,35,1,1,nil,16,nil},nil,nil,1},{58,nil,58,59,nil,nil,nil,60,61,{0,100,1,nil,nil,17,nil},nil,nil,nil},{62,nil,62,63,nil,nil,nil,8,64,{15,35,0.5,1,nil,18,nil},nil,nil,1},{65,nil,65,66,nil,nil,nil,67,68,{5,15,0.5,1,nil,19,nil},nil,nil,1},{69,nil,69,70,nil,nil,nil,71,72,{5,25,0.5,1,nil,20,nil},nil,nil,1},{74,nil,74,75,nil,nil,nil,76,77,{0,60,1,73,nil,21,nil},nil,nil,73},{78,nil,78,79,nil,nil,nil,80,81,{5,35,1,1,nil,22,nil},nil,nil,1},{82,nil,82,47,nil,nil,nil,48,83,{5,35,0.5,1,nil,23,nil},nil,nil,1},{84,nil,84,51,nil,nil,nil,52,85,{5,35,0.5,1,nil,24,nil},nil,nil,1},{86,nil,86,47,nil,nil,nil,48,87,{5,35,0.5,1,nil,25,nil},nil,nil,1},{88,nil,88,51,nil,nil,nil,52,89,{5,35,0.5,1,nil,26,nil},nil,nil,1},{90,nil,90,79,nil,nil,nil,80,91,{5,35,0.5,1,nil,27,nil},nil,nil,1},{92,nil,92,93,nil,nil,nil,94,95,{5,35,0.5,1,nil,28,nil},nil,nil,1},{96,nil,96,70,nil,nil,nil,71,97,{5,25,0.5,1,nil,29,nil},nil,nil,1},{98,nil,98,75,nil,nil,nil,76,99,{0,60,1,73,nil,30,nil},nil,nil,73},{100,nil,100,43,nil,nil,nil,44,101,{0,900,1,41,nil,31,nil},nil,nil,41},{102,nil,102,103,nil,0,0,104,105,{0,255,1,nil,nil,32,nil},nil,nil,nil},{106,nil,106,47,nil,nil,nil,48,107,{5,35,0.5,1,nil,33,nil},nil,nil,1},{108,nil,108,51,nil,nil,nil,52,109,{5,35,0.5,1,nil,34,nil},nil,nil,1},{110,nil,110,79,nil,nil,nil,80,111,{5,35,0.5,1,nil,35,nil},nil,nil,1},{112,nil,112,43,nil,nil,nil,44,113,{0,900,1,41,nil,36,nil},nil,nil,41},{114,nil,114,79,nil,nil,nil,80,115,{5,35,0.5,1,nil,37,nil},nil,nil,1},{116,nil,116,51,nil,nil,nil,52,117,{5,35,0.5,1,nil,38,nil},nil,nil,1},{118,nil,118,47,nil,nil,nil,48,119,{5,35,0.5,1,nil,39,nil},nil,nil,1},{120,nil,120,121,nil,nil,nil,122,123,{5,35,0.5,1,nil,40,nil},nil,nil,1},{124,nil,124,43,nil,nil,nil,44,125,{0,900,1,41,nil,41,nil},nil,nil,41},{126,nil,126,127,nil,nil,nil,128,129,{0,255,1,nil,nil,42,nil},nil,nil,nil},{130,nil,130,131,nil,0,0,132,133,{0,255,1,nil,nil,43,nil},nil,nil,nil},{134,nil,134,79,nil,nil,nil,80,135,{5,35,0.5,1,nil,44,nil},nil,nil,1},{136,nil,136,51,nil,nil,nil,52,137,{5,35,0.5,1,nil,45,nil},nil,nil,1},{138,nil,138,55,nil,nil,nil,56,139,{5,35,0.5,1,nil,46,nil},nil,nil,1},{141,nil,141,142,nil,0,0,143,144,{0,99999,0.1,140,nil,47,nil},nil,nil,140},{145,nil,145,146,nil,0,0,147,148,{0,99999,0.1,140,nil,48,nil},nil,nil,140},{149,nil,149,150,nil,0,0,151,152,{0,255,1,nil,nil,49,nil},nil,nil,nil},{153,nil,153,34,nil,nil,nil,35,154,{0,20,1,1,nil,50,nil},nil,nil,1},{155,nil,155,38,nil,nil,nil,39,156,{20,50,1,1,nil,51,nil},nil,nil,1},{157,nil,157,11,nil,nil,nil,12,158,{-9,9,1,1,nil,52,nil},nil,nil,1},{159,nil,159,160,nil,nil,nil,161,162,{1,5,1,1,nil,53,nil},nil,nil,1},{163,nil,163,63,nil,nil,nil,8,164,{15,90,0.5,1,nil,54,nil},nil,nil,1},{165,nil,165,11,nil,nil,nil,12,166,{-9.9,9.9,0.1,1,nil,55,nil},nil,nil,1},{167,nil,167,43,nil,nil,nil,44,168,{0,1000,1,73,nil,56,nil},nil,nil,73},{169,nil,169,34,nil,nil,nil,35,170,{5,15,0.5,1,nil,57,nil},nil,nil,1},{171,nil,171,38,nil,nil,nil,39,172,{15,35,0.5,1,nil,58,nil},nil,nil,1},{173,nil,173,11,nil,nil,nil,12,174,{-30,30,0.1,1,nil,59,nil},nil,nil,1},{175,nil,175,29,nil,0,0,29,176,{0,100,1,14,nil,60,nil},nil,nil,14},{177,nil,177,178,nil,nil,nil,179,180,{0.5,5,0.1,1,nil,61,nil},nil,nil,1},{181,nil,181,11,nil,nil,nil,12,182,{-9,9,1,1,nil,62,nil},nil,nil,1},{183,nil,183,184,nil,nil,nil,12,185,{-5.5,5.5,0.1,1,nil,63,nil},nil,nil,1},{186,nil,186,184,nil,nil,nil,12,187,{-12,12,1,1,nil,64,nil},nil,nil,1},{188,nil,188,184,nil,nil,nil,12,189,{-7,7,0.5,1,nil,65,nil},nil,nil,1},{190,nil,190,184,nil,nil,nil,12,191,{-9.5,9.5,0.5,1,nil,66,nil},nil,nil,1}},numeric)
@@ -75,8 +75,8 @@ custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
-if type(metadata.capability_id)=="string" and metadata.capability_id ~="" then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
-if type(metadata.range_key)=="string" and metadata.range_key ~="" then custom_capabilities.by_range_key[metadata.range_key]=metadata end
+if type(metadata.capability_id)=="string"and metadata.capability_id~=""then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
+if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
 index_metadata(custom_capabilities.numeric)
@@ -85,24 +85,23 @@ index_metadata(custom_capabilities.text)
 custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
-if type(allowed_values)~="table" then return nil end
+if type(allowed_values)~="table"then return nil end
 local copied={}
 for index,value in ipairs(allowed_values)do copied[index]=value end
 return copied
 end
 function custom_capabilities.resolve_range(definition,metadata)
-if type(metadata)~="table" then return nil end
-local default_range=type(metadata.default_range)=="table" and metadata.default_range or nil
-local ranges=type(definition)=="table" and definition.presence_capability_ranges or nil
-local resolved=type(ranges)=="table" and ranges[metadata.range_key]or nil
-if type(resolved)~="table" then resolved=default_range end
-if type(resolved)~="table" then return nil end
+if type(metadata)~="table"then return nil end
+local default_range=type(metadata.default_range)=="table"and metadata.default_range or nil
+local ranges=type(definition)=="table"and definition.presence_capability_ranges or nil
+local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
+if type(resolved)~="table"then resolved=default_range end
+if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number" and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number" and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number" and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string" and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table" and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),
-}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
+maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
+step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
+unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
+allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

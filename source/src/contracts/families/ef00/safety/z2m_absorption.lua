@@ -72,7 +72,10 @@ register_device_definition(gas_model_nous_e9, device_helpers.create_fingerprints
 -- Z2M v26.99.0: Moes ZC-HM / Heiman HS-720ES.
 local co_model_moes_zc_hm = {
   profile = "safety-co-moes-zc-hm",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
   query_on_configure = false,
+  query_on_announce = false,
   time_start = "off",
   initial_custom_state_query = false,
   refresh_state_query = false,
@@ -85,8 +88,8 @@ local co_model_moes_zc_hm = {
     end),
   }),
   tuya.dp_numeric(2, {
-    name = "co",
-    emit = emit.carbon_monoxide_level(),
+    name = "moes_zc_hm_co",
+    emit = emit.moesZcHmCo(),
     read_only = true,
   }),
   tuya.dp_numeric(9, {
@@ -115,6 +118,7 @@ register_device_definition(co_model_moes_zc_hm, device_helpers.create_fingerprin
   "_TZE200_hr0tdd47",
   "_TZE200_rjxqso4a",
   "_TZE284_rjxqso4a",
+  "JM720ES-EF-3.0",
 }))
 
 -- Z2M v26.99.0: Nous E13.
@@ -285,6 +289,113 @@ local siren_model_moes_mg_bjq002_core = {
 register_device_definition(siren_model_moes_mg_bjq002_core, device_helpers.create_fingerprints("TS0601", {
   "_TZE20C_tjz9ad5g",
 }))
+
+local novato_zas01p = {
+  profile = "safety-novato-zas01p",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = true,
+  query_on_announce = true,
+  announce_delay = 0,
+  time_start = "off",
+  alarm_command_modes = true,
+  datapoints = {
+    tuya.dp_enum(1, {
+      name = "alarm", emit = emit.alarm(),
+      converter = converter.lookup_from_to({siren=0, strobe=1, both=2, off=3}),
+    }),
+    tuya.dp_enum(5, {
+      name = "zas01p_volume", emit = emit.zas01pVolume(),
+      converter = converter.lookup_from_to({low=0, medium=1, high=2}),
+    }),
+    tuya.dp_numeric(7, {name="zas01p_duration", emit=emit.zas01pDuration()}),
+    tuya.dp_enum(21, {
+      name = "zas01p_melody", emit = emit.zas01pMelody(),
+      converter = converter.lookup_from_to({
+        doorbell=0, alarm_1=1, alarm_2=2, alarm_clock=3, notification=4, countdown=5,
+        emergency_button=6, fall_detected=7, equipment_moved=8, carbon_dioxide=9,
+        circuit_breaker=10, door_open=11, window_open=12, air_quality=13,
+        motion_detected=14, person_detected=15, camera=16, vibration=17,
+        ambient_temperature=18, target_temperature_reached=19, heating=20,
+        water_level_alarm=21, valve_closed=22, scheduled_task=23, door_lock_alarm=24,
+        smoke_alarm=25, gas_alarm=26, low_battery=27, water_leak_alarm=28,
+        device_offline=29, alarm_system_disarmed=30, alarm_system_armed=31,
+      }),
+    }),
+    tuya.dp_on_off(22, {name="switch", emit=emit.switch()}),
+    tuya.dp_enum(23, {
+      name = "zas01p_light_mode", emit = emit.zas01pLightMode(),
+      converter = converter.lookup_from_to({breathing=0, red_flash=1, white=2}),
+    }),
+  },
+}
+register_device_definition(novato_zas01p, device_helpers.create_fingerprints("TS0601", {
+  "_TZE20C_ycab9txf",
+}))
+
+local avatto_zsd20 = {
+  profile = "safety-avatto-zsd20",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_enum(1, {
+      name = "smoke", read_only = true, emit = emit.smoke(),
+      converter = converter.true_false0(),
+    }),
+    tuya.dp_binary(8, {
+      name = "zsd20_self_check", emit = emit.zsd20SelfCheck(),
+      converter = converter.lookup_from_to({ON = true, OFF = false}),
+    }),
+    tuya.dp_battery(15, {read_only = true, emit = emit.battery()}),
+    tuya.dp_binary(16, {
+      name = "zsd20_muffling", emit = emit.zsd20Muffling(),
+      converter = converter.lookup_from_to({ON = true, OFF = false}),
+    }),
+  },
+}
+register_device_definition(avatto_zsd20, device_helpers.create_fingerprints("TS0601", {
+  "_TZE284_uqzwwjas", "_TZE284_zeeqkb0p",
+}))
+
+local hs118z_tuya = {
+  profile = "safety-rain-hs118z-tuya",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  query_on_announce = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_enum(1, {name="rainwater",read_only=true,emit=emit.water(),converter=converter.true_false1()}),
+    tuya.dp_numeric(2, {name="hs118z_tuya_sensitivity",emit=emit.hs118zTuyaSensitivity()}),
+    tuya.dp_numeric(101, {name="hs118z_tuya_illuminance_sampling",emit=emit.hs118zTuyaIlluminanceSampling()}),
+    tuya.dp_illuminance(102, {read_only=true,emit=emit.illuminance()}),
+    tuya.dp_battery(104, {read_only=true,emit=emit.battery()}),
+  },
+}
+register_device_definition(hs118z_tuya, {
+  device_helpers.create_fingerprint("_TZE200_gt1gge3x", "TS0601"),
+})
+
+local hs118z_hysyiot = {
+  profile = "safety-rain-hs118z-hysyiot",
+  magic_packet = true,
+  mcu_version_request_on_configure = false,
+  query_on_configure = false,
+  query_on_announce = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_enum(1, {name="rainwater",read_only=true,emit=emit.water(),converter=converter.true_false1()}),
+    tuya.dp_numeric(2, {name="hs118z_sensitivity",emit=emit.hs118zSensitivity()}),
+    tuya.dp_numeric(101, {name="hs118z_illuminance_sampling",emit=emit.hs118zIlluminanceSampling()}),
+    tuya.dp_illuminance(102, {read_only=true,emit=emit.illuminance()}),
+    tuya.dp_battery(104, {read_only=true,emit=emit.battery()}),
+  },
+}
+register_device_definition(hs118z_hysyiot, {
+  device_helpers.create_fingerprint("HYSYIOT", "HS118Z"),
+})
 
 return {
   id = "ef00.safety.z2m_absorption",

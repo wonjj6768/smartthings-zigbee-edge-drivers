@@ -1,21 +1,21 @@
 local custom_capabilities={}
 local strings={"s","power_poll_interval","powerPollIntervalV2","powerPollInterval","powerPollIntervalRange","Power poll interval","countdown_timer","countdownTimer","countdownTimerRange","Countdown timer","C","temperature_threshold","temperatureThreshold","temperatureThresholdRange","Temperature threshold","A","over_current_threshold","overCurrentThreshold","overCurrentThresholdRange","Over current threshold","V","over_voltage_threshold","overVoltageThreshold","overVoltageThresholdRange","Over voltage threshold","under_voltage_threshold","underVoltageThreshold","underVoltageThresholdRange","Under voltage threshold","kWh","producedEnergyDin","produced_energy","Produced Energy Din","var","reactivePowerDin1","reactivePowerDinOne","power_reactive","Reactive Power Din1","mA","leakageCurrentProtector","leakage_current","Leakage Current Protector","leakageCurrentToqJzt","Leakage Current Toq Jzt","leakageThresholdProtector100ma","leakageThreshProtHundredMa","leakage_threshold","Leakage Threshold Protector100ma","currentThresholdToqcb2A63","currentThreshToqcbTwoAThree","current_threshold","Current Threshold Toqcb2A63","currentThresholdRcbo63a","currentThreshRcboSixtyThreeA","Current Threshold Rcbo63a","din4Temperature","temperature","Din4Temperature","din4Leakage","leakage","Din4Leakage","din4ReclosingTimes","reclosingTimes","reclosing_allowed_times","Din4Reclosing Times","din4Timer","timer","Din4Timer","zbndj63ReverseEnergy","reverseEnergy","reverse_energy","Zbndj63Reverse Energy","zbndj63Temperature","Zbndj63Temperature","zbndj63LeakageCurrent","leakageCurrent","Zbndj63Leakage Current","zbndj63BalanceEnergy","balanceEnergy","balance_energy","Zbndj63Balance Energy","zbndj63ChargeEnergy","chargeEnergy","charge_energy","Zbndj63Charge Energy","zbndj63LeakageDelay","leakageDelay","leakage_delay","Zbndj63Leakage Delay","zbndj63Countdown","countdown","Zbndj63Countdown","zbndj63PowerOnDelay","powerOnDelay","power_on_delay","Zbndj63Power On Delay","zbndj63RecoverCount","recoverCount","recover_count","Zbndj63Recover Count","din1TotalEnergy","totalEnergy","total_energy","Din1Total Energy","kVArh","din1EnergyReactive","energyReactive","energy_reactive","Din1Energy Reactive","Hz","din1AcFrequency","acFrequency","ac_frequency","Din1Ac Frequency","%","din1PowerFactor","powerFactor","power_factor","Din1Power Factor","toqjztAcFrequency","Toqjzt Ac Frequency","toqjztPowerFactor","Toqjzt Power Factor","toqjztOverCurrentThreshold","Toqjzt Over Current Threshold","toqjztOverVoltageThreshold","Toqjzt Over Voltage Threshold","toqjztUnderVoltageThreshold","Toqjzt Under Voltage Threshold","toqjztTemperatureThreshold","Toqjzt Temperature Threshold","W","toqjztOverPowerThreshold","overPowerThreshold","over_power_threshold","Toqjzt Over Power Threshold","towsmr1LeakageCurrent","Towsmr1Leakage Current","towsmr1OverCurrentThreshold","Towsmr1Over Current Threshold","towsmr1OverVoltageThreshold","Towsmr1Over Voltage Threshold","towsmr1UnderVoltageThreshold","Towsmr1Under Voltage Threshold","towsmr1LeakageThreshold","leakageThreshold","Towsmr1Leakage Threshold","towsmr1TemperatureThreshold","Towsmr1Temperature Threshold","towsmr1OverPowerThreshold","Towsmr1Over Power Threshold","toqcb2OverVoltageThreshold","Toqcb2Over Voltage Threshold","toqcb2UnderVoltageThreshold","Toqcb2Under Voltage Threshold","toqcb2TemperatureThreshold","Toqcb2Temperature Threshold","toqcb2OverPowerThreshold","Toqcb2Over Power Threshold","smkg2knlOverVoltageThreshold","Smkg2knl Over Voltage Threshold","smkg2knlUnderVoltageThreshold","Smkg2knl Under Voltage Threshold","smkg2knlOverCurrentThreshold","Smkg2knl Over Current Threshold","smkg2knlTemperatureThreshold","Smkg2knl Temperature Threshold","rcboCountdownTimer","Rcbo Countdown Timer","rcboVoltageRms","voltageRms","voltage_rms","Rcbo Voltage Rms","rcboCurrentAverage","currentAverage","current_average","Rcbo Current Average","power_on_behavior","powerOnBehavior","supportedPowerOnBehaviors","Power on behavior","off","on","previous","power_outage_memory","powerOutageMemory","supportedPowerOutageMemories","Power outage memory","restore","clearEnergyRcbo","clear_energy","Clear Energy Rcbo","clearFaultDin2","clearFaultDinTwo","clear_fault","Clear Fault Din2","din2Fault","fault","Din2Fault","clear","wrong_frequency_threshold","din3Fault","Din3Fault","stb3l125zjLeakageTest","leakageTest","leakage_test","Stb3l125zj Leakage Test","zbndj63RecoverEnable","recoverEnable","recover_enable","Zbndj63Recover Enable","zbndj63SwitchPrepayment","switchPrepayment","switch_prepayment","Zbndj63Switch Prepayment","zbndj63ClearEnergy","clearEnergy","Zbndj63Clear Energy","zbndj63RelayPowerOnState","relayPowerOnState","relay_power_on_state","Zbndj63Relay Power On State","zbndj63Faults","faults","Zbndj63Faults","short_circuit_alarm","surge_alarm","overload_alarm","leakagecurr_alarm","temp_dif_fault","fire_alarm","high_power_alarm","self_test_alarm","ov_cr","unbalance_alarm","ov_vol","undervoltage_alarm","miss_phase_alarm","outage_alarm","magnetism_alarm","credit_alarm","no_balance_alarm","clearFaultDin3","clearFaultDinThree","Clear Fault Din3","clearFaultBreaker","Clear Fault Breaker","tripTestRcboTripClear","trip_test","Trip Test Rcbo Trip Clear","trip","din4Status","status","Din4Status","standby","active","din4ReclosingEnable","reclosingEnable","reclosing_enable","Din4Reclosing Enable","din4ClearEnergy","Din4Clear Energy","din4PowerOnBehavior","Din4Power On Behavior","toqjztOverVoltageSetting","overVoltageSetting","over_voltage_setting","Toqjzt Over Voltage Setting","ignore","alarm","toqjztUnderVoltageSetting","underVoltageSetting","under_voltage_setting","Toqjzt Under Voltage Setting","toqjztOverCurrentSetting","overCurrentSetting","over_current_setting","Toqjzt Over Current Setting","toqjztOverPowerSetting","overPowerSetting","over_power_setting","Toqjzt Over Power Setting","toqjztTemperatureSetting","temperatureSetting","temperature_setting","Toqjzt Temperature Setting","toqjztControlMode","controlMode","control_mode","Toqjzt Control Mode","local_lock","local_mode","remote_mode","full_control","toqjztEvent","event","Toqjzt Event","normal","over_current_trip","over_power_trip","high_temp_trip","over_voltage_trip","under_voltage_trip","over_current_alarm","over_power_alarm","high_temp_alarm","over_voltage_alarm","under_voltage_alarm","remote_on","remote_off","manual_on","manual_off","leakage_trip","leakage_alarm","restore_default","automatic_closing","electricity_shortage","electricity_shortage_alarm","timing_switch_on","timing_switch_off","towsmr1OverVoltageSetting","Towsmr1Over Voltage Setting","towsmr1UnderVoltageSetting","Towsmr1Under Voltage Setting","towsmr1OverCurrentSetting","Towsmr1Over Current Setting","towsmr1OverPowerSetting","Towsmr1Over Power Setting","towsmr1TemperatureSetting","Towsmr1Temperature Setting","towsmr1LeakageSetting","leakageSetting","leakage_setting","Towsmr1Leakage Setting","towsmr1Event","Towsmr1Event","towsmr1AutoReclosing","autoReclosing","auto_reclosing","Towsmr1Auto Reclosing","towsmr1RestoreDefault","restoreDefault","Towsmr1Restore Default","towsmr1OvercurrentRecloser","overcurrentRecloser","overcurrent_recloser","Towsmr1Overcurrent Recloser","towsmr1LeakageRecloser","leakageRecloser","leakage_recloser","Towsmr1Leakage Recloser","towsmr1OverpowerRecloser","overpowerRecloser","overpower_recloser","Towsmr1Overpower Recloser","zbnjt63Fault","Zbnjt63Fault","terminal_alarm","cover_alarm","battery_alarm","meter_hardware_alarm","zbnjt63PowerOutageMemory","Zbnjt63Power Outage Memory","toqcb2OverVoltageSetting","Toqcb2Over Voltage Setting","closed","toqcb2UnderVoltageSetting","Toqcb2Under Voltage Setting","toqcb2OverCurrentSetting","Toqcb2Over Current Setting","toqcb2OverPowerSetting","Toqcb2Over Power Setting","toqcb2TemperatureSetting","Toqcb2Temperature Setting","toqcb2LastEvent","lastEvent","last_event","Toqcb2Last Event","trip_over_current","trip_over_power","trip_over_temperature","trip_voltage_1","trip_voltage_2","alarm_over_current","alarm_over_power","alarm_over_temperature","alarm_voltage_1","alarm_voltage_2","value_15","value_16","factory_reset","toqcb2FactoryReset","factoryReset","Toqcb2Factory Reset","rcboAlarm","Rcbo Alarm","over_temperature_threshold","over_leakage_current_threshold","safety_lock","rcboPowerOnBehavior","Rcbo Power On Behavior","rcboChildLock","childLock","child_lock","Rcbo Child Lock","last_power_response_time","lastPowerResponseTime","Last power response time","din4Faults","Din4Faults","din1Faults","Din1Faults","din2MeterId","meterId","meter_id","Din2Meter Id","din3MeterId","Din3Meter Id","rmdzb1pnl63Faults","Rmdzb1pnl63Faults","stb3l125zjFaults","Stb3l125zj Faults","zbnjt63MeterId","Zbnjt63Meter Id","smkg2knlFaults","Smkg2knl Faults","rcboMeterNumber","meterNumber","meter_number","Rcbo Meter Number"}
 local function string_value(value)
-if type(value)=="number" then return strings[value]end
+if type(value)=="number"then return strings[value]end
 return value
 end
-local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return "concertmirror08464." .. suffix end
+local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
 local table_groups={}
 local function grouped_table(group_id)
-if type(group_id)~="number" then return{}end
+if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
-if existing ~=nil then return existing end
+if existing~=nil then return existing end
 local out={}
 table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
-if type(values)~="table" then return nil end
+if type(values)~="table"then return nil end
 local out=grouped_table(group_id)
 for index,value in ipairs(values)do out[index]=string_value(value)end
 return out
@@ -26,11 +26,11 @@ if value==0 then return nil end
 return string_value(value)
 end
 local function command_default(attribute_name)
-if type(attribute_name)~="string" or attribute_name=="" then return nil end
-return "set" .. attribute_name:sub(1,1):upper().. attribute_name:sub(2)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
-if type(value)~="table" then return nil end
+if type(value)~="table"then return nil end
 local out=grouped_table(value[6])
 out.minimum=value[1]
 out.maximum=value[2]
@@ -62,7 +62,7 @@ return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(ro
 end
 local function build(rows,factory)
 local out={}
-for _,row in ipairs(rows)do out[#out + 1]=factory(row)end
+for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
 custom_capabilities.numeric=build({{2,2,3,4,5,nil,nil,2,6,{5,3600,5,1,nil,1,nil},5,3600,1},{7,7,8,8,9,nil,nil,7,10,{0,43200,1,1,nil,2,nil},0,43200,1},{12,12,13,13,14,nil,nil,12,15,{40,100,1,11,nil,3,nil},40,100,11},{17,17,18,18,19,nil,nil,17,20,{1,64,1,16,nil,4,nil},1,64,16},{22,22,23,23,24,nil,nil,22,25,{220,265,1,21,nil,5,nil},220,265,21},{26,26,27,27,28,nil,nil,26,29,{76,240,1,21,nil,6,nil},76,240,21},{31,nil,31,31,nil,0,0,32,33,{0,999999,0.001,30,nil,7,nil},nil,nil,30},{35,nil,35,36,nil,0,0,37,38,{0,999999,1,34,nil,8,nil},nil,nil,34},{40,nil,40,40,nil,0,0,41,42,{0,1000,1,39,nil,9,nil},nil,nil,39},{43,nil,43,43,nil,0,0,41,44,{0,1000,1,39,nil,10,nil},nil,nil,39},{45,nil,45,46,nil,nil,nil,47,48,{10,100,1,39,nil,11,nil},nil,nil,39},{49,nil,49,50,nil,nil,nil,51,52,{1,63,1,16,nil,12,nil},nil,nil,16},{53,nil,53,54,nil,nil,nil,51,55,{1,63,1,16,nil,13,nil},nil,nil,16},{56,nil,56,57,nil,0,0,57,58,{-40,150,1,11,nil,14,nil},nil,nil,11},{59,nil,59,60,nil,0,0,60,61,{0,1000,1,39,nil,15,nil},nil,nil,39},{62,nil,62,63,nil,nil,nil,64,65,{0,30,1,nil,nil,16,nil},nil,nil,nil},{66,nil,66,67,nil,nil,nil,67,68,{0,86400,1,1,nil,17,nil},nil,nil,1},{69,nil,69,70,nil,0,0,71,72,{0,999999,0.01,30,nil,18,nil},nil,nil,30},{73,nil,73,57,nil,0,0,57,74,{-40,150,1,11,nil,19,nil},nil,nil,11},{75,nil,75,76,nil,0,0,41,77,{0,1000,1,39,nil,20,nil},nil,nil,39},{78,nil,78,79,nil,0,0,80,81,{0,999999,0.01,30,nil,21,nil},nil,nil,30},{82,nil,82,83,nil,nil,nil,84,85,{0,999999,0.01,30,nil,22,nil},nil,nil,30},{86,nil,86,87,nil,nil,nil,88,89,{1,9999,1,1,nil,23,nil},nil,nil,1},{90,nil,90,91,nil,nil,nil,91,92,{0,43200,1,1,nil,24,nil},nil,nil,1},{93,nil,93,94,nil,nil,nil,95,96,{1,9999,1,1,nil,25,nil},nil,nil,1},{97,nil,97,98,nil,nil,nil,99,100,{0,999,1,nil,nil,26,nil},nil,nil,nil},{101,nil,101,102,nil,0,0,103,104,{0,999999,0.01,30,nil,27,nil},nil,nil,30},{106,nil,106,107,nil,0,0,108,109,{0,999999,0.01,105,nil,28,nil},nil,nil,105},{111,nil,111,112,nil,0,0,113,114,{0,100,0.01,110,nil,29,nil},nil,nil,110},{116,nil,116,117,nil,0,0,118,119,{0,100,0.1,115,nil,30,nil},nil,nil,115},{120,nil,120,112,nil,0,0,113,121,{0,100,1,110,nil,31,nil},nil,nil,110},{122,nil,122,117,nil,0,0,118,123,{0,100,1,115,nil,32,nil},nil,nil,115},{124,nil,124,18,nil,nil,nil,17,125,{1,50,1,16,nil,33,nil},nil,nil,16},{126,nil,126,23,nil,nil,nil,22,127,{240,295,1,21,nil,34,nil},nil,nil,21},{128,nil,128,27,nil,nil,nil,26,129,{90,220,1,21,nil,35,nil},nil,nil,21},{130,nil,130,13,nil,nil,nil,12,131,{-25,80,1,11,nil,36,nil},nil,nil,11},{133,nil,133,134,nil,nil,nil,135,136,{1000,26000,1,132,nil,37,nil},nil,nil,132},{137,nil,137,76,nil,0,0,41,138,{0,1000,1,39,nil,38,nil},nil,nil,39},{139,nil,139,18,nil,nil,nil,17,140,{1,40,1,16,nil,39,nil},nil,nil,16},{141,nil,141,23,nil,nil,nil,22,142,{240,295,1,21,nil,40,nil},nil,nil,21},{143,nil,143,27,nil,nil,nil,26,144,{145,220,1,21,nil,41,nil},nil,nil,21},{145,nil,145,146,nil,nil,nil,47,147,{30,100,5,39,nil,42,nil},nil,nil,39},{148,nil,148,13,nil,nil,nil,12,149,{-25,100,1,11,nil,43,nil},nil,nil,11},{150,nil,150,134,nil,nil,nil,135,151,{5,25000,10,132,nil,44,nil},nil,nil,132},{152,nil,152,23,nil,nil,nil,22,153,{245,295,1,21,nil,45,nil},nil,nil,21},{154,nil,154,27,nil,nil,nil,26,155,{145,220,1,21,nil,46,nil},nil,nil,21},{156,nil,156,13,nil,nil,nil,12,157,{-40,100,1,11,nil,47,nil},nil,nil,11},{158,nil,158,134,nil,nil,nil,135,159,{200,20000,100,132,nil,48,nil},nil,nil,132},{160,nil,160,23,nil,nil,nil,22,161,{220,265,1,21,nil,49,nil},nil,nil,21},{162,nil,162,27,nil,nil,nil,26,163,{76,240,1,21,nil,50,nil},nil,nil,21},{164,nil,164,18,nil,nil,nil,17,165,{1,63,1,16,nil,51,nil},nil,nil,16},{166,nil,166,13,nil,nil,nil,12,167,{40,150,1,11,nil,52,nil},nil,nil,11},{168,nil,168,8,nil,nil,nil,7,169,{0,86400,1,1,nil,53,nil},nil,nil,1},{170,nil,170,171,nil,0,0,172,173,{0,1000,0.1,21,nil,54,nil},nil,nil,21},{174,nil,174,175,nil,0,0,176,177,{0,1000,0.001,16,nil,55,nil},nil,nil,16}},numeric)
@@ -75,8 +75,8 @@ custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
-if type(metadata.capability_id)=="string" and metadata.capability_id ~="" then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
-if type(metadata.range_key)=="string" and metadata.range_key ~="" then custom_capabilities.by_range_key[metadata.range_key]=metadata end
+if type(metadata.capability_id)=="string"and metadata.capability_id~=""then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
+if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
 index_metadata(custom_capabilities.numeric)
@@ -85,24 +85,23 @@ index_metadata(custom_capabilities.text)
 custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
-if type(allowed_values)~="table" then return nil end
+if type(allowed_values)~="table"then return nil end
 local copied={}
 for index,value in ipairs(allowed_values)do copied[index]=value end
 return copied
 end
 function custom_capabilities.resolve_range(definition,metadata)
-if type(metadata)~="table" then return nil end
-local default_range=type(metadata.default_range)=="table" and metadata.default_range or nil
-local ranges=type(definition)=="table" and definition.presence_capability_ranges or nil
-local resolved=type(ranges)=="table" and ranges[metadata.range_key]or nil
-if type(resolved)~="table" then resolved=default_range end
-if type(resolved)~="table" then return nil end
+if type(metadata)~="table"then return nil end
+local default_range=type(metadata.default_range)=="table"and metadata.default_range or nil
+local ranges=type(definition)=="table"and definition.presence_capability_ranges or nil
+local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
+if type(resolved)~="table"then resolved=default_range end
+if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number" and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number" and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number" and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string" and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table" and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),
-}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
+maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
+step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
+unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
+allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

@@ -1,0 +1,54 @@
+name: thermostats-aqara-w500
+components:
+- id: main
+  capabilities:
+  - id: temperatureMeasurement
+    version: 1
+  - id: relativeHumidityMeasurement
+    version: 1
+  - id: thermostatHeatingSetpoint
+    version: 1
+  - id: thermostatMode
+    version: 1
+  - id: thermostatOperatingState
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: energyMeter
+    version: 1
+  - id: concertmirror08464.aqW500TemperatureCalibration
+    version: 1
+  - id: concertmirror08464.aqW500HoldDuration
+    version: 1
+  - id: concertmirror08464.aqW500MinHeatSetpoint
+    version: 1
+  - id: concertmirror08464.aqW500MaxHeatSetpoint
+    version: 1
+  - id: concertmirror08464.aqW500NtcR25
+    version: 1
+  - id: concertmirror08464.aqW500NtcBeta
+    version: 1
+  - id: concertmirror08464.aqW500Hysteresis
+    version: 1
+  - id: concertmirror08464.aqW500SetpointHold
+    version: 1
+  - id: concertmirror08464.aqW500Preset
+    version: 1
+  - id: concertmirror08464.aqW500WorkState
+    version: 1
+  - id: concertmirror08464.aqW500SensorSource
+    version: 1
+  - id: concertmirror08464.aqW500NtcSensorType
+    version: 1
+  - id: concertmirror08464.aqW500WindowDetection
+    version: 1
+  - id: concertmirror08464.aqW500PowerOutageMemory
+    version: 1
+  - id: concertmirror08464.aqW500ChildLock
+    version: 1
+  - id: concertmirror08464.aqW500Identify
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: Thermostat

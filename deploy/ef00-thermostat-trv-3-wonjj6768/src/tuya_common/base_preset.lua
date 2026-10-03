@@ -16,14 +16,12 @@ local configure_option_keys={
 "named_mapping_values",
 "named_mapping_names",
 "named_datapoints",
-"named_key_field",
-}
+"named_key_field",}
 local announce_option_keys={
 "query_on_announce",
 "announce_delay",
 "query_command_id",
-"announce_handler",
-}
+"announce_handler",}
 local message_option_keys={
 "config_queue",
 "queue_delay",
@@ -36,19 +34,16 @@ local message_option_keys={
 "local_time",
 "auto_connection_status",
 "connection_status_bytes",
-"respond_to_mcu_version_response",
-}
+"respond_to_mcu_version_response",}
 local preferences_option_keys={
 "preference_names",
-"use_queue",
-}
+"use_queue",}
 local named_mapping_option_keys={
 "named_mappings",
 "named_datapoints",
 "named_key_field",
 "named_mapping_values",
-"named_mapping_names",
-}
+"named_mapping_names",}
 local copy_table=shared.copy_table
 local copy_keys=shared.copy_keys
 local time_offset_for_start=shared.time_offset_for_start
@@ -56,10 +51,10 @@ local function resolve_datapoints(options)
 return options.datapoints
 end
 local function resolve_preference_map(options,datapoints)
-if options.preference_map ~=nil then
+if options.preference_map~=nil then
 return options.preference_map
 end
-if options.preference_datapoints ~=nil then
+if options.preference_datapoints~=nil then
 local preference_datapoints=options.preference_datapoints
 if preference_datapoints==true then
 preference_datapoints=datapoints
@@ -77,14 +72,14 @@ copy_keys(normalized,options,named_mapping_option_keys)
 return normalized
 end
 local function merge_named_mapping_overrides(datapoints,named_mappings)
-if type_check(datapoints)~="table" or
-type_check(named_mappings)~="table" or
+if type_check(datapoints)~="table"or
+type_check(named_mappings)~="table"or
 named_mappings[1]~=nil then
 return named_mappings
 end
 local has_named_override=false
 for key,_ in pairs(named_mappings)do
-if type_check(key)=="string" then
+if type_check(key)=="string"then
 has_named_override=true
 break
 end
@@ -99,10 +94,10 @@ end
 return merged
 end
 local function resolve_named_mappings(named_mapping_options,datapoints)
-if named_mapping_options.named_mappings ~=nil then
+if named_mapping_options.named_mappings~=nil then
 return merge_named_mapping_overrides(datapoints,named_mapping_options.named_mappings)
 end
-if named_mapping_options.named_datapoints ~=nil then
+if named_mapping_options.named_datapoints~=nil then
 local named_datapoints=named_mapping_options.named_datapoints
 if named_datapoints==true then
 named_datapoints=datapoints
@@ -110,16 +105,16 @@ end
 if named_datapoints==nil then
 return nil
 end
-if named_mapping_options.named_key_field ~=nil then
+if named_mapping_options.named_key_field~=nil then
 return tuya.build_named_map(named_datapoints,named_mapping_options.named_key_field)
 end
 return named_datapoints
 end
-if named_mapping_options.named_mapping_values ~=nil or named_mapping_options.named_mapping_names ~=nil then
+if named_mapping_options.named_mapping_values~=nil or named_mapping_options.named_mapping_names~=nil then
 if datapoints==nil then
 return nil
 end
-if named_mapping_options.named_key_field ~=nil then
+if named_mapping_options.named_key_field~=nil then
 return tuya.build_named_map(datapoints,named_mapping_options.named_key_field)
 end
 return datapoints
@@ -127,13 +122,13 @@ end
 return nil
 end
 local function resolve_variant_datapoints(options,builder)
-if type_check(options)~="table" then
+if type_check(options)~="table"then
 return builder(options)
 end
-if options.datapoints ~=nil then
+if options.datapoints~=nil then
 return options.datapoints
 end
-if options.datapoint_options ~=nil then
+if options.datapoint_options~=nil then
 return builder(options.datapoint_options)
 end
 return builder(options)
@@ -144,18 +139,18 @@ resolved_options.datapoints=resolve_variant_datapoints(options,builder)
 return tuya.build_base_preset(resolved_options)
 end
 local function resolve_list_variant_args(options)
-if type_check(options)~="table" then
+if type_check(options)~="table"then
 return options,nil
 end
 local builder_options=options.datapoint_options
-if type_check(builder_options)~="table" then
+if type_check(builder_options)~="table"then
 builder_options=options
 end
 local dp_list=builder_options.dps
 if dp_list==nil then
 dp_list=builder_options.dp_list
 end
-if dp_list==nil and builder_options.dp ~=nil then
+if dp_list==nil and builder_options.dp~=nil then
 dp_list={builder_options.dp}
 end
 if dp_list==nil and builder_options[1]~=nil then
@@ -178,53 +173,53 @@ local named_mapping_options=normalize_named_mapping_options(options)
 local preference_map=resolve_preference_map(options,datapoints)
 local named_mappings=resolve_named_mappings(named_mapping_options,datapoints)
 local named_mappings_by_name=nil
-if type_check(named_mappings)=="table" then
+if type_check(named_mappings)=="table"then
 named_mappings_by_name=tuya.build_named_map(named_mappings,"name")
 for key,mapping in pairs(named_mappings)do
-if type_check(key)=="string" then
+if type_check(key)=="string"then
 named_mappings_by_name[key]=mapping
 end
 end
 end
 local configure_options=copy_table(options.configure)
 copy_keys(configure_options,options,configure_option_keys)
-if options.zcl_clusters ~=nil and configure_options.magic_packet==nil then
+if options.zcl_clusters~=nil and configure_options.magic_packet==nil then
 configure_options.magic_packet=false
 end
-if preference_map ~=nil and configure_options.preference_map==nil then
+if preference_map~=nil and configure_options.preference_map==nil then
 configure_options.preference_map=preference_map
 end
-if options.preference_names ~=nil and configure_options.preference_names==nil then
+if options.preference_names~=nil and configure_options.preference_names==nil then
 configure_options.preference_names=options.preference_names
 end
-if named_mappings ~=nil and configure_options.named_mappings==nil then
+if named_mappings~=nil and configure_options.named_mappings==nil then
 configure_options.named_mappings=named_mappings
 end
-if named_mapping_options.named_mapping_values ~=nil and configure_options.named_mapping_values==nil then
+if named_mapping_options.named_mapping_values~=nil and configure_options.named_mapping_values==nil then
 configure_options.named_mapping_values=named_mapping_options.named_mapping_values
 end
-if named_mapping_options.named_mapping_names ~=nil and configure_options.named_mapping_names==nil then
+if named_mapping_options.named_mapping_names~=nil and configure_options.named_mapping_names==nil then
 configure_options.named_mapping_names=named_mapping_options.named_mapping_names
 end
 local announce_options=copy_table(options.announce)
 copy_keys(announce_options,options,announce_option_keys)
 local message_handlers=copy_table(options.message)
 copy_keys(message_handlers,options,message_option_keys)
-if datapoints ~=nil and message_handlers.datapoints==nil then
+if datapoints~=nil and message_handlers.datapoints==nil then
 message_handlers.datapoints=datapoints
 end
 local preferences_options=copy_table(options.preferences)
 copy_keys(preferences_options,options,preferences_option_keys)
-if options.preference_names ~=nil and preferences_options.preference_names==nil then
+if options.preference_names~=nil and preferences_options.preference_names==nil then
 preferences_options.preference_names=options.preference_names
 end
-if datapoints ~=nil then
+if datapoints~=nil then
 prepare_mappings(datapoints)
 end
-if preference_map ~=nil then
+if preference_map~=nil then
 prepare_mappings(preference_map)
 end
-if named_mappings ~=nil and named_mappings ~=datapoints then
+if named_mappings~=nil and named_mappings~=datapoints then
 prepare_mappings(named_mappings)
 end
 return{
@@ -237,18 +232,17 @@ configure_options=configure_options,
 announce_options=announce_options,
 message_handlers=message_handlers,
 preferences_options=preferences_options,
-named_mapping_options=named_mapping_options,
-}
+named_mapping_options=named_mapping_options,}
 end
 local preset_methods={}
 local function resolve_preset_preference_map(preset)
-if preset.preference_map ~=nil then
+if preset.preference_map~=nil then
 return preset.preference_map
 end
 return preset.datapoints
 end
 local function resolve_preset_named_mappings(preset)
-if preset.named_mappings ~=nil then
+if preset.named_mappings~=nil then
 return preset.named_mappings
 end
 return preset.datapoints
@@ -277,24 +271,23 @@ local handlers=self.message_handlers
 return tuya.send_connection_status(
 device,
 transaction,
-status_bytes or handlers.connection_status_bytes
-)
+status_bytes or handlers.connection_status_bytes)
 end
 function preset_methods.send_time(self,device,utc_time,local_time)
 local handlers=self.message_handlers
 local resolved_utc_time=utc_time or handlers.utc_time
 local resolved_local_time=local_time or handlers.local_time
 local time_offset=handlers.time_offset
-if time_offset ~=nil then
+if time_offset~=nil then
 return tuya.send_time_with_offset(device,time_offset,resolved_utc_time,resolved_local_time)
 end
 local time_start=handlers.time_start
-if time_start=="off" then
+if time_start=="off"then
 return false
 end
-if time_start ~=nil then
+if time_start~=nil then
 local offset=time_offset_for_start(time_start)
-if offset ~=0 then
+if offset~=0 then
 return tuya.send_time_with_offset(device,offset,resolved_utc_time,resolved_local_time)
 end
 end
@@ -306,29 +299,28 @@ local resolved_offset=offset_seconds
 if resolved_offset==nil then
 resolved_offset=handlers.time_offset
 end
-if resolved_offset==nil and handlers.time_start ~=nil then
+if resolved_offset==nil and handlers.time_start~=nil then
 resolved_offset=time_offset_for_start(handlers.time_start)
 end
 return tuya.send_time_with_offset(
 device,
 resolved_offset,
 utc_time or handlers.utc_time,
-local_time or handlers.local_time
-)
+local_time or handlers.local_time)
 end
 function preset_methods.apply_time_request(self,device,message)
 local handlers=self.message_handlers
 local time_offset=handlers.time_offset
-if time_offset ~=nil then
+if time_offset~=nil then
 return tuya.apply_time_request_with_offset(device,message,time_offset,handlers.utc_time,handlers.local_time)
 end
 local time_start=handlers.time_start
-if time_start=="off" then
+if time_start=="off"then
 return false
 end
-if time_start ~=nil then
+if time_start~=nil then
 local offset=time_offset_for_start(time_start)
-if offset ~=0 then
+if offset~=0 then
 return tuya.apply_time_request_with_offset(device,message,offset,handlers.utc_time,handlers.local_time)
 end
 end
@@ -342,8 +334,7 @@ local configure_options=self.configure_options
 return tuya.start_query_timer(
 device,
 interval_seconds or configure_options.query_interval_seconds,
-command_id or configure_options.query_command_id
-)
+command_id or configure_options.query_command_id)
 end
 function preset_methods.stop_query_timer(self,device)
 return tuya.stop_query_timer(device)
@@ -371,8 +362,7 @@ return tuya.send_preferences(
 device,
 preference_map,
 old_prefs,
-preference_names or preferences_options.preference_names
-)
+preference_names or preferences_options.preference_names)
 end
 function preset_methods.build_preference_config_queue(self,device,old_prefs,preference_names)
 local preference_map=resolve_preset_preference_map(self)
@@ -384,8 +374,7 @@ return tuya.build_preference_config_queue(
 device,
 preference_map,
 preference_names or preferences_options.preference_names,
-old_prefs
-)
+old_prefs)
 end
 function preset_methods.start_preference_config_queue(self,device,old_prefs,preference_names)
 local preference_map=resolve_preset_preference_map(self)
@@ -397,8 +386,7 @@ return tuya.start_preference_config_queue(
 device,
 preference_map,
 preference_names or preferences_options.preference_names,
-old_prefs
-)
+old_prefs)
 end
 function preset_methods.send_named_mapping(self,device,name,value,context)
 local named_mappings=resolve_preset_named_mappings(self)
@@ -408,8 +396,8 @@ end
 local named_mapping_options=self.named_mapping_options
 local resolved_value=value
 if resolved_value==nil and
-type_check(name)=="string" and
-type_check(named_mapping_options.named_mapping_values)=="table" then
+type_check(name)=="string"and
+type_check(named_mapping_options.named_mapping_values)=="table"then
 resolved_value=named_mapping_options.named_mapping_values[name]
 end
 return tuya.send_named_mapping(device,named_mappings,name,resolved_value,context)
@@ -425,8 +413,7 @@ device,
 named_mappings,
 values or named_mapping_options.named_mapping_values,
 names or named_mapping_options.named_mapping_names,
-context
-)
+context)
 end
 function preset_methods.build_named_mapping_config_queue(self,device,values,names,context)
 local named_mappings=resolve_preset_named_mappings(self)
@@ -439,8 +426,7 @@ device,
 named_mappings,
 values or named_mapping_options.named_mapping_values,
 names or named_mapping_options.named_mapping_names,
-context
-)
+context)
 end
 function preset_methods.start_named_mapping_config_queue(self,device,values,names,context)
 local named_mappings=resolve_preset_named_mappings(self)
@@ -453,8 +439,7 @@ device,
 named_mappings,
 values or named_mapping_options.named_mapping_values,
 names or named_mapping_options.named_mapping_names,
-context
-)
+context)
 end
 function preset_methods.build_driver_template(self,options)
 options=options or{}
@@ -472,10 +457,7 @@ cluster={
 [tuya.REPORT_STATUS]=cluster_handler,
 [tuya.ACTIVE_STATUS_REPORT]=cluster_handler,
 [tuya.SET_TIME]=cluster_handler,
-[tuya.CONNECTION_STATUS]=cluster_handler,
-},
-},
-},
+[tuya.CONNECTION_STATUS]=cluster_handler,},},},
 lifecycle_handlers={
 init=function(driver,device)
 device:set_find_child(function()return device end)
@@ -489,10 +471,8 @@ capability_handlers={
 ["refresh"]=function(driver,device)
 self:send_state_request(device)
 end,
-},
-},
-health_check=false,
-}
+},},
+health_check=false,}
 if options.preferences then
 template.lifecycle_handlers.infoChanged=function(_,device,_,args)
 if args.old_st_store then
@@ -534,8 +514,7 @@ local preset_method_names={
 "start_preference_config_queue",
 "send_named_mapping","send_named_mappings",
 "build_named_mapping_config_queue","start_named_mapping_config_queue",
-"build_driver_template",
-}
+"build_driver_template",}
 function tuya.build_base_preset(options)
 local normalized=normalize_base_preset_options(options)
 for _,name in ipairs(preset_method_names)do
@@ -608,26 +587,24 @@ local variant_preset_names={
 "cover","thermostat","trv","fan","siren","lock",
 "air_quality_sensor","water_meter","radar_presence_sensor",
 "plug","button_plug","curtain_plug",
-"gang_plug","gang_button_plug","gang_curtain_plug",
-}
+"gang_plug","gang_button_plug","gang_curtain_plug",}
 for _,name in ipairs(variant_preset_names)do
-tuya["build_" .. name .. "_preset"]=function(options)
-return build_variant_preset(options,tuya["build_" .. name .. "_datapoints"])
+tuya["build_"..name .."_preset"]=function(options)
+return build_variant_preset(options,tuya["build_"..name .."_datapoints"])
 end
 end
 local list_variant_preset_names={
 "gang_switch","gang_child_lock","gang_power_on_behavior",
 "gang_switch_mode","gang_switch_type","gang_switch_type_button",
 "gang_switch_type_curtain","gang_brightness","gang_countdown",
-"phase_variant1_meter","phase_variant2_meter","phase_variant3_meter",
-}
+"phase_variant1_meter","phase_variant2_meter","phase_variant3_meter",}
 for _,name in ipairs(list_variant_preset_names)do
-tuya["build_" .. name .. "_preset"]=function(options)
-return build_list_variant_preset(options,tuya["build_" .. name .. "_datapoints"])
+tuya["build_"..name .."_preset"]=function(options)
+return build_list_variant_preset(options,tuya["build_"..name .."_datapoints"])
 end
 end
 function tuya.build_driver(name,preset,options)
-local ZigbeeDriver=require "st.zigbee"
+local ZigbeeDriver=require"st.zigbee"
 return ZigbeeDriver(name,preset:build_driver_template(options))
 end
 end

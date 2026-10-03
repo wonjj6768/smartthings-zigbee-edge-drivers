@@ -29,7 +29,7 @@ local ACTION_BIND_BASIC="bind_basic"
 local ACTION_CONFIG_QUEUE="config_queue"
 local ACTION_QUERY_TIMER="query_timer"
 local FORCE_TIME_UPDATE_FIELD="tuya_next_forced_time_update"
-local FORCE_TIME_UPDATE_INTERVAL=60 * 60
+local FORCE_TIME_UPDATE_INTERVAL=60*60
 local handle_time_request_with_start_mode
 local run_configure_actions
 local send_next_config_item
@@ -39,7 +39,7 @@ local resolved=value
 if resolved==nil then
 resolved=default_value
 end
-if type_check(resolved)~="number" or resolved < 0 then
+if type_check(resolved)~="number"or resolved<0 then
 log.warn(string.format("Tuya %s expects non-negative number, got %s",label,tostring(resolved)))
 return nil
 end
@@ -50,7 +50,7 @@ local resolved=value
 if resolved==nil then
 resolved=default_value
 end
-if type_check(resolved)~="number" or resolved <=0 then
+if type_check(resolved)~="number"or resolved<=0 then
 log.warn(string.format("Tuya %s expects positive number, got %s",label,tostring(resolved)))
 return nil
 end
@@ -58,12 +58,12 @@ return resolved
 end
 local function resolve_bind_target_eui(options,driver)
 local bind_target_eui=options.bind_target_eui
-if type_check(bind_target_eui)=="string" and bind_target_eui ~="" then
+if type_check(bind_target_eui)=="string"and bind_target_eui~=""then
 return bind_target_eui
 end
-if type_check(driver)=="table" and type_check(driver.environment_info)=="table" then
+if type_check(driver)=="table"and type_check(driver.environment_info)=="table"then
 local hub_zigbee_eui=driver.environment_info.hub_zigbee_eui
-if type_check(hub_zigbee_eui)=="string" and hub_zigbee_eui ~="" then
+if type_check(hub_zigbee_eui)=="string"and hub_zigbee_eui~=""then
 return hub_zigbee_eui
 end
 end
@@ -71,8 +71,8 @@ return nil
 end
 local function merge_named_mapping_options(options)
 local merged={}
-local nested=type_check(options.named_mapping)=="table" and options.named_mapping or nil
-if nested ~=nil then
+local nested=type_check(options.named_mapping)=="table"and options.named_mapping or nil
+if nested~=nil then
 for key,value in pairs(nested)do
 merged[key]=value
 end
@@ -82,8 +82,7 @@ local named_keys={
 "named_datapoints",
 "named_key_field",
 "named_mapping_values",
-"named_mapping_names",
-}
+"named_mapping_names",}
 for _,key in ipairs(named_keys)do
 if options[key]~=nil then
 merged[key]=options[key]
@@ -92,7 +91,7 @@ end
 return merged
 end
 local function send_basic_bind_request(device,bind_target_eui)
-if type_check(bind_target_eui)~="string" or bind_target_eui=="" then
+if type_check(bind_target_eui)~="string"or bind_target_eui==""then
 return false
 end
 local request=cluster_base.build_bind_request(device,BASIC_CLUSTER,bind_target_eui)
@@ -104,7 +103,7 @@ device:send(request)
 return true
 end
 local function append_queue_items(target,items)
-if type_check(target)~="table" or type_check(items)~="table" then
+if type_check(target)~="table"or type_check(items)~="table"then
 return target
 end
 for _,item in ipairs(items)do
@@ -113,18 +112,18 @@ end
 return target
 end
 local function schedule_next_configure_action(device,actions,step_delay,cursor)
-if actions[cursor + 1]then
+if actions[cursor+1]then
 device.thread:call_with_delay(step_delay,function()
-run_configure_actions(device,actions,step_delay,cursor + 1)
+run_configure_actions(device,actions,step_delay,cursor+1)
 end)
 end
 end
 handle_time_request_with_start_mode=function(device,message,time_start,utc_time,local_time)
-if time_start=="off" then
+if time_start=="off"then
 return false
 end
 local offset=time_offset_for_start(time_start)
-if offset ~=0 then
+if offset~=0 then
 return tuya.apply_time_request_with_offset(device,message,offset,utc_time,local_time)
 end
 return tuya.apply_time_request(device,message,utc_time,local_time)
@@ -160,7 +159,7 @@ end
 function tuya.apply_announce(device,options)
 options=options or{}
 local handled=false
-if type_check(options.announce_handler)=="function" then
+if type_check(options.announce_handler)=="function"then
 handled=options.announce_handler(device,options)~=false
 end
 if not options.query_on_announce then
@@ -209,10 +208,10 @@ return false
 end
 local named_mapping_options=merge_named_mapping_options(options)
 local preference_map=options.preference_map
-local preference_names=type_check(options.preference_names)=="table" and options.preference_names or nil
+local preference_names=type_check(options.preference_names)=="table"and options.preference_names or nil
 local named_mappings=named_mapping_options.named_mappings
-local named_mapping_values=type_check(named_mapping_options.named_mapping_values)=="table" and named_mapping_options.named_mapping_values or nil
-local named_mapping_names=type_check(named_mapping_options.named_mapping_names)=="table" and named_mapping_options.named_mapping_names or nil
+local named_mapping_values=type_check(named_mapping_options.named_mapping_values)=="table"and named_mapping_options.named_mapping_values or nil
+local named_mapping_names=type_check(named_mapping_options.named_mapping_names)=="table"and named_mapping_options.named_mapping_names or nil
 local bind_target_eui=resolve_bind_target_eui(options,driver)
 local config_queue={}
 if preference_map==nil and options.preference_datapoints then
@@ -220,14 +219,13 @@ local preference_datapoints=options.preference_datapoints
 if preference_datapoints==true then
 preference_datapoints=options.datapoints
 end
-if preference_datapoints ~=nil then
+if preference_datapoints~=nil then
 preference_map=tuya.build_preference_map(
 preference_datapoints,
-options.preference_key_field
-)
+options.preference_key_field)
 end
 end
-if preference_map ~=nil then
+if preference_map~=nil then
 prepare_mappings(preference_map)
 end
 if named_mappings==nil and named_mapping_options.named_datapoints then
@@ -235,75 +233,69 @@ local named_datapoints=named_mapping_options.named_datapoints
 if named_datapoints==true then
 named_datapoints=options.datapoints
 end
-if named_datapoints ~=nil then
-if named_mapping_options.named_key_field ~=nil then
+if named_datapoints~=nil then
+if named_mapping_options.named_key_field~=nil then
 named_mappings=tuya.build_named_map(named_datapoints,named_mapping_options.named_key_field)
 else
 named_mappings=named_datapoints
 end
 end
 end
-if named_mappings==nil and(named_mapping_values ~=nil or named_mapping_names ~=nil)and options.datapoints ~=nil then
-if named_mapping_options.named_key_field ~=nil then
+if named_mappings==nil and(named_mapping_values~=nil or named_mapping_names~=nil)and options.datapoints~=nil then
+if named_mapping_options.named_key_field~=nil then
 named_mappings=tuya.build_named_map(options.datapoints,named_mapping_options.named_key_field)
 else
 named_mappings=options.datapoints
 end
 end
-if named_mappings ~=nil then
+if named_mappings~=nil then
 prepare_mappings(named_mappings)
 end
-if options.magic_packet ~=false then
+if options.magic_packet~=false then
 table_insert(actions,{kind=ACTION_MAGIC_PACKET})
 end
 if options.query_on_configure then
 table_insert(actions,{
 kind=ACTION_QUERY_STATE,
-command_id=options.query_command_id,
-})
+command_id=options.query_command_id,})
 end
 if options.mcu_version_request_on_configure then
 table_insert(actions,{kind=ACTION_MCU_VERSION})
 end
 if options.bind_basic_on_configure then
-if bind_target_eui ~=nil then
+if bind_target_eui~=nil then
 table_insert(actions,{
 kind=ACTION_BIND_BASIC,
-bind_target_eui=bind_target_eui,
-})
+bind_target_eui=bind_target_eui,})
 else
 log.warn("Tuya bind_basic_on_configure requires bind_target_eui or driver.environment_info.hub_zigbee_eui")
 end
 end
-if preference_map ~=nil then
+if preference_map~=nil then
 append_queue_items(
 config_queue,
-tuya.build_preference_config_queue(device,preference_map,preference_names)
-)
+tuya.build_preference_config_queue(device,preference_map,preference_names))
 end
-if named_mappings ~=nil and named_mapping_values ~=nil then
+if named_mappings~=nil and named_mapping_values~=nil then
 append_queue_items(
 config_queue,
-tuya.build_named_mapping_config_queue(device,named_mappings,named_mapping_values,named_mapping_names)
-)
+tuya.build_named_mapping_config_queue(device,named_mappings,named_mapping_values,named_mapping_names))
 end
-if #config_queue > 0 then
+if #config_queue>0 then
 table_insert(actions,{
 kind=ACTION_CONFIG_QUEUE,
-queue=config_queue,
-})
+queue=config_queue,})
 end
 if options.query_interval_seconds then
 table_insert(actions,{
 kind=ACTION_QUERY_TIMER,
 interval_seconds=options.query_interval_seconds,
-command_id=options.query_command_id,
-})
+command_id=options.query_command_id,})
 end
 if #actions==0 then
 return false
 end
-if initial_delay > 0 then
+if initial_delay>0 then
 device.thread:call_with_delay(initial_delay,function()
 run_configure_actions(device,actions,step_delay,1)
 end)
@@ -312,7 +304,7 @@ end
 return run_configure_actions(device,actions,step_delay,1)
 end
 local function handle_time_command(device,message,handlers)
-if type(handlers.time_handler)=="function" then
+if type(handlers.time_handler)=="function"then
 return handlers.time_handler(device,message,handlers)
 end
 if handlers.auto_time==false then
@@ -336,25 +328,24 @@ end
 local function defer_forced_time_update(device,now)
 device:set_field(
 FORCE_TIME_UPDATE_FIELD,
-(now or os.time())+ FORCE_TIME_UPDATE_INTERVAL,
-PERSIST_FALSE
-)
+(now or os.time())+FORCE_TIME_UPDATE_INTERVAL,
+PERSIST_FALSE)
 end
 local function maybe_force_time_update(device,message,handlers)
-if handlers.force_time_updates ~=true or handlers.time_start=="off" then
+if handlers.force_time_updates~=true or handlers.time_start=="off"then
 return false
 end
 local now=os.time()
 local next_update=device:get_field(FORCE_TIME_UPDATE_FIELD)
-if next_update ~=nil and next_update >=now then
+if next_update~=nil and next_update>=now then
 return false
 end
 defer_forced_time_update(device,now)
-if type(handlers.time_handler)=="function" then
+if type(handlers.time_handler)=="function"then
 return handlers.time_handler(device,message,handlers)==true
 end
 local time_offset=handlers.time_offset
-if time_offset ~=nil then
+if time_offset~=nil then
 return tuya.send_time_with_offset(
 device,
 time_offset,
@@ -363,9 +354,9 @@ handlers.local_time
 )==true
 end
 local time_start=handlers.time_start
-if time_start ~=nil then
+if time_start~=nil then
 local offset=time_offset_for_start(time_start)
-if offset ~=0 then
+if offset~=0 then
 return tuya.send_time_with_offset(
 device,
 offset,
@@ -382,15 +373,14 @@ if not frame then
 log.warn(string.format("Failed to parse Tuya report for command 0x%02X",command_id))
 return false
 end
-if handlers.config_queue ~=false then
+if handlers.config_queue~=false then
 handle_config_queue_response(device,message,handlers.queue_delay,frame)
 end
 for _,dp_info in ipairs(frame.datapoints)do
 if datapoints then
 tuya.apply_datapoint_mapping(device,dp_info,datapoints,{
 frame=frame,
-endpoint=dp_info.endpoint or frame.endpoint,
-})
+endpoint=dp_info.endpoint or frame.endpoint,})
 end
 end
 return true
@@ -435,11 +425,11 @@ end
 if expected==actual then
 return true
 end
-return(expected % 0x100)==actual
+return(expected%0x100)==actual
 end
 local function collect_response_dps(payload,frame)
 local responded_dps={}
-if frame and frame.datapoints and #frame.datapoints > 0 then
+if frame and frame.datapoints and #frame.datapoints>0 then
 for _,dp_info in ipairs(frame.datapoints)do
 responded_dps[dp_info.dp]=true
 end
@@ -447,27 +437,27 @@ return responded_dps
 end
 if payload then
 local dp_info=tuya.parse_datapoint(payload,3)
-if dp_info ~=nil then
+if dp_info~=nil then
 responded_dps[dp_info.dp]=true
 end
 end
 return responded_dps
 end
 local function response_contains_dp(responded_dps,dp)
-return dp ~=nil and responded_dps[dp]==true
+return dp~=nil and responded_dps[dp]==true
 end
 local function build_expected_response_dps(current)
 local expected_dps={}
 local function append_dp(dp)
-if type_check(dp)=="number" then
+if type_check(dp)=="number"then
 expected_dps[dp]=true
 end
 end
-if current.response_dp ~=nil then
+if current.response_dp~=nil then
 append_dp(current.response_dp)
 return expected_dps
 end
-if type_check(current.response_dps)=="table" then
+if type_check(current.response_dps)=="table"then
 for _,dp in ipairs(current.response_dps)do
 append_dp(dp)
 end
@@ -475,13 +465,13 @@ if next(expected_dps)~=nil then
 return expected_dps
 end
 end
-if current.dp ~=nil then
+if current.dp~=nil then
 append_dp(current.dp)
 return expected_dps
 end
-if type_check(current.items)=="table" then
+if type_check(current.items)=="table"then
 for _,item in ipairs(current.items)do
-if type_check(item)=="table" then
+if type_check(item)=="table"then
 append_dp(item.dp)
 end
 end
@@ -490,7 +480,7 @@ return expected_dps
 end
 local function response_matches_expected_dps(current,responded_dps)
 local expected_dps=current.expected_response_dps
-if type_check(expected_dps)~="table" then
+if type_check(expected_dps)~="table"then
 expected_dps=build_expected_response_dps(current)
 current.expected_response_dps=expected_dps
 end
@@ -498,7 +488,7 @@ if next(expected_dps)==nil then
 return false
 end
 local matched_dps=current.matched_response_dps
-if type_check(matched_dps)~="table" then
+if type_check(matched_dps)~="table"then
 matched_dps={}
 current.matched_response_dps=matched_dps
 end
@@ -523,7 +513,7 @@ local function config_response_matches(current,response,payload,frame)
 if current.match_response then
 return current.match_response(response,payload,current,frame)==true
 end
-if current.match_transaction and current.packet_id ~=nil then
+if current.match_transaction and current.packet_id~=nil then
 local response_transaction=extract_transaction(response)
 if not transaction_matches(current.packet_id,response_transaction)then
 return false
@@ -531,7 +521,7 @@ end
 end
 local responded_dps=collect_response_dps(payload,frame)
 if next(responded_dps)==nil then
-return current.match_transaction and current.packet_id ~=nil
+return current.match_transaction and current.packet_id~=nil
 end
 return response_matches_expected_dps(current,responded_dps)
 end
@@ -540,10 +530,10 @@ device:set_field(CONFIG_QUEUE_FIELD,nil,PERSIST_FALSE)
 device:set_field(CONFIG_QUEUE_CALLBACK_FIELD,nil,PERSIST_FALSE)
 end
 local function resolve_queue_callback(options)
-if type_check(options)=="function" then
+if type_check(options)=="function"then
 return options
 end
-if type_check(options)=="table" and type_check(options.on_complete)=="function" then
+if type_check(options)=="table"and type_check(options.on_complete)=="function"then
 return options.on_complete
 end
 return nil
@@ -551,7 +541,7 @@ end
 local function finish_config_queue(device,success)
 local callback=device:get_field(CONFIG_QUEUE_CALLBACK_FIELD)
 clear_config_queue(device)
-if type_check(callback)=="function" then
+if type_check(callback)=="function"then
 local ok,err=pcall(callback,success==true)
 if not ok then
 log.warn(string.format("Tuya config queue callback failed: %s",tostring(err)))
@@ -570,7 +560,7 @@ local items=queue or{}
 local callback=resolve_queue_callback(options)
 if #items==0 then
 clear_config_queue(device)
-if type_check(callback)=="function" then
+if type_check(callback)=="function"then
 pcall(callback,false)
 end
 return false
@@ -588,14 +578,14 @@ local item=queue[1]
 local command_id=item.command_id
 if item.items then
 local packet_id=tuya.send_datapoints(device,item.items,command_id,item.transaction)
-if packet_id ~=nil then
+if packet_id~=nil then
 item.packet_id=packet_id
 return true
 end
 return false
 end
 local packet_id=tuya.send_datapoint(device,item.dp,item.datatype,item.value,command_id,item.signed,item.transaction)
-if packet_id ~=nil then
+if packet_id~=nil then
 item.packet_id=packet_id
 return true
 end

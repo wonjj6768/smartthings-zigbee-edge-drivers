@@ -6,6 +6,7 @@ local function load_mapping_preset(zcl)
   local emit = require "capabilities.events.all"
   local data_types = require "st.zigbee.data_types"
   local zigbee_constants = require "st.zigbee.constants"
+  local safe_xy_to_hsv = require "st.utils.safe_xy_to_hsv"
 
   local function merge_options(target, source)
     if type(target) ~= "table" then
@@ -1438,6 +1439,54 @@ local function load_mapping_preset(zcl)
       end,
     })
     return zcl.cluster_attribute(resolved.cluster_id, resolved.attribute_id, resolved)
+  end
+
+  function zcl.color_xy(options)
+    local function receive(value, device, context, mapping)
+      value = type(value) == "table" and value.value or value
+      local prefix = "_zcl_color_xy_" .. tostring(context.endpoint or 1) .. "_"
+      device:set_field(prefix .. mapping.name, value)
+      local x, y = device:get_field(prefix .. "color_x"), device:get_field(prefix .. "color_y")
+      local mode = device:get_field(prefix .. "color_mode")
+      if x ~= nil and y ~= nil and (mode == nil or mode == 0) then
+        local hue, saturation = safe_xy_to_hsv(x, y)
+        local component = context.component or { id = context.component_id or "main" }
+        device:emit_component_event(component, emit.color_hue()(device, hue))
+        device:emit_component_event(component, emit.color_saturation()(device, saturation))
+      end
+    end
+    local mappings = {}
+    for _, item in ipairs({ { "color_x", 0x0003 }, { "color_y", 0x0004 }, { "color_mode", 0x0008 } }) do
+      local resolved = merge_options({}, options)
+      resolved.name, resolved.read_only, resolved.from_device = item[1], true, receive
+      resolved.data_type = item[2] == 0x0008 and data_types.Enum8 or data_types.Uint16
+      mappings[#mappings + 1] = zcl.cluster_attribute(zcl.CLUSTER_COLOR_CONTROL, item[2], resolved)
+    end
+    return mappings
+  end
+
+  function zcl.send_light_effect(device, mapping, value, context)
+    local endpoint = context.endpoint or 1
+    local cluster, command, payload = 0x0003, 0x40, nil
+    if value == "colorloop" or value == "stop_colorloop" then
+      cluster, command = 0x0300, 0x01
+      payload = string.char(value == "colorloop" and 1 or 0, value == "colorloop" and 17 or 1, 0, 0)
+    else
+      local effect = ({ blink = 0, breathe = 1, okay = 2, channel_change = 11, finish_effect = 254, stop_effect = 255 })[value]
+      if effect == nil then return false end
+      payload = string.char(effect, 0)
+    end
+    local sent = zcl.send_raw_cluster_command(device, cluster, command, payload, endpoint)
+    if sent ~= false then
+      device:emit_component_event({ id = context.component_id or "main" }, mapping.emit(device, value))
+      if value == "stop_colorloop" then
+        device.thread:call_with_delay(0.1, function()
+          zcl.read_mapping(device, zcl.cluster_attribute(0x0300, 0x0000, { endpoint = endpoint }))
+          zcl.read_mapping(device, zcl.cluster_attribute(0x0300, 0x0008, { endpoint = endpoint }))
+        end, "light colorloop stopped")
+      end
+    end
+    return sent
   end
 
   define_preset("contact", zcl.ias_zone, function()

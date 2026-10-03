@@ -122,7 +122,6 @@ local candeo_rd1p_dpm = {
       endpoint = 1,
       minimum_interval = 0,
       maximum_interval = 65000,
-      reportable_change = 1,
     }),
     zcl.level({
       endpoint = 1,
@@ -197,7 +196,7 @@ local candeo_rd1p_dpm = {
       write_type = data_types.Uint8,
       read_on_configure = true,
     }),
-    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0x0010, {
+    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0x0012, {
       name = "candeo_rd1p_dpm_on_transition_time",
       emit = emit.candeoRd1pDpmOnTransitionTime(),
       endpoint = 1,
@@ -208,7 +207,7 @@ local candeo_rd1p_dpm = {
       write_type = data_types.Uint16,
       read_on_configure = true,
     }),
-    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0x0012, {
+    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0x0013, {
       name = "candeo_rd1p_dpm_off_transition_time",
       emit = emit.candeoRd1pDpmOffTransitionTime(),
       endpoint = 1,
@@ -277,6 +276,49 @@ local color_cct_light = {
     zcl.color(),
   },
 }
+
+local ledvance_a60 = {
+  profile = "lights-ledvance-a60-rgbw-t",
+  auto_on_before_light_command = false,
+  color_temperature_range = { minimum = 2703, maximum = 6536 },
+  zcl_clusters = {
+    zcl.switch({ endpoint = 1, configure_reporting = false }),
+    zcl.level({ endpoint = 1, configure_reporting = false }),
+    zcl.color_temperature({
+      endpoint = 1, configure_reporting = false,
+      to_device = function(value) return math.max(153, math.min(370, math.floor(1000000 / value + 0.5))) end,
+    }),
+    zcl.color_hue({ endpoint = 1, configure_reporting = false }),
+    zcl.color_saturation({ endpoint = 1, configure_reporting = false }),
+    zcl.color({ endpoint = 1 }),
+    zcl.cluster_attribute(0x0006, 0x4003, {
+      name = "ledvance_a60_power_behavior", endpoint = 1,
+      emit = emit.ledvanceA60PowerBehavior(),
+      from_device = function(value)
+        value = type(value) == "table" and value.value or value
+        return ({ [0] = "off", [1] = "on", [2] = "toggle", [255] = "previous" })[value]
+      end,
+      to_device = function(value) return ({ off = 0, on = 1, toggle = 2, previous = 255 })[value] end,
+      data_type = data_types.Enum8, write_type = data_types.Enum8,
+    }),
+    zcl.cluster_attribute(0x0003, 0xFFFF, {
+      name = "ledvance_a60_effect", endpoint = 1, write_only = true,
+      emit = emit.ledvanceA60Effect(), sender = zcl.send_light_effect,
+    }),
+  },
+  configure = function(_, device)
+    for _, attribute in ipairs({ 0x400A, 0x400B, 0x400C }) do
+      zcl.read_mapping(device, zcl.cluster_attribute(0x0300, attribute, { endpoint = 1 }))
+    end
+  end,
+  runtime_start = function(device)
+    device:emit_component_event({ id = "main" }, capabilities.colorTemperature.colorTemperatureRange({
+      value = { minimum = 2703, maximum = 6536 }, unit = "K",
+    }))
+    return true
+  end,
+}
+zcl_device_helpers.append_clusters(ledvance_a60.zcl_clusters, zcl.color_xy({ endpoint = 1 }))
 
 
 
@@ -590,12 +632,13 @@ register_aliases(color_cct_light, create_model_fingerprints("LEDVANCE", {
   "Gardenpole Mini RGBW Z3",
   "CLA60 RGBW JP",
   "A60S RGBW",
-  "A60 RGBW T",
   "GARDENPOLE RGBW T",
   "A60 RGBW B22D T",
   "FLEX RGBW T",
   "OUTDOOR FLEX RGBW T",
 }))
+
+register_aliases(ledvance_a60, create_model_fingerprints("LEDVANCE", { "A60 RGBW T" }))
 
 register_aliases(color_light, create_model_fingerprints("OSRAM", {
   "Gardenspot RGB",

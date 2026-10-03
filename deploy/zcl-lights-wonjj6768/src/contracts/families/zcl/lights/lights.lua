@@ -1,22 +1,20 @@
-local zcl=require "protocol.zcl"
-local device_helpers=require "contracts.helpers.family"
-local capabilities=require "st.capabilities"
+local zcl=require"protocol.zcl"
+local device_helpers=require"contracts.helpers.family"
+local capabilities=require"st.capabilities"
+local emit=require"capabilities.events.all"
+local data_types=require"st.zigbee.data_types"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local dimmer_light={
 profile="lights-dimmer",
 zcl_clusters={
 zcl.switch(),
-zcl.level(),
-},
-}
+zcl.level(),},}
 local cct_light={
 profile="lights-color-temperature",
 zcl_clusters={
 zcl.switch(),
 zcl.level(),
-zcl.color_temperature(),
-},
-}
+zcl.color_temperature(),},}
 local function build_cct_light(mired_minimum,mired_maximum,options)
 options=options or{}
 local light={
@@ -24,24 +22,19 @@ profile="lights-color-temperature",
 zcl_clusters={
 zcl.switch(),
 zcl.level(),
-zcl.color_temperature(),
-},
-}
+zcl.color_temperature(),},}
 if options.tuya_magic==true then
 table.insert(light.zcl_clusters,1,zcl.tuya_magic_packet())
 end
 light.color_temperature_range={
-minimum=math.floor((1000000 / mired_maximum)+ 0.5),
-maximum=math.floor((1000000 / mired_minimum)+ 0.5),
-}
+minimum=math.floor((1000000/mired_maximum)+0.5),
+maximum=math.floor((1000000/mired_minimum)+0.5),}
 light.runtime_start=function(device)
 device:emit_component_event(
 {id="main"},
 capabilities.colorTemperature.colorTemperatureRange({
 value=light.color_temperature_range,
-unit="K",
-})
-)
+unit="K",}))
 return true
 end
 return light
@@ -49,9 +42,9 @@ end
 local function build_color_cct_light(mired_minimum,mired_maximum,options)
 local light=build_cct_light(mired_minimum,mired_maximum,options)
 light.profile="lights-color-temperature-color"
-light.zcl_clusters[#light.zcl_clusters + 1]=zcl.color_hue()
-light.zcl_clusters[#light.zcl_clusters + 1]=zcl.color_saturation()
-light.zcl_clusters[#light.zcl_clusters + 1]=zcl.color()
+light.zcl_clusters[#light.zcl_clusters+1]=zcl.color_hue()
+light.zcl_clusters[#light.zcl_clusters+1]=zcl.color_saturation()
+light.zcl_clusters[#light.zcl_clusters+1]=zcl.color()
 return light
 end
 local domraem_cct_light=build_cct_light(158,495)
@@ -65,9 +58,7 @@ zcl.switch(),
 zcl.level(),
 zcl.color_hue(),
 zcl.color_saturation(),
-zcl.color(),
-},
-}
+zcl.color(),},}
 local color_cct_light={
 profile="lights-color-temperature-color",
 zcl_clusters={
@@ -76,15 +67,157 @@ zcl.level(),
 zcl.color_temperature(),
 zcl.color_hue(),
 zcl.color_saturation(),
-zcl.color(),
-},
+zcl.color(),},}
+local function ts0505b_setting_sender(device,mapping,value,context)
+local command,payload,cluster=nil,nil,0x0300
+if mapping.name:match("_do_not_disturb$")then
+command,payload=0xFA,string.char(value=="enabled"and 1 or 0)
+elseif mapping.name:match("_color_power_on_behavior$")then
+local mode=({initial=0,previous=1,customized=2})[value]
+if mode==nil then return false end
+command,payload=0xF9,string.char(0,mode)..string.rep(string.char(0),10)
+elseif value=="colorloop"or value=="stop_colorloop"then
+command,payload=0x01,string.char(value=="colorloop"and 1 or 0,value=="colorloop"and 17 or 1,0,0)
+else
+local effect=({blink=0,breathe=1,okay=2,channel_change=11,finish_effect=254,stop_effect=255})[value]
+if effect==nil then return false end
+cluster,command,payload=0x0003,0x40,string.char(effect,0)
+end
+local sent=zcl.send_raw_cluster_command(device,cluster,command,payload,context.endpoint)
+if sent~=false then
+device:emit_component_event({id=context.component_id or"main"},mapping.emit(device,value))
+if value=="stop_colorloop"then
+device.thread:call_with_delay(0.1,function()
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x0000,{endpoint=context.endpoint}))
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x0008,{endpoint=context.endpoint}))
+end,"ts0505b colorloop stopped")
+end
+end
+return sent
+end
+local function livarno_led_sender(device,mapping,value,context)
+local endpoint=context.endpoint or 1
+local brightness=device:get_field("livarno_led_brightness")or 100
+local name=mapping.name
+if name=="color_temperature"then
+local mired=math.max(153,math.min(500,math.floor(1000000/value+0.5)))
+local encoded=math.floor((500-mired)*254/346+0.5)
+zcl.send_raw_cluster_command(device,0x0300,0xF0,string.char(0),endpoint)
+zcl.send_raw_cluster_command(device,0x0300,0x0A,string.char(encoded%256,math.floor(encoded/256),0,0,0,0),endpoint)
+zcl.send_raw_cluster_command(device,0x0008,0x00,string.char(brightness,0,0,0,0),endpoint)
+device:set_field("livarno_led_rgb_mode",false)
+return true
+end
+if name=="brightness"then
+brightness=math.floor(math.max(0,math.min(100,value))*254/100+0.5)
+if device:get_field("livarno_led_rgb_mode")==false then
+zcl.send_raw_cluster_command(device,0x0008,0x00,string.char(brightness,0,0,0,0),endpoint)
+device:set_field("livarno_led_brightness",brightness)
+return true
+end
+end
+local hue=device:get_latest_state("main","colorControl","hue")
+local saturation=device:get_latest_state("main","colorControl","saturation")
+if name=="color"then hue,saturation=value.hue,value.saturation
+elseif name=="color_hue"then hue=value
+elseif name=="color_saturation"then saturation=value end
+hue=hue~=nil and math.floor(math.max(0,math.min(100,hue))*254/100+0.5)or 100
+saturation=saturation~=nil and math.floor(math.max(0,math.min(100,saturation))*254/100+0.5)or 100
+zcl.send_raw_cluster_command(device,0x0300,0xF0,string.char(1),endpoint)
+zcl.send_raw_cluster_command(device,0x0300,0x06,string.char(hue,saturation,0,0,brightness),endpoint)
+device:set_field("livarno_led_brightness",brightness)
+device:set_field("livarno_led_rgb_mode",true)
+return true
+end
+local function livarno_rgb_mode(value,device)
+device:set_field("livarno_led_rgb_mode",value==1)
+return nil
+end
+local lidl_livarno_rgbcct={
+profile="lights-lidl-livarno-rgbcct",
+auto_on_before_light_command=false,
+color_temperature_range={minimum=2000,maximum=6536},
+zcl_clusters={
+zcl.switch({endpoint=1,configure_reporting=false}),
+zcl.level({endpoint=1,configure_reporting=false,sender=livarno_led_sender}),
+zcl.color_temperature({endpoint=1,configure_reporting=false,sender=livarno_led_sender}),
+zcl.color_hue({endpoint=1,configure_reporting=false,sender=livarno_led_sender}),
+zcl.color_saturation({endpoint=1,configure_reporting=false,sender=livarno_led_sender}),
+zcl.color({endpoint=1,sender=livarno_led_sender}),
+zcl.cluster_attribute(0x0300,0xF000,{
+name="livarno_rgb_mode",endpoint=1,data_type=data_types.Uint8,
+read_only=true,from_device=livarno_rgb_mode,}),
+zcl.cluster_attribute(0x0300,0xF001,{
+name="livarno_rgb_brightness",endpoint=1,data_type=data_types.Uint8,
+read_only=true,emit=emit.level(),
+from_device=function(value)return math.floor(value*100/254+0.5)end,
+}),
+zcl.cluster_attribute(0x0008,0xF000,{
+name="livarno_tuya_brightness",endpoint=1,data_type=data_types.Uint16,
+read_only=true,emit=emit.level(),
+from_device=function(value)return math.floor(value/10+0.5)end,
+}),
+zcl.cluster_attribute(0x0003,0xFFFF,{
+name="livarno_effect",endpoint=1,write_only=true,
+emit=emit.livarnoEffect(),sender=ts0505b_setting_sender,}),
+zcl.cluster_attribute(0x0300,0xFFFE,{
+name="livarno_do_not_disturb",endpoint=1,write_only=true,
+emit=emit.livarnoDoNotDisturb(),sender=ts0505b_setting_sender,}),
+zcl.cluster_attribute(0x0300,0xFFFD,{
+name="livarno_color_power_on_behavior",endpoint=1,write_only=true,
+emit=emit.livarnoColorPowerBehavior(),sender=ts0505b_setting_sender,}),},
+configure=function(_,device)
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x400A,{endpoint=1}))
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x400B,{endpoint=1}))
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x400C,{endpoint=1}))
+end,
+runtime_start=function(device)
+device:emit_component_event({id="main"},capabilities.colorTemperature.colorTemperatureRange({
+value={minimum=2000,maximum=6536},unit="K",}))
+return true
+end,
+}
+local tuya_ts0505b_two={
+profile="lights-tuya-ts0505b-two",
+auto_on_before_light_command=false,
+color_temperature_range={minimum=2000,maximum=6536},
+zcl_clusters={
+zcl.switch({endpoint=1,configure_reporting=false}),
+zcl.level({endpoint=1,configure_reporting=false}),
+zcl.color_temperature({endpoint=1,configure_reporting=false}),
+zcl.color_hue({endpoint=1,configure_reporting=false}),
+zcl.color_saturation({endpoint=1,configure_reporting=false}),
+zcl.color({endpoint=1}),
+zcl.cluster_attribute(0x0008,0xF000,{
+name="ts0505b_two_tuya_brightness",endpoint=1,data_type=data_types.Uint16,
+read_only=true,emit=emit.level(),
+from_device=function(value)return math.floor(value/10+0.5)end,
+}),
+zcl.cluster_attribute(0x0003,0xFFFF,{
+name="ts0505b_two_effect",endpoint=1,write_only=true,
+emit=emit.ts0505bTwoEffect(),sender=ts0505b_setting_sender,}),
+zcl.cluster_attribute(0x0300,0xFFFE,{
+name="ts0505b_two_do_not_disturb",endpoint=1,write_only=true,
+emit=emit.ts0505bTwoDoNotDisturb(),sender=ts0505b_setting_sender,}),
+zcl.cluster_attribute(0x0300,0xFFFD,{
+name="ts0505b_two_color_power_on_behavior",endpoint=1,write_only=true,
+emit=emit.ts0505bTwoColorPowerBehavior(),sender=ts0505b_setting_sender,}),},
+configure=function(_,device)
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x400A,{endpoint=1}))
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x400B,{endpoint=1}))
+zcl.read_mapping(device,zcl.cluster_attribute(0x0300,0x400C,{endpoint=1}))
+end,
+runtime_start=function(device)
+device:emit_component_event({id="main"},capabilities.colorTemperature.colorTemperatureRange({
+value={minimum=2000,maximum=6536},unit="K",}))
+return true
+end,
 }
 register_device_definition(dimmer_light,device_helpers.create_fingerprints("TS0501A",{
 "_TZ3000_j2w1dw29",
 "_TZ3000_nosnx7im",
 "_TZ3000_7dcddnye",
-"_TZ3000_nbnmw9nc",
-}))
+"_TZ3000_nbnmw9nc",}))
 register_device_definition(dimmer_light,device_helpers.create_fingerprints("TS0501B",{
 "_TZ3210_dxroobu3",
 "_TZ3210_dbilpfqk",
@@ -97,17 +230,13 @@ register_device_definition(dimmer_light,device_helpers.create_fingerprints("TS05
 "_TZ3210_i680rtja",
 "_TZ3210_agjx0pxt",
 "_TZ3210_d062rv7j",
-"_TZ3210_syh4kuef",
-}))
+"_TZ3210_syh4kuef",}))
 register_device_definition(dimmer_light,device_helpers.create_fingerprints("TS0501B",{
-"_TZB210_g01ie5wu",
-}))
+"_TZB210_g01ie5wu",}))
 register_device_definition(dimmer_light,device_helpers.create_fingerprints("TS0052",{
-"_TZ3000_mgusv51k",
-}))
+"_TZ3000_mgusv51k",}))
 register_device_definition(cct_light,device_helpers.create_fingerprints("TS0501B",{
-"_TZB210_rkgngb5o",
-}))
+"_TZB210_rkgngb5o",}))
 register_device_definition(cct_light,device_helpers.create_fingerprints("TS0502A",{
 "_TZ3000_oborybow",
 "_TZ3000_el5kt5im",
@@ -116,8 +245,7 @@ register_device_definition(cct_light,device_helpers.create_fingerprints("TS0502A
 "_TZ3000_5fkufhn1",
 "_TZ3000_8uaoilu9",
 "_TZ3000_9evm3otq",
-"_TZ3000_oh7jddmx",
-}))
+"_TZ3000_oh7jddmx",}))
 register_device_definition(cct_light,device_helpers.create_fingerprints("TS0502B",{
 "_TZ3000_zw7wr5uo",
 "_TZ3000_g1glzzfk",
@@ -132,8 +260,7 @@ register_device_definition(cct_light,device_helpers.create_fingerprints("TS0502B
 "_TZ3210_c2iwpxf1",
 "_TZ3210_09hzmirw",
 "_TZ3000_6dwfra5l",
-"_TZ3210_claeh5ds",
-}))
+"_TZ3210_claeh5ds",}))
 register_device_definition(cct_light,{
 device_helpers.create_fingerprint("Aqara","lumi.dimmer.acn004"),
 device_helpers.create_fingerprint("Aqara","lumi.light.acn003"),
@@ -161,32 +288,23 @@ device_helpers.create_fingerprint("LUMI","lumi.light.cwjwcn01"),
 device_helpers.create_fingerprint("LUMI","lumi.light.cwjwcn02"),
 device_helpers.create_fingerprint("LUMI","lumi.light.cwopcn01"),
 device_helpers.create_fingerprint("LUMI","lumi.light.cwopcn02"),
-device_helpers.create_fingerprint("LUMI","lumi.light.cwopcn03"),
-})
+device_helpers.create_fingerprint("LUMI","lumi.light.cwopcn03"),})
 register_device_definition(domraem_cct_light,{
-device_helpers.create_fingerprint("DOMRAEM","CCT"),
-})
+device_helpers.create_fingerprint("DOMRAEM","CCT"),})
 register_device_definition(paulmann_cct_i_light,{
-device_helpers.create_fingerprint("Paulmann Licht GmbH","CCT-I"),
-})
+device_helpers.create_fingerprint("Paulmann Licht GmbH","CCT-I"),})
 register_device_definition(qa_cct_light,device_helpers.create_fingerprints("TS0502B",{
-"_TZ3218_op6ztaju",
-}))
+"_TZ3218_op6ztaju",}))
 register_device_definition(dimmer_light,{
-{manufacturer="Megaman" .. string.char(0),model="ZLL-DimmableLight"},
-})
+{manufacturer="Megaman"..string.char(0),model="ZLL-DimmableLight"},})
 register_device_definition(dimmer_light,{
-device_helpers.create_fingerprint("LUMI","lumi.light.cbacn1"),
-})
+device_helpers.create_fingerprint("LUMI","lumi.light.cbacn1"),})
 register_device_definition(cct_light,{
-device_helpers.create_fingerprint("_TZB210_lmqquxus","TS0503B"),
-})
+device_helpers.create_fingerprint("_TZB210_lmqquxus","TS0503B"),})
 register_device_definition(color_light,device_helpers.create_fingerprints("TS0503A",{
-"_TZ3000_obacbukl",
-}))
+"_TZ3000_obacbukl",}))
 register_device_definition(color_light,device_helpers.create_fingerprints("TS0503B",{
-"_TZB210_zdvrsts8",
-}))
+"_TZB210_zdvrsts8",}))
 register_device_definition(color_cct_light,device_helpers.create_fingerprints("TS0505A",{
 "_TZ3000_sosdczdl",
 "_TZ3000_odygigth",
@@ -196,28 +314,26 @@ register_device_definition(color_cct_light,device_helpers.create_fingerprints("T
 "_TZ3000_gek6snaj",
 "_TZ3000_evag0pvn",
 "_TZ3000_riwp3k79",
-"_TZ3000_keabpigv",
-}))
+"_TZ3000_keabpigv",}))
 register_device_definition(color_cct_light,{
 device_helpers.create_fingerprint("Aqara","lumi.light.acn132"),
 device_helpers.create_fingerprint("LUMI","lumi.light.acn132"),
-device_helpers.create_fingerprint("LUMI","lumi.light.rgbac1"),
-})
+device_helpers.create_fingerprint("LUMI","lumi.light.rgbac1"),})
 register_device_definition(color_cct_light,device_helpers.create_fingerprints("TS0505B",{
-"_TZ3210_iystcadi",
-"_TZ3210_it1u8ahz",
 "_TZB210_3zfp8mki",
 "_TZB210_gj0ccsar",
 "_TZ3210_jaap6jeb",
-"_TZ3210_bfwvfyx1",
-}))
+"_TZ3210_bfwvfyx1",}))
+register_device_definition(lidl_livarno_rgbcct,{
+device_helpers.create_fingerprint("_TZ3210_iystcadi","TS0505B"),})
+register_device_definition(tuya_ts0505b_two,{
+device_helpers.create_fingerprint("_TZ3210_it1u8ahz","TS0505B"),})
 register_device_definition(tuya_ts0505b_1_light,device_helpers.create_fingerprints("TS0505B",{
 "_TZ3210_8etggm4u",
 "_TZ3210_cqqb61yo",
 "_TZ3210_htdm5hvw",
 "_TZ3210_o4vasvef",
-"_TZ3210_r3wubmyh",
-}))
+"_TZ3210_r3wubmyh",}))
 register_device_definition(color_cct_light,device_helpers.create_fingerprints("TS0505B",{
 "_TZ3000_7hcgjxpc",
 "_TZ3000_bwlvyjwk",
@@ -283,8 +399,7 @@ register_device_definition(color_cct_light,device_helpers.create_fingerprints("T
 "_TZ3210_mntza0sw",
 "_TZ3210_pdqu9pot",
 "_TZ3210_pwauw3g2",
-"_TZ3210_r0vzq1oj",
-}))
+"_TZ3210_r0vzq1oj",}))
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("Candeo","Candeo Zigbee Dimmer"),
 device_helpers.create_fingerprint("Candeo","HK-DIM-A"),
@@ -296,79 +411,63 @@ device_helpers.create_fingerprint("Light Solutions","Dimmer-Switch-ZB3.0"),
 device_helpers.create_fingerprint("Samotech","Dimmer-Switch-ZB3.0"),
 device_helpers.create_fingerprint("Shyugj","Dimmer-Switch-ZB3.0"),
 device_helpers.create_fingerprint("Smart Dim","Dimmer-Switch-ZB3.0"),
-device_helpers.create_fingerprint("idinio","Dimmer-Switch-ZB3.0"),
-})
+device_helpers.create_fingerprint("idinio","Dimmer-Switch-ZB3.0"),})
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("Samotech","HK_DIM_A"),
-device_helpers.create_fingerprint("Shyugj","HK_DIM_A"),
-})
+device_helpers.create_fingerprint("Shyugj","HK_DIM_A"),})
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("DOMRAEM","DIMMER"),
-device_helpers.create_fingerprint("NorLum Dim OP","DIMMER"),
-})
+device_helpers.create_fingerprint("NorLum Dim OP","DIMMER"),})
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("Iluminize","DIM Lighting"),
 device_helpers.create_fingerprint("Namron As","DIM Lighting"),
-device_helpers.create_fingerprint("Sunricher","DIM Lighting"),
-})
+device_helpers.create_fingerprint("Sunricher","DIM Lighting"),})
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("Nordtronic","98426061"),
-device_helpers.create_fingerprint("Nordtronic A/S","98426061"),
-})
+device_helpers.create_fingerprint("Nordtronic A/S","98426061"),})
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("Nordtronic","WSZ 98426061"),
-device_helpers.create_fingerprint("Nordtronic A/S","WSZ 98426061"),
-})
+device_helpers.create_fingerprint("Nordtronic A/S","WSZ 98426061"),})
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("Candeo","C-ZB-DM204"),
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20-Dim"),
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-Dim"),
 device_helpers.create_fingerprint("Candeo","C-ZB-RD1"),
-device_helpers.create_fingerprint("Candeo","C-ZB-RD1P-DIM"),
-})
+device_helpers.create_fingerprint("Candeo","C-ZB-RD1P-DIM"),})
 register_device_definition(cct_light,{
 device_helpers.create_fingerprint("Astuta/ZB-CCT","CCT Light"),
 device_helpers.create_fingerprint("Paulmann lamp","CCT Light"),
 device_helpers.create_fingerprint("ZB/Ajax Online","CCT Light"),
-device_helpers.create_fingerprint("ZigBee/CCT","CCT Light"),
-})
+device_helpers.create_fingerprint("ZigBee/CCT","CCT Light"),})
 register_device_definition(cct_light,{
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20-CCT"),
-device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-CCT"),
-})
+device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-CCT"),})
 register_device_definition(color_light,{
 device_helpers.create_fingerprint("DOMRAEM","RGB"),
-device_helpers.create_fingerprint("Paulmann Licht GmbH","RGB"),
-})
+device_helpers.create_fingerprint("Paulmann Licht GmbH","RGB"),})
 register_device_definition(color_light,{
 device_helpers.create_fingerprint("DOMRAEM","RGBW"),
 device_helpers.create_fingerprint("Paulmann Licht","RGBW"),
-device_helpers.create_fingerprint("Paulmann Licht GmbH","RGBW"),
-})
+device_helpers.create_fingerprint("Paulmann Licht GmbH","RGBW"),})
 register_device_definition(color_cct_light,device_helpers.create_fingerprints("TS0504B",{
 "_TZ3210_sroezl0s",
-"_TZ3210_ttkgurpb",
-}))
+"_TZ3210_ttkgurpb",}))
 register_device_definition(color_light,{
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20-RGB"),
-device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-RGB"),
-})
+device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-RGB"),})
 register_device_definition(color_cct_light,{
 device_helpers.create_fingerprint("_TZ3210_f0byevky","TS0503B"),
 device_helpers.create_fingerprint("KURVIA","ZB-CL01"),
 device_helpers.create_fingerprint("YSRSAI","ZB-CL01"),
 device_helpers.create_fingerprint("YSRSAI","ZB-CL03"),
-device_helpers.create_fingerprint("eWeLi" .. string.char(0x01,0x10),"ZB-CL01"),
+device_helpers.create_fingerprint("eWeLi"..string.char(0x01,0x10),"ZB-CL01"),
 device_helpers.create_fingerprint("eWeLight","ZB-CL01"),
-device_helpers.create_fingerprint("eWeLink","ZB-CL01"),
-})
+device_helpers.create_fingerprint("eWeLink","ZB-CL01"),})
 register_device_definition(color_cct_light,{
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20-RGBCCT"),
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-RGBCCT"),
 device_helpers.create_fingerprint("Candeo","C-ZB-LC20-RGBW"),
-device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-RGBW"),
-})
+device_helpers.create_fingerprint("Candeo","C-ZB-LC20v2-RGBW"),})
 return{
 id="zcl.lights.lights",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

@@ -10,13 +10,12 @@ local send_policy_keys={
 "match_transaction",
 "response_dp",
 "response_dps",
-"match_response",
-}
+"match_response",}
 local function normalize_policy_options(command_id_or_options,options)
 local resolved={}
-if type_check(command_id_or_options)=="table" then
+if type_check(command_id_or_options)=="table"then
 merge_options(resolved,command_id_or_options)
-elseif command_id_or_options ~=nil then
+elseif command_id_or_options~=nil then
 resolved.command_id=command_id_or_options
 end
 merge_options(resolved,options)
@@ -29,32 +28,32 @@ end
 if value==false or value==0 then
 return false
 end
-if type_check(value)=="string" then
+if type_check(value)=="string"then
 local lowered=string_lower(value)
-if lowered=="on" then
+if lowered=="on"then
 return true
 end
-if lowered=="off" then
+if lowered=="off"then
 return false
 end
 end
 return value
 end
 local function values_from_context(context)
-if type_check(context)~="table" then
+if type_check(context)~="table"then
 return nil
 end
-if type_check(context.values)=="table" then
+if type_check(context.values)=="table"then
 return context.values
 end
 return nil
 end
 local function state_matches(device,context,value,options)
-if type_check(options.current)=="function" then
+if type_check(options.current)=="function"then
 return normalize_state_value(options.current(device,context,value))==normalize_state_value(value)
 end
 local state_field=options.state_field
-if type_check(state_field)~="string" or state_field=="" then
+if type_check(state_field)~="string"or state_field==""then
 state_field="switch"
 end
 return normalize_state_value(device:get_field(state_field))==normalize_state_value(value)
@@ -70,13 +69,13 @@ end
 return policy
 end
 function tuya.apply_send_policy(mapping,send_policy)
-if type_check(mapping)~="table" or type_check(send_policy)~="table" then
+if type_check(mapping)~="table"or type_check(send_policy)~="table"then
 return mapping
 end
 if mapping[1]~=nil and mapping.dp==nil then
 local list={}
 for index,item in ipairs(mapping)do
-if type_check(item)=="table" then
+if type_check(item)=="table"then
 list[index]=tuya.apply_send_policy(item,send_policy)
 else
 list[index]=item
@@ -118,7 +117,7 @@ end
 function tuya.skip.state_on_and_brightness_present(options)
 options=options or{}
 local brightness_key=options.brightness_key
-if type_check(brightness_key)~="string" or brightness_key=="" then
+if type_check(brightness_key)~="string"or brightness_key==""then
 brightness_key="brightness"
 end
 return function(device,value,item,context)
@@ -132,7 +131,7 @@ end
 function tuya.skip.state_on_and_brightness_present_only(options)
 options=options or{}
 local brightness_key=options.brightness_key
-if type_check(brightness_key)~="string" or brightness_key=="" then
+if type_check(brightness_key)~="string"or brightness_key==""then
 brightness_key="brightness"
 end
 return function(device,value,item,context)

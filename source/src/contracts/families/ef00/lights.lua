@@ -826,11 +826,22 @@ local function load_lights()
     momentary = 2,
   })
 
+  local ts0601_setting_brightness = converter.from_to(
+    function(value) return math.floor(value * 254 / 1000 + 0.5) end,
+    function(value) return math.floor(value * 1000 / 254 + 0.5) end
+  )
+
   local function add_ts0601_knob_reports(definition)
     -- Local knob events use standard reports; app writes retain the Tuya DPs.
     -- Periodic reports are stale on ION firmware, so request change-only reports.
     definition.magic_packet = true
     definition.mcu_version_request_on_configure = true
+    definition.query_on_configure = false
+    definition.query_on_announce = false
+    definition.initial_custom_state_query = false
+    definition.refresh_state_query = false
+    definition.time_start = "off"
+    definition.parent_refresh = function() end
     definition.zcl_clusters = {
       zcl.switch({name = "knob_switch", read_only = true, read_on_configure = false, maximum_interval = 0}),
       zcl.level({name = "knob_level", read_only = true, read_on_configure = false, maximum_interval = 0}),
@@ -845,13 +856,13 @@ local function load_lights()
   -- Z2M TS0601_dimmer_1_gang_1 contract, narrowed by exact hardware reports.
   local dimmer_model_ts0601_la2c2uo9 = {
     profile = "lights-dimmer-options-ts0601-la2c2uo9",
-    tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+    tuya.dp_on_off(1, { name = "switch", emit = emit.switch(), skip = tuya.skip.state_on_and_brightness_present() }),
     tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
-    tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
-    tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
-    tuya.dp_countdown(6, { name = "countdown_timer", emit = emit.countdownTsOneTenHours() }),
-    tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
-    tuya.dp_backlight_mode(21, { name = "la2c2uo9_backlight_mode", emit = emit.la2c2uo9BacklightMode() }),
+    tuya.dp_min_brightness(3, { name = "la2_dimmer_min_brightness", converter = ts0601_setting_brightness, emit = emit.la2DimmerMinimumBrightness() }),
+    tuya.dp_light_type(4, { datatype = tuya.DP_TYPE_VALUE, name = "la2_dimmer_light_type", emit = emit.la2DimmerLightType() }),
+    tuya.dp_countdown(6, { name = "la2_dimmer_countdown", emit = emit.la2DimmerCountdown() }),
+    tuya.dp_power_on_behavior(14, { name = "la2_dimmer_power_on_behavior", datatype = tuya.DP_TYPE_VALUE, emit = emit.la2DimmerPowerOnBehavior() }),
+    tuya.dp_backlight_mode(21, { name = "la2_dimmer_backlight_mode", emit = emit.la2DimmerBacklightMode() }),
   }
 
   add_ts0601_knob_reports(dimmer_model_ts0601_la2c2uo9)
@@ -863,12 +874,12 @@ local function load_lights()
   -- Countdown is DP6 VALUE in seconds (0..43200); do not substitute an inferred DP.
   local dimmer_model_ts0601_dfxkcots = {
     profile = "lights-dimmer-options-ts0601-dfxkcots",
-    tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+    tuya.dp_on_off(1, { name = "switch", emit = emit.switch(), skip = tuya.skip.state_on_and_brightness_present() }),
     tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
-    tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
-    tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
-    tuya.dp_countdown(6, { name = "countdown_timer", emit = emit.countdownTsOneTenHours() }),
-    tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
+    tuya.dp_min_brightness(3, { name = "dfx_dimmer_min_brightness", converter = ts0601_setting_brightness, emit = emit.dfxDimmerMinimumBrightness() }),
+    tuya.dp_light_type(4, { datatype = tuya.DP_TYPE_VALUE, name = "dfx_dimmer_light_type", emit = emit.dfxDimmerLightType() }),
+    tuya.dp_countdown(6, { name = "dfx_dimmer_countdown", emit = emit.dfxDimmerCountdown() }),
+    tuya.dp_power_on_behavior(14, { name = "dfx_dimmer_power_on_behavior", datatype = tuya.DP_TYPE_VALUE, emit = emit.dfxDimmerPowerOnBehavior() }),
   }
 
   add_ts0601_knob_reports(dimmer_model_ts0601_dfxkcots)
@@ -879,14 +890,14 @@ local function load_lights()
   -- TS0601_dimmer_1_gang_1
   local dimmer_model_ts0601_dimmer_1_gang_1 = {
     profile = "lights-dimmer-options-ts0601",
-    tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
+    tuya.dp_on_off(1, { name = "switch", emit = emit.switch(), skip = tuya.skip.state_on_and_brightness_present() }),
     tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
-    tuya.dp_min_brightness(3, { name = "min_brightness", value_max = 1000, emit = emit.ef00Ts0601MinimumBrightness() }),
-    tuya.dp_light_type(4, { name = "light_type", emit = emit.light_type() }),
-    tuya.dp_max_brightness(5, { name = "max_brightness", value_max = 1000, emit = emit.ef00Ts0601MaximumBrightness() }),
-    tuya.dp_countdown(6, { name = "countdown_timer", emit = emit.countdownTsOneTenHours() }),
-    tuya.dp_power_on_behavior(14, { emit = emit.power_on_behavior() }),
-    tuya.dp_backlight_mode(21, { name = "ts_dimmer_backlight", emit = emit.tsDimmerBacklight() }),
+    tuya.dp_min_brightness(3, { name = "tsd1_min_brightness", converter = ts0601_setting_brightness, emit = emit.tsd1MinimumBrightness() }),
+    tuya.dp_light_type(4, { datatype = tuya.DP_TYPE_VALUE, name = "tsd1_light_type", emit = emit.tsd1LightType() }),
+    tuya.dp_max_brightness(5, { name = "tsd1_max_brightness", converter = ts0601_setting_brightness, emit = emit.tsd1MaximumBrightness() }),
+    tuya.dp_countdown(6, { name = "tsd1_countdown", emit = emit.tsd1Countdown() }),
+    tuya.dp_power_on_behavior(14, { name = "tsd1_power_on_behavior", datatype = tuya.DP_TYPE_VALUE, emit = emit.tsd1PowerOnBehavior() }),
+    tuya.dp_backlight_mode(21, { name = "tsd1_backlight_mode", emit = emit.tsd1BacklightMode() }),
   }
 
   add_ts0601_knob_reports(dimmer_model_ts0601_dimmer_1_gang_1)
@@ -913,6 +924,7 @@ local function load_lights()
     "_TZE284_m1cvyneb",
     "_TZE284_68utemio",
     "_TZE28C1000000_68utemio",
+    "_TZE284_xc7dve2g",
   }))
 
   register_device_definition(dimmer_model_ts0601_dimmer_1_gang_1, {
@@ -936,12 +948,12 @@ local function load_lights()
   -- These ION revisions expose no light type or backlight setting in Z2M.
   local dimmer_ion = {
     profile = "lights-dimmer-ion",
-    tuya.dp_on_off(1, {name = "switch", emit = emit.switch()}),
+    tuya.dp_on_off(1, {name = "switch", emit = emit.switch(), skip = tuya.skip.state_on_and_brightness_present()}),
     tuya.dp_brightness(2, {name = "brightness", emit = emit.level()}),
-    tuya.dp_min_brightness(3, {name = "ion_min_brightness", value_max = 254, emit = emit.ionDimmerMin()}),
-    tuya.dp_max_brightness(5, {name = "ion_max_brightness", value_max = 254, emit = emit.ionDimmerMax()}),
+    tuya.dp_min_brightness(3, {name = "ion_min_brightness", converter = ts0601_setting_brightness, emit = emit.ionDimmerMin()}),
+    tuya.dp_max_brightness(5, {name = "ion_max_brightness", converter = ts0601_setting_brightness, emit = emit.ionDimmerMax()}),
     tuya.dp_countdown(6, {name = "ion_countdown", emit = emit.ionDimmerCountdown()}),
-    tuya.dp_power_on_behavior(14, {name = "ion_power_on", emit = emit.ionDimmerPowerOn()}),
+    tuya.dp_power_on_behavior(14, {datatype = tuya.DP_TYPE_VALUE, name = "ion_power_on", emit = emit.ionDimmerPowerOn()}),
   }
   add_ts0601_knob_reports(dimmer_ion)
   register_device_definition(dimmer_ion, {

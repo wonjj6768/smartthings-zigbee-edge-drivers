@@ -1,0 +1,1 @@
+{name: safety-rain-hs118z-tuya,components:[{id: main,capabilities:[{id: waterSensor,version: 1},{id: illuminanceMeasurement,version: 1},{id: battery,version: 1},{id: concertmirror08464.hs118zTuyaSensitivity,version: 1},{id: concertmirror08464.hs118zTuyaIlluminanceSampling,version: 1},{id: refresh,version: 1}],categories:[{name: LeakSensor}]}]}

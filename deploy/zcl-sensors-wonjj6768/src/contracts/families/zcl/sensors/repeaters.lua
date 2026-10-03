@@ -1,8 +1,7 @@
-local device_helpers=require "contracts.helpers.family"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local repeater={
-profile="network-repeater",
-}
+profile="network-repeater",}
 register_device_definition(repeater,device_helpers.create_fingerprints("TS0207",{
 "_TZ3000_5k5vh43t",
 "_TZ3000_gszjt2xx",
@@ -20,14 +19,12 @@ register_device_definition(repeater,device_helpers.create_fingerprints("TS0207",
 "_TZ3000_mmzmkkd4",
 "_TZ3000_piuensvr",
 "_TZ3000_wlquqiiz",
-"_TZ3000_wmlc9p9z",
-}))
+"_TZ3000_wmlc9p9z",}))
 register_device_definition(repeater,device_helpers.create_fingerprints("TS0001",{
 "_TZ3000_gdsvhfao",
 "_TZ3000_n0lphcok",
 "_TZ3000_trdx8uxs",
-"_TZ3000_wn65ixz9",
-}))
+"_TZ3000_wn65ixz9",}))
 register_device_definition(repeater,{
 device_helpers.create_fingerprint("Aeotec","ZGA008"),
 device_helpers.create_fingerprint("eWeLink","CK-BL702-ROUTER-01(7018)"),
@@ -57,9 +54,7 @@ device_helpers.create_fingerprint("TubesZB","BM24"),
 device_helpers.create_fingerprint("TubesZB","MGM24"),
 device_helpers.create_fingerprint("easyiot","ZB-GW04"),
 device_helpers.create_fingerprint("easyiot","ZB-GW04-1v1"),
-device_helpers.create_fingerprint("easyiot","ZB-GW04-1v2"),
-})
+device_helpers.create_fingerprint("easyiot","ZB-GW04-1v2"),})
 return{
 id="zcl.sensors.repeaters",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

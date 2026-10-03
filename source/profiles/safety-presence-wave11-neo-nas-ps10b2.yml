@@ -14,5 +14,4 @@ components:
       - {id: concertmirror08464.nasPsTenOutputTime, version: 1}
       - {id: concertmirror08464.nasPsTenLedSwitch, version: 1}
       - {id: concertmirror08464.nasPsTenLuxValue, version: 1}
-      - {id: refresh, version: 1}
     categories: [{name: PresenceSensor}]

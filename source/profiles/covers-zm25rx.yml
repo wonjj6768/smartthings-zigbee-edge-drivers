@@ -1,0 +1,19 @@
+name: covers-zm25rx
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: battery, version: 1}
+      - {id: concertmirror08464.zm25rxMotorDirection, version: 1}
+      - {id: concertmirror08464.zm25rxMotorState, version: 1}
+      - {id: concertmirror08464.zm25rxProgram, version: 1}
+      - {id: concertmirror08464.zm25rxClickControl, version: 1}
+    categories: [{name: Blind}]
+preferences:
+  - name: invertCover
+    title: Invert cover
+    description: Reverse position, motion commands, motor state, limits and step movement.
+    required: false
+    preferenceType: boolean
+    definition: {default: false}

@@ -1,0 +1,9 @@
+name: covers-tuya-limited-switch
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.limitedCoverMotorDirection, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Blind}]

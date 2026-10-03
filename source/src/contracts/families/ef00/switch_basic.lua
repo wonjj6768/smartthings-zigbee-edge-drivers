@@ -350,22 +350,9 @@ local switch_4gang = {
 register_device_definition(switch_4gang, device_helpers.create_fingerprints("TS0601", {
   "_TZ3000_uim07oem",
   "_TZE200_1n2kyphz",
-  "_TZE200_6wi2mope",
-  "_TZE200_aqnazj70",
-  "_TZE200_di3tfv5b",
   "_TZE200_js3mgbjb",
-  "_TZE200_mexisfik",
   "_TZE200_shkxsgis",
-  "_TZE204_6wi2mope",
-  "_TZE204_58of2pfn",
-  "_TZE204_aagrxlbd",
-  "_TZE204_f5efvtbv",
-  "_TZE204_iik0pquw",
-  "_TZE204_lbhh5o6z",
-  "_TZE204_mexisfik",
   "_TZE204_shkxsgis",
-  "_TZE284_f5efvtbv",
-  "_TZE284_lbhh5o6z",
 }))
 
 register_device_definition(switch_4gang, {
@@ -375,6 +362,23 @@ register_device_definition(switch_4gang, {
   device_helpers.create_fingerprint("Tuya", "MG-ZG04W"),
 })
 
+local switch_four_tuya_base = {
+  profile = "switches-switch-4",
+  package_group = "switch-basic",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  query_on_configure = false,
+  query_on_announce = false,
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  time_start = "off",
+  component_to_endpoint_map = {main = 1, switch2 = 1, switch3 = 1, switch4 = 1},
+  endpoint_to_component_map = {[1] = "main"},
+  tuya.dp_on_off(1, {name = "switch", component = "main", endpoint = 1}),
+  tuya.dp_on_off(2, {name = "switch", component = "switch2", endpoint = 1}),
+  tuya.dp_on_off(3, {name = "switch", component = "switch3", endpoint = 1}),
+  tuya.dp_on_off(4, {name = "switch", component = "switch4", endpoint = 1}),
+}
 -- ══════════════════════════════════════════════════════════════
 -- 1-5. switch_5gang: 기본 5구
 -- Z2M: TS0601_switch_5_gang
@@ -775,6 +779,13 @@ local switch_1gang_dp16 = {
 
 register_device_definition(switch_1gang_dp16, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_hiith90n",
+}))
+
+register_device_definition(switch_four_tuya_base, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_aqnazj70", "_TZE200_di3tfv5b", "_TZE200_mexisfik", "_TZE204_mexisfik",
+  "_TZE204_6wi2mope", "_TZE200_6wi2mope", "_TZE204_iik0pquw", "_TZE204_aagrxlbd",
+  "_TZE204_f5efvtbv", "_TZE284_f5efvtbv", "_TZE204_lbhh5o6z", "_TZE284_lbhh5o6z",
+  "_TZE204_58of2pfn",
 }))
 
 return {

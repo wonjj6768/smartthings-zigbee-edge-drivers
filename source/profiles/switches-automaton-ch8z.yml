@@ -1,0 +1,60 @@
+name: switches-automaton-ch8z
+components:
+  - id: main
+    label: Zone 1
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownOne, version: 1}
+      - {id: concertmirror08464.ch8zPowerBehavior, version: 1}
+      - {id: concertmirror08464.ch8zChildLock, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch2
+    label: Zone 2
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownTwo, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch3
+    label: Zone 3
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownThree, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch4
+    label: Zone 4
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownFour, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch5
+    label: Zone 5
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownFive, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch6
+    label: Zone 6
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownSix, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch7
+    label: Zone 7
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownSeven, version: 1}
+    categories:
+      - {name: Switch}
+  - id: switch8
+    label: Zone 8
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: concertmirror08464.ch8zCountdownEight, version: 1}
+    categories:
+      - {name: Switch}

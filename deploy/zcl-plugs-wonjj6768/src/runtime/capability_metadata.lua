@@ -1,21 +1,21 @@
 local custom_capabilities={}
 local strings={"s","power_poll_interval","powerPollIntervalV2","powerPollInterval","powerPollIntervalRange","Power poll interval","ts011fPlug1Countdown","countdown","ts011f_plug1_countdown","Ts011f Plug1Countdown","bacchusPumpDuration","pumpDuration","bacchus_pump_duration","Bacchus Pump Duration","nousA11zCountdown","nous_a11z_countdown","Nous A11z Countdown","countdownTimerZclTwelveHours","countdown_timer","Countdown Timer Zcl Twelve Hours","indicator_mode","indicatorMode","supportedIndicatorModes","Indicator mode","off","off/on","on/off","on","power_outage_memory","powerOutageMemory","supportedPowerOutageMemories","Power outage memory","restore","ts011fPlug1PowerOutageMemory","ts011f_plug1_power_outage_memory","Ts011f Plug1Power Outage Memory","ts011fPlug1IndicatorMode","ts011f_plug1_indicator_mode","Ts011f Plug1Indicator Mode","off_on","on_off","ts011fPlug1ChildLock","childLock","ts011f_plug1_child_lock","Ts011f Plug1Child Lock","ts011fPlug1SwitchTypeButton","switchTypeButton","ts011f_plug1_switch_type_button","Ts011f Plug1Switch Type Button","release","press","bacchusBeeperOnLeak","beeperOnLeak","bacchus_beeper_on_leak","Bacchus Beeper On Leak","bacchusTankFull","tankFull","bacchus_tank_full","Bacchus Tank Full","normal","full","nousA11zPowerBehavior","powerOnBehavior","nous_a11z_power_on_behavior","Nous A11z Power Behavior","previous","nousA11zIndicatorMode","nous_a11z_indicator_mode","Nous A11z Indicator Mode","nousA11zChildLock","nous_a11z_child_lock","Nous A11z Child Lock","nousA11zSwitchType","switchType","nous_a11z_switch_type","Nous A11z Switch Type","nousA11zIdentify","identify","nous_a11z_identify","Nous A11z Identify","child_lock","Child Lock","last_power_response_time","lastPowerResponseTime","Last power response time"}
 local function string_value(value)
-if type(value)=="number" then return strings[value]end
+if type(value)=="number"then return strings[value]end
 return value
 end
-local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return "concertmirror08464." .. suffix end
+local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
 local table_groups={}
 local function grouped_table(group_id)
-if type(group_id)~="number" then return{}end
+if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
-if existing ~=nil then return existing end
+if existing~=nil then return existing end
 local out={}
 table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
-if type(values)~="table" then return nil end
+if type(values)~="table"then return nil end
 local out=grouped_table(group_id)
 for index,value in ipairs(values)do out[index]=string_value(value)end
 return out
@@ -26,11 +26,11 @@ if value==0 then return nil end
 return string_value(value)
 end
 local function command_default(attribute_name)
-if type(attribute_name)~="string" or attribute_name=="" then return nil end
-return "set" .. attribute_name:sub(1,1):upper().. attribute_name:sub(2)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
-if type(value)~="table" then return nil end
+if type(value)~="table"then return nil end
 local out=grouped_table(value[6])
 out.minimum=value[1]
 out.maximum=value[2]
@@ -62,7 +62,7 @@ return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(ro
 end
 local function build(rows,factory)
 local out={}
-for _,row in ipairs(rows)do out[#out + 1]=factory(row)end
+for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
 custom_capabilities.numeric=build({{2,2,3,4,5,nil,nil,2,6,{5,3600,5,1,nil,1,nil},5,3600,1},{7,nil,7,8,nil,nil,nil,9,10,{0,43200,1,1,nil,2,nil},nil,nil,1},{11,nil,11,12,nil,nil,nil,13,14,{0,600,1,1,nil,3,nil},nil,nil,1},{15,nil,15,8,nil,nil,nil,16,17,{0,43200,1,1,nil,4,nil},nil,nil,1},{18,nil,18,18,nil,nil,nil,19,20,{0,43200,1,1,nil,5,nil},nil,nil,1}},numeric)
@@ -75,8 +75,8 @@ custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
-if type(metadata.capability_id)=="string" and metadata.capability_id ~="" then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
-if type(metadata.range_key)=="string" and metadata.range_key ~="" then custom_capabilities.by_range_key[metadata.range_key]=metadata end
+if type(metadata.capability_id)=="string"and metadata.capability_id~=""then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
+if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
 index_metadata(custom_capabilities.numeric)
@@ -85,24 +85,23 @@ index_metadata(custom_capabilities.text)
 custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
-if type(allowed_values)~="table" then return nil end
+if type(allowed_values)~="table"then return nil end
 local copied={}
 for index,value in ipairs(allowed_values)do copied[index]=value end
 return copied
 end
 function custom_capabilities.resolve_range(definition,metadata)
-if type(metadata)~="table" then return nil end
-local default_range=type(metadata.default_range)=="table" and metadata.default_range or nil
-local ranges=type(definition)=="table" and definition.presence_capability_ranges or nil
-local resolved=type(ranges)=="table" and ranges[metadata.range_key]or nil
-if type(resolved)~="table" then resolved=default_range end
-if type(resolved)~="table" then return nil end
+if type(metadata)~="table"then return nil end
+local default_range=type(metadata.default_range)=="table"and metadata.default_range or nil
+local ranges=type(definition)=="table"and definition.presence_capability_ranges or nil
+local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
+if type(resolved)~="table"then resolved=default_range end
+if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number" and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number" and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number" and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string" and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table" and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),
-}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
+maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
+step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
+unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
+allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

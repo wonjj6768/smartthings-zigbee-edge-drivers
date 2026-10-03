@@ -1,0 +1,15 @@
+name: meters-avatto-zot60
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.zot60Countdown, version: 1}
+      - {id: concertmirror08464.zot60Energy, version: 1}
+      - {id: concertmirror08464.zot60PowerBehavior, version: 1}
+      - {id: concertmirror08464.zot60BacklightMode, version: 1}
+    categories:
+      - {name: SmartPlug}

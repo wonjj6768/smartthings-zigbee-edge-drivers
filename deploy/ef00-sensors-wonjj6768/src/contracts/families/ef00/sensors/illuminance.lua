@@ -1,7 +1,7 @@
-local tuya=require "protocol.tuya"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
-local ef00_helpers=require "contracts.helpers.ef00"
+local tuya=require"protocol.tuya"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
+local ef00_helpers=require"contracts.helpers.ef00"
 local converter=tuya.converter
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local aaeasoll_report_interval_converter=converter.lookup_from_to({
@@ -10,10 +10,9 @@ local aaeasoll_report_interval_converter=converter.lookup_from_to({
 ["15m"]=2,
 ["20m"]=3,
 ["30m"]=4,
-["1h"]=5,
-})
+["1h"]=5,})
 local function register_sensor_definition(definitions_or_table,fingerprint_list)
-if type(definitions_or_table)=="table" then
+if type(definitions_or_table)=="table"then
 local entry={}
 for key,value in pairs(definitions_or_table)do
 entry[key]=value
@@ -39,16 +38,12 @@ converter=converter.from_only(converter.lookup_value({
 [0]="low",
 [1]="middle",
 [2]="high",
-[3]="strong",
-})),
-}),
-tuya.dp_illuminance(2,{emit=emit.illuminance()}),
-}
+[3]="strong",})),}),
+tuya.dp_illuminance(2,{emit=emit.illuminance()}),}
 register_device_definition(illum_standalone,ef00_helpers.ts0601_fingerprints({
 "_TZE200_yi4jtqq1",
 "_TZE200_khx7nnka",
-"_TZE204_khx7nnka",
-}))
+"_TZE204_khx7nnka",}))
 local illum_battery={
 profile="sensors-illuminance-battery-brightness-slux",
 bind_basic_on_configure=true,
@@ -59,18 +54,13 @@ read_only=true,
 converter=converter.from_only(converter.lookup_value({
 [0]="low",
 [1]="middle",
-[2]="high",
-})),
-}),
+[2]="high",})),}),
 tuya.dp_illuminance(2,{emit=emit.illuminance()}),
-tuya.dp_battery(4,{emit=emit.battery()}),
-}
+tuya.dp_battery(4,{emit=emit.battery()}),}
 register_device_definition(illum_battery,ef00_helpers.ts0601_fingerprints({
-"_TZE200_pisltm67",
-}))
+"_TZE200_pisltm67",}))
 register_device_definition(illum_battery,{
-{manufacturer="_TYST11_pisltm67",model="isltm67" .. string.char(0)},
-})
+{manufacturer="_TYST11_pisltm67",model="isltm67"..string.char(0)},})
 local illum_battery_report_interval_aaeasoll={
 profile="sensors-illuminance-battery-report-interval-aaeasoll",
 datapoints={
@@ -79,25 +69,17 @@ tuya.dp_battery(4,{emit=emit.battery()}),
 tuya.dp_enum(101,{
 name="report_interval",
 emit=emit.aaeasollReportInterval(),
-converter=aaeasoll_report_interval_converter,
-}),
-},
-}
+converter=aaeasoll_report_interval_converter,}),},}
 register_device_definition(illum_battery_report_interval_aaeasoll,ef00_helpers.ts0601_fingerprints({
-"_TZE284_aaeasoll",
-}))
+"_TZE284_aaeasoll",}))
 local pressure_temp={
 profile="sensors-pressure-temp-display",
 datapoints={
 tuya.dp_temperature(8,{emit=emit.temperature("C"),scale=100}),
 tuya.dp_numeric(101,{name="pressure",emit=emit.atmospheric_pressure(),scale=10}),
-tuya.dp_numeric(102,{name="display_brightness",emit=emit.displayBrightnessPressureLevel8()}),
-},
-}
+tuya.dp_numeric(102,{name="display_brightness",emit=emit.displayBrightnessPressureLevel8()}),},}
 register_device_definition(pressure_temp,ef00_helpers.ts0601_fingerprints({
-"_TZE204_w2vunxzm",
-}))
+"_TZE204_w2vunxzm",}))
 return{
 id="ef00.sensors.illuminance",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

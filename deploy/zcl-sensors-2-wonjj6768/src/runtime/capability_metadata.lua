@@ -1,21 +1,21 @@
 local custom_capabilities={}
 local strings={"lx","shellyPresenceDarkThreshold","shelly_presence_dark_threshold","Shelly Presence Dark Threshold","shellyPresenceBrightThreshold","shelly_presence_bright_threshold","Shelly Presence Bright Threshold","s","shellyPresencePresenceDelay","shelly_presence_presence_delay","Shelly Presence Presence Delay","shellyPresenceAbsenceDelay","shelly_presence_absence_delay","Shelly Presence Absence Delay","m","shellyPresenceInstallationHeight","shelly_presence_installation_height","Shelly Presence Installation Height","shellyPresenceMinimumRange","shelly_presence_minimum_range","Shelly Presence Minimum Range","shellyPresenceMaximumRange","shelly_presence_maximum_range","Shelly Presence Maximum Range","shellyPresenceTrackedObjects","shelly_presence_tracked_objects","Shelly Presence Tracked Objects","%","shellyPresenceLedBrightness","shelly_presence_led_brightness","Shelly Presence Led Brightness","shellyPresenceNightBrightness","shelly_presence_night_mode_brightness","Shelly Presence Night Brightness","shellyPresenceDetectionPoints","shelly_presence_detection_points","Shelly Presence Detection Points","shellyPresenceVelocityThreshold","shelly_presence_velocity_threshold","Shelly Presence Velocity Threshold","shellyPresenceSnrThreshold","shelly_presence_snr_threshold","Shelly Presence Snr Threshold","shellyPresenceMaxVelocityDiff","shelly_presence_maximum_velocity_difference","Shelly Presence Max Velocity Diff","shellyPresenceMotionActThreshold","shelly_presence_motion_activation_threshold","Shelly Presence Motion Act Threshold","shellyPresenceMotionRelThreshold","shelly_presence_motion_release_threshold","Shelly Presence Motion Rel Threshold","shellyPresenceTrackingLoss","shelly_presence_tracking_loss_threshold","Shelly Presence Tracking Loss","shellyPresenceStillTrackLimit","shelly_presence_stillness_tracking_threshold","Shelly Presence Still Track Limit","shellyPresenceStillTimeoutLimit","shelly_presence_stillness_timeout_threshold","Shelly Presence Still Timeout Limit","linknLinkEmotionAirActionGroup","Linkn Link Emotion Air Action Group","linknLinkEmotionAirActionLevel","Linkn Link Emotion Air Action Level","linknAirActionTransition","Linkn Air Action Transition","linknLinkEmotionAirActionRate","Linkn Link Emotion Air Action Rate","linknAirActionStepSize","Linkn Air Action Step Size","μg/m^3","heimanEfThreePmTen","pmTen","heiman_ef_three_pm_ten","Heiman Ef Three Pm Ten","heimanEfThreeAqi","aqi","heiman_ef_three_aqi","Heiman Ef Three Aqi","tuyaTs0210Sensitivity","sensitivity","tuya_ts0210_sensitivity","Tuya Ts0210Sensitivity","C","sonoffSnzb02pTemperatureCal","temperatureCalibration","sonoff_snzb02p_temperature_calibration","Sonoff Snzb02p Temperature Cal","sonoffSnzb02pHumidityCal","humidityCalibration","sonoff_snzb02p_humidity_calibration","Sonoff Snzb02p Humidity Cal","sonoffSnzb02dComfortTempMin","comfortTemperatureMinimum","sonoff_snzb02d_comfort_temperature_min","Sonoff Snzb02d Comfort Temp Min","sonoffSnzb02dComfortTempMax","comfortTemperatureMaximum","sonoff_snzb02d_comfort_temperature_max","Sonoff Snzb02d Comfort Temp Max","sonoffSnzb02dComfortHumidityMin","comfortHumidityMinimum","sonoff_snzb02d_comfort_humidity_min","Sonoff Snzb02d Comfort Humidity Min","sonoffSnzb02dComfortHumidityMax","comfortHumidityMaximum","sonoff_snzb02d_comfort_humidity_max","Sonoff Snzb02d Comfort Humidity Max","sonoffSnzb02dTemperatureCal","sonoff_snzb02d_temperature_calibration","Sonoff Snzb02d Temperature Cal","sonoffSnzb02dHumidityCal","sonoff_snzb02d_humidity_calibration","Sonoff Snzb02d Humidity Cal","sonoffSnzb02ldTemperatureCal","sonoff_snzb02ld_temperature_calibration","Sonoff Snzb02ld Temperature Cal","sonoffSnzb02wdTemperatureCal","sonoff_snzb02wd_temperature_calibration","Sonoff Snzb02wd Temperature Cal","sonoffSnzb02wdHumidityCal","sonoff_snzb02wd_humidity_calibration","Sonoff Snzb02wd Humidity Cal","sonoffSnzb02mTemperatureCal","sonoff_snzb02m_temperature_calibration","Sonoff Snzb02m Temperature Cal","sonoffSnzb02mHumidityCal","sonoff_snzb02m_humidity_calibration","Sonoff Snzb02m Humidity Cal","hPa","sonoffSnzb02mPressureCal","pressureCalibration","sonoff_snzb02m_pressure_calibration","Sonoff Snzb02m Pressure Cal","kPa","sonoffSnzb02mVpd","vaporPressureDeficit","sonoff_snzb02m_vpd","Sonoff Snzb02m Vpd","sonoffSnzb02bTemperatureCal","sonoff_snzb02b_temperature_calibration","Sonoff Snzb02b Temperature Cal","sonoffSnzb02bHumidityCal","sonoff_snzb02b_humidity_calibration","Sonoff Snzb02b Humidity Cal","sonoffSnzb02bVpd","sonoff_snzb02b_vpd","Sonoff Snzb02b Vpd","sonoffSnzb03pMotionTimeout","motionTimeout","sonoff_snzb03p_motion_timeout","Sonoff Snzb03p Motion Timeout","sonoffMg35rzOccupiedDelay","occupiedToUnoccupiedDelay","sonoff_mg35rz_occupied_delay","Sonoff Mg35rz Occupied Delay","sonoffMg35rzUnoccupiedDelay","unoccupiedToOccupiedDelay","sonoff_mg35rz_unoccupied_delay","Sonoff Mg35rz Unoccupied Delay","sonoffSnzb03pr2DetectionDuration","detectionDuration","sonoff_snzb03pr2_detection_duration","Sonoff Snzb03pr2Detection Duration","sonoffSnzb03pr2IlluminationOffset","illuminationOffset","sonoff_snzb03pr2_illumination_offset","Sonoff Snzb03pr2Illumination Offset","battery_low","batteryLow","Battery low","normal","low","linknLinkEmotionAirAction","linknlink_emotion_air_action","Linkn Link Emotion Air Action","on","off","toggle","brightness_move_to_level","brightness_move_up","brightness_move_down","brightness_step_up","brightness_step_down","brightness_stop","shellyPresenceLightLevel","shelly_presence_light_level","Shelly Presence Light Level","dark","twilight","bright","shellyPresenceSensorPosition","shelly_presence_sensor_position","Shelly Presence Sensor Position","center","left","right","shellyPresenceSensorFlipped","shelly_presence_sensor_flipped","Shelly Presence Sensor Flipped","false","true","shellyPresenceSensitivity","shelly_presence_sensitivity","Shelly Presence Sensitivity","medium","high","custom","shellyPresenceRadarPower","shelly_presence_radar_power","Shelly Presence Radar Power","shellyPresenceNightMode","shelly_presence_night_mode","Shelly Presence Night Mode","shellyPresenceEcoMode","shelly_presence_eco_mode","Shelly Presence Eco Mode","shellyPresenceIdentify","shelly_presence_identify","Shelly Presence Identify","identify","shellyPresenceDhcpEnabled","shelly_presence_dhcp_enabled","Shelly Presence Dhcp Enabled","shellyPresenceWifiEnabled","shelly_presence_wifi_enabled","Shelly Presence Wifi Enabled","heimanEfThreeChargingStatus","chargingStatus","heiman_ef_three_charging_status","Heiman Ef Three Charging Status","NotCharged","Charging","FullyCharged","sonoffSnzb02dTemperatureUnits","temperatureUnits","sonoff_snzb02d_temperature_units","Sonoff Snzb02d Temperature Units","celsius","fahrenheit","sonoffSnzb02ldTemperatureUnits","sonoff_snzb02ld_temperature_units","Sonoff Snzb02ld Temperature Units","sonoffSnzb02wdTemperatureUnits","sonoff_snzb02wd_temperature_units","Sonoff Snzb02wd Temperature Units","sonoffSnzb03pIllumination","illumination","sonoff_snzb03p_illumination","Sonoff Snzb03p Illumination","dim","sonoffMg35rzSensitivity","occupancySensitivity","sonoff_mg35rz_sensitivity","Sonoff Mg35rz Sensitivity","last_power_response_time","lastPowerResponseTime","Last power response time","shellyPresenceWifiStatus","shelly_presence_wifi_status","Shelly Presence Wifi Status","shellyPresenceIpAddress","shelly_presence_ip_address","Shelly Presence Ip Address","shellyPresenceWifiSsid","shelly_presence_wifi_ssid","Shelly Presence Wifi Ssid","shellyPresenceWifiPassword","shelly_presence_wifi_password","Shelly Presence Wifi Password","shellyPresenceStaticIp","shelly_presence_static_ip","Shelly Presence Static Ip","shellyPresenceNetMask","shelly_presence_net_mask","Shelly Presence Net Mask","shellyPresenceGateway","shelly_presence_gateway","Shelly Presence Gateway","shellyPresenceNameServer","shelly_presence_name_server","Shelly Presence Name Server"}
 local function string_value(value)
-if type(value)=="number" then return strings[value]end
+if type(value)=="number"then return strings[value]end
 return value
 end
-local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return "concertmirror08464." .. suffix end
+local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
 local table_groups={}
 local function grouped_table(group_id)
-if type(group_id)~="number" then return{}end
+if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
-if existing ~=nil then return existing end
+if existing~=nil then return existing end
 local out={}
 table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
-if type(values)~="table" then return nil end
+if type(values)~="table"then return nil end
 local out=grouped_table(group_id)
 for index,value in ipairs(values)do out[index]=string_value(value)end
 return out
@@ -26,11 +26,11 @@ if value==0 then return nil end
 return string_value(value)
 end
 local function command_default(attribute_name)
-if type(attribute_name)~="string" or attribute_name=="" then return nil end
-return "set" .. attribute_name:sub(1,1):upper().. attribute_name:sub(2)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
-if type(value)~="table" then return nil end
+if type(value)~="table"then return nil end
 local out=grouped_table(value[6])
 out.minimum=value[1]
 out.maximum=value[2]
@@ -62,7 +62,7 @@ return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(ro
 end
 local function build(rows,factory)
 local out={}
-for _,row in ipairs(rows)do out[#out + 1]=factory(row)end
+for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
 custom_capabilities.numeric=build({{2,nil,2,2,nil,nil,nil,3,4,{0,65535,1,1,nil,1,nil},nil,nil,1},{5,nil,5,5,nil,nil,nil,6,7,{0,65535,1,1,nil,2,nil},nil,nil,1},{9,nil,9,9,nil,nil,nil,10,11,{0,3600,1,8,nil,3,nil},nil,nil,8},{12,nil,12,12,nil,nil,nil,13,14,{0,3600,1,8,nil,4,nil},nil,nil,8},{16,nil,16,16,nil,nil,nil,17,18,{0,5,0.1,15,nil,5,nil},nil,nil,15},{19,nil,19,19,nil,nil,nil,20,21,{0,5,0.1,15,nil,6,nil},nil,nil,15},{22,nil,22,22,nil,nil,nil,23,24,{0,5,0.1,15,nil,7,nil},nil,nil,15},{25,nil,25,25,nil,nil,nil,26,27,{1,10,1,nil,nil,8,nil},nil,nil,nil},{29,nil,29,29,nil,nil,nil,30,31,{0,100,1,28,nil,9,nil},nil,nil,28},{32,nil,32,32,nil,nil,nil,33,34,{0,100,1,28,nil,10,nil},nil,nil,28},{35,nil,35,35,nil,nil,nil,36,37,{10,100,1,nil,nil,11,nil},nil,nil,nil},{38,nil,38,38,nil,nil,nil,39,40,{0,1,0.01,nil,nil,12,nil},nil,nil,nil},{41,nil,41,41,nil,nil,nil,42,43,{10,100,1,nil,nil,13,nil},nil,nil,nil},{44,nil,44,44,nil,nil,nil,45,46,{1,50,1,nil,nil,14,nil},nil,nil,nil},{47,nil,47,47,nil,nil,nil,48,49,{1,100,1,nil,nil,15,nil},nil,nil,nil},{50,nil,50,50,nil,nil,nil,51,52,{1,100,1,nil,nil,16,nil},nil,nil,nil},{53,nil,53,53,nil,nil,nil,54,55,{1,1000,1,nil,nil,17,nil},nil,nil,nil},{56,nil,56,56,nil,nil,nil,57,58,{1,1000,1,nil,nil,18,nil},nil,nil,nil},{59,nil,59,59,nil,nil,nil,60,61,{1,65535,1,nil,nil,19,nil},nil,nil,nil},{62,nil,62,62,nil,0,0,62,63,{1,65527,1,nil,nil,20,nil},nil,nil,nil},{64,nil,64,64,nil,0,0,64,65,{0,255,1,nil,nil,21,nil},nil,nil,nil},{66,nil,66,66,nil,0,0,66,67,{0,6553.5,0.1,8,nil,22,nil},nil,nil,8},{68,nil,68,68,nil,0,0,68,69,{0,255,1,nil,nil,23,nil},nil,nil,nil},{70,nil,70,70,nil,0,0,70,71,{0,255,1,nil,nil,24,nil},nil,nil,nil},{73,nil,73,74,nil,0,0,75,76,{0,65535,1,72,nil,25,nil},nil,nil,72},{77,nil,77,78,nil,0,0,79,80,{0,65535,1,nil,nil,26,nil},nil,nil,nil},{81,nil,81,82,nil,nil,nil,83,84,{0,50,1,nil,nil,27,nil},nil,nil,nil},{86,nil,86,87,nil,nil,nil,88,89,{-50,50,0.1,85,nil,28,nil},nil,nil,85},{90,nil,90,91,nil,nil,nil,92,93,{-50,50,0.1,28,nil,29,nil},nil,nil,28},{94,nil,94,95,nil,nil,nil,96,97,{-10,60,0.1,85,nil,30,nil},nil,nil,85},{98,nil,98,99,nil,nil,nil,100,101,{-10,60,0.1,85,nil,31,nil},nil,nil,85},{102,nil,102,103,nil,nil,nil,104,105,{5,95,0.1,28,nil,32,nil},nil,nil,28},{106,nil,106,107,nil,nil,nil,108,109,{5,95,0.1,28,nil,33,nil},nil,nil,28},{110,nil,110,87,nil,nil,nil,111,112,{-50,50,0.1,85,nil,34,nil},nil,nil,85},{113,nil,113,91,nil,nil,nil,114,115,{-50,50,0.1,28,nil,35,nil},nil,nil,28},{116,nil,116,87,nil,nil,nil,117,118,{-50,50,0.1,85,nil,36,nil},nil,nil,85},{119,nil,119,87,nil,nil,nil,120,121,{-50,50,0.1,85,nil,37,nil},nil,nil,85},{122,nil,122,91,nil,nil,nil,123,124,{-50,50,0.1,28,nil,38,nil},nil,nil,28},{125,nil,125,87,nil,nil,nil,126,127,{-50,50,0.1,85,nil,39,nil},nil,nil,85},{128,nil,128,91,nil,nil,nil,129,130,{-50,50,0.1,28,nil,40,nil},nil,nil,28},{132,nil,132,133,nil,nil,nil,134,135,{-200,200,0.1,131,nil,41,nil},nil,nil,131},{137,nil,137,138,nil,0,0,139,140,{nil,nil,nil,136,nil,42,nil},nil,nil,136},{141,nil,141,87,nil,nil,nil,142,143,{-50,50,0.1,85,nil,43,nil},nil,nil,85},{144,nil,144,91,nil,nil,nil,145,146,{-50,50,0.1,28,nil,44,nil},nil,nil,28},{147,nil,147,138,nil,0,0,148,149,{nil,nil,nil,136,nil,45,nil},nil,nil,136},{150,nil,150,151,nil,nil,nil,152,153,{5,60,1,8,nil,46,nil},nil,nil,8},{154,nil,154,155,nil,nil,nil,156,157,{60,65535,1,8,nil,47,nil},nil,nil,8},{158,nil,158,159,nil,nil,nil,160,161,{0,65535,1,8,nil,48,nil},nil,nil,8},{162,nil,162,163,nil,nil,nil,164,165,{5,60,1,8,nil,49,nil},nil,nil,8},{166,nil,166,167,nil,nil,nil,168,169,{-1000,1000,1,1,nil,50,nil},nil,nil,1}},numeric)
@@ -75,8 +75,8 @@ custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
-if type(metadata.capability_id)=="string" and metadata.capability_id ~="" then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
-if type(metadata.range_key)=="string" and metadata.range_key ~="" then custom_capabilities.by_range_key[metadata.range_key]=metadata end
+if type(metadata.capability_id)=="string"and metadata.capability_id~=""then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
+if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
 index_metadata(custom_capabilities.numeric)
@@ -85,24 +85,23 @@ index_metadata(custom_capabilities.text)
 custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
-if type(allowed_values)~="table" then return nil end
+if type(allowed_values)~="table"then return nil end
 local copied={}
 for index,value in ipairs(allowed_values)do copied[index]=value end
 return copied
 end
 function custom_capabilities.resolve_range(definition,metadata)
-if type(metadata)~="table" then return nil end
-local default_range=type(metadata.default_range)=="table" and metadata.default_range or nil
-local ranges=type(definition)=="table" and definition.presence_capability_ranges or nil
-local resolved=type(ranges)=="table" and ranges[metadata.range_key]or nil
-if type(resolved)~="table" then resolved=default_range end
-if type(resolved)~="table" then return nil end
+if type(metadata)~="table"then return nil end
+local default_range=type(metadata.default_range)=="table"and metadata.default_range or nil
+local ranges=type(definition)=="table"and definition.presence_capability_ranges or nil
+local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
+if type(resolved)~="table"then resolved=default_range end
+if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number" and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number" and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number" and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string" and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table" and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),
-}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
+maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
+step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
+unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
+allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

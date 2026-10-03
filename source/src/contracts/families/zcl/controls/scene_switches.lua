@@ -2,6 +2,8 @@ local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
 local zcl_device_helpers = require "contracts.helpers.zcl"
 local device_management = require "st.zigbee.device_management"
+local emit = require "capabilities.events.all"
+local data_types = require "st.zigbee.data_types"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -73,7 +75,44 @@ local multi_two_gang = build_mixed_scene_switch("scene-switches-2-advanced", 2, 
 local multi_three_gang = build_mixed_scene_switch("scene-switches-3-advanced", 3, 0)
 local multi_four_gang = build_mixed_scene_switch("scene-switches-4-advanced", 4, 0)
 local four_gang_two_scene = build_mixed_scene_switch("scene-switches-4-plus-2", 4, 2)
-local four_gang_four_scene = build_mixed_scene_switch("scene-switches-4-plus-4", 4, 4)
+local four_gang_four_scene = {
+  profile = "scene-switches-4-plus-4",
+  scene_switch = true,
+  button_actions = { "pushed" },
+  scene_component_map = build_scene_component_map(4, 4),
+  zcl_clusters = {zcl.tuya_magic_packet({read_on_configure = false})},
+  configure = bind_on_off_endpoints(8),
+  parent_refresh = function(device)
+    for endpoint = 1, 4 do
+      zcl.read_attribute(device, 0x0006, 0x0000, endpoint)
+      zcl.read_attribute(device, 0xE001, 0xD010, endpoint)
+    end
+    return true
+  end,
+}
+for endpoint = 1, 4 do
+  local component = endpoint == 1 and "main" or ("switch" .. endpoint)
+  four_gang_four_scene.zcl_clusters[#four_gang_four_scene.zcl_clusters + 1] = zcl.cluster_attribute(0x0006, 0x0000, {
+    name = "switch", endpoint = endpoint, component = component, data_type = data_types.Boolean, emit = emit.switch(),
+  })
+  four_gang_four_scene.zcl_clusters[#four_gang_four_scene.zcl_clusters + 1] = zcl.cluster_attribute(0xE001, 0xD010, {
+    name = "ts0726_four_scene_power_behavior", endpoint = endpoint, component = component,
+    data_type = data_types.Enum8, write_type = data_types.Enum8, emit = emit.ts0726FourScenePowerBehavior(),
+    converter = {
+      from = function(value)
+        if type(value) == "table" then value = value.value end
+        return ({[0] = "off", [1] = "on", [2] = "previous"})[value]
+      end,
+      to = function(value) return ({off = 0, on = 1, previous = 2})[value] end,
+    },
+  })
+  four_gang_four_scene.zcl_clusters[#four_gang_four_scene.zcl_clusters + 1] = zcl.cluster_attribute(0xE001, 0xD020, {
+    name = "ts0726_four_scene_switch_mode", endpoint = endpoint, component = component,
+    data_type = data_types.Enum8, write_type = data_types.Enum8, write_only = true,
+    to_device = function(value) return ({switch = 0, scene = 1})[value] end,
+    emit = emit.ts0726FourSceneSwitchMode(),
+  })
+end
 local scene_one = build_mixed_scene_switch("scene-switches-scene-1", 1, 0)
 local scene_two = build_mixed_scene_switch("scene-switches-scene-2", 2, 0)
 local scene_three = build_mixed_scene_switch("scene-switches-scene-3", 3, 0)
@@ -190,6 +229,7 @@ register_device_definition(coswall_four_two, device_helpers.create_fingerprints(
 
 register_device_definition(four_gang_four_scene, device_helpers.create_fingerprints("TS0726", {
   "_TZ300A_82iab0pn",
+  "_TZ300A_57kqwetw",
 }))
 
 register_device_definition(three_gang, device_helpers.create_fingerprints("TS0726", {

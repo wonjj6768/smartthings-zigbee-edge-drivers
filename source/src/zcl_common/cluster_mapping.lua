@@ -68,6 +68,7 @@ local function load_cluster_mapping(zcl)
     "endpoint",
     "read_only",
     "write_only",
+    "suppress_optimistic_state",
     "handler",
     "sender",
     "command_id",

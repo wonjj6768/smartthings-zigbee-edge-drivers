@@ -1,0 +1,12 @@
+name: covers-tuya-cover14-a0
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: concertmirror08464.cover14A0MotorDirection, version: 1}
+      - {id: concertmirror08464.cover14A0MotorState, version: 1}
+      - {id: concertmirror08464.cover14A0TotalTime, version: 1}
+      - {id: concertmirror08464.cover14A0SituationSet, version: 1}
+      - {id: concertmirror08464.cover14A0FavoritePosition, version: 1}
+    categories: [{name: Blind}]

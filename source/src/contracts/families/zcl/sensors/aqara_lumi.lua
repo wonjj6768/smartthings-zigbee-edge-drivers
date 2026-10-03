@@ -176,6 +176,70 @@ local function lumi_motion_diagnostics(temp_emit, interval_emit, p1, restart_emi
   end
 end
 
+local function t1_ht_heartbeat(device, value)
+  local fields = lumi_number(value)
+  if type(fields) == "string" then
+    local decoded, offset = {}, 1
+    while offset + 1 <= #fields do
+      local key, kind = fields:byte(offset, offset + 1)
+      local width = kind >= 0x20 and kind <= 0x2F and ((kind % 8) + 1) or kind == 0x10 and 1
+      if not width or offset + 1 + width > #fields then break end
+      decoded[key] = string.unpack("<" .. (kind >= 0x28 and "i" or "I") .. width, fields, offset + 2)
+      offset = offset + 2 + width
+    end
+    fields = decoded
+  end
+  if type(fields) ~= "table" then return end
+  local events = lumi_basic_events(device, {
+    [1] = lumi_number(lumi_table_value(fields, 1)),
+    [100] = lumi_number(lumi_table_value(fields, 100)),
+    [101] = lumi_number(lumi_table_value(fields, 101)),
+  }) or {}
+  local temperature = lumi_number(lumi_table_value(fields, 3))
+  if type(temperature) == "number" then
+    events[#events + 1] = emit.t1HtDeviceTemperature("C")(device, temperature)
+  end
+  local outages = lumi_number(lumi_table_value(fields, 5))
+  if type(outages) == "number" then
+    events[#events + 1] = emit.t1HtPowerOutageCount()(device, outages - 1)
+  end
+  return #events > 0 and events or nil
+end
+
+local aqara_t1_ht = {
+  profile = "sensors-aqara-t1-ht",
+  magic_packet = false,
+  parent_refresh = function(device)
+    for _, attribute in ipairs({{0x0402, 0}, {0x0405, 0}, {0x0403, 0}, {1, 0x21}, {1, 0x20}}) do
+      zcl.read_attribute(device, attribute[1], attribute[2], 1)
+    end
+  end,
+  zcl_clusters = {
+    zcl.cluster_attribute(0, 0xFF01, {
+      name = "t1_ht_basic_heartbeat", endpoint = 1, read_only = true,
+      read_on_configure = false, emit = t1_ht_heartbeat,
+    }),
+    zcl.cluster_attribute(0xFCC0, 0x00F7, {
+      name = "t1_ht_heartbeat", endpoint = 1, read_only = true,
+      read_on_configure = false, emit = t1_ht_heartbeat,
+    }),
+    zcl.temperature({endpoint = 1, minimum_interval = 10, maximum_interval = 3600, reportable_change = 100}),
+    zcl.humidity({endpoint = 1, minimum_interval = 10, maximum_interval = 3600, reportable_change = 100}),
+    zcl.pressure({endpoint = 1, scale = 1, minimum_interval = 10, maximum_interval = 3600, reportable_change = 5,
+      emit = function(_, value)
+        return capabilities.atmosphericPressureMeasurement.atmosphericPressure({value = value, unit = "hPa"})
+      end}),
+    zcl.battery({endpoint = 1, minimum_interval = 3600, maximum_interval = 65000, reportable_change = 10,
+      from_device = function(value, _, context) return context.raw_value < 255 and value or nil end}),
+    zcl.battery_voltage({endpoint = 1, minimum_interval = 3600, maximum_interval = 65000, reportable_change = 10,
+      from_device = function(value, _, context) return context.raw_value < 255 and value or nil end,
+      emit = function(_, value)
+        return {capabilities.voltageMeasurement.voltage({value = value, unit = "V"}),
+          capabilities.battery.battery(battery_percent_from_voltage(value * 1000))}
+      end}),
+  },
+}
+
 local function lumi_occupancy(device, value)
   if lumi_number(value) ~= 1 then return end
   lumi_motion_timer(device, tonumber(device.preferences.occupancyTimeout) or 90)
@@ -376,8 +440,11 @@ register_device_definition(temp_humidity_lumi_basic, {
 })
 
 register_device_definition(temp_humidity_pressure, {
-  device_helpers.create_fingerprint("LUMI", "lumi.sensor_ht.agl02"),
   device_helpers.create_fingerprint("LUMI", "lumi.weather"),
+})
+
+register_device_definition(aqara_t1_ht, {
+  device_helpers.create_fingerprint("LUMI", "lumi.sensor_ht.agl02"),
 })
 
 register_device_definition(illuminance, {

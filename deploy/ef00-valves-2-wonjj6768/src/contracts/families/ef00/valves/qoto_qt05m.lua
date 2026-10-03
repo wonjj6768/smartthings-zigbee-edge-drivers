@@ -1,6 +1,6 @@
-local tuya=require "protocol.tuya"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
+local tuya=require"protocol.tuya"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local definition={
 profile="valves-qoto-qt05m",
@@ -14,44 +14,33 @@ placeholder_custom_states=false,
 tuya.dp_numeric(3,{
 name="qoto_qt_five_water_flow",
 read_only=true,
-emit=emit.qotoQtFiveWaterFlow(),
-}),
+emit=emit.qotoQtFiveWaterFlow(),}),
 tuya.dp_numeric(107,{
 name="qoto_qt_five_last_duration",
 read_only=true,
-emit=emit.qotoQtFiveLastDuration(),
-}),
+emit=emit.qotoQtFiveLastDuration(),}),
 tuya.dp_numeric(101,{
 name="qoto_qt_five_remaining_time",
 read_only=true,
-emit=emit.qotoQtFiveRemainingTime(),
-}),
+emit=emit.qotoQtFiveRemainingTime(),}),
 tuya.dp_numeric(102,{
 name="qoto_qt_five_valve_state",
-emit=emit.qotoQtFiveValveState(),
-}),
+emit=emit.qotoQtFiveValveState(),}),
 tuya.dp_numeric(2,{
 name="qoto_qt_five_valve_auto_state",
 emit=emit.all(
 emit.qotoQtFiveValveAutoState(),
-emit.qotoQtFiveValveState()
-),
-}),
+emit.qotoQtFiveValveState()),}),
 tuya.dp_numeric(11,{
 name="qoto_qt_five_shutdown_timer",
-emit=emit.qotoQtFiveShutdownTimer(),
-}),
+emit=emit.qotoQtFiveShutdownTimer(),}),
 tuya.dp_battery(110,{
 read_only=true,
-emit=emit.battery(),
-}),
-}
+emit=emit.battery(),}),}
 register_device_definition(definition,{
 {manufacturer="_TZE200_arge1ptm",model="TS0601"},
 {manufacturer="_TZE200_anv5ujhv",model="TS0601"},
-{manufacturer="_TZE200_xlppj4f5",model="TS0601"},
-})
+{manufacturer="_TZE200_xlppj4f5",model="TS0601"},})
 return{
 id="qoto.qt_05m",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

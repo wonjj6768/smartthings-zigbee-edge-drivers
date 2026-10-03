@@ -1,6 +1,6 @@
-local cluster_base=require "st.zigbee.cluster_base"
-local data_types=require "st.zigbee.data_types"
-local device_management=require "st.zigbee.device_management"
+local cluster_base=require"st.zigbee.cluster_base"
+local data_types=require"st.zigbee.data_types"
+local device_management=require"st.zigbee.device_management"
 local function build_stub()
 local zcl={}
 zcl.CLUSTER_ON_OFF=0x0006
@@ -19,8 +19,7 @@ device:send(device_management.build_bind_request(
 device,
 cluster_id,
 hub_eui,
-endpoint
-))
+endpoint))
 return true
 end
 function zcl.cluster_attribute(cluster_id,attribute_id,options)
@@ -32,16 +31,15 @@ return mapping
 end
 function zcl.switch(options)
 local mapping=zcl.cluster_attribute(zcl.CLUSTER_ON_OFF,zcl.ATTR_ON_OFF,options or{})
-if mapping.name==nil then mapping.name="switch" end
+if mapping.name==nil then mapping.name="switch"end
 return mapping
 end
 function zcl.battery(options)
 local mapping=zcl.cluster_attribute(
 zcl.CLUSTER_POWER_CONFIGURATION,
 zcl.ATTR_BATTERY_PERCENTAGE_REMAINING,
-options or{}
-)
-if mapping.name==nil then mapping.name="battery" end
+options or{})
+if mapping.name==nil then mapping.name="battery"end
 if mapping.scale==nil then mapping.scale=2 end
 return mapping
 end
@@ -64,9 +62,8 @@ function zcl.read_attribute(device,cluster_id,attribute_id,endpoint)
 local request=cluster_base.read_attribute(
 device,
 data_types.ClusterId(cluster_id),
-data_types.AttributeId(attribute_id)
-)
-if endpoint ~=nil and type(request.to_endpoint)=="function" then
+data_types.AttributeId(attribute_id))
+if endpoint~=nil and type(request.to_endpoint)=="function"then
 request=request:to_endpoint(endpoint)
 end
 device:send(request)
@@ -80,7 +77,7 @@ local event=mapping.emit(device,value,{},mapping)
 if event==nil then
 return
 end
-if mapping.component ~=nil and type(device.emit_component_event)=="function" then
+if mapping.component~=nil and type(device.emit_component_event)=="function"then
 device:emit_component_event({id=mapping.component},event)
 return
 end
@@ -90,13 +87,13 @@ local function matching_mappings(zcl_clusters,cluster_id,attribute_id)
 local found={}
 for _,mapping in ipairs(zcl_clusters or{})do
 if mapping.cluster_id==cluster_id and mapping.attribute_id==attribute_id then
-found[#found + 1]=mapping
+found[#found+1]=mapping
 end
 end
 return found
 end
 local function raw_value(value)
-if type(value)=="table" and value.value ~=nil then
+if type(value)=="table"and value.value~=nil then
 return value.value
 end
 return value
@@ -126,29 +123,26 @@ zcl.CLUSTER_POWER_CONFIGURATION,
 zcl.ATTR_BATTERY_PERCENTAGE_REMAINING,
 function(raw,mapping)
 local scale=mapping.scale
-if type(raw)=="number" and type(scale)=="number" and scale ~=0 then
-return raw / scale
+if type(raw)=="number"and type(scale)=="number"and scale~=0 then
+return raw/scale
 end
 return raw
 end
-),
-},
+),},
 [zcl.CLUSTER_ILLUMINANCE]={
 [zcl.ATTR_MEASURED_VALUE]=factory(
 zcl.CLUSTER_ILLUMINANCE,
 zcl.ATTR_MEASURED_VALUE,
 function(raw)
-if type(raw)~="number" then
+if type(raw)~="number"then
 return raw
 end
-if raw <=0 then
+if raw<=0 then
 return 0
 end
-return math.floor(10 ^((raw - 1)/ 10000)+ 0.5)
+return math.floor(10 ^((raw-1)/10000)+0.5)
 end
-),
-},
-}
+),},}
 end
 function zcl.build_zigbee_cluster_handlers(get_preset)
 local function zone_status_handler(_,device,zb_rx)
@@ -161,8 +155,8 @@ local zone_status=zcl_body and zcl_body.zone_status or nil
 if zone_status==nil then
 return
 end
-local bits=type(zone_status)=="table" and zone_status.value or zone_status
-if type(bits)~="number" then
+local bits=type(zone_status)=="table"and zone_status.value or zone_status
+if type(bits)~="number"then
 return
 end
 for _,mapping in ipairs(matching_mappings(
@@ -171,28 +165,25 @@ zcl.CLUSTER_IAS_ZONE,
 zcl.ATTR_ZONE_STATUS
 ))do
 local mask=mapping.zone_status_mask
-if type(mask)=="number" then
-stub_emit(device,mapping,(bits %(mask * 2))>=mask)
+if type(mask)=="number"then
+stub_emit(device,mapping,(bits%(mask*2))>=mask)
 end
 end
 end
 return{
 [zcl.CLUSTER_IAS_ZONE]={
-[0x00]=zone_status_handler,
-},
-}
+[0x00]=zone_status_handler,},}
 end
 function zcl.start_configuration(device,zcl_clusters)
 local seen={}
 for _,mapping in ipairs(zcl_clusters or{})do
 local cluster_id=mapping.cluster_id
-if type(cluster_id)=="number" and not seen[cluster_id]then
+if type(cluster_id)=="number"and not seen[cluster_id]then
 seen[cluster_id]=true
 device:send(device_management.build_bind_request(
 device,
 cluster_id,
-device.driver.environment_info.hub_zigbee_eui
-))
+device.driver.environment_info.hub_zigbee_eui))
 end
 end
 return true

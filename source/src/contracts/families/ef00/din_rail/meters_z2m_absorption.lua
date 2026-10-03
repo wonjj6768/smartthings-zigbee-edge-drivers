@@ -11,22 +11,26 @@ local device_definitions, register_device_definition = device_helpers.definition
 local power_meter_model_zwpm16 = {
   profile = "meters-zwpm16",
   package_group = "meters",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  initial_custom_state_query = false,
+  refresh_state_query = false,
+  placeholder_custom_states = false,
   tuya.dp_current(18, {
-    emit = emit.current(), converter = converter.signed_number_pair(1000), signed = true, read_only = true,
+    emit = emit.current(), converter = converter.divide_by_pair(1000), read_only = true,
   }),
   tuya.dp_power(19, {
-    emit = emit.power(), converter = converter.signed_number_pair(10), signed = true, read_only = true,
+    emit = emit.power(), converter = converter.divide_by_pair(10), read_only = true,
   }),
   tuya.dp_voltage(20, {
-    emit = emit.voltage(), converter = converter.signed_number_pair(10), signed = true, read_only = true,
+    emit = emit.voltage(), converter = converter.divide_by_pair(10), read_only = true,
   }),
   tuya.dp_energy(104, {
-    emit = emit.energy(), converter = converter.signed_number_pair(1000), signed = true, read_only = true,
+    emit = emit.energy(), converter = converter.divide_by_pair(1000), read_only = true,
   }),
   tuya.dp_numeric(105, {
     name = "daily_energy",
-    converter = converter.signed_number_pair(1000),
-    signed = true,
+    converter = converter.divide_by_pair(1000),
     read_only = true,
     emit = emit.zwpm16DailyEnergy(),
   }),
@@ -36,6 +40,7 @@ local power_meter_model_zwpm16 = {
 
 register_device_definition(power_meter_model_zwpm16, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_goecjd1t",
+  "_TZE284_goecjd1t",
 }))
 
 -- Z2M v26.99.0: AVATTO ZWPM16 two-line energy meter.
@@ -227,6 +232,37 @@ register_device_definition(nous_d4z_m_core, device_helpers.create_fingerprints("
   "_TZE200_agjqiu4h",
   "_TZE204_agjqiu4h",
   "_TZE284_agjqiu4h",
+}))
+
+local avatto_zot60 = {
+  profile = "meters-avatto-zot60",
+  magic_packet = true,
+  query_on_configure = false,
+  time_start = "off",
+  datapoints = {
+    tuya.dp_on_off(1, {name = "switch", emit = emit.switch()}),
+    tuya.dp_numeric(9, {name = "zot60_countdown", emit = emit.zot60Countdown()}),
+    tuya.dp_energy(17, {
+      name = "zot60_energy", scale = 1000,
+      emit = function(device, value)
+        return {emit.energy()(device, value), emit.zot60Energy()(device, value)}
+      end,
+    }),
+    tuya.dp_current(18, {scale = 1000, read_only = true, emit = emit.current()}),
+    tuya.dp_power(19, {scale = 10, read_only = true, emit = emit.power()}),
+    tuya.dp_voltage(20, {scale = 10, read_only = true, emit = emit.voltage()}),
+    tuya.dp_enum(27, {
+      name = "zot60_power_behavior", emit = emit.zot60PowerBehavior(),
+      converter = converter.lookup_from_to({off = 0, on = 1, previous = 2}),
+    }),
+    tuya.dp_binary(101, {
+      name = "zot60_backlight_mode", emit = emit.zot60BacklightMode(),
+      converter = converter.lookup_from_to({ON = true, OFF = false}),
+    }),
+  },
+}
+register_device_definition(avatto_zot60, device_helpers.create_fingerprints("TS011F", {
+  "_TZ3218_pfnjjx6a", "_TZ3218_fv20refe", "_TZ3218_o1slgs0r",
 }))
 
 return {

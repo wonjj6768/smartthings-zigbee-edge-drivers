@@ -661,7 +661,7 @@ local function emit_text_custom(definition, options)
       return
     end
 
-    local maximum_length = definition.maximum_length or 512
+    local maximum_length = definition.maximum_length or utf8_text.length(value)
     local message = utf8_text.truncate(value, maximum_length)
     if message == nil then
       return

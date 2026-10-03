@@ -45,6 +45,7 @@ local screen_switch_events = {}
 
 
 local zms206_four = {
+  time_zone = emit.zms206us4TimeZone,
   backlight_mode = emit.zmsFourBacklightSetting,
   backlight_brightness = emit.zmsFourBacklightBrightness,
   child_lock = emit.zmsFourChildLock,
@@ -53,7 +54,7 @@ local zms206_four = {
   switch_color_off = emit.zmsFourSwitchColorOff,
   indicator_status = emit.zmsFourIndicatorStatus,
   delay_off_color = emit.zmsFourDelayOffColor,
-  switch_name = emit.zmsFourSwitchName,
+  switch_name = emit.zms206us4SwitchName,
   relay_status = emit.zmsFourRelayStatus,
   countdown = emit.zmsFourCountdown,
 }
@@ -72,6 +73,7 @@ local zms206_four = {
 
 local function zms206(factories, gang_count, single_gang)
   local events = {
+    time_zone = factories.time_zone(),
     switch_main = emit.switch(),
     indicator_status = factories.indicator_status(),
     backlight_mode = factories.backlight_mode(),

@@ -1,9 +1,9 @@
-local tuya=require "protocol.tuya"
-local emit=require "capabilities.events.all"
-local device_helpers=require "contracts.helpers.family"
-local zcl=require "protocol.zcl"
-local zcl_clusters=require "st.zigbee.zcl.clusters"
-local device_management=require "st.zigbee.device_management"
+local tuya=require"protocol.tuya"
+local emit=require"capabilities.events.all"
+local device_helpers=require"contracts.helpers.family"
+local zcl=require"protocol.zcl"
+local zcl_clusters=require"st.zigbee.zcl.clusters"
+local device_management=require"st.zigbee.device_management"
 local converter=tuya.converter
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function window_shade_state_from_position()
@@ -12,13 +12,13 @@ local number_value=tonumber(value)
 if number_value==nil then
 return nil
 end
-if number_value <=0 then
-return "closed"
+if number_value<=0 then
+return"closed"
 end
-if number_value >=100 then
-return "open"
+if number_value>=100 then
+return"open"
 end
-return "partially open"
+return"partially open"
 end)
 end
 local function window_shade_state_from_position_inverted()
@@ -27,21 +27,20 @@ local number_value=tonumber(value)
 if number_value==nil then
 return nil
 end
-number_value=100 - number_value
-if number_value <=0 then
-return "closed"
+number_value=100-number_value
+if number_value<=0 then
+return"closed"
 end
-if number_value >=100 then
-return "open"
+if number_value>=100 then
+return"open"
 end
-return "partially open"
+return"partially open"
 end)
 end
 local cover_state_standard=converter.lookup_from_to({
 open=0,
 stop=1,
-close=2,
-})
+close=2,})
 local cover_action_shade_state=converter.from_only(function(value)
 return({
 [0]="open",
@@ -53,139 +52,111 @@ end)
 local cover_state_open_close_stop=converter.lookup_from_to({
 open=0,
 close=1,
-stop=2,
-})
+stop=2,})
 local cover_state_reversed=converter.lookup_from_to({
 open=2,
 stop=1,
-close=0,
-})
+close=0,})
 local cover_state_open_close_stop_reversed=converter.lookup_from_to({
 open=1,
 close=0,
-stop=2,
-})
+stop=2,})
 local cover_state_alt_controls=converter.lookup_from_to({
 open=2,
 stop=0,
-close=1,
-})
+close=1,})
 local cover_with_1_switch={
 profile="covers-cover-switch-1",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_on_off(101,{
 name="switch",
-component="switch2",
-}),
-}
+component="switch2",}),}
 local cover_with_2_switch={
 profile="covers-cover-switch-2",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_on_off(101,{
 name="switch",
-component="switch2",
-}),
+component="switch2",}),
 tuya.dp_on_off(102,{
 name="switch",
-component="switch3",
-}),
-}
+component="switch3",}),}
 local cover_switch_2_touch_panel={
 profile="covers-cover-switch-2-trwaxi57",
 datapoints={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(3,{
 name="calibration",
 emit=emit.trwaxi57Calibration(),
 converter=converter.lookup_from_to({
 start=0,
 ["end"]=1,
-}),
-}),
+}),}),
 tuya.dp_backlight_mode_off_on(7,{
 name="backlight_mode",
 emit=emit.trwaxi57Backlight(),
-converter=converter.lookup_from_to({off=false,on=true}),
-}),
+converter=converter.lookup_from_to({off=false,on=true}),}),
 tuya.dp_enum(8,{
 name="motor_steering",
 emit=emit.trwaxi57MotorSteering(),
 converter=converter.lookup_from_to({
 forward=0,
-backward=1,
-}),
-}),
+backward=1,}),}),
 tuya.dp_child_lock(102,{
 name="child_lock",
 emit=emit.trwaxi57ChildLock(),
-converter=converter.lookup_from_to({off=false,on=true}),
-}),
+converter=converter.lookup_from_to({off=false,on=true}),}),
 tuya.dp_on_off(108,{name="switch",component="switch2"}),
-tuya.dp_on_off(107,{name="switch",component="switch3"}),
-},
-query_on_configure=true,
-}
+tuya.dp_on_off(107,{name="switch",component="switch3"}),},
+query_on_configure=true,}
 local cover_core={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local cover_core_position_reversed={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position_inverted(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position_inverted(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local cover_six={
 profile="covers-cover-six",
 magic_packet=true,
@@ -202,178 +173,144 @@ tuya.dp_enum(7,{name="cover_six_work_state",converter=converter.lookup_from_to({
 tuya.dp_battery(13,{emit=emit.battery(),read_only=true}),
 tuya.dp_enum(101,{name="cover_six_direction",converter=converter.lookup_from_to({left=0,right=1}),emit=emit.coverSixDirection()}),
 tuya.dp_enum(102,{name="cover_six_upper_limit",converter=converter.lookup_from_to({start=1,stop=0}),emit=emit.coverSixUpperLimit()}),
-tuya.dp_numeric(104,{name="cover_six_illumination",emit=emit.coverSixIllumination(),read_only=true}),
-}
+tuya.dp_numeric(104,{name="cover_six_illumination",emit=emit.coverSixIllumination(),read_only=true}),}
 local cover_core_reversed_position_alt={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position_inverted(8,{emit=emit.shade_level()}),
 tuya.dp_numeric(8,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position_inverted(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local function yy_position(value,device)
-return device.preferences.reverse==true and(100 - value)or value
+return device.preferences.reverse==true and(100-value)or value
 end
 local yy_position_converter={from=yy_position,to=yy_position}
 local yy_state_converter=converter.from_only(function(value,device)
 local position=yy_position(value,device)
-return position <=0 and "closed" or position >=100 and "open" or "partially open"
+return position<=0 and"closed"or position>=100 and"open"or"partially open"
 end)
 local cover_core_alt_dp={
 tuya.dp_enum(2,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(7,{converter=yy_position_converter,emit=emit.shade_level()}),
 tuya.dp_numeric(7,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=yy_state_converter,
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_cover_position(8,{name="cover_position_report",converter=yy_position_converter,
 emit=emit.shade_level(),read_only=true}),
 tuya.dp_numeric(8,{
 name="window_shade_state_report",
 emit=emit.shade_state(),
 converter=yy_state_converter,
-read_only=true,
-}),
-}
+read_only=true,}),}
 local cover_core_alt_position_8={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(8,{emit=emit.shade_level()}),
 tuya.dp_numeric(8,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local ts130f_xbexmf8h={
 profile="covers-cover",
 datapoints={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(3,{
 name="calibration",
-converter=converter.lookup_from_to({on=0,off=1}),
-}),
+converter=converter.lookup_from_to({on=0,off=1}),}),
 tuya.dp_enum(8,{
 name="motor_reversal",
-converter=converter.lookup_from_to({on=1,off=0}),
-}),
+converter=converter.lookup_from_to({on=1,off=0}),}),
 tuya.dp_numeric(10,{
 name="calibration_time",
 scale=10,
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(12,{
 name="switch_type",
-converter=converter.lookup_from_to({momentary=0,toggle=1}),
-}),
+converter=converter.lookup_from_to({momentary=0,toggle=1}),}),
 tuya.dp_enum(14,{
 name="backlight_mode",
-converter=converter.lookup_from_to({on=0,off=1}),
-}),
-},
-query_on_configure=true,
-}
+converter=converter.lookup_from_to({on=0,off=1}),}),},
+query_on_configure=true,}
 local cover_model_zsm01={
 profile="covers-cover-zsm01",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(9,{write_only=true}),
 tuya.dp_numeric(8,{
 name="cover_position_state",
 emit=emit.shade_level(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(8,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(11,{
 name="control_back_mode",
 emit=emit.zsm01ControlBackMode(),
-converter=converter.lookup_from_to({forward=0,back=1}),
-}),
+converter=converter.lookup_from_to({forward=0,back=1}),}),
 tuya.dp_numeric(19,{
 name="position_best",
-emit=emit.zsm01PositionBest(),
-}),
+emit=emit.zsm01PositionBest(),}),
 tuya.dp_enum(20,{
 name="click_control",
 emit=emit.zsm01ClickControl(),
-converter=converter.lookup_from_to({up=0,down=1}),
-}),
-}
+converter=converter.lookup_from_to({up=0,down=1}),}),}
 local cover_core_alt_controls={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_alt_controls,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local cover_zb_sm={
 profile="covers-cover-zb-sm",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(3,{name="arrived_position"}),
 tuya.dp_enum(5,{
 name="motor_direction",
 emit=emit.motorDirectionZbSmNormalRev(),
-converter=converter.lookup_from_to({normal=0,reversed=1}),
-}),
+converter=converter.lookup_from_to({normal=0,reversed=1}),}),
 tuya.dp_numeric(10,{
 name="cycle_time",
 read_only=true,
-emit=emit.zbSmCycleTime(),
-}),
+emit=emit.zbSmCycleTime(),}),
 tuya.dp_enum(101,{
 name="motor_type",
 read_only=true,
@@ -384,29 +321,23 @@ converter=converter.from_only(converter.lookup_value({
 [2]="AM0/10-19R-Sm",
 [3]="AM1/10-13R-Sm",
 [4]="AM1/20-13R-Sm",
-[5]="AM1/30-13R-Sm",
-})),
-}),
+[5]="AM1/30-13R-Sm",})),}),
 tuya.dp_numeric(102,{
 name="cycle_count",
 read_only=true,
-emit=emit.zbSmCycleCount(),
-}),
+emit=emit.zbSmCycleCount(),}),
 tuya.dp_enum(103,{
 name="bottom_limit",
 emit=emit.zbSmBottomLimit(),
-converter=converter.lookup_from_to({set=0,clear=1}),
-}),
+converter=converter.lookup_from_to({set=0,clear=1}),}),
 tuya.dp_enum(104,{
 name="top_limit",
 emit=emit.zbSmTopLimit(),
-converter=converter.lookup_from_to({set=0,clear=1}),
-}),
+converter=converter.lookup_from_to({set=0,clear=1}),}),
 tuya.dp_numeric(109,{
 name="active_power",
 read_only=true,
-emit=emit.zbSmActivePower(),
-}),
+emit=emit.zbSmActivePower(),}),
 tuya.dp_cover_position(115,{name="favorite_position",emit=emit.favoritePositionZbSm()}),
 tuya.dp_enum(121,{
 name="motor_state",
@@ -415,24 +346,18 @@ emit=emit.zbSmMotorState(),
 converter=converter.from_only(converter.lookup_value({
 [0]="opening",
 [1]="stopped",
-[2]="closing",
-})),
-}),
-}
+[2]="closing",})),}),}
 local cover_core_reversed={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_reversed,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local moes_zcls02={
 profile="covers-cover-battery",
 magic_packet=true,
@@ -447,8 +372,7 @@ tuya.dp_cover_position_inverted(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{name="window_shade_state",converter=window_shade_state_from_position_inverted(),emit=emit.shade_state(),read_only=true}),
 tuya.dp_cover_position_inverted(3,{name="position_report",emit=emit.shade_level(),read_only=true}),
 tuya.dp_numeric(3,{name="window_shade_report",converter=window_shade_state_from_position_inverted(),emit=emit.shade_state(),read_only=true}),
-tuya.dp_battery(13,{emit=emit.battery(),read_only=true}),
-}
+tuya.dp_battery(13,{emit=emit.battery(),read_only=true}),}
 register_device_definition(moes_zcls02,device_helpers.create_fingerprints("TS0601",{"_TZE284_koxaopnk"}))
 local cover_ten={
 magic_packet=true,mcu_version_request_on_configure=true,time_start="off",
@@ -458,29 +382,23 @@ from_device=function(value)return({[0]="closed",[1]="partially open",[2]="open"}
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{name="window_shade_state",converter=window_shade_state_from_position(),emit=emit.shade_state(),read_only=true}),
 tuya.dp_numeric(3,{name="position_report",emit=emit.shade_level(),read_only=true}),
-tuya.dp_numeric(3,{name="window_shade_report",converter=window_shade_state_from_position(),emit=emit.shade_state(),read_only=true}),
-}
+tuya.dp_numeric(3,{name="window_shade_report",converter=window_shade_state_from_position(),emit=emit.shade_state(),read_only=true}),}
 local cover_core_am02={
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_numeric(3,{
 name="cover_position_state",
 emit=emit.shade_level(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(3,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local cover_core_pims3028={
 profile="covers-cover-pims3028",
 tuya.dp_enum(1,{
@@ -490,17 +408,14 @@ open=0,
 stop=1,
 close=2,
 lock=3,
-unlock=4,
-}),
-write_only=true,
-}),
+unlock=4,}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_cover_position_inverted(3,{name="position_inverted"}),
 tuya.dp_enum(4,{
 name="mode",
@@ -508,48 +423,39 @@ emit=emit.pims3028Mode(),
 converter=converter.lookup_from_to({
 up=0,
 up_delete=1,
-remove_up_down=2,
-}),
-}),
+remove_up_down=2,}),}),
 tuya.dp_enum(5,{
 name="control_back",
 emit=emit.pims3028ControlBack(),
-converter=converter.lookup_from_to({forward=0,back=1}),
-}),
+converter=converter.lookup_from_to({forward=0,back=1}),}),
 tuya.dp_binary(6,{
 name="auto_power",
 emit=emit.pims3028AutoPower(),
-converter=converter.lookup_from_to({off=false,on=true}),
-}),
+converter=converter.lookup_from_to({off=false,on=true}),}),
 tuya.dp_enum(7,{
 name="work_state",
 emit=emit.coverWorkPimsActual(),
 converter=converter.from_only(converter.lookup_value({
 [0]="opening",
 [1]="closing",
-[2]="value_123",
-})),
-}),
+[2]="value_123",})),}),
 tuya.dp_numeric(10,{
 name="time_total",
 read_only=true,
-emit=emit.pims3028TimeTotal(),
-}),
+emit=emit.pims3028TimeTotal(),}),
 tuya.dp_enum(11,{
 name="situation_set",
 read_only=true,
 emit=emit.pims3028SituationSet(),
 converter=converter.from_only(converter.lookup_value({
 [0]="fully_open",
-[1]="fully_close",
-})),
-}),
+[1]="fully_close",})),}),
 tuya.dp_binary(12,{
 name="fault",
 read_only=true,
 emit=emit.pims3028Fault(),
 converter=converter.from_only(function(value)
-return value and "fault" or "normal"
+return value and"fault"or"normal"
 end),
 }),
 tuya.dp_enum(16,{
@@ -557,80 +463,63 @@ name="border",
 emit=emit.pims3028Border(),
 converter=converter.lookup_from_to({
 down_delete=0,
-remove_top_bottom=1,
-}),
-}),
+remove_top_bottom=1,}),}),
 tuya.dp_numeric(19,{
 name="position_best",
-emit=emit.pims3028PositionBest(),
-}),
+emit=emit.pims3028PositionBest(),}),
 tuya.dp_numeric(21,{
 name="angle_horizontal",
-emit=emit.pims3028AngleHorizontal(),
-}),
+emit=emit.pims3028AngleHorizontal(),}),
 tuya.dp_enum(101,{
 name="calibration",
 emit=emit.coverCalibrationPims3028StartEnd(),
 converter=converter.lookup_from_to({
 start=0,
 ["end"]=1,
-}),
-}),
+}),}),
 tuya.dp_numeric(102,{
 name="quick_calibration",
-emit=emit.pims3028QuickCalibration(),
-}),
+emit=emit.pims3028QuickCalibration(),}),
 tuya.dp_binary(103,{
 name="best_position_trigger",
 emit=emit.pims3028BestTrigger(),
-converter=converter.lookup_from_to({off=false,on=true}),
-}),
+converter=converter.lookup_from_to({off=false,on=true}),}),
 tuya.dp_enum(104,{
 name="reset",
 emit=emit.pims3028Reset(),
-converter=converter.lookup_from_to({reset=0}),
-}),
-}
+converter=converter.lookup_from_to({reset=0}),}),}
 local cover_rm28_le={
 profile="covers-cover-battery-rm28-le",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(3,{name="position_report",emit=emit.coverPositionReportRm28Le()}),
 tuya.dp_enum(4,{
 name="mode",
 emit=emit.rm28leMode(),
-converter=converter.lookup_from_to({morning=0,night=1}),
-}),
+converter=converter.lookup_from_to({morning=0,night=1}),}),
 tuya.dp_enum(5,{
 name="reverse_direction",
 converter=converter.lookup_from_to({
 forward=0,
-back=1,
-}),
-}),
+back=1,}),}),
 tuya.dp_binary(6,{
 name="auto_power",
 emit=emit.rm28leAutoPower(),
-converter=converter.lookup_from_to({off=false,on=true}),
-}),
+converter=converter.lookup_from_to({off=false,on=true}),}),
 tuya.dp_enum(7,{
 name="work_state",
 emit=emit.coverWorkRmOpeningClosing(),
 converter=converter.from_only(converter.lookup_value({
 [0]="closing",
-[1]="opening",
-})),
-}),
+[1]="opening",})),}),
 tuya.dp_enum(8,{
 name="countdown",
 emit=emit.rm28leCountdown(),
@@ -639,34 +528,28 @@ cancel=0,
 ["1h"]=1,
 ["2h"]=2,
 ["3h"]=3,
-["4h"]=4,
-}),
-}),
+["4h"]=4,}),}),
 tuya.dp_numeric(9,{
 name="countdown_left",
 read_only=true,
-emit=emit.rm28leCountdownLeft(),
-}),
+emit=emit.rm28leCountdownLeft(),}),
 tuya.dp_numeric(10,{
 name="time_total",
 read_only=true,
-emit=emit.rm28leTimeTotal(),
-}),
+emit=emit.rm28leTimeTotal(),}),
 tuya.dp_enum(11,{
 name="situation_set",
 read_only=true,
 emit=emit.rm28leSituationSet(),
 converter=converter.from_only(converter.lookup_value({
 [0]="fully_open",
-[1]="fully_close",
-})),
-}),
+[1]="fully_close",})),}),
 tuya.dp_numeric(12,{
 name="motor_fault",
 read_only=true,
 emit=emit.rm28leMotorFault(),
 converter=converter.from_only(function(value)
-return(tonumber(value)or 0)~=0 and "fault" or "normal"
+return(tonumber(value)or 0)~=0 and"fault"or"normal"
 end),
 }),
 tuya.dp_battery(13,{emit=emit.battery()}),
@@ -678,51 +561,42 @@ up=0,
 down=1,
 up_delete=2,
 down_delete=3,
-remove_top_bottom=4,
-}),
-}),
+remove_top_bottom=4,}),}),
 tuya.dp_numeric(19,{
 name="position_best",
-emit=emit.rm28lePositionBest(),
-}),
+emit=emit.rm28lePositionBest(),}),
 tuya.dp_enum(20,{
 name="click_control",
 emit=emit.rm28leClickControl(),
-converter=converter.lookup_from_to({up=0,down=1}),
-}),
-}
+converter=converter.lookup_from_to({up=0,down=1}),}),}
 local cover_three={
 profile="covers-cover-battery-cover-three",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_cover_position(3,{name="position_report",emit=emit.shade_level()}),
 tuya.dp_numeric(3,{
 name="window_shade_state_report",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(5,{
 name="reverse_direction",
 emit=emit.coverThreeReverseDirection(),
-converter=converter.lookup_from_to({forward=0,back=1}),
-}),
+converter=converter.lookup_from_to({forward=0,back=1}),}),
 tuya.dp_numeric(12,{
 name="motor_fault",
 read_only=true,
 emit=emit.coverThreeMotorFault(),
 converter=converter.from_only(function(value)
-return(tonumber(value)or 0)~=0 and "fault" or "normal"
+return(tonumber(value)or 0)~=0 and"fault"or"normal"
 end),
 }),
 tuya.dp_battery(13,{emit=emit.battery()}),
@@ -734,169 +608,243 @@ set_up=0,
 set_down=1,
 delete_up=2,
 delete_down=3,
-delete_both=4,
-}),
-}),
+delete_both=4,}),}),
 tuya.dp_enum(20,{
 name="click_control",
 emit=emit.coverThreeClickControl(),
-converter=converter.lookup_from_to({up=0,down=1}),
-}),
-}
+converter=converter.lookup_from_to({up=0,down=1}),}),}
 local cover_one={
 profile="covers-cover-cover-one",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_cover_position(3,{name="position_report",emit=emit.shade_level()}),
 tuya.dp_numeric(3,{
 name="window_shade_state_report",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(5,{
 name="reverse_direction",
 emit=emit.coverOneReverseDirection(),
-converter=converter.lookup_from_to({forward=0,back=1}),
-}),
+converter=converter.lookup_from_to({forward=0,back=1}),}),
 tuya.dp_numeric(105,{
 name="motor_speed",
-emit=emit.coverOneMotorSpeed(),
-}),
+emit=emit.coverOneMotorSpeed(),}),}
+local function rinn_position(value,device)
+return device.preferences.invertCover and(100-value)or value
+end
+local rinn_position_converter=converter.from_to(rinn_position,rinn_position)
+local rinn_shade_state=converter.from_only(function(value,device)
+local position=rinn_position(value,device)
+return position==0 and"closed"or position==100 and"open"or"partially open"
+end)
+local rinn_wser40={
+profile="covers-rinn-wser40",
+magic_packet=true,
+mcu_version_request_on_configure=true,
+query_on_configure=false,
+query_on_announce=false,
+initial_custom_state_query=false,
+refresh_state_query=false,
+time_start="off",
+datapoints={
+tuya.dp_enum(1,{name="cover_state",write_only=true,converter=cover_state_open_close_stop}),
+tuya.dp_enum(1,{name="cover_action_state",read_only=true,emit=emit.shade_state(),
+converter=converter.from_only(function(value)
+return({[0]="open",[1]="closed",[2]="partially open"})[value]
+end)}),
+tuya.dp_cover_position(102,{emit=emit.shade_level(),converter=rinn_position_converter}),
+tuya.dp_numeric(102,{name="window_shade_state",read_only=true,emit=emit.shade_state(),converter=rinn_shade_state}),
+tuya.dp_cover_position(103,{name="position_report",read_only=true,emit=emit.shade_level(),converter=rinn_position_converter}),
+tuya.dp_numeric(103,{name="window_shade_state_report",read_only=true,emit=emit.shade_state(),converter=rinn_shade_state}),},}
+local function zm25rx_lookup(normal,inverted)
+local maps={converter.lookup_from_to(normal),converter.lookup_from_to(inverted)}
+return converter.from_to(function(value,device)
+return maps[device.preferences.invertCover and 2 or 1].from(value)
+end,function(value,device)
+return maps[device.preferences.invertCover and 2 or 1].to(value)
+end)
+end
+local zm25rx_direction=converter.lookup_from_to({normal=0,reversed=1})
+local zm25rx={
+profile="covers-zm25rx",
+magic_packet=true,
+mcu_version_request_on_configure=true,
+query_on_configure=false,
+query_on_announce=false,
+initial_custom_state_query=false,
+refresh_state_query=false,
+time_start="off",
+datapoints={
+tuya.dp_enum(1,{name="cover_state",write_only=true,
+converter=zm25rx_lookup({open=0,stop=1,close=2},{open=2,stop=1,close=0})}),
+tuya.dp_cover_position(2,{emit=emit.shade_level(),converter=rinn_position_converter}),
+tuya.dp_numeric(2,{name="window_shade_state",read_only=true,emit=emit.shade_state(),converter=rinn_shade_state}),
+tuya.dp_cover_position(3,{name="position_report",read_only=true,emit=emit.shade_level(),converter=rinn_position_converter}),
+tuya.dp_numeric(3,{name="window_shade_state_report",read_only=true,emit=emit.shade_state(),converter=rinn_shade_state}),
+tuya.dp_enum(5,{name="zm25rx_motor_direction",emit=emit.zm25rxMotorDirection(),receive_datatypes={4,3},
+converter=converter.from_to(function(value)
+if type(value)=="string"then return value=="back"and"reversed"or"normal"end
+return zm25rx_direction.from(value)
+end,zm25rx_direction.to)}),
+tuya.dp_enum(7,{name="zm25rx_motor_state",read_only=true,emit=emit.zm25rxMotorState(),
+converter=zm25rx_lookup({opening=0,closing=1,stopped=2},{opening=1,closing=0,stopped=2})}),
+tuya.dp_battery(13,{read_only=true,emit=emit.battery()}),
+tuya.dp_enum(101,{name="zm25rx_program",write_only=true,suppress_optimistic_state=true,
+converter=zm25rx_lookup({set_bottom=1,set_upper=0,reset=4},{set_bottom=0,set_upper=1,reset=4})}),
+tuya.dp_enum(101,{name="zm25rx_click_control",write_only=true,suppress_optimistic_state=true,
+converter=zm25rx_lookup({upper=2,upper_micro=5,lower=3,lower_micro=6},{upper=3,upper_micro=6,lower=2,lower_micro=5})}),
+tuya.dp_battery(103,{name="battery_report",read_only=true,emit=emit.battery()}),},}
+local dream_blinds_position={
+from=function(value)
+local position=value%256
+if position<=100 then return position end
+end,
+to=function(value)return value end,
 }
+local dream_blinds_shade_state=converter.from_only(function(value)
+local position=dream_blinds_position.from(value)
+if position==nil then return nil end
+return position==0 and"closed"or position==100 and"open"or"partially open"
+end)
+local dream_blinds_tilt={
+profile="covers-dream-blinds-tilt",
+magic_packet=false,
+mcu_version_request_on_configure=false,
+query_on_configure=false,
+query_on_announce=false,
+initial_custom_state_query=false,
+refresh_state_query=false,
+time_start="off",
+datapoints={
+tuya.dp_enum(1,{name="cover_state",write_only=true,converter=cover_state_standard}),
+tuya.dp_cover_position(2,{emit=emit.shade_level(),converter=dream_blinds_position}),
+tuya.dp_numeric(2,{name="window_shade_state",read_only=true,emit=emit.shade_state(),converter=dream_blinds_shade_state}),
+tuya.dp_cover_position(3,{name="position_report",read_only=true,emit=emit.shade_level(),converter=dream_blinds_position}),
+tuya.dp_numeric(3,{name="window_shade_state_report",read_only=true,emit=emit.shade_state(),converter=dream_blinds_shade_state}),
+tuya.dp_enum(5,{
+name="dream_blinds_reverse_direction",write_only=true,emit=emit.dreamBlindsReverseDirection(),
+converter=converter.lookup_from_to({forward=0,back=1}),}),
+tuya.dp_numeric(105,{name="dream_blinds_motor_speed",emit=emit.dreamBlindsMotorSpeed()}),
+tuya.dp_numeric(21,{
+name="cover_tilt",emit=emit.shade_tilt_level(),
+converter={
+from=function(value)return math.floor(math.min(180,value)*100/180+0.5)end,
+to=function(value)return math.min(180,math.max(0,math.floor(value*180/100+0.5)))end,
+},}),
+tuya.dp_numeric(21,{
+name="dream_blinds_flip_angle",emit=emit.dreamBlindsFlipAngle(),
+converter={
+from=function(value)return math.min(180,value)end,
+to=function(value)return math.min(180,math.max(0,math.floor(value+0.5)))end,
+},}),},}
 local cover_model_zm79e_dt={
 profile="covers-cover-zm79e-dt",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_reversed,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position_inverted(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position_inverted(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_cover_position_inverted(3,{name="position_report",emit=emit.coverPositionReportZm79eDt()}),
 tuya.dp_enum(4,{
 name="opening_mode",
 emit=emit.zm79eOpeningMode(),
-converter=converter.lookup_from_to({tilt=0,lift=1}),
-}),
+converter=converter.lookup_from_to({tilt=0,lift=1}),}),
 tuya.dp_enum(7,{
 name="work_state",
 emit=emit.coverWorkStateZm79eDtLearning(),
 converter=converter.from_only(converter.lookup_value({
 [0]="standby",
 [1]="success",
-[2]="learning",
-})),
-}),
+[2]="learning",})),}),
 tuya.dp_enum(101,{
 name="motor_direction",
 emit=emit.motorDirectionZm79eDtLeftRight(),
 converter=converter.lookup_from_to({
 left=0,
-right=1,
-}),
-}),
+right=1,}),}),
 tuya.dp_enum(102,{
 name="set_upper_limit",
 emit=emit.zm79eSetUpperLimit(),
-converter=converter.lookup_from_to({stop=0,start=1}),
-}),
+converter=converter.lookup_from_to({stop=0,start=1}),}),
 tuya.dp_enum(107,{
 name="factory_reset",
 emit=emit.zm79eFactoryReset(),
-converter=converter.lookup_from_to({set=0}),
-}),
-}
+converter=converter.lookup_from_to({set=0}),}),}
 local cover_model_bx82_tyz1={
 profile="covers-cover-bx82-tyz1",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_reversed,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{emit=emit.shade_level()}),
 tuya.dp_numeric(2,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(3,{name="position_report",emit=emit.coverPositionReportBx82Tyz1()}),
 tuya.dp_enum(5,{
 name="motor_direction",
 emit=emit.motorDirectionBxTyzNormalRev(),
-converter=converter.lookup_from_to({normal=0,reversed=1}),
-}),
-}
+converter=converter.lookup_from_to({normal=0,reversed=1}),}),}
 local cover_model_mb60l={
 profile="covers-cover-battery-mb60l",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position_inverted(9,{emit=emit.shade_level()}),
 tuya.dp_numeric(9,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position_inverted(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(11,{
 name="motor_direction",
 emit=emit.motorDirectionMbNormalRev(),
-converter=converter.lookup_from_to({normal=0,reversed=1}),
-}),
+converter=converter.lookup_from_to({normal=0,reversed=1}),}),
 tuya.dp_battery(13,{emit=emit.battery()}),
 tuya.dp_enum(16,{
 name="set_limits",
 emit=emit.mb60lSetLimits(),
-converter=converter.lookup_from_to({up=0,down=1,reset=2}),
-}),
+converter=converter.lookup_from_to({up=0,down=1,reset=2}),}),
 tuya.dp_binary(101,{
 name="child_lock",
 emit=emit.mb60lChildLock(),
-converter=converter.lookup_from_to({off=false,on=true}),
-}),
+converter=converter.lookup_from_to({off=false,on=true}),}),
 tuya.dp_binary(103,{
 name="tilt_mode",
 emit=emit.tiltModeMb60l(),
-converter=converter.lookup_from_to({on=true,off=false}),
-}),
-}
+converter=converter.lookup_from_to({on=true,off=false}),}),}
 local cover_epj_zb={
 profile="covers-cover-battery-epj-zb",
 tuya.dp_enum(102,{
 name="cover_state",
 converter=cover_state_open_close_stop,
 command_id=tuya.SEND_DATA,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(104,{
 command_id=tuya.SEND_DATA,
-emit=emit.shade_level(),
-}),
+emit=emit.shade_level(),}),
 tuya.dp_numeric(104,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_battery(4,{emit=emit.battery()}),
 tuya.dp_binary(105,{name="charge_state"}),
 tuya.dp_enum(106,{
@@ -904,60 +852,47 @@ name="manual_mode",
 emit=emit.manualModeEpjZbEnableDisable(),
 converter=converter.lookup_from_to({
 enable=0,
-disable=1,
-}),
-}),
+disable=1,}),}),
 tuya.dp_enum(107,{
 name="fault",
 converter=converter.lookup_from_to({
 Normal=0,
 None=1,
-Fault=2,
-}),
-}),
+Fault=2,}),}),
 tuya.dp_numeric(108,{name="countdown"}),
 tuya.dp_enum(109,{
 name="motor_direction",
 emit=emit.motorDirectionEpjZbSide(),
 converter=converter.lookup_from_to({
 right_side=0,
-left_side=1,
-}),
-}),
+left_side=1,}),}),
 tuya.dp_enum(110,{
 name="mode",
 converter=converter.lookup_from_to({
 Disable=0,
-Enable=1,
-}),
-}),
+Enable=1,}),}),
 tuya.dp_enum(112,{
 name="fixed_window_sash",
 converter=converter.lookup_from_to({
 Down=0,
-Up=1,
-}),
-}),
+Up=1,}),}),
 tuya.dp_enum(114,{
 name="window_detection",
 emit=emit.windowDetectionEpjZbState(),
 converter=converter.lookup_from_to({
 opened=0,
 closed=1,
-pending=2,
-}),
-}),
-}
+pending=2,}),}),}
 local ts0301_position=converter.from_to(function(value,device)
-return device.preferences.reverse==true and(100 - value)or value
+return device.preferences.reverse==true and(100-value)or value
 end,function(value,device)
-return device.preferences.reverse==true and(100 - value)or value
+return device.preferences.reverse==true and(100-value)or value
 end)
 local ts0301_position_state=converter.from_only(function(value,device)
 local position=ts0301_position.from(value,device)
-if position <=0 then return "closed" end
-if position >=100 then return "open" end
-return "partially open"
+if position<=0 then return"closed"end
+if position>=100 then return"open"end
+return"partially open"
 end)
 local ts0301_cover_one={
 profile="covers-ts0301-one",
@@ -970,34 +905,33 @@ tuya.dp_numeric(2,{name="window_shade_command_state",converter=ts0301_position_s
 tuya.dp_numeric(3,{name="cover_position_state",converter=ts0301_position,read_only=true,emit=emit.shade_level()}),
 tuya.dp_numeric(3,{name="window_shade_state",converter=ts0301_position_state,read_only=true,emit=emit.shade_state()}),
 tuya.dp_enum(5,{name="ts0301_direction",converter=converter.lookup_from_to({forward=0,back=1}),emit=emit.ts0301Direction()}),
-tuya.dp_battery(13,{emit=emit.battery()}),
-}
+tuya.dp_battery(13,{emit=emit.battery()}),}
 local function ts0301_combined_position(component,raw,device)
-if type(raw)=="table" then raw=raw.value end
-if raw > 100 then return end
-if component=="shade2" then return raw < 50 and 0 or(raw - 50)* 2 end
-if component=="shade3" then
-local top=raw > 50 and 0 or raw * 2
-return device.preferences.invertTopRail==true and 100 - top or top
+if type(raw)=="table"then raw=raw.value end
+if raw>100 then return end
+if component=="shade2"then return raw<50 and 0 or(raw-50)*2 end
+if component=="shade3"then
+local top=raw>50 and 0 or raw*2
+return device.preferences.invertTopRail==true and 100-top or top
 end
 return raw
 end
 local function ts0301_combined_sender(component)
 return function(device,_,value)
 local commands=zcl_clusters.WindowCovering.server.commands
-if value=="stop" then device:send(commands.Stop(device):to_endpoint(1));return true end
-if component=="main" and type(value)=="string" then
-if value=="open" then device:send(commands.UpOrOpen(device):to_endpoint(1))
-elseif value=="close" then device:send(commands.DownOrClose(device):to_endpoint(1))
+if value=="stop"then device:send(commands.Stop(device):to_endpoint(1));return true end
+if component=="main"and type(value)=="string"then
+if value=="open"then device:send(commands.UpOrOpen(device):to_endpoint(1))
+elseif value=="close"then device:send(commands.DownOrClose(device):to_endpoint(1))
 else return false end
 return true
 end
-if value=="open" then value=100 elseif value=="close" then value=0 end
-if type(value)~="number" then return false end
+if value=="open"then value=100 elseif value=="close"then value=0 end
+if type(value)~="number"then return false end
 local lift=value
-if component=="shade2" then lift=value==0 and 0 or 50 + value / 2
-elseif component=="shade3" then lift=(device.preferences.invertTopRail==true and 100 - value or value)/ 2 end
-device:send(commands.GoToLiftPercentage(device,math.floor(math.max(0,math.min(100,lift))+ 0.5)):to_endpoint(1))
+if component=="shade2"then lift=value==0 and 0 or 50+value/2
+elseif component=="shade3"then lift=(device.preferences.invertTopRail==true and 100-value or value)/2 end
+device:send(commands.GoToLiftPercentage(device,math.floor(math.max(0,math.min(100,lift))+0.5)):to_endpoint(1))
 return true
 end
 end
@@ -1011,47 +945,40 @@ end,
 local function ts0301_combined_events(device,raw)
 for _,component in ipairs({"main","shade2","shade3"})do
 local position=ts0301_combined_position(component,raw,device)
-if position ~=nil then
+if position~=nil then
 device:emit_component_event(device.profile.components[component],emit.shade_level()(device,position))
-device:emit_component_event(device.profile.components[component],emit.shade_state()(device,position==0 and "closed" or "open"))
+device:emit_component_event(device.profile.components[component],emit.shade_state()(device,position==0 and"closed"or"open"))
 end
 end
 end
 for _,component in ipairs({"main","shade2","shade3"})do
 local position_from=function(value,device)return ts0301_combined_position(component,value,device)end
-ts0301_combined_rail.zcl_clusters[#ts0301_combined_rail.zcl_clusters + 1]=zcl.cover_position({
+ts0301_combined_rail.zcl_clusters[#ts0301_combined_rail.zcl_clusters+1]=zcl.cover_position({
 endpoint=1,component=component,sender=ts0301_combined_sender(component),
 from_device=position_from,emit=ts0301_combined_events,
-read_only=false,write_only=component ~="main",read_on_configure=false,
-minimum_interval=1,maximum_interval=65000,reportable_change=1,
-})
-ts0301_combined_rail.zcl_clusters[#ts0301_combined_rail.zcl_clusters + 1]=zcl.cover_state({
+read_only=false,write_only=component~="main",read_on_configure=false,
+minimum_interval=1,maximum_interval=65000,reportable_change=1,})
+ts0301_combined_rail.zcl_clusters[#ts0301_combined_rail.zcl_clusters+1]=zcl.cover_state({
 endpoint=1,component=component,sender=ts0301_combined_sender(component),
-read_only=false,
-})
+read_only=false,})
 end
 local ts0301_cover_single={
 profile="covers-cover",
 tuya.dp_enum(1,{
 name="cover_state",
 converter=cover_state_standard,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_numeric(3,{
 name="cover_position_state",
 emit=emit.shade_level(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(3,{
 name="window_shade_state",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 local ts0301_cover_dual_rail={
 profile="covers-ts0301-dual-rail",
 query_on_configure=false,
@@ -1061,50 +988,41 @@ tuya.dp_enum(109,{
 name="cover_state",
 component="main",
 converter=cover_state_open_close_stop,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position_inverted(101,{
 component="main",
-emit=emit.shade_level(),
-}),
+emit=emit.shade_level(),}),
 tuya.dp_numeric(102,{
 name="cover_position_state",
 component="main",
 emit=emit.shade_level(),
 converter=converter.cover_position_inverted(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(102,{
 name="window_shade_state",
 component="main",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position_inverted(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_enum(1,{
 name="cover_state",
 component="shade2",
 converter=cover_state_open_close_stop_reversed,
-write_only=true,
-}),
+write_only=true,}),
 tuya.dp_cover_position(2,{
 component="shade2",
-emit=emit.shade_level(),
-}),
+emit=emit.shade_level(),}),
 tuya.dp_numeric(3,{
 name="cover_position_state",
 component="shade2",
 emit=emit.shade_level(),
-read_only=true,
-}),
+read_only=true,}),
 tuya.dp_numeric(3,{
 name="window_shade_state",
 component="shade2",
 emit=emit.shade_state(),
 converter=window_shade_state_from_position(),
-read_only=true,
-}),
-}
+read_only=true,}),}
 register_device_definition(cover_one,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_bqcqqjpb",
 "_TZE200_gaj531w3",
@@ -1137,7 +1055,6 @@ register_device_definition(cover_one,device_helpers.create_fingerprints("TS0601"
 "_TZE200_nkoabg8w",
 "_TZE200_4vobcgd3",
 "_TZE284_4vobcgd3",
-"_TZE200_pk0sfzvr",
 "_TZE200_m6lwazh9",
 "_TZE200_swlgvdlh",
 "_TZE200_fdtjuw7u",
@@ -1156,19 +1073,16 @@ register_device_definition(cover_one,device_helpers.create_fingerprints("TS0601"
 "_TZE200_7shyddj3",
 "_TZE284_udank5zs",
 "_TZE284_b7kbnl6q",
-"_TZE204_wzre8hu2",
 "_TZE204_dpqsvdbi",
 "_TZE204_ic7jtutb",
 "_TZE204_m1wl5fvq",
 "_TZE204_nladmfvf",
 "_TZE204_tgl8i2np",
-"_TZE200_2jwrgrro",
-}))
+"_TZE200_2jwrgrro",}))
 register_device_definition(cover_one,{
 device_helpers.create_fingerprint("HOBEIAN","ZG-301Z-MOTO"),
-{manufacturer="_TYST11_fzo2pocs",model="zo2pocs" .. string.char(0)},
-{manufacturer="_TYST11_udank5zs",model="dank5zs" .. string.char(0)},
-})
+{manufacturer="_TYST11_fzo2pocs",model="zo2pocs"..string.char(0)},
+{manufacturer="_TYST11_udank5zs",model="dank5zs"..string.char(0)},})
 register_device_definition(cover_one,{
 device_helpers.create_fingerprint("Yushun","YS-MT750"),
 device_helpers.create_fingerprint("Yushun","YS-MT750L"),
@@ -1189,15 +1103,12 @@ device_helpers.create_fingerprint("Quoya","AT8510-TY"),
 device_helpers.create_fingerprint("Somgoms","ZSTY-SM-1DMZG-US-W_1"),
 device_helpers.create_fingerprint("HUARUI","CMD900LE"),
 device_helpers.create_fingerprint("Novato","WPK"),
-device_helpers.create_fingerprint("Zemismart","ZMS1-TYZ"),
-})
+device_helpers.create_fingerprint("Zemismart","ZMS1-TYZ"),})
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_eegnwoyw",
-"_TZE200_fu14oapz",
-}))
+"_TZE200_fu14oapz",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0105",{
-"_TZE600_ogyg1y6b",
-}))
+"_TZE600_ogyg1y6b",}))
 register_device_definition(cover_three,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_68nvbio9",
 "_TZE200_pw7mji0l",
@@ -1210,26 +1121,21 @@ register_device_definition(cover_three,device_helpers.create_fingerprints("TS060
 "_TZE200_68nvbi09",
 "_TZE284_n73badib",
 "_TZE200_vexa5o82",
-"_TZE200_sfqyhvpv",
-}))
+"_TZE200_sfqyhvpv",}))
 register_device_definition(cover_core,{
 device_helpers.create_fingerprint("Zemismart","ZM16EL-03/33"),
 device_helpers.create_fingerprint("Zemismart","ZM25EL"),
 device_helpers.create_fingerprint("Zemismart","ZM85EL-2Z"),
 device_helpers.create_fingerprint("Hiladuo","B09M3R35GC"),
 device_helpers.create_fingerprint("Tuya","MYQ-RM25-1.3/25-BZ"),
-device_helpers.create_fingerprint("Shaman","25EB-1/30-TYZ"),
-})
+device_helpers.create_fingerprint("Shaman","25EB-1/30-TYZ"),})
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_zah67ekd",
-"_TZE200_icka1clh",
-}))
+"_TZE200_icka1clh",}))
 register_device_definition(ts130f_xbexmf8h,device_helpers.create_fingerprints("TS130F",{
-"_TZE20C_xbexmf8h",
-}))
+"_TZE20C_xbexmf8h",}))
 register_device_definition(cover_core,{
-device_helpers.create_fingerprint("Moes","AM43-0.45/40-ES-EB"),
-})
+device_helpers.create_fingerprint("Moes","AM43-0.45/40-ES-EB"),})
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_5sbebbzs",
 "_TZE200_hsgrhjpf",
@@ -1242,19 +1148,15 @@ register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601
 "_TZE200_p6vz3wzt",
 "_TZE204_p6vz3wzt",
 "_TZE284_uqfph8ah",
-"_TZE284_waa352qv",
-}))
+"_TZE284_waa352qv",}))
 register_device_definition(cover_core,{
-device_helpers.create_fingerprint("Homeetec","37022483"),
-})
+device_helpers.create_fingerprint("Homeetec","37022483"),})
 register_device_definition(cover_six,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_cpbo62rn",
 "_TZE200_libht6ua",
-"_TZE284_libht6ua",
-}))
+"_TZE284_libht6ua",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_zvo63cmo",
-}))
+"_TZE200_zvo63cmo",}))
 register_device_definition(cover_core_position_reversed,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_r0jdjrvi",
 "_TZE200_r0jdjrvi",
@@ -1263,74 +1165,57 @@ register_device_definition(cover_core_position_reversed,device_helpers.create_fi
 "_TZE200_fzo2pocs",
 "_TZE284_fzo2pocs",
 "_TZE200_9vpe3fl1",
-"_TZE28C1000000_alh14edn",
-}))
+"_TZE28C1000000_alh14edn",}))
 register_device_definition(cover_core_position_reversed,{
-device_helpers.create_fingerprint("Tuya","TS0601_alh14edn"),
-})
-register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
+device_helpers.create_fingerprint("Tuya","TS0601_alh14edn"),})
+register_device_definition(zm25rx,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_7eue9vhc",
 "_TZE200_bv1jcqqu",
-"_TZE200_wehza30a",
-}))
+"_TZE200_wehza30a",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_p2qzzazi",
-}))
+"_TZE200_p2qzzazi",}))
 register_device_definition(cover_core_position_reversed,device_helpers.create_fingerprints("TS0601",{
 "_TZE204_xu4a5rhj",
 "_TZE200_xu4a5rhj",
-"_TZE204_q9xty0ad",
-}))
+"_TZE204_q9xty0ad",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_1vxgqfba",
 "_TZE200_wdfurkoa",
 "_TZE200_sq6affpe",
 "_TZE284_wdfurkoa",
-"_TZE284_6fopvb6v",
-}))
+"_TZE284_6fopvb6v",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_gubdgai2",
-"_TZE200_vdiuwbkq",
-}))
+"_TZE200_vdiuwbkq",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_yenbr4om",
 "_TZE204_bdblidq3",
-"_TZE200_bdblidq3",
-}))
+"_TZE200_bdblidq3",}))
 register_device_definition(cover_core,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_mlglxwp3",
-}))
+"_TZE200_mlglxwp3",}))
 register_device_definition(cover_core_alt_dp,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_a8z0g46u",
-"_TZE204_a8z0g46u",
-}))
+"_TZE204_a8z0g46u",}))
 register_device_definition(cover_core_alt_position_8,device_helpers.create_fingerprints("TS0601",{
 "_TZE284_3mzb0sdz",
-"_TZE2841000000_3mzb0sdz",
-}))
+"_TZE2841000000_3mzb0sdz",}))
 register_device_definition(cover_model_zsm01,device_helpers.create_fingerprints("TS0601",{
-"_TZE284_zofmmt9s",
-}))
+"_TZE284_zofmmt9s",}))
 register_device_definition(cover_core_position_reversed,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_2odrmqwq",
-"_TZE200_hojryzzd",
-}))
+"_TZE200_hojryzzd",}))
 register_device_definition(cover_ten,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_clm4gdw4",
 "_TZE200_2vfxweng",
 "_TZE200_gnw1rril",
 "_TZE204_ycke4deo",
-"_TZE284_clm4gdw4",
-}))
+"_TZE284_clm4gdw4",}))
 register_device_definition(cover_core_reversed,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_cowvfni3",
-}))
+"_TZE200_cowvfni3",}))
 register_device_definition(cover_core_alt_controls,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_rddyvrci",
-}))
+"_TZE200_rddyvrci",}))
 register_device_definition(cover_core_reversed_position_alt,device_helpers.create_fingerprints("TS0601",{
-"_TZE284_r3szw0xr",
-}))
+"_TZE284_r3szw0xr",}))
 register_device_definition(cover_core_position_reversed,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_wmcdj3aq",
 "_TZE200_xuzcvlku",
@@ -1339,64 +1224,49 @@ register_device_definition(cover_core_position_reversed,device_helpers.create_fi
 "_TZE200_3i3exuay",
 "_TZE200_nogaemzt",
 "_TZE200_dng9fn0k",
-"_TZE200_zpzndjez",
-}))
+"_TZE200_zpzndjez",}))
 register_device_definition(cover_with_1_switch,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_jhkttplm",
-}))
+"_TZE200_jhkttplm",}))
 register_device_definition(cover_with_1_switch,{
-device_helpers.create_fingerprint("Homeetec","37022493"),
-})
+device_helpers.create_fingerprint("Homeetec","37022493"),})
 register_device_definition(cover_with_2_switch,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_5nldle7w",
-}))
+"_TZE200_5nldle7w",}))
 register_device_definition(cover_with_2_switch,{
-device_helpers.create_fingerprint("Homeetec","37022173"),
-})
+device_helpers.create_fingerprint("Homeetec","37022173"),})
 register_device_definition(cover_switch_2_touch_panel,device_helpers.create_fingerprints("TS0601",{
-"_TZE204_trwaxi57",
-}))
+"_TZE204_trwaxi57",}))
 register_device_definition(cover_core_am02,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_iossyxra",
-"_TZE200_cxu0jkjk",
-}))
+"_TZE200_cxu0jkjk",}))
 register_device_definition(cover_core_pims3028,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_eqpaxqdv",
-}))
+"_TZE200_eqpaxqdv",}))
 register_device_definition(cover_rm28_le,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_fodv6bkr",
-}))
+"_TZE200_fodv6bkr",}))
 register_device_definition(cover_epj_zb,{
-device_helpers.create_fingerprint("_TZ3210_emqmwtym","TS0601"),
-})
+device_helpers.create_fingerprint("_TZ3210_emqmwtym","TS0601"),})
 register_device_definition(cover_model_zm79e_dt,device_helpers.create_fingerprints("TS0601",{
-"_TZE200_ax8a8ahx",
-}))
+"_TZE200_ax8a8ahx",}))
 register_device_definition(cover_model_bx82_tyz1,device_helpers.create_fingerprints("TS0601",{
-"_TZE204_2rvvqjoa",
-}))
+"_TZE204_2rvvqjoa",}))
 register_device_definition(cover_model_mb60l,device_helpers.create_fingerprints("TS0601",{
 "_TZE284_2gi1hy8s",
-"_TZE2841000000_2gi1hy8s",
-}))
+"_TZE2841000000_2gi1hy8s",}))
 register_device_definition(cover_zb_sm,device_helpers.create_fingerprints("TS0601",{
 "_TZE200_zyrdrmno",
-"_TZE200_osmxri8y",
-}))
+"_TZE200_osmxri8y",}))
 register_device_definition(ts0301_cover_one,device_helpers.create_fingerprints("TS0301",{
-"_TZE210_m6lwazh9",
-}))
+"_TZE210_m6lwazh9",}))
 register_device_definition(ts0301_combined_rail,device_helpers.create_fingerprints("TS0301",{
-"_TZE200_eatmkx5j",
-}))
+"_TZE200_eatmkx5j",}))
 register_device_definition(ts0301_cover_single,{
-device_helpers.create_fingerprint("Yoolax","Day-Night Shade"),
-})
+device_helpers.create_fingerprint("Yoolax","Day-Night Shade"),})
 register_device_definition(ts0301_cover_dual_rail,device_helpers.create_fingerprints("TS0301",{
 "_TZE210_inpjmc0h",
-"_TZE210_yqwse3h5",
-}))
+"_TZE210_yqwse3h5",}))
+register_device_definition(dream_blinds_tilt,{
+device_helpers.create_fingerprint("_TZE204_wzre8hu2","TS0601"),})
+register_device_definition(rinn_wser40,{
+device_helpers.create_fingerprint("_TZE200_pk0sfzvr","TS0601"),})
 return{
 id="ef00.covers",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

@@ -1,0 +1,1 @@
+{name: covers-rinn-wser40,components:[{id: main,capabilities:[{id: windowShade,version: 1},{id: windowShadeLevel,version: 1}],categories:[{name: Blind}]}],preferences:[{name: invertCover,title: Invert cover position,description: Reverse the displayed and requested cover position.,required: false,preferenceType: boolean,definition:{default: false}}]}

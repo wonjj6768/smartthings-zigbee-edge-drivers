@@ -1,0 +1,38 @@
+name: lights-philips-flux
+components:
+- id: main
+  capabilities:
+  - id: switch
+    version: 1
+  - id: switchLevel
+    version: 1
+  - id: colorControl
+    version: 1
+  - id: colorTemperature
+    version: 1
+  - id: concertmirror08464.hueFluxEffect
+    version: 1
+  - id: concertmirror08464.hueFluxEffectSpeed
+    version: 1
+  - id: concertmirror08464.hueFluxEffectColor
+    version: 1
+  - id: concertmirror08464.hueFluxGradient
+    version: 1
+  - id: concertmirror08464.hueFluxGradientScene
+    version: 1
+  - id: concertmirror08464.hueFluxGradientStyle
+    version: 1
+  - id: concertmirror08464.hueFluxGradientScale
+    version: 1
+  - id: concertmirror08464.hueFluxGradientOffset
+    version: 1
+  - id: concertmirror08464.hueFluxPowerOnBehavior
+    version: 1
+  - id: concertmirror08464.hueFluxStartupColorTemperature
+    version: 1
+  - id: concertmirror08464.hueFluxIdentify
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: Light

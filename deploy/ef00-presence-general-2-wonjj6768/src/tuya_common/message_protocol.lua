@@ -41,12 +41,10 @@ local normalize_transaction=shared.normalize_transaction
 local THRESHOLD_STATE_LOOKUP={
 [0]="not_set",
 [1]="over_current_threshold",
-[3]="over_voltage_threshold",
-}
+[3]="over_voltage_threshold",}
 local THRESHOLD_PROTECTION_LOOKUP={
 [0]="OFF",
-[1]="ON",
-}
+[1]="ON",}
 local build_bytes
 local parse_uint
 local parse_int
@@ -56,15 +54,15 @@ local build_connection_status_payload
 local build_time_payload
 local build_time_payload_with_offset
 local function is_byte(value)
-return type_check(value)=="number" and value >=0 and value <=0xFF and value % 1==0
+return type_check(value)=="number"and value>=0 and value<=0xFF and value%1==0
 end
 local function normalize_uint32(value,label)
-if type_check(value)~="number" then
+if type_check(value)~="number"then
 log.warn(string.format("Tuya %s expects number, got %s",label,type_check(value)))
 return nil
 end
 local normalized=math_floor(value)
-if normalized ~=value or normalized < 0 or normalized > 0xFFFFFFFF then
+if normalized~=value or normalized<0 or normalized>0xFFFFFFFF then
 log.warn(string.format("Tuya %s expects integer in range 0..0xFFFFFFFF, got %s",label,tostring(value)))
 return nil
 end
@@ -78,7 +76,7 @@ return value
 end
 build_bytes=function(value)
 local encoded=raw_bytes(value)
-if encoded ~=nil then
+if encoded~=nil then
 return encoded
 end
 log.warn(string.format("Tuya bytes expects string or byte array, got %s",type_check(value)))
@@ -86,73 +84,67 @@ return nil
 end
 function tuya.parse_phase_variant1(value,phase)
 local buffer=raw_bytes(value)
-if buffer==nil or string_len(buffer)< 15 then
+if buffer==nil or string_len(buffer)<15 then
 log.warn("Tuya phase_variant1 expects at least 15 bytes")
 return nil
 end
-local voltage=parse_uint(buffer,14,2)/ 10
-local current=parse_uint(buffer,12,2)/ 1000
-if type_check(phase)=="string" and phase ~="" then
+local voltage=parse_uint(buffer,14,2)/10
+local current=parse_uint(buffer,12,2)/1000
+if type_check(phase)=="string"and phase~=""then
 return{
-["voltage_" .. phase]=voltage,
-["current_" .. phase]=current,
-}
+["voltage_"..phase]=voltage,
+["current_"..phase]=current,}
 end
 return{
 voltage=voltage,
-current=current,
-}
+current=current,}
 end
 function tuya.parse_phase_variant2(value,phase,signed_power)
 local buffer=raw_bytes(value)
-if buffer==nil or string_len(buffer)< 8 then
+if buffer==nil or string_len(buffer)<8 then
 log.warn("Tuya phase_variant2 expects at least 8 bytes")
 return nil
 end
-local voltage=parse_uint(buffer,1,2)/ 10
-local current=parse_uint(buffer,4,2)/ 1000
+local voltage=parse_uint(buffer,1,2)/10
+local current=parse_uint(buffer,4,2)/1000
 local power=parse_uint(buffer,7,2)
-if signed_power and power > 0x7FFF then
-power=(0x999A - power)* -1
+if signed_power and power>0x7FFF then
+power=(0x999A-power)*-1
 end
-if type_check(phase)=="string" and phase ~="" then
+if type_check(phase)=="string"and phase~=""then
 return{
-["voltage_" .. phase]=voltage,
-["current_" .. phase]=current,
-["power_" .. phase]=power,
-}
+["voltage_"..phase]=voltage,
+["current_"..phase]=current,
+["power_"..phase]=power,}
 end
 return{
 voltage=voltage,
 current=current,
-power=power,
-}
+power=power,}
 end
 function tuya.parse_phase_variant3(value,phase)
 local buffer=raw_bytes(value)
-if buffer==nil or string_len(buffer)< 8 then
+if buffer==nil or string_len(buffer)<8 then
 log.warn("Tuya phase_variant3 expects at least 8 bytes")
 return nil
 end
-local voltage=parse_uint(buffer,1,2)/ 10
-local current=parse_uint(buffer,3,3)/ 1000
+local voltage=parse_uint(buffer,1,2)/10
+local current=parse_uint(buffer,3,3)/1000
 local power=parse_uint(buffer,6,3)
-if type_check(phase)=="string" and phase ~="" then
+if type_check(phase)=="string"and phase~=""then
 return{
-["voltage_" .. phase]=voltage,
-["current_" .. phase]=current,
-["power_" .. phase]=power,
-}
+["voltage_"..phase]=voltage,
+["current_"..phase]=current,
+["power_"..phase]=power,}
 end
 return{
 voltage=voltage,
 current=current,
-power=power,
-}
+power=power,}
 end
 function tuya.parse_threshold(value)
 local buffer=raw_bytes(value)
-if buffer==nil or string_len(buffer)< 8 then
+if buffer==nil or string_len(buffer)<8 then
 log.warn("Tuya threshold expects at least 8 bytes")
 return nil
 end
@@ -162,8 +154,7 @@ threshold_1=THRESHOLD_STATE_LOOKUP[string_byte(buffer,1)],
 threshold_1_value=parse_uint(buffer,3,2),
 threshold_2_protection=THRESHOLD_PROTECTION_LOOKUP[string_byte(buffer,6)],
 threshold_2=THRESHOLD_STATE_LOOKUP[string_byte(buffer,5)],
-threshold_2_value=parse_uint(buffer,7,2),
-}
+threshold_2_value=parse_uint(buffer,7,2),}
 end
 function tuya.send_magic_packet(device)
 local message=build_basic_read_attributes_message(device,MAGIC_PACKET_ATTRS)
@@ -174,65 +165,65 @@ device:send(message)
 return true
 end
 parse_uint=function(buffer,start,len)
-if type_check(buffer)~="string" then
+if type_check(buffer)~="string"then
 log.warn(string.format("Tuya parse_uint expects string, got %s",type_check(buffer)))
 return nil
 end
 local offset=default_if_nil(start,1)
 local size=len
-if type_check(offset)~="number" or offset % 1 ~=0 or offset < 1 then
+if type_check(offset)~="number"or offset%1~=0 or offset<1 then
 log.warn(string.format("Tuya parse_uint expects positive integer offset, got %s",tostring(offset)))
 return nil
 end
 if size==nil then
-size=string_len(buffer)- offset + 1
+size=string_len(buffer)-offset+1
 end
-if type_check(size)~="number" or size % 1 ~=0 or size < 1 then
+if type_check(size)~="number"or size%1~=0 or size<1 then
 log.warn(string.format("Tuya parse_uint expects positive integer length, got %s",tostring(size)))
 return nil
 end
-if offset + size - 1 > string_len(buffer)then
+if offset+size-1>string_len(buffer)then
 log.warn(string.format("Tuya parse_uint out of range: offset=%d len=%d buffer_len=%d",offset,size,string_len(buffer)))
 return nil
 end
 if size==1 then
 return string_byte(buffer,offset)
 elseif size==2 then
-return(string_byte(buffer,offset)* 256)+ string_byte(buffer,offset + 1)
+return(string_byte(buffer,offset)*256)+string_byte(buffer,offset+1)
 elseif size==4 then
-return(string_byte(buffer,offset)* 16777216)+
-(string_byte(buffer,offset + 1)* 65536)+
-(string_byte(buffer,offset + 2)* 256)+
-string_byte(buffer,offset + 3)
+return(string_byte(buffer,offset)*16777216)+
+(string_byte(buffer,offset+1)*65536)+
+(string_byte(buffer,offset+2)*256)+
+string_byte(buffer,offset+3)
 end
 local value=0
-for i=0,size - 1 do
-value=value * 256 + string_byte(buffer,offset + i)
+for i=0,size-1 do
+value=value*256+string_byte(buffer,offset+i)
 end
 return value
 end
 parse_int=function(buffer,start,len)
-if type_check(buffer)~="string" then
+if type_check(buffer)~="string"then
 log.warn(string.format("Tuya parse_int expects string, got %s",type_check(buffer)))
 return nil
 end
 local offset=default_if_nil(start,1)
 local size=len
 if size==nil then
-if type_check(offset)~="number" or offset % 1 ~=0 then
+if type_check(offset)~="number"or offset%1~=0 then
 log.warn(string.format("Tuya parse_int expects integer offset, got %s",tostring(offset)))
 return nil
 end
-size=string_len(buffer)- offset + 1
+size=string_len(buffer)-offset+1
 end
 local unsigned=parse_uint(buffer,offset,size)
 if unsigned==nil then
 return nil
 end
-local max_value=2 ^(size * 8)
-local sign_bit=max_value / 2
-if unsigned >=sign_bit then
-return unsigned - max_value
+local max_value=2 ^(size*8)
+local sign_bit=max_value/2
+if unsigned>=sign_bit then
+return unsigned-max_value
 end
 return unsigned
 end
@@ -248,45 +239,45 @@ log.warn(string.format("Tuya BOOL expects boolean or 0/1, got %s",tostring(value
 return nil
 end
 if datatype==DP_TYPE_VALUE then
-if type_check(value)~="number" then
+if type_check(value)~="number"then
 log.warn(string.format("Tuya VALUE expects number, got %s",type_check(value)))
 return nil
 end
 local int_value=math_floor(value)
 if signed then
-if int_value < -0x80000000 then int_value=-0x80000000 end
-if int_value > 0x7FFFFFFF then int_value=0x7FFFFFFF end
-if int_value < 0 then
-int_value=int_value + 0x100000000
+if int_value<-0x80000000 then int_value=-0x80000000 end
+if int_value>0x7FFFFFFF then int_value=0x7FFFFFFF end
+if int_value<0 then
+int_value=int_value+0x100000000
 end
 else
-if int_value < 0 then int_value=0 end
-if int_value > 0xFFFFFFFF then int_value=0xFFFFFFFF end
+if int_value<0 then int_value=0 end
+if int_value>0xFFFFFFFF then int_value=0xFFFFFFFF end
 end
 return string_pack(">I4",int_value)
 end
 if datatype==DP_TYPE_ENUM then
-if type_check(value)~="number" then
+if type_check(value)~="number"then
 log.warn(string.format("Tuya ENUM expects number, got %s",type_check(value)))
 return nil
 end
 local enum_value=math_floor(value)
-if enum_value ~=value or enum_value < 0 or enum_value > 0xFF then
+if enum_value~=value or enum_value<0 or enum_value>0xFF then
 log.warn(string.format("Tuya ENUM expects byte integer, got %s",tostring(value)))
 return nil
 end
 return string_char(enum_value)
 end
 if datatype==DP_TYPE_BITMAP then
-if type_check(value)=="number" then
+if type_check(value)=="number"then
 local bitmap=pack_bitmap(value)
-if bitmap ~=nil then
+if bitmap~=nil then
 return bitmap
 end
 log.warn(string.format("Tuya BITMAP expects non-negative integer up to 0xFFFFFFFF, got %s",tostring(value)))
 return nil
 end
-if type_check(value)=="string" then
+if type_check(value)=="string"then
 return value
 end
 log.warn(string.format("Tuya BITMAP expects number or string, got %s",type_check(value)))
@@ -300,7 +291,7 @@ end
 return raw_value
 end
 if datatype==DP_TYPE_STRING then
-if type_check(value)~="string" then
+if type_check(value)~="string"then
 log.warn(string.format("Tuya type %d expects string, got %s",datatype,type_check(value)))
 return nil
 end
@@ -310,7 +301,7 @@ log.warn(string.format("Unsupported Tuya datatype: %d",datatype))
 return nil
 end
 parse_value=function(datatype,value_bytes)
-if type_check(value_bytes)~="string" then
+if type_check(value_bytes)~="string"then
 return nil
 end
 if datatype==DP_TYPE_BOOL then
@@ -342,11 +333,11 @@ if not value_bytes then
 return nil
 end
 local value_length=string_len(value_bytes)
-if value_length > 0xFFFF then
+if value_length>0xFFFF then
 log.warn(string.format("Tuya datapoint value too long: %d",value_length))
 return nil
 end
-return string_char(dp,datatype).. string_pack(">I2",value_length).. value_bytes
+return string_char(dp,datatype)..string_pack(">I2",value_length)..value_bytes
 end
 function tuya.build_datapoints(items)
 local parts={}
@@ -361,11 +352,11 @@ return table.concat(parts)
 end
 local function resolve_packet_id(device,transaction)
 local normalized=normalize_transaction(transaction)
-if transaction ~=nil and normalized==nil then
+if transaction~=nil and normalized==nil then
 log.warn(string.format("Tuya transaction expects number, got %s",type_check(transaction)))
 return nil
 end
-if normalized ~=nil then
+if normalized~=nil then
 return normalized
 end
 return next_packet_id(device)
@@ -378,7 +369,7 @@ end
 if payload==nil then
 payload=""
 end
-if type_check(payload)~="string" then
+if type_check(payload)~="string"then
 log.warn(string.format("Tuya raw payload expects string, got %s",type_check(payload)))
 return false
 end
@@ -396,16 +387,13 @@ constants.HUB.ENDPOINT,
 device:get_short_address(),
 endpoint,
 constants.HA_PROFILE_ID,
-TUYA_CLUSTER
-)
+TUYA_CLUSTER)
 local message_body=zcl_messages.ZclMessageBody({
 zcl_header=zcl_header,
-zcl_body=generic_body.GenericBody(payload)
-})
+zcl_body=generic_body.GenericBody(payload)})
 device:send(messages.ZigbeeMessageTx({
 address_header=address_header,
-body=message_body
-}))
+body=message_body}))
 return true
 end
 function tuya.send_datapoint(device,dp,datatype,value,command_id,signed,transaction)
@@ -421,7 +409,7 @@ local cmd=command_id
 if cmd==nil then
 cmd=SET_DATA
 end
-if not tuya.send_raw(device,cmd,string_pack(">I2",packet_id).. dp_payload)then
+if not tuya.send_raw(device,cmd,string_pack(">I2",packet_id)..dp_payload)then
 return nil
 end
 return packet_id
@@ -439,7 +427,7 @@ local cmd=command_id
 if cmd==nil then
 cmd=SET_DATA
 end
-if not tuya.send_raw(device,cmd,string_pack(">I2",packet_id).. dps_payload)then
+if not tuya.send_raw(device,cmd,string_pack(">I2",packet_id)..dps_payload)then
 return nil
 end
 return packet_id
@@ -466,7 +454,7 @@ end
 return packet_id
 end
 build_connection_status_payload=function(status_bytes)
-local status=status_bytes==nil and "\x01" or build_bytes(status_bytes)
+local status=status_bytes==nil and"\x01"or build_bytes(status_bytes)
 if status==nil then
 return nil
 end
@@ -474,7 +462,7 @@ if string_len(status)~=1 then
 log.warn(string.format("Tuya connection status expects exactly one status byte, got %d",string_len(status)))
 return nil
 end
-return string_pack("<I2",1).. status
+return string_pack("<I2",1)..status
 end
 function tuya.send_connection_status(device,transaction,status_bytes)
 local payload=build_connection_status_payload(status_bytes)
@@ -493,7 +481,7 @@ if local_value==nil then
 return nil
 end
 local time_bytes=string_pack(">I4I4",utc_value,local_value)
-return string_pack("<I2",string_len(time_bytes)).. time_bytes
+return string_pack("<I2",string_len(time_bytes))..time_bytes
 end
 build_time_payload_with_offset=function(offset_seconds,utc_time,local_time)
 local offset=normalize_uint32(default_if_nil(offset_seconds,0),"time_offset")
@@ -501,17 +489,17 @@ if offset==nil then
 return nil
 end
 local base_utc=normalize_uint32(default_if_nil(utc_time,os_time()),"utc_time")
-if base_utc==nil or base_utc < offset then
+if base_utc==nil or base_utc<offset then
 log.warn(string.format("Tuya time offset underflow: utc=%s offset=%s",tostring(base_utc),tostring(offset)))
 return nil
 end
 local base_local=normalize_uint32(default_if_nil(local_time,base_utc),"local_time")
-if base_local==nil or base_local < offset then
+if base_local==nil or base_local<offset then
 log.warn(string.format("Tuya time offset underflow: local=%s offset=%s",tostring(base_local),tostring(offset)))
 return nil
 end
-local utc_value=base_utc - offset
-local local_value=base_local - offset
+local utc_value=base_utc-offset
+local local_value=base_local-offset
 return build_time_payload(utc_value,local_value)
 end
 function tuya.send_time(device,utc_time,local_time)
@@ -552,40 +540,38 @@ return tuya.send_connection_status(device,nil,status_bytes)==true
 end
 function tuya.parse_connection_status(message)
 local payload=extract_payload(message)
-if not payload or string_len(payload)< 2 then
+if not payload or string_len(payload)<2 then
 return nil
 end
-local payload_size=string_byte(payload,1)+ string_byte(payload,2)* 0x100
-local available=string_len(payload)- 2
+local payload_size=string_byte(payload,1)+string_byte(payload,2)*0x100
+local available=string_len(payload)-2
 local status_bytes=""
-if available > 0 and payload_size > 0 then
-status_bytes=string_sub(payload,3,math.min(string_len(payload),payload_size + 2))
+if available>0 and payload_size>0 then
+status_bytes=string_sub(payload,3,math.min(string_len(payload),payload_size+2))
 end
 return{
 payload_size=payload_size,
 status_length=payload_size,
 status_bytes=status_bytes,
-payload=payload,
-}
+payload=payload,}
 end
 function tuya.parse_mcu_version_response(message)
 local payload=extract_payload(message)
-if not payload or string_len(payload)< 3 then
+if not payload or string_len(payload)<3 then
 return nil
 end
-local transaction_hi=string_byte(payload,1)-- 2바이트 트랜잭션 ID의 상위 바이트
-local transaction_lo=string_byte(payload,2)-- 2바이트 트랜잭션 ID의 하위 바이트
+local transaction_hi=string_byte(payload,1)
+local transaction_lo=string_byte(payload,2)
 local version_raw=string_byte(payload,3)
-local major=math_floor(version_raw / 64)
-local minor=math_floor((version_raw % 64)/ 16)
-local release=version_raw % 16
+local major=math_floor(version_raw/64)
+local minor=math_floor((version_raw%64)/16)
+local release=version_raw%16
 return{
 transaction_hi=transaction_hi,
 transaction_lo=transaction_lo,
 version_raw=version_raw,
 version=string.format("%d.%d.%d",major,minor,release),
-payload=payload,
-}
+payload=payload,}
 end
 function tuya.parse_datapoint(buffer,index)
 local payload=extract_payload(buffer)
@@ -593,38 +579,36 @@ local start_index=default_if_nil(index,3)
 if not payload then
 return nil
 end
-if type_check(start_index)~="number" or start_index % 1 ~=0 or start_index < 1 then
+if type_check(start_index)~="number"or start_index%1~=0 or start_index<1 then
 log.warn(string.format("Tuya parse_datapoint expects positive integer index, got %s",tostring(start_index)))
 return nil
 end
 local payload_len=string_len(payload)
-if payload_len < start_index + 3 then
-if payload_len >=start_index then
+if payload_len<start_index+3 then
+if payload_len>=start_index then
 log.warn(string.format(
 "Tuya DP header truncated at index %d (payload_len=%d)",
 start_index,
-payload_len
-))
+payload_len))
 end
 return nil
 end
 local dp=string_byte(payload,start_index)
-local datatype=string_byte(payload,start_index + 1)
-local len=(string_byte(payload,start_index + 2)* 256)+ string_byte(payload,start_index + 3)
-local value_start=start_index + 4
-local next_index=value_start + len
-if next_index - 1 > payload_len then
+local datatype=string_byte(payload,start_index+1)
+local len=(string_byte(payload,start_index+2)*256)+string_byte(payload,start_index+3)
+local value_start=start_index+4
+local next_index=value_start+len
+if next_index-1>payload_len then
 log.warn(string.format(
 "Tuya DP payload truncated: dp=%d datatype=%d len=%d index=%d payload_len=%d",
 dp,
 datatype,
 len,
 start_index,
-payload_len
-))
+payload_len))
 return nil
 end
-local value_bytes=string_sub(payload,value_start,next_index - 1)
+local value_bytes=string_sub(payload,value_start,next_index-1)
 local decoded_value=parse_value(datatype,value_bytes)
 return{
 dp=dp,
@@ -634,8 +618,7 @@ value_bytes=value_bytes,
 value=decoded_value,
 int_value=parse_uint(value_bytes),
 signed_value=parse_int(value_bytes),
-next_index=next_index,
-}
+next_index=next_index,}
 end
 function tuya.parse_datapoints(buffer,index)
 local payload=extract_payload(buffer)
@@ -643,13 +626,13 @@ if payload==nil then
 return nil
 end
 local cursor=default_if_nil(index,3)
-if type_check(cursor)~="number" or cursor % 1 ~=0 or cursor < 1 then
+if type_check(cursor)~="number"or cursor%1~=0 or cursor<1 then
 log.warn(string.format("Tuya parse_datapoints expects positive integer index, got %s",tostring(cursor)))
 return nil
 end
 local payload_len=string_len(payload)
 local datapoints={}
-while cursor <=payload_len do
+while cursor<=payload_len do
 local dp_info=tuya.parse_datapoint(payload,cursor)
 if not dp_info then
 return nil
@@ -664,7 +647,7 @@ local payload=extract_payload(message)
 if not payload then
 return nil
 end
-if string_len(payload)< 2 then
+if string_len(payload)<2 then
 log.warn(string.format("Tuya report too short (payload_len=%d)",string_len(payload)))
 return nil
 end
@@ -674,8 +657,7 @@ endpoint=extract_source_endpoint(message),
 status=string_byte(payload,1),
 transaction=string_byte(payload,2),
 payload=payload,
-datapoints={},
-}
+datapoints={},}
 local datapoints=tuya.parse_datapoints(payload,3)
 if datapoints==nil then
 return nil

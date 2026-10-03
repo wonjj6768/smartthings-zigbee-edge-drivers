@@ -1,0 +1,13 @@
+name: covers-tuya-cover5-px
+components:
+  - id: main
+    capabilities:
+      - {id: windowShade, version: 1}
+      - {id: windowShadeLevel, version: 1}
+      - {id: concertmirror08464.cover5PxCalibration, version: 1}
+      - {id: concertmirror08464.cover5PxBacklight, version: 1}
+      - {id: concertmirror08464.cover5PxMotorDirection, version: 1}
+      - {id: concertmirror08464.cover5PxChildLock, version: 1}
+    categories: [{name: Blind}]
+preferences:
+  - {preferenceId: reverse, explicit: true}

@@ -1,0 +1,8 @@
+name: bridges-ti-router
+components:
+  - id: main
+    capabilities:
+      - {id: concertmirror08464.tiRouterTransmitPower, version: 1}
+      - {id: signalStrength, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Bridges}]

@@ -57,12 +57,16 @@ local function build_mh(profile, capability_prefix, mapping_prefix, gangs)
     query_on_configure = false,
     respond_to_mcu_version_response = true,
     datapoints = {},
+    component_to_endpoint_map = {},
+    endpoint_to_component_map = {[1] = "main"},
   }
 
   for index = 1, gangs do
+    definition.component_to_endpoint_map[component(index)] = 1
     append(definition, tuya.dp_on_off(state_dp(index), {
       name = "switch",
       component = component(index),
+      endpoint = 1,
       emit = emit.switch(),
     }))
   end

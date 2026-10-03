@@ -1,35 +1,35 @@
-local zcl=require "protocol.zcl"
-local device_helpers=require "contracts.helpers.family"
+local zcl=require"protocol.zcl"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function standard_cover_position_converter()
 return{
 from=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-return 100 - math.max(0,math.min(100,value))
+return 100-math.max(0,math.min(100,value))
 end,
 to=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-return 100 - math.max(0,math.min(100,value))
+return 100-math.max(0,math.min(100,value))
 end,
 }
 end
 local function standard_window_shade_state_converter()
 return{
 from=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-if value <=0 then
-return "open"
+if value<=0 then
+return"open"
 end
-if value >=100 then
-return "closed"
+if value>=100 then
+return"closed"
 end
-return "partially open"
+return"partially open"
 end,
 }
 end
@@ -39,9 +39,7 @@ zcl_clusters={
 zcl.tuya_magic_packet(),
 zcl.cover_position(),
 zcl.window_shade_state(),
-zcl.cover_state(),
-},
-}
+zcl.cover_state(),},}
 local ts130f_dual_cover={
 profile="covers-cover-2",
 zcl_clusters={
@@ -51,18 +49,14 @@ zcl.window_shade_state({endpoint=1,component="main"}),
 zcl.cover_state({endpoint=1,component="main"}),
 zcl.cover_position({endpoint=2,component="shade2"}),
 zcl.window_shade_state({endpoint=2,component="shade2"}),
-zcl.cover_state({endpoint=2,component="shade2"}),
-},
-}
+zcl.cover_state({endpoint=2,component="shade2"}),},}
 local standard_cover_battery={
 profile="covers-cover-battery",
 zcl_clusters={
 zcl.cover_position({converter=standard_cover_position_converter()}),
 zcl.window_shade_state({converter=standard_window_shade_state_converter()}),
 zcl.cover_state(),
-zcl.battery(),
-},
-}
+zcl.battery(),},}
 register_device_definition(ts130f_cover,device_helpers.create_fingerprints("TS130F",{
 "_TZ3000_bs93npae",
 "_TZ3000_dojqjapa",
@@ -81,16 +75,13 @@ register_device_definition(ts130f_cover,device_helpers.create_fingerprints("TS13
 "_TZ3000_fccpjz5z",
 "_TZ3000_vd43bbfq",
 "_TZ3000_zirycpws",
-"_TZ3210_ol1uhvza",
-}))
+"_TZ3210_ol1uhvza",}))
 register_device_definition(ts130f_cover,{
 device_helpers.create_fingerprint("Aqara","lumi.curtain.acn04"),
 device_helpers.create_fingerprint("LUMI","lumi.curtain.acn04"),
-device_helpers.create_fingerprint("LUMI","lumi.curtain.acn018"),
-})
+device_helpers.create_fingerprint("LUMI","lumi.curtain.acn018"),})
 register_device_definition(ts130f_cover,device_helpers.create_fingerprints("TS130F",{
-"_TZ3000_1dd0d5yi",
-}))
+"_TZ3000_1dd0d5yi",}))
 register_device_definition(ts130f_dual_cover,device_helpers.create_fingerprints("TS130F",{
 "_TZ3000_bmhwnl7s",
 "_TZ3000_esynmmox",
@@ -98,49 +89,45 @@ register_device_definition(ts130f_dual_cover,device_helpers.create_fingerprints(
 "_TZ3000_kmsbwdol",
 "_TZ3000_l6iqph4f",
 "_TZ3000_wvedmwyp",
-"_TZ3000_xdo0hj1k",
-}))
+"_TZ3000_xdo0hj1k",}))
 register_device_definition(standard_cover_battery,device_helpers.create_fingerprints("TS0301",{
-"_TZE200_9caxna4s",
-}))
+"_TZE200_9caxna4s",}))
 register_device_definition(standard_cover_battery,device_helpers.create_fingerprints("TS030F",{
-"_TZB000_42ha4rsc",
-}))
+"_TZB000_42ha4rsc",}))
 register_device_definition(standard_cover_battery,{
 device_helpers.create_fingerprint("IKEA of Sweden","FYRTUR block-out roller blind"),
 device_helpers.create_fingerprint("IKEA of Sweden","KADRILJ roller blind"),
 device_helpers.create_fingerprint("IKEA of Sweden","PRAKTLYSING cellular blind"),
-device_helpers.create_fingerprint("IKEA of Sweden","TREDANSEN block-out cellul blind"),
-})
+device_helpers.create_fingerprint("IKEA of Sweden","TREDANSEN block-out cellul blind"),})
 local function standard_cover_position_converter()
 return{
 from=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-return 100 - math.max(0,math.min(100,value))
+return 100-math.max(0,math.min(100,value))
 end,
 to=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-return 100 - math.max(0,math.min(100,value))
+return 100-math.max(0,math.min(100,value))
 end,
 }
 end
 local function standard_window_shade_state_converter()
 return{
 from=function(value)
-if type(value)~="number" then
+if type(value)~="number"then
 return value
 end
-if value <=0 then
-return "open"
+if value<=0 then
+return"open"
 end
-if value >=100 then
-return "closed"
+if value>=100 then
+return"closed"
 end
-return "partially open"
+return"partially open"
 end,
 }
 end
@@ -149,43 +136,33 @@ profile="covers-cover",
 zcl_clusters={
 zcl.cover_position(),
 zcl.window_shade_state(),
-zcl.cover_state(),
-},
-}
+zcl.cover_state(),},}
 local cover_battery={
 profile="covers-cover-battery",
 zcl_clusters={
 zcl.cover_position({converter=standard_cover_position_converter()}),
 zcl.window_shade_state({converter=standard_window_shade_state_converter()}),
 zcl.cover_state(),
-zcl.battery(),
-},
-}
+zcl.battery(),},}
 register_device_definition({
 profile="covers-cover-battery",
 zcl_clusters={
 zcl.cover_position(),
 zcl.window_shade_state(),
 zcl.cover_state(),
-zcl.battery(),
-},
+zcl.battery(),},
 },{
 device_helpers.create_fingerprint("eWeLink","AM25C-1-25-ES-E-Z"),
 device_helpers.create_fingerprint("eWeLink","CK-MG22-Z310EE07DOOYA-01(7015)"),
 device_helpers.create_fingerprint("eWeLink","MYDY25Z-1"),
-device_helpers.create_fingerprint("eWeLink","ZM25-EAZ"),
-})
+device_helpers.create_fingerprint("eWeLink","ZM25-EAZ"),})
 register_device_definition(cover,{
-device_helpers.create_fingerprint("Sunricher","HK-ZCC-A"),
-})
+device_helpers.create_fingerprint("Sunricher","HK-ZCC-A"),})
 register_device_definition(cover_battery,{
-device_helpers.create_fingerprint("Third Reality, Inc","TRZB3"),
-})
+device_helpers.create_fingerprint("Third Reality, Inc","TRZB3"),})
 register_device_definition(cover_battery,{
 device_helpers.create_fingerprint("Third Reality, Inc","3RSB015BZ"),
-device_helpers.create_fingerprint("Third Reality, Inc","3RSB02015Z"),
-})
+device_helpers.create_fingerprint("Third Reality, Inc","3RSB02015Z"),})
 return{
 id="zcl.covers",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

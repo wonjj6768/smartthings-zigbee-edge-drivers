@@ -1,21 +1,17 @@
-local zcl=require "protocol.zcl"
-local device_helpers=require "contracts.helpers.family"
+local zcl=require"protocol.zcl"
+local device_helpers=require"contracts.helpers.family"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local dimmer_light={
 profile="lights-dimmer",
 zcl_clusters={
 zcl.switch(),
-zcl.level(),
-},
-}
+zcl.level(),},}
 local cct_light={
 profile="lights-color-temperature",
 zcl_clusters={
 zcl.switch(),
 zcl.level(),
-zcl.color_temperature(),
-},
-}
+zcl.color_temperature(),},}
 local color_cct_light={
 profile="lights-color-temperature-color",
 zcl_clusters={
@@ -24,9 +20,7 @@ zcl.level(),
 zcl.color_temperature(),
 zcl.color_hue(),
 zcl.color_saturation(),
-zcl.color(),
-},
-}
+zcl.color(),},}
 register_device_definition(dimmer_light,{
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb E27 opal 1000lm"),
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb E27 W opal 1000lm"),
@@ -57,8 +51,7 @@ device_helpers.create_fingerprint("IKEA of Sweden","TRADFRIbulbE12WWcandleclear2
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 WW 345lm"),
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 WW 380lm"),
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 W 400lm"),
-device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 WW 400lm"),
-})
+device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 WW 400lm"),})
 register_device_definition(cct_light,{
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb E27 WS opal 980lm"),
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb E26 WS opal 980lm"),
@@ -133,8 +126,7 @@ device_helpers.create_fingerprint("IKEA of Sweden","FLOALT panel WS 60x60"),
 device_helpers.create_fingerprint("IKEA of Sweden","FLOALT panel WS 30x90"),
 device_helpers.create_fingerprint("IKEA of Sweden","SURTE door WS 38x64"),
 device_helpers.create_fingerprint("IKEA of Sweden","GUNNARP panel round"),
-device_helpers.create_fingerprint("IKEA of Sweden","GUNNARP panel 40*40"),
-})
+device_helpers.create_fingerprint("IKEA of Sweden","GUNNARP panel 40*40"),})
 register_device_definition(color_cct_light,{
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb E26 CWS globe 800lm"),
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb E26 CWS globe 806lm"),
@@ -159,9 +151,7 @@ device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 CWS 380lm"
 device_helpers.create_fingerprint("IKEA of Sweden","TRADFRI bulb GU10 CWS 345lm"),
 device_helpers.create_fingerprint("IKEA of Sweden","JETSTROM 3030 wall"),
 device_helpers.create_fingerprint("IKEA of Sweden","JETSTROM 3030 NA wall"),
-device_helpers.create_fingerprint("IKEA of Sweden","JETSTROM 3030 ceiling"),
-})
+device_helpers.create_fingerprint("IKEA of Sweden","JETSTROM 3030 ceiling"),})
 return{
 id="zcl.lights.ikea",
-registrations=device_definitions,
-}
+registrations=device_definitions,}

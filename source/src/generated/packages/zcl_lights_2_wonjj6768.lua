@@ -34,4 +34,9 @@ for _, entry in ipairs(registrations(catalog_4, "zcl.lights.wave19.exact", "cont
   entries[#entries + 1] = entry
 end
 
+local catalog_5 = require "contracts.families.zcl.lights.philips_flux"
+for _, entry in ipairs(registrations(catalog_5, "zcl.lights.philips_flux", "contracts.families.zcl.lights.philips_flux")) do
+  entries[#entries + 1] = entry
+end
+
 return entries

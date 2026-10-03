@@ -1,5 +1,5 @@
-local zcl=require "protocol.zcl"
-local device_helpers=require "contracts.helpers.family"
+local zcl=require"protocol.zcl"
+local device_helpers=require"contracts.helpers.family"
 local registrations,register_device_definition=device_helpers.definition_registry()
 local zg204zl_ias={
 profile="zg204zl-ias-motion-battery",
@@ -8,7 +8,7 @@ zcl_clusters={
 zcl.motion({
 endpoint=1,read_only=true,read_on_configure=false,
 from_device=function(value)
-if type(value)=="table" then value=value.value end
+if type(value)=="table"then value=value.value end
 return bit32.band(value,0x0001)~=0
 end,
 }),
@@ -19,10 +19,9 @@ read_on_configure=true,
 from_device=function(value,_,context)
 local raw=context and context.raw_value or value
 if raw==0xFF then return nil end
-return context and value or raw / 2
+return context and value or raw/2
 end,
-}),
-},
+}),},
 parent_refresh=function(device,definition)
 zcl.read_named_attribute(device,definition.zcl_clusters,"motion",{endpoint=1})
 zcl.read_named_attribute(device,definition.zcl_clusters,"battery",{endpoint=1})

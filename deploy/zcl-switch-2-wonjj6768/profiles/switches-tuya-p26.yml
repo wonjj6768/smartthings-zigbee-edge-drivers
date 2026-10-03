@@ -1,0 +1,1 @@
+{name: switches-tuya-p26,components:[{id: main,capabilities:[{id: switch,version: 1},{id: concertmirror08464.tuyaP26PowerBehavior,version: 1},{id: concertmirror08464.tuyaP26SwitchType,version: 1},{id: concertmirror08464.tuyaP26BacklightMode,version: 1},{id: concertmirror08464.tuyaP26IndicatorMode,version: 1},{id: refresh,version: 1}],categories:[{name: Switch}]}]}

@@ -115,6 +115,13 @@ local develco_smszb_core = {
     }),
   },
 }
+for _, mapping in ipairs(develco_smszb_core.zcl_clusters) do
+  if mapping.cluster_id == 0x0500 then
+    mapping.minimum_interval = nil
+    mapping.maximum_interval = nil
+    mapping.reportable_change = nil
+  end
+end
 register_device_definition(develco_smszb_core, {
   fp("Develco Products A/S", "SMSZB-120"),
   fp("Develco Products A/S", "GWA1512_SmokeSensor"),
@@ -180,10 +187,14 @@ local function smoke_heartbeat(minimum, include_smoke)
 end
 
 local aqara_smoke_heartbeat = smoke_heartbeat(2475, true)
+local aqara_smoke_ias = unreported_alarm()
+aqara_smoke_ias.read_on_configure = false
+aqara_smoke_ias.ias_configure_method = 0
 
 local aqara_smoke_acn03_core = {
   profile = "safety-smoke-aqara-acn03-core",
   zcl_clusters = {
+    aqara_smoke_ias,
     zcl.cluster_attribute(0xFCC0, 0x013A, {
       name="aqara_smoke", endpoint=1, mfg_code=0x115F, data_type=data_types.Uint8,
       read_only=true, read_on_configure=true, from_device=function(value) return value == 1 end,

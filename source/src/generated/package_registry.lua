@@ -291,9 +291,21 @@ for _, entry in ipairs(package_48) do
   entries[#entries + 1] = entry
 end
 
-local package_49 = require "generated.packages.zcl_sensors_3_wonjj6768"
-assert(type(package_49) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_sensors_3_wonjj6768")
+local package_49 = require "generated.packages.zcl_covers_2_wonjj6768"
+assert(type(package_49) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_covers_2_wonjj6768")
 for _, entry in ipairs(package_49) do
+  entries[#entries + 1] = entry
+end
+
+local package_50 = require "generated.packages.zcl_sensors_3_wonjj6768"
+assert(type(package_50) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_sensors_3_wonjj6768")
+for _, entry in ipairs(package_50) do
+  entries[#entries + 1] = entry
+end
+
+local package_51 = require "generated.packages.zcl_chargers_wonjj6768"
+assert(type(package_51) == "table", "Canonical package bootstrap must return a table: generated.packages.zcl_chargers_wonjj6768")
+for _, entry in ipairs(package_51) do
   entries[#entries + 1] = entry
 end
 

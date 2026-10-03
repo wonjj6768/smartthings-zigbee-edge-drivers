@@ -1,47 +1,47 @@
 local function registrations(catalog,expected_id,module_name)
-assert(type(catalog)=="table","Canonical catalog must return a table: " .. module_name)
+assert(type(catalog)=="table","Canonical catalog must return a table: "..module_name)
 for key in next,catalog do
-assert(key=="id" or key=="registrations","Canonical catalog has extra key: " .. module_name .. ":" .. tostring(key))
+assert(key=="id"or key=="registrations","Canonical catalog has extra key: "..module_name ..":"..tostring(key))
 end
-assert(catalog.id==expected_id,"Canonical catalog id mismatch: " .. module_name)
-assert(type(catalog.registrations)=="table","Canonical catalog registrations missing: " .. module_name)
+assert(catalog.id==expected_id,"Canonical catalog id mismatch: "..module_name)
+assert(type(catalog.registrations)=="table","Canonical catalog registrations missing: "..module_name)
 return catalog.registrations
 end
 local entries={}
-local catalog_1=require "contracts.families.zcl.sensors.z2m_absorption"
+local catalog_1=require"contracts.families.zcl.sensors.z2m_absorption"
 for _,entry in ipairs(registrations(catalog_1,"zcl.sensors.z2m_absorption","contracts.families.zcl.sensors.z2m_absorption"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_2=require "contracts.families.zcl.sensors.wave19_exact_aliases"
+local catalog_2=require"contracts.families.zcl.sensors.wave19_exact_aliases"
 for _,entry in ipairs(registrations(catalog_2,"zcl.sensors.wave19_exact_aliases","contracts.families.zcl.sensors.wave19_exact_aliases"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_3=require "contracts.families.zcl.sensors.wave19_environment"
+local catalog_3=require"contracts.families.zcl.sensors.wave19_environment"
 for _,entry in ipairs(registrations(catalog_3,"zcl.sensors.wave19_environment","contracts.families.zcl.sensors.wave19_environment"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_4=require "contracts.families.zcl.sensors.wave19_smoke"
+local catalog_4=require"contracts.families.zcl.sensors.wave19_smoke"
 for _,entry in ipairs(registrations(catalog_4,"zcl.sensors.wave19_smoke","contracts.families.zcl.sensors.wave19_smoke"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_5=require "contracts.families.zcl.sensors.wave19_vibration"
+local catalog_5=require"contracts.families.zcl.sensors.wave19_vibration"
 for _,entry in ipairs(registrations(catalog_5,"zcl.sensors.wave19_vibration","contracts.families.zcl.sensors.wave19_vibration"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_6=require "contracts.families.zcl.sensors.sonoff"
+local catalog_6=require"contracts.families.zcl.sensors.sonoff"
 for _,entry in ipairs(registrations(catalog_6,"zcl.sensors.sonoff","contracts.families.zcl.sensors.sonoff"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_7=require "contracts.families.zcl.sensors.sonoff_presence_advanced"
+local catalog_7=require"contracts.families.zcl.sensors.sonoff_presence_advanced"
 for _,entry in ipairs(registrations(catalog_7,"zcl.sensors.sonoff_presence_advanced","contracts.families.zcl.sensors.sonoff_presence_advanced"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_8=require "contracts.families.zcl.sensors.hobeian"
+local catalog_8=require"contracts.families.zcl.sensors.hobeian"
 for _,entry in ipairs(registrations(catalog_8,"zcl.sensors.hobeian","contracts.families.zcl.sensors.hobeian"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
-local catalog_9=require "contracts.families.zcl.sensors.zg204zl"
+local catalog_9=require"contracts.families.zcl.sensors.zg204zl"
 for _,entry in ipairs(registrations(catalog_9,"zcl.sensors.zg204zl","contracts.families.zcl.sensors.zg204zl"))do
-entries[#entries + 1]=entry
+entries[#entries+1]=entry
 end
 return entries

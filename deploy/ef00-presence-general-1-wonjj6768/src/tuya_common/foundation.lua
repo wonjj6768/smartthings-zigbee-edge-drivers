@@ -1,4 +1,4 @@
-local log=require "log"
+local log=require"log"
 local shared={}
 shared.log=log
 shared.BASIC_CLUSTER=0x0000
@@ -71,7 +71,7 @@ local type_check=shared.type_check
 local EPOCH_2000_OFFSET=shared.EPOCH_2000_OFFSET
 local function copy_table(source)
 local target={}
-if type_check(source)~="table" then
+if type_check(source)~="table"then
 return target
 end
 for key,value in pairs(source)do
@@ -80,7 +80,7 @@ end
 return target
 end
 local function copy_keys(target,source,keys)
-if type_check(source)~="table" then
+if type_check(source)~="table"then
 return target
 end
 for _,key in ipairs(keys)do
@@ -91,7 +91,7 @@ end
 return target
 end
 local function merge_options(target,source)
-if type_check(source)~="table" then
+if type_check(source)~="table"then
 return target
 end
 for key,value in pairs(source)do
@@ -100,7 +100,7 @@ end
 return target
 end
 local function time_offset_for_start(time_start)
-if time_start=="2000" then
+if time_start=="2000"then
 return EPOCH_2000_OFFSET
 end
 return 0

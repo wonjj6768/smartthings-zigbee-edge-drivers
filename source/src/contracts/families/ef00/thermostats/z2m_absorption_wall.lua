@@ -49,6 +49,41 @@ register_device_definition(hd_t1000, ef00_helpers.ts0601_fingerprints({
   "_TZE200_spyvfeti",
 }))
 
+local beca_bvrf_l001 = {
+  profile="thermostats-beca-bvrf-l001",
+  package_group="wall-2",
+  magic_packet=true,
+  mcu_version_request_on_configure=true,
+  query_on_configure=false,
+  query_on_announce=false,
+  time_start="off",
+  datapoints={
+    tuya.dp_on_off(1,{name="switch",emit=emit.switch()}),
+    tuya.dp_enum(2,{
+      name="system_mode",emit=emit.thermostat_mode(),
+      converter=converter.lookup_from_to({cool=0,heat=1,fanonly=2,dryair=3}),
+    }),
+    tuya.dp_current_heating_setpoint(16,{
+      emit=emit.heating_setpoint("C"),
+      converter=converter.from_to(function(value) return value/10 end,
+      function(value)
+        if type(value)=="number" and value%1==0 and value>=16 and value<=32 then return value*10 end
+      end),
+    }),
+    tuya.dp_local_temperature(24,{read_only=true,scale=10,emit=emit.temperature("C")}),
+    tuya.dp_binary(40,{
+      name="bvrf_l001_child_lock",emit=emit.bvrfL001ChildLock(),
+      converter=converter.lookup_from_to({LOCK=true,UNLOCK=false}),
+    }),
+    tuya.dp_enum(49,{
+      name="bvrf_l001_fan_mode",emit=emit.bvrfL001FanMode(),
+      converter=converter.lookup_from_to({auto=0,low=1,medium=2,high=3}),
+    }),
+  },
+}
+thermostat_metadata.attach(beca_bvrf_l001,{"cool","heat","fanonly","dryair"},16,32,1)
+register_device_definition(beca_bvrf_l001,ef00_helpers.ts0601_fingerprints({"_TZE204_6ewjlefg"}))
+
 return {
   id = "ef00.thermostats.z2m_absorption_wall",
   registrations = device_definitions,

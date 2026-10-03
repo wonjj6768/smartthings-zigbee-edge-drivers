@@ -1,21 +1,21 @@
 local custom_capabilities={}
 local strings={"s","rjvxCountdown","countdown","Rjvx Countdown","C","rjvxTempCSetpoint","temperatureCelsiusSetpoint","temperature_c_setpoint","Rjvx Temp CSetpoint","F","rjvxTempFSetpoint","temperatureFahrenheitSetpoint","temperature_f_setpoint","Rjvx Temp FSetpoint","rjvxTemperatureF","temperatureFahrenheit","temperature_fahrenheit","Rjvx Temperature F","rjvxTemperatureRange","temperatureRange","temperature_range","Rjvx Temperature Range","rjvxTempCalibration","temperatureCalibration","temperature_calibration","Rjvx Temp Calibration","min","rjvxCoolingDelay","coolingDelay","cooling_delay","Rjvx Cooling Delay","apiuCountdown","Apiu Countdown","mgzgCountdown1","countdownOne","Mgzg Countdown1","usb4gCountdownUsba","countdown_usb_a","Usb4g Countdown Usba","usb4gCountdownUsbc","countdownTwo","countdown_usb_c","Usb4g Countdown Usbc","usb4gCountdownPlugOne","countdownThree","countdown_plug_1","Usb4g Countdown Plug One","usb4gCountdownPlugTwo","countdownFour","countdown_plug_2","Usb4g Countdown Plug Two","scimagicTempCalibration","Scimagic Temp Calibration","kWh","usb4gProducedEnergyStatus","producedEnergy","produced_energy","Usb4g Produced Energy Status","sciThTarget","temperatureTarget","temperature_target","Sci Th Target","sciThRange","Sci Th Range","sciThDelayTime","delayTime","delay_time","Sci Th Delay Time","%","sciThHumidityTarget","humidityTarget","humidity_target","Sci Th Humidity Target","sciThHumidityRange","humidityRange","humidity_range","Sci Th Humidity Range","sciThHumidityCalibration","humidityCalibration","humidity_calibration","Sci Th Humidity Calibration","sciTempCalibration","Sci Temp Calibration","sciTempTarget","Sci Temp Target","sciTempRange","Sci Temp Range","sciTempDelayTime","Sci Temp Delay Time","indicator_mode","indicatorMode","supportedIndicatorModes","Indicator mode","off","off/on","on/off","on","power_on_behavior","powerOnBehavior","supportedPowerOnBehaviors","Power on behavior","previous","rjvxAutowork","autowork","Rjvx Autowork","rjvxWorkMode","workMode","work_mode","Rjvx Work Mode","heating","cooling","rjvxTemperatureUnit","temperatureUnit","temperature_unit","Rjvx Temperature Unit","celsius","fahrenheit","rjvxCoolingDelaySwitch","coolingDelaySwitch","cooling_delay_switch","Rjvx Cooling Delay Switch","usb4gRelayStatus","relayStatus","relay_status","Usb4g Relay Status","usb4gBacklight","backlightSwitch","switch_backlight","Usb4g Backlight","usb4gChildLock","childLock","child_lock","Usb4g Child Lock","mgzgPowerOnBehavior","Mgzg Power On Behavior","mgzgBacklightMode","backlightMode","backlight_mode","Mgzg Backlight Mode","scimagicMode","mode","Scimagic Mode","dehumidify","wet","scimagicAutoWork","autoWork","auto_work","Scimagic Auto Work","scimagicDelay","delay","Scimagic Delay","sciTempAuto","Sci Temp Auto","sciTempMode","Sci Temp Mode","sciTempDelay","Sci Temp Delay","ts6gPowerOnBehavior","Ts6g Power On Behavior","memory","ts6gIndicatorMode","Ts6g Indicator Mode","none","relay","pos","last_power_response_time","lastPowerResponseTime","Last power response time"}
 local function string_value(value)
-if type(value)=="number" then return strings[value]end
+if type(value)=="number"then return strings[value]end
 return value
 end
-local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return "concertmirror08464." .. suffix end
+local function capability_id(value)local suffix=string_value(value);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
 local table_groups={}
 local function grouped_table(group_id)
-if type(group_id)~="number" then return{}end
+if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
-if existing ~=nil then return existing end
+if existing~=nil then return existing end
 local out={}
 table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
-if type(values)~="table" then return nil end
+if type(values)~="table"then return nil end
 local out=grouped_table(group_id)
 for index,value in ipairs(values)do out[index]=string_value(value)end
 return out
@@ -26,11 +26,11 @@ if value==0 then return nil end
 return string_value(value)
 end
 local function command_default(attribute_name)
-if type(attribute_name)~="string" or attribute_name=="" then return nil end
-return "set" .. attribute_name:sub(1,1):upper().. attribute_name:sub(2)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
-if type(value)~="table" then return nil end
+if type(value)~="table"then return nil end
 local out=grouped_table(value[6])
 out.minimum=value[1]
 out.maximum=value[2]
@@ -62,7 +62,7 @@ return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(ro
 end
 local function build(rows,factory)
 local out={}
-for _,row in ipairs(rows)do out[#out + 1]=factory(row)end
+for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
 custom_capabilities.numeric=build({{2,nil,2,3,nil,nil,nil,3,4,{0,86400,1,1,nil,1,nil},nil,nil,1},{6,nil,6,7,nil,nil,nil,8,9,{-20,102,0.5,5,nil,2,nil},nil,nil,5},{11,nil,11,12,nil,nil,nil,13,14,{-4,221,0.5,10,nil,3,nil},nil,nil,10},{15,nil,15,16,nil,0,0,17,18,{-4,221,0.1,10,nil,4,nil},nil,nil,10},{19,nil,19,20,nil,nil,nil,21,22,{1,9,0.5,5,nil,5,nil},nil,nil,5},{23,nil,23,24,nil,nil,nil,25,26,{-9,9,1,10,nil,6,nil},nil,nil,10},{28,nil,28,29,nil,nil,nil,30,31,{0,10,1,27,nil,7,nil},nil,nil,27},{32,nil,32,3,nil,nil,nil,3,33,{0,120,1,27,nil,8,nil},nil,nil,27},{34,nil,34,35,nil,nil,nil,3,36,{0,86400,1,1,nil,9,nil},nil,nil,1},{37,nil,37,35,nil,nil,nil,38,39,{0,86400,1,1,nil,10,nil},nil,nil,1},{40,nil,40,41,nil,nil,nil,42,43,{0,86400,1,1,nil,11,nil},nil,nil,1},{44,nil,44,45,nil,nil,nil,46,47,{0,86400,1,1,nil,12,nil},nil,nil,1},{48,nil,48,49,nil,nil,nil,50,51,{0,86400,1,1,nil,13,nil},nil,nil,1},{52,nil,52,24,nil,nil,nil,25,53,{-10,10,0.5,5,nil,14,nil},nil,nil,5},{55,nil,55,56,nil,0,0,57,58,{nil,nil,nil,54,nil,15,nil},nil,nil,54},{59,nil,59,60,nil,nil,nil,61,62,{-100.0,100.0,0.5,5,nil,16,nil},nil,nil,5},{63,nil,63,20,nil,nil,nil,21,64,{1.0,10.0,0.1,5,nil,17,nil},nil,nil,5},{65,nil,65,66,nil,nil,nil,67,68,{0,10,1,27,nil,18,nil},nil,nil,27},{70,nil,70,71,nil,nil,nil,72,73,{1,99,1,69,nil,19,nil},nil,nil,69},{74,nil,74,75,nil,nil,nil,76,77,{1,10,1,69,nil,20,nil},nil,nil,69},{78,nil,78,79,nil,nil,nil,80,81,{-9,9,1,69,nil,21,nil},nil,nil,69},{82,nil,82,24,nil,nil,nil,25,83,{-10.0,10.0,0.5,5,nil,22,nil},nil,nil,5},{84,nil,84,60,nil,nil,nil,61,85,{-100.0,100.0,0.5,5,nil,23,nil},nil,nil,5},{86,nil,86,20,nil,nil,nil,21,87,{1.0,10.0,0.1,5,nil,24,nil},nil,nil,5},{88,nil,88,66,nil,nil,nil,67,89,{0,10,1,27,nil,25,nil},nil,nil,27}},numeric)
@@ -75,8 +75,8 @@ custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
-if type(metadata.capability_id)=="string" and metadata.capability_id ~="" then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
-if type(metadata.range_key)=="string" and metadata.range_key ~="" then custom_capabilities.by_range_key[metadata.range_key]=metadata end
+if type(metadata.capability_id)=="string"and metadata.capability_id~=""then custom_capabilities.by_capability_id[metadata.capability_id]=metadata end
+if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
 index_metadata(custom_capabilities.numeric)
@@ -85,24 +85,23 @@ index_metadata(custom_capabilities.text)
 custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
-if type(allowed_values)~="table" then return nil end
+if type(allowed_values)~="table"then return nil end
 local copied={}
 for index,value in ipairs(allowed_values)do copied[index]=value end
 return copied
 end
 function custom_capabilities.resolve_range(definition,metadata)
-if type(metadata)~="table" then return nil end
-local default_range=type(metadata.default_range)=="table" and metadata.default_range or nil
-local ranges=type(definition)=="table" and definition.presence_capability_ranges or nil
-local resolved=type(ranges)=="table" and ranges[metadata.range_key]or nil
-if type(resolved)~="table" then resolved=default_range end
-if type(resolved)~="table" then return nil end
+if type(metadata)~="table"then return nil end
+local default_range=type(metadata.default_range)=="table"and metadata.default_range or nil
+local ranges=type(definition)=="table"and definition.presence_capability_ranges or nil
+local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
+if type(resolved)~="table"then resolved=default_range end
+if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number" and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number" and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number" and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string" and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table" and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),
-}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
+maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
+step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
+unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
+allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

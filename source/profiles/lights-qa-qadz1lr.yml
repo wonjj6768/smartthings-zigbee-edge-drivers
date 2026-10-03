@@ -1,0 +1,14 @@
+name: lights-qa-qadz1lr
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: switchLevel, version: 1}
+      - {id: concertmirror08464.qadz1lrMinBrightness, version: 1}
+      - {id: concertmirror08464.qadz1lrMaxBrightness, version: 1}
+      - {id: concertmirror08464.qadz1lrCountdown, version: 1}
+      - {id: concertmirror08464.qadz1lrPowerBehavior, version: 1}
+      - {id: concertmirror08464.qadz1lrSwitchType, version: 1}
+      - {id: concertmirror08464.qadz1lrDimmingTime, version: 1}
+    categories:
+      - {name: Light}

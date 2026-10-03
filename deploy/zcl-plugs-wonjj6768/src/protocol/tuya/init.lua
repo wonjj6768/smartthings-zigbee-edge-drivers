@@ -6,20 +6,18 @@ REPORT_STATUS=0x05,
 ACTIVE_STATUS_REPORT=0x06,
 MCU_VERSION_RESPONSE=0x11,
 SET_TIME=0x24,
-CONNECTION_STATUS=0x25,
-}
+CONNECTION_STATUS=0x25,}
 function tuya.build_base_preset(options)
 options=options or{}
 local preset={
 zcl_clusters=options.zcl_clusters,
-datapoints=options.datapoints,
-}
+datapoints=options.datapoints,}
 function preset:start_configuration(...)return false end
 function preset:send_magic_packet(...)return false end
 function preset:send_state_request(...)return false end
 function preset:apply_message(...)return false end
 function preset:apply_announce(device)
-if type(options.announce_handler)~="function" then return false end
+if type(options.announce_handler)~="function"then return false end
 return options.announce_handler(device,options)~=false
 end
 function preset:apply_preferences_changed(...)return false end

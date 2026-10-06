@@ -15574,5 +15574,13 @@
   [
     "zms206us4TimeZone",
     "timeZone"
+  ],
+  [
+    "ts0002RuxSwitchType",
+    "switchType"
+  ],
+  [
+    "ts0002RuxPowerOutageMemory",
+    "powerOutageMemory"
   ]
 ]

@@ -843,6 +843,14 @@ end,
 doConfigure=function(driver,device)
 configure_preset(driver,device,get_preset(device))
 end,
+driverSwitched=function(driver,device)
+local preset=get_preset(device)
+if preset==nil then
+return
+end
+configure_preset(driver,device,preset)
+device:try_update_metadata({provisioning_state="PROVISIONED"})
+end,
 infoChanged=function(driver,device,_,args)
 if not args.old_st_store then
 return

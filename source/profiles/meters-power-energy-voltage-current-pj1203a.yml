@@ -130,3 +130,9 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.powerPollIntervalV2
         version: 1
+      - component: ct1
+        capability: energyMeter
+        version: 1
+      - component: ct2
+        capability: energyMeter
+        version: 1

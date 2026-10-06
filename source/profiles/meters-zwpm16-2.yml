@@ -110,4 +110,10 @@ deviceConfig:
       - component: l2
         capability: concertmirror08464.zwpm16TwoDailyEnergyL2
         version: 1
-    actions: []
+    actions:
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: l2
+        capability: energyMeter
+        version: 1

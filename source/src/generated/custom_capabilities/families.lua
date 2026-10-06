@@ -3910,6 +3910,8 @@ local ATTRIBUTE_OVERRIDES = {
   moesZcHmCo = "co",
   zms206us4SwitchName = "switchName",
   zms206us4TimeZone = "timeZone",
+  ts0002RuxSwitchType = "switchType",
+  ts0002RuxPowerOutageMemory = "powerOutageMemory",
 }
 
 local function attribute_name(capability_id)
@@ -7876,6 +7878,8 @@ local enum_rows = {
   {"hueFluxPowerOnBehavior",true,"philips_flux_power_on_behavior",{"off","on","toggle","previous"}},
   {"hueFluxIdentify",true,"philips_flux_identify",{"identify"}},
   {"r3sb22bzAction",false,"r3sb22bz_action",{"single","double","hold","release","triple","quadruple","many"}},
+  {"ts0002RuxSwitchType",true,"ts0002_rux_switch_type",{"toggle","state","momentary"}},
+  {"ts0002RuxPowerOutageMemory",true,"ts0002_rux_power_outage_memory",{"off","on","restore"}},
 }
 local text_rows = {
   {"zmsFourSwitchName",true,"zms206_switch_name",12},

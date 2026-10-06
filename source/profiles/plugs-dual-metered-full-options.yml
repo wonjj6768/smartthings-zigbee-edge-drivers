@@ -70,3 +70,6 @@ deviceConfig:
       - {component: main, capability: concertmirror08464.indicatorMode, version: 1}
       - {component: main, capability: concertmirror08464.childLock, version: 1}
       - {component: main, capability: concertmirror08464.countdownTimerZclTwelveHours, version: 1}
+      - component: main
+        capability: energyMeter
+        version: 1

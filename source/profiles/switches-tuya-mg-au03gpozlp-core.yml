@@ -64,3 +64,6 @@ deviceConfig:
     actions:
       - {component: main, capability: switch, version: 1}
       - {component: switch2, capability: switch, version: 1}
+      - component: main
+        capability: energyMeter
+        version: 1

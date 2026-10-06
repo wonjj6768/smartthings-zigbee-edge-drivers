@@ -192,3 +192,15 @@ deviceConfig:
     - component: main
       capability: concertmirror08464.sdm01v1gtDeviceLocating
       version: 1
+    - component: main
+      capability: energyMeter
+      version: 1
+    - component: l1
+      capability: energyMeter
+      version: 1
+    - component: l2
+      capability: energyMeter
+      version: 1
+    - component: l3
+      capability: energyMeter
+      version: 1

@@ -80,3 +80,6 @@ deviceConfig:
       - component: main
         capability: switch
         version: 1
+      - component: main
+        capability: energyMeter
+        version: 1

@@ -121,3 +121,6 @@ deviceConfig:
     - component: main
       capability: concertmirror08464.spm25ReportInterval
       version: 1
+    - component: main
+      capability: energyMeter
+      version: 1

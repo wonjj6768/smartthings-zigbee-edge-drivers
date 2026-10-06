@@ -909,6 +909,17 @@ return
 end
 configure_preset(driver,device,get_preset(device))
 end,
+driverSwitched=function(driver,device)
+if is_child_device(device)then
+return
+end
+local preset=get_preset(device)
+if preset==nil then
+return
+end
+configure_preset(driver,device,preset)
+device:try_update_metadata({provisioning_state="PROVISIONED"})
+end,
 infoChanged=function(driver,device,_,args)
 if is_child_device(device)then
 return

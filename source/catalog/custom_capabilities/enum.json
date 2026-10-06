@@ -19027,5 +19027,25 @@
       "quadruple",
       "many"
     ]
+  ],
+  [
+    "ts0002RuxSwitchType",
+    true,
+    "ts0002_rux_switch_type",
+    [
+      "toggle",
+      "state",
+      "momentary"
+    ]
+  ],
+  [
+    "ts0002RuxPowerOutageMemory",
+    true,
+    "ts0002_rux_power_outage_memory",
+    [
+      "off",
+      "on",
+      "restore"
+    ]
   ]
 ]

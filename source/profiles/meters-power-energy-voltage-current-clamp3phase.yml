@@ -147,4 +147,16 @@ deviceConfig:
       - component: main
         capability: energyMeter
         version: 1
-    actions: []
+    actions:
+      - component: main
+        capability: energyMeter
+        version: 1
+      - component: l1
+        capability: energyMeter
+        version: 1
+      - component: l2
+        capability: energyMeter
+        version: 1
+      - component: l3
+        capability: energyMeter
+        version: 1

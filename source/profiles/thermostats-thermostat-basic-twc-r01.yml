@@ -157,3 +157,6 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.twcr01TempCalibration
         version: 1
+      - component: main
+        capability: energyMeter
+        version: 1

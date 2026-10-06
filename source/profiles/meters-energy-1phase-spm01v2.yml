@@ -77,4 +77,7 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.spm01v2PowerFactor
         version: 1
-    actions: []
+    actions:
+      - component: main
+        capability: energyMeter
+        version: 1

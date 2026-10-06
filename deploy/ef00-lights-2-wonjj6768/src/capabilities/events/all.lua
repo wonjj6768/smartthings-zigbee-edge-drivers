@@ -62,7 +62,7 @@ local function format_power_response_time(epoch)
 if type(epoch)~="number"or epoch<=0 then
 return LAST_POWER_RESPONSE_WAITING_TEXT
 end
-return os.date("%Y-%m-%d %H:%M:%S",epoch)
+return os.date("!%Y-%m-%d %H:%M:%S UTC",epoch)
 end
 local function last_power_response_event(device)
 local definition=last_power_response_time_definition

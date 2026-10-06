@@ -64,4 +64,7 @@ deviceConfig:
       - component: main
         capability: concertmirror08464.zwpm16DailyEnergy
         version: 1
-    actions: []
+    actions:
+      - component: main
+        capability: energyMeter
+        version: 1

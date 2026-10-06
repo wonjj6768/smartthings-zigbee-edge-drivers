@@ -156,7 +156,7 @@ local function load_metering(zcl)
       return LAST_POWER_RESPONSE_WAITING_TEXT
     end
 
-    return os.date("%Y-%m-%d %H:%M:%S", epoch)
+    return os.date("!%Y-%m-%d %H:%M:%S UTC", epoch)
   end
 
   local function select_primary_power_mapping(device, zcl_clusters)

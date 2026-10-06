@@ -97,3 +97,6 @@ deviceConfig:
       - component: main
         capability: thermostatHeatingSetpoint
         version: 1
+      - component: main
+        capability: energyMeter
+        version: 1

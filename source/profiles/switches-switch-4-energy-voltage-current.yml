@@ -110,3 +110,6 @@ deviceConfig:
       - component: switch4
         capability: switch
         version: 1
+      - component: main
+        capability: energyMeter
+        version: 1

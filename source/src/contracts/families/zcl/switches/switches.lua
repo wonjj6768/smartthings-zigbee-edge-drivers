@@ -95,7 +95,10 @@ local function tuya_enum_mapping(name, cluster_id, attribute_id, emitter, from_v
     endpoint = options.endpoint,
     component = options.component,
     emit = emitter,
-    from_device = function(value) return from_values[value] end,
+    from_device = function(value)
+      if type(value) == "table" then value = value.value end
+      return from_values[value]
+    end,
     to_device = function(value) return to_values[value] end,
     data_type = options.data_type or data_types.Enum8,
     write_type = options.write_type or options.data_type or data_types.Enum8,
@@ -521,6 +524,15 @@ bound_dual_switch.configure = bind_on_off_endpoints(2)
 local tuya_dual_switch = build_switch("switches-switch-2", 2, { index_offset = 1 })
 append_option_clusters(tuya_dual_switch.zcl_clusters, zcl.tuya_magic_packet())
 tuya_dual_switch.configure = bind_on_off_endpoints(2)
+local ts0002_rux = build_switch("switches-ts0002-rux", 2, { index_offset = 1 })
+append_option_clusters(ts0002_rux.zcl_clusters,
+  zcl.tuya_magic_packet(),
+  tuya_enum_mapping("ts0002_rux_power_outage_memory", zcl.CLUSTER_ON_OFF, 0x8002,
+    emit.ts0002RuxPowerOutageMemory(), { [0] = "off", [1] = "on", [2] = "restore" }, { off = 0, on = 1, restore = 2 }),
+  tuya_enum_mapping("ts0002_rux_switch_type", 0xE001, 0xD030,
+    emit.ts0002RuxSwitchType(), { [0] = "toggle", [1] = "state", [2] = "momentary" }, { toggle = 0, state = 1, momentary = 2 })
+)
+ts0002_rux.configure = bind_on_off_endpoints(2)
 local dual_power_switch = build_dual_power_switch("switches-switch-2-power-options")
 local bound_triple_switch = build_switch("switches-switch-3", 3)
 bound_triple_switch.configure = bind_on_off_endpoints(3)
@@ -1147,12 +1159,15 @@ register_device_definition(relay_2_poweron_switch_type, device_helpers.create_fi
   "_TZ3218_sgbsg6mr",
 }))
 
+register_device_definition(ts0002_rux, device_helpers.create_fingerprints("TS0002", {
+  "_TZ3000_ruxexjfz",
+}))
+
 register_device_definition(tuya_dual_switch, device_helpers.create_fingerprints("TS0002", {
   "_TZ3000_01gpyda5",
   "_TZ3000_bvrlqyj7",
   "_TZ3000_7ed9cqgi",
   "_TZ3000_zmy4lslw",
-  "_TZ3000_ruxexjfz",
   "_TZ3000_4xfqlgqo",
   "_TZ3000_hojntt34",
   "_TZ3000_eei0ubpy",

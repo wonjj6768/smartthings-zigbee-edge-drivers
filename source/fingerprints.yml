@@ -7170,7 +7170,7 @@ zigbeeManufacturer:
   - id: "fp_5f7b52909b"
     manufacturer: "_TZ3000_ruxexjfz"
     model: "TS0002"
-    deviceProfileName: "switches-switch-2"
+    deviceProfileName: "switches-ts0002-rux"
   - id: "fp_e25d83630c"
     manufacturer: "_TZ3000_rylaozuc"
     model: "TS0502A"

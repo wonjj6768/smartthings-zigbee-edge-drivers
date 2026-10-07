@@ -15582,5 +15582,13 @@
   [
     "ts0002RuxPowerOutageMemory",
     "powerOutageMemory"
+  ],
+  [
+    "la2DimmerMinBrightness",
+    "minimumBrightness"
+  ],
+  [
+    "dfxDimmerMinBrightness",
+    "minimumBrightness"
   ]
 ]

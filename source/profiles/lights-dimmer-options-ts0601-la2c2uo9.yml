@@ -12,7 +12,7 @@ components:
         version: 1
       - id: concertmirror08464.la2DimmerCountdown
         version: 1
-      - id: concertmirror08464.la2DimmerMinimumBrightness
+      - id: concertmirror08464.la2DimmerMinBrightness
         version: 1
       - id: concertmirror08464.la2DimmerLightType
         version: 1
@@ -54,7 +54,7 @@ deviceConfig:
       capability: switchLevel
       version: 1
     - component: main
-      capability: concertmirror08464.la2DimmerMinimumBrightness
+      capability: concertmirror08464.la2DimmerMinBrightness
       version: 1
     - component: main
       capability: concertmirror08464.la2DimmerLightType
@@ -80,7 +80,7 @@ deviceConfig:
         capability: switchLevel
         version: 1
       - component: main
-        capability: concertmirror08464.la2DimmerMinimumBrightness
+        capability: concertmirror08464.la2DimmerMinBrightness
         version: 1
       - component: main
         capability: concertmirror08464.la2DimmerLightType
@@ -105,7 +105,7 @@ deviceConfig:
         capability: statelessSwitchLevelStep
         version: 1
       - component: main
-        capability: concertmirror08464.la2DimmerMinimumBrightness
+        capability: concertmirror08464.la2DimmerMinBrightness
         version: 1
       - component: main
         capability: concertmirror08464.la2DimmerLightType

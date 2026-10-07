@@ -3912,6 +3912,8 @@ local ATTRIBUTE_OVERRIDES = {
   zms206us4TimeZone = "timeZone",
   ts0002RuxSwitchType = "switchType",
   ts0002RuxPowerOutageMemory = "powerOutageMemory",
+  la2DimmerMinBrightness = "minimumBrightness",
+  dfxDimmerMinBrightness = "minimumBrightness",
 }
 
 local function attribute_name(capability_id)
@@ -6005,6 +6007,8 @@ local numeric_rows = {
   {"hueFluxGradientOffset",true,"philips_flux_gradient_offset",0,31,nil,nil},
   {"moesZcHmCo",false,"moes_zc_hm_co",nil,nil,nil,"ppm"},
   {"zms206us4TimeZone",true,"zms206_time_zone",-12,14,0.25,"h"},
+  {"la2DimmerMinBrightness",true,"la2_dimmer_min_brightness",0,1000,1,nil},
+  {"dfxDimmerMinBrightness",true,"dfx_dimmer_min_brightness",0,1000,1,nil},
 }
 local enum_rows = {
   {"zmsFourBacklightSetting",true,"zms206_backlight_mode",{"OFF","ON"}},

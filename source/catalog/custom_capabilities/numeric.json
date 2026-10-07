@@ -18448,5 +18448,23 @@
     14,
     0.25,
     "h"
+  ],
+  [
+    "la2DimmerMinBrightness",
+    true,
+    "la2_dimmer_min_brightness",
+    0,
+    1000,
+    1,
+    null
+  ],
+  [
+    "dfxDimmerMinBrightness",
+    true,
+    "dfx_dimmer_min_brightness",
+    0,
+    1000,
+    1,
+    null
   ]
 ]

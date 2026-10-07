@@ -16,7 +16,6 @@ local switch_default_off=require"st.zigbee.defaults.switch_defaults.off"
 local power_poll_interval_metadata=custom_capabilities.by_emit_name.power_poll_interval
 local learn_ir_code_metadata=custom_capabilities.by_emit_name.learn_ir_code
 local ir_code_to_send_metadata=custom_capabilities.by_emit_name.ir_code_to_send
-local ef00_minimum_brightness_metadata=custom_capabilities.by_emit_name.ef00Ts0601MinimumBrightness
 local WINDOW_SHADE_PRESET_LEVEL_KEY="_presetLevel"
 local DEFAULT_WINDOW_SHADE_PRESET_LEVEL=50
 local EF00_POWER_POLL_INTERVAL_FIELD="_tuya_power_poll_interval_seconds"
@@ -520,12 +519,14 @@ local level=device:get_latest_state(component_id or"main",capabilities.switchLev
 return clamp_switch_level(level)or 0
 end
 local function configured_minimum_switch_level(device,component_id)
-local metadata=ef00_minimum_brightness_metadata
 local target_component=component_id or"main"
-if type(device)~="table"or type(metadata)~="table"then
+if type(device)~="table"then
 return 0
 end
-if not device:supports_capability_by_id(metadata.capability_id,target_component)then
+local preset=get_preset(device)
+local metadata=custom_capabilities.by_emit_name[
+preset and preset.minimum_brightness_capability or"ef00Ts0601MinimumBrightness"]
+if type(metadata)~="table"or not device:supports_capability_by_id(metadata.capability_id,target_component)then
 return 0
 end
 local raw_minimum_state=device:get_latest_state(
@@ -536,7 +537,7 @@ local raw_minimum=tonumber(raw_minimum_state)
 if raw_minimum==nil or raw_minimum<=0 then
 return 0
 end
-return clamp_switch_level(math.ceil(raw_minimum/10))or 0
+return clamp_switch_level(math.ceil(raw_minimum*100/metadata.default_range.maximum))or 0
 end
 local function emit_switch_level_state(device,component_id,level)
 local target_component=component_id or"main"

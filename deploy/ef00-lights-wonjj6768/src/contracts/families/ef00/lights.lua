@@ -400,9 +400,10 @@ end
 end
 local dimmer_model_ts0601_la2c2uo9={
 profile="lights-dimmer-options-ts0601-la2c2uo9",
+minimum_brightness_capability="la2DimmerMinBrightness",
 tuya.dp_on_off(1,{name="switch",emit=emit.switch(),skip=tuya.skip.state_on_and_brightness_present()}),
 tuya.dp_brightness(2,{name="brightness",emit=emit.level()}),
-tuya.dp_min_brightness(3,{name="la2_dimmer_min_brightness",converter=ts0601_setting_brightness,emit=emit.la2DimmerMinimumBrightness()}),
+tuya.dp_min_brightness(3,{name="la2_dimmer_min_brightness",value_max=1000,emit=emit.la2DimmerMinBrightness()}),
 tuya.dp_light_type(4,{datatype=tuya.DP_TYPE_VALUE,name="la2_dimmer_light_type",emit=emit.la2DimmerLightType()}),
 tuya.dp_countdown(6,{name="la2_dimmer_countdown",emit=emit.la2DimmerCountdown()}),
 tuya.dp_power_on_behavior(14,{name="la2_dimmer_power_on_behavior",datatype=tuya.DP_TYPE_VALUE,emit=emit.la2DimmerPowerOnBehavior()}),
@@ -412,9 +413,10 @@ register_device_definition(dimmer_model_ts0601_la2c2uo9,device_helpers.create_fi
 "_TZE200_la2c2uo9",}))
 local dimmer_model_ts0601_dfxkcots={
 profile="lights-dimmer-options-ts0601-dfxkcots",
+minimum_brightness_capability="dfxDimmerMinBrightness",
 tuya.dp_on_off(1,{name="switch",emit=emit.switch(),skip=tuya.skip.state_on_and_brightness_present()}),
 tuya.dp_brightness(2,{name="brightness",emit=emit.level()}),
-tuya.dp_min_brightness(3,{name="dfx_dimmer_min_brightness",converter=ts0601_setting_brightness,emit=emit.dfxDimmerMinimumBrightness()}),
+tuya.dp_min_brightness(3,{name="dfx_dimmer_min_brightness",value_max=1000,emit=emit.dfxDimmerMinBrightness()}),
 tuya.dp_light_type(4,{datatype=tuya.DP_TYPE_VALUE,name="dfx_dimmer_light_type",emit=emit.dfxDimmerLightType()}),
 tuya.dp_countdown(6,{name="dfx_dimmer_countdown",emit=emit.dfxDimmerCountdown()}),
 tuya.dp_power_on_behavior(14,{name="dfx_dimmer_power_on_behavior",datatype=tuya.DP_TYPE_VALUE,emit=emit.dfxDimmerPowerOnBehavior()}),}
@@ -423,6 +425,7 @@ register_device_definition(dimmer_model_ts0601_dfxkcots,device_helpers.create_fi
 "_TZE200_dfxkcots",}))
 local dimmer_model_ts0601_dimmer_1_gang_1={
 profile="lights-dimmer-options-ts0601",
+minimum_brightness_capability="tsd1MinimumBrightness",
 tuya.dp_on_off(1,{name="switch",emit=emit.switch(),skip=tuya.skip.state_on_and_brightness_present()}),
 tuya.dp_brightness(2,{name="brightness",emit=emit.level()}),
 tuya.dp_min_brightness(3,{name="tsd1_min_brightness",converter=ts0601_setting_brightness,emit=emit.tsd1MinimumBrightness()}),
@@ -474,6 +477,7 @@ device_helpers.create_fingerprint("Zemismart","ZN2S-US1-SD"),
 device_helpers.create_fingerprint("Mercator Ikuü","SSWRM-ZB"),})
 local dimmer_ion={
 profile="lights-dimmer-ion",
+minimum_brightness_capability="ionDimmerMin",
 tuya.dp_on_off(1,{name="switch",emit=emit.switch(),skip=tuya.skip.state_on_and_brightness_present()}),
 tuya.dp_brightness(2,{name="brightness",emit=emit.level()}),
 tuya.dp_min_brightness(3,{name="ion_min_brightness",converter=ts0601_setting_brightness,emit=emit.ionDimmerMin()}),

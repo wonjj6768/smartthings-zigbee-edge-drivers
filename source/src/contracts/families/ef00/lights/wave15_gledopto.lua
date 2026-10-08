@@ -316,6 +316,7 @@ local gl_spi = {
 register_device_definition(gl_spi, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_8fffc3kb",
   "_TZE284_gt5al3bl",
+  "_TZE28C1000000_gt5al3bl",
 }))
 
 return {

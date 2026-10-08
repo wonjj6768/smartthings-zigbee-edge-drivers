@@ -6,11 +6,11 @@ components:
         version: 1
       - id: concertmirror08464.zg103zTilt
         version: 1
-      - id: concertmirror08464.zg103zXCoordinate
+      - id: concertmirror08464.zg103AccelerationX
         version: 1
-      - id: concertmirror08464.zg103zYCoordinate
+      - id: concertmirror08464.zg103AccelerationY
         version: 1
-      - id: concertmirror08464.zg103zZCoordinate
+      - id: concertmirror08464.zg103AccelerationZ
         version: 1
       - id: battery
         version: 1
@@ -22,3 +22,4 @@ components:
         version: 1
     categories:
       - name: MultiFunctionalSensor
+

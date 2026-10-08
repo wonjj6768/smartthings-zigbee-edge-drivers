@@ -4,8 +4,7 @@ local device_management=require"st.zigbee.device_management"
 local device_definitions,register_device_definition=device_helpers.definition_registry()
 local function resolve_action(zb_rx,cluster_id,command_id)
 if cluster_id==zcl.CLUSTER_ON_OFF then
-local action=({[0x00]="off",[0x01]="on",[0x02]="toggle",[0x40]="off"})[command_id]
-return action,"main",action~=nil
+local action=({[0x00]="off",[0x01]="on",[0x02]="toggle",[0x40]="off"})[command_id]return action,"main",action~=nil
 end
 if cluster_id~=zcl.CLUSTER_LEVEL_CONTROL then return nil,nil,false end
 if command_id==0x00 or command_id==0x04 then
@@ -32,58 +31,21 @@ end
 return nil,nil,false
 end
 local emotion_air={
-profile="sensors-linknlink-emotion-air",
-advanced_remote=true,
-unprefixed_remote_actions=true,
-remote_action_emit_name="linknLinkEmotionAirAction",
-standard_action_metadata_emit_names={
-action_group="linknLinkEmotionAirActionGroup",
-action_level="linknLinkEmotionAirActionLevel",
-action_transition_time="linknAirActionTransition",
-action_rate="linknLinkEmotionAirActionRate",
-action_step_size="linknAirActionStepSize",},
-standard_command_action_resolver=resolve_action,
-zcl_clusters={
+profile="sensors-linknlink-emotion-air",advanced_remote=true,unprefixed_remote_actions=true,remote_action_emit_name="linknLinkEmotionAirAction",standard_action_metadata_emit_names={
+action_group="linknLinkEmotionAirActionGroup",action_level="linknLinkEmotionAirActionLevel",action_transition_time="linknAirActionTransition",action_rate="linknLinkEmotionAirActionRate",action_step_size="linknAirActionStepSize",},standard_command_action_resolver=resolve_action,zcl_clusters={
 zcl.temperature({
-minimum_interval=10,
-maximum_interval=3600,
-reportable_change=100,
-read_on_configure=true,}),
-zcl.humidity({
-minimum_interval=10,
-maximum_interval=3600,
-reportable_change=100,
-read_on_configure=true,}),
-zcl.illuminance({
-minimum_interval=10,
-maximum_interval=3600,
-reportable_change=5,
-read_on_configure=true,}),
-zcl.occupancy({
-minimum_interval=0,
-maximum_interval=3600,
-reportable_change=0,
-read_on_configure=true,}),
-zcl.battery({
-minimum_interval=3600,
-maximum_interval=65000,
-reportable_change=10,
-read_on_configure=true,}),},
+minimum_interval=10,maximum_interval=3600,reportable_change=100,read_on_configure=true,}),zcl.humidity({
+minimum_interval=10,maximum_interval=3600,reportable_change=100,read_on_configure=true,}),zcl.illuminance({
+minimum_interval=10,maximum_interval=3600,reportable_change=5,read_on_configure=true,}),zcl.occupancy({
+minimum_interval=0,maximum_interval=3600,reportable_change=0,read_on_configure=true,}),zcl.battery({
+minimum_interval=3600,maximum_interval=65000,reportable_change=10,read_on_configure=true,}),},
 configure=function(driver,device)
 for _,cluster_id in ipairs({
-zcl.CLUSTER_ON_OFF,
-zcl.CLUSTER_LEVEL_CONTROL,
-})do
+zcl.CLUSTER_ON_OFF,zcl.CLUSTER_LEVEL_CONTROL,})do
 device:send(device_management.build_bind_request(
-device,
-cluster_id,
-driver.environment_info.hub_zigbee_eui,
-1))
+device,cluster_id,driver.environment_info.hub_zigbee_eui,1))
 end
 end,
-}
-register_device_definition(emotion_air,{
-device_helpers.create_fingerprint("LinknLink","eMotion Air"),})
-return{
-id="zcl.sensors.linknlink",
-registrations=device_definitions,}
+}register_device_definition(emotion_air,{
+device_helpers.create_fingerprint("LinknLink","eMotion Air"),})return{
+id="zcl.sensors.linknlink",registrations=device_definitions,}

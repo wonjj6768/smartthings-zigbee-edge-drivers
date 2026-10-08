@@ -27,14 +27,12 @@ end
 return target
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function clamp(value,min_value,max_value)
 if value<min_value then
@@ -79,38 +77,28 @@ end,
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 local function define_preset(name,factory,defaults_builder)
 zcl[name]=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,defaults_builder(resolved))
-return factory(resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,defaults_builder(resolved))return factory(resolved)
 end
 end
 define_preset("battery",zcl.power_configuration_battery,function()
 return merge_defaults(
 {
-emit=emit.battery(),
-scale=2,},
-reporting_defaults(300,21600,2))
+emit=emit.battery(),scale=2,},reporting_defaults(300,21600,2))
 end)
 define_preset("battery_voltage",zcl.power_configuration_battery_voltage,function()
 return merge_defaults(
 {
-emit=emit.voltage(),
-scale=10,},
-reporting_defaults(300,21600,1))
+emit=emit.voltage(),scale=10,},reporting_defaults(300,21600,1))
 end)
 define_preset("switch",zcl.on_off,function(options)
 local configure_reporting=options.configure_reporting
@@ -121,70 +109,46 @@ emit=emit.switch(),}
 end
 return merge_defaults(
 {
-emit=emit.switch(),},
-reporting_defaults(0,300,nil))
+emit=emit.switch(),},reporting_defaults(0,300,nil))
 end)
 zcl.tuya_magic_packet=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,{
-name="tuya_magic_packet",
-read_only=true,
-read_on_configure=true,})
-return zcl.cluster_attribute(0x0000,0xFFFE,resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,{
+name="tuya_magic_packet",read_only=true,read_on_configure=true,})return zcl.cluster_attribute(0x0000,0xFFFE,resolved)
 end
 define_preset("level",zcl.level_control,function(options)
 local configure_reporting=options.configure_reporting
 options.configure_reporting=nil
 local defaults={
-name="brightness",
-emit=emit.level(),
-converter=level_percent_pair(),}
+name="brightness",emit=emit.level(),converter=level_percent_pair(),}
 if configure_reporting==false then return defaults end
 return merge_defaults(defaults,reporting_defaults(1,3600,1))
 end)
 define_preset("power",zcl.electrical_measurement_power,function()
 return merge_defaults(
 {
-emit=emit.power(),
-metering_kind="power",
-poll_interval=300,},
-reporting_defaults(5,300,1))
+emit=emit.power(),metering_kind="power",poll_interval=300,},reporting_defaults(5,300,1))
 end)
 define_preset("current",zcl.electrical_measurement_current,function()
 return merge_defaults(
 {
-emit=emit.current(),
-scale=1000,
-metering_kind="current",
-poll_interval=300,},
-reporting_defaults(5,300,1))
+emit=emit.current(),scale=1000,metering_kind="current",poll_interval=300,},reporting_defaults(5,300,1))
 end)
 define_preset("voltage",zcl.electrical_measurement_voltage,function()
 return merge_defaults(
 {
-emit=emit.voltage(),
-metering_kind="voltage",
-poll_interval=300,},
-reporting_defaults(5,300,1))
+emit=emit.voltage(),metering_kind="voltage",poll_interval=300,},reporting_defaults(5,300,1))
 end)
 define_preset("energy",zcl.simple_metering,function()
 return{
-emit=emit.energy(),
-read_on_configure=true,
-metering_kind="energy",
-poll_interval=900,}
+emit=emit.energy(),read_on_configure=true,metering_kind="energy",poll_interval=900,}
 end)
 define_preset("color_hue",zcl.color_control_hue,function(options)
 local configure_reporting=options.configure_reporting
 options.configure_reporting=nil
 local defaults={
-name="color_hue",
-emit=emit.color_hue(),
-converter=percent_254_pair(),
-tx_command_id=0x00,
+name="color_hue",emit=emit.color_hue(),converter=percent_254_pair(),tx_command_id=0x00,
 to_device=function(value)
-local encoded=percent_254_pair().to(value)
-return{encoded,0x00,0x0000,0x00,0x00}
+local encoded=percent_254_pair().to(value)return{encoded,0x00,0x0000,0x00,0x00}
 end,
 }
 if configure_reporting==false then return defaults end
@@ -194,39 +158,27 @@ define_preset("color_saturation",zcl.color_control_saturation,function(options)
 local configure_reporting=options.configure_reporting
 options.configure_reporting=nil
 local defaults={
-name="color_saturation",
-emit=emit.color_saturation(),
-converter=percent_254_pair(),
-tx_command_id=0x03,
+name="color_saturation",emit=emit.color_saturation(),converter=percent_254_pair(),tx_command_id=0x03,
 to_device=function(value)
-local encoded=percent_254_pair().to(value)
-return{encoded,0x0000,0x00,0x00}
+local encoded=percent_254_pair().to(value)return{encoded,0x0000,0x00,0x00}
 end,
 }
 if configure_reporting==false then return defaults end
 return merge_defaults(defaults,reporting_defaults(1,300,1))
 end)
 zcl.color=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,{
-name="color",
-cluster_id=zcl.CLUSTER_COLOR_CONTROL,
-attribute_id=zcl.ATTR_CURRENT_HUE,
-write_only=true,
-tx_command_id=0x06,
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,{
+name="color",cluster_id=zcl.CLUSTER_COLOR_CONTROL,attribute_id=zcl.ATTR_CURRENT_HUE,write_only=true,tx_command_id=0x06,
 to_device=function(value)
 if type(value)~="table"then
 return value
 end
-local hue=percent_254_pair().to(value.hue)
-local saturation=percent_254_pair().to(value.saturation)
-if type(hue)~="number"or type(saturation)~="number"then
+local hue=percent_254_pair().to(value.hue)local saturation=percent_254_pair().to(value.saturation)if type(hue)~="number"or type(saturation)~="number"then
 return nil
 end
 return{hue,saturation,0x0000,0x00,0x00}
 end,
-})
-return zcl.cluster_attribute(resolved.cluster_id,resolved.attribute_id,resolved)
+})return zcl.cluster_attribute(resolved.cluster_id,resolved.attribute_id,resolved)
 end
 end
 return load_mapping_preset

@@ -60,20 +60,6 @@ local function has_named_fields(value)
   return false
 end
 
-local function is_zcl_mapping(entry)
-  if type(entry) ~= "table" or entry.cluster_id == nil then
-    return false
-  end
-
-  -- A normal mapping is keyed by cluster/attribute. A command-only mapping has
-  -- no attribute by design and must provide its own sender instead.
-  return entry.attribute_id ~= nil or (entry.write_only == true and type(entry.sender) == "function")
-end
-
-local function is_datapoint_mapping(entry)
-  return type(entry) == "table" and entry.dp ~= nil and entry.datatype ~= nil
-end
-
 local function split_mapping_entries(entries, context)
   context = context or "mapping list"
   local datapoints = {}
@@ -81,8 +67,12 @@ local function split_mapping_entries(entries, context)
   local unknown = {}
 
   for index, entry in ipairs(entries) do
-    local is_zcl = is_zcl_mapping(entry)
-    local is_datapoint = is_datapoint_mapping(entry)
+    local is_zcl = type(entry) == "table" and entry.cluster_id ~= nil and (
+      entry.attribute_id ~= nil or
+      (entry.write_only == true and type(entry.sender) == "function") or
+      (entry.read_only == true and entry.command_id ~= nil and type(entry.command_extractor) == "function")
+    )
+    local is_datapoint = type(entry) == "table" and entry.dp ~= nil and entry.datatype ~= nil
     if is_zcl and is_datapoint then
       error(string.format("%s[%d] mixes datapoint and ZCL fields", context, index))
     elseif is_zcl then

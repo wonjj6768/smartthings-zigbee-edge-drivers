@@ -8,6 +8,7 @@ local device_management = require "st.zigbee.device_management"
 local data_types = require "st.zigbee.data_types"
 local cluster_base = require "st.zigbee.cluster_base"
 local buf = require "st.buf"
+local json = require "st.json"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local CLUSTER_SCENES = 0x0005
@@ -694,7 +695,7 @@ local STREDA_ROCKER_ACTIONS = {
   [1] = "single_up", [2] = "double_up", [3] = "release_up", [4] = "hold_up",
   [11] = "single_down", [12] = "double_down", [13] = "release_down", [14] = "hold_down",
 }
-local STREDA_DOORBELL_ACTIONS = { [1] = "single", [2] = "double", [3] = "release", [4] = "hold" }
+local STREDA_DOORBELL_ACTIONS = { [1] = "single_up", [2] = "double_up", [3] = "release_up", [4] = "hold_up" }
 
 local function streda_button_cluster(endpoint, suffix, upper, lower, name, emitter)
   local actions = lower and STREDA_ROCKER_ACTIONS or STREDA_DOORBELL_ACTIONS
@@ -924,7 +925,7 @@ local streda_sn3k = {
 }
 for _, family in ipairs({
   { streda_sn3, "streda_sn3", emit.stredaSn3Action(), emit.stredaSn3Doorbell() },
-  { streda_sn3k, "streda_sn3k", emit.stredaSn3kAction(), emit.stredaSn3kDoorbell() },
+  { streda_sn3k, "streda_sn3k", emit.stredaSn3kButtonAction(), emit.stredaSn3kDoorbell() },
 }) do
   local definition, prefix, action = family[1], family[2], family[3]
   for index, endpoint in ipairs({ 4, 5 }) do
@@ -1002,6 +1003,341 @@ local third_reality_3rsb22bz = {
 register_device_definition(third_reality_3rsb22bz, {
   device_helpers.create_fingerprint("Third Reality, Inc", "3RSB22BZ"),
 })
+
+local function sunricher_cct_command(zb_rx, device, mapping)
+  local cluster, command = mapping.cluster_id, mapping.command_id
+  local seq = zb_rx.body.zcl_header.seqno.value
+  local identity = tostring(cluster) .. ":" .. tostring(command) .. ":" .. tostring(seq)
+  if device:get_field("__sunricher_cct_last_command") == identity then return end
+  device:set_field("__sunricher_cct_last_command", identity)
+  local action, component, button = nil, "main", "pushed"
+  if cluster == 0x0006 then
+    action = ({[0] = "off", [1] = "on", [2] = "toggle", [0x40] = "off"})[command]
+    component = action == "off" and "offButton" or "main"
+  elseif cluster == 0x0008 or cluster == 0x0300 then
+    local mode = body_member_value(zb_rx, "step_mode", "stepmode")
+    local up = cluster == 0x0008 and mode ~= 1 or cluster == 0x0300 and mode == 1
+    action = (cluster == 0x0008 and "brightness_step_" or "color_temperature_step_") .. (up and "up" or "down")
+    component = (cluster == 0x0008 and "brightness" or "temperature") .. (up and "Up" or "Down")
+    local size = body_member_value(zb_rx, "step_size", "stepsize")
+    if size ~= nil then
+      device:emit_event(emit.srCctStepSize()(device, size))
+      if cluster == 0x0300 then
+        device:emit_event(emit.srCctTemperatureDelta()(device, up and size or -size))
+      end
+    end
+    local transition = body_member_value(zb_rx, "transition_time", "transtime")
+    if transition ~= nil then device:emit_event(emit.srCctTransitionTime()(device, transition / 10)) end
+  elseif cluster == 0x0005 then
+    local scene = body_member_value(zb_rx, "scene_id", "sceneid")
+    if scene == nil then return end
+    action = (command == 4 and "store_" or "recall_") .. tostring(scene)
+    component = scene == 1 and "sceneOne" or scene == 2 and "sceneTwo" or nil
+    button = command == 4 and "held" or "pushed"
+  end
+  local event = emit.srCctAction()(device, action)
+  event.state_change = true
+  device:emit_event(event)
+  if component then
+    device:emit_component_event({id = component}, capabilities.button.button(button, {state_change = true}))
+  end
+  local group = zb_rx.address_header.dest_addr.value
+  if group >= 1 and group <= 0xFFF7 then device:emit_event(emit.srCctGroup()(device, group)) end
+end
+
+local sunricher_cct = {
+  profile = "buttons-sunricher-cct",
+  button_actions = {"pushed", "held"},
+  placeholder_custom_states = false,
+  zcl_clusters = {
+    zcl.cluster_attribute(0x0001, 0x0021, {
+      name = "battery", endpoint = 1, read_only = true, data_type = data_types.Uint8,
+      minimum_interval = 3600, maximum_interval = 65000, reportable_change = 10, read_on_configure = true,
+      emit = emit.battery(), from_device = function(value) if value < 255 then return value / 2 end end,
+    }),
+  },
+  configure = function(driver, device)
+    for _, cluster in ipairs({0x0001, 0x0006, 0x0008, 0x0300, 0x0005}) do
+      zcl.bind_cluster(device, cluster, driver.environment_info.hub_zigbee_eui, 1)
+    end
+  end,
+  parent_refresh = function(device) zcl.read_attribute(device, 0x0001, 0x0021, 1) end,
+}
+for _, item in ipairs({{0x0006, 0}, {0x0006, 1}, {0x0006, 2}, {0x0006, 0x40},
+    {0x0008, 2}, {0x0008, 6}, {0x0300, 0x4C}, {0x0005, 4}, {0x0005, 5}}) do
+  sunricher_cct.zcl_clusters[#sunricher_cct.zcl_clusters + 1] = zcl.cluster_attribute(item[1], nil, {
+    name = "sr_cct_action", endpoint = 1, read_only = true,
+    command_id = item[2], command_extractor = sunricher_cct_command,
+  })
+end
+register_device_definition(sunricher_cct, {device_helpers.create_fingerprint("Sunricher", "ZGRC-KEY-008")})
+
+local function airwick_sync(device)
+  local request = cluster_base.write_attribute(device, data_types.ClusterId(0xFC00),
+    data_types.AttributeId(0x0010), data_types.Uint32(os.time()-946684800))
+  device:send(request:to_endpoint(10))
+  return true
+end
+
+local AIRWICK_BATTERY_CURVE = {
+  {4200,200},{4180,196},{4160,192},{4140,188},{4120,184},{4100,180},{4080,176},
+  {4060,171},{4040,166},{4020,160},{4000,154},{3980,148},{3960,142},{3940,135},
+  {3920,128},{3900,120},{3880,112},{3860,104},{3840,96},{3820,88},{3800,80},
+  {3780,72},{3760,64},{3740,56},{3720,48},{3700,40},{3680,32},{3660,25},
+  {3640,19},{3620,14},{3600,10},{3580,7},{3560,5},{3540,3},{3520,2},{3500,1},{3400,0},
+}
+local function airwick_battery(value)
+  if value<2500 or value>4400 then return nil end
+  if value>=4200 then return 100 end
+  for index=2,#AIRWICK_BATTERY_CURVE do
+    local high,low=AIRWICK_BATTERY_CURVE[index-1],AIRWICK_BATTERY_CURVE[index]
+    if value>=low[1] then
+      return (low[2]+math.floor(((value-low[1])*(high[2]-low[2])+math.floor((high[1]-low[1])/2))/(high[1]-low[1])))/2
+    end
+  end
+  return 0
+end
+
+local function airwick_clock_text(value, device, context)
+  if value<=0 or value>=0xFFFFFFFF then return "—" end
+  local offset=device:get_field("airwick_timezone_minutes") or 180
+  for _,record in ipairs(context.zb_rx.body.zcl_body.attr_records or {}) do
+    if record.attr_id.value==6 and record.data then offset=record.data.value end
+  end
+  return os.date("!%d.%m.%Y %H:%M",value+946684800+offset*60)
+end
+
+local function airwick_time_text(value)
+  if value<0 or value>1439 then return "—" end
+  return string.format("%02d:%02d",math.floor(value/60),value%60)
+end
+local function airwick_time_minutes(value)
+  local hour,minute=value:match("^%s*(%d%d?):(%d%d)%s*$")
+  if hour==nil or tonumber(hour)>23 or tonumber(minute)>59 then return nil end
+  return tonumber(hour)*60+tonumber(minute)
+end
+
+local function airwick_attribute(attribute, name, emitter, data_type, options)
+  options=options or {}
+  options.name=name;options.endpoint=10;options.emit=emitter;options.data_type=data_type
+  options.read_on_configure=not options.write_only
+  options.prefer_plain_attribute_write=true
+  return zcl.cluster_attribute(0xFC00,attribute,options)
+end
+
+local airwick = {
+  profile="controllers-airwick",magic_packet=false,placeholder_custom_states=false,
+  component_to_endpoint_map={main=10},
+  configure=function(driver,device)
+    zcl.bind_cluster(device,0xFC00,driver.environment_info.hub_zigbee_eui,10)
+    airwick_sync(device)
+  end,
+  runtime_start=function(device)
+    device.thread:call_with_delay(0.8,function() airwick_sync(device) end)
+  end,
+  announce_handler=function(device)
+    device.thread:call_with_delay(1.2,function() airwick_sync(device) end)
+  end,
+  capability_commands={
+    {capability_id="concertmirror08464.airwickSpray",command_name="spray",value=true,mapping_name="airwick_spray"},
+    {capability_id="concertmirror08464.airwickResetCounter",command_name="reset",value=true,mapping_name="airwick_reset_counter"},
+  },
+  zcl_clusters={
+    airwick_attribute(0,"airwick_mode",function(device,value)
+      return {emit.airwickMode()(device,value),emit.airwickScheduleInfo()(device,
+        "Mon–Fri 07:00–22:00; Sat–Sun 09:00–22:00; every 30 min; duration is configured separately")}
+    end,data_types.Enum8,{read_only=true,minimum_interval=0,maximum_interval=3600,
+      from_device=function(value) return ({[0]="OFF","AUTO","SCHEDULE","PROGRAMMABLE"})[value] or "UNKNOWN" end}),
+    airwick_attribute(1,"airwick_auto_interval",emit.airwickAutoInterval(),data_types.Uint16),
+    airwick_attribute(6,"airwick_time_zone",emit.airwickTimeZone(),data_types.Int16,{scale=60,
+      from_device=function(value,device) device:set_field("airwick_timezone_minutes",value*60,{persist=true});return value end}),
+    airwick_attribute(7,"airwick_spray_count",emit.airwickSprayCount(),data_types.Uint32,
+      {read_only=true,minimum_interval=0,maximum_interval=3600,reportable_change=1}),
+    airwick_attribute(8,"airwick_last_reason",emit.airwickLastReason(),data_types.Uint8,
+      {read_only=true,minimum_interval=0,maximum_interval=3600,reportable_change=1,
+       from_device=function(value) return ({[0]="None","Zigbee","Button","AUTO","SCHEDULE","PROGRAM"})[value] end}),
+    airwick_attribute(9,"airwick_last_spray",emit.airwickLastSpray(),data_types.UtcTime,
+      {read_only=true,minimum_interval=0,maximum_interval=3600,reportable_change=1,from_device=airwick_clock_text}),
+    airwick_attribute(10,"airwick_next_spray",emit.airwickNextSpray(),data_types.UtcTime,
+      {read_only=true,minimum_interval=0,maximum_interval=3600,reportable_change=1,from_device=airwick_clock_text}),
+    airwick_attribute(11,"airwick_time_valid",emit.airwickTimeValid(),data_types.Boolean,
+      {read_only=true,minimum_interval=0,maximum_interval=3600,from_device=function(value,device)
+        if not value and os.time()-(device:get_field("airwick_last_sync_attempt") or 0)>=60 then
+          device:set_field("airwick_last_sync_attempt",os.time());airwick_sync(device)
+        end
+        return value and "ON" or "OFF"
+      end}),
+    airwick_attribute(14,"airwick_reset_counter",nil,data_types.Boolean,{write_only=true,
+      sender=function(device)
+        device:send(cluster_base.write_attribute(device,data_types.ClusterId(0xFC00),
+          data_types.AttributeId(14),data_types.Boolean(true)):to_endpoint(10))
+        device:emit_component_event({id="main"},emit.airwickSprayCount()(device,0))
+        return true
+      end}),
+    airwick_attribute(17,"airwick_battery_level",function(device,value)
+      local events = {emit.voltage()(device,value/1000)}
+      local level = airwick_battery(value)
+      if level then events[#events+1] = emit.airwickBatteryLevel()(device,level) end
+      return events
+    end,data_types.Uint16,{read_only=true,minimum_interval=30,maximum_interval=3600,reportable_change=10}),
+    airwick_attribute(18,"airwick_duration",emit.airwickDuration(),data_types.Uint16),
+    zcl.cluster_attribute(6,nil,{name="airwick_spray",endpoint=10,write_only=true,
+      sender=function(device) return zcl.send_raw_cluster_command(device,6,1,"",10) end}),
+  },
+}
+for index,day in ipairs({"Mon","Tue","Wed","Thu","Fri","Sat","Sun"}) do
+  local base=0x20+(index-1)*8
+  for _,item in ipairs({
+    {0,"Enabled",data_types.Boolean,
+      function(value) return value and "ON" or "OFF" end,
+      function(value) return value=="ON" end},
+    {2,"Start",data_types.Uint16,airwick_time_text,airwick_time_minutes},
+    {3,"End",data_types.Uint16,airwick_time_text,airwick_time_minutes},
+    {4,"Interval",data_types.Uint16},
+  }) do
+    airwick.zcl_clusters[#airwick.zcl_clusters+1]=airwick_attribute(base+item[1],
+      "airwick_"..day:lower().."_"..item[2]:lower(),emit["airwick"..day..item[2]](),item[3],
+      {from_device=item[4],to_device=item[5]})
+  end
+end
+register_device_definition(airwick,{device_helpers.create_fingerprint("DIY","AirWick_nRF52840")})
+
+local NIMLY_SOURCES={[0]="zigbee",[2]="keypad",[3]="fingerprintsensor",[4]="rfid",[5]="unattributed",[10]="self"}
+local NIMLY_EVENTS={
+  LastLockUser=emit.nimlyCodeLastLockUser(),LastUnlockUser=emit.nimlyCodeLastUnlockUser(),
+  LastLockSource=emit.nimlyCodeLastLockSource(),LastUnlockSource=emit.nimlyCodeLastUnlockSource(),
+  Action=emit.nimlyCodeAction(),ActionUser=emit.nimlyCodeActionUser(),
+  ActionSource=emit.nimlyCodeActionSource(),EventSource=emit.nimlyCodeEventSource(),Pin=emit.nimlyCodePin(),
+}
+local function nimly_event(device, name, value)
+  local event=NIMLY_EVENTS[name](device,value)
+  if event then event.state_change=true;device:emit_component_event({id="main"},event) end
+end
+local function nimly_action(value, device)
+  local source=NIMLY_SOURCES[(value>>24)&255] or "unknown"
+  local action=({[1]="Lock",[2]="Unlock"})[(value>>16)&255]
+  if not action then return end
+  local user=value&65535
+  nimly_event(device,"Last"..action.."User",tostring(user))
+  nimly_event(device,"Last"..action.."Source",source)
+  nimly_event(device,"Action",action:lower());nimly_event(device,"ActionUser",user)
+  nimly_event(device,"ActionSource",source)
+end
+local function nimly_pin_decode(value, device, context)
+  local minimum=device:get_field("nimly_min_pin_length") or 4
+  for _,record in ipairs(context.zb_rx.body.zcl_body.attr_records or {}) do
+    if record.attr_id.value==0x18 and record.data and record.data.value>0 then minimum=record.data.value end
+  end
+  value=value:gsub("%z+$","")
+  if #value>=minimum and value:match("^%d+$") then return value end
+  local digits={}
+  for index=1,#value do
+    local byte=value:byte(index)
+    if byte>>4>9 or byte&15>9 then
+      return (value:gsub(".",function(character) return string.format("%02x",character:byte()) end))
+    end
+    digits[#digits+1]=tostring(byte>>4)..tostring(byte&15)
+  end
+  return table.concat(digits)
+end
+local function nimly_pin_write(device, _, value)
+  local decoded=json.decode(value)
+  if type(decoded)~="table" or type(decoded.user)~="number" or decoded.user%1~=0 or decoded.user<0 or decoded.user>=50 then return false end
+  local payload=string.pack("<I2",decoded.user)
+  local command=7
+  if decoded.pin_code~=nil then
+    local pin=tostring(decoded.pin_code)
+    if not pin:match("^%d+$") then return false end
+    local user_type=({unrestricted=0,year_day_schedule=1,week_day_schedule=2,master=3,non_access=4})[decoded.user_type or "unrestricted"]
+    if not user_type then return false end
+    command=5;payload=payload..string.char(decoded.user_enabled==false and 3 or 1,user_type,#pin)..pin
+  end
+  device:set_field("nimly_pending_pin_user",decoded.user)
+  device:set_field("nimly_pending_pin_value",value)
+  return zcl.send_raw_cluster_command(device,0x0101,command,payload,11)
+end
+local function nimly_pin_response(command)
+  return function(rx,device)
+    local user=device:get_field("nimly_pending_pin_user")
+    local value=device:get_field("nimly_pending_pin_value")
+    device:set_field("nimly_pending_pin_user",nil);device:set_field("nimly_pending_pin_value",nil)
+    if body_member_value(rx,"status")~=0 then return end
+    nimly_event(device,"Action",command==5 and "pin_code_added" or "pin_code_deleted")
+    if user~=nil then nimly_event(device,"ActionUser",user) end
+    if value then nimly_event(device,"Pin",value) end
+  end
+end
+local NIMLY_OPERATION_ACTIONS={
+  [0]="unknown","lock","unlock","lock_failure_invalid_pin_or_id","lock_failure_invalid_schedule",
+  "unlock_failure_invalid_pin_or_id","unlock_failure_invalid_schedule","one_touch_lock","key_lock",
+  "key_unlock","auto_lock","schedule_lock","schedule_unlock","manual_lock","manual_unlock","non_access_user_operational_event",
+}
+local NIMLY_PROGRAM_ACTIONS={[0]="unknown","master_code_changed","pin_code_added","pin_code_deleted","pin_code_changed","rfid_code_added","rfid_code_deleted"}
+local function nimly_notification(programming)
+  return function(rx,device)
+    local source=body_member_value(rx,programming and "program_event_source" or "operation_event_source")
+    local code=body_member_value(rx,programming and "program_event_code" or "operation_event_code")
+    nimly_event(device,"Action",(programming and NIMLY_PROGRAM_ACTIONS or NIMLY_OPERATION_ACTIONS)[code])
+    nimly_event(device,"ActionUser",body_member_value(rx,"user_id"))
+    nimly_event(device,"EventSource",source)
+    nimly_event(device,"ActionSource",({[0]="keypad","rf","manual","rfid","fingerprint"})[source])
+  end
+end
+local nimly_code = {
+  profile="locks-nimly-code-pro",magic_packet=false,placeholder_custom_states=false,
+  component_to_endpoint_map={main=11},
+  capability_commands={
+    {capability_id="lock",command_name="lock",value=1,mapping_name="nimly_lock"},
+    {capability_id="lock",command_name="unlock",value=0,mapping_name="nimly_lock"},
+  },
+  configure=function(driver,device)
+    for _,cluster in ipairs({0x0101,1}) do zcl.bind_cluster(device,cluster,driver.environment_info.hub_zigbee_eui,11) end
+  end,
+  zcl_clusters={
+    zcl.cluster_attribute(0x0101,0,{name="nimly_lock_state",endpoint=11,read_only=true,data_type=data_types.Enum8,
+      minimum_interval=0,maximum_interval=3600,reportable_change=0,read_on_configure=true,
+      from_device=function(value)
+        value=type(value)=="table" and value.value or value
+        return ({[0]="not fully locked","locked","unlocked"})[value]
+      end,
+      emit=function(_,value) return capabilities.lock.lock(value) end}),
+    zcl.cluster_attribute(0x0101,nil,{name="nimly_lock",endpoint=11,write_only=true,
+      sender=function(device,_,value) return zcl.send_raw_cluster_command(device,0x0101,value==1 and 0 or 1,"\0",11) end}),
+    zcl.battery({endpoint=11,scale=1,read_only=true,minimum_interval=3600,maximum_interval=65000,reportable_change=10,read_on_configure=false,
+      from_device=function(value) if value~=255 then return value end end}),
+    zcl.cluster_attribute(1,0x20,{name="nimly_voltage",endpoint=11,data_type=data_types.Uint8,read_only=true,
+      minimum_interval=3600,maximum_interval=65000,reportable_change=0,read_on_configure=false,scale=10,emit=emit.voltage()}),
+    zcl.cluster_attribute(0x0101,0x100,{name="nimly_code_action",endpoint=11,data_type=data_types.Uint32,read_only=true,
+      read_on_configure=false,handler=function(device,value) nimly_action(value,device) end}),
+    zcl.cluster_attribute(0x0101,0x101,{name="nimly_code_lastPin",endpoint=11,data_type=data_types.OctetString,read_only=true,
+      read_on_configure=false,from_device=nimly_pin_decode,emit=emit.nimlyCodeLastPin()}),
+    zcl.cluster_attribute(0x0101,0x24,{name="nimly_code_sound_volume",endpoint=11,data_type=data_types.Uint8,read_on_configure=true,
+      from_device=function(value)
+        value=type(value)=="table" and value.value or value
+        return ({[0]="silent_mode","low_volume","high_volume"})[value]
+      end,
+      to_device=function(value) return ({silent_mode=0,low_volume=1,high_volume=2})[value] end,emit=emit.nimlyCodeSoundVolume()}),
+    zcl.cluster_attribute(0x0101,0x23,{name="nimly_code_auto_relock",endpoint=11,data_type=data_types.Uint32,read_on_configure=true,
+      from_device=function(value) return value==0 and "OFF" or "ON" end,
+      to_device=function(value) return value=="ON" and 1 or 0 end,emit=emit.nimlyCodeAutoRelock()}),
+    zcl.cluster_attribute(0x0101,0x23,{name="nimly_code_relock_time",endpoint=11,data_type=data_types.Uint32,read_on_configure=true,emit=emit.nimlyCodeRelockTime()}),
+    zcl.cluster_attribute(0x0101,nil,{name="nimly_code_pin",endpoint=11,write_only=true,suppress_optimistic_state=true,sender=nimly_pin_write}),
+  },
+}
+for _,field in ipairs({{0x12,"PinCapacity",data_types.Uint16},{0x18,"MinPinLength",data_types.Uint8},{0x17,"MaxPinLength",data_types.Uint8}}) do
+  nimly_code.zcl_clusters[#nimly_code.zcl_clusters+1]=zcl.cluster_attribute(0x0101,field[1],{
+    name="nimly_code_"..field[2]:sub(1,1):lower()..field[2]:sub(2),endpoint=11,data_type=field[3],read_only=true,read_on_configure=true,
+    handler=field[1]==0x18 and function(device,value) if value>0 then device:set_field("nimly_min_pin_length",value) end end or nil,
+    emit=emit["nimlyCode"..field[2]](),
+  })
+end
+for _,command in ipairs({5,7,0x20,0x21}) do
+  nimly_code.zcl_clusters[#nimly_code.zcl_clusters+1]=zcl.cluster_attribute(0x0101,nil,{
+    name="nimly_response_"..command,endpoint=11,read_only=true,command_id=command,
+    command_extractor=command<0x20 and nimly_pin_response(command) or nimly_notification(command==0x21),
+  })
+end
+register_device_definition(nimly_code,{device_helpers.create_fingerprint("Onesti Products AS","NimlyCodePRO")})
 
 return {
   id = "zcl.controls.z2m_absorption",

@@ -104,12 +104,14 @@
       "id": "ef00.presence.z2m_absorption",
       "requiredModules": [
         "protocol.tuya",
+        "protocol.zcl",
         "capabilities.events.all",
         "contracts.helpers.family",
         "contracts.helpers.ef00_presence"
       ],
       "externalDependencies": [
-        "protocol.tuya"
+        "protocol.tuya",
+        "protocol.zcl"
       ],
       "converterDeclarations": 1,
       "sourceRelativeToSrc": "contracts/families/ef00/presence/z2m_absorption.lua",
@@ -129,9 +131,12 @@
         ],
         "contracts.helpers.ef00_presence": [
           "common"
+        ],
+        "protocol.zcl": [
+          "zcl"
         ]
       },
-      "dynamicEventMemberSha256": "ac4dfecd5bbd406f7839e26976ed9bbb5ab608ea22bedc35b5902b34249cdbdc"
+      "dynamicEventMemberSha256": "a99bdaa33df019da2770f43cfb7551e215c0ebc6cb312af71a78ee0342c0cb3c"
     },
     "contracts.families.ef00.safety.z2m_absorption": {
       "id": "ef00.safety.z2m_absorption",
@@ -252,7 +257,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "fafc6d7dacf01cea69743a8c0ebfb72a74621848536038374db5752103194a11"
+      "dynamicEventMemberSha256": "b41939a00eec5dbc72e415193490e1c33f273f4a6f41a67a3e83fd841e998a11"
     },
     "contracts.families.ef00.switch_panel_z2m_absorption": {
       "id": "ef00.switch.panel.z2m_absorption",
@@ -326,7 +331,8 @@
         "st.zigbee.device_management",
         "st.zigbee.data_types",
         "st.zigbee.cluster_base",
-        "st.buf"
+        "st.buf",
+        "st.json"
       ],
       "externalDependencies": [
         "protocol.zcl",
@@ -334,7 +340,8 @@
         "st.zigbee.device_management",
         "st.zigbee.data_types",
         "st.zigbee.cluster_base",
-        "st.buf"
+        "st.buf",
+        "st.json"
       ],
       "converterDeclarations": 0,
       "sourceRelativeToSrc": "contracts/families/zcl/controls/z2m_absorption.lua",
@@ -369,9 +376,12 @@
         ],
         "st.buf": [
           "buf"
+        ],
+        "st.json": [
+          "json"
         ]
       },
-      "dynamicEventMemberSha256": "ffe1cdda9d51cc8972d031efc42475244f4ebea5d358038a18c931ff9f6a5b41"
+      "dynamicEventMemberSha256": "8ee170da5cf590d96dc5ea0540ec1ad0219b17205a47939d9106081c7be99d81"
     },
     "contracts.families.zcl.lights.z2m_absorption": {
       "id": "zcl.lights.z2m_absorption",
@@ -467,7 +477,7 @@
           "cluster_base"
         ]
       },
-      "dynamicEventMemberSha256": "f018b8571fee411f69aa7f4e6cb29041057b4dd1b8ac0670eae1e089243ee2a0"
+      "dynamicEventMemberSha256": "bc86cf841c9f6281bbe39b2d21f729256c14a106d5889ebb5a5567ff1ac294f6"
     },
     "contracts.families.ef00.bridges_wave19": {
       "id": "ef00.bridges.wave19",
@@ -807,7 +817,7 @@
           "capabilities"
         ]
       },
-      "dynamicEventMemberSha256": "4b7e47e39ba9df8d2a2cf2ef6fdd0b220c733fbcb7e5c266ce995bd04d8df5cd"
+      "dynamicEventMemberSha256": "fdc6ffb14168de49ff4751489793ae270fd8de19f30d29b8e68b7d0d5b5eadfe"
     },
     "contracts.families.zcl.lights.wave19_dali": {
       "id": "zcl.lights.wave19_dali",
@@ -941,7 +951,7 @@
           "buf"
         ]
       },
-      "dynamicEventMemberSha256": "d1054663e13cd3e3e2cdab374e5059c9541eb3e0e17e721782bec7843322e9a3"
+      "dynamicEventMemberSha256": "c3610b3b8838d653542f2e3423452cdbbf1fe061bc8862b93eba236ba6735d18"
     },
     "contracts.families.zcl.sensors.wave19_hvac": {
       "id": "zcl.sensors.wave19_hvac",
@@ -984,7 +994,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "44ab02e7422efe5f2e58931aa4f06cc06add8ce794fe6c503f1976ba4eb26ae2"
+      "dynamicEventMemberSha256": "45444bc27a52a21a935d860db8fda3305552f8a0047c675a11279f9ce07c310b"
     },
     "contracts.families.zcl.sensors.wave19_smoke": {
       "id": "zcl.sensors.wave19_smoke",
@@ -1103,7 +1113,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "5bce787617be72d521286e1508f084250775f17deeedfe81e97474acf91eeeb0"
+      "dynamicEventMemberSha256": "5b4468151a1be4d2366bb1c989e315934daa6bc9f2935b50069622435db36ce8"
     },
     "contracts.families.ef00.thermostats.wave19_exact_aliases": {
       "id": "ef00.thermostats.wave19_exact_aliases",
@@ -1136,7 +1146,7 @@
         ]
       },
       "converterDeclarations": 1,
-      "dynamicEventMemberSha256": "344a95c8fb0dc69c6ceca6948bb663dc2cda2aee9dc7c0e460ad192bd1877ceb"
+      "dynamicEventMemberSha256": "7ee16d55601b33970a88609c23919c26309306ec5e8c795fb5adbcb038e7ded1"
     },
     "contracts.families.zcl.lights.wave19_exact_aliases": {
       "id": "zcl.lights.wave19_exact_aliases",
@@ -1457,7 +1467,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "a08306bc6a8d745f023c38cf872e0ab256e08cbd8d28ce59724f151f7af47af6"
+      "dynamicEventMemberSha256": "e6677f1d5dbdb07a018bf028e73fa7dd60b23260ed719942105531fd2ccba495"
     },
     "contracts.families.ef00.presence.simple_sensors": {
       "id": "ef00.presence.simple_sensors",
@@ -1647,7 +1657,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "b621828593a6a1c991dd3acbb8a4b2e56839c8a6afdd09d79d72ef84862dcd97"
+      "dynamicEventMemberSha256": "e919a0e9582dacbb8272cdc8869bb6e661428bf23c8fe6fc188a7004bb33ad85"
     },
     "contracts.families.zcl.plugs.futurehome": {
       "id": "zcl.plugs.futurehome",

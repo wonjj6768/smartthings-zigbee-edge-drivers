@@ -1,0 +1,22 @@
+name: switches-makegood-single
+components:
+  - id: main
+    capabilities:
+      - {id: switch, version: 1}
+      - {id: energyMeter, version: 1}
+      - {id: powerMeter, version: 1}
+      - {id: currentMeasurement, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: concertmirror08464.mg1Countdown, version: 1}
+      - {id: concertmirror08464.mg1PowerBehavior, version: 1}
+      - {id: concertmirror08464.mg1Backlight, version: 1}
+      - {id: concertmirror08464.mg1ChildLock, version: 1}
+      - {id: concertmirror08464.mg1AllPower, version: 1}
+      - {id: concertmirror08464.mg1ColorMode, version: 1}
+      - {id: concertmirror08464.mg1OnBrightness, version: 1}
+      - {id: concertmirror08464.mg1OnHue, version: 1}
+      - {id: concertmirror08464.mg1OnSaturation, version: 1}
+      - {id: concertmirror08464.mg1OffBrightness, version: 1}
+      - {id: concertmirror08464.mg1OffHue, version: 1}
+      - {id: concertmirror08464.mg1OffSaturation, version: 1}
+    categories: [{name: Switch}]

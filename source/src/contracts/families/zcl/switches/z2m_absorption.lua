@@ -657,6 +657,31 @@ register_device_definition(tuya_p26, {
   device_helpers.create_fingerprint("_TZ3000_p26flek3", "TS0001"),
 })
 
+local qs_s10_switch_type = tuya_enum_mapping(
+  "qs_s10_switch_type", 0xE001, 0xD030, emit.qsS10SwitchType(),
+  {[0] = "toggle", [1] = "state", [2] = "momentary"},
+  {toggle = 0, state = 1, momentary = 2}, {read_on_configure = false}
+)
+qs_s10_switch_type.sender = nous_b2z_switch_type.sender
+
+local qs_s10_three = {
+  profile = "switches-qs-s10-three",
+  zcl_clusters = {
+    zcl.switch({endpoint = 1, component = "main", configure_reporting = false, read_on_configure = false}),
+    zcl.switch({endpoint = 2, component = "switch2", configure_reporting = false, read_on_configure = false}),
+    zcl.switch({endpoint = 3, component = "switch3", configure_reporting = false, read_on_configure = false}),
+    zcl.tuya_magic_packet({read_on_configure = false}),
+    qs_s10_switch_type,
+    tuya_enum_mapping("qs_s10_power_memory", 0x0006, 0x8002, emit.qsS10PowerMemory(),
+      {[0] = "off", [1] = "on", [2] = "restore"},
+      {off = 0, on = 1, restore = 2}, {read_on_configure = false}),
+  },
+  configure = bind_on_off_endpoints(3),
+}
+register_device_definition(qs_s10_three, {
+  device_helpers.create_fingerprint("_TZ3000_ly9apzky", "TS0003"),
+})
+
 return {
   id = "zcl.switches.z2m_absorption",
   registrations = device_definitions,

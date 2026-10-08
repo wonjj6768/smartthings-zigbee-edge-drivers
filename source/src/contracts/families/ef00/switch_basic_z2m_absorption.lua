@@ -308,6 +308,81 @@ register_device_definition(automaton_ch8z, {
   device_helpers.create_fingerprint("_TZE284_1oft6qso", "TS0601"),
 })
 
+local function makegood_single_backlight_mapping(name, emitter, offset, width, maximum)
+  return tuya.dp_raw(107, {
+    name = name, emit = emitter, suppress_optimistic_state = true,
+    from_device = function(value, device)
+      if type(value) ~= "string" or #value ~= 11 then return nil end
+      device:set_field("__makegood_single_backlight", value, {persist = true})
+      local raw = string.unpack(width == 1 and ">B" or ">I2", value, offset)
+      if offset == 1 then return raw == 1 and "multi" or "single" end
+      return raw
+    end,
+    to_device = function(value, device)
+      local current = device:get_field("__makegood_single_backlight") or
+        string.pack(">BBI2I2BI2I2", 0, 100, 0, 1000, 10, 240, 1000)
+      local raw = offset == 1 and (value == "multi" and 1 or 0) or
+        math.max(0, math.min(maximum, math.floor(tonumber(value) + 0.5)))
+      local payload = current:sub(1, offset - 1) ..
+        string.pack(width == 1 and ">B" or ">I2", raw) .. current:sub(offset + width)
+      device:set_field("__makegood_single_backlight", payload, {persist = true})
+      return payload
+    end,
+  })
+end
+
+local makegood_single = {
+  profile = "switches-makegood-single",
+  package_group = "switch-basic",
+  magic_packet = true,
+  mcu_version_request_on_configure = true,
+  named_datapoints = true,
+  query_on_configure = false,
+  query_on_refresh = false,
+  time_start = "1970",
+  placeholder_custom_states = false,
+  datapoints = {
+    tuya.dp_on_off(1, {name = "switch", emit = emit.switch()}),
+    tuya.dp_numeric(7, {
+      name = "mg1_countdown", emit = emit.mg1Countdown(),
+      from_device = function(value) return value == false and 0 or tonumber(value) end,
+    }),
+    tuya.dp_binary(16, {
+      name = "mg1_backlight", emit = emit.mg1Backlight(),
+      converter = converter.lookup_from_to({ON = true, OFF = false}),
+    }),
+    tuya.dp_energy(20, {
+      name = "energy", read_only = true, emit = emit.energy(),
+      converter = converter.from_only(makegood_incremental_energy_from_device),
+    }),
+    tuya.dp_current(21, {name = "current", scale = 1000, read_only = true, emit = emit.current()}),
+    tuya.dp_power(22, {name = "power", scale = 10, read_only = true, emit = emit.power()}),
+    tuya.dp_voltage(23, {name = "voltage", scale = 10, read_only = true, emit = emit.voltage()}),
+    tuya.dp_enum(29, {
+      name = "mg1_power_behavior", emit = emit.mg1PowerBehavior(),
+      converter = converter.lookup_from_to({off = 0, on = 1, previous = 2}),
+    }),
+    tuya.dp_binary(101, {
+      name = "mg1_child_lock", emit = emit.mg1ChildLock(),
+      converter = converter.lookup_from_to({LOCK = true, UNLOCK = false}),
+    }),
+    makegood_single_backlight_mapping("mg1_color_mode", emit.mg1ColorMode(), 1, 1, 1),
+    makegood_single_backlight_mapping("mg1_on_brightness", emit.mg1OnBrightness(), 2, 1, 100),
+    makegood_single_backlight_mapping("mg1_on_hue", emit.mg1OnHue(), 3, 2, 359),
+    makegood_single_backlight_mapping("mg1_on_saturation", emit.mg1OnSaturation(), 5, 2, 1000),
+    makegood_single_backlight_mapping("mg1_off_brightness", emit.mg1OffBrightness(), 7, 1, 100),
+    makegood_single_backlight_mapping("mg1_off_hue", emit.mg1OffHue(), 8, 2, 359),
+    makegood_single_backlight_mapping("mg1_off_saturation", emit.mg1OffSaturation(), 10, 2, 1000),
+    tuya.dp_binary(136, {
+      name = "mg1_all_power", emit = emit.mg1AllPower(),
+      converter = converter.lookup_from_to({ON = true, OFF = false}),
+    }),
+  },
+}
+register_device_definition(makegood_single, {
+  device_helpers.create_fingerprint("_TZE200_xnwxmj8z", "TS0601"),
+})
+
 return {
   id = "ef00.switch.basic.z2m_absorption",
   registrations = device_definitions,

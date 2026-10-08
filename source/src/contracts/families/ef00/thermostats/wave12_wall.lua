@@ -161,7 +161,7 @@ local eone_bat = {
   profile = "thermostats-wave12-engo-eone-batb",
   package_group = "wall-2",
   query_on_configure = true,
-  time_start = "2000",
+  time_start = "1970",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_system_mode(2, { name = "system_mode", converter = converter.lookup_from_to({ heat = 0, cool = 1 }), emit = emit.thermostat_mode() }),
   tuya.dp_running_state(3, {

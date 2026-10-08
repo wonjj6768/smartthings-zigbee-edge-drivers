@@ -448,6 +448,32 @@ local ti_router = {
 }
 register_device_definition(ti_router, { device_helpers.create_fingerprint("TexasInstruments", "ti.router") })
 
+local slzb07mg26 = {
+  profile = "bridges-slzb07mg26",
+  magic_packet = false,
+  placeholder_custom_states = false,
+  zcl_clusters = {
+    zcl.cluster_attribute(0, 0, {
+      name="slzb07_link_quality", endpoint=1, read_only=true, data_type=data_types.Uint8,
+      minimum_interval=3600, maximum_interval=14400, reportable_change=0, read_on_configure=true,
+      emit=function(_, _, context)
+        return capabilities.signalStrength.lqi({value=context.zb_rx.lqi.value})
+      end,
+    }),
+    zcl.cluster_attribute(0, nil, {
+      name="slzb07_reset", endpoint=1, write_only=true,
+      sender=function(device) return zcl.send_raw_cluster_command(device,0,0,"",1,nil,nil,true) end,
+    }),
+  },
+  capability_commands = {
+    {capability_id=NAMESPACE.."slzb07Reset",command_name="reset",value=true,mapping_name="slzb07_reset"},
+  },
+  configure=function(driver, device)
+    zcl.bind_cluster(device,0,driver.environment_info.hub_zigbee_eui,1)
+  end,
+}
+register_device_definition(slzb07mg26, {device_helpers.create_fingerprint("SMLIGHT","SLZB-07MG26")})
+
 return {
   id = "zcl.bridges.wave19",
   registrations = device_definitions,

@@ -21,6 +21,8 @@ local power_mode_write = thermostat_common.power_mode_write
 local saswell_legacy = {
   profile = "thermostats-thermostat-saswell",
   bind_basic_on_configure = true,
+  time_start = "1970",
+  heating_setpoint_range = {minimum=5,maximum=30,step=0.5,unit="C"},
   named_mapping = {
     named_mappings = {
       system_mode = saswell_system_mode_write,
@@ -93,6 +95,22 @@ local saswell_legacy = {
     emit = emit.thermostat_mode(),
   }),
 }
+for index,day in ipairs({
+  {"sun",emit.saswellSunSchedule()},{"mon",emit.saswellMonSchedule()},
+  {"tue",emit.saswellTueSchedule()},{"wed",emit.saswellWedSchedule()},
+  {"thu",emit.saswellThuSchedule()},{"fri",emit.saswellFriSchedule()},
+  {"sat",emit.saswellSatSchedule()},
+}) do
+  local schedule=thermostat_common.saswell_schedule(index-1)
+  local name="saswell_"..day[1].."_schedule"
+  saswell_legacy[#saswell_legacy+1]=tuya.dp_raw(122+index,{
+    name=name,read_only=true,converter=converter.from_only(schedule.from),emit=day[2],
+  })
+  saswell_legacy.named_mapping.named_mappings[name]=function(_,value)
+    local data=schedule.to(value)
+    if data then return {dp=109,datatype=tuya.DP_TYPE_RAW,value=data} end
+  end
+end
 register_device_definition(saswell_legacy, {
   device_helpers.create_fingerprint("_TYST11_KGbxAXL2", "GbxAXL2"),
   device_helpers.create_fingerprint("_TYST11_zuhszj9s", "uhszj9s"),
@@ -117,6 +135,10 @@ register_device_definition(saswell_legacy, {
   device_helpers.create_fingerprint("_TZE200_7p8ugv8d", "TS0601"),
   device_helpers.create_fingerprint("_TZE284_3yp57tby", "TS0601"),
   device_helpers.create_fingerprint("_TZE2841000000_3yp57tby", "TS0601"),
+  device_helpers.create_fingerprint("_TZE200_3ymoslep", "TS0601"),
+  device_helpers.create_fingerprint("_TZE204_3ymoslep", "TS0601"),
+  device_helpers.create_fingerprint("_TZE284_3ymoslep", "TS0601"),
+  device_helpers.create_fingerprint("_TZE2841000000_3ymoslep", "TS0601"),
 })
 -- Z2M legacy.fz.etop_thermostat (legacy.ts:2370) unpacks DP13 as a bitmap of
 -- high/low temperature, internal/external sensor errors, battery low and offline.

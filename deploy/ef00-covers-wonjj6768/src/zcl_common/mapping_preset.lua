@@ -27,53 +27,41 @@ end
 return target
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 local function define_preset(name,factory,defaults_builder)
 zcl[name]=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,defaults_builder(resolved))
-return factory(resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,defaults_builder(resolved))return factory(resolved)
 end
 end
 define_preset("battery",zcl.power_configuration_battery,function()
 return merge_defaults(
 {
-emit=emit.battery(),
-scale=2,},
-reporting_defaults(300,21600,2))
+emit=emit.battery(),scale=2,},reporting_defaults(300,21600,2))
 end)
 define_preset("cover_position",zcl.window_covering_position,function()
 return merge_defaults(
 {
-emit=emit.shade_level(),},
-reporting_defaults(0,600,1))
+emit=emit.shade_level(),},reporting_defaults(0,600,1))
 end)
 define_preset("cover_state",zcl.window_covering_position,function()
 return{
-name="cover_state",
-write_only=true,}
+name="cover_state",write_only=true,}
 end)
 end
 return load_mapping_preset

@@ -19,8 +19,7 @@ if key~="value"and key~="unit"then
 return false
 end
 end
-local value_type=type(value)
-if value_type~="number"and value_type~="string"and value_type~="boolean"then
+local value_type=type(value)if value_type~="number"and value_type~="string"and value_type~="boolean"then
 return false
 end
 local component_id=mapping_context.component and mapping_context.component.id or"main"
@@ -74,8 +73,7 @@ end
 if not meta.custom_from_device then
 return false
 end
-local type_name=base_type_name(meta)
-if type_name~=nil then
+local type_name=base_type_name(meta)if type_name~=nil then
 return not is_scalar_base_type(type_name)
 end
 return type(raw_value)~="number"and type(raw_value)~="boolean"and type(raw_value)~="string"
@@ -83,8 +81,7 @@ end
 local function transform_value(raw_value,meta,device,mapping_context,mapping)
 local scaled_value=zcl.scale_mapping_value and
 zcl.scale_mapping_value(device,mapping,raw_value,meta,mapping_context)or
-apply_scale(raw_value,meta.scale)
-mapping_context.scaled_value=scaled_value
+apply_scale(raw_value,meta.scale)mapping_context.scaled_value=scaled_value
 local converter_value=should_prefer_typed_value(raw_value,meta,mapping_context)and
 mapping_context.typed_value or
 scaled_value
@@ -94,17 +91,14 @@ local function emit_event(device,event,mapping_context)
 if event==nil then
 return
 end
-battery_refresh.maybe_schedule_after_event(device,event)
-if zcl.is_duplicate_attribute_event(device,event,mapping_context)then
+battery_refresh.maybe_schedule_after_event(device,event)if zcl.is_duplicate_attribute_event(device,event,mapping_context)then
 return
 end
 if mapping_context.component~=nil and type(device.emit_component_event)=="function"then
-device:emit_component_event(mapping_context.component,event)
-return
+device:emit_component_event(mapping_context.component,event)return
 end
 if mapping_context.endpoint~=nil and type(device.emit_event_for_endpoint)=="function"then
-device:emit_event_for_endpoint(mapping_context.endpoint,event)
-return
+device:emit_event_for_endpoint(mapping_context.endpoint,event)return
 end
 device:emit_event(event)
 end
@@ -151,15 +145,12 @@ local function apply_single_mapping(device,mapping,raw_value,attribute_info)
 if mapping==nil then
 return nil
 end
-local meta=zcl.mapping_meta(mapping)
-if meta==nil or meta.write_only then
+local meta=zcl.mapping_meta(mapping)if meta==nil or meta.write_only then
 return nil
 end
-local mapping_context=zcl.build_mapping_context(device,mapping,attribute_info,raw_value)
-mapping_context.raw_value=raw_value
+local mapping_context=zcl.build_mapping_context(device,mapping,attribute_info,raw_value)mapping_context.raw_value=raw_value
 mapping_context.typed_value=attribute_info and attribute_info.typed_value or raw_value
-local value=transform_value(raw_value,meta,device,mapping_context,mapping)
-if value==nil then
+local value=transform_value(raw_value,meta,device,mapping_context,mapping)if value==nil then
 return nil
 end
 mapping_context.value=value
@@ -181,9 +172,7 @@ function zcl.apply_attribute(device,zcl_clusters,cluster_id,attribute_id,raw_val
 if cluster_id==0x0001 and(attribute_id==0x0020 or attribute_id==0x0021)then
 battery_refresh.note_report(device)
 end
-local context=attribute_info or{}
-local mappings=zcl.find_mappings(zcl_clusters,cluster_id,attribute_id,device,context)
-if mappings[1]==nil then
+local context=attribute_info or{}local mappings=zcl.find_mappings(zcl_clusters,cluster_id,attribute_id,device,context)if mappings[1]==nil then
 return false
 end
 local applied=false
@@ -200,22 +189,9 @@ return function(_,device,value,zb_rx)
 if cluster_id==0x0001 and(attribute_id==0x0020 or attribute_id==0x0021)then
 battery_refresh.note_report(device)
 end
-local preset=get_preset(device)
-if preset and preset.zcl_clusters then
-local src_endpoint=extract_source_endpoint(zb_rx)
-local mfg_code=extract_mfg_code(zb_rx)
-local raw_value=extract_raw_attribute_value(value)
-local attribute_info={
-cluster_id=cluster_id,
-attribute_id=attribute_id,
-zb_rx=zb_rx,
-src_endpoint=src_endpoint,
-endpoint=src_endpoint,
-mfg_code=mfg_code,
-typed_value=value,
-zcl_clusters=preset.zcl_clusters,}
-zcl.handle_internal_attribute(device,cluster_id,attribute_id,value,attribute_info)
-zcl.apply_attribute(device,preset.zcl_clusters,cluster_id,attribute_id,raw_value,attribute_info)
+local preset=get_preset(device)if preset and preset.zcl_clusters then
+local src_endpoint=extract_source_endpoint(zb_rx)local mfg_code=extract_mfg_code(zb_rx)local raw_value=extract_raw_attribute_value(value)local attribute_info={
+cluster_id=cluster_id,attribute_id=attribute_id,zb_rx=zb_rx,src_endpoint=src_endpoint,endpoint=src_endpoint,mfg_code=mfg_code,typed_value=value,zcl_clusters=preset.zcl_clusters,}zcl.handle_internal_attribute(device,cluster_id,attribute_id,value,attribute_info)zcl.apply_attribute(device,preset.zcl_clusters,cluster_id,attribute_id,raw_value,attribute_info)
 end
 end
 end

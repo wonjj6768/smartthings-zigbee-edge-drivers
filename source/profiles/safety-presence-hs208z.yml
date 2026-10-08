@@ -19,7 +19,7 @@ components:
       - {id: concertmirror08464.hs208zIndicator, version: 1}
       - {id: concertmirror08464.hs208zHumidityCalibration, version: 1}
       - {id: concertmirror08464.hs208zTemperatureUnit, version: 1}
-      - {id: concertmirror08464.hs208zVibrationSensitivity, version: 1}
+      - {id: concertmirror08464.hs208VibrationSensitivity, version: 1}
       - {id: concertmirror08464.hs208zVibrationDelay, version: 1}
       - {id: concertmirror08464.hs208zMotionDetectionMode, version: 1}
       - {id: concertmirror08464.hs208zDetectionSensitivity, version: 1}

@@ -19,7 +19,7 @@ components:
       - {id: concertmirror08464.sberThermAntifrost, version: 1}
       - {id: concertmirror08464.sberThermInvalidTime, version: 1}
       - {id: concertmirror08464.sberThermKeypadLockout, version: 1}
-      - {id: concertmirror08464.sberThermLocalCalibration, version: 1}
+      - {id: concertmirror08464.sber205Calibration, version: 1}
       - {id: concertmirror08464.sberThermControlSequence, version: 1}
       - {id: concertmirror08464.sberThermRunningMode, version: 1}
       - {id: concertmirror08464.sberThermProgrammingMode, version: 1}
@@ -63,3 +63,4 @@ components:
       - {id: refresh, version: 1}
     categories:
       - name: Thermostat
+

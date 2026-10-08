@@ -6,6 +6,7 @@ local device_helpers = require "contracts.helpers.family"
 local zcl_device_helpers = require "contracts.helpers.zcl"
 local device_management = require "st.zigbee.device_management"
 local data_types = require "st.zigbee.data_types"
+local cluster_base = require "st.zigbee.cluster_base"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -399,23 +400,34 @@ local function build_dual_power_switch(profile)
     zcl_device_helpers.switch_cluster(2, "switch2"),
   }
 
-  local metering_clusters = zcl_device_helpers.metering_clusters({
-    endpoint = 1,
-    include_switch = false,
-    include_current = true,
-  })
-
   append_option_clusters(clusters,
-    metering_clusters,
+    zcl.power({endpoint=1,component="main",minimum_interval=5,maximum_interval=3600,reportable_change=10,poll_interval=300}),
+    zcl.voltage({endpoint=1,component="main",minimum_interval=5,maximum_interval=3600,reportable_change=5,poll_interval=300}),
+    zcl.current({endpoint=1,component="main",scale=1000,ignore_reported_scaler=true,minimum_interval=5,maximum_interval=3600,reportable_change=50,poll_interval=300}),
+    zcl.energy({endpoint=1,component="main",scale=100,ignore_reported_scaler=true,minimum_interval=5,maximum_interval=3600,reportable_change=257,poll_interval=900}),
     zcl.tuya_magic_packet(),
-    zcl.power_outage_memory(),
-    zcl.switch_type()
+    zcl.power_outage_memory({endpoint=1,name="nous_b3z_power_behavior",emit=emit.nousB3zPowerBehavior()}),
+    zcl.switch_type({endpoint=1,name="nous_b3z_switch_type",emit=emit.nousB3zSwitchType(),
+      sender=function(device,mapping,value)
+        local request=cluster_base.write_attribute(device,data_types.ClusterId(0xE001),
+          data_types.AttributeId(0xD030),data_types.Enum8(mapping.converter.to(value)))
+        request.body.zcl_header.frame_ctrl:set_disable_default_response()
+        device:send(request:to_endpoint(1));return true
+      end}),
+    zcl.countdown_timer({endpoint=1,component="main",name="nous_b3z_countdown1",emit=emit.nousB3zCountdown1()}),
+    zcl.countdown_timer({endpoint=2,component="switch2",name="nous_b3z_countdown2",emit=emit.nousB3zCountdown2()})
   )
 
   return {
     profile = profile,
     zcl_clusters = clusters,
-    configure = bind_on_off_endpoints(2),
+    component_to_endpoint_map = {main=1,switch2=2},
+    configure = function(driver,device)
+      for _,cluster in ipairs({6,0x0B04,0x0702}) do
+        zcl.bind_cluster(device,cluster,driver.environment_info.hub_zigbee_eui,1)
+      end
+      zcl.bind_cluster(device,6,driver.environment_info.hub_zigbee_eui,2)
+    end,
   }
 end
 
@@ -489,6 +501,22 @@ local mercator_spp02gip = build_tuya_dual_metered_plug("plugs-dual-metered-outag
   outage_memory = true,
   energy_ignore_reported_scaler = true,
 })
+local mercator_spp04g = {
+  profile = "plugs-mercator-spp04g",
+  component_to_endpoint_map = { main = 1, switch2 = 2 },
+  zcl_clusters = {
+    zcl.switch({ endpoint = 1, component = "main", minimum_interval = 0, maximum_interval = 3600 }),
+    zcl.switch({ endpoint = 2, component = "switch2", minimum_interval = 0, maximum_interval = 3600 }),
+    zcl.power({ endpoint = 1, minimum_interval = 5, maximum_interval = 3600, reportable_change = 1, poll_interval = 300 }),
+    zcl.voltage({ endpoint = 1, minimum_interval = 5, maximum_interval = 3600, reportable_change = 5, poll_interval = 300 }),
+    zcl.current({ endpoint = 1, scale = 1000, ignore_reported_scaler = true,
+      minimum_interval = 5, maximum_interval = 3600, reportable_change = 50, poll_interval = 300 }),
+    zcl.energy({ endpoint = 1, scale = 100, ignore_reported_scaler = true, poll_interval = 900 }),
+    zcl.tuya_magic_packet(),
+    zcl.tuya_power_outage_memory({ endpoint = 1, name = "spp04_power_behavior", emit = emit.spp04PowerBehavior() }),
+  },
+  configure = bind_dual_metered_plug,
+}
 local tuya_dual_metered_outage_indicator = build_tuya_dual_metered_plug("plugs-dual-metered-outage-indicator", {
   outage_memory = true,
   indicator_mode = true,
@@ -533,7 +561,7 @@ append_option_clusters(ts0002_rux.zcl_clusters,
     emit.ts0002RuxSwitchType(), { [0] = "toggle", [1] = "state", [2] = "momentary" }, { toggle = 0, state = 1, momentary = 2 })
 )
 ts0002_rux.configure = bind_on_off_endpoints(2)
-local dual_power_switch = build_dual_power_switch("switches-switch-2-power-options")
+local dual_power_switch = build_dual_power_switch("switches-nous-b3z")
 local bound_triple_switch = build_switch("switches-switch-3", 3)
 bound_triple_switch.configure = bind_on_off_endpoints(3)
 local tuya_triple_switch = build_switch("switches-switch-3", 3)
@@ -835,6 +863,7 @@ register_device_definition(dual_power_switch, device_helpers.create_fingerprints
   "_TZ3000_irrmjcgi",
   "_TZ3000_huvxrx4i",
   "_TZ3000_pxfjrzyj",
+  "_TZ3000_hopb2kjm",
 }))
 
 register_device_definition(single_power_switch, device_helpers.create_fingerprints("TS000F", {
@@ -1021,9 +1050,12 @@ register_device_definition(mercator_spp02gip, device_helpers.create_fingerprints
 
 register_device_definition(tuya_dual_metered_outage, device_helpers.create_fingerprints("TS011F", {
   "_TZ3210_raqjcxo5",
-  "_TZ3210_yvxjawlt",
   "_TZ3210_pfbzs1an",
 }))
+
+register_device_definition(mercator_spp04g, {
+  device_helpers.create_fingerprint("_TZ3210_yvxjawlt", "TS011F"),
+})
 
 register_device_definition(tuya_dual_metered_outage_indicator, device_helpers.create_fingerprints("TS011F", {
   "_TZ3000_dd8wwzcy",

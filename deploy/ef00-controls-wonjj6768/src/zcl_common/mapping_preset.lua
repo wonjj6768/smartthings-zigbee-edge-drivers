@@ -34,14 +34,12 @@ end
 return nil
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function zone_status_pair(mask)
 return{
@@ -55,8 +53,7 @@ if type(value.is_alarm2_set)=="function"and value:is_alarm2_set()then
 return true
 end
 elseif mask==0x0004 and type(value.is_tamper_set)=="function"then
-return value:is_tamper_set()
-elseif value.value~=nil then
+return value:is_tamper_set()elseif value.value~=nil then
 value=value.value
 else
 return value
@@ -75,40 +72,27 @@ if zone_status==nil then
 return nil
 end
 return{
-raw_value=zone_status.value or zone_status,
-typed_value=zone_status,}
+raw_value=zone_status.value or zone_status,typed_value=zone_status,}
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 local function define_preset(name,factory,defaults_builder)
 zcl[name]=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,defaults_builder(resolved))
-return factory(resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,defaults_builder(resolved))return factory(resolved)
 end
 end
 define_preset("battery_low",zcl.ias_zone,function()
 return merge_defaults(
 {
-name="battery_low",
-emit=optional_emit("battery_low"),
-converter=zone_status_pair(0x0008),
-ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
-command_id=0x00,
-command_extractor=extract_zone_status_from_command,},
-reporting_defaults(0,300,nil))
+name="battery_low",emit=optional_emit("battery_low"),converter=zone_status_pair(0x0008),ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0x00,command_extractor=extract_zone_status_from_command,},reporting_defaults(0,300,nil))
 end)
 end
 return load_mapping_preset

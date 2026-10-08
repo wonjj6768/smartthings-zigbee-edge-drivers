@@ -35,6 +35,8 @@ register_device_definition(alecto_smart_heat10, {
 local saswell_legacy = {
   profile = "thermostats-thermostat-saswell",
   bind_basic_on_configure = true,
+  time_start = "1970",
+  heating_setpoint_range = {minimum=5,maximum=30,step=0.5,unit="C"},
   named_mapping = {
     named_mappings = {
       system_mode = thermostat_common.binary_power_schedule_mode_write(101, 108),
@@ -93,6 +95,22 @@ local saswell_legacy = {
     emit = emit.thermostat_mode(),
   }),
 }
+for index,day in ipairs({
+  {"sun",emit.saswellSunSchedule()},{"mon",emit.saswellMonSchedule()},
+  {"tue",emit.saswellTueSchedule()},{"wed",emit.saswellWedSchedule()},
+  {"thu",emit.saswellThuSchedule()},{"fri",emit.saswellFriSchedule()},
+  {"sat",emit.saswellSatSchedule()},
+}) do
+  local schedule=thermostat_common.saswell_schedule(index-1)
+  local name="saswell_"..day[1].."_schedule"
+  saswell_legacy[#saswell_legacy+1]=tuya.dp_raw(122+index,{
+    name=name,read_only=true,converter=converter.from_only(schedule.from),emit=day[2],
+  })
+  saswell_legacy.named_mapping.named_mappings[name]=function(_,value)
+    local data=schedule.to(value)
+    if data then return {dp=109,datatype=tuya.DP_TYPE_RAW,value=data} end
+  end
+end
 register_device_definition(saswell_legacy, {
   device_helpers.create_fingerprint("_TYST11_KGbxAXL2", "GbxAXL2" .. nul),
   device_helpers.create_fingerprint("_TYST11_c88teujp", "88teujp" .. nul),

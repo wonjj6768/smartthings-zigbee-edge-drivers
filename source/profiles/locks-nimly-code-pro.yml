@@ -1,0 +1,25 @@
+name: locks-nimly-code-pro
+components:
+  - id: main
+    capabilities:
+      - {id: lock, version: 1}
+      - {id: battery, version: 1}
+      - {id: voltageMeasurement, version: 1}
+      - {id: refresh, version: 1}
+      - {id: concertmirror08464.nimlyCodeLastLockUser, version: 1}
+      - {id: concertmirror08464.nimlyCodeLastUnlockUser, version: 1}
+      - {id: concertmirror08464.nimlyCodeLastLockSource, version: 1}
+      - {id: concertmirror08464.nimlyCodeLastUnlockSource, version: 1}
+      - {id: concertmirror08464.nimlyCodeLastPin, version: 1}
+      - {id: concertmirror08464.nimlyCodeAction, version: 1}
+      - {id: concertmirror08464.nimlyCodeActionUser, version: 1}
+      - {id: concertmirror08464.nimlyCodeActionSource, version: 1}
+      - {id: concertmirror08464.nimlyCodeEventSource, version: 1}
+      - {id: concertmirror08464.nimlyCodePinCapacity, version: 1}
+      - {id: concertmirror08464.nimlyCodeMinPinLength, version: 1}
+      - {id: concertmirror08464.nimlyCodeMaxPinLength, version: 1}
+      - {id: concertmirror08464.nimlyCodeSoundVolume, version: 1}
+      - {id: concertmirror08464.nimlyCodeAutoRelock, version: 1}
+      - {id: concertmirror08464.nimlyCodeRelockTime, version: 1}
+      - {id: concertmirror08464.nimlyCodePin, version: 1}
+    categories: [{name: SmartLock}]

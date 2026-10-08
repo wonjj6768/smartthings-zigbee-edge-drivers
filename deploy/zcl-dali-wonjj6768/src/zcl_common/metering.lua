@@ -9,18 +9,13 @@ local LAST_POWER_RESPONSE_TIME_METADATA=custom_capabilities.by_emit_name.last_po
 local POWER_POLL_INTERVAL_FIELD="_zcl_power_poll_interval_seconds"
 local LAST_POWER_RESPONSE_AT_FIELD="_zcl_last_power_response_at"
 local SWITCH_STATE_FIELD="_zcl_switch_state"
-local POWER_POLL_INTERVAL_DEFAULT_RANGE=POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.default_range or{}
-local POWER_POLL_INTERVAL_MIN=POWER_POLL_INTERVAL_DEFAULT_RANGE.minimum or 5
+local POWER_POLL_INTERVAL_DEFAULT_RANGE=POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.default_range or{}local POWER_POLL_INTERVAL_MIN=POWER_POLL_INTERVAL_DEFAULT_RANGE.minimum or 5
 local POWER_POLL_INTERVAL_MAX=POWER_POLL_INTERVAL_DEFAULT_RANGE.maximum or 3600
 local POWER_POLL_INTERVAL_STEP=POWER_POLL_INTERVAL_DEFAULT_RANGE.step or 5
 local POWER_POLL_INTERVAL_UNIT=POWER_POLL_INTERVAL_DEFAULT_RANGE.unit or"s"
 local LAST_POWER_RESPONSE_WAITING_TEXT="--"
 local OFF_STATE_POLL_INTERVAL=3600
-local ON_STATE_CONFIRM_POLL_DELAYS={1,3,10,30}
-local OFF_STATE_CONFIRM_POLL_DELAYS={1,3}
-local metering_specs={}
-local poll_timers=setmetatable({},{__mode="k"})
-local scaler_pair_reports=setmetatable({},{__mode="k"})
+local ON_STATE_CONFIRM_POLL_DELAYS={1,3,10,30}local OFF_STATE_CONFIRM_POLL_DELAYS={1,3}local metering_specs={}local poll_timers=setmetatable({},{__mode="k"})local scaler_pair_reports=setmetatable({},{__mode="k"})
 local function normalize_numeric(value)
 if type(value)=="table"then
 value=value.value
@@ -38,8 +33,7 @@ if type(value)=="table"then
 value=value.value
 end
 if type(value)=="string"and value~=""then
-local parsed=tonumber(value)
-if parsed~=nil then
+local parsed=tonumber(value)if parsed~=nil then
 value=parsed
 end
 end
@@ -49,8 +43,7 @@ end
 return math.floor(value+0.5)
 end
 local function clamp_power_poll_interval(value)
-value=normalize_integer(value)
-if value==nil then
+value=normalize_integer(value)if value==nil then
 return nil
 end
 if value<POWER_POLL_INTERVAL_MIN then
@@ -80,12 +73,10 @@ if event==nil then
 return false
 end
 if type(device.emit_component_event)=="function"then
-device:emit_component_event({id="main"},event)
-return true
+device:emit_component_event({id="main"},event)return true
 end
 if type(device.emit_event)=="function"then
-device:emit_event(event)
-return true
+device:emit_event(event)return true
 end
 return false
 end
@@ -106,8 +97,7 @@ end
 if not supports_main_capability_id(device,metadata.capability_id)then
 return nil,nil
 end
-local capability=capabilities[metadata.capability_id]
-local attribute=capability and capability[attribute_name]or nil
+local capability=capabilities[metadata.capability_id]local attribute=capability and capability[attribute_name]or nil
 if not is_callable(attribute)and capability and type(capability.attributes)=="table"then
 attribute=capability.attributes[attribute_name]
 end
@@ -129,14 +119,9 @@ end
 local first_match=nil
 for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-if meta~=nil and meta.metering_kind=="power"and not meta.write_only then
-local context=zcl.build_mapping_context(device,mapping,nil)
-local candidate={
-mapping=mapping,
-meta=meta,
-context=context,}
-if context.component_id=="main"then
+local meta=zcl.mapping_meta(mapping)if meta~=nil and meta.metering_kind=="power"and not meta.write_only then
+local context=zcl.build_mapping_context(device,mapping,nil)local candidate={
+mapping=mapping,meta=meta,context=context,}if context.component_id=="main"then
 return candidate
 end
 if first_match==nil then
@@ -148,22 +133,19 @@ end
 return first_match
 end
 local function default_power_poll_interval(device,zcl_clusters)
-local entry=select_primary_power_mapping(device,zcl_clusters)
-if entry==nil then
+local entry=select_primary_power_mapping(device,zcl_clusters)if entry==nil then
 return nil
 end
 return clamp_power_poll_interval(entry.meta.poll_interval)
 end
 local function resolved_power_poll_interval(device,zcl_clusters)
-local override=clamp_power_poll_interval(device:get_field(POWER_POLL_INTERVAL_FIELD))
-if override~=nil then
+local override=clamp_power_poll_interval(device:get_field(POWER_POLL_INTERVAL_FIELD))if override~=nil then
 return override
 end
 return default_power_poll_interval(device,zcl_clusters)
 end
 local function current_time_epoch()
-local epoch=os.time()
-if type(epoch)=="number"then
+local epoch=os.time()if type(epoch)=="number"then
 return epoch
 end
 return nil
@@ -178,13 +160,11 @@ end
 return nil
 end
 local function switch_state_value(device)
-local state=normalize_switch_state(device:get_field(SWITCH_STATE_FIELD))
-if state~=nil then
+local state=normalize_switch_state(device:get_field(SWITCH_STATE_FIELD))if state~=nil then
 return state
 end
 local latest=normalize_switch_state(type(device.get_latest_state)=="function"and
-device:get_latest_state("main",capabilities.switch.ID,"switch")or nil)
-if latest~=nil then
+device:get_latest_state("main",capabilities.switch.ID,"switch")or nil)if latest~=nil then
 return latest
 end
 return nil
@@ -197,22 +177,13 @@ if type(zcl_clusters)~="table"then
 return false
 end
 local read_count=0
-local seen={}
-for _,mapping in ipairs(zcl_clusters)do
+local seen={}for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-if meta~=nil and meta.metering_kind~=nil and not meta.write_only then
-local mapping_context=zcl.build_mapping_context(device,mapping,nil)
-local key=string.format(
-"%04X:%04X:%s:%s",
-meta.cluster_id or 0,
-meta.attribute_id or 0,
-tostring(mapping_context.endpoint),
-tostring(meta.mfg_code))
-if not seen[key]then
+local meta=zcl.mapping_meta(mapping)if meta~=nil and meta.metering_kind~=nil and not meta.write_only then
+local mapping_context=zcl.build_mapping_context(device,mapping,nil)local key=string.format(
+"%04X:%04X:%s:%s",meta.cluster_id or 0,meta.attribute_id or 0,tostring(mapping_context.endpoint),tostring(meta.mfg_code))if not seen[key]then
 seen[key]=true
-zcl.read_mapping(device,mapping,mapping_context)
-read_count=read_count+1
+zcl.read_mapping(device,mapping,mapping_context)read_count=read_count+1
 end
 end
 end
@@ -227,10 +198,8 @@ if type(delays)~="table"then
 return false
 end
 local scheduled=false
-local timers=poll_timers[device]
-if type(timers)~="table"then
-timers={}
-poll_timers[device]=timers
+local timers=poll_timers[device]if type(timers)~="table"then
+timers={}poll_timers[device]=timers
 end
 for _,delay in ipairs(delays)do
 if type(delay)=="number"and delay>0 then
@@ -267,87 +236,57 @@ end
 return poll_interval
 end
 local function emit_power_poll_interval_state(device,zcl_clusters)
-local interval=resolved_power_poll_interval(device,zcl_clusters)
-local capability,attribute=resolve_capability_attribute(
-device,
-POWER_POLL_INTERVAL_METADATA,
-POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.attribute_name or nil)
-if interval==nil or attribute==nil or not supports_main_capability(device,capability)then
+local interval=resolved_power_poll_interval(device,zcl_clusters)local capability,attribute=resolve_capability_attribute(
+device,POWER_POLL_INTERVAL_METADATA,POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.attribute_name or nil)if interval==nil or attribute==nil or not supports_main_capability(device,capability)then
 return false
 end
 local _,range_attribute=resolve_capability_attribute(
-device,
-POWER_POLL_INTERVAL_METADATA,
-POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.range_attribute_name or nil)
-if range_attribute~=nil then
+device,POWER_POLL_INTERVAL_METADATA,POWER_POLL_INTERVAL_METADATA and POWER_POLL_INTERVAL_METADATA.range_attribute_name or nil)if range_attribute~=nil then
 emit_main_event(device,range_attribute({
 value={
-minimum=POWER_POLL_INTERVAL_MIN,
-maximum=POWER_POLL_INTERVAL_MAX,
-step=POWER_POLL_INTERVAL_STEP,},
-unit=POWER_POLL_INTERVAL_UNIT,}))
+minimum=POWER_POLL_INTERVAL_MIN,maximum=POWER_POLL_INTERVAL_MAX,step=POWER_POLL_INTERVAL_STEP,},unit=POWER_POLL_INTERVAL_UNIT,}))
 end
 emit_main_event(device,attribute({
-value=interval,
-unit=POWER_POLL_INTERVAL_UNIT,}))
-return true
+value=interval,unit=POWER_POLL_INTERVAL_UNIT,}))return true
 end
 local function emit_last_power_response_state(device)
 local capability,attribute=resolve_capability_attribute(
-device,
-LAST_POWER_RESPONSE_TIME_METADATA,
-LAST_POWER_RESPONSE_TIME_METADATA and LAST_POWER_RESPONSE_TIME_METADATA.attribute_name or nil)
-if attribute==nil or not supports_main_capability(device,capability)then
+device,LAST_POWER_RESPONSE_TIME_METADATA,LAST_POWER_RESPONSE_TIME_METADATA and LAST_POWER_RESPONSE_TIME_METADATA.attribute_name or nil)if attribute==nil or not supports_main_capability(device,capability)then
 return false
 end
 emit_main_event(device,attribute({
-value=format_power_response_time(device:get_field(LAST_POWER_RESPONSE_AT_FIELD)),}))
-return true
+value=format_power_response_time(device:get_field(LAST_POWER_RESPONSE_AT_FIELD)),}))return true
 end
 local function field_key(kind,field_name,endpoint)
 return string.format("_zcl_metering:%s:%s:%d",tostring(kind),tostring(field_name),normalize_endpoint(endpoint))
 end
 local function build_spec(kind,cluster_name,multiplier_name,divisor_name,multiplier_store_key,divisor_store_key)
-local cluster_id=zcl.get_generated_cluster_id(cluster_name)
-local multiplier=zcl.get_generated_attribute_by_name(cluster_name,multiplier_name)
-local divisor=zcl.get_generated_attribute_by_name(cluster_name,divisor_name)
-if cluster_id==nil or multiplier==nil or divisor==nil then
+local cluster_id=zcl.get_generated_cluster_id(cluster_name)local multiplier=zcl.get_generated_attribute_by_name(cluster_name,multiplier_name)local divisor=zcl.get_generated_attribute_by_name(cluster_name,divisor_name)if cluster_id==nil or multiplier==nil or divisor==nil then
 return nil
 end
 return{
-kind=kind,
-cluster_id=cluster_id,
-multiplier_attribute_id=multiplier.ID,
-divisor_attribute_id=divisor.ID,
-multiplier_store_key=multiplier_store_key,
-divisor_store_key=divisor_store_key,}
+kind=kind,cluster_id=cluster_id,multiplier_attribute_id=multiplier.ID,divisor_attribute_id=divisor.ID,multiplier_store_key=multiplier_store_key,divisor_store_key=divisor_store_key,}
 end
 local function set_scaler(device,spec,field_name,value,endpoint)
-local numeric=normalize_numeric(value)
-if numeric==nil then
+local numeric=normalize_numeric(value)if numeric==nil then
 return false
 end
-device:set_field(field_key(spec.kind,field_name,endpoint),numeric,{persist=true})
-if normalize_endpoint(endpoint)==1 then
+device:set_field(field_key(spec.kind,field_name,endpoint),numeric,{persist=true})if normalize_endpoint(endpoint)==1 then
 if field_name=="multiplier"and spec.multiplier_store_key~=nil then
-device:set_field(spec.multiplier_store_key,numeric,{persist=true})
-elseif field_name=="divisor"and spec.divisor_store_key~=nil then
+device:set_field(spec.multiplier_store_key,numeric,{persist=true})elseif field_name=="divisor"and spec.divisor_store_key~=nil then
 device:set_field(spec.divisor_store_key,numeric,{persist=true})
 end
 end
 return true
 end
 local function get_scaler(device,spec,field_name,endpoint)
-endpoint=normalize_endpoint(endpoint)
-local numeric=device:get_field(field_key(spec.kind,field_name,endpoint))
-if type(numeric)=="number"then
+endpoint=normalize_endpoint(endpoint)local numeric=device:get_field(field_key(spec.kind,field_name,endpoint))if type(numeric)=="number"then
 return numeric
 end
 if endpoint==1 then
 local compatibility_key=field_name=="multiplier"and spec.multiplier_store_key or spec.divisor_store_key
 if compatibility_key~=nil then
-numeric=device:get_field(compatibility_key)
-if type(numeric)=="number"then
+numeric=device:get_field(compatibility_key)if type(numeric)=="number"then
 return numeric
 end
 end
@@ -359,17 +298,14 @@ local physical=meta.physical_reportable_change
 if type(physical)~="number"or physical<=0 then
 return nil
 end
-local multiplier=get_scaler(device,spec,"multiplier",endpoint)
-local divisor=get_scaler(device,spec,"divisor",endpoint)
-if type(multiplier)~="number"or multiplier<=0 or type(divisor)~="number"or divisor<=0 then
+local multiplier=get_scaler(device,spec,"multiplier",endpoint)local divisor=get_scaler(device,spec,"divisor",endpoint)if type(multiplier)~="number"or multiplier<=0 or type(divisor)~="number"or divisor<=0 then
 return nil
 end
 local raw=physical*divisor/multiplier
 if raw~=raw or raw==math.huge or raw==-math.huge then
 return nil
 end
-local integer=math.floor(raw+0.5)
-if integer<=0 or math.abs(raw-integer)>0.000000001 then
+local integer=math.floor(raw+0.5)if integer<=0 or math.abs(raw-integer)>0.000000001 then
 return nil
 end
 if type(meta.data_type)=="function"then
@@ -388,31 +324,19 @@ if type(zcl_clusters)~="table"or type(device.send)~="function"then
 return false
 end
 local sent=false
-local seen={}
-for _,mapping in ipairs(zcl_clusters)do
+local seen={}for _,mapping in ipairs(zcl_clusters)do
 local meta=type(mapping)=="table"and zcl.mapping_meta(mapping)or nil
 if meta~=nil and meta.metering_kind==spec.kind and meta.physical_reportable_change~=nil then
-local context=zcl.build_mapping_context(device,mapping,nil)
-local mapping_endpoint=normalize_endpoint(context.endpoint)
-if mapping_endpoint==endpoint and meta.cluster_id~=nil and meta.attribute_id~=nil then
-local key=string.format("%04X:%04X:%d",meta.cluster_id,meta.attribute_id,endpoint)
-if not seen[key]then
+local context=zcl.build_mapping_context(device,mapping,nil)local mapping_endpoint=normalize_endpoint(context.endpoint)if mapping_endpoint==endpoint and meta.cluster_id~=nil and meta.attribute_id~=nil then
+local key=string.format("%04X:%04X:%d",meta.cluster_id,meta.attribute_id,endpoint)if not seen[key]then
 seen[key]=true
-local reportable_change=exact_raw_reportable_change(device,mapping,meta,spec,endpoint)
-if reportable_change~=nil then
+local reportable_change=exact_raw_reportable_change(device,mapping,meta,spec,endpoint)if reportable_change~=nil then
 local request=device_management.attr_config(device,{
-cluster=meta.cluster_id,
-attribute=meta.attribute_id,
-minimum_interval=meta.minimum_interval or 0,
-maximum_interval=meta.maximum_interval or 300,
-data_type=meta.data_type,
-reportable_change=reportable_change,
-mfg_code=meta.mfg_code,})
+cluster=meta.cluster_id,attribute=meta.attribute_id,minimum_interval=meta.minimum_interval or 0,maximum_interval=meta.maximum_interval or 300,data_type=meta.data_type,reportable_change=reportable_change,mfg_code=meta.mfg_code,})
 if type(request.to_endpoint)=="function"then
 request=request:to_endpoint(endpoint)
 end
-device:send(request)
-sent=true
+device:send(request)sent=true
 end
 end
 end
@@ -421,29 +345,21 @@ end
 return sent
 end
 local function note_scaler_pair_report(device,spec,field_name,endpoint,zcl_clusters)
-local by_kind=scaler_pair_reports[device]
-if by_kind==nil then
-by_kind={}
-scaler_pair_reports[device]=by_kind
+local by_kind=scaler_pair_reports[device]if by_kind==nil then
+by_kind={}scaler_pair_reports[device]=by_kind
 end
-by_kind[spec.kind]=by_kind[spec.kind]or{}
-local pair=by_kind[spec.kind][endpoint]or{}
-by_kind[spec.kind][endpoint]=pair
+by_kind[spec.kind]=by_kind[spec.kind]or{}local pair=by_kind[spec.kind][endpoint]or{}by_kind[spec.kind][endpoint]=pair
 pair[field_name]=true
 if pair.multiplier~=true or pair.divisor~=true then
 return false
 end
-by_kind[spec.kind][endpoint]={}
-return send_scaler_aware_reporting(device,spec,endpoint,zcl_clusters)
+by_kind[spec.kind][endpoint]={}return send_scaler_aware_reporting(device,spec,endpoint,zcl_clusters)
 end
 local function reset_scaler_pair_report(device,spec,endpoint)
-local by_kind=scaler_pair_reports[device]
-if by_kind==nil then
-by_kind={}
-scaler_pair_reports[device]=by_kind
+local by_kind=scaler_pair_reports[device]if by_kind==nil then
+by_kind={}scaler_pair_reports[device]=by_kind
 end
-by_kind[spec.kind]=by_kind[spec.kind]or{}
-by_kind[spec.kind][endpoint]={}
+by_kind[spec.kind]=by_kind[spec.kind]or{}by_kind[spec.kind][endpoint]={}
 end
 local function read_scaler(device,spec,attribute_id,endpoint)
 if zcl.read_attribute==nil then
@@ -469,58 +385,29 @@ if next(metering_specs)~=nil then
 return
 end
 metering_specs.energy=build_spec(
-"energy",
-"SimpleMetering",
-"Multiplier",
-"Divisor",
-zigbee_constants.SIMPLE_METERING_MULTIPLIER_KEY,
-zigbee_constants.SIMPLE_METERING_DIVISOR_KEY)
-metering_specs.power=build_spec(
-"power",
-"ElectricalMeasurement",
-"ACPowerMultiplier",
-"ACPowerDivisor",
-zigbee_constants.ELECTRICAL_MEASUREMENT_MULTIPLIER_KEY,
-zigbee_constants.ELECTRICAL_MEASUREMENT_DIVISOR_KEY)
-metering_specs.voltage=build_spec(
-"voltage",
-"ElectricalMeasurement",
-"ACVoltageMultiplier",
-"ACVoltageDivisor")
-metering_specs.current=build_spec(
-"current",
-"ElectricalMeasurement",
-"ACCurrentMultiplier",
-"ACCurrentDivisor")
-metering_specs.frequency=build_spec(
-"frequency",
-"ElectricalMeasurement",
-"ACFrequencyMultiplier",
-"ACFrequencyDivisor")
-for _,spec in pairs(metering_specs)do
+"energy","SimpleMetering","Multiplier","Divisor",zigbee_constants.SIMPLE_METERING_MULTIPLIER_KEY,zigbee_constants.SIMPLE_METERING_DIVISOR_KEY)metering_specs.power=build_spec(
+"power","ElectricalMeasurement","ACPowerMultiplier","ACPowerDivisor",zigbee_constants.ELECTRICAL_MEASUREMENT_MULTIPLIER_KEY,zigbee_constants.ELECTRICAL_MEASUREMENT_DIVISOR_KEY)metering_specs.voltage=build_spec(
+"voltage","ElectricalMeasurement","ACVoltageMultiplier","ACVoltageDivisor")metering_specs.current=build_spec(
+"current","ElectricalMeasurement","ACCurrentMultiplier","ACCurrentDivisor")metering_specs.frequency=build_spec(
+"frequency","ElectricalMeasurement","ACFrequencyMultiplier","ACFrequencyDivisor")for _,spec in pairs(metering_specs)do
 if spec~=nil then
-zcl.register_attribute(spec.cluster_id,spec.multiplier_attribute_id)
-zcl.register_attribute(spec.cluster_id,spec.divisor_attribute_id)
+zcl.register_attribute(spec.cluster_id,spec.multiplier_attribute_id)zcl.register_attribute(spec.cluster_id,spec.divisor_attribute_id)
 end
 end
 end
 function zcl.handle_internal_attribute(device,cluster_id,attribute_id,raw_value,attribute_info)
-ensure_metering_specs()
-local endpoint=normalize_endpoint(type(attribute_info)=="table"and
-(attribute_info.endpoint or attribute_info.src_endpoint)or nil)
-local zcl_clusters=type(attribute_info)=="table"and attribute_info.zcl_clusters or nil
+ensure_metering_specs()local endpoint=normalize_endpoint(type(attribute_info)=="table"and
+(attribute_info.endpoint or attribute_info.src_endpoint)or nil)local zcl_clusters=type(attribute_info)=="table"and attribute_info.zcl_clusters or nil
 for _,spec in pairs(metering_specs)do
 if spec~=nil and cluster_id==spec.cluster_id then
 if attribute_id==spec.multiplier_attribute_id then
-local applied=set_scaler(device,spec,"multiplier",raw_value,endpoint)
-if applied then
+local applied=set_scaler(device,spec,"multiplier",raw_value,endpoint)if applied then
 note_scaler_pair_report(device,spec,"multiplier",endpoint,zcl_clusters)
 end
 return applied
 end
 if attribute_id==spec.divisor_attribute_id then
-local applied=set_scaler(device,spec,"divisor",raw_value,endpoint)
-if applied then
+local applied=set_scaler(device,spec,"divisor",raw_value,endpoint)if applied then
 note_scaler_pair_report(device,spec,"divisor",endpoint,zcl_clusters)
 end
 return applied
@@ -536,9 +423,7 @@ end
 local spec=meta.metering_kind and metering_specs[meta.metering_kind]or nil
 if spec~=nil and type(raw_value)=="number"and not meta.ignore_reported_scaler then
 local endpoint=mapping_context and mapping_context.endpoint or nil
-local reported_multiplier=get_scaler(device,spec,"multiplier",endpoint)
-local reported_divisor=get_scaler(device,spec,"divisor",endpoint)
-local multiplier=reported_multiplier or 1
+local reported_multiplier=get_scaler(device,spec,"multiplier",endpoint)local reported_divisor=get_scaler(device,spec,"divisor",endpoint)local multiplier=reported_multiplier or 1
 local divisor=reported_divisor or 1
 if divisor==0 then
 divisor=1
@@ -556,32 +441,23 @@ end
 return raw_value
 end
 function zcl.read_metering_scalers(device,zcl_clusters)
-ensure_metering_specs()
-if type(zcl_clusters)~="table"then
+ensure_metering_specs()if type(zcl_clusters)~="table"then
 return false
 end
 local sent=false
-local seen={}
-local reset_pairs={}
-for _,mapping in ipairs(zcl_clusters)do
+local seen={}local reset_pairs={}for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-local spec=meta and meta.metering_kind and metering_specs[meta.metering_kind]or nil
+local meta=zcl.mapping_meta(mapping)local spec=meta and meta.metering_kind and metering_specs[meta.metering_kind]or nil
 if spec~=nil then
-local mapping_context=zcl.build_mapping_context(device,mapping,nil)
-local endpoint=normalize_endpoint(mapping_context.endpoint)
-local pair_key=string.format("%s:%d",spec.kind,endpoint)
-if not reset_pairs[pair_key]then
+local mapping_context=zcl.build_mapping_context(device,mapping,nil)local endpoint=normalize_endpoint(mapping_context.endpoint)local pair_key=string.format("%s:%d",spec.kind,endpoint)if not reset_pairs[pair_key]then
 reset_pairs[pair_key]=true
 reset_scaler_pair_report(device,spec,endpoint)
 end
-local multiplier_key=string.format("%04X:%04X:%d",spec.cluster_id,spec.multiplier_attribute_id,endpoint)
-if not seen[multiplier_key]then
+local multiplier_key=string.format("%04X:%04X:%d",spec.cluster_id,spec.multiplier_attribute_id,endpoint)if not seen[multiplier_key]then
 seen[multiplier_key]=true
 sent=read_scaler(device,spec,spec.multiplier_attribute_id,endpoint)or sent
 end
-local divisor_key=string.format("%04X:%04X:%d",spec.cluster_id,spec.divisor_attribute_id,endpoint)
-if not seen[divisor_key]then
+local divisor_key=string.format("%04X:%04X:%d",spec.cluster_id,spec.divisor_attribute_id,endpoint)if not seen[divisor_key]then
 seen[divisor_key]=true
 sent=read_scaler(device,spec,spec.divisor_attribute_id,endpoint)or sent
 end
@@ -603,52 +479,39 @@ function zcl.set_power_poll_interval(device,zcl_clusters,value)
 if default_power_poll_interval(device,zcl_clusters)==nil then
 return false
 end
-local interval=clamp_power_poll_interval(value)
-if interval==nil then
+local interval=clamp_power_poll_interval(value)if interval==nil then
 return false
 end
-device:set_field(POWER_POLL_INTERVAL_FIELD,interval,{persist=true})
-zcl.start_runtime(device,zcl_clusters)
-zcl.emit_power_polling_state(device,zcl_clusters)
-return true
+device:set_field(POWER_POLL_INTERVAL_FIELD,interval,{persist=true})zcl.start_runtime(device,zcl_clusters)zcl.emit_power_polling_state(device,zcl_clusters)return true
 end
 function zcl.handle_metering_value(device,_,value,meta)
 if meta==nil or meta.metering_kind~="power"or type(value)~="number"then
 return false
 end
-local epoch=os.time()
-if type(epoch)~="number"then
+local epoch=os.time()if type(epoch)~="number"then
 return false
 end
-device:set_field(LAST_POWER_RESPONSE_AT_FIELD,epoch,{persist=false})
-emit_last_power_response_state(device)
-return true
+device:set_field(LAST_POWER_RESPONSE_AT_FIELD,epoch,{persist=false})emit_last_power_response_state(device)return true
 end
 function zcl.begin_power_poll_burst(device,zcl_clusters)
 if not switch_aware_polling_enabled(device)then
 return false
 end
-device:set_field(SWITCH_STATE_FIELD,"on",{persist=false})
-if type(zcl_clusters)=="table"then
-zcl.start_runtime(device,zcl_clusters)
-schedule_state_confirm_polls(device,zcl_clusters,"on",ON_STATE_CONFIRM_POLL_DELAYS,"zcl on-state confirm poll")
+device:set_field(SWITCH_STATE_FIELD,"on",{persist=false})if type(zcl_clusters)=="table"then
+zcl.start_runtime(device,zcl_clusters)schedule_state_confirm_polls(device,zcl_clusters,"on",ON_STATE_CONFIRM_POLL_DELAYS,"zcl on-state confirm poll")
 end
 return true
 end
 function zcl.handle_switch_state(device,zcl_clusters,value)
-value=normalize_switch_state(value)
-if not switch_aware_polling_enabled(device)or value==nil then
+value=normalize_switch_state(value)if not switch_aware_polling_enabled(device)or value==nil then
 return false
 end
-local previous=switch_state_value(device)
-device:set_field(SWITCH_STATE_FIELD,value,{persist=false})
-if value=="on"and previous~="on"then
+local previous=switch_state_value(device)device:set_field(SWITCH_STATE_FIELD,value,{persist=false})if value=="on"and previous~="on"then
 return zcl.begin_power_poll_burst(device,zcl_clusters)
 end
 if value=="off"and previous~="off"then
 if type(zcl_clusters)=="table"then
-zcl.start_runtime(device,zcl_clusters)
-schedule_state_confirm_polls(device,zcl_clusters,"off",OFF_STATE_CONFIRM_POLL_DELAYS,"zcl off-state confirm poll")
+zcl.start_runtime(device,zcl_clusters)schedule_state_confirm_polls(device,zcl_clusters,"off",OFF_STATE_CONFIRM_POLL_DELAYS,"zcl off-state confirm poll")
 end
 return true
 end
@@ -659,21 +522,11 @@ cancel_poll_timers(device)
 if type(zcl_clusters)~="table"or device.thread==nil or type(device.thread.call_on_schedule)~="function"then
 return false
 end
-local timers={}
-local seen={}
-for _,mapping in ipairs(zcl_clusters)do
+local timers={}local seen={}for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-local poll_interval=effective_poll_interval(device,zcl_clusters,meta)
-if meta~=nil and type(poll_interval)=="number"and poll_interval>0 and not meta.write_only then
-local mapping_context=zcl.build_mapping_context(device,mapping,nil)
-local key=string.format(
-"%04X:%04X:%s:%s",
-meta.cluster_id or 0,
-meta.attribute_id or 0,
-tostring(mapping_context.endpoint),
-tostring(meta.mfg_code))
-if not seen[key]then
+local meta=zcl.mapping_meta(mapping)local poll_interval=effective_poll_interval(device,zcl_clusters,meta)if meta~=nil and type(poll_interval)=="number"and poll_interval>0 and not meta.write_only then
+local mapping_context=zcl.build_mapping_context(device,mapping,nil)local key=string.format(
+"%04X:%04X:%s:%s",meta.cluster_id or 0,meta.attribute_id or 0,tostring(mapping_context.endpoint),tostring(meta.mfg_code))if not seen[key]then
 seen[key]=true
 local timer=device.thread:call_on_schedule(poll_interval,function()
 zcl.read_mapping(device,mapping,zcl.build_mapping_context(device,mapping,nil))

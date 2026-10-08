@@ -27,14 +27,12 @@ end
 return target
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function clamp(value,min_value,max_value)
 if value<min_value then
@@ -63,23 +61,17 @@ end,
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 local function define_preset(name,factory,defaults_builder)
 zcl[name]=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,defaults_builder(resolved))
-return factory(resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,defaults_builder(resolved))return factory(resolved)
 end
 end
 define_preset("switch",zcl.on_off,function(options)
@@ -91,16 +83,13 @@ emit=emit.switch(),}
 end
 return merge_defaults(
 {
-emit=emit.switch(),},
-reporting_defaults(0,300,nil))
+emit=emit.switch(),},reporting_defaults(0,300,nil))
 end)
 define_preset("level",zcl.level_control,function(options)
 local configure_reporting=options.configure_reporting
 options.configure_reporting=nil
 local defaults={
-name="brightness",
-emit=emit.level(),
-converter=level_percent_pair(),}
+name="brightness",emit=emit.level(),converter=level_percent_pair(),}
 if configure_reporting==false then return defaults end
 return merge_defaults(defaults,reporting_defaults(1,3600,1))
 end)

@@ -174,4 +174,30 @@ function thermostat_common.daily_schedule(day, count)
   }
 end
 
+function thermostat_common.saswell_schedule(day)
+  return {
+    from = function(value)
+      if type(value) ~= "string" or #value ~= 17 then return nil end
+      local periods = {}
+      for index=0,3 do
+        local minutes, temperature=string.unpack(">I2I2",value,2+index*4)
+        periods[#periods+1]=string.format("%02d:%02d/%.1f",minutes//60,minutes%60,temperature/10)
+      end
+      return table.concat(periods," ")
+    end,
+    to = function(value)
+      local periods={}
+      for period in value:gmatch("%S+") do
+        local hour,minute,temperature=period:match("^(%d%d?):(%d%d)/(%d+%.?%d*)$")
+        hour,minute,temperature=tonumber(hour),tonumber(minute),tonumber(temperature)
+        if not hour or not minute or not temperature or hour>23 or minute>59 or temperature>6553.5 then return nil end
+        periods[#periods+1]=string.pack(">I2I2",hour*60+minute,math.floor(temperature*10))
+      end
+      if #periods<1 or #periods>4 then return nil end
+      while #periods<4 do periods[#periods+1]=periods[#periods] end
+      return string.char(1<<day,4)..table.concat(periods)
+    end,
+  }
+end
+
 return thermostat_common

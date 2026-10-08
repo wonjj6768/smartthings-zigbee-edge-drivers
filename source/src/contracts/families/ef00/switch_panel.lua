@@ -214,6 +214,7 @@ register_device_definition(switch_3gang_colored_backlight, device_helpers.create
 local switch_2gang_colored_backlight = {
   profile = "switches-switch-2-colored-backlight",
   package_group = "switch-panel",
+  component_to_endpoint_map = {main=1,switch2=1,switch3=1},
   datapoints = {
     tuya.dp_on_off(13, { name = "switch", component = "main" }),
     tuya.dp_on_off(1, { name = "switch", component = "switch2" }),
@@ -254,6 +255,7 @@ local switch_2gang_colored_backlight = {
 
 register_device_definition(switch_2gang_colored_backlight, device_helpers.create_fingerprints("TS0601", {
   "_TZE284_zpvusbtv",
+  "_TZE204_zpvusbtv",
 }))
 
 -- TS0601 touch panel switch family (Z2M tuya.ts:27846, 28137, 27921, 28007):

@@ -1525,6 +1525,94 @@
       "catalogModule": "contracts.families.ef00.screen_switches",
       "profile": "switches-screen-zms206us4",
       "auditEvidence": "analysis/latest_z2m_backward_20261002.md#wave344--zemismart-zms-206us-4-contract-and-status-response"
+    },
+    {
+      "manufacturer": "ADUROLIGHT",
+      "manufacturerUtf8Hex": "414455524f4c49474854",
+      "model": "CSW_ADUROLIGHT",
+      "modelUtf8Hex": "4353575f414455524f4c49474854",
+      "owner": "zcl-sensors-3-wonjj6768",
+      "catalogId": "zcl.sensors.simple_sensors",
+      "catalogModule": "contracts.families.zcl.sensors.simple_sensors",
+      "profile": "safety-contact-trust808",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE28C1000000_gt5al3bl",
+      "manufacturerUtf8Hex": "5f545a45323843313030303030305f677435616c33626c",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-lights-2-wonjj6768",
+      "catalogId": "ef00.lights.wave15_gledopto",
+      "catalogModule": "contracts.families.ef00.lights.wave15_gledopto",
+      "profile": "lights-wave15-gledopto-gl-spi-206p",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE204_zpvusbtv",
+      "manufacturerUtf8Hex": "5f545a453230345f7a70767573627476",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-switch-panel-wonjj6768",
+      "catalogId": "ef00.switch.panel",
+      "catalogModule": "contracts.families.ef00.switch_panel",
+      "profile": "switches-switch-2-colored-backlight",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZ3000_hopb2kjm",
+      "manufacturerUtf8Hex": "5f545a333030305f686f7062326b6a6d",
+      "model": "TS0002",
+      "modelUtf8Hex": "545330303032",
+      "owner": "zcl-switch-wonjj6768",
+      "catalogId": "zcl.switches",
+      "catalogModule": "contracts.families.zcl.switches",
+      "profile": "switches-nous-b3z",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE200_3ymoslep",
+      "manufacturerUtf8Hex": "5f545a453230305f33796d6f736c6570",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-thermostat-fcu-wonjj6768",
+      "catalogId": "ef00.thermostats.legacy",
+      "catalogModule": "contracts.families.ef00.thermostats.legacy",
+      "profile": "thermostats-thermostat-saswell",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE204_3ymoslep",
+      "manufacturerUtf8Hex": "5f545a453230345f33796d6f736c6570",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-thermostat-fcu-wonjj6768",
+      "catalogId": "ef00.thermostats.legacy",
+      "catalogModule": "contracts.families.ef00.thermostats.legacy",
+      "profile": "thermostats-thermostat-saswell",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE284_3ymoslep",
+      "manufacturerUtf8Hex": "5f545a453238345f33796d6f736c6570",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-thermostat-fcu-wonjj6768",
+      "catalogId": "ef00.thermostats.legacy",
+      "catalogModule": "contracts.families.ef00.thermostats.legacy",
+      "profile": "thermostats-thermostat-saswell",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
+    },
+    {
+      "manufacturer": "_TZE2841000000_3ymoslep",
+      "manufacturerUtf8Hex": "5f545a45323834313030303030305f33796d6f736c6570",
+      "model": "TS0601",
+      "modelUtf8Hex": "545330363031",
+      "owner": "ef00-thermostat-fcu-wonjj6768",
+      "catalogId": "ef00.thermostats.legacy",
+      "catalogModule": "contracts.families.ef00.thermostats.legacy",
+      "profile": "thermostats-thermostat-saswell",
+      "auditEvidence": "analysis/z2m_catchup_20261007.md#fingerprint-only-exact-aliases"
     }
   ],
   "approvedFailClosedExacts": [
@@ -1620,7 +1708,7 @@
           "id": "zcl.switches.shelly_em"
         }
       ],
-      "exactCount": 12
+      "exactCount": 13
     },
     {
       "sourcePackage": "zcl-lights-wonjj6768",
@@ -1670,7 +1758,7 @@
           "id": "zcl.controls.jethome"
         }
       ],
-      "exactCount": 21
+      "exactCount": 24
     },
     {
       "sourcePackage": "ef00-covers-wonjj6768",
@@ -1728,7 +1816,7 @@
           "id": "ef00.switch.basic.z2m_absorption"
         }
       ],
-      "exactCount": 11
+      "exactCount": 12
     },
     {
       "sourcePackage": "ef00-switch-panel-wonjj6768",
@@ -2016,7 +2104,7 @@
           "id": "wave14.terncy.zcl_switch"
         }
       ],
-      "exactCount": 18,
+      "exactCount": 19,
       "catalogMigrations": [
         {
           "catalogId": "zcl.switches.z2m_absorption",
@@ -2024,7 +2112,7 @@
           "oldOwner": "z2m-zcl-switch-wonjj6768",
           "newOwner": "zcl-switch-2-wonjj6768",
           "moved": false,
-          "exactCount": 11,
+          "exactCount": 12,
           "exacts": [
             {
               "manufacturer": "AOYAN",
@@ -2109,6 +2197,17 @@
               "model": "TS0013",
               "modelUtf8Hex": "545330303133",
               "profile": "switches-switch-3-ssw03g",
+              "oldOwner": "z2m-zcl-switch-wonjj6768",
+              "newOwner": "zcl-switch-2-wonjj6768",
+              "catalogId": "zcl.switches.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.switches.z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZ3000_ly9apzky",
+              "manufacturerUtf8Hex": "5f545a333030305f6c793961707a6b79",
+              "model": "TS0003",
+              "modelUtf8Hex": "545330303033",
+              "profile": "switches-qs-s10-three",
               "oldOwner": "z2m-zcl-switch-wonjj6768",
               "newOwner": "zcl-switch-2-wonjj6768",
               "catalogId": "zcl.switches.z2m_absorption",
@@ -6655,7 +6754,7 @@
           "id": "zcl.controls.sonoff"
         }
       ],
-      "exactCount": 26,
+      "exactCount": 29,
       "catalogMigrations": [
         {
           "catalogId": "zcl.controls.z2m_absorption",
@@ -6663,7 +6762,7 @@
           "oldOwner": "z2m-zcl-controls-wonjj6768",
           "newOwner": "zcl-controls-2-wonjj6768",
           "moved": false,
-          "exactCount": 20,
+          "exactCount": 23,
           "exacts": [
             {
               "manufacturer": "Candeo",
@@ -6671,6 +6770,17 @@
               "model": "C-ZB-RD1Pv2-REM",
               "modelUtf8Hex": "432d5a422d5244315076322d52454d",
               "profile": "controllers-candeo-rd1p-rem",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "DIY",
+              "manufacturerUtf8Hex": "444959",
+              "model": "AirWick_nRF52840",
+              "modelUtf8Hex": "4169725769636b5f6e52463532383430",
+              "profile": "controllers-airwick",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
               "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
@@ -6710,6 +6820,17 @@
               "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
             },
             {
+              "manufacturer": "Onesti Products AS",
+              "manufacturerUtf8Hex": "4f6e657374692050726f6475637473204153",
+              "model": "NimlyCodePRO",
+              "modelUtf8Hex": "4e696d6c79436f646550524f",
+              "profile": "locks-nimly-code-pro",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
               "manufacturer": "Slacky-DIY",
               "manufacturerUtf8Hex": "536c61636b792d444959",
               "model": "TS0043-M007-SlD",
@@ -6726,6 +6847,17 @@
               "model": "TS0043-z-SlD",
               "modelUtf8Hex": "5453303034332d7a2d536c44",
               "profile": "buttons-button-3-battery-remote-action-slacky",
+              "oldOwner": "z2m-zcl-controls-wonjj6768",
+              "newOwner": "zcl-controls-2-wonjj6768",
+              "catalogId": "zcl.controls.z2m_absorption",
+              "catalogModule": "contracts.families.zcl.controls.z2m_absorption"
+            },
+            {
+              "manufacturer": "Sunricher",
+              "manufacturerUtf8Hex": "53756e726963686572",
+              "model": "ZGRC-KEY-008",
+              "modelUtf8Hex": "5a4752432d4b45592d303038",
+              "profile": "buttons-sunricher-cct",
               "oldOwner": "z2m-zcl-controls-wonjj6768",
               "newOwner": "zcl-controls-2-wonjj6768",
               "catalogId": "zcl.controls.z2m_absorption",
@@ -7027,7 +7159,7 @@
           "id": "zcl.bridges.wave19"
         }
       ],
-      "exactCount": 4,
+      "exactCount": 5,
       "catalogMigrations": [
         {
           "catalogId": "zcl.bridges.wave19",
@@ -7035,7 +7167,7 @@
           "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
           "newOwner": "zcl-bridge-wonjj6768",
           "moved": true,
-          "exactCount": 4,
+          "exactCount": 5,
           "exacts": [
             {
               "manufacturer": "Candeo",
@@ -7065,6 +7197,17 @@
               "model": "IRControl2-EF-3.0",
               "modelUtf8Hex": "4952436f6e74726f6c322d45462d332e30",
               "profile": "bridges-wave19-heiman-hs-two-ir",
+              "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
+              "newOwner": "zcl-bridge-wonjj6768",
+              "catalogId": "zcl.bridges.wave19",
+              "catalogModule": "contracts.families.zcl.bridges_wave19"
+            },
+            {
+              "manufacturer": "SMLIGHT",
+              "manufacturerUtf8Hex": "534d4c49474854",
+              "model": "SLZB-07MG26",
+              "modelUtf8Hex": "534c5a422d30374d473236",
+              "profile": "bridges-slzb07mg26",
               "oldOwner": "z2m-bridge-zcl-w19-wonjj6768",
               "newOwner": "zcl-bridge-wonjj6768",
               "catalogId": "zcl.bridges.wave19",
@@ -7105,7 +7248,7 @@
           "id": "zcl.thermostats.namron_edge"
         }
       ],
-      "exactCount": 5,
+      "exactCount": 6,
       "catalogMigrations": [
         {
           "catalogId": "zcl.sensors.wave19_hvac",
@@ -7113,7 +7256,7 @@
           "oldOwner": "z2m-hvac-w19-wonjj6768",
           "newOwner": "zcl-thermostat-wonjj6768",
           "moved": true,
-          "exactCount": 1,
+          "exactCount": 2,
           "exacts": [
             {
               "manufacturer": "PirogovX",
@@ -7121,6 +7264,17 @@
               "model": "ZB-MIDEA-AC",
               "modelUtf8Hex": "5a422d4d494445412d4143",
               "profile": "thermostats-wave19-pirogov-zb-midea-ac",
+              "oldOwner": "z2m-hvac-w19-wonjj6768",
+              "newOwner": "zcl-thermostat-wonjj6768",
+              "catalogId": "zcl.sensors.wave19_hvac",
+              "catalogModule": "contracts.families.zcl.sensors.wave19_hvac"
+            },
+            {
+              "manufacturer": "Topband",
+              "manufacturerUtf8Hex": "546f7062616e64",
+              "model": "TRV602WZ",
+              "modelUtf8Hex": "545256363032575a",
+              "profile": "thermostats-topband-trv602",
               "oldOwner": "z2m-hvac-w19-wonjj6768",
               "newOwner": "zcl-thermostat-wonjj6768",
               "catalogId": "zcl.sensors.wave19_hvac",
@@ -8035,7 +8189,7 @@
           "id": "ef00.switch.oxt4"
         }
       ],
-      "exactCount": 60,
+      "exactCount": 61,
       "catalogMigrations": [
         {
           "catalogId": "ef00.switch.basic.z2m_absorption",
@@ -8043,7 +8197,7 @@
           "oldOwner": "z2m-ef00-switch-wonjj6768",
           "newOwner": "ef00-switch-2-wonjj6768",
           "moved": false,
-          "exactCount": 11,
+          "exactCount": 12,
           "exacts": [
             {
               "manufacturer": "_TZE200_4jvmbiph",
@@ -8062,6 +8216,17 @@
               "model": "TS0601",
               "modelUtf8Hex": "545330363031",
               "profile": "switches-makegood-mg-gpo02z-core",
+              "oldOwner": "z2m-ef00-switch-wonjj6768",
+              "newOwner": "ef00-switch-2-wonjj6768",
+              "catalogId": "ef00.switch.basic.z2m_absorption",
+              "catalogModule": "contracts.families.ef00.switch_basic_z2m_absorption"
+            },
+            {
+              "manufacturer": "_TZE200_xnwxmj8z",
+              "manufacturerUtf8Hex": "5f545a453230305f786e77786d6a387a",
+              "model": "TS0601",
+              "modelUtf8Hex": "545330363031",
+              "profile": "switches-makegood-single",
               "oldOwner": "z2m-ef00-switch-wonjj6768",
               "newOwner": "ef00-switch-2-wonjj6768",
               "catalogId": "ef00.switch.basic.z2m_absorption",
@@ -12995,7 +13160,7 @@
               "manufacturerUtf8Hex": "547275737420496e7465726e6174696f6e616c20422e562e",
               "model": "CSW_ADUROLIGHT",
               "modelUtf8Hex": "4353575f414455524f4c49474854",
-              "profile": "safety-contact-tamper-battery-low-battery",
+              "profile": "safety-contact-trust808",
               "oldOwner": "zcl-sensors-3-wonjj6768",
               "newOwner": "zcl-sensors-3-wonjj6768",
               "catalogId": "zcl.sensors.simple_sensors",
@@ -13006,7 +13171,7 @@
               "manufacturerUtf8Hex": "547275737420496e7465726e6174696f6e616c20422e562e00",
               "model": "CSW_ADUROLIGHT",
               "modelUtf8Hex": "4353575f414455524f4c49474854",
-              "profile": "safety-contact-tamper-battery-low-battery",
+              "profile": "safety-contact-trust808",
               "oldOwner": "zcl-sensors-3-wonjj6768",
               "newOwner": "zcl-sensors-3-wonjj6768",
               "catalogId": "zcl.sensors.simple_sensors",
@@ -13439,13 +13604,13 @@
     "legacyOwnerChangeCount": 0,
     "newPackageCount": 24,
     "newCatalogCount": 96,
-    "newExactCount": 908,
-    "fingerprintOnlyAliasCount": 86,
+    "newExactCount": 915,
+    "fingerprintOnlyAliasCount": 94,
     "failClosedExactCount": 1,
     "restoredLegacyExactCount": 4,
-    "runtimeExactCount": 4269,
+    "runtimeExactCount": 4284,
     "movedCatalogCount": 52,
-    "movedExactCount": 500,
+    "movedExactCount": 502,
     "historicalPartitionCount": 17
   }
 }

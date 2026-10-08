@@ -1,0 +1,49 @@
+name: buttons-sunricher-cct
+components:
+  - id: main
+    label: On
+    capabilities:
+      - {id: button, version: 1}
+      - {id: battery, version: 1}
+      - {id: refresh, version: 1}
+      - {id: concertmirror08464.srCctAction, version: 1}
+      - {id: concertmirror08464.srCctStepSize, version: 1}
+      - {id: concertmirror08464.srCctTransitionTime, version: 1}
+      - {id: concertmirror08464.srCctTemperatureDelta, version: 1}
+      - {id: concertmirror08464.srCctGroup, version: 1}
+    categories: [{name: Button}]
+  - id: offButton
+    label: Off
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]
+  - id: brightnessUp
+    label: Brightness up
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]
+  - id: brightnessDown
+    label: Brightness down
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]
+  - id: temperatureUp
+    label: Color temperature up
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]
+  - id: temperatureDown
+    label: Color temperature down
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]
+  - id: sceneOne
+    label: Scene 1
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]
+  - id: sceneTwo
+    label: Scene 2
+    capabilities:
+      - {id: button, version: 1}
+    categories: [{name: Button}]

@@ -1,0 +1,8 @@
+name: bridges-slzb07mg26
+components:
+  - id: main
+    capabilities:
+      - {id: signalStrength, version: 1}
+      - {id: concertmirror08464.slzb07Reset, version: 1}
+      - {id: refresh, version: 1}
+    categories: [{name: Bridges}]

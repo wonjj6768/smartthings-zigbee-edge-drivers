@@ -1,4 +1,5 @@
 local tuya = require "protocol.tuya"
+local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local common = require "contracts.helpers.ef00_presence"
@@ -196,10 +197,14 @@ local hs208z = {
   initial_custom_state_query = false,
   refresh_state_query = false,
   time_start = "off",
+  zcl_clusters = {
+    zcl.motion({endpoint=1,emit=emit.presence(),read_only=true,read_on_configure=false}),
+    zcl.battery({endpoint=1,read_only=true,read_on_configure=true,
+      minimum_interval=3600,maximum_interval=65000,reportable_change=10,
+      from_device=function(value,_,context) if context.raw_value~=255 then return value end end}),
+  },
   datapoints = {
-    tuya.dp_enum(1, {name="presence",read_only=true,receive_datatypes={4,2},emit=emit.presence(),converter=converter.true_false0()}),
     tuya.dp_numeric(3, {name="hs208z_battery_state",read_only=true,receive_datatypes={2,4},emit=emit.hs208zBatteryState(),converter=converter.lookup_from_to({low=0,middle=1,high=2})}),
-    tuya.dp_battery(4, {read_only=true,emit=emit.battery()}),
     tuya.dp_numeric(9, {name="hs208z_pir_sensitivity",receive_datatypes={2,4},emit=emit.hs208zPirSensitivity(),converter=converter.lookup_from_to({low=0,middle=1,high=2})}),
     tuya.dp_illuminance(11, {read_only=true,emit=emit.illuminance()}),
     tuya.dp_numeric(12, {name="hs208z_pir_delay",emit=emit.hs208zPirDelay()}),
@@ -214,12 +219,14 @@ local hs208z = {
     tuya.dp_enum(109, {name="hs208z_temperature_unit",emit=emit.hs208zTemperatureUnit(),converter=converter.lookup_from_to({celsius=0,fahrenheit=1})}),
     tuya.dp_temperature(110, {read_only=true,emit=emit.temperature(),converter=converter.signed_number_pair(10)}),
     tuya.dp_numeric(111, {name="humidity",read_only=true,emit=emit.humidity()}),
-    tuya.dp_numeric(112, {name="hs208z_vibration_sensitivity",emit=emit.hs208zVibrationSensitivity()}),
+    tuya.dp_numeric(112, {name="hs208z_vibration_sensitivity",emit=emit.hs208VibrationSensitivity()}),
     tuya.dp_numeric(113, {name="hs208z_vibration_delay",emit=emit.hs208zVibrationDelay()}),
     tuya.dp_enum(122, {name="hs208z_motion_detection_mode",emit=emit.hs208zMotionDetectionMode(),converter=converter.lookup_from_to({pir_and_radar=0,pir_or_radar=1,only_radar=2})}),
     tuya.dp_numeric(123, {name="hs208z_detection_sensitivity",emit=emit.hs208zDetectionSensitivity()}),
   },
 }
+hs208z.zcl_clusters[1].minimum_interval = nil
+hs208z.zcl_clusters[1].maximum_interval = nil
 register_presence_definition(hs208z, {
   device_helpers.create_fingerprint("_TZD200_sjjp9bti", "TS0202"),
 })

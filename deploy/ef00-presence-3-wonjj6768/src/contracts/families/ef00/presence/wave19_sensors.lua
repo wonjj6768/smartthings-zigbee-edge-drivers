@@ -52,8 +52,7 @@ local function signed_number_value(value,_,dp_info)
 if type(dp_info)=="table"and type(dp_info.signed_value)=="number"then
 return dp_info.signed_value
 end
-local numeric=number_value(value)
-if numeric~=nil and numeric>0x7FFFFFFF then
+local numeric=number_value(value)if numeric~=nil and numeric>0x7FFFFFFF then
 return numeric-0x100000000
 end
 return numeric
@@ -74,8 +73,7 @@ local numeric=number_value(value)
 if numeric==nil then return nil end
 return numeric>0 and numeric<5
 end)
-local javis_number_converter=first_from(number_value)
-local javis_led_converter=first_pair(
+local javis_number_converter=first_from(number_value)local javis_led_converter=first_pair(
 function(value)
 local numeric=numeric_or_raw_one_byte_value(value)
 if numeric==1 then return"enabled"end
@@ -87,8 +85,7 @@ if value=="enabled"then return string.char(1)end
 if value=="disabled"then return string.char(0)end
 return nil
 end
-)
-local javis_keep_time_converter=first_pair(
+)local javis_keep_time_converter=first_pair(
 function(value)
 local numeric=numeric_or_raw_one_byte_value(value)
 if numeric==nil or numeric<0 or numeric>7 then return nil end
@@ -99,10 +96,8 @@ local numeric=tonumber(value)
 if numeric==nil or numeric<0 or numeric>7 then return nil end
 return string.char(math.floor(numeric))
 end
-)
-local javis_sensitivity_lookup={
-[25]="25",[50]="50",[75]="75",[100]="100",}
-local javis_sensitivity_converter=first_pair(
+)local javis_sensitivity_lookup={
+[25]="25",[50]="50",[75]="75",[100]="100",}local javis_sensitivity_converter=first_pair(
 function(value)
 return javis_sensitivity_lookup[numeric_or_raw_one_byte_value(value)]
 end,
@@ -111,58 +106,26 @@ local numeric=tonumber(value)
 if javis_sensitivity_lookup[numeric]==nil then return nil end
 return string.char(numeric)
 end
-)
-local javis_calibration_converter=first_pair(signed_numeric_or_raw_one_byte_value,raw_byte)
+)local javis_calibration_converter=first_pair(signed_numeric_or_raw_one_byte_value,raw_byte)
 local function javis_definition(keep_time_dp,led_dp,calibration_dp)
 return{
-profile="safety-wave19-javis-microwave",
-named_datapoints=true,
-magic_packet=false,
-query_on_configure=false,
-time_start="off",
-datapoints={
+profile="safety-wave19-javis-microwave",named_datapoints=true,magic_packet=false,query_on_configure=false,time_start="off",datapoints={
 tuya.dp_enum(1,{
-name="motion",endpoint=1,transaction=1,read_only=true,
-converter=javis_motion_converter,emit=emit.motion(),}),
-tuya.dp_numeric(101,{
-name="illuminance_primary",endpoint=1,transaction=1,read_only=true,
-converter=javis_number_converter,emit=emit.illuminance(),}),
-tuya.dp_numeric(104,{
-name="illuminance_secondary",endpoint=1,transaction=1,read_only=true,
-converter=javis_number_converter,emit=emit.illuminance(),}),
-tuya.dp_raw(2,{
-name="javis_mc_sensitivity",endpoint=1,transaction=1,
-converter=javis_sensitivity_converter,emit=emit.javisMcSensitivity(),}),
-tuya.dp_raw(keep_time_dp,{
-name="javis_mc_keep_time",endpoint=1,transaction=1,
-converter=javis_keep_time_converter,emit=emit.javisMcKeepTime(),}),
-tuya.dp_raw(led_dp,{
-name="javis_mc_led_enable",endpoint=1,transaction=1,
-converter=javis_led_converter,emit=emit.javisMcLedEnable(),}),
-tuya.dp_raw(calibration_dp,{
-name="javis_mc_illuminance_calibration",endpoint=1,transaction=1,
-converter=javis_calibration_converter,emit=emit.javisMcIlluminanceCalibration(),}),},}
+name="motion",endpoint=1,transaction=1,read_only=true,converter=javis_motion_converter,emit=emit.motion(),}),tuya.dp_numeric(101,{
+name="illuminance_primary",endpoint=1,transaction=1,read_only=true,converter=javis_number_converter,emit=emit.illuminance(),}),tuya.dp_numeric(104,{
+name="illuminance_secondary",endpoint=1,transaction=1,read_only=true,converter=javis_number_converter,emit=emit.illuminance(),}),tuya.dp_raw(2,{
+name="javis_mc_sensitivity",endpoint=1,transaction=1,converter=javis_sensitivity_converter,emit=emit.javisMcSensitivity(),}),tuya.dp_raw(keep_time_dp,{
+name="javis_mc_keep_time",endpoint=1,transaction=1,converter=javis_keep_time_converter,emit=emit.javisMcKeepTime(),}),tuya.dp_raw(led_dp,{
+name="javis_mc_led_enable",endpoint=1,transaction=1,converter=javis_led_converter,emit=emit.javisMcLedEnable(),}),tuya.dp_raw(calibration_dp,{
+name="javis_mc_illuminance_calibration",endpoint=1,transaction=1,converter=javis_calibration_converter,emit=emit.javisMcIlluminanceCalibration(),}),},}
 end
 register_device_definition(javis_definition(102,103,105),{
-device_helpers.create_fingerprint("_TZE200_i0b1dbqu","TS0601"),
-device_helpers.create_fingerprint("_TZE200_lgstepha","TS0601"),})
-register_device_definition(javis_definition(106,107,102),{
-device_helpers.create_fingerprint("_TZE200_kagkgk0i","TS0601"),})
-local neo_power_type_lookup={
-[0]="battery_full",
-[1]="battery_high",
-[2]="battery_medium",
-[3]="battery_low",
-[4]="usb",}
-local neo_alarm_lookup={
-[0]="over_temperature",
-[1]="over_humidity",
-[2]="below_min_temperature",
-[3]="below_min_humdity",
-[4]="off",}
+device_helpers.create_fingerprint("_TZE200_i0b1dbqu","TS0601"),device_helpers.create_fingerprint("_TZE200_lgstepha","TS0601"),})register_device_definition(javis_definition(106,107,102),{
+device_helpers.create_fingerprint("_TZE200_kagkgk0i","TS0601"),})local neo_power_type_lookup={
+[0]="battery_full",[1]="battery_high",[2]="battery_medium",[3]="battery_low",[4]="usb",}local neo_alarm_lookup={
+[0]="over_temperature",[1]="over_humidity",[2]="below_min_temperature",[3]="below_min_humdity",[4]="off",}
 local neo_motion_converter=first_from(function(value)
-local enabled=binary_value(value)
-return enabled
+local enabled=binary_value(value)return enabled
 end)
 local neo_power_type_converter=first_from(function(value)
 return neo_power_type_lookup[number_value(value)]
@@ -178,8 +141,7 @@ local numeric=number_value(value)
 if numeric==nil then return nil end
 return numeric/10
 end)
-local neo_numeric_converter=first_pair(number_value,number_value)
-local neo_signed_numeric_converter=first_pair(signed_number_value,number_value)
+local neo_numeric_converter=first_pair(number_value,number_value)local neo_signed_numeric_converter=first_pair(signed_number_value,number_value)
 local neo_alarm_converter=first_from(function(value)
 return neo_alarm_lookup[number_value(value)]
 end)
@@ -194,85 +156,29 @@ if value=="celsius"then return true end
 if value=="fahrenheit"then return false end
 return nil
 end
-)
-local neo_nas_pd07={
-profile="safety-wave19-neo-nas-pd07",
-named_datapoints=true,
-magic_packet=true,
-query_on_configure=false,
-mcu_version_request_on_configure=true,
-time_start="off",
-datapoints={
+)local neo_nas_pd07={
+profile="safety-wave19-neo-nas-pd07",named_datapoints=true,magic_packet=true,query_on_configure=false,mcu_version_request_on_configure=true,time_start="off",datapoints={
 tuya.dp_binary(101,{
-name="motion",endpoint=1,transaction=1,read_only=true,
-converter=neo_motion_converter,emit=emit.motion(),}),
-tuya.dp_enum(102,{
-name="neo_nas_pd_seven_power_type",endpoint=1,transaction=1,read_only=true,
-converter=neo_power_type_converter,emit=emit.neoNasPdSevenPowerType(),}),
-tuya.dp_enum(102,{
-name="neo_nas_pd_seven_battery_low",endpoint=1,transaction=1,read_only=true,
-converter=neo_battery_low_converter,emit=emit.neoNasPdSevenBatteryLow(),}),
-tuya.dp_binary(103,{
-name="tamper",endpoint=1,transaction=1,read_only=true,
-converter=neo_tamper_converter,emit=emit.tamper(),}),
-tuya.dp_numeric(104,{
-name="temperature",endpoint=1,transaction=1,read_only=true,
-converter=neo_temperature_converter,emit=emit.temperature(),}),
-tuya.dp_numeric(105,{
-name="humidity",endpoint=1,transaction=1,read_only=true,
-converter=first_from(number_value),emit=emit.humidity(),}),
-tuya.dp_numeric(107,{
-name="neo_nas_pd_seven_minimum_temperature",endpoint=1,transaction=1,
-signed=true,converter=neo_signed_numeric_converter,emit=emit.neoNasPdSevenTemperatureMin(),}),
-tuya.dp_numeric(108,{
-name="neo_nas_pd_seven_maximum_temperature",endpoint=1,transaction=1,
-signed=true,converter=neo_signed_numeric_converter,emit=emit.neoNasPdSevenTemperatureMax(),}),
-tuya.dp_binary(106,{
-name="neo_nas_pd_seven_temperature_scale",endpoint=1,transaction=1,
-converter=neo_temperature_scale_converter,emit=emit.neoNasPdSevenTemperatureScale(),}),
-tuya.dp_numeric(109,{
-name="neo_nas_pd_seven_minimum_humidity",endpoint=1,transaction=1,
-converter=neo_numeric_converter,emit=emit.neoNasPdSevenHumidityMin(),}),
-tuya.dp_numeric(110,{
-name="neo_nas_pd_seven_maximum_humidity",endpoint=1,transaction=1,
-converter=neo_numeric_converter,emit=emit.neoNasPdSevenHumidityMax(),}),
-tuya.dp_enum(113,{
-name="neo_nas_pd_seven_alarm",endpoint=1,transaction=1,read_only=true,
-converter=neo_alarm_converter,emit=emit.neoNasPdSevenAlarm(),}),},}
-register_device_definition(neo_nas_pd07,{
-device_helpers.create_fingerprint("_TZE200_7hfcudw5","TS0601"),})
-local mowe_mw833p={
-profile="safety-presence-mw833p-core",
-query_on_configure=false,
-time_start="off",
-datapoints={
-tuya.dp_enum(1,{name="presence",read_only=true,
-converter=converter.true_false1(),emit=emit.presence()}),
-tuya.dp_illuminance(103,{read_only=true,emit=emit.illuminance()}),},}
-register_device_definition(mowe_mw833p,{
-device_helpers.create_fingerprint("_TZE200_ops9sidw","TS0601"),})
-local lincukoo_r12z20_core={
-profile="safety-presence-r12z20-core",
-query_on_configure=false,
-time_start="off",
-datapoints={
-tuya.dp_enum(1,{name="presence",read_only=true,
-converter=converter.true_false0(),emit=emit.presence()}),
-tuya.dp_illuminance(101,{read_only=true,emit=emit.illuminance()}),},}
-register_device_definition(lincukoo_r12z20_core,device_helpers.create_fingerprints("TS0601",{
-"_TZE284_h7oalfxa","_TZE2841000000_h7oalfxa",}))
-local lincukoo_b08lrt_core={
-profile="safety-presence-b08lrt-core",
-query_on_configure=false,
-time_start="off",
-datapoints={
-tuya.dp_enum(1,{name="presence",read_only=true,
-converter=converter.true_false0(),emit=emit.presence()}),
-tuya.dp_illuminance(101,{read_only=true,emit=emit.illuminance()}),
-tuya.dp_temperature(22,{read_only=true,emit=emit.temperature()}),
-tuya.dp_humidity(23,{scale=1,read_only=true,emit=emit.humidity()}),},}
-register_device_definition(lincukoo_b08lrt_core,device_helpers.create_fingerprints("TS0601",{
-"_TZE284_cipobaav","_TZE2841000000_cipobaav",}))
-return{
-id="ef00.presence.wave19.sensors",
-registrations=registrations,}
+name="motion",endpoint=1,transaction=1,read_only=true,converter=neo_motion_converter,emit=emit.motion(),}),tuya.dp_enum(102,{
+name="neo_nas_pd_seven_power_type",endpoint=1,transaction=1,read_only=true,converter=neo_power_type_converter,emit=emit.neoNasPdSevenPowerType(),}),tuya.dp_enum(102,{
+name="neo_nas_pd_seven_battery_low",endpoint=1,transaction=1,read_only=true,converter=neo_battery_low_converter,emit=emit.neoNasPdSevenBatteryLow(),}),tuya.dp_binary(103,{
+name="tamper",endpoint=1,transaction=1,read_only=true,converter=neo_tamper_converter,emit=emit.tamper(),}),tuya.dp_numeric(104,{
+name="temperature",endpoint=1,transaction=1,read_only=true,converter=neo_temperature_converter,emit=emit.temperature(),}),tuya.dp_numeric(105,{
+name="humidity",endpoint=1,transaction=1,read_only=true,converter=first_from(number_value),emit=emit.humidity(),}),tuya.dp_numeric(107,{
+name="neo_nas_pd_seven_minimum_temperature",endpoint=1,transaction=1,signed=true,converter=neo_signed_numeric_converter,emit=emit.neoNasPdSevenTemperatureMin(),}),tuya.dp_numeric(108,{
+name="neo_nas_pd_seven_maximum_temperature",endpoint=1,transaction=1,signed=true,converter=neo_signed_numeric_converter,emit=emit.neoNasPdSevenTemperatureMax(),}),tuya.dp_binary(106,{
+name="neo_nas_pd_seven_temperature_scale",endpoint=1,transaction=1,converter=neo_temperature_scale_converter,emit=emit.neoNasPdSevenTemperatureScale(),}),tuya.dp_numeric(109,{
+name="neo_nas_pd_seven_minimum_humidity",endpoint=1,transaction=1,converter=neo_numeric_converter,emit=emit.neoNasPdSevenHumidityMin(),}),tuya.dp_numeric(110,{
+name="neo_nas_pd_seven_maximum_humidity",endpoint=1,transaction=1,converter=neo_numeric_converter,emit=emit.neoNasPdSevenHumidityMax(),}),tuya.dp_enum(113,{
+name="neo_nas_pd_seven_alarm",endpoint=1,transaction=1,read_only=true,converter=neo_alarm_converter,emit=emit.neoNasPdSevenAlarm(),}),},}register_device_definition(neo_nas_pd07,{
+device_helpers.create_fingerprint("_TZE200_7hfcudw5","TS0601"),})local mowe_mw833p={
+profile="safety-presence-mw833p-core",query_on_configure=false,time_start="off",datapoints={
+tuya.dp_enum(1,{name="presence",read_only=true,converter=converter.true_false1(),emit=emit.presence()}),tuya.dp_illuminance(103,{read_only=true,emit=emit.illuminance()}),},}register_device_definition(mowe_mw833p,{
+device_helpers.create_fingerprint("_TZE200_ops9sidw","TS0601"),})local lincukoo_r12z20_core={
+profile="safety-presence-r12z20-core",query_on_configure=false,time_start="off",datapoints={
+tuya.dp_enum(1,{name="presence",read_only=true,converter=converter.true_false0(),emit=emit.presence()}),tuya.dp_illuminance(101,{read_only=true,emit=emit.illuminance()}),},}register_device_definition(lincukoo_r12z20_core,device_helpers.create_fingerprints("TS0601",{
+"_TZE284_h7oalfxa","_TZE2841000000_h7oalfxa",}))local lincukoo_b08lrt_core={
+profile="safety-presence-b08lrt-core",query_on_configure=false,time_start="off",datapoints={
+tuya.dp_enum(1,{name="presence",read_only=true,converter=converter.true_false0(),emit=emit.presence()}),tuya.dp_illuminance(101,{read_only=true,emit=emit.illuminance()}),tuya.dp_temperature(22,{read_only=true,emit=emit.temperature()}),tuya.dp_humidity(23,{scale=1,read_only=true,emit=emit.humidity()}),},}register_device_definition(lincukoo_b08lrt_core,device_helpers.create_fingerprints("TS0601",{
+"_TZE284_cipobaav","_TZE2841000000_cipobaav",}))return{
+id="ef00.presence.wave19.sensors",registrations=registrations,}

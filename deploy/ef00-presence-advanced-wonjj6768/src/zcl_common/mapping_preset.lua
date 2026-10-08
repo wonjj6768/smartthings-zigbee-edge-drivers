@@ -27,14 +27,12 @@ end
 return target
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function zone_status_pair(mask)
 return{
@@ -48,8 +46,7 @@ if type(value.is_alarm2_set)=="function"and value:is_alarm2_set()then
 return true
 end
 elseif mask==0x0004 and type(value.is_tamper_set)=="function"then
-return value:is_tamper_set()
-elseif value.value~=nil then
+return value:is_tamper_set()elseif value.value~=nil then
 value=value.value
 else
 return value
@@ -68,52 +65,35 @@ if zone_status==nil then
 return nil
 end
 return{
-raw_value=zone_status.value or zone_status,
-typed_value=zone_status,}
+raw_value=zone_status.value or zone_status,typed_value=zone_status,}
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 zcl.occupancy=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-local ias_zone=resolved.ias_zone==true
+local resolved=normalize_preset_options(name_or_options,options)local ias_zone=resolved.ias_zone==true
 local configure_reporting=resolved.configure_reporting
 resolved.ias_zone=nil
 resolved.configure_reporting=nil
 if ias_zone then
 apply_defaults(resolved,merge_defaults(
 {
-name="occupancy",
-emit=emit.occupancy(),
-converter=zone_status_pair(0x0001),
-ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,
-command_id=0x00,
-command_extractor=extract_zone_status_from_command,},
-reporting_defaults(30,300,nil)))
-return zcl.ias_zone(resolved)
+name="occupancy",emit=emit.occupancy(),converter=zone_status_pair(0x0001),ias_configure_method=zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0x00,command_extractor=extract_zone_status_from_command,},reporting_defaults(30,300,nil)))return zcl.ias_zone(resolved)
 end
 if configure_reporting==false then
 apply_defaults(resolved,{
-emit=emit.occupancy(),
-read_on_configure=true,})
-return zcl.occupancy_sensing(resolved)
+emit=emit.occupancy(),read_on_configure=true,})return zcl.occupancy_sensing(resolved)
 end
 apply_defaults(resolved,merge_defaults(
 {
-emit=emit.occupancy(),},
-reporting_defaults(0,300,nil)))
-return zcl.occupancy_sensing(resolved)
+emit=emit.occupancy(),},reporting_defaults(0,300,nil)))return zcl.occupancy_sensing(resolved)
 end
 end
 return load_mapping_preset

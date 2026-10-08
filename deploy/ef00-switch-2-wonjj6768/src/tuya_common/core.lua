@@ -8,8 +8,7 @@ local cluster_base=require"st.zigbee.cluster_base"
 local utils=require"st.utils"
 local foundation=require"tuya_common.foundation"
 local log=foundation.log
-local shared={}
-for key,value in pairs(foundation)do
+local shared={}for key,value in pairs(foundation)do
 shared[key]=value
 end
 shared.data_types=data_types
@@ -21,11 +20,7 @@ shared.read_attribute=read_attribute
 shared.cluster_base=cluster_base
 shared.utils=utils
 shared.REPORT_COMMANDS={
-[shared.GET_DATA]=true,
-[shared.SET_DATA_RESPONSE]=true,
-[shared.REPORT_STATUS]=true,
-[shared.ACTIVE_STATUS_REPORT]=true,}
-local BASIC_CLUSTER=shared.BASIC_CLUSTER
+[shared.GET_DATA]=true,[shared.SET_DATA_RESPONSE]=true,[shared.REPORT_STATUS]=true,[shared.ACTIVE_STATUS_REPORT]=true,}local BASIC_CLUSTER=shared.BASIC_CLUSTER
 local PACKET_ID_FIELD=shared.PACKET_ID_FIELD
 local PERSIST_FALSE=shared.PERSIST_FALSE
 local BASIC_ENDPOINT_FIELD=shared.BASIC_ENDPOINT_FIELD
@@ -37,24 +32,21 @@ local math_floor=shared.math_floor
 local type_check=shared.type_check
 local table_concat=shared.table_concat
 local function next_packet_id(device)
-local previous_packet_id=device:get_field(PACKET_ID_FIELD)
-if type_check(previous_packet_id)~="number"or previous_packet_id%1~=0 then
+local previous_packet_id=device:get_field(PACKET_ID_FIELD)if type_check(previous_packet_id)~="number"or previous_packet_id%1~=0 then
 previous_packet_id=0
 end
 local packet_id=previous_packet_id+1
 if packet_id>=0x10000 then
 packet_id=1
 end
-device:set_field(PACKET_ID_FIELD,packet_id,PERSIST_FALSE)
-return packet_id
+device:set_field(PACKET_ID_FIELD,packet_id,PERSIST_FALSE)return packet_id
 end
 local function resolve_cluster_endpoint(device,cluster_id,field_name)
 local cached=field_name and device:get_field(field_name)or nil
 if cached then
 return cached
 end
-local endpoint=device:get_endpoint(cluster_id)
-if endpoint and field_name then
+local endpoint=device:get_endpoint(cluster_id)if endpoint and field_name then
 device:set_field(field_name,endpoint,PERSIST_FALSE)
 end
 return endpoint
@@ -90,35 +82,21 @@ end
 return nil
 end
 local function build_basic_read_attributes_message(device,attr_ids)
-local endpoint=resolve_cluster_endpoint(device,BASIC_CLUSTER,BASIC_ENDPOINT_FIELD)
-if not endpoint then
-log.warn(string.format("Cluster 0x%04X endpoint not found",BASIC_CLUSTER))
-return nil
+local endpoint=resolve_cluster_endpoint(device,BASIC_CLUSTER,BASIC_ENDPOINT_FIELD)if not endpoint then
+log.warn(string.format("Cluster 0x%04X endpoint not found",BASIC_CLUSTER))return nil
 end
 local zcl_header=zcl_messages.ZclHeader({
-cmd=data_types.ZCLCommandId(read_attribute.ReadAttribute.ID)})
-local address_header=messages.AddressHeader(
-constants.HUB.ADDR,
-constants.HUB.ENDPOINT,
-device:get_short_address(),
-endpoint,
-constants.HA_PROFILE_ID,
-BASIC_CLUSTER)
-local message_body=zcl_messages.ZclMessageBody({
-zcl_header=zcl_header,
-zcl_body=read_attribute.ReadAttribute(attr_ids)})
-return messages.ZigbeeMessageTx({
-address_header=address_header,
-body=message_body})
+cmd=data_types.ZCLCommandId(read_attribute.ReadAttribute.ID)})local address_header=messages.AddressHeader(
+constants.HUB.ADDR,constants.HUB.ENDPOINT,device:get_short_address(),endpoint,constants.HA_PROFILE_ID,BASIC_CLUSTER)local message_body=zcl_messages.ZclMessageBody({
+zcl_header=zcl_header,zcl_body=read_attribute.ReadAttribute(attr_ids)})return messages.ZigbeeMessageTx({
+address_header=address_header,body=message_body})
 end
 local function bytes_from_table(bytes)
-local parts={}
-for index,byte in ipairs(bytes or{})do
+local parts={}for index,byte in ipairs(bytes or{})do
 if type_check(byte)~="number"then
 return nil
 end
-local normalized=math_floor(byte)
-if normalized~=byte or normalized<0 or normalized>0xFF then
+local normalized=math_floor(byte)if normalized~=byte or normalized<0 or normalized>0xFF then
 return nil
 end
 parts[index]=string_char(normalized)
@@ -138,16 +116,13 @@ local function pack_bitmap(value)
 if type_check(value)~="number"then
 return nil
 end
-local normalized=math_floor(value)
-if normalized~=value or normalized<0 then
+local normalized=math_floor(value)if normalized~=value or normalized<0 then
 return nil
 end
 value=normalized
 if value<=0xFF then
-return string_char(value)
-elseif value<=0xFFFF then
-return string_pack(">I2",value)
-elseif value<=0xFFFFFFFF then
+return string_char(value)elseif value<=0xFFFF then
+return string_pack(">I2",value)elseif value<=0xFFFFFFFF then
 return string_pack(">I4",value)
 end
 return nil
@@ -165,8 +140,7 @@ end
 if type_check(transaction)~="number"then
 return nil
 end
-local normalized=math_floor(transaction)
-if normalized~=transaction then
+local normalized=math_floor(transaction)if normalized~=transaction then
 return nil
 end
 normalized=normalized%0x10000
@@ -176,8 +150,7 @@ end
 return normalized
 end
 local function extract_transaction(message)
-local payload=extract_payload(message)
-if payload and string_len(payload)>=2 then
+local payload=extract_payload(message)if payload and string_len(payload)>=2 then
 return string_byte(payload,2)
 end
 return nil

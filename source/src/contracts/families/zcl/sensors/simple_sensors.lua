@@ -56,7 +56,7 @@ register_device_definition(adurosmart_81910_core,{
 -- NUL-terminated Basic manufacturer string observed by Z2M; neither row is a
 -- model-only fallback.  Contact is alarm1 only (alarm2 must stay ignored).
 local trust_zcts808_core = {
-  profile="safety-contact-tamper-battery-low-battery",magic_packet=false,
+  profile="safety-contact-trust808",magic_packet=false,
   parent_refresh=function(device)
     zcl.read_attribute(device,1,0x21,1)
   end,
@@ -70,7 +70,7 @@ local trust_zcts808_core = {
       return (value&1)~=0
     end})),
     passive(zcl.tamper({endpoint=1})),
-    passive(zcl.battery_low({endpoint=1})),
+    passive(zcl.battery_low({endpoint=1,name="trust808_battery_low",emit=emit.trust808BatteryLow()})),
     zcl.battery({endpoint=1,minimum_interval=3600,maximum_interval=65000,
       reportable_change=0,read_on_configure=true,from_device=battery_value}),
   },
@@ -78,6 +78,7 @@ local trust_zcts808_core = {
 register_device_definition(trust_zcts808_core,{
   device_helpers.create_fingerprint("Trust International B.V.","CSW_ADUROLIGHT"),
   device_helpers.create_fingerprint("Trust International B.V.\0","CSW_ADUROLIGHT"),
+  device_helpers.create_fingerprint("ADUROLIGHT","CSW_ADUROLIGHT"),
 })
 
 -- Z2M 764f7d10: STH1Z/STH2Z share these measurements; FD22 settings stay separate.

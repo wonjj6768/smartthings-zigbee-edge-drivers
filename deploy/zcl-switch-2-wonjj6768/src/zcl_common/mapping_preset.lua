@@ -34,18 +34,15 @@ end
 return nil
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function build_lookup_pair(map,default_from,default_to,aliases)
-local reverse={}
-for key,value in pairs(map)do
+local reverse={}for key,value in pairs(map)do
 reverse[value]=key
 end
 if type(aliases)=="table"then
@@ -57,8 +54,7 @@ end
 end
 return{
 from=function(value)
-local mapped=map[value]
-if mapped~=nil then
+local mapped=map[value]if mapped~=nil then
 return mapped
 end
 if default_from~=nil then
@@ -67,8 +63,7 @@ end
 return value
 end,
 to=function(value)
-local mapped=reverse[value]
-if mapped~=nil then
+local mapped=reverse[value]if mapped~=nil then
 return mapped
 end
 if default_to~=nil then
@@ -89,61 +84,40 @@ return value
 end
 local function power_on_behavior_pair()
 return build_lookup_pair({
-[0]="off",
-[1]="on",
-[2]="previous",
-},nil,nil,{
+[0]="off",[1]="on",[2]="previous",},nil,nil,{
 restore="previous",})
 end
 local function switch_type_pair()
 return build_lookup_pair({
-[0]="toggle",
-[1]="state",
-[2]="momentary",})
+[0]="toggle",[1]="state",[2]="momentary",})
 end
 local function encode_uint16_le(value)
-local numeric=math.floor(clamp(tonumber(value)or 0,0,0xFFFF)+0.5)
-return string.char(bit32.band(numeric,0xFF))..
+local numeric=math.floor(clamp(tonumber(value)or 0,0,0xFFFF)+0.5)return string.char(bit32.band(numeric,0xFF))..
 string.char(bit32.rshift(bit32.band(numeric,0xFF00),8))
 end
 local function define_enum_attribute(cluster_id,attribute_id,defaults)
 return function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-local converter=defaults.converter_factory()
-apply_defaults(resolved,{
-name=defaults.name,
-emit=defaults.emit,
-converter=converter,
+local resolved=normalize_preset_options(name_or_options,options)local converter=defaults.converter_factory()apply_defaults(resolved,{
+name=defaults.name,emit=defaults.emit,converter=converter,
 to_device=function(value)
 return converter.to(value)
 end,
-data_type=data_types.Enum8,
-write_type=data_types.Enum8,
-attribute_name=defaults.attribute_name,
-mfg_code=defaults.mfg_code,
-read_on_configure=true,})
-return zcl.cluster_attribute(cluster_id,attribute_id,resolved)
+data_type=data_types.Enum8,write_type=data_types.Enum8,attribute_name=defaults.attribute_name,mfg_code=defaults.mfg_code,read_on_configure=true,})return zcl.cluster_attribute(cluster_id,attribute_id,resolved)
 end
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 local function define_preset(name,factory,defaults_builder)
 zcl[name]=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,defaults_builder(resolved))
-return factory(resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,defaults_builder(resolved))return factory(resolved)
 end
 end
 define_preset("switch",zcl.on_off,function(options)
@@ -155,97 +129,54 @@ emit=emit.switch(),}
 end
 return merge_defaults(
 {
-emit=emit.switch(),},
-reporting_defaults(0,300,nil))
+emit=emit.switch(),},reporting_defaults(0,300,nil))
 end)
 zcl.power_on_behavior=define_enum_attribute(zcl.CLUSTER_ON_OFF,0x8002,{
-name="power_on_behavior",
-emit=optional_emit("power_on_behavior"),
-attribute_name="tuyaPowerOnBehavior",
-converter_factory=power_on_behavior_pair,})
+name="power_on_behavior",emit=optional_emit("power_on_behavior"),attribute_name="tuyaPowerOnBehavior",converter_factory=power_on_behavior_pair,})
 zcl.child_lock=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,{
-name="child_lock",
-emit=optional_emit("childLock"),
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,{
+name="child_lock",emit=optional_emit("childLock"),
 from_device=function(value)
 return value and"on"or"off"
 end,
 to_device=function(value)
 return value==true or value=="on"or value=="lock"or value=="LOCK"
 end,
-data_type=data_types.Boolean,
-write_type=data_types.Boolean,
-attribute_name="tuyaChildLock",
-read_on_configure=true,})
-return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF,0x8000,resolved)
+data_type=data_types.Boolean,write_type=data_types.Boolean,attribute_name="tuyaChildLock",read_on_configure=true,})return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF,0x8000,resolved)
 end
 zcl.tuya_magic_packet=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,{
-name="tuya_magic_packet",
-read_only=true,
-read_on_configure=true,})
-return zcl.cluster_attribute(0x0000,0xFFFE,resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,{
+name="tuya_magic_packet",read_only=true,read_on_configure=true,})return zcl.cluster_attribute(0x0000,0xFFFE,resolved)
 end
 zcl.switch_type=define_enum_attribute(0xE001,0xD030,{
-name="switch_type",
-emit=optional_emit("switch_type"),
-attribute_name="tuyaExternalSwitchType",
-mfg_code=0x1141,
-converter_factory=switch_type_pair,})
+name="switch_type",emit=optional_emit("switch_type"),attribute_name="tuyaExternalSwitchType",mfg_code=0x1141,converter_factory=switch_type_pair,})
 zcl.countdown_timer=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,{
-name="countdown_timer",
-emit=optional_emit("countdownTimerZclTwelveHours","s"),
-data_type=data_types.Uint16,
-write_type=data_types.Uint16,
-tx_command_id=0x42,
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,{
+name="countdown_timer",emit=optional_emit("countdownTimerZclTwelveHours","s"),data_type=data_types.Uint16,write_type=data_types.Uint16,tx_command_id=0x42,
 to_device=function(value)
-local countdown=clamp(tonumber(value)or 0,0,43200)
-return string.char(0x00)..encode_uint16_le(countdown)..encode_uint16_le(countdown)
+local countdown=clamp(tonumber(value)or 0,0,43200)return string.char(0x00)..encode_uint16_le(countdown)..encode_uint16_le(countdown)
 end,
 numeric_range={
-minimum=0,
-maximum=43200,
-step=1,
-unit="s",},
-attribute_name="onTime",
-read_on_configure=true,})
-return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF,0x4001,resolved)
+minimum=0,maximum=43200,step=1,unit="s",},attribute_name="onTime",read_on_configure=true,})return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF,0x4001,resolved)
 end
 define_preset("power",zcl.electrical_measurement_power,function()
 return merge_defaults(
 {
-emit=emit.power(),
-metering_kind="power",
-poll_interval=300,},
-reporting_defaults(5,300,1))
+emit=emit.power(),metering_kind="power",poll_interval=300,},reporting_defaults(5,300,1))
 end)
 define_preset("current",zcl.electrical_measurement_current,function()
 return merge_defaults(
 {
-emit=emit.current(),
-scale=1000,
-metering_kind="current",
-poll_interval=300,},
-reporting_defaults(5,300,1))
+emit=emit.current(),scale=1000,metering_kind="current",poll_interval=300,},reporting_defaults(5,300,1))
 end)
 define_preset("voltage",zcl.electrical_measurement_voltage,function()
 return merge_defaults(
 {
-emit=emit.voltage(),
-metering_kind="voltage",
-poll_interval=300,},
-reporting_defaults(5,300,1))
+emit=emit.voltage(),metering_kind="voltage",poll_interval=300,},reporting_defaults(5,300,1))
 end)
 define_preset("energy",zcl.simple_metering,function()
 return{
-emit=emit.energy(),
-read_on_configure=true,
-metering_kind="energy",
-poll_interval=900,}
+emit=emit.energy(),read_on_configure=true,metering_kind="energy",poll_interval=900,}
 end)
 end
 return load_mapping_preset

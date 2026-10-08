@@ -1,0 +1,48 @@
+name: controllers-airwick
+components:
+  - id: main
+    capabilities:
+      - {id: voltageMeasurement, version: 1}
+      - {id: refresh, version: 1}
+      - {id: concertmirror08464.airwickMode, version: 1}
+      - {id: concertmirror08464.airwickScheduleInfo, version: 1}
+      - {id: concertmirror08464.airwickSpray, version: 1}
+      - {id: concertmirror08464.airwickResetCounter, version: 1}
+      - {id: concertmirror08464.airwickBatteryLevel, version: 1}
+      - {id: concertmirror08464.airwickDuration, version: 1}
+      - {id: concertmirror08464.airwickAutoInterval, version: 1}
+      - {id: concertmirror08464.airwickTimeZone, version: 1}
+      - {id: concertmirror08464.airwickSprayCount, version: 1}
+      - {id: concertmirror08464.airwickLastReason, version: 1}
+      - {id: concertmirror08464.airwickLastSpray, version: 1}
+      - {id: concertmirror08464.airwickNextSpray, version: 1}
+      - {id: concertmirror08464.airwickTimeValid, version: 1}
+      - {id: concertmirror08464.airwickMonEnabled, version: 1}
+      - {id: concertmirror08464.airwickMonStart, version: 1}
+      - {id: concertmirror08464.airwickMonEnd, version: 1}
+      - {id: concertmirror08464.airwickMonInterval, version: 1}
+      - {id: concertmirror08464.airwickTueEnabled, version: 1}
+      - {id: concertmirror08464.airwickTueStart, version: 1}
+      - {id: concertmirror08464.airwickTueEnd, version: 1}
+      - {id: concertmirror08464.airwickTueInterval, version: 1}
+      - {id: concertmirror08464.airwickWedEnabled, version: 1}
+      - {id: concertmirror08464.airwickWedStart, version: 1}
+      - {id: concertmirror08464.airwickWedEnd, version: 1}
+      - {id: concertmirror08464.airwickWedInterval, version: 1}
+      - {id: concertmirror08464.airwickThuEnabled, version: 1}
+      - {id: concertmirror08464.airwickThuStart, version: 1}
+      - {id: concertmirror08464.airwickThuEnd, version: 1}
+      - {id: concertmirror08464.airwickThuInterval, version: 1}
+      - {id: concertmirror08464.airwickFriEnabled, version: 1}
+      - {id: concertmirror08464.airwickFriStart, version: 1}
+      - {id: concertmirror08464.airwickFriEnd, version: 1}
+      - {id: concertmirror08464.airwickFriInterval, version: 1}
+      - {id: concertmirror08464.airwickSatEnabled, version: 1}
+      - {id: concertmirror08464.airwickSatStart, version: 1}
+      - {id: concertmirror08464.airwickSatEnd, version: 1}
+      - {id: concertmirror08464.airwickSatInterval, version: 1}
+      - {id: concertmirror08464.airwickSunEnabled, version: 1}
+      - {id: concertmirror08464.airwickSunStart, version: 1}
+      - {id: concertmirror08464.airwickSunEnd, version: 1}
+      - {id: concertmirror08464.airwickSunInterval, version: 1}
+    categories: [{name: Others}]

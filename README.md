@@ -5,7 +5,7 @@ This project ports selected Zigbee2MQTT device support into native SmartThings E
 
 **[Open the driver search →](https://wonjj6768.github.io/smartthings-zigbee-edge-drivers/)**
 
-Search 4,269 exact manufacturer/model fingerprints across 51 SmartThings Edge drivers.
+Search 4,284 exact manufacturer/model fingerprints across 51 SmartThings Edge drivers.
 
 ## Install
 
@@ -37,7 +37,7 @@ For a missing device, a problem, or a feature request, [open an issue](https://g
 | EF00 Covers wonjj6768 | 194 |
 | EF00 Energy wonjj6768 | 54 |
 | EF00 Garage Door wonjj6768 | 11 |
-| EF00 Lights 2 wonjj6768 | 32 |
+| EF00 Lights 2 wonjj6768 | 33 |
 | EF00 Lights wonjj6768 | 112 |
 | EF00 Meters 2 wonjj6768 | 13 |
 | EF00 Meters wonjj6768 | 63 |
@@ -52,10 +52,10 @@ For a missing device, a problem, or a feature request, [open an issue](https://g
 | EF00 Screen Switch wonjj6768 | 10 |
 | EF00 Sensors 2 wonjj6768 | 21 |
 | EF00 Sensors wonjj6768 | 155 |
-| EF00 Switch 2 wonjj6768 | 73 |
-| EF00 Switch Panel wonjj6768 | 40 |
+| EF00 Switch 2 wonjj6768 | 74 |
+| EF00 Switch Panel wonjj6768 | 41 |
 | EF00 Switch wonjj6768 | 113 |
-| EF00 Thermostat FCU wonjj6768 | 42 |
+| EF00 Thermostat FCU wonjj6768 | 46 |
 | EF00 Thermostat HVAC 2 wonjj6768 | 24 |
 | EF00 Thermostat TRV 1 wonjj6768 | 71 |
 | EF00 Thermostat TRV 2 wonjj6768 | 34 |
@@ -63,9 +63,9 @@ For a missing device, a problem, or a feature request, [open an issue](https://g
 | EF00 Thermostat Wall wonjj6768 | 42 |
 | EF00 Valves 2 wonjj6768 | 20 |
 | EF00 Valves wonjj6768 | 31 |
-| ZCL Bridge wonjj6768 | 4 |
+| ZCL Bridge wonjj6768 | 5 |
 | ZCL EV Chargers wonjj6768 | 1 |
-| ZCL Controls 2 wonjj6768 | 26 |
+| ZCL Controls 2 wonjj6768 | 29 |
 | ZCL Controls wonjj6768 | 320 |
 | ZCL Covers 2 wonjj6768 | 3 |
 | ZCL Covers wonjj6768 | 43 |
@@ -76,11 +76,11 @@ For a missing device, a problem, or a feature request, [open an issue](https://g
 | ZCL Locks wonjj6768 | 2 |
 | ZCL Plugs wonjj6768 | 110 |
 | ZCL Sensors 2 wonjj6768 | 338 |
-| ZCL Sensors 3 wonjj6768 | 150 |
+| ZCL Sensors 3 wonjj6768 | 151 |
 | ZCL Sensors wonjj6768 | 406 |
-| ZCL Switch 2 wonjj6768 | 18 |
-| ZCL Switch wonjj6768 | 504 |
-| ZCL Thermostat wonjj6768 | 5 |
+| ZCL Switch 2 wonjj6768 | 19 |
+| ZCL Switch wonjj6768 | 505 |
+| ZCL Thermostat wonjj6768 | 6 |
 
 </details>
 

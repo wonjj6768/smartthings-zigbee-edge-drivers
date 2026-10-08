@@ -7,8 +7,7 @@ local function battery_percent_from_voltage(voltage)
 if type(voltage)~="number"then
 return voltage
 end
-local percent=math.floor((((voltage-2.0)/1.0)*100)+0.5)
-if percent<0 then
+local percent=math.floor((((voltage-2.0)/1.0)*100)+0.5)if percent<0 then
 return 0
 end
 if percent>100 then
@@ -17,37 +16,16 @@ end
 return percent
 end
 local excellux_scene_switch={
-profile="buttons-button-1-battery-operation-mode-remote-action",
-datapoints={{dp=4,datatype=2,name="battery",field="battery",emit=emit.battery(),read_only=true}},
-advanced_remote=true,
-unprefixed_remote_actions=true,
-button_actions={"pushed","double","held"},
-button_count=1,
-zcl_initial_writes={
-{name="operation_mode",value="event"},},
-zcl_clusters={
-zcl.tuya_magic_packet(),
-zcl.battery({endpoint=1,read_on_configure=true}),
-zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION,zcl.ATTR_BATTERY_VOLTAGE,{
-name="battery",
-endpoint=1,
-emit=emit.battery(),
-scale=10,
-from_device=battery_percent_from_voltage,
-read_on_configure=true,}),
-zcl.operation_mode(),},
+profile="buttons-button-1-battery-operation-mode-remote-action",datapoints={{dp=4,datatype=2,name="battery",field="battery",emit=emit.battery(),read_only=true}},advanced_remote=true,unprefixed_remote_actions=true,button_actions={"pushed","double","held"},button_count=1,zcl_initial_writes={
+{name="operation_mode",value="event"},},zcl_clusters={
+zcl.tuya_magic_packet(),zcl.battery({endpoint=1,read_on_configure=true}),zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION,zcl.ATTR_BATTERY_VOLTAGE,{
+name="battery",endpoint=1,emit=emit.battery(),scale=10,from_device=battery_percent_from_voltage,read_on_configure=true,}),zcl.operation_mode(),},
 configure=function(driver,device)
 for _,cluster_id in ipairs({zcl.CLUSTER_POWER_CONFIGURATION,zcl.CLUSTER_ON_OFF})do
 device:send(device_management.build_bind_request(
-device,
-cluster_id,
-driver.environment_info.hub_zigbee_eui,
-1))
+device,cluster_id,driver.environment_info.hub_zigbee_eui,1))
 end
 end,
-}
-register_device_definition(excellux_scene_switch,{
-device_helpers.create_fingerprint("DSS0010","Excellux"),})
-return{
-id="zcl.controls.excellux",
-registrations=device_definitions,}
+}register_device_definition(excellux_scene_switch,{
+device_helpers.create_fingerprint("DSS0010","Excellux"),})return{
+id="zcl.controls.excellux",registrations=device_definitions,}

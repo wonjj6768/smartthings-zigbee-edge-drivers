@@ -2375,7 +2375,7 @@ local aqara_fp310_core = {
   zcl_clusters={
     zcl.cluster_attribute(0xFCC0,0x0142,{
       name="aqara_fp310_presence",endpoint=1,mfg_code=0x115F,data_type=data_types.Uint8,
-      read_only=true,read_on_configure=true,
+      read_only=true,read_on_configure=true,minimum_interval=0,maximum_interval=3600,reportable_change=1,
       from_device=function(value)
         if type(value)=="table" then value=value.value end
         return value==1

@@ -3,8 +3,7 @@ local custom_capabilities=require"runtime.capability_metadata"
 local capability_support=require"runtime.capability_support"
 local utf8_text=require"runtime.utf8_text"
 local log=require"log"
-local binding={}
-local MAIN_COMPONENT="main"
+local binding={}local MAIN_COMPONENT="main"
 local REFRESHED_DEFINITIONS={}
 local function device_name(device)
 if type(device)~="table"then
@@ -28,8 +27,7 @@ end
 local function emit_event(device,component_id,event)
 component_id=component_id or MAIN_COMPONENT
 if component_id==MAIN_COMPONENT then
-device:emit_event(event)
-else
+device:emit_event(event)else
 device:emit_component_event({id=component_id},event)
 end
 end
@@ -49,10 +47,8 @@ end
 if REFRESHED_DEFINITIONS[capability_id]==true then
 return true
 end
-local ok,err=pcall(capabilities.get_capability_definition,capability_id,1,true)
-if not ok then
-log.warn(string.format("Failed to refresh capability definition for %s: %s",capability_id,tostring(err)))
-return false
+local ok,err=pcall(capabilities.get_capability_definition,capability_id,1,true)if not ok then
+log.warn(string.format("Failed to refresh capability definition for %s: %s",capability_id,tostring(err)))return false
 end
 REFRESHED_DEFINITIONS[capability_id]=true
 return true
@@ -61,9 +57,7 @@ local function resolve_attribute(metadata,attribute_name)
 if type(metadata)~="table"then
 return nil,nil
 end
-ensure_definition_loaded(metadata.capability_id)
-local capability=capabilities[metadata.capability_id]
-local attribute=capability and capability[attribute_name]or nil
+ensure_definition_loaded(metadata.capability_id)local capability=capabilities[metadata.capability_id]local attribute=capability and capability[attribute_name]or nil
 if not is_callable(attribute)and capability and type(capability.attributes)=="table"then
 attribute=capability.attributes[attribute_name]
 end
@@ -81,17 +75,11 @@ if type(device.set_field)=="function"then
 device:set_field(key,true,{persist=false})
 end
 log.warn(string.format(
-"[%s] Custom capability binding missing (%s): %s.%s",
-device_name(device),
-reason or"unknown",
-metadata.capability_id or"unknown",
-metadata.attribute_name or"unknown"))
+"[%s] Custom capability binding missing (%s): %s.%s",device_name(device),reason or"unknown",metadata.capability_id or"unknown",metadata.attribute_name or"unknown"))
 end
 local function build_payload(metadata,value,options)
-options=options or{}
-if metadata.kind=="numeric"then
-local payload={value=value}
-local unit=options.unit
+options=options or{}if metadata.kind=="numeric"then
+local payload={value=value}local unit=options.unit
 if type(unit)~="string"or unit==""then
 unit=metadata.event_unit or(metadata.default_range and metadata.default_range.unit or nil)
 end
@@ -103,12 +91,10 @@ end
 return{value=value}
 end
 function binding.supports(device,reference,component_id)
-local metadata=resolve_metadata(reference)
-return metadata~=nil and supports_component_capability(device,metadata.capability_id,component_id)
+local metadata=resolve_metadata(reference)return metadata~=nil and supports_component_capability(device,metadata.capability_id,component_id)
 end
 function binding.emit_state(device,component_id,reference,value,options)
-local metadata=resolve_metadata(reference)
-if metadata==nil or value==nil then
+local metadata=resolve_metadata(reference)if metadata==nil or value==nil then
 return false
 end
 component_id=component_id or MAIN_COMPONENT
@@ -119,27 +105,22 @@ if metadata.kind=="enum"and(type(value)~="string"or value=="")then
 return false
 end
 if metadata.kind=="text"then
-local character_length=utf8_text.length(value)
-if character_length==nil then
+local character_length=utf8_text.length(value)if character_length==nil then
 return false
 end
 if type(metadata.maximum_length)=="number"then
-value=utf8_text.truncate(value,metadata.maximum_length)
-if value==nil then
+value=utf8_text.truncate(value,metadata.maximum_length)if value==nil then
 return false
 end
 end
 end
-local capability,attribute=resolve_attribute(metadata,metadata.attribute_name)
-if not is_callable(attribute)then
+local capability,attribute=resolve_attribute(metadata,metadata.attribute_name)if not is_callable(attribute)then
 if capability==nil then
-log_missing_binding(device,metadata,"capability")
-else
+log_missing_binding(device,metadata,"capability")else
 log_missing_binding(device,metadata,"attribute")
 end
 return false
 end
-emit_event(device,component_id,attribute(build_payload(metadata,value,options)))
-return true
+emit_event(device,component_id,attribute(build_payload(metadata,value,options)))return true
 end
 return binding

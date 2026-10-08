@@ -32,8 +32,7 @@ component_id=component_id or"main"
 if type(device.supports_capability_by_id)=="function"then
 return device:supports_capability_by_id(capability_id,component_id)
 end
-local components=profile_components(device)
-local component=type(components)=="table"and components[component_id]or nil
+local components=profile_components(device)local component=type(components)=="table"and components[component_id]or nil
 return component_has_capability(component,capability_id)
 end
 return capability_support

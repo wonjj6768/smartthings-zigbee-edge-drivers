@@ -27,18 +27,15 @@ end
 return target
 end
 local function normalize_preset_options(name_or_options,options)
-local resolved={}
-if type(name_or_options)=="string"then
+local resolved={}if type(name_or_options)=="string"then
 resolved.name=name_or_options
 else
 merge_options(resolved,name_or_options)
 end
-merge_options(resolved,options)
-return resolved
+merge_options(resolved,options)return resolved
 end
 local function build_lookup_pair(map,default_from,default_to,aliases)
-local reverse={}
-for key,value in pairs(map)do
+local reverse={}for key,value in pairs(map)do
 reverse[value]=key
 end
 if type(aliases)=="table"then
@@ -50,8 +47,7 @@ end
 end
 return{
 from=function(value)
-local mapped=map[value]
-if mapped~=nil then
+local mapped=map[value]if mapped~=nil then
 return mapped
 end
 if default_from~=nil then
@@ -60,8 +56,7 @@ end
 return value
 end,
 to=function(value)
-local mapped=reverse[value]
-if mapped~=nil then
+local mapped=reverse[value]if mapped~=nil then
 return mapped
 end
 if default_to~=nil then
@@ -73,11 +68,7 @@ end,
 end
 local function thermostat_mode_pair()
 return build_lookup_pair({
-[0]="off",
-[1]="auto",
-[3]="cool",
-[4]="heat",
-[5]="emergency heat",})
+[0]="off",[1]="auto",[3]="cool",[4]="heat",[5]="emergency heat",})
 end
 local function thermostat_running_state_pair()
 return{
@@ -117,31 +108,28 @@ end,
 end
 local function reporting_defaults(minimum_interval,maximum_interval,reportable_change)
 return{
-minimum_interval=minimum_interval,
-maximum_interval=maximum_interval,
-reportable_change=reportable_change,
-read_on_configure=true,}
+minimum_interval=minimum_interval,maximum_interval=maximum_interval,reportable_change=reportable_change,read_on_configure=true,}
 end
 local function merge_defaults(...)
-local merged={}
-for _,defaults in ipairs({...})do
+local merged={}for _,defaults in ipairs({...})do
 apply_defaults(merged,defaults)
 end
 return merged
 end
 local function define_preset(name,factory,defaults_builder)
 zcl[name]=function(name_or_options,options)
-local resolved=normalize_preset_options(name_or_options,options)
-apply_defaults(resolved,defaults_builder(resolved))
-return factory(resolved)
+local resolved=normalize_preset_options(name_or_options,options)apply_defaults(resolved,defaults_builder(resolved))return factory(resolved)
 end
 end
 define_preset("humidity",zcl.relative_humidity,function()
 return merge_defaults(
 {
-emit=emit.humidity(),
-scale=100,},
-reporting_defaults(30,300,100))
+emit=emit.humidity(),scale=100,},reporting_defaults(30,300,100))
+end)
+define_preset("battery",zcl.power_configuration_battery,function()
+return merge_defaults(
+{
+emit=emit.battery(),scale=2,},reporting_defaults(300,21600,2))
 end)
 define_preset("switch",zcl.on_off,function(options)
 local configure_reporting=options.configure_reporting
@@ -152,46 +140,32 @@ emit=emit.switch(),}
 end
 return merge_defaults(
 {
-emit=emit.switch(),},
-reporting_defaults(0,300,nil))
+emit=emit.switch(),},reporting_defaults(0,300,nil))
 end)
 define_preset("local_temperature",zcl.thermostat_local_temperature,function()
 return merge_defaults(
 {
-emit=emit.temperature("C"),
-scale=100,},
-reporting_defaults(30,300,50))
+emit=emit.temperature("C"),scale=100,},reporting_defaults(30,300,50))
 end)
 define_preset("heating_setpoint",zcl.thermostat_heating_setpoint,function()
 return merge_defaults(
 {
-name="current_heating_setpoint",
-emit=emit.heating_setpoint("C"),
-scale=100,},
-reporting_defaults(30,300,50))
+name="current_heating_setpoint",emit=emit.heating_setpoint("C"),scale=100,},reporting_defaults(30,300,50))
 end)
 define_preset("system_mode",zcl.thermostat_system_mode,function()
 return merge_defaults(
 {
-emit=emit.thermostat_mode(),
-converter=thermostat_mode_pair(),},
-reporting_defaults(1,300,nil))
+emit=emit.thermostat_mode(),converter=thermostat_mode_pair(),},reporting_defaults(1,300,nil))
 end)
 define_preset("cooling_setpoint",zcl.thermostat_cooling_setpoint,function()
 return merge_defaults(
 {
-name="current_cooling_setpoint",
-emit=emit.cooling_setpoint("C"),
-scale=100,},
-reporting_defaults(30,300,50))
+name="current_cooling_setpoint",emit=emit.cooling_setpoint("C"),scale=100,},reporting_defaults(30,300,50))
 end)
 define_preset("thermostat_operating_state",zcl.thermostat_running_state,function()
 return merge_defaults(
 {
-name="thermostat_operating_state",
-emit=emit.thermostat_operating_state(),
-converter=thermostat_running_state_pair(),},
-reporting_defaults(1,300,nil))
+name="thermostat_operating_state",emit=emit.thermostat_operating_state(),converter=thermostat_running_state_pair(),},reporting_defaults(1,300,nil))
 end)
 end
 return load_mapping_preset

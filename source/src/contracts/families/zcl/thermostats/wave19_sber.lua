@@ -283,8 +283,8 @@ append(mappings, zcl.cluster_attribute(CLUSTER_THERMOSTAT, 0x0029, {
   from_device = function(value) return bit32.band(tonumber(value) or 0, 0x01) ~= 0 and "heating" or "idle" end,
   read_on_configure = false,
 }))
-append(mappings, mapping(CLUSTER_THERMOSTAT, 0x0010, "sber_therm_local_calibration", "sberThermLocalCalibration", data_types.Int8, {
-  scale = 10, numeric_range = { minimum = -2.5, maximum = 2.5, step = 0.1, unit = "C" },
+append(mappings, mapping(CLUSTER_THERMOSTAT, 0x0010, "sber_therm_local_calibration", "sber205Calibration", data_types.Int8, {
+  scale = 10, numeric_range = { minimum = -10, maximum = 10, step = 0.5, unit = "C" },
   read_on_configure = false,
 }))
 local control_from, control_to = lookup({ [2] = "heating_only" })

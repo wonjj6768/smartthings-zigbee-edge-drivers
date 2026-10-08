@@ -4,8 +4,7 @@ local battery_refresh=require"runtime.battery_refresh"
 local energy_reset=require"runtime.energy_reset"
 local utf8_text=require"runtime.utf8_text"
 local log=require"log"
-local emit={}
-local last_power_response_time_definition=custom_capabilities.by_emit_name.last_power_response_time
+local emit={}local last_power_response_time_definition=custom_capabilities.by_emit_name.last_power_response_time
 local LAST_POWER_RESPONSE_AT_FIELD="_tuya_last_power_response_at"
 local LAST_POWER_RESPONSE_WAITING_TEXT="waiting"
 local function is_callable(value)
@@ -19,8 +18,7 @@ local metatable=getmetatable(value)
 return type(metatable)=="table"and type(metatable.__call)=="function"
 end
 local function resolve_capability_attribute(capability_id,attribute_name)
-local capability=capabilities[capability_id]
-local attribute=capability and capability[attribute_name]or nil
+local capability=capabilities[capability_id]local attribute=capability and capability[attribute_name]or nil
 if not is_callable(attribute)and capability and type(capability.attributes)=="table"then
 attribute=capability.attributes[attribute_name]
 end
@@ -69,12 +67,10 @@ local definition=last_power_response_time_definition
 if type(definition)~="table"or not supports_capability(device,definition.capability_id)then
 return nil
 end
-local _,attribute=resolve_capability_attribute(definition.capability_id,definition.attribute_name)
-if not is_callable(attribute)then
+local _,attribute=resolve_capability_attribute(definition.capability_id,definition.attribute_name)if not is_callable(attribute)then
 return nil
 end
-local epoch=os.time()
-if type(epoch)=="number"then
+local epoch=os.time()if type(epoch)=="number"then
 device:set_field(LAST_POWER_RESPONSE_AT_FIELD,epoch,{persist=false})
 end
 return attribute({
@@ -84,28 +80,21 @@ local function log_missing_custom_binding(device,definition,reason)
 if type(device)~="table"or type(definition)~="table"then
 return
 end
-local key=string.format("__custom_emit_missing__:%s:%s",definition.capability_id or"unknown",reason or"unknown")
-if device.get_field~=nil and device.set_field~=nil and device:get_field(key)then
+local key=string.format("__custom_emit_missing__:%s:%s",definition.capability_id or"unknown",reason or"unknown")if device.get_field~=nil and device.set_field~=nil and device:get_field(key)then
 return
 end
 if device.set_field~=nil then
 device:set_field(key,true,{persist=false})
 end
 log.error(string.format(
-"[%s] Custom capability emit binding missing (%s): %s.%s",
-device.label or device.id or"device",
-reason or"unknown",
-definition.capability_id or"unknown",
-definition.attribute_name or"unknown"))
+"[%s] Custom capability emit binding missing (%s): %s.%s",device.label or device.id or"device",reason or"unknown",definition.capability_id or"unknown",definition.attribute_name or"unknown"))
 end
 function emit.all(...)
 local emitters={...}
 return function(device,value,dp_info,mapping_context)
-local events={}
-for _,emitter in ipairs(emitters)do
+local events={}for _,emitter in ipairs(emitters)do
 if type(emitter)=="function"then
-local event=emitter(device,value,dp_info,mapping_context)
-if type(event)=="table"and event[1]~=nil then
+local event=emitter(device,value,dp_info,mapping_context)if type(event)=="table"and event[1]~=nil then
 for _,item in ipairs(event)do
 events[#events+1]=item
 end
@@ -122,8 +111,7 @@ end
 function emit.switch()
 return function(_,value)
 if value then
-return capabilities.switch.switch.on()
-else
+return capabilities.switch.switch.on()else
 return capabilities.switch.switch.off()
 end
 end
@@ -131,8 +119,7 @@ end
 function emit.contact()
 return function(_,value)
 if value then
-return capabilities.contactSensor.contact.open()
-else
+return capabilities.contactSensor.contact.open()else
 return capabilities.contactSensor.contact.closed()
 end
 end
@@ -140,8 +127,7 @@ end
 function emit.motion()
 return function(_,value)
 if value then
-return capabilities.motionSensor.motion.active()
-else
+return capabilities.motionSensor.motion.active()else
 return capabilities.motionSensor.motion.inactive()
 end
 end
@@ -149,8 +135,7 @@ end
 function emit.water()
 return function(_,value)
 if value then
-return capabilities.waterSensor.water.wet()
-else
+return capabilities.waterSensor.water.wet()else
 return capabilities.waterSensor.water.dry()
 end
 end
@@ -158,8 +143,7 @@ end
 function emit.smoke()
 return function(_,value)
 if value then
-return capabilities.smokeDetector.smoke.detected()
-else
+return capabilities.smokeDetector.smoke.detected()else
 return capabilities.smokeDetector.smoke.clear()
 end
 end
@@ -167,8 +151,7 @@ end
 function emit.carbon_monoxide()
 return function(_,value)
 if value then
-return capabilities.carbonMonoxideDetector.carbonMonoxide.detected()
-else
+return capabilities.carbonMonoxideDetector.carbonMonoxide.detected()else
 return capabilities.carbonMonoxideDetector.carbonMonoxide.clear()
 end
 end
@@ -176,8 +159,7 @@ end
 function emit.tamper()
 return function(_,value)
 if value then
-return capabilities.tamperAlert.tamper.detected()
-else
+return capabilities.tamperAlert.tamper.detected()else
 return capabilities.tamperAlert.tamper.clear()
 end
 end
@@ -185,8 +167,7 @@ end
 function emit.presence()
 return function(_,value)
 if value then
-return capabilities.presenceSensor.presence.present()
-else
+return capabilities.presenceSensor.presence.present()else
 return capabilities.presenceSensor.presence.not_present()
 end
 end
@@ -194,8 +175,7 @@ end
 function emit.gas()
 return function(_,value)
 if value then
-return capabilities.gasDetector.gas.detected()
-else
+return capabilities.gasDetector.gas.detected()else
 return capabilities.gasDetector.gas.clear()
 end
 end
@@ -218,8 +198,7 @@ end
 function emit.occupancy()
 return function(_,value)
 if value then
-return capabilities.occupancySensor.occupancy.occupied()
-else
+return capabilities.occupancySensor.occupancy.occupied()else
 return capabilities.occupancySensor.occupancy.unoccupied()
 end
 end
@@ -227,8 +206,7 @@ end
 function emit.acceleration()
 return function(_,value)
 if value then
-return capabilities.accelerationSensor.acceleration.active()
-else
+return capabilities.accelerationSensor.acceleration.active()else
 return capabilities.accelerationSensor.acceleration.inactive()
 end
 end
@@ -236,14 +214,10 @@ end
 function emit.alarm()
 return function(_,value)
 if value=="strobe"then
-return capabilities.alarm.alarm.strobe()
-elseif value=="both"then
-return capabilities.alarm.alarm.both()
-elseif value=="off"then
-return capabilities.alarm.alarm.off()
-elseif value=="siren"or value then
-return capabilities.alarm.alarm.siren()
-else
+return capabilities.alarm.alarm.strobe()elseif value=="both"then
+return capabilities.alarm.alarm.both()elseif value=="off"then
+return capabilities.alarm.alarm.off()elseif value=="siren"or value then
+return capabilities.alarm.alarm.siren()else
 return capabilities.alarm.alarm.off()
 end
 end
@@ -266,10 +240,7 @@ end
 function emit.battery()
 return function(device,value)
 if value~=nil then
-battery_refresh.note_report(device)
-local clamped=value<0 and 0 or(value>100 and 100 or value)
-local rounded=math.floor(clamped+0.5)
-return capabilities.battery.battery(rounded)
+battery_refresh.note_report(device)local clamped=value<0 and 0 or(value>100 and 100 or value)local rounded=math.floor(clamped+0.5)return capabilities.battery.battery(rounded)
 end
 end
 end
@@ -327,9 +298,7 @@ end
 function emit.power()
 return function(device,value)
 if value~=nil then
-local power_event=capabilities.powerMeter.power({value=value,unit="W"})
-local response_event=last_power_response_event(device)
-if response_event~=nil then
+local power_event=capabilities.powerMeter.power({value=value,unit="W"})local response_event=last_power_response_event(device)if response_event~=nil then
 return{power_event,response_event}
 end
 return power_event
@@ -359,13 +328,8 @@ end
 function emit.energy()
 return function(device,value,first_context,second_context)
 if value~=nil then
-local component_id=explicit_energy_component_id(second_context)
-or explicit_energy_component_id(first_context)
-or mapped_energy_component_id(second_context)
-or mapped_energy_component_id(first_context)
-return capabilities.energyMeter.energy({
-value=energy_reset.apply_report(device,value,component_id),
-unit="kWh",})
+local component_id=explicit_energy_component_id(second_context)or explicit_energy_component_id(first_context)or mapped_energy_component_id(second_context)or mapped_energy_component_id(first_context)return capabilities.energyMeter.energy({
+value=energy_reset.apply_report(device,value,component_id),unit="kWh",})
 end
 end
 end
@@ -386,16 +350,14 @@ end
 function emit.audio_volume()
 return function(_,value)
 if value~=nil then
-local clamped=value<0 and 0 or(value>100 and 100 or value)
-return capabilities.audioVolume.volume(math.floor(clamped+0.5))
+local clamped=value<0 and 0 or(value>100 and 100 or value)return capabilities.audioVolume.volume(math.floor(clamped+0.5))
 end
 end
 end
 function emit.level()
 return function(_,value)
 if value~=nil then
-local clamped=value<0 and 0 or(value>100 and 100 or value)
-return capabilities.switchLevel.level(clamped)
+local clamped=value<0 and 0 or(value>100 and 100 or value)return capabilities.switchLevel.level(clamped)
 end
 end
 end
@@ -439,8 +401,7 @@ end
 function emit.soil_moisture()
 return function(_,value)
 if value~=nil then
-local clamped=value<0 and 0 or(value>100 and 100 or value)
-return capabilities["concertmirror08464.soilMoisture"].soilMoisture({value=clamped,unit="%"})
+local clamped=value<0 and 0 or(value>100 and 100 or value)return capabilities["concertmirror08464.soilMoisture"].soilMoisture({value=clamped,unit="%"})
 end
 end
 end
@@ -465,12 +426,7 @@ if value==nil then
 return
 end
 local clamped=value
-local minimum=definition.event_minimum or(definition.default_range and definition.default_range.minimum or nil)
-local maximum=definition.event_maximum or(definition.default_range and definition.default_range.maximum or nil)
-local _,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)
-local schema_minimum=resolve_numeric_value_limit(attribute_fn,"minimum")
-local schema_maximum=resolve_numeric_value_limit(attribute_fn)
-if type(schema_minimum)=="number"then
+local minimum=definition.event_minimum or(definition.default_range and definition.default_range.minimum or nil)local maximum=definition.event_maximum or(definition.default_range and definition.default_range.maximum or nil)local _,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)local schema_minimum=resolve_numeric_value_limit(attribute_fn,"minimum")local schema_maximum=resolve_numeric_value_limit(attribute_fn)if type(schema_minimum)=="number"then
 if type(minimum)~="number"or schema_minimum>minimum then
 minimum=schema_minimum
 end
@@ -486,20 +442,17 @@ end
 if type(maximum)=="number"and clamped>maximum then
 clamped=maximum
 end
-local capability=capabilities[definition.capability_id]
-if not is_callable(attribute_fn)and capability and type(capability.attributes)=="table"then
+local capability=capabilities[definition.capability_id]if not is_callable(attribute_fn)and capability and type(capability.attributes)=="table"then
 attribute_fn=capability.attributes[definition.attribute_name]
 end
 if not is_callable(attribute_fn)then
 if capability==nil then
-log_missing_custom_binding(device,definition,"capability")
-else
+log_missing_custom_binding(device,definition,"capability")else
 log_missing_custom_binding(device,definition,"attribute")
 end
 return
 end
-local unit=definition.event_unit or(definition.default_range and definition.default_range.unit or nil)
-if unit~=nil then
+local unit=definition.event_unit or(definition.default_range and definition.default_range.unit or nil)if unit~=nil then
 return attribute_fn({value=clamped,unit=unit})
 end
 return attribute_fn({value=clamped})
@@ -534,11 +487,9 @@ end
 if type(value)~="string"or value==""then
 return
 end
-local capability,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)
-if not is_callable(attribute_fn)then
+local capability,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)if not is_callable(attribute_fn)then
 if capability==nil then
-log_missing_custom_binding(device,definition,"capability")
-else
+log_missing_custom_binding(device,definition,"capability")else
 log_missing_custom_binding(device,definition,"attribute")
 end
 return
@@ -551,18 +502,14 @@ return function(device,value)
 if type(value)~="string"or(value==""and not(options and options.allow_empty))then
 return
 end
-local capability,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)
-if not is_callable(attribute_fn)then
+local capability,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)if not is_callable(attribute_fn)then
 if capability==nil then
-log_missing_custom_binding(device,definition,"capability")
-else
+log_missing_custom_binding(device,definition,"capability")else
 log_missing_custom_binding(device,definition,"attribute")
 end
 return
 end
-local maximum_length=definition.maximum_length or utf8_text.length(value)
-local message=utf8_text.truncate(value,maximum_length)
-if message==nil then
+local maximum_length=definition.maximum_length or utf8_text.length(value)local message=utf8_text.truncate(value,maximum_length)if message==nil then
 return
 end
 return attribute_fn({value=message})
@@ -587,18 +534,15 @@ function emit.driver_message()
 return function(device,value)
 if type(value)=="string"and value~=""then
 local definition=custom_capabilities.driver_message
-local capability,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)
-if not is_callable(attribute_fn)then
+local capability,attribute_fn=resolve_capability_attribute(definition.capability_id,definition.attribute_name)if not is_callable(attribute_fn)then
 if capability==nil then
-log_missing_custom_binding(device,definition,"capability")
-else
+log_missing_custom_binding(device,definition,"capability")else
 log_missing_custom_binding(device,definition,"attribute")
 end
 return
 end
 local maximum_length=definition.maximum_length or 512
-local message=utf8_text.truncate(value,maximum_length)
-if message==nil then
+local message=utf8_text.truncate(value,maximum_length)if message==nil then
 return
 end
 return attribute_fn({value=message})
@@ -629,24 +573,21 @@ end
 function emit.color_temperature()
 return function(_,value)
 if value~=nil then
-local clamped=value<1 and 1 or(value>30000 and 30000 or value)
-return capabilities.colorTemperature.colorTemperature(clamped)
+local clamped=value<1 and 1 or(value>30000 and 30000 or value)return capabilities.colorTemperature.colorTemperature(clamped)
 end
 end
 end
 function emit.color_hue()
 return function(_,value)
 if value~=nil then
-local clamped=value<0 and 0 or(value>100 and 100 or value)
-return capabilities.colorControl.hue(clamped)
+local clamped=value<0 and 0 or(value>100 and 100 or value)return capabilities.colorControl.hue(clamped)
 end
 end
 end
 function emit.color_saturation()
 return function(_,value)
 if value~=nil then
-local clamped=value<0 and 0 or(value>100 and 100 or value)
-return capabilities.colorControl.saturation(clamped)
+local clamped=value<0 and 0 or(value>100 and 100 or value)return capabilities.colorControl.saturation(clamped)
 end
 end
 end
@@ -661,8 +602,7 @@ function emit.value(capability_attr,unit)
 return function(_,value)
 if value~=nil then
 if unit then
-return capability_attr({value=value,unit=unit})
-else
+return capability_attr({value=value,unit=unit})else
 return capability_attr(value)
 end
 end
@@ -671,8 +611,7 @@ end
 function emit.binary(capability_attr,true_val,false_val)
 return function(_,value)
 if value then
-return capability_attr(true_val)
-else
+return capability_attr(true_val)else
 return capability_attr(false_val)
 end
 end

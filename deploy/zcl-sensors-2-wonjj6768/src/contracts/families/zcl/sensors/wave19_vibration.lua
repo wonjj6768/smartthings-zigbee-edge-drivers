@@ -2,8 +2,7 @@ local zcl=require"protocol.zcl"
 local emit=require"capabilities.events.all"
 local device_helpers=require"contracts.helpers.family"
 local data_types=require"st.zigbee.data_types"
-local device_definitions,register_device_definition=device_helpers.definition_registry()
-local VIBRATION_TIMEOUT_SECONDS=90
+local device_definitions,register_device_definition=device_helpers.definition_registry()local VIBRATION_TIMEOUT_SECONDS=90
 local TIMER_FIELD="__wave19_ts0210_vibration_timer"
 local acceleration_emitter=emit.acceleration()
 local function passive_rx(mapping)
@@ -34,37 +33,16 @@ if VIBRATION_TIMEOUT_SECONDS==0 then return end
 local timer
 timer=device.thread:call_with_delay(VIBRATION_TIMEOUT_SECONDS,function()
 if device:get_field(TIMER_FIELD)~=timer then return end
-device:set_field(TIMER_FIELD,nil,{persist=false})
-local event=acceleration_emitter(device,false)
+device:set_field(TIMER_FIELD,nil,{persist=false})local event=acceleration_emitter(device,false)
 if event~=nil then device:emit_event(event)end
 end,"wave19 TS0210 vibration clear")
 device:set_field(TIMER_FIELD,timer,{persist=false})
 end
 local ts0210={
-profile="safety-wave19-tuya-ts0210-quoted",
-package_group="wave19-vibration",
-transport_classification="STANDARD_ZCL_WITH_LITERAL_IDENTITY",
-z2m_converter_source="fz.battery + fz.ias_vibration_alarm_1_with_timeout + tzLocal.TS0210_sensitivity",
-wire_cluster="Power Configuration 0x0001 + IAS Zone 0x0500",
-zcl_clusters={
+profile="safety-wave19-tuya-ts0210-quoted",package_group="wave19-vibration",transport_classification="STANDARD_ZCL_WITH_LITERAL_IDENTITY",z2m_converter_source="fz.battery + fz.ias_vibration_alarm_1_with_timeout + tzLocal.TS0210_sensitivity",wire_cluster="Power Configuration 0x0001 + IAS Zone 0x0500",zcl_clusters={
 passive_rx(zcl.motion({
-emit=acceleration_emitter,
-handler=schedule_vibration_clear,})),
-passive_rx(zcl.tamper()),
-passive_rx(zcl.battery({from_device=reject_zcl_unknown})),
-passive_rx(zcl.battery_voltage({from_device=reject_zcl_unknown})),
-zcl.cluster_attribute(0x0500,0x0013,{
-name="tuya_ts0210_sensitivity",
-data_type=data_types.Uint8,
-write_type=data_types.Uint8,
-write_only=true,
-to_device=sensitivity_to_device,
-numeric_range={
-minimum=0,
-maximum=50,
-step=1,},}),},}
-register_device_definition(ts0210,{
-device_helpers.create_fingerprint("'_TZ32101000000_5oy7cysk'","TS0210"),})
-return{
-id="zcl.sensors.wave19_vibration",
-registrations=device_definitions,}
+emit=acceleration_emitter,handler=schedule_vibration_clear,})),passive_rx(zcl.tamper()),passive_rx(zcl.battery({from_device=reject_zcl_unknown})),passive_rx(zcl.battery_voltage({from_device=reject_zcl_unknown})),zcl.cluster_attribute(0x0500,0x0013,{
+name="tuya_ts0210_sensitivity",data_type=data_types.Uint8,write_type=data_types.Uint8,write_only=true,to_device=sensitivity_to_device,numeric_range={
+minimum=0,maximum=50,step=1,},}),},}register_device_definition(ts0210,{
+device_helpers.create_fingerprint("'_TZ32101000000_5oy7cysk'","TS0210"),})return{
+id="zcl.sensors.wave19_vibration",registrations=device_definitions,}

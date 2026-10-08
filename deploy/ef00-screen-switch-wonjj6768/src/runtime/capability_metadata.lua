@@ -1,5 +1,4 @@
-local custom_capabilities={}
-local strings={"%","zmsFourBacklightBrightness","backlightBrightness","zms206_backlight_brightness","Zms Four Backlight Brightness","s","zmsFourCountdown","countdown","zms206_countdown","Zms Four Countdown","h","zms206us4TimeZone","timeZone","zms206_time_zone","Zms206us4Time Zone","zmsFourBacklightSetting","backlightSetting","zms206_backlight_mode","Zms Four Backlight Setting","OFF","ON","zmsFourChildLock","childLock","zms206_child_lock","Zms Four Child Lock","off","on","zmsFourRadarConfig","radarConfig","zms206_radar_config","Zms Four Radar Config","none","10s","20s","30s","45s","60s","zmsFourSwitchColorOn","switchColorOn","zms206_switch_color_on","Zms Four Switch Color On","red","blue","green","white","yellow","magenta","cyan","warm_white","warm_yellow","zmsFourSwitchColorOff","switchColorOff","zms206_switch_color_off","Zms Four Switch Color Off","zmsFourIndicatorStatus","indicatorStatus","zms206_indicator_status","Zms Four Indicator Status","on_off_status","switch_position","zmsFourDelayOffColor","delayOffColor","zms206_delay_off_color","Zms Four Delay Off Color","zmsFourRelayStatus","relayStatus","zms206_relay_status","Zms Four Relay Status","power_on","power_off","restart_memory","last_power_response_time","lastPowerResponseTime","Last power response time","zms206us4SwitchName","switchName","zms206_switch_name","Zms206us4Switch Name"}
+local custom_capabilities={}local strings={"%","zmsFourBacklightBrightness","backlightBrightness","zms206_backlight_brightness","Zms Four Backlight Brightness","s","zmsFourCountdown","countdown","zms206_countdown","Zms Four Countdown","h","zms206us4TimeZone","timeZone","zms206_time_zone","Zms206us4Time Zone","zmsFourBacklightSetting","backlightSetting","zms206_backlight_mode","Zms Four Backlight Setting","OFF","ON","zmsFourChildLock","childLock","zms206_child_lock","Zms Four Child Lock","off","on","zmsFourRadarConfig","radarConfig","zms206_radar_config","Zms Four Radar Config","none","10s","20s","30s","45s","60s","zmsFourSwitchColorOn","switchColorOn","zms206_switch_color_on","Zms Four Switch Color On","red","blue","green","white","yellow","magenta","cyan","warm_white","warm_yellow","zmsFourSwitchColorOff","switchColorOff","zms206_switch_color_off","Zms Four Switch Color Off","zmsFourIndicatorStatus","indicatorStatus","zms206_indicator_status","Zms Four Indicator Status","on_off_status","switch_position","zmsFourDelayOffColor","delayOffColor","zms206_delay_off_color","Zms Four Delay Off Color","zmsFourRelayStatus","relayStatus","zms206_relay_status","Zms Four Relay Status","power_on","power_off","restart_memory","last_power_response_time","lastPowerResponseTime","Last power response time","zms206us4SwitchName","switchName","zms206_switch_name","Zms206us4Switch Name"}
 local function string_value(value)
 if type(value)=="number"then return strings[value]end
 return value
@@ -10,8 +9,7 @@ local function grouped_table(group_id)
 if type(group_id)~="number"then return{}end
 local existing=table_groups[group_id]
 if existing~=nil then return existing end
-local out={}
-table_groups[group_id]=out
+local out={}table_groups[group_id]=out
 return out
 end
 local function string_list(values,group_id)
@@ -31,47 +29,28 @@ return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
 end
 local function range(value)
 if type(value)~="table"then return nil end
-local out=grouped_table(value[6])
-out.minimum=value[1]
-out.maximum=value[2]
-out.step=value[3]
-out.unit=string_value(value[4])
-out.allowed_values=string_list(value[5],value[7])
-return out
+local out=grouped_table(value[6])out.minimum=value[1]out.maximum=value[2]out.step=value[3]out.unit=string_value(value[4])out.allowed_values=string_list(value[5],value[7])return out
 end
 local function allowed_range(allowed_values,group_id)
 if allowed_values==nil and group_id==nil then return nil end
-local out=grouped_table(group_id)
-out.allowed_values=allowed_values
+local out=grouped_table(group_id)out.allowed_values=allowed_values
 return out
 end
 local function numeric(row)
-local attribute_name=string_value(row[4])
-return{kind="numeric",emit_name=string_value(row[1]),range_key=string_value(row[2]),capability_id=capability_id(row[3]),attribute_name=attribute_name,range_attribute_name=string_value(row[5]),command_name=optional_string(row[6],command_default(attribute_name)),argument_name=optional_string(row[7],attribute_name),mapping_name=string_value(row[8]),label=string_value(row[9]),default_range=range(row[10]),event_minimum=row[11],event_maximum=row[12],event_unit=string_value(row[13])}
+local attribute_name=string_value(row[4])return{kind="numeric",emit_name=string_value(row[1]),range_key=string_value(row[2]),capability_id=capability_id(row[3]),attribute_name=attribute_name,range_attribute_name=string_value(row[5]),command_name=optional_string(row[6],command_default(attribute_name)),argument_name=optional_string(row[7],attribute_name),mapping_name=string_value(row[8]),label=string_value(row[9]),default_range=range(row[10]),event_minimum=row[11],event_maximum=row[12],event_unit=string_value(row[13])}
 end
 local function enum(row)
-local attribute_name=string_value(row[4])
-local supported_values=string_list(row[10],row[12])
-local default_allowed_values=string_list(row[11],row[14])
-local default_range=allowed_range(default_allowed_values,row[13])
-return{kind="enum",emit_name=string_value(row[1]),range_key=string_value(row[2]),capability_id=capability_id(row[3]),attribute_name=attribute_name,supported_attribute_name=string_value(row[5]),command_name=optional_string(row[6],command_default(attribute_name)),argument_name=optional_string(row[7],attribute_name),mapping_name=string_value(row[8]),label=string_value(row[9]),supported_values=supported_values,default_range=default_range}
+local attribute_name=string_value(row[4])local supported_values=string_list(row[10],row[12])local default_allowed_values=string_list(row[11],row[14])local default_range=allowed_range(default_allowed_values,row[13])return{kind="enum",emit_name=string_value(row[1]),range_key=string_value(row[2]),capability_id=capability_id(row[3]),attribute_name=attribute_name,supported_attribute_name=string_value(row[5]),command_name=optional_string(row[6],command_default(attribute_name)),argument_name=optional_string(row[7],attribute_name),mapping_name=string_value(row[8]),label=string_value(row[9]),supported_values=supported_values,default_range=default_range}
 end
 local function text(row)
-local attribute_name=string_value(row[3])
-return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(row[2]),attribute_name=attribute_name,command_name=optional_string(row[4],command_default(attribute_name)),argument_name=optional_string(row[5],attribute_name),mapping_name=string_value(row[6]),label=string_value(row[7]),maximum_length=row[8]}
+local attribute_name=string_value(row[3])return{kind="text",emit_name=string_value(row[1]),capability_id=capability_id(row[2]),attribute_name=attribute_name,command_name=optional_string(row[4],command_default(attribute_name)),argument_name=optional_string(row[5],attribute_name),mapping_name=string_value(row[6]),label=string_value(row[7]),maximum_length=row[8]}
 end
 local function build(rows,factory)
 local out={}
 for _,row in ipairs(rows)do out[#out+1]=factory(row)end
 return out
 end
-custom_capabilities.numeric=build({{2,nil,2,3,nil,nil,nil,4,5,{0,100,1,1,nil,1,nil},nil,nil,1},{7,nil,7,8,nil,nil,nil,9,10,{0,43200,1,6,nil,2,nil},nil,nil,6},{12,nil,12,13,nil,nil,nil,14,15,{-12,14,0.25,11,nil,3,nil},nil,nil,11}},numeric)
-custom_capabilities.enum=build({{16,nil,16,17,nil,nil,nil,18,19,{20,21},{20,21},4,5,4},{22,nil,22,23,nil,nil,nil,24,25,{26,27},{26,27},6,7,6},{28,nil,28,29,nil,nil,nil,30,31,{32,33,34,35,36,37},{32,33,34,35,36,37},8,9,8},{38,nil,38,39,nil,nil,nil,40,41,{42,43,44,45,46,47,48,49,50},{42,43,44,45,46,47,48,49,50},10,11,10},{51,nil,51,52,nil,nil,nil,53,54,{42,43,44,45,46,47,48,49,50},{42,43,44,45,46,47,48,49,50},12,13,12},{55,nil,55,56,nil,nil,nil,57,58,{26,59,60},{26,59,60},14,15,14},{61,nil,61,62,nil,nil,nil,63,64,{42,43,44,45,46,47,48,49,50},{42,43,44,45,46,47,48,49,50},16,17,16},{65,nil,65,66,nil,nil,nil,67,68,{69,70,71},{69,70,71},18,19,18}},enum)
-custom_capabilities.text=build({{72,73,73,0,0,nil,74,64},{75,75,76,nil,nil,77,78,nil}},text)
-custom_capabilities.driver_message={["attribute_name"]="driverMessage",["capability_id"]="concertmirror08464.driverMessage",["emit_name"]="driver_message",["label"]="Driver message",["maximum_length"]=512}
-custom_capabilities.by_range_key={}
-custom_capabilities.by_emit_name={}
-custom_capabilities.by_capability_id={}
+custom_capabilities.numeric=build({{2,nil,2,3,nil,nil,nil,4,5,{0,100,1,1,nil,1,nil},nil,nil,1},{7,nil,7,8,nil,nil,nil,9,10,{0,43200,1,6,nil,2,nil},nil,nil,6},{12,nil,12,13,nil,nil,nil,14,15,{-12,14,0.25,11,nil,3,nil},nil,nil,11}},numeric)custom_capabilities.enum=build({{16,nil,16,17,nil,nil,nil,18,19,{20,21},{20,21},4,5,4},{22,nil,22,23,nil,nil,nil,24,25,{26,27},{26,27},6,7,6},{28,nil,28,29,nil,nil,nil,30,31,{32,33,34,35,36,37},{32,33,34,35,36,37},8,9,8},{38,nil,38,39,nil,nil,nil,40,41,{42,43,44,45,46,47,48,49,50},{42,43,44,45,46,47,48,49,50},10,11,10},{51,nil,51,52,nil,nil,nil,53,54,{42,43,44,45,46,47,48,49,50},{42,43,44,45,46,47,48,49,50},12,13,12},{55,nil,55,56,nil,nil,nil,57,58,{26,59,60},{26,59,60},14,15,14},{61,nil,61,62,nil,nil,nil,63,64,{42,43,44,45,46,47,48,49,50},{42,43,44,45,46,47,48,49,50},16,17,16},{65,nil,65,66,nil,nil,nil,67,68,{69,70,71},{69,70,71},18,19,18}},enum)custom_capabilities.text=build({{72,73,73,0,0,nil,74,64},{75,75,76,nil,nil,77,78,nil}},text)custom_capabilities.driver_message={["attribute_name"]="driverMessage",["capability_id"]="concertmirror08464.driverMessage",["emit_name"]="driver_message",["label"]="Driver message",["maximum_length"]=512}custom_capabilities.by_range_key={}custom_capabilities.by_emit_name={}custom_capabilities.by_capability_id={}
 local function index_metadata(definitions)
 for _,metadata in ipairs(definitions)do
 custom_capabilities.by_emit_name[metadata.emit_name]=metadata
@@ -79,10 +58,7 @@ if type(metadata.capability_id)=="string"and metadata.capability_id~=""then cust
 if type(metadata.range_key)=="string"and metadata.range_key~=""then custom_capabilities.by_range_key[metadata.range_key]=metadata end
 end
 end
-index_metadata(custom_capabilities.numeric)
-index_metadata(custom_capabilities.enum)
-index_metadata(custom_capabilities.text)
-custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
+index_metadata(custom_capabilities.numeric)index_metadata(custom_capabilities.enum)index_metadata(custom_capabilities.text)custom_capabilities.by_emit_name[custom_capabilities.driver_message.emit_name]=custom_capabilities.driver_message
 custom_capabilities.by_capability_id[custom_capabilities.driver_message.capability_id]=custom_capabilities.driver_message
 local function clone_allowed_values(allowed_values)
 if type(allowed_values)~="table"then return nil end
@@ -98,10 +74,6 @@ local resolved=type(ranges)=="table"and ranges[metadata.range_key]or nil
 if type(resolved)~="table"then resolved=default_range end
 if type(resolved)~="table"then return nil end
 return{
-minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),
-maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),
-step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),
-unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),
-allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
+minimum=type(resolved.minimum)=="number"and resolved.minimum or(default_range and default_range.minimum or nil),maximum=type(resolved.maximum)=="number"and resolved.maximum or(default_range and default_range.maximum or nil),step=type(resolved.step)=="number"and resolved.step or(default_range and default_range.step or nil),unit=type(resolved.unit)=="string"and resolved.unit or(default_range and default_range.unit or nil),allowed_values=type(resolved.allowed_values)=="table"and clone_allowed_values(resolved.allowed_values)or clone_allowed_values(default_range and default_range.allowed_values or nil),}
 end
 return custom_capabilities

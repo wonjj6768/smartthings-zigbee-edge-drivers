@@ -335,7 +335,7 @@ local eone = {
   profile = "thermostats-wave6a-engo-eone230w",
   package_group = "wall",
   query_on_configure = true,
-  time_start = "2000",
+  time_start = "1970",
   tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
   tuya.dp_system_mode(2, {
     name = "system_mode",

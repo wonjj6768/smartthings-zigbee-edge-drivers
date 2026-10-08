@@ -5,11 +5,7 @@ local BASIC_CLUSTER=0x0000
 local BASIC_MAGIC_ATTRIBUTES={0x0004,0x0000,0x0001,0x0005,0x0007,0xFFFE}
 function zcl.bind_cluster(device,cluster_id,hub_eui,endpoint)
 device:send(device_management.build_bind_request(
-device,
-cluster_id,
-hub_eui,
-endpoint))
-return true
+device,cluster_id,hub_eui,endpoint))return true
 end
 local function is_callable_type(value)
 if type(value)=="function"then
@@ -51,28 +47,17 @@ if meta.cluster_id==nil or meta.attribute_id==nil or meta.data_type==nil then
 return nil
 end
 return{
-cluster=meta.cluster_id,
-attribute=meta.attribute_id,
-minimum_interval=meta.minimum_interval or 0,
-maximum_interval=meta.maximum_interval or 300,
-data_type=meta.data_type,
-reportable_change=normalize_reportable_change(meta.data_type,meta.reportable_change),
-mfg_code=meta.mfg_code,}
+cluster=meta.cluster_id,attribute=meta.attribute_id,minimum_interval=meta.minimum_interval or 0,maximum_interval=meta.maximum_interval or 300,data_type=meta.data_type,reportable_change=normalize_reportable_change(meta.data_type,meta.reportable_change),mfg_code=meta.mfg_code,}
 end
 function zcl.build_configured_attributes(zcl_clusters)
 if type(zcl_clusters)~="table"then
 return{}
 end
-local configured={}
-local seen={}
-for _,mapping in ipairs(zcl_clusters)do
+local configured={}local seen={}for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-local item=meta and build_configured_attribute(meta)or nil
+local meta=zcl.mapping_meta(mapping)local item=meta and build_configured_attribute(meta)or nil
 if item~=nil then
-local key=string.format("%04X:%04X",item.cluster,item.attribute)
-local existing_index=seen[key]
-if existing_index==nil then
+local key=string.format("%04X:%04X",item.cluster,item.attribute)local existing_index=seen[key]if existing_index==nil then
 seen[key]=#configured+1
 configured[#configured+1]=item
 elseif configured[existing_index].mfg_code==nil and item.mfg_code~=nil then
@@ -88,22 +73,13 @@ if type(zcl_clusters)~="table"then
 return false
 end
 local sent=false
-local seen={}
-for _,mapping in ipairs(zcl_clusters)do
+local seen={}for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-if meta~=nil and meta.read_on_configure and not meta.write_only then
-local mapping_context=zcl.build_mapping_context(device,mapping,nil)
-local key=string.format(
-"%04X:%04X:%s:%s",
-meta.cluster_id,
-meta.attribute_id,
-tostring(mapping_context.endpoint),
-tostring(meta.mfg_code))
-if not seen[key]then
+local meta=zcl.mapping_meta(mapping)if meta~=nil and meta.read_on_configure and not meta.write_only then
+local mapping_context=zcl.build_mapping_context(device,mapping,nil)local key=string.format(
+"%04X:%04X:%s:%s",meta.cluster_id,meta.attribute_id,tostring(mapping_context.endpoint),tostring(meta.mfg_code))if not seen[key]then
 seen[key]=true
-zcl.read_mapping(device,mapping,mapping_context)
-sent=true
+zcl.read_mapping(device,mapping,mapping_context)sent=true
 end
 end
 end
@@ -115,14 +91,11 @@ if type(zcl_clusters)~="table"then
 return false
 end
 local sent=false
-local seen={}
-for _,mapping in ipairs(zcl_clusters)do
+local seen={}for _,mapping in ipairs(zcl_clusters)do
 local meta=type(mapping)=="table"and zcl.mapping_meta(mapping)or nil
 if meta~=nil and meta.name=="tuya_magic_packet"then
-local mapping_context=zcl.build_mapping_context(device,mapping,nil)
-local endpoint=mapping_context and mapping_context.endpoint or nil
-local key=tostring(endpoint or"main")
-if not seen[key]then
+local mapping_context=zcl.build_mapping_context(device,mapping,nil)local endpoint=mapping_context and mapping_context.endpoint or nil
+local key=tostring(endpoint or"main")if not seen[key]then
 seen[key]=true
 for _,attribute_id in ipairs(BASIC_MAGIC_ATTRIBUTES)do
 zcl.read_attribute(device,BASIC_CLUSTER,attribute_id,endpoint)
@@ -140,8 +113,7 @@ end
 local ias_configure_method=nil
 for _,mapping in ipairs(zcl_clusters)do
 if type(mapping)=="table"then
-local meta=zcl.mapping_meta(mapping)
-if meta~=nil and meta.cluster_id==zcl.CLUSTER_IAS_ZONE then
+local meta=zcl.mapping_meta(mapping)if meta~=nil and meta.cluster_id==zcl.CLUSTER_IAS_ZONE then
 ias_configure_method=meta.ias_configure_method or zigbee_constants.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE
 break
 end
@@ -156,16 +128,13 @@ for _,item in ipairs(configured)do
 device:add_configured_attribute(item)
 end
 end
-local magic_read_any=read_tuya_magic_packet(device,zcl_clusters)
-local scaler_read_any=zcl.read_metering_scalers and zcl.read_metering_scalers(device,zcl_clusters)or false
+local magic_read_any=read_tuya_magic_packet(device,zcl_clusters)local scaler_read_any=zcl.read_metering_scalers and zcl.read_metering_scalers(device,zcl_clusters)or false
 local should_configure=#configured>0 or ias_configure_method~=nil
 local configured_any=false
 if should_configure and type(device.configure)=="function"then
-device:configure()
-configured_any=true
+device:configure()configured_any=true
 end
-local read_any=zcl.read_configured_attributes(device,zcl_clusters)
-local runtime_any=zcl.start_runtime and zcl.start_runtime(device,zcl_clusters)or false
+local read_any=zcl.read_configured_attributes(device,zcl_clusters)local runtime_any=zcl.start_runtime and zcl.start_runtime(device,zcl_clusters)or false
 return configured_any or magic_read_any or scaler_read_any or read_any or runtime_any
 end
 end

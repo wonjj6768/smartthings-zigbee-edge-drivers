@@ -1,11 +1,8 @@
 local log=require"log"
-local shared={}
-shared.log=log
+local shared={}shared.log=log
 shared.BASIC_CLUSTER=0x0000
 shared.TUYA_CLUSTER=0xEF00
-shared.MAGIC_PACKET_ATTRS={0x0004,0x0000,0x0001,0x0005,0x0007,0xFFFE}
-shared.PERSIST_FALSE={persist=false}
-shared.EPOCH_2000_OFFSET=946684800
+shared.MAGIC_PACKET_ATTRS={0x0004,0x0000,0x0001,0x0005,0x0007,0xFFFE}shared.PERSIST_FALSE={persist=false}shared.EPOCH_2000_OFFSET=946684800
 shared.PACKET_ID_FIELD="tuya_packet_id"
 shared.CONFIG_QUEUE_FIELD="config_queue"
 shared.CONFIG_QUEUE_CALLBACK_FIELD="config_queue_callback"
@@ -64,14 +61,12 @@ tuya.DP_TYPE_VALUE=shared.DP_TYPE_VALUE
 tuya.DP_TYPE_STRING=shared.DP_TYPE_STRING
 tuya.DP_TYPE_ENUM=shared.DP_TYPE_ENUM
 tuya.DP_TYPE_BITMAP=shared.DP_TYPE_BITMAP
-tuya.converter={}
-tuya.skip={}
+tuya.converter={}tuya.skip={}
 end
 local type_check=shared.type_check
 local EPOCH_2000_OFFSET=shared.EPOCH_2000_OFFSET
 local function copy_table(source)
-local target={}
-if type_check(source)~="table"then
+local target={}if type_check(source)~="table"then
 return target
 end
 for key,value in pairs(source)do

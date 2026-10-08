@@ -8,21 +8,10 @@ local dimming=require"contracts.families.zcl.controls.dimming"
 local scene_switches=require"contracts.families.zcl.controls.scene_switches"
 local ir=require"contracts.families.zcl.controls.ir"
 local catalogs={
-remotes,
-advanced,
-scene,
-excellux,
-security,
-doorbell,
-dimming,
-scene_switches,
-ir,}
-local registrations={}
-for _,catalog in ipairs(catalogs)do
+remotes,advanced,scene,excellux,security,doorbell,dimming,scene_switches,ir,}local registrations={}for _,catalog in ipairs(catalogs)do
 for _,registration in ipairs(catalog.registrations)do
 registrations[#registrations+1]=registration
 end
 end
 return{
-id="zcl.controls",
-registrations=registrations,}
+id="zcl.controls",registrations=registrations,}

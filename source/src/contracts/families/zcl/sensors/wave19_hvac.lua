@@ -322,6 +322,44 @@ register_device_definition(pirogov, {
   device_helpers.create_fingerprint("PirogovX", "ZB-MIDEA-AC"),
 })
 
+local topband_trv602 = {
+  profile = "thermostats-topband-trv602",
+  magic_packet = false,
+  placeholder_custom_states = false,
+  component_to_endpoint_map = {main=1},
+  heating_setpoint_range = {minimum=7, maximum=30, step=0.5, unit="C"},
+  capability_commands = {
+    {capability_id="concertmirror08464.trv602Identify",command_name="identify",mapping_name="trv602_identify",value=true},
+  },
+  zcl_clusters = {
+    zcl.battery({endpoint=1,scale=2,read_only=true,minimum_interval=3600,maximum_interval=65000,reportable_change=10,read_on_configure=true}),
+    zcl.switch({endpoint=1,minimum_interval=0,maximum_interval=65000,reportable_change=1,read_on_configure=true}),
+    zcl.local_temperature({endpoint=1,read_only=true,minimum_interval=0,maximum_interval=3600,reportable_change=10,read_on_configure=true}),
+    zcl.heating_setpoint({endpoint=1,minimum_interval=0,maximum_interval=3600,reportable_change=10,read_on_configure=true}),
+    zcl.system_mode({endpoint=1,minimum_interval=0,maximum_interval=3600,reportable_change=0,read_on_configure=true,
+      to_device=function(value) return ({off=0,heat=4})[value] end}),
+    zcl.thermostat_operating_state({endpoint=1,read_only=true,minimum_interval=0,maximum_interval=3600,reportable_change=0,read_on_configure=true}),
+    zcl.cluster_attribute(6,0x4003,{name="trv602_power_behavior",endpoint=1,data_type=data_types.Enum8,read_on_configure=true,
+      from_device=function(value)
+        value=type(value)=="table" and value.value or value
+        return ({[0]="off",[1]="on",[2]="toggle",[255]="previous"})[value]
+      end,
+      to_device=function(value) return ({off=0,on=1,toggle=2,previous=255})[value] end,
+      emit=emit.trv602PowerBehavior()}),
+    zcl.cluster_attribute(3,nil,{name="trv602_identify",endpoint=1,write_only=true,
+      sender=function(device)
+        return zcl.send_raw_cluster_command(device,3,0,string.pack("<I2",device.preferences.identifyTimeout or 3),1)
+      end}),
+  },
+  configure=function(driver,device)
+    for _,cluster in ipairs({1,6,0x0201}) do zcl.bind_cluster(device,cluster,driver.environment_info.hub_zigbee_eui,1) end
+  end,
+  runtime_start=function(device)
+    device:emit_component_event({id="main"},capabilities.thermostatMode.supportedThermostatModes({"off","heat"}))
+  end,
+}
+register_device_definition(topband_trv602,{device_helpers.create_fingerprint("Topband","TRV602WZ")})
+
 return {
   id = "zcl.sensors.wave19_hvac",
   registrations = device_definitions,

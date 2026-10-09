@@ -42,7 +42,7 @@ return endpoint==1 and"main"or("button"..tostring(endpoint))
 end
 local function emit_button_action(device,component_id,action)
 local button_action=BUTTON_EVENT_BY_ACTION[action]local builder=button_action and BUTTON_EVENT_BUILDERS[button_action]or nil
-if type(builder)~="function"then
+if builder==nil then
 return
 end
 if type(device.supports_capability_by_id)=="function"and not device:supports_capability_by_id(capabilities.button.ID,component_id)then
@@ -247,7 +247,81 @@ return definition
 end
 local remote_1=build_advanced_remote("buttons-button-1-battery-operation-mode-remote-action",1,{
 unprefixed_remote_actions=true,})local remote_4=build_advanced_remote("buttons-button-4-battery-voltage-operation-mode-remote-action",4)remote_4.zcl_clusters[#remote_4.zcl_clusters+1]=passive_battery_voltage_cluster()local remote_6=build_advanced_remote("buttons-button-6-battery-operation-mode-remote-action",6)local ysr_mini_z=build_advanced_remote("buttons-button-4-battery-operation-mode-remote-action",4)local knob_remote=build_advanced_remote("buttons-button-1-battery-operation-mode-remote-action",1,{
-knob_remote=true,})local standard_action_remote_1=build_standard_action_remote("buttons-button-1-battery-remote-action",1,{
+knob_remote=true,})
+local function ts004f_knob_rotation(device,component_id,action,zb_rx)
+if not device:supports_capability_by_id(capabilities.knob.ID,component_id)then
+return
+end
+local step=body_member_value(zb_rx,"step_size","stepsize")local transition_time=body_member_value(zb_rx,"transition_time","transtime")local component={id=component_id}local repeated={state_change=true}if action=="brightness_step_up"or action=="brightness_step_down"then
+if type(step)=="number"then
+device:emit_component_event(component,capabilities["concertmirror08464.tsfKnobStep"].stepSize(step,repeated))device:emit_component_event(component,capabilities["concertmirror08464.tsfKnobBrightnessDelta"].brightnessDelta(
+action=="brightness_step_up"and step or-step,repeated))
+end
+elseif action=="color_temperature_step_up"or action=="color_temperature_step_down"then
+if type(step)=="number"then
+device:emit_component_event(component,capabilities["concertmirror08464.tsfKnobColorDelta"].colorDelta(
+{value=action=="color_temperature_step_up"and step or-step,unit="mired"},repeated))
+end
+elseif action=="hue_move"or action=="hue_down"or action=="hue_stop"then
+local rate=body_member_value(zb_rx,"rate")if type(rate)=="number"then
+device:emit_component_event(component,capabilities["concertmirror08464.tsfKnobRate"].rate(rate,repeated))
+end
+end
+if type(transition_time)=="number"then
+device:emit_component_event(component,capabilities["concertmirror08464.tsfKnobTransition"].transitionTime(
+{value=transition_time/10,unit="s"},repeated))
+end
+local preferences=device.preferences or{}local rotation_attribute=capabilities.knob.rotateAmount
+local amount
+if action=="rotate_left"or action=="rotate_right"then
+amount=tonumber(preferences.knobEventStep)or 5
+if action=="rotate_left"then amount=-amount end
+elseif action=="brightness_step_up"or action=="brightness_step_down"then
+if type(step)~="number"then return end
+amount=step*100/255
+if action=="brightness_step_down"then amount=-amount end
+elseif action=="color_temperature_step_up"or action=="color_temperature_step_down"then
+if type(step)~="number"then return end
+rotation_attribute=capabilities.knob.heldRotateAmount
+amount=step/(tonumber(preferences.knobHeldMiredsPerPercent)or 10)
+if action=="color_temperature_step_down"then amount=-amount end
+else
+return
+end
+local factor=({0.5,1,2})[tonumber(preferences["stse.knobSensitivity"])]or 1
+local sign=amount<0 and-1 or 1
+if amount==0 then return end
+amount=sign*math.max(1,math.min(100,math.floor(math.abs(amount)*factor+0.5)))device:emit_component_event({id=component_id},rotation_attribute(
+{value=amount,unit="%"},{state_change=true}))
+end
+local function ts004f_knob_mode(value,device)
+local mode=({[0]="command",[1]="event",command="command",event="event"})[value]
+if mode==nil then return nil end
+device:set_field("__ts004f_knob_mode",mode,{persist=true})local event_mode=mode=="event"
+device:emit_event(capabilities.button.supportedButtonValues(event_mode and{"pushed","double","held"}or{"pushed","held"}))device:emit_event(capabilities.knob.supportedAttributes(event_mode and{"rotateAmount"}or{"rotateAmount","heldRotateAmount"}))device:emit_event(capabilities["concertmirror08464.tsfKnobAction"].supportedActions(event_mode and{
+"single","double","hold","rotate_left","rotate_right",}or{
+"toggle","brightness_step_up","brightness_step_down","color_temperature_step_up","color_temperature_step_down","hue_move","hue_down","hue_stop",}))return mode
+end
+local ts004f_knob=build_advanced_remote("buttons-ts004f-knob",1,{
+knob_remote=true,placeholder_custom_states=false,remote_action_handler=ts004f_knob_rotation,remote_action_emit_name="tsfKnobAction",standard_action_button_events={toggle="pushed",hue_move="held",hue_down="held"},
+standard_command_action_resolver=function(_,cluster_id,command_id)
+local commands={
+[zcl.CLUSTER_ON_OFF]={[0x02]=true},[zcl.CLUSTER_LEVEL_CONTROL]={[0x02]=true},[zcl.CLUSTER_COLOR_CONTROL]={[0x01]=true,[0x47]=true,[0x4C]=true},}return nil,nil,not(commands[cluster_id]and commands[cluster_id][command_id])
+end,
+runtime_start=function(device)
+ts004f_knob_mode(device:get_field("__ts004f_knob_mode")or"event",device)if device:get_latest_state("main",capabilities.knob.ID,"rotateAmount")==nil then
+device:emit_event(capabilities.knob.rotateAmount({value=0,unit="%"},{state_change=false}))
+end
+if device:get_latest_state("main",capabilities.knob.ID,"heldRotateAmount")==nil then
+device:emit_event(capabilities.knob.heldRotateAmount({value=0,unit="%"},{state_change=false}))
+end
+end,
+})ts004f_knob.zcl_clusters[4]=zcl.operation_mode({
+emit=emit.tsfKnobMode(),from_device=ts004f_knob_mode,
+to_device=function(value,device)
+ts004f_knob_mode(value,device)return({command=0,event=1})[value]
+end,
+})local standard_action_remote_1=build_standard_action_remote("buttons-button-1-battery-remote-action",1,{
 button_actions={"pushed","double"},})local slacky_remote_1=build_standard_action_remote("buttons-button-1-battery-remote-action",1,{
 slacky_multistate=true,standard_action_endpoint_suffix=true,})local slacky_remote_2=build_standard_action_remote("buttons-button-2-battery-remote-action",2,{
 slacky_multistate=true,standard_action_endpoint_suffix=true,})local slacky_remote_4=build_standard_action_remote("buttons-button-4-battery-remote-action",4,{
@@ -271,7 +345,7 @@ end
 local ewelink_button=build_standard_action_remote("buttons-ewelink-button-1-battery-voltage-remote-action",1,{
 button_actions={"pushed","double","held"},})local namron_4512772=build_standard_action_remote("buttons-button-4-battery-remote-action",4,{
 button_actions={"up","down","up_hold","down_hold"},})local namron_4512793=build_standard_action_remote("buttons-button-3-battery",3,{
-button_actions={"up","down","up_hold","down_hold"},})remote_1.configure=bind_on_off_endpoints(1)remote_4.configure=bind_on_off_endpoints(4)remote_6.configure=bind_on_off_endpoints(6)ysr_mini_z.configure=bind_on_off_endpoints(1)knob_remote.configure=bind_on_off_endpoints(1)standard_action_remote_1.configure=bind_on_off_endpoints(1)local slacky_command_clusters={
+button_actions={"up","down","up_hold","down_hold"},})remote_1.configure=bind_on_off_endpoints(1)remote_4.configure=bind_on_off_endpoints(4)remote_6.configure=bind_on_off_endpoints(6)ysr_mini_z.configure=bind_on_off_endpoints(1)knob_remote.configure=bind_on_off_endpoints(1)ts004f_knob.configure=bind_on_off_endpoints(1)standard_action_remote_1.configure=bind_on_off_endpoints(1)local slacky_command_clusters={
 CLUSTER_MULTI_STATE_INPUT,zcl.CLUSTER_ON_OFF,zcl.CLUSTER_LEVEL_CONTROL,zcl.CLUSTER_COLOR_CONTROL,CLUSTER_SCENES,}slacky_remote_1.configure=bind_clusters_endpoints(slacky_command_clusters,1)slacky_remote_2.configure=bind_clusters_endpoints(slacky_command_clusters,2)slacky_remote_4.configure=bind_clusters_endpoints(slacky_command_clusters,4)shelly_button_tough.zcl_clusters={zcl.battery()}shelly_button_tough.standard_command_action_resolver=shelly_button_tough_action
 shelly_button_tough.standard_action_button_events={
 single="pushed",double="double",triple="pushed_3x",single_long="held",}shelly_button_tough.configure=bind_clusters_endpoints({
@@ -334,5 +408,6 @@ device_helpers.create_fingerprint("Shelly","1"),})register_device_definition(ewe
 device_helpers.create_fingerprint("eWeLink","CK-TLSR8656-SS5-01(7000)"),device_helpers.create_fingerprint("eWeLink","WB-01"),device_helpers.create_fingerprint("eWeLink","SNZB-01"),device_helpers.create_fingerprint("SONOFF","CK-TLSR8656-SS5-01(7000)"),device_helpers.create_fingerprint("SONOFF","WB01"),device_helpers.create_fingerprint("SONOFF","WB-01"),device_helpers.create_fingerprint("SONOFF","SNZB-01"),})register_device_definition(namron_4512772,{
 device_helpers.create_fingerprint("Namron","4512772"),})register_device_definition(namron_4512793,{
 device_helpers.create_fingerprint("Namron AS","4512793"),})register_device_definition(knob_remote,device_helpers.create_fingerprints("TS004F",{
-"_TZ3000_qja6nq5z","_TZ3000_1fqpj6qz","_TZ3000_402vrq2i","_TZ3000_4fjiwweb","_TZ3000_uri7ongn","_TZ3000_ixla93vd","_TZ3000_csflgqj2","_TZ3000_abrsvsou","_TZ3000_gwkzibhs","_TZ3000_ugi8ky6u",}))return{
+"_TZ3000_qja6nq5z","_TZ3000_402vrq2i","_TZ3000_4fjiwweb","_TZ3000_uri7ongn","_TZ3000_ixla93vd","_TZ3000_csflgqj2","_TZ3000_abrsvsou","_TZ3000_ugi8ky6u",}))register_device_definition(ts004f_knob,device_helpers.create_fingerprints("TS004F",{
+"_TZ3000_1fqpj6qz","_TZ3000_gwkzibhs",}))return{
 id="zcl.controls.advanced",registrations=device_definitions,}

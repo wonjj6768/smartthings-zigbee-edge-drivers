@@ -16010,5 +16010,33 @@
   [
     "stredaSn3kButtonAction",
     "action"
+  ],
+  [
+    "tsfKnobAction",
+    "action"
+  ],
+  [
+    "tsfKnobMode",
+    "operationMode"
+  ],
+  [
+    "tsfKnobStep",
+    "stepSize"
+  ],
+  [
+    "tsfKnobBrightnessDelta",
+    "brightnessDelta"
+  ],
+  [
+    "tsfKnobColorDelta",
+    "colorDelta"
+  ],
+  [
+    "tsfKnobTransition",
+    "transitionTime"
+  ],
+  [
+    "tsfKnobRate",
+    "rate"
   ]
 ]

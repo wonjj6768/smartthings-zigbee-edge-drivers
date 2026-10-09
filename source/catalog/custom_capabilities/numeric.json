@@ -6088,7 +6088,7 @@
     true,
     "detection_distance_max",
     0.75,
-    9.0,
+    9,
     0.75,
     "m"
   ],
@@ -6889,7 +6889,7 @@
     true,
     "switch_sensitivity",
     0.5,
-    5.0,
+    5,
     0.5,
     "C"
   ],
@@ -6897,8 +6897,8 @@
     "tervixFloorTempProtection",
     true,
     "floor_temp_protection",
-    5.0,
-    60.0,
+    5,
+    60,
     0.5,
     "C"
   ],
@@ -6906,8 +6906,8 @@
     "tervixFloorLowProtection",
     true,
     "floor_low_protection",
-    10.0,
-    30.0,
+    10,
+    30,
     0.5,
     "C"
   ],
@@ -16851,8 +16851,8 @@
     "sciThTarget",
     true,
     "temperature_target",
-    -100.0,
-    100.0,
+    -100,
+    100,
     0.5,
     "C"
   ],
@@ -16860,8 +16860,8 @@
     "sciThRange",
     true,
     "temperature_range",
-    1.0,
-    10.0,
+    1,
+    10,
     0.1,
     "C"
   ],
@@ -16905,8 +16905,8 @@
     "sciTempCalibration",
     true,
     "temperature_calibration",
-    -10.0,
-    10.0,
+    -10,
+    10,
     0.5,
     "C"
   ],
@@ -16914,8 +16914,8 @@
     "sciTempTarget",
     true,
     "temperature_target",
-    -100.0,
-    100.0,
+    -100,
+    100,
     0.5,
     "C"
   ],
@@ -16923,8 +16923,8 @@
     "sciTempRange",
     true,
     "temperature_range",
-    1.0,
-    10.0,
+    1,
+    10,
     0.1,
     "C"
   ],
@@ -18862,5 +18862,50 @@
     null,
     null,
     "C"
+  ],
+  [
+    "tsfKnobStep",
+    false,
+    "action_step_size",
+    0,
+    255,
+    1,
+    null
+  ],
+  [
+    "tsfKnobBrightnessDelta",
+    false,
+    "action_brightness_delta",
+    -255,
+    255,
+    1,
+    null
+  ],
+  [
+    "tsfKnobColorDelta",
+    false,
+    "action_color_temperature_delta",
+    -65535,
+    65535,
+    1,
+    "mired"
+  ],
+  [
+    "tsfKnobTransition",
+    false,
+    "action_transition_time",
+    0,
+    6553.5,
+    0.1,
+    "s"
+  ],
+  [
+    "tsfKnobRate",
+    false,
+    "action_rate",
+    0,
+    255,
+    1,
+    null
   ]
 ]

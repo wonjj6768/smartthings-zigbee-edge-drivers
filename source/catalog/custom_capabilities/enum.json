@@ -19371,5 +19371,34 @@
       "release_up_doorbell_button",
       "hold_up_doorbell_button"
     ]
+  ],
+  [
+    "tsfKnobAction",
+    false,
+    "tsf_knob_action",
+    [
+      "single",
+      "double",
+      "hold",
+      "rotate_left",
+      "rotate_right",
+      "toggle",
+      "brightness_step_up",
+      "brightness_step_down",
+      "color_temperature_step_up",
+      "color_temperature_step_down",
+      "hue_move",
+      "hue_down",
+      "hue_stop"
+    ]
+  ],
+  [
+    "tsfKnobMode",
+    true,
+    "operation_mode",
+    [
+      "command",
+      "event"
+    ]
   ]
 ]

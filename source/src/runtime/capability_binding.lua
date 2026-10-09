@@ -175,7 +175,8 @@ function binding.emit_state(device, component_id, reference, value, options)
     return false
   end
 
-  emit_event(device, component_id, attribute(build_payload(metadata, value, options)))
+  local event_metadata = options and { state_change = options.state_change } or nil
+  emit_event(device, component_id, attribute(build_payload(metadata, value, options), event_metadata))
   return true
 end
 

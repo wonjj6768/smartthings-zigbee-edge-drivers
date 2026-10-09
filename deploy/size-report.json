@@ -1,9 +1,9 @@
 [
   {
     "name": "zcl-switch-wonjj6768",
-    "raw_size": 452637,
+    "raw_size": 453362,
     "under_limit": true,
-    "free_bytes": 71651,
+    "free_bytes": 70926,
     "meets_headroom": true,
     "profiles": [
       "controllers-easyiot-sp1000",
@@ -71,8 +71,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 15,
-      "bytes": 78776
+      "files": 6,
+      "bytes": 69795
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_switch_wonjj6768",
@@ -109,7 +109,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "765d20c0ee3dd75d9ab4f15701b4f5d0b2e50cb353ee2d26b7e1271b8cce78ab",
+      "closure_sha256": "0f7922a43beaa1d81a2097c87c3905179e2139718d4ae42c6ab9c6669a7c0c4b",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -133,8 +133,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -217,9 +217,9 @@
   },
   {
     "name": "zcl-easyiot-wonjj6768",
-    "raw_size": 314230,
+    "raw_size": 314955,
     "under_limit": true,
-    "free_bytes": 210058,
+    "free_bytes": 209333,
     "meets_headroom": true,
     "profiles": [
       "controllers-easyiot-ir01",
@@ -236,8 +236,8 @@
       "text": 5
     },
     "pruned_lua": {
-      "files": 15,
-      "bytes": 32887
+      "files": 6,
+      "bytes": 23906
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_easyiot_wonjj6768",
@@ -274,7 +274,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "9da684857d375e3108dc6e178d0512d55b494d1e3b7540b0c93d020efd72e92e",
+      "closure_sha256": "a0ec1e7fee38c32bda087a0c6e10922d70fe00c8a3bafa92242791562e03ce87",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -298,8 +298,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -353,9 +353,9 @@
   },
   {
     "name": "zcl-plugs-wonjj6768",
-    "raw_size": 293351,
+    "raw_size": 294076,
     "under_limit": true,
-    "free_bytes": 230937,
+    "free_bytes": 230212,
     "meets_headroom": true,
     "profiles": [
       "plugs-bacchus-water-station",
@@ -382,8 +382,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84912
+      "files": 7,
+      "bytes": 75931
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_plugs_wonjj6768",
@@ -420,7 +420,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "ce2818e898053585c72680c0e93d96833fea1bcec8975824601027a7279ed2a3",
+      "closure_sha256": "0bcaa46b5878335d2d92b357ce900ec278fc078941b1aafcc8b1aebed133352a",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -444,8 +444,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -511,9 +511,9 @@
   },
   {
     "name": "zcl-lights-wonjj6768",
-    "raw_size": 417524,
+    "raw_size": 418249,
     "under_limit": true,
-    "free_bytes": 106764,
+    "free_bytes": 106039,
     "meets_headroom": true,
     "profiles": [
       "fans-switch-fan-mode",
@@ -550,8 +550,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84915
+      "files": 7,
+      "bytes": 75934
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_lights_wonjj6768",
@@ -588,7 +588,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "54fe6ae5397232725bd9565c8db249140e6fbe1a143d907a05b48e6858ea631c",
+      "closure_sha256": "e376a9583d6ffcf43560ad5d5c10839dcec9d4175cf7bffbfd1799e8888ca41a",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -612,8 +612,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -695,9 +695,9 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 483773,
+    "raw_size": 484498,
     "under_limit": true,
-    "free_bytes": 40515,
+    "free_bytes": 39790,
     "meets_headroom": true,
     "profiles": [
       "lights-dimmer-power-voltage-current",
@@ -802,8 +802,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 15,
-      "bytes": 78773
+      "files": 6,
+      "bytes": 69792
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_sensors_wonjj6768",
@@ -840,7 +840,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "54150c6e151f777ff7f8f7395136fd0a0cd3473682433d92f7c292aa3e2550c7",
+      "closure_sha256": "a811dc1087e57feb3f9e31c56db8ddf0ddcc9a6aed888064ede041e9094ab131",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -864,8 +864,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -966,9 +966,9 @@
   },
   {
     "name": "zcl-covers-wonjj6768",
-    "raw_size": 246279,
+    "raw_size": 247004,
     "under_limit": true,
-    "free_bytes": 278009,
+    "free_bytes": 277284,
     "meets_headroom": true,
     "profiles": [
       "covers-cover",
@@ -982,8 +982,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84915
+      "files": 7,
+      "bytes": 75934
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_covers_wonjj6768",
@@ -1020,7 +1020,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "5f21cbc885c5bdf341fa3dc236193ed205a1c79e4fc4f7c0a8fc8e8b364a7e0d",
+      "closure_sha256": "31f780527aa5e6910b89a88d938fff2a9fdbc8d14352e3fcd029857a7ce2d795",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -1044,8 +1044,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -1099,9 +1099,9 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 382571,
+    "raw_size": 390522,
     "under_limit": true,
-    "free_bytes": 141717,
+    "free_bytes": 133766,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -1124,6 +1124,7 @@
       "buttons-ewelink-button-1-battery-voltage-remote-action",
       "buttons-heiman-scene-battery-remote-action",
       "buttons-shelly-one-input",
+      "buttons-ts004f-knob",
       "controllers-candeo-rd1p-rem",
       "controllers-dimming-battery-remote-action",
       "controllers-dimming-remote-action",
@@ -1151,13 +1152,13 @@
     ],
     "fingerprints": 320,
     "custom_capabilities": {
-      "numeric": 0,
-      "enum": 11,
+      "numeric": 5,
+      "enum": 13,
       "text": 4
     },
     "pruned_lua": {
-      "files": 14,
-      "bytes": 68503
+      "files": 5,
+      "bytes": 59522
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_controls_wonjj6768",
@@ -1194,7 +1195,7 @@
       "name": "full_metering_ir",
       "source_sha256": "7c5a8779ef83a9477679c1038a614b58dae0822dc32765c13c4f0743dd188c85",
       "selected_sha256": "483fd913ff6e4604c06179b9299e3cb0ca97cf9a5c5cc825e4f2fd96f2f763ef",
-      "closure_sha256": "0bf1d602c66c20279b179670d2e98e90ec265837614cc9b6175ad41843b5afae",
+      "closure_sha256": "e84bea70a602c3326ce88bb9c7c60f4d300b9c0d542b2085793cad051d3b0c86",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -1218,8 +1219,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -1298,9 +1299,9 @@
   },
   {
     "name": "ef00-controls-wonjj6768",
-    "raw_size": 352751,
+    "raw_size": 353476,
     "under_limit": true,
-    "free_bytes": 171537,
+    "free_bytes": 170812,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-18",
@@ -1318,8 +1319,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 17,
-      "bytes": 121052
+      "files": 8,
+      "bytes": 112071
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_controls_wonjj6768",
@@ -1356,7 +1357,7 @@
       "name": "receive_only",
       "source_sha256": "8b53eec817b9e9efafc16f2a744aec96a5f4150514723fa6c88a1f51e35f9ddc",
       "selected_sha256": "385c44e2d40206211b4e1361b141d6163a9661c3dd8703ac9e837d791970f2db",
-      "closure_sha256": "010f0b15bea1d315df3c54044dcb34138bf256a3f05d8d2781a33a52152c3b7a",
+      "closure_sha256": "f71197623881664e6a722dceaa6efa9ea4b8fb372a850d19a4eb80b56a54911b",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -1385,8 +1386,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -1426,9 +1427,9 @@
   },
   {
     "name": "ef00-covers-wonjj6768",
-    "raw_size": 449012,
+    "raw_size": 449737,
     "under_limit": true,
-    "free_bytes": 75276,
+    "free_bytes": 74551,
     "meets_headroom": true,
     "profiles": [
       "covers-cover",
@@ -1461,8 +1462,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 101063
+      "files": 7,
+      "bytes": 92082
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_covers_wonjj6768",
@@ -1499,7 +1500,7 @@
       "name": "full",
       "source_sha256": "fad41aef6102474ee9bcd75e90cd08288864bf99dcdca94c9312514ea9930ea2",
       "selected_sha256": "9f39e8ff7385b4bc93cfca7d8e1afd3d41ed78db3844b31f0b95a98d62226ea2",
-      "closure_sha256": "bcac9f3a590a993978fd48e84762f13bc1d907dee613775bcf1b501a5e35db2d",
+      "closure_sha256": "4b3149002f8107300b833f9e31a09a7e8662b4f537adb20bc3e1a03ee00bef66",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -1528,8 +1529,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -1576,9 +1577,9 @@
   },
   {
     "name": "ef00-lights-wonjj6768",
-    "raw_size": 442279,
+    "raw_size": 443004,
     "under_limit": true,
-    "free_bytes": 82009,
+    "free_bytes": 81284,
     "meets_headroom": true,
     "profiles": [
       "fans-fan-level-light-dimmer",
@@ -1610,8 +1611,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 17,
-      "bytes": 121046
+      "files": 8,
+      "bytes": 112065
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_lights_wonjj6768",
@@ -1648,7 +1649,7 @@
       "name": "receive_only",
       "source_sha256": "8b53eec817b9e9efafc16f2a744aec96a5f4150514723fa6c88a1f51e35f9ddc",
       "selected_sha256": "385c44e2d40206211b4e1361b141d6163a9661c3dd8703ac9e837d791970f2db",
-      "closure_sha256": "ba5fe67bea64778c2fcdfac26bfbae4be8d7b1016bfe7383c7ae69afd76bb53c",
+      "closure_sha256": "5d54f3fcc065c574715cae449e2f2ed1c62bb2376e590522b9f3232c4090c664",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -1677,8 +1678,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -1721,9 +1722,9 @@
   },
   {
     "name": "ef00-switch-wonjj6768",
-    "raw_size": 446192,
+    "raw_size": 446897,
     "under_limit": true,
-    "free_bytes": 78096,
+    "free_bytes": 77391,
     "meets_headroom": true,
     "profiles": [
       "switches-switch-1",
@@ -1755,8 +1756,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 101081
+      "files": 7,
+      "bytes": 92100
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_switch_wonjj6768",
@@ -1793,7 +1794,7 @@
       "name": "full",
       "source_sha256": "fad41aef6102474ee9bcd75e90cd08288864bf99dcdca94c9312514ea9930ea2",
       "selected_sha256": "9f39e8ff7385b4bc93cfca7d8e1afd3d41ed78db3844b31f0b95a98d62226ea2",
-      "closure_sha256": "46083b30b5250a4e83bc5b4c0eab69ecdbfa91a3a2b88e49a9e452d00dacb285",
+      "closure_sha256": "dba701fd740b856113bcb263b00f96759014182fabd0283f63b8347809953ab8",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -1822,8 +1823,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -1910,8 +1911,8 @@
       "text": 29
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247751
+      "files": 19,
+      "bytes": 239495
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_switch_panel_wonjj6768",
@@ -1966,9 +1967,9 @@
   },
   {
     "name": "ef00-screen-switch-wonjj6768",
-    "raw_size": 344224,
+    "raw_size": 344949,
     "under_limit": true,
-    "free_bytes": 180064,
+    "free_bytes": 179339,
     "meets_headroom": true,
     "profiles": [
       "switches-screen-zms206us4"
@@ -1980,8 +1981,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 17,
-      "bytes": 121073
+      "files": 8,
+      "bytes": 112092
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_screen_switch_wonjj6768",
@@ -2016,7 +2017,7 @@
       "name": "receive_only",
       "source_sha256": "8b53eec817b9e9efafc16f2a744aec96a5f4150514723fa6c88a1f51e35f9ddc",
       "selected_sha256": "385c44e2d40206211b4e1361b141d6163a9661c3dd8703ac9e837d791970f2db",
-      "closure_sha256": "e225c2701fbbaab0e27277383978f405b18166fb51263e4c2e46186d66264e2b",
+      "closure_sha256": "76a4c9d41d1a72c283b1ed021380a1e4a79247c7a59706c6a7917751816030e1",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -2045,8 +2046,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -2102,8 +2103,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 26,
-      "bytes": 246584
+      "files": 17,
+      "bytes": 238328
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_garage_door_wonjj6768",
@@ -2185,8 +2186,8 @@
       "text": 10
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247760
+      "files": 19,
+      "bytes": 239504
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_energy_wonjj6768",
@@ -2278,8 +2279,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247760
+      "files": 19,
+      "bytes": 239504
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_meters_wonjj6768",
@@ -2399,8 +2400,8 @@
       "text": 5
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247736
+      "files": 19,
+      "bytes": 239480
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_sensors_wonjj6768",
@@ -2477,8 +2478,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247745
+      "files": 19,
+      "bytes": 239489
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_pir_motion_wonjj6768",
@@ -2563,8 +2564,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247769
+      "files": 19,
+      "bytes": 239513
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_presence_general_1_wonjj6768",
@@ -2619,9 +2620,9 @@
   },
   {
     "name": "ef00-presence-general-2-wonjj6768",
-    "raw_size": 424739,
+    "raw_size": 425462,
     "under_limit": true,
-    "free_bytes": 99549,
+    "free_bytes": 98826,
     "meets_headroom": true,
     "profiles": [
       "safety-presence-zd24-illuminance-battery",
@@ -2645,8 +2646,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 17,
-      "bytes": 121082
+      "files": 8,
+      "bytes": 112101
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_presence_general_2_wonjj6768",
@@ -2683,7 +2684,7 @@
       "name": "receive_only",
       "source_sha256": "8b53eec817b9e9efafc16f2a744aec96a5f4150514723fa6c88a1f51e35f9ddc",
       "selected_sha256": "385c44e2d40206211b4e1361b141d6163a9661c3dd8703ac9e837d791970f2db",
-      "closure_sha256": "ed9866181e9bee8f083948decb910a584f2e097e352cdb03c81fbc18fc7098ba",
+      "closure_sha256": "1f3797b8da18d42feaf1e0c05c4b2c07acc1e96bb922dec7853877c209c9718e",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -2712,8 +2713,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -2770,8 +2771,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247760
+      "files": 19,
+      "bytes": 239504
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_presence_switch_wonjj6768",
@@ -2826,9 +2827,9 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 424877,
+    "raw_size": 425602,
     "under_limit": true,
-    "free_bytes": 99411,
+    "free_bytes": 98686,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-mtd085-illuminance",
@@ -2853,8 +2854,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 17,
-      "bytes": 121079
+      "files": 8,
+      "bytes": 112098
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_presence_advanced_wonjj6768",
@@ -2891,7 +2892,7 @@
       "name": "receive_only",
       "source_sha256": "8b53eec817b9e9efafc16f2a744aec96a5f4150514723fa6c88a1f51e35f9ddc",
       "selected_sha256": "385c44e2d40206211b4e1361b141d6163a9661c3dd8703ac9e837d791970f2db",
-      "closure_sha256": "267349089603e6089faa12318dd9eeb5633612028669e046ffb0e2aa7bd6dfa3",
+      "closure_sha256": "e2c4c79ccf749cc4aca281b65f7c086134aef79fbdf52223d89f4d19f1239ffc",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -2920,8 +2921,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -3020,8 +3021,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247733
+      "files": 19,
+      "bytes": 239477
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_safety_wonjj6768",
@@ -3100,8 +3101,8 @@
       "text": 3
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247733
+      "files": 19,
+      "bytes": 239477
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_valves_wonjj6768",
@@ -3184,8 +3185,8 @@
       "text": 9
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247766
+      "files": 19,
+      "bytes": 239510
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_thermostat_trv_1_wonjj6768",
@@ -3264,8 +3265,8 @@
       "text": 15
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247766
+      "files": 19,
+      "bytes": 239510
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_thermostat_trv_2_wonjj6768",
@@ -3320,9 +3321,9 @@
   },
   {
     "name": "ef00-thermostat-wall-wonjj6768",
-    "raw_size": 381868,
+    "raw_size": 381858,
     "under_limit": true,
-    "free_bytes": 142420,
+    "free_bytes": 142430,
     "meets_headroom": true,
     "profiles": [
       "thermostats-bht002-fine",
@@ -3349,8 +3350,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247763
+      "files": 19,
+      "bytes": 239507
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_thermostat_wall_wonjj6768",
@@ -3432,8 +3433,8 @@
       "text": 9
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247979
+      "files": 19,
+      "bytes": 239723
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_thermostat_fcu_wonjj6768",
@@ -3488,9 +3489,9 @@
   },
   {
     "name": "zcl-switch-2-wonjj6768",
-    "raw_size": 367474,
+    "raw_size": 368199,
     "under_limit": true,
-    "free_bytes": 156814,
+    "free_bytes": 156089,
     "meets_headroom": true,
     "profiles": [
       "switches-candeo-ssfs",
@@ -3521,8 +3522,8 @@
       "text": 14
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 85646
+      "files": 7,
+      "bytes": 76665
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_switch_2_wonjj6768",
@@ -3559,7 +3560,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "a27cec3b18cbb704f7618d992d6a94a27dbec5186fcdf4bafcd786734b787299",
+      "closure_sha256": "f7b187c40bba0445493824031ae1f68fd146df59cd80f4674b416f3c34467bb7",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -3583,8 +3584,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -3658,9 +3659,9 @@
   },
   {
     "name": "zcl-lights-2-wonjj6768",
-    "raw_size": 328762,
+    "raw_size": 329487,
     "under_limit": true,
-    "free_bytes": 195526,
+    "free_bytes": 194801,
     "meets_headroom": true,
     "profiles": [
       "lights-candeo-rd1p-dpm",
@@ -3683,8 +3684,8 @@
       "text": 12
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 85863
+      "files": 7,
+      "bytes": 76882
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_lights_2_wonjj6768",
@@ -3721,7 +3722,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "a4014f1ba01f1c019dda8ac78490233d5eff58482ca4b94d43ab25268a9a4094",
+      "closure_sha256": "eb6b4af25eb4a4c489ec1177d9dfae23028883f5f0daf545b70d830b776a6a6a",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -3745,8 +3746,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -3819,9 +3820,9 @@
   },
   {
     "name": "zcl-sensors-2-wonjj6768",
-    "raw_size": 474608,
+    "raw_size": 475333,
     "under_limit": true,
-    "free_bytes": 49680,
+    "free_bytes": 48955,
     "meets_headroom": true,
     "profiles": [
       "hobeian-zg102z-contact",
@@ -3972,8 +3973,8 @@
       "text": 9
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 86781
+      "files": 7,
+      "bytes": 77800
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_sensors_2_wonjj6768",
@@ -4010,7 +4011,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "4739a55d7ba94d9dbda2387cfc5a1d8cbd226ffd6c5c1cff083db9e6ae0e6ea1",
+      "closure_sha256": "70fe20dd5e1264692e447efdc55dae5bc0df8ca57a894c833675476670faa701",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4034,8 +4035,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4111,9 +4112,9 @@
   },
   {
     "name": "zcl-controls-2-wonjj6768",
-    "raw_size": 332598,
+    "raw_size": 333323,
     "under_limit": true,
-    "free_bytes": 191690,
+    "free_bytes": 190965,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-12-battery",
@@ -4146,8 +4147,8 @@
       "text": 25
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 85383
+      "files": 7,
+      "bytes": 76402
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_controls_2_wonjj6768",
@@ -4184,7 +4185,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "a4c5de1a196f1c98281953560e27bc7d0d6b22fb036f7f79e20a71e13d10d520",
+      "closure_sha256": "fc414bb447a4508a989cc5ddaea634186bd7447750636493ead8257651ec1188",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4208,8 +4209,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4285,9 +4286,9 @@
   },
   {
     "name": "zcl-locks-wonjj6768",
-    "raw_size": 235020,
+    "raw_size": 235745,
     "under_limit": true,
-    "free_bytes": 289268,
+    "free_bytes": 288543,
     "meets_headroom": true,
     "profiles": [
       "locks-wave18-javis-js-slk2-zb"
@@ -4299,8 +4300,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84975
+      "files": 7,
+      "bytes": 75994
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_locks_wonjj6768",
@@ -4337,7 +4338,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "33dfcedd6fe9b2816ac8b75d04701a06817bff2acf975a6f43beec6eb96eb1c1",
+      "closure_sha256": "e9b49be2f8f01deaa2229788889ed04a615d5f7e1d5f25851d492b6fe0b1d90f",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4361,8 +4362,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4412,9 +4413,9 @@
   },
   {
     "name": "zcl-bridge-wonjj6768",
-    "raw_size": 253177,
+    "raw_size": 253902,
     "under_limit": true,
-    "free_bytes": 271111,
+    "free_bytes": 270386,
     "meets_headroom": true,
     "profiles": [
       "bridges-slzb07mg26",
@@ -4430,8 +4431,8 @@
       "text": 3
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84939
+      "files": 7,
+      "bytes": 75958
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_bridge_wonjj6768",
@@ -4468,7 +4469,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "9da684857d375e3108dc6e178d0512d55b494d1e3b7540b0c93d020efd72e92e",
+      "closure_sha256": "a0ec1e7fee38c32bda087a0c6e10922d70fe00c8a3bafa92242791562e03ce87",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4492,8 +4493,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4547,9 +4548,9 @@
   },
   {
     "name": "zcl-thermostat-wonjj6768",
-    "raw_size": 323458,
+    "raw_size": 324183,
     "under_limit": true,
-    "free_bytes": 200830,
+    "free_bytes": 200105,
     "meets_headroom": true,
     "profiles": [
       "thermostats-aqara-w500",
@@ -4565,8 +4566,8 @@
       "text": 17
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 85644
+      "files": 7,
+      "bytes": 76663
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_thermostat_wonjj6768",
@@ -4603,7 +4604,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "683218df16c79ec1fe05df42f725c314323106b28b98d3d7fd0bb5289481ac14",
+      "closure_sha256": "ef5310689d97d09313045152f5f2e1718e92006ca875d32057499422154a3ece",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4627,8 +4628,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4694,9 +4695,9 @@
   },
   {
     "name": "zcl-dali-wonjj6768",
-    "raw_size": 244414,
+    "raw_size": 245139,
     "under_limit": true,
-    "free_bytes": 279874,
+    "free_bytes": 279149,
     "meets_headroom": true,
     "profiles": [
       "bridge-wave19-sunricher-dali-cct-child",
@@ -4710,8 +4711,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84951
+      "files": 7,
+      "bytes": 75970
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_dali_wonjj6768",
@@ -4748,7 +4749,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "b2e51e0fe1cf5fc52800e6396660e348a5ceda2bbd9df5178ad75f20d1259e50",
+      "closure_sha256": "5d29a9c67ddd2c46690d4fefc8c103922d6eb28901c59d9c61ff265e061d1a0b",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4772,8 +4773,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4826,9 +4827,9 @@
   },
   {
     "name": "ef00-covers-2-wonjj6768",
-    "raw_size": 413554,
+    "raw_size": 414279,
     "under_limit": true,
-    "free_bytes": 110734,
+    "free_bytes": 110009,
     "meets_headroom": true,
     "profiles": [
       "covers-cover-gm25teq",
@@ -4858,8 +4859,8 @@
       "text": 5
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 101741
+      "files": 7,
+      "bytes": 92760
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_covers_2_wonjj6768",
@@ -4896,7 +4897,7 @@
       "name": "full",
       "source_sha256": "fad41aef6102474ee9bcd75e90cd08288864bf99dcdca94c9312514ea9930ea2",
       "selected_sha256": "9f39e8ff7385b4bc93cfca7d8e1afd3d41ed78db3844b31f0b95a98d62226ea2",
-      "closure_sha256": "eee82114d51a2e9badcf95175c506a8d37e57d26c1833a6f92cfbb956843f67f",
+      "closure_sha256": "837cb85369276bb011b5527fc8a0b865e58b5314b8e4c4cfc79caf49bac767ae",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -4925,8 +4926,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -4977,9 +4978,9 @@
   },
   {
     "name": "ef00-lights-2-wonjj6768",
-    "raw_size": 443660,
+    "raw_size": 444385,
     "under_limit": true,
-    "free_bytes": 80628,
+    "free_bytes": 79903,
     "meets_headroom": true,
     "profiles": [
       "lights-color-skydance-wz5-rgb",
@@ -5010,8 +5011,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 102131
+      "files": 7,
+      "bytes": 93150
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_lights_2_wonjj6768",
@@ -5048,7 +5049,7 @@
       "name": "full",
       "source_sha256": "fad41aef6102474ee9bcd75e90cd08288864bf99dcdca94c9312514ea9930ea2",
       "selected_sha256": "9f39e8ff7385b4bc93cfca7d8e1afd3d41ed78db3844b31f0b95a98d62226ea2",
-      "closure_sha256": "11db97c1f8e9e956ad220a861db1c10a76318deb8cefa6149be34f1219e8b068",
+      "closure_sha256": "62d4cc7c21f2fc8cccca536aab62e5ba350c7e9bf015e8babbf2f64af98d8fe3",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -5077,8 +5078,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -5175,8 +5176,8 @@
       "text": 30
     },
     "pruned_lua": {
-      "files": 26,
-      "bytes": 248926
+      "files": 17,
+      "bytes": 240670
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_switch_2_wonjj6768",
@@ -5231,9 +5232,9 @@
   },
   {
     "name": "ef00-meters-2-wonjj6768",
-    "raw_size": 383652,
+    "raw_size": 384377,
     "under_limit": true,
-    "free_bytes": 140636,
+    "free_bytes": 139911,
     "meets_headroom": true,
     "profiles": [
       "meters-avatto-zot60",
@@ -5252,8 +5253,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 17,
-      "bytes": 121349
+      "files": 8,
+      "bytes": 112368
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_meters_2_wonjj6768",
@@ -5290,7 +5291,7 @@
       "name": "receive_only",
       "source_sha256": "8b53eec817b9e9efafc16f2a744aec96a5f4150514723fa6c88a1f51e35f9ddc",
       "selected_sha256": "385c44e2d40206211b4e1361b141d6163a9661c3dd8703ac9e837d791970f2db",
-      "closure_sha256": "53d6bc8dcbaf1edeca7f4015c08d66cf717cd15003607b5d4fbea14150adb2c1",
+      "closure_sha256": "2bb0942a212b93f05eef1b450acf6d4a8b32650c7fd8608c0bb8bdd8004babd3",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -5319,8 +5320,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -5390,8 +5391,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 248261
+      "files": 19,
+      "bytes": 240005
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_sensors_2_wonjj6768",
@@ -5446,9 +5447,9 @@
   },
   {
     "name": "ef00-presence-3-wonjj6768",
-    "raw_size": 448792,
+    "raw_size": 449517,
     "under_limit": true,
-    "free_bytes": 75496,
+    "free_bytes": 74771,
     "meets_headroom": true,
     "profiles": [
       "safety-occupancy-wave11-linptech-es1",
@@ -5478,8 +5479,8 @@
       "text": 2
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 102530
+      "files": 7,
+      "bytes": 93549
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_presence_3_wonjj6768",
@@ -5516,7 +5517,7 @@
       "name": "full",
       "source_sha256": "fad41aef6102474ee9bcd75e90cd08288864bf99dcdca94c9312514ea9930ea2",
       "selected_sha256": "9f39e8ff7385b4bc93cfca7d8e1afd3d41ed78db3844b31f0b95a98d62226ea2",
-      "closure_sha256": "775308a44bacc1008319599c2c120726aed094c7c6617d482c2d374f7611b3c5",
+      "closure_sha256": "3f7845ebe69a1826aacf8f6209dbdd8d9497bbf1382551542ae067f08ead3bd3",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -5545,8 +5546,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -5637,8 +5638,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 249347
+      "files": 19,
+      "bytes": 241091
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_safety_2_wonjj6768",
@@ -5713,8 +5714,8 @@
       "text": 7
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 248403
+      "files": 19,
+      "bytes": 240147
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_valves_2_wonjj6768",
@@ -5801,8 +5802,8 @@
       "text": 73
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 249212
+      "files": 19,
+      "bytes": 240956
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_thermostat_trv_3_wonjj6768",
@@ -5889,8 +5890,8 @@
       "text": 38
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 248507
+      "files": 19,
+      "bytes": 240251
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_thermostat_hvac_2_wonjj6768",
@@ -5945,9 +5946,9 @@
   },
   {
     "name": "ef00-controls-2-wonjj6768",
-    "raw_size": 405204,
+    "raw_size": 405929,
     "under_limit": true,
-    "free_bytes": 119084,
+    "free_bytes": 118359,
     "meets_headroom": true,
     "profiles": [
       "controls-tuya-fingerbot-plus",
@@ -5969,8 +5970,8 @@
       "text": 16
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 102062
+      "files": 7,
+      "bytes": 93081
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_controls_2_wonjj6768",
@@ -6007,7 +6008,7 @@
       "name": "full",
       "source_sha256": "fad41aef6102474ee9bcd75e90cd08288864bf99dcdca94c9312514ea9930ea2",
       "selected_sha256": "9f39e8ff7385b4bc93cfca7d8e1afd3d41ed78db3844b31f0b95a98d62226ea2",
-      "closure_sha256": "11db97c1f8e9e956ad220a861db1c10a76318deb8cefa6149be34f1219e8b068",
+      "closure_sha256": "62d4cc7c21f2fc8cccca536aab62e5ba350c7e9bf015e8babbf2f64af98d8fe3",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -6036,8 +6037,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -6096,8 +6097,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 28,
-      "bytes": 247757
+      "files": 19,
+      "bytes": 239501
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.ef00_bridge_wonjj6768",
@@ -6152,9 +6153,9 @@
   },
   {
     "name": "zcl-covers-2-wonjj6768",
-    "raw_size": 242494,
+    "raw_size": 243219,
     "under_limit": true,
-    "free_bytes": 281794,
+    "free_bytes": 281069,
     "meets_headroom": true,
     "profiles": [
       "covers-allesin-roller-shade",
@@ -6168,8 +6169,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84960
+      "files": 7,
+      "bytes": 75979
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_covers_2_wonjj6768",
@@ -6206,7 +6207,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "5f21cbc885c5bdf341fa3dc236193ed205a1c79e4fc4f7c0a8fc8e8b364a7e0d",
+      "closure_sha256": "31f780527aa5e6910b89a88d938fff2a9fdbc8d14352e3fcd029857a7ce2d795",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -6230,8 +6231,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -6289,9 +6290,9 @@
   },
   {
     "name": "zcl-sensors-3-wonjj6768",
-    "raw_size": 458040,
+    "raw_size": 458765,
     "under_limit": true,
-    "free_bytes": 66248,
+    "free_bytes": 65523,
     "meets_headroom": true,
     "profiles": [
       "safety-aqara-gas-acn02-core",
@@ -6426,8 +6427,8 @@
       "text": 1
     },
     "pruned_lua": {
-      "files": 15,
-      "bytes": 79283
+      "files": 6,
+      "bytes": 70302
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_sensors_3_wonjj6768",
@@ -6464,7 +6465,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "5b91fd16b1878a70309b2c9158829195098accf110f6a2be8b6677f806cc49bf",
+      "closure_sha256": "9aa42fd57889c547c916d78c88df00caca9cd98ea89b7ec98618fb39966aae0c",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -6488,8 +6489,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",
@@ -6563,9 +6564,9 @@
   },
   {
     "name": "zcl-chargers-wonjj6768",
-    "raw_size": 245416,
+    "raw_size": 246141,
     "under_limit": true,
-    "free_bytes": 278872,
+    "free_bytes": 278147,
     "meets_headroom": true,
     "profiles": [
       "plugs-futurehome-charge"
@@ -6577,8 +6578,8 @@
       "text": 5
     },
     "pruned_lua": {
-      "files": 16,
-      "bytes": 84945
+      "files": 7,
+      "bytes": 75964
     },
     "canonical_loader": {
       "source_bootstrap_module": "generated.packages.zcl_chargers_wonjj6768",
@@ -6615,7 +6616,7 @@
       "name": "full_metering",
       "source_sha256": "71845e310bcc761728e9e6f2fcd9cd839147ca35122abaaf93bddff848c04201",
       "selected_sha256": "7828c53a3f4c1888a1afebaecc5ab00d2d968f0a1bad9cdb63dc24ed58150f68",
-      "closure_sha256": "33dfcedd6fe9b2816ac8b75d04701a06817bff2acf975a6f43beec6eb96eb1c1",
+      "closure_sha256": "e9b49be2f8f01deaa2229788889ed04a615d5f7e1d5f25851d492b6fe0b1d90f",
       "closure": [
         {
           "path": "protocol/zcl/init.lua",
@@ -6639,8 +6640,8 @@
         },
         {
           "path": "zcl_common/cluster_command_handler.lua",
-          "bytes": 30533,
-          "sha256": "86cedf900447bdd556f259f9c4618ffa495333f3cdca6bc4c27408554d3853e6"
+          "bytes": 31169,
+          "sha256": "5bb9ac427c45079e75a9177bf7a4b59914846ad61b43fabe37f34bb6e0fc0f7e"
         },
         {
           "path": "zcl_common/cluster_mapping.lua",

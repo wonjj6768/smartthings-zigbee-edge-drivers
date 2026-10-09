@@ -86,7 +86,7 @@ return component_id
 end
 local function emit_button_event(device,component_id,action_name)
 local capability_builder=capabilities.button and capabilities.button.button and capabilities.button.button[action_name]or nil
-if type(capability_builder)~="function"then
+if capability_builder==nil then
 return false
 end
 local target_component=component_id or"main"
@@ -111,13 +111,13 @@ device:set_field(LAST_REMOTE_ACTION_FIELD,dedupe_key,{persist=false})return true
 end
 local function emit_remote_action(device,preset,component_id,action,seqno)
 if not should_emit_remote_action(device,component_id,action,seqno)then
-return false
+return false,false
 end
 local metadata=remote_action_metadata
 if type(preset)=="table"and type(preset.remote_action_emit_name)=="string"then
 metadata=custom_capabilities.by_emit_name[preset.remote_action_emit_name]or metadata
 end
-return custom_capability_binding.emit_state(device,component_id,metadata,action)
+return custom_capability_binding.emit_state(device,component_id,metadata,action,{state_change=true}),true
 end
 local function emit_security_remote_action(device,preset,action,seqno)
 if not should_emit_remote_action(device,"main",action,seqno)then
@@ -156,7 +156,7 @@ local emitted=false
 local function emit_value(property,value)
 local emit_name=emit_names[property]local metadata=type(emit_name)=="string"and custom_capabilities.by_emit_name[emit_name]or nil
 if metadata~=nil and type(value)=="number"then
-emitted=custom_capability_binding.emit_state(device,component_id,metadata,value)or emitted
+emitted=custom_capability_binding.emit_state(device,component_id,metadata,value,{state_change=true})or emitted
 end
 end
 local destination=extract_destination_address(zb_rx)if type(destination)=="number"and destination>=0x0001 and destination<=0xFFF7 then
@@ -171,7 +171,7 @@ emit_value("action_transition_time",transition_time/10)
 end
 elseif command_id==0x01 or command_id==0x05 then
 emit_value("action_rate",extract_body_member(zb_rx,"rate"))elseif command_id==0x02 or command_id==0x06 then
-emit_value("action_step_size",extract_body_member(zb_rx,"step_size","stepsize"))local transition_time=extract_body_member(zb_rx,"transition_time","transtime")if type(transition_time)=="number"then
+local step=extract_body_member(zb_rx,"step_size","stepsize")emit_value("action_step_size",step)local transition_time=extract_body_member(zb_rx,"transition_time","transtime")if type(transition_time)=="number"then
 emit_value("action_transition_time",transition_time/10)
 end
 end
@@ -184,10 +184,13 @@ end
 local target_component=component_id or"main"
 local button_event=type(preset.standard_action_button_events)=="table"and
 preset.standard_action_button_events[action]or nil
-if type(button_event)=="string"then
+local action_emitted,action_accepted=emit_remote_action(device,preset,target_component,action,extract_seqno(zb_rx))if action_accepted and type(button_event)=="string"then
 emit_button_event(device,target_component,button_event)
 end
-local action_emitted=emit_remote_action(device,preset,target_component,action,extract_seqno(zb_rx))if action_emitted then
+if action_emitted then
+if type(preset.remote_action_handler)=="function"then
+preset.remote_action_handler(device,target_component,action,zb_rx)
+end
 local cluster_id=zb_rx and zb_rx.address_header and zb_rx.address_header.cluster and zb_rx.address_header.cluster.value or nil
 emit_standard_action_metadata(device,preset,target_component,zb_rx,cluster_id,extract_command_id(zb_rx))
 end
@@ -278,25 +281,29 @@ action="move_to_hue_and_saturation"
 elseif command_id==0x07 then
 action="color_move"
 elseif command_id==0x01 then
-local move_mode=extract_body_member(zb_rx,"move_mode","movemode","mode")if move_mode==0 or move_mode=="up"then
+local move_mode=extract_body_member(zb_rx,"move_mode","movemode","mode")if move_mode==0 or move_mode=="stop"then
+action="hue_stop"
+elseif move_mode==1 or move_mode=="up"then
 action="hue_move"
-elseif move_mode==1 or move_mode=="down"then
-action="hue_move"
+elseif move_mode==3 or move_mode=="down"then
+action="hue_down"
 end
 elseif command_id==0x47 then
 action="hue_stop"
 elseif command_id==0x0A then
 action="color_temperature_move"
 elseif command_id==0x4B then
-local move_mode=extract_body_member(zb_rx,"move_mode","movemode","mode")if move_mode==1 or move_mode=="down"then
+local move_mode=extract_body_member(zb_rx,"move_mode","movemode","mode")if move_mode==0 or move_mode=="stop"then
+action="color_temperature_stop"
+elseif move_mode==3 or move_mode=="down"then
 action="color_temperature_move_down"
-else
+elseif move_mode==1 or move_mode=="up"then
 action="color_temperature_move_up"
 end
 elseif command_id==0x4C then
-local step_mode=extract_body_member(zb_rx,"step_mode","stepmode","mode")if step_mode==1 or step_mode=="down"then
+local step_mode=extract_body_member(zb_rx,"step_mode","stepmode","mode")if step_mode==3 or step_mode=="down"then
 action="color_temperature_step_down"
-else
+elseif step_mode==1 or step_mode=="up"then
 action="color_temperature_step_up"
 end
 end
@@ -557,7 +564,12 @@ local base_action_map=command_id==0xFC and{
 [0]="rotate_right",[1]="rotate_left",}or{
 [0]="single",[1]="double",[2]="hold",}local base_action=base_action_map[raw_value]if base_action~=nil then
 local component_id=resolve_endpoint_component(device,src_endpoint,"main")if preset.knob_remote==true then
-emit_remote_action(device,preset,"main",base_action,seqno)if base_action=="single"or base_action=="double"or base_action=="hold"then
+local action_emitted,action_accepted=emit_remote_action(device,preset,"main",base_action,seqno)if action_emitted then
+if type(preset.remote_action_handler)=="function"then
+preset.remote_action_handler(device,"main",base_action,zb_rx)
+end
+end
+if action_accepted and(base_action=="single"or base_action=="double"or base_action=="hold")then
 local button_event=({
 single="pushed",double="double",hold="held",})[base_action]if button_event~=nil then
 emit_button_event(device,component_id,button_event)

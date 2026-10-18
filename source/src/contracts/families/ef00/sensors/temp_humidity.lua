@@ -42,6 +42,24 @@ local converter = tuya.converter
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
+-- DP106/107 (pH) and DP112/113 (free chlorine) limits are stored in tenths
+-- (Tuya spec scale 1), the same as the DP10 and DP102 readings.
+local function pool_limit_tenths()
+  return converter.from_to(function(value)
+    local numeric = tonumber(value)
+    if numeric == nil then
+      return nil
+    end
+    return numeric / 10
+  end, function(value)
+    local numeric = tonumber(value)
+    if numeric == nil then
+      return nil
+    end
+    return math.tointeger(math.floor(numeric * 10 + 0.5))
+  end)
+end
+
 local function pool_ph_converter()
   return converter.from_only(function(value)
     local numeric = tonumber(value)
@@ -490,21 +508,21 @@ local pool_chlorine_meter = {
 
     tuya.dp_numeric(105, { name = "backlightvalue", emit = emit.ylPoolBacklight() }),
 
-    tuya.dp_numeric(106, { name = "ph_max", emit = emit.ylPoolPhMax("pH") }),
+    tuya.dp_numeric(106, { name = "ph_max", converter = pool_limit_tenths(), emit = emit.ylPoolPhMax("pH") }),
 
-    tuya.dp_numeric(107, { name = "ph_min", emit = emit.ylPoolPhMin("pH") }),
+    tuya.dp_numeric(107, { name = "ph_min", converter = pool_limit_tenths(), emit = emit.ylPoolPhMin("pH") }),
 
     tuya.dp_numeric(108, { name = "ec_max", emit = emit.ylPoolEcMax("µS/cm") }),
 
     tuya.dp_numeric(109, { name = "ec_min", emit = emit.ylPoolEcMin("µS/cm") }),
 
-    tuya.dp_numeric(110, { name = "orp_max", emit = emit.ylPoolOrpMax("mV") }),
+    tuya.dp_numeric(110, { name = "orp_max", signed = true, converter = converter.signed_number_pair(1), emit = emit.ylPoolOrpMax("mV") }),
 
-    tuya.dp_numeric(111, { name = "orp_min", emit = emit.ylPoolOrpMin("mV") }),
+    tuya.dp_numeric(111, { name = "orp_min", signed = true, converter = converter.signed_number_pair(1), emit = emit.ylPoolOrpMin("mV") }),
 
-    tuya.dp_numeric(112, { name = "free_chlorine_max", emit = emit.ylPoolChlorineMax("mg/L") }),
+    tuya.dp_numeric(112, { name = "free_chlorine_max", converter = pool_limit_tenths(), emit = emit.ylPoolChlorineMax("mg/L") }),
 
-    tuya.dp_numeric(113, { name = "free_chlorine_min", emit = emit.ylPoolChlorineMin("mg/L") }),
+    tuya.dp_numeric(113, { name = "free_chlorine_min", converter = pool_limit_tenths(), emit = emit.ylPoolChlorineMin("mg/L") }),
 
     tuya.dp_numeric(117, { name = "salinity", emit = emit.salinityChlorineMeter(), read_only = true }),
 

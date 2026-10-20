@@ -17058,7 +17058,7 @@
     "ylPoolOrpMax",
     true,
     "orp_max",
-    -1200,
+    0,
     1200,
     1,
     "mV"
@@ -17067,7 +17067,7 @@
     "ylPoolOrpMin",
     true,
     "orp_min",
-    -1200,
+    0,
     1200,
     1,
     "mV"

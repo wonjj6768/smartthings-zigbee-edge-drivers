@@ -34,6 +34,7 @@
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
+local log = require "log"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local ef00_helpers = require "contracts.helpers.ef00"
@@ -42,22 +43,85 @@ local converter = tuya.converter
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
--- DP106/107 (pH) and DP112/113 (free chlorine) limits are stored in tenths
--- (Tuya spec scale 1), the same as the DP10 and DP102 readings.
-local function pool_limit_tenths()
-  return converter.from_to(function(value)
+-- DP106/107 (pH) and DP112/113 (free chlorine) limits. Tuya's spec says
+-- tenths (scale 1, the same as the DP10/DP102 readings), but some meters send
+-- hundredths (factory pH max 1400 instead of 140; #40). A limit above the
+-- tenths maximum can only be hundredths, so the format is learned per device.
+-- Chlorine follows pH until the meter shows its own format; unknown = tenths.
+-- A raw 0xFFFFFFFF (-1) means "not set" (factory reset) and is shown as 0.
+local POOL_LIMIT_SCALE_FIELD = "pool_limit_scale"
+
+local function pool_limit_scale(device, kind)
+  local scales = device and device.get_field and device:get_field(POOL_LIMIT_SCALE_FIELD)
+  if type(scales) == "table" then
+    return scales[kind]
+  end
+  return nil
+end
+
+local function note_pool_limit_scale(device, kind, scale)
+  if pool_limit_scale(device, kind) == scale or not (device and device.set_field) then
+    return
+  end
+  local scales = {}
+  local current = device:get_field(POOL_LIMIT_SCALE_FIELD)
+  if type(current) == "table" then
+    for k, v in pairs(current) do
+      scales[k] = v
+    end
+  end
+  scales[kind] = scale
+  device:set_field(POOL_LIMIT_SCALE_FIELD, scales, { persist = true })
+  log.info(string.format("Pool meter %s limits use 1/%d units", kind, scale))
+end
+
+local function effective_pool_limit_scale(device, kind)
+  return pool_limit_scale(device, kind) or (kind == "cl" and pool_limit_scale(device, "ph")) or 10
+end
+
+local function pool_limit_decimal(kind, maximum)
+  return converter.from_to(function(value, device)
     local numeric = tonumber(value)
     if numeric == nil then
       return nil
     end
-    return numeric / 10
-  end, function(value)
+    if numeric > 0x7FFFFFFF then
+      return 0
+    end
+    if numeric > maximum * 10 then
+      note_pool_limit_scale(device, kind, 100)
+    end
+    local decimal = numeric / effective_pool_limit_scale(device, kind)
+    if decimal > maximum then
+      return nil
+    end
+    return decimal
+  end, function(value, device)
     local numeric = tonumber(value)
     if numeric == nil then
       return nil
     end
-    return math.tointeger(math.floor(numeric * 10 + 0.5))
+    return math.tointeger(math.floor(numeric * effective_pool_limit_scale(device, kind) + 0.5))
   end)
+end
+
+-- DP110/111 (ORP limits) are signed; -1 means "not set". Negative values are
+-- shown as 0, so the existing 0..1200 mV range still applies.
+local function pool_orp_limit()
+  local signed = converter.signed_number_pair(1)
+  return converter.from_to(function(value, device, dp_info, context)
+    local mv = signed.from(value, device, dp_info, context)
+    if mv == nil then
+      return nil
+    end
+    if mv < 0 then
+      return 0
+    end
+    if mv > 1200 then
+      return nil
+    end
+    return math.tointeger(math.floor(mv + 0.5))
+  end, signed.to)
 end
 
 local function pool_ph_converter()
@@ -508,21 +572,21 @@ local pool_chlorine_meter = {
 
     tuya.dp_numeric(105, { name = "backlightvalue", emit = emit.ylPoolBacklight() }),
 
-    tuya.dp_numeric(106, { name = "ph_max", converter = pool_limit_tenths(), emit = emit.ylPoolPhMax("pH") }),
+    tuya.dp_numeric(106, { name = "ph_max", converter = pool_limit_decimal("ph", 14), emit = emit.ylPoolPhMax("pH") }),
 
-    tuya.dp_numeric(107, { name = "ph_min", converter = pool_limit_tenths(), emit = emit.ylPoolPhMin("pH") }),
+    tuya.dp_numeric(107, { name = "ph_min", converter = pool_limit_decimal("ph", 14), emit = emit.ylPoolPhMin("pH") }),
 
     tuya.dp_numeric(108, { name = "ec_max", emit = emit.ylPoolEcMax("µS/cm") }),
 
     tuya.dp_numeric(109, { name = "ec_min", emit = emit.ylPoolEcMin("µS/cm") }),
 
-    tuya.dp_numeric(110, { name = "orp_max", signed = true, converter = converter.signed_number_pair(1), emit = emit.ylPoolOrpMax("mV") }),
+    tuya.dp_numeric(110, { name = "orp_max", signed = true, converter = pool_orp_limit(), emit = emit.ylPoolOrpMax("mV") }),
 
-    tuya.dp_numeric(111, { name = "orp_min", signed = true, converter = converter.signed_number_pair(1), emit = emit.ylPoolOrpMin("mV") }),
+    tuya.dp_numeric(111, { name = "orp_min", signed = true, converter = pool_orp_limit(), emit = emit.ylPoolOrpMin("mV") }),
 
-    tuya.dp_numeric(112, { name = "free_chlorine_max", converter = pool_limit_tenths(), emit = emit.ylPoolChlorineMax("mg/L") }),
+    tuya.dp_numeric(112, { name = "free_chlorine_max", converter = pool_limit_decimal("cl", 4), emit = emit.ylPoolChlorineMax("mg/L") }),
 
-    tuya.dp_numeric(113, { name = "free_chlorine_min", converter = pool_limit_tenths(), emit = emit.ylPoolChlorineMin("mg/L") }),
+    tuya.dp_numeric(113, { name = "free_chlorine_min", converter = pool_limit_decimal("cl", 4), emit = emit.ylPoolChlorineMin("mg/L") }),
 
     tuya.dp_numeric(117, { name = "salinity", emit = emit.salinityChlorineMeter(), read_only = true }),
 

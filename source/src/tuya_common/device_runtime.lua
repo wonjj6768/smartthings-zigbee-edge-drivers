@@ -475,7 +475,6 @@ local function handle_report_message(device, message, handlers, datapoints, comm
   return true
 end
 
--- Tuya 메시지 공통 디스패처
 function tuya.apply_message(device, message, handlers)
   handlers = handlers or {}
   local datapoints = handlers.datapoints
@@ -692,7 +691,6 @@ local function send_next_config_item_or_clear(device)
   return finish_config_queue(device, false)
 end
 
--- 설정 큐 시작: tuya.start_config_queue(device, queue)
 function tuya.start_config_queue(device, queue, options)
   local items = queue or {}
   local callback = resolve_queue_callback(options)
@@ -710,7 +708,6 @@ function tuya.start_config_queue(device, queue, options)
   return send_next_config_item_or_clear(device)
 end
 
--- 설정 큐 다음 항목 전송
 send_next_config_item = function(device)
   local queue = device:get_field(CONFIG_QUEUE_FIELD)
   if not queue or #queue == 0 then
@@ -738,7 +735,6 @@ send_next_config_item = function(device)
   return false
 end
 
--- 설정 응답 처리 후 다음 큐 진행
 handle_config_queue_response = function(device, response, delay, frame)
   local payload = extract_payload(response)
   local queue = device:get_field(CONFIG_QUEUE_FIELD)

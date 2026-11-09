@@ -1,241 +1,259 @@
-local function ae(B)
-local t=require"runtime.capability_metadata"
-local l=require"runtime.capability_binding"
-local aw=require"log"
-local R=t.by_emit_name.learn_ir_code
-local N=t.by_emit_name.learned_ir_code
-local M=t.by_emit_name.ir_code_to_send
-local p=57348
-local g=60672
-local ak=1
-local Z=56
-local y="__ir_learning"
-local G="__ir_next_seq"
-local H="__ir_outgoing_messages"
-local i="__ir_incoming_bytes"
-local m="__ir_incoming_length"
-local z="__ir_last_learned_code"
-local F="__ir_last_sent_code"
-local function encode_le16(ao)
-local C=math.max(0,math.min(65535,math.floor(ao or 0)))return string.char(bit32.band(C,255))..string.char(bit32.band(bit32.rshift(C,8),255))
+local function at(ao)
+local C,t,aR,ar=require"runtime.capability_metadata",require"runtime.capability_binding",require"log",{}require"st.json".configure(ar,{use_native=false})local ac,Y,X,v,i,aA,ay,G,R,x,o,l,k,j,I,Q=C.by_emit_name.learn_ir_code,C.by_emit_name.learned_ir_code,C.by_emit_name.ir_code_to_send,57348,60672,1,56,"__ir_learning","__ir_next_seq","__ir_outgoing_messages","__ir_incoming_bytes","__ir_incoming_length","__ir_incoming_seq","__ir_incoming_position","__ir_last_learned_code","__ir_last_sent_code"
+
+
+
+
+
+
+
+local function encode_le16(h)
+local av=math.max(0,math.min(65535,math.floor(h or 0)))return string.pack("<I2",av)
 end
-local function encode_le32(ao)
-local C=math.max(0,math.min(0xFFFFFFFF,math.floor(ao or 0)))return string.char(bit32.band(C,255))..string.char(bit32.band(bit32.rshift(C,8),255))..string.char(bit32.band(bit32.rshift(C,16),255))..string.char(bit32.band(bit32.rshift(C,24),255))
+local function encode_le32(h)
+local av=math.max(0,math.min(0xFFFFFFFF,math.floor(h or 0)))return string.pack("<I4",av)
 end
-local function s(A,r)
-r=r or 1
-if type(A)~="string"or #A<r+1 then
+local function w(z,s)
+s=s or 1
+if type(z)~="string"or #z<s+1 then
 return nil
 end
-local b1=string.byte(A,r)or 0
-local b2=string.byte(A,r+1)or 0
-return b1+bit32.lshift(b2,8)
+local b1,b2=string.byte(z,s)or 0,string.byte(z,s+1)or 0
+
+return b1+(b2<<8)
 end
-local function D(A,r)
-r=r or 1
-if type(A)~="string"or #A<r+3 then
+local function N(z,s)
+s=s or 1
+if type(z)~="string"or #z<s+3 then
 return nil
 end
-local b1=string.byte(A,r)or 0
-local b2=string.byte(A,r+1)or 0
-local b3=string.byte(A,r+2)or 0
-local b4=string.byte(A,r+3)or 0
+local b1,b2,b3,b4=string.byte(z,s)or 0,string.byte(z,s+1)or 0,string.byte(z,s+2)or 0,string.byte(z,s+3)or 0
+
+
+
 return b1+
-bit32.lshift(b2,8)+
-bit32.lshift(b3,16)+
-bit32.lshift(b4,24)
+(b2<<8)+
+(b3<<16)+
+(b4<<24)
 end
-local function ac(L)
-if type(L)~="string"then
+local function aq(u)
+if type(u)~="string"then
 return 0
 end
-local ai=0
-for E=1,#L do
-ai=(ai+(string.byte(L,E)or 0))%256
+local az=0
+for O=1,#u do
+az=(az+(string.byte(u,O)or 0))%256
 end
-return ai
+return az
 end
-local function ah(af)
-if type(af)~="string"or af==""then
-return""
+local function ak(aw)
+if type(aw)~="string"or aw==""then
+return""end
+local ae,p,H,O="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",{},#aw,1
+
+while O<=H do
+local a,b,c=string.byte(aw,O)or 0,string.byte(aw,O+1)or 0,string.byte(aw,O+2)or 0
+
+
+local n=(a<<16)+(b<<8)+c
+p[#p+1]=ae:sub((n>>18)+1,(n>>18)+1)p[#p+1]=ae:sub(((n>>12)&63)+1,((n>>12)&63)+1)if O+1<=H then
+p[#p+1]=ae:sub(((n>>6)&63)+1,((n>>6)&63)+1)else
+p[#p+1]="="end
+if O+2<=H then
+p[#p+1]=ae:sub((n&63)+1,(n&63)+1)else
+p[#p+1]="="end
+O=O+3
 end
-local U="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-local j={}local O=#af
-local E=1
-while E<=O do
-local a=string.byte(af,E)or 0
-local b=string.byte(af,E+1)or 0
-local c=string.byte(af,E+2)or 0
-local n=bit32.lshift(a,16)+bit32.lshift(b,8)+c
-j[#j+1]=U:sub(bit32.rshift(n,18)+1,bit32.rshift(n,18)+1)j[#j+1]=U:sub(bit32.band(bit32.rshift(n,12),63)+1,bit32.band(bit32.rshift(n,12),63)+1)if E+1<=O then
-j[#j+1]=U:sub(bit32.band(bit32.rshift(n,6),63)+1,bit32.band(bit32.rshift(n,6),63)+1)else
-j[#j+1]="="
+return table.concat(p)
 end
-if E+2<=O then
-j[#j+1]=U:sub(bit32.band(n,63)+1,bit32.band(n,63)+1)else
-j[#j+1]="="
+local function r(f)
+return type(f)=="table"and type(f.ir_endpoint)=="number"and f.ir_endpoint or aA
 end
-E=E+3
+local function g(d,aK,aL,u,aF)
+return ao.send_raw_cluster_command(d,aK,aL,u,aF,nil,nil,true)
 end
-return table.concat(j)
+local function V(h,aG)
+if h==nil or h==ar.null then return aG end
+return h
 end
-local function k(f)
-return type(f)=="table"and type(f.ir_endpoint)=="number"and f.ir_endpoint or ak
+local as={keyorder={"key_num","delay","key1","num","freq","type","key_code"}}
+local function ab(M,B)
+B=B or{}return ar.encode({key_num=1,delay=V(B.delay,300),key1={num=V(B.num,1),freq=V(B.freq,38000),type=V(B.type,1),key_code=M}},as)
 end
-local function q(d)
-local X=type(d)=="table"and d:get_field(H)or nil
-if type(X)~="table"then
-X={}d:set_field(H,X,{persist=false})
+local function au(B)
+local aC=B.timings
+if #aC==0 then return end
+local ai=V(B.modulation,38000)if type(ai)~="number"or ai<=30000 then return end
+local z={}for _,h in ipairs(aC)do
+if h==ar.null then h=0
+elseif type(h)=="boolean"then h=h and 1 or 0
+elseif type(h)=="string"and h:match"^%s*$"then h=0 end
+h=tonumber(h)if h==nil or h~=h or math.abs(h)==math.huge then return end
+h=math.floor(math.abs(h))if h>65535 then return end
+z[#z+1]=string.pack("<I2",h)end
+local aT,ag=table.concat(z),{}for s=1,#aT,32 do
+local part=aT:sub(s,s+31)ag[#ag+1]=string.char(#part-1)..part
 end
-return X
+return ab(ak(table.concat(ag)),{num=1+V(B.repeat_count,0),freq=ai})
 end
-local function aq(d)
-local o=type(d)=="table"and d:get_field(G)or 0
-if type(o)~="number"then
-o=0
+local function aj(M)
+local W=M:match"^%s*(.-)%s*$"if W==""then return end
+if W:sub(1,1)=="{"and W:sub(-1)=="}"then
+local A,e,ba=ar.decode(W,1,ar.null)if not ba and type(A)=="table"and W:sub(e):match"^%s*$"then
+local an=type(A.timings)=="table"and getmetatable(A.timings)if an and an.__jsontype=="array"then
+local ok,u=pcall(au,A)if ok and u then return u end
+elseif A.key_num~=nil and A.key1~=nil then
+return ar.encode(A,as)elseif A.key_code~=nil then
+return ab(A.key_code,A)end
 end
-o=(o+1)%65536
-d:set_field(G,o,{persist=false})return o
 end
-local function u(d,av)
-l.emit_state(d,"main",R,av)
+return ab(W)
 end
-local function J(d,W)
-l.emit_state(d,"main",N,W or"")
+local function L(d)
+for _,aP in ipairs{o,l,k,j}do
+d:set_field(aP,nil,{persist=false})end
 end
-local function I(d,W)
-l.emit_state(d,"main",M,W or"")
+local function J(d)
+local ah=type(d)=="table"and d:get_field(x)or nil
+if type(ah)~="table"then
+ah={}d:set_field(x,ah,{persist=false})end
+return ah
 end
-function B.emit_ir_state(d,f)
+local function aI(d)
+local q=type(d)=="table"and d:get_field(R)or 0
+if type(q)~="number"then
+q=0
+end
+q=(q+1)%65536
+d:set_field(R,q,{persist=false})return q
+end
+local function D(d,aQ)
+t.emit_state(d,"main",ac,aQ)
+end
+local function T(d,M)
+t.emit_state(d,"main",Y,M or"")
+end
+local function S(d,M)
+t.emit_state(d,"main",X,M or"")
+end
+function ao.emit_ir_state(d,f)
 if type(f)~="table"or f.ir_controller~=true then
 return
 end
-local ap=d:get_field(y)==true
-u(d,ap and"start"or"stop")J(d,d:get_field(z)or"")I(d,d:get_field(F)or"")
+local aH=d:get_field(G)==true
+D(d,aH and"start"or"stop")T(d,d:get_field(I)or"")S(d,d:get_field(Q)or"")
 end
-function B.start_ir_learning(d,f)
-if B.send_raw_cluster_command==nil then
+function ao.start_ir_learning(d,f)
+if ao.send_raw_cluster_command==nil then
 return false
 end
-d:set_field(y,true,{persist=false})u(d,"start")return B.send_raw_cluster_command(d,p,0,'{"study":0}',k(f))
+d:set_field(G,true,{persist=false})D(d,"start")return g(d,v,0,'{"study":0}',r(f))
 end
-function B.stop_ir_learning(d,f)
-if B.send_raw_cluster_command==nil then
+function ao.stop_ir_learning(d,f)
+if ao.send_raw_cluster_command==nil then
 return false
 end
-d:set_field(y,false,{persist=false})u(d,"stop")return B.send_raw_cluster_command(d,p,0,'{"study":1}',k(f))
+d:set_field(G,false,{persist=false})D(d,"stop")return g(d,v,0,'{"study":1}',r(f))
 end
-function B.send_ir_code(d,f,W)
-if B.send_raw_cluster_command==nil or type(W)~="string"or W==""then
+function ao.send_ir_code(d,f,M)
+if ao.send_raw_cluster_command==nil or type(M)~="string"or M==""then
 return false
 end
-local o=aq(d)local L=string.format(
-'{"key_num":1,"delay":300,"key1":{"num":1,"freq":38000,"type":1,"key_code":"%s"}}',W)local ad=q(d)ad[o]=L
-d:set_field(F,W,{persist=false})I(d,W)return B.send_raw_cluster_command(
-d,g,0,encode_le16(o)..
-encode_le32(#L)..
+local u=aj(M)if u==nil then return false end
+local q=aI(d)L(d)d:set_field(x,{[q]=u},{persist=false})d:set_field(Q,M,{persist=false})S(d,M)return g(d,i,0,encode_le16(q)..
+encode_le32(#u)..
 encode_le32(0)..
-encode_le16(p)..
+encode_le16(v)..
 string.char(1)..
 string.char(2)..
-encode_le16(0),k(f))
+encode_le16(0),r(f))
 end
-local function P(d,f,o,e)
-return B.send_raw_cluster_command(
-d,g,2,encode_le16(o)..encode_le32(e)..string.char(Z),k(f))
+local function Z(d,f,q,e)
+return g(d,i,2,encode_le16(q)..encode_le32(e)..string.char(ay),r(f))
 end
-local function Y(d,f,o,e,aj)
-local ad=q(d)local ag=ad[o]if type(ag)~="string"then
-aw.warn(string.format("missing pending IR message for seq=%s",tostring(o)))return false
+local function al(d,f,q,e)
+local aJ=J(d)local ax=aJ[q]if type(ax)~="string"then
+aR.warn(string.format("missing pending IR message for seq=%s",tostring(q)))return false
 end
-local al=e+1
-local an=math.min(#ag,e+aj)local part=ag:sub(al,an)local ai=ac(part)return B.send_raw_cluster_command(
-d,g,3,string.char(0)..
-encode_le16(o)..
+local aB,aE=e+1,math.min(#ax,e+50)
+local part=ax:sub(aB,aE)local az=aq(part)return g(d,i,3,string.char(0)..
+encode_le16(q)..
 encode_le32(e)..
 string.char(#part)..
 part..
-string.char(ai),k(f))
+string.char(az),r(f))
 end
-local function V(d,e,part,h)
-local x=d:get_field(i)if type(x)~="string"then
-x=string.rep("\0",h)elseif #x<h then
-x=x..string.rep("\0",h-#x)
+local function af(d,e,part,m)
+local F=d:get_field(o)if type(F)~="string"then
+F=string.rep("\0",m)elseif #F<m then
+F=F..string.rep("\0",m-#F)end
+local aM,am=e>0 and F:sub(1,e)or"",e+#part+1
+local suffix=am<=#F and F:sub(am)or""local ap=aM..part..suffix
+d:set_field(o,ap,{persist=false})return ap
 end
-local as=e>0 and x:sub(1,e)or""
-local aa=e+#part+1
-local suffix=aa<=#x and x:sub(aa)or""
-local ab=as..part..suffix
-d:set_field(i,ab,{persist=false})return ab
-end
-function B.handle_ir_transmit_command(d,f,K)
-if B.send_raw_cluster_command==nil then
+function ao.handle_ir_transmit_command(d,f,U)
+if ao.send_raw_cluster_command==nil then
 return false
 end
-local w=K and K.body and K.body.zcl_header and K.body.zcl_header.cmd and K.body.zcl_header.cmd.value or nil
-local v=K and K.body and K.body.zcl_body and K.body.zcl_body.body_bytes or nil
-if type(w)~="number"or type(v)~="string"then
+local E,y=U and U.body and U.body.zcl_header and U.body.zcl_header.cmd and U.body.zcl_header.cmd.value or nil,U and U.body and U.body.zcl_body and U.body.zcl_body.body_bytes or nil
+
+if type(E)~="number"or type(y)~="string"then
 return false
 end
-if w==0 then
-local o=s(v,1)local O=D(v,3)local aA=D(v,7)or 0
-local am=s(v,11)or p
-local aB=string.byte(v,13)or 0
-local aD=string.byte(v,14)or 0
-local aC=s(v,15)or 0
-if o==nil or O==nil then
+if E==0 then
+local q,H,aW,aD,aX,aZ,aY=w(y,1),N(y,3),N(y,7)or 0,w(y,11)or v,string.byte(y,13)or 0,string.byte(y,14)or 0,w(y,15)or 0
+
+
+
+
+if q==nil or H==nil then
 return false
 end
-d:set_field(i,"",{persist=false})d:set_field(m,O,{persist=false})B.send_raw_cluster_command(
-d,g,1,string.char(0)..
-encode_le16(o)..
-encode_le32(O)..
-encode_le32(aA)..
-encode_le16(am)..
-string.char(aB)..
-string.char(aD)..
-encode_le16(aC),k(f))P(d,f,o,0)return true
+d:set_field(o,"",{persist=false})d:set_field(l,H,{persist=false})d:set_field(k,q,{persist=false})d:set_field(j,0,{persist=false})d:set_field(x,{},{persist=false})g(d,i,1,string.char(0)..
+encode_le16(q)..
+encode_le32(H)..
+encode_le32(aW)..
+encode_le16(aD)..
+string.char(aX)..
+string.char(aZ)..
+encode_le16(aY),r(f))Z(d,f,q,0)return true
 end
-if w==2 then
-local o=s(v,1)local e=D(v,3)local aj=string.byte(v,7)or Z
-if o==nil or e==nil then
+if E==2 then
+local q,e=w(y,1),N(y,3)if q==nil or e==nil or #y<7 then
 return false
 end
-return Y(d,f,o,e,aj)
-end
-if w==3 then
-local o=s(v,2)local e=D(v,4)local T=string.byte(v,8)if o==nil or e==nil or T==nil then
+return al(d,f,q,e)end
+if E==3 then
+local q,e,P=w(y,2),N(y,4),string.byte(y,8)if q==nil or e==nil or P==nil or #y<9+P then
 return false
 end
-local part=v:sub(9,8+T)local ai=string.byte(v,9+T)or 0
-if ac(part)~=ai then
-aw.warn(string.format("IR chunk CRC mismatch seq=%s position=%s",tostring(o),tostring(e)))
+if d:get_field(k)~=q or d:get_field(j)~=e then return false end
+local part,az=y:sub(9,8+P),string.byte(y,9+P)or 0
+if aq(part)~=az then
+aR.warn(string.format("IR chunk CRC mismatch seq=%s position=%s",tostring(q),tostring(e)))return false
 end
-local h=d:get_field(m)if type(h)~="number"then
-h=e+#part
-end
-local ab=V(d,e,part,h)if e+#part<h then
-P(d,f,o,e+#part)else
-B.send_raw_cluster_command(
-d,g,4,string.char(0)..encode_le16(o)..encode_le16(0),k(f))d:set_field(i,ab:sub(1,h),{persist=false})
-end
+local m=d:get_field(l)if type(m)~="number"then return false end
+part=part:sub(1,math.max(0,m-e))local ap=af(d,e,part,m)d:set_field(j,e+#part,{persist=false})if e+#part<m then
+Z(d,f,q,e+#part)else
+g(d,i,4,string.char(0)..encode_le16(q)..encode_le16(0),r(f))d:set_field(o,ap:sub(1,m),{persist=false})end
 return true
 end
-if w==4 then
-local o=s(v,2)if o==nil then
+if E==4 then
+local q=w(y,2)if q==nil then
 return false
 end
-local at=B.send_raw_cluster_command(
-d,g,5,encode_le16(o)..encode_le16(0),k(f))if at then
-q(d)[o]=nil
+local aN=g(d,i,5,encode_le16(q)..encode_le16(0),r(f))if aN then
+J(d)[q]=nil
+if d:get_field(k)==q then L(d)end
+end
+return aN
+end
+if E==5 then
+local q=w(y,1)if q==nil or d:get_field(k)~=q then return false end
+local ad,H=d:get_field(o)or"",d:get_field(l)if #ad<H then ad=ad ..string.rep("\0",H-#ad)end
+local p=ak(ad)d:set_field(I,p,{persist=false})L(d)T(d,p)ao.stop_ir_learning(d,f)return true
+end
+return false
+end
 end
 return at
-end
-if w==5 then
-local ar=d:get_field(i)or""
-local j=ah(ar)d:set_field(z,j,{persist=false})d:set_field(i,nil,{persist=false})d:set_field(m,nil,{persist=false})J(d,j)B.stop_ir_learning(d,f)return true
-end
-return false
-end
-end
-return ae

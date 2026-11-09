@@ -1,6 +1,4 @@
--- 센서 디바이스 정의
 -- ZHA tuya_sensor.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
 -- 변수명 규칙: {category}_{variant}
 --   category: th   (온습도: 온도+습도+배터리)
 --             soil (토양: 수분+온도+배터리)
@@ -24,13 +22,6 @@
 --     pm25           PM2.5 primary (DP2=PM2.5)
 --     probe          외부 프로브
 --     warning        물 부족 경고
---   규칙:
---     - category 내 variant 간 차이나는 scale만 표기
---     - soil은 t, h 항상 명시
---     - 복수 차이점은 모두 표기
---     - bare 숫자 금지 (숫자 앞에 의미 문자 필수)
---     - 기능 알파벳순 배치
---     - 가독성 우선: 약어보다 풀네임 선호 (표준 약어 ec, co2, pm25, hcho, illum 유지)
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
@@ -100,13 +91,10 @@ end
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-1. aq: 기본형 (legacy CO2)
 
 -- Z2M: _TZE200_8ygsuhe1 (TS0601_air_quality)
 
--- ══════════════════════════════════════════════════════════════
 
 local aq = {
 
@@ -142,13 +130,10 @@ register_sensor_definition(aq, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-2. aq_h1_v100_f100: Airbox modern (습도 raw, VOC÷100, HCHO÷100)
 
 -- Z2M: _TZE284_8b9zpaav (TS0601_airbox)
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_h1_v100_f100 = {
 
@@ -180,13 +165,10 @@ register_sensor_definition(aq_h1_v100_f100, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-3. aq_v100_f100: PM2.5 Airbox (VOC÷100, HCHO÷100)
 
 -- Z2M: _TZE284_it9utkro (PM2.5_airbox)
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_v100_f100 = {
 
@@ -220,13 +202,10 @@ register_sensor_definition(aq_v100_f100, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-4. aq_pm25: House Keeper (DP2=PM2.5, DP layout 상이)
 
 -- Z2M: _TZE200_dwcarsat (smart_air_house_keeper)
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_pm25 = {
 
@@ -276,13 +255,10 @@ register_sensor_definition(aq_pm25_unfiltered, ef00_helpers.ts0601_fingerprints(
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-5. aq_hcho: 포름알데히드 primary (DP2=HCHO)
 
 -- Z2M: _TZE200_mja3fuja
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_hcho = {
 
@@ -310,13 +286,10 @@ register_sensor_definition(aq_hcho, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-6. aq_hcho_f100_v10: 포름알데히드 primary, HCHO÷100 + VOC÷10
 
 -- Z2M: _TZE200_ryfmq5rl
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_hcho_f100_v10 = {
 
@@ -344,13 +317,10 @@ register_sensor_definition(aq_hcho_f100_v10, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-7. aq_co2: CO2 + 온습도만
 
 -- Z2M: _TZE200_ogkdpgy2 (th_co2_sensor)
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_co2 = {
 
@@ -378,13 +348,10 @@ register_sensor_definition(aq_co2, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-7a. aq_co2_only: CO2만 지원
 
 -- Z2M: _TZE204_ogkdpgy2 (TS0601_co2_sensor)
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_co2_only = {
 
@@ -404,11 +371,8 @@ register_sensor_definition(aq_co2_only, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 3-8. aq_zr360_co2: Zorro Alert ZR360CDB / Nous E10
 
--- ══════════════════════════════════════════════════════════════
 
 local aq_zr360_co2 = {
 

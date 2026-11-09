@@ -1,10 +1,9 @@
 local function r(k,x)
-local f=x.type_check
-local p=x.merge_options
-local A=x.copy_table
-local y=string.lower
-local o={
-"command_id","transaction","batch_key","match_transaction","response_dp","response_dps","match_response"}
+local f,p,A,y,o=x.type_check,x.merge_options,x.copy_table,string.lower,{"command_id","transaction","batch_key","match_transaction","response_dp","response_dps","match_response"}
+
+
+
+
 local function g(a,b)
 local c={}if f(a)=="table"then
 p(c,a)elseif a~=nil then
@@ -40,19 +39,16 @@ return nil
 end
 local function v(q,i,h,b)
 if f(b.current)=="function"then
-return e(b.current(q,i,h))==e(h)
-end
+return e(b.current(q,i,h))==e(h)end
 local n=b.state_field
 if f(n)~="string"or n==""then
-n="switch"
-end
+n="switch"end
 return e(q:get_field(n))==e(h)
 end
 function k.build_send_policy(a,b)
-local c=g(a,b)local B={}for _,u in ipairs(o)do
+local c,B=g(a,b),{}for _,u in ipairs(o)do
 if c[u]~=nil then
-B[u]=c[u]
-end
+B[u]=c[u]end
 end
 return B
 end
@@ -71,8 +67,7 @@ return C
 end
 local t=A(j)for _,u in ipairs(o)do
 if t[u]==nil and m[u]~=nil then
-t[u]=m[u]
-end
+t[u]=m[u]end
 end
 return t
 end
@@ -100,8 +95,7 @@ end
 function k.skip.state_on_and_brightness_present(b)
 b=b or{}local d=b.brightness_key
 if f(d)~="string"or d==""then
-d="brightness"
-end
+d="brightness"end
 return function(q,h,w,i)
 local s=l(i)if s==nil or s[d]==nil then
 return false
@@ -112,8 +106,7 @@ end
 function k.skip.state_on_and_brightness_present_only(b)
 b=b or{}local d=b.brightness_key
 if f(d)~="string"or d==""then
-d="brightness"
-end
+d="brightness"end
 return function(q,h,w,i)
 local s=l(i)if s==nil or s[d]==nil then
 return false

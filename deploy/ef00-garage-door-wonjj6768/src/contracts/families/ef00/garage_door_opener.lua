@@ -1,11 +1,2 @@
-local e=require"protocol.tuya.contract"
-local b=require"capabilities.events.garage_door"
-local d=e.converter
-local c={
-profile="doors-garage-contact",datapoints={
-e.dp_binary(1,{name="door_control",write_only=true}),e.dp_binary(3,{
-name="garage_door_contact",converter=d.invert_bool_pair(),emit=b.garage_door_contact})},query_on_configure=true}local a={
-{
-{manufacturer="_TZE608_c75zqghm",model="TS0603"},{manufacturer="_TZE608_fmemczv1",model="TS0603"},{manufacturer="_TZE608_xkr8gep3",model="TS0603"},{manufacturer="_TZE608_lapuuoke",model="TS0603"}},{
-{manufacturer="_TZE200_wfxuhoea",model="TS0601"},{manufacturer="_TZE204_wfxuhoea",model="TS0601"},{manufacturer="LoraTap",model="GDC311ZBQ1"}}}return{
-id="ef00.garage_door.opener",definition=c,fingerprint_groups=a}
+local e,b=require"protocol.tuya.contract",require"capabilities.events.garage_door"local d=e.converter
+local c,a={profile="doors-garage-contact",datapoints={e.dp_binary(1,{name="door_control",write_only=true}),e.dp_binary(3,{name="garage_door_contact",converter=d.invert_bool_pair(),emit=b.garage_door_contact})},query_on_configure=true},{{{manufacturer="_TZE608_c75zqghm",model="TS0603"},{manufacturer="_TZE608_fmemczv1",model="TS0603"},{manufacturer="_TZE608_xkr8gep3",model="TS0603"},{manufacturer="_TZE608_lapuuoke",model="TS0603"}},{{manufacturer="_TZE200_wfxuhoea",model="TS0601"},{manufacturer="_TZE204_wfxuhoea",model="TS0601"},{manufacturer="LoraTap",model="GDC311ZBQ1"}}}return{id="ef00.garage_door.opener",definition=c,fingerprint_groups=a}

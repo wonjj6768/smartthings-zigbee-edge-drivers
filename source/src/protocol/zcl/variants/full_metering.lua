@@ -1,4 +1,3 @@
--- Complete ZCL RX/TX/configuration/metering facade without IR support.
 
 local zcl = {}
 

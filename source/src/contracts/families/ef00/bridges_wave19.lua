@@ -1,4 +1,3 @@
--- Wave19 WETEN PCI E bridge source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/weten.ts:18-48.
 
 local tuya = require "protocol.tuya"

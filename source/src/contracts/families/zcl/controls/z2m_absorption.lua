@@ -3,7 +3,7 @@ local device_helpers = require "contracts.helpers.family"
 local zcl_device_helpers = require "contracts.helpers.zcl"
 local emit = require "capabilities.events.all"
 local capabilities = require "st.capabilities"
--- Battery refresh is provided by the protocol facade.
+local is_callable = require("runtime.capability_support").is_callable
 local device_management = require "st.zigbee.device_management"
 local data_types = require "st.zigbee.data_types"
 local cluster_base = require "st.zigbee.cluster_base"
@@ -89,7 +89,7 @@ end
 local function emit_button_action(device, component_id, action)
   local button_action = BUTTON_EVENT_BY_ACTION[action]
   local builder = button_action and BUTTON_EVENT_BUILDERS[button_action] or nil
-  if type(builder) ~= "function" then
+  if not is_callable(builder) then
     return
   end
 

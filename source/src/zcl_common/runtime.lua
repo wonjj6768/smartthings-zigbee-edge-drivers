@@ -1,5 +1,3 @@
--- ZCL 매핑 런타임 유틸리티
--- endpoint/component 해석, 매핑 메타, 인덱스 캐시를 공통 제공합니다.
 
 local function load_runtime(zcl)
 
@@ -129,6 +127,7 @@ local function load_runtime(zcl)
       metering_kind = type(mapping.metering_kind) == "string" and mapping.metering_kind or nil,
       scale = type(mapping.scale) == "number" and mapping.scale or nil,
       ignore_reported_scaler = mapping.ignore_reported_scaler == true,
+      use_reported_unity_scaler = mapping.use_reported_unity_scaler == true,
       attribute_def = attribute_def,
       data_type = configured_data_type or
         (attribute_def and attribute_def.base_type or nil),
@@ -193,7 +192,8 @@ local function load_runtime(zcl)
     end
 
     local component_id = resolve_mapping_component_id(device, mapping, mapping_context)
-    if component_id == nil then
+    local components = device.profile and device.profile.components
+    if component_id == nil or (components and components[component_id] == nil) then
       if endpoint ~= nil and type(device.get_component_id_for_endpoint) == "function" then
         component_id = device:get_component_id_for_endpoint(endpoint)
       else

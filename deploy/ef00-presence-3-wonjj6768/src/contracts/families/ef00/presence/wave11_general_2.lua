@@ -1,33 +1,6 @@
-local b=require"protocol.tuya"
-local c=require"capabilities.events.all"
-local f=require"contracts.helpers.family"
-local m=require"contracts.helpers.ef00_presence"
-local a=b.converter
+local b,c,f,m=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00_presence"local a=b.converter
 local j,e=m.isolated_definition_registry(f.definition_registry)local d=a.lookup_from_to{ON=true,OFF=false}
 local function k(l,i)
 e(l,f.create_fingerprints("TS0601",i))
 end
-local h={
-profile="safety-presence-wave11-r12lm-z10t",package_group="z2m-ef00-presence",named_datapoints=true,datapoints={
-b.dp_presence(1,{
-converter=a.true_false0(),emit=c.presence(),read_only=true}),b.dp_illuminance(101,{emit=c.illuminance(),read_only=true}),b.dp_enum(102,{
-name="r_twelve_z_ten_work_mode",converter=a.lookup_from_to{radar_mode=0,combine_mode=1},emit=c.rTwelveZTenWorkMode()}),b.dp_binary(103,{
-name="r_twelve_z_ten_radar_switch",converter=d,emit=c.rTwelveZTenRadarSwitch()}),b.dp_numeric(104,{
-name="r_twelve_z_ten_fading_time",emit=c.rTwelveZTenFadingTime()}),b.dp_numeric(106,{
-name="r_twelve_z_ten_detection_distance",converter=a.divide_by_pair(100),emit=c.rTwelveZTenDetectionDistance()}),b.dp_numeric(107,{
-name="r_twelve_z_ten_radar_sensitivity",emit=c.rTwelveZTenRadarSensitivity()}),b.dp_enum(108,{
-name="r_twelve_z_ten_battery_state",converter=a.from_only(a.lookup_value{
-[0]="low",[1]="middle",[2]="high",[3]="usb"}),emit=c.rTwelveZTenBatteryState(),read_only=true})},query_on_configure=false}k(h,{"_TZE284_hqys6frs","_TZE2841000000_hqys6frs"})local g={
-profile="safety-presence-wave11-r12lm-z11t",package_group="z2m-ef00-presence",named_datapoints=true,datapoints={
-b.dp_presence(1,{
-converter=a.true_false0(),emit=c.presence(),read_only=true}),b.dp_enum(8,{
-name="r_twelve_z_eleven_scan_result",converter=a.from_only(a.lookup_value{
-[0]="normal",[1]="scanning",[2]="scan_success",[3]="scan_failure",[4]="scan_start"}),emit=c.rTwelveZElevenScanResult(),read_only=true}),b.dp_illuminance(101,{emit=c.illuminance(),read_only=true}),b.dp_enum(102,{
-name="r_twelve_z_eleven_mode",converter=a.lookup_from_to{radar_mode=0,fusion_mode=1},emit=c.rTwelveZElevenMode()}),b.dp_binary(103,{
-name="r_twelve_z_eleven_radar_switch",converter=d,emit=c.rTwelveZElevenRadarSwitch()}),b.dp_enum(105,{
-name="r_twelve_z_eleven_scan_environment",converter=a.lookup_from_to{start=0},emit=c.rTwelveZElevenScanEnvironment()}),b.dp_numeric(106,{
-name="r_twelve_z_eleven_detection_distance",converter=a.divide_by_pair(100),emit=c.rTwelveZElevenDetectionDistance()}),b.dp_enum(108,{
-name="r_twelve_z_eleven_battery_state",converter=a.from_only(a.lookup_value{
-[0]="low",[1]="middle",[2]="high",[3]="USB"}),emit=c.rTwelveZElevenBatteryState(),read_only=true}),b.dp_binary(109,{
-name="r_twelve_z_eleven_switch_night_light",converter=d,emit=c.rTwelveZElevenNightLight()})},query_on_configure=false}k(g,{"_TZE284_zzm83zpz","_TZE2841000000_zzm83zpz"})return{
-id="ef00.presence.wave11.general.2",registrations=j}
+local h={profile="safety-presence-wave11-r12lm-z10t",package_group="z2m-ef00-presence",named_datapoints=true,datapoints={b.dp_presence(1,{converter=a.true_false0(),emit=c.presence(),read_only=true}),b.dp_illuminance(101,{emit=c.illuminance(),read_only=true}),b.dp_enum(102,{name="r_twelve_z_ten_work_mode",converter=a.lookup_from_to{radar_mode=0,combine_mode=1},emit=c.rTwelveZTenWorkMode()}),b.dp_binary(103,{name="r_twelve_z_ten_radar_switch",converter=d,emit=c.rTwelveZTenRadarSwitch()}),b.dp_numeric(104,{name="r_twelve_z_ten_fading_time",emit=c.rTwelveZTenFadingTime()}),b.dp_numeric(106,{name="r_twelve_z_ten_detection_distance",converter=a.divide_by_pair(100),emit=c.rTwelveZTenDetectionDistance()}),b.dp_numeric(107,{name="r_twelve_z_ten_radar_sensitivity",emit=c.rTwelveZTenRadarSensitivity()}),b.dp_enum(108,{name="r_twelve_z_ten_battery_state",converter=a.from_only(a.lookup_value{[0]="low",[1]="middle",[2]="high",[3]="usb"}),emit=c.rTwelveZTenBatteryState(),read_only=true})},query_on_configure=false}k(h,{"_TZE284_hqys6frs","_TZE2841000000_hqys6frs"})local g={profile="safety-presence-wave11-r12lm-z11t",package_group="z2m-ef00-presence",named_datapoints=true,datapoints={b.dp_presence(1,{converter=a.true_false0(),emit=c.presence(),read_only=true}),b.dp_enum(8,{name="r_twelve_z_eleven_scan_result",converter=a.from_only(a.lookup_value{[0]="normal",[1]="scanning",[2]="scan_success",[3]="scan_failure",[4]="scan_start"}),emit=c.rTwelveZElevenScanResult(),read_only=true}),b.dp_illuminance(101,{emit=c.illuminance(),read_only=true}),b.dp_enum(102,{name="r_twelve_z_eleven_mode",converter=a.lookup_from_to{radar_mode=0,fusion_mode=1},emit=c.rTwelveZElevenMode()}),b.dp_binary(103,{name="r_twelve_z_eleven_radar_switch",converter=d,emit=c.rTwelveZElevenRadarSwitch()}),b.dp_enum(105,{name="r_twelve_z_eleven_scan_environment",converter=a.lookup_from_to{start=0},emit=c.rTwelveZElevenScanEnvironment()}),b.dp_numeric(106,{name="r_twelve_z_eleven_detection_distance",converter=a.divide_by_pair(100),emit=c.rTwelveZElevenDetectionDistance()}),b.dp_enum(108,{name="r_twelve_z_eleven_battery_state",converter=a.from_only(a.lookup_value{[0]="low",[1]="middle",[2]="high",[3]="USB"}),emit=c.rTwelveZElevenBatteryState(),read_only=true}),b.dp_binary(109,{name="r_twelve_z_eleven_switch_night_light",converter=d,emit=c.rTwelveZElevenNightLight()})},query_on_configure=false}k(g,{"_TZE284_zzm83zpz","_TZE2841000000_zzm83zpz"})return{id="ef00.presence.wave11.general.2",registrations=j}

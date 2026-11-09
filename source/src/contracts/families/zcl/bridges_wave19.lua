@@ -1,4 +1,3 @@
--- Wave19 Candeo/Heiman bridge source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/candeo.ts:55-141,1257-1272
 --   src/devices/heiman.ts:2039-2095,2188-2243,2973-3003
@@ -29,7 +28,6 @@ local function emit_main(device, event)
   end
 end
 
--- Candeo C-RFZB-HUB --------------------------------------------------------
 
 local kinetic_press_names = {
   [1] = "single",
@@ -142,7 +140,6 @@ register_device_definition(candeo_rf_hub, {
   device_helpers.create_fingerprint("Candeo", "C-RFZB-HUB"),
 })
 
--- Heiman HS1IRC / HS2IRC ---------------------------------------------------
 
 local function body_bytes(zb_rx)
   local body = zb_rx and zb_rx.body and zb_rx.body.zcl_body or nil

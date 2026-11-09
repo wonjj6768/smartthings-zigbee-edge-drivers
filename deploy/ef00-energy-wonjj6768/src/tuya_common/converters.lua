@@ -1,22 +1,21 @@
 local function ad(am,q)
-local aD=q.utils
-local u=q.log
-local C=q.math_floor
-local g=q.type_check
-local d=q.tonumber_check
-local ai=q.raw_bytes
-local H=q.string_byte
-local an=q.string_char
-local w=q.string_len
-local N=q.table_concat
-local x={}
+local aD,u,C,g,d,ai,H,an,w,N,x=q.utils,q.log,q.math_floor,q.type_check,q.tonumber_check,q.raw_bytes,q.string_byte,q.string_char,q.string_len,q.table_concat,{}
+
+
+
+
+
+
+
+
+
+
 local function aB(b)
 return b
 end
 local function k(as,f,c)
 if g(as)=="function"then
-return as(f,c)
-end
+return as(f,c)end
 return as
 end
 local function i(as,f,c)
@@ -50,12 +49,11 @@ return nil
 end
 local b=0
 for W=Z,Z+ao-1 do
-b=(b*256)+H(l,W)
-end
+b=(b*256)+H(l,W)end
 return b
 end
 local function S(l,I,f,c)
-local z=w(l)local n=g(I)=="table"and I or x
+local z,n=w(l),g(I)=="table"and I or x
 local j=i(n.bytes or n.length,f,c)if j==nil then
 j=z
 end
@@ -81,34 +79,29 @@ return h,j
 end
 local function R(l)
 local aq={}for W=1,w(l)do
-aq[#aq+1]=string.format("%02X",H(l,W))
-end
+aq[#aq+1]=string.format("%02X",H(l,W))end
 return N(aq)
 end
 local function ar(G)
 local ap={}for aA,_ in pairs(G or x)do
 local T=d(aA)if T~=nil then
-ap[#ap+1]=C(T)
-end
+ap[#ap+1]=C(T)end
 end
 table.sort(ap)return ap
 end
 local a=am.converter
 function a.pipe(...)
 local aa={...}if #aa==1 and g(aa[1])=="table"then
-aa=aa[1]
-end
+aa=aa[1]end
 return function(b,f,c)
 local ab=b
 for _,aC in ipairs(aa)do
-ab=aC(ab,f,c)
-end
+ab=aC(ab,f,c)end
 return ab
 end
 end
 function a.from_to(y,aj)
-local ay={}
-if g(y)=="function"then
+local ay={}if g(y)=="function"then
 ay.from=y
 end
 if g(aj)=="function"then
@@ -172,31 +165,26 @@ return a.from_only(function(b)
 local l=ai(b)if l==nil then
 return b
 end
-local z=w(l)local ak={}local ah=true
+local z,ak,ah=w(l),{},true
 for W=1,z do
 local B=H(l,W)if B~=0 then
 if B<32 or B>126 then
 ah=false
 end
-ak[#ak+1]=an(B)
-end
+ak[#ak+1]=an(B)end
 end
 if ah and #ak>0 then
-return N(ak)
-end
+return N(ak)end
 if z<=4 then
-return K(l,1,z)
-end
+return K(l,1,z)end
 return R(l)
 end)
 end
 function a.power_on_behavior()
-return a.lookup_from_to{
-off=0,on=1,previous=2}
+return a.lookup_from_to{off=0,on=1,previous=2}
 end
 function a.power_outage_memory()
-return a.lookup_from_to{
-off=0,on=1,restore=2}
+return a.lookup_from_to{off=0,on=1,restore=2}
 end
 function a.power()
 return a.from_only(function(b)
@@ -211,7 +199,7 @@ end)
 end
 function a.scale(V,U,P,O)
 return function(b)
-local e=d(b)local F=d(V)local L=d(U)local J=d(P)local X=d(O)if e==nil then
+local e,F,L,J,X=d(b),d(V),d(U),d(P),d(O)if e==nil then
 u.warn(string.format("Tuya scale expects number, got %s",g(b)))return nil
 end
 if F==nil or L==nil or J==nil or X==nil then
@@ -224,12 +212,11 @@ return((e-F)*(X-J)/(L-F))+J
 end
 end
 function a.scale_pair(V,U,P,O)
-return a.from_to(
-a.scale(V,U,P,O),a.scale(P,O,V,U))
+return a.from_to(a.scale(V,U,P,O),a.scale(P,O,V,U))
 end
 function a.divide_by(o)
 return function(b,f,c)
-local e=d(b)local ag=i(o,f,c)if e==nil or ag==nil then
+local e,ag=d(b),i(o,f,c)if e==nil or ag==nil then
 u.warn"Tuya divide_by expects numeric input and divisor"return nil
 end
 if ag==0 then
@@ -239,8 +226,7 @@ return e/ag
 end
 end
 function a.divide_by_pair(o)
-return a.from_to(
-a.divide_by(o),a.multiply_by(o))
+return a.from_to(a.divide_by(o),a.multiply_by(o))
 end
 function a.signed_number_pair(az)
 return a.from_to(
@@ -279,7 +265,7 @@ end
 end
 function a.multiply_by(p)
 return function(b,f,c)
-local e=d(b)local at=i(p,f,c)if e==nil or at==nil then
+local e,at=d(b),i(p,f,c)if e==nil or at==nil then
 u.warn"Tuya multiply_by expects numeric input and multiplier"return nil
 end
 return e*at

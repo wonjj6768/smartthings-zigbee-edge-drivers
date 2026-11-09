@@ -1,5 +1,3 @@
--- ZCL 계량형 scaler/polling helper
--- SimpleMetering / ElectricalMeasurement 의 multiplier/divisor 와 polling 을 공통 처리합니다.
 
 local function load_metering(zcl)
 
@@ -668,12 +666,11 @@ local function load_metering(zcl)
         divisor = 1
       end
 
-      -- A reported pair only carries information when it actually rescales the
-      -- reading. Some plugs report identical multiplier and divisor values
-      -- (1/1, or 1280/1280 seen on a TS011F), which cancel out; treating that
-      -- as a real scaler skipped meta.scale and published the raw counter, so
-      -- one plug reported 239995 kWh where its siblings reported 2399.95.
-      if multiplier ~= divisor then
+      -- Preserve the fixed-scale fallback for legacy plug unity ratios
+      -- (TS011F 1280/1280 previously turned 2399.95 kWh into 239995).
+      -- Audited families such as Candeo can accept a valid reported unity ratio.
+      if multiplier ~= divisor or (meta.use_reported_unity_scaler and
+          reported_multiplier ~= nil and reported_divisor ~= nil and reported_divisor ~= 0) then
         return raw_value * multiplier / divisor
       end
     end

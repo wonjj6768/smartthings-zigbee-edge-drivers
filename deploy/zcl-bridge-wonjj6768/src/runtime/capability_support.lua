@@ -6,8 +6,7 @@ end
 if type(m)~="table"then
 return false
 end
-local l=getmetatable(m)
-return type(l)=="table"and type(l.__call)=="function"
+local l=getmetatable(m)return type(l)=="table"and type(l.__call)=="function"
 end
 local function g(d)
 if type(d)~="table"then
@@ -38,10 +37,8 @@ function b.supports(d,a,c)
 if type(d)~="table"or type(a)~="string"or a==""then
 return false
 end
-c=c or"main"
-if type(d.supports_capability_by_id)=="function"then
-return d:supports_capability_by_id(a,c)
-end
+c=c or"main"if type(d.supports_capability_by_id)=="function"then
+return d:supports_capability_by_id(a,c)end
 local k=g(d)local f=type(k)=="table"and k[c]or nil
 return e(f,a)
 end

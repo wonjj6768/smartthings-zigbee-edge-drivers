@@ -1,5 +1,4 @@
-local c=require"contracts.helpers.family"
-local a={}
+local c,a=require"contracts.helpers.family",{}
 function a.ts0601_fingerprints(b)
 return c.create_fingerprints("TS0601",b)
 end

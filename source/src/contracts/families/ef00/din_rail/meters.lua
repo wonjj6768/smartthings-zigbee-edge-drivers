@@ -1,4 +1,3 @@
--- meters package-owned DIN rail family definitions.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -12,10 +11,7 @@ local circuit_breaker_faults_converter = common.circuit_breaker_faults_converter
 local BREAKER_EVENT_LOOKUP = common.BREAKER_EVENT_LOOKUP
 local IGNORE_ALARM_SETTING = { ignore = 0, alarm = 1 }
 
--- ══════════════════════════════════════════════════════════════
--- 1-6. power_meter_model_sdm01: 3상 에너지 모니터
 -- Z2M: SDM01 (tuya.ts:16535)
--- ══════════════════════════════════════════════════════════════
 -- Only the ugekduaj exacts use this datapoint map: DP1 forward energy /100,
 -- DP2 reverse energy /100, DP15 total power factor, DP101 AC frequency /100,
 -- DP102..DP110 per-phase voltage/current/power, DP111 total power,
@@ -67,10 +63,7 @@ register_device_definition(power_meter_model_sdm01, device_helpers.create_finger
   "_TZE200_ugekduaj",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6a. power_meter_model_spm02: 3상 에너지 모니터 (phase X/Y/Z)
 -- Z2M: SPM02 (tuya.ts:16058)
--- ══════════════════════════════════════════════════════════════
 -- This exact does not share the SDM01 datapoint map at all.  Z2M reports the
 -- three phases through DP6, DP7 and DP8 phase-variant-2 payloads and exposes
 -- only total forward energy DP1 and total reverse energy DP2.  There is no
@@ -113,10 +106,7 @@ register_device_definition(power_meter_model_spm02, device_helpers.create_finger
   "_TZE284_ves1ycwx",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6b. power_meter_model_nous_d4z: Nous D4Z 3상 에너지 모니터
 -- Z2M: Nous D4Z (nous.ts:257)
--- ══════════════════════════════════════════════════════════════
 -- `Nous / D4Z` is a real interviewed model, not a Tuya whiteLabel row, and the
 -- exacts _TZE204_loejka0i / _TZE284_loejka0i belong to it.  The datapoint map
 -- matches SDM01 for DP1, DP2, DP15, DP101..DP120 but adds DP9 circuit breaker
@@ -187,10 +177,7 @@ register_device_definition(power_meter_model_nous_d4z, {
   device_helpers.create_fingerprint("Nous", "D4Z"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-6c. power_meter_model_spm02v2: 3상 에너지 모니터
 -- Z2M: SPM02V2 (tuya.ts:16165)
--- ══════════════════════════════════════════════════════════════
 -- Same DP1/DP2/DP15/DP101..DP111 head as SDM01 but this exact has no
 -- per-phase energy or per-phase power factor block (DP112..DP120), so those
 -- datapoints are not mapped.  Z2M keeps DP6..DP8 commented out.
@@ -232,10 +219,7 @@ register_device_definition(power_meter_model_spm02v2, device_helpers.create_fing
   "_TZE284_v9hkz2yn",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6d. power_meter_model_spm02v25: 3상 에너지 모니터
 -- Z2M: SPM02V2.5 (tuya.ts:16377)
--- ══════════════════════════════════════════════════════════════
 -- This generation moved the totals onto different datapoints: reverse energy is
 -- DP23, total power is DP29, AC frequency is DP32 and total power factor is
 -- DP50.  Reading DP2/DP15/DP101 as the SDM01 definition did would target
@@ -290,10 +274,7 @@ register_device_definition(power_meter_model_spm02v25, device_helpers.create_fin
   "_TZE284_ny94onlb",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6e. power_meter_model_spm02v3: 3상 에너지 모니터
 -- Z2M: SPM02V3 (tuya.ts:16467)
--- ══════════════════════════════════════════════════════════════
 -- Totals sit on the SPM02V2.5 datapoints (DP1/DP23/DP29/DP32/DP50) but the
 -- per-phase block is spread over DP103..DP128 in blocks of nine: voltage,
 -- current and power first, then power factor, forward energy and reverse
@@ -346,10 +327,7 @@ register_device_definition(power_meter_model_spm02v3, device_helpers.create_fing
   "_TZE284_dikb3dp6",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6f. power_meter_model_spm02v1gt: 3상 에너지 모니터 (grid-tie)
 -- Z2M: SPM02V1-GT (tuya.ts:16804)
--- ══════════════════════════════════════════════════════════════
 -- Grid-tie generation: totals on DP1/DP23/DP29/DP32/DP50, per-phase voltage,
 -- current and power back on the DP6/DP7/DP8 phase-variant-2 frames, per-phase
 -- forward energy on DP53..DP55, reverse energy on DP57..DP59 and per-phase
@@ -417,10 +395,7 @@ register_device_definition(power_meter_model_spm02v1gt, device_helpers.create_fi
   "_TZE284_wjk6rurm",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6g. power_meter_model_sdm01v1gt: 3상 에너지 모니터 (grid-tie)
 -- Z2M: SDM01V1-GT (tuya.ts:16868)
--- ══════════════════════════════════════════════════════════════
 -- Same datapoint map as SPM02V1-GT.  The only functional difference in Z2M is
 -- the DP102 report interval floor, which drops from 30 s to 5 s, so this stays
 -- a separate family with its own fixed-range capability.
@@ -486,10 +461,7 @@ register_device_definition(power_meter_model_sdm01v1gt, device_helpers.create_fi
   "_TZE284_s4sa1mcx",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-7. power_meter_model_ts0601_3_phase_clamp_meter: 3상 클램프 계량기
 -- Z2M: TS0601_3_phase_clamp_meter
--- ══════════════════════════════════════════════════════════════
 -- Z2M TS0601_3_phase_clamp_meter (tuya.ts:15086) reports phase voltage, current
 -- and power through the DP6/DP7/DP8 phase-variant-2 frames and per-phase energy
 -- on DP101/DP111/DP121 with a /1000 scale.  Those phase frames and energies were
@@ -533,7 +505,7 @@ local power_meter_model_ts0601_3_phase_clamp_meter = {
     component = "l3",
     emit = emit_metric_bundle({ voltage = true, current = true, power = true }),
   }),
-  tuya.dp_numeric(134, { name = "device_status" }),                         -- 프로파일 미포함
+  tuya.dp_numeric(134, { name = "device_status" }),
   tuya.dp_ac_frequency(135, {
     name = "ac_frequency_high_precision",
     read_only = true,
@@ -550,10 +522,7 @@ register_device_definition(power_meter_model_ts0601_3_phase_clamp_meter, {
   device_helpers.create_fingerprint("OWON", "PC321-Z-TY"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-8. power_meter_model_ts0601_3_phase_clamp_meter_relay: 3상 클램프 계량 릴레이
 -- Z2M: TS0601_3_phase_clamp_meter_relay
--- ══════════════════════════════════════════════════════════════
 -- Z2M TS0601_3_phase_clamp_meter_relay (tuya.ts:15148): DP16 switch, DP1 total
 -- energy /100, DP2 produced energy /100, DP9 total power and DP6/DP7/DP8
 -- carrying voltage, current and power for phases A, B and C.  Only the total
@@ -596,10 +565,7 @@ register_device_definition(power_meter_model_ts0601_3_phase_clamp_meter_relay, d
   "_TZE204_x8fp01wi",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9. power_meter_model_ts0601_bidirectional_energy_meter: 양방향 에너지 미터
 -- Z2M: TS0601_bidirectional_energy meter
--- ══════════════════════════════════════════════════════════════
 local power_meter_model_ts0601_bidirectional_energy_meter = {
   profile = "meters-power-energy-voltage-current-bidirectional",
   package_group = "meters",
@@ -612,7 +578,7 @@ local power_meter_model_ts0601_bidirectional_energy_meter = {
       power = true,
     }),
   }),
-  tuya.dp_enum(102, { name = "energy_flow" }),                              -- 프로파일 미포함
+  tuya.dp_enum(102, { name = "energy_flow" }),
 }
 
 register_device_definition(power_meter_model_ts0601_bidirectional_energy_meter, device_helpers.create_fingerprints("TS0601", {
@@ -620,10 +586,7 @@ register_device_definition(power_meter_model_ts0601_bidirectional_energy_meter, 
   "_TZE284_ac0fhfiq",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9a. power_meter_model_spm01: 1P+N 에너지 모니터
 -- Z2M: SPM01 (tuya.ts:16034)
--- ══════════════════════════════════════════════════════════════
 -- SPM01 has no DP102 energy flow enum, so it does not belong on the
 -- bidirectional definition.  Z2M reports only DP1 forward energy, DP2 reverse
 -- energy and the DP6 phaseVariant4 frame, whose byte layout matches the local
@@ -648,10 +611,7 @@ register_device_definition(power_meter_model_spm01, device_helpers.create_finger
   "_TZE200_bcusnqt8",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9b. power_meter_model_spm01v2: 1P+N 에너지 모니터
 -- Z2M: SPM01V2 (tuya.ts:16089)
--- ══════════════════════════════════════════════════════════════
 -- This generation does not use DP6 at all: Z2M has that mapping commented out
 -- and reads voltage, current and power from separate DP102/DP103/DP104 scalars,
 -- with power factor on DP15 and AC frequency on DP101.  Reading DP6 as the
@@ -672,7 +632,7 @@ local power_meter_model_spm01v2 = {
     read_only = true,
     emit = emit.spm01v2PowerFactor(),
   }),
-  tuya.dp_raw(18, { name = "data_report_duration" }),                       -- 프로파일 미포함
+  tuya.dp_raw(18, { name = "data_report_duration" }),
   tuya.dp_ac_frequency(101, {
     name = "ac_frequency",
     read_only = true,
@@ -689,10 +649,7 @@ register_device_definition(power_meter_model_spm01v2, device_helpers.create_fing
   "_TZE284_qhlxve78",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9c. power_meter_model_spm01v25: 1P+N 에너지 모니터
 -- Z2M: SPM01V2.5 (tuya.ts:16303)
--- ══════════════════════════════════════════════════════════════
 -- Same scalar voltage/current/power block as SPM01V2 but the totals moved:
 -- reverse energy is DP23, AC frequency is DP32 and power factor is DP50.
 local function spm01v25_query(device)
@@ -754,10 +711,7 @@ register_device_definition(power_meter_model_spm01v25, device_helpers.create_fin
   "_TZE284_iwn0gpzz",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9d. power_meter_model_spm01v1gt: 1P+N 에너지 모니터 (grid-tie)
 -- Z2M: SPM01V1-GT (tuya.ts:16767)
--- ══════════════════════════════════════════════════════════════
 -- Grid-tie single phase: DP1/DP23 totals, DP6 phaseVariant3 metrics, DP32
 -- frequency, DP50 power factor, DP101 device locating and DP102 report
 -- interval.  The bidirectional definition read DP2 and DP102 as energy flow,
@@ -799,7 +753,6 @@ register_device_definition(power_meter_model_spm01v1gt, device_helpers.create_fi
   "_TZE284_d2zfgtij",
 }))
 
--- PC311-Z-TY: bidirectional 2-channel clamp meter
 -- Z2M PC311-Z-TY (tuya.ts:18653) also reports per-channel forward energy on
 -- DP101/DP103 and reverse energy on DP102/DP104, which were missing from the
 -- definition entirely, and the DP107..DP111 channel current and power were
@@ -847,7 +800,6 @@ register_device_definition(power_meter_model_pc311, device_helpers.create_finger
   "_TZE200_rks0sgb7",
 }))
 
--- 2CT: two-channel bidirectional meter
 -- Z2M 2CT (tuya.ts:16209) exposes both clamp channels plus six calibration
 -- factors.  DP101..DP104 and DP115/DP117 were parsed but unreachable, and the
 -- DP123..DP131 calibration block was not mapped at all.  Note DP131 is
@@ -903,7 +855,6 @@ register_device_definition(power_meter_model_2ct, device_helpers.create_fingerpr
   "_TZE204_dhotiauw",
 }))
 
--- PJ-1203A: compact bidirectional clamp meter
 -- Z2M PJ-1203A (tuya.ts:18574) routes every channel datapoint through stateful
 -- private converters, but the scales are unambiguous: DP101/DP105 power /10,
 -- DP113/DP114 current /1000, DP110/DP121 power factor raw percent, DP106..DP109
@@ -952,9 +903,9 @@ local power_meter_model_pj1203a = {
     read_only = true,
     emit = emit.pj1203aProducedEnergy(),
   }),
-  tuya.dp_numeric(102, { name = "energy_flow_a" }),                       -- profile 미포함
-  tuya.dp_numeric(104, { name = "energy_flow_b" }),                       -- profile 미포함
-  tuya.dp_power(115, { name = "power_ab" }),                              -- profile 미포함
+  tuya.dp_numeric(102, { name = "energy_flow_a" }),
+  tuya.dp_numeric(104, { name = "energy_flow_b" }),
+  tuya.dp_power(115, { name = "power_ab" }),
   tuya.dp_numeric(129, { name = "update_frequency", emit = emit.updateFrequencyPj1203aSeconds60() }),
 }
 
@@ -964,10 +915,7 @@ register_device_definition(power_meter_model_pj1203a, device_helpers.create_fing
   "_TZE28C1000000_81yrt3lo",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9a. power_meter_model_atms10013z3: 3상 전력계
 -- Z2M: ATMS10013Z3 / ATMS100133Z
--- ══════════════════════════════════════════════════════════════
 local power_meter_model_atms10013z3 = {
   profile = "meters-energy-3phase-atms10013z3",
   package_group = "meters",
@@ -1016,10 +964,7 @@ register_device_definition(power_meter_model_atms10013z3, {
   device_helpers.create_fingerprint("Ourtop", "ATMS100133Z"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-10f. power_meter_model_to_q_sa1: Tongou clamp energy meter
 -- Z2M: TO-Q-SA1 / TOSA1-01WXJAT2A
--- ══════════════════════════════════════════════════════════════
 local power_meter_model_to_q_sa1 = {
   profile = "meters-power-energy-voltage-current-toqsa1",
   package_group = "meters",
@@ -1031,7 +976,7 @@ local power_meter_model_to_q_sa1 = {
       power = true,
     }),
   }),
-  tuya.dp_numeric(13, { name = "test1" }),                                 -- 프로파일 미포함
+  tuya.dp_numeric(13, { name = "test1" }),
   tuya.dp_ac_frequency(32, {
     name = "ac_frequency",
     read_only = true,
@@ -1083,7 +1028,7 @@ local power_meter_model_to_q_sa1 = {
     emit = emit.toqsa1TemperatureThreshold(),
   }),
   tuya.dp_numeric(119, { name = "over_power_threshold", emit = emit.toqsa1OverPowerThreshold() }),
-  tuya.dp_numeric(125, { name = "forward_electricity" }),                  -- 프로파일 미포함
+  tuya.dp_numeric(125, { name = "forward_electricity" }),
   tuya.dp_temperature(131, {
     name = "temperature",
     scale = 10,
@@ -1101,10 +1046,7 @@ register_device_definition(power_meter_model_to_q_sa1, {
   device_helpers.create_fingerprint("Tongou", "TOSA1-01WXJAT2A"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-11. power_meter_model_pj_mgw1203: 단상 클램프 미터
 -- Z2M: PJ-MGW1203 / PJ-1203-W
--- ══════════════════════════════════════════════════════════════
 
 
 
@@ -1219,31 +1161,28 @@ register_device_definition(power_meter_model_pj_mgw1203, {
   device_helpers.create_fingerprint("Tuya", "PJ-1203-W"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-12. power_meter_model_sdm02v1: 2P+N 에너지 모니터
 -- Z2M: SDM02V1
--- ══════════════════════════════════════════════════════════════
 local power_meter_model_sdm02v1 = {
   profile = "meters-power-energy-2phase-sdm02v1",
   package_group = "meters",
   tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
-  tuya.dp_energy(23, { name = "produced_energy", scale = 100 }),            -- 프로파일 미포함
+  tuya.dp_energy(23, { name = "produced_energy", scale = 100 }),
   tuya.dp_power(29, { emit = emit.power(), scale = 1 }),
-  tuya.dp_ac_frequency(32, {}),                                            -- 프로파일 미포함
-  tuya.dp_power_factor(50, {}),                                            -- 프로파일 미포함
+  tuya.dp_ac_frequency(32, {}),
+  tuya.dp_power_factor(50, {}),
   tuya.dp_numeric(102, { name = "update_frequency", emit = emit.updateFrequencySdm02v1Seconds3600() }),
   tuya.dp_voltage(103, { name = "voltage_l1", component = "l1", emit = emit.voltage() }),
   tuya.dp_current(104, { name = "current_l1", component = "l1", emit = emit.current() }),
   tuya.dp_power(105, { name = "power_l1", component = "l1", emit = emit.power(), scale = 1 }),
-  tuya.dp_power_factor(108, { name = "power_factor_l1" }),                 -- 프로파일 미포함
+  tuya.dp_power_factor(108, { name = "power_factor_l1" }),
   tuya.dp_energy(109, { name = "energy_l1", component = "l1", emit = emit.energy(), scale = 100 }),
-  tuya.dp_energy(110, { name = "energy_produced_l1", scale = 100 }),       -- 프로파일 미포함
+  tuya.dp_energy(110, { name = "energy_produced_l1", scale = 100 }),
   tuya.dp_voltage(112, { name = "voltage_l2", component = "l2", emit = emit.voltage() }),
   tuya.dp_current(113, { name = "current_l2", component = "l2", emit = emit.current() }),
   tuya.dp_power(114, { name = "power_l2", component = "l2", emit = emit.power(), scale = 1 }),
-  tuya.dp_power_factor(117, { name = "power_factor_l2" }),                 -- 프로파일 미포함
+  tuya.dp_power_factor(117, { name = "power_factor_l2" }),
   tuya.dp_energy(118, { name = "energy_l2", component = "l2", emit = emit.energy(), scale = 100 }),
-  tuya.dp_energy(119, { name = "energy_produced_l2", scale = 100 }),       -- 프로파일 미포함
+  tuya.dp_energy(119, { name = "energy_produced_l2", scale = 100 }),
 }
 
 register_device_definition(power_meter_model_sdm02v1, device_helpers.create_fingerprints("TS0601", {
@@ -1252,10 +1191,7 @@ register_device_definition(power_meter_model_sdm02v1, device_helpers.create_fing
   "_TZE200_78ioiaml",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-12a. power_meter_model_sdm02v1gt: 2P+N 에너지 모니터 (grid-tie)
 -- Z2M: SDM02V1-GT (tuya.ts:16933)
--- ══════════════════════════════════════════════════════════════
 -- The x8diwkqb exacts are a different generation from SDM02V1: they carry the
 -- per-line voltage, current and power in DP6/DP7 phase-variant-2 frames instead
 -- of DP103..DP114, put line energy on DP53/DP54 and produced energy on
@@ -1296,16 +1232,16 @@ local power_meter_model_sdm02v1gt = {
   }),
   tuya.dp_energy(53, { name = "energy_l1", scale = 100, component = "l1", emit = emit.energy() }),
   tuya.dp_energy(54, { name = "energy_l2", scale = 100, component = "l2", emit = emit.energy() }),
-  tuya.dp_energy(57, { name = "energy_produced_l1", scale = 100 }),         -- 프로파일 미포함
-  tuya.dp_energy(58, { name = "energy_produced_l2", scale = 100 }),         -- 프로파일 미포함
+  tuya.dp_energy(57, { name = "energy_produced_l1", scale = 100 }),
+  tuya.dp_energy(58, { name = "energy_produced_l2", scale = 100 }),
   tuya.dp_on_off(101, {
     name = "device_locating",
     emit = emit.sdm02v1gtDeviceLocating(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
   tuya.dp_numeric(102, { name = "update_frequency", emit = emit.sdm02v1gtUpdateFrequency() }),
-  tuya.dp_power_factor(108, { name = "power_factor_l1" }),                  -- 프로파일 미포함
-  tuya.dp_power_factor(117, { name = "power_factor_l2" }),                  -- 프로파일 미포함
+  tuya.dp_power_factor(108, { name = "power_factor_l1" }),
+  tuya.dp_power_factor(117, { name = "power_factor_l2" }),
 }
 
 register_device_definition(power_meter_model_sdm02v1gt, device_helpers.create_fingerprints("TS0601", {
@@ -1314,10 +1250,7 @@ register_device_definition(power_meter_model_sdm02v1gt, device_helpers.create_fi
   "_TZE284_x8diwkqb",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-13. power_meter_model_sdm01v15: 3P+N 에너지 모니터 변형
 -- Z2M: SDM01V1.5
--- ══════════════════════════════════════════════════════════════
 -- Z2M SDM01V1.5 (tuya.ts:16645) has the same datapoint map as SPM02V3: totals
 -- on DP1/23/29/32/50, DP102 report interval and three phase blocks nine
 -- datapoints apart.  Phase B (DP112..DP119) was missing entirely and phase C

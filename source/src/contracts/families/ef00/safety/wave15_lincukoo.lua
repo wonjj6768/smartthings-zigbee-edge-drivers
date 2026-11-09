@@ -1,4 +1,3 @@
--- Wave15 Lincukoo E04CF-Z10T source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/lincukoo.ts:653-696.
 
 local tuya = require "protocol.tuya"

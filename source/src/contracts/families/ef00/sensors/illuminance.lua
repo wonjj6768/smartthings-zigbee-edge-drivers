@@ -1,6 +1,4 @@
--- 센서 디바이스 정의
 -- ZHA tuya_sensor.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
 -- 변수명 규칙: {category}_{variant}
 --   category: th   (온습도: 온도+습도+배터리)
 --             soil (토양: 수분+온도+배터리)
@@ -24,13 +22,6 @@
 --     pm25           PM2.5 primary (DP2=PM2.5)
 --     probe          외부 프로브
 --     warning        물 부족 경고
---   규칙:
---     - category 내 variant 간 차이나는 scale만 표기
---     - soil은 t, h 항상 명시
---     - 복수 차이점은 모두 표기
---     - bare 숫자 금지 (숫자 앞에 의미 문자 필수)
---     - 기능 알파벳순 배치
---     - 가독성 우선: 약어보다 풀네임 선호 (표준 약어 ec, co2, pm25, hcho, illum 유지)
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
@@ -51,10 +42,7 @@ local aaeasoll_report_interval_converter = converter.lookup_from_to({
   ["1h"] = 5,
 })
 
--- ══════════════════════════════════════════════════════════════
--- 4-1. illum_standalone: 독립 조도 (배터리 없음)
 -- Z2M: _TZE200_yi4jtqq1 (XFY-CGQ-ZIGB)
--- ══════════════════════════════════════════════════════════════
 local illum_standalone = {
   profile = "sensors-illuminance-brightness-xfy",
   tuya.dp_enum(1, {
@@ -77,10 +65,7 @@ register_device_definition(illum_standalone, ef00_helpers.ts0601_fingerprints( {
   "_TZE204_khx7nnka",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 4-2. illum_battery: 독립 조도 + 배터리
 -- Z2M: _TZE200_pisltm67 (S-LUX-ZB)
--- ══════════════════════════════════════════════════════════════
 local illum_battery = {
   profile = "sensors-illuminance-battery-brightness-slux",
   bind_basic_on_configure = true,
@@ -106,10 +91,7 @@ register_device_definition(illum_battery, {
   { manufacturer = "_TYST11_pisltm67", model = "isltm67" .. string.char(0) },
 })
 
--- ══════════════════════════════════════════════════════════════
--- 4-2a. illum_battery_report_interval_aaeasoll: 조도 + 배터리 + 보고 주기
 -- Z2M: _TZE284_aaeasoll (TZE284_aaeasoll)
--- ══════════════════════════════════════════════════════════════
 local illum_battery_report_interval_aaeasoll = {
   profile = "sensors-illuminance-battery-report-interval-aaeasoll",
   datapoints = {
@@ -128,10 +110,7 @@ register_device_definition(illum_battery_report_interval_aaeasoll, ef00_helpers.
 }))
 
 
--- ══════════════════════════════════════════════════════════════
--- 4-6. pressure_temp: 기압 + 온도
 -- Z2M: _TZE204_w2vunxzm
--- ══════════════════════════════════════════════════════════════
 local pressure_temp = {
   profile = "sensors-pressure-temp-display",
   datapoints = {

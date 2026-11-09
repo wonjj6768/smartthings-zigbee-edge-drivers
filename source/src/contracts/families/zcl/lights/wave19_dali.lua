@@ -1,4 +1,3 @@
--- Wave19 Sunricher SR-2421-Z2D8C dynamic DALI endpoint candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/sunricher.ts:23-28,270-354,2070-2084.
 
 local zcl = require "protocol.zcl"

@@ -1,22 +1,21 @@
 local function ah(aK,w)
-local aN=w.utils
-local z=w.log
-local r=w.math_floor
-local e=w.type_check
-local d=w.tonumber_check
-local am=w.raw_bytes
-local L=w.string_byte
-local au=w.string_char
-local B=w.string_len
-local J=w.table_concat
-local E={}
+local aN,z,r,e,d,am,L,au,B,J,E=w.utils,w.log,w.math_floor,w.type_check,w.tonumber_check,w.raw_bytes,w.string_byte,w.string_char,w.string_len,w.table_concat,{}
+
+
+
+
+
+
+
+
+
+
 local function aL(c)
 return c
 end
 local function j(ay,f,b)
 if e(ay)=="function"then
-return ay(f,b)
-end
+return ay(f,b)end
 return ay
 end
 local function i(ay,f,b)
@@ -50,12 +49,11 @@ return nil
 end
 local c=0
 for aa=ad,ad+av-1 do
-c=(c*256)+L(l,aa)
-end
+c=(c*256)+L(l,aa)end
 return c
 end
 local function W(l,M,f,b)
-local G=B(l)local q=e(M)=="table"and M or E
+local G,q=B(l),e(M)=="table"and M or E
 local k=i(q.bytes or q.length,f,b)if k==nil then
 k=G
 end
@@ -81,34 +79,29 @@ return h,k
 end
 local function V(l)
 local ax={}for aa=1,B(l)do
-ax[#ax+1]=string.format("%02X",L(l,aa))
-end
+ax[#ax+1]=string.format("%02X",L(l,aa))end
 return J(ax)
 end
 local function D(C)
 local aw={}for aJ,_ in pairs(C or E)do
 local X=d(aJ)if X~=nil then
-aw[#aw+1]=r(X)
-end
+aw[#aw+1]=r(X)end
 end
 table.sort(aw)return aw
 end
 local a=aK.converter
 function a.pipe(...)
 local ae={...}if #ae==1 and e(ae[1])=="table"then
-ae=ae[1]
-end
+ae=ae[1]end
 return function(c,f,b)
 local af=c
 for _,aM in ipairs(ae)do
-af=aM(af,f,b)
-end
+af=aM(af,f,b)end
 return af
 end
 end
 function a.from_to(F,an)
-local aF={}
-if e(F)=="function"then
+local aF={}if e(F)=="function"then
 aF.from=F
 end
 if e(an)=="function"then
@@ -172,21 +165,18 @@ return a.from_only(function(c)
 local l=am(c)if l==nil then
 return c
 end
-local G=B(l)local aq={}local al=true
+local G,aq,al=B(l),{},true
 for aa=1,G do
 local H=L(l,aa)if H~=0 then
 if H<32 or H>126 then
 al=false
 end
-aq[#aq+1]=au(H)
-end
+aq[#aq+1]=au(H)end
 end
 if al and #aq>0 then
-return J(aq)
-end
+return J(aq)end
 if G<=4 then
-return P(l,1,G)
-end
+return P(l,1,G)end
 return V(l)
 end)
 end
@@ -197,7 +187,7 @@ return a.from_only(function(c,f,b)
 local O=d(c)if O==nil then
 z.warn(string.format("Tuya bitmap_flags expects number, got %s",e(c)))return nil
 end
-local p=o or s(C,f,b)local ap=at or D(p)local ab={}local ao=r(O)for _,aI in ipairs(ap)do
+local p=o or s(C,f,b)local ap,ab,ao=at or D(p),{},r(O)for _,aI in ipairs(ap)do
 if r(ao/aI)%2==1 then
 local aG=p[aI]or p[tostring(aI)]if aG~=nil then
 ab[#ab+1]=aG
@@ -205,37 +195,29 @@ end
 end
 end
 if #ab==0 then
-return j(as,f,b)
-end
+return j(as,f,b)end
 local t=j(aE,f,b)if e(t)~="string"then
-t=","
-end
+t=","end
 return J(ab,t)
 end)
 end
 function a.alarm_state_lower_upper_cancel()
-return a.lookup_from_to{
-lower_alarm=0,upper_alarm=1,cancel=2}
+return a.lookup_from_to{lower_alarm=0,upper_alarm=1,cancel=2}
 end
 function a.temperature_unit()
-return a.lookup_from_to{
-celsius=0,fahrenheit=1}
+return a.lookup_from_to{celsius=0,fahrenheit=1}
 end
 function a.report_period_hours()
-return a.lookup_from_to{
-["1h"]=0,["2h"]=1,["3h"]=2,["4h"]=3,["6h"]=4,["8h"]=5,["12h"]=6,["24h"]=7,["48h"]=8,["72h"]=9}
+return a.lookup_from_to{["1h"]=0,["2h"]=1,["3h"]=2,["4h"]=3,["6h"]=4,["8h"]=5,["12h"]=6,["24h"]=7,["48h"]=8,["72h"]=9}
 end
 function a.water_meter_faults()
-return a.bitmap_flags({
-[1]="battery_alarm",[2]="magnetism_alarm",[4]="cover_alarm",[8]="credit_alarm",[16]="switch_gaps_alarm",[32]="meter_body_alarm",[64]="abnormal_water_alarm",[128]="arrearage_alarm",[256]="overflow_alarm",[512]="revflow_alarm",[1024]="over_pre_alarm",[2048]="empty_pipe_alarm",[4096]="transducer_alarm"},"no_alarm",",")
+return a.bitmap_flags({[1]="battery_alarm",[2]="magnetism_alarm",[4]="cover_alarm",[8]="credit_alarm",[16]="switch_gaps_alarm",[32]="meter_body_alarm",[64]="abnormal_water_alarm",[128]="arrearage_alarm",[256]="overflow_alarm",[512]="revflow_alarm",[1024]="over_pre_alarm",[2048]="empty_pipe_alarm",[4096]="transducer_alarm"},"no_alarm",",")
 end
 function a.water_warning()
-return a.lookup_from_to{
-none=0,alarm=1}
+return a.lookup_from_to{none=0,alarm=1}
 end
 function a.soil_fertility_warning()
-return a.lookup_from_to{
-none=0,alarm=1}
+return a.lookup_from_to{none=0,alarm=1}
 end
 function a.power()
 return a.from_only(function(c)
@@ -250,7 +232,7 @@ end)
 end
 function a.scale(Z,Y,T,S)
 return function(c)
-local g=d(c)local K=d(Z)local Q=d(Y)local N=d(T)local ac=d(S)if g==nil then
+local g,K,Q,N,ac=d(c),d(Z),d(Y),d(T),d(S)if g==nil then
 z.warn(string.format("Tuya scale expects number, got %s",e(c)))return nil
 end
 if K==nil or Q==nil or N==nil or ac==nil then
@@ -263,12 +245,11 @@ return((g-K)*(ac-N)/(Q-K))+N
 end
 end
 function a.scale_pair(Z,Y,T,S)
-return a.from_to(
-a.scale(Z,Y,T,S),a.scale(T,S,Z,Y))
+return a.from_to(a.scale(Z,Y,T,S),a.scale(T,S,Z,Y))
 end
 function a.divide_by(n)
 return function(c,f,b)
-local g=d(c)local ak=i(n,f,b)if g==nil or ak==nil then
+local g,ak=d(c),i(n,f,b)if g==nil or ak==nil then
 z.warn"Tuya divide_by expects numeric input and divisor"return nil
 end
 if ak==0 then
@@ -278,8 +259,7 @@ return g/ak
 end
 end
 function a.divide_by_pair(n)
-return a.from_to(
-a.divide_by(n),a.multiply_by(n))
+return a.from_to(a.divide_by(n),a.multiply_by(n))
 end
 function a.signed_number_pair(ar)
 return a.from_to(
@@ -318,7 +298,7 @@ end
 end
 function a.multiply_by(u)
 return function(c,f,b)
-local g=d(c)local az=i(u,f,b)if g==nil or az==nil then
+local g,az=d(c),i(u,f,b)if g==nil or az==nil then
 z.warn"Tuya multiply_by expects numeric input and multiplier"return nil
 end
 return g*az

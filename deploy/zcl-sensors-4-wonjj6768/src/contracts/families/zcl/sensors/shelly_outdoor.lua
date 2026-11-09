@@ -1,8 +1,4 @@
-local g=require"protocol.zcl"
-local d=require"contracts.helpers.family"
-local p=require"capabilities.events.all"
-local q=require"st.zigbee.data_types"
-local b,c=d.definition_registry()
+local g,d,p,q=require"protocol.zcl",require"contracts.helpers.family",require"capabilities.events.all",require"st.zigbee.data_types"local b,c=d.definition_registry()
 local function k(e)
 return g.battery{endpoint=e,read_only=true,read_on_configure=true,minimum_interval=3600,maximum_interval=65000,reportable_change=10,
 from_device=function(a,_,l)
@@ -23,14 +19,8 @@ if type(a)~="number"or a%1~=0 or a<1 or a>30 then return nil end
 return string.pack("<I2",a)
 end})
 end
-local m={
-profile="safety-contact-battery-shelly-outdoor",
+local m={profile="safety-contact-battery-shelly-outdoor",
 configure=function(o,n)
 g.bind_cluster(n,1280,o.environment_info.hub_zigbee_eui,1)
 end,
-capability_commands={
-{capability_id="concertmirror08464.sbdw302Identify",command_name="setIdentifyTime",argument_name="identifyTime",mapping_name="sbdw302_identify"}},zcl_clusters={
-g.contact_alarm_1_or_2{endpoint=1,read_only=true,read_on_configure=true,configure_reporting=false},g.shelly_handle_position{name="sbdw302_handle_position",endpoint=1,emit=p.sbdw302HandlePosition(),read_only=true,read_on_configure=true,configure_reporting=false},h("sbdw302_battery_low",p.sbdw302BatteryLow(),1),k(1),i"sbdw302_identify"}}c(m,{
-d.create_fingerprint("Shelly","BLU DoorWindow Outdoor ZB")})g.attach_reporting_capabilities(b,{
-{1,"rpt-blz"}})return{
-id="zcl.sensors.shelly_outdoor",registrations=b}
+capability_commands={{capability_id="concertmirror08464.sbdw302Identify",command_name="setIdentifyTime",argument_name="identifyTime",mapping_name="sbdw302_identify"}},zcl_clusters={g.contact_alarm_1_or_2{endpoint=1,read_only=true,read_on_configure=true,configure_reporting=false},g.shelly_handle_position{name="sbdw302_handle_position",endpoint=1,emit=p.sbdw302HandlePosition(),read_only=true,read_on_configure=true,configure_reporting=false},h("sbdw302_battery_low",p.sbdw302BatteryLow(),1),k(1),i"sbdw302_identify"}}c(m,{d.create_fingerprint("Shelly","BLU DoorWindow Outdoor ZB")})g.attach_reporting_capabilities(b,{{1,"rpt-blz"}})return{id="zcl.sensors.shelly_outdoor",registrations=b}

@@ -1,22 +1,21 @@
 local function Z(ax,t)
-local aB=t.utils
-local s=t.log
-local B=t.math_floor
-local f=t.type_check
-local d=t.tonumber_check
-local ar=t.raw_bytes
-local Q=t.string_byte
-local az=t.string_char
-local C=t.string_len
-local af=t.table_concat
-local y={}
+local aB,s,B,f,d,ar,Q,az,C,af,y=t.utils,t.log,t.math_floor,t.type_check,t.tonumber_check,t.raw_bytes,t.string_byte,t.string_char,t.string_len,t.table_concat,{}
+
+
+
+
+
+
+
+
+
+
 local function ay(b)
 return b
 end
 local function j(al,g,c)
 if f(al)=="function"then
-return al(g,c)
-end
+return al(g,c)end
 return al
 end
 local function i(al,g,c)
@@ -50,12 +49,11 @@ return nil
 end
 local b=0
 for ah=V,V+ag-1 do
-b=(b*256)+Q(o,ah)
-end
+b=(b*256)+Q(o,ah)end
 return b
 end
 local function O(o,H,g,c)
-local T=C(o)local n=f(H)=="table"and H or y
+local T,n=C(o),f(H)=="table"and H or y
 local k=i(n.bytes or n.length,g,c)if k==nil then
 k=T
 end
@@ -81,34 +79,29 @@ return h,k
 end
 local function as(o)
 local aj={}for ah=1,C(o)do
-aj[#aj+1]=string.format("%02X",Q(o,ah))
-end
+aj[#aj+1]=string.format("%02X",Q(o,ah))end
 return af(aj)
 end
 local function ak(G)
 local ai={}for aw,_ in pairs(G or y)do
 local P=d(aw)if P~=nil then
-ai[#ai+1]=B(P)
-end
+ai[#ai+1]=B(P)end
 end
 table.sort(ai)return ai
 end
 local a=ax.converter
 function a.pipe(...)
 local W={...}if #W==1 and f(W[1])=="table"then
-W=W[1]
-end
+W=W[1]end
 return function(b,g,c)
 local X=b
 for _,aA in ipairs(W)do
-X=aA(X,g,c)
-end
+X=aA(X,g,c)end
 return X
 end
 end
 function a.from_to(z,ad)
-local au={}
-if f(z)=="function"then
+local au={}if f(z)=="function"then
 au.from=z
 end
 if f(ad)=="function"then
@@ -134,8 +127,7 @@ s.warn(string.format("Tuya to_bool expected %s or %s, got %s",tostring(p),tostri
 end
 end
 function a.bool_pair(p,r)
-return a.from_to(
-a.to_bool(p,r),
+return a.from_to(a.to_bool(p,r),
 function(b)
 if b==true then
 return p
@@ -222,7 +214,7 @@ end)
 end
 function a.scale(S,R,M,L)
 return function(b)
-local e=d(b)local F=d(S)local J=d(R)local I=d(M)local U=d(L)if e==nil then
+local e,F,J,I,U=d(b),d(S),d(R),d(M),d(L)if e==nil then
 s.warn(string.format("Tuya scale expects number, got %s",f(b)))return nil
 end
 if F==nil or J==nil or I==nil or U==nil then
@@ -235,12 +227,11 @@ return((e-F)*(U-I)/(J-F))+I
 end
 end
 function a.scale_pair(S,R,M,L)
-return a.from_to(
-a.scale(S,R,M,L),a.scale(M,L,S,R))
+return a.from_to(a.scale(S,R,M,L),a.scale(M,L,S,R))
 end
 function a.divide_by(m)
 return function(b,g,c)
-local e=d(b)local ac=i(m,g,c)if e==nil or ac==nil then
+local e,ac=d(b),i(m,g,c)if e==nil or ac==nil then
 s.warn"Tuya divide_by expects numeric input and divisor"return nil
 end
 if ac==0 then
@@ -250,8 +241,7 @@ return e/ac
 end
 end
 function a.divide_by_pair(m)
-return a.from_to(
-a.divide_by(m),a.multiply_by(m))
+return a.from_to(a.divide_by(m),a.multiply_by(m))
 end
 function a.signed_number_pair(av)
 return a.from_to(
@@ -290,7 +280,7 @@ end
 end
 function a.multiply_by(q)
 return function(b,g,c)
-local e=d(b)local am=i(q,g,c)if e==nil or am==nil then
+local e,am=d(b),i(q,g,c)if e==nil or am==nil then
 s.warn"Tuya multiply_by expects numeric input and multiplier"return nil
 end
 return e*am

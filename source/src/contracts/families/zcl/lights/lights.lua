@@ -1,4 +1,3 @@
--- 조명 디바이스 정의
 
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
@@ -489,7 +488,6 @@ register_device_definition(color_cct_light, device_helpers.create_fingerprints("
   "_TZ3210_r0vzq1oj",
 }))
 
--- Z2M exact-only retail/light families not covered by Tuya TS050x model IDs.
 register_device_definition(dimmer_light, {
   device_helpers.create_fingerprint("Candeo", "Candeo Zigbee Dimmer"),
   device_helpers.create_fingerprint("Candeo", "HK-DIM-A"),

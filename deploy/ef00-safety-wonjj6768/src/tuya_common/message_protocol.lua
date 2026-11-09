@@ -1,46 +1,44 @@
 local function aV(n,f)
-local bj=f.data_types
-local aD=f.constants
-local aH=f.zcl_messages
-local bc=f.messages
-local aZ=f.generic_body
-local v=f.log
-local aB=f.TUYA_CLUSTER
-local ax=f.TUYA_ENDPOINT_FIELD
-local aA=f.MAGIC_PACKET_ATTRS
-local aX=f.SET_DATA
-local bi=f.QUERY_DATA
-local aw=f.MCU_VERSION_REQUEST
-local aq=f.SET_TIME
-local Y=f.CONNECTION_STATUS
-local Q=f.DEFAULT_MCU_VERSION_TRANSACTION
-local aI=f.DP_TYPE_RAW
-local ay=f.DP_TYPE_BOOL
-local av=f.DP_TYPE_VALUE
-local al=f.DP_TYPE_STRING
-local az=f.DP_TYPE_ENUM
-local ak=f.DP_TYPE_BITMAP
-local d=f.string_byte
-local U=f.string_char
-local string_pack=f.string_pack
-local aL=f.string_sub
-local h=f.string_len
-local R=f.math_floor
-local b=f.type_check
-local aG=f.table_insert
-local bh=f.os_time
-local aO=f.next_packet_id
-local af=f.resolve_cluster_endpoint
-local D=f.extract_payload
-local C=f.extract_command_id
-local ah=f.extract_source_endpoint
-local M=f.build_basic_read_attributes_message
-local W=f.raw_bytes
-local bf=f.pack_bitmap
-local ao=f.normalize_transaction
-local P={
-[0]="not_set",[1]="over_current_threshold",[3]="over_voltage_threshold"}local J={
-[0]="OFF",[1]="ON"}local aj
+local bj,aD,aH,bc,aZ,v,aB,ax,aA,aX,bi,aw,aq,Y,Q,aI,ay,av,al,az,ak,d,U,string_pack,aL,h,R,b,aG,bh,aO,af,D,C,ah,M,W,bf,ao,P,J=f.data_types,f.constants,f.zcl_messages,f.messages,f.generic_body,f.log,f.TUYA_CLUSTER,f.TUYA_ENDPOINT_FIELD,f.MAGIC_PACKET_ATTRS,f.SET_DATA,f.QUERY_DATA,f.MCU_VERSION_REQUEST,f.SET_TIME,f.CONNECTION_STATUS,f.DEFAULT_MCU_VERSION_TRANSACTION,f.DP_TYPE_RAW,f.DP_TYPE_BOOL,f.DP_TYPE_VALUE,f.DP_TYPE_STRING,f.DP_TYPE_ENUM,f.DP_TYPE_BITMAP,f.string_byte,f.string_char,f.string_pack,f.string_sub,f.string_len,f.math_floor,f.type_check,f.table_insert,f.os_time,f.next_packet_id,f.resolve_cluster_endpoint,f.extract_payload,f.extract_command_id,f.extract_source_endpoint,f.build_basic_read_attributes_message,f.raw_bytes,f.pack_bitmap,f.normalize_transaction,{[0]="not_set",[1]="over_current_threshold",[3]="over_voltage_threshold"},{[0]="OFF",[1]="ON"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local aj
 local m
 local aS
 local Z
@@ -76,46 +74,39 @@ function n.parse_phase_variant1(e,phase)
 local c=W(e)if c==nil or h(c)<15 then
 v.warn"Tuya phase_variant1 expects at least 15 bytes"return nil
 end
-local ap=m(c,14,2)/10
-local am=m(c,12,2)/1000
-local suffix=b(phase)=="string"and phase~=""and"_"..phase or""
-return{
-["voltage"..suffix]=ap,["current"..suffix]=am}
+local ap,am,suffix=m(c,14,2)/10,m(c,12,2)/1000,b(phase)=="string"and phase~=""and"_"..phase or""
+
+return{["voltage"..suffix]=ap,["current"..suffix]=am}
 end
 function n.parse_phase_variant2(e,phase,aF)
 local c=W(e)if c==nil or h(c)<8 then
 v.warn"Tuya phase_variant2 expects at least 8 bytes"return nil
 end
-local ap=m(c,1,2)/10
-local aW=aF and 3 or 2
-local am=m(c,6-aW,aW)/1000
-local ac=m(c,9-aW,aW)if aF then
+local ap,aW=m(c,1,2)/10,aF and 3 or 2
+
+local am,ac=m(c,6-aW,aW)/1000,m(c,9-aW,aW)
+if aF then
 if ac>0x99999A then
 ac=ac-16777216
 elseif ac>=8388608 then
 ac=ac-0x99999A
 end
 end
-local suffix=b(phase)=="string"and phase~=""and"_"..phase or""
-return{
-["voltage"..suffix]=ap,["current"..suffix]=am,["power"..suffix]=ac}
+local suffix=b(phase)=="string"and phase~=""and"_"..phase or""return{["voltage"..suffix]=ap,["current"..suffix]=am,["power"..suffix]=ac}
 end
 function n.parse_phase_variant3(e,phase)
 local c=W(e)if c==nil or h(c)<8 then
 v.warn"Tuya phase_variant3 expects at least 8 bytes"return nil
 end
-local ap=m(c,1,2)/10
-local am=m(c,3,3)/1000
-local ac=m(c,6,3)local suffix=b(phase)=="string"and phase~=""and"_"..phase or""
-return{
-["voltage"..suffix]=ap,["current"..suffix]=am,["power"..suffix]=ac}
+local ap,am,ac,suffix=m(c,1,2)/10,m(c,3,3)/1000,m(c,6,3),b(phase)=="string"and phase~=""and"_"..phase or""
+
+return{["voltage"..suffix]=ap,["current"..suffix]=am,["power"..suffix]=ac}
 end
 function n.parse_threshold(e)
 local c=W(e)if c==nil or h(c)<8 then
 v.warn"Tuya threshold expects at least 8 bytes"return nil
 end
-return{
-threshold_1_protection=J[d(c,2)],threshold_1=P[d(c,1)],threshold_1_value=m(c,3,2),threshold_2_protection=J[d(c,6)],threshold_2=P[d(c,5)],threshold_2_value=m(c,7,2)}
+return{threshold_1_protection=J[d(c,2)],threshold_1=P[d(c,1)],threshold_1_value=m(c,3,2),threshold_2_protection=J[d(c,6)],threshold_2=P[d(c,5)],threshold_2_value=m(c,7,2)}
 end
 function n.send_magic_packet(j)
 local q=M(j,aA)if not q then
@@ -127,7 +118,7 @@ m=function(c,bp,ba)
 if b(c)~="string"then
 v.warn(string.format("Tuya parse_uint expects string, got %s",b(c)))return nil
 end
-local k=p(bp,1)local L=ba
+local k,L=p(bp,1),ba
 if b(k)~="number"or k%1~=0 or k<1 then
 v.warn(string.format("Tuya parse_uint expects positive integer offset, got %s",tostring(k)))return nil
 end
@@ -146,19 +137,17 @@ return(d(c,k)*256)+d(c,k+1)elseif L==4 then
 return(d(c,k)*16777216)+
 (d(c,k+1)*65536)+
 (d(c,k+2)*256)+
-d(c,k+3)
-end
+d(c,k+3)end
 local e=0
 for i=0,L-1 do
-e=e*256+d(c,k+i)
-end
+e=e*256+d(c,k+i)end
 return e
 end
 aS=function(c,bp,ba)
 if b(c)~="string"then
 v.warn(string.format("Tuya parse_int expects string, got %s",b(c)))return nil
 end
-local k=p(bp,1)local L=ba
+local k,L=p(bp,1),ba
 if L==nil then
 if b(k)~="number"or k%1~=0 then
 v.warn(string.format("Tuya parse_int expects integer offset, got %s",tostring(k)))return nil
@@ -177,11 +166,9 @@ end
 Z=function(g,e,aE)
 if g==ay then
 if e==true or e==1 then
-return U(1)
-end
+return U(1)end
 if e==false or e==0 then
-return U(0)
-end
+return U(0)end
 v.warn(string.format("Tuya BOOL expects boolean or 0/1, got %s",tostring(e)))return nil
 end
 if g==av then
@@ -198,8 +185,7 @@ else
 if u<0 then u=0 end
 if u>0xFFFFFFFF then u=0xFFFFFFFF end
 end
-return string_pack(">I4",u)
-end
+return string_pack(">I4",u)end
 if g==az then
 if b(e)~="number"then
 v.warn(string.format("Tuya ENUM expects number, got %s",b(e)))return nil
@@ -207,8 +193,7 @@ end
 local ab=R(e)if ab~=e or ab<0 or ab>255 then
 v.warn(string.format("Tuya ENUM expects byte integer, got %s",tostring(e)))return nil
 end
-return U(ab)
-end
+return U(ab)end
 if g==ak then
 if b(e)=="number"then
 local bs=bf(e)if bs~=nil then
@@ -272,8 +257,7 @@ local by={}for _,bn in ipairs(bo or{})do
 local a=n.build_datapoint(bn.dp,bn.datatype,bn.value,bn.signed)if not a then
 return nil
 end
-aG(by,a)
-end
+aG(by,a)end
 return table.concat(by)
 end
 local function O(j,r)
@@ -290,18 +274,14 @@ if not aN(x)then
 v.warn(string.format("Tuya command id expects byte value, got %s",tostring(x)))return false
 end
 if a==nil then
-a=""
-end
+a=""end
 if b(a)~="string"then
 v.warn(string.format("Tuya raw payload expects string, got %s",b(a)))return false
 end
 local aY=af(j,aB,ax)if not aY then
 v.warn"Tuya cluster endpoint not found"return false
 end
-local au=aH.ZclHeader{cmd=bj.ZCLCommandId(x)}au.frame_ctrl:set_cluster_specific()au.frame_ctrl:set_disable_default_response()local aM=bc.AddressHeader(
-aD.HUB.ADDR,aD.HUB.ENDPOINT,j:get_short_address(),aY,aD.HA_PROFILE_ID,aB)local bb=aH.ZclMessageBody{
-zcl_header=au,zcl_body=aZ.GenericBody(a)}j:send(bc.ZigbeeMessageTx{
-address_header=aM,body=bb})return true
+local au=aH.ZclHeader{cmd=bj.ZCLCommandId(x)}au.frame_ctrl:set_cluster_specific()au.frame_ctrl:set_disable_default_response()local aM,bb=bc.AddressHeader(aD.HUB.ADDR,aD.HUB.ENDPOINT,j:get_short_address(),aY,aD.HA_PROFILE_ID,aB),aH.ZclMessageBody{zcl_header=au,zcl_body=aZ.GenericBody(a)}j:send(bc.ZigbeeMessageTx{address_header=aM,body=bb})return true
 end
 function n.send_datapoint(j,dp,g,e,x,aE,r)
 local dp_payload=n.build_datapoint(dp,g,e,aE)if not dp_payload then
@@ -389,8 +369,8 @@ end
 local aa=y(p(s,ad),"local_time")if aa==nil or aa<k then
 v.warn(string.format("Tuya time offset underflow: local=%s offset=%s",tostring(aa),tostring(k)))return nil
 end
-local X=ad-k
-local T=aa-k
+local X,T=ad-k,aa-k
+
 return K(X,T)
 end
 function n.send_time(j,z,s)
@@ -430,25 +410,21 @@ function n.parse_connection_status(q)
 local a=D(q)if not a or h(a)<2 then
 return nil
 end
-local S=d(a,1)+d(a,2)*256
-local br=h(a)-2
-local t=""
+local S,br,t=d(a,1)+d(a,2)*256,h(a)-2,""
+
 if br>0 and S>0 then
-t=aL(a,3,math.min(h(a),S+2))
-end
-return{
-payload_size=S,status_length=S,status_bytes=t,payload=a}
+t=aL(a,3,math.min(h(a),S+2))end
+return{payload_size=S,status_length=S,status_bytes=t,payload=a}
 end
 function n.parse_mcu_version_response(q)
 local a=D(q)if not a or h(a)<3 then
 return nil
 end
-local aP=d(a,1)local aQ=d(a,2)local V=d(a,3)local bA=R(V/64)local bB=R((V%64)/16)local bz=V%16
-return{
-transaction_hi=aP,transaction_lo=aQ,version_raw=V,version=string.format("%d.%d.%d",bA,bB,bz),payload=a}
+local aP,aQ,V=d(a,1),d(a,2),d(a,3)local bA,bB,bz=R(V/64),R((V%64)/16),V%16
+return{transaction_hi=aP,transaction_lo=aQ,version_raw=V,version=string.format("%d.%d.%d",bA,bB,bz),payload=a}
 end
 function n.parse_datapoint(c,bm)
-local a=D(c)local o=p(bm,3)if not a then
+local a,o=D(c),p(bm,3)if not a then
 return nil
 end
 if b(o)~="number"or o%1~=0 or o<1 then
@@ -456,19 +432,15 @@ v.warn(string.format("Tuya parse_datapoint expects positive integer index, got %
 end
 local F=h(a)if F<o+3 then
 if F>=o then
-v.warn(string.format(
-"Tuya DP header truncated at index %d (payload_len=%d)",o,F))
-end
+v.warn(string.format("Tuya DP header truncated at index %d (payload_len=%d)",o,F))end
 return nil
 end
-local dp=d(a,o)local g=d(a,o+1)local ba=(d(a,o+2)*256)+d(a,o+3)local aK=o+4
+local dp,g,ba,aK=d(a,o),d(a,o+1),(d(a,o+2)*256)+d(a,o+3),o+4
 local as=aK+ba
 if as-1>F then
-v.warn(string.format(
-"Tuya DP payload truncated: dp=%d datatype=%d len=%d index=%d payload_len=%d",dp,g,ba,o,F))return nil
+v.warn(string.format("Tuya DP payload truncated: dp=%d datatype=%d len=%d index=%d payload_len=%d",dp,g,ba,o,F))return nil
 end
-local value_bytes=aL(a,aK,as-1)local aU=aJ(g,value_bytes)return{
-dp=dp,datatype=g,length=ba,value_bytes=value_bytes,value=aU,int_value=m(value_bytes),signed_value=aS(value_bytes),next_index=as}
+local value_bytes=aL(a,aK,as-1)local aU=aJ(g,value_bytes)return{dp=dp,datatype=g,length=ba,value_bytes=value_bytes,value=aU,int_value=m(value_bytes),signed_value=aS(value_bytes),next_index=as}
 end
 function n.parse_datapoints(c,bm)
 local a=D(c)if a==nil then
@@ -477,7 +449,7 @@ end
 local ae=p(bm,3)if b(ae)~="number"or ae%1~=0 or ae<1 then
 v.warn(string.format("Tuya parse_datapoints expects positive integer index, got %s",tostring(ae)))return nil
 end
-local F=h(a)local N={}while ae<=F do
+local F,N=h(a),{}while ae<=F do
 local an=n.parse_datapoint(a,ae)if not an then
 return nil
 end
@@ -492,8 +464,7 @@ end
 if h(a)<2 then
 v.warn(string.format("Tuya report too short (payload_len=%d)",h(a)))return nil
 end
-local bl={
-command_id=C(q),endpoint=ah(q),status=d(a,1),transaction=d(a,2),payload=a,datapoints={}}local N=n.parse_datapoints(a,3)if N==nil then
+local bl,N={command_id=C(q),endpoint=ah(q),status=d(a,1),transaction=d(a,2),payload=a,datapoints={}},n.parse_datapoints(a,3)if N==nil then
 return nil
 end
 for _,an in ipairs(N)do

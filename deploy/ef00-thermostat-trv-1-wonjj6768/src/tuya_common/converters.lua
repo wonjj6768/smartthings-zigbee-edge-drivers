@@ -1,22 +1,21 @@
 local function Z(ay,s)
-local aC=s.utils
-local r=s.log
-local A=s.math_floor
-local h=s.type_check
-local c=s.tonumber_check
-local as=s.raw_bytes
-local P=s.string_byte
-local aA=s.string_char
-local B=s.string_len
-local af=s.table_concat
-local x={}
+local aC,r,A,h,c,as,P,aA,B,af,x=s.utils,s.log,s.math_floor,s.type_check,s.tonumber_check,s.raw_bytes,s.string_byte,s.string_char,s.string_len,s.table_concat,{}
+
+
+
+
+
+
+
+
+
+
 local function az(g)
 return g
 end
 local function k(am,f,d)
 if h(am)=="function"then
-return am(f,d)
-end
+return am(f,d)end
 return am
 end
 local function e(am,f,d)
@@ -50,12 +49,11 @@ return nil
 end
 local g=0
 for ai=V,V+ah-1 do
-g=(g*256)+P(n,ai)
-end
+g=(g*256)+P(n,ai)end
 return g
 end
 local function N(n,G,f,d)
-local T=B(n)local m=h(G)=="table"and G or x
+local T,m=B(n),h(G)=="table"and G or x
 local j=e(m.bytes or m.length,f,d)if j==nil then
 j=T
 end
@@ -81,34 +79,29 @@ return i,j
 end
 local function at(n)
 local ak={}for ai=1,B(n)do
-ak[#ak+1]=string.format("%02X",P(n,ai))
-end
+ak[#ak+1]=string.format("%02X",P(n,ai))end
 return af(ak)
 end
 local function al(F)
 local aj={}for ax,_ in pairs(F or x)do
 local O=c(ax)if O~=nil then
-aj[#aj+1]=A(O)
-end
+aj[#aj+1]=A(O)end
 end
 table.sort(aj)return aj
 end
 local b=ay.converter
 function b.pipe(...)
 local W={...}if #W==1 and h(W[1])=="table"then
-W=W[1]
-end
+W=W[1]end
 return function(g,f,d)
 local X=g
 for _,aB in ipairs(W)do
-X=aB(X,f,d)
-end
+X=aB(X,f,d)end
 return X
 end
 end
 function b.from_to(y,ad)
-local au={}
-if h(y)=="function"then
+local au={}if h(y)=="function"then
 au.from=y
 end
 if h(ad)=="function"then
@@ -168,16 +161,13 @@ return ar/ac
 end)
 end
 function b.valve_state_closed_open()
-return b.lookup_from_to{
-close=0,open=1}
+return b.lookup_from_to{close=0,open=1}
 end
 function b.temperature_sensor_select_in_al_ou()
-return b.lookup_from_to{
-IN=0,AL=1,OU=2}
+return b.lookup_from_to{IN=0,AL=1,OU=2}
 end
 function b.temperature_sensor_select_internal_external_both()
-return b.lookup_from_to{
-internal=0,external=1,both=2}
+return b.lookup_from_to{internal=0,external=1,both=2}
 end
 function b.power()
 return b.from_only(function(g)
@@ -192,7 +182,7 @@ end)
 end
 function b.scale(S,R,L,K)
 return function(g)
-local a=c(g)local E=c(S)local I=c(R)local H=c(L)local U=c(K)if a==nil then
+local a,E,I,H,U=c(g),c(S),c(R),c(L),c(K)if a==nil then
 r.warn(string.format("Tuya scale expects number, got %s",h(g)))return nil
 end
 if E==nil or I==nil or H==nil or U==nil then
@@ -205,12 +195,11 @@ return((a-E)*(U-H)/(I-E))+H
 end
 end
 function b.scale_pair(S,R,L,K)
-return b.from_to(
-b.scale(S,R,L,K),b.scale(L,K,S,R))
+return b.from_to(b.scale(S,R,L,K),b.scale(L,K,S,R))
 end
 function b.divide_by(o)
 return function(g,f,d)
-local a=c(g)local ac=e(o,f,d)if a==nil or ac==nil then
+local a,ac=c(g),e(o,f,d)if a==nil or ac==nil then
 r.warn"Tuya divide_by expects numeric input and divisor"return nil
 end
 if ac==0 then
@@ -220,8 +209,7 @@ return a/ac
 end
 end
 function b.divide_by_pair(o)
-return b.from_to(
-b.divide_by(o),b.multiply_by(o))
+return b.from_to(b.divide_by(o),b.multiply_by(o))
 end
 function b.signed_number_pair(av)
 return b.from_to(
@@ -260,7 +248,7 @@ end
 end
 function b.multiply_by(q)
 return function(g,f,d)
-local a=c(g)local an=e(q,f,d)if a==nil or an==nil then
+local a,an=c(g),e(q,f,d)if a==nil or an==nil then
 r.warn"Tuya multiply_by expects numeric input and multiplier"return nil
 end
 return a*an
@@ -269,7 +257,7 @@ end
 function b.wrap_signed(ag,aw)
 return b.from_to(
 function(g,f,d)
-local a=c(g)local p=e(ag,f,d)local Q=e(aw,f,d)if a==nil or p==nil or Q==nil then
+local a,p,Q=c(g),e(ag,f,d),e(aw,f,d)if a==nil or p==nil or Q==nil then
 r.warn"Tuya wrapped_signed expects numeric input, modulus, and cutoff"return nil
 end
 if a>Q then
@@ -278,7 +266,7 @@ end
 return a
 end,
 function(g,f,d)
-local a=c(g)local p=e(ag,f,d)if a==nil or p==nil then
+local a,p=c(g),e(ag,f,d)if a==nil or p==nil then
 r.warn"Tuya wrapped_signed expects numeric input and modulus"return nil
 end
 if a<0 then
@@ -298,8 +286,7 @@ return b.from_only(function(g)
 local a=c(g)if a==nil or a%1~=0 or a<0 or a>0xFFFFFFFF then
 return nil
 end
-return{
-error=a,battery_low=a==1 and"low"or"normal"}
+return{error=a,battery_low=a==1 and"low"or"normal"}
 end)
 end
 end

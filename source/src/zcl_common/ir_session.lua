@@ -1,10 +1,11 @@
--- Zosung/Tuya TS1201 IR learning + transmit session helper.
 
 local function load_ir_session(zcl)
 
   local custom_capabilities = require "runtime.capability_metadata"
   local custom_capability_binding = require "runtime.capability_binding"
   local log = require "log"
+  local json = {}
+  require("st.json").configure(json, {use_native = false})
 
   local learn_ir_code_metadata = custom_capabilities.by_emit_name.learn_ir_code
   local learned_ir_code_metadata = custom_capabilities.by_emit_name.learned_ir_code
@@ -20,21 +21,19 @@ local function load_ir_session(zcl)
   local IR_OUTGOING_FIELD = "__ir_outgoing_messages"
   local IR_INCOMING_FIELD = "__ir_incoming_bytes"
   local IR_INCOMING_LENGTH_FIELD = "__ir_incoming_length"
+  local IR_INCOMING_SEQ_FIELD = "__ir_incoming_seq"
+  local IR_INCOMING_POSITION_FIELD = "__ir_incoming_position"
   local IR_LAST_LEARNED_FIELD = "__ir_last_learned_code"
   local IR_LAST_SENT_FIELD = "__ir_last_sent_code"
 
   local function encode_le16(value)
     local clamped = math.max(0, math.min(0xFFFF, math.floor(value or 0)))
-    return string.char(bit32.band(clamped, 0xFF))
-      .. string.char(bit32.band(bit32.rshift(clamped, 8), 0xFF))
+    return string.pack("<I2", clamped)
   end
 
   local function encode_le32(value)
     local clamped = math.max(0, math.min(0xFFFFFFFF, math.floor(value or 0)))
-    return string.char(bit32.band(clamped, 0xFF))
-      .. string.char(bit32.band(bit32.rshift(clamped, 8), 0xFF))
-      .. string.char(bit32.band(bit32.rshift(clamped, 16), 0xFF))
-      .. string.char(bit32.band(bit32.rshift(clamped, 24), 0xFF))
+    return string.pack("<I4", clamped)
   end
 
   local function decode_le16(bytes, offset)
@@ -45,7 +44,7 @@ local function load_ir_session(zcl)
 
     local b1 = string.byte(bytes, offset) or 0
     local b2 = string.byte(bytes, offset + 1) or 0
-    return b1 + bit32.lshift(b2, 8)
+    return b1 + (b2 << 8)
   end
 
   local function decode_le32(bytes, offset)
@@ -60,9 +59,9 @@ local function load_ir_session(zcl)
     local b4 = string.byte(bytes, offset + 3) or 0
 
     return b1 +
-      bit32.lshift(b2, 8) +
-      bit32.lshift(b3, 16) +
-      bit32.lshift(b4, 24)
+      (b2 << 8) +
+      (b3 << 16) +
+      (b4 << 24)
   end
 
   local function compute_crc(payload)
@@ -91,19 +90,19 @@ local function load_ir_session(zcl)
       local a = string.byte(data, index) or 0
       local b = string.byte(data, index + 1) or 0
       local c = string.byte(data, index + 2) or 0
-      local n = bit32.lshift(a, 16) + bit32.lshift(b, 8) + c
+      local n = (a << 16) + (b << 8) + c
 
-      encoded[#encoded + 1] = alphabet:sub(bit32.rshift(n, 18) + 1, bit32.rshift(n, 18) + 1)
-      encoded[#encoded + 1] = alphabet:sub(bit32.band(bit32.rshift(n, 12), 0x3F) + 1, bit32.band(bit32.rshift(n, 12), 0x3F) + 1)
+      encoded[#encoded + 1] = alphabet:sub((n >> 18) + 1, (n >> 18) + 1)
+      encoded[#encoded + 1] = alphabet:sub(((n >> 12) & 0x3F) + 1, ((n >> 12) & 0x3F) + 1)
 
       if index + 1 <= length then
-        encoded[#encoded + 1] = alphabet:sub(bit32.band(bit32.rshift(n, 6), 0x3F) + 1, bit32.band(bit32.rshift(n, 6), 0x3F) + 1)
+        encoded[#encoded + 1] = alphabet:sub(((n >> 6) & 0x3F) + 1, ((n >> 6) & 0x3F) + 1)
       else
         encoded[#encoded + 1] = "="
       end
 
       if index + 2 <= length then
-        encoded[#encoded + 1] = alphabet:sub(bit32.band(n, 0x3F) + 1, bit32.band(n, 0x3F) + 1)
+        encoded[#encoded + 1] = alphabet:sub((n & 0x3F) + 1, (n & 0x3F) + 1)
       else
         encoded[#encoded + 1] = "="
       end
@@ -116,6 +115,77 @@ local function load_ir_session(zcl)
 
   local function get_endpoint(preset)
     return type(preset) == "table" and type(preset.ir_endpoint) == "number" and preset.ir_endpoint or IR_ENDPOINT
+  end
+
+  local function send_ir_command(device, cluster, command, payload, endpoint)
+    return zcl.send_raw_cluster_command(device, cluster, command, payload, endpoint, nil, nil, true)
+  end
+
+  local function default(value, fallback)
+    if value == nil or value == json.null then return fallback end
+    return value
+  end
+
+  local json_order = {keyorder = {"key_num", "delay", "key1", "num", "freq", "type", "key_code"}}
+
+  local function key_message(code, options)
+    options = options or {}
+    return json.encode({key_num = 1, delay = default(options.delay, 300), key1 = {
+      num = default(options.num, 1), freq = default(options.freq, 38000),
+      type = default(options.type, 1), key_code = code,
+    }}, json_order)
+  end
+
+  local function timings_message(options)
+    local timings = options.timings
+    if #timings == 0 then return end
+    local modulation = default(options.modulation, 38000)
+    if type(modulation) ~= "number" or modulation <= 30000 then return end
+    local bytes = {}
+    for _, value in ipairs(timings) do
+      if value == json.null then value = 0
+      elseif type(value) == "boolean" then value = value and 1 or 0
+      elseif type(value) == "string" and value:match("^%s*$") then value = 0 end
+      value = tonumber(value)
+      if value == nil or value ~= value or math.abs(value) == math.huge then return end
+      value = math.floor(math.abs(value))
+      if value > 0xFFFF then return end
+      bytes[#bytes + 1] = string.pack("<I2", value)
+    end
+    local raw, compressed = table.concat(bytes), {}
+    for offset = 1, #raw, 32 do
+      local part = raw:sub(offset, offset + 31)
+      compressed[#compressed + 1] = string.char(#part - 1) .. part
+    end
+    return key_message(base64_encode(table.concat(compressed)), {
+      num = 1 + default(options.repeat_count, 0), freq = modulation,
+    })
+  end
+
+  local function normalize_ir_message(code)
+    local trimmed = code:match("^%s*(.-)%s*$")
+    if trimmed == "" then return end
+    if trimmed:sub(1, 1) == "{" and trimmed:sub(-1) == "}" then
+      local decoded, position, err = json.decode(trimmed, 1, json.null)
+      if not err and type(decoded) == "table" and trimmed:sub(position):match("^%s*$") then
+        local timings_meta = type(decoded.timings) == "table" and getmetatable(decoded.timings)
+        if timings_meta and timings_meta.__jsontype == "array" then
+          local ok, payload = pcall(timings_message, decoded)
+          if ok and payload then return payload end
+        elseif decoded.key_num ~= nil and decoded.key1 ~= nil then
+          return json.encode(decoded, json_order)
+        elseif decoded.key_code ~= nil then
+          return key_message(decoded.key_code, decoded)
+        end
+      end
+    end
+    return key_message(trimmed)
+  end
+
+  local function clear_incoming(device)
+    for _, field in ipairs({IR_INCOMING_FIELD, IR_INCOMING_LENGTH_FIELD, IR_INCOMING_SEQ_FIELD, IR_INCOMING_POSITION_FIELD}) do
+      device:set_field(field, nil, {persist = false})
+    end
   end
 
   local function get_outgoing_messages(device)
@@ -167,7 +237,7 @@ local function load_ir_session(zcl)
 
     device:set_field(IR_LEARNING_FIELD, true, { persist = false })
     emit_learning_state(device, "start")
-    return zcl.send_raw_cluster_command(device, IR_CONTROL_CLUSTER, 0x00, '{"study":0}', get_endpoint(preset))
+    return send_ir_command(device, IR_CONTROL_CLUSTER, 0x00, '{"study":0}', get_endpoint(preset))
   end
 
   function zcl.stop_ir_learning(device, preset)
@@ -177,7 +247,7 @@ local function load_ir_session(zcl)
 
     device:set_field(IR_LEARNING_FIELD, false, { persist = false })
     emit_learning_state(device, "stop")
-    return zcl.send_raw_cluster_command(device, IR_CONTROL_CLUSTER, 0x00, '{"study":1}', get_endpoint(preset))
+    return send_ir_command(device, IR_CONTROL_CLUSTER, 0x00, '{"study":1}', get_endpoint(preset))
   end
 
   function zcl.send_ir_code(device, preset, code)
@@ -185,18 +255,15 @@ local function load_ir_session(zcl)
       return false
     end
 
+    local payload = normalize_ir_message(code)
+    if payload == nil then return false end
     local seq = next_seq(device)
-    local payload = string.format(
-      '{"key_num":1,"delay":300,"key1":{"num":1,"freq":38000,"type":1,"key_code":"%s"}}',
-      code
-    )
-
-    local outgoing = get_outgoing_messages(device)
-    outgoing[seq] = payload
+    clear_incoming(device)
+    device:set_field(IR_OUTGOING_FIELD, {[seq] = payload}, {persist = false})
     device:set_field(IR_LAST_SENT_FIELD, code, { persist = false })
     emit_code_to_send(device, code)
 
-    return zcl.send_raw_cluster_command(
+    return send_ir_command(
       device,
       IR_TRANSMIT_CLUSTER,
       0x00,
@@ -212,7 +279,7 @@ local function load_ir_session(zcl)
   end
 
   local function request_ir_chunk(device, preset, seq, position)
-    return zcl.send_raw_cluster_command(
+    return send_ir_command(
       device,
       IR_TRANSMIT_CLUSTER,
       0x02,
@@ -221,7 +288,7 @@ local function load_ir_session(zcl)
     )
   end
 
-  local function send_outgoing_chunk(device, preset, seq, position, maxlen)
+  local function send_outgoing_chunk(device, preset, seq, position)
     local outgoing = get_outgoing_messages(device)
     local message = outgoing[seq]
     if type(message) ~= "string" then
@@ -230,11 +297,11 @@ local function load_ir_session(zcl)
     end
 
     local start_index = position + 1
-    local last_index = math.min(#message, position + maxlen)
+    local last_index = math.min(#message, position + 0x32)
     local part = message:sub(start_index, last_index)
     local crc = compute_crc(part)
 
-    return zcl.send_raw_cluster_command(
+    return send_ir_command(
       device,
       IR_TRANSMIT_CLUSTER,
       0x03,
@@ -289,8 +356,11 @@ local function load_ir_session(zcl)
 
       device:set_field(IR_INCOMING_FIELD, "", { persist = false })
       device:set_field(IR_INCOMING_LENGTH_FIELD, length, { persist = false })
+      device:set_field(IR_INCOMING_SEQ_FIELD, seq, { persist = false })
+      device:set_field(IR_INCOMING_POSITION_FIELD, 0, { persist = false })
+      device:set_field(IR_OUTGOING_FIELD, {}, { persist = false })
 
-      zcl.send_raw_cluster_command(
+      send_ir_command(
         device,
         IR_TRANSMIT_CLUSTER,
         0x01,
@@ -311,38 +381,39 @@ local function load_ir_session(zcl)
     if command_id == 0x02 then
       local seq = decode_le16(body, 1)
       local position = decode_le32(body, 3)
-      local maxlen = string.byte(body, 7) or IR_MAX_CHUNK
-      if seq == nil or position == nil then
+      if seq == nil or position == nil or #body < 7 then
         return false
       end
 
-      return send_outgoing_chunk(device, preset, seq, position, maxlen)
+      return send_outgoing_chunk(device, preset, seq, position)
     end
 
     if command_id == 0x03 then
       local seq = decode_le16(body, 2)
       local position = decode_le32(body, 4)
       local part_length = string.byte(body, 8)
-      if seq == nil or position == nil or part_length == nil then
+      if seq == nil or position == nil or part_length == nil or #body < 9 + part_length then
         return false
       end
+      if device:get_field(IR_INCOMING_SEQ_FIELD) ~= seq or device:get_field(IR_INCOMING_POSITION_FIELD) ~= position then return false end
 
       local part = body:sub(9, 8 + part_length)
       local crc = string.byte(body, 9 + part_length) or 0
       if compute_crc(part) ~= crc then
         log.warn(string.format("IR chunk CRC mismatch seq=%s position=%s", tostring(seq), tostring(position)))
+        return false
       end
 
       local total_length = device:get_field(IR_INCOMING_LENGTH_FIELD)
-      if type(total_length) ~= "number" then
-        total_length = position + #part
-      end
+      if type(total_length) ~= "number" then return false end
+      part = part:sub(1, math.max(0, total_length - position))
 
       local updated = append_incoming_part(device, position, part, total_length)
+      device:set_field(IR_INCOMING_POSITION_FIELD, position + #part, {persist = false})
       if position + #part < total_length then
         request_ir_chunk(device, preset, seq, position + #part)
       else
-        zcl.send_raw_cluster_command(
+        send_ir_command(
           device,
           IR_TRANSMIT_CLUSTER,
           0x04,
@@ -360,7 +431,7 @@ local function load_ir_session(zcl)
         return false
       end
 
-      local sent = zcl.send_raw_cluster_command(
+      local sent = send_ir_command(
         device,
         IR_TRANSMIT_CLUSTER,
         0x05,
@@ -369,16 +440,20 @@ local function load_ir_session(zcl)
       )
       if sent then
         get_outgoing_messages(device)[seq] = nil
+        if device:get_field(IR_INCOMING_SEQ_FIELD) == seq then clear_incoming(device) end
       end
       return sent
     end
 
     if command_id == 0x05 then
+      local seq = decode_le16(body, 1)
+      if seq == nil or device:get_field(IR_INCOMING_SEQ_FIELD) ~= seq then return false end
       local learned = device:get_field(IR_INCOMING_FIELD) or ""
+      local length = device:get_field(IR_INCOMING_LENGTH_FIELD)
+      if #learned < length then learned = learned .. string.rep("\0", length - #learned) end
       local encoded = base64_encode(learned)
       device:set_field(IR_LAST_LEARNED_FIELD, encoded, { persist = false })
-      device:set_field(IR_INCOMING_FIELD, nil, { persist = false })
-      device:set_field(IR_INCOMING_LENGTH_FIELD, nil, { persist = false })
+      clear_incoming(device)
       emit_learned_code(device, encoded)
       zcl.stop_ir_learning(device, preset)
       return true

@@ -1,14 +1,4 @@
-local g=require"protocol.tuya"
-local h=require"capabilities.events.all"
-local b=require"contracts.helpers.family"
-local e,c=b.definition_registry()local a={
-profile="switches-oxt-four",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",component_to_endpoint_map={main=1,switch2=1,switch3=1,switch4=1},endpoint_to_component_map={[1]="main"},datapoints={}}for index,word in ipairs{"One","Two","Three","Four"}do
-local d=index==1 and"main"or"switch"..index
-local suffix=word:lower()a.datapoints[#a.datapoints+1]=g.dp_on_off(index,{
-name="switch",component=d,endpoint=1,emit=h.switch()})a.datapoints[#a.datapoints+1]=g.dp_numeric(index+6,{
-name="oxt4_countdown_"..suffix,component=d,endpoint=1,emit=h["oxt4Channel"..word .."Countdown"]()})a.datapoints[#a.datapoints+1]=g.dp_numeric(index+13,{
-name="oxt4_power_on_behavior_"..suffix,component=d,endpoint=1,converter=g.converter.lookup_from_to{off=0,on=1,previous=2},emit=h["oxt4Channel"..word .."PowerOnBehavior"]()})
-end
-c(a,{
-b.create_fingerprint("_TZE28C1000000_f5efvtbv","TS0601"),b.create_fingerprint("_TZE204_m9dzckna","TS0601")})return{
-id="ef00.switch.oxt4",registrations=e}
+local g,h,b=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family"local e,c=b.definition_registry()local a={profile="switches-oxt-four",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",component_to_endpoint_map={main=1,switch2=1,switch3=1,switch4=1},endpoint_to_component_map={[1]="main"},datapoints={}}for index,word in ipairs{"One","Two","Three","Four"}do
+local d,suffix=index==1 and"main"or"switch"..index,word:lower()
+a.datapoints[#a.datapoints+1]=g.dp_on_off(index,{name="switch",component=d,endpoint=1,emit=h.switch()})a.datapoints[#a.datapoints+1]=g.dp_numeric(index+6,{name="oxt4_countdown_"..suffix,component=d,endpoint=1,emit=h["oxt4Channel"..word .."Countdown"]()})a.datapoints[#a.datapoints+1]=g.dp_numeric(index+13,{name="oxt4_power_on_behavior_"..suffix,component=d,endpoint=1,converter=g.converter.lookup_from_to{off=0,on=1,previous=2},emit=h["oxt4Channel"..word .."PowerOnBehavior"]()})end
+c(a,{b.create_fingerprint("_TZE28C1000000_f5efvtbv","TS0601"),b.create_fingerprint("_TZE204_m9dzckna","TS0601")})return{id="ef00.switch.oxt4",registrations=e}

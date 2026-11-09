@@ -1,5 +1,3 @@
--- Minimal Tuya EF00 receive-only runtime for ZCL-owned hybrid packages.
---
 -- This leaf intentionally owns no transmit/configuration behavior.  It consumes
 -- the actual device-definition mappings so converter, field, and emit function
 -- identities remain the same as the canonical full Tuya runtime.

@@ -1,4 +1,3 @@
--- Full RX/TX ZCL facade for contracts without metering.
 
 local zcl = {}
 

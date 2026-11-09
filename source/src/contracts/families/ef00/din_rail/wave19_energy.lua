@@ -1,4 +1,3 @@
--- Wave19 energy-meter source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/moes.ts:2493-2544   (Moes ZM6LT1)
 --   src/devices/nous.ts:336-410     (Nous D5Z)
@@ -60,7 +59,6 @@ end)
 local ON_OFF = { ON = true, OFF = false }
 local on_off_converter = converter.lookup_from_to(ON_OFF)
 
--- Moes ZM6LT1 ---------------------------------------------------------------
 
 local moes_zm_six = {
   profile = "meters-wave19-moes-zm6lt1",
@@ -151,7 +149,6 @@ register_device_definition(moes_zm_six, {
   device_helpers.create_fingerprint("_TZE284_2fnssffc", "TS0601"),
 })
 
--- Nous D5Z ------------------------------------------------------------------
 
 local function emit_direct(device, event)
   if event == nil then return end
@@ -495,7 +492,6 @@ register_device_definition(d_five, {
   device_helpers.create_fingerprint("_TZE204_t9ffmdin", "TS0601"),
 })
 
--- QA QASZP ------------------------------------------------------------------
 
 local qa_qaszp = {
   profile = "meters-wave19-qa-qaszp",

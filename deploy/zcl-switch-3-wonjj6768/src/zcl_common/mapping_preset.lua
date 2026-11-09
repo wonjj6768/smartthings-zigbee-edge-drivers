@@ -1,12 +1,8 @@
 local function m(s)
-local r=require"capabilities.events.all"
-local A=require"st.zigbee.data_types"
-local w=require"st.zigbee.constants"
-local z=require"st.utils.safe_xy_to_hsv"
+local r,A,w,z=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function l(g,v)
 if type(g)~="table"then
-g={}
-end
+g={}end
 if type(v)~="table"then
 return g
 end
@@ -30,24 +26,21 @@ local function j(b,i)
 local d={}if type(b)=="string"then
 d.name=b
 else
-l(d,b)
-end
+l(d,b)end
 l(d,i)return d
 end
 local function c(q,p,n)
-return{
-minimum_interval=q,maximum_interval=p,reportable_change=n,read_on_configure=true}
+return{minimum_interval=q,maximum_interval=p,reportable_change=n,read_on_configure=true}
 end
 local function h(...)
 local u={}for _,a in ipairs{...}do
-k(u,a)
-end
+k(u,a)end
 return u
 end
 local function e(B,y,o)
 s[B]=function(b,i)
-local d=j(b,i)local f=d.configure_reporting
-local a=o(d)d.configure_reporting=nil
+local d=j(b,i)local f,a=d.configure_reporting,o(d)
+d.configure_reporting=nil
 if f==false then
 a.minimum_interval=nil
 a.maximum_interval=nil
@@ -62,31 +55,20 @@ e("switch",s.on_off,function(i)
 local f=i.configure_reporting
 i.configure_reporting=nil
 if f==false then
-return{
-emit=r.switch()}
-end
-return h(
-{
-emit=r.switch()},c(0,300,nil))
+return{emit=r.switch()}end
+return h({emit=r.switch()},c(0,300,nil))
 end)
 e("power",s.electrical_measurement_power,function()
-return h(
-{
-emit=r.power(),metering_kind="power",poll_interval=300},c(5,300,1))
+return h({emit=r.power(),metering_kind="power",poll_interval=300},c(5,300,1))
 end)
 e("current",s.electrical_measurement_current,function()
-return h(
-{
-emit=r.current(),scale=1000,metering_kind="current",poll_interval=300},c(5,300,1))
+return h({emit=r.current(),scale=1000,metering_kind="current",poll_interval=300},c(5,300,1))
 end)
 e("voltage",s.electrical_measurement_voltage,function()
-return h(
-{
-emit=r.voltage(),metering_kind="voltage",poll_interval=300},c(5,300,1))
+return h({emit=r.voltage(),metering_kind="voltage",poll_interval=300},c(5,300,1))
 end)
 e("energy",s.simple_metering,function()
-return{
-emit=r.energy(),read_on_configure=true,metering_kind="energy",poll_interval=900}
+return{emit=r.energy(),read_on_configure=true,metering_kind="energy",poll_interval=900}
 end)
 end
 return m

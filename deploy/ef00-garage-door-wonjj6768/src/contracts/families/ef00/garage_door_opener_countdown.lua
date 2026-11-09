@@ -1,12 +1,2 @@
-local c=require"protocol.tuya.contract"
-local a=require"capabilities.events.garage_door"
-local d=c.converter
-local e={
-profile="doors-garage-contact-countdown",datapoints={
-c.dp_binary(1,{name="door_control",write_only=true}),c.dp_numeric(2,{name="countdown",emit=a.countdown}),c.dp_binary(3,{
-name="garage_door_contact",converter=d.invert_bool_pair(),emit=a.garage_door_contact}),c.dp_numeric(4,{name="run_time",emit=a.run_time}),c.dp_numeric(5,{name="open_alarm_time",emit=a.open_alarm_time}),c.dp_enum(12,{
-name="garage_status",converter=d.lookup_from_to{
-open_time_alarm=0,run_time_alarm=1,normal=2},emit=a.status})},query_on_configure=true}local b={
-{
-{manufacturer="_TZE200_nklqjk62",model="TS0601"},{manufacturer="_TZE204_nklqjk62",model="TS0601"},{manufacturer="_TZE204_jktmrpoj",model="TS0601"},{manufacturer="_TZE284_nklqjk62",model="TS0601"}}}return{
-id="ef00.garage_door.opener_countdown",definition=e,fingerprint_groups=b}
+local c,a=require"protocol.tuya.contract",require"capabilities.events.garage_door"local d=c.converter
+local e,b={profile="doors-garage-contact-countdown",datapoints={c.dp_binary(1,{name="door_control",write_only=true}),c.dp_numeric(2,{name="countdown",emit=a.countdown}),c.dp_binary(3,{name="garage_door_contact",converter=d.invert_bool_pair(),emit=a.garage_door_contact}),c.dp_numeric(4,{name="run_time",emit=a.run_time}),c.dp_numeric(5,{name="open_alarm_time",emit=a.open_alarm_time}),c.dp_enum(12,{name="garage_status",converter=d.lookup_from_to{open_time_alarm=0,run_time_alarm=1,normal=2},emit=a.status})},query_on_configure=true},{{{manufacturer="_TZE200_nklqjk62",model="TS0601"},{manufacturer="_TZE204_nklqjk62",model="TS0601"},{manufacturer="_TZE204_jktmrpoj",model="TS0601"},{manufacturer="_TZE284_nklqjk62",model="TS0601"}}}return{id="ef00.garage_door.opener_countdown",definition=e,fingerprint_groups=b}

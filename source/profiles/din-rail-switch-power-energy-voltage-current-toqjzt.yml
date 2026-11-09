@@ -16,9 +16,9 @@ components:
     version: 1
   - id: concertmirror08464.leakageCurrentToqJzt
     version: 1
-  - id: concertmirror08464.toqjztAcFrequency
+  - id: concertmirror08464.toqjztAcFrequencyV2
     version: 1
-  - id: concertmirror08464.toqjztPowerFactor
+  - id: concertmirror08464.toqjztPowerFactorV2
     version: 1
   - id: concertmirror08464.toqjztEvent
     version: 1
@@ -101,10 +101,10 @@ deviceConfig:
       capability: concertmirror08464.leakageCurrentToqJzt
       version: 1
     - component: main
-      capability: concertmirror08464.toqjztAcFrequency
+      capability: concertmirror08464.toqjztAcFrequencyV2
       version: 1
     - component: main
-      capability: concertmirror08464.toqjztPowerFactor
+      capability: concertmirror08464.toqjztPowerFactorV2
       version: 1
     - component: main
       capability: concertmirror08464.toqjztEvent
@@ -175,10 +175,10 @@ deviceConfig:
         capability: concertmirror08464.leakageCurrentToqJzt
         version: 1
       - component: main
-        capability: concertmirror08464.toqjztAcFrequency
+        capability: concertmirror08464.toqjztAcFrequencyV2
         version: 1
       - component: main
-        capability: concertmirror08464.toqjztPowerFactor
+        capability: concertmirror08464.toqjztPowerFactorV2
         version: 1
       - component: main
         capability: concertmirror08464.toqjztEvent

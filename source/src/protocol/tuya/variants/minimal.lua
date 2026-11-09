@@ -1,4 +1,3 @@
--- Minimal Tuya facade for pure ZCL-owned packages.
 
 local tuya = {
   EF00_CLUSTER = 0xEF00,

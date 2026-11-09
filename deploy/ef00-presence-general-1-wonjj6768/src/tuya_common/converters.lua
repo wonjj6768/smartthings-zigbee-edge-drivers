@@ -1,22 +1,21 @@
 local function Z(aw,s)
-local aA=s.utils
-local r=s.log
-local B=s.math_floor
-local f=s.type_check
-local d=s.tonumber_check
-local ar=s.raw_bytes
-local Q=s.string_byte
-local ay=s.string_char
-local C=s.string_len
-local af=s.table_concat
-local y={}
+local aA,r,B,f,d,ar,Q,ay,C,af,y=s.utils,s.log,s.math_floor,s.type_check,s.tonumber_check,s.raw_bytes,s.string_byte,s.string_char,s.string_len,s.table_concat,{}
+
+
+
+
+
+
+
+
+
+
 local function ax(b)
 return b
 end
 local function k(al,g,c)
 if f(al)=="function"then
-return al(g,c)
-end
+return al(g,c)end
 return al
 end
 local function i(al,g,c)
@@ -50,12 +49,11 @@ return nil
 end
 local b=0
 for ah=V,V+ag-1 do
-b=(b*256)+Q(n,ah)
-end
+b=(b*256)+Q(n,ah)end
 return b
 end
 local function O(n,H,g,c)
-local T=C(n)local m=f(H)=="table"and H or y
+local T,m=C(n),f(H)=="table"and H or y
 local j=i(m.bytes or m.length,g,c)if j==nil then
 j=T
 end
@@ -81,34 +79,29 @@ return h,j
 end
 local function as(n)
 local aj={}for ah=1,C(n)do
-aj[#aj+1]=string.format("%02X",Q(n,ah))
-end
+aj[#aj+1]=string.format("%02X",Q(n,ah))end
 return af(aj)
 end
 local function ak(G)
 local ai={}for av,_ in pairs(G or y)do
 local P=d(av)if P~=nil then
-ai[#ai+1]=B(P)
-end
+ai[#ai+1]=B(P)end
 end
 table.sort(ai)return ai
 end
 local a=aw.converter
 function a.pipe(...)
 local W={...}if #W==1 and f(W[1])=="table"then
-W=W[1]
-end
+W=W[1]end
 return function(b,g,c)
 local X=b
 for _,az in ipairs(W)do
-X=az(X,g,c)
-end
+X=az(X,g,c)end
 return X
 end
 end
 function a.from_to(z,ad)
-local at={}
-if f(z)=="function"then
+local at={}if f(z)=="function"then
 at.from=z
 end
 if f(ad)=="function"then
@@ -134,8 +127,7 @@ r.warn(string.format("Tuya to_bool expected %s or %s, got %s",tostring(x),tostri
 end
 end
 function a.bool_pair(x,q)
-return a.from_to(
-a.to_bool(x,q),
+return a.from_to(a.to_bool(x,q),
 function(b)
 if b==true then
 return x
@@ -202,8 +194,7 @@ function a.true_false1()
 return a.bool_pair(1,0)
 end
 function a.temperature_unit()
-return a.lookup_from_to{
-celsius=0,fahrenheit=1}
+return a.lookup_from_to{celsius=0,fahrenheit=1}
 end
 function a.power()
 return a.from_only(function(b)
@@ -218,7 +209,7 @@ end)
 end
 function a.scale(S,R,M,L)
 return function(b)
-local e=d(b)local F=d(S)local J=d(R)local I=d(M)local U=d(L)if e==nil then
+local e,F,J,I,U=d(b),d(S),d(R),d(M),d(L)if e==nil then
 r.warn(string.format("Tuya scale expects number, got %s",f(b)))return nil
 end
 if F==nil or J==nil or I==nil or U==nil then
@@ -231,12 +222,11 @@ return((e-F)*(U-I)/(J-F))+I
 end
 end
 function a.scale_pair(S,R,M,L)
-return a.from_to(
-a.scale(S,R,M,L),a.scale(M,L,S,R))
+return a.from_to(a.scale(S,R,M,L),a.scale(M,L,S,R))
 end
 function a.divide_by(o)
 return function(b,g,c)
-local e=d(b)local ac=i(o,g,c)if e==nil or ac==nil then
+local e,ac=d(b),i(o,g,c)if e==nil or ac==nil then
 r.warn"Tuya divide_by expects numeric input and divisor"return nil
 end
 if ac==0 then
@@ -246,8 +236,7 @@ return e/ac
 end
 end
 function a.divide_by_pair(o)
-return a.from_to(
-a.divide_by(o),a.multiply_by(o))
+return a.from_to(a.divide_by(o),a.multiply_by(o))
 end
 function a.signed_number_pair(au)
 return a.from_to(
@@ -286,7 +275,7 @@ end
 end
 function a.multiply_by(p)
 return function(b,g,c)
-local e=d(b)local am=i(p,g,c)if e==nil or am==nil then
+local e,am=d(b),i(p,g,c)if e==nil or am==nil then
 r.warn"Tuya multiply_by expects numeric input and multiplier"return nil
 end
 return e*am

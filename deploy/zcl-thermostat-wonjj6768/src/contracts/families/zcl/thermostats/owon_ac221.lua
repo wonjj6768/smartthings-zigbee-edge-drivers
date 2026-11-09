@@ -2,8 +2,7 @@ local function x(a,aJ,aF)
 return type(a)=="number"and a==a and a>=aJ and a<=aF
 end
 local function ay(a)
-local z={[9]=true,[10]=true,[11]=true,[12]=true,[13]=true,[32]=true,[160]=true,[5760]=true,[8232]=true,[8233]=true,[8239]=true,[8287]=true,[12288]=true,[65279]=true}
-for P=8192,8202 do z[P]=true end
+local z={[9]=true,[10]=true,[11]=true,[12]=true,[13]=true,[32]=true,[160]=true,[5760]=true,[8232]=true,[8233]=true,[8239]=true,[8287]=true,[12288]=true,[65279]=true}for P=8192,8202 do z[P]=true end
 if not utf8.len(a)then return end
 local E,last
 for y,P in utf8.codes(a)do
@@ -14,30 +13,24 @@ end
 local function A(a)
 if type(a)=="boolean"then return a and 1 or 0 end
 if type(a)~="string"then return end
-local m=ay(a)
-if not m then return end
-m=m:lower()
-if m=="start"or m=="on"or m=="true"then return 1 end
+local m=ay(a)if not m then return end
+m=m:lower()if m=="start"or m=="on"or m=="true"then return 1 end
 if m=="end"or m=="off"or m=="false"then return 0 end
 end
 local function J(a)
 if type(a)=="number"then
 if not x(a,-1,65536)then return end
-a=math.modf(a)
-if a<0 or a>65535 then return end
+a=math.modf(a)if a<0 or a>65535 then return end
 return a
 end
 if type(a)~="string"then return end
-local m=ay(a)
-if not m or not m:match"^%d+$"then return end
-local Z=tonumber(m)
-if x(Z,0,65535)then return Z end
+local m=ay(a)if not m or not m:match"^%d+$"then return end
+local Z=tonumber(m)if x(Z,0,65535)then return Z end
 end
 local function B(c)
 if type(c)~="string"or #c==0 then return"null"end
 local aj,S=c:byte(1),{}for y=2,math.min(#c-1,aj*2),2 do
-S[#S+1]=tostring(string.unpack("<I2",c,y))
-end
+S[#S+1]=tostring(string.unpack("<I2",c,y))end
 return string.format('{"count":%d,"codes_found":[%s]}',aj,table.concat(S,","))
 end
 local function R(c)
@@ -47,19 +40,13 @@ end
 local function D(a)
 if not x(a,8,30)then return end
 local N=a*2
-local F=math.floor(N)local at=string.unpack("<I8",string.pack("<d",N))local ad=((at>>52)&2047)-1022
-local af=(at&0xFFFFFFFFFFFFF)|0x10000000000000
+local F,at=math.floor(N),string.unpack("<I8",string.pack("<d",N))local ad,af=((at>>52)&2047)-1022,(at&0xFFFFFFFFFFFFF)|0x10000000000000
+
 if af*20>=(F*20+9)*(1<<(53-ad))then F=F+1 end
 return F*50
 end
-local Y={fully_closed=1,fully_open=2,quarter_open=3,half_open=4,three_quarters_open=5}local X={[0]="fully_closed","fully_closed","fully_open","quarter_open","half_open","three_quarters_open"}local aa=require"protocol.zcl"
-local t=require"capabilities.events.all"
-local O=require"contracts.helpers.family"
-local p=require"st.capabilities"
-local i=require"st.zigbee.data_types"
-local ac=require"st.zigbee.cluster_base"
-local v,ah=O.definition_registry()local u,w,k={},{},{}local d,ai,AC,as=513,514,65452,4412
-local L=t.owonAc221PairingStatus()local K=t.owonAc221PairingResult()local Q=t.owonAc221PairingCode()
+local Y,X,aa,t,O,p,i,ac={fully_closed=1,fully_open=2,quarter_open=3,half_open=4,three_quarters_open=5},{[0]="fully_closed","fully_closed","fully_open","quarter_open","half_open","three_quarters_open"},require"protocol.zcl",require"capabilities.events.all",require"contracts.helpers.family",require"st.capabilities",require"st.zigbee.data_types",require"st.zigbee.cluster_base"local v,ah=O.definition_registry()local u,w,k,d,ai,AC,as,L,K,Q={},{},{},513,514,65452,4412,t.owonAc221PairingStatus(),t.owonAc221PairingResult(),t.owonAc221PairingCode()
+
 local function T(tx)
 tx.body.zcl_header.frame_ctrl:set_disable_default_response()return tx:to_endpoint(1)
 end
@@ -67,8 +54,7 @@ local function U(b,o,g)
 b:send(T(ac.read_attribute(b,i.ClusterId(o),i.AttributeId(g))))
 end
 local function G(b,o,g,H,a)
-local tx=ac.write_attribute(b,i.ClusterId(o),i.AttributeId(g),H(a))
-if not pcall(b.send,b,T(tx))then return false end
+local tx=ac.write_attribute(b,i.ClusterId(o),i.AttributeId(g),H(a))if not pcall(b.send,b,T(tx))then return false end
 return pcall(U,b,o,g)
 end
 local function h(b,f,c)
@@ -93,8 +79,7 @@ end
 end
 local function q(aB)
 return function(a,_,j,e)
-a=al(a,j,e,41)
-if not x(a,-32767,32767)or a%1~=0 then return end
+a=al(a,j,e,41)if not x(a,-32767,32767)or a%1~=0 then return end
 a=a/100
 if not aB or a>=-273.15 then return a end
 end
@@ -107,46 +92,37 @@ end
 M(d,0,"owon_ac221_local_temperature",i.Int16,q(true),t.temperature"C",{minimum_interval=60,maximum_interval=600,reportable_change=0})M(d,18,"owon_ac221_heating_rx",i.Int16,q(true),t.heating_setpoint"C",{minimum_interval=0,maximum_interval=3600,reportable_change=10})M(d,17,"owon_ac221_cooling_rx",i.Int16,q(false),t.cooling_setpoint"C",{minimum_interval=0,maximum_interval=3600,reportable_change=10})for _,item in ipairs{{"heating","thermostatHeatingSetpoint","setHeatingSetpoint",18},{"cooling","thermostatCoolingSetpoint","setCoolingSetpoint",17}}do
 local ak="owon_ac221_"..item[1]
 k[ak]=function(b,a)
-local n=D(a)
-if n==nil then return false end
+local n=D(a)if n==nil then return false end
 return G(b,d,item[4],i.Int16,n)
 end
-f(item[2],item[3],ak,"setpoint")
-end
-local ap={off=0,auto=1,cool=3,heat=4,fanonly=7,dryair=8}local ao={[0]="off",[1]="auto",[3]="cool",[4]="heat",[5]="emergencyheat",[6]="precooling",[7]="fanonly",[8]="dryair",[9]="asleep"}M(d,28,"owon_ac221_mode_rx",i.Enum8,I(ao),t.thermostat_mode(),{minimum_interval=10,maximum_interval=3600})
+f(item[2],item[3],ak,"setpoint")end
+local ap,ao={off=0,auto=1,cool=3,heat=4,fanonly=7,dryair=8},{[0]="off",[1]="auto",[3]="cool",[4]="heat",[5]="emergencyheat",[6]="precooling",[7]="fanonly",[8]="dryair",[9]="asleep"}M(d,28,"owon_ac221_mode_rx",i.Enum8,I(ao),t.thermostat_mode(),{minimum_interval=10,maximum_interval=3600})
 k.owon_ac221_mode=function(b,a)
-local n=ap[a]
-if n==nil then return false end
+local n=ap[a]if n==nil then return false end
 return G(b,d,28,i.Enum8,n)
 end
-f("thermostatMode","setThermostatMode","owon_ac221_mode","mode")
-for _,ax in ipairs{"off","auto","cool","heat"}do f("thermostatMode",ax,"owon_ac221_mode",nil,ax)end
-local aw={off=0,low=1,medium=2,high=3,on=4,auto=5,smart=6}local av={[0]="off","low","medium","high","on","auto","smart"}M(ai,0,"owon_ac221_fan_rx",i.Enum8,I(av),t.value(p.airConditionerFanMode.fanMode),{minimum_interval=0,maximum_interval=3600})
+f("thermostatMode","setThermostatMode","owon_ac221_mode","mode")for _,ax in ipairs{"off","auto","cool","heat"}do f("thermostatMode",ax,"owon_ac221_mode",nil,ax)end
+local aw,av={off=0,low=1,medium=2,high=3,on=4,auto=5,smart=6},{[0]="off","low","medium","high","on","auto","smart"}M(ai,0,"owon_ac221_fan_rx",i.Enum8,I(av),t.value(p.airConditionerFanMode.fanMode),{minimum_interval=0,maximum_interval=3600})
 k.owon_ac221_fan=function(b,a)
 if type(a)~="string"then return false end
-local n=aw[a:lower()]
-if n==nil then return false end
+local n=aw[a:lower()]if n==nil then return false end
 return G(b,ai,0,i.Enum8,n)
 end
 f("airConditionerFanMode","setFanMode","owon_ac221_fan","fanMode")local W=M(d,69,"owon_ac221_louver",i.Enum8,I(X),t.owonAc221Louver())W.read_only=false
 W.sender=function(b,_,a)
-local n=Y[a]
-if n==nil then return false end
+local n=Y[a]if n==nil then return false end
 return G(b,d,69,i.Enum8,n)
 end
 f("concertmirror08464.owonAc221Louver","setLouverPosition","owon_ac221_louver","position")
 k.owon_ac221_read_louver=function(b)return pcall(U,b,d,69)end
 f("concertmirror08464.owonAc221Louver","readLouverPosition","owon_ac221_read_louver")
 k.owon_ac221_one_key_pairing=function(b,a)
-local n=A(a)
-if n==nil then return false end
+local n=A(a)if n==nil then return false end
 return h(b,82,string.char(n))
 end
-f("concertmirror08464.owonAc221OneKeyPairing","setPairing","owon_ac221_one_key_pairing","action")f("concertmirror08464.owonAc221OneKeyPairing","startPairing","owon_ac221_one_key_pairing",nil,"start")
-f("concertmirror08464.owonAc221OneKeyPairing","endPairing","owon_ac221_one_key_pairing",nil,"end")
+f("concertmirror08464.owonAc221OneKeyPairing","setPairing","owon_ac221_one_key_pairing","action")f("concertmirror08464.owonAc221OneKeyPairing","startPairing","owon_ac221_one_key_pairing",nil,"start")f("concertmirror08464.owonAc221OneKeyPairing","endPairing","owon_ac221_one_key_pairing",nil,"end")
 k.owon_ac221_pairing_code=function(b,a)
-local n=J(a)
-if n==nil then return false end
+local n=J(a)if n==nil then return false end
 return h(b,32,string.pack("<I2",n))
 end
 k.owon_ac221_read_pairing_code=function(b)return h(b,0,"")end
@@ -163,8 +139,7 @@ if type(c)~="string"then return end
 if r.cmd.value==82 and #c>=1 then
 C(b,L,c:byte(1)==0 and"SUCCESS"or"FAILURE")elseif r.cmd.value==128 then
 C(b,K,B(c))elseif r.cmd.value==0 then
-C(b,Q,R(c))
-end
+C(b,Q,R(c))end
 end
 local au={profile="thermostats-owon-ac221",zcl_clusters=u,capability_commands=w,protocol_writers=k,initial_custom_state_query=false,zigbee_message_handler=aq,
 runtime_start=function(b)
@@ -174,13 +149,11 @@ configure=function(V,b)
 aa.bind_cluster(b,d,V.environment_info.hub_zigbee_eui,1)aa.bind_cluster(b,ai,V.environment_info.hub_zigbee_eui,1)for _,e in ipairs(u)do
 local l=e.reporting_defaults
 if l then
-aa.configure_reporting(b,{cluster=e.cluster_id,attribute=e.attribute_id,data_type=e.data_type,minimum_interval=l.minimum_interval,maximum_interval=l.maximum_interval,reportable_change=l.reportable_change},1,{disable_default_response=true})
-end
+aa.configure_reporting(b,{cluster=e.cluster_id,attribute=e.attribute_id,data_type=e.data_type,minimum_interval=l.minimum_interval,maximum_interval=l.maximum_interval,reportable_change=l.reportable_change},1,{disable_default_response=true})end
 end
 end,
 parent_refresh=function(b)
 for _,g in ipairs{0,18,17,28,69}do U(b,d,g)end
 U(b,ai,0)return h(b,0,"")
 end
-}ah(au,{O.create_fingerprint("OWON","AC221")})aa.attach_reporting_capabilities(v,{
-{1,"rpt-ajn"}})return{id="zcl.thermostats.owon_ac221",registrations=v}
+}ah(au,{O.create_fingerprint("OWON","AC221")})aa.attach_reporting_capabilities(v,{{1,"rpt-ajn"}})return{id="zcl.thermostats.owon_ac221",registrations=v}

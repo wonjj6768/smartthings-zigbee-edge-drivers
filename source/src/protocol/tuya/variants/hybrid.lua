@@ -1,4 +1,3 @@
--- Compact BOOL/VALUE/ENUM settings and reports for ZCL-owned sensor families.
 local data_types = require "st.zigbee.data_types"
 local constants = require "st.zigbee.constants"
 local zcl_messages = require "st.zigbee.zcl"

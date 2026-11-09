@@ -1,4 +1,4 @@
-local a={}local H={"sonoffMinil2PowerBehavior","off","on","toggle","previous","lastPowerResponseTime"}
+local a,H={},{"sonoffMinil2PowerBehavior","off","on","toggle","previous","lastPowerResponseTime"}
 local function b(g)
 if type(g)=="number"then return H[g]end
 return g
@@ -7,15 +7,13 @@ local function p(g)local suffix=b(g);if suffix==nil then return nil end;return"c
 local t={}
 local function q(k)
 if type(k)~="number"then return{}end
-local x=t[k]
-if x~=nil then return x end
+local x=t[k]if x~=nil then return x end
 local n={}t[k]=n
 return n
 end
 local function s(D,k)
 if type(D)~="table"then return nil end
-local n=q(k)
-for A,g in ipairs(D)do n[A]=b(g)end
+local n=q(k)for A,g in ipairs(D)do n[A]=b(g)end
 return n
 end
 local function i(g,E)
@@ -40,14 +38,13 @@ local function G(f)
 local attribute_name=b(f[4])return{kind="numeric",emit_name=b(f[1]),range_key=b(f[2]),capability_id=p(f[3]),attribute_name=attribute_name,range_attribute_name=b(f[5]),command_name=i(f[6],m(attribute_name)),argument_name=i(f[7],attribute_name),mapping_name=b(f[8]),label=b(f[9]),default_range=J(f[10]),event_minimum=f[11],event_maximum=f[12],event_unit=b(f[13])}
 end
 local function K(f)
-local attribute_name=b(f[4])local u=s(f[10],f[12])local r=s(f[11],f[14])local d=w(r,f[13])return{kind="enum",emit_name=b(f[1]),range_key=b(f[2]),capability_id=p(f[3]),attribute_name=attribute_name,supported_attribute_name=b(f[5]),command_name=i(f[6],m(attribute_name)),argument_name=i(f[7],attribute_name),mapping_name=b(f[8]),label=b(f[9]),supported_values=u,default_range=d}
+local attribute_name,u,r=b(f[4]),s(f[10],f[12]),s(f[11],f[14])local d=w(r,f[13])return{kind="enum",emit_name=b(f[1]),range_key=b(f[2]),capability_id=p(f[3]),attribute_name=attribute_name,supported_attribute_name=b(f[5]),command_name=i(f[6],m(attribute_name)),argument_name=i(f[7],attribute_name),mapping_name=b(f[8]),label=b(f[9]),supported_values=u,default_range=d}
 end
 local function M(f)
 local attribute_name=b(f[3])return{kind="text",emit_name=b(f[1]),capability_id=p(f[2]),attribute_name=attribute_name,command_name=i(f[4],m(attribute_name)),argument_name=i(f[5],attribute_name),mapping_name=b(f[6]),label=b(f[7]),maximum_length=f[8]}
 end
 local function z(L,F)
-local n={}
-for _,f in ipairs(L)do n[#n+1]=F(f)end
+local n={}for _,f in ipairs(L)do n[#n+1]=F(f)end
 return n
 end
 a.numeric=z({},G)a.enum=z({{1,nil,1,"powerOnBehavior",nil,nil,nil,"sonoff_minil2_power_on_behavior","Sonoff Minil2Power Behavior",{2,3,4,5},{2,3,4,5},1,2,1}},K)a.text=z({{"last_power_response_time",6,6,0,0,nil,"Last power response time",64}},M)a.driver_message={attribute_name="driverMessage",capability_id="concertmirror08464.driverMessage",emit_name="driver_message",label="Driver message",maximum_length=512}a.by_range_key={}a.by_emit_name={}a.by_capability_id={}
@@ -62,18 +59,16 @@ o(a.numeric)o(a.enum)o(a.text)a.by_emit_name[a.driver_message.emit_name]=a.drive
 a.by_capability_id[a.driver_message.capability_id]=a.driver_message
 local function l(j)
 if type(j)~="table"then return nil end
-local B={}
-for A,g in ipairs(j)do B[A]=g end
+local B={}for A,g in ipairs(j)do B[A]=g end
 return B
 end
 function a.resolve_range(v,e)
 if type(e)~="table"then return nil end
-local d=type(e.default_range)=="table"and e.default_range or nil
-local C=type(v)=="table"and v.presence_capability_ranges or nil
+local d,C=type(e.default_range)=="table"and e.default_range or nil,type(v)=="table"and v.presence_capability_ranges or nil
+
 local h=type(C)=="table"and C[e.range_key]or nil
 if type(h)~="table"then h=d end
 if type(h)~="table"then return nil end
-return{
-minimum=type(h.minimum)=="number"and h.minimum or(d and d.minimum or nil),maximum=type(h.maximum)=="number"and h.maximum or(d and d.maximum or nil),step=type(h.step)=="number"and h.step or(d and d.step or nil),unit=type(h.unit)=="string"and h.unit or(d and d.unit or nil),allowed_values=type(h.allowed_values)=="table"and l(h.allowed_values)or l(d and d.allowed_values or nil)}
+return{minimum=type(h.minimum)=="number"and h.minimum or(d and d.minimum or nil),maximum=type(h.maximum)=="number"and h.maximum or(d and d.maximum or nil),step=type(h.step)=="number"and h.step or(d and d.step or nil),unit=type(h.unit)=="string"and h.unit or(d and d.unit or nil),allowed_values=type(h.allowed_values)=="table"and l(h.allowed_values)or l(d and d.allowed_values or nil)}
 end
 return a

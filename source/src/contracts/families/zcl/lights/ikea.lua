@@ -33,7 +33,6 @@ local color_cct_light = {
 }
 
 register_device_definition(dimmer_light, {
-  -- Z2M IKEA model-only dimmer lights
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E27 opal 1000lm"),
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E27 W opal 1000lm"),
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E26 WW globe 800lm"),
@@ -67,7 +66,6 @@ register_device_definition(dimmer_light, {
 })
 
 register_device_definition(cct_light, {
-  -- Z2M IKEA model-only color-temperature lights
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E27 WS opal 980lm"),
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E26 WS opal 980lm"),
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E27 WS�opal 980lm"),
@@ -145,7 +143,6 @@ register_device_definition(cct_light, {
 })
 
 register_device_definition(color_cct_light, {
-  -- Z2M IKEA model-only color-temperature-color lights
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E26 CWS globe 800lm"),
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E26 CWS globe 806lm"),
   device_helpers.create_fingerprint("IKEA of Sweden", "TRADFRI bulb E26 CWS globe 810lm"),
@@ -167,7 +164,6 @@ register_device_definition(color_cct_light, {
   device_helpers.create_fingerprint("IKEA of Sweden", "JETSTROM 3030 ceiling"),
 })
 
--- Fourth registration: correct the existing five LED1624 exacts first, then add E17 alias.
 do
   -- ZHC cff1de47 LED1624G9: XY color, including mired-to-XY CCT.
   local emit = require "capabilities.events.all"

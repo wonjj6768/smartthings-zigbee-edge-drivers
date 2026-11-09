@@ -1,4 +1,3 @@
--- SONOFF/eWeLink button contracts.
 -- Oracle: zigbee-herdsman-converters 26.106.0, FETCH_HEAD e2aa714 (sonoff.ts).
 
 local zcl = require "protocol.zcl"

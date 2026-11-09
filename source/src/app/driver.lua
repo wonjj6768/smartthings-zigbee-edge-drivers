@@ -1,5 +1,3 @@
--- Tuya Universal Edge Driver
--- Tuya EF00 + ZCL 표준 클러스터 이중 프로토콜 지원
 
 local tuya = require "protocol.tuya"
 local zcl = require "protocol.zcl"
@@ -42,7 +40,6 @@ local STATELESS_SWITCH_LEVEL_STEP_COMMAND = "stepLevel"
 -- needed for this opt-in Tuya state query.
 local DEVICE_ANNOUNCE_CLUSTER_ID = 0x0013
 
--- ── 디바이스 preset 조회 ──
 
 local preset_cache = setmetatable({}, { __mode = "k" })
 
@@ -107,6 +104,13 @@ local function handle_device_announce(_, device)
 end
 
 battery_refresh.set_requester(function(device)
+  local mappings = get_preset(device).zcl_clusters
+  if zcl.find_mapping(mappings, 0x0001, 0x0020) == nil then
+    local percentage = zcl.find_mapping(mappings, 0x0001, 0x0021)
+    if percentage ~= nil then
+      return zcl.read_mapping(device, percentage, {endpoint = device:get_endpoint(0x0001)})
+    end
+  end
   return zcl.read_attribute(device, 0x0001, 0x0020, device:get_endpoint(0x0001))
 end, function(device)
   local preset = get_preset(device)
@@ -276,7 +280,6 @@ local function emit_button_metadata(device, definition)
   end
 end
 
--- ── EF00 클러스터 핸들러 ──
 
 local function ef00_handler(_, device, zigbee_message)
   local preset = get_preset(device)
@@ -309,7 +312,6 @@ local function build_cluster_handlers()
   return handlers
 end
 
--- ── Capability 커맨드 정의 ──
 -- { capability_id, command_name, mapping_name, value, turn_on_first? }
 -- value가 문자열이면 command.args[value]에서 추출, 그 외는 고정값
 
@@ -430,6 +432,7 @@ local function send(device, command, name, value)
     handled = zcl.send_named_command(device, preset.zcl_clusters, name, value, {
       component_id = command.component,
       zcl_clusters = preset.zcl_clusters,
+      transition_time = name == "brightness" and command.args and command.args.rate or nil,
     }) or handled
   end
 
@@ -584,7 +587,7 @@ local function configure_preset(driver, device, preset)
   end
 
   preset:start_configuration(device, driver)
-  if preset.zcl_clusters then
+  if preset.zcl_clusters and preset.zcl_configure ~= false then
     zcl.start_configuration(device, preset.zcl_clusters)
   end
   if type(preset.zcl_initial_writes) == "table" then
@@ -1086,7 +1089,6 @@ local function build_capability_handlers()
   return handlers
 end
 
--- ── 드라이버 템플릿 ──
 
 local driver_template = {
   supported_capabilities = {},
@@ -1197,7 +1199,6 @@ local driver_template = {
   health_check = false,
 }
 
--- ── 실행 ──
 
 local ZigbeeDriver = require "st.zigbee"
 local driver = ZigbeeDriver("tuya-universal", driver_template)

@@ -1,4 +1,3 @@
--- Wave19 exact-only EF00/hybrid light candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/avatto.ts:340-376   AVATTO ZDMS16-US-W2
 --   src/devices/lidl.ts:385-393     Lidl HG06467
@@ -73,7 +72,6 @@ local function two_channel_dimmer(profile, capability_prefix, switch_type_conver
   })
 end
 
--- AVATTO -------------------------------------------------------------------
 
 local avatto = two_channel_dimmer(
   "lights-wave19-avatto-zdms16-us-w2",
@@ -85,7 +83,6 @@ register_device_definition(avatto, {
   device_helpers.create_fingerprint("_TZE204_sdykkwsu", "TS0601"),
 })
 
--- Lidl HG06467 -------------------------------------------------------------
 -- This frozen legacy definition uses standard genOnOff for the switch and
 -- EF00 DP2/3/5/6 only for white/color/effect data. Effect DP6 is deliberately
 -- decoded as a hidden raw item because the frozen expose omits effect.
@@ -252,7 +249,6 @@ register_device_definition(lidl, {
   device_helpers.create_fingerprint("_TZE200_s8gkrkxk", "TS0601"),
 })
 
--- Lonsonho ---------------------------------------------------------------
 
 local lonsonho = two_channel_dimmer(
   "lights-wave19-lonsonho-vm-s02-010v",
@@ -265,7 +261,6 @@ register_device_definition(lonsonho, {
   device_helpers.create_fingerprint("_TZE600_wxq8dpha\0", "TS0603"),
 })
 
--- QA QADZ4DIN --------------------------------------------------------------
 
 local qa = tuya_lifecycle("lights-wave19-qa-qadz4din", {
   tuya.dp_on_off(1, { name = "switch", component = "main", transaction = 1, emit = emit.switch() }),
@@ -290,7 +285,6 @@ register_device_definition(qa, {
   device_helpers.create_fingerprint("_TZE284_nthhgkd6", "TS0601"),
 })
 
--- Nova Digital Topazio ------------------------------------------------------
 
 local nova_brightness = converter.from_to(
   function(value)

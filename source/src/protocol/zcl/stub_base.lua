@@ -1,5 +1,3 @@
--- Fresh lightweight ZCL facade used by EF00-owned packages.
---
 -- Every call returns a new table so loading a writable variant can never
 -- mutate the table owned by a minimal or receive-only variant.
 

@@ -1,33 +1,23 @@
-local a=require"protocol.tuya"
-local c=require"capabilities.events.all"
-local g=require"contracts.helpers.family"
-local e=require"contracts.helpers.ef00"
-local U=require"contracts.helpers.ef00_thermostat_metadata"
-local n=require"contracts.helpers.ef00_thermostats"
-local b=a.converter
-local X,d=g.definition_registry()local an=b.lookup_from_to{off=false,on=true}local W=b.lookup_from_to{hold=0,program=1}local M=b.lookup_from_to{program=0,hold=1}local ao=b.lookup_from_to{IN=0,AL=1,OU=2}
+local a,c,g,e,U,n=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00",require"contracts.helpers.ef00_thermostat_metadata",require"contracts.helpers.ef00_thermostats"local b=a.converter
+local X,d=g.definition_registry()local an,W,M,ao=b.lookup_from_to{off=false,on=true},b.lookup_from_to{hold=0,program=1},b.lookup_from_to{program=0,hold=1},b.lookup_from_to{IN=0,AL=1,OU=2}
 local function r(f)
-local j=tonumber(f)
-if j==nil then return nil end
+local j=tonumber(f)if j==nil then return nil end
 if j>=32768 then j=j-65535 end
 return j
 end
 local function H(f)
-local j=tonumber(f)
-if j==nil then return nil end
+local j=tonumber(f)if j==nil then return nil end
 return j>4000 and(j-4096)or j
 end
 local function N(f)
-local j=tonumber(f)
-if j==nil then return nil end
+local j=tonumber(f)if j==nil then return nil end
 return j<0 and(4096+j)or j
 end
 local function R(f)
 if type(f)~="string"or #f<36 then return nil end
 local ax={}for aw=0,11 do
 local ay=aw*3
-local P,v,ar=string.byte(f,ay+1,ay+3)
-if P==nil or v==nil or ar==nil then return nil end
+local P,v,ar=string.byte(f,ay+1,ay+3)if P==nil or v==nil or ar==nil then return nil end
 local temperature=ar/2
 local aC=string.format("%02d:%02d/%.1f",P,v,temperature):gsub("%.0$","")ax[#ax+1]=aC
 end
@@ -40,8 +30,7 @@ P,v,temperature=tonumber(P),tonumber(v),tonumber(temperature)if P==nil or P<0 or
 temperature==nil or temperature<5 or temperature>35 then
 return nil
 end
-local ar=math.floor((temperature*2)+0.5)
-if math.abs((ar/2)-temperature)>0.001 then return nil end
+local ar=math.floor((temperature*2)+0.5)if math.abs((ar/2)-temperature)>0.001 then return nil end
 u[#u+1]=P
 u[#u+1]=v
 u[#u+1]=ar
@@ -51,8 +40,7 @@ return string.char(table.unpack(u))
 end
 local function Q(_,f)
 if f~="hold"and f~="program"then return nil end
-return{
-{dp=2,datatype=a.DP_TYPE_ENUM,value=f=="hold"and 0 or 1},{dp=3,datatype=a.DP_TYPE_ENUM,value=f=="program"and 0 or 1}}
+return{{dp=2,datatype=a.DP_TYPE_ENUM,value=f=="hold"and 0 or 1},{dp=3,datatype=a.DP_TYPE_ENUM,value=f=="program"and 0 or 1}}
 end
 local function L(i,q)
 if i==10 and q==10 then
@@ -65,16 +53,11 @@ return b.from_to(r,function(f)return tonumber(f)end)
 end
 end
 local function h(aB,ak,i,q,ad,ap)
-local ai=L(i,q)local C={
-profile=aB,time_start="1970",named_mapping={named_mappings={bht002_preset=Q}},a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{off=false,heat=true},emit=c.thermostat_mode()}),a.dp_enum(2,{name="bht002_preset",read_only=true,converter=W,emit=c.bhtPreset()}),a.dp_enum(3,{name="bht002_preset",read_only=true,converter=M,emit=c.bhtPreset()}),a.dp_current_heating_setpoint(16,{scale=ak,emit=c.heating_setpoint"C"}),a.dp_numeric(18,{name="bht002_maximum_temperature_limit",emit=c.bhtMaximumTemperatureLimit(),converter=b.divide_by_pair(q)}),a.dp_numeric(20,{name="bht002_deadzone_temperature",emit=c.bhtDeadzoneTemperature(),converter=b.divide_by_pair(q)}),a.dp_numeric(24,{name="local_temperature",read_only=true,emit=c.temperature"C",converter=ai}),a.dp_numeric(26,{name="bht002_minimum_temperature_limit",emit=c.bhtMinimumTemperatureLimit(),converter=b.divide_by_pair(q)}),a.dp_numeric(27,{name="bht002_temperature_calibration",emit=ad,converter=b.from_to(H,N)}),
+local ai=L(i,q)local C={profile=aB,time_start="1970",named_mapping={named_mappings={bht002_preset=Q}},a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{off=false,heat=true},emit=c.thermostat_mode()}),a.dp_enum(2,{name="bht002_preset",read_only=true,converter=W,emit=c.bhtPreset()}),a.dp_enum(3,{name="bht002_preset",read_only=true,converter=M,emit=c.bhtPreset()}),a.dp_current_heating_setpoint(16,{scale=ak,emit=c.heating_setpoint"C"}),a.dp_numeric(18,{name="bht002_maximum_temperature_limit",emit=c.bhtMaximumTemperatureLimit(),converter=b.divide_by_pair(q)}),a.dp_numeric(20,{name="bht002_deadzone_temperature",emit=c.bhtDeadzoneTemperature(),converter=b.divide_by_pair(q)}),a.dp_numeric(24,{name="local_temperature",read_only=true,emit=c.temperature"C",converter=ai}),a.dp_numeric(26,{name="bht002_minimum_temperature_limit",emit=c.bhtMinimumTemperatureLimit(),converter=b.divide_by_pair(q)}),a.dp_numeric(27,{name="bht002_temperature_calibration",emit=ad,converter=b.from_to(H,N)}),
 a.dp_binary(36,{name="running_state",read_only=true,emit=c.thermostat_operating_state(),converter=b.from_only(function(f)return f==true and"idle"or"heating"end)}),
 a.dp_binary(40,{name="bht002_child_lock",emit=c.bhtChildLock(),converter=an}),a.dp_enum(43,{name="bht002_temperature_sensor",emit=c.bhtTemperatureSensor(),converter=ao}),a.dp_raw(101,{name="bht002_program",emit=c.bhtProgram(),converter=b.from_to(R,Z)})}return U.attach(C,{"off","heat"},5,90,ap)
 end
-local at=h("thermostats-bht002-fine",1,10,1,c.bhtTemperatureCalibrationFine(),1)d(at,g.create_fingerprints("TS0601",{
-"_TZE200_u9bfwha0","_TZE204_u9bfwha0"}))local z=h("thermostats-bht002-fine",1,1,1,c.bhtTemperatureCalibrationFine(),1)d(z,g.create_fingerprints("TS0601",{
-"_TZE200_ztvwu4nk","_TZE200_ye5jkfsb","_TZE284_ye5jkfsb"}))local y=h("thermostats-bht002-fine",10,10,10,c.bhtTemperatureCalibrationFine(),1)d(y,g.create_fingerprints("TS0601",{
-"_TZE200_5toc8efa"}))local au=h("thermostats-bht002-half",10,10,10,c.bhtTemperatureCalibrationFine(),0.5)d(au,g.create_fingerprints("TS0601",{
-"_TZE204_5toc8efa"}))local p=h("thermostats-bht002-whole",1,10,1,c.bhtTemperatureCalibrationWhole(),1)local m="_bht002_time_zone_hours"
+local at=h("thermostats-bht002-fine",1,10,1,c.bhtTemperatureCalibrationFine(),1)d(at,g.create_fingerprints("TS0601",{"_TZE200_u9bfwha0","_TZE204_u9bfwha0"}))local z=h("thermostats-bht002-fine",1,1,1,c.bhtTemperatureCalibrationFine(),1)d(z,g.create_fingerprints("TS0601",{"_TZE200_ztvwu4nk","_TZE200_ye5jkfsb","_TZE284_ye5jkfsb"}))local y=h("thermostats-bht002-fine",10,10,10,c.bhtTemperatureCalibrationFine(),1)d(y,g.create_fingerprints("TS0601",{"_TZE200_5toc8efa"}))local au=h("thermostats-bht002-half",10,10,10,c.bhtTemperatureCalibrationFine(),0.5)d(au,g.create_fingerprints("TS0601",{"_TZE204_5toc8efa"}))local p,m=h("thermostats-bht002-whole",1,10,1,c.bhtTemperatureCalibrationWhole(),1),"_bht002_time_zone_hours"
 local function D(l,w)
 local as=os.time()return a.send_time(l,as,as+w*3600)
 end
@@ -89,24 +72,9 @@ l:set_field(m,w,{persist=true})return true
 end
 }local A=p.runtime_start
 p.runtime_start=function(l)
-A(l)l:emit_component_event(
-{id="main"},c.bht002TimeZone()(l,l:get_field(m)or 0))
+A(l)l:emit_component_event({id="main"},c.bht002TimeZone()(l,l:get_field(m)or 0))
 end
-d(p,g.create_fingerprints("TS0601",{
-"_TZE204_aoclfnxz"}))local aj=h("thermostats-bht002-fine",1,10,1,c.bhtTemperatureCalibrationFine(),1)d(aj,g.create_fingerprints("TS0601",{
-"_TZE200_aoclfnxz"}))local o={
-profile="thermostats-thermostat-zwt198",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_local_temperature(3,{scale=10}),a.dp_enum(4,{
-name="preset",emit=c.zwt198Preset(),converter=b.lookup_from_to{auto=0,manual=1,temporaryManual=2}}),a.dp_child_lock(9,{emit=c.zwt198ChildLock()}),a.dp_numeric(11,{name="fault_alarm",read_only=true,emit=c.zwt198FaultAlarm()}),a.dp_max_temperature_limit(15,{scale=10,emit=c.zwt198MaxTemperatureLimit()}),a.dp_local_temperature_calibration(19,{scale=10,emit=c.zwt198TempCalibration()}),a.dp_running_state(101,{
-converter=b.lookup_from_to{
-heating=1,idle=0},emit=c.thermostat_operating_state()}),a.dp_frost_protection(102,{emit=c.zwt198FrostProtection()}),a.dp_binary(103,{
-name="factory_reset",emit=c.zwt198FactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(104,{
-name="working_day",emit=c.zwt198WorkingDay(),converter=b.lookup_from_to{disabled=0,fiveTwo=1,sixOne=2,seven=3}}),a.dp_temperature_sensor_select_internal_external_both(106,{
-name="sensor",emit=c.zwt198Sensor()}),a.dp_deadzone_temperature(107,{scale=10,emit=c.zwt198DeadzoneTemperature()}),a.dp_enum(110,{
-name="backlight_mode",emit=c.zwt198BacklightMode(),converter=b.lookup_from_to{off=0,low=1,medium=2,high=3}})}d(o,e.ts0601_fingerprints{
-"_TZE204_xnbkhhdr","_TZE284_xnbkhhdr","_TZE204_oh8y8pv8","_TZE284_gops3slb","_TZE284_zjhoqbrd","_TZE204_zjhoqbrd"})d(o,{
-g.create_fingerprint("AVATTO","WT-100-BH")})
+d(p,g.create_fingerprints("TS0601",{"_TZE204_aoclfnxz"}))local aj=h("thermostats-bht002-fine",1,10,1,c.bhtTemperatureCalibrationFine(),1)d(aj,g.create_fingerprints("TS0601",{"_TZE200_aoclfnxz"}))local o={profile="thermostats-thermostat-zwt198",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_local_temperature(3,{scale=10}),a.dp_enum(4,{name="preset",emit=c.zwt198Preset(),converter=b.lookup_from_to{auto=0,manual=1,temporaryManual=2}}),a.dp_child_lock(9,{emit=c.zwt198ChildLock()}),a.dp_numeric(11,{name="fault_alarm",read_only=true,emit=c.zwt198FaultAlarm()}),a.dp_max_temperature_limit(15,{scale=10,emit=c.zwt198MaxTemperatureLimit()}),a.dp_local_temperature_calibration(19,{scale=10,emit=c.zwt198TempCalibration()}),a.dp_running_state(101,{converter=b.lookup_from_to{heating=1,idle=0},emit=c.thermostat_operating_state()}),a.dp_frost_protection(102,{emit=c.zwt198FrostProtection()}),a.dp_binary(103,{name="factory_reset",emit=c.zwt198FactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(104,{name="working_day",emit=c.zwt198WorkingDay(),converter=b.lookup_from_to{disabled=0,fiveTwo=1,sixOne=2,seven=3}}),a.dp_temperature_sensor_select_internal_external_both(106,{name="sensor",emit=c.zwt198Sensor()}),a.dp_deadzone_temperature(107,{scale=10,emit=c.zwt198DeadzoneTemperature()}),a.dp_enum(110,{name="backlight_mode",emit=c.zwt198BacklightMode(),converter=b.lookup_from_to{off=0,low=1,medium=2,high=3}})}d(o,e.ts0601_fingerprints{"_TZE204_xnbkhhdr","_TZE284_xnbkhhdr","_TZE204_oh8y8pv8","_TZE284_gops3slb","_TZE284_zjhoqbrd","_TZE204_zjhoqbrd"})d(o,{g.create_fingerprint("AVATTO","WT-100-BH")})
 local function G(C,dp,av)
 local aq={}for aD,f in pairs(C)do
 aq[aD]=f
@@ -118,204 +86,24 @@ end
 end
 return aq
 end
-local t=G(o,4,a.dp_enum(4,{
-name="preset",emit=c.zwt198Preset(),converter=b.lookup_from_to{manual=0,auto=1,temporaryManual=2}}))d(t,e.ts0601_fingerprints{
-"_TZE204_lzriup1j","_TZE204_gops3slb"})local s=G(o,104,a.dp_enum(104,{
-name="working_day",emit=c.zwt198WorkingDay(),converter=b.lookup_from_to{disabled=0,sixOne=1,fiveTwo=2,seven=3}}))d(s,e.ts0601_fingerprints{
-"_TZE200_viy9ihs7"})local ac={
-profile="thermostats-thermostat-zwt100",force_time_updates=true,a.dp_on_off(1,{name="state",emit=c.switch()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_local_temperature(3,{scale=10}),a.dp_enum(4,{
-name="mode",emit=c.zwt100Mode(),converter=b.lookup_from_to{manual=0,program=1,temporary=2}}),a.dp_child_lock(9,{emit=c.zwt100ChildLock()}),a.dp_numeric(11,{name="fault",read_only=true,emit=c.zwt100Fault()}),a.dp_max_temperature_limit(15,{
-name="upper_temperature_limit",scale=10,emit=c.zwt100UpperTempLimit()}),a.dp_local_temperature_calibration(19,{scale=10,emit=c.zwt100TempCalibration()}),a.dp_running_state(101,{
-converter=b.lookup_from_to{idle=0,heating=1},emit=c.thermostat_operating_state()}),a.dp_frost_protection(102,{emit=c.zwt100FrostProtection()}),a.dp_binary(103,{
-name="reset",emit=c.zwt100Reset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(104,{
-name="work_days",emit=c.zwt100WorkDays(),converter=b.lookup_from_to{
-programmingOff=0,twoDayWeekend=1,singleDayOff=2,noRest=3}}),a.dp_binary(105,{
-name="sound",emit=c.zwt100Sound(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(106,{
-name="sensor_selection",emit=c.zwt100SensorSelection(),converter=b.lookup_from_to{["in"]=0,out=1,all=2}}),a.dp_numeric(107,{
-name="temperature_variation",converter=b.divide_by_pair(10),emit=c.zwt100TempVariation()}),a.dp_numeric(108,{
-name="sensor_temperature_limit",emit=c.zwt100SensorTempLimit()}),a.dp_enum(110,{
-name="backlight",emit=c.zwt100Backlight(),converter=b.lookup_from_to{off=0,micro=1,medium=2,high=3}}),a.dp_binary(111,{
-name="direction_mode",emit=c.zwt100DirectionMode(),converter=b.lookup_from_to{off=false,on=true}})}d(ac,e.ts0601_fingerprints{
-"_TZE204_aaeaifez","_TZE284_aaeaifez","_TZE28C1000000_aaeaifez"})local ah={
-profile="thermostats-thermostat-zwt07",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{
-name="preset",emit=c.thermostatPresetZwt07Program(),converter=b.lookup_from_to{
-program=0,manual=1}}),a.dp_binary(10,{
-name="frost_protection",emit=c.zwt07FrostProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_local_temperature(24,{scale=10}),a.dp_running_state(36,{
-converter=b.lookup_from_to{
-idle=0,heating=1},emit=c.thermostat_operating_state()})}d(ah,e.ts0601_fingerprints{
-"_TZE200_g9a3awaj"})local x="hy08we_power_state"
-local B="hy08we_system_mode_device"
-local E=n.power_mode_from_device(
-x,B,"heat")local I=n.enum_mode_from_device(
-x,B,{[0]="heat",[1]="auto",[2]="heat"})local F=n.power_mode_write(
-125,128,{heat=0,auto=1})local K=a.dp_current_heating_setpoint(126,{
-scale=10,emit=c.heating_setpoint"C"})local aa={
-profile="thermostats-thermostat-hy08we",time_start="2000",named_mapping={
-named_mappings={
-system_mode=F,current_heating_setpoint=K}},a.dp_binary(102,{
-name="running_state",converter=b.lookup_from_to{
-heating=true,idle=false},emit=c.thermostat_operating_state()}),a.dp_temperature(103,{
-name="external_temperature",scale=10,read_only=true,emit=c.hy08weExternalTemperature()}),a.dp_numeric(104,{name="away_preset_days",emit=c.hy08weAwayDays()}),a.dp_numeric(105,{name="away_preset_temperature",emit=c.hy08weAwayTemperature()}),a.dp_binary(106,{
-name="max_temperature_protection",emit=c.hy08weMaxTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_binary(107,{
-name="min_temperature_protection",emit=c.hy08weMinTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_local_temperature_calibration(109,{scale=10,read_only=true}),a.dp_numeric(110,{
-name="hysteresis",converter=b.divide_by_pair(10),emit=c.hy08weHysteresis()}),a.dp_numeric(111,{
-name="hysteresis_for_protection",emit=c.hy08weProtectionHysteresis()}),a.dp_numeric(112,{
-name="max_temperature_for_protection",emit=c.hy08weProtectionMaxTemp()}),a.dp_numeric(113,{
-name="min_temperature_for_protection",emit=c.hy08weProtectionMinTemp()}),a.dp_numeric(114,{name="max_temperature",emit=c.hy08weMaxTemperature()}),a.dp_numeric(115,{name="min_temperature",emit=c.hy08weMinTemperature()}),a.dp_enum(116,{
-name="sensor_type",emit=c.hy08weSensorType(),converter=b.lookup_from_to{internal=0,external=1,both=2}}),a.dp_enum(117,{
-name="power_on_behavior",emit=c.hy08wePowerOnBehavior(),converter=b.lookup_from_to{restore=0,off=1,on=2}}),a.dp_enum(118,{
-name="week_format",emit=c.hy08weWeekFormat(),converter=b.lookup_from_to{fiveTwo=0,sixOne=1,seven=2}}),a.dp_child_lock(129,{emit=c.hy08weChildLock()}),a.dp_numeric(130,{
-name="alarm",read_only=true,emit=c.hy08weAlarm(),
+local t=G(o,4,a.dp_enum(4,{name="preset",emit=c.zwt198Preset(),converter=b.lookup_from_to{manual=0,auto=1,temporaryManual=2}}))d(t,e.ts0601_fingerprints{"_TZE204_lzriup1j","_TZE204_gops3slb"})local s=G(o,104,a.dp_enum(104,{name="working_day",emit=c.zwt198WorkingDay(),converter=b.lookup_from_to{disabled=0,sixOne=1,fiveTwo=2,seven=3}}))d(s,e.ts0601_fingerprints{"_TZE200_viy9ihs7"})local ac={profile="thermostats-thermostat-zwt100",force_time_updates=true,a.dp_on_off(1,{name="state",emit=c.switch()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_local_temperature(3,{scale=10}),a.dp_enum(4,{name="mode",emit=c.zwt100Mode(),converter=b.lookup_from_to{manual=0,program=1,temporary=2}}),a.dp_child_lock(9,{emit=c.zwt100ChildLock()}),a.dp_numeric(11,{name="fault",read_only=true,emit=c.zwt100Fault()}),a.dp_max_temperature_limit(15,{name="upper_temperature_limit",scale=10,emit=c.zwt100UpperTempLimit()}),a.dp_local_temperature_calibration(19,{scale=10,emit=c.zwt100TempCalibration()}),a.dp_running_state(101,{converter=b.lookup_from_to{idle=0,heating=1},emit=c.thermostat_operating_state()}),a.dp_frost_protection(102,{emit=c.zwt100FrostProtection()}),a.dp_binary(103,{name="reset",emit=c.zwt100Reset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(104,{name="work_days",emit=c.zwt100WorkDays(),converter=b.lookup_from_to{programmingOff=0,twoDayWeekend=1,singleDayOff=2,noRest=3}}),a.dp_binary(105,{name="sound",emit=c.zwt100Sound(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(106,{name="sensor_selection",emit=c.zwt100SensorSelection(),converter=b.lookup_from_to{["in"]=0,out=1,all=2}}),a.dp_numeric(107,{name="temperature_variation",converter=b.divide_by_pair(10),emit=c.zwt100TempVariation()}),a.dp_numeric(108,{name="sensor_temperature_limit",emit=c.zwt100SensorTempLimit()}),a.dp_enum(110,{name="backlight",emit=c.zwt100Backlight(),converter=b.lookup_from_to{off=0,micro=1,medium=2,high=3}}),a.dp_binary(111,{name="direction_mode",emit=c.zwt100DirectionMode(),converter=b.lookup_from_to{off=false,on=true}})}d(ac,e.ts0601_fingerprints{"_TZE204_aaeaifez","_TZE284_aaeaifez","_TZE28C1000000_aaeaifez"})local ah={profile="thermostats-thermostat-zwt07",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{name="preset",emit=c.thermostatPresetZwt07Program(),converter=b.lookup_from_to{program=0,manual=1}}),a.dp_binary(10,{name="frost_protection",emit=c.zwt07FrostProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_local_temperature(24,{scale=10}),a.dp_running_state(36,{converter=b.lookup_from_to{idle=0,heating=1},emit=c.thermostat_operating_state()})}d(ah,e.ts0601_fingerprints{"_TZE200_g9a3awaj"})local x,B="hy08we_power_state","hy08we_system_mode_device"local E,I,F,K=n.power_mode_from_device(x,B,"heat"),n.enum_mode_from_device(x,B,{[0]="heat",[1]="auto",[2]="heat"}),n.power_mode_write(125,128,{heat=0,auto=1}),a.dp_current_heating_setpoint(126,{scale=10,emit=c.heating_setpoint"C"})local aa={profile="thermostats-thermostat-hy08we",time_start="2000",named_mapping={named_mappings={system_mode=F,current_heating_setpoint=K}},a.dp_binary(102,{name="running_state",converter=b.lookup_from_to{heating=true,idle=false},emit=c.thermostat_operating_state()}),a.dp_temperature(103,{name="external_temperature",scale=10,read_only=true,emit=c.hy08weExternalTemperature()}),a.dp_numeric(104,{name="away_preset_days",emit=c.hy08weAwayDays()}),a.dp_numeric(105,{name="away_preset_temperature",emit=c.hy08weAwayTemperature()}),a.dp_binary(106,{name="max_temperature_protection",emit=c.hy08weMaxTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_binary(107,{name="min_temperature_protection",emit=c.hy08weMinTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_local_temperature_calibration(109,{scale=10,read_only=true}),a.dp_numeric(110,{name="hysteresis",converter=b.divide_by_pair(10),emit=c.hy08weHysteresis()}),a.dp_numeric(111,{name="hysteresis_for_protection",emit=c.hy08weProtectionHysteresis()}),a.dp_numeric(112,{name="max_temperature_for_protection",emit=c.hy08weProtectionMaxTemp()}),a.dp_numeric(113,{name="min_temperature_for_protection",emit=c.hy08weProtectionMinTemp()}),a.dp_numeric(114,{name="max_temperature",emit=c.hy08weMaxTemperature()}),a.dp_numeric(115,{name="min_temperature",emit=c.hy08weMinTemperature()}),a.dp_enum(116,{name="sensor_type",emit=c.hy08weSensorType(),converter=b.lookup_from_to{internal=0,external=1,both=2}}),a.dp_enum(117,{name="power_on_behavior",emit=c.hy08wePowerOnBehavior(),converter=b.lookup_from_to{restore=0,off=1,on=2}}),a.dp_enum(118,{name="week_format",emit=c.hy08weWeekFormat(),converter=b.lookup_from_to{fiveTwo=0,sixOne=1,seven=2}}),a.dp_child_lock(129,{emit=c.hy08weChildLock()}),a.dp_numeric(130,{name="alarm",read_only=true,emit=c.hy08weAlarm(),
 converter=b.from_only(function(f)
 return(tonumber(f)or 0)>0 and"detected"or"clear"
 end)
-}),a.dp_binary(125,{
-name="state",from_device=E,emit=c.thermostat_mode(),read_only=true}),K,a.dp_local_temperature(127,{scale=10}),a.dp_system_mode(128,{
-from_device=I,emit=c.thermostat_mode(),read_only=true})}d(aa,e.ts0601_fingerprints{
-"_TZE200_znzs7yaw"})local S=c.thermostatPresetTervixProgram()local ae=c.tervixMode()local ab={
-profile="thermostats-thermostat-tervix",a.dp_binary(1,{
-name="system_mode",emit=c.thermostat_mode(),converter=b.lookup_from_to{
-off=false,heat=true}}),a.dp_enum(2,{
-name="preset",
+}),a.dp_binary(125,{name="state",from_device=E,emit=c.thermostat_mode(),read_only=true}),K,a.dp_local_temperature(127,{scale=10}),a.dp_system_mode(128,{from_device=I,emit=c.thermostat_mode(),read_only=true})}d(aa,e.ts0601_fingerprints{"_TZE200_znzs7yaw"})local S,ae=c.thermostatPresetTervixProgram(),c.tervixMode()local ab={profile="thermostats-thermostat-tervix",a.dp_binary(1,{name="system_mode",emit=c.thermostat_mode(),converter=b.lookup_from_to{off=false,heat=true}}),a.dp_enum(2,{name="preset",
 emit=function(l,f)
 return{S(l,f),ae(l,f)}
 end,
-converter=b.lookup_from_to{
-manual=0,program=1}}),a.dp_running_state(3,{
-converter=b.lookup_from_to{
-idle=0,heating=1},emit=c.thermostat_operating_state()}),a.dp_enum(3,{
-name="working_status",read_only=true,emit=c.tervixWorkingStatus(),converter=b.from_only(b.lookup_value{
-[0]="keeping_warm",[1]="working"})}),a.dp_binary(8,{
-name="window_check",converter=b.lookup_from_to{on=true,off=false},emit=c.tervixWindowCheck()}),a.dp_frost_protection(10,{emit=c.tervixFrostProtection()}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_max_temperature_limit(19,{
-name="upper_temp",scale=10,emit=c.tervixUpperTemp()}),a.dp_local_temperature(24,{scale=10}),a.dp_binary(25,{
-name="window_state",read_only=true,emit=c.tervixWindowState(),
+converter=b.lookup_from_to{manual=0,program=1}}),a.dp_running_state(3,{converter=b.lookup_from_to{idle=0,heating=1},emit=c.thermostat_operating_state()}),a.dp_enum(3,{name="working_status",read_only=true,emit=c.tervixWorkingStatus(),converter=b.from_only(b.lookup_value{[0]="keeping_warm",[1]="working"})}),a.dp_binary(8,{name="window_check",converter=b.lookup_from_to{on=true,off=false},emit=c.tervixWindowCheck()}),a.dp_frost_protection(10,{emit=c.tervixFrostProtection()}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_max_temperature_limit(19,{name="upper_temp",scale=10,emit=c.tervixUpperTemp()}),a.dp_local_temperature(24,{scale=10}),a.dp_binary(25,{name="window_state",read_only=true,emit=c.tervixWindowState(),
 converter=b.from_only(function(f)
 return f and"open"or"close"
 end)
-}),a.dp_local_temperature_calibration(27,{
-scale=1,name="temperature_correction",emit=c.tervixTempCorrection()}),a.dp_humidity(34,{emit=c.humidity()}),a.dp_binary(39,{
-name="factory_reset",emit=c.tervixFactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_child_lock(40,{emit=c.tervixChildLock()}),a.dp_enum(43,{
-name="sensor_choose",converter=b.lookup_from_to{
-["in"]=0,out=1},emit=c.tervixSensorChoose()}),a.dp_raw(48,{name="week_schedule"}),a.dp_enum(58,{
-name="run_mode",emit=c.tervixRunMode(),converter=b.lookup_from_to{heat_mode=1,cool_mode=2}}),a.dp_enum(61,{
-name="week_program_periods",read_only=true,emit=c.tervixWeekProgramPeriods(),
+}),a.dp_local_temperature_calibration(27,{scale=1,name="temperature_correction",emit=c.tervixTempCorrection()}),a.dp_humidity(34,{emit=c.humidity()}),a.dp_binary(39,{name="factory_reset",emit=c.tervixFactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_child_lock(40,{emit=c.tervixChildLock()}),a.dp_enum(43,{name="sensor_choose",converter=b.lookup_from_to{["in"]=0,out=1},emit=c.tervixSensorChoose()}),a.dp_raw(48,{name="week_schedule"}),a.dp_enum(58,{name="run_mode",emit=c.tervixRunMode(),converter=b.lookup_from_to{heat_mode=1,cool_mode=2}}),a.dp_enum(61,{name="week_program_periods",read_only=true,emit=c.tervixWeekProgramPeriods(),
 converter=b.from_only(function()
 return"periods_4"
 end)
-}),a.dp_numeric(101,{
-name="switch_sensitivity",scale=10,emit=c.tervixSwitchSensitivity()}),a.dp_temperature(102,{
-name="floor_temp_protection",scale=10,emit=c.tervixFloorTempProtection()}),a.dp_temperature(103,{
-name="floor_low_protection",scale=10,emit=c.tervixFloorLowProtection()}),a.dp_numeric(104,{
-name="window_open_detection_time",emit=c.tervixWindowDetectTime()}),a.dp_numeric(105,{
-name="window_open_detection_temp",emit=c.tervixWindowDetectTemp()}),a.dp_numeric(106,{
-name="window_open_delay_time",emit=c.tervixWindowDelayTime()}),a.dp_binary(107,{
-name="humidity_control",emit=c.tervixHumidityControl(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_numeric(108,{
-name="upper_humidity_limit",emit=c.tervixUpperHumidityLimit()})}d(ab,e.ts0601_fingerprints{
-"_TZE284_6kijc7nd","_TZE204_6kijc7nd"})local am={
-profile="thermostats-thermostat-x5h",time_start="2000",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{
-name="preset",emit=c.thermostatPresetX5hProgram(),converter=b.lookup_from_to{
-manual=0,program=1}}),a.dp_running_state(3,{
-converter=b.lookup_from_to{
-heating=true,idle=false},emit=c.thermostat_operating_state()}),a.dp_binary(7,{
-name="sound",emit=c.x5hSound(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_frost_protection(10,{emit=c.x5hFrostProtection()}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_max_temperature_limit(19,{
-name="upper_temp",scale=1,emit=c.x5hUpperTemp()}),a.dp_numeric(24,{
-name="local_temperature",from_device=n.x5h_local_temperature_from_device,emit=c.temperature"C"}),a.dp_local_temperature_calibration(27,{scale=10,emit=c.x5hTempCalibration()}),a.dp_raw(30,{name="schedule"}),a.dp_enum(31,{
-name="working_day",converter=b.lookup_from_to{
-mon_fri=0,mon_sat=1,all_days=2},emit=c.workingDayX5h()}),a.dp_binary(39,{
-name="factory_reset",emit=c.x5hFactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_child_lock(40,{emit=c.x5hChildLock()}),a.dp_enum(43,{
-name="temperature_sensor_select",converter=b.lookup_from_to{
-internal=0,external=1,both=2},emit=c.temperatureSensorSelectX5hThree()}),a.dp_numeric(45,{
-name="fault_alarm",read_only=true,emit=c.x5hFaultAlarm()}),a.dp_deadzone_temperature(101,{scale=10,emit=c.tempDeltaXhCToNinetyFive()}),a.dp_temperature(102,{
-name="heating_temp_limit",scale=1,emit=c.x5hHeatingTempLimit()}),a.dp_binary(103,{
-name="output_reverse",emit=c.x5hOutputReverse(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(104,{
-name="brightness_state",emit=c.x5hBrightnessState(),converter=b.lookup_from_to{off=0,low=1,medium=2,high=3}})}d(am,e.ts0601_fingerprints{
-"_TZE200_2ekuz3dz"})local J={
-profile="thermostats-thermostat-thermosphere",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-auto=true,off=false},emit=c.thermostat_mode()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_enum(4,{
-name="boost",emit=c.tsphereBoost(),converter=b.lookup_from_to{off=1,on=2}}),a.dp_binary(18,{
-name="open_window_active",emit=c.tsphereOpenWindowActive(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_binary(37,{
-name="adaptive_start",emit=c.tsphereAdaptiveStart(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_local_temperature(38,{scale=10,emit=c.temperature"C"}),a.dp_max_temperature_limit(39,{scale=10,emit=c.tsphereMaxTemperatureLimit()}),a.dp_numeric(40,{
-name="open_window_sensing_time",emit=c.tsphereOpenWindowSensingTime()}),a.dp_numeric(41,{name="holiday_days",emit=c.tsphereHolidayDays()}),a.dp_holiday_temperature(42,{scale=10,emit=c.tsphereHolidayTemperature()}),a.dp_enum(43,{
-name="sensor_mode",emit=c.tsphereSensorMode(),converter=b.lookup_from_to{room=0,floor=1,roomWithFloorLimit=2}}),a.dp_numeric(45,{
-name="open_window_drop_limit",converter=b.divide_by_pair(10),emit=c.tsphereOpenWindowDropLimit()}),a.dp_numeric(47,{
-name="open_window_off_time",emit=c.tsphereOpenWindowOffTime()}),a.dp_numeric(50,{name="power_rating",emit=c.tspherePowerRating()}),a.dp_binary(52,{
-name="frost_protection",emit=c.tsphereFrostProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_min_temperature_limit(53,{scale=10,emit=c.tsphereMinTemperatureLimit()}),a.dp_numeric(54,{name="switch_delay",emit=c.tsphereSwitchDelay()}),a.dp_numeric(55,{name="display_brightness",emit=c.tsphereDisplayBrightness()})}d(J,e.ts0601_fingerprints{
-"_TZE200_ha0vwoew"})local af={
-profile="thermostats-thermostat-floor",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{
-name="preset",emit=c.thermostatPresetFloorManualAuto(),converter=b.lookup_from_to{
-manual=0,auto=1}}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_temperature(24,{
-name="device_temperature",scale=10,read_only=true,emit=c.floorDeviceTemperature()}),a.dp_local_temperature_calibration(27,{scale=1,read_only=true}),a.dp_running_state(36,{
-converter=b.lookup_from_to{
-heating=0,idle=1},emit=c.thermostat_operating_state()}),a.dp_child_lock(40,{emit=c.floorChildLock()}),a.dp_local_temperature(102,{scale=10}),a.dp_deadzone_temperature(103,{scale=1,emit=c.floorDeadzoneTemperature()}),a.dp_raw(101,{name="schedule_sunday"}),a.dp_raw(105,{name="schedule_saturday"}),a.dp_raw(106,{name="schedule_friday"}),a.dp_raw(107,{name="schedule_thursday"}),a.dp_raw(108,{name="schedule_wednesday"}),a.dp_raw(109,{name="schedule_tuesday"}),a.dp_raw(110,{name="schedule_monday"})}d(af,e.ts0601_fingerprints{
-"_TZE200_edl8pz1k","_TZE204_edl8pz1k","_TZE204_6a4vxfnv"})local Y={
-profile="thermostats-thermostat-bot-r9v",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{
-name="preset",emit=c.botr9vPreset(),converter=b.lookup_from_to{
-auto=0,manual=1,eco=2}}),a.dp_frost_protection(10,{name="frost",emit=c.botr9vFrost()}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_min_temperature_limit(18,{scale=10,emit=c.botr9vMinTemperatureLimit()}),a.dp_max_temperature_limit(19,{scale=10,emit=c.botr9vMaxTemperatureLimit()}),a.dp_local_temperature(24,{scale=10}),a.dp_running_state(36,{
-converter=b.lookup_from_to{
-idle=false,heating=true},emit=c.thermostat_operating_state()}),a.dp_binary(36,{
-name="valve_state",read_only=true,emit=c.botr9vValveState(),
+}),a.dp_numeric(101,{name="switch_sensitivity",scale=10,emit=c.tervixSwitchSensitivity()}),a.dp_temperature(102,{name="floor_temp_protection",scale=10,emit=c.tervixFloorTempProtection()}),a.dp_temperature(103,{name="floor_low_protection",scale=10,emit=c.tervixFloorLowProtection()}),a.dp_numeric(104,{name="window_open_detection_time",emit=c.tervixWindowDetectTime()}),a.dp_numeric(105,{name="window_open_detection_temp",emit=c.tervixWindowDetectTemp()}),a.dp_numeric(106,{name="window_open_delay_time",emit=c.tervixWindowDelayTime()}),a.dp_binary(107,{name="humidity_control",emit=c.tervixHumidityControl(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_numeric(108,{name="upper_humidity_limit",emit=c.tervixUpperHumidityLimit()})}d(ab,e.ts0601_fingerprints{"_TZE284_6kijc7nd","_TZE204_6kijc7nd"})local am={profile="thermostats-thermostat-x5h",time_start="2000",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{name="preset",emit=c.thermostatPresetX5hProgram(),converter=b.lookup_from_to{manual=0,program=1}}),a.dp_running_state(3,{converter=b.lookup_from_to{heating=true,idle=false},emit=c.thermostat_operating_state()}),a.dp_binary(7,{name="sound",emit=c.x5hSound(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_frost_protection(10,{emit=c.x5hFrostProtection()}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_max_temperature_limit(19,{name="upper_temp",scale=1,emit=c.x5hUpperTemp()}),a.dp_numeric(24,{name="local_temperature",from_device=n.x5h_local_temperature_from_device,emit=c.temperature"C"}),a.dp_local_temperature_calibration(27,{scale=10,emit=c.x5hTempCalibration()}),a.dp_raw(30,{name="schedule"}),a.dp_enum(31,{name="working_day",converter=b.lookup_from_to{mon_fri=0,mon_sat=1,all_days=2},emit=c.workingDayX5h()}),a.dp_binary(39,{name="factory_reset",emit=c.x5hFactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_child_lock(40,{emit=c.x5hChildLock()}),a.dp_enum(43,{name="temperature_sensor_select",converter=b.lookup_from_to{internal=0,external=1,both=2},emit=c.temperatureSensorSelectX5hThree()}),a.dp_numeric(45,{name="fault_alarm",read_only=true,emit=c.x5hFaultAlarm()}),a.dp_deadzone_temperature(101,{scale=10,emit=c.tempDeltaXhCToNinetyFive()}),a.dp_temperature(102,{name="heating_temp_limit",scale=1,emit=c.x5hHeatingTempLimit()}),a.dp_binary(103,{name="output_reverse",emit=c.x5hOutputReverse(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_enum(104,{name="brightness_state",emit=c.x5hBrightnessState(),converter=b.lookup_from_to{off=0,low=1,medium=2,high=3}})}d(am,e.ts0601_fingerprints{"_TZE200_2ekuz3dz"})local J={profile="thermostats-thermostat-thermosphere",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{auto=true,off=false},emit=c.thermostat_mode()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_enum(4,{name="boost",emit=c.tsphereBoost(),converter=b.lookup_from_to{off=1,on=2}}),a.dp_binary(18,{name="open_window_active",emit=c.tsphereOpenWindowActive(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_binary(37,{name="adaptive_start",emit=c.tsphereAdaptiveStart(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_local_temperature(38,{scale=10,emit=c.temperature"C"}),a.dp_max_temperature_limit(39,{scale=10,emit=c.tsphereMaxTemperatureLimit()}),a.dp_numeric(40,{name="open_window_sensing_time",emit=c.tsphereOpenWindowSensingTime()}),a.dp_numeric(41,{name="holiday_days",emit=c.tsphereHolidayDays()}),a.dp_holiday_temperature(42,{scale=10,emit=c.tsphereHolidayTemperature()}),a.dp_enum(43,{name="sensor_mode",emit=c.tsphereSensorMode(),converter=b.lookup_from_to{room=0,floor=1,roomWithFloorLimit=2}}),a.dp_numeric(45,{name="open_window_drop_limit",converter=b.divide_by_pair(10),emit=c.tsphereOpenWindowDropLimit()}),a.dp_numeric(47,{name="open_window_off_time",emit=c.tsphereOpenWindowOffTime()}),a.dp_numeric(50,{name="power_rating",emit=c.tspherePowerRating()}),a.dp_binary(52,{name="frost_protection",emit=c.tsphereFrostProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_min_temperature_limit(53,{scale=10,emit=c.tsphereMinTemperatureLimit()}),a.dp_numeric(54,{name="switch_delay",emit=c.tsphereSwitchDelay()}),a.dp_numeric(55,{name="display_brightness",emit=c.tsphereDisplayBrightness()})}d(J,e.ts0601_fingerprints{"_TZE200_ha0vwoew"})local af={profile="thermostats-thermostat-floor",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{name="preset",emit=c.thermostatPresetFloorManualAuto(),converter=b.lookup_from_to{manual=0,auto=1}}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_temperature(24,{name="device_temperature",scale=10,read_only=true,emit=c.floorDeviceTemperature()}),a.dp_local_temperature_calibration(27,{scale=1,read_only=true}),a.dp_running_state(36,{converter=b.lookup_from_to{heating=0,idle=1},emit=c.thermostat_operating_state()}),a.dp_child_lock(40,{emit=c.floorChildLock()}),a.dp_local_temperature(102,{scale=10}),a.dp_deadzone_temperature(103,{scale=1,emit=c.floorDeadzoneTemperature()}),a.dp_raw(101,{name="schedule_sunday"}),a.dp_raw(105,{name="schedule_saturday"}),a.dp_raw(106,{name="schedule_friday"}),a.dp_raw(107,{name="schedule_thursday"}),a.dp_raw(108,{name="schedule_wednesday"}),a.dp_raw(109,{name="schedule_tuesday"}),a.dp_raw(110,{name="schedule_monday"})}d(af,e.ts0601_fingerprints{"_TZE200_edl8pz1k","_TZE204_edl8pz1k","_TZE204_6a4vxfnv"})local Y={profile="thermostats-thermostat-bot-r9v",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{name="preset",emit=c.botr9vPreset(),converter=b.lookup_from_to{auto=0,manual=1,eco=2}}),a.dp_frost_protection(10,{name="frost",emit=c.botr9vFrost()}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_min_temperature_limit(18,{scale=10,emit=c.botr9vMinTemperatureLimit()}),a.dp_max_temperature_limit(19,{scale=10,emit=c.botr9vMaxTemperatureLimit()}),a.dp_local_temperature(24,{scale=10}),a.dp_running_state(36,{converter=b.lookup_from_to{idle=false,heating=true},emit=c.thermostat_operating_state()}),a.dp_binary(36,{name="valve_state",read_only=true,emit=c.botr9vValveState(),
 converter=b.from_only(function(f)
 return f and"open"or"close"
 end)
-}),a.dp_child_lock(40,{emit=c.botr9vChildLock()}),a.dp_raw(65,{name="schedule_monday"}),a.dp_raw(66,{name="schedule_tuesday"}),a.dp_raw(67,{name="schedule_wednesday"}),a.dp_raw(68,{name="schedule_thursday"}),a.dp_raw(69,{name="schedule_friday"}),a.dp_raw(70,{name="schedule_saturday"}),a.dp_raw(71,{name="schedule_sunday"}),a.dp_battery(107,{emit=c.battery()}),a.dp_local_temperature_calibration(109,{scale=10,emit=c.botr9vTempCalibration()}),a.dp_deadzone_temperature(112,{scale=10,emit=c.botr9vDeadzoneTemperature()}),a.dp_eco_temperature(116,{scale=10,emit=c.botr9vEcoTemperature()})}d(Y,e.ts0601_fingerprints{
-"_TZE204_wc2w9t1s"})local T={
-profile="thermostats-thermostat-battery-bot-r15w",respond_to_mcu_version_response=true,a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_local_temperature(3,{scale=10}),a.dp_enum(4,{
-name="preset",emit=c.botr15wPreset2(),converter=b.lookup_from_to{
-manual=0,auto=1,mixed=2,away=3}}),a.dp_child_lock(9,{emit=c.botr15wChildLock()}),a.dp_max_temperature_limit(15,{scale=10,emit=c.botr15wMaxTemperatureLimit()}),a.dp_local_temperature_calibration(19,{scale=10,emit=c.botr15wTempCalibration()}),a.dp_running_state(101,{
-converter=b.lookup_from_to{
-idle=0,heating=1},emit=c.thermostat_operating_state()}),a.dp_frost_protection(102,{emit=c.botr15wFrostProtection()}),a.dp_binary(103,{
-name="factory_reset",emit=c.botr15wFactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_deadzone_temperature(107,{name="temperature_delta",scale=10,emit=c.tempDeltaBotRToTen()}),a.dp_battery(113,{emit=c.battery()})}d(T,e.ts0601_fingerprints{
-"_TZE284_agcxaw3f"})local ag={
-profile="thermostats-thermostat-khah2lkr",time_start="2000",a.dp_local_temperature(16,{scale=10}),a.dp_current_heating_setpoint(50,{scale=10}),a.dp_running_state(102,{
-converter=b.lookup_from_to{
-idle=false,heating=true},emit=c.thermostat_operating_state()}),a.dp_temperature(103,{
-name="temperature_sensor",scale=10,read_only=true,emit=c.khahTemperatureSensor()}),a.dp_binary(106,{
-name="high_temperature_protection_state",emit=c.khahHighTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_binary(107,{
-name="low_temperature_protection_state",emit=c.khahLowTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_local_temperature_calibration(109,{
-scale=10,emit=c.khahLocalTempCalibration()}),a.dp_numeric(110,{
-name="temperature_return_difference",emit=c.khahReturnDifference()}),a.dp_deadzone_temperature(111,{scale=1,emit=c.khahDeadzoneTemperature()}),a.dp_temperature(112,{
-name="high_temperature_protection_setting",scale=1,emit=c.khahHighTempSetting()}),a.dp_temperature(113,{
-name="low_temperature_protection_setting",scale=1,emit=c.khahLowTempSetting()}),a.dp_max_temperature_limit(114,{
-name="max_temperature",scale=1,emit=c.khahMaxTemperature()}),a.dp_enum(116,{
-name="sensor_mode",emit=c.khahSensorMode(),converter=b.lookup_from_to{["in"]=0,ou=1,al=2}}),a.dp_binary(125,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(128,{
-name="preset",emit=c.khahPreset(),converter=b.lookup_from_to{
-manual=0,auto=1,mixed=3}}),a.dp_child_lock(129,{emit=c.khahChildLock()}),a.dp_numeric(130,{
-name="error_status",read_only=true,emit=c.khahErrorStatus()})}d(ag,e.ts0601_fingerprints{
-"_TZE284_khah2lkr"})local O={
-profile="thermostats-thermostat-pilot-wire-no-operating",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{
-name="preset",emit=c.pilotWirePreset(),converter=b.lookup_from_to{
-comfort=0,eco=1,antifrost=2,off=3,comfort_1=4,comfort_2=5,program=6,manual=7}}),a.dp_power(11,{name="power",scale=10,emit=c.power()}),a.dp_local_temperature(16,{scale=10}),a.dp_enum(17,{
-name="window",read_only=true,emit=c.pilotWireWindow(),converter=b.from_only(b.lookup_value{
-[0]="close",[1]="open"})}),a.dp_local_temperature_calibration(19,{scale=1,emit=c.pilotWireTempCalibration()}),a.dp_numeric(20,{name="fault",read_only=true,emit=c.pilotWireFault()}),a.dp_binary(29,{
-name="window_detection",converter=b.lookup_from_to{on=true,off=false},emit=c.windowDetectionPilotWire()}),a.dp_child_lock(39,{emit=c.pilotWireChildLock()}),a.dp_current_heating_setpoint(50,{scale=10}),a.dp_voltage(101,{name="voltage",scale=10,emit=c.voltage()}),a.dp_current(102,{name="current",scale=1000,emit=c.current()}),a.dp_numeric(103,{
-name="temperature_sensibility",scale=10,emit=c.pilotWireTempSensibility()}),a.dp_energy(104,{name="energy_today",scale=10,emit=c.energyTodayPilotWire()}),a.dp_energy(105,{name="energy_yesterday",scale=10,emit=c.energyYesterdayPilotWire()}),a.dp_enum(106,{
-name="device_mode_type",emit=c.pilotWireDeviceModeType(),converter=b.lookup_from_to{four=0,six=1,switch=2}}),a.dp_energy(107,{name="energy",scale=10,emit=c.energy()})}d(O,e.ts0601_fingerprints{
-"_TZE204_0hcjew5p","_TZE204_3regm3h6","_TZE204_6vwfjkcj","_TZE204_ouy7vpm1","_TZE284_3regm3h6","_TZE204_3q3maeoo","_TZE204_d6i25bwg"})local V={
-profile="thermostats-thermostat-pro900z",time_start="2000",a.dp_binary(1,{
-name="system_mode",converter=b.lookup_from_to{
-off=false,heat=true},emit=c.thermostat_mode()}),a.dp_enum(2,{
-name="preset",emit=c.pro900zPreset(),converter=b.lookup_from_to{
-auto=0,manual=1}}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_max_temperature_limit(19,{name="max_temperature",emit=c.pro900zMaxTemperature(),scale=10}),a.dp_local_temperature(24,{scale=10}),a.dp_min_temperature_limit(26,{name="min_temperature",emit=c.pro900zMinTemperature(),scale=10}),a.dp_local_temperature_calibration(27,{scale=1,emit=c.pro900zLocalTempCalibration()}),a.dp_binary(28,{name="factory_reset",emit=c.pro900zFactoryReset()}),a.dp_running_state(36,{
-converter=b.lookup_from_to{
-heat=0,idle=1},emit=c.thermostat_operating_state()}),a.dp_child_lock(39,{emit=c.pro900zChildLock()}),a.dp_binary(40,{name="eco_mode",emit=c.pro900zEcoMode()}),a.dp_temperature_sensor_select_internal_external_both(43,{
-name="sensor",emit=c.pro900zSensor(),converter=b.lookup_from_to{
-["in"]=0,al=1,ou=2}}),a.dp_raw(101,{name="schedule_monday"}),a.dp_temperature(102,{name="external_temperature_input",emit=c.pro900zExternalTemperature(),scale=10}),a.dp_deadzone_temperature(103,{scale=1,emit=c.pro900zDeadzoneTemperature()}),a.dp_max_temperature_limit(104,{
-name="max_temperature_limit",scale=10,emit=c.pro900zMaxTemperatureLimit()}),a.dp_raw(105,{name="schedule_tuesday"}),a.dp_raw(106,{name="schedule_wednesday"}),a.dp_raw(107,{name="schedule_thursday"}),a.dp_raw(108,{name="schedule_friday"}),a.dp_raw(109,{name="schedule_saturday"}),a.dp_raw(110,{name="schedule_sunday"}),a.dp_min_temperature_limit(111,{
-name="min_temperature_limit",scale=10,emit=c.pro900zMinTemperatureLimit()}),a.dp_eco_temperature(112,{scale=10,emit=c.pro900zEcoTemperature()}),a.dp_numeric(113,{name="brightness",emit=c.pro900zBrightness()}),a.dp_numeric(114,{name="display_brightness",emit=c.displayBrightnessPro900zLevel8()})}d(V,e.ts0601_fingerprints{
-"_TZE204_tagezcph"})return{
-id="ef00.thermostats.wall",registrations=X}
+}),a.dp_child_lock(40,{emit=c.botr9vChildLock()}),a.dp_raw(65,{name="schedule_monday"}),a.dp_raw(66,{name="schedule_tuesday"}),a.dp_raw(67,{name="schedule_wednesday"}),a.dp_raw(68,{name="schedule_thursday"}),a.dp_raw(69,{name="schedule_friday"}),a.dp_raw(70,{name="schedule_saturday"}),a.dp_raw(71,{name="schedule_sunday"}),a.dp_battery(107,{emit=c.battery()}),a.dp_local_temperature_calibration(109,{scale=10,emit=c.botr9vTempCalibration()}),a.dp_deadzone_temperature(112,{scale=10,emit=c.botr9vDeadzoneTemperature()}),a.dp_eco_temperature(116,{scale=10,emit=c.botr9vEcoTemperature()})}d(Y,e.ts0601_fingerprints{"_TZE204_wc2w9t1s"})local T={profile="thermostats-thermostat-battery-bot-r15w",respond_to_mcu_version_response=true,a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_current_heating_setpoint(2,{scale=10}),a.dp_local_temperature(3,{scale=10}),a.dp_enum(4,{name="preset",emit=c.botr15wPreset2(),converter=b.lookup_from_to{manual=0,auto=1,mixed=2,away=3}}),a.dp_child_lock(9,{emit=c.botr15wChildLock()}),a.dp_max_temperature_limit(15,{scale=10,emit=c.botr15wMaxTemperatureLimit()}),a.dp_local_temperature_calibration(19,{scale=10,emit=c.botr15wTempCalibration()}),a.dp_running_state(101,{converter=b.lookup_from_to{idle=0,heating=1},emit=c.thermostat_operating_state()}),a.dp_frost_protection(102,{emit=c.botr15wFrostProtection()}),a.dp_binary(103,{name="factory_reset",emit=c.botr15wFactoryReset(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_deadzone_temperature(107,{name="temperature_delta",scale=10,emit=c.tempDeltaBotRToTen()}),a.dp_battery(113,{emit=c.battery()})}d(T,e.ts0601_fingerprints{"_TZE284_agcxaw3f"})local ag={profile="thermostats-thermostat-khah2lkr",time_start="2000",a.dp_local_temperature(16,{scale=10}),a.dp_current_heating_setpoint(50,{scale=10}),a.dp_running_state(102,{converter=b.lookup_from_to{idle=false,heating=true},emit=c.thermostat_operating_state()}),a.dp_temperature(103,{name="temperature_sensor",scale=10,read_only=true,emit=c.khahTemperatureSensor()}),a.dp_binary(106,{name="high_temperature_protection_state",emit=c.khahHighTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_binary(107,{name="low_temperature_protection_state",emit=c.khahLowTempProtection(),converter=b.lookup_from_to{off=false,on=true}}),a.dp_local_temperature_calibration(109,{scale=10,emit=c.khahLocalTempCalibration()}),a.dp_numeric(110,{name="temperature_return_difference",emit=c.khahReturnDifference()}),a.dp_deadzone_temperature(111,{scale=1,emit=c.khahDeadzoneTemperature()}),a.dp_temperature(112,{name="high_temperature_protection_setting",scale=1,emit=c.khahHighTempSetting()}),a.dp_temperature(113,{name="low_temperature_protection_setting",scale=1,emit=c.khahLowTempSetting()}),a.dp_max_temperature_limit(114,{name="max_temperature",scale=1,emit=c.khahMaxTemperature()}),a.dp_enum(116,{name="sensor_mode",emit=c.khahSensorMode(),converter=b.lookup_from_to{["in"]=0,ou=1,al=2}}),a.dp_binary(125,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(128,{name="preset",emit=c.khahPreset(),converter=b.lookup_from_to{manual=0,auto=1,mixed=3}}),a.dp_child_lock(129,{emit=c.khahChildLock()}),a.dp_numeric(130,{name="error_status",read_only=true,emit=c.khahErrorStatus()})}d(ag,e.ts0601_fingerprints{"_TZE284_khah2lkr"})local O={profile="thermostats-thermostat-pilot-wire-no-operating",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{heat=true,off=false},emit=c.thermostat_mode()}),a.dp_enum(2,{name="preset",emit=c.pilotWirePreset(),converter=b.lookup_from_to{comfort=0,eco=1,antifrost=2,off=3,comfort_1=4,comfort_2=5,program=6,manual=7}}),a.dp_power(11,{name="power",scale=10,emit=c.power()}),a.dp_local_temperature(16,{scale=10}),a.dp_enum(17,{name="window",read_only=true,emit=c.pilotWireWindow(),converter=b.from_only(b.lookup_value{[0]="close",[1]="open"})}),a.dp_local_temperature_calibration(19,{scale=1,emit=c.pilotWireTempCalibration()}),a.dp_numeric(20,{name="fault",read_only=true,emit=c.pilotWireFault()}),a.dp_binary(29,{name="window_detection",converter=b.lookup_from_to{on=true,off=false},emit=c.windowDetectionPilotWire()}),a.dp_child_lock(39,{emit=c.pilotWireChildLock()}),a.dp_current_heating_setpoint(50,{scale=10}),a.dp_voltage(101,{name="voltage",scale=10,emit=c.voltage()}),a.dp_current(102,{name="current",scale=1000,emit=c.current()}),a.dp_numeric(103,{name="temperature_sensibility",scale=10,emit=c.pilotWireTempSensibility()}),a.dp_energy(104,{name="energy_today",scale=10,emit=c.energyTodayPilotWire()}),a.dp_energy(105,{name="energy_yesterday",scale=10,emit=c.energyYesterdayPilotWire()}),a.dp_enum(106,{name="device_mode_type",emit=c.pilotWireDeviceModeType(),converter=b.lookup_from_to{four=0,six=1,switch=2}}),a.dp_energy(107,{name="energy",scale=10,emit=c.energy()})}d(O,e.ts0601_fingerprints{"_TZE204_0hcjew5p","_TZE204_3regm3h6","_TZE204_6vwfjkcj","_TZE204_ouy7vpm1","_TZE284_3regm3h6","_TZE204_3q3maeoo","_TZE204_d6i25bwg"})local V={profile="thermostats-thermostat-pro900z",time_start="2000",a.dp_binary(1,{name="system_mode",converter=b.lookup_from_to{off=false,heat=true},emit=c.thermostat_mode()}),a.dp_enum(2,{name="preset",emit=c.pro900zPreset(),converter=b.lookup_from_to{auto=0,manual=1}}),a.dp_current_heating_setpoint(16,{scale=10}),a.dp_max_temperature_limit(19,{name="max_temperature",emit=c.pro900zMaxTemperature(),scale=10}),a.dp_local_temperature(24,{scale=10}),a.dp_min_temperature_limit(26,{name="min_temperature",emit=c.pro900zMinTemperature(),scale=10}),a.dp_local_temperature_calibration(27,{scale=1,emit=c.pro900zLocalTempCalibration()}),a.dp_binary(28,{name="factory_reset",emit=c.pro900zFactoryReset()}),a.dp_running_state(36,{converter=b.lookup_from_to{heat=0,idle=1},emit=c.thermostat_operating_state()}),a.dp_child_lock(39,{emit=c.pro900zChildLock()}),a.dp_binary(40,{name="eco_mode",emit=c.pro900zEcoMode()}),a.dp_temperature_sensor_select_internal_external_both(43,{name="sensor",emit=c.pro900zSensor(),converter=b.lookup_from_to{["in"]=0,al=1,ou=2}}),a.dp_raw(101,{name="schedule_monday"}),a.dp_temperature(102,{name="external_temperature_input",emit=c.pro900zExternalTemperature(),scale=10}),a.dp_deadzone_temperature(103,{scale=1,emit=c.pro900zDeadzoneTemperature()}),a.dp_max_temperature_limit(104,{name="max_temperature_limit",scale=10,emit=c.pro900zMaxTemperatureLimit()}),a.dp_raw(105,{name="schedule_tuesday"}),a.dp_raw(106,{name="schedule_wednesday"}),a.dp_raw(107,{name="schedule_thursday"}),a.dp_raw(108,{name="schedule_friday"}),a.dp_raw(109,{name="schedule_saturday"}),a.dp_raw(110,{name="schedule_sunday"}),a.dp_min_temperature_limit(111,{name="min_temperature_limit",scale=10,emit=c.pro900zMinTemperatureLimit()}),a.dp_eco_temperature(112,{scale=10,emit=c.pro900zEcoTemperature()}),a.dp_numeric(113,{name="brightness",emit=c.pro900zBrightness()}),a.dp_numeric(114,{name="display_brightness",emit=c.displayBrightnessPro900zLevel8()})}d(V,e.ts0601_fingerprints{"_TZE204_tagezcph"})return{id="ef00.thermostats.wall",registrations=X}

@@ -102,6 +102,7 @@ for _, cluster in ipairs(zcl_device_helpers.metering_clusters({
   include_switch = false,
   include_current = true,
 })) do
+  cluster.use_reported_unity_scaler = true
   dual_metered_switch_ep3.zcl_clusters[#dual_metered_switch_ep3.zcl_clusters + 1] = cluster
 end
 
@@ -167,11 +168,11 @@ local function on_off_to_device(value)
   return value == "on" or value == true
 end
 
-local function sonoff_boolean(attribute_id, name, emit_name, options)
+local function sonoff_boolean(attribute_id, name, emitter, options)
   options = options or {}
   return zcl.cluster_attribute(SONOFF_CLUSTER, attribute_id, {
     name = name,
-    emit = emit[emit_name](),
+    emit = emitter,
     data_type = options.data_type or data_types.Boolean,
     write_type = options.write_type or data_types.Boolean,
     from_device = options.from_device or on_off_from_device,
@@ -203,7 +204,7 @@ local function send_sonoff_inching(device, mapping, value, context)
   local mode_byte = (control == "on" and 0x80 or 0) + (mode == "on" and 0x01 or 0)
   local bytes = { 0x01, 0x17, 0x07, 0x80, mode_byte, 0x00, encoded_time % 0x100, math.floor(encoded_time / 0x100), 0x00, 0x00 }
   local checksum = 0
-  for _, byte in ipairs(bytes) do checksum = bit32.bxor(checksum, byte) end
+  for _, byte in ipairs(bytes) do checksum = checksum ~ byte end
   bytes[#bytes + 1] = checksum
 
   return zcl.send_raw_cluster_command(
@@ -243,14 +244,14 @@ local sonoff_zbmini_r2 = {
         return device:get_latest_state("main", capabilities.switch.ID, "switch") ~= "on"
       end,
     }),
-    sonoff_boolean(0x0001, "sonoff_zbmini_r2_network_indicator", "sonoffZbminir2NetworkIndicator"),
-    sonoff_boolean(0x0012, "sonoff_zbmini_r2_turbo_mode", "sonoffZbminir2TurboMode", {
+    sonoff_boolean(0x0001, "sonoff_zbmini_r2_network_indicator", emit.sonoffZbminir2NetworkIndicator()),
+    sonoff_boolean(0x0012, "sonoff_zbmini_r2_turbo_mode", emit.sonoffZbminir2TurboMode(), {
       data_type = data_types.Int16,
       write_type = data_types.Int16,
       from_device = function(value) return value == 0x14 and "on" or "off" end,
       to_device = function(value) return value == "on" and 0x14 or 0x09 end,
     }),
-    sonoff_boolean(0x0014, "sonoff_zbmini_r2_delayed_power_on_state", "sonoffZbminir2DelayPowerState"),
+    sonoff_boolean(0x0014, "sonoff_zbmini_r2_delayed_power_on_state", emit.sonoffZbminir2DelayPowerState()),
     zcl.cluster_attribute(SONOFF_CLUSTER, 0x0015, {
       name = "sonoff_zbmini_r2_delayed_power_on_time",
       emit = emit.sonoffZbminir2DelayPowerTime(),
@@ -261,7 +262,7 @@ local sonoff_zbmini_r2 = {
       numeric_range = { minimum = 0.5, maximum = 3599.5, step = 0.5, unit = "s" },
       read_on_configure = true,
     }),
-    sonoff_boolean(0x0017, "sonoff_zbmini_r2_detach_relay_mode", "sonoffZbminir2DetachRelayMode"),
+    sonoff_boolean(0x0017, "sonoff_zbmini_r2_detach_relay_mode", emit.sonoffZbminir2DetachRelayMode()),
     zcl.cluster_attribute(SONOFF_CLUSTER, 0x0016, {
       name = "sonoff_zbmini_r2_external_trigger_mode",
       emit = emit.sonoffZbminir2ExtTriggerMode(),

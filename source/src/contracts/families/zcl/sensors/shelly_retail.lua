@@ -33,6 +33,7 @@ local metered_plug = {
   zcl_clusters = zcl_device_helpers.metering_clusters({
     include_switch = true,
     include_current = true,
+    use_reported_unity_scaler = true,
   }),
   configure = bind_metered_endpoints(1, false),
 }

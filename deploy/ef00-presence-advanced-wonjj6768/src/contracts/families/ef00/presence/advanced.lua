@@ -1,183 +1,33 @@
-local c=require"protocol.tuya"
-local b=require"capabilities.events.all"
-local ad=require"protocol.zcl"
-local f=require"contracts.helpers.family"
-local Y=require"contracts.helpers.ef00_presence"
-local a=c.converter
+local c,b,ad,f,Y=require"protocol.tuya",require"capabilities.events.all",require"protocol.zcl",require"contracts.helpers.family",require"contracts.helpers.ef00_presence"local a=c.converter
 local x,i=Y.isolated_definition_registry(f.definition_registry)
 local function d(S,V,ac)
-return Y.register_presence_definition(
-i,S,V,ac)
+return Y.register_presence_definition(i,S,V,ac)
 end
-local e=Y.ts0601_fingerprints
-local m=a.lookup_from_to{on=1,off=0}local P=a.lookup_from_to{standard=0,["local"]=1}local H=a.lookup_from_to{
-default=0,bathroom=1,bedroom=2,sleeping=3,unknown=4}local C=a.lookup_from_to{only_move=0,exist_move=1}local B=a.lookup_from_to{
-on=0,off=1,occupied=2,unoccupied=3}local D={
-profile="safety-presence-zym10024g-illuminance",package_group="presence-advanced",named_datapoints=true,c.dp_numeric(102,{name="illuminance_threshold_max"}),c.dp_numeric(103,{name="illuminance_threshold_min"}),c.dp_illuminance(104,{emit=b.illuminance()}),c.dp_enum(105,{
-name="state",read_only=true,emit=b.zym10024gState(),converter=a.lookup_from_to{
-none=0,presence=1,move=2}}),c.dp_numeric(106,{
-name="move_sensitivity",emit=b.zym10024gMoveSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_numeric(107,{
-name="max_range",emit=b.zym10024gMaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{
-name="target_distance",read_only=true,emit=b.zym10024gTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(110,{name="presence_timeout",emit=b.zym10024gTimeout()}),c.dp_numeric(111,{
-name="presence_sensitivity",emit=b.zym10024gSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_presence(112,{emit=b.presence(),converter=a.true_false1()})}d(D,e{
-"_TZE204_ijxvkhd0"})local u={
-profile="safety-presence-zym10024gv2-move-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_enum(1,{
-name="state",read_only=true,emit=b.zym24gv2State(),converter=a.from_only(a.lookup_value{
-[0]="none",[1]="presence",[2]="move"})}),c.dp_numeric(2,{name="move_sensitivity",emit=b.zym24gv2MoveSensitivity()}),c.dp_numeric(3,{
-name="min_range",emit=b.zym24gv2MinRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(4,{
-name="max_range",emit=b.zym24gv2MaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(9,{
-name="target_distance",read_only=true,emit=b.zym24gv2TargetDistance(),converter=a.divide_by_from_only(10)}),c.dp_numeric(102,{name="presence_sensitivity",emit=b.zym24gv2Sensitivity()}),c.dp_illuminance(103,{emit=b.illuminance()}),c.dp_presence(104,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(105,{name="presence_timeout",emit=b.zym24gv2Timeout()})}}d(u,e{
-"_TZE204_7gclukjs"})
+local e,m,P,H,C,B,D=Y.ts0601_fingerprints,a.lookup_from_to{on=1,off=0},a.lookup_from_to{standard=0,["local"]=1},a.lookup_from_to{default=0,bathroom=1,bedroom=2,sleeping=3,unknown=4},a.lookup_from_to{only_move=0,exist_move=1},a.lookup_from_to{on=0,off=1,occupied=2,unoccupied=3},{profile="safety-presence-zym10024g-illuminance",package_group="presence-advanced",named_datapoints=true,c.dp_numeric(102,{name="illuminance_threshold_max"}),c.dp_numeric(103,{name="illuminance_threshold_min"}),c.dp_illuminance(104,{emit=b.illuminance()}),c.dp_enum(105,{name="state",read_only=true,emit=b.zym10024gState(),converter=a.lookup_from_to{none=0,presence=1,move=2}}),c.dp_numeric(106,{name="move_sensitivity",emit=b.zym10024gMoveSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_numeric(107,{name="max_range",emit=b.zym10024gMaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name="target_distance",read_only=true,emit=b.zym10024gTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(110,{name="presence_timeout",emit=b.zym10024gTimeout()}),c.dp_numeric(111,{name="presence_sensitivity",emit=b.zym10024gSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_presence(112,{emit=b.presence(),converter=a.true_false1()})}
+d(D,e{"_TZE204_ijxvkhd0"})local u={profile="safety-presence-zym10024gv2-move-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_enum(1,{name="state",read_only=true,emit=b.zym24gv2State(),converter=a.from_only(a.lookup_value{[0]="none",[1]="presence",[2]="move"})}),c.dp_numeric(2,{name="move_sensitivity",emit=b.zym24gv2MoveSensitivity()}),c.dp_numeric(3,{name="min_range",emit=b.zym24gv2MinRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(4,{name="max_range",emit=b.zym24gv2MaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(9,{name="target_distance",read_only=true,emit=b.zym24gv2TargetDistance(),converter=a.divide_by_from_only(10)}),c.dp_numeric(102,{name="presence_sensitivity",emit=b.zym24gv2Sensitivity()}),c.dp_illuminance(103,{emit=b.illuminance()}),c.dp_presence(104,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(105,{name="presence_timeout",emit=b.zym24gv2Timeout()})}}d(u,e{"_TZE204_7gclukjs"})
 local function w()
 local X=b.presence()
 return function(Z,value,W,o)
 return X(Z,value=="presence"or value=="move",W,o)
 end
 end
-local K=a.from_only(a.lookup_value{
-[0]="none",[1]="presence",[2]="move"})
+local K=a.from_only(a.lookup_value{[0]="none",[1]="presence",[2]="move"})
 local function j(U,T)
-return{
-c.dp_enum(1,{
-name="presence_state",read_only=true,emit=b.all(b.zym24gv3State(),w()),converter=K}),c.dp_numeric(2,{name="move_sensitivity",emit=b.zym24gv3MoveSensitivity()}),c.dp_numeric(3,{
-name="min_range",emit=U,converter=a.divide_by_pair(100)}),c.dp_numeric(4,{
-name="max_range",emit=T,converter=a.divide_by_pair(100)}),c.dp_numeric(9,{
-name="target_distance",read_only=true,emit=b.zym24gv3TargetDistance(),converter=a.divide_by_from_only(10)}),c.dp_binary(101,{name="find_switch"}),c.dp_numeric(102,{name="presence_sensitivity",emit=b.zym24gv3Sensitivity()}),c.dp_illuminance(103,{emit=b.illuminance()}),c.dp_numeric(105,{name="presence_timeout",emit=b.zym24gv3Timeout()})}
+return{c.dp_enum(1,{name="presence_state",read_only=true,emit=b.all(b.zym24gv3State(),w()),converter=K}),c.dp_numeric(2,{name="move_sensitivity",emit=b.zym24gv3MoveSensitivity()}),c.dp_numeric(3,{name="min_range",emit=U,converter=a.divide_by_pair(100)}),c.dp_numeric(4,{name="max_range",emit=T,converter=a.divide_by_pair(100)}),c.dp_numeric(9,{name="target_distance",read_only=true,emit=b.zym24gv3TargetDistance(),converter=a.divide_by_from_only(10)}),c.dp_binary(101,{name="find_switch"}),c.dp_numeric(102,{name="presence_sensitivity",emit=b.zym24gv3Sensitivity()}),c.dp_illuminance(103,{emit=b.illuminance()}),c.dp_numeric(105,{name="presence_timeout",emit=b.zym24gv3Timeout()})}
 end
-local q={
-profile="safety-presence-zym10024gv3-move-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=j(b.zym24gv3bMinRange(),b.zym24gv3bMaxRange())}d(q,e{
-"_TZE204_ya4ft0w4","_TZE200_ya4ft0w4"})local p={
-profile="safety-presence-zym10024gv3a-move-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=j(b.zym24gv3aMinRange(),b.zym24gv3aMaxRange())}d(p,e{
-"_TZE204_gkfbdvyx","_TZE200_gkfbdvyx"})local L={
-profile="safety-presence-yxzbrb58-range-delay-scene-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="radar_sensitivity",emit=b.yxzbrb58Sensitivity()}),c.dp_numeric(3,{
-name="min_range",emit=b.yxzbrb58MinRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(4,{
-name="max_range",emit=b.yxzbrb58MaxRange(),converter=a.divide_by_pair(100)}),c.dp_illuminance(101,{emit=b.illuminance()}),c.dp_numeric(102,{
-name="detection_delay",emit=b.yxzbrb58DetectionDelay(),converter=a.divide_by_pair(10)}),c.dp_numeric(103,{
-name="fading_time",emit=b.yxzbrb58FadingTime(),converter=a.divide_by_pair(10)}),c.dp_enum(104,{
-name="radar_scene",emit=b.yxzbrb58RadarScene(),converter=H}),c.dp_numeric(105,{
-name="target_distance",read_only=true,emit=b.yxzbrb58TargetDistance(),converter=a.divide_by_from_only(100)})}}d(L,e{
-"_TZE204_sooucan5","_TZE204_oqtpvx51"})local n={
-profile="safety-presence-ctlr1-threshold-min-delay-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="presence_sensitivity",emit=b.ctlr1Sensitivity()}),c.dp_numeric(4,{
-name="detection_range",emit=b.ctlr1DetectionRange(),converter=a.divide_by_pair(10)}),c.dp_illuminance(101,{emit=b.illuminance()}),c.dp_numeric(102,{name="illuminance_threshold_max",emit=b.ctlr1ThresholdMax()}),c.dp_numeric(103,{name="illuminance_threshold_min",emit=b.ctlr1ThresholdMin()}),c.dp_numeric(104,{name="detection_delay",emit=b.ctlr1DetectionDelay()}),c.dp_binary(105,{
-name="light_switch",read_only=true,emit=b.ctlr1LightSwitch(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_enum(106,{
-name="light_linkage",emit=b.ctlr1LightLinkage(),converter=m}),c.dp_enum(107,{
-name="indicator_light",emit=b.ctlr1IndicatorLight(),converter=a.lookup_from_to{
-presence=0,off=1,on=2}}),c.dp_enum(108,{
-name="detection_method",emit=b.ctlr1DetectionMethod(),converter=C}),c.dp_enum(109,{
-name="illuminance_switch",emit=b.ctlr1ThresholdSwitch(),converter=m})}}d(n,e{
-"_TZE204_e9ajs4ft"})local J={
-profile="safety-presence-rtzcz03z-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false(4)}),c.dp_numeric(101,{
-name="target_distance",read_only=true,emit=b.rtzcz03zTargetDistance()}),c.dp_illuminance(102,{emit=b.illuminance()}),c.dp_numeric(103,{name="fading_time",emit=b.rtzcz03zFadingTime()}),c.dp_binary(104,{
-name="indicator",emit=b.rtzcz03zIndicator(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(107,{name="max_distance",emit=b.rtzcz03zMaxDistance()}),c.dp_numeric(108,{name="min_distance",emit=b.rtzcz03zMinDistance()}),c.dp_numeric(111,{name="presence_sensitivity",emit=b.rtzcz03zSensitivity()})}}d(J,e{
-"_TZE204_uxllnywp"})
+local q={profile="safety-presence-zym10024gv3-move-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=j(b.zym24gv3bMinRange(),b.zym24gv3bMaxRange())}d(q,e{"_TZE204_ya4ft0w4","_TZE200_ya4ft0w4"})local p={profile="safety-presence-zym10024gv3a-move-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=j(b.zym24gv3aMinRange(),b.zym24gv3aMaxRange())}d(p,e{"_TZE204_gkfbdvyx","_TZE200_gkfbdvyx"})local L={profile="safety-presence-yxzbrb58-range-delay-scene-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="radar_sensitivity",emit=b.yxzbrb58Sensitivity()}),c.dp_numeric(3,{name="min_range",emit=b.yxzbrb58MinRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(4,{name="max_range",emit=b.yxzbrb58MaxRange(),converter=a.divide_by_pair(100)}),c.dp_illuminance(101,{emit=b.illuminance()}),c.dp_numeric(102,{name="detection_delay",emit=b.yxzbrb58DetectionDelay(),converter=a.divide_by_pair(10)}),c.dp_numeric(103,{name="fading_time",emit=b.yxzbrb58FadingTime(),converter=a.divide_by_pair(10)}),c.dp_enum(104,{name="radar_scene",emit=b.yxzbrb58RadarScene(),converter=H}),c.dp_numeric(105,{name="target_distance",read_only=true,emit=b.yxzbrb58TargetDistance(),converter=a.divide_by_from_only(100)})}}d(L,e{"_TZE204_sooucan5","_TZE204_oqtpvx51"})local n={profile="safety-presence-ctlr1-threshold-min-delay-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="presence_sensitivity",emit=b.ctlr1Sensitivity()}),c.dp_numeric(4,{name="detection_range",emit=b.ctlr1DetectionRange(),converter=a.divide_by_pair(10)}),c.dp_illuminance(101,{emit=b.illuminance()}),c.dp_numeric(102,{name="illuminance_threshold_max",emit=b.ctlr1ThresholdMax()}),c.dp_numeric(103,{name="illuminance_threshold_min",emit=b.ctlr1ThresholdMin()}),c.dp_numeric(104,{name="detection_delay",emit=b.ctlr1DetectionDelay()}),c.dp_binary(105,{name="light_switch",read_only=true,emit=b.ctlr1LightSwitch(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_enum(106,{name="light_linkage",emit=b.ctlr1LightLinkage(),converter=m}),c.dp_enum(107,{name="indicator_light",emit=b.ctlr1IndicatorLight(),converter=a.lookup_from_to{presence=0,off=1,on=2}}),c.dp_enum(108,{name="detection_method",emit=b.ctlr1DetectionMethod(),converter=C}),c.dp_enum(109,{name="illuminance_switch",emit=b.ctlr1ThresholdSwitch(),converter=m})}}d(n,e{"_TZE204_e9ajs4ft"})local J={profile="safety-presence-rtzcz03z-range-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false(4)}),c.dp_numeric(101,{name="target_distance",read_only=true,emit=b.rtzcz03zTargetDistance()}),c.dp_illuminance(102,{emit=b.illuminance()}),c.dp_numeric(103,{name="fading_time",emit=b.rtzcz03zFadingTime()}),c.dp_binary(104,{name="indicator",emit=b.rtzcz03zIndicator(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(107,{name="max_distance",emit=b.rtzcz03zMaxDistance()}),c.dp_numeric(108,{name="min_distance",emit=b.rtzcz03zMinDistance()}),c.dp_numeric(111,{name="presence_sensitivity",emit=b.rtzcz03zSensitivity()})}}d(J,e{"_TZE204_uxllnywp"})
 local function t(g,aa,O)
-local G={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="radar_sensitivity",emit=g[1]}),c.dp_numeric(3,{name="shield_range",emit=g[2],converter=a.divide_by_pair(100)}),c.dp_numeric(4,{name="detection_range",emit=g[3],converter=a.divide_by_pair(100)}),c.dp_numeric(6,{name="equipment_status",read_only=true}),c.dp_numeric(9,{name="target_distance",read_only=true,emit=g[4],converter=a.divide_by_from_only(100)}),c.dp_numeric(101,{name="entry_filter_time",emit=g[5],converter=a.divide_by_pair(10)}),c.dp_numeric(102,{name="departure_delay",emit=g[6]}),c.dp_illuminance(104,{emit=b.illuminance(),converter=a.divide_by_from_only(10)}),c.dp_numeric(105,{name="entry_sensitivity",emit=g[7]}),c.dp_numeric(106,{name="entry_distance_indentation",emit=g[8],converter=a.divide_by_pair(100)}),c.dp_enum(107,{name="breaker_mode",emit=g[9],converter=P}),c.dp_enum(108,{name="breaker_status",emit=g[10],converter=a.lookup_from_to{OFF=0,ON=1}}),c.dp_enum(109,{name="status_indication",emit=g[11],converter=a.lookup_from_to{OFF=0,ON=1}}),c.dp_numeric(110,{name="illuminance_threshold",emit=g[12],converter=a.divide_by_pair(10)}),c.dp_numeric(112,{name="block_time",emit=g[13],converter=a.divide_by_pair(10)}),c.dp_enum(115,{name="sensor_state",emit=g[14],converter=B})}if aa then
-table.insert(G,16,c.dp_enum(111,{
-name="breaker_polarity",emit=aa,converter=a.lookup_from_to{NC=0,NO=1}}))
-end
+local G={c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="radar_sensitivity",emit=g[1]}),c.dp_numeric(3,{name="shield_range",emit=g[2],converter=a.divide_by_pair(100)}),c.dp_numeric(4,{name="detection_range",emit=g[3],converter=a.divide_by_pair(100)}),c.dp_numeric(6,{name="equipment_status",read_only=true}),c.dp_numeric(9,{name="target_distance",read_only=true,emit=g[4],converter=a.divide_by_from_only(100)}),c.dp_numeric(101,{name="entry_filter_time",emit=g[5],converter=a.divide_by_pair(10)}),c.dp_numeric(102,{name="departure_delay",emit=g[6]}),c.dp_illuminance(104,{emit=b.illuminance(),converter=a.divide_by_from_only(10)}),c.dp_numeric(105,{name="entry_sensitivity",emit=g[7]}),c.dp_numeric(106,{name="entry_distance_indentation",emit=g[8],converter=a.divide_by_pair(100)}),c.dp_enum(107,{name="breaker_mode",emit=g[9],converter=P}),c.dp_enum(108,{name="breaker_status",emit=g[10],converter=a.lookup_from_to{OFF=0,ON=1}}),c.dp_enum(109,{name="status_indication",emit=g[11],converter=a.lookup_from_to{OFF=0,ON=1}}),c.dp_numeric(110,{name="illuminance_threshold",emit=g[12],converter=a.divide_by_pair(10)}),c.dp_numeric(112,{name="block_time",emit=g[13],converter=a.divide_by_pair(10)}),c.dp_enum(115,{name="sensor_state",emit=g[14],converter=B})}if aa then
+table.insert(G,16,c.dp_enum(111,{name="breaker_polarity",emit=aa,converter=a.lookup_from_to{NC=0,NO=1}}))end
 if O then
-G[#G+1]=c.dp_enum(116,{
-name="distance_report",emit=O,converter=a.lookup_from_to{OFF=0,ON=1}})
-end
+G[#G+1]=c.dp_enum(116,{name="distance_report",emit=O,converter=a.lookup_from_to{OFF=0,ON=1}})end
 return G
 end
-local y={
-profile="safety-presence-mtg075-entry-controls-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=t({
-b.mtg075RadarSensitivity(),b.mtg075ShieldRange(),b.mtg075DetectionRange(),b.mtg075TargetDist(),b.mtg075EntryFilterTime(),b.mtg075DepartureDelay(),b.mtg075EntrySensitivity(),b.mtg075EntryIndentation(),b.mtg075BreakerMode(),b.mtg075BreakerStatus(),b.mtg075StatusIndication(),b.mtg075IlluminanceThreshold(),b.mtg075BlockTime(),b.mtg075SensorState()},b.mtg075BreakerPolarity())}d(y,e{
-"_TZE204_sbyx0lm6","_TZE204_iaeejhvf","_TZE204_mtoaryre","_TZE200_mp902om5","_TZE204_pfayrzcw","_TZE284_4qznlkbu","_TZE200_clrdrnya","_TZE200_sbyx0lm6"})local A={
-profile="safety-presence-mtg275-entry-controls-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=t({
-b.mtg275RadarSensitivity(),b.mtg275ShieldRange(),b.mtg275DetectionRange(),b.mtg275TargetDistance(),b.mtg275EntryFilterTime(),b.mtg275DepartureDelay(),b.mtg275EntrySensitivity(),b.mtg275EntryIndentation(),b.mtg275BreakerMode(),b.mtg275BreakerStatus(),b.mtg275StatusIndication(),b.mtg275IlluminanceThreshold(),b.mtg275BlockTime(),b.mtg275SensorState()},nil,b.mtg275DistanceReport())}d(A,e{"_TZE204_dtzziy1e"})local r=a.lookup_from_to{
-low=0,medium=1,high=2}local v=a.lookup_from_to{
-["30"]=0,["60"]=1,["120"]=2}local E={
-profile="safety-presence-zym100s3-keep-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false0()}),c.dp_enum(9,{
-name="sensitivity",emit=b.zym100s3Sensitivity(),converter=r}),c.dp_enum(10,{
-name="keep_time",emit=b.zym100s3KeepTime(),converter=v}),c.dp_illuminance(12,{emit=b.illuminance()})}}d(E,e{
-"_TZE204_nbkshs6k"})
+local y={profile="safety-presence-mtg075-entry-controls-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=t({b.mtg075RadarSensitivity(),b.mtg075ShieldRange(),b.mtg075DetectionRange(),b.mtg075TargetDist(),b.mtg075EntryFilterTime(),b.mtg075DepartureDelay(),b.mtg075EntrySensitivity(),b.mtg075EntryIndentation(),b.mtg075BreakerMode(),b.mtg075BreakerStatus(),b.mtg075StatusIndication(),b.mtg075IlluminanceThreshold(),b.mtg075BlockTime(),b.mtg075SensorState()},b.mtg075BreakerPolarity())}d(y,e{"_TZE204_sbyx0lm6","_TZE204_iaeejhvf","_TZE204_mtoaryre","_TZE200_mp902om5","_TZE204_pfayrzcw","_TZE284_4qznlkbu","_TZE200_clrdrnya","_TZE200_sbyx0lm6"})local A={profile="safety-presence-mtg275-entry-controls-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=t({b.mtg275RadarSensitivity(),b.mtg275ShieldRange(),b.mtg275DetectionRange(),b.mtg275TargetDistance(),b.mtg275EntryFilterTime(),b.mtg275DepartureDelay(),b.mtg275EntrySensitivity(),b.mtg275EntryIndentation(),b.mtg275BreakerMode(),b.mtg275BreakerStatus(),b.mtg275StatusIndication(),b.mtg275IlluminanceThreshold(),b.mtg275BlockTime(),b.mtg275SensorState()},nil,b.mtg275DistanceReport())}d(A,e{"_TZE204_dtzziy1e"})local r,v=a.lookup_from_to{low=0,medium=1,high=2},a.lookup_from_to{["30"]=0,["60"]=1,["120"]=2}local E={profile="safety-presence-zym100s3-keep-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false0()}),c.dp_enum(9,{name="sensitivity",emit=b.zym100s3Sensitivity(),converter=r}),c.dp_enum(10,{name="keep_time",emit=b.zym100s3KeepTime(),converter=v}),c.dp_illuminance(12,{emit=b.illuminance()})}}d(E,e{"_TZE204_nbkshs6k"})
 local function F()
 local X=b.presence()
 return function(Z,value,W,o)
 return X(Z,value~="none",W,o)
 end
 end
-local Q={
-profile="safety-presence-zg205z-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_enum(1,{
-name="presence_state",read_only=true,emit=b.all(b.zg205zPresenceState(),F()),converter=a.from_only(a.lookup_value{
-[0]="none",[1]="presence",[2]="peaceful",[3]="small_movement",[4]="large_movement"})}),c.dp_numeric(101,{
-name="target_distance",read_only=true,emit=b.zg205zTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_illuminance(102,{emit=b.illuminance()}),c.dp_numeric(103,{name="none_delay_time",emit=b.zg205zNoneDelayTime()}),c.dp_binary(104,{
-name="indicator",emit=b.zg205zIndicator(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(107,{
-name="move_detection_max",emit=b.zg205zMoveMax(),converter=a.divide_by_pair(100)}),c.dp_numeric(108,{
-name="move_detection_min",emit=b.zg205zMoveMin(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{
-name="breath_detection_max",emit=b.zg205zBreathMax(),converter=a.divide_by_pair(100)}),c.dp_numeric(110,{
-name="breath_detection_min",emit=b.zg205zBreathMin(),converter=a.divide_by_pair(100)}),c.dp_numeric(114,{
-name="small_move_detection_max",emit=b.zg205zSmallMoveMax(),converter=a.divide_by_pair(100)}),c.dp_numeric(115,{
-name="small_move_detection_min",emit=b.zg205zSmallMoveMin(),converter=a.divide_by_pair(100)}),c.dp_numeric(116,{name="move_sensitivity",emit=b.zg205zMoveSensitivity()}),c.dp_numeric(117,{name="small_move_sensitivity",emit=b.zg205zSmallMoveSensitivity()}),c.dp_numeric(118,{name="breath_sensitivity",emit=b.zg205zBreathSensitivity()})}}d(Q,e{
-"_TZE204_dapwryy7"})local M={
-profile="safety-presence-zg205za-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{
-name="large_motion_sensitivity",emit=b.zg205zaLargeSensitivity()}),c.dp_numeric(4,{
-name="large_motion_distance",emit=b.zg205zaLargeDistance(),converter=a.divide_by_pair(100)}),c.dp_enum(101,{
-name="motion_state",read_only=true,emit=b.zg205zaMotionState(),converter=a.from_only(a.lookup_value{
-[0]="none",[1]="large",[2]="medium",[3]="small",[4]="far",[5]="near"})}),c.dp_numeric(102,{name="fading_time",emit=b.zg205zaFadingTime()}),c.dp_numeric(104,{
-name="medium_motion_distance",emit=b.zg205zaMediumDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(105,{
-name="medium_motion_sensitivity",emit=b.zg205zaMediumSensitivity()}),c.dp_illuminance(106,{emit=b.illuminance()}),c.dp_binary(107,{
-name="indicator",emit=b.zg205zaIndicator(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(108,{
-name="small_detection_distance",emit=b.zg205zaSmallDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{
-name="small_detection_sensitivity",emit=b.zg205zaSmallSensitivity()}),c.dp_numeric(122,{
-name="target_distance",read_only=true,emit=b.zg205zaTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(123,{
-name="minimum_range",emit=b.zg205zaMinimumRange(),converter=a.divide_by_pair(100)})}}d(M,{
-f.create_fingerprint("_TZE200_2aaelwxk","TS0225"),f.create_fingerprint("_TZE200_crq3r3la","TS0225"),f.create_fingerprint("HOBEIAN","CK-BL702-MWS-01(7016)"),f.create_fingerprint("_TZE200_crq3r3la","CK-BL702-MWS-01(7016)")})local N={
-profile="safety-presence-zg205zl-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_enum(11,{
-name="motion_state",read_only=true,emit=b.zg205zlMotionState(),converter=a.from_only(a.lookup_value{
-[0]="none",[1]="large",[2]="small",[3]="static",[4]="far",[5]="near"})}),c.dp_numeric(12,{name="fading_time",emit=b.zg205zlFadingTime()}),c.dp_numeric(13,{
-name="large_motion_distance",emit=b.zg205zlLargeDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(14,{
-name="small_motion_distance",emit=b.zg205zlSmallDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(15,{
-name="large_motion_sensitivity",emit=b.zg205zlLargeSensitivity()}),c.dp_numeric(16,{
-name="small_motion_sensitivity",emit=b.zg205zlSmallSensitivity()}),c.dp_illuminance(20,{emit=b.illuminance()}),c.dp_binary(24,{
-name="light_mode",emit=b.zg205zlLightMode(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(101,{name="alarm_time",emit=b.zg205zlAlarmTime()}),c.dp_enum(102,{
-name="alarm_volume",emit=b.zg205zlAlarmVolume(),converter=a.lookup_from_to{
-low=0,medium=1,high=2,mute=3}}),c.dp_numeric(103,{
-name="static_distance",emit=b.zg205zlStaticDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(104,{
-name="static_sensitivity",emit=b.zg205zlStaticSensitivity()}),c.dp_enum(105,{
-name="working_mode",emit=b.zg205zlMode(),converter=a.lookup_from_to{
-arm=0,off=1,alarm=2,doorbell=3}})}}d(N,{
-f.create_fingerprint("_TZE200_hl0ss9oa","TS0225"),f.create_fingerprint("ZGAF-205L","CK-BL702-MWS-01(7016)"),f.create_fingerprint("_TZE200_y4mdop0b","TS0225")})local l=a.lookup_from_to{
-on=0,occupied=1,unoccupied=2}local h=a.lookup_from_to{
-OFF=0,ON=1}local s=a.lookup_from_to{
-custom=0,toilet=1,kitchen=2,hallway=3,bedroom=4,livingroom=5,meetingroom=6,factory_default=7}local k=a.lookup_from_to{
-normal=0,occupancy_detection=1}local I={
-profile="safety-occupancy-mtd085-illuminance",package_group="presence-advanced",datapoints={
-c.dp_numeric(101,{
-name="entry_sensitivity",emit=b.mtd085EntrySensitivity(),command_id=c.SEND_DATA}),c.dp_numeric(102,{
-name="entry_distance",emit=b.mtd085EntryDistance(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(103,{
-name="departure_delay",emit=b.mtd085DepartureDelay(),command_id=c.SEND_DATA}),c.dp_numeric(104,{
-name="entry_filter_time",emit=b.mtd085EntryFilterTime(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(105,{
-name="block_time",emit=b.mtd085BlockTime(),converter=a.divide_by_pair(10),command_id=c.SEND_DATA}),c.dp_illuminance(107,{
-emit=b.illuminance(),converter=a.divide_by_pair(10),read_only=true}),c.dp_enum(108,{
-name="debug_mode",emit=b.mtd085DebugMode(),converter=h,command_id=c.SEND_DATA}),c.dp_numeric(109,{
-name="debug_distance",emit=b.mtd085DebugDistance(),converter=a.divide_by_pair(100),read_only=true}),c.dp_numeric(110,{
-name="debug_countdown",emit=b.mtd085DebugCountdown(),read_only=true}),c.dp_enum(111,{
-name="scene_preset",emit=b.mtd085ScenePreset(),converter=s,command_id=c.SEND_DATA}),c.dp_enum(112,{
-name="sensor",emit=b.mtd085Sensor(),converter=l,command_id=c.SEND_DATA}),c.dp_numeric(113,{name="cline",read_only=true}),c.dp_enum(114,{
-name="status_indication",emit=b.mtd085StatusIndication(),converter=h,command_id=c.SEND_DATA}),c.dp_numeric(115,{
-name="radar_sensitivity",emit=b.mtd085RadarSensitivity(),command_id=c.SEND_DATA}),c.dp_numeric(116,{
-name="shield_range",emit=b.mtd085ShieldRange(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(117,{
-name="detection_range",emit=b.mtd085DetectionRange(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(118,{name="equipment_status",read_only=true}),c.dp_numeric(119,{
-name="target_distance",emit=b.mtd085TargetDistance(),converter=a.divide_by_pair(100),read_only=true}),c.dp_enum(120,{
-name="distance_report_mode",emit=b.mtd085DistanceReportMode(),converter=k,command_id=c.SEND_DATA})},zcl_clusters={
-ad.occupancy{ias_zone=true,read_only=true}},query_on_configure=false}i(I,{
-f.create_fingerprint("_TZ321C_fkzihax8","TS0225"),f.create_fingerprint("_TZ321C_4slreunp","TS0225")})local R={
-profile="safety-presence-zp301z-time-cycle-illuminance-battery",package_group="presence-advanced",named_datapoints=true,datapoints={
-c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_battery(14,{emit=b.battery()}),c.dp_illuminance(20,{emit=b.illuminance()}),c.dp_numeric(100,{name="brightness_value",emit=b.zp301zBrightnessValue()}),c.dp_numeric(101,{name="illuminance_trigger",emit=b.zp301zIlluminanceTrigger()}),c.dp_numeric(102,{name="presence_time",emit=b.zp301zPresenceTime()}),c.dp_numeric(103,{name="presence_delay",emit=b.zp301zPresenceDelay()}),c.dp_numeric(104,{name="detection_cycle",emit=b.zp301zDetectionCycle()})}}d(R,{
-f.create_fingerprint("_TZE284_d4h8j2n6","ZP-301Z"),f.create_fingerprint("B3876M9","ZP-301Z")})local z={
-profile="safety-presence-mtg235-entry-controls-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=t({
-b.mtg235RadarSensitivity(),b.mtg235ShieldRange(),b.mtg235DetectionRange(),b.mtg235TargetDistance(),b.mtg235EntryFilterTime(),b.mtg235DepartureDelay(),b.mtg235EntrySensitivity(),b.mtg235EntryIndentation(),b.mtg235BreakerMode(),b.mtg235BreakerStatus(),b.mtg235StatusIndication(),b.mtg235IlluminanceThreshold(),b.mtg235BlockTime(),b.mtg235SensorState()},nil,b.mtg235DistanceReport())}d(z,e{"_TZE204_clrdrnya"})ad.attach_reporting_capabilities(x,{
-{14,"rpt-tai"}})return{
-id="ef00.presence.advanced",registrations=x}
+local Q={profile="safety-presence-zg205z-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_enum(1,{name="presence_state",read_only=true,emit=b.all(b.zg205zPresenceState(),F()),converter=a.from_only(a.lookup_value{[0]="none",[1]="presence",[2]="peaceful",[3]="small_movement",[4]="large_movement"})}),c.dp_numeric(101,{name="target_distance",read_only=true,emit=b.zg205zTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_illuminance(102,{emit=b.illuminance()}),c.dp_numeric(103,{name="none_delay_time",emit=b.zg205zNoneDelayTime()}),c.dp_binary(104,{name="indicator",emit=b.zg205zIndicator(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(107,{name="move_detection_max",emit=b.zg205zMoveMax(),converter=a.divide_by_pair(100)}),c.dp_numeric(108,{name="move_detection_min",emit=b.zg205zMoveMin(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name="breath_detection_max",emit=b.zg205zBreathMax(),converter=a.divide_by_pair(100)}),c.dp_numeric(110,{name="breath_detection_min",emit=b.zg205zBreathMin(),converter=a.divide_by_pair(100)}),c.dp_numeric(114,{name="small_move_detection_max",emit=b.zg205zSmallMoveMax(),converter=a.divide_by_pair(100)}),c.dp_numeric(115,{name="small_move_detection_min",emit=b.zg205zSmallMoveMin(),converter=a.divide_by_pair(100)}),c.dp_numeric(116,{name="move_sensitivity",emit=b.zg205zMoveSensitivity()}),c.dp_numeric(117,{name="small_move_sensitivity",emit=b.zg205zSmallMoveSensitivity()}),c.dp_numeric(118,{name="breath_sensitivity",emit=b.zg205zBreathSensitivity()})}}d(Q,e{"_TZE204_dapwryy7"})local M={profile="safety-presence-zg205za-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_numeric(2,{name="large_motion_sensitivity",emit=b.zg205zaLargeSensitivity()}),c.dp_numeric(4,{name="large_motion_distance",emit=b.zg205zaLargeDistance(),converter=a.divide_by_pair(100)}),c.dp_enum(101,{name="motion_state",read_only=true,emit=b.zg205zaMotionState(),converter=a.from_only(a.lookup_value{[0]="none",[1]="large",[2]="medium",[3]="small",[4]="far",[5]="near"})}),c.dp_numeric(102,{name="fading_time",emit=b.zg205zaFadingTime()}),c.dp_numeric(104,{name="medium_motion_distance",emit=b.zg205zaMediumDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(105,{name="medium_motion_sensitivity",emit=b.zg205zaMediumSensitivity()}),c.dp_illuminance(106,{emit=b.illuminance()}),c.dp_binary(107,{name="indicator",emit=b.zg205zaIndicator(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(108,{name="small_detection_distance",emit=b.zg205zaSmallDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name="small_detection_sensitivity",emit=b.zg205zaSmallSensitivity()}),c.dp_numeric(122,{name="target_distance",read_only=true,emit=b.zg205zaTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(123,{name="minimum_range",emit=b.zg205zaMinimumRange(),converter=a.divide_by_pair(100)})}}d(M,{f.create_fingerprint("_TZE200_2aaelwxk","TS0225"),f.create_fingerprint("_TZE200_crq3r3la","TS0225"),f.create_fingerprint("HOBEIAN","CK-BL702-MWS-01(7016)"),f.create_fingerprint("_TZE200_crq3r3la","CK-BL702-MWS-01(7016)")})local N={profile="safety-presence-zg205zl-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_enum(11,{name="motion_state",read_only=true,emit=b.zg205zlMotionState(),converter=a.from_only(a.lookup_value{[0]="none",[1]="large",[2]="small",[3]="static",[4]="far",[5]="near"})}),c.dp_numeric(12,{name="fading_time",emit=b.zg205zlFadingTime()}),c.dp_numeric(13,{name="large_motion_distance",emit=b.zg205zlLargeDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(14,{name="small_motion_distance",emit=b.zg205zlSmallDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(15,{name="large_motion_sensitivity",emit=b.zg205zlLargeSensitivity()}),c.dp_numeric(16,{name="small_motion_sensitivity",emit=b.zg205zlSmallSensitivity()}),c.dp_illuminance(20,{emit=b.illuminance()}),c.dp_binary(24,{name="light_mode",emit=b.zg205zlLightMode(),converter=a.lookup_from_to{ON=true,OFF=false}}),c.dp_numeric(101,{name="alarm_time",emit=b.zg205zlAlarmTime()}),c.dp_enum(102,{name="alarm_volume",emit=b.zg205zlAlarmVolume(),converter=a.lookup_from_to{low=0,medium=1,high=2,mute=3}}),c.dp_numeric(103,{name="static_distance",emit=b.zg205zlStaticDistance(),converter=a.divide_by_pair(100)}),c.dp_numeric(104,{name="static_sensitivity",emit=b.zg205zlStaticSensitivity()}),c.dp_enum(105,{name="working_mode",emit=b.zg205zlMode(),converter=a.lookup_from_to{arm=0,off=1,alarm=2,doorbell=3}})}}d(N,{f.create_fingerprint("_TZE200_hl0ss9oa","TS0225"),f.create_fingerprint("ZGAF-205L","CK-BL702-MWS-01(7016)"),f.create_fingerprint("_TZE200_y4mdop0b","TS0225")})local l,h,s,k=a.lookup_from_to{on=0,occupied=1,unoccupied=2},a.lookup_from_to{OFF=0,ON=1},a.lookup_from_to{custom=0,toilet=1,kitchen=2,hallway=3,bedroom=4,livingroom=5,meetingroom=6,factory_default=7},a.lookup_from_to{normal=0,occupancy_detection=1}local I={profile="safety-occupancy-mtd085-illuminance",package_group="presence-advanced",datapoints={c.dp_numeric(101,{name="entry_sensitivity",emit=b.mtd085EntrySensitivity(),command_id=c.SEND_DATA}),c.dp_numeric(102,{name="entry_distance",emit=b.mtd085EntryDistance(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(103,{name="departure_delay",emit=b.mtd085DepartureDelay(),command_id=c.SEND_DATA}),c.dp_numeric(104,{name="entry_filter_time",emit=b.mtd085EntryFilterTime(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(105,{name="block_time",emit=b.mtd085BlockTime(),converter=a.divide_by_pair(10),command_id=c.SEND_DATA}),c.dp_illuminance(107,{emit=b.illuminance(),converter=a.divide_by_pair(10),read_only=true}),c.dp_enum(108,{name="debug_mode",emit=b.mtd085DebugMode(),converter=h,command_id=c.SEND_DATA}),c.dp_numeric(109,{name="debug_distance",emit=b.mtd085DebugDistance(),converter=a.divide_by_pair(100),read_only=true}),c.dp_numeric(110,{name="debug_countdown",emit=b.mtd085DebugCountdown(),read_only=true}),c.dp_enum(111,{name="scene_preset",emit=b.mtd085ScenePreset(),converter=s,command_id=c.SEND_DATA}),c.dp_enum(112,{name="sensor",emit=b.mtd085Sensor(),converter=l,command_id=c.SEND_DATA}),c.dp_numeric(113,{name="cline",read_only=true}),c.dp_enum(114,{name="status_indication",emit=b.mtd085StatusIndication(),converter=h,command_id=c.SEND_DATA}),c.dp_numeric(115,{name="radar_sensitivity",emit=b.mtd085RadarSensitivity(),command_id=c.SEND_DATA}),c.dp_numeric(116,{name="shield_range",emit=b.mtd085ShieldRange(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(117,{name="detection_range",emit=b.mtd085DetectionRange(),converter=a.divide_by_pair(100),command_id=c.SEND_DATA}),c.dp_numeric(118,{name="equipment_status",read_only=true}),c.dp_numeric(119,{name="target_distance",emit=b.mtd085TargetDistance(),converter=a.divide_by_pair(100),read_only=true}),c.dp_enum(120,{name="distance_report_mode",emit=b.mtd085DistanceReportMode(),converter=k,command_id=c.SEND_DATA})},zcl_clusters={ad.occupancy{ias_zone=true,read_only=true}},query_on_configure=false}i(I,{f.create_fingerprint("_TZ321C_fkzihax8","TS0225"),f.create_fingerprint("_TZ321C_4slreunp","TS0225")})local R={profile="safety-presence-zp301z-time-cycle-illuminance-battery",package_group="presence-advanced",named_datapoints=true,datapoints={c.dp_presence(1,{emit=b.presence(),converter=a.true_false1()}),c.dp_battery(14,{emit=b.battery()}),c.dp_illuminance(20,{emit=b.illuminance()}),c.dp_numeric(100,{name="brightness_value",emit=b.zp301zBrightnessValue()}),c.dp_numeric(101,{name="illuminance_trigger",emit=b.zp301zIlluminanceTrigger()}),c.dp_numeric(102,{name="presence_time",emit=b.zp301zPresenceTime()}),c.dp_numeric(103,{name="presence_delay",emit=b.zp301zPresenceDelay()}),c.dp_numeric(104,{name="detection_cycle",emit=b.zp301zDetectionCycle()})}}d(R,{f.create_fingerprint("_TZE284_d4h8j2n6","ZP-301Z"),f.create_fingerprint("B3876M9","ZP-301Z")})local z={profile="safety-presence-mtg235-entry-controls-illuminance",package_group="presence-advanced",named_datapoints=true,datapoints=t({b.mtg235RadarSensitivity(),b.mtg235ShieldRange(),b.mtg235DetectionRange(),b.mtg235TargetDistance(),b.mtg235EntryFilterTime(),b.mtg235DepartureDelay(),b.mtg235EntrySensitivity(),b.mtg235EntryIndentation(),b.mtg235BreakerMode(),b.mtg235BreakerStatus(),b.mtg235StatusIndication(),b.mtg235IlluminanceThreshold(),b.mtg235BlockTime(),b.mtg235SensorState()},nil,b.mtg235DistanceReport())}d(z,e{"_TZE204_clrdrnya"})ad.attach_reporting_capabilities(x,{{14,"rpt-tai"}})return{id="ef00.presence.advanced",registrations=x}

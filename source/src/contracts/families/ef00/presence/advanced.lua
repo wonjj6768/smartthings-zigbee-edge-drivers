@@ -1,4 +1,3 @@
--- presence-advanced package-owned presence family definitions.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -28,13 +27,10 @@ local sensor_state_mode_converter = converter.lookup_from_to({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-12. presence_model_zy_m100_24g: ZY-M100-24G (AC, 조도 DP104)
 
 -- Z2M: _TZE204_ijxvkhd0 (ZY-M100-24G)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZY-M100-24G (tuya.ts:17930)
 -- DP104 illuminance, DP105 read-only state none/presence/move,
@@ -103,13 +99,10 @@ register_presence_definition(presence_model_zy_m100_24g, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-13. presence_model_zy_m100_24gv2: ZY-M100-24GV2 (AC, 조도 DP103)
 
 -- Z2M: _TZE204_7gclukjs (ZY-M100-24GV2)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZY-M100-24GV2 (tuya.ts:17987)
 -- Unlike V3, presence is its own DP104 trueFalse1 and DP1 only carries the
@@ -180,13 +173,10 @@ register_presence_definition(presence_model_zy_m100_24gv2, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-14. presence_model_zy_m100_24gv3: ZY-M100-24GV3 (AC, 조도 DP103)
 
 -- Z2M: _TZE204_ya4ft0w4 (ZY-M100-24GV3)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZY-M100-24GV3 (tuya.ts:18037)
 -- DP1 carries both the presence flag and the three-state presence label in a
@@ -194,7 +184,6 @@ register_presence_definition(presence_model_zy_m100_24gv2, ts0601_fingerprints({
 -- 1..10, DP3/DP4 min/max range /100, DP9 target distance /10, DP101 find
 -- switch (no expose), DP102 presence sensitivity 1..10, DP103 illuminance and
 -- DP105 fade time 1..15000 s.
---
 -- Z2M builds `exposes` per manufacturerName, and the two exact groups do not
 -- share a range: gkfbdvyx uses 0..6 / 0.5..9.0 step 0.5 (tuya.ts:18064) while
 -- ya4ft0w4 uses 0..8.25 / 0.75..9.0 step 0.75 (tuya.ts:18083).  They therefore
@@ -296,13 +285,10 @@ register_presence_definition(presence_model_zy_m100_24gv3_a, ts0601_fingerprints
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-15. presence_model_yxzbrb58: YXZBRB58 (AC, 조도 DP101)
 
 -- Z2M: _TZE204_sooucan5 (YXZBRB58)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya YXZBRB58 (tuya.ts:17688)
 -- DP1 presence trueFalse1, DP2 radar sensitivity 0..9, DP3/DP4 min/max range
@@ -376,13 +362,10 @@ register_presence_definition(presence_model_yxzbrb58, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-16. presence_model_ctl_r1_ty_zigbee: CTL-R1-TY-Zigbee (AC, 조도 DP101)
 
 -- Z2M: _TZE204_e9ajs4ft (CTL-R1-TY-Zigbee)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya CTL-R1-TY-Zigbee (tuya.ts:18148)
 -- DP1 presence trueFalse1, DP2 presence sensitivity 0..100%, DP4 detection
@@ -466,13 +449,10 @@ register_presence_definition(presence_model_ctl_r1_ty_zigbee, ts0601_fingerprint
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-17. presence_model_rt_zcz03z: RT_ZCZ03Z (AC, 조도 DP102)
 
 -- Z2M: _TZE204_uxllnywp (RT_ZCZ03Z)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya RT_ZCZ03Z (tuya.ts:20304)
 -- DP1 presence uses trueFalse(4), and every distance on this exact is
@@ -526,13 +506,10 @@ register_presence_definition(presence_model_rt_zcz03z, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-18. presence_model_mtg075_zb_rl: MTG075-ZB-RL (AC, 조도 DP104, 릴레이 포함)
 
 -- Z2M: _TZE204_sbyx0lm6 (MTG075-ZB-RL)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya MTG075-ZB-RL (tuya.ts:18240)
 -- DP1 presence trueFalse1, DP2 radar sensitivity 0..9, DP3 shield range /100
@@ -608,13 +585,10 @@ register_presence_definition(presence_model_mtg275_zb_rl, ts0601_fingerprints({ 
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-19. presence_model_zy_m100_s_3: ZY-M100-S_3 (AC, 조도 DP12, inverted)
 
 -- Z2M: _TZE204_nbkshs6k (ZY-M100-S_3)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZY-M100-S_3 (tuya.ts:20542)
 -- DP1 presence with the inverted True=0/False=1 lookup, DP9 sensitivity
@@ -672,13 +646,10 @@ register_presence_definition(presence_model_zy_m100_s_3, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-20. presence_model_zg_205z: ZG-205Z 5.8GHz (AC, 조도 DP102)
 
 -- Z2M: _TZE204_dapwryy7 (ZG-205Z)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZG-205Z (tuya.ts:20580)
 -- DP1 has no direct presence value: Z2M derives both presence and the
@@ -787,13 +758,10 @@ register_presence_definition(presence_model_zg_205z, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-21. presence_model_zg_205za: ZG-205Z/A (AC, 조도 DP106)
 
 -- Z2M: _TZE200_crq3r3la / HOBEIAN (CK-BL702-MWS-01)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZG-205Z/A (tuya.ts:14656)
 -- DP1 presence trueFalse1, DP2/DP4 large sensitivity 0..10 and distance /100
@@ -903,13 +871,10 @@ register_presence_definition(presence_model_zg_205za, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-22. presence_model_zg_205zl: ZG-205ZL (AC, 조도 DP20)
 
 -- Z2M: _TZE200_hl0ss9oa / ZGAF-205L / _TZE200_y4mdop0b
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Tuya ZG-205ZL (tuya.ts:13985)
 -- DP1 presence trueFalse1, DP11 motion state, DP12 fading time 0..3600 s,
@@ -1028,13 +993,10 @@ register_presence_definition(presence_model_zg_205zl, {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-22a. presence_model_mtd085_zb: MTD085-ZB (AC, 조도 DP107)
 
 -- Z2M: _TZ321C_fkzihax8 / _TZ321C_4slreunp
 
--- ══════════════════════════════════════════════════════════════
 
 local sensor_state_mode_mtd085_converter = converter.lookup_from_to({
 
@@ -1212,13 +1174,10 @@ register_device_definition(presence_model_mtd085_zb, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-23. presence_model_zp_301z: ZP-301Z (배터리 + 조도, 야간등 옵션)
 
 -- Z2M: _TZE284_d4h8j2n6 / B3876M9
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Arteco ZP-301Z (tuya.ts:25682)
 -- DP1 presence trueFalse1, DP14 battery percentage, DP20 illuminance,

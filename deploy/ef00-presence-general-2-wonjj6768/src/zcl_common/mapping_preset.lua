@@ -1,12 +1,8 @@
 local function l(B)
-local z=require"capabilities.events.all"
-local A=require"st.zigbee.data_types"
-local v=require"st.zigbee.constants"
-local y=require"st.utils.safe_xy_to_hsv"
+local z,A,v,y=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function k(f,u)
 if type(f)~="table"then
-f={}
-end
+f={}end
 if type(u)~="table"then
 return f
 end
@@ -30,8 +26,7 @@ local function i(b,h)
 local c={}if type(b)=="string"then
 c.name=b
 else
-k(c,b)
-end
+k(c,b)end
 k(c,h)return c
 end
 local function d()
@@ -58,19 +53,17 @@ end
 }
 end
 local function m(q,p,n)
-return{
-minimum_interval=q,maximum_interval=p,reportable_change=n,read_on_configure=true}
+return{minimum_interval=q,maximum_interval=p,reportable_change=n,read_on_configure=true}
 end
 local function r(...)
 local t={}for _,a in ipairs{...}do
-j(t,a)
-end
+j(t,a)end
 return t
 end
 local function s(C,x,o)
 B[C]=function(b,h)
-local c=i(b,h)local e=c.configure_reporting
-local a=o(c)c.configure_reporting=nil
+local c=i(b,h)local e,a=c.configure_reporting,o(c)
+c.configure_reporting=nil
 if e==false then
 a.minimum_interval=nil
 a.maximum_interval=nil
@@ -85,12 +78,8 @@ s("illuminance",B.illuminance_measurement,function(h)
 local e=h.configure_reporting
 h.configure_reporting=nil
 if e==false then
-return{
-emit=z.illuminance(),converter=d(),read_on_configure=true}
-end
-return r(
-{
-emit=z.illuminance(),converter=d()},m(30,300,100))
+return{emit=z.illuminance(),converter=d(),read_on_configure=true}end
+return r({emit=z.illuminance(),converter=d()},m(30,300,100))
 end)
 end
 return l

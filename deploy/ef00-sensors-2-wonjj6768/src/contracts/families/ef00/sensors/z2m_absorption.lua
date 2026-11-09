@@ -1,8 +1,4 @@
-local c=require"protocol.tuya"
-local b=require"capabilities.events.all"
-local d=require"contracts.helpers.family"
-local i=require"contracts.helpers.ef00"
-local e=c.converter
+local c,b,d,i=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00"local e=c.converter
 local p,a=d.definition_registry()
 local function j(x,t)
 local u={}for B,l in pairs(x)do
@@ -13,65 +9,21 @@ u.query_on_configure=true
 end
 a(u,t)
 end
-local f=e.lookup_from_to{
-lower_alarm=0,upper_alarm=1,cancel=2}local n={
-profile="sensors-temp-humidity-battery-alarm-onenuo-th05z",datapoints={
-c.dp_temperature(1,{
-emit=b.temperature"C",read_only=true,signed=true,converter=e.signed_number_pair(10)}),c.dp_humidity(2,{emit=b.humidity(),scale=1,read_only=true}),c.dp_battery(4,{emit=b.battery(),read_only=true}),c.dp_enum(9,{
-name="temperature_unit",emit=b.th05zTemperatureUnit(),converter=e.lookup_from_to{celsius=0,fahrenheit=1}}),c.dp_numeric(10,{
-name="max_temperature_alarm",emit=b.th05zMaxTempAlarm(),signed=true,converter=e.signed_number_pair(10)}),c.dp_numeric(11,{
-name="min_temperature_alarm",emit=b.th05zMinTempAlarm(),signed=true,converter=e.signed_number_pair(10)}),c.dp_numeric(12,{name="max_humidity_alarm",emit=b.th05zMaxHumidityAlarm()}),c.dp_numeric(13,{name="min_humidity_alarm",emit=b.th05zMinHumidityAlarm()}),c.dp_enum(14,{
-name="temperature_alarm",emit=b.th05zTemperatureAlarm(),read_only=true,converter=f}),c.dp_enum(15,{
-name="humidity_alarm",emit=b.th05zHumidityAlarm(),read_only=true,converter=f}),c.dp_numeric(17,{
-name="temperature_report_interval",emit=b.th05zTempReportPeriod()}),c.dp_numeric(19,{
-name="temperature_sensitivity",emit=b.th05zTempSensitivity(),converter=e.divide_by_pair(10)}),c.dp_numeric(20,{
-name="humidity_sensitivity",emit=b.th05zHumiditySensitivity()}),c.dp_temperature_calibration(23,{emit=b.th05zTempCalibration()}),c.dp_humidity_calibration(24,{emit=b.th05zHumidityCalibration()})},query_on_configure=true,query_on_announce=false,respond_to_mcu_version_response=true,time_start="1970"}a(n,i.ts0601_fingerprints{
-"_TZE2841000000_qf5mzewi"})local g={
-profile="sensors-aq-co2-temp-humidity",query_on_configure=true,query_on_announce=true,c.dp_co2(2,{emit=b.co2(),read_only=true}),c.dp_temperature(18,{
-name="temperature",scale=10,read_only=true,emit=b.temperature"C"}),c.dp_humidity(19,{emit=b.humidity(),scale=1,read_only=true})}j(g,i.ts0601_fingerprints{
-"_TZE204_pkpfn9hc"})local o={
-profile="sensors-onenuo-th05-core",query_on_configure=true,query_on_announce=true,time_start="1970",datapoints={
-c.dp_temperature(1,{read_only=true,emit=b.temperature"C"}),c.dp_humidity(2,{read_only=true,scale=1,emit=b.humidity()}),c.dp_battery(4,{read_only=true,emit=b.battery()})}}a(o,i.ts0601_fingerprints{"_TZE284_qf5mzewi"})local k={
-profile="sensors-lincukoo-szt04-long-core",query_on_configure=false,time_start="1970",force_time_updates=true,datapoints={
-c.dp_temperature(1,{read_only=true,scale=10,emit=b.temperature"C"}),c.dp_humidity(2,{read_only=true,scale=1,emit=b.humidity()}),c.dp_battery(4,{read_only=true,emit=b.battery()})}}a(k,i.ts0601_fingerprints{
-"_TZE2841000000_rs62zxk8","_TZE2841000000_4dosadbh","_TZE2841000000_mpzuabwk"})local q={
-profile="sensors-hobeian-zg227-core",query_on_configure=false,query_on_announce=false,time_start="off",datapoints={
-c.dp_temperature(1,{read_only=true,signed=true,converter=e.signed_number_pair(10),emit=b.temperature"C"}),c.dp_humidity(2,{read_only=true,scale=1,emit=b.humidity()}),c.dp_battery(4,{read_only=true,emit=b.battery()})}}a(q,{
-d.create_fingerprint("HOBEIAN","ZG-227Z"),d.create_fingerprint("HOBEIAN","ZG-227ZL")})local m={
-profile="safety-motion-blitzwolf-bwis3-core",magic_packet=false,query_on_configure=false,datapoints={
-c.dp_enum(3,{
-name="motion",read_only=true,receive_datatypes={0,1,2,3,5},
+local f=e.lookup_from_to{lower_alarm=0,upper_alarm=1,cancel=2}local n={profile="sensors-temp-humidity-battery-alarm-onenuo-th05z",datapoints={c.dp_temperature(1,{emit=b.temperature"C",read_only=true,signed=true,converter=e.signed_number_pair(10)}),c.dp_humidity(2,{emit=b.humidity(),scale=1,read_only=true}),c.dp_battery(4,{emit=b.battery(),read_only=true}),c.dp_enum(9,{name="temperature_unit",emit=b.th05zTemperatureUnit(),converter=e.lookup_from_to{celsius=0,fahrenheit=1}}),c.dp_numeric(10,{name="max_temperature_alarm",emit=b.th05zMaxTempAlarm(),signed=true,converter=e.signed_number_pair(10)}),c.dp_numeric(11,{name="min_temperature_alarm",emit=b.th05zMinTempAlarm(),signed=true,converter=e.signed_number_pair(10)}),c.dp_numeric(12,{name="max_humidity_alarm",emit=b.th05zMaxHumidityAlarm()}),c.dp_numeric(13,{name="min_humidity_alarm",emit=b.th05zMinHumidityAlarm()}),c.dp_enum(14,{name="temperature_alarm",emit=b.th05zTemperatureAlarm(),read_only=true,converter=f}),c.dp_enum(15,{name="humidity_alarm",emit=b.th05zHumidityAlarm(),read_only=true,converter=f}),c.dp_numeric(17,{name="temperature_report_interval",emit=b.th05zTempReportPeriod()}),c.dp_numeric(19,{name="temperature_sensitivity",emit=b.th05zTempSensitivity(),converter=e.divide_by_pair(10)}),c.dp_numeric(20,{name="humidity_sensitivity",emit=b.th05zHumiditySensitivity()}),c.dp_temperature_calibration(23,{emit=b.th05zTempCalibration()}),c.dp_humidity_calibration(24,{emit=b.th05zHumidityCalibration()})},query_on_configure=true,query_on_announce=false,respond_to_mcu_version_response=true,time_start="1970"}a(n,i.ts0601_fingerprints{"_TZE2841000000_qf5mzewi"})local g={profile="sensors-aq-co2-temp-humidity",query_on_configure=true,query_on_announce=true,c.dp_co2(2,{emit=b.co2(),read_only=true}),c.dp_temperature(18,{name="temperature",scale=10,read_only=true,emit=b.temperature"C"}),c.dp_humidity(19,{emit=b.humidity(),scale=1,read_only=true})}j(g,i.ts0601_fingerprints{"_TZE204_pkpfn9hc"})local o={profile="sensors-onenuo-th05-core",query_on_configure=true,query_on_announce=true,time_start="1970",datapoints={c.dp_temperature(1,{read_only=true,emit=b.temperature"C"}),c.dp_humidity(2,{read_only=true,scale=1,emit=b.humidity()}),c.dp_battery(4,{read_only=true,emit=b.battery()})}}a(o,i.ts0601_fingerprints{"_TZE284_qf5mzewi"})local k={profile="sensors-lincukoo-szt04-long-core",query_on_configure=false,time_start="1970",force_time_updates=true,datapoints={c.dp_temperature(1,{read_only=true,scale=10,emit=b.temperature"C"}),c.dp_humidity(2,{read_only=true,scale=1,emit=b.humidity()}),c.dp_battery(4,{read_only=true,emit=b.battery()})}}a(k,i.ts0601_fingerprints{"_TZE2841000000_rs62zxk8","_TZE2841000000_4dosadbh","_TZE2841000000_mpzuabwk"})local q={profile="sensors-hobeian-zg227-core",query_on_configure=false,query_on_announce=false,time_start="off",datapoints={c.dp_temperature(1,{read_only=true,signed=true,converter=e.signed_number_pair(10),emit=b.temperature"C"}),c.dp_humidity(2,{read_only=true,scale=1,emit=b.humidity()}),c.dp_battery(4,{read_only=true,emit=b.battery()})}}a(q,{d.create_fingerprint("HOBEIAN","ZG-227Z"),d.create_fingerprint("HOBEIAN","ZG-227ZL")})local m={profile="safety-motion-blitzwolf-bwis3-core",magic_packet=false,query_on_configure=false,datapoints={c.dp_enum(3,{name="motion",read_only=true,receive_datatypes={0,1,2,3,5},
 from_device=function(_,h,C,z)
 local y=z.frame
 if y.command_id~=2 or y.datapoints[1]~=C then return nil end
 return true
 end,
 emit=function(h,l)
-local w=h:get_field"__bwis3_core_timer"
-if w then w:cancel()end
+local w=h:get_field"__bwis3_core_timer"if w then w:cancel()end
 h:set_field("__bwis3_core_timer",h.thread:call_with_delay(90,function()
 h:set_field("__bwis3_core_timer",nil)h:emit_event(b.motion()(h,false))
 end,"Motion reset"))
 return b.motion()(h,l)
 end
-})}}a(m,{
-d.create_fingerprint("_TYST11_i5j6ifxj","5j6ifxj"),d.create_fingerprint("_TYST11_i5j6ifxj","5j6ifxj\0")})local s={
-profile="sensors-dak2k10o-air-core",magic_packet=true,query_on_configure=false,datapoints={
-c.dp_co2(2,{emit=b.co2(),read_only=true}),c.dp_temperature(18,{emit=b.temperature"C",scale=10,read_only=true}),c.dp_humidity(19,{emit=b.humidity(),scale=10,read_only=true}),c.dp_voc(21,{emit=b.voc"ppb",read_only=true}),c.dp_formaldehyde(22,{emit=b.formaldehyde"mg/m^3",scale=1000,read_only=true})}}a(s,{
-d.create_fingerprint("_TZE204_dak2k10o","TS0601")})local v=require"st.capabilities"
-local r={
-"noise","no_noise","noise_2min","noise_5min","no_noise_2min","no_noise_5min","no_noise_10min","noise_normal","noise_normal_2min","noise_normal_5min"}local A={
-profile="sensors-tuya-zyn1",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=true,query_on_announce=false,time_start="off",datapoints={
-c.dp_numeric(1,{name="zy_n1_noise_level",read_only=true,emit=b.zyN1NoiseLevel()}),c.dp_enum(8,{
-name="zy_n1_noise_status",read_only=true,emit=b.zyN1NoiseStatus(),converter=e.lookup_from_to{no_noise=0,noise_normal=1,noise=2}}),c.dp_enum(13,{
-name="zy_n1_report_mode",emit=b.zyN1ReportMode(),converter=e.lookup_from_to{collect_noise_floor=0,realtime=1,threshold=2}}),c.dp_numeric(16,{name="zy_n1_noise_lower_limit",emit=b.zyN1NoiseLowerLimit()}),c.dp_numeric(18,{name="zy_n1_collect_time",emit=b.zyN1CollectTime()}),c.dp_numeric(20,{name="zy_n1_noise_upper_limit",emit=b.zyN1NoiseUpperLimit()}),c.dp_numeric(22,{name="zy_n1_noise_hold_time",emit=b.zyN1NoiseHoldTime()}),c.dp_binary(23,{
-name="zy_n1_indicator",emit=b.zyN1Indicator(),converter=e.lookup_from_to{ON=true,OFF=false}}),c.dp_enum(101,{
-name="zy_n1_noise_state",read_only=true,
+})}}a(m,{d.create_fingerprint("_TYST11_i5j6ifxj","5j6ifxj"),d.create_fingerprint("_TYST11_i5j6ifxj","5j6ifxj\0")})local s={profile="sensors-dak2k10o-air-core",magic_packet=true,query_on_configure=false,datapoints={c.dp_co2(2,{emit=b.co2(),read_only=true}),c.dp_temperature(18,{emit=b.temperature"C",scale=10,read_only=true}),c.dp_humidity(19,{emit=b.humidity(),scale=10,read_only=true}),c.dp_voc(21,{emit=b.voc"ppb",read_only=true}),c.dp_formaldehyde(22,{emit=b.formaldehyde"mg/m^3",scale=1000,read_only=true})}}a(s,{d.create_fingerprint("_TZE204_dak2k10o","TS0601")})local v,r=require"st.capabilities",{"noise","no_noise","noise_2min","noise_5min","no_noise_2min","no_noise_5min","no_noise_10min","noise_normal","noise_normal_2min","noise_normal_5min"}local A={profile="sensors-tuya-zyn1",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=true,query_on_announce=false,time_start="off",datapoints={c.dp_numeric(1,{name="zy_n1_noise_level",read_only=true,emit=b.zyN1NoiseLevel()}),c.dp_enum(8,{name="zy_n1_noise_status",read_only=true,emit=b.zyN1NoiseStatus(),converter=e.lookup_from_to{no_noise=0,noise_normal=1,noise=2}}),c.dp_enum(13,{name="zy_n1_report_mode",emit=b.zyN1ReportMode(),converter=e.lookup_from_to{collect_noise_floor=0,realtime=1,threshold=2}}),c.dp_numeric(16,{name="zy_n1_noise_lower_limit",emit=b.zyN1NoiseLowerLimit()}),c.dp_numeric(18,{name="zy_n1_collect_time",emit=b.zyN1CollectTime()}),c.dp_numeric(20,{name="zy_n1_noise_upper_limit",emit=b.zyN1NoiseUpperLimit()}),c.dp_numeric(22,{name="zy_n1_noise_hold_time",emit=b.zyN1NoiseHoldTime()}),c.dp_binary(23,{name="zy_n1_indicator",emit=b.zyN1Indicator(),converter=e.lookup_from_to{ON=true,OFF=false}}),c.dp_enum(101,{name="zy_n1_noise_state",read_only=true,
 emit=function(h,l)
-return{
-v.soundSensor.sound((l==0 or l==2 or l==3)and"detected"or"not detected"),b.zyN1NoiseState()(h,r[l+1])}
+return{v.soundSensor.sound((l==0 or l==2 or l==3)and"detected"or"not detected"),b.zyN1NoiseState()(h,r[l+1])}
 end
-}),c.dp_enum(102,{
-name="zy_n1_report_threshold",emit=b.zyN1ReportThreshold(),converter=e.lookup_from_to{["1_db"]=0,["3_db"]=1,["5_db"]=2,["10_db"]=3,["20_db"]=4,no_report=5}}),c.dp_numeric(103,{name="zy_n1_noise_delay",emit=b.zyN1NoiseDelay()})}}a(A,{
-d.create_fingerprint("_TZE204_r6kfl9ta","TS0601")})return{
-id="ef00.sensors.z2m_absorption",registrations=p}
+}),c.dp_enum(102,{name="zy_n1_report_threshold",emit=b.zyN1ReportThreshold(),converter=e.lookup_from_to{["1_db"]=0,["3_db"]=1,["5_db"]=2,["10_db"]=3,["20_db"]=4,no_report=5}}),c.dp_numeric(103,{name="zy_n1_noise_delay",emit=b.zyN1NoiseDelay()})}}a(A,{d.create_fingerprint("_TZE204_r6kfl9ta","TS0601")})return{id="ef00.sensors.z2m_absorption",registrations=p}

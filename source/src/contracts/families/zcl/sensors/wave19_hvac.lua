@@ -1,4 +1,3 @@
--- Wave19 PirogovX ZB-MIDEA-AC source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/pirogovx.ts:1-161
 --   src/converters/fromZigbee.ts:43-149

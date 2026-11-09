@@ -134,7 +134,6 @@ local function numeric_lookup_keys(map)
   return keys
 end
 
--- converter helpers
 local converter = tuya.converter
 
 function converter.pipe(...)

@@ -1,7 +1,5 @@
 local function u(A)
-local D=require"st.zigbee.cluster_base"
-local q=require"st.zigbee.generated.zcl_clusters"
-local r={}local o={}local k={}local l={}local w={}local v={}local j={}
+local D,q,r,o,k,l,w,v,j=require"st.zigbee.cluster_base",require"st.zigbee.generated.zcl_clusters",{},{},{},{},{},{},{}
 local function x(b,G)
 return string.format("%04X:%04X",b,G)
 end
@@ -30,8 +28,7 @@ local a=n(b)local c
 if a~=nil and a~=false then
 local B=a.attr_id_map and a.attr_id_map()[g]or nil
 if B~=nil and a.server and a.server.attributes then
-c=a.server.attributes[B]
-end
+c=a.server.attributes[B]end
 end
 k[y]=c or false
 return c
@@ -57,8 +54,7 @@ local a=n(b)local i
 if a~=nil and a~=false then
 local H=p=="client"and a.client_id_map and a.client_id_map()[h]or p=="server"and a.server_id_map and a.server_id_map()[h]or nil
 if H~=nil and a[p]and a[p].commands then
-i=a[p].commands[H]
-end
+i=a[p].commands[H]end
 end
 F[y]=i or false
 return i
@@ -88,12 +84,10 @@ function A.build_dynamic_attribute(b,g,s,writable,f,is_complex)
 local a=n(b)if a==nil or a==false or type(s)~="table"or s.ID==nil then
 return nil
 end
-local y=table.concat({
-tostring(b),tostring(g),tostring(s.ID),writable==false and"0"or"1",is_complex==true and"1"or"0",tostring(f or"")},":")local e=j[y]if e~=nil then
+local y=table.concat({tostring(b),tostring(g),tostring(s.ID),writable==false and"0"or"1",is_complex==true and"1"or"0",tostring(f or"")},":")local e=j[y]if e~=nil then
 return e~=false and e or nil
 end
-local c=D.build_cluster_attribute(
-a,g,f or string.format("Attribute%04X",g),s,writable~=false,is_complex==true)j[y]=c or false
+local c=D.build_cluster_attribute(a,g,f or string.format("Attribute%04X",g),s,writable~=false,is_complex==true)j[y]=c or false
 return c
 end
 end

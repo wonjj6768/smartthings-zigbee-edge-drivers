@@ -1,7 +1,3 @@
--- ZCL 클러스터 명령 전송
--- SmartThings capability 커맨드 → ZCL 클러스터 명령 변환/전송
---
--- 기존 EF00의 send_named_mapping 에 대응하는 ZCL 전송 레이어입니다.
 
 local function load_command_sender(zcl)
 
@@ -19,6 +15,7 @@ local function load_command_sender(zcl)
   local FrameCtrl = require "st.zigbee.zcl.frame_ctrl"
   local generic_body = require "st.zigbee.generic_body"
   local log = require "log"
+  local on_off_ack = require "zcl_common.on_off_ack"
 
   local default_sender_key = "__default"
   local sender_registry = {}
@@ -510,11 +507,15 @@ local function load_command_sender(zcl)
       zcl_clusters.OnOff.server.commands.Off(device)
 
     if type(component_id) == "string" and component_id ~= "" and type(device.send_to_component) == "function" then
+      local target = type(request.to_component) == "function" and request:to_component(device, component_id) or request
+      on_off_ack.remember(device, on_off, mapping_context, target)
       device:send_to_component(component_id, request)
       schedule_zll_switch_refresh(device, on_off and "on delayed read" or "off delayed read")
       return true
     end
 
+    local target = endpoint ~= nil and type(request.to_endpoint) == "function" and request:to_endpoint(endpoint) or request
+    on_off_ack.remember(device, on_off, mapping_context, target)
     if send_request(device, request, endpoint) then
       schedule_zll_switch_refresh(device, on_off and "on delayed read" or "off delayed read")
       return true
@@ -657,7 +658,6 @@ local function load_command_sender(zcl)
     )
   end
 
-  --- cluster/attribute 전용 sender를 등록합니다.
   --- attribute_id를 nil로 넘기면 해당 cluster의 기본 sender로 등록됩니다.
   ---@param cluster_id number
   ---@param attribute_id number|nil
@@ -701,7 +701,7 @@ local function load_command_sender(zcl)
       return false
     end
 
-    return send_level(device, encoded, nil, mapping_context.endpoint)
+    return send_level(device, encoded, mapping_context.transition_time, mapping_context.endpoint)
   end)
 
   zcl.register_sender(zcl.CLUSTER_WINDOW_COVERING, nil, function(device, mapping, value, mapping_context)
@@ -744,7 +744,6 @@ local function load_command_sender(zcl)
     return send_thermostat_mode(device, encoded, mapping_context.endpoint)
   end)
 
-  --- name 기반 ZCL 명령 전송 (capability handler에서 호출)
   ---@param device table SmartThings device 객체
   ---@param zcl_clusters table zcl_clusters 매핑 리스트
   ---@param name string 매핑 이름

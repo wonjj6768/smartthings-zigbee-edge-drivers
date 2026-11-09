@@ -1,4 +1,3 @@
--- 커버/블라인드 디바이스 정의
 
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"

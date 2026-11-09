@@ -20,7 +20,7 @@ components:
         version: 1
       - id: concertmirror08464.dimmer3gBacklightColor
         version: 1
-      - id: concertmirror08464.dimmer3gBacklightBrightness
+      - id: concertmirror08464.dimmer3gBacklightBrightnessV2
         version: 1
       - id: refresh
         version: 1
@@ -147,7 +147,7 @@ deviceConfig:
       capability: concertmirror08464.dimmer3gBacklightColor
       version: 1
     - component: main
-      capability: concertmirror08464.dimmer3gBacklightBrightness
+      capability: concertmirror08464.dimmer3gBacklightBrightnessV2
       version: 1
     - component: main
       capability: refresh
@@ -218,7 +218,7 @@ deviceConfig:
         capability: concertmirror08464.dimmer3gBacklightColor
         version: 1
       - component: main
-        capability: concertmirror08464.dimmer3gBacklightBrightness
+        capability: concertmirror08464.dimmer3gBacklightBrightnessV2
         version: 1
     actions:
       - component: main

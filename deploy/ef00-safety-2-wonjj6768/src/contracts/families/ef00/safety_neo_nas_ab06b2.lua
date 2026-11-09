@@ -1,25 +1,6 @@
-local e=require"protocol.tuya"
-local h=require"capabilities.events.all"
-local k=require"contracts.helpers.family"
-local b=e.converter
-local j,c=k.definition_registry()local a=b.lookup_from_to{
-ON=true,OFF=false}local f=b.from_only(b.lookup_value{
-[0]="alarm_sound",[1]="alarm_light",[2]="alarm_sound_light",[3]="no_alarm"})local d=b.lookup_from_to{
-melody_1=0,melody_2=1,melody_3=2}local g=b.lookup_from_to{
-alarm_sound=0,alarm_light=1,alarm_sound_light=2}
+local e,h,k=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family"local b=e.converter
+local j,c=k.definition_registry()local a,f,d,g=b.lookup_from_to{ON=true,OFF=false},b.from_only(b.lookup_value{[0]="alarm_sound",[1]="alarm_light",[2]="alarm_sound_light",[3]="no_alarm"}),b.lookup_from_to{melody_1=0,melody_2=1,melody_3=2},b.lookup_from_to{alarm_sound=0,alarm_light=1,alarm_sound_light=2}
 local i=b.from_only(function(m)
 return(m==true or m==1)and"charging"or"not_charging"
 end)
-local l={
-profile="safety-alarm-neo-nas-ab06b2",query_on_configure=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",e.dp_enum(1,{
-name="neo_ab_six_alarm_state",read_only=true,emit=h.neoAbSixAlarmState(),converter=f}),e.dp_binary(13,{
-name="neo_ab_six_alarm_switch",emit=h.neoAbSixAlarmSwitch(),converter=a}),e.dp_binary(101,{
-name="neo_ab_six_tamper_alarm_switch",emit=h.neoAbSixTamperAlarmSwitch(),converter=a}),e.dp_binary(20,{
-name="neo_ab_six_tamper_alarm",read_only=true,emit=h.neoAbSixTamperAlarm(),converter=a}),e.dp_enum(21,{
-name="neo_ab_six_alarm_melody",emit=h.neoAbSixAlarmMelody(),converter=d}),e.dp_enum(102,{
-name="neo_ab_six_alarm_mode",emit=h.neoAbSixAlarmMode(),converter=g}),e.dp_numeric(7,{
-name="neo_ab_six_alarm_time",emit=h.neoAbSixAlarmTime()}),e.dp_binary(6,{
-name="neo_ab_six_charging",read_only=true,emit=h.neoAbSixCharging(),converter=i}),e.dp_battery(15,{
-read_only=true,emit=h.battery()})}c(l,{
-{manufacturer="_TZE200_nlrfgpny",model="TS0601"},{manufacturer="_TZE284_nlrfgpny",model="TS0601"},{manufacturer="_TZE204_nlrfgpny",model="TS0601"}})return{
-id="neo.nas_ab06b2",registrations=j}
+local l={profile="safety-alarm-neo-nas-ab06b2",query_on_configure=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",e.dp_enum(1,{name="neo_ab_six_alarm_state",read_only=true,emit=h.neoAbSixAlarmState(),converter=f}),e.dp_binary(13,{name="neo_ab_six_alarm_switch",emit=h.neoAbSixAlarmSwitch(),converter=a}),e.dp_binary(101,{name="neo_ab_six_tamper_alarm_switch",emit=h.neoAbSixTamperAlarmSwitch(),converter=a}),e.dp_binary(20,{name="neo_ab_six_tamper_alarm",read_only=true,emit=h.neoAbSixTamperAlarm(),converter=a}),e.dp_enum(21,{name="neo_ab_six_alarm_melody",emit=h.neoAbSixAlarmMelody(),converter=d}),e.dp_enum(102,{name="neo_ab_six_alarm_mode",emit=h.neoAbSixAlarmMode(),converter=g}),e.dp_numeric(7,{name="neo_ab_six_alarm_time",emit=h.neoAbSixAlarmTime()}),e.dp_binary(6,{name="neo_ab_six_charging",read_only=true,emit=h.neoAbSixCharging(),converter=i}),e.dp_battery(15,{read_only=true,emit=h.battery()})}c(l,{{manufacturer="_TZE200_nlrfgpny",model="TS0601"},{manufacturer="_TZE284_nlrfgpny",model="TS0601"},{manufacturer="_TZE204_nlrfgpny",model="TS0601"}})return{id="neo.nas_ab06b2",registrations=j}

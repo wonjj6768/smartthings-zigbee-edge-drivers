@@ -1,5 +1,4 @@
-local i=require"generated.package_registry"
-local f={}local a
+local i,f=require"generated.package_registry",{}local a
 local function c(g)
 local j={}if type(g)~="table"then
 return j
@@ -17,19 +16,17 @@ return a
 end
 a={}for _,g in ipairs(i)do
 for _,n in ipairs(g.fingerprints)do
-local b=n.manufacturer
-local h=n.model
+local b,h=n.manufacturer,n.model
+
 if h~=nil and b~=nil then
-a[b]=a[b]or{}a[b][h]=c(g)
-end
+a[b]=a[b]or{}a[b][h]=c(g)end
 end
 end
 return a
 end
 function f.find(b,h)
 local k=e()local d=k[b]if d and d[h]then
-return d[h]
-end
+return d[h]end
 return nil
 end
 function f.all()

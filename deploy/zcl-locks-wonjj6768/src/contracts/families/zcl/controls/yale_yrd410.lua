@@ -1,29 +1,17 @@
-local aj=require"contracts.helpers.family"
-local e=require"st.capabilities"
-local H=require"capabilities.events.all"
-local ax=require"st.zigbee.zcl.clusters"
-local w=require"st.zigbee.data_types"
-local J=require"st.zigbee.device_management"
-local az=require"st.json"
-local D=ax.DoorLock
-local ah,aC=aj.definition_registry()local P="yrd410:"
-local B={persist=false}local K={persist=true}local aK={[0]="keypad",[1]="rf",[2]="manual",[3]="rfid",[4]="fingerprint"}local ag={[0]="available",[1]="enabled",[3]="disabled"}local aE={unrestricted=0,year_day_schedule=1,week_day_schedule=2,master=3,non_access=4}local am={[0]="silent_mode",[1]="low_volume",[2]="high_volume"}local aq={[0]="unknown","lock","unlock","lock_failure_invalid_pin_or_id","lock_failure_invalid_schedule","unlock_failure_invalid_pin_or_id","unlock_failure_invalid_schedule","one_touch_lock","key_lock","key_unlock","auto_lock","schedule_lock","schedule_unlock","manual_lock","manual_unlock","non_access_user_operational_event"}local aB={[0]="unknown","master_code_changed","pin_code_added","pin_code_deleted","pin_code_changed","rfid_code_added","rfid_code_deleted"}local ai={[0]="open","closed","error_jammed","error_forced_open","error_unspecified",[255]="undefined"}local W={[0]="not_fully_locked","locked","unlocked"}local t={
-relock=H.yrd410RelockTime(),volume=H.yrd410SoundVolume(),action=H.yrd410Action(),user=H.yrd410ActionUser(),source=H.yrd410ActionSource(),source_name=H.yrd410ActionSourceName(),raw_lock=H.yrd410LockState(),door=H.yrd410DoorState(),raw_battery=H.yrd410BatteryPercent()}
+local aj,e,H,ax,w,J,az=require"contracts.helpers.family",require"st.capabilities",require"capabilities.events.all",require"st.zigbee.zcl.clusters",require"st.zigbee.data_types",require"st.zigbee.device_management",require"st.json"local D=ax.DoorLock
+local ah,aC=aj.definition_registry()local P,B,K,aK,ag,aE,am,aq,aB,ai,W,t="yrd410:",{persist=false},{persist=true},{[0]="keypad",[1]="rf",[2]="manual",[3]="rfid",[4]="fingerprint"},{[0]="available",[1]="enabled",[3]="disabled"},{unrestricted=0,year_day_schedule=1,week_day_schedule=2,master=3,non_access=4},{[0]="silent_mode",[1]="low_volume",[2]="high_volume"},{[0]="unknown","lock","unlock","lock_failure_invalid_pin_or_id","lock_failure_invalid_schedule","unlock_failure_invalid_pin_or_id","unlock_failure_invalid_schedule","one_touch_lock","key_lock","key_unlock","auto_lock","schedule_lock","schedule_unlock","manual_lock","manual_unlock","non_access_user_operational_event"},{[0]="unknown","master_code_changed","pin_code_added","pin_code_deleted","pin_code_changed","rfid_code_added","rfid_code_deleted"},{[0]="open","closed","error_jammed","error_forced_open","error_unspecified",[255]="undefined"},{[0]="not_fully_locked","locked","unlocked"},{relock=H.yrd410RelockTime(),volume=H.yrd410SoundVolume(),action=H.yrd410Action(),user=H.yrd410ActionUser(),source=H.yrd410ActionSource(),source_name=H.yrd410ActionSourceName(),raw_lock=H.yrd410LockState(),door=H.yrd410DoorState(),raw_battery=H.yrd410BatteryPercent()}
 local function aF(d,aI,aG)
 return type(d)=="number"and d==d and d%1==0 and d>=aI and d<=aG
 end
 local function k(c,Z,d,aR,T)
 if d==nil then return end
-local ak={value=d}
-if aR then ak.unit=aR end
-local x=Z(ak)
-if T then x.state_change=true end
+local ak={value=d}if aR then ak.unit=aR end
+local x=Z(ak)if T then x.state_change=true end
 c:emit_event(x)
 end
 local function h(c,Z,d,T)
 if d==nil then return end
-local x=Z(c,d)
-if x==nil then return end
+local x=Z(c,d)if x==nil then return end
 if T then x.state_change=true end
 c:emit_event(x)
 end
@@ -59,23 +47,19 @@ if not U(d)then return false end
 return z(c,D.server.commands.GetUserStatus(c,d))
 end
 local function l(c,f,ae)
-local j=c:get_field(P.."pending")or{}
-if not ae or j[f]==ae then j[f]=nil end
+local j=c:get_field(P.."pending")or{}if not ae or j[f]==ae then j[f]=nil end
 c:set_field(P.."pending",j,B)
 end
 local function aa(c,f,v,ao,Y,aW)
-local E=C(v,false)
-if not U(f)or not E or aE[ao]==nil or type(Y)~="boolean"then return false end
+local E=C(v,false)if not U(f)or not E or aE[ao]==nil or type(Y)~="boolean"then return false end
 if not z(c,D.server.commands.SetPINCode(c,f,Y and 1 or 3,aE[ao],E))then return false end
-local g={code=v,status=Y and 1 or 3,name=aW}local j=c:get_field(P.."pending")or{}j[f]=g;c:set_field(P.."pending",j,B)
-if not O(c,f)then l(c,f,g);return false end
+local g,j={code=v,status=Y and 1 or 3,name=aW},c:get_field(P.."pending")or{}j[f]=g;c:set_field(P.."pending",j,B)if not O(c,f)then l(c,f,g);return false end
 c.thread:call_with_delay(10,function()l(c,f,g)end,"YRD410 PIN readback expiry")
 return true
 end
 local function ac(c,f)
 if not U(f)or not z(c,D.server.commands.ClearPINCode(c,f))then return false end
-local g={clear=true}local j=c:get_field(P.."pending")or{}j[f]=g;c:set_field(P.."pending",j,B)
-if not O(c,f)then l(c,f,g);return false end
+local g,j={clear=true},c:get_field(P.."pending")or{}j[f]=g;c:set_field(P.."pending",j,B)if not O(c,f)then l(c,f,g);return false end
 c.thread:call_with_delay(10,function()l(c,f,g)end,"YRD410 clear readback expiry")
 return true
 end
@@ -88,36 +72,31 @@ k(c,e.lockCodes.lockCodes,az.encode(c:get_field(P.."names")or{}))
 end
 local function N(c,s,aN)
 local f,status=s.user_id.value,s.user_status.value
-local key=tostring(f)local as=c:get_field(P.."users")or{}as[key]=ag[status]or"not_supported_"..status
-c:set_field(P.."users",as,K)k(c,e["concertmirror08464.yrd410UserStatus"].userStatus,az.encode(as))
-if not aN then return end
+local key,as=tostring(f),c:get_field(P.."users")or{}as[key]=ag[status]or"not_supported_"..status
+c:set_field(P.."users",as,K)k(c,e["concertmirror08464.yrd410UserStatus"].userStatus,az.encode(as))if not aN then return end
 local v=s.code.value
 if c.preferences.yrd410ExposePin==true and s.code.byte_length~=255 then
-local aA=c:get_field(P.."pins")or{}aA[key]=v;c:set_field(P.."pins",aA,B)k(c,e["concertmirror08464.yrd410PinCode"].pinCode,az.encode(aA))
-end
-local j=c:get_field(P.."pending")or{}local g=j[f]local A=c:get_field(P.."names")or{}if status==0 then A[key]=nil
+local aA=c:get_field(P.."pins")or{}aA[key]=v;c:set_field(P.."pins",aA,B)k(c,e["concertmirror08464.yrd410PinCode"].pinCode,az.encode(aA))end
+local j=c:get_field(P.."pending")or{}local g,A=j[f],c:get_field(P.."names")or{}if status==0 then A[key]=nil
 elseif status==1 or status==3 then
 A[key]=(g and g.code==v and g.status==status and g.name)or A[key]or"Code "..key
 end
 c:set_field(P.."names",A,K);S(c)k(c,e.lockCodes.codeReport,f)if g and((g.clear and status==0)or(g.code==v and g.status==status))then
-local x=e.lockCodes.codeChanged(key..(g.clear and" deleted"or" set"),{state_change=true})
-if not g.clear and g.name then x.data={codeName=g.name}end
-c:emit_event(x);l(c,f,g)
-end
+local x=e.lockCodes.codeChanged(key..(g.clear and" deleted"or" set"),{state_change=true})if not g.clear and g.name then x.data={codeName=g.name}end
+c:emit_event(x);l(c,f,g)end
 end
 local function aJ(c,rx)
 if rx.address_header.src_endpoint.value~=1 then return end
-local u=rx.address_header.cluster.value
-local V,s=rx.body.zcl_header,rx.body.zcl_body
+local u,V,s=rx.address_header.cluster.value,rx.body.zcl_header,rx.body.zcl_body
+
 if V.mfg_code~=nil then return end
 local i=V.cmd.value
 if(V.frame_ctrl.value&3)==1 and u==257 then
 if i==6 then N(c,s,true)elseif i==10 then N(c,s,false)elseif i==32 or i==33 then
 local M=i==32
-local v=M and s.operation_event_code.value or s.program_event_code.value
-local av=M and s.operation_event_source.value or s.program_event_source.value
-h(c,t.action,(M and aq or aB)[v],true)h(c,t.user,s.user_id.value,true)h(c,t.source,av,true)h(c,t.source_name,aK[av],true)
-end
+local v,av=M and s.operation_event_code.value or s.program_event_code.value,M and s.operation_event_source.value or s.program_event_source.value
+
+h(c,t.action,(M and aq or aB)[v],true)h(c,t.user,s.user_id.value,true)h(c,t.source,av,true)h(c,t.source_name,aK[av],true)end
 return
 end
 if(V.frame_ctrl.value&3)~=0 or(i~=1 and i~=10)or not s.attr_records then return end
@@ -128,24 +107,18 @@ end
 end
 if u==257 then
 if q[0]~=nil then
-k(c,e.lock.lock,q[0]==1 and"locked"or"unlocked")h(c,t.raw_lock,W[q[0]])
-end
+k(c,e.lock.lock,q[0]==1 and"locked"or"unlocked")h(c,t.raw_lock,W[q[0]])end
 h(c,t.relock,q[35])h(c,t.volume,am[q[36]])h(c,t.door,ai[q[3]])elseif u==1 then
 local o=q[33]if o~=nil and o<255 then
-h(c,t.raw_battery,o/2)
-if o<=200 and o%2==0 then k(c,e.battery.battery,o/2,"%")end
+h(c,t.raw_battery,o/2)if o<=200 and o%2==0 then k(c,e.battery.battery,o/2,"%")end
 end
-local ab=q[32]
-if ab~=nil and ab<255 then k(c,e.voltageMeasurement.voltage,ab/10,"V")end
-local aD=q[62]
-if aD~=nil then k(c,e["concertmirror08464.yrd410BatteryLow"].batteryLow,(aD&15744015)~=0)end
+local ab=q[32]if ab~=nil and ab<255 then k(c,e.voltageMeasurement.voltage,ab/10,"V")end
+local aD=q[62]if aD~=nil then k(c,e["concertmirror08464.yrd410BatteryLow"].batteryLow,(aD&15744015)~=0)end
 end
 end
 local function Q(c,ao,v)
-local E=C(v,true)
-if not E then return false end
-local i=({LOCK=D.server.commands.LockDoor,UNLOCK=D.server.commands.UnlockDoor,TOGGLE=D.server.commands.Toggle})[ao]
-if not i or not z(c,i(c,E))then return false end
+local E=C(v,true)if not E then return false end
+local i=({LOCK=D.server.commands.LockDoor,UNLOCK=D.server.commands.UnlockDoor,TOGGLE=D.server.commands.Toggle})[ao]if not i or not z(c,i(c,E))then return false end
 return af(c,257,0)
 end
 local function al(c,d,aS)
@@ -154,16 +127,13 @@ local aP
 for f,ap in pairs(am)do if ap==d then aP=f end end
 if aP==nil then return false end
 if not z(c,D.attributes.SoundVolume:write(c,aP))then return false end
-return af(c,257,36)
-end
+return af(c,257,36)end
 if not aF(d,0,3600)or not z(c,D.attributes.AutoRelockTime:write(c,d))then return false end
 return af(c,257,35)
 end
 local function ad(c,_,i)
-local y=i.args or{}
-if not U(y.codeSlot)or type(y.codeName)~="string"then return false end
-local A=c:get_field(P.."names")or{}
-if A[tostring(y.codeSlot)]==nil then return false end
+local y=i.args or{}if not U(y.codeSlot)or type(y.codeName)~="string"then return false end
+local A=c:get_field(P.."names")or{}if A[tostring(y.codeSlot)]==nil then return false end
 A[tostring(y.codeSlot)]=y.codeName
 c:set_field(P.."names",A,K);S(c)c:emit_event(e.lockCodes.codeChanged(y.codeSlot.." renamed",{state_change=true}))return true
 end
@@ -180,8 +150,7 @@ end,
 yrd410_relock=function(c,d)return al(c,d,false)end,
 yrd410_volume=function(c,d)return al(c,d,true)end,
 yrd410_standard_pin=function(c,_,i)
-local y=i.args or{}
-if y.codePIN==""then return ad(c,nil,i)end
+local y=i.args or{}if y.codePIN==""then return ad(c,nil,i)end
 return aa(c,y.codeSlot,y.codePIN,"unrestricted",true,y.codeName)
 end,
 yrd410_pin=function(c,d)
@@ -206,28 +175,23 @@ yrd410_name=ad,
 yrd410_update_codes=function(c,d)
 if type(d)~="table"then return false end
 local R={}for key,v in pairs(d)do
-local f=type(key)=="string"and tonumber(key:match"^code(%d+)$")
-if not U(f)or not C(v,false)then return false end
-R[#R+1]={f,v}
-end
+local f=type(key)=="string"and tonumber(key:match"^code(%d+)$")if not U(f)or not C(v,false)then return false end
+R[#R+1]={f,v}end
 table.sort(R,function(a,b)return a[1]<b[1]end)
 for _,p in ipairs(R)do
 local ok
-if p[2]==""or p[2]=="0"then ok=ac(c,p[1])
-else ok=aa(c,p[1],p[2],"unrestricted",true)end
+if p[2]==""or p[2]=="0"then ok=ac(c,p[1])else ok=aa(c,p[1],p[2],"unrestricted",true)end
 if not ok then return false end
 end
 return true
 end
-}local ay={
-{capability_id="lock",command_name="lock",mapping_name="yrd410_lock"},{capability_id="lock",command_name="unlock",mapping_name="yrd410_unlock"},{capability_id="lockCodes",command_name="lock",mapping_name="yrd410_lock"},{capability_id="lockCodes",command_name="unlock",mapping_name="yrd410_unlock"},{capability_id="lockCodes",command_name="setCode",mapping_name="yrd410_standard_pin"},{capability_id="lockCodes",command_name="updateCodes",argument_name="codes",mapping_name="yrd410_update_codes"},{capability_id="lockCodes",command_name="deleteCode",argument_name="codeSlot",mapping_name="yrd410_clear"},{capability_id="lockCodes",command_name="requestCode",argument_name="codeSlot",mapping_name="yrd410_get_pin"},{capability_id="lockCodes",command_name="reloadAllCodes",mapping_name="yrd410_get_pins"},{capability_id="lockCodes",command_name="nameSlot",mapping_name="yrd410_name"},{capability_id="concertmirror08464.yrd410Toggle",command_name="toggle",mapping_name="yrd410_toggle"},{capability_id="concertmirror08464.yrd410PinOperation",command_name="sendOperation",argument_name="operation",mapping_name="yrd410_operation"},{capability_id="concertmirror08464.yrd410RelockTime",command_name="setRelockTime",argument_name="relockTime",mapping_name="yrd410_relock"},{capability_id="concertmirror08464.yrd410SoundVolume",command_name="setSoundVolume",argument_name="soundVolume",mapping_name="yrd410_volume"},{capability_id="concertmirror08464.yrd410PinCode",command_name="setPinCode",argument_name="pinCode",mapping_name="yrd410_pin"},{capability_id="concertmirror08464.yrd410PinCode",command_name="clearPinCode",argument_name="user",mapping_name="yrd410_clear"},{capability_id="concertmirror08464.yrd410PinCode",command_name="getPinCode",argument_name="user",mapping_name="yrd410_get_pin"},{capability_id="concertmirror08464.yrd410PinCode",command_name="getAllPinCodes",mapping_name="yrd410_get_pins"},{capability_id="concertmirror08464.yrd410UserStatus",command_name="setUserStatus",argument_name="userStatus",mapping_name="yrd410_set_status"},{capability_id="concertmirror08464.yrd410UserStatus",command_name="getUserStatus",argument_name="user",mapping_name="yrd410_get_status"},{capability_id="concertmirror08464.yrd410UserStatus",command_name="getAllUserStatuses",mapping_name="yrd410_get_statuses"}}
+}local ay={{capability_id="lock",command_name="lock",mapping_name="yrd410_lock"},{capability_id="lock",command_name="unlock",mapping_name="yrd410_unlock"},{capability_id="lockCodes",command_name="lock",mapping_name="yrd410_lock"},{capability_id="lockCodes",command_name="unlock",mapping_name="yrd410_unlock"},{capability_id="lockCodes",command_name="setCode",mapping_name="yrd410_standard_pin"},{capability_id="lockCodes",command_name="updateCodes",argument_name="codes",mapping_name="yrd410_update_codes"},{capability_id="lockCodes",command_name="deleteCode",argument_name="codeSlot",mapping_name="yrd410_clear"},{capability_id="lockCodes",command_name="requestCode",argument_name="codeSlot",mapping_name="yrd410_get_pin"},{capability_id="lockCodes",command_name="reloadAllCodes",mapping_name="yrd410_get_pins"},{capability_id="lockCodes",command_name="nameSlot",mapping_name="yrd410_name"},{capability_id="concertmirror08464.yrd410Toggle",command_name="toggle",mapping_name="yrd410_toggle"},{capability_id="concertmirror08464.yrd410PinOperation",command_name="sendOperation",argument_name="operation",mapping_name="yrd410_operation"},{capability_id="concertmirror08464.yrd410RelockTime",command_name="setRelockTime",argument_name="relockTime",mapping_name="yrd410_relock"},{capability_id="concertmirror08464.yrd410SoundVolume",command_name="setSoundVolume",argument_name="soundVolume",mapping_name="yrd410_volume"},{capability_id="concertmirror08464.yrd410PinCode",command_name="setPinCode",argument_name="pinCode",mapping_name="yrd410_pin"},{capability_id="concertmirror08464.yrd410PinCode",command_name="clearPinCode",argument_name="user",mapping_name="yrd410_clear"},{capability_id="concertmirror08464.yrd410PinCode",command_name="getPinCode",argument_name="user",mapping_name="yrd410_get_pin"},{capability_id="concertmirror08464.yrd410PinCode",command_name="getAllPinCodes",mapping_name="yrd410_get_pins"},{capability_id="concertmirror08464.yrd410UserStatus",command_name="setUserStatus",argument_name="userStatus",mapping_name="yrd410_set_status"},{capability_id="concertmirror08464.yrd410UserStatus",command_name="getUserStatus",argument_name="user",mapping_name="yrd410_get_status"},{capability_id="concertmirror08464.yrd410UserStatus",command_name="getAllUserStatuses",mapping_name="yrd410_get_statuses"}}
 local function au(aM,c)
 for _,u in ipairs{257,1}do
 if not z(c,J.build_bind_request(c,u,aM.environment_info.hub_zigbee_eui,1))then return false end
 end
 for _,p in ipairs{{257,0,w.Enum8,0,3600},{1,33,w.Uint8,3600,65000},{1,62,w.Bitmap32,3600,65000}}do
-if not z(c,J.attr_config(c,{cluster=p[1],attribute=p[2],data_type=p[3],
-minimum_interval=p[4],maximum_interval=p[5],reportable_change=0}))then return false end
+if not z(c,J.attr_config(c,{cluster=p[1],attribute=p[2],data_type=p[3],minimum_interval=p[4],maximum_interval=p[5],reportable_change=0}))then return false end
 if p[1]==1 then af(c,1,p[2])end
 end
 return true

@@ -1,4 +1,3 @@
--- Wave17 Lincukoo CZF02 Finger Robot source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/lincukoo.ts:151-210.
 
 local tuya = require "protocol.tuya"

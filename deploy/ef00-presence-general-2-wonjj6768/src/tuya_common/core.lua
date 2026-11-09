@@ -1,14 +1,5 @@
-local E=require"st.zigbee.data_types"
-local s=require"st.zigbee.constants"
-local p=require"st.zigbee.zcl"
-local D=require"st.zigbee.messages"
-local K=require"st.zigbee.generic_body"
-local k=require"st.zigbee.zcl.global_commands.read_attribute"
-local J=require"st.zigbee.cluster_base"
-local ab=require"st.utils"
-local F=require"tuya_common.foundation"
-local ad=F.log
-local a={}for ac,f in pairs(F)do
+local E,s,p,D,K,k,J,ab,F=require"st.zigbee.data_types",require"st.zigbee.constants",require"st.zigbee.zcl",require"st.zigbee.messages",require"st.zigbee.generic_body",require"st.zigbee.zcl.global_commands.read_attribute",require"st.zigbee.cluster_base",require"st.utils",require"tuya_common.foundation"local ad,a=F.log,{}
+for ac,f in pairs(F)do
 a[ac]=f
 end
 a.data_types=E
@@ -19,18 +10,17 @@ a.generic_body=K
 a.read_attribute=k
 a.cluster_base=J
 a.utils=ab
-a.REPORT_COMMANDS={
-[a.GET_DATA]=true,[a.SET_DATA_RESPONSE]=true,[a.REPORT_STATUS]=true,[a.ACTIVE_STATUS_REPORT]=true}local m=a.BASIC_CLUSTER
-local r=a.PACKET_ID_FIELD
-local n=a.PERSIST_FALSE
-local w=a.BASIC_ENDPOINT_FIELD
-local P=a.string_byte
-local A=a.string_char
-local B=a.string_pack
-local R=a.string_len
-local x=a.math_floor
-local d=a.type_check
-local M=a.table_concat
+a.REPORT_COMMANDS={[a.GET_DATA]=true,[a.SET_DATA_RESPONSE]=true,[a.REPORT_STATUS]=true,[a.ACTIVE_STATUS_REPORT]=true}local m,r,n,w,P,A,B,R,x,d,M=a.BASIC_CLUSTER,a.PACKET_ID_FIELD,a.PERSIST_FALSE,a.BASIC_ENDPOINT_FIELD,a.string_byte,a.string_char,a.string_pack,a.string_len,a.math_floor,a.type_check,a.table_concat
+
+
+
+
+
+
+
+
+
+
 local function H(j)
 local e=j:get_field(r)if d(e)~="number"or e%1~=0 then
 e=0
@@ -47,8 +37,7 @@ if T then
 return T
 end
 local g=j:get_endpoint(Q)if g and o then
-j:set_field(o,g,n)
-end
+j:set_field(o,g,n)end
 return g
 end
 local function t(c)
@@ -85,11 +74,7 @@ local function i(j,V)
 local g=h(j,m,w)if not g then
 ad.warn(string.format("Cluster 0x%04X endpoint not found",m))return nil
 end
-local S=p.ZclHeader{
-cmd=E.ZCLCommandId(k.ReadAttribute.ID)}local G=D.AddressHeader(
-s.HUB.ADDR,s.HUB.ENDPOINT,j:get_short_address(),g,s.HA_PROFILE_ID,m)local L=p.ZclMessageBody{
-zcl_header=S,zcl_body=k.ReadAttribute(V)}return D.ZigbeeMessageTx{
-address_header=G,body=L}
+local S,G=p.ZclHeader{cmd=E.ZCLCommandId(k.ReadAttribute.ID)},D.AddressHeader(s.HUB.ADDR,s.HUB.ENDPOINT,j:get_short_address(),g,s.HA_PROFILE_ID,m)local L=p.ZclMessageBody{zcl_header=S,zcl_body=k.ReadAttribute(V)}return D.ZigbeeMessageTx{address_header=G,body=L}
 end
 local function C(Z)
 local X={}for aa,W in ipairs(Z or{})do
@@ -99,8 +84,7 @@ end
 local b=x(W)if b~=W or b<0 or b>255 then
 return nil
 end
-X[aa]=A(b)
-end
+X[aa]=A(b)end
 return M(X)
 end
 local function U(f)
@@ -108,8 +92,7 @@ if d(f)=="string"then
 return f
 end
 if d(f)=="table"then
-return C(f)
-end
+return C(f)end
 return nil
 end
 local function N(f)
@@ -123,14 +106,12 @@ f=b
 if f<=255 then
 return A(f)elseif f<=65535 then
 return B(">I2",f)elseif f<=0xFFFFFFFF then
-return B(">I4",f)
-end
+return B(">I4",f)end
 return nil
 end
 local function O(Y)
 if Y then
-return{persist=true}
-end
+return{persist=true}end
 return n
 end
 local function v(l)
@@ -151,8 +132,7 @@ return b
 end
 local function y(c)
 local I=t(c)if I and R(I)>=2 then
-return P(I,2)
-end
+return P(I,2)end
 return nil
 end
 a.next_packet_id=H

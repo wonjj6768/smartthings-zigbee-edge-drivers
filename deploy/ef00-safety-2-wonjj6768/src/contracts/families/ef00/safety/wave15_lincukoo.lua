@@ -1,22 +1,6 @@
-local d=require"protocol.tuya"
-local f=require"capabilities.events.all"
-local c=require"contracts.helpers.family"
-local a=d.converter
-local e,b=c.definition_registry()local h={
-profile="safety-wave15-lincukoo-e04cf-z10t",package_group="gas-co-sensor",magic_packet=true,query_on_configure=false,time_start="off",datapoints={
-d.dp_enum(1,{
-name="gas",read_only=true,transaction=1,
+local d,f,c=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family"local a=d.converter
+local e,b=c.definition_registry()local h={profile="safety-wave15-lincukoo-e04cf-z10t",package_group="gas-co-sensor",magic_packet=true,query_on_configure=false,time_start="off",datapoints={d.dp_enum(1,{name="gas",read_only=true,transaction=1,
 converter=a.from_only(function(g)return g==true or tonumber(g)==1 end),
-emit=f.gas()}),d.dp_numeric(2,{
-name="e_four_gas_level",read_only=true,transaction=1,converter=a.divide_by_pair(1000),emit=f.eFourGasLevel()}),d.dp_binary(8,{
-name="e_four_self_checking",transaction=1,converter=a.lookup_from_to{ON=true,OFF=false},emit=f.eFourSelfChecking()}),d.dp_enum(9,{
-name="e_four_checking_result",read_only=true,transaction=1,converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"}),emit=f.eFourCheckingResult()}),d.dp_enum(18,{
-name="carbon_monoxide",read_only=true,transaction=1,
+emit=f.gas()}),d.dp_numeric(2,{name="e_four_gas_level",read_only=true,transaction=1,converter=a.divide_by_pair(1000),emit=f.eFourGasLevel()}),d.dp_binary(8,{name="e_four_self_checking",transaction=1,converter=a.lookup_from_to{ON=true,OFF=false},emit=f.eFourSelfChecking()}),d.dp_enum(9,{name="e_four_checking_result",read_only=true,transaction=1,converter=a.from_only(a.lookup_value{[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"}),emit=f.eFourCheckingResult()}),d.dp_enum(18,{name="carbon_monoxide",read_only=true,transaction=1,
 converter=a.from_only(function(g)return g==true or tonumber(g)==1 end),
-emit=f.carbon_monoxide()}),d.dp_numeric(19,{
-name="co",read_only=true,transaction=1,emit=f.carbon_monoxide_level()}),d.dp_numeric(101,{
-name="e_four_max_gas_alarm",transaction=1,converter=a.divide_by_pair(1000),emit=f.eFourMaxGasAlarm()}),d.dp_numeric(102,{
-name="e_four_max_co_alarm",transaction=1,emit=f.eFourMaxCoAlarm()})}}b(h,c.create_fingerprints("TS0601",{
-"_TZE204_ra9zfiwr","_TZE28C1000000_ra9zfiwr"}))return{
-id="ef00.safety.wave15_lincukoo",registrations=e}
+emit=f.carbon_monoxide()}),d.dp_numeric(19,{name="co",read_only=true,transaction=1,emit=f.carbon_monoxide_level()}),d.dp_numeric(101,{name="e_four_max_gas_alarm",transaction=1,converter=a.divide_by_pair(1000),emit=f.eFourMaxGasAlarm()}),d.dp_numeric(102,{name="e_four_max_co_alarm",transaction=1,emit=f.eFourMaxCoAlarm()})}}b(h,c.create_fingerprints("TS0601",{"_TZE204_ra9zfiwr","_TZE28C1000000_ra9zfiwr"}))return{id="ef00.safety.wave15_lincukoo",registrations=e}

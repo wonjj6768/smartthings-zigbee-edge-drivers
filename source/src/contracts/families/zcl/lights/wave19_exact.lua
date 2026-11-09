@@ -1,4 +1,3 @@
--- Wave19 exact-only native/custom-ZCL light candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/candeo.ts:1082-1143 Candeo C-ZB-RD1Pv2-DIM
 --   src/devices/terncy.ts:716-776  TERNCY DIM003
@@ -47,7 +46,6 @@ local function candeo_action_resolver(zb_rx, cluster_id, command_id, source_endp
   return action, "switch2", handled
 end
 
--- Candeo C-ZB-RD1Pv2-DIM -----------------------------------------------
 
 local candeo = {
   profile = "lights-wave19-candeo-rd1pv2-dim",
@@ -164,7 +162,6 @@ register_device_definition(candeo, {
   device_helpers.create_fingerprint("Candeo", "C-ZB-RD1Pv2-DIM"),
 })
 
--- TERNCY DIM003 -------------------------------------------------------------
 
 local XIAOYAN_MFG_CODE = 0x1228
 local DIMMER_POWER_CLUSTER = 0xFCCC

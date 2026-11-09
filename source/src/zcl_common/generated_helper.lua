@@ -1,5 +1,3 @@
--- SmartThings generated ZCL cluster helper
--- 표준 cluster/attribute/command 정의를 ID 기반으로 조회합니다.
 
 local function load_generated_helper(zcl)
 

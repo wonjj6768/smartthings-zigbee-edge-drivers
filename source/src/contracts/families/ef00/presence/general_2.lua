@@ -1,4 +1,3 @@
--- presence-general-2 package-owned presence family definitions.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -30,13 +29,10 @@ local zg204zv_temperature_binding = temperature_unit.handlers({
   capability_id = "concertmirror08464.zg204zvTemperatureUnit",
   capability_emitter = emit.zg204zvTemperatureUnit(),
 })
--- ══════════════════════════════════════════════════════════════
 
--- 2-3. presence_model_zf24: ZF24 mmWave (AC, 조도 포함)
 
 -- Z2M: _TZE284_pzm3wab5 (ZF24)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zf24 = {
   profile = "safety-presence-zf24-move-illuminance",
@@ -84,13 +80,10 @@ register_presence_definition(presence_model_zf24, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-3c. presence_model_zd24: ZD24 PIR 24GHz human presence sensor
 
 -- Z2M: _TZE284_bw4ayyeh
 
--- ══════════════════════════════════════════════════════════════
 
 
 
@@ -288,13 +281,10 @@ register_presence_definition(presence_model_zd24, device_helpers.create_fingerpr
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-5. presence_model_zy_m100_l: ZY-M100-L (AC, 조도, 레거시)
 
 -- Z2M: _TZE200_ikvncluo (TS0601_smart_human_presence_sensor_1)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zy_m100_l = {
   profile = "safety-presence-zym100l-fixed-illuminance",
@@ -378,13 +368,10 @@ register_presence_definition(presence_model_zy_m100_l, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-7. presence_model_zy_m100_s_1: ZY-M100-S_1 (AC, 조도 DP104)
 
 -- Z2M: _TZE204_sxm7l9xa (ZY-M100-S_1)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zy_m100_s_1 = {
   profile = "safety-presence-zym100s1-range-illuminance",
@@ -431,13 +418,10 @@ register_presence_definition(presence_model_zy_m100_s_1, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-8. presence_model_zy_m100_s_2: ZY-M100-S_2 (AC, 조도 DP104)
 
 -- Z2M: _TZE204_qasjif9e (ZY-M100-S_2)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zy_m100_s_2 = {
   profile = "safety-presence-zym100s2-range-illuminance",
@@ -524,11 +508,8 @@ register_presence_definition(presence_model_zy_m100_s_2_iadro9bf, ts0601_fingerp
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-10a. presence_model_zy_hps01: ZY_HPS01 5.8GHz mmWave
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zy_hps01 = {
 
@@ -585,13 +566,10 @@ register_device_definition(presence_model_zy_hps01_entry, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11. presence_model_zg_204zm: ZG-204ZM (배터리 + 조도 + PIR/레이더 모드)
 
 -- Z2M: _TZE200_kb5noeto (ZG-204ZM)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zg_204zm = {
   profile = "safety-presence-zg204zm-illuminance-battery",
@@ -664,13 +642,10 @@ register_presence_definition(presence_model_zg_204zm, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11a. presence_model_zg_204zk: ZG-204ZK (배터리 + 조도)
 
 -- Z2M: _TZE200_ka8l86iu / _TZE200_zbfmvj13
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zg_204zk = {
   profile = "safety-presence-zg204zk-battery",
@@ -719,13 +694,10 @@ register_presence_definition(presence_model_zg_204zk, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11b. presence_model_zg_204ze: ZG-204ZE (배터리 + 조도)
 
 -- Z2M: ZG-204ZE / _TZE200_cq8lu23i / _TZE200_4pm4pekt
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zg_204ze = {
   profile = "safety-presence-zg204ze-illuminance-battery",
@@ -767,13 +739,10 @@ register_presence_definition(presence_model_zg_204ze, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11c. presence_model_zg_204zv: ZG-204ZV (배터리 + 조도 + 온습도)
 
 -- Z2M: _TZE200_uli8wasj / _TZE200_grgol3xp / _TZE200_rhgsbacq / _TZE200_y8jijhba
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zg_204zv = {
   profile = "safety-presence-zg204zv-illuminance-temp-humidity-battery",
@@ -836,13 +805,10 @@ presence_model_zg_204zv_fingerprints[#presence_model_zg_204zv_fingerprints + 1] 
 }
 register_presence_definition(presence_model_zg_204zv, presence_model_zg_204zv_fingerprints)
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11d. presence_model_zg_204zh: ZG-204ZH (배터리 + 조도 + 온습도 + 상태)
 
 -- Z2M: _TZE200_vuqzj1ej / _TZE200_hdih4foa
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zg_204zh = {
   profile = "safety-presence-zg204zh-illuminance-temp-humidity-battery",
@@ -913,13 +879,10 @@ register_presence_definition(presence_model_zg_204zh, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11e. presence_model_zg_204zq: ZG-204ZQ (배터리 + 조도 + 온습도)
 
 -- Z2M: _TZE200_p9zbdqgs
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zg_204zq = {
 
@@ -972,13 +935,10 @@ register_device_definition(presence_model_zg_204zq, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-24. presence_model_zis_01p: ZIS-01P dual-tech PIR + radar
 
 -- Z2M: _TZE284_vceqncho / _TZE284_who1jxwd
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_zis_01p = {
 

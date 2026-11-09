@@ -1,12 +1,4 @@
--- 안전 디바이스 정의 (연기, 가스, CO, 누수, 진동)
 -- Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
--- 변수명 규칙: {category}_{variant}
---   category: smoke (연기감지기)
---             gas   (가스감지기)
---             co    (일산화탄소감지기)
---             water (누수센서)
---             vibration (진동센서)
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -114,10 +106,7 @@ local function emit_smoke_state(custom_emitter)
   end
 end
 
--- ══════════════════════════════════════════════════════════════
--- 1-1. smoke: 기본형 (battery_state enum)
 -- Z2M: _TZE200_ux5v4dbd (TS0601_smoke_3)
--- ══════════════════════════════════════════════════════════════
 local smoke = {
   profile = "safety-smoke-battery-state-ux5v4dbd",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -132,10 +121,7 @@ register_device_definition(smoke, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_ux5v4dbd",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-2. smoke_tamper_battery_low: tamper + battery_low (bool)
 -- Z2M: _TZE200_0zaf1cr8 (TS0601_smoke_1 / Nous E8)
--- ══════════════════════════════════════════════════════════════
 local smoke_tamper_battery_low = {
   profile = "safety-smoke-tamper-battery-low",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -149,10 +135,7 @@ register_device_definition(smoke_tamper_battery_low, device_helpers.create_finge
   "_TZE284_0zaf1cr8",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-3. smoke_tamper: tamper + battery_state (enum)
 -- Z2M: _TZE200_ntcy3xu1 (TS0601_smoke_6)
--- ══════════════════════════════════════════════════════════════
 local smoke_tamper = {
   profile = "safety-smoke-tamper-battery-state-ntcy3xu1",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -168,10 +151,7 @@ register_device_definition(smoke_tamper, device_helpers.create_fingerprints("TS0
   "_TZE200_ntcy3xu1",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-4. smoke_battery: battery_state + battery numeric
 -- Z2M: _TZE200_t5p1vj8r (TS0601_smoke_4)
--- ══════════════════════════════════════════════════════════════
 local smoke_battery = {
   profile = "safety-smoke-battery-state-battery-t5p1vj8r",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -327,10 +307,7 @@ register_device_definition(siren_alarm_zg229z, {
   device_helpers.create_fingerprint("HOBEIAN", "ZG-229Z"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-5. smoke_model_hs2sa_1: self_test + battery_state + battery + silence
 -- Z2M: _TZE284_ai4rqhky (HS2SA-1 / Heiman)
--- ══════════════════════════════════════════════════════════════
 local smoke_model_hs2sa_1 = {
   profile = "safety-smoke-battery-state-battery-self-test-silence-hs2sa",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -364,10 +341,7 @@ register_device_definition(smoke_model_hs2sa_1, device_helpers.create_fingerprin
   "_TZE284_vawy74yh",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6. smoke_concentration: smoke_concentration + device_fault + battery
 -- Z2M: _TZE200_m9skfctm (PA-44Z)
--- ══════════════════════════════════════════════════════════════
 local smoke_concentration = {
   profile = "safety-smoke-battery-concentration-fault-silence-test-pa44z",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -400,10 +374,7 @@ register_device_definition(smoke_concentration, device_helpers.create_fingerprin
   "_TZE284_qvzsq3s2",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-7. smoke_concentration_fault_alarm: concentration + fault + battery_state + battery
 -- Z2M: _TZE200_e2bedvo9 (ZSS-QY-SSD-A-EN)
--- ══════════════════════════════════════════════════════════════
 local smoke_concentration_fault_alarm = {
   profile = "safety-smoke-battery-concentration-fault-state-silence-test-zss",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -439,10 +410,7 @@ register_device_definition(smoke_concentration_fault_alarm, device_helpers.creat
   "_TZE284_e2bedvo9",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-8. smoke_tamper_alarm: tamper + fault_alarm + battery + alarm
 -- Z2M: _TZE200_ytibqbra (TS0601_smoke_5)
--- ══════════════════════════════════════════════════════════════
 local smoke_tamper_alarm = {
   profile = "safety-smoke-tamper-battery-fault-silence-alarm-ytibqbra",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -471,10 +439,7 @@ register_device_definition(smoke_tamper_alarm, device_helpers.create_fingerprint
   "_TZE200_ytibqbra",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9. smoke_legacy: legacy (inverted smoke + alarm)
 -- Z2M: _TZE200_5d3vhjro (SA12IZL)
--- ══════════════════════════════════════════════════════════════
 local smoke_legacy = {
   profile = "safety-smoke-battery-silence-alarm-sa12izl",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -495,10 +460,7 @@ register_device_definition(smoke_legacy, device_helpers.create_fingerprints("TS0
   "_TZE200_5d3vhjro",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-10. smoke_model_r7049: Woox (battery enum + alarm)
 -- Z2M: _TZE200_aycxwiau (R7049)
--- ══════════════════════════════════════════════════════════════
 local smoke_model_r7049 = {
   profile = "safety-smoke-test-result-battery-fault-silence-alarm-r7049",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -551,10 +513,7 @@ register_device_definition(smoke_model_r7049, device_helpers.create_fingerprints
   "_TZE200_ft523twt",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-11. smoke_model_smart_smoke10: Alecto (smoke_state enum)
 -- Z2M: _TZE200_qtbrwrfv (SMART-SMOKE10)
--- ══════════════════════════════════════════════════════════════
 local smoke_model_smart_smoke10 = {
   profile = "safety-smoke-value-self-check-result-lifecycle-battery-silence-alecto",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -610,10 +569,7 @@ register_device_definition(smoke_model_smart_smoke10, {
   { manufacturer = "_TYST11_qtbrwrfv", model = "tbrwrfv" .. string.char(0) },
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-12. smoke_model_288wz: ONENUO 288WZ
 -- Z2M: _TZE204_kgaxpvxr / _TZE284_n4ttsck2 (288WZ)
--- ══════════════════════════════════════════════════════════════
 local smoke_model_288wz = {
   profile = "safety-smoke-detector-battery-288wz",
   magic_packet = true,
@@ -668,10 +624,7 @@ register_device_definition(smoke_model_288wz, device_helpers.create_fingerprints
   "_TZE2841000000_n4ttsck2",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-13. smoke_co: 연기 + CO 복합
 -- Z2M: _TZE284_6ycgarab (TS0601_smoke_co)
--- ══════════════════════════════════════════════════════════════
 local smoke_co = {
   profile = "safety-smoke-co-battery-state-volume-silence-alarm-smokeco",
   query_on_configure = true,
@@ -727,10 +680,7 @@ register_device_definition(smoke_co, device_helpers.create_fingerprints("TS0601"
   "_TZE284_aoah6bv8",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-14. smoke_temp_humidity: 연기 + 온도 + 습도
 -- Z2M: _TZE284_gyzlwu5q (228WZH)
--- ══════════════════════════════════════════════════════════════
 local smoke_temp_humidity = {
   profile = "safety-smoke-temp-humidity-battery",
   tuya.dp_smoke(1, { emit = emit.smoke() }),
@@ -770,10 +720,7 @@ register_device_definition(smoke_temp_humidity, device_helpers.create_fingerprin
   "_TZE284_gyzlwu5q",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-1. gas_self_test_fault: 기본 가스 (self_test + fault)
 -- Z2M: _TZE200_ggev5fsl (TS0601_gas_sensor_1)
--- ══════════════════════════════════════════════════════════════
 local gas_self_test_fault = {
   profile = "safety-gas-detector-self-test",
   tuya.dp_gas(1, { emit = emit.gas() }),
@@ -813,10 +760,7 @@ register_device_definition(gas_self_test_fault, device_helpers.create_fingerprin
   "_TZE204_kvpwq8z7",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-2. gas_value_alarm_time_ringtone: 가스 농도 + 알람 시간/벨소리
 -- Z2M: _TZE200_yojqa8xn (TS0601_gas_sensor_2)
--- ══════════════════════════════════════════════════════════════
 local gas_value_alarm_time_ringtone = {
   profile = "safety-gas-detector-alarm-time-ringtone",
   tuya.dp_enum(1, {
@@ -876,10 +820,7 @@ register_device_definition(gas_value_alarm_time_ringtone, device_helpers.create_
   "_TZE28C1000000_chbyv06x",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-3. gas_self_test_result_fault: 최소 가스 (self_test_result + fault)
 -- Z2M: _TZE200_nus5kk3n (TS0601_gas_sensor_3)
--- ══════════════════════════════════════════════════════════════
 local gas_self_test_result_fault = {
   profile = "safety-gas-detector-self-test-result-fault-gas3",
   tuya.dp_gas(1, { emit = emit.gas() }),
@@ -908,10 +849,7 @@ register_device_definition(gas_self_test_result_fault, device_helpers.create_fin
   "_TZE200_nus5kk3n",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-4. gas_value_preheat_fault: 가스 농도 + preheat + fault
 -- Z2M: _TZE200_mby4kbtq (TS0601_gas_sensor_4)
--- ══════════════════════════════════════════════════════════════
 local gas_value_preheat_fault = {
   profile = "safety-gas-detector-value-preheat-fault-alarm-silence-gas4",
   tuya.dp_gas(1, { emit = emit.gas() }),
@@ -956,10 +894,7 @@ register_device_definition(gas_value_preheat_fault, device_helpers.create_finger
   "_TZE284_uo8qcagc",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-5. gas_model_ga01: Meian (self_test_result + preheat)
 -- Z2M: _TZE200_ioxkjvuz (GA01)
--- ══════════════════════════════════════════════════════════════
 local gas_model_ga01 = {
   profile = "safety-gas-detector-self-test-result-preheat-ga01",
   tuya.dp_gas(1, { emit = emit.gas() }),
@@ -988,10 +923,7 @@ register_device_definition(gas_model_ga01, device_helpers.create_fingerprints("T
   "_TZE200_ioxkjvuz",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-6. gas_model_dg03: Spacetronik (fault enum)
 -- Z2M: _TZE204_v6iczj35 (ZB-DG03)
--- ══════════════════════════════════════════════════════════════
 
 
 
@@ -1108,10 +1040,7 @@ register_device_definition(gas_model_dg03, device_helpers.create_fingerprints("T
   "_TZE204_v6iczj35",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 2-7. gas_model_zg_225z: 가스 농도 (ppm) + sensitivity
 -- Z2M: _TZE200_8isdky6j / _TZE200_p6fuhvez / _TZE200_aj0oxo1i
--- ══════════════════════════════════════════════════════════════
 local gas_model_zg_225z = {
   profile = "safety-gas-detector-zg225z",
   tuya.dp_gas(1, { emit = emit.gas() }),
@@ -1145,10 +1074,7 @@ register_device_definition(gas_model_zg_225z, {
   device_helpers.create_fingerprint("_TZE200_aj0oxo1i", "TS0225"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 3-1. co: CO 감지기 (CO 농도 포함)
 -- Z2M: _TZE200_7bztmfm1 (DCR-CO)
--- ══════════════════════════════════════════════════════════════
 local co = {
   profile = "safety-co-detector",
   tuya.dp_carbon_monoxide(1, { emit = emit.carbon_monoxide() }),
@@ -1160,10 +1086,7 @@ register_device_definition(co, device_helpers.create_fingerprints("TS0601", {
   "_TZE204_7bztmfm1",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 3-2. gas_carbon_monoxide: CO + 가스 복합
 -- Z2M: _TZE200_iuk8kupi (DCR-RQJ)
--- ══════════════════════════════════════════════════════════════
 
 
 
@@ -1304,10 +1227,7 @@ register_device_definition(gas_carbon_monoxide_jkd816, device_helpers.create_fin
   "_TZE204_qaxkdgyt",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 4-1. th_contact: 접점 + 온습도
 -- Z2M: _TZE200_nvups4nh (contact_th_sensor)
--- ══════════════════════════════════════════════════════════════
 local th_contact = {
   profile = "safety-contact-temp-humidity-battery",
   tuya.dp_contact(1, { emit = emit.contact(), inverted = true }),
@@ -1320,13 +1240,14 @@ register_device_definition(th_contact, device_helpers.create_fingerprints("TS060
   "_TZE200_nvups4nh",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 4-2. contact_illum: 독립 접점 + 조도 + 배터리
 -- Z2M: _TZE200_pay2byax (ZG-102ZL)
--- ══════════════════════════════════════════════════════════════
 local contact_illum = {
   profile = "safety-contact-illuminance-battery",
-  tuya.dp_contact(1, { emit = emit.contact(), inverted = true }),
+  time_start = "off",
+  tuya.dp_contact(1, {
+    emit = emit.contact(),
+    from_device = function(value) return value ~= false and value ~= 0 end,
+  }),
   tuya.dp_battery(2, { emit = emit.battery() }),
   tuya.dp_illuminance(101, { emit = emit.illuminance() }),
   tuya.dp_numeric(102, {
@@ -1342,10 +1263,7 @@ register_device_definition(contact_illum, device_helpers.create_fingerprints("TS
   "_TZE200_kf2hbko4",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 4-3. contact_basic: 독립 접점 + 배터리
 -- Z2M: _TZE200_kltffuzl (TM001-ZA/TM081)
--- ══════════════════════════════════════════════════════════════
 local contact_basic = {
   profile = "safety-contact-battery",
   tuya.dp_contact(1, { emit = emit.contact(), inverted = true }),
@@ -1358,10 +1276,7 @@ register_device_definition(contact_basic, device_helpers.create_fingerprints("TS
   "_TZE200_n8dljorx",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 4-4. contact_opening_tamper: opening_state + 배터리 + tamper
 -- ZHA: _TZE200_ytx9fudw / Z2M: Senoro.Win
--- ══════════════════════════════════════════════════════════════
 local contact_opening_tamper = {
   profile = "safety-contact-alarm-battery-opening-senoro",
   tuya.dp_battery(2, { emit = emit.battery() }),
@@ -1526,10 +1441,7 @@ register_device_definition(contact_senoro_win_v2, device_helpers.create_fingerpr
   "_TZE284_6teua268",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 5-1. water: 누수 (배터리 없음)
 -- Z2M: _TZE200_qq9mpfhw (TS0601_water_sensor / NEO NAS-WS02B0)
--- ══════════════════════════════════════════════════════════════
 local water = {
   profile = "safety-water-leak",
   tuya.dp_binary(101, { name = "water_leak", emit = emit.water() }),
@@ -1539,10 +1451,7 @@ register_device_definition(water, device_helpers.create_fingerprints("TS0601", {
   "_TZE200_qq9mpfhw",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 5-2. water_battery: 누수 + 배터리
 -- Z2M: _TZE200_jthf7vb6 (WLS-100z)
--- ══════════════════════════════════════════════════════════════
 local water_battery = {
   profile = "safety-water-leak-battery",
   bind_basic_on_configure = true,
@@ -1554,10 +1463,7 @@ register_device_definition(water_battery, device_helpers.create_fingerprints("TS
   "_TZE200_jthf7vb6",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 5-3. water_illum_battery_model_zg_223z: ZG-223Z (비 감지 + 조도 + 배터리)
 -- Z2M: _TZE200_jsaqgakf / _TZE200_u6x1zyv2 / _TZE200_2pddnnrk
--- ══════════════════════════════════════════════════════════════
 
 
 
@@ -1683,10 +1589,7 @@ register_device_definition(water_illum_battery_model_zg_223z, {
   device_helpers.create_fingerprint("HOBEIAN", "ZG-223Z"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 6-1. vibration: 진동 + 접점 + 배터리
 -- Z2M: _TZE200_kzm5w4iz (TS0601_vibration_sensor)
--- ══════════════════════════════════════════════════════════════
 local vibration = {
   profile = "safety-acceleration-contact-battery",
   tuya.dp_contact(1, { emit = emit.contact(), inverted = true }),
@@ -1698,10 +1601,7 @@ register_device_definition(vibration, device_helpers.create_fingerprints("TS0601
   "_TZE200_kzm5w4iz",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 6-2. vibration_model_zg_102zm: ZG-102ZM
 -- Z2M: _TZE200_wzk0x7fq / _TZE200_jfw0a4aa
--- ══════════════════════════════════════════════════════════════
 local vibration_model_zg_102zm = {
   profile = "safety-acceleration-contact-battery-zg102zm",
   tuya.dp_binary(1, { name = "vibration", emit = emit.acceleration(), converter = converter.true_false1() }),
@@ -1719,10 +1619,7 @@ register_device_definition(vibration_model_zg_102zm, {
   device_helpers.create_fingerprint("AOYAN", "AY02SZ"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 6-3. vibration_model_zg_103z: ZG-103Z
 -- Z2M: _TZE200_iba1ckek / _TZE200_hggxgsjj / _TZE200_yjryxpot / _TZE200_afycb3cg
--- ══════════════════════════════════════════════════════════════
 local vibration_model_zg_103z = {
   profile = "safety-acceleration-battery-zg103z",
   tuya.dp_enum(1, { name = "vibration", emit = emit.acceleration(), converter = converter.true_false1() }),
@@ -1760,10 +1657,7 @@ register_device_definition(vibration_model_zg_103z, device_helpers.create_finger
   "HOBEIAN:ZG-103Z",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 6-4. vibration_model_4cqhd2ha: 진동 + 감도 + buzzer mute
 -- Z2M: _TZE284_4cqhd2ha / _TZE200_8ply8mjj
--- ══════════════════════════════════════════════════════════════
 local vibration_model_4cqhd2ha = {
   profile = "safety-acceleration-4cqhd2ha",
   tuya.dp_binary(1, { name = "vibration", emit = emit.acceleration(), converter = converter.true_false1() }),

@@ -11,8 +11,9 @@ local function setpoint_wire(value)
   -- Primary Math.round(Number((value*2).toFixed(1)))/2, including binary64 ties.
   local doubled = value * 2
   local whole = math.floor(doubled)
-  local mantissa, exponent = math.frexp(doubled)
-  mantissa = math.floor(mantissa * 9007199254740992)
+  local bits = string.unpack("<I8", string.pack("<d", doubled))
+  local exponent = ((bits >> 52) & 0x7FF) - 1022
+  local mantissa = (bits & 0xFFFFFFFFFFFFF) | 0x10000000000000
   if mantissa * 20 >= (whole * 20 + 9) * (1 << (53 - exponent)) then whole = whole + 1 end
   return whole * 50
 end
@@ -167,7 +168,6 @@ local family = {
   end,
 }
 register(family, {device_helpers.create_fingerprint("OWON", "AC201")})
--- Main's normal reporting generator supplies attachment + derived final profile.
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(definitions, {
   {1, "rpt-ars"},

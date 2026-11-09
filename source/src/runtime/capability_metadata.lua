@@ -1,6 +1,3 @@
--- Protocol-neutral custom capability metadata.
--- Keep capability IDs, command wiring, labels, and fallback ranges in one place
--- so emitters and driver handlers stay aligned.
 
 local custom_capabilities = {}
 local generated_family_capabilities = require "generated.custom_capabilities.families"
@@ -83,21 +80,22 @@ end
 local function make_numeric_capability(options)
   local attribute_name = assert(options.attribute_name, "numeric capability requires attribute_name")
   local read_only = options.read_only == true
+  local range_attribute_name = options.range_attribute_name
+  local command_name, argument_name = options.command_name, options.argument_name
+  if not read_only then
+    if range_attribute_name == nil then range_attribute_name = attribute_name .. "Range" end
+    if command_name == nil then command_name = "set" .. capitalize(attribute_name) end
+    if argument_name == nil then argument_name = attribute_name end
+  end
 
   return numeric({
     emit_name = assert(options.emit_name, "numeric capability requires emit_name"),
     range_key = options.range_key or options.emit_name,
     capability_id = capability_id(options.capability_name or attribute_name),
     attribute_name = attribute_name,
-    range_attribute_name = options.range_attribute_name ~= nil
-      and options.range_attribute_name
-      or (read_only and nil or (attribute_name .. "Range")),
-    command_name = options.command_name ~= nil
-      and options.command_name
-      or (read_only and nil or ("set" .. capitalize(attribute_name))),
-    argument_name = options.argument_name ~= nil
-      and options.argument_name
-      or (read_only and nil or attribute_name),
+    range_attribute_name = range_attribute_name,
+    command_name = command_name,
+    argument_name = argument_name,
     mapping_name = options.mapping_name or options.emit_name,
     label = assert(options.label, "numeric capability requires label"),
     default_range = options.default_range,
@@ -110,6 +108,11 @@ end
 local function make_enum_capability(options)
   local attribute_name = assert(options.attribute_name, "enum capability requires attribute_name")
   local read_only = options.read_only == true
+  local command_name, argument_name = options.command_name, options.argument_name
+  if not read_only then
+    if command_name == nil then command_name = "set" .. capitalize(attribute_name) end
+    if argument_name == nil then argument_name = attribute_name end
+  end
 
   return enum({
     emit_name = assert(options.emit_name, "enum capability requires emit_name"),
@@ -117,12 +120,8 @@ local function make_enum_capability(options)
     capability_id = capability_id(options.capability_name or attribute_name),
     attribute_name = attribute_name,
     supported_attribute_name = options.supported_attribute_name,
-    command_name = options.command_name ~= nil
-      and options.command_name
-      or (read_only and nil or ("set" .. capitalize(attribute_name))),
-    argument_name = options.argument_name ~= nil
-      and options.argument_name
-      or (read_only and nil or attribute_name),
+    command_name = command_name,
+    argument_name = argument_name,
     mapping_name = options.mapping_name or options.emit_name,
     label = assert(options.label, "enum capability requires label"),
     supported_values = assert(options.supported_values, "enum capability requires supported_values"),

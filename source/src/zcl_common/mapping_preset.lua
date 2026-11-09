@@ -1,5 +1,3 @@
--- ZCL capability 중심 프리셋
--- 자주 쓰는 cluster/attribute 조합에 emit/converter/scale 기본값을 제공합니다.
 
 local function load_mapping_preset(zcl)
 
@@ -292,24 +290,19 @@ local function load_mapping_preset(zcl)
 
   local function encode_uint16_le(value)
     local numeric = math.floor(clamp(tonumber(value) or 0, 0, 0xFFFF) + 0.5)
-    return string.char(bit32.band(numeric, 0xFF)) ..
-      string.char(bit32.rshift(bit32.band(numeric, 0xFF00), 8))
+    return string.char(numeric & 0xFF, (numeric >> 8) & 0xFF)
   end
 
   local function encode_uint32_le(value)
     local numeric = math.floor(clamp(tonumber(value) or 0, 0, 0xFFFFFFFF) + 0.5)
-    return string.char(bit32.band(numeric, 0xFF)) ..
-      string.char(bit32.rshift(bit32.band(numeric, 0xFF00), 8)) ..
-      string.char(bit32.rshift(bit32.band(numeric, 0xFF0000), 16)) ..
-      string.char(bit32.rshift(bit32.band(numeric, 0xFF000000), 24))
+    return string.char(numeric & 0xFF, (numeric >> 8) & 0xFF,
+      (numeric >> 16) & 0xFF, (numeric >> 24) & 0xFF)
   end
 
   local function encode_uint32_be(value)
     local numeric = math.floor(clamp(tonumber(value) or 0, 0, 0xFFFFFFFF) + 0.5)
-    return string.char(bit32.rshift(bit32.band(numeric, 0xFF000000), 24)) ..
-      string.char(bit32.rshift(bit32.band(numeric, 0xFF0000), 16)) ..
-      string.char(bit32.rshift(bit32.band(numeric, 0xFF00), 8)) ..
-      string.char(bit32.band(numeric, 0xFF))
+    return string.char((numeric >> 24) & 0xFF, (numeric >> 16) & 0xFF,
+      (numeric >> 8) & 0xFF, numeric & 0xFF)
   end
 
   local function ts110e_brightness_limit_pair()
@@ -447,8 +440,8 @@ local function load_mapping_preset(zcl)
     return string.char(
       key,
       state,
-      bit32.band(bit32.rshift(numeric, 8), 0xFF),
-      bit32.band(numeric, 0xFF)
+      (numeric >> 8) & 0xFF,
+      numeric & 0xFF
     )
   end
 
@@ -491,13 +484,13 @@ local function load_mapping_preset(zcl)
           return numeric
         end
 
-        if bit32.band(numeric, 0x0001) ~= 0 or bit32.band(numeric, 0x0008) ~= 0 then
+        if (numeric & 0x0009) ~= 0 then
           return "heating"
         end
-        if bit32.band(numeric, 0x0002) ~= 0 or bit32.band(numeric, 0x0010) ~= 0 then
+        if (numeric & 0x0012) ~= 0 then
           return "cooling"
         end
-        if bit32.band(numeric, 0x0004) ~= 0 or bit32.band(numeric, 0x0020) ~= 0 or bit32.band(numeric, 0x0040) ~= 0 then
+        if (numeric & 0x0064) ~= 0 then
           return "fan only"
         end
 
@@ -570,7 +563,7 @@ local function load_mapping_preset(zcl)
           return value
         end
 
-        return bit32.band(value, mask) ~= 0
+        return (value & mask) ~= 0
       end,
     }
   end
@@ -586,8 +579,8 @@ local function load_mapping_preset(zcl)
           if alarm1 == nil and value.value ~= nil then value = value.value end
         end
         if type(value) == "number" then
-          alarm1 = bit32.band(value, 0x0001) ~= 0
-          alarm2 = bit32.band(value, 0x0002) ~= 0
+          alarm1 = (value & 0x0001) ~= 0
+          alarm2 = (value & 0x0002) ~= 0
         end
         if alarm1 == nil or alarm2 == nil then return value end
         if not alarm1 and not alarm2 then return "closed" end

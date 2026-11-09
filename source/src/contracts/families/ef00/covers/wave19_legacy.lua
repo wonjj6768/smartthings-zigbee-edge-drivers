@@ -1,4 +1,3 @@
--- Wave19 Novo/Somgoms legacy Tuya cover source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/novo.ts:8-16
 --   src/devices/somgoms.ts:29-37

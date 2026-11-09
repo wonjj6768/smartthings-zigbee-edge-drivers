@@ -1,4 +1,3 @@
--- Complete source ZCL facade including metering and IR support.
 
 local zcl = {}
 

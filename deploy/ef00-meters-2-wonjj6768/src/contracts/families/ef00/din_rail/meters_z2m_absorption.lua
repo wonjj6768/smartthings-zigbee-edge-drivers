@@ -1,56 +1,7 @@
-local c=require"protocol.tuya"
-local d=require"capabilities.events.all"
-local e=require"contracts.helpers.family"
-local m=require"contracts.helpers.ef00_din_rail"
-local a=c.converter
-local f=m.emit_metric_bundle
-local j,b=e.definition_registry()local i={
-profile="meters-zwpm16",package_group="meters",magic_packet=true,mcu_version_request_on_configure=true,initial_custom_state_query=false,refresh_state_query=false,c.dp_current(18,{
-emit=d.current(),converter=a.divide_by_pair(1000),read_only=true}),c.dp_power(19,{
-emit=d.power(),converter=a.divide_by_pair(10),read_only=true}),c.dp_voltage(20,{
-emit=d.voltage(),converter=a.divide_by_pair(10),read_only=true}),c.dp_energy(104,{
-emit=d.energy(),converter=a.divide_by_pair(1000),read_only=true}),c.dp_numeric(105,{
-name="daily_energy",converter=a.divide_by_pair(1000),read_only=true,emit=d.zwpm16DailyEnergy()}),query_on_configure=false,time_start="off"}b(i,e.create_fingerprints("TS0601",{
-"_TZE204_goecjd1t","_TZE284_goecjd1t"}))local h={
-profile="meters-zwpm16-2",package_group="meters",c.dp_power(105,{
-name="power_l1",component="main",emit=d.power(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_current(106,{
-name="current_l1",component="main",emit=d.current(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_voltage(107,{
-name="voltage_l1",component="main",emit=d.voltage(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_energy(108,{
-name="energy_l1",component="main",emit=d.energy(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_numeric(109,{
-name="daily_energy_l1",component="main",converter=a.signed_number_pair(1000),signed=true,read_only=true,emit=d.zwpm16TwoDailyEnergyL1()}),c.dp_power(115,{
-name="power_l2",component="l2",emit=d.power(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_current(116,{
-name="current_l2",component="l2",emit=d.current(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_voltage(117,{
-name="voltage_l2",component="l2",emit=d.voltage(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_energy(118,{
-name="energy_l2",component="l2",emit=d.energy(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_numeric(119,{
-name="daily_energy_l2",component="l2",converter=a.signed_number_pair(1000),signed=true,read_only=true,emit=d.zwpm16TwoDailyEnergyL2()}),query_on_configure=false,time_start="off"}b(h,e.create_fingerprints("TS0601",{
-"_TZE204_jrcfsaa3"}))local g={
-profile="meters-three-channel-bidirectional-core",package_group="meters",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,named_datapoints=true,time_start="off",datapoints={
-c.dp_energy(1,{
-name="energy",scale=100,read_only=true,transaction=1,emit=d.energy()}),c.dp_power(9,{
-name="power",scale=10,read_only=true,transaction=1,emit=d.power()}),c.dp_on_off(16,{
-name="switch",component="main",transaction=1,emit=d.switch()}),c.dp_voltage(101,{
-name="voltage",scale=10,read_only=true,transaction=1,emit=d.voltage()}),c.dp_temperature(131,{
-name="temperature",scale=10,read_only=true,transaction=1,emit=d.temperature"C"})}}b(g,{
-e.create_fingerprint("_TZE20C1000000_p3g8xiug","TS0601")})local k={
-profile="meters-nous-d4z-m-core",package_group="meters",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,named_datapoints=true,time_start="off",datapoints={
-c.dp_energy(1,{
-name="energy",scale=100,read_only=true,emit=d.energy()}),c.dp_phase_variant2(6,{
-signed_power=true,phase="a",component="l1",read_only=true,emit=f{voltage=true,current=true,power=true}}),c.dp_phase_variant2(7,{
-signed_power=true,phase="b",component="l2",read_only=true,emit=f{voltage=true,current=true,power=true}}),c.dp_phase_variant2(8,{
-signed_power=true,phase="c",component="l3",read_only=true,emit=f{voltage=true,current=true,power=true}}),c.dp_power(29,{
-name="power",scale=1,read_only=true,emit=d.power()}),c.dp_energy(53,{
-name="energy_a",component="l1",scale=100,read_only=true,emit=d.energy()}),c.dp_energy(54,{
-name="energy_b",component="l2",scale=100,read_only=true,emit=d.energy()}),c.dp_energy(55,{
-name="energy_c",component="l3",scale=100,read_only=true,emit=d.energy()})}}b(k,e.create_fingerprints("TS0601",{
-"_TZE200_agjqiu4h","_TZE204_agjqiu4h","_TZE284_agjqiu4h"}))local l={
-profile="meters-avatto-zot60",magic_packet=true,query_on_configure=false,time_start="off",datapoints={
-c.dp_on_off(1,{name="switch",emit=d.switch()}),c.dp_numeric(9,{name="zot60_countdown",emit=d.zot60Countdown()}),c.dp_energy(17,{
-name="zot60_energy",scale=1000,
+local c,d,e,m=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00_din_rail"local a,f=c.converter,m.emit_metric_bundle
+
+local j,b=e.definition_registry()local i={profile="meters-zwpm16",package_group="meters",magic_packet=true,mcu_version_request_on_configure=true,initial_custom_state_query=false,refresh_state_query=false,c.dp_current(18,{emit=d.current(),converter=a.divide_by_pair(1000),read_only=true}),c.dp_power(19,{emit=d.power(),converter=a.divide_by_pair(10),read_only=true}),c.dp_voltage(20,{emit=d.voltage(),converter=a.divide_by_pair(10),read_only=true}),c.dp_energy(104,{emit=d.energy(),converter=a.divide_by_pair(1000),read_only=true}),c.dp_numeric(105,{name="daily_energy",converter=a.divide_by_pair(1000),read_only=true,emit=d.zwpm16DailyEnergy()}),query_on_configure=false,time_start="off"}b(i,e.create_fingerprints("TS0601",{"_TZE204_goecjd1t","_TZE284_goecjd1t"}))local h={profile="meters-zwpm16-2",package_group="meters",c.dp_power(105,{name="power_l1",component="main",emit=d.power(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_current(106,{name="current_l1",component="main",emit=d.current(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_voltage(107,{name="voltage_l1",component="main",emit=d.voltage(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_energy(108,{name="energy_l1",component="main",emit=d.energy(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_numeric(109,{name="daily_energy_l1",component="main",converter=a.signed_number_pair(1000),signed=true,read_only=true,emit=d.zwpm16TwoDailyEnergyL1()}),c.dp_power(115,{name="power_l2",component="l2",emit=d.power(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_current(116,{name="current_l2",component="l2",emit=d.current(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_voltage(117,{name="voltage_l2",component="l2",emit=d.voltage(),converter=a.signed_number_pair(10),signed=true,read_only=true}),c.dp_energy(118,{name="energy_l2",component="l2",emit=d.energy(),converter=a.signed_number_pair(1000),signed=true,read_only=true}),c.dp_numeric(119,{name="daily_energy_l2",component="l2",converter=a.signed_number_pair(1000),signed=true,read_only=true,emit=d.zwpm16TwoDailyEnergyL2()}),query_on_configure=false,time_start="off"}b(h,e.create_fingerprints("TS0601",{"_TZE204_jrcfsaa3"}))local g={profile="meters-three-channel-bidirectional-core",package_group="meters",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,named_datapoints=true,time_start="off",datapoints={c.dp_energy(1,{name="energy",scale=100,read_only=true,transaction=1,emit=d.energy()}),c.dp_power(9,{name="power",scale=10,read_only=true,transaction=1,emit=d.power()}),c.dp_on_off(16,{name="switch",component="main",transaction=1,emit=d.switch()}),c.dp_voltage(101,{name="voltage",scale=10,read_only=true,transaction=1,emit=d.voltage()}),c.dp_temperature(131,{name="temperature",scale=10,read_only=true,transaction=1,emit=d.temperature"C"})}}b(g,{e.create_fingerprint("_TZE20C1000000_p3g8xiug","TS0601")})local k={profile="meters-nous-d4z-m-core",package_group="meters",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,named_datapoints=true,time_start="off",datapoints={c.dp_energy(1,{name="energy",scale=100,read_only=true,emit=d.energy()}),c.dp_phase_variant2(6,{signed_power=true,phase="a",component="l1",read_only=true,emit=f{voltage=true,current=true,power=true}}),c.dp_phase_variant2(7,{signed_power=true,phase="b",component="l2",read_only=true,emit=f{voltage=true,current=true,power=true}}),c.dp_phase_variant2(8,{signed_power=true,phase="c",component="l3",read_only=true,emit=f{voltage=true,current=true,power=true}}),c.dp_power(29,{name="power",scale=1,read_only=true,emit=d.power()}),c.dp_energy(53,{name="energy_a",component="l1",scale=100,read_only=true,emit=d.energy()}),c.dp_energy(54,{name="energy_b",component="l2",scale=100,read_only=true,emit=d.energy()}),c.dp_energy(55,{name="energy_c",component="l3",scale=100,read_only=true,emit=d.energy()})}}b(k,e.create_fingerprints("TS0601",{"_TZE200_agjqiu4h","_TZE204_agjqiu4h","_TZE284_agjqiu4h"}))local l={profile="meters-avatto-zot60",magic_packet=true,query_on_configure=false,time_start="off",datapoints={c.dp_on_off(1,{name="switch",emit=d.switch()}),c.dp_numeric(9,{name="zot60_countdown",emit=d.zot60Countdown()}),c.dp_energy(17,{name="zot60_energy",scale=1000,
 emit=function(n,o)
 return{d.energy()(n,o),d.zot60Energy()(n,o)}
 end
-}),c.dp_current(18,{scale=1000,read_only=true,emit=d.current()}),c.dp_power(19,{scale=10,read_only=true,emit=d.power()}),c.dp_voltage(20,{scale=10,read_only=true,emit=d.voltage()}),c.dp_enum(27,{
-name="zot60_power_behavior",emit=d.zot60PowerBehavior(),converter=a.lookup_from_to{off=0,on=1,previous=2}}),c.dp_binary(101,{
-name="zot60_backlight_mode",emit=d.zot60BacklightMode(),converter=a.lookup_from_to{ON=true,OFF=false}})}}b(l,e.create_fingerprints("TS011F",{
-"_TZ3218_pfnjjx6a","_TZ3218_fv20refe","_TZ3218_o1slgs0r"}))return{
-id="ef00.din_rail.meters.z2m_absorption",registrations=j}
+}),c.dp_current(18,{scale=1000,read_only=true,emit=d.current()}),c.dp_power(19,{scale=10,read_only=true,emit=d.power()}),c.dp_voltage(20,{scale=10,read_only=true,emit=d.voltage()}),c.dp_enum(27,{name="zot60_power_behavior",emit=d.zot60PowerBehavior(),converter=a.lookup_from_to{off=0,on=1,previous=2}}),c.dp_binary(101,{name="zot60_backlight_mode",emit=d.zot60BacklightMode(),converter=a.lookup_from_to{ON=true,OFF=false}})}}b(l,e.create_fingerprints("TS011F",{"_TZ3218_pfnjjx6a","_TZ3218_fv20refe","_TZ3218_o1slgs0r"}))return{id="ef00.din_rail.meters.z2m_absorption",registrations=j}

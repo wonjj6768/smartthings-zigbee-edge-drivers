@@ -1,12 +1,8 @@
 local function p(D)
-local x=require"capabilities.events.all"
-local G=require"st.zigbee.data_types"
-local A=require"st.zigbee.constants"
-local F=require"st.utils.safe_xy_to_hsv"
+local x,G,A,F=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function o(h,z)
 if type(h)~="table"then
-h={}
-end
+h={}end
 if type(z)~="table"then
 return h
 end
@@ -30,8 +26,7 @@ local function l(e,d)
 local f={}if type(e)=="string"then
 f.name=e
 else
-o(f,e)
-end
+o(f,e)end
 o(f,d)return f
 end
 local function B(c,w,v)
@@ -77,19 +72,17 @@ end
 }
 end
 local function g(u,t,r)
-return{
-minimum_interval=u,maximum_interval=t,reportable_change=r,read_on_configure=true}
+return{minimum_interval=u,maximum_interval=t,reportable_change=r,read_on_configure=true}
 end
 local function j(...)
 local y={}for _,b in ipairs{...}do
-n(y,b)
-end
+n(y,b)end
 return y
 end
 local function k(H,E,s)
 D[H]=function(e,d)
-local f=l(e,d)local a=f.configure_reporting
-local b=s(f)f.configure_reporting=nil
+local f=l(e,d)local a,b=f.configure_reporting,s(f)
+f.configure_reporting=nil
 if a==false then
 b.minimum_interval=nil
 b.maximum_interval=nil
@@ -104,27 +97,19 @@ k("switch",D.on_off,function(d)
 local a=d.configure_reporting
 d.configure_reporting=nil
 if a==false then
-return{
-emit=x.switch()}
-end
-return j(
-{
-emit=x.switch()},g(0,300,nil))
+return{emit=x.switch()}end
+return j({emit=x.switch()},g(0,300,nil))
 end)
 k("level",D.level_control,function(d)
 local a=d.configure_reporting
 d.configure_reporting=nil
-local b={
-name="brightness",emit=x.level(),converter=q()}
-if a==false then return b end
+local b={name="brightness",emit=x.level(),converter=q()}if a==false then return b end
 return j(b,g(1,3600,1))
 end)
 k("color_temperature",D.color_control_temperature,function(d)
 local a=d.configure_reporting
 d.configure_reporting=nil
-local b={
-name="color_temperature",emit=x.color_temperature(),converter=m(),tx_command_id=10}
-if a==false then return b end
+local b={name="color_temperature",emit=x.color_temperature(),converter=m(),tx_command_id=10}if a==false then return b end
 return j(b,g(1,300,1))
 end)
 end

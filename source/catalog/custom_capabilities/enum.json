@@ -3520,8 +3520,8 @@
     ]
   ],
   [
-    "windowDetectionEpjZbState",
-    true,
+    "windowDetectionEpjZbStateV2",
+    false,
     "window_detection",
     [
       "opened",
@@ -4545,12 +4545,15 @@
     ]
   ],
   [
-    "pims3028Border",
+    "pims3028BorderV2",
     true,
     "border",
     [
-      "down_delete",
-      "remove_top_bottom"
+      "set_up",
+      "set_down",
+      "delete_up",
+      "delete_down",
+      "delete_both"
     ]
   ],
   [

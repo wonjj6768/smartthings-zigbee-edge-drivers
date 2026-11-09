@@ -1,4 +1,3 @@
--- ZCL command handler precedence policy.
 -- Only commands left unhandled by an explicit handler reach definition-based
 -- mappings.
 

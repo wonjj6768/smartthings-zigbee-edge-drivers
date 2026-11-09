@@ -1,4 +1,3 @@
--- Wave19 exact-only legacy Tuya thermostat candidates.
 -- Frozen Zigbee2MQTT v26.99.0 (df7200535e381f70023013f96791e424b6ac7b0e):
 --   src/devices/immax.ts:243-277 Immax 07703L
 --   src/devices/woox.ts:94-159   Woox R7067
@@ -55,7 +54,6 @@ local function lifecycle(profile, datapoints)
   return datapoints
 end
 
--- Immax 07703L -------------------------------------------------------------
 
 local IMMAX_DAY_BY_DP = {
   [101] = "monday",
@@ -220,7 +218,6 @@ register_device_definition(immax, {
   device_helpers.create_fingerprint("_TZE200_wlosfena", "TS0601"),
 })
 
--- Woox R7067 ---------------------------------------------------------------
 
 local half_degree = converter.from_to(
   function(value) local numeric = tonumber(value); return numeric and tonumber(string.format("%.1f", numeric / 2)) or nil end,

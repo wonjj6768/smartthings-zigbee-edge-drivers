@@ -1,8 +1,1 @@
-local e=require"protocol.zcl"
-local c=require"contracts.helpers.family"
-local a,b=c.definition_registry()local d={
-profile="lights-dimmer",zcl_clusters={
-e.switch(),e.level()}}b(d,{
-c.create_fingerprint("Legrand","Dimmer switch with neutral")})e.attach_reporting_capabilities(a,{
-{1,"rpt-tmf"}})return{
-id="zcl.lights.schneider",registrations=a}
+local e,c=require"protocol.zcl",require"contracts.helpers.family"local a,b=c.definition_registry()local d={profile="lights-dimmer",zcl_clusters={e.switch(),e.level()}}b(d,{c.create_fingerprint("Legrand","Dimmer switch with neutral")})e.attach_reporting_capabilities(a,{{1,"rpt-tmf"}})return{id="zcl.lights.schneider",registrations=a}

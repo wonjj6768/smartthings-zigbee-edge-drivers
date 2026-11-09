@@ -1,4 +1,3 @@
--- Wave15 BOX ERC2202-Z source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/box.ts:174-220.
 
 local tuya = require "protocol.tuya"

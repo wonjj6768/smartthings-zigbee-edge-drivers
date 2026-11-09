@@ -1,5 +1,4 @@
 -- Frozen Z2M v26.99 Linptech ES1ZZ(TY) hybrid presence contract.
---
 -- The family is package-owned by EF00 Presence Advanced because its fading
 -- time is Tuya DP101, while occupancy/illuminance and the six configuration
 -- attributes are ZCL/IAS.  Z2M's manuSpecificTuya2 cluster is 0xE002.

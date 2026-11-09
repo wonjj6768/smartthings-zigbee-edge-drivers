@@ -1,4 +1,3 @@
--- Wave13 Nova Digital TO-WK and Tuya Semicom source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/tuya.ts:6458-6679,8834-8873.
 
 local tuya = require "protocol.tuya"

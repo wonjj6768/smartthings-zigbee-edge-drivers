@@ -6,8 +6,6 @@ local converter = tuya.converter
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
 -- Frozen Z2M v26.99.0 src/devices/neo.ts:95-144.
--- Registered only after an independent audit verified every DP, profile item,
--- custom capability, and exact fingerprint.
 local on_off_converter = converter.lookup_from_to({
   ON = true,
   OFF = false,

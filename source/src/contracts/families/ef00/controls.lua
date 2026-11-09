@@ -3,6 +3,7 @@ local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local capabilities = require "st.capabilities"
 local zcl = require "protocol.zcl"
+local is_callable = require("runtime.capability_support").is_callable
 
 local converter = tuya.converter
 
@@ -27,7 +28,7 @@ local cube_action_converter = converter.from_only(converter.lookup_value({
 local function emit_button_action(_, value)
   local button = capabilities.button and capabilities.button.button or nil
   local event_builder = button and button[value] or nil
-  if type(event_builder) ~= "function" then
+  if not is_callable(event_builder) then
     return nil
   end
 
@@ -197,18 +198,20 @@ local foria_scene_remote_4 = {
   query_on_configure = true,
 }
 
+local scene_knob_action_converter = converter.from_only(converter.constant("pushed"))
 local scene_knob_4 = {
   profile = "buttons-button-4",
-  button_actions = { "pushed", "double", "held" },
+  button_actions = { "pushed" },
   datapoints = {
-    tuya.dp_enum(1, { name = "button_1_action", component = "main", converter = action_converter, emit = emit_button_action }),
-    tuya.dp_enum(2, { name = "button_2_action", component = "button2", converter = action_converter, emit = emit_button_action }),
-    tuya.dp_enum(3, { name = "button_3_action", component = "button3", converter = action_converter, emit = emit_button_action }),
-    tuya.dp_enum(4, { name = "button_4_action", component = "button4", converter = action_converter, emit = emit_button_action }),
-    tuya.dp_raw(52, { name = "binding_confirmation" }),                  -- profile 미포함
-    tuya.dp_raw(102, { name = "binding_config" }),                       -- profile 미포함
+    tuya.dp_enum(1, { name = "button_1_action", component = "main", converter = scene_knob_action_converter, emit = emit_button_action }),
+    tuya.dp_enum(2, { name = "button_2_action", component = "button2", converter = scene_knob_action_converter, emit = emit_button_action }),
+    tuya.dp_enum(3, { name = "button_3_action", component = "button3", converter = scene_knob_action_converter, emit = emit_button_action }),
+    tuya.dp_enum(4, { name = "button_4_action", component = "button4", converter = scene_knob_action_converter, emit = emit_button_action }),
+    tuya.dp_raw(52, { name = "binding_confirmation" }),
+    tuya.dp_raw(102, { name = "binding_config" }),
   },
-  query_on_configure = true,
+  query_on_configure = false,
+  time_start = "off",
 }
 
 local scene_cube_6 = {

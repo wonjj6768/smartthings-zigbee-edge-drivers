@@ -1,15 +1,1 @@
-local d=require"protocol.tuya"
-local b=require"capabilities.events.all"
-local e=require"contracts.helpers.family"
-local c,a=e.definition_registry()local f={
-profile="valves-qoto-qt05m",magic_packet=false,query_on_configure=false,time_start="off",auto_connection_status=false,initial_custom_state_query=false,refresh_state_query=false,d.dp_numeric(3,{
-name="qoto_qt_five_water_flow",read_only=true,emit=b.qotoQtFiveWaterFlow()}),d.dp_numeric(107,{
-name="qoto_qt_five_last_duration",read_only=true,emit=b.qotoQtFiveLastDuration()}),d.dp_numeric(101,{
-name="qoto_qt_five_remaining_time",read_only=true,emit=b.qotoQtFiveRemainingTime()}),d.dp_numeric(102,{
-name="qoto_qt_five_valve_state",emit=b.qotoQtFiveValveState()}),d.dp_numeric(2,{
-name="qoto_qt_five_valve_auto_state",emit=b.all(
-b.qotoQtFiveValveAutoState(),b.qotoQtFiveValveState())}),d.dp_numeric(11,{
-name="qoto_qt_five_shutdown_timer",emit=b.qotoQtFiveShutdownTimer()}),d.dp_battery(110,{
-read_only=true,emit=b.battery()})}a(f,{
-{manufacturer="_TZE200_arge1ptm",model="TS0601"},{manufacturer="_TZE200_anv5ujhv",model="TS0601"},{manufacturer="_TZE200_xlppj4f5",model="TS0601"}})return{
-id="qoto.qt_05m",registrations=c}
+local d,b,e=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family"local c,a=e.definition_registry()local f={profile="valves-qoto-qt05m",magic_packet=false,query_on_configure=false,time_start="off",auto_connection_status=false,initial_custom_state_query=false,refresh_state_query=false,d.dp_numeric(3,{name="qoto_qt_five_water_flow",read_only=true,emit=b.qotoQtFiveWaterFlow()}),d.dp_numeric(107,{name="qoto_qt_five_last_duration",read_only=true,emit=b.qotoQtFiveLastDuration()}),d.dp_numeric(101,{name="qoto_qt_five_remaining_time",read_only=true,emit=b.qotoQtFiveRemainingTime()}),d.dp_numeric(102,{name="qoto_qt_five_valve_state",emit=b.qotoQtFiveValveState()}),d.dp_numeric(2,{name="qoto_qt_five_valve_auto_state",emit=b.all(b.qotoQtFiveValveAutoState(),b.qotoQtFiveValveState())}),d.dp_numeric(11,{name="qoto_qt_five_shutdown_timer",emit=b.qotoQtFiveShutdownTimer()}),d.dp_battery(110,{read_only=true,emit=b.battery()})}a(f,{{manufacturer="_TZE200_arge1ptm",model="TS0601"},{manufacturer="_TZE200_anv5ujhv",model="TS0601"},{manufacturer="_TZE200_xlppj4f5",model="TS0601"}})return{id="qoto.qt_05m",registrations=c}

@@ -1,8 +1,1 @@
-local e=require"protocol.zcl"
-local c=require"contracts.helpers.family"
-local a,b=c.definition_registry()local d={
-profile="lights-color",zcl_clusters={
-e.switch(),e.level(),e.color_hue(),e.color_saturation(),e.color()}}b(d,{
-c.create_fingerprint("_TZ3210_778drfdt","TS0503B")})e.attach_reporting_capabilities(a,{
-{1,"rpt-tot"}})return{
-id="zcl.lights.miboxer",registrations=a}
+local e,c=require"protocol.zcl",require"contracts.helpers.family"local a,b=c.definition_registry()local d={profile="lights-color",zcl_clusters={e.switch(),e.level(),e.color_hue(),e.color_saturation(),e.color()}}b(d,{c.create_fingerprint("_TZ3210_778drfdt","TS0503B")})e.attach_reporting_capabilities(a,{{1,"rpt-tot"}})return{id="zcl.lights.miboxer",registrations=a}

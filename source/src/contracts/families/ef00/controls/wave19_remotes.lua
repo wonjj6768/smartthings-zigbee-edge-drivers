@@ -4,6 +4,7 @@ local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local capabilities = require "st.capabilities"
+local is_callable = require("runtime.capability_support").is_callable
 
 local converter = tuya.converter
 local registrations, register_device_definition = device_helpers.definition_registry()
@@ -18,7 +19,7 @@ end
 local function emit_button_action(_, value)
   local button = capabilities.button and capabilities.button.button or nil
   local builder = button and button[value] or nil
-  if type(builder) ~= "function" then
+  if not is_callable(builder) then
     return nil
   end
   return builder({ state_change = true })

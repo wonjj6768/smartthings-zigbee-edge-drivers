@@ -4,6 +4,7 @@ local fp = device_helpers.create_fingerprint
 local capabilities = require "st.capabilities"
 local emit = require "capabilities.events.all"
 local data_types = require "st.zigbee.data_types"
+local Reader = require("st.buf").Reader
 
 local device_definitions, register = device_helpers.definition_registry()
 
@@ -24,7 +25,33 @@ local function lumi_table_value(source, key)
   if type(source) ~= "table" then
     return nil
   end
-  return source[key] or source[tostring(key)]
+  if source[key] ~= nil then return source[key] end
+  return source[tostring(key)]
+end
+
+local function lumi_tlv(fields)
+  if type(fields) ~= "string" then return fields end
+  local decoded, offset = {}, 1
+  while offset + 1 <= #fields do
+    local key, kind = fields:byte(offset, offset + 1)
+    local datatype = data_types.get_data_type_by_id(kind)
+    if not datatype then break end
+    local reader = Reader(fields:sub(offset + 2))
+    local ok, value = pcall(datatype.deserialize, reader)
+    if not ok then break end
+    if kind == 0x39 or kind == 0x3A then
+      decoded[key] = string.unpack(kind == 0x39 and "<f" or "<d", value:_serialize())
+    else
+      decoded[key] = value.value
+    end
+    if decoded[key] == nil then decoded[key] = value end
+    offset = offset + 2 + reader:tell()
+  end
+  return decoded
+end
+
+local function lumi_temperature(value)
+  if type(value) == "number" and value > -65 and value < 65 then return value end
 end
 
 local function lumi_basic_events(_, value)
@@ -37,6 +64,7 @@ local function lumi_basic_events(_, value)
   elseif type(data) == "table" and data["65281"] ~= nil then
     data = data["65281"]
   end
+  data = lumi_tlv(data)
   if type(data) ~= "table" then
     return nil
   end
@@ -79,7 +107,7 @@ local temp_humidity_lumi_basic = {
       emit = lumi_basic_events,
       read_only = true,
     }),
-    zcl.temperature(),
+    zcl.temperature({from_device = lumi_temperature}),
     zcl.humidity(),
     zcl.battery(),
   },
@@ -94,7 +122,7 @@ local temp_humidity_pressure = {
       emit = lumi_basic_events,
       read_only = true,
     }),
-    zcl.temperature(),
+    zcl.temperature({from_device = lumi_temperature}),
     zcl.humidity(),
     zcl.pressure(),
     zcl.cluster_attribute(0x0403, 0x0014, {
@@ -156,18 +184,7 @@ end
 
 local function lumi_motion_diagnostics(temp_emit, interval_emit, p1, restart_emit)
   return function(device, value)
-    local fields = lumi_number(value)
-    if type(fields) == "string" then
-      local decoded, offset = {}, 1
-      while offset + 1 <= #fields do
-        local key, kind = fields:byte(offset, offset + 1)
-        local width = kind >= 0x20 and kind <= 0x2F and ((kind % 8) + 1) or kind == 0x10 and 1
-        if not width or offset + 1 + width > #fields then break end
-        decoded[key] = string.unpack("<" .. (kind >= 0x28 and "i" or "I") .. width, fields, offset + 2)
-        offset = offset + 2 + width
-      end
-      fields = decoded
-    end
+    local fields = lumi_tlv(lumi_number(value))
     if type(fields) ~= "table" then return end
     local events = {}
     local voltage = lumi_number(fields[1] or fields["1"])
@@ -195,18 +212,7 @@ local function lumi_motion_diagnostics(temp_emit, interval_emit, p1, restart_emi
 end
 
 local function t1_ht_heartbeat(device, value)
-  local fields = lumi_number(value)
-  if type(fields) == "string" then
-    local decoded, offset = {}, 1
-    while offset + 1 <= #fields do
-      local key, kind = fields:byte(offset, offset + 1)
-      local width = kind >= 0x20 and kind <= 0x2F and ((kind % 8) + 1) or kind == 0x10 and 1
-      if not width or offset + 1 + width > #fields then break end
-      decoded[key] = string.unpack("<" .. (kind >= 0x28 and "i" or "I") .. width, fields, offset + 2)
-      offset = offset + 2 + width
-    end
-    fields = decoded
-  end
+  local fields = lumi_tlv(lumi_number(value))
   if type(fields) ~= "table" then return end
   local events = lumi_basic_events(device, {
     [1] = lumi_number(lumi_table_value(fields, 1)),
@@ -407,21 +413,8 @@ do
   end
 
   local function fields(value)
-    value = lumi_number(value)
-    if type(value) == "table" then return value end
-    if type(value) ~= "string" then return {} end
-    local result, offset = {}, 1
-    while offset + 1 <= #value do
-      local key, kind = value:byte(offset, offset + 1)
-      local width = (kind >= 0x20 and kind <= 0x25 or kind >= 0x28 and kind <= 0x2D) and (kind % 8 + 1)
-        or kind == 0x10 and 1 or kind == 0x39 and 4 or kind == 0x3A and 8
-      if not width or offset + width + 1 > #value then break end
-      local format = kind == 0x39 and "f" or kind == 0x3A and "d" or
-        ((kind >= 0x28 and "i" or "I") .. width)
-      result[key] = string.unpack("<" .. format, value, offset + 2)
-      offset = offset + width + 2
-    end
-    return result
+    local decoded = lumi_tlv(lumi_number(value))
+    return type(decoded) == "table" and decoded or {}
   end
 
   local function accept_interval(device, value, context)
@@ -569,6 +562,17 @@ do
     return {capabilities.battery.battery(percent), capabilities.voltageMeasurement.voltage({value = millivolts / 1000, unit = "V"})}
   end
 
+  local function door_diagnostics(device, value)
+    local decoded = fields(value)
+    local events = door_voltage(device, lumi_number(lumi_table_value(decoded, 1))) or {}
+    local distance = distances[lumi_number(lumi_table_value(decoded, 159))]
+    if distance then events[#events + 1] = distance_event(device, distance) end
+    local tamper = lumi_number(lumi_table_value(decoded, 320))
+    if tamper == 0 then events[#events + 1] = capabilities.tamperAlert.tamper.clear()
+    elseif tamper == 1 then events[#events + 1] = capabilities.tamperAlert.tamper.detected() end
+    return #events > 0 and events or nil
+  end
+
   lumi_ac01_contact.profile = "safety-aqara-contact-p1"
   lumi_ac01_contact.button_actions = {"pushed"}
   lumi_ac01_contact.reporting_capability_exclusions = {
@@ -584,15 +588,18 @@ do
   end
   lumi_ac01_contact.zcl_clusters[#lumi_ac01_contact.zcl_clusters + 1] = zcl.cluster_attribute(0xFCC0, 0x00F7, {
     name = "aq_contact_p_one_heartbeat", endpoint = 1, read_only = true, read_on_configure = false,
-    emit = function(device, value)
-      local decoded = fields(value)
-      local events = door_voltage(device, lumi_number(lumi_table_value(decoded, 1))) or {}
-      local distance = distances[lumi_number(lumi_table_value(decoded, 159))]
-      if distance then events[#events + 1] = distance_event(device, distance) end
-      -- key3 is intentionally ignored for MCCGQ13LM, including constant25C.
-      return #events > 0 and events or nil
-    end,
+    emit = door_diagnostics,
   })
+  for _, attribute in ipairs({0x0001, 0x009F, 0xFF01, 0x0140}) do
+    lumi_ac01_contact.zcl_clusters[#lumi_ac01_contact.zcl_clusters + 1] = zcl.cluster_attribute(0xFCC0, attribute, {
+      name = string.format("aq_contact_p_one_native_%04x", attribute), endpoint = 1,
+      read_only = true, read_on_configure = false, read_on_refresh = false,
+      emit = function(device, value)
+        if attribute == 0xFF01 then return door_diagnostics(device, value) end
+        return door_diagnostics(device, {[attribute] = lumi_number(value)})
+      end,
+    })
+  end
   lumi_ac01_contact.zcl_clusters[#lumi_ac01_contact.zcl_clusters + 1] = zcl.cluster_attribute(0xFCC0, 0x010C, {
     name = "aq_contact_p_one_distance", endpoint = 1, mfg_code = 0x115F, write_type = data_types.Uint8,
     sender = writer, suppress_optimistic_state = true, read_on_configure = false,

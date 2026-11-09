@@ -1,4 +1,3 @@
--- Wave16 Lincukoo A08-Z10T siren source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/lincukoo.ts:703-790.
 
 local tuya = require "protocol.tuya"

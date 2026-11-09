@@ -1,4 +1,3 @@
--- Wave16 Excellux environmental sensor source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/tuya.ts:29669-30161.
 
 local tuya = require "protocol.tuya"

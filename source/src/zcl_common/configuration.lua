@@ -1,10 +1,10 @@
--- ZCL configure/read helper
--- reporting 설정과 초기 read 요청을 매핑 정의에서 공통 처리합니다.
 
 local function load_configuration(zcl)
 
   local zigbee_constants = require "st.zigbee.constants"
   local device_management = require "st.zigbee.device_management"
+  local cluster_base = require "st.zigbee.cluster_base"
+  local data_types = require "st.zigbee.data_types"
   local reporting = require "zcl_common.reporting"
   local BASIC_CLUSTER = 0x0000
   local BASIC_MAGIC_ATTRIBUTES = { 0x0004, 0x0000, 0x0001, 0x0005, 0x0007, 0xFFFE }
@@ -145,7 +145,7 @@ local function load_configuration(zcl)
     for _, mapping in ipairs(zcl_clusters) do
       if type(mapping) == "table" then
         local meta = zcl.mapping_meta(mapping)
-        if meta ~= nil and meta.read_on_configure and not meta.write_only then
+        if meta ~= nil and meta.read_on_configure and not meta.write_only and meta.name ~= "tuya_magic_packet" then
           local mapping_context = zcl.build_mapping_context(device, mapping, nil)
           local key = string.format(
             "%04X:%04X:%s:%s",
@@ -183,9 +183,13 @@ local function load_configuration(zcl)
 
         if not seen[key] then
           seen[key] = true
+          local request = cluster_base.read_attribute(device, data_types.ClusterId(BASIC_CLUSTER), data_types.AttributeId(BASIC_MAGIC_ATTRIBUTES[1]))
+          request.body.zcl_body.attr_ids = {}
           for _, attribute_id in ipairs(BASIC_MAGIC_ATTRIBUTES) do
-            zcl.read_attribute(device, BASIC_CLUSTER, attribute_id, endpoint)
+            request.body.zcl_body.attr_ids[#request.body.zcl_body.attr_ids + 1] = data_types.AttributeId(attribute_id)
           end
+          if endpoint ~= nil then request = request:to_endpoint(endpoint) end
+          device:send(request)
           sent = true
         end
       end

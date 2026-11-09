@@ -4563,13 +4563,13 @@
     "s"
   ],
   [
-    "dimmer3gBacklightBrightness",
+    "dimmer3gBacklightBrightnessV2",
     true,
     "backlight_brightness",
     0,
-    1000,
+    100,
     1,
-    null
+    "%"
   ],
   [
     "fanSwitchR32FanSpeed",
@@ -4662,10 +4662,10 @@
     "s"
   ],
   [
-    "pims3028PositionBest",
+    "pims3028PositionBestV2",
     true,
     "position_best",
-    1,
+    0,
     100,
     1,
     "%"
@@ -5271,6 +5271,24 @@
     0,
     100,
     1,
+    "%"
+  ],
+  [
+    "toqjztAcFrequencyV2",
+    false,
+    "ac_frequency",
+    null,
+    null,
+    null,
+    "Hz"
+  ],
+  [
+    "toqjztPowerFactorV2",
+    false,
+    "power_factor",
+    null,
+    null,
+    null,
     "%"
   ],
   [
@@ -7056,38 +7074,38 @@
     "C"
   ],
   [
-    "tbgeComfortTemperature",
+    "tbgeComfortTemperatureV2",
     true,
     "comfort_temperature",
-    5,
-    35,
+    0.5,
+    29.5,
     0.5,
     "C"
   ],
   [
-    "tbgeEcoTemperature",
+    "tbgeEcoTemperatureV2",
     true,
     "eco_temperature",
-    5,
-    35,
+    0.5,
+    29.5,
     0.5,
     "C"
   ],
   [
-    "tbgeHolidayTemperature",
+    "tbgeHolidayTemperatureV2",
     true,
     "holiday_temperature",
-    5,
-    35,
+    0.5,
+    29.5,
     0.5,
     "C"
   ],
   [
-    "tbgeAutoTemperature",
+    "tbgeAutoTemperatureV2",
     true,
     "auto_temperature",
-    5,
-    35,
+    0.5,
+    29.5,
     0.5,
     "C"
   ],
@@ -17253,11 +17271,11 @@
     "%"
   ],
   [
-    "tuyaFingerbotUpperLimit",
+    "tuyaFingerbotUpperLimitV2",
     true,
     "tuya_fingerbot_upper_limit",
     0,
-    50,
+    51,
     1,
     "%"
   ],
@@ -20698,5 +20716,14 @@
     30,
     1,
     "%"
+  ],
+  [
+    "tzzt01ProbeTemperature",
+    false,
+    "temperature_probe",
+    null,
+    null,
+    null,
+    "C"
   ]
 ]

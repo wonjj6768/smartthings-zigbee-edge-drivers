@@ -38,11 +38,9 @@ return e
 end
 end
 function w.build_component_suffix(v,d)
-d=d or{}local p=type(v)=="string"and v~=""and v or"switch"
-local l=type(d.main_endpoint)=="number"and d.main_endpoint or 1
-local s=type(d.main_component)=="string"and d.main_component~=""and d.main_component or"main"
-local e=d.default_component
-local u=type(d.index_offset)=="number"and d.index_offset or 0
+d=d or{}local p,l,s,e,u=type(v)=="string"and v~=""and v or"switch",type(d.main_endpoint)=="number"and d.main_endpoint or 1,type(d.main_component)=="string"and d.main_component~=""and d.main_component or"main",d.default_component,type(d.index_offset)=="number"and d.index_offset or 0
+
+
 return function(_,_,i)
 local c=i and(i.endpoint or i.src_endpoint)or nil
 if type(c)~="number"then
@@ -59,10 +57,9 @@ return p..tostring(y)
 end
 end
 local function j(z,a,d)
-local f=m(a)local b=r(d)local g=b.component
+local f,b=m(a),r(d)local g=b.component
 if g==nil then
-g=w.build_component_suffix(b.component_prefix or"switch",b)
-end
+g=w.build_component_suffix(b.component_prefix or"switch",b)end
 b.component_prefix=nil
 b.main_component=nil
 b.main_endpoint=nil
@@ -72,8 +69,7 @@ b.component=nil
 local q={}for _,c in ipairs(f)do
 local h=r(b)h.endpoint=c
 h.component=g
-q[#q+1]=z(h)
-end
+q[#q+1]=z(h)end
 return q
 end
 function w.multi_switch(a,d)

@@ -315,7 +315,6 @@ local c1_m = create_family(false, "hmC1M", "hm_c1_m_", "safety-heiman-c1-m")
 register(s1_m, {helpers.create_fingerprint("0x120B", "S1-M")})
 register(c1_m, {helpers.create_fingerprint("0x120B", "C1-M")})
 
--- Normal reporting generation will append9 settings to each base profile.
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(definitions, {
   {1, "rpt-srn"},

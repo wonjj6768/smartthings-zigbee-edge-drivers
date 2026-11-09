@@ -3,7 +3,7 @@ local device_helpers = require "contracts.helpers.family"
 local zcl_device_helpers = require "contracts.helpers.zcl"
 local emit = require "capabilities.events.all"
 local capabilities = require "st.capabilities"
--- Battery refresh is provided by the protocol facade.
+local is_callable = require("runtime.capability_support").is_callable
 local device_management = require "st.zigbee.device_management"
 local data_types = require "st.zigbee.data_types"
 
@@ -971,7 +971,7 @@ namron_4512793.standard_action_button_events = {
   down_hold = "down_hold",
 }
 zcl.register_cluster_command_handler(CLUSTER_NAMRON_PRIVATE_E004, 0x00, function(device, preset, zb_rx)
-  if preset ~= namron_4512793 then
+  if preset.standard_command_action_resolver ~= namron_4512793_action then
     return
   end
 
@@ -979,12 +979,12 @@ zcl.register_cluster_command_handler(CLUSTER_NAMRON_PRIVATE_E004, 0x00, function
     zb_rx,
     CLUSTER_NAMRON_PRIVATE_E004,
     0x00,
-    1,
+    zb_rx.address_header.src_endpoint.value,
     device
   )
   local button_value = action and namron_4512793.standard_action_button_events[action] or nil
   local builder = button_value and BUTTON_EVENT_BUILDERS[button_value] or nil
-  if type(builder) ~= "function" then
+  if not is_callable(builder) then
     return
   end
   if type(device.supports_capability_by_id) == "function" and

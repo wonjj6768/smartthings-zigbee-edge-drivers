@@ -1,24 +1,2 @@
-local f=require"protocol.tuya"
-local g=require"capabilities.events.all"
-local k=require"contracts.helpers.family"
-local d=require"contracts.helpers.ef00"
-local e=f.converter
-local i,a=k.definition_registry()local c=e.lookup_from_to{
-["5m"]=0,["10m"]=1,["15m"]=2,["20m"]=3,["30m"]=4,["1h"]=5}local j={
-profile="sensors-illuminance-brightness-xfy",f.dp_enum(1,{
-name="brightness_state",emit=g.xfyBrightnessState(),read_only=true,converter=e.from_only(e.lookup_value{
-[0]="low",[1]="middle",[2]="high",[3]="strong"})}),f.dp_illuminance(2,{emit=g.illuminance()})}a(j,d.ts0601_fingerprints{
-"_TZE200_yi4jtqq1","_TZE200_khx7nnka","_TZE204_khx7nnka"})local h={
-profile="sensors-illuminance-battery-brightness-slux",bind_basic_on_configure=true,f.dp_enum(1,{
-name="brightness_level",emit=g.sluxBrightnessLevel(),read_only=true,converter=e.from_only(e.lookup_value{
-[0]="low",[1]="middle",[2]="high"})}),f.dp_illuminance(2,{emit=g.illuminance()}),f.dp_battery(4,{emit=g.battery()})}a(h,d.ts0601_fingerprints{
-"_TZE200_pisltm67"})a(h,{
-{manufacturer="_TYST11_pisltm67",model="isltm67"..string.char(0)}})local b={
-profile="sensors-illuminance-battery-report-interval-aaeasoll",datapoints={
-f.dp_illuminance(2,{emit=g.illuminance()}),f.dp_battery(4,{emit=g.battery()}),f.dp_enum(101,{
-name="report_interval",emit=g.aaeasollReportInterval(),converter=c})}}a(b,d.ts0601_fingerprints{
-"_TZE284_aaeasoll"})local l={
-profile="sensors-pressure-temp-display",datapoints={
-f.dp_temperature(8,{emit=g.temperature"C",scale=100}),f.dp_numeric(101,{name="pressure",emit=g.atmospheric_pressure(),scale=10}),f.dp_numeric(102,{name="display_brightness",emit=g.displayBrightnessPressureLevel8()})}}a(l,d.ts0601_fingerprints{
-"_TZE204_w2vunxzm"})return{
-id="ef00.sensors.illuminance",registrations=i}
+local f,g,k,d=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00"local e=f.converter
+local i,a=k.definition_registry()local c,j=e.lookup_from_to{["5m"]=0,["10m"]=1,["15m"]=2,["20m"]=3,["30m"]=4,["1h"]=5},{profile="sensors-illuminance-brightness-xfy",f.dp_enum(1,{name="brightness_state",emit=g.xfyBrightnessState(),read_only=true,converter=e.from_only(e.lookup_value{[0]="low",[1]="middle",[2]="high",[3]="strong"})}),f.dp_illuminance(2,{emit=g.illuminance()})}a(j,d.ts0601_fingerprints{"_TZE200_yi4jtqq1","_TZE200_khx7nnka","_TZE204_khx7nnka"})local h={profile="sensors-illuminance-battery-brightness-slux",bind_basic_on_configure=true,f.dp_enum(1,{name="brightness_level",emit=g.sluxBrightnessLevel(),read_only=true,converter=e.from_only(e.lookup_value{[0]="low",[1]="middle",[2]="high"})}),f.dp_illuminance(2,{emit=g.illuminance()}),f.dp_battery(4,{emit=g.battery()})}a(h,d.ts0601_fingerprints{"_TZE200_pisltm67"})a(h,{{manufacturer="_TYST11_pisltm67",model="isltm67"..string.char(0)}})local b={profile="sensors-illuminance-battery-report-interval-aaeasoll",datapoints={f.dp_illuminance(2,{emit=g.illuminance()}),f.dp_battery(4,{emit=g.battery()}),f.dp_enum(101,{name="report_interval",emit=g.aaeasollReportInterval(),converter=c})}}a(b,d.ts0601_fingerprints{"_TZE284_aaeasoll"})local l={profile="sensors-pressure-temp-display",datapoints={f.dp_temperature(8,{emit=g.temperature"C",scale=100}),f.dp_numeric(101,{name="pressure",emit=g.atmospheric_pressure(),scale=10}),f.dp_numeric(102,{name="display_brightness",emit=g.displayBrightnessPressureLevel8()})}}a(l,d.ts0601_fingerprints{"_TZE204_w2vunxzm"})return{id="ef00.sensors.illuminance",registrations=i}

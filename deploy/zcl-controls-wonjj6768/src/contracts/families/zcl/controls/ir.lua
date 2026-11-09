@@ -1,11 +1,1 @@
-local f=require"protocol.zcl"
-local b=require"contracts.helpers.family"
-local c,a=b.definition_registry()local e={
-profile="controllers-ir-transceiver",ir_controller=true,ir_endpoint=1,zcl_clusters={}}local d={
-profile="controllers-ir-transceiver-battery",ir_controller=true,ir_endpoint=1,zcl_clusters={
-f.battery()}}a(e,b.create_fingerprints("TS1201",{
-"_TZ3290_785fbxik","_TZ3290_7v1k4vufotpowp9z","_TZ3290_rlkmy85q4pzoxobl","_TZ3290_jxvzqatwgsaqzx1u","_TZ3290_lypnqvlem5eq1ree","_TZ3290_uc8lwbi2","_TZ3290_nba3knpsarkawgnt","_TZ3290_8xzb2ghn","_TZ3290_s6ezpa3j","_TZ3290_ot6ewjvmejq5ekhl","_TZ3290_j37rooaxrcdcqo5n","_TZ3290_nkpxapoz","_TZ3290_yac64inudpovoaba","_TZ3290_acv1iuslxi3shaaj","_TZ3290_gnl5a6a5xvql7c2a","_TZ3290_xjpbcxn92aaxvmlz","_TZ3290_yyax9ajf"}))a(d,b.create_fingerprints("TS1201",{
-"_TZ3290_u9xac5rv","_TZ3290_lidgqyzu"}))a(e,b.create_fingerprints("ZS06",{
-"_TZ3290_7v1k4vufotpowp9z","_TZ3290_acv1iuslxi3shaaj","_TZ3290_gnl5a6a5xvql7c2a","_TZ3290_rlkmy85q4pzoxobl","_TZ3290_nba3knpsarkawgnt","_TZ3290_yac64inudpovoaba"}))f.attach_reporting_capabilities(c,{
-{2,"rpt-tes"}})return{
-id="zcl.controls.ir",registrations=c}
+local f,b=require"protocol.zcl",require"contracts.helpers.family"local c,a=b.definition_registry()local e,d={profile="controllers-ir-transceiver",ir_controller=true,ir_endpoint=1,zcl_clusters={}},{profile="controllers-ir-transceiver-battery",ir_controller=true,ir_endpoint=1,zcl_clusters={f.battery{minimum_interval=3600,maximum_interval=65000,reportable_change=10}}}a(e,b.create_fingerprints("TS1201",{"_TZ3290_785fbxik","_TZ3290_7v1k4vufotpowp9z","_TZ3290_rlkmy85q4pzoxobl","_TZ3290_jxvzqatwgsaqzx1u","_TZ3290_lypnqvlem5eq1ree","_TZ3290_uc8lwbi2","_TZ3290_nba3knpsarkawgnt","_TZ3290_8xzb2ghn","_TZ3290_s6ezpa3j","_TZ3290_ot6ewjvmejq5ekhl","_TZ3290_j37rooaxrcdcqo5n","_TZ3290_nkpxapoz","_TZ3290_yac64inudpovoaba","_TZ3290_acv1iuslxi3shaaj","_TZ3290_gnl5a6a5xvql7c2a","_TZ3290_xjpbcxn92aaxvmlz","_TZ3290_yyax9ajf"}))a(d,b.create_fingerprints("TS1201",{"_TZ3290_u9xac5rv","_TZ3290_lidgqyzu"}))a(e,b.create_fingerprints("ZS06",{"_TZ3290_7v1k4vufotpowp9z","_TZ3290_acv1iuslxi3shaaj","_TZ3290_gnl5a6a5xvql7c2a","_TZ3290_rlkmy85q4pzoxobl","_TZ3290_nba3knpsarkawgnt","_TZ3290_yac64inudpovoaba"}))f.attach_reporting_capabilities(c,{{2,"rpt-tes"}})return{id="zcl.controls.ir",registrations=c}

@@ -1,53 +1,8 @@
-local e=require"protocol.tuya"
-local f=require"capabilities.events.all"
-local a=require"contracts.helpers.family"
-local b=require"contracts.helpers.ef00_thermostats"
-local c=e.converter
-local m,d=a.definition_registry()local nul=string.char(0)local k=c.lookup_from_to{off=false,on=true}local l={
-profile="thermostats-alecto-smart-heat10",package_group="trv-1",e.dp_current_heating_setpoint(2,{scale=10}),e.dp_local_temperature(3,{scale=10}),e.dp_system_mode(4,{
-converter=c.lookup_from_to{off=0,auto=1,heat=2}}),e.dp_binary(7,{
-name="alecto_child_lock",emit=f.alectoSmartHeat10ChildLock(),converter=k}),e.dp_binary(18,{
-name="alecto_window_detection",emit=f.alectoSmartHeat10WindowDetection(),converter=k}),e.dp_battery(21,{emit=f.battery()})}d(l,{
-a.create_fingerprint("_TYST11_8daqwrsj","daqwrsj"..nul)})local g={
-profile="thermostats-thermostat-saswell",bind_basic_on_configure=true,time_start="1970",heating_setpoint_range={minimum=5,maximum=30,step=0.5,unit="C"},named_mapping={
-named_mappings={
-system_mode=b.binary_power_schedule_mode_write(101,108)}},e.dp_running_state(3,{
-converter=c.lookup_from_to{heat=1,idle=0}}),e.dp_binary(8,{
-name="window_detection",emit=f.saswellWindowDetection(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_binary(10,{
-name="frost_detection",emit=f.saswellFrostDetection(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_numeric(27,{
-name="local_temperature_calibration",emit=f.saswellTempCalibration(),converter=c.signed_number_pair(1),signed=true}),e.dp_binary(40,{
-name="child_lock",emit=f.saswellChildLock(),converter=c.lookup_from_to{unlock=false,lock=true}}),e.dp_local_temperature(102,{scale=10}),e.dp_current_heating_setpoint(103,{scale=10}),e.dp_binary(105,{
-name="battery_low",read_only=true,emit=f.saswellBatteryLow(),converter=c.from_only(
-b.boolean_label_from_device("normal","low"))}),e.dp_binary(106,{
-name="away_mode",emit=f.saswellAwayMode(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_binary(130,{
-name="anti_scaling",emit=f.saswellAntiScaling(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_system_mode(101,{
-converter=c.lookup_from_to{heat=true,off=false}}),e.dp_binary(108,{
-name="saswell_schedule_enable",from_device=b.true_mode_from_device"auto",emit=f.thermostat_mode()})}for o,day in ipairs{
-{"sun",f.saswellSunSchedule()},{"mon",f.saswellMonSchedule()},{"tue",f.saswellTueSchedule()},{"wed",f.saswellWedSchedule()},{"thu",f.saswellThuSchedule()},{"fri",f.saswellFriSchedule()},{"sat",f.saswellSatSchedule()}}do
-local n=b.saswell_schedule(o-1)local q="saswell_"..day[1].."_schedule"
-g[#g+1]=e.dp_raw(122+o,{
-name=q,read_only=true,converter=c.from_only(n.from),emit=day[2]})
+local e,f,a,b=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00_thermostats"local c=e.converter
+local m,d=a.definition_registry()local nul,k=string.char(0),c.lookup_from_to{off=false,on=true}local l={profile="thermostats-alecto-smart-heat10",package_group="trv-1",e.dp_current_heating_setpoint(2,{scale=10}),e.dp_local_temperature(3,{scale=10}),e.dp_system_mode(4,{converter=c.lookup_from_to{off=0,auto=1,heat=2}}),e.dp_binary(7,{name="alecto_child_lock",emit=f.alectoSmartHeat10ChildLock(),converter=k}),e.dp_binary(18,{name="alecto_window_detection",emit=f.alectoSmartHeat10WindowDetection(),converter=k}),e.dp_battery(21,{emit=f.battery()})}d(l,{a.create_fingerprint("_TYST11_8daqwrsj","daqwrsj"..nul)})local g={profile="thermostats-thermostat-saswell",bind_basic_on_configure=true,time_start="1970",heating_setpoint_range={minimum=5,maximum=30,step=0.5,unit="C"},named_mapping={named_mappings={system_mode=b.binary_power_schedule_mode_write(101,108)}},e.dp_running_state(3,{converter=c.lookup_from_to{heat=1,idle=0}}),e.dp_binary(8,{name="window_detection",emit=f.saswellWindowDetection(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_binary(10,{name="frost_detection",emit=f.saswellFrostDetection(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_numeric(27,{name="local_temperature_calibration",emit=f.saswellTempCalibration(),converter=c.signed_number_pair(1),signed=true}),e.dp_binary(40,{name="child_lock",emit=f.saswellChildLock(),converter=c.lookup_from_to{unlock=false,lock=true}}),e.dp_local_temperature(102,{scale=10}),e.dp_current_heating_setpoint(103,{scale=10}),e.dp_binary(105,{name="battery_low",read_only=true,emit=f.saswellBatteryLow(),converter=c.from_only(b.boolean_label_from_device("normal","low"))}),e.dp_binary(106,{name="away_mode",emit=f.saswellAwayMode(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_binary(130,{name="anti_scaling",emit=f.saswellAntiScaling(),converter=c.lookup_from_to{off=false,on=true}}),e.dp_system_mode(101,{converter=c.lookup_from_to{heat=true,off=false}}),e.dp_binary(108,{name="saswell_schedule_enable",from_device=b.true_mode_from_device"auto",emit=f.thermostat_mode()})}for o,day in ipairs{{"sun",f.saswellSunSchedule()},{"mon",f.saswellMonSchedule()},{"tue",f.saswellTueSchedule()},{"wed",f.saswellWedSchedule()},{"thu",f.saswellThuSchedule()},{"fri",f.saswellFriSchedule()},{"sat",f.saswellSatSchedule()}}do
+local n,q=b.saswell_schedule(o-1),"saswell_"..day[1].."_schedule"g[#g+1]=e.dp_raw(122+o,{name=q,read_only=true,converter=c.from_only(n.from),emit=day[2]})
 g.named_mapping.named_mappings[q]=function(_,r)
-local p=n.to(r)
-if p then return{dp=109,datatype=e.DP_TYPE_RAW,value=p}end
+local p=n.to(r)if p then return{dp=109,datatype=e.DP_TYPE_RAW,value=p}end
 end
 end
-d(g,{
-a.create_fingerprint("_TYST11_KGbxAXL2","GbxAXL2"..nul),a.create_fingerprint("_TYST11_c88teujp","88teujp"..nul),a.create_fingerprint("_TYST11_caj4jz0i","aj4jz0i"..nul),a.create_fingerprint("_TYST11_yw7cahqs","w7cahqs"..nul),a.create_fingerprint("_TYST11_zuhszj9s","uhszj9s"..nul)})local i="etop_power_state"
-local j="etop_system_mode_device"
-local h={
-profile="thermostats-thermostat-etop",named_mapping={
-named_mappings={
-system_mode=b.power_mode_write(1,4,{
-heat=0,auto=2})}},e.dp_binary(1,{
-name="system_mode",from_device=b.power_mode_from_device(
-i,j,"heat"),emit=f.thermostat_mode()}),e.dp_current_heating_setpoint(2,{scale=10}),e.dp_local_temperature(3,{scale=10}),e.dp_enum(4,{
-name="system_mode",from_device=b.enum_mode_from_device(
-i,j,{
-[0]="heat",[1]="heat",[2]="auto"}),emit=f.thermostat_mode(),read_only=true}),e.dp_child_lock(7,{name="child_lock",emit=f.etopChildLock()}),e.dp_numeric(13,{
-name="error_status",read_only=true,converter=c.bitmap_flags({
-[1]="high_temperature",[2]="low_temperature",[4]="internal_sensor_error",[8]="external_sensor_error",[16]="battery_low",[32]="device_offline"},"none"),emit=f.etopErrorStatus()}),e.dp_running_state(14,{
-converter=c.lookup_from_to{heating=true,idle=false},emit=f.thermostat_operating_state()})}d(h,{
-a.create_fingerprint("_TYST11_wv90ladg","v90ladg"..nul)})d(h,{
-a.create_fingerprint("_TYST11_2dpplnsn","dpplnsn"..nul)})return{
-id="ef00.thermostats.wave19_exact_aliases",registrations=m}
+d(g,{a.create_fingerprint("_TYST11_KGbxAXL2","GbxAXL2"..nul),a.create_fingerprint("_TYST11_c88teujp","88teujp"..nul),a.create_fingerprint("_TYST11_caj4jz0i","aj4jz0i"..nul),a.create_fingerprint("_TYST11_yw7cahqs","w7cahqs"..nul),a.create_fingerprint("_TYST11_zuhszj9s","uhszj9s"..nul)})local i,j="etop_power_state","etop_system_mode_device"local h={profile="thermostats-thermostat-etop",named_mapping={named_mappings={system_mode=b.power_mode_write(1,4,{heat=0,auto=2})}},e.dp_binary(1,{name="system_mode",from_device=b.power_mode_from_device(i,j,"heat"),emit=f.thermostat_mode()}),e.dp_current_heating_setpoint(2,{scale=10}),e.dp_local_temperature(3,{scale=10}),e.dp_enum(4,{name="system_mode",from_device=b.enum_mode_from_device(i,j,{[0]="heat",[1]="heat",[2]="auto"}),emit=f.thermostat_mode(),read_only=true}),e.dp_child_lock(7,{name="child_lock",emit=f.etopChildLock()}),e.dp_numeric(13,{name="error_status",read_only=true,converter=c.bitmap_flags({[1]="high_temperature",[2]="low_temperature",[4]="internal_sensor_error",[8]="external_sensor_error",[16]="battery_low",[32]="device_offline"},"none"),emit=f.etopErrorStatus()}),e.dp_running_state(14,{converter=c.lookup_from_to{heating=true,idle=false},emit=f.thermostat_operating_state()})}d(h,{a.create_fingerprint("_TYST11_wv90ladg","v90ladg"..nul)})d(h,{a.create_fingerprint("_TYST11_2dpplnsn","dpplnsn"..nul)})return{id="ef00.thermostats.wave19_exact_aliases",registrations=m}

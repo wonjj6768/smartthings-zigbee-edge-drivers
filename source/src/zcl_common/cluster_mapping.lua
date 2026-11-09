@@ -1,8 +1,3 @@
--- ZCL 클러스터/attribute 매핑 팩토리
--- tuya_common/datapoint_preset.lua 에 대응하는 ZCL 선언적 API
---
--- 사용법: zcl.temperature_measurement({ emit = emit.temperature("C"), scale = 100 })
--- 반환: { cluster_id = 0x0402, attribute_id = 0x0000, emit = ..., ... }
 
 local function load_cluster_mapping(zcl)
 
@@ -65,6 +60,7 @@ local function load_cluster_mapping(zcl)
     "to_device",
     "scale",
     "ignore_reported_scaler",
+    "use_reported_unity_scaler",
     "component",
     "endpoint",
     "read_only",
@@ -227,7 +223,6 @@ local function load_cluster_mapping(zcl)
     end
   end
 
-  --- 범용 ZCL attribute 매핑을 생성합니다.
   ---@param cluster_id number
   ---@param attribute_id number
   ---@param options table|nil
@@ -239,7 +234,6 @@ local function load_cluster_mapping(zcl)
     return mapping
   end
 
-  --- 수동으로 attribute 핸들러 등록만 추가하고 싶을 때 사용합니다.
   ---@param cluster_id number
   ---@param attribute_id number
   ---@return boolean 새로 등록되었으면 true
@@ -247,7 +241,6 @@ local function load_cluster_mapping(zcl)
     return add_registered_attribute(cluster_id, attribute_id)
   end
 
-  --- zcl_clusters 리스트에 포함된 모든 attribute를 핸들러 등록 목록에 추가합니다.
   ---@param zcl_clusters table|nil
   function zcl.register_attributes_from_mappings(zcl_clusters)
     if type(zcl_clusters) ~= "table" then
@@ -263,8 +256,6 @@ local function load_cluster_mapping(zcl)
     return zcl_clusters
   end
 
-  --- 커스텀 매핑 팩토리를 등록합니다.
-  --- 팩토리 등록과 attribute 핸들러 등록을 동시에 처리합니다.
   ---@param definition table
   ---@return table 정규화된 정의
   function zcl.register_mapping(definition)
@@ -327,7 +318,6 @@ local function load_cluster_mapping(zcl)
     })
   end
 
-  --- REGISTERED_ATTRIBUTES로부터 zigbee_handlers.attr 테이블을 자동 생성합니다.
   ---@param handler_factory function (cluster_id, attribute_id) → handler function
   ---@return table zigbee_handlers.attr에 직접 할당 가능한 테이블
   function zcl.build_attribute_handlers(handler_factory)

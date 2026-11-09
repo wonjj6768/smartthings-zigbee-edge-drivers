@@ -185,7 +185,6 @@ function tuya.send_magic_packet(device)
   return true
 end
 
--- 바이트열을 부호 없는 정수로 변환
 parse_uint = function(buffer, start, len)
   if type_check(buffer) ~= "string" then
     log.warn(string.format("Tuya parse_uint expects string, got %s", type_check(buffer)))
@@ -232,7 +231,6 @@ parse_uint = function(buffer, start, len)
   return value
 end
 
--- 바이트열을 부호 있는 정수로 변환
 parse_int = function(buffer, start, len)
   if type_check(buffer) ~= "string" then
     log.warn(string.format("Tuya parse_int expects string, got %s", type_check(buffer)))
@@ -264,7 +262,6 @@ parse_int = function(buffer, start, len)
   return unsigned
 end
 
--- datatype에 맞는 value bytes 생성
 build_value_bytes = function(datatype, value, signed)
   if datatype == DP_TYPE_BOOL then
     if value == true or value == 1 then
@@ -355,7 +352,6 @@ build_value_bytes = function(datatype, value, signed)
   return nil
 end
 
--- datatype에 맞게 value bytes 복원
 parse_value = function(datatype, value_bytes)
   if type_check(value_bytes) ~= "string" then
     return nil
@@ -386,7 +382,6 @@ parse_value = function(datatype, value_bytes)
   return nil
 end
 
--- 단일 DP payload 생성: tuya.build_datapoint(dp, datatype, value)
 function tuya.build_datapoint(dp, datatype, value, signed)
   if not is_byte(dp) or not is_byte(datatype) then
     log.warn(string.format("Tuya datapoint expects byte dp/datatype, got dp=%s datatype=%s", tostring(dp), tostring(datatype)))
@@ -407,7 +402,6 @@ function tuya.build_datapoint(dp, datatype, value, signed)
   return string_char(dp, datatype) .. string_pack(">I2", value_length) .. value_bytes
 end
 
--- 다중 DP payload 생성: tuya.build_datapoints({{dp=.., datatype=.., value=..}, ...})
 function tuya.build_datapoints(items)
   local parts = {}
 
@@ -436,7 +430,6 @@ local function resolve_packet_id(device, transaction)
   return next_packet_id(device)
 end
 
--- Raw Tuya 명령 전송: tuya.send_raw(device, command_id, payload)
 function tuya.send_raw(device, command_id, payload)
   if not is_byte(command_id) then
     log.warn(string.format("Tuya command id expects byte value, got %s", tostring(command_id)))
@@ -483,7 +476,6 @@ function tuya.send_raw(device, command_id, payload)
   return true
 end
 
--- 단일 DP 명령 전송: tuya.send_datapoint(device, dp, datatype, value[, command_id])
 function tuya.send_datapoint(device, dp, datatype, value, command_id, signed, transaction)
   local dp_payload = tuya.build_datapoint(dp, datatype, value, signed)
   if not dp_payload then
@@ -506,7 +498,6 @@ function tuya.send_datapoint(device, dp, datatype, value, command_id, signed, tr
   return packet_id
 end
 
--- 다중 DP 명령 전송: tuya.send_datapoints(device, items[, command_id])
 function tuya.send_datapoints(device, items, command_id, transaction)
   local dps_payload = tuya.build_datapoints(items)
   if not dps_payload then
@@ -529,7 +520,6 @@ function tuya.send_datapoints(device, items, command_id, transaction)
   return packet_id
 end
 
--- 장치 상태 요청 전송: 기본은 QUERY_DATA, 필요시 command_id 지정
 -- 빈 페이로드 전송 (일부 디바이스는 2바이트 시퀀스 프리픽스를 기대할 수 있으나, 대부분 빈 페이로드로 동작 확인됨)
 function tuya.send_state_request(device, command_id)
   local cmd = command_id
@@ -540,7 +530,6 @@ function tuya.send_state_request(device, command_id)
   return tuya.send_raw(device, cmd, "")
 end
 
--- MCU version 요청 전송
 function tuya.send_mcu_version_request(device, transaction)
   local effective_transaction = transaction
   if effective_transaction == nil then
@@ -576,7 +565,6 @@ build_connection_status_payload = function(status_bytes)
   return string_pack("<I2", 1) .. status
 end
 
--- gateway connection status 응답 전송
 function tuya.send_connection_status(device, transaction, status_bytes)
   -- Keep the legacy transaction argument for preset API compatibility. Z2M's
   -- actual 0x25 wire contract does not echo or otherwise encode it.
@@ -587,7 +575,6 @@ function tuya.send_connection_status(device, transaction, status_bytes)
   return tuya.send_raw(device, CONNECTION_STATUS, payload)
 end
 
--- 시간 동기화 payload 생성
 build_time_payload = function(utc_time, local_time)
   local utc_value = normalize_uint32(default_if_nil(utc_time, os_time()), "utc_time")
   if utc_value == nil then
@@ -603,7 +590,6 @@ build_time_payload = function(utc_time, local_time)
   return string_pack("<I2", string_len(time_bytes)) .. time_bytes
 end
 
--- epoch offset을 반영한 시간 동기화 payload 생성
 build_time_payload_with_offset = function(offset_seconds, utc_time, local_time)
   local offset = normalize_uint32(default_if_nil(offset_seconds, 0), "time_offset")
   if offset == nil then
@@ -627,7 +613,6 @@ build_time_payload_with_offset = function(offset_seconds, utc_time, local_time)
   return build_time_payload(utc_value, local_value)
 end
 
--- 시간 동기화 응답 전송
 function tuya.send_time(device, utc_time, local_time)
   local payload = build_time_payload(utc_time, local_time)
   if payload == nil then
@@ -637,7 +622,6 @@ function tuya.send_time(device, utc_time, local_time)
   return tuya.send_raw(device, SET_TIME, payload)
 end
 
--- epoch offset을 반영한 시간 동기화 응답 전송
 function tuya.send_time_with_offset(device, offset_seconds, utc_time, local_time)
   local payload = build_time_payload_with_offset(offset_seconds, utc_time, local_time)
   if payload == nil then
@@ -647,7 +631,6 @@ function tuya.send_time_with_offset(device, offset_seconds, utc_time, local_time
   return tuya.send_raw(device, SET_TIME, payload)
 end
 
--- time request면 즉시 응답
 function tuya.apply_time_request(device, message, utc_time, local_time)
   if extract_command_id(message) ~= SET_TIME then
     return false
@@ -656,7 +639,6 @@ function tuya.apply_time_request(device, message, utc_time, local_time)
   return tuya.send_time(device, utc_time, local_time) == true
 end
 
--- time request면 epoch offset을 반영해 응답
 function tuya.apply_time_request_with_offset(device, message, offset_seconds, utc_time, local_time)
   if extract_command_id(message) ~= SET_TIME then
     return false
@@ -665,7 +647,6 @@ function tuya.apply_time_request_with_offset(device, message, offset_seconds, ut
   return tuya.send_time_with_offset(device, offset_seconds, utc_time, local_time) == true
 end
 
--- connection status request면 즉시 응답
 function tuya.apply_connection_status_request(device, message, status_bytes)
   if extract_command_id(message) ~= CONNECTION_STATUS then
     return false
@@ -679,7 +660,6 @@ function tuya.apply_connection_status_request(device, message, status_bytes)
   return tuya.send_connection_status(device, nil, status_bytes) == true
 end
 
--- connection status 프레임 파싱
 function tuya.parse_connection_status(message)
   local payload = extract_payload(message)
   if not payload or string_len(payload) < 2 then
@@ -701,7 +681,6 @@ function tuya.parse_connection_status(message)
   }
 end
 
--- MCU version 응답 파싱
 function tuya.parse_mcu_version_response(message)
   local payload = extract_payload(message)
   if not payload or string_len(payload) < 3 then
@@ -724,7 +703,6 @@ function tuya.parse_mcu_version_response(message)
   }
 end
 
--- 단일 DP 파싱: tuya.parse_datapoint(buffer[, index])
 function tuya.parse_datapoint(buffer, index)
   local payload = extract_payload(buffer)
   local start_index = default_if_nil(index, 3)
@@ -783,7 +761,6 @@ function tuya.parse_datapoint(buffer, index)
   }
 end
 
--- 전체 DP 파싱
 function tuya.parse_datapoints(buffer, index)
   local payload = extract_payload(buffer)
   if payload == nil then
@@ -812,7 +789,6 @@ function tuya.parse_datapoints(buffer, index)
   return datapoints
 end
 
--- 전체 report 파싱: status/transaction/datapoints 테이블 반환
 function tuya.parse_datapoint_report(message)
   local payload = extract_payload(message)
   if not payload then

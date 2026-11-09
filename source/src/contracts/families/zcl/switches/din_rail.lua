@@ -1,4 +1,3 @@
--- DIN 레일 계량 스위치 정의
 
 local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"

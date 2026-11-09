@@ -255,7 +255,18 @@ function reporting.global_handlers(zcl, handlers)
   end
   for cluster in pairs(items) do
     handlers[cluster] = handlers[cluster] or {}
-    handlers[cluster][7], handlers[cluster][9], handlers[cluster][11] = response, response, response
+    for _, command in ipairs({7, 9, 11}) do
+      local previous = handlers[cluster][command]
+      if previous ~= nil then
+        handlers[cluster][command] = function(...)
+          local result = previous(...)
+          response(...)
+          return result
+        end
+      else
+        handlers[cluster][command] = response
+      end
+    end
   end
   return handlers
 end

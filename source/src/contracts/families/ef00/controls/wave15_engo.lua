@@ -1,4 +1,3 @@
--- Wave15 ENGO ECB62-ZB source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/engo.ts:10-82.
 
 local tuya = require "protocol.tuya"

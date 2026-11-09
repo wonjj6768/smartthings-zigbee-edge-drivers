@@ -1,5 +1,4 @@
 -- OWON / AC221 only. Pinned ZHC cff1de4731a14a84094a8568d8bbf92aa5feb0db.
--- Actual Main-authored resources + normal generated metadata are prerequisites.
 -- BEGIN PURE CODEC
 local function finite(value, low, high)
   return type(value)=="number" and value==value and value>=low and value<=high
@@ -231,7 +230,6 @@ local family={profile="thermostats-owon-ac221",zcl_clusters=mappings,capability_
   end,
 }
 register(family,{helpers.create_fingerprint("OWON","AC221")})
--- Normal reporting generation supplies attachment/profile; no scratch footer.
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(definitions, {
   {1, "rpt-ajn"},

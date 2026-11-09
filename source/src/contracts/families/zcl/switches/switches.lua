@@ -419,6 +419,7 @@ local function build_tuya_dual_metered_plug(profile, options)
       include_current = true,
       energy_scale = 100,
       energy_ignore_reported_scaler = options.energy_ignore_reported_scaler,
+      use_reported_unity_scaler = options.use_reported_unity_scaler,
     }),
     zcl.tuya_magic_packet()
   )
@@ -433,7 +434,9 @@ local function build_tuya_dual_metered_plug(profile, options)
   }
 end
 
-local tuya_dual_metered = build_tuya_dual_metered_plug("plugs-dual-metered")
+local tuya_dual_metered = build_tuya_dual_metered_plug("plugs-dual-metered", {
+  use_reported_unity_scaler = true,
+})
 local tuya_dual_metered_outage = build_tuya_dual_metered_plug("plugs-dual-metered-outage", {
   outage_memory = true,
 })
@@ -462,6 +465,7 @@ local mercator_spp04g = {
 local tuya_dual_metered_outage_indicator = build_tuya_dual_metered_plug("plugs-dual-metered-outage-indicator", {
   outage_memory = true,
   indicator_mode = true,
+  use_reported_unity_scaler = true,
 })
 local tuya_dual_metered_outage_indicator_lock = build_tuya_dual_metered_plug("plugs-dual-metered-outage-indicator-lock", {
   outage_memory = true,
@@ -482,15 +486,67 @@ append_option_clusters(zemismart_dual_outlet.zcl_clusters,
 zemismart_dual_outlet.configure = bind_on_off_endpoints(2)
 
 local single_switch = build_switch("switches-switch-1", 1)
+local function is_lumi_model(device, model)
+  return device:get_manufacturer() == "LUMI" and device:get_model() == model
+end
+
+single_switch.component_to_endpoint = function(device)
+  if is_lumi_model(device, "lumi.ctrl_neutral1") then return 2 end
+end
+single_switch.zcl_clusters[1].endpoint = function(device)
+  if is_lumi_model(device, "lumi.ctrl_neutral1") then return 2 end
+end
+local single_switch_receive = single_switch.zcl_clusters[1].from_device
+  or (single_switch.zcl_clusters[1].converter or {}).from
+single_switch.zcl_clusters[1].from_device = function(value, device, context, mapping)
+  local model = device:get_model()
+  if device:get_manufacturer() == "LUMI" and
+      (model == "lumi.ctrl_ln1" or model == "lumi.ctrl_ln1.aq1" or model == "lumi.ctrl_neutral1") and
+      (context.endpoint == 4 or context.endpoint == 5 or context.endpoint == 6) then
+    return nil
+  end
+  if single_switch_receive then return single_switch_receive(value, device, context, mapping) end
+  return value
+end
 local tuya_single_switch = build_switch("switches-switch-1", 1)
 append_option_clusters(tuya_single_switch.zcl_clusters, zcl.tuya_magic_packet())
 tuya_single_switch.configure = bind_on_off_endpoints(1)
 local single_power_switch = build_single_power_switch("switches-switch-1-power-options")
 local single_power_outage_switch = build_single_power_switch("switches-switch-1-power-outage", false)
 local bound_dual_switch = build_switch("switches-switch-2", 2)
-bound_dual_switch.configure = bind_on_off_endpoints(2)
+bound_dual_switch.component_to_endpoint = function(device, component)
+  if is_lumi_model(device, "lumi.ctrl_neutral2") then return component == "main" and 2 or 3 end
+end
+bound_dual_switch.endpoint_to_component = function(device, endpoint)
+  if is_lumi_model(device, "lumi.ctrl_neutral2") then
+    if endpoint == 2 then return "main" end
+    if endpoint == 3 then return "switch2" end
+  end
+end
+for _, mapping in ipairs(bound_dual_switch.zcl_clusters) do
+  local endpoint, component = mapping.endpoint, mapping.component
+  mapping.reporting_defaults = {
+    key = string.format("zr%04x%04x%d", mapping.cluster_id, mapping.attribute_id, endpoint),
+    minimum_interval = mapping.minimum_interval,
+    maximum_interval = mapping.maximum_interval,
+    reportable_change = mapping.reportable_change,
+  }
+  mapping.endpoint = function(device)
+    return is_lumi_model(device, "lumi.ctrl_neutral2") and endpoint + 1 or endpoint
+  end
+  mapping.component = function(device, current, context)
+    if is_lumi_model(device, "lumi.ctrl_neutral2") then return endpoint == 1 and "main" or "switch2" end
+    return component(device, current, context)
+  end
+end
+local configure_bound_dual = bind_on_off_endpoints(2)
+bound_dual_switch.configure = function(driver, device)
+  if not is_lumi_model(device, "lumi.ctrl_neutral2") then return configure_bound_dual(driver, device) end
+  for endpoint = 2, 3 do zcl.bind_cluster(device, zcl.CLUSTER_ON_OFF, driver.environment_info.hub_zigbee_eui, endpoint) end
+end
 -- This profile numbers its second channel switch2, not switch1.
 local tuya_dual_switch = build_switch("switches-switch-2", 2, { index_offset = 1 })
+tuya_dual_switch.time_start = "off"
 append_option_clusters(tuya_dual_switch.zcl_clusters, zcl.tuya_magic_packet())
 tuya_dual_switch.configure = bind_on_off_endpoints(2)
 local ts0002_rux = build_switch("switches-ts0002-rux", 2, { index_offset = 1 })

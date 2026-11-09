@@ -1,4 +1,3 @@
--- Wave14 QA QAT44Z4H/QAT44Z6H source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/qa.ts:182-251 and
 -- src/lib/legacy.ts fz.tuya_switch/tz.tuya_switch_state.
 

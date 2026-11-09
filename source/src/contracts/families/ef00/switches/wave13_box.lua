@@ -1,4 +1,3 @@
--- Wave13 BOX EWS1154-Z source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/box.ts:258-336.
 
 local tuya = require "protocol.tuya"

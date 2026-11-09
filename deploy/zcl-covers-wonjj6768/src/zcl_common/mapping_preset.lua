@@ -1,12 +1,8 @@
 local function o(v)
-local z=require"capabilities.events.all"
-local F=require"st.zigbee.data_types"
-local A=require"st.zigbee.constants"
-local D=require"st.utils.safe_xy_to_hsv"
+local z,F,A,D=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function m(f,y)
 if type(f)~="table"then
-f={}
-end
+f={}end
 if type(y)~="table"then
 return f
 end
@@ -30,8 +26,7 @@ local function d(a,l)
 local b={}if type(a)=="string"then
 b.name=a
 else
-m(b,a)
-end
+m(b,a)end
 m(b,l)return b
 end
 local function E(i,u,t)
@@ -50,29 +45,25 @@ if type(i)~="number"then
 return i
 end
 local w=E(i,0,100)if w<=0 then
-return"closed"
-end
+return"closed"end
 if w>=100 then
-return"open"
-end
+return"open"end
 return"partially open"
 end
 }
 end
 local function e(s,r,p)
-return{
-minimum_interval=s,maximum_interval=r,reportable_change=p,read_on_configure=true}
+return{minimum_interval=s,maximum_interval=r,reportable_change=p,read_on_configure=true}
 end
 local function k(...)
 local x={}for _,c in ipairs{...}do
-j(x,c)
-end
+j(x,c)end
 return x
 end
 local function g(G,C,q)
 v[G]=function(a,l)
-local b=d(a,l)local n=b.configure_reporting
-local c=q(b)b.configure_reporting=nil
+local b=d(a,l)local n,c=b.configure_reporting,q(b)
+b.configure_reporting=nil
 if n==false then
 c.minimum_interval=nil
 c.maximum_interval=nil
@@ -84,27 +75,19 @@ j(b,c)return C(b)
 end
 end
 g("battery",v.power_configuration_battery,function()
-return k(
-{
-emit=z.battery(),scale=2},e(300,21600,2))
+return k({emit=z.battery(),scale=2},e(300,21600,2))
 end)
 v.tuya_magic_packet=function(a,l)
-local b=d(a,l)j(b,{
-name="tuya_magic_packet",read_only=true,read_on_configure=true})return v.cluster_attribute(0,65534,b)
+local b=d(a,l)j(b,{name="tuya_magic_packet",read_only=true,read_on_configure=true})return v.cluster_attribute(0,65534,b)
 end
 g("cover_position",v.window_covering_position,function()
-return k(
-{
-emit=z.shade_level()},e(0,600,1))
+return k({emit=z.shade_level()},e(0,600,1))
 end)
 g("cover_state",v.window_covering_position,function()
-return{
-name="cover_state",write_only=true}
+return{name="cover_state",write_only=true}
 end)
 g("window_shade_state",v.window_covering_position,function()
-return k(
-{
-name="window_shade_state",emit=z.shade_state(),converter=h()},e(0,600,1))
+return k({name="window_shade_state",emit=z.shade_state(),converter=h()},e(0,600,1))
 end)
 end
 return o

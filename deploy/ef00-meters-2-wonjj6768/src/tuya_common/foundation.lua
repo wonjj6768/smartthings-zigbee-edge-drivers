@@ -1,15 +1,8 @@
-local o=require"log"
-local a={}a.log=o
+local o,a=require"log",{}a.log=o
 a.BASIC_CLUSTER=0
 a.TUYA_CLUSTER=61184
 a.MAGIC_PACKET_ATTRS={4,0,1,5,7,65534}a.PERSIST_FALSE={persist=false}a.EPOCH_2000_OFFSET=946684800
-a.PACKET_ID_FIELD="tuya_packet_id"
-a.CONFIG_QUEUE_FIELD="config_queue"
-a.CONFIG_QUEUE_CALLBACK_FIELD="config_queue_callback"
-a.QUERY_INTERVAL_TIMER_FIELD="tuya_query_interval_timer"
-a.BASIC_ENDPOINT_FIELD="tuya_basic_endpoint"
-a.TUYA_ENDPOINT_FIELD="tuya_cluster_endpoint"
-a.SET_DATA=0
+a.PACKET_ID_FIELD="tuya_packet_id"a.CONFIG_QUEUE_FIELD="config_queue"a.CONFIG_QUEUE_CALLBACK_FIELD="config_queue_callback"a.QUERY_INTERVAL_TIMER_FIELD="tuya_query_interval_timer"a.BASIC_ENDPOINT_FIELD="tuya_basic_endpoint"a.TUYA_ENDPOINT_FIELD="tuya_cluster_endpoint"a.SET_DATA=0
 a.GET_DATA=1
 a.SET_DATA_RESPONSE=2
 a.QUERY_DATA=3
@@ -63,8 +56,8 @@ b.DP_TYPE_ENUM=a.DP_TYPE_ENUM
 b.DP_TYPE_BITMAP=a.DP_TYPE_BITMAP
 b.converter={}b.skip={}
 end
-local f=a.type_check
-local g=a.EPOCH_2000_OFFSET
+local f,g=a.type_check,a.EPOCH_2000_OFFSET
+
 local function j(d)
 local c={}if f(d)~="table"then
 return c
@@ -80,8 +73,7 @@ return c
 end
 for _,i in ipairs(n)do
 if d[i]~=nil then
-c[i]=d[i]
-end
+c[i]=d[i]end
 end
 return c
 end

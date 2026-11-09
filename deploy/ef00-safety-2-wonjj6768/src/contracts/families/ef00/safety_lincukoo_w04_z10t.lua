@@ -1,21 +1,2 @@
-local j=require"protocol.tuya"
-local k=require"capabilities.events.all"
-local l=require"contracts.helpers.family"
-local d=j.converter
-local h,a=l.definition_registry()local b=d.from_only(d.lookup_value{
-[0]="alarm",[1]="normal"})local c=d.lookup_from_to{
-mute=0,alarm=1}local g=d.from_only(d.lookup_value{
-[0]="low",[1]="middle",[2]="high"})local i=d.lookup_from_to{
-ring1=0,ring2=1,ring3=2}local f={
-profile="safety-water-lincukoo-w04-z10t-battery-state",query_on_configure=false,time_start="off",initial_custom_state_query=false,refresh_state_query=false,j.dp_numeric(1,{
-name="lincukoo_w_four_alarm_status",read_only=true,emit=k.lincukooWFourAlarmStatus(),converter=b}),j.dp_enum(101,{
-name="lincukoo_w_four_alarm_switch",emit=k.lincukooWFourAlarmSwitch(),converter=c}),j.dp_enum(3,{
-name="lincukoo_w_four_battery_state",read_only=true,emit=k.lincukooWFourBatteryState(),converter=g})}a(f,{
-{manufacturer="_TZE284_iunyuzwe",model="TS0601"},{manufacturer="_TZE2841000000_iunyuzwe",model="TS0601"}})local e={
-profile="safety-water-lincukoo-w04-z10t-battery-ringtone",query_on_configure=false,time_start="off",initial_custom_state_query=false,refresh_state_query=false,j.dp_numeric(1,{
-name="lincukoo_w_four_alarm_status",read_only=true,emit=k.lincukooWFourAlarmStatus(),converter=b}),j.dp_enum(101,{
-name="lincukoo_w_four_alarm_switch",emit=k.lincukooWFourAlarmSwitch(),converter=c}),j.dp_enum(102,{
-name="lincukoo_w_four_ringtone",emit=k.lincukooWFourRingtone(),converter=i}),j.dp_battery(4,{
-read_only=true,emit=k.battery()})}a(e,{
-{manufacturer="_TZE284_vbgmewta",model="TS0601"},{manufacturer="_TZE2841000000_vbgmewta",model="TS0601"}})return{
-id="lincukoo.w04_z10t",registrations=h}
+local j,k,l=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family"local d=j.converter
+local h,a=l.definition_registry()local b,c,g,i=d.from_only(d.lookup_value{[0]="alarm",[1]="normal"}),d.lookup_from_to{mute=0,alarm=1},d.from_only(d.lookup_value{[0]="low",[1]="middle",[2]="high"}),d.lookup_from_to{ring1=0,ring2=1,ring3=2}local f={profile="safety-water-lincukoo-w04-z10t-battery-state",query_on_configure=false,time_start="off",initial_custom_state_query=false,refresh_state_query=false,j.dp_numeric(1,{name="lincukoo_w_four_alarm_status",read_only=true,emit=k.lincukooWFourAlarmStatus(),converter=b}),j.dp_enum(101,{name="lincukoo_w_four_alarm_switch",emit=k.lincukooWFourAlarmSwitch(),converter=c}),j.dp_enum(3,{name="lincukoo_w_four_battery_state",read_only=true,emit=k.lincukooWFourBatteryState(),converter=g})}a(f,{{manufacturer="_TZE284_iunyuzwe",model="TS0601"},{manufacturer="_TZE2841000000_iunyuzwe",model="TS0601"}})local e={profile="safety-water-lincukoo-w04-z10t-battery-ringtone",query_on_configure=false,time_start="off",initial_custom_state_query=false,refresh_state_query=false,j.dp_numeric(1,{name="lincukoo_w_four_alarm_status",read_only=true,emit=k.lincukooWFourAlarmStatus(),converter=b}),j.dp_enum(101,{name="lincukoo_w_four_alarm_switch",emit=k.lincukooWFourAlarmSwitch(),converter=c}),j.dp_enum(102,{name="lincukoo_w_four_ringtone",emit=k.lincukooWFourRingtone(),converter=i}),j.dp_battery(4,{read_only=true,emit=k.battery()})}a(e,{{manufacturer="_TZE284_vbgmewta",model="TS0601"},{manufacturer="_TZE2841000000_vbgmewta",model="TS0601"}})return{id="lincukoo.w04_z10t",registrations=h}

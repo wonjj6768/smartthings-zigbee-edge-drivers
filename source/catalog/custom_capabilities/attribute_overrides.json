@@ -2988,7 +2988,7 @@
     "backlightMode"
   ],
   [
-    "dimmer3gBacklightBrightness",
+    "dimmer3gBacklightBrightnessV2",
     "backlightBrightness"
   ],
   [
@@ -3112,11 +3112,11 @@
     "fault"
   ],
   [
-    "pims3028Border",
+    "pims3028BorderV2",
     "border"
   ],
   [
-    "pims3028PositionBest",
+    "pims3028PositionBestV2",
     "positionBest"
   ],
   [
@@ -3601,6 +3601,14 @@
   ],
   [
     "toqjztPowerFactor",
+    "powerFactor"
+  ],
+  [
+    "toqjztAcFrequencyV2",
+    "acFrequency"
+  ],
+  [
+    "toqjztPowerFactorV2",
     "powerFactor"
   ],
   [
@@ -4964,19 +4972,19 @@
     "windowOpen"
   ],
   [
-    "tbgeComfortTemperature",
+    "tbgeComfortTemperatureV2",
     "comfortTemperature"
   ],
   [
-    "tbgeEcoTemperature",
+    "tbgeEcoTemperatureV2",
     "ecoTemperature"
   ],
   [
-    "tbgeHolidayTemperature",
+    "tbgeHolidayTemperatureV2",
     "holidayTemperature"
   ],
   [
-    "tbgeAutoTemperature",
+    "tbgeAutoTemperatureV2",
     "autoTemperature"
   ],
   [
@@ -14352,7 +14360,7 @@
     "lowerLimit"
   ],
   [
-    "tuyaFingerbotUpperLimit",
+    "tuyaFingerbotUpperLimitV2",
     "upperLimit"
   ],
   [
@@ -17842,5 +17850,9 @@
   [
     "zg210zHumidityCalibration",
     "humidityCalibration"
+  ],
+  [
+    "tzzt01ProbeTemperature",
+    "probeTemperature"
   ]
 ]

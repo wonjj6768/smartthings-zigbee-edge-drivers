@@ -1,6 +1,4 @@
-local u=require"st.zigbee.cluster_base"
-local r=require"st.zigbee.data_types"
-local h=require"st.zigbee.device_management"
+local u,r,h=require"st.zigbee.cluster_base",require"st.zigbee.data_types",require"st.zigbee.device_management"
 local function w()
 local b={}
 function b.attach_reporting_capabilities(...)end
@@ -17,24 +15,19 @@ b.ATTR_ZONE_STATUS=2
 b.ATTR_MEASURED_VALUE=0
 b.ATTR_OCCUPANCY=0
 function b.bind_cluster(d,c,E,n)
-d:send(h.build_bind_request(
-d,c,E,n))return true
+d:send(h.build_bind_request(d,c,E,n))return true
 end
 function b.cluster_attribute(c,e,l)
-local a=l or{}a.protocol="zcl"
-a.cluster_id=c
+local a=l or{}a.protocol="zcl"a.cluster_id=c
 a.attribute_id=e
 return a
 end
 function b.switch(l)
-local a=b.cluster_attribute(b.CLUSTER_ON_OFF,b.ATTR_ON_OFF,l or{})
-if a.name==nil then a.name="switch"end
+local a=b.cluster_attribute(b.CLUSTER_ON_OFF,b.ATTR_ON_OFF,l or{})if a.name==nil then a.name="switch"end
 return a
 end
 function b.battery(l)
-local a=b.cluster_attribute(
-b.CLUSTER_POWER_CONFIGURATION,b.ATTR_BATTERY_PERCENTAGE_REMAINING,l or{})
-if a.name==nil then a.name="battery"end
+local a=b.cluster_attribute(b.CLUSTER_POWER_CONFIGURATION,b.ATTR_BATTERY_PERCENTAGE_REMAINING,l or{})if a.name==nil then a.name="battery"end
 if a.scale==nil then a.scale=2 end
 return a
 end
@@ -54,11 +47,8 @@ function b.emit_power_polling_state(...)return false end
 function b.set_power_poll_interval(...)return false end
 function b.begin_power_poll_burst(...)return false end
 function b.read_attribute(d,c,e,n)
-local q=u.read_attribute(
-d,r.ClusterId(c),r.AttributeId(e))
-if n~=nil and type(q.to_endpoint)=="function"then
-q=q:to_endpoint(n)
-end
+local q=u.read_attribute(d,r.ClusterId(c),r.AttributeId(e))if n~=nil and type(q.to_endpoint)=="function"then
+q=q:to_endpoint(n)end
 d:send(q)return true
 end
 local function t(d,a,f)
@@ -94,18 +84,14 @@ local j=o(d)if j==nil or j.zcl_clusters==nil then
 return
 end
 local m=B(f)for _,a in ipairs(i(j.zcl_clusters,c,e))do
-t(d,a,C(m,a))
+t(d,a,C(m,a))end
 end
 end
-end
-return{
-[b.CLUSTER_ON_OFF]={
+return{[b.CLUSTER_ON_OFF]={
 [b.ATTR_ON_OFF]=s(b.CLUSTER_ON_OFF,b.ATTR_ON_OFF,function(m)
 return m==true or m==1
 end)
-},[b.CLUSTER_POWER_CONFIGURATION]={
-[b.ATTR_BATTERY_PERCENTAGE_REMAINING]=s(
-b.CLUSTER_POWER_CONFIGURATION,b.ATTR_BATTERY_PERCENTAGE_REMAINING,
+},[b.CLUSTER_POWER_CONFIGURATION]={[b.ATTR_BATTERY_PERCENTAGE_REMAINING]=s(b.CLUSTER_POWER_CONFIGURATION,b.ATTR_BATTERY_PERCENTAGE_REMAINING,
 function(m,a)
 local z=a.scale
 if type(m)=="number"and type(z)=="number"and z~=0 then
@@ -113,9 +99,7 @@ return m/z
 end
 return m
 end
-)},[b.CLUSTER_ILLUMINANCE]={
-[b.ATTR_MEASURED_VALUE]=s(
-b.CLUSTER_ILLUMINANCE,b.ATTR_MEASURED_VALUE,
+)},[b.CLUSTER_ILLUMINANCE]={[b.ATTR_MEASURED_VALUE]=s(b.CLUSTER_ILLUMINANCE,b.ATTR_MEASURED_VALUE,
 function(m)
 if type(m)~="number"then
 return m
@@ -141,27 +125,20 @@ local F=type(g)=="table"and g.value or g
 if type(F)~="number"then
 return
 end
-for _,a in ipairs(i(
-j.zcl_clusters,b.CLUSTER_IAS_ZONE,b.ATTR_ZONE_STATUS
-))do
+for _,a in ipairs(i(j.zcl_clusters,b.CLUSTER_IAS_ZONE,b.ATTR_ZONE_STATUS))do
 local D=a.zone_status_mask
 if type(D)=="number"then
-t(d,a,(F%(D*2))>=D)
+t(d,a,(F%(D*2))>=D)end
 end
 end
-end
-return{
-[b.CLUSTER_IAS_ZONE]={
-[0]=p}}
+return{[b.CLUSTER_IAS_ZONE]={[0]=p}}
 end
 function b.start_configuration(d,k)
 local G={}for _,a in ipairs(k or{})do
 local c=a.cluster_id
 if type(c)=="number"and not G[c]then
 G[c]=true
-d:send(h.build_bind_request(
-d,c,d.driver.environment_info.hub_zigbee_eui))
-end
+d:send(h.build_bind_request(d,c,d.driver.environment_info.hub_zigbee_eui))end
 end
 return true
 end

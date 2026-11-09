@@ -494,13 +494,13 @@ local terncy_dc01 = {
     zcl.cluster_attribute(0x000F, 0x0055, {
       name = "contact",
       emit = emit.contact(),
-      data_type = data_types.SinglePrecisionFloat,
+      data_type = data_types.Boolean,
+      read_only = true,
+      read_on_configure = true,
+      read_on_refresh = true,
       from_device = function(value)
-        return value == 0
+        return value == false or value == 0
       end,
-      minimum_interval = 0,
-      maximum_interval = 300,
-      reportable_change = 1,
     }),
     zcl.temperature({ scale = 10 }),
     zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION, zcl.ATTR_BATTERY_PERCENTAGE_REMAINING, {
@@ -709,7 +709,7 @@ zcl.attach_reporting_capabilities(device_definitions, {
   {20, "rpt-zzw"},
   {21, "rpt-sgy"},
   {22, "rpt-hlk"},
-  {23, "rpt-trc", {zr000f0055auto = false}},
+  {23, "rpt-trc"},
   {24, "rpt-tcg"},
   {25, "rpt-zxh"},
   {26, "rpt-tctq"},

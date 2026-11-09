@@ -1,4 +1,3 @@
--- Wave13 AVATTO ZBS16 source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/avatto.ts:469-530.
 
 local tuya = require "protocol.tuya"

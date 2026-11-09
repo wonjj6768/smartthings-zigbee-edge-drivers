@@ -94,7 +94,7 @@ local l2_fan_mode = tuya.dp_fan_mode(49, {
 })
 local thermostat_l2_t_f_mf = {
   profile = "thermostats-fcu-thermostat-l2-t-f-mf",
-  tuya.dp_on_off(1, { name = "state" }),                                  -- profile 미포함
+  tuya.dp_on_off(1, { name = "state" }),
   tuya.dp_system_mode(2, {
     converter = converter.lookup_from_to({
       cool = 0,

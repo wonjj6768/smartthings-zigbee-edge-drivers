@@ -1,4 +1,3 @@
--- Wave18 Immax 07505L and DAEWOO WKE502Z source-only keypad candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/immax.ts:405-442
 --   src/devices/daewoo.ts:8-179

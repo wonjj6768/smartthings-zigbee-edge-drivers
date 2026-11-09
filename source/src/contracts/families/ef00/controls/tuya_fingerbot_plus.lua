@@ -1,11 +1,12 @@
 -- Current Z2M 8e3b01c: Tuya TS0001 Fingerbot Plus.
---
 -- The actuator itself uses the standard OnOff cluster. Tuya EF00 carries the
 -- battery and the six settings that Z2M exposes. DP109 program data remains
 -- internal because upstream does not expose a public contract for it.
 
 local tuya = require "protocol.tuya"
 local zcl = require "protocol.zcl"
+local switch_defaults = require "st.zigbee.defaults.switch_defaults"
+local log = require "log"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 
@@ -16,12 +17,54 @@ local function custom(capability_id)
   return assert(emit[capability_id], "missing Fingerbot Plus emitter: " .. capability_id)()
 end
 
+local actuator_switch_event = emit.switch()
+
+local function send_actuator(device, _, value, context)
+  local command = value and "on" or "off"
+  log.info("Fingerbot SDK Lua " .. command .. "; native handling disabled")
+  switch_defaults[command](nil, device, {
+    component = context.component_id or "main",
+    capability = "switch",
+    command = command,
+  }, false)
+  return true
+end
+
+local actuator = zcl.switch({ read_only = false, emit = actuator_switch_event, sender = send_actuator })
+
+local function handle_actuator_response(device, message)
+  local address = message.address_header
+  if address.profile.value ~= 0x0104 or address.cluster.value ~= 0x0006 or address.src_endpoint.value ~= 1 then
+    return
+  end
+  local header = message.body.zcl_header
+  local control = header.frame_ctrl
+  if control:is_cluster_specific_set() or control:is_mfg_specific_set() or control:get_direction() ~= 1
+      or header.cmd.value ~= 0x0B then
+    return
+  end
+  switch_defaults.default_response_handler(nil, device, message, false)
+end
+
 local definition = {
   profile = "controls-tuya-fingerbot-plus",
   package_group = "finger-robot",
-  magic_packet = true,
+  -- Keep automatic configuration off for this battery actuator; explicit
+  -- switch, refresh and EF00 setting commands retain their existing paths.
+  magic_packet = false,
+  zcl_configure = false,
   query_on_configure = false,
+  refresh_state_query = false,
+  initial_custom_state_query = false,
   time_start = "off",
+  zigbee_message_handler = handle_actuator_response,
+  runtime_start = function(device, preset)
+    device:remove_configured_attribute(0x0006, 0x0000)
+    device:remove_monitored_attribute(0x0006, 0x0000)
+    if not device:supports_capability_by_id("concertmirror08464.tuyaFingerbotUpperLimitV2", "main") then
+      device:try_update_metadata({ profile = preset.profile })
+    end
+  end,
   -- Z2M seq=1 is 01 00; the common transaction encoder uses big-endian.
   datapoints = {
     tuya.dp_enum(101, {
@@ -54,7 +97,7 @@ local definition = {
     tuya.dp_numeric(106, {
       name = "tuya_fingerbot_upper_limit",
       command_id = tuya.SEND_DATA, transaction = 0x0100,
-      emit = custom("tuyaFingerbotUpperLimit"),
+      emit = custom("tuyaFingerbotUpperLimitV2"),
     }),
     tuya.dp_binary(107, {
       name = "tuya_fingerbot_touch",
@@ -64,7 +107,7 @@ local definition = {
     }),
   },
   zcl_clusters = {
-    zcl.switch({ read_only = false, emit = emit.switch() }),
+    actuator,
   },
 }
 

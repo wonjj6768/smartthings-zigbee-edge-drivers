@@ -1,12 +1,8 @@
 local function u(p)
-local A=require"capabilities.events.all"
-local l=require"st.zigbee.data_types"
-local S=require"st.zigbee.constants"
-local U=require"st.utils.safe_xy_to_hsv"
+local A,l,S,U=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function t(i,P)
 if type(i)~="table"then
-i={}
-end
+i={}end
 if type(P)~="table"then
 return i
 end
@@ -27,18 +23,15 @@ end
 return i
 end
 local function n(R,...)
-local x=A[R]
-if type(x)=="function"then
-return x(...)
-end
+local x=A[R]if type(x)=="function"then
+return x(...)end
 return nil
 end
 local function e(a,f)
 local b={}if type(a)=="string"then
 b.name=a
 else
-t(b,a)
-end
+t(b,a)end
 t(b,f)return b
 end
 local function q(W,v,E,K)
@@ -48,8 +41,7 @@ end
 if type(K)=="table"then
 for V,i in pairs(K)do
 if s[i]~=nil then
-s[V]=s[i]
-end
+s[V]=s[i]end
 end
 end
 return{
@@ -83,22 +75,17 @@ end
 return c
 end
 local function r()
-return q({
-[0]="off",[1]="on",[2]="previous"},nil,nil,{
-restore="previous"})
+return q({[0]="off",[1]="on",[2]="previous"},nil,nil,{restore="previous"})
 end
 local function D()
-return q{
-[0]="toggle",[1]="state",[2]="momentary"}
+return q{[0]="toggle",[1]="state",[2]="momentary"}
 end
 local function encode_uint16_le(c)
-local M=math.floor(T(tonumber(c)or 0,0,65535)+0.5)return string.char(bit32.band(M,255))..
-string.char(bit32.rshift(bit32.band(M,65280),8))
+local M=math.floor(T(tonumber(c)or 0,0,65535)+0.5)return string.char(M&255,(M>>8)&255)
 end
 local function o(N,J,d)
 return function(a,f)
-local b=e(a,f)local F=d.converter_factory()g(b,{
-name=d.name,emit=d.emit,converter=F,
+local b,F=e(a,f),d.converter_factory()g(b,{name=d.name,emit=d.emit,converter=F,
 to_device=function(c)
 return F.to(c)
 end,
@@ -106,19 +93,17 @@ data_type=l.Enum8,write_type=l.Enum8,attribute_name=d.attribute_name,mfg_code=d.
 end
 end
 local function h(C,B,y)
-return{
-minimum_interval=C,maximum_interval=B,reportable_change=y,read_on_configure=true}
+return{minimum_interval=C,maximum_interval=B,reportable_change=y,read_on_configure=true}
 end
 local function m(...)
 local O={}for _,d in ipairs{...}do
-g(O,d)
-end
+g(O,d)end
 return O
 end
 local function j(R,x,z)
 p[R]=function(a,f)
-local b=e(a,f)local k=b.configure_reporting
-local d=z(b)b.configure_reporting=nil
+local b=e(a,f)local k,d=b.configure_reporting,z(b)
+b.configure_reporting=nil
 if k==false then
 d.minimum_interval=nil
 d.maximum_interval=nil
@@ -133,18 +118,12 @@ j("switch",p.on_off,function(f)
 local k=f.configure_reporting
 f.configure_reporting=nil
 if k==false then
-return{
-emit=A.switch()}
-end
-return m(
-{
-emit=A.switch()},h(0,300,nil))
+return{emit=A.switch()}end
+return m({emit=A.switch()},h(0,300,nil))
 end)
-p.power_on_behavior=o(p.CLUSTER_ON_OFF,32770,{
-name="power_on_behavior",emit=n"power_on_behavior",attribute_name="tuyaPowerOnBehavior",converter_factory=r})
+p.power_on_behavior=o(p.CLUSTER_ON_OFF,32770,{name="power_on_behavior",emit=n"power_on_behavior",attribute_name="tuyaPowerOnBehavior",converter_factory=r})
 p.child_lock=function(a,f)
-local b=e(a,f)g(b,{
-name="child_lock",emit=n"childLock",
+local b=e(a,f)g(b,{name="child_lock",emit=n"childLock",
 from_device=function(c)
 return c and"on"or"off"
 end,
@@ -154,38 +133,27 @@ end,
 data_type=l.Boolean,write_type=l.Boolean,attribute_name="tuyaChildLock",read_on_configure=true})return p.cluster_attribute(p.CLUSTER_ON_OFF,32768,b)
 end
 p.tuya_magic_packet=function(a,f)
-local b=e(a,f)g(b,{
-name="tuya_magic_packet",read_only=true,read_on_configure=true})return p.cluster_attribute(0,65534,b)
+local b=e(a,f)g(b,{name="tuya_magic_packet",read_only=true,read_on_configure=true})return p.cluster_attribute(0,65534,b)
 end
-p.switch_type=o(57345,53296,{
-name="switch_type",emit=n"switch_type",attribute_name="tuyaExternalSwitchType",mfg_code=4417,converter_factory=D})
+p.switch_type=o(57345,53296,{name="switch_type",emit=n"switch_type",attribute_name="tuyaExternalSwitchType",mfg_code=4417,converter_factory=D})
 p.countdown_timer=function(a,f)
-local b=e(a,f)g(b,{
-name="countdown_timer",emit=n("countdownTimerZclTwelveHours","s"),data_type=l.Uint16,write_type=l.Uint16,tx_command_id=66,
+local b=e(a,f)g(b,{name="countdown_timer",emit=n("countdownTimerZclTwelveHours","s"),data_type=l.Uint16,write_type=l.Uint16,tx_command_id=66,
 to_device=function(c)
 local G=T(tonumber(c)or 0,0,43200)return string.char(0)..encode_uint16_le(G)..encode_uint16_le(G)
 end,
-numeric_range={
-minimum=0,maximum=43200,step=1,unit="s"},attribute_name="onTime",read_on_configure=true})return p.cluster_attribute(p.CLUSTER_ON_OFF,16385,b)
+numeric_range={minimum=0,maximum=43200,step=1,unit="s"},attribute_name="onTime",read_on_configure=true})return p.cluster_attribute(p.CLUSTER_ON_OFF,16385,b)
 end
 j("power",p.electrical_measurement_power,function()
-return m(
-{
-emit=A.power(),metering_kind="power",poll_interval=300},h(5,300,1))
+return m({emit=A.power(),metering_kind="power",poll_interval=300},h(5,300,1))
 end)
 j("current",p.electrical_measurement_current,function()
-return m(
-{
-emit=A.current(),scale=1000,metering_kind="current",poll_interval=300},h(5,300,1))
+return m({emit=A.current(),scale=1000,metering_kind="current",poll_interval=300},h(5,300,1))
 end)
 j("voltage",p.electrical_measurement_voltage,function()
-return m(
-{
-emit=A.voltage(),metering_kind="voltage",poll_interval=300},h(5,300,1))
+return m({emit=A.voltage(),metering_kind="voltage",poll_interval=300},h(5,300,1))
 end)
 j("energy",p.simple_metering,function()
-return{
-emit=A.energy(),read_on_configure=true,metering_kind="energy",poll_interval=900}
+return{emit=A.energy(),read_on_configure=true,metering_kind="energy",poll_interval=900}
 end)
 end
 return u

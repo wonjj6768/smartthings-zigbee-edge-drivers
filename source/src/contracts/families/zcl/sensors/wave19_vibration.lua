@@ -1,4 +1,3 @@
--- Wave19 Tuya TS0210 literal-quote exact source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/tuya.ts:1271-1279,13933-13960
 --   src/converters/fromZigbee.ts:1084-1115

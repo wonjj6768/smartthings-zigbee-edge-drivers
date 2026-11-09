@@ -1,12 +1,8 @@
 local function n(D)
-local x=require"capabilities.events.all"
-local E=require"st.zigbee.data_types"
-local y=require"st.zigbee.constants"
-local C=require"st.utils.safe_xy_to_hsv"
+local x,E,y,C=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function m(f,w)
 if type(f)~="table"then
-f={}
-end
+f={}end
 if type(w)~="table"then
 return f
 end
@@ -30,8 +26,7 @@ local function i(c,g)
 local d={}if type(c)=="string"then
 d.name=c
 else
-m(d,c)
-end
+m(d,c)end
 m(d,g)return d
 end
 local function z(e,u,t)
@@ -60,19 +55,17 @@ end
 }
 end
 local function h(s,r,p)
-return{
-minimum_interval=s,maximum_interval=r,reportable_change=p,read_on_configure=true}
+return{minimum_interval=s,maximum_interval=r,reportable_change=p,read_on_configure=true}
 end
 local function k(...)
 local v={}for _,a in ipairs{...}do
-j(v,a)
-end
+j(v,a)end
 return v
 end
 local function l(F,B,q)
 D[F]=function(c,g)
-local d=i(c,g)local b=d.configure_reporting
-local a=q(d)d.configure_reporting=nil
+local d=i(c,g)local b,a=d.configure_reporting,q(d)
+d.configure_reporting=nil
 if b==false then
 a.minimum_interval=nil
 a.maximum_interval=nil
@@ -87,19 +80,13 @@ l("switch",D.on_off,function(g)
 local b=g.configure_reporting
 g.configure_reporting=nil
 if b==false then
-return{
-emit=x.switch()}
-end
-return k(
-{
-emit=x.switch()},h(0,300,nil))
+return{emit=x.switch()}end
+return k({emit=x.switch()},h(0,300,nil))
 end)
 l("level",D.level_control,function(g)
 local b=g.configure_reporting
 g.configure_reporting=nil
-local a={
-name="brightness",emit=x.level(),converter=o()}
-if b==false then return a end
+local a={name="brightness",emit=x.level(),converter=o()}if b==false then return a end
 return k(a,h(1,3600,1))
 end)
 end

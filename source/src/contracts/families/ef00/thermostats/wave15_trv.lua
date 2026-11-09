@@ -1,4 +1,3 @@
--- Wave15 Moes ZTRV-S01 source-only candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/moes.ts:843-925.
 
 local tuya = require "protocol.tuya"

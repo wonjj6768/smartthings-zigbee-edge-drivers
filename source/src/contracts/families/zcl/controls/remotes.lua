@@ -1,4 +1,3 @@
--- 버튼/리모컨 디바이스 정의
 
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"

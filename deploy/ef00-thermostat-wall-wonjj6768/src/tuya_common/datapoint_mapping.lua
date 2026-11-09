@@ -1,14 +1,9 @@
 local function bB(H,aW)
-local bT=aW.log
-local by=require"st.capabilities"
-local ax=require"runtime.capability_metadata"
-local aL=require"runtime.battery_refresh"
-local bP=require"runtime.utf8_text"
-local a=aW.type_check
-local u=aW.table_insert
-local aT=aW.normalize_transaction
-local bF=aW.persist_opt
-local ae=setmetatable({},{__mode="k"})local ay=setmetatable({},{__mode="k"})local as=setmetatable({},{__mode="k"})local an=setmetatable({},{__mode="k"})local aA="__tuya_mapping_bucket"
+local bT,by,ax,aL,bP,a,u,aT,bF,ae,ay,as,an,aA=aW.log,require"st.capabilities",require"runtime.capability_metadata",require"runtime.battery_refresh",require"runtime.utf8_text",aW.type_check,aW.table_insert,aW.normalize_transaction,aW.persist_opt,setmetatable({},{__mode="k"}),setmetatable({},{__mode="k"}),setmetatable({},{__mode="k"}),setmetatable({},{__mode="k"}),"__tuya_mapping_bucket"
+
+
+
+
 local M
 local p=ax.driver_message
 local function aR(h)
@@ -16,20 +11,16 @@ local aJ=a(h)if aJ=="string"then
 return h
 end
 if aJ=="number"or aJ=="boolean"then
-return tostring(h)
-end
+return tostring(h)end
 if aJ=="table"then
-local bs={}local bK=0
+local bs,bK={},0
 for ap,e in pairs(h)do
 bK=bK+1
 if bK>4 then
-bs[#bs+1]="..."
-break
+bs[#bs+1]="..."break
 end
-bs[#bs+1]=tostring(ap).."="..tostring(e)
-end
-return table.concat(bs,", ")
-end
+bs[#bs+1]=tostring(ap).."="..tostring(e)end
+return table.concat(bs,", ")end
 return tostring(h)
 end
 local function aI(b,f,t,h)
@@ -41,12 +32,9 @@ return
 end
 local bp=by[p.capability_id]local ba=bp and bp[p.attribute_name]or nil
 if a(ba)~="function"then
-bT.error(string.format(
-"[%s] Debug driver message binding missing: %s.%s",b.label or b.id or"device",p.capability_id or"unknown",p.attribute_name or"unknown"))return
+bT.error(string.format("[%s] Debug driver message binding missing: %s.%s",b.label or b.id or"device",p.capability_id or"unknown",p.attribute_name or"unknown"))return
 end
-local N=aY.label or aY.emit_name or"custom state"
-local bQ=a(t)=="table"and a(t.dp)=="number"and string.format("dp=%d",t.dp)or"dp=?"
-local bi=string.format("RX %s (%s): %s",N,bQ,aR(h))local bx=p.maximum_length or 512
+local N,bQ=aY.label or aY.emit_name or"custom state",a(t)=="table"and a(t.dp)=="number"and string.format("dp=%d",t.dp)or"dp=?"local bi,bx=string.format("RX %s (%s): %s",N,bQ,aR(h)),p.maximum_length or 512
 bi=bP.truncate(bi,bx)if bi==nil then
 return
 end
@@ -69,8 +57,7 @@ end
 if am(aX)then
 u(aX,s)return
 end
-bh[ap]={
-[aA]=true,aX,s}
+bh[ap]={[aA]=true,aX,s}
 end
 local function aH(c)
 if a(c)~="table"then
@@ -91,21 +78,10 @@ local function af(c)
 if a(c)~="table"then
 return nil
 end
-local m=aH(c)
-local bj=a(c.converter)=="function"and c.converter or nil
-return{
-from_device=a(c.from_device)=="function"and c.from_device or
-(m and a(m.from)=="function"and m.from or bj),
-to_device=a(c.to_device)=="function"and c.to_device or
-(m and a(m.to)=="function"and m.to or nil),
-read_only=c.read_only==true,write_only=c.write_only==true,
-field=(a(c.field)=="string"or a(c.field)=="function")and c.field or nil,
-fields=(a(c.fields)=="table"or a(c.fields)=="function")and c.fields or nil,
-handler=a(c.handler)=="function"and c.handler or nil,
-emit=a(c.emit)=="function"and c.emit or nil,
-endpoint=(a(c.endpoint)=="number"or a(c.endpoint)=="function")and c.endpoint or nil,
-component=(a(c.component)=="string"or a(c.component)=="function")and c.component or nil,
-persist=bF(c.persist)}
+local m,bj=aH(c),a(c.converter)=="function"and c.converter or nil
+return{from_device=a(c.from_device)=="function"and c.from_device or
+(m and a(m.from)=="function"and m.from or bj),to_device=a(c.to_device)=="function"and c.to_device or
+(m and a(m.to)=="function"and m.to or nil),read_only=c.read_only==true,write_only=c.write_only==true,field=(a(c.field)=="string"or a(c.field)=="function")and c.field or nil,fields=(a(c.fields)=="table"or a(c.fields)=="function")and c.fields or nil,handler=a(c.handler)=="function"and c.handler or nil,emit=a(c.emit)=="function"and c.emit or nil,endpoint=(a(c.endpoint)=="number"or a(c.endpoint)=="function")and c.endpoint or nil,component=(a(c.component)=="string"or a(c.component)=="function")and c.component or nil,persist=bF(c.persist)}
 end
 local function O(q)
 if a(q)~="number"or q%1~=0 then
@@ -121,8 +97,7 @@ local i=d.component_id or d.component
 if a(i)=="string"and i~=""then
 return i
 end
-local q=O(d.endpoint or d.src_endpoint)
-if q~=nil and a(b.get_component_id_for_endpoint)=="function"then
+local q=O(d.endpoint or d.src_endpoint)if q~=nil and a(b.get_component_id_for_endpoint)=="function"then
 local o=b:get_component_id_for_endpoint(q)if a(o)=="string"and o~=""then
 return o
 end
@@ -139,10 +114,8 @@ end
 local i=d.component_id or d.component
 if a(i)=="string"and i~=""and a(b.get_endpoint_for_component_id)=="function"then
 local o=b:get_endpoint_for_component_id(i)if a(o)=="table"then
-o=o[1]
-end
-return O(o)
-end
+o=o[1]end
+return O(o)end
 return nil
 end
 local function ag(v,b,d)
@@ -151,8 +124,7 @@ return nil
 end
 local q=v.endpoint
 if a(q)=="function"then
-q=q(b,d,v)
-end
+q=q(b,d,v)end
 return O(q)
 end
 local function V(v,b,d)
@@ -161,16 +133,14 @@ return nil
 end
 local i=v.component
 if a(i)=="function"then
-i=i(b,d,v)
-end
+i=i(b,d,v)end
 if a(i)=="string"and i~=""then
 return i
 end
 return nil
 end
 local function aq(b,c,d,h)
-local f={
-mapping=c,value=h}if a(d)=="table"then
+local f={mapping=c,value=h}if a(d)=="table"then
 for ap,e in pairs(d)do
 f[ap]=e
 end
@@ -179,13 +149,11 @@ if f.dp==nil and a(c)=="table"then
 f.dp=c.dp
 end
 local v=af(c)local q=ag(v,b,f)if q==nil then
-q=J(b,f)
-end
+q=J(b,f)end
 local i=V(v,b,f)if i==nil then
 if q~=nil and a(b.get_component_id_for_endpoint)=="function"then
 i=b:get_component_id_for_endpoint(q)else
-i=U(b,f)
-end
+i=U(b,f)end
 end
 f.endpoint=q
 f.component_id=i
@@ -206,13 +174,10 @@ local function ab(c,b,d)
 if a(c)~="table"then
 return 0
 end
-local v=af(c)local al=ag(v,b,d)local S=V(v,b,d)local F=J(b,d)local K=U(b,d)local W=aw(d)
-if F==nil and K~=nil and a(b.get_endpoint_for_component_id)=="function"then
-F=J(b,{component_id=K})
-end
+local v=af(c)local al,S,F,K,W=ag(v,b,d),V(v,b,d),J(b,d),U(b,d),aw(d)if F==nil and K~=nil and a(b.get_endpoint_for_component_id)=="function"then
+F=J(b,{component_id=K})end
 if K==nil and F~=nil and a(b.get_component_id_for_endpoint)=="function"then
-K=b:get_component_id_for_endpoint(F)
-end
+K=b:get_component_id_for_endpoint(F)end
 if al~=nil then
 if F==nil or F~=al then
 return-1
@@ -254,9 +219,8 @@ return R
 end
 local function Q(I,b,d)
 if I==nil or not am(I)then
-return Z(I,b,d)
-end
-local R={}local C=-1
+return Z(I,b,d)end
+local R,C={},-1
 for _,c in ipairs(I)do
 local aj=ab(c,b,d)if aj>C then
 R={c}C=aj
@@ -268,15 +232,13 @@ if C<0 or #R==0 then
 return nil
 end
 if #R==1 then
-return R[1]
-end
+return R[1]end
 return R
 end
 local function bf(Y,b,d)
 local o=Y
 if a(o)=="function"then
-o=o(b,d)
-end
+o=o(b,d)end
 if a(o)=="string"and o~=""then
 return o
 end
@@ -285,8 +247,7 @@ end
 local function bg(bS,b,d)
 local o=bS
 if a(o)=="function"then
-o=o(b,d)
-end
+o=o(b,d)end
 if a(o)=="table"then
 return o
 end
@@ -296,8 +257,7 @@ local function aE(b,ar,d)
 if ar==nil then
 return
 end
-aL.maybe_schedule_after_event(b,ar)
-if d.component~=nil and a(b.emit_component_event)=="function"then
+aL.maybe_schedule_after_event(b,ar)if d.component~=nil and a(b.emit_component_event)=="function"then
 b:emit_component_event(d.component,ar)return
 end
 if d.endpoint~=nil and a(b.emit_event_for_endpoint)=="function"then
@@ -335,38 +295,32 @@ return nil,nil
 end
 local aD=an[g]==true
 if aD then
-local y=ay[g]local E=as[g]if y~=nil and E~=nil then
+local y,E=ay[g],as[g]if y~=nil and E~=nil then
 return y,E
 end
 end
-local y={}local E={}if M(g)then
+local y,E={},{}if M(g)then
 for _,s in ipairs(g)do
 if a(s)=="table"then
 local dp=s.dp
 if a(dp)=="number"then
-w(y,dp,s)
-end
+w(y,dp,s)end
 local l=aK(s)if a(l)=="string"then
-w(E,l,s)
-end
+w(E,l,s)end
 end
 end
 else
 for B,s in pairs(g)do
 if a(B)=="number"then
-w(y,B,s)
-end
+w(y,B,s)end
 if a(s)=="table"then
 local dp=s.dp
 if a(dp)=="number"then
-w(y,dp,s)
-end
+w(y,dp,s)end
 local l=aK(s,B)if a(l)=="string"then
-w(E,l,s)
-end
+w(E,l,s)end
 elseif a(s)=="function"and a(B)=="string"then
-w(E,B,s)
-end
+w(E,B,s)end
 end
 end
 if aD then
@@ -428,20 +382,18 @@ k(N)return nil
 end
 end
 end
-local v=af(e)local au=e.response_dps
+local v,au=af(e),e.response_dps
 if au~=nil and next(au)==nil then
 au=nil
 end
-return{
-dp=e.dp,datatype=bz,value=e.value,command_id=e.command_id,transaction=aT(e.transaction),signed=e.signed==true,to_device=v and v.to_device or nil,skip=e.skip,batch_key=e.batch_key,match_transaction=e.match_transaction~=false,response_dp=e.response_dp,response_dps=au,match_response=e.match_response}
+return{dp=e.dp,datatype=bz,value=e.value,command_id=e.command_id,transaction=aT(e.transaction),signed=e.signed==true,to_device=v and v.to_device or nil,skip=e.skip,batch_key=e.batch_key,match_transaction=e.match_transaction~=false,response_dp=e.response_dp,response_dps=au,match_response=e.match_response}
 end
 local function bl(A)
 if a(A)~="table"then
 return nil
 end
 local bN={}for _,h in ipairs(A)do
-u(bN,h)
-end
+u(bN,h)end
 return bN
 end
 M=function(g)
@@ -466,11 +418,9 @@ return nil
 end
 local dp=a(d)=="table"and d.dp or d
 if M(g)then
-local y=G(g)return Q(y and y[dp]or nil,b,d)
-end
+local y=G(g)return Q(y and y[dp]or nil,b,d)end
 local bc=g[dp]if bc~=nil then
-return Q(bc,b,d)
-end
+return Q(bc,b,d)end
 local y=G(g)return Q(y and y[dp]or nil,b,d)
 end
 local function ac(g,ap,b,d)
@@ -478,8 +428,7 @@ if a(g)~="table"or a(ap)~="string"then
 return nil
 end
 local bc=g[ap]if bc~=nil then
-return Z(bc,b,d)
-end
+return Z(bc,b,d)end
 local _,E=G(g)return Z(E and E[ap]or nil,b,d)
 end
 local function aZ(b,t,c,d)
@@ -489,43 +438,35 @@ end
 local v=af(c)if v==nil or v.write_only then
 return t.value
 end
-local f=aq(b,c,d or t,t.value)local h=t.value
+local f,h=aq(b,c,d or t,t.value),t.value
 if v.from_device then
-h=v.from_device(h,b,t,f)
-end
+h=v.from_device(h,b,t,f)end
 if v.field then
 local ai=bf(v.field,b,f)if ai~=nil then
-b:set_field(ai,h,v.persist)
-end
+b:set_field(ai,h,v.persist)end
 end
 local br=bg(v.fields,b,f)if br~=nil and a(h)=="table"then
 for ai,bu in pairs(br)do
 local ap=bu==true and ai or bu
 if a(ai)=="string"and a(ap)=="string"and h[ap]~=nil then
-b:set_field(ai,h[ap],v.persist)
-end
+b:set_field(ai,h[ap],v.persist)end
 end
 end
 if h==nil then
 return h
 end
 local l=aK(c)if l=="battery"or l=="battery_voltage"then
-aL.note_report(b)
-end
+aL.note_report(b)end
 if v.handler then
-v.handler(b,h,t,f)
-end
+v.handler(b,h,t,f)end
 if v.emit then
 local ar=v.emit(b,h,t,f)if ar then
 if a(ar)=="table"and ar[1]~=nil then
 for _,e in ipairs(ar)do
-aE(b,e,f)
-end
+aE(b,e,f)end
 else
-aE(b,ar,f)
-end
-aI(b,f,t,h)
-end
+aE(b,ar,f)end
+aI(b,f,t,h)end
 end
 return h
 end
@@ -534,10 +475,9 @@ if #z==0 then
 return nil
 end
 if #z==1 then
-local e=z[1]return H.send_datapoint(b,e.dp,e.datatype,e.value,e.command_id,e.signed,e.transaction)
-end
-local bq=z[1].command_id
-local bk=z[1].transaction
+local e=z[1]return H.send_datapoint(b,e.dp,e.datatype,e.value,e.command_id,e.signed,e.transaction)end
+local bq,bk=z[1].command_id,z[1].transaction
+
 for bh=2,#z do
 if z[bh].command_id~=bq or z[bh].transaction~=bk then
 local az
@@ -562,19 +502,16 @@ local D=T(bC,A,l)local c=ac(g,l,b,D)if c==nil then
 return
 end
 for _,e in ipairs(X(b,c,h,D))do
-aa(bD,e)
-end
+aa(bD,e)end
 end
 if a(aO)=="table"then
 for _,l in ipairs(aO)do
 local h=A and A[l]if h~=nil then
-aC(l,h)
-end
+aC(l,h)end
 end
 elseif a(A)=="table"then
 for l,h in pairs(A)do
-aC(l,h)
-end
+aC(l,h)end
 end
 return bD
 end
@@ -590,43 +527,36 @@ return nil
 end
 local bI=h
 if e.to_device then
-bI=e.to_device(h,b,e,f)
-end
-return{
-dp=e.dp,datatype=e.datatype,value=bI,command_id=e.command_id,transaction=e.transaction,signed=e.signed,batch_key=e.batch_key,match_transaction=e.match_transaction,response_dp=e.response_dp,response_dps=e.response_dps,match_response=e.match_response}
+bI=e.to_device(h,b,e,f)end
+return{dp=e.dp,datatype=e.datatype,value=bI,command_id=e.command_id,transaction=e.transaction,signed=e.signed,batch_key=e.batch_key,match_transaction=e.match_transaction,response_dp=e.response_dp,response_dps=e.response_dps,match_response=e.match_response}
 end
 X=function(b,c,h,d)
 if a(c)=="function"then
-local e=c(b,h,d)local z={}if e==nil then
+local e,z=c(b,h,d),{}if e==nil then
 return z
 end
 if e[1]~=nil then
 for _,bH in ipairs(e)do
 local aF=ah(bH,"send mapping result")if aF then
-u(z,aF)
-end
+u(z,aF)end
 end
 return z
 end
 local aF=ah(e,"send mapping result")if aF then
-u(z,aF)
-end
+u(z,aF)end
 return z
 end
 if a(c)~="table"then
-return{}
-end
+return{}end
 if c[1]~=nil and c.dp==nil then
 local z={}for _,e in ipairs(c)do
 local bo=aM(b,e,h,d)if bo then
-u(z,bo)
-end
+u(z,bo)end
 end
 return z
 end
 local bo=aM(b,c,h,d)if bo then
-return{bo}
-end
+return{bo}end
 return{}
 end
 function H.apply_datapoint_mapping(b,t,L,d)
@@ -646,11 +576,9 @@ return false
 end
 if c[1]~=nil then
 for _,e in ipairs(c)do
-aZ(b,t,e,x)
-end
+aZ(b,t,e,x)end
 else
-aZ(b,t,c,x)
-end
+aZ(b,t,c,x)end
 return true
 end
 function H.send_mapping(b,c,h,d)
@@ -669,8 +597,7 @@ local function aG(P,e)
 if not e.batch_key then
 u(P,e)return
 end
-local at=P[#P]local bd={
-dp=e.dp,datatype=e.datatype,value=e.value,command_id=e.command_id,transaction=e.transaction,signed=e.signed}if at and
+local at,bd=P[#P],{dp=e.dp,datatype=e.datatype,value=e.value,command_id=e.command_id,transaction=e.transaction,signed=e.signed}if at and
 at.batch_key==e.batch_key and
 at.command_id==e.command_id and
 at.transaction==e.transaction and
@@ -680,20 +607,17 @@ at.items then
 u(at.items,bd)if e.response_dp~=nil then
 at.response_dps=at.response_dps or{}u(at.response_dps,e.response_dp)elseif e.response_dps then
 at.response_dps=at.response_dps or{}for _,dp in ipairs(e.response_dps)do
-u(at.response_dps,dp)
-end
+u(at.response_dps,dp)end
 end
 return
 end
-local s={
-items={bd},command_id=e.command_id,batch_key=e.batch_key,transaction=e.transaction,match_transaction=e.match_transaction,match_response=e.match_response}if e.response_dp~=nil then
+local s={items={bd},command_id=e.command_id,batch_key=e.batch_key,transaction=e.transaction,match_transaction=e.match_transaction,match_response=e.match_response}if e.response_dp~=nil then
 s.response_dps={e.response_dp}elseif e.response_dps then
-s.response_dps=bl(e.response_dps)
-end
+s.response_dps=bl(e.response_dps)end
 u(P,s)
 end
 local function av(b,ad,j,r)
-local aP=b.preferences or{}local D=T(nil,aP,ad)local c=ac(j,ad,b,D)local h=aP[ad]local bO=r and r[ad]or nil
+local aP=b.preferences or{}local D=T(nil,aP,ad)local c,h,bO=ac(j,ad,b,D),aP[ad],r and r[ad]or nil
 if c==nil or h==nil or h==bO then
 return false
 end
@@ -706,31 +630,27 @@ end
 return aP[l]~=r[l]
 end
 function H.build_preference_config_queue(b,j,n,r)
-local P={}local aP=b.preferences or{}
+local P,aP={},b.preferences or{}
 local function aa(l)
-local D=T(nil,aP,l)local c=ac(j,l,b,D)local h=aP[l]if c==nil or h==nil or not aQ(aP,r,l)then
+local D=T(nil,aP,l)local c,h=ac(j,l,b,D),aP[l]if c==nil or h==nil or not aQ(aP,r,l)then
 return
 end
 for _,e in ipairs(X(b,c,h,D))do
-aG(P,e)
-end
+aG(P,e)end
 end
 if a(n)=="table"then
 for _,l in ipairs(n)do
-aa(l)
-end
+aa(l)end
 elseif a(j)=="table"then
 if M(j)then
 for _,c in ipairs(j)do
 local l=c.preference or c.key or c.name
 if a(l)=="string"then
-aa(l)
-end
+aa(l)end
 end
 else
 for l,_ in pairs(j)do
-aa(l)
-end
+aa(l)end
 end
 end
 return P
@@ -740,8 +660,7 @@ local P={}aB(P,aG,b,g,A,aO,d)return P
 end
 local function ao(L,Y,aN)
 if a(L)~="table"then
-return{}
-end
+return{}end
 local bm={}for B,s in pairs(L)do
 if a(s)=="function"and a(B)=="string"then
 bm[B]=s
@@ -765,23 +684,18 @@ return bm
 end
 local function ak(Y)
 if Y=="key"then
-return{"name","preference"}
-end
+return{"name","preference"}end
 if Y=="name"then
-return{"key","preference"}
-end
+return{"key","preference"}end
 if Y=="preference"then
-return{"key","name"}
-end
+return{"key","name"}end
 return nil
 end
 function H.build_named_map(L,be)
-local Y=be or"key"
-return ao(L,Y,ak(Y))
+local Y=be or"key"return ao(L,Y,ak(Y))
 end
 function H.build_preference_map(L,be)
-local Y=be or"preference"
-return ao(L,Y,ak(Y))
+local Y=be or"preference"return ao(L,Y,ak(Y))
 end
 local function bn(g)
 if a(g)~="table"then
@@ -829,8 +743,7 @@ local P=H.build_preference_config_queue(b,j,n,r)if #P==0 then
 return false
 end
 if aU.use_queue then
-return H.start_config_queue(b,P)
-end
+return H.start_config_queue(b,P)end
 return H.send_preferences(b,j,r,n)
 end
 end

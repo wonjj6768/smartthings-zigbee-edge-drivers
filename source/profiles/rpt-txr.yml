@@ -10,7 +10,7 @@ components:
     version: 1
   - id: concertmirror08464.tuyaFingerbotLowerLimit
     version: 1
-  - id: concertmirror08464.tuyaFingerbotUpperLimit
+  - id: concertmirror08464.tuyaFingerbotUpperLimitV2
     version: 1
   - id: concertmirror08464.tuyaFingerbotDelay
     version: 1

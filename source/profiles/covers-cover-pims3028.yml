@@ -10,7 +10,7 @@ components:
         version: 1
       - id: concertmirror08464.coverCalibrationPims3028StartEnd
         version: 1
-      - id: concertmirror08464.pims3028PositionBest
+      - id: concertmirror08464.pims3028PositionBestV2
         version: 1
       - id: concertmirror08464.pims3028BestTrigger
         version: 1
@@ -20,7 +20,7 @@ components:
         version: 1
       - id: concertmirror08464.pims3028ControlBack
         version: 1
-      - id: concertmirror08464.pims3028Border
+      - id: concertmirror08464.pims3028BorderV2
         version: 1
       - id: concertmirror08464.pims3028QuickCalibration
         version: 1

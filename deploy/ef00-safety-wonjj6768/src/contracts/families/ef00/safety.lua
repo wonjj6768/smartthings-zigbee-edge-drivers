@@ -1,19 +1,9 @@
-local c=require"protocol.tuya"
-local d=require"capabilities.events.all"
-local e=require"contracts.helpers.family"
-local o=require"st.capabilities"
-local a=c.converter
-local Q,b=e.definition_registry()local i=a.lookup_from_to{
-low=0,middle=1,high=2,mute=3}local g=i
-local j=a.lookup_from_to{
-mute=0,beep=1,music=2}local m=a.lookup_from_to{
-melody1=0,melody2=1,melody3=2,melody4=3,melody5=4,melody6=5,melody7=6,melody8=7,door=8,water=9,temperature=10,entered=11,left=12}local v=a.lookup_from_to{
-low=0,medium=1,high=2,mute=3}local r=a.lookup_from_to{
-ringtone_1=0,ringtone_2=1,ringtone_3=2,ringtone_4=3,ringtone_5=4,ringtone_6=5,ringtone_7=6,ringtone_8=7,ringtone_9=8,ringtone_10=9,ringtone_11=10,ringtone_12=11,ringtone_13=12,ringtone_14=13,ringtone_15=14,ringtone_16=15,ringtone_17=16,ringtone_18=17,ringtone_19=18,ringtone_20=19,ringtone_21=20,ringtone_22=21,ringtone_23=22,ringtone_24=23,ringtone_25=24,ringtone_26=25,ringtone_27=26,ringtone_28=27,ringtone_29=28,ringtone_30=29,ringtone_31=30,ringtone_32=31}
+local c,d,e,o=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"st.capabilities"local a=c.converter
+local Q,b=e.definition_registry()local i=a.lookup_from_to{low=0,middle=1,high=2,mute=3}local g,j,m,v,r=i,a.lookup_from_to{mute=0,beep=1,music=2},a.lookup_from_to{melody1=0,melody2=1,melody3=2,melody4=3,melody5=4,melody6=5,melody7=6,melody8=7,door=8,water=9,temperature=10,entered=11,left=12},a.lookup_from_to{low=0,medium=1,high=2,mute=3},a.lookup_from_to{ringtone_1=0,ringtone_2=1,ringtone_3=2,ringtone_4=3,ringtone_5=4,ringtone_6=5,ringtone_7=6,ringtone_8=7,ringtone_9=8,ringtone_10=9,ringtone_11=10,ringtone_12=11,ringtone_13=12,ringtone_14=13,ringtone_15=14,ringtone_16=15,ringtone_17=16,ringtone_18=17,ringtone_19=18,ringtone_20=19,ringtone_21=20,ringtone_22=21,ringtone_23=22,ringtone_24=23,ringtone_25=24,ringtone_26=25,ringtone_27=26,ringtone_28=27,ringtone_29=28,ringtone_30=29,ringtone_31=30,ringtone_32=31}
+
 local function u(s)
 return function(ah,f)
-local p={}local ad=f=="closed"and"closed"or"open"
-p[#p+1]=o.contactSensor.contact(ad)local k=s(ah,f)if k~=nil then
+local p,ad={},f=="closed"and"closed"or"open"p[#p+1]=o.contactSensor.contact(ad)local k=s(ah,f)if k~=nil then
 p[#p+1]=k
 end
 return p
@@ -21,343 +11,97 @@ end
 end
 local function A(s)
 return function(ah,f)
-local p={
-o.smokeDetector.smoke(f=="alarm"and"detected"or"clear")}local k=s(ah,f)if k~=nil then
+local p,k={o.smokeDetector.smoke(f=="alarm"and"detected"or"clear")},s(ah,f)if k~=nil then
 p[#p+1]=k
 end
 return p
 end
 end
-local ao={
-profile="safety-smoke-battery-state-ux5v4dbd",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(14,{
-name="battery_state",emit=d.ux5v4dbdSmokeBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})})}b(ao,e.create_fingerprints("TS0601",{
-"_TZE200_ux5v4dbd"}))local B={
-profile="safety-smoke-tamper-battery-low",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_battery_low(14,{emit=d.battery_low()})}b(B,e.create_fingerprints("TS0601",{
-"_TZE200_0zaf1cr8","_TZE204_ntcy3xu1","_TZE284_0zaf1cr8"}))local aj={
-profile="safety-smoke-tamper-battery-state-ntcy3xu1",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_enum(14,{
-name="battery_state",emit=d.ntcy3xu1SmokeBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})})}b(aj,e.create_fingerprints("TS0601",{
-"_TZE200_ntcy3xu1"}))local ae={
-profile="safety-smoke-battery-state-battery-t5p1vj8r",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(14,{
-name="battery_state",emit=d.t5p1vj8rSmokeBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})}),c.dp_battery(15,{emit=d.battery()})}b(ae,{
-e.create_fingerprint("_TZE200_t5p1vj8r","TS0601"),e.create_fingerprint("_TZE200_uebojraa","TS0601"),e.create_fingerprint("_TZE200_vzekyi4c","TS0601"),e.create_fingerprint("_TZE200_yh7aoahi","TS0601"),e.create_fingerprint("_TZE200_dq1mfjug","TS0601"),e.create_fingerprint("_TYST11_t5p1vj8r","5p1vj8r\0")})local af={
-profile="safety-smoke-tamper-battery",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_battery(15,{emit=d.battery()})}b(af,e.create_fingerprints("TS0601",{
-"_TZE200_qcasmfan"}))local ak={
-profile="safety-alarm-battery-duration-volume-ringtone-yxzbsl",c.dp_enum(1,{
-name="yxzbsl_alarm_type",emit=d.yxzbslAlarmType(),converter=a.lookup_from_to{
-sound=0,light=1,sound_light=2,normal=3}}),c.dp_enum(5,{name="volume",emit=d.alarmVolumeSirenYxzbsl(),converter=i}),c.dp_enum(6,{
-name="power_type",emit=d.yxzbslPowerType(),read_only=true,
+local ao={profile="safety-smoke-battery-state-ux5v4dbd",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(14,{name="battery_state",emit=d.ux5v4dbdSmokeBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})})}b(ao,e.create_fingerprints("TS0601",{"_TZE200_ux5v4dbd"}))local B={profile="safety-smoke-tamper-battery-low",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_battery_low(14,{emit=d.battery_low()})}b(B,e.create_fingerprints("TS0601",{"_TZE200_0zaf1cr8","_TZE204_ntcy3xu1","_TZE284_0zaf1cr8"}))local aj={profile="safety-smoke-tamper-battery-state-ntcy3xu1",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_enum(14,{name="battery_state",emit=d.ntcy3xu1SmokeBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})})}b(aj,e.create_fingerprints("TS0601",{"_TZE200_ntcy3xu1"}))local ae={profile="safety-smoke-battery-state-battery-t5p1vj8r",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(14,{name="battery_state",emit=d.t5p1vj8rSmokeBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})}),c.dp_battery(15,{emit=d.battery()})}b(ae,{e.create_fingerprint("_TZE200_t5p1vj8r","TS0601"),e.create_fingerprint("_TZE200_uebojraa","TS0601"),e.create_fingerprint("_TZE200_vzekyi4c","TS0601"),e.create_fingerprint("_TZE200_yh7aoahi","TS0601"),e.create_fingerprint("_TZE200_dq1mfjug","TS0601"),e.create_fingerprint("_TYST11_t5p1vj8r","5p1vj8r\0")})local af={profile="safety-smoke-tamper-battery",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_battery(15,{emit=d.battery()})}b(af,e.create_fingerprints("TS0601",{"_TZE200_qcasmfan"}))local ak={profile="safety-alarm-battery-duration-volume-ringtone-yxzbsl",c.dp_enum(1,{name="yxzbsl_alarm_type",emit=d.yxzbslAlarmType(),converter=a.lookup_from_to{sound=0,light=1,sound_light=2,normal=3}}),c.dp_enum(5,{name="volume",emit=d.alarmVolumeSirenYxzbsl(),converter=i}),c.dp_enum(6,{name="power_type",emit=d.yxzbslPowerType(),read_only=true,
 converter=a.from_only(function(f)
 return(f==true or f==1)and"battery"or"cable"
 end)
-}),c.dp_numeric(7,{name="duration",emit=d.alarmDurationSirenYxzbslMinutes()}),c.dp_on_off(13,{name="alarm",emit=d.alarm()}),c.dp_enum(14,{
-name="battery_level",emit=d.yxzbslBatteryLevel(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="low",[1]="middle",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_enum(21,{name="ringtone",emit=d.alarmRingtoneSirenYxzbsl(),converter=m})}b(ak,e.create_fingerprints("TS0601",{
-"_TZE204_fncxk3ob","_TZE204_k7mfgaen","_TZE284_fncxk3ob"}))local H={
-profile="safety-alarm-duration-volume-ringtone-za03",c.dp_enum(5,{name="volume",emit=d.alarmVolumeSirenZa03(),converter=v}),c.dp_numeric(7,{name="duration",emit=d.alarmDurationSirenZa03Seconds()}),c.dp_on_off(13,{name="alarm",emit=d.alarm()}),c.dp_enum(21,{name="ringtone",emit=d.alarmRingtoneSirenZa03(),converter=r})}b(H,e.create_fingerprints("TS0601",{
-"_TZE204_hcxvyxa5"}))local F={
-profile="safety-water-leak-alarm-battery-zg226z",c.dp_water_leak(1,{emit=d.water(),converter=a.true_false0()}),c.dp_on_off(101,{name="alarm",emit=d.alarm()}),c.dp_on_off(7,{name="muffling",emit=d.mufflingWaterLeak()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(102,{name="duration",emit=d.alarmDurationSiren()}),c.dp_enum(104,{name="alarm_volume",emit=d.alarmVolumeHobeian(),converter=g}),c.dp_enum(103,{name="alarm_ring",emit=d.alarmRingHobeian(),converter=j})}b(F,{
-e.create_fingerprint("HOBEIAN","ZG-226Z")})local I={
-profile="safety-acceleration-alarm-battery-zg228z",c.dp_enum(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_enum(101,{
-name="zg228z_vibration_siren",emit=d.zg228zVibrationSiren(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(105,{
-name="zg228z_alarm_mode",emit=d.zg228zAlarmMode(),converter=a.lookup_from_to{beep=0,ring=1,stop=2}}),c.dp_on_off(102,{name="muffling",emit=d.mufflingSiren()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(106,{name="duration",emit=d.alarmDurationSiren()}),c.dp_numeric(6,{name="sensitivity",emit=d.vibrationSensitivityZgFifty()}),c.dp_enum(103,{name="alarm_volume",emit=d.alarmVolumeHobeian(),converter=g}),c.dp_enum(104,{name="alarm_ring",emit=d.alarmRingHobeian(),converter=j})}b(I,{
-e.create_fingerprint("HOBEIAN","ZG-228Z")})local R={
-profile="safety-alarm-battery-zg229z",c.dp_enum(1,{
-name="zg229z_alarm_mode",emit=d.zg229zAlarmMode(),converter=a.lookup_from_to{
-alarm_sound=0,alarm_light=1,alarm_sound_light=2,normal=3}}),c.dp_on_off(102,{name="doorbell",emit=d.doorbellSirenHobeian()}),c.dp_on_off(16,{name="muffling",emit=d.mufflingSiren()}),c.dp_battery(15,{emit=d.battery()}),c.dp_numeric(7,{name="duration",emit=d.alarmDurationSiren()}),c.dp_enum(5,{name="alarm_volume",emit=d.alarmVolumeHobeian(),converter=g}),c.dp_enum(101,{name="doorbell_volume",emit=d.doorbellVolumeHobeian(),converter=g})}b(R,{
-e.create_fingerprint("HOBEIAN","ZG-229Z")})local O={
-profile="safety-smoke-battery-state-battery-self-test-silence-hs2sa",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(9,{
-name="self_test",emit=d.hs2saSelfTest(),converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="check_success",[2]="check_failure"})}),c.dp_enum(14,{
-name="battery_state",emit=d.hs2saBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_silence(16,{
-name="hs2sa_silence",emit=d.hs2saSilence(),converter=a.lookup_from_to{off=false,on=true}})}b(O,e.create_fingerprints("TS0601",{
-"_TZE200_vawy74yh","_TZE204_ai4rqhky","_TZE204_vawy74yh","_TZE284_ai4rqhky","_TZE284_vawy74yh"}))local N={
-profile="safety-smoke-battery-concentration-fault-silence-test-pa44z",c.dp_smoke(1,{emit=d.smoke()}),c.dp_smoke_concentration(2,{emit=d.pa44zSmokeConcentration()}),c.dp_binary(11,{
-name="device_fault",emit=d.pa44zDeviceFault(),
+}),c.dp_numeric(7,{name="duration",emit=d.alarmDurationSirenYxzbslMinutes()}),c.dp_on_off(13,{name="alarm",emit=d.alarm()}),c.dp_enum(14,{name="battery_level",emit=d.yxzbslBatteryLevel(),read_only=true,converter=a.from_only(a.lookup_value{[0]="low",[1]="middle",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_enum(21,{name="ringtone",emit=d.alarmRingtoneSirenYxzbsl(),converter=m})}b(ak,e.create_fingerprints("TS0601",{"_TZE204_fncxk3ob","_TZE204_k7mfgaen","_TZE284_fncxk3ob"}))local H={profile="safety-alarm-duration-volume-ringtone-za03",c.dp_enum(5,{name="volume",emit=d.alarmVolumeSirenZa03(),converter=v}),c.dp_numeric(7,{name="duration",emit=d.alarmDurationSirenZa03Seconds()}),c.dp_on_off(13,{name="alarm",emit=d.alarm()}),c.dp_enum(21,{name="ringtone",emit=d.alarmRingtoneSirenZa03(),converter=r})}b(H,e.create_fingerprints("TS0601",{"_TZE204_hcxvyxa5"}))local F={profile="safety-water-leak-alarm-battery-zg226z",c.dp_water_leak(1,{emit=d.water(),converter=a.true_false0()}),c.dp_on_off(101,{name="alarm",emit=d.alarm()}),c.dp_on_off(7,{name="muffling",emit=d.mufflingWaterLeak()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(102,{name="duration",emit=d.alarmDurationSiren()}),c.dp_enum(104,{name="alarm_volume",emit=d.alarmVolumeHobeian(),converter=g}),c.dp_enum(103,{name="alarm_ring",emit=d.alarmRingHobeian(),converter=j})}b(F,{e.create_fingerprint("HOBEIAN","ZG-226Z")})local I={profile="safety-acceleration-alarm-battery-zg228z",c.dp_enum(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_enum(101,{name="zg228z_vibration_siren",emit=d.zg228zVibrationSiren(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(105,{name="zg228z_alarm_mode",emit=d.zg228zAlarmMode(),converter=a.lookup_from_to{beep=0,ring=1,stop=2}}),c.dp_on_off(102,{name="muffling",emit=d.mufflingSiren()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(106,{name="duration",emit=d.alarmDurationSiren()}),c.dp_numeric(6,{name="sensitivity",emit=d.vibrationSensitivityZgFifty()}),c.dp_enum(103,{name="alarm_volume",emit=d.alarmVolumeHobeian(),converter=g}),c.dp_enum(104,{name="alarm_ring",emit=d.alarmRingHobeian(),converter=j})}b(I,{e.create_fingerprint("HOBEIAN","ZG-228Z")})local R={profile="safety-alarm-battery-zg229z",c.dp_enum(1,{name="zg229z_alarm_mode",emit=d.zg229zAlarmMode(),converter=a.lookup_from_to{alarm_sound=0,alarm_light=1,alarm_sound_light=2,normal=3}}),c.dp_on_off(102,{name="doorbell",emit=d.doorbellSirenHobeian()}),c.dp_on_off(16,{name="muffling",emit=d.mufflingSiren()}),c.dp_battery(15,{emit=d.battery()}),c.dp_numeric(7,{name="duration",emit=d.alarmDurationSiren()}),c.dp_enum(5,{name="alarm_volume",emit=d.alarmVolumeHobeian(),converter=g}),c.dp_enum(101,{name="doorbell_volume",emit=d.doorbellVolumeHobeian(),converter=g})}b(R,{e.create_fingerprint("HOBEIAN","ZG-229Z")})local O={profile="safety-smoke-battery-state-battery-self-test-silence-hs2sa",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(9,{name="self_test",emit=d.hs2saSelfTest(),converter=a.from_only(a.lookup_value{[0]="checking",[1]="check_success",[2]="check_failure"})}),c.dp_enum(14,{name="battery_state",emit=d.hs2saBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_silence(16,{name="hs2sa_silence",emit=d.hs2saSilence(),converter=a.lookup_from_to{off=false,on=true}})}b(O,e.create_fingerprints("TS0601",{"_TZE200_vawy74yh","_TZE204_ai4rqhky","_TZE204_vawy74yh","_TZE284_ai4rqhky","_TZE284_vawy74yh"}))local N={profile="safety-smoke-battery-concentration-fault-silence-test-pa44z",c.dp_smoke(1,{emit=d.smoke()}),c.dp_smoke_concentration(2,{emit=d.pa44zSmokeConcentration()}),c.dp_binary(11,{name="device_fault",emit=d.pa44zDeviceFault(),
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{
-name="pa44z_silence",emit=d.pa44zSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(101,{
-name="pa44z_test",emit=d.pa44zTest(),converter=a.lookup_from_to{off=false,on=true}})}b(N,e.create_fingerprints("TS0601",{
-"_TZE200_m9skfctm","_TZE200_rccxox8p","_TZE2841000000_rccxox8p","_TZE284_rccxox8p","_TZE284_qvzsq3s2"}))local n={
-profile="safety-smoke-battery-concentration-fault-state-silence-test-zss",c.dp_smoke(1,{emit=d.smoke()}),c.dp_smoke_concentration(2,{emit=d.zssSmokeConcentration()}),c.dp_binary(11,{
-name="fault_alarm",emit=d.zssFaultAlarm(),
+}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{name="pa44z_silence",emit=d.pa44zSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(101,{name="pa44z_test",emit=d.pa44zTest(),converter=a.lookup_from_to{off=false,on=true}})}b(N,e.create_fingerprints("TS0601",{"_TZE200_m9skfctm","_TZE200_rccxox8p","_TZE2841000000_rccxox8p","_TZE284_rccxox8p","_TZE284_qvzsq3s2"}))local n={profile="safety-smoke-battery-concentration-fault-state-silence-test-zss",c.dp_smoke(1,{emit=d.smoke()}),c.dp_smoke_concentration(2,{emit=d.zssSmokeConcentration()}),c.dp_binary(11,{name="fault_alarm",emit=d.zssFaultAlarm(),
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-}),c.dp_enum(14,{
-name="battery_state",emit=d.zssBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{
-name="zss_silence",emit=d.zssSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(17,{
-name="zss_self_test",emit=d.zssSelfTest(),converter=a.lookup_from_to{off=false,on=true}})}b(n,e.create_fingerprints("TS0601",{
-"_TZE200_e2bedvo9","_TZE200_dnz6yvl2","_TZE284_e2bedvo9"}))local S={
-profile="safety-smoke-tamper-battery-fault-silence-alarm-ytibqbra",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_binary(11,{
-name="fault_alarm",emit=d.ytibqbraFaultAlarm(),
+}),c.dp_enum(14,{name="battery_state",emit=d.zssBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="medium",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{name="zss_silence",emit=d.zssSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(17,{name="zss_self_test",emit=d.zssSelfTest(),converter=a.lookup_from_to{off=false,on=true}})}b(n,e.create_fingerprints("TS0601",{"_TZE200_e2bedvo9","_TZE200_dnz6yvl2","_TZE284_e2bedvo9"}))local S={profile="safety-smoke-tamper-battery-fault-silence-alarm-ytibqbra",c.dp_smoke(1,{emit=d.smoke()}),c.dp_tamper(4,{emit=d.tamper()}),c.dp_binary(11,{name="fault_alarm",emit=d.ytibqbraFaultAlarm(),
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{
-name="ytibqbra_silence",emit=d.ytibqbraSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(17,{
-name="ytibqbra_alarm_switch",emit=d.ytibqbraAlarmSwitch(),converter=a.lookup_from_to{off=false,on=true}})}b(S,e.create_fingerprints("TS0601",{
-"_TZE200_ytibqbra"}))local ai={
-profile="safety-smoke-battery-silence-alarm-sa12izl",c.dp_smoke(1,{emit=d.smoke()}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{
-name="sa12izl_silence_siren",emit=d.sa12izlSilenceSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(20,{
-name="sa12izl_alarm",emit=d.sa12izlAlarm(),converter=a.lookup_from_to{off=1,on=0}})}b(ai,e.create_fingerprints("TS0601",{
-"_TZE200_5d3vhjro"}))local X={
-profile="safety-smoke-test-result-battery-fault-silence-alarm-r7049",c.dp_smoke(1,{emit=d.smoke()}),c.dp_binary(8,{
-name="r7049_test_alarm",emit=d.r7049TestAlarm(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(9,{
-name="test_alarm_result",emit=d.r7049TestAlarmResult(),converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"})}),c.dp_binary(11,{
-name="fault_alarm",emit=d.r7049FaultAlarm(),
+}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{name="ytibqbra_silence",emit=d.ytibqbraSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(17,{name="ytibqbra_alarm_switch",emit=d.ytibqbraAlarmSwitch(),converter=a.lookup_from_to{off=false,on=true}})}b(S,e.create_fingerprints("TS0601",{"_TZE200_ytibqbra"}))local ai={profile="safety-smoke-battery-silence-alarm-sa12izl",c.dp_smoke(1,{emit=d.smoke()}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{name="sa12izl_silence_siren",emit=d.sa12izlSilenceSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(20,{name="sa12izl_alarm",emit=d.sa12izlAlarm(),converter=a.lookup_from_to{off=1,on=0}})}b(ai,e.create_fingerprints("TS0601",{"_TZE200_5d3vhjro"}))local X={profile="safety-smoke-test-result-battery-fault-silence-alarm-r7049",c.dp_smoke(1,{emit=d.smoke()}),c.dp_binary(8,{name="r7049_test_alarm",emit=d.r7049TestAlarm(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(9,{name="test_alarm_result",emit=d.r7049TestAlarmResult(),converter=a.from_only(a.lookup_value{[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"})}),c.dp_binary(11,{name="fault_alarm",emit=d.r7049FaultAlarm(),
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-}),c.dp_enum(14,{
-name="battery_level",emit=d.r7049BatteryLevel(),converter=a.from_only(a.lookup_value{
-[0]="low",[1]="middle",[2]="high"})}),c.dp_binary(16,{
-name="r7049_silence_siren",emit=d.r7049SilenceSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(20,{
-name="r7049_alarm",emit=d.r7049Alarm(),converter=a.lookup_from_to{off=1,on=0}})}b(X,e.create_fingerprints("TS0601",{
-"_TZE200_aycxwiau","_TZE200_bxdyeaa9","_TZE200_ft523twt"}))local y={
-profile="safety-smoke-value-self-check-result-lifecycle-battery-silence-alecto",c.dp_smoke(1,{emit=d.smoke()}),c.dp_numeric(2,{
-name="smoke_value",emit=d.alectoSmoke10SmokeValue()}),c.dp_binary(8,{
-name="alecto_smoke10_self_checking",emit=d.alectoSmoke10SelfChecking(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(9,{
-name="checking_result",emit=d.alectoSmoke10CheckingResult(),converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"})}),c.dp_binary(11,{name="smoke_test"}),c.dp_binary(12,{
-name="lifecycle",emit=d.alectoSmoke10Lifecycle(),converter=a.from_only(a.lookup_value{
-[false]="inactive",[true]="active",[0]="inactive",[1]="active"})}),c.dp_enum(14,{
-name="battery_state",emit=d.alectoSmoke10BatteryState(),converter=a.from_only(a.lookup_value{
-[0]="low",[1]="middle",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{
-name="alecto_smoke10_silence",emit=d.alectoSmoke10Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(y,{
-e.create_fingerprint("_TZE200_qtbrwrfv","TS0601"),{manufacturer="_TYST11_qtbrwrfv",model="tbrwrfv"..string.char(0)}})local W={
-profile="safety-smoke-detector-battery-288wz",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",c.dp_enum(1,{
-name="smoke_state",read_only=true,emit=A(d.onenuo288wzSmokeState()),converter=a.from_only(a.lookup_value{
-[0]="alarm",[1]="normal",[2]="detecting",[3]="unknown"})}),c.dp_battery(15,{emit=d.battery(),read_only=true}),c.dp_binary(16,{
-name="onenuo_288wz_silence",emit=d.onenuo288wzSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(101,{
-name="self_test_result",read_only=true,emit=d.onenuo288wzSelfTestResult(),converter=a.from_only(a.lookup_value{
-[false]="failure",[true]="success",[0]="failure",[1]="success"})}),c.dp_enum(102,{
-name="sensitivity",emit=d.sensitivitySmoke288wzEnum(),converter=a.lookup_from_to{
-low=0,medium=1,high=2}})}b(W,e.create_fingerprints("TS0601",{
-"_TZE204_kgaxpvxr","_TZE284_n4ttsck2","_TZE2841000000_n4ttsck2"}))local am={
-profile="safety-smoke-co-battery-state-volume-silence-alarm-smokeco",query_on_configure=true,query_on_announce=true,bind_basic_on_configure=true,force_time_updates=true,time_start="off",c.dp_enum(1,{
-name="smoke_state",emit=A(d.smokeCoSmokeState()),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="alarm",[1]="none",[2]="detecting",[3]="unknown"})}),c.dp_enum(5,{
-name="smoke_co_alarm_volume",emit=d.smokeCoAlarmVolume(),converter=a.lookup_from_to{
-low=0,medium=1,high=2,mute=3}}),c.dp_battery(15,{emit=d.battery(),read_only=true}),c.dp_binary(16,{
-name="smoke_co_silence",emit=d.smokeCoSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(17,{
-name="smoke_co_alarm_switch",emit=d.smokeCoAlarmSwitch(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(18,{
-name="carbon_monoxide",emit=d.carbon_monoxide(),read_only=true,
+}),c.dp_enum(14,{name="battery_level",emit=d.r7049BatteryLevel(),converter=a.from_only(a.lookup_value{[0]="low",[1]="middle",[2]="high"})}),c.dp_binary(16,{name="r7049_silence_siren",emit=d.r7049SilenceSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(20,{name="r7049_alarm",emit=d.r7049Alarm(),converter=a.lookup_from_to{off=1,on=0}})}b(X,e.create_fingerprints("TS0601",{"_TZE200_aycxwiau","_TZE200_bxdyeaa9","_TZE200_ft523twt"}))local y={profile="safety-smoke-value-self-check-result-lifecycle-battery-silence-alecto",c.dp_smoke(1,{emit=d.smoke()}),c.dp_numeric(2,{name="smoke_value",emit=d.alectoSmoke10SmokeValue()}),c.dp_binary(8,{name="alecto_smoke10_self_checking",emit=d.alectoSmoke10SelfChecking(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(9,{name="checking_result",emit=d.alectoSmoke10CheckingResult(),converter=a.from_only(a.lookup_value{[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"})}),c.dp_binary(11,{name="smoke_test"}),c.dp_binary(12,{name="lifecycle",emit=d.alectoSmoke10Lifecycle(),converter=a.from_only(a.lookup_value{[false]="inactive",[true]="active",[0]="inactive",[1]="active"})}),c.dp_enum(14,{name="battery_state",emit=d.alectoSmoke10BatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="middle",[2]="high"})}),c.dp_battery(15,{emit=d.battery()}),c.dp_binary(16,{name="alecto_smoke10_silence",emit=d.alectoSmoke10Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(y,{e.create_fingerprint("_TZE200_qtbrwrfv","TS0601"),{manufacturer="_TYST11_qtbrwrfv",model="tbrwrfv"..string.char(0)}})local W={profile="safety-smoke-detector-battery-288wz",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",c.dp_enum(1,{name="smoke_state",read_only=true,emit=A(d.onenuo288wzSmokeState()),converter=a.from_only(a.lookup_value{[0]="alarm",[1]="normal",[2]="detecting",[3]="unknown"})}),c.dp_battery(15,{emit=d.battery(),read_only=true}),c.dp_binary(16,{name="onenuo_288wz_silence",emit=d.onenuo288wzSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(101,{name="self_test_result",read_only=true,emit=d.onenuo288wzSelfTestResult(),converter=a.from_only(a.lookup_value{[false]="failure",[true]="success",[0]="failure",[1]="success"})}),c.dp_enum(102,{name="sensitivity",emit=d.sensitivitySmoke288wzEnum(),converter=a.lookup_from_to{low=0,medium=1,high=2}})}b(W,e.create_fingerprints("TS0601",{"_TZE204_kgaxpvxr","_TZE284_n4ttsck2","_TZE2841000000_n4ttsck2"}))local am={profile="safety-smoke-co-battery-state-volume-silence-alarm-smokeco",query_on_configure=true,query_on_announce=true,bind_basic_on_configure=true,force_time_updates=true,time_start="off",c.dp_enum(1,{name="smoke_state",emit=A(d.smokeCoSmokeState()),read_only=true,converter=a.from_only(a.lookup_value{[0]="alarm",[1]="none",[2]="detecting",[3]="unknown"})}),c.dp_enum(5,{name="smoke_co_alarm_volume",emit=d.smokeCoAlarmVolume(),converter=a.lookup_from_to{low=0,medium=1,high=2,mute=3}}),c.dp_battery(15,{emit=d.battery(),read_only=true}),c.dp_binary(16,{name="smoke_co_silence",emit=d.smokeCoSilence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(17,{name="smoke_co_alarm_switch",emit=d.smokeCoAlarmSwitch(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(18,{name="carbon_monoxide",emit=d.carbon_monoxide(),read_only=true,
 converter=a.from_only(function(f)
 return type(f)=="number"and f==0
 end)
-})}b(am,e.create_fingerprints("TS0601",{
-"_TZE2841000000_6ycgarab","_TZE284_6ycgarab","_TZE284_aoah6bv8"}))local P={
-profile="safety-smoke-temp-humidity-battery",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(9,{
-name="self_test",emit=d.smoke228wzhSelfTest(),converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="check_success",[2]="check_failure"})}),c.dp_enum(14,{
-name="battery_state",emit=d.smoke228wzhBatteryState(),converter=a.from_only(a.lookup_value{
-[0]="low",[1]="middle",[2]="high"})}),c.dp_binary(16,{
-name="smoke_228wzh_silence",emit=d.smoke228wzhSilence(),converter=a.lookup_from_to{on=true}}),c.dp_temperature(23,{emit=d.temperature(),scale=10}),c.dp_humidity(24,{emit=d.humidity(),scale=1}),c.dp_string(103,{
-name="version",emit=d.smoke228wzhVersion(),read_only=true})}b(P,e.create_fingerprints("TS0601",{
-"_TZE284_gyzlwu5q"}))local M={
-profile="safety-gas-detector-self-test",c.dp_gas(1,{emit=d.gas()}),c.dp_binary(8,{
-name="self_test",emit=d.selfTestGas(),converter=a.lookup_from_to{on=true,off=false}}),c.dp_enum(9,{
-name="self_test_result",emit=d.gasSensor1SelfTestResult(),converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(11,{
-name="fault_alarm",emit=d.gasSensor1FaultAlarm(),
+})}b(am,e.create_fingerprints("TS0601",{"_TZE2841000000_6ycgarab","_TZE284_6ycgarab","_TZE284_aoah6bv8"}))local P={profile="safety-smoke-temp-humidity-battery",c.dp_smoke(1,{emit=d.smoke()}),c.dp_enum(9,{name="self_test",emit=d.smoke228wzhSelfTest(),converter=a.from_only(a.lookup_value{[0]="checking",[1]="check_success",[2]="check_failure"})}),c.dp_enum(14,{name="battery_state",emit=d.smoke228wzhBatteryState(),converter=a.from_only(a.lookup_value{[0]="low",[1]="middle",[2]="high"})}),c.dp_binary(16,{name="smoke_228wzh_silence",emit=d.smoke228wzhSilence(),converter=a.lookup_from_to{on=true}}),c.dp_temperature(23,{emit=d.temperature(),scale=10}),c.dp_humidity(24,{emit=d.humidity(),scale=1}),c.dp_string(103,{name="version",emit=d.smoke228wzhVersion(),read_only=true})}b(P,e.create_fingerprints("TS0601",{"_TZE284_gyzlwu5q"}))local M={profile="safety-gas-detector-self-test",c.dp_gas(1,{emit=d.gas()}),c.dp_binary(8,{name="self_test",emit=d.selfTestGas(),converter=a.lookup_from_to{on=true,off=false}}),c.dp_enum(9,{name="self_test_result",emit=d.gasSensor1SelfTestResult(),converter=a.from_only(a.lookup_value{[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(11,{name="fault_alarm",emit=d.gasSensor1FaultAlarm(),
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-}),c.dp_binary(16,{
-name="gas_sensor1_silence",emit=d.gasSensor1Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(M,e.create_fingerprints("TS0601",{
-"_TZE200_ggev5fsl","_TZE200_u319yc66","_TZE200_kvpwq8z7","_TZE204_kvpwq8z7"}))local q={
-profile="safety-gas-detector-alarm-time-ringtone",c.dp_enum(1,{
-name="gas",emit=d.gas(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]=true,[1]=false})}),c.dp_numeric(2,{
-name="gas_value",emit=d.gasSensor2GasValue(),read_only=true,converter=a.divide_by_from_only(10)}),c.dp_alarm_ringtone(6,{emit=d.alarmMelodyGasFive()}),c.dp_alarm_time(7,{emit=d.alarmDurationGas180()}),c.dp_binary(8,{
-name="self_test",emit=d.selfTestGas(),converter=a.lookup_from_to{on=true,off=false}}),c.dp_enum(9,{
-name="self_test_result",emit=d.gasSensor2SelfTestResult(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(10,{
-name="preheat",emit=d.gasSensor2Preheat(),read_only=true,
+}),c.dp_binary(16,{name="gas_sensor1_silence",emit=d.gasSensor1Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(M,e.create_fingerprints("TS0601",{"_TZE200_ggev5fsl","_TZE200_u319yc66","_TZE200_kvpwq8z7","_TZE204_kvpwq8z7"}))local q={profile="safety-gas-detector-alarm-time-ringtone",c.dp_enum(1,{name="gas",emit=d.gas(),read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_numeric(2,{name="gas_value",emit=d.gasSensor2GasValue(),read_only=true,converter=a.divide_by_from_only(10)}),c.dp_alarm_ringtone(6,{emit=d.alarmMelodyGasFive()}),c.dp_alarm_time(7,{emit=d.alarmDurationGas180()}),c.dp_binary(8,{name="self_test",emit=d.selfTestGas(),converter=a.lookup_from_to{on=true,off=false}}),c.dp_enum(9,{name="self_test_result",emit=d.gasSensor2SelfTestResult(),read_only=true,converter=a.from_only(a.lookup_value{[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(10,{name="preheat",emit=d.gasSensor2Preheat(),read_only=true,
 converter=a.from_only(function(f)
 return f and"on"or"off"
 end)
-}),c.dp_binary(16,{
-name="gas_sensor2_silence",emit=d.gasSensor2Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(q,e.create_fingerprints("TS0601",{
-"_TZE200_yojqa8xn","_TZE204_zougpkpy","_TZE204_chbyv06x","_TZE204_yojqa8xn","_TZE284_chbyv06x","_TZE28C1000000_chbyv06x"}))local x={
-profile="safety-gas-detector-self-test-result-fault-gas3",c.dp_gas(1,{emit=d.gas()}),c.dp_enum(9,{
-name="self_test_result",emit=d.gasSensor3SelfTestResult(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(11,{
-name="fault_alarm",emit=d.gasSensor3FaultAlarm(),read_only=true,
+}),c.dp_binary(16,{name="gas_sensor2_silence",emit=d.gasSensor2Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(q,e.create_fingerprints("TS0601",{"_TZE200_yojqa8xn","_TZE204_zougpkpy","_TZE204_chbyv06x","_TZE204_yojqa8xn","_TZE284_chbyv06x","_TZE28C1000000_chbyv06x"}))local x={profile="safety-gas-detector-self-test-result-fault-gas3",c.dp_gas(1,{emit=d.gas()}),c.dp_enum(9,{name="self_test_result",emit=d.gasSensor3SelfTestResult(),read_only=true,converter=a.from_only(a.lookup_value{[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(11,{name="fault_alarm",emit=d.gasSensor3FaultAlarm(),read_only=true,
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-})}b(x,e.create_fingerprints("TS0601",{
-"_TZE200_nus5kk3n"}))local D={
-profile="safety-gas-detector-value-preheat-fault-alarm-silence-gas4",c.dp_gas(1,{emit=d.gas()}),c.dp_numeric(2,{
-name="gas_value",emit=d.gasSensor4GasValue(),read_only=true,converter=a.divide_by_from_only(10)}),c.dp_binary(10,{
-name="preheat",emit=d.gasSensor4Preheat(),read_only=true,
+})}b(x,e.create_fingerprints("TS0601",{"_TZE200_nus5kk3n"}))local D={profile="safety-gas-detector-value-preheat-fault-alarm-silence-gas4",c.dp_gas(1,{emit=d.gas()}),c.dp_numeric(2,{name="gas_value",emit=d.gasSensor4GasValue(),read_only=true,converter=a.divide_by_from_only(10)}),c.dp_binary(10,{name="preheat",emit=d.gasSensor4Preheat(),read_only=true,
 converter=a.from_only(function(f)
 return f and"on"or"off"
 end)
-}),c.dp_binary(11,{
-name="fault_alarm",emit=d.gasSensor4FaultAlarm(),read_only=true,
+}),c.dp_binary(11,{name="fault_alarm",emit=d.gasSensor4FaultAlarm(),read_only=true,
 converter=a.from_only(function(f)
 return(f==true or f==1)and"fault"or"clear"
 end)
-}),c.dp_binary(13,{
-name="gas_sensor4_alarm_switch",emit=d.gasSensor4AlarmSwitch(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(16,{
-name="gas_sensor4_silence",emit=d.gasSensor4Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(D,e.create_fingerprints("TS0601",{
-"_TZE200_mby4kbtq","_TZE204_mby4kbtq","_TZE204_uo8qcagc","_TZE284_uo8qcagc"}))local aa={
-profile="safety-gas-detector-self-test-result-preheat-ga01",c.dp_gas(1,{emit=d.gas()}),c.dp_enum(9,{
-name="self_test_result",emit=d.ga01SelfTestResult(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(16,{
-name="preheat",emit=d.ga01Preheat(),read_only=true,
+}),c.dp_binary(13,{name="gas_sensor4_alarm_switch",emit=d.gasSensor4AlarmSwitch(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(16,{name="gas_sensor4_silence",emit=d.gasSensor4Silence(),converter=a.lookup_from_to{off=false,on=true}})}b(D,e.create_fingerprints("TS0601",{"_TZE200_mby4kbtq","_TZE204_mby4kbtq","_TZE204_uo8qcagc","_TZE284_uo8qcagc"}))local aa={profile="safety-gas-detector-self-test-result-preheat-ga01",c.dp_gas(1,{emit=d.gas()}),c.dp_enum(9,{name="self_test_result",emit=d.ga01SelfTestResult(),read_only=true,converter=a.from_only(a.lookup_value{[0]="checking",[1]="success",[2]="failure",[3]="others"})}),c.dp_binary(16,{name="preheat",emit=d.ga01Preheat(),read_only=true,
 converter=a.from_only(function(f)
 return f and"on"or"off"
 end)
-})}b(aa,e.create_fingerprints("TS0601",{
-"_TZE200_ioxkjvuz"}))local Z={
-profile="safety-gas-detector-preheat-fault-lifecycle-dg03",query_on_configure=true,c.dp_enum(1,{
-name="gas",emit=d.gas(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]=true,[1]=false})}),c.dp_binary(10,{
-name="preheat",emit=d.dg03Preheat(),read_only=true,
+})}b(aa,e.create_fingerprints("TS0601",{"_TZE200_ioxkjvuz"}))local Z={profile="safety-gas-detector-preheat-fault-lifecycle-dg03",query_on_configure=true,c.dp_enum(1,{name="gas",emit=d.gas(),read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_binary(10,{name="preheat",emit=d.dg03Preheat(),read_only=true,
 converter=a.from_only(function(f)
 return(f==true or f==1)and"on"or"off"
 end)
-}),c.dp_enum(11,{
-name="fault",emit=d.dg03Fault(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="none",[1]="fault",[2]="serious_fault",[3]="sensor_fault",[4]="probe_fault",[5]="power_fault"})}),c.dp_binary(12,{
-name="lifecycle",emit=d.dg03Lifecycle(),read_only=true,
+}),c.dp_enum(11,{name="fault",emit=d.dg03Fault(),read_only=true,converter=a.from_only(a.lookup_value{[0]="none",[1]="fault",[2]="serious_fault",[3]="sensor_fault",[4]="probe_fault",[5]="power_fault"})}),c.dp_binary(12,{name="lifecycle",emit=d.dg03Lifecycle(),read_only=true,
 converter=a.from_only(function(f)
 local an=type(f)=="boolean"and f or f==0
 return an and"on"or"off"
 end)
-})}b(Z,e.create_fingerprints("TS0601",{
-"_TZE204_v6iczj35"}))local V={
-profile="safety-gas-detector-zg225z",c.dp_gas(1,{emit=d.gas()}),c.dp_numeric(2,{
-name="gas_value",emit=d.zg225zGasValue(),read_only=true}),c.dp_enum(6,{
-name="zg225z_ring",emit=d.zg225zRing(),converter=a.lookup_from_to{
-ring1=0,ring2=1}}),c.dp_enum(101,{
-name="sensitivity",emit=d.sensitivityGasZg225zEnum(),converter=a.lookup_from_to{
-low=0,medium=1,high=2}})}b(V,{
-e.create_fingerprint("_TZE200_8isdky6j","TS0601"),e.create_fingerprint("_TZE200_p6fuhvez","TS0225"),e.create_fingerprint("_TZE200_aj0oxo1i","TS0225")})local co={
-profile="safety-co-detector",c.dp_carbon_monoxide(1,{emit=d.carbon_monoxide()}),c.dp_co(2,{emit=d.carbon_monoxide_level(),scale=100})}b(co,e.create_fingerprints("TS0601",{
-"_TZE200_7bztmfm1","_TZE204_7bztmfm1"}))local L={
-profile="safety-gas-co-detector",c.dp_enum(1,{
-name="gas",emit=d.gas(),read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_numeric(2,{
-name="gas_value",emit=d.dcrRqjGasValue(),read_only=true,converter=a.divide_by_from_only(1000)}),c.dp_enum(18,{
-name="carbon_monoxide",emit=d.carbon_monoxide(),read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_co(19,{emit=d.carbon_monoxide_level(),scale=100})}b(L,e.create_fingerprints("TS0601",{
-"_TZE200_iuk8kupi","_TZE204_iuk8kupi"}))local w={
-profile="safety-gas-co-detector-jkd816",c.dp_binary(1,{
-name="gas",emit=d.gas(),read_only=true,
+})}b(Z,e.create_fingerprints("TS0601",{"_TZE204_v6iczj35"}))local V={profile="safety-gas-detector-zg225z",c.dp_gas(1,{emit=d.gas()}),c.dp_numeric(2,{name="gas_value",emit=d.zg225zGasValue(),read_only=true}),c.dp_enum(6,{name="zg225z_ring",emit=d.zg225zRing(),converter=a.lookup_from_to{ring1=0,ring2=1}}),c.dp_enum(101,{name="sensitivity",emit=d.sensitivityGasZg225zEnum(),converter=a.lookup_from_to{low=0,medium=1,high=2}})}b(V,{e.create_fingerprint("_TZE200_8isdky6j","TS0601"),e.create_fingerprint("_TZE200_p6fuhvez","TS0225"),e.create_fingerprint("_TZE200_aj0oxo1i","TS0225")})local co={profile="safety-co-detector",c.dp_carbon_monoxide(1,{emit=d.carbon_monoxide()}),c.dp_co(2,{emit=d.carbon_monoxide_level(),scale=100})}b(co,e.create_fingerprints("TS0601",{"_TZE200_7bztmfm1","_TZE204_7bztmfm1"}))local L={profile="safety-gas-co-detector",c.dp_enum(1,{name="gas",emit=d.gas(),read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_numeric(2,{name="gas_value",emit=d.dcrRqjGasValue(),read_only=true,converter=a.divide_by_from_only(1000)}),c.dp_enum(18,{name="carbon_monoxide",emit=d.carbon_monoxide(),read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_co(19,{emit=d.carbon_monoxide_level(),scale=100})}b(L,e.create_fingerprints("TS0601",{"_TZE200_iuk8kupi","_TZE204_iuk8kupi"}))local w={profile="safety-gas-co-detector-jkd816",c.dp_binary(1,{name="gas",emit=d.gas(),read_only=true,
 converter=a.from_only(function(f)
 return f==true or f==1
 end)
-}),c.dp_numeric(2,{
-name="gas_value",emit=d.jkd816GasValue(),read_only=true}),c.dp_enum(9,{
-name="self_test",emit=d.jkd816SelfTest(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"})}),c.dp_enum(11,{
-name="fault",emit=d.jkd816Fault(),read_only=true,converter=a.from_only(a.lookup_value{
-[0]="none",[1]="fault",[2]="serious_fault",[3]="sensor_fault",[4]="probe_fault",[5]="power_fault"})}),c.dp_binary(16,{
-name="jkd816_silence",emit=d.jkd816Silence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(18,{
-name="carbon_monoxide",emit=d.carbon_monoxide(),read_only=true,
+}),c.dp_numeric(2,{name="gas_value",emit=d.jkd816GasValue(),read_only=true}),c.dp_enum(9,{name="self_test",emit=d.jkd816SelfTest(),read_only=true,converter=a.from_only(a.lookup_value{[0]="checking",[1]="check_success",[2]="check_failure",[3]="others"})}),c.dp_enum(11,{name="fault",emit=d.jkd816Fault(),read_only=true,converter=a.from_only(a.lookup_value{[0]="none",[1]="fault",[2]="serious_fault",[3]="sensor_fault",[4]="probe_fault",[5]="power_fault"})}),c.dp_binary(16,{name="jkd816_silence",emit=d.jkd816Silence(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(18,{name="carbon_monoxide",emit=d.carbon_monoxide(),read_only=true,
 converter=a.from_only(function(f)
 return f==true or f==1
 end)
-}),c.dp_numeric(19,{
-name="co",emit=d.carbon_monoxide_level(),read_only=true})}b(w,e.create_fingerprints("TS0601",{
-"_TZE204_qaxkdgyt"}))local al={
-profile="safety-contact-temp-humidity-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(2,{emit=d.battery()}),c.dp_temperature(7,{emit=d.temperature"C",scale=10}),c.dp_humidity(8,{emit=d.humidity()})}b(al,e.create_fingerprints("TS0601",{
-"_TZE200_nvups4nh"}))local ac={
-profile="safety-contact-illuminance-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(2,{emit=d.battery()}),c.dp_illuminance(101,{emit=d.illuminance()}),c.dp_numeric(102,{
-name="zg102zl_illuminance_interval",emit=d.zg102zlIlluminanceInterval()})}b(ac,e.create_fingerprints("TS0601",{
-"_TZE200_pay2byax","_TZE200_ijey4q29","_TZE200_ykglasuj","_TZE200_kf2hbko4"}))local ab={
-profile="safety-contact-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(2,{emit=d.battery()})}b(ab,e.create_fingerprints("TS0601",{
-"_TZE200_kltffuzl","_TZE200_fwoorn8y","_TZE200_n8dljorx"}))local G={
-profile="safety-contact-alarm-battery-opening-senoro",c.dp_battery(2,{emit=d.battery()}),c.dp_binary(16,{
-name="senoro_win_alarm",emit=d.senoroWinAlarm(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(101,{
-name="opening_state",emit=u(d.openingStateContactTamper3State()),converter=a.lookup_from_to{open=0,closed=1,tilted=2}})}b(G,e.create_fingerprints("TS0601",{
-"_TZE200_ytx9fudw"}))local z={
-profile="safety-contact-temp-humidity-battery-s8",c.dp_battery(3,{emit=d.battery()}),c.dp_temperature(8,{emit=d.temperature"C",scale=10}),c.dp_humidity(101,{emit=d.humidity()}),c.dp_enum(102,{
-name="alarm",emit=d.s8AlarmState(),read_only=true,converter=a.from_only(a.lookup_value{[0]="idle",[1]="alarm"})}),c.dp_enum(103,{
-name="opening_mode",emit=d.s8OpeningMode(),read_only=true,converter=a.from_only(a.lookup_value{[0]="closed",[1]="tilted"})}),c.dp_enum(104,{
-name="position",emit=d.s8HandlePosition(),read_only=true,converter=a.from_only(a.lookup_value{[1]="up",[2]="down",[3]="right",[4]="left"})}),c.dp_enum(105,{
-name="button_left",emit=d.s8LeftButton(),read_only=true,converter=a.from_only(a.lookup_value{[0]="released",[1]="pressed"})}),c.dp_enum(106,{
-name="button_right",emit=d.s8RightButton(),read_only=true,converter=a.from_only(a.lookup_value{[0]="released",[1]="pressed"})}),c.dp_enum(107,{
-name="s8_vacation_mode",emit=d.s8VacationMode(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(108,{
-name="sensitivity",emit=d.sensitivityContactS8Enum(),converter=a.lookup_from_to{
-off=0,low=1,medium=2,high=3,max=4}}),c.dp_enum(109,{
-name="s8_alarm_switch",emit=d.s8AlarmSwitch(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_numeric(110,{name="update_frequency",emit=d.updateFrequencyContactS8Minutes()}),c.dp_enum(111,{
-name="s8_key_sound",emit=d.s8KeySound(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(112,{
-name="battery_low",
+}),c.dp_numeric(19,{name="co",emit=d.carbon_monoxide_level(),read_only=true})}b(w,e.create_fingerprints("TS0601",{"_TZE204_qaxkdgyt"}))local al={profile="safety-contact-temp-humidity-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(2,{emit=d.battery()}),c.dp_temperature(7,{emit=d.temperature"C",scale=10}),c.dp_humidity(8,{emit=d.humidity()})}b(al,e.create_fingerprints("TS0601",{"_TZE200_nvups4nh"}))local ac={profile="safety-contact-illuminance-battery",time_start="off",c.dp_contact(1,{emit=d.contact(),
+from_device=function(f)return f~=false and f~=0 end
+}),c.dp_battery(2,{emit=d.battery()}),c.dp_illuminance(101,{emit=d.illuminance()}),c.dp_numeric(102,{name="zg102zl_illuminance_interval",emit=d.zg102zlIlluminanceInterval()})}b(ac,e.create_fingerprints("TS0601",{"_TZE200_pay2byax","_TZE200_ijey4q29","_TZE200_ykglasuj","_TZE200_kf2hbko4"}))local ab={profile="safety-contact-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(2,{emit=d.battery()})}b(ab,e.create_fingerprints("TS0601",{"_TZE200_kltffuzl","_TZE200_fwoorn8y","_TZE200_n8dljorx"}))local G={profile="safety-contact-alarm-battery-opening-senoro",c.dp_battery(2,{emit=d.battery()}),c.dp_binary(16,{name="senoro_win_alarm",emit=d.senoroWinAlarm(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_enum(101,{name="opening_state",emit=u(d.openingStateContactTamper3State()),converter=a.lookup_from_to{open=0,closed=1,tilted=2}})}b(G,e.create_fingerprints("TS0601",{"_TZE200_ytx9fudw"}))local z={profile="safety-contact-temp-humidity-battery-s8",c.dp_battery(3,{emit=d.battery()}),c.dp_temperature(8,{emit=d.temperature"C",scale=10}),c.dp_humidity(101,{emit=d.humidity()}),c.dp_enum(102,{name="alarm",emit=d.s8AlarmState(),read_only=true,converter=a.from_only(a.lookup_value{[0]="idle",[1]="alarm"})}),c.dp_enum(103,{name="opening_mode",emit=d.s8OpeningMode(),read_only=true,converter=a.from_only(a.lookup_value{[0]="closed",[1]="tilted"})}),c.dp_enum(104,{name="position",emit=d.s8HandlePosition(),read_only=true,converter=a.from_only(a.lookup_value{[1]="up",[2]="down",[3]="right",[4]="left"})}),c.dp_enum(105,{name="button_left",emit=d.s8LeftButton(),read_only=true,converter=a.from_only(a.lookup_value{[0]="released",[1]="pressed"})}),c.dp_enum(106,{name="button_right",emit=d.s8RightButton(),read_only=true,converter=a.from_only(a.lookup_value{[0]="released",[1]="pressed"})}),c.dp_enum(107,{name="s8_vacation_mode",emit=d.s8VacationMode(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(108,{name="sensitivity",emit=d.sensitivityContactS8Enum(),converter=a.lookup_from_to{off=0,low=1,medium=2,high=3,max=4}}),c.dp_enum(109,{name="s8_alarm_switch",emit=d.s8AlarmSwitch(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_numeric(110,{name="update_frequency",emit=d.updateFrequencyContactS8Minutes()}),c.dp_enum(111,{name="s8_key_sound",emit=d.s8KeySound(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(112,{name="battery_low",
 emit=function(_,aq)
 return aq and o.batteryLevel.battery.critical()or o.batteryLevel.battery.normal()
 end,
-read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_numeric(113,{name="duration",emit=d.alarmDurationContactS8Sec300()}),c.dp_enum(114,{
-name="s8_handle_sound",emit=d.s8HandleSound(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(120,{
-name="s8_calibrate",emit=d.s8Calibrate(),converter=a.lookup_from_to{clear=0,execute=1}})}b(z,e.create_fingerprints("TS0601",{
-"_TZE200_j7sgd8po"}))local J={
-profile="safety-contact-battery-senoro-win-v2",c.dp_battery(2,{emit=d.battery()}),c.dp_enum(101,{
-name="opening_state",emit=u(d.openingStateSenoroWinV23State()),converter=a.lookup_from_to{open=0,closed=1,tilted=2}}),c.dp_binary(16,{
-name="senoro_win_v2_alarm_state",emit=d.senoroWinV2AlarmState(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_numeric(102,{
-name="vibration",emit=d.senoroWinV2Vibration(),read_only=true}),c.dp_binary(103,{
-name="senoro_win_v2_alarm_siren",emit=d.senoroWinV2AlarmSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(104,{
-name="senoro_win_v2_close_signal",emit=d.senoroWinV2CloseSignal(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_numeric(105,{name="transmission_power",emit=d.txPowerSenoroWinLevel()}),c.dp_numeric(106,{name="vibration_limit",emit=d.vibrationLimitSenoroWinV2()}),c.dp_binary(107,{
-name="senoro_win_v2_setup_mode",emit=d.senoroWinV2SetupMode(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(108,{
-name="senoro_win_v2_vibration_siren",emit=d.senoroWinV2VibrationSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_numeric(109,{name="senoro_win_v2_alarm_siren_duration",emit=d.senoroWinV2AlarmSirenDuration()}),c.dp_numeric(110,{name="senoro_win_v2_vibration_siren_duration",emit=d.senoroV2VibrationSirenTime()}),c.dp_binary(111,{
-name="magnetic_status",emit=d.senoroWinV2MagneticStatus(),read_only=true,
+read_only=true,converter=a.from_only(a.lookup_value{[0]=true,[1]=false})}),c.dp_numeric(113,{name="duration",emit=d.alarmDurationContactS8Sec300()}),c.dp_enum(114,{name="s8_handle_sound",emit=d.s8HandleSound(),converter=a.lookup_from_to{off=0,on=1}}),c.dp_enum(120,{name="s8_calibrate",emit=d.s8Calibrate(),converter=a.lookup_from_to{clear=0,execute=1}})}b(z,e.create_fingerprints("TS0601",{"_TZE200_j7sgd8po"}))local J={profile="safety-contact-battery-senoro-win-v2",c.dp_battery(2,{emit=d.battery()}),c.dp_enum(101,{name="opening_state",emit=u(d.openingStateSenoroWinV23State()),converter=a.lookup_from_to{open=0,closed=1,tilted=2}}),c.dp_binary(16,{name="senoro_win_v2_alarm_state",emit=d.senoroWinV2AlarmState(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_numeric(102,{name="vibration",emit=d.senoroWinV2Vibration(),read_only=true}),c.dp_binary(103,{name="senoro_win_v2_alarm_siren",emit=d.senoroWinV2AlarmSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(104,{name="senoro_win_v2_close_signal",emit=d.senoroWinV2CloseSignal(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_numeric(105,{name="transmission_power",emit=d.txPowerSenoroWinLevel()}),c.dp_numeric(106,{name="vibration_limit",emit=d.vibrationLimitSenoroWinV2()}),c.dp_binary(107,{name="senoro_win_v2_setup_mode",emit=d.senoroWinV2SetupMode(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_binary(108,{name="senoro_win_v2_vibration_siren",emit=d.senoroWinV2VibrationSiren(),converter=a.lookup_from_to{off=false,on=true}}),c.dp_numeric(109,{name="senoro_win_v2_alarm_siren_duration",emit=d.senoroWinV2AlarmSirenDuration()}),c.dp_numeric(110,{name="senoro_win_v2_vibration_siren_duration",emit=d.senoroV2VibrationSirenTime()}),c.dp_binary(111,{name="magnetic_status",emit=d.senoroWinV2MagneticStatus(),read_only=true,
 converter=a.from_only(function(f)
 return(f==true or f==1)and"on"or"off"
 end)
-})}b(J,e.create_fingerprints("TS0601",{
-"_TZE284_6teua268"}))local ap={
-profile="safety-water-leak",c.dp_binary(101,{name="water_leak",emit=d.water()})}b(ap,e.create_fingerprints("TS0601",{
-"_TZE200_qq9mpfhw"}))local ag={
-profile="safety-water-leak-battery",bind_basic_on_configure=true,c.dp_water_leak(1,{emit=d.water()}),c.dp_battery(4,{emit=d.battery()})}b(ag,e.create_fingerprints("TS0601",{
-"_TZE200_jthf7vb6"}))local h={
-profile="safety-water-leak-illuminance-battery-zg223z",c.dp_enum(1,{
-name="rainwater",emit=d.water(),converter=a.from_only(a.lookup_value{
-[0]=false,[1]=true})}),c.dp_numeric(2,{
-name="zg223z_sensitivity",emit=d.zg223zSensitivity()}),c.dp_numeric(101,{name="illuminance_sampling",emit=d.illuminanceSamplingZg223zMinutes()}),c.dp_illuminance(102,{emit=d.illuminance()}),c.dp_battery(104,{emit=d.battery()})}b(h,e.create_fingerprints("TS0601",{
-"_TZE200_jsaqgakf","_TZE200_u6x1zyv2","_TZE200_2pddnnrk"}))b(h,{
-e.create_fingerprint("HOBEIAN","ZG-223Z")})local T={
-profile="safety-acceleration-contact-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(3,{emit=d.battery()}),c.dp_binary(10,{name="vibration",emit=d.acceleration()})}b(T,e.create_fingerprints("TS0601",{
-"_TZE200_kzm5w4iz"}))local l={
-profile="safety-acceleration-contact-battery-zg102zm",c.dp_binary(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_contact(101,{emit=d.contact(),converter=a.true_false0()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="sensitivity",emit=d.vibrationSensitivityZgFifty()})}b(l,e.create_fingerprints("TS0601",{
-"_TZE200_wzk0x7fq","_TZE200_jfw0a4aa"}))b(l,{
-e.create_fingerprint("AOYAN","AY02SZ")})local E={
-profile="safety-acceleration-battery-zg103z",c.dp_enum(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_enum(7,{
-name="tilt",emit=d.zg103zTilt(),converter=a.from_only(a.lookup_value{
-[0]="clear",[1]="detected"})}),c.dp_numeric(101,{name="x",read_only=true,emit=d.zg103AccelerationX(),
+})}b(J,e.create_fingerprints("TS0601",{"_TZE284_6teua268"}))local ap={profile="safety-water-leak",c.dp_binary(101,{name="water_leak",emit=d.water()})}b(ap,e.create_fingerprints("TS0601",{"_TZE200_qq9mpfhw"}))local ag={profile="safety-water-leak-battery",bind_basic_on_configure=true,c.dp_water_leak(1,{emit=d.water()}),c.dp_battery(4,{emit=d.battery()})}b(ag,e.create_fingerprints("TS0601",{"_TZE200_jthf7vb6"}))local h={profile="safety-water-leak-illuminance-battery-zg223z",c.dp_enum(1,{name="rainwater",emit=d.water(),converter=a.from_only(a.lookup_value{[0]=false,[1]=true})}),c.dp_numeric(2,{name="zg223z_sensitivity",emit=d.zg223zSensitivity()}),c.dp_numeric(101,{name="illuminance_sampling",emit=d.illuminanceSamplingZg223zMinutes()}),c.dp_illuminance(102,{emit=d.illuminance()}),c.dp_battery(104,{emit=d.battery()})}b(h,e.create_fingerprints("TS0601",{"_TZE200_jsaqgakf","_TZE200_u6x1zyv2","_TZE200_2pddnnrk"}))b(h,{e.create_fingerprint("HOBEIAN","ZG-223Z")})local T={profile="safety-acceleration-contact-battery",c.dp_contact(1,{emit=d.contact(),inverted=true}),c.dp_battery(3,{emit=d.battery()}),c.dp_binary(10,{name="vibration",emit=d.acceleration()})}b(T,e.create_fingerprints("TS0601",{"_TZE200_kzm5w4iz"}))local l={profile="safety-acceleration-contact-battery-zg102zm",c.dp_binary(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_contact(101,{emit=d.contact(),converter=a.true_false0()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="sensitivity",emit=d.vibrationSensitivityZgFifty()})}b(l,e.create_fingerprints("TS0601",{"_TZE200_wzk0x7fq","_TZE200_jfw0a4aa"}))b(l,{e.create_fingerprint("AOYAN","AY02SZ")})local E={profile="safety-acceleration-battery-zg103z",c.dp_enum(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_enum(7,{name="tilt",emit=d.zg103zTilt(),converter=a.from_only(a.lookup_value{[0]="clear",[1]="detected"})}),c.dp_numeric(101,{name="x",read_only=true,emit=d.zg103AccelerationX(),
 from_device=function(f)return f>127 and f-256 or f end}),
 c.dp_numeric(102,{name="y",read_only=true,emit=d.zg103AccelerationY(),
 from_device=function(f)return f>127 and f-256 or f end}),
 c.dp_numeric(103,{name="z",read_only=true,emit=d.zg103AccelerationZ(),
 from_device=function(f)return f>127 and f-256 or f end}),
-c.dp_enum(104,{
-name="sensitivity",emit=d.vibrationSensitivityZg103zEnum(),converter=a.lookup_from_to{
-low=0,middle=1,high=2}}),c.dp_battery(105,{emit=d.battery()})}b(E,e.create_fingerprints("TS0601",{
-"_TZE200_iba1ckek","_TZE200_hggxgsjj","_TZE200_yjryxpot","_TZE200_afycb3cg","HOBEIAN:ZG-103Z"}))local C={
-profile="safety-acceleration-4cqhd2ha",c.dp_binary(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_numeric(101,{name="sensitivity",emit=d.vibrationSensitivity4cqhd2haLevel()}),c.dp_binary(103,{
-name="buzzer_mute",emit=d.vibration4cqBuzzerMute(),read_only=true,
+c.dp_enum(104,{name="sensitivity",emit=d.vibrationSensitivityZg103zEnum(),converter=a.lookup_from_to{low=0,middle=1,high=2}}),c.dp_battery(105,{emit=d.battery()})}b(E,e.create_fingerprints("TS0601",{"_TZE200_iba1ckek","_TZE200_hggxgsjj","_TZE200_yjryxpot","_TZE200_afycb3cg","HOBEIAN:ZG-103Z"}))local C={profile="safety-acceleration-4cqhd2ha",c.dp_binary(1,{name="vibration",emit=d.acceleration(),converter=a.true_false1()}),c.dp_numeric(101,{name="sensitivity",emit=d.vibrationSensitivity4cqhd2haLevel()}),c.dp_binary(103,{name="buzzer_mute",emit=d.vibration4cqBuzzerMute(),read_only=true,
 converter=a.from_only(function(f)
 return(f==true or f==1 or f=="ON")and"on"or"off"
 end)
-})}b(C,e.create_fingerprints("TS0601",{
-"_TZE284_4cqhd2ha","_TZE200_8ply8mjj"}))do
-local K=a.from_only(a.lookup_value{
-[0]=false,[1]=true})local Y=a.from_only(a.lookup_value{
-[0]="none",[1]="low",[2]="high"})local t={
-profile="safety-motion-vibration-illuminance-battery-excellux",datapoints={
-c.dp_enum(1,{name="motion",emit=d.motion(),converter=K}),c.dp_binary(3,{name="vibration",emit=d.acceleration()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="vibration_sensitivity",emit=d.excelluxPirVibrationSensitivity()}),c.dp_illuminance(20,{emit=d.illuminance()}),c.dp_numeric(50,{name="vibration_count",emit=d.excelluxPirVibrationCount(),read_only=true}),c.dp_numeric(101,{name="sampling_interval",emit=d.excelluxPirSamplingInterval()}),c.dp_illuminance(104,{name="illuminance_v0",emit=d.excelluxPirIlluminanceV0()}),c.dp_illuminance(105,{name="illuminance_v1",emit=d.excelluxPirIlluminanceV1()}),c.dp_numeric(106,{
-name="illuminance_calibration",emit=d.excelluxPirIlluminanceCalibration(),signed=true}),c.dp_enum(107,{
-name="illuminance_warning",emit=d.excelluxPirIlluminanceWarning(),read_only=true,converter=Y})},query_on_configure=true}local U={
-profile="safety-contact-vibration-battery-excellux",datapoints={
-c.dp_binary(3,{name="vibration",emit=d.acceleration()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="vibration_sensitivity",emit=d.excelluxCatVibrationSensitivity()}),c.dp_contact(7,{emit=d.contact(),converter=a.invert_bool_pair()})},query_on_configure=true}local T={
-profile="safety-vibration-battery-excellux",datapoints={
-c.dp_binary(3,{name="vibration",emit=d.acceleration()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="vibration_sensitivity",emit=d.excelluxVibrateSensitivity()})},query_on_configure=true}b(t,{
-e.create_fingerprint("PIRIV01","Excellux")})b(U,{
-e.create_fingerprint("CAT0001","Excellux")})b(T,{
-e.create_fingerprint("VABRATE","Excellux")})
-end
-return{
-id="ef00.safety",registrations=Q}
+})}b(C,e.create_fingerprints("TS0601",{"_TZE284_4cqhd2ha","_TZE200_8ply8mjj"}))do
+local K,Y=a.from_only(a.lookup_value{[0]=false,[1]=true}),a.from_only(a.lookup_value{[0]="none",[1]="low",[2]="high"})local t,U,T={profile="safety-motion-vibration-illuminance-battery-excellux",datapoints={c.dp_enum(1,{name="motion",emit=d.motion(),converter=K}),c.dp_binary(3,{name="vibration",emit=d.acceleration()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="vibration_sensitivity",emit=d.excelluxPirVibrationSensitivity()}),c.dp_illuminance(20,{emit=d.illuminance()}),c.dp_numeric(50,{name="vibration_count",emit=d.excelluxPirVibrationCount(),read_only=true}),c.dp_numeric(101,{name="sampling_interval",emit=d.excelluxPirSamplingInterval()}),c.dp_illuminance(104,{name="illuminance_v0",emit=d.excelluxPirIlluminanceV0()}),c.dp_illuminance(105,{name="illuminance_v1",emit=d.excelluxPirIlluminanceV1()}),c.dp_numeric(106,{name="illuminance_calibration",emit=d.excelluxPirIlluminanceCalibration(),signed=true}),c.dp_enum(107,{name="illuminance_warning",emit=d.excelluxPirIlluminanceWarning(),read_only=true,converter=Y})},query_on_configure=true},{profile="safety-contact-vibration-battery-excellux",datapoints={c.dp_binary(3,{name="vibration",emit=d.acceleration()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="vibration_sensitivity",emit=d.excelluxCatVibrationSensitivity()}),c.dp_contact(7,{emit=d.contact(),converter=a.invert_bool_pair()})},query_on_configure=true},{profile="safety-vibration-battery-excellux",datapoints={c.dp_binary(3,{name="vibration",emit=d.acceleration()}),c.dp_battery(4,{emit=d.battery()}),c.dp_numeric(6,{name="vibration_sensitivity",emit=d.excelluxVibrateSensitivity()})},query_on_configure=true}b(t,{e.create_fingerprint("PIRIV01","Excellux")})b(U,{e.create_fingerprint("CAT0001","Excellux")})b(T,{e.create_fingerprint("VABRATE","Excellux")})end
+return{id="ef00.safety",registrations=Q}

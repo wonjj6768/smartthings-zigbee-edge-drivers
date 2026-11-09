@@ -1,4 +1,3 @@
--- presence-switch package-owned presence family definitions.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -22,13 +21,10 @@ local presence_switch_auto_channel_long_converter = converter.lookup_from_to({
 })
 local presence_switch_trigger_channel_converter = converter.lookup_from_to({ ch1 = 0, ch2 = 1, ch3 = 2 })
 local msa201_presence_converter = common.msa201_presence_converter
--- ══════════════════════════════════════════════════════════════
 
--- 2-11g. presence_switch_model_zg_302zm: ZG-302ZM (존재감 + 3구 스위치)
 
 -- Z2M: _TZE200_kccdzaeo 등 (ZG-302ZM Motion sensing switch)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M HOBEIAN ZG-302ZM (tuya.ts:20889)
 -- DP1 presence trueFalse1, DP2 sensitivity 0..19, DP4 distance /100,
@@ -106,13 +102,10 @@ register_presence_definition(presence_switch_model_zg_302zm, ts0601_fingerprints
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11g. presence_switch_model_zg_302zl: ZG-302ZL (존재감 + 3구 스위치)
 
 -- Z2M: _TZE200_khzbklyh 등 (ZG-302ZL Motion sensing switch)
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M HOBEIAN ZG-302ZL (tuya.ts:20992)
 -- DP1..3 switches, DP14 power outage memory, DP16 backlight,
@@ -178,13 +171,10 @@ register_presence_definition(presence_switch_model_zg_302zl, ts0601_fingerprints
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11h. presence_switch_model_zis03: ZIS-03 / ZIS-04 (존재감 + 릴레이)
 
 -- Z2M: _TZE204_izy1g1mb / _TZE204_f2rflfa6
 
--- ══════════════════════════════════════════════════════════════
 
 -- Z2M Novato ZIS-03 / ZIS-04 (tuya.ts:28160)
 -- DP1 presence (raw value 1), DP4 detection range level 1..7,

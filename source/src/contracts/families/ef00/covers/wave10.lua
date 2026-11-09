@@ -1,7 +1,3 @@
--- Wave 10 cover candidates reviewed against frozen Zigbee2MQTT v26.99.0.
---
--- These registrations intentionally stay isolated from the global catalog and
--- fingerprint manifest until the separate family-by-family audit is complete.
 
 local tuya = require "protocol.tuya"
 local zcl = require "protocol.zcl"

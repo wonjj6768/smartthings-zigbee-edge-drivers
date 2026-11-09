@@ -1,14 +1,7 @@
-local s=require"st.capabilities"
-local l=require"runtime.capability_metadata"
-local o=require"runtime.capability_support"
-local z=require"runtime.utf8_text"
-local H=require"log"
-local w={}local h="main"
-local i={}
+local s,l,o,z,H,w,h,i=require"st.capabilities",require"runtime.capability_metadata",require"runtime.capability_support",require"runtime.utf8_text",require"log",{},"main",{}
 local function B(c)
 if type(c)~="table"then
-return"device"
-end
+return"device"end
 return c.label or c.id or"device"
 end
 local u=o.is_callable
@@ -19,8 +12,7 @@ local function D(c,b,F)
 b=b or h
 if b==h then
 c:emit_event(F)else
-c:emit_component_event({id=b},F)
-end
+c:emit_component_event({id=b},F)end
 end
 local function q(e)
 if type(e)=="table"then
@@ -50,30 +42,25 @@ return nil,nil
 end
 p(a.capability_id)local f=s[a.capability_id]local j=f and f[r]or nil
 if not u(j)and f and type(f.attributes)=="table"then
-j=f.attributes[r]
-end
+j=f.attributes[r]end
 return f,j
 end
 local function m(c,a,E)
 if type(c)~="table"or type(a)~="table"then
 return
 end
-local G=string.format("__custom_binding_missing__:%s:%s",a.capability_id or"unknown",E or"unknown")
-if type(c.get_field)=="function"and c:get_field(G)then
+local G=string.format("__custom_binding_missing__:%s:%s",a.capability_id or"unknown",E or"unknown")if type(c.get_field)=="function"and c:get_field(G)then
 return
 end
 if type(c.set_field)=="function"then
-c:set_field(G,true,{persist=false})
-end
-H.warn(string.format(
-"[%s] Custom capability binding missing (%s): %s.%s",B(c),E or"unknown",a.capability_id or"unknown",a.attribute_name or"unknown"))
+c:set_field(G,true,{persist=false})end
+H.warn(string.format("[%s] Custom capability binding missing (%s): %s.%s",B(c),E or"unknown",a.capability_id or"unknown",a.attribute_name or"unknown"))
 end
 local function A(a,k,n)
 n=n or{}if a.kind=="numeric"then
-local C={value=k}local y=n.unit
+local C,y={value=k},n.unit
 if type(y)~="string"or y==""then
-y=a.event_unit or(a.default_range and a.default_range.unit or nil)
-end
+y=a.event_unit or(a.default_range and a.default_range.unit or nil)end
 if type(y)=="string"and y~=""then
 C.unit=y
 end
@@ -108,8 +95,7 @@ end
 local f,j=t(a,a.attribute_name)if not u(j)then
 if f==nil then
 m(c,a,"capability")else
-m(c,a,"attribute")
-end
+m(c,a,"attribute")end
 return false
 end
 local x=n and{state_change=n.state_change}or nil

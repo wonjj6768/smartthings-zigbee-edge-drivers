@@ -1,4 +1,3 @@
--- EF00 relay and metered-switch families owned by the switch-basic package.
 local tuya = require "protocol.tuya"
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
@@ -10,10 +9,7 @@ local panel_off_on_converter = common.panel_off_on_converter
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
 
--- ══════════════════════════════════════════════════════════════
--- 1-1. switch_1gang: 기본 1구
 -- Z2M: TS0601_switch_1_gang / X711A
--- ══════════════════════════════════════════════════════════════
 local switch_1gang = {
   profile = "switches-switch-1",
   package_group = "switch-basic",
@@ -38,10 +34,8 @@ register_device_definition(switch_1gang, {
   device_helpers.create_fingerprint("AVATTO", "ZGB-WS-EU"),
 })
 
--- ══════════════════════════════════════════════════════════════
 -- Scimagic 1-ZB-WSD temperature-only revision. It shares seven settings with
 -- the humidity revision, but DP8 exposes only heating0/cooling2 here.
--- ══════════════════════════════════════════════════════════════
 local switch_1gang_temperature = {
   profile = "switches-switch-1-temperature",
   package_group = "switch-basic",
@@ -124,10 +118,7 @@ register_device_definition(switch_1gang_temperature_humidity_scimagic, device_he
   "_TZE21C_i2ij4rb3",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-1aa. switch_1gang_smart_temperature: 온도 기반 릴레이
 -- Z2M: TS0601_smart_temperature_switch
--- ══════════════════════════════════════════════════════════════
 local switch_1gang_smart_temperature = {
   profile = "switches-switch-1-temperature-roujjevx",
   package_group = "switch-basic",
@@ -190,10 +181,7 @@ register_device_definition(switch_1gang_smart_temperature, device_helpers.create
   "_TZE284_roujjevx",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-1ab. switch_model_mg_gpo04zslp: 2 socket + 1 light + master + metering
 -- Z2M: MG-GPO04ZSLP
--- ══════════════════════════════════════════════════════════════
 local switch_model_mg_gpo04zslp = {
   profile = "switches-switch-4-energy-voltage-current",
   package_group = "switch-basic",
@@ -213,14 +201,11 @@ register_device_definition(switch_model_mg_gpo04zslp, device_helpers.create_fing
   "_TZE200_oyti2ums",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-1c. switch_1gang_temperature_humidity: 1구 + 온습도
 -- Z2M: TYZGTH1CH-D1RF
 -- NOTE:
 --   - Switch is handled by standard ZCL OnOff.
 --   - EF00 datapoints provide temperature/humidity.
 --   - Calibration/manual-mode/child-lock options are intentionally deferred.
--- ══════════════════════════════════════════════════════════════
 local switch_1gang_temperature_humidity = {
   profile = "switches-switch-1-temp-humidity",
   package_group = "switch-basic",
@@ -238,14 +223,11 @@ register_device_definition(switch_1gang_temperature_humidity, device_helpers.cre
   "_TZ3218_7fiyo3kv",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-1d. switch_4gang_temperature_humidity: 4구 + 온습도
 -- Z2M: TYZGTH4CH-D1RF
 -- NOTE:
 --   - Switch endpoints are handled by standard ZCL OnOff.
 --   - EF00 datapoints provide temperature/humidity only.
 --   - Countdown / power-on-behavior2 are intentionally deferred.
--- ══════════════════════════════════════════════════════════════
 local switch_4gang_temperature_humidity = {
   profile = "switches-switch-4-temp-humidity",
   package_group = "switch-basic",
@@ -266,10 +248,7 @@ register_device_definition(switch_4gang_temperature_humidity, device_helpers.cre
   "_TZ3218_ya5d6wth",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-2. switch_2gang: 기본 2구
 -- Z2M: TS0601_switch_2_gang / MG-ZG02W
--- ══════════════════════════════════════════════════════════════
 local switch_2gang = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -289,10 +268,7 @@ register_device_definition(switch_2gang, device_helpers.create_fingerprints("TS0
   "_TZE204_wvovwe9h",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-3. switch_3gang: 기본 3구
 -- Z2M: TS0601_switch_3_gang / MG-ZG03W
--- ══════════════════════════════════════════════════════════════
 local switch_3gang = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -312,10 +288,7 @@ register_device_definition(switch_3gang, device_helpers.create_fingerprints("TS0
   "_TZE204_atpwqgml",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-4. switch_4gang: 기본 4구
 -- Z2M: TS0601_switch_4_gang_1
--- ══════════════════════════════════════════════════════════════
 local switch_4gang = {
   profile = "switches-switch-4",
   package_group = "switch-basic",
@@ -357,10 +330,7 @@ local switch_four_tuya_base = {
   tuya.dp_on_off(3, {name = "switch", component = "switch3", endpoint = 1}),
   tuya.dp_on_off(4, {name = "switch", component = "switch4", endpoint = 1}),
 }
--- ══════════════════════════════════════════════════════════════
--- 1-5. switch_5gang: 기본 5구
 -- Z2M: TS0601_switch_5_gang
--- ══════════════════════════════════════════════════════════════
 local switch_5gang = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -375,10 +345,7 @@ register_device_definition(switch_5gang, device_helpers.create_fingerprints("TS0
   "_TZE200_leaqthqq",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6. switch_6gang: 기본 6구. 최신 Z2M의 option 계약이 확인되지 않은
 -- exact만 이 보수적인 DP1~6 family에 남긴다.
--- ══════════════════════════════════════════════════════════════
 local switch_6gang = {
   profile = "switches-switch-6",
   package_group = "switch-basic",
@@ -553,10 +520,7 @@ register_device_definition(switch_4gang_metered_usb, device_helpers.create_finge
   "_TZE284_mvtclclq",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-6a. switch_6gang_power: 6구 + 전류/전력/전압
 -- Z2M: SWS6TZ-WHITE
--- ══════════════════════════════════════════════════════════════
 local switch_6gang_power = {
   profile = "switches-switch-6-power-voltage-current",
   package_group = "switch-basic",
@@ -578,10 +542,7 @@ register_device_definition(switch_6gang_power, device_helpers.create_fingerprint
   "_TZE200_8eazvzo6",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-16. switch_1gang_model_mg_zg01w: 1구 + countdown + power meter + backlight + power_on_behavior
 -- Z2M: MG-ZG01W
--- ══════════════════════════════════════════════════════════════
 local switch_1gang_model_mg_zg01w = {
   profile = "switches-switch-1-power-voltage-current-mg-zg01w",
   package_group = "switch-basic",
@@ -603,10 +564,7 @@ register_device_definition(switch_1gang_model_mg_zg01w, device_helpers.create_fi
   "_TZE284_xnwxmj8z",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-19. switch_10gang: 기본 10구 (7~10채널이 DP 101~104)
 -- Z2M: TS0601_switch_10
--- ══════════════════════════════════════════════════════════════
 local switch_10gang = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -626,10 +584,7 @@ register_device_definition(switch_10gang, device_helpers.create_fingerprints("TS
   "TZE204_7sjncirf",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-20. switch_12gang: 기본 12구 (7~12채널이 DP 101~106)
 -- Z2M: TS0601_switch_12
--- ══════════════════════════════════════════════════════════════
 local switch_12gang = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -651,10 +606,7 @@ register_device_definition(switch_12gang, device_helpers.create_fingerprints("TS
   "_TZE284_dqolcpcp",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-22. switch_24gang: 기본 24구 (7~24채널이 DP 101~118)
 -- Z2M: ZYXH_switch_24
--- ══════════════════════════════════════════════════════════════
 local switch_24gang = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -688,10 +640,7 @@ register_device_definition(switch_24gang, device_helpers.create_fingerprints("TS
   "_TZE284_vmcgja59",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-22. switch_8gang_dp101: 8구 특수형 (7/8채널이 DP 101/102)
 -- Z2M: TS0601_switch_8
--- ══════════════════════════════════════════════════════════════
 local switch_8gang_dp101 = {
   package_group = "switch-basic",
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
@@ -717,10 +666,7 @@ register_device_definition(switch_8gang_dp101, device_helpers.create_fingerprint
   "_TZE284_dvosyycn",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-24. switch_1gang_dp16: 단일 스위치가 DP 16 사용
 -- Z2M: R3 Smart Switch
--- ══════════════════════════════════════════════════════════════
 local switch_1gang_dp16 = {
   package_group = "switch-basic",
   tuya.dp_on_off(16, { name = "switch", component = "main" }),

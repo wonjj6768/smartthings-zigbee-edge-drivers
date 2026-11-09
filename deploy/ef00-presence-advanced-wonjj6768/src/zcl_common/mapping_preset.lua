@@ -1,12 +1,8 @@
 local function n(B)
-local x=require"capabilities.events.all"
-local D=require"st.zigbee.data_types"
-local r=require"st.zigbee.constants"
-local C=require"st.utils.safe_xy_to_hsv"
+local x,D,r,C=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function l(d,w)
 if type(d)~="table"then
-d={}
-end
+d={}end
 if type(w)~="table"then
 return d
 end
@@ -30,8 +26,7 @@ local function i(c,t)
 local a={}if type(c)=="string"then
 a.name=c
 else
-l(a,c)
-end
+l(a,c)end
 l(a,t)return a
 end
 local function s(z)
@@ -55,7 +50,7 @@ end
 if type(b)~="number"then
 return b
 end
-return bit32.band(b,z)~=0
+return(b&z)~=0
 end
 }
 end
@@ -64,36 +59,26 @@ local g=u and u.body and u.body.zcl_body and u.body.zcl_body.zone_status or nil
 if g==nil then
 return nil
 end
-return{
-raw_value=g.value or g,typed_value=g}
+return{raw_value=g.value or g,typed_value=g}
 end
 local function h(q,p,o)
-return{
-minimum_interval=q,maximum_interval=p,reportable_change=o,read_on_configure=true}
+return{minimum_interval=q,maximum_interval=p,reportable_change=o,read_on_configure=true}
 end
 local function j(...)
 local v={}for _,k in ipairs{...}do
-e(v,k)
-end
+e(v,k)end
 return v
 end
 B.occupancy=function(c,t)
-local a=i(c,t)local y=a.ias_zone==true
-local m=a.configure_reporting
+local a=i(c,t)local y,m=a.ias_zone==true,a.configure_reporting
+
 a.ias_zone=nil
 a.configure_reporting=nil
 if y then
-e(a,j(
-{
-name="occupancy",emit=x.occupancy(),converter=s(1),ias_configure_method=r.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=f},h(30,300,nil)))return B.ias_zone(a)
-end
+e(a,j({name="occupancy",emit=x.occupancy(),converter=s(1),ias_configure_method=r.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=f},h(30,300,nil)))return B.ias_zone(a)end
 if m==false then
-e(a,{
-emit=x.occupancy(),read_on_configure=true})return B.occupancy_sensing(a)
-end
-e(a,j(
-{
-emit=x.occupancy()},h(0,300,nil)))return B.occupancy_sensing(a)
+e(a,{emit=x.occupancy(),read_on_configure=true})return B.occupancy_sensing(a)end
+e(a,j({emit=x.occupancy()},h(0,300,nil)))return B.occupancy_sensing(a)
 end
 end
 return n

@@ -1,14 +1,8 @@
-local R=require"protocol.zcl"
-local V=require"capabilities.events.all"
-local x=require"contracts.helpers.family"
-local P=require"st.capabilities"
-local u=require"st.zigbee.device_management"
-local E,s=x.definition_registry()local C=257
-local c=268
-local h=1
-local i=8
-local o="bridge-wave19-sunricher-dali-dimmer-child"
-local t="bridge-wave19-sunricher-dali-cct-child"
+local R,V,x,P,u=require"protocol.zcl",require"capabilities.events.all",require"contracts.helpers.family",require"st.capabilities",require"st.zigbee.device_management"local E,s=x.definition_registry()local C,c,h,i,o,t=257,268,1,8,"bridge-wave19-sunricher-dali-dimmer-child","bridge-wave19-sunricher-dali-cct-child"
+
+
+
+
 local function L(a)
 return string.format("%02X",a)
 end
@@ -51,10 +45,8 @@ local device_id=d(b,a)if not e(b,a)or
 (q~=nil and device_id~=q)then
 return nil
 end
-local p=b:get_child_by_parent_assigned_key(M)
-if p==nil or not f(p,device_id==c)then return nil end
-local W=O(p,aa,Y,Z)
-if W~=nil then p:emit_event(W)end
+local p=b:get_child_by_parent_assigned_key(M)if p==nil or not f(p,device_id==c)then return nil end
+local W=O(p,aa,Y,Z)if W~=nil then p:emit_event(W)end
 return nil
 end
 end
@@ -64,23 +56,17 @@ for a=h,i do
 local M=L(a)local p=b:get_child_by_parent_assigned_key(M)if e(b,a)then
 local T=z(b,a)if p~=nil then
 if not f(p,d(b,a)==c)then
-p:try_update_metadata{profile=T}
-end
+p:try_update_metadata{profile=T}end
 else
-F:try_create_device{
-type="EDGE_CHILD",parent_assigned_child_key=M,parent_device_id=b.id,label=string.format("%s DALI %d",b.label,a),profile=T}
-end
+F:try_create_device{type="EDGE_CHILD",parent_assigned_child_key=M,parent_device_id=b.id,label=string.format("%s DALI %d",b.label,a),profile=T}end
 elseif p~=nil and type(F.try_delete_device)=="function"then
-F:try_delete_device(p.id)
-end
+F:try_delete_device(p.id)end
 end
 end
 local function G(j,b)
-local a=l(b)
-if a==nil or not e(j,a)then return false end
+local a=l(b)if a==nil or not e(j,a)then return false end
 local H=z(j,a)if not f(b,d(j,a)==c)then
-b:try_update_metadata{profile=H}
-end
+b:try_update_metadata{profile=H}end
 return true
 end
 local function A(b,_,j)
@@ -88,9 +74,7 @@ local a=l(b)if a==nil or d(j,a)~=c then
 return
 end
 if not f(b,true)then return end
-b:emit_component_event(
-{id="main"},P.colorTemperature.colorTemperatureRange{
-value={minimum=2000,maximum=6667},unit="K"})
+b:emit_component_event({id="main"},P.colorTemperature.colorTemperatureRange{value={minimum=2000,maximum=6667},unit="K"})
 end
 local function D(b)
 if type(b)~="table"or type(b.get_parent_device)~="function"then
@@ -100,27 +84,21 @@ return b:get_parent_device()
 end
 local function k(b,a,g)
 R.read_attribute(b,6,0,a)R.read_attribute(b,8,0,a)if g then
-R.read_attribute(b,768,8,a)R.read_attribute(b,768,7,a)
-end
+R.read_attribute(b,768,8,a)R.read_attribute(b,768,7,a)end
 end
 local function N(b)
-local j=D(b)local a=l(b)
-if a==nil or not e(j,a)then return end
-k(
-b,a,d(j,a)==c)
+local j,a=D(b),l(b)if a==nil or not e(j,a)then return end
+k(b,a,d(j,a)==c)
 end
 local function J(b)
 if type(b.zigbee_endpoints)~="table"then return end
 for a=h,i do
 if e(b,a)then
-k(
-b,a,d(b,a)==c)
-end
+k(b,a,d(b,a)==c)end
 end
 end
 local function w(b,Q)
-local j=D(b)local a=l(b)
-if a==nil or not e(j,a)then return false end
+local j,a=D(b),l(b)if a==nil or not e(j,a)then return false end
 if not f(b,d(j,a)==c)then return false end
 if Q=="switch"or Q=="brightness"then return true end
 return Q=="color_temperature"and
@@ -131,26 +109,17 @@ local S=F.environment_info.hub_zigbee_eui
 for a=h,i do
 if e(b,a)then
 for _,X in ipairs{6,8}do
-b:send(u.build_bind_request(b,X,S,a))
-end
+b:send(u.build_bind_request(b,X,S,a))end
 local g=
 d(b,a)==c
 if g then
-b:send(u.build_bind_request(b,768,S,a))
-end
-k(b,a,g)
-end
+b:send(u.build_bind_request(b,768,S,a))end
+k(b,a,g)end
 end
 end
 local n={}for a=h,i do
-n[#n+1]=R.switch{
-endpoint=a,configure_reporting=false,emit=r(a,V.switch())}n[#n+1]=R.level{
-endpoint=a,configure_reporting=false,emit=r(a,V.level())}n[#n+1]=R.color_temperature{
-endpoint=a,configure_reporting=false,emit=r(
-a,V.color_temperature(),c)}
-end
-local K={
-profile="bridge-wave19-sunricher-dali-parent",
+n[#n+1]=R.switch{endpoint=a,configure_reporting=false,emit=r(a,V.switch())}n[#n+1]=R.level{endpoint=a,configure_reporting=false,emit=r(a,V.level())}n[#n+1]=R.color_temperature{endpoint=a,configure_reporting=false,emit=r(a,V.color_temperature(),c)}end
+local K={profile="bridge-wave19-sunricher-dali-parent",
 parent_profile_matches=function(b)
 local m=b.profile and b.profile.components
 return type(m)=="table"and m.main~=nil and
@@ -158,6 +127,4 @@ b:supports_capability_by_id("refresh","main")and
 not b:supports_capability_by_id("switch","main")and
 not b:supports_capability_by_id("switchLevel","main")
 end,
-auxiliary_profiles={o,t},package_group="wave19-dali",zcl_clusters=n,allow_child_devices=true,is_expected_child=G,create_child_devices=y,child_runtime_start=A,child_refresh=N,parent_refresh=J,child_command_allowed=w,configure=U}s(K,{
-x.create_fingerprint("Sunricher","Light")})return{
-id="zcl.lights.wave19_dali",registrations=E}
+auxiliary_profiles={o,t},package_group="wave19-dali",zcl_clusters=n,allow_child_devices=true,is_expected_child=G,create_child_devices=y,child_runtime_start=A,child_refresh=N,parent_refresh=J,child_command_allowed=w,configure=U}s(K,{x.create_fingerprint("Sunricher","Light")})return{id="zcl.lights.wave19_dali",registrations=E}

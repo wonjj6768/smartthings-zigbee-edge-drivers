@@ -1,4 +1,3 @@
--- Receive-only Tuya EF00 facade for ZCL-owned reverse-hybrid packages.
 
 local tuya = {
   EF00_CLUSTER = 0xEF00,

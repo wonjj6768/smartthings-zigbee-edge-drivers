@@ -1,14 +1,9 @@
--- ZCL attribute 수신 핸들러
--- tuya_common/device_runtime.lua의 apply_message에 대응하는 ZCL 버전
---
--- ZCL attribute report/read response를 수신하여
--- zcl_clusters 매핑에 따라 SmartThings capability 이벤트를 발생시킵니다.
 
 local function load_attribute_handler(zcl)
 
   local battery_refresh = require "runtime.battery_refresh"
+  local on_off_ack = require "zcl_common.on_off_ack"
 
-  --- Reports an unchanged attribute value as a duplicate that can be skipped.
   --- Only plain scalar values are compared; anything structured is always sent
   --- so richer payloads never get dropped by a shallow comparison.
   function zcl.is_duplicate_attribute_event(device, event, mapping_context)
@@ -88,6 +83,7 @@ local function load_attribute_handler(zcl)
       name == "SecurityKey" or
       name:match("^Uint%d+$") ~= nil or
       name:match("^Int%d+$") ~= nil or
+      name:match("^Enum%d+$") ~= nil or
       name:match("String$") ~= nil
   end
 
@@ -219,7 +215,14 @@ local function load_attribute_handler(zcl)
     mapping_context.raw_value = raw_value
     mapping_context.typed_value = attribute_info and attribute_info.typed_value or raw_value
 
-    local value = transform_value(raw_value, meta, device, mapping_context, mapping)
+    local value
+    if mapping_context.command_result then
+      -- A successful On/Off ACK confirms the logical command, not a new
+      -- attribute transaction for report-only converters to deduplicate.
+      value = raw_value
+    else
+      value = transform_value(raw_value, meta, device, mapping_context, mapping)
+    end
     if value == nil then
       return nil
     end
@@ -245,7 +248,6 @@ local function load_attribute_handler(zcl)
     return value
   end
 
-  --- ZCL attribute 값을 zcl_clusters 매핑에 따라 처리합니다.
   ---@param device table SmartThings device 객체
   ---@param zcl_clusters table zcl_clusters 매핑 리스트
   ---@param cluster_id number ZCL 클러스터 ID
@@ -254,8 +256,11 @@ local function load_attribute_handler(zcl)
   ---@param attribute_info table 추가 정보 (endpoint 등)
   ---@return boolean 매핑이 적용되었으면 true
   function zcl.apply_attribute(device, zcl_clusters, cluster_id, attribute_id, raw_value, attribute_info)
-    if cluster_id == 0x0001 and (attribute_id == 0x0020 or attribute_id == 0x0021) then
-      battery_refresh.note_report(device)
+    if cluster_id == 0x0402 and attribute_id == 0x0000 and extract_raw_attribute_value(raw_value) == -32768 then
+      return false
+    end
+    if cluster_id == 0x0001 and (attribute_id == 0x0020 or attribute_id == 0x0021) and extract_raw_attribute_value(raw_value) == 0xFF then
+      return false
     end
 
     local context = attribute_info or {}
@@ -271,20 +276,21 @@ local function load_attribute_handler(zcl)
       end
     end
 
+    if applied and context.zb_rx ~= nil and cluster_id == zcl.CLUSTER_ON_OFF and attribute_id == zcl.ATTR_ON_OFF then
+      on_off_ack.clear(device, context.endpoint or context.src_endpoint)
+    end
+
+    if applied and cluster_id == 0x0001 and (attribute_id == 0x0020 or attribute_id == 0x0021) then
+      battery_refresh.note_report(device)
+    end
     return applied
   end
 
-  --- get_preset 함수를 받아 zigbee_handlers.attr에 직접 넣을 수 있는 핸들러 테이블을 생성합니다.
-  --- init.lua에서 ZCL 관련 로직을 모르고도 사용할 수 있게 합니다.
   ---@param get_preset function device → preset 조회 함수
   ---@return table zigbee_handlers.attr 테이블
   function zcl.build_zigbee_attr_handlers(get_preset)
     local function handler_factory(cluster_id, attribute_id)
       return function(_, device, value, zb_rx)
-        if cluster_id == 0x0001 and (attribute_id == 0x0020 or attribute_id == 0x0021) then
-          battery_refresh.note_report(device)
-        end
-
         local preset = get_preset(device)
         if preset and preset.zcl_clusters then
           local src_endpoint = extract_source_endpoint(zb_rx)

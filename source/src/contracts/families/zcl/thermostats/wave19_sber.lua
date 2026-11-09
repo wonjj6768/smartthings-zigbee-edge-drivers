@@ -1,4 +1,3 @@
--- Wave19 exact-only Sber SBDV-00205 thermostat candidate.
 -- Frozen Zigbee2MQTT v26.99.0 (df7200535e381f70023013f96791e424b6ac7b0e):
 --   src/devices/sber.ts:1-225,450-1135,1290-1395,2296-2564
 --   src/converters/fromZigbee.ts thermostat/temperature/UI converters
@@ -220,7 +219,6 @@ end
 local mappings = {}
 local commands = {}
 
--- Definition-local alarm and status converters.
 for _, item in ipairs({
   { 0x3001, "emergency_overcurrent", "EmergencyOvercurrent", 0x04, CLUSTER_SBER },
   { 0x3001, "emergency_overheat", "EmergencyOverheat", 0x08, CLUSTER_SBER },
@@ -252,7 +250,6 @@ append(mappings, mapping(CLUSTER_UI, 0x0001, "sber_therm_keypad_lockout", "sberT
   from_device = keypad_from, to_device = keypad_to, numeric_range = nil, read_on_configure = false,
 }))
 
--- Standard thermostat features plus exact family-specific companions.
 append(mappings, zcl.cluster_attribute(CLUSTER_THERMOSTAT, 0x0012, {
   name = "current_heating_setpoint", endpoint = 1,
   emit = emit.heating_setpoint("C"), data_type = data_types.Int16, write_type = data_types.Int16,
@@ -327,7 +324,6 @@ for index, day in ipairs(DAYS) do
   }))
 end
 
--- Manufacturer thermostat attributes.
 for _, field in ipairs({
   { 0x40F0, "min_local_temperature", "MinLocalTemperature", data_types.Int16, 100, 1, 35, 0.01, "C" },
   { 0x40F1, "max_local_temperature", "MaxLocalTemperature", data_types.Int16, 100, 5, 50, 0.01, "C" },
@@ -362,7 +358,6 @@ append(mappings, manufacturer_mapping(CLUSTER_THERMOSTAT, 0x4100, "sber_therm_ou
   from_device = output_mode_from, to_device = output_mode_to, read_on_configure = true,
 }))
 
--- Device/wired temperature and Sber electricity meter.
 append(mappings, mapping(CLUSTER_DEVICE_TEMPERATURE, 0x0000, "sber_therm_device_temperature", "sberThermDeviceTemperature", data_types.Int16, {
   read_only = true, read_on_configure = false,
 }))

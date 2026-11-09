@@ -90,6 +90,7 @@ function zcl_device_helpers.metering_clusters(options)
     append_cluster(clusters, zcl.current({
       endpoint = endpoint,
       poll_interval = current_poll,
+      use_reported_unity_scaler = options.use_reported_unity_scaler,
     }))
   end
 
@@ -97,6 +98,7 @@ function zcl_device_helpers.metering_clusters(options)
     endpoint = endpoint,
     scale = energy_scale,
     ignore_reported_scaler = options.energy_ignore_reported_scaler,
+    use_reported_unity_scaler = options.use_reported_unity_scaler,
     poll_interval = energy_poll,
   }))
 

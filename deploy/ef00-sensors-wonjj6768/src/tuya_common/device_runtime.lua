@@ -1,31 +1,23 @@
 local function bh(l,p)
-local bm=p.log
-local bd=p.BASIC_CLUSTER
-local v=p.PERSIST_FALSE
-local B=p.CONFIG_QUEUE_FIELD
-local r=p.CONFIG_QUEUE_CALLBACK_FIELD
-local w=p.QUERY_INTERVAL_TIMER_FIELD
-local br=p.SET_TIME
-local aO=p.CONNECTION_STATUS
-local aV=p.REPORT_COMMANDS
-local aP=require"st.zigbee.device_management"
-local d=p.type_check
-local A=p.table_insert
-local bj=p.table_remove
-local aW=p.extract_payload
-local aL=p.extract_command_id
-local aH=p.extract_transaction
-local au=p.prepare_mappings
-local R=p.time_offset_for_start
-local Y="magic_packet"
-local af="query_state"
-local ae="mcu_version"
-local aE=p.MCU_VERSION_RESPONSE
-local ar="bind_basic"
-local X="config_queue"
-local ag="query_timer"
-local K="tuya_next_forced_time_update"
-local ao=60*60
+local bm,bd,v,B,r,w,br,aO,aV,aP,d,A,bj,aW,aL,aH,au,R,Y,af,ae,aE,ar,X,ag,K,ao=p.log,p.BASIC_CLUSTER,p.PERSIST_FALSE,p.CONFIG_QUEUE_FIELD,p.CONFIG_QUEUE_CALLBACK_FIELD,p.QUERY_INTERVAL_TIMER_FIELD,p.SET_TIME,p.CONNECTION_STATUS,p.REPORT_COMMANDS,require"st.zigbee.device_management",p.type_check,p.table_insert,p.table_remove,p.extract_payload,p.extract_command_id,p.extract_transaction,p.prepare_mappings,p.time_offset_for_start,"magic_packet","query_state","mcu_version",p.MCU_VERSION_RESPONSE,"bind_basic","config_queue","query_timer","tuya_next_forced_time_update",60*60
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 local s
 local u
 local Q
@@ -64,17 +56,15 @@ end
 return nil
 end
 local function al(b)
-local bi={}local bq=d(b.named_mapping)=="table"and b.named_mapping or nil
+local bi,bq={},d(b.named_mapping)=="table"and b.named_mapping or nil
 if bq~=nil then
 for bp,ba in pairs(bq)do
 bi[bp]=ba
 end
 end
-local bo={
-"named_mappings","named_datapoints","named_key_field","named_mapping_values","named_mapping_names"}for _,bp in ipairs(bo)do
+local bo={"named_mappings","named_datapoints","named_key_field","named_mapping_values","named_mapping_names"}for _,bp in ipairs(bo)do
 if b[bp]~=nil then
-bi[bp]=b[bp]
-end
+bi[bp]=b[bp]end
 end
 return bi
 end
@@ -92,8 +82,7 @@ if d(aZ)~="table"or d(aX)~="table"then
 return aZ
 end
 for _,L in ipairs(aX)do
-A(aZ,L)
-end
+A(aZ,L)end
 return aZ
 end
 local function D(a,o,x,aB)
@@ -108,8 +97,7 @@ if V=="off"then
 return false
 end
 local aM=R(V)if aM~=0 then
-return l.apply_time_request_with_offset(a,m,aM,bk,aY)
-end
+return l.apply_time_request_with_offset(a,m,aM,bk,aY)end
 return l.apply_time_request(a,m,bk,aY)
 end
 u=function(a,o,x,bt)
@@ -125,12 +113,10 @@ ay(a,H.bind_target_eui)elseif H.kind==X then
 return l.start_config_queue(a,H.queue,{
 on_complete=function(success)
 if success then
-D(a,o,x,aB)
-end
+D(a,o,x,aB)end
 end
 })elseif H.kind==ag then
-l.start_query_timer(a,H.interval_seconds,H.command_id)
-end
+l.start_query_timer(a,H.interval_seconds,H.command_id)end
 D(a,o,x,aB)return true
 end
 function l.apply_announce(a,b)
@@ -169,27 +155,24 @@ end)
 a:set_field(w,aN,v)return true
 end
 function l.start_configuration(a,b,aK)
-b=b or{}local o={}local x=n(b.step_delay,1,"step_delay")local aq=n(b.initial_delay,0,"initial_delay")if x==nil or aq==nil then
+b=b or{}local o,x,aq={},n(b.step_delay,1,"step_delay"),n(b.initial_delay,0,"initial_delay")if x==nil or aq==nil then
 return false
 end
-local e=al(b)local y=b.preference_map
-local aU=d(b.preference_names)=="table"and b.preference_names or nil
-local j=e.named_mappings
-local G=d(e.named_mapping_values)=="table"and e.named_mapping_values or nil
-local Z=d(e.named_mapping_names)=="table"and e.named_mapping_names or nil
-local h=ax(b,aK)local S={}if y==nil and b.preference_datapoints then
+local e,y,aU=al(b),b.preference_map,d(b.preference_names)=="table"and b.preference_names or nil
+
+local j,G,Z,h,S=e.named_mappings,d(e.named_mapping_values)=="table"and e.named_mapping_values or nil,d(e.named_mapping_names)=="table"and e.named_mapping_names or nil,ax(b,aK),{}
+
+
+if y==nil and b.preference_datapoints then
 local t=b.preference_datapoints
 if t==true then
 t=b.datapoints
 end
 if t~=nil then
-y=l.build_preference_map(
-t,b.preference_key_field)
-end
+y=l.build_preference_map(t,b.preference_key_field)end
 end
 if y~=nil then
-au(y)
-end
+au(y)end
 if j==nil and e.named_datapoints then
 local z=e.named_datapoints
 if z==true then
@@ -209,41 +192,26 @@ j=b.datapoints
 end
 end
 if j~=nil then
-au(j)
-end
+au(j)end
 if b.magic_packet~=false then
-A(o,{kind=Y})
-end
+A(o,{kind=Y})end
 if b.query_on_configure then
-A(o,{
-kind=af,command_id=b.query_command_id})
-end
+A(o,{kind=af,command_id=b.query_command_id})end
 if b.mcu_version_request_on_configure then
-A(o,{kind=ae})
-end
+A(o,{kind=ae})end
 if b.bind_basic_on_configure then
 if h~=nil then
-A(o,{
-kind=ar,bind_target_eui=h})else
-bm.warn"Tuya bind_basic_on_configure requires bind_target_eui or driver.environment_info.hub_zigbee_eui"
-end
+A(o,{kind=ar,bind_target_eui=h})else
+bm.warn"Tuya bind_basic_on_configure requires bind_target_eui or driver.environment_info.hub_zigbee_eui"end
 end
 if y~=nil then
-ah(
-S,l.build_preference_config_queue(a,y,aU))
-end
+ah(S,l.build_preference_config_queue(a,y,aU))end
 if j~=nil and G~=nil then
-ah(
-S,l.build_named_mapping_config_queue(a,j,G,Z))
-end
+ah(S,l.build_named_mapping_config_queue(a,j,G,Z))end
 if #S>0 then
-A(o,{
-kind=X,queue=S})
-end
+A(o,{kind=X,queue=S})end
 if b.query_interval_seconds then
-A(o,{
-kind=ag,interval_seconds=b.query_interval_seconds,command_id=b.query_command_id})
-end
+A(o,{kind=ag,interval_seconds=b.query_interval_seconds,command_id=b.query_command_id})end
 if #o==0 then
 return false
 end
@@ -257,18 +225,15 @@ return u(a,o,x,1)
 end
 local function aI(a,m,c)
 if type(c.time_handler)=="function"then
-return c.time_handler(a,m,c)
-end
+return c.time_handler(a,m,c)end
 if c.auto_time==false then
 return false
 end
 local N=c.time_offset
 if N then
-return l.apply_time_request_with_offset(a,m,N,c.utc_time,c.local_time)
-end
+return l.apply_time_request_with_offset(a,m,N,c.utc_time,c.local_time)end
 if c.time_start then
-return s(a,m,c.time_start,c.utc_time,c.local_time)
-end
+return s(a,m,c.time_start,c.utc_time,c.local_time)end
 return l.apply_time_request(a,m,c.utc_time,c.local_time)
 end
 local function O(a,m,c)
@@ -278,32 +243,26 @@ end
 return l.apply_connection_status_request(a,m,c.connection_status_bytes)
 end
 local function J(a,bs)
-a:set_field(
-K,(bs or os.time())+ao,v)
+a:set_field(K,(bs or os.time())+ao,v)
 end
 local function aw(a,m,c)
 if c.force_time_updates~=true or c.time_start=="off"then
 return false
 end
-local bs=os.time()local aR=a:get_field(K)if aR~=nil and aR>=bs then
+local bs,aR=os.time(),a:get_field(K)if aR~=nil and aR>=bs then
 return false
 end
-J(a,bs)
-if type(c.time_handler)=="function"then
+J(a,bs)if type(c.time_handler)=="function"then
 return c.time_handler(a,m,c)==true
 end
 local N=c.time_offset
 if N~=nil then
-return l.send_time_with_offset(
-a,N,c.utc_time,c.local_time
-)==true
+return l.send_time_with_offset(a,N,c.utc_time,c.local_time)==true
 end
 local V=c.time_start
 if V~=nil then
 local aM=R(V)if aM~=0 then
-return l.send_time_with_offset(
-a,aM,c.utc_time,c.local_time
-)==true
+return l.send_time_with_offset(a,aM,c.utc_time,c.local_time)==true
 end
 end
 return l.send_time(a,c.utc_time,c.local_time)==true
@@ -313,19 +272,16 @@ local C=l.parse_datapoint_report(m)if not C then
 bm.warn(string.format("Failed to parse Tuya report for command 0x%02X",k))return false
 end
 if c.config_queue~=false then
-F(a,m,c.queue_delay,C)
-end
+F(a,m,c.queue_delay,C)end
 for _,ab in ipairs(C.datapoints)do
 if as then
-l.apply_datapoint_mapping(a,ab,as,{
-frame=C,endpoint=ab.endpoint or C.endpoint})
-end
+l.apply_datapoint_mapping(a,ab,as,{frame=C,endpoint=ab.endpoint or C.endpoint})end
 end
 return true
 end
 function l.apply_message(a,m,c)
-c=c or{}local as=c.datapoints
-local k=aL(m)if not k then
+c=c or{}local as,k=c.datapoints,aL(m)
+if not k then
 return false
 end
 local ak=aw(a,m,c)if k==br then
@@ -348,8 +304,7 @@ if k==aE and c.respond_to_mcu_version_response==true then
 return l.send_mcu_version_request(a,l.DEFAULT_MCU_VERSION_TRANSACTION)~=nil
 end
 if aV[k]==true then
-return aC(a,m,c,as,k)
-end
+return aC(a,m,c,as,k)end
 return false
 end
 local function aJ(aS,bg)
@@ -390,8 +345,7 @@ az(f.response_dp)return g
 end
 if d(f.response_dps)=="table"then
 for _,dp in ipairs(f.response_dps)do
-az(dp)
-end
+az(dp)end
 if next(g)~=nil then
 return g
 end
@@ -402,8 +356,7 @@ end
 if d(f.items)=="table"then
 for _,L in ipairs(f.items)do
 if d(L)=="table"then
-az(L.dp)
-end
+az(L.dp)end
 end
 end
 return g
@@ -464,11 +417,9 @@ end
 return nil
 end
 local function I(a,success)
-local aa=a:get_field(r)aj(a)
-if d(aa)=="function"then
+local aa=a:get_field(r)aj(a)if d(aa)=="function"then
 local ok,bv=pcall(aa,success==true)if not ok then
-bm.warn(string.format("Tuya config queue callback failed: %s",tostring(bv)))
-end
+bm.warn(string.format("Tuya config queue callback failed: %s",tostring(bv)))end
 end
 return success==true
 end
@@ -479,11 +430,9 @@ end
 return I(a,false)
 end
 function l.start_config_queue(a,T,b)
-local aX=T or{}local aa=aA(b)if #aX==0 then
-aj(a)
-if d(aa)=="function"then
-pcall(aa,false)
-end
+local aX,aa=T or{},aA(b)if #aX==0 then
+aj(a)if d(aa)=="function"then
+pcall(aa,false)end
 return false
 end
 a:set_field(B,aX,v)a:set_field(r,aa,v)return E(a)
@@ -507,18 +456,16 @@ end
 return false
 end
 F=function(a,ad,bf,C)
-local P=aW(ad)local T=a:get_field(B)if not P or not T or #T==0 then
+local P,T=aW(ad),a:get_field(B)if not P or not T or #T==0 then
 return false
 end
 C=C or l.parse_datapoint_report(ad)local f=T[1]if not av(f,ad,P,C)then
 return false
 end
 bj(T,1)if #T==0 then
-return I(a,true)
-end
+return I(a,true)end
 local aD=n(bf,0.5,"config_queue_delay")if aD==nil then
-return I(a,false)
-end
+return I(a,false)end
 a.thread:call_with_delay(aD,function()
 E(a)
 end)

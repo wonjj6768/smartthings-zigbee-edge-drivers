@@ -1,8 +1,7 @@
-local b={}local g=type(utf8)=="table"and utf8.len or nil
-local i=type(utf8)=="table"and utf8.offset or nil
+local b,g,i={},type(utf8)=="table"and utf8.len or nil,type(utf8)=="table"and utf8.offset or nil
+
 local function d(a)
-if type(a)~="number"
-or a<0
+if type(a)~="number"or a<0
 or a%1~=0 then
 return nil
 end
@@ -15,10 +14,10 @@ end
 return g(c)
 end
 function b.fits(c,a)
-local f=d(a)local e=b.length(c)return f~=nil and e~=nil and e<=f
+local f,e=d(a),b.length(c)return f~=nil and e~=nil and e<=f
 end
 function b.truncate(c,a)
-local f=d(a)local e=b.length(c)if f==nil or e==nil then
+local f,e=d(a),b.length(c)if f==nil or e==nil then
 return nil
 end
 if e<=f then

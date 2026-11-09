@@ -1,5 +1,4 @@
 -- MEG5779: ZHC cff1de4731a14a84094a8568d8bbf92aa5feb0db.
--- Uses actual current resources through normally generated metadata; no SDK substitutes.
 -- BEGIN PURE CODEC
 local function scalar(value)
   return type(value) == "table" and value.value or value
@@ -13,8 +12,9 @@ local function setpoint_wire(value)
   -- Compare the binary64 value against n+9/20 without introducing another rounding.
   local doubled = value * 2
   local whole = math.floor(doubled)
-  local mantissa, exponent = math.frexp(doubled)
-  mantissa = math.floor(mantissa * 9007199254740992)
+  local bits = string.unpack("<I8", string.pack("<d", doubled))
+  local exponent = ((bits >> 52) & 0x7FF) - 1022
+  local mantissa = (bits & 0xFFFFFFFFFFFFF) | 0x10000000000000
   if mantissa * 20 >= (whole * 20 + 9) * (1 << (53 - exponent)) then whole = whole + 1 end
   return whole * 50
 end
@@ -242,7 +242,6 @@ local family = {
   parent_refresh = function(device) queries(device) end,
 }
 register(family, {helpers.create_fingerprint("Schneider Electric", "MEG5779")})
--- Normal reporting generation supplies the final profile/attachment; no candidate footer.
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(definitions, {
   {1, "rpt-men", {zr02010011auto = "CoolSet", zr02010012auto = "HeatSet", zr02010013auto = "CoolSetTwo", zr02010014auto = "HeatSetTwo"}},

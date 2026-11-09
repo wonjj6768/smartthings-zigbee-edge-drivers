@@ -18,13 +18,13 @@ components:
         version: 1
       - id: concertmirror08464.tbgeWindowOpenStatus
         version: 1
-      - id: concertmirror08464.tbgeComfortTemperature
+      - id: concertmirror08464.tbgeComfortTemperatureV2
         version: 1
-      - id: concertmirror08464.tbgeEcoTemperature
+      - id: concertmirror08464.tbgeEcoTemperatureV2
         version: 1
-      - id: concertmirror08464.tbgeHolidayTemperature
+      - id: concertmirror08464.tbgeHolidayTemperatureV2
         version: 1
-      - id: concertmirror08464.tbgeAutoTemperature
+      - id: concertmirror08464.tbgeAutoTemperatureV2
         version: 1
       - id: concertmirror08464.tbgeLocalTempCalibration
         version: 1
@@ -73,16 +73,16 @@ deviceConfig:
       capability: concertmirror08464.tbgeWindowOpenStatus
       version: 1
     - component: main
-      capability: concertmirror08464.tbgeComfortTemperature
+      capability: concertmirror08464.tbgeComfortTemperatureV2
       version: 1
     - component: main
-      capability: concertmirror08464.tbgeEcoTemperature
+      capability: concertmirror08464.tbgeEcoTemperatureV2
       version: 1
     - component: main
-      capability: concertmirror08464.tbgeHolidayTemperature
+      capability: concertmirror08464.tbgeHolidayTemperatureV2
       version: 1
     - component: main
-      capability: concertmirror08464.tbgeAutoTemperature
+      capability: concertmirror08464.tbgeAutoTemperatureV2
       version: 1
     - component: main
       capability: concertmirror08464.tbgeLocalTempCalibration
@@ -126,16 +126,16 @@ deviceConfig:
         capability: concertmirror08464.tbgeWindowOpenStatus
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeComfortTemperature
+        capability: concertmirror08464.tbgeComfortTemperatureV2
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeEcoTemperature
+        capability: concertmirror08464.tbgeEcoTemperatureV2
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeHolidayTemperature
+        capability: concertmirror08464.tbgeHolidayTemperatureV2
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeAutoTemperature
+        capability: concertmirror08464.tbgeAutoTemperatureV2
         version: 1
       - component: main
         capability: concertmirror08464.tbgeLocalTempCalibration
@@ -166,16 +166,16 @@ deviceConfig:
         capability: concertmirror08464.tbgeBoostHeating
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeComfortTemperature
+        capability: concertmirror08464.tbgeComfortTemperatureV2
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeEcoTemperature
+        capability: concertmirror08464.tbgeEcoTemperatureV2
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeHolidayTemperature
+        capability: concertmirror08464.tbgeHolidayTemperatureV2
         version: 1
       - component: main
-        capability: concertmirror08464.tbgeAutoTemperature
+        capability: concertmirror08464.tbgeAutoTemperatureV2
         version: 1
       - component: main
         capability: concertmirror08464.tbgeLocalTempCalibration

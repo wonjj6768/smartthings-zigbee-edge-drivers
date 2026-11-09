@@ -1,4 +1,3 @@
--- Wave13 Manhot MH03 OLED switch source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/manhot.ts:34-758.
 
 local tuya = require "protocol.tuya"

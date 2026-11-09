@@ -695,7 +695,6 @@ local function mapping_for_key(mappings, key, device, context)
   return select_mapping_entry(key_index and key_index[key] or nil, device, context)
 end
 
--- mapping 한 건 적용
 local function apply_mapping(device, dp_info, mapping, context)
   if type_check(mapping) ~= "table" then
     return dp_info.value
@@ -825,7 +824,6 @@ local function append_named_items(target, append_item, device, mappings, values,
   return target
 end
 
--- preference/dp map에서 송신 item 생성
 local function build_send_item(device, mapping, value, context)
   local item = sanitize_send_item(mapping, "send mapping")
   if not item then
@@ -864,7 +862,6 @@ local function build_send_item(device, mapping, value, context)
   }
 end
 
--- converter 인자 해석
 
 build_send_items = function(device, mapping, value, context)
   if type_check(mapping) == "function" then
@@ -914,7 +911,6 @@ build_send_items = function(device, mapping, value, context)
   return {}
 end
 
--- 공개 API
 
 
 function tuya.apply_datapoint_mapping(device, dp_info, datapoints, context)
@@ -950,7 +946,6 @@ function tuya.apply_datapoint_mapping(device, dp_info, datapoints, context)
   return true
 end
 
--- 매핑 정의를 사용해 값 전송
 function tuya.send_mapping(device, mapping, value, context)
   return send_items(device, build_send_items(device, mapping, value, context))
 end
@@ -1048,7 +1043,6 @@ local function preference_has_changed(prefs, old_prefs, name)
   return prefs[name] ~= old_prefs[name]
 end
 
--- preference map으로 큐 생성
 function tuya.build_preference_config_queue(device, preference_map, preference_names, old_prefs)
   local queue = {}
   local prefs = device.preferences or {}
@@ -1167,7 +1161,6 @@ end
 
 shared.prepare_mappings = prepare_mappings
 
--- preference map으로 설정 큐 시작
 function tuya.start_preference_config_queue(device, preference_map, preference_names, old_prefs)
   local queue = tuya.build_preference_config_queue(device, preference_map, preference_names, old_prefs)
   return tuya.start_config_queue(device, queue)
@@ -1178,7 +1171,6 @@ function tuya.start_named_mapping_config_queue(device, mappings, values, names, 
   return tuya.start_config_queue(device, queue)
 end
 
--- 변경된 preference만 전송
 function tuya.send_preferences(device, preference_map, old_prefs, preference_names)
   local sent = false
 

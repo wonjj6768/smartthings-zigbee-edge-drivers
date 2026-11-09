@@ -1,337 +1,134 @@
-local c=require"protocol.tuya"
-local e=require"capabilities.events.all"
-local b=require"contracts.helpers.family"
-local ay=require"protocol.zcl"
-local ap=require"st.zigbee.zcl.clusters"
-local ah=require"st.zigbee.device_management"
-local d=c.converter
+local c,f,b,ay,ap,ah=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"protocol.zcl",require"st.zigbee.zcl.clusters",require"st.zigbee.device_management"local d=c.converter
 local K,a=b.definition_registry()
-local function f()
-return d.from_only(function(h)
-local p=tonumber(h)if p==nil then
+local function e()
+return d.from_only(function(i)
+local p=tonumber(i)if p==nil then
 return nil
 end
 if p<=0 then
-return"closed"
-end
+return"closed"end
 if p>=100 then
-return"open"
-end
+return"open"end
 return"partially open"
 end)
 end
-local function i()
-return d.from_only(function(h)
-local p=tonumber(h)if p==nil then
+local function h()
+return d.from_only(function(i)
+local p=tonumber(i)if p==nil then
 return nil
 end
 p=100-p
 if p<=0 then
-return"closed"
-end
+return"closed"end
 if p>=100 then
-return"open"
-end
+return"open"end
 return"partially open"
 end)
 end
-local g=d.lookup_from_to{
-open=0,stop=1,close=2}
-local n=d.from_only(function(h)
-return({
-[0]="open",[1]="partially open",[2]="closed",[3]="partially open"})[tonumber(h)]
+local g=d.lookup_from_to{open=0,stop=1,close=2}
+local n=d.from_only(function(i)
+return({[0]="open",[1]="partially open",[2]="closed",[3]="partially open"})[tonumber(i)]
 end)
-local s=d.lookup_from_to{
-open=0,close=1,stop=2}local t=d.lookup_from_to{
-open=2,stop=1,close=0}local x=d.lookup_from_to{
-open=1,close=0,stop=2}local P=d.lookup_from_to{
-open=2,stop=0,close=1}local I={
-profile="covers-cover-switch-1",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_on_off(101,{
-name="switch",component="switch2"})}local J={
-profile="covers-cover-switch-2",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_on_off(101,{
-name="switch",component="switch2"}),c.dp_on_off(102,{
-name="switch",component="switch3"})}local M={
-profile="covers-cover-switch-2-trwaxi57",datapoints={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_enum(3,{
-name="calibration",emit=e.trwaxi57Calibration(),converter=d.lookup_from_to{
-start=0,
-["end"]=1
-}}),c.dp_backlight_mode_off_on(7,{
-name="backlight_mode",emit=e.trwaxi57Backlight(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(8,{
-name="motor_steering",emit=e.trwaxi57MotorSteering(),converter=d.lookup_from_to{
-forward=0,backward=1}}),c.dp_child_lock(102,{
-name="child_lock",emit=e.trwaxi57ChildLock(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_on_off(108,{name="switch",component="switch2"}),c.dp_on_off(107,{name="switch",component="switch3"})},query_on_configure=true}local o={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true})}local l={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=i(),read_only=true})}local au={
-profile="covers-cover-six",magic_packet=true,mcu_version_request_on_configure=true,time_start="off",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_report",converter=n,emit=e.shade_state(),read_only=true}),c.dp_cover_position_inverted(2,{emit=e.shade_level()}),c.dp_numeric(2,{name="window_shade_state",converter=i(),emit=e.shade_state(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_report",emit=e.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_report",converter=i(),emit=e.shade_state(),read_only=true}),c.dp_enum(4,{name="cover_six_opening",converter=d.lookup_from_to{tilt=0,lift=1},emit=e.coverSixOpening()}),c.dp_enum(7,{name="cover_six_work_state",converter=d.lookup_from_to{standby=0,success=1,learning=2},emit=e.coverSixWorkState(),read_only=true}),c.dp_battery(13,{emit=e.battery(),read_only=true}),c.dp_enum(101,{name="cover_six_direction",converter=d.lookup_from_to{left=0,right=1},emit=e.coverSixDirection()}),c.dp_enum(102,{name="cover_six_upper_limit",converter=d.lookup_from_to{start=1,stop=0},emit=e.coverSixUpperLimit()}),c.dp_numeric(104,{name="cover_six_illumination",emit=e.coverSixIllumination(),read_only=true})}local D={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(8,{emit=e.shade_level()}),c.dp_numeric(8,{
-name="window_shade_state",emit=e.shade_state(),converter=i(),read_only=true})}
-local function U(h,j)
-return j.preferences.reverse==true and(100-h)or h
+local s,u,x,P,I,J,M,o,l,au,D=d.lookup_from_to{open=0,close=1,stop=2},d.lookup_from_to{open=2,stop=1,close=0},d.lookup_from_to{open=1,close=0,stop=2},d.lookup_from_to{open=2,stop=0,close=1},{profile="covers-cover-switch-1",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_on_off(101,{name="switch",component="switch2"})},{profile="covers-cover-switch-2",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_on_off(101,{name="switch",component="switch2"}),c.dp_on_off(102,{name="switch",component="switch3"})},{profile="covers-cover-switch-2-trwaxi57",datapoints={c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_enum(3,{name="calibration",emit=f.trwaxi57Calibration(),converter=d.lookup_from_to{start=0,["end"]=1}}),c.dp_backlight_mode_off_on(7,{name="backlight_mode",emit=f.trwaxi57Backlight(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(8,{name="motor_steering",emit=f.trwaxi57MotorSteering(),converter=d.lookup_from_to{forward=0,backward=1}}),c.dp_child_lock(102,{name="child_lock",emit=f.trwaxi57ChildLock(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_on_off(108,{name="switch",component="switch2"}),c.dp_on_off(107,{name="switch",component="switch3"})},query_on_configure=true},{c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true})},{c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=h(),read_only=true})},{profile="covers-cover-six",magic_packet=true,mcu_version_request_on_configure=true,time_start="off",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_report",converter=n,emit=f.shade_state(),read_only=true}),c.dp_cover_position_inverted(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",converter=h(),emit=f.shade_state(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_report",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_report",converter=h(),emit=f.shade_state(),read_only=true}),c.dp_enum(4,{name="cover_six_opening",converter=d.lookup_from_to{tilt=0,lift=1},emit=f.coverSixOpening()}),c.dp_enum(7,{name="cover_six_work_state",converter=d.lookup_from_to{standby=0,success=1,learning=2},emit=f.coverSixWorkState(),read_only=true}),c.dp_battery(13,{emit=f.battery(),read_only=true}),c.dp_enum(101,{name="cover_six_direction",converter=d.lookup_from_to{left=0,right=1},emit=f.coverSixDirection()}),c.dp_enum(102,{name="cover_six_upper_limit",converter=d.lookup_from_to{start=1,stop=0},emit=f.coverSixUpperLimit()}),c.dp_numeric(104,{name="cover_six_illumination",emit=f.coverSixIllumination(),read_only=true})},{c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(8,{emit=f.shade_level()}),c.dp_numeric(8,{name="window_shade_state",emit=f.shade_state(),converter=h(),read_only=true})}
+local function U(i,j)
+return j.preferences.reverse==true and(100-i)or i
 end
 local F={from=U,to=U}
-local L=d.from_only(function(h,j)
-local position=U(h,j)return position<=0 and"closed"or position>=100 and"open"or"partially open"
+local L=d.from_only(function(i,j)
+local position=U(i,j)return position<=0 and"closed"or position>=100 and"open"or"partially open"
 end)
-local ae={
-c.dp_enum(2,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(7,{converter=F,emit=e.shade_level()}),c.dp_numeric(7,{
-name="window_shade_state",emit=e.shade_state(),converter=L,read_only=true}),c.dp_cover_position(8,{name="cover_position_report",converter=F,emit=e.shade_level(),read_only=true}),c.dp_numeric(8,{
-name="window_shade_state_report",emit=e.shade_state(),converter=L,read_only=true})}local O={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(8,{emit=e.shade_level()}),c.dp_numeric(8,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true})}local al={
-profile="covers-ts130f-xbexmf8h",datapoints={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{
-name="cover_action_state",emit=e.shade_state(),converter=n,read_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_enum(3,{
-name="calibration",emit=e.ts130fXbCalibration(),converter=d.lookup_from_to{on=0,off=1}}),c.dp_enum(8,{
-name="motor_direction",emit=e.ts130fXbDirection(),converter=d.lookup_from_to{normal=0,reversed=1},
-from_device=function(h)
-if type(h)=="string"then return h=="back"and"reversed"or"normal"end
-return({[0]="normal",[1]="reversed"})[h]
+local ae,O={c.dp_enum(2,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(7,{converter=F,emit=f.shade_level()}),c.dp_numeric(7,{name="window_shade_state",emit=f.shade_state(),converter=L,read_only=true}),c.dp_cover_position(8,{name="cover_position_report",converter=F,emit=f.shade_level(),read_only=true}),c.dp_numeric(8,{name="window_shade_state_report",emit=f.shade_state(),converter=L,read_only=true})},{c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(9,{write_only=true}),c.dp_cover_position(8,{name="cover_position_report",emit=f.shade_level(),read_only=true}),c.dp_numeric(8,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true})}local al={profile="covers-ts130f-xbexmf8h",datapoints={c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_state",emit=f.shade_state(),converter=n,read_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_enum(3,{name="calibration",emit=f.ts130fXbCalibration(),converter=d.lookup_from_to{on=0,off=1}}),c.dp_enum(8,{name="motor_direction",emit=f.ts130fXbDirection(),converter=d.lookup_from_to{normal=0,reversed=1},
+from_device=function(i)
+if type(i)=="string"then return i=="back"and"reversed"or"normal"end
+return({[0]="normal",[1]="reversed"})[i]
 end
-}),c.dp_numeric(10,{
-name="calibration_time",emit=e.ts130fXbCalibTime(),converter=d.from_only(d.pipe(
-d.wrap_signed(4294967296,0x7FFFFFFF).from,d.divide_by(10))),read_only=true}),c.dp_enum(12,{
-name="switch_type",converter=d.lookup_from_to{momentary=0,toggle=1}}),c.dp_enum(14,{
-name="backlight_mode",emit=e.ts130fXbBacklight(),converter=d.lookup_from_to{on=0,off=1}})},query_on_configure=false,initial_custom_state_query=false,time_start="off"}local ag={
-profile="covers-cover-zsm01",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(9,{write_only=true}),c.dp_numeric(8,{
-name="cover_position_state",emit=e.shade_level(),read_only=true}),c.dp_numeric(8,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_enum(11,{
-name="control_back_mode",emit=e.zsm01ControlBackMode(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(19,{
-name="position_best",emit=e.zsm01PositionBest()}),c.dp_enum(20,{
-name="click_control",emit=e.zsm01ClickControl(),converter=d.lookup_from_to{up=0,down=1}})}local R={
-c.dp_enum(1,{
-name="cover_state",converter=P,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true})}local ar={
-profile="covers-cover-zb-sm",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_numeric(3,{name="arrived_position"}),c.dp_enum(5,{
-name="motor_direction",emit=e.motorDirectionZbSmNormalRev(),converter=d.lookup_from_to{normal=0,reversed=1}}),c.dp_numeric(10,{
-name="cycle_time",read_only=true,emit=e.zbSmCycleTime()}),c.dp_enum(101,{
-name="motor_type",read_only=true,emit=e.zbSmMotorType(),converter=d.from_only(d.lookup_value{
-[0]="",[1]="AM0/6-28R-Sm",[2]="AM0/10-19R-Sm",[3]="AM1/10-13R-Sm",[4]="AM1/20-13R-Sm",[5]="AM1/30-13R-Sm"})}),c.dp_numeric(102,{
-name="cycle_count",read_only=true,emit=e.zbSmCycleCount()}),c.dp_enum(103,{
-name="bottom_limit",emit=e.zbSmBottomLimit(),converter=d.lookup_from_to{set=0,clear=1}}),c.dp_enum(104,{
-name="top_limit",emit=e.zbSmTopLimit(),converter=d.lookup_from_to{set=0,clear=1}}),c.dp_numeric(109,{
-name="active_power",read_only=true,emit=e.zbSmActivePower()}),c.dp_cover_position(115,{name="favorite_position",emit=e.favoritePositionZbSm()}),c.dp_enum(121,{
-name="motor_state",read_only=true,emit=e.zbSmMotorState(),converter=d.from_only(d.lookup_value{
-[0]="opening",[1]="stopped",[2]="closing"})})}local Z={
-c.dp_enum(1,{
-name="cover_state",converter=t,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true})}local as={
-profile="covers-cover-battery",magic_packet=true,mcu_version_request_on_configure=true,time_start="off",query_on_configure=true,query_on_announce=true,query_interval_seconds=86400,c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_report",converter=n,emit=e.shade_state(),read_only=true}),c.dp_cover_position_inverted(2,{emit=e.shade_level()}),c.dp_numeric(2,{name="window_shade_state",converter=i(),emit=e.shade_state(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_report",emit=e.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_report",converter=i(),emit=e.shade_state(),read_only=true}),c.dp_battery(13,{emit=e.battery(),read_only=true})}a(as,b.create_fingerprints("TS0601",{"_TZE284_koxaopnk"}))local av={
-magic_packet=true,mcu_version_request_on_configure=true,time_start="off",c.dp_enum(1,{name="cover_state",converter=t,write_only=true}),c.dp_enum(1,{name="cover_action_report",read_only=true,emit=e.shade_state(),
-from_device=function(h)return({[0]="closed",[1]="partially open",[2]="open"})[h]end}),
-c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{name="window_shade_state",converter=f(),emit=e.shade_state(),read_only=true}),c.dp_numeric(3,{name="position_report",emit=e.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_report",converter=f(),emit=e.shade_state(),read_only=true})}local ak={
-c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{
-write_only=true}),c.dp_numeric(3,{
-name="cover_position_state",emit=e.shade_level(),read_only=true}),c.dp_numeric(3,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true})}local Y={
-profile="covers-cover-pims3028",c.dp_enum(1,{
-name="cover_state",converter=d.lookup_from_to{
-open=0,stop=1,close=2,lock=3,unlock=4},write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_inverted"}),c.dp_enum(4,{
-name="mode",emit=e.pims3028Mode(),converter=d.lookup_from_to{
-up=0,up_delete=1,remove_up_down=2}}),c.dp_enum(5,{
-name="control_back",emit=e.pims3028ControlBack(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_binary(6,{
-name="auto_power",emit=e.pims3028AutoPower(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(7,{
-name="work_state",emit=e.coverWorkPimsActual(),converter=d.from_only(d.lookup_value{
-[0]="opening",[1]="closing",[2]="value_123"})}),c.dp_numeric(10,{
-name="time_total",read_only=true,emit=e.pims3028TimeTotal()}),c.dp_enum(11,{
-name="situation_set",read_only=true,emit=e.pims3028SituationSet(),converter=d.from_only(d.lookup_value{
-[0]="fully_open",[1]="fully_close"})}),c.dp_binary(12,{
-name="fault",read_only=true,emit=e.pims3028Fault(),
-converter=d.from_only(function(h)
-return h and"fault"or"normal"
+}),c.dp_numeric(10,{name="calibration_time",emit=f.ts130fXbCalibTime(),converter=d.from_only(d.pipe(d.wrap_signed(4294967296,0x7FFFFFFF).from,d.divide_by(10))),read_only=true}),c.dp_enum(12,{name="switch_type",converter=d.lookup_from_to{momentary=0,toggle=1}}),c.dp_enum(14,{name="backlight_mode",emit=f.ts130fXbBacklight(),converter=d.lookup_from_to{on=0,off=1}})},query_on_configure=false,initial_custom_state_query=false,time_start="off"}local ag={profile="covers-cover-zsm01",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(9,{write_only=true}),c.dp_numeric(8,{name="cover_position_state",emit=f.shade_level(),read_only=true}),c.dp_numeric(8,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_enum(11,{name="control_back_mode",emit=f.zsm01ControlBackMode(),converter=d.lookup_from_to{forward=0,back=1},
+from_device=function(i)
+if type(i)=="string"then return i=="back"and"back"or"forward"end
+return({[0]="forward",[1]="back"})[i]
+end
+}),c.dp_numeric(19,{name="position_best",emit=f.zsm01PositionBest()}),c.dp_enum(20,{name="click_control",emit=f.zsm01ClickControl(),converter=d.lookup_from_to{up=0,down=1}})}local R,ar,Z,as={c.dp_enum(1,{name="cover_state",converter=P,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true})},{profile="covers-cover-zb-sm",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_numeric(3,{name="arrived_position"}),c.dp_enum(5,{name="motor_direction",emit=f.motorDirectionZbSmNormalRev(),converter=d.lookup_from_to{normal=0,reversed=1}}),c.dp_numeric(10,{name="cycle_time",read_only=true,emit=f.zbSmCycleTime()}),c.dp_enum(101,{name="motor_type",read_only=true,emit=f.zbSmMotorType(),converter=d.from_only(d.lookup_value{[0]="",[1]="AM0/6-28R-Sm",[2]="AM0/10-19R-Sm",[3]="AM1/10-13R-Sm",[4]="AM1/20-13R-Sm",[5]="AM1/30-13R-Sm"})}),c.dp_numeric(102,{name="cycle_count",read_only=true,emit=f.zbSmCycleCount()}),c.dp_enum(103,{name="bottom_limit",emit=f.zbSmBottomLimit(),converter=d.lookup_from_to{set=0,clear=1}}),c.dp_enum(104,{name="top_limit",emit=f.zbSmTopLimit(),converter=d.lookup_from_to{set=0,clear=1}}),c.dp_numeric(109,{name="active_power",read_only=true,emit=f.zbSmActivePower()}),c.dp_cover_position(115,{name="favorite_position",emit=f.favoritePositionZbSm()}),c.dp_enum(121,{name="motor_state",read_only=true,emit=f.zbSmMotorState(),converter=d.from_only(d.lookup_value{[0]="opening",[1]="stopped",[2]="closing"})})},{c.dp_enum(1,{name="cover_state",converter=u,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true})},{profile="covers-cover-battery",magic_packet=true,mcu_version_request_on_configure=true,time_start="off",query_on_configure=true,query_on_announce=true,query_interval_seconds=86400,c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_report",converter=n,emit=f.shade_state(),read_only=true}),c.dp_cover_position_inverted(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",converter=h(),emit=f.shade_state(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_report",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_report",converter=h(),emit=f.shade_state(),read_only=true}),c.dp_battery(13,{emit=f.battery(),read_only=true})}a(as,b.create_fingerprints("TS0601",{"_TZE284_koxaopnk"}))local av={magic_packet=true,mcu_version_request_on_configure=true,time_start="off",c.dp_enum(1,{name="cover_state",converter=u,write_only=true}),c.dp_enum(1,{name="cover_action_report",read_only=true,emit=f.shade_state(),
+from_device=function(i)return({[0]="closed",[1]="partially open",[2]="open"})[i]end}),
+c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",converter=e(),emit=f.shade_state(),read_only=true}),c.dp_numeric(3,{name="position_report",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_report",converter=e(),emit=f.shade_state(),read_only=true})}local ak={c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_moving_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_numeric(3,{name="cover_position_state",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true})}local Y={profile="covers-cover-pims3028",c.dp_enum(1,{name="cover_state",converter=d.lookup_from_to{open=0,stop=1,close=2,lock=3,unlock=4},write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_inverted",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_state_report",emit=f.shade_state(),converter=h(),read_only=true}),c.dp_enum(4,{name="mode",emit=f.pims3028Mode(),converter=d.lookup_from_to{up=0,up_delete=1,remove_up_down=2}}),c.dp_enum(5,{name="control_back",emit=f.pims3028ControlBack(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_binary(6,{name="auto_power",emit=f.pims3028AutoPower(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(7,{name="work_state",emit=f.coverWorkPimsActual(),converter=d.from_only(d.lookup_value{[0]="opening",[1]="closing",[2]="value_123"})}),c.dp_numeric(10,{name="time_total",read_only=true,emit=f.pims3028TimeTotal()}),c.dp_enum(11,{name="situation_set",read_only=true,emit=f.pims3028SituationSet(),converter=d.from_only(d.lookup_value{[0]="fully_open",[1]="fully_close"})}),c.dp_binary(12,{name="fault",read_only=true,emit=f.pims3028Fault(),
+converter=d.from_only(function(i)
+return i and"fault"or"normal"
 end)
-}),c.dp_enum(16,{
-name="border",emit=e.pims3028Border(),converter=d.lookup_from_to{
-down_delete=0,remove_top_bottom=1}}),c.dp_numeric(19,{
-name="position_best",emit=e.pims3028PositionBest()}),c.dp_numeric(21,{
-name="angle_horizontal",emit=e.pims3028AngleHorizontal()}),c.dp_enum(101,{
-name="calibration",emit=e.coverCalibrationPims3028StartEnd(),converter=d.lookup_from_to{
-start=0,
-["end"]=1
-}}),c.dp_numeric(102,{
-name="quick_calibration",emit=e.pims3028QuickCalibration()}),c.dp_binary(103,{
-name="best_position_trigger",emit=e.pims3028BestTrigger(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(104,{
-name="reset",emit=e.pims3028Reset(),converter=d.lookup_from_to{reset=0}})}local am={
-profile="covers-cover-battery-rm28-le",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_numeric(3,{name="position_report",emit=e.coverPositionReportRm28Le()}),c.dp_enum(4,{
-name="mode",emit=e.rm28leMode(),converter=d.lookup_from_to{morning=0,night=1}}),c.dp_enum(5,{
-name="reverse_direction",converter=d.lookup_from_to{
-forward=0,back=1}}),c.dp_binary(6,{
-name="auto_power",emit=e.rm28leAutoPower(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(7,{
-name="work_state",emit=e.coverWorkRmOpeningClosing(),converter=d.from_only(d.lookup_value{
-[0]="closing",[1]="opening"})}),c.dp_enum(8,{
-name="countdown",emit=e.rm28leCountdown(),converter=d.lookup_from_to{
-cancel=0,["1h"]=1,["2h"]=2,["3h"]=3,["4h"]=4}}),c.dp_numeric(9,{
-name="countdown_left",read_only=true,emit=e.rm28leCountdownLeft()}),c.dp_numeric(10,{
-name="time_total",read_only=true,emit=e.rm28leTimeTotal()}),c.dp_enum(11,{
-name="situation_set",read_only=true,emit=e.rm28leSituationSet(),converter=d.from_only(d.lookup_value{
-[0]="fully_open",[1]="fully_close"})}),c.dp_numeric(12,{
-name="motor_fault",read_only=true,emit=e.rm28leMotorFault(),
-converter=d.from_only(function(h)
-return(tonumber(h)or 0)~=0 and"fault"or"normal"
+}),c.dp_enum(16,{name="border",emit=f.pims3028BorderV2(),converter=d.lookup_from_to{set_up=0,set_down=1,delete_up=2,delete_down=3,delete_both=4}}),c.dp_numeric(19,{name="position_best",emit=f.pims3028PositionBestV2()}),c.dp_numeric(21,{name="angle_horizontal",emit=f.pims3028AngleHorizontal()}),c.dp_enum(101,{name="calibration",emit=f.coverCalibrationPims3028StartEnd(),converter=d.lookup_from_to{start=0,["end"]=1}}),c.dp_numeric(102,{name="quick_calibration",emit=f.pims3028QuickCalibration()}),c.dp_binary(103,{name="best_position_trigger",emit=f.pims3028BestTrigger(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(104,{name="reset",emit=f.pims3028Reset(),converter=d.lookup_from_to{reset=0}})}local am={profile="covers-cover-battery-rm28-le",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_numeric(3,{name="position_report",emit=f.coverPositionReportRm28Le()}),c.dp_enum(4,{name="mode",emit=f.rm28leMode(),converter=d.lookup_from_to{morning=0,night=1}}),c.dp_enum(5,{name="reverse_direction",converter=d.lookup_from_to{forward=0,back=1}}),c.dp_binary(6,{name="auto_power",emit=f.rm28leAutoPower(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_enum(7,{name="work_state",emit=f.coverWorkRmOpeningClosing(),converter=d.from_only(d.lookup_value{[0]="closing",[1]="opening"})}),c.dp_enum(8,{name="countdown",emit=f.rm28leCountdown(),converter=d.lookup_from_to{cancel=0,["1h"]=1,["2h"]=2,["3h"]=3,["4h"]=4}}),c.dp_numeric(9,{name="countdown_left",read_only=true,emit=f.rm28leCountdownLeft()}),c.dp_numeric(10,{name="time_total",read_only=true,emit=f.rm28leTimeTotal()}),c.dp_enum(11,{name="situation_set",read_only=true,emit=f.rm28leSituationSet(),converter=d.from_only(d.lookup_value{[0]="fully_open",[1]="fully_close"})}),c.dp_numeric(12,{name="motor_fault",read_only=true,emit=f.rm28leMotorFault(),
+converter=d.from_only(function(i)
+return(tonumber(i)or 0)~=0 and"fault"or"normal"
 end)
-}),c.dp_battery(13,{emit=e.battery()}),c.dp_enum(16,{
-name="border",emit=e.rm28leBorder(),converter=d.lookup_from_to{
-up=0,down=1,up_delete=2,down_delete=3,remove_top_bottom=4}}),c.dp_numeric(19,{
-name="position_best",emit=e.rm28lePositionBest()}),c.dp_enum(20,{
-name="click_control",emit=e.rm28leClickControl(),converter=d.lookup_from_to{up=0,down=1}})}local aq={
-profile="covers-cover-battery-cover-three",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_cover_position(3,{name="position_report",emit=e.shade_level()}),c.dp_numeric(3,{
-name="window_shade_state_report",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_enum(5,{
-name="reverse_direction",emit=e.coverThreeReverseDirection(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(12,{
-name="motor_fault",read_only=true,emit=e.coverThreeMotorFault(),
-converter=d.from_only(function(h)
-return(tonumber(h)or 0)~=0 and"fault"or"normal"
+}),c.dp_battery(13,{emit=f.battery()}),c.dp_enum(16,{name="border",emit=f.rm28leBorder(),converter=d.lookup_from_to{up=0,down=1,up_delete=2,down_delete=3,remove_top_bottom=4}}),c.dp_numeric(19,{name="position_best",emit=f.rm28lePositionBest()}),c.dp_enum(20,{name="click_control",emit=f.rm28leClickControl(),converter=d.lookup_from_to{up=0,down=1}})}local aq={profile="covers-cover-battery-cover-three",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_cover_position(3,{name="position_report",emit=f.shade_level()}),c.dp_numeric(3,{name="window_shade_state_report",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_enum(5,{name="reverse_direction",emit=f.coverThreeReverseDirection(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(12,{name="motor_fault",read_only=true,emit=f.coverThreeMotorFault(),
+converter=d.from_only(function(i)
+return(tonumber(i)or 0)~=0 and"fault"or"normal"
 end)
-}),c.dp_battery(13,{emit=e.battery()}),c.dp_enum(16,{
-name="cover_limit",emit=e.coverThreeLimit(),converter=d.lookup_from_to{
-set_up=0,set_down=1,delete_up=2,delete_down=3,delete_both=4}}),c.dp_enum(20,{
-name="click_control",emit=e.coverThreeClickControl(),converter=d.lookup_from_to{up=0,down=1}})}local ab={
-profile="covers-cover-cover-one",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_cover_position(3,{name="position_report",emit=e.shade_level()}),c.dp_numeric(3,{
-name="window_shade_state_report",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_enum(5,{
-name="reverse_direction",emit=e.coverOneReverseDirection(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(105,{
-name="motor_speed",emit=e.coverOneMotorSpeed()})}
-local function C(h,j)
-return j.preferences.invertCover and(100-h)or h
+}),c.dp_battery(13,{emit=f.battery()}),c.dp_enum(16,{name="cover_limit",emit=f.coverThreeLimit(),converter=d.lookup_from_to{set_up=0,set_down=1,delete_up=2,delete_down=3,delete_both=4}}),c.dp_enum(20,{name="click_control",emit=f.coverThreeClickControl(),converter=d.lookup_from_to{up=0,down=1}})}local ab={profile="covers-cover-cover-one",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_cover_position(3,{name="position_report",emit=f.shade_level()}),c.dp_numeric(3,{name="window_shade_state_report",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_enum(5,{name="reverse_direction",emit=f.coverOneReverseDirection(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(105,{name="motor_speed",emit=f.coverOneMotorSpeed()})}
+local function C(i,j)
+return j.preferences.invertCover and(100-i)or i
 end
 local w=d.from_to(C,C)
-local H=d.from_only(function(h,j)
-local position=C(h,j)return position<=0 and"closed"or position>=100 and"open"or"partially open"
+local H=d.from_only(function(i,j)
+local position=C(i,j)return position<=0 and"closed"or position>=100 and"open"or"partially open"
 end)
-local ad=d.lookup_from_to{normal=0,reversed=1}local az={
-profile="covers-tuya-cover15",magic_packet=true,mcu_version_request_on_configure=true,time_start="off",query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_report",converter=n,emit=e.shade_state(),read_only=true}),c.dp_cover_position(2,{emit=e.shade_level(),converter=w}),c.dp_numeric(2,{name="window_shade_state",emit=e.shade_state(),converter=H,read_only=true}),c.dp_cover_position(3,{name="position_report",emit=e.shade_level(),converter=w,read_only=true}),c.dp_numeric(3,{name="window_shade_state_report",emit=e.shade_state(),converter=H,read_only=true}),c.dp_enum(5,{name="cover15_motor_direction",converter=ad,emit=e.cover15MotorDirection()}),c.dp_string(5,{name="cover15_motor_direction_string",emit=e.cover15MotorDirection(),
-read_only=true,converter=d.from_only(function(h)
-if type(h)~="string"then return nil end
-return h=="back"and"reversed"or"normal"
+local ad=d.lookup_from_to{normal=0,reversed=1}local az={profile="covers-tuya-cover15",magic_packet=true,mcu_version_request_on_configure=true,time_start="off",query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_report",converter=n,emit=f.shade_state(),read_only=true}),c.dp_cover_position(2,{emit=f.shade_level(),converter=w}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=H,read_only=true}),c.dp_cover_position(3,{name="position_report",emit=f.shade_level(),converter=w,read_only=true}),c.dp_numeric(3,{name="window_shade_state_report",emit=f.shade_state(),converter=H,read_only=true}),c.dp_enum(5,{name="cover15_motor_direction",converter=ad,emit=f.cover15MotorDirection()}),c.dp_string(5,{name="cover15_motor_direction_string",emit=f.cover15MotorDirection(),
+read_only=true,converter=d.from_only(function(i)
+if type(i)~="string"then return nil end
+return i=="back"and"reversed"or"normal"
 end)}),
-c.dp_binary(6,{name="cover15_auto_power",emit=e.cover15AutoPower(),converter=d.lookup_from_to{disabled=false,enabled=true}}),c.dp_enum(7,{name="cover15_motor_state",emit=e.cover15MotorState(),read_only=true,converter=d.lookup_from_to{opening=0,closing=1,stopped=2}})}
-local function N(h,j)
-return j.preferences.invertCover and(100-h)or h
+c.dp_binary(6,{name="cover15_auto_power",emit=f.cover15AutoPower(),converter=d.lookup_from_to{disabled=false,enabled=true}}),c.dp_enum(7,{name="cover15_motor_state",emit=f.cover15MotorState(),read_only=true,converter=d.lookup_from_to{opening=0,closing=1,stopped=2}})}
+local function N(i,j)
+return j.preferences.invertCover and(100-i)or i
 end
 local r=d.from_to(N,N)
-local v=d.from_only(function(h,j)
-local position=N(h,j)return position==0 and"closed"or position==100 and"open"or"partially open"
+local v=d.from_only(function(i,j)
+local position=N(i,j)return position==0 and"closed"or position==100 and"open"or"partially open"
 end)
-local at={
-profile="covers-rinn-wser40",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",datapoints={
-c.dp_enum(1,{name="cover_state",write_only=true,converter=s}),c.dp_enum(1,{name="cover_action_state",read_only=true,emit=e.shade_state(),
-converter=d.from_only(function(h)
-return({[0]="open",[1]="closed",[2]="partially open"})[h]
+local at={profile="covers-rinn-wser40",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",datapoints={c.dp_enum(1,{name="cover_state",write_only=true,converter=s}),c.dp_enum(1,{name="cover_action_state",read_only=true,emit=f.shade_state(),
+converter=d.from_only(function(i)
+return({[0]="open",[1]="closed",[2]="partially open"})[i]
 end)}),
-c.dp_cover_position(102,{emit=e.shade_level(),converter=r}),c.dp_numeric(102,{name="window_shade_state",read_only=true,emit=e.shade_state(),converter=v}),c.dp_cover_position(103,{name="position_report",read_only=true,emit=e.shade_level(),converter=r}),c.dp_numeric(103,{name="window_shade_state_report",read_only=true,emit=e.shade_state(),converter=v})}}
+c.dp_cover_position(102,{emit=f.shade_level(),converter=r}),c.dp_numeric(102,{name="window_shade_state",read_only=true,emit=f.shade_state(),converter=v}),c.dp_cover_position(103,{name="position_report",read_only=true,emit=f.shade_level(),converter=r}),c.dp_numeric(103,{name="window_shade_state_report",read_only=true,emit=f.shade_state(),converter=v})}}
 local function B(aC,aw)
 local aB={d.lookup_from_to(aC),d.lookup_from_to(aw)}
-return d.from_to(function(h,j)
-return aB[j.preferences.invertCover and 2 or 1].from(h)
-end,function(h,j)
-return aB[j.preferences.invertCover and 2 or 1].to(h)
+return d.from_to(function(i,j)
+return aB[j.preferences.invertCover and 2 or 1].from(i)
+end,function(i,j)
+return aB[j.preferences.invertCover and 2 or 1].to(i)
 end)
 end
-local Q=d.lookup_from_to{normal=0,reversed=1}local aD={
-profile="covers-zm25rx",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",datapoints={
-c.dp_enum(1,{name="cover_state",write_only=true,converter=B({open=0,stop=1,close=2},{open=2,stop=1,close=0})}),c.dp_cover_position(2,{emit=e.shade_level(),converter=r}),c.dp_numeric(2,{name="window_shade_state",read_only=true,emit=e.shade_state(),converter=v}),c.dp_cover_position(3,{name="position_report",read_only=true,emit=e.shade_level(),converter=r}),c.dp_numeric(3,{name="window_shade_state_report",read_only=true,emit=e.shade_state(),converter=v}),c.dp_enum(5,{name="zm25rx_motor_direction",emit=e.zm25rxMotorDirection(),receive_datatypes={4,3},
-converter=d.from_to(function(h)
-if type(h)=="string"then return h=="back"and"reversed"or"normal"end
-return Q.from(h)
+local Q=d.lookup_from_to{normal=0,reversed=1}local aD={profile="covers-zm25rx",magic_packet=true,mcu_version_request_on_configure=true,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",datapoints={c.dp_enum(1,{name="cover_state",write_only=true,converter=B({open=0,stop=1,close=2},{open=2,stop=1,close=0})}),c.dp_cover_position(2,{emit=f.shade_level(),converter=r}),c.dp_numeric(2,{name="window_shade_state",read_only=true,emit=f.shade_state(),converter=v}),c.dp_cover_position(3,{name="position_report",read_only=true,emit=f.shade_level(),converter=r}),c.dp_numeric(3,{name="window_shade_state_report",read_only=true,emit=f.shade_state(),converter=v}),c.dp_enum(5,{name="zm25rx_motor_direction",emit=f.zm25rxMotorDirection(),receive_datatypes={4,3},
+converter=d.from_to(function(i)
+if type(i)=="string"then return i=="back"and"reversed"or"normal"end
+return Q.from(i)
 end,Q.to)}),
-c.dp_enum(7,{name="zm25rx_motor_state",read_only=true,emit=e.zm25rxMotorState(),converter=B({opening=0,closing=1,stopped=2},{opening=1,closing=0,stopped=2})}),c.dp_battery(13,{read_only=true,emit=e.battery()}),c.dp_enum(101,{name="zm25rx_program",write_only=true,suppress_optimistic_state=true,converter=B({set_bottom=1,set_upper=0,reset=4},{set_bottom=0,set_upper=1,reset=4})}),c.dp_enum(101,{name="zm25rx_click_control",write_only=true,suppress_optimistic_state=true,converter=B({upper=2,upper_micro=5,lower=3,lower_micro=6},{upper=3,upper_micro=6,lower=2,lower_micro=5})}),c.dp_battery(103,{name="battery_report",read_only=true,emit=e.battery()})}}local u={
-from=function(h)
-local position=h%256
+c.dp_enum(7,{name="zm25rx_motor_state",read_only=true,emit=f.zm25rxMotorState(),converter=B({opening=0,closing=1,stopped=2},{opening=1,closing=0,stopped=2})}),c.dp_battery(13,{read_only=true,emit=f.battery()}),c.dp_enum(101,{name="zm25rx_program",write_only=true,suppress_optimistic_state=true,converter=B({set_bottom=1,set_upper=0,reset=4},{set_bottom=0,set_upper=1,reset=4})}),c.dp_enum(101,{name="zm25rx_click_control",write_only=true,suppress_optimistic_state=true,converter=B({upper=2,upper_micro=5,lower=3,lower_micro=6},{upper=3,upper_micro=6,lower=2,lower_micro=5})}),c.dp_battery(103,{name="battery_report",read_only=true,emit=f.battery()})}}local t={
+from=function(i)
+local position=i%256
 if position<=100 then return position end
 end,
-to=function(h)return h end
+to=function(i)return i end
 }
-local y=d.from_only(function(h)
-local position=u.from(h)
-if position==nil then return nil end
+local y=d.from_only(function(i)
+local position=t.from(i)if position==nil then return nil end
 return position==0 and"closed"or position==100 and"open"or"partially open"
 end)
-local ai={
-profile="covers-dream-blinds-tilt",magic_packet=false,mcu_version_request_on_configure=false,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",datapoints={
-c.dp_enum(1,{name="cover_state",write_only=true,converter=g}),c.dp_cover_position(2,{emit=e.shade_level(),converter=u}),c.dp_numeric(2,{name="window_shade_state",read_only=true,emit=e.shade_state(),converter=y}),c.dp_cover_position(3,{name="position_report",read_only=true,emit=e.shade_level(),converter=u}),c.dp_numeric(3,{name="window_shade_state_report",read_only=true,emit=e.shade_state(),converter=y}),c.dp_enum(5,{
-name="dream_blinds_reverse_direction",write_only=true,emit=e.dreamBlindsReverseDirection(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(105,{name="dream_blinds_motor_speed",emit=e.dreamBlindsMotorSpeed()}),c.dp_numeric(21,{
-name="cover_tilt",emit=e.shade_tilt_level(),converter={
-from=function(h)return math.floor(math.min(180,h)*100/180+0.5)end,
-to=function(h)return math.min(180,math.max(0,math.floor(h*180/100+0.5)))end
-}}),c.dp_numeric(21,{
-name="dream_blinds_flip_angle",emit=e.dreamBlindsFlipAngle(),converter={
-from=function(h)return math.min(180,h)end,
-to=function(h)return math.min(180,math.max(0,math.floor(h+0.5)))end
-}})}}local X={
-profile="covers-cover-zm79e-dt",c.dp_enum(1,{
-name="cover_state",converter=t,write_only=true}),c.dp_cover_position_inverted(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=i(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_report",emit=e.coverPositionReportZm79eDt()}),c.dp_enum(4,{
-name="opening_mode",emit=e.zm79eOpeningMode(),converter=d.lookup_from_to{tilt=0,lift=1}}),c.dp_enum(7,{
-name="work_state",emit=e.coverWorkStateZm79eDtLearning(),converter=d.from_only(d.lookup_value{
-[0]="standby",[1]="success",[2]="learning"})}),c.dp_enum(101,{
-name="motor_direction",emit=e.motorDirectionZm79eDtLeftRight(),converter=d.lookup_from_to{
-left=0,right=1}}),c.dp_enum(102,{
-name="set_upper_limit",emit=e.zm79eSetUpperLimit(),converter=d.lookup_from_to{stop=0,start=1}}),c.dp_enum(107,{
-name="factory_reset",emit=e.zm79eFactoryReset(),converter=d.lookup_from_to{set=0}})}local V={
-profile="covers-cover-bx82-tyz1",c.dp_enum(1,{
-name="cover_state",converter=t,write_only=true}),c.dp_cover_position(2,{emit=e.shade_level()}),c.dp_numeric(2,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_numeric(3,{name="position_report",emit=e.coverPositionReportBx82Tyz1()}),c.dp_enum(5,{
-name="motor_direction",emit=e.motorDirectionBxTyzNormalRev(),converter=d.lookup_from_to{normal=0,reversed=1}})}local af={
-profile="covers-cover-battery-mb60l",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(9,{emit=e.shade_level()}),c.dp_numeric(9,{
-name="window_shade_state",emit=e.shade_state(),converter=i(),read_only=true}),c.dp_enum(11,{
-name="motor_direction",emit=e.motorDirectionMbNormalRev(),converter=d.lookup_from_to{normal=0,reversed=1}}),c.dp_battery(13,{emit=e.battery()}),c.dp_enum(16,{
-name="set_limits",emit=e.mb60lSetLimits(),converter=d.lookup_from_to{up=0,down=1,reset=2}}),c.dp_binary(101,{
-name="child_lock",emit=e.mb60lChildLock(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_binary(103,{
-name="tilt_mode",emit=e.tiltModeMb60l(),converter=d.lookup_from_to{on=true,off=false}})}local ao={
-profile="covers-cover-battery-epj-zb",c.dp_enum(102,{
-name="cover_state",converter=s,command_id=c.SEND_DATA,write_only=true}),c.dp_cover_position(104,{
-command_id=c.SEND_DATA,emit=e.shade_level()}),c.dp_numeric(104,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true}),c.dp_battery(4,{emit=e.battery()}),c.dp_binary(105,{name="charge_state"}),c.dp_enum(106,{
-name="manual_mode",emit=e.manualModeEpjZbEnableDisable(),converter=d.lookup_from_to{
-enable=0,disable=1}}),c.dp_enum(107,{
-name="fault",converter=d.lookup_from_to{
-Normal=0,None=1,Fault=2}}),c.dp_numeric(108,{name="countdown"}),c.dp_enum(109,{
-name="motor_direction",emit=e.motorDirectionEpjZbSide(),converter=d.lookup_from_to{
-right_side=0,left_side=1}}),c.dp_enum(110,{
-name="mode",converter=d.lookup_from_to{
-Disable=0,Enable=1}}),c.dp_enum(112,{
-name="fixed_window_sash",converter=d.lookup_from_to{
-Down=0,Up=1}}),c.dp_enum(114,{
-name="window_detection",emit=e.windowDetectionEpjZbState(),converter=d.lookup_from_to{
-opened=0,closed=1,pending=2}})}
-local G=d.from_to(function(h,j)
-return j.preferences.reverse==true and(100-h)or h
-end,function(h,j)
-return j.preferences.reverse==true and(100-h)or h
+local ai={profile="covers-dream-blinds-tilt",magic_packet=false,mcu_version_request_on_configure=false,query_on_configure=false,query_on_announce=false,initial_custom_state_query=false,refresh_state_query=false,time_start="off",datapoints={c.dp_enum(1,{name="cover_state",write_only=true,converter=g}),c.dp_cover_position(2,{emit=f.shade_level(),converter=t}),c.dp_numeric(2,{name="window_shade_state",read_only=true,emit=f.shade_state(),converter=y}),c.dp_cover_position(3,{name="position_report",read_only=true,emit=f.shade_level(),converter=t}),c.dp_numeric(3,{name="window_shade_state_report",read_only=true,emit=f.shade_state(),converter=y}),c.dp_enum(5,{name="dream_blinds_reverse_direction",write_only=true,emit=f.dreamBlindsReverseDirection(),converter=d.lookup_from_to{forward=0,back=1}}),c.dp_numeric(105,{name="dream_blinds_motor_speed",emit=f.dreamBlindsMotorSpeed()}),c.dp_numeric(21,{name="cover_tilt",emit=f.shade_tilt_level(),converter={
+from=function(i)return math.floor(math.min(180,i)*100/180+0.5)end,
+to=function(i)return math.min(180,math.max(0,math.floor(i*180/100+0.5)))end
+}}),c.dp_numeric(21,{name="dream_blinds_flip_angle",emit=f.dreamBlindsFlipAngle(),converter={
+from=function(i)return math.min(180,i)end,
+to=function(i)return math.min(180,math.max(0,math.floor(i+0.5)))end
+}})}}local X,V,af,ao={profile="covers-cover-zm79e-dt",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=h(),read_only=true}),c.dp_cover_position_inverted(3,{name="position_report",emit=f.coverPositionReportZm79eDt()}),c.dp_enum(4,{name="opening_mode",emit=f.zm79eOpeningMode(),converter=d.lookup_from_to{tilt=0,lift=1}}),c.dp_enum(7,{name="work_state",emit=f.coverWorkStateZm79eDtLearning(),converter=d.from_only(d.lookup_value{[0]="standby",[1]="success",[2]="learning"})}),c.dp_enum(101,{name="motor_direction",emit=f.motorDirectionZm79eDtLeftRight(),converter=d.lookup_from_to{left=0,right=1}}),c.dp_enum(102,{name="set_upper_limit",emit=f.zm79eSetUpperLimit(),converter=d.lookup_from_to{stop=0,start=1}}),c.dp_enum(107,{name="factory_reset",emit=f.zm79eFactoryReset(),converter=d.lookup_from_to{set=0}})},{profile="covers-cover-bx82-tyz1",respond_to_mcu_version_response=true,c.dp_enum(1,{name="cover_state",converter=u,write_only=true}),c.dp_cover_position(2,{emit=f.shade_level()}),c.dp_numeric(2,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_numeric(3,{name="position_report",emit=f.coverPositionReportBx82Tyz1()}),c.dp_enum(5,{name="motor_direction",emit=f.motorDirectionBxTyzNormalRev(),converter=d.lookup_from_to{normal=0,reversed=1}})},{profile="covers-cover-battery-mb60l",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position_inverted(9,{emit=f.shade_level()}),c.dp_numeric(9,{name="window_shade_state",emit=f.shade_state(),converter=h(),read_only=true}),c.dp_enum(11,{name="motor_direction",emit=f.motorDirectionMbNormalRev(),converter=d.lookup_from_to{normal=0,reversed=1}}),c.dp_battery(13,{emit=f.battery()}),c.dp_enum(16,{name="set_limits",emit=f.mb60lSetLimits(),converter=d.lookup_from_to{up=0,down=1,reset=2}}),c.dp_binary(101,{name="child_lock",emit=f.mb60lChildLock(),converter=d.lookup_from_to{off=false,on=true}}),c.dp_binary(103,{name="tilt_mode",emit=f.tiltModeMb60l(),converter=d.lookup_from_to{on=true,off=false}})},{profile="covers-cover-battery-epj-zb",c.dp_numeric(102,{name="cover_state",converter=s,command_id=c.SEND_DATA,write_only=true}),c.dp_cover_position(104,{command_id=c.SEND_DATA,emit=f.shade_level()}),c.dp_numeric(104,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),c.dp_battery(4,{emit=f.battery()}),c.dp_binary(105,{name="charge_state"}),c.dp_numeric(106,{name="manual_mode",command_id=c.SEND_DATA,emit=f.manualModeEpjZbEnableDisable(),converter=d.lookup_from_to{enable=0,disable=1}}),c.dp_enum(107,{name="fault",converter=d.lookup_from_to{Normal=0,None=1,Fault=2}}),c.dp_numeric(108,{name="countdown"}),c.dp_numeric(109,{name="motor_direction",command_id=c.SEND_DATA,emit=f.motorDirectionEpjZbSide(),converter=d.lookup_from_to{right_side=0,left_side=1}}),c.dp_enum(110,{name="mode",converter=d.lookup_from_to{Disable=0,Enable=1}}),c.dp_enum(112,{name="fixed_window_sash",converter=d.lookup_from_to{Down=0,Up=1}}),c.dp_enum(114,{name="window_detection",read_only=true,emit=f.windowDetectionEpjZbStateV2(),converter=d.lookup_from_to{opened=0,closed=1,pending=2}})}
+local G=d.from_to(function(i,j)
+return j.preferences.reverse==true and(100-i)or i
+end,function(i,j)
+return j.preferences.reverse==true and(100-i)or i
 end)
-local E=d.from_only(function(h,j)
-local position=G.from(h,j)
-if position<=0 then return"closed"end
+local E=d.from_only(function(i,j)
+local position=G.from(i,j)if position<=0 then return"closed"end
 if position>=100 then return"open"end
 return"partially open"
 end)
-local aj={
-profile="covers-ts0301-one",query_on_configure=false,time_start="off",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_state",converter=n,read_only=true,emit=e.shade_state()}),c.dp_cover_position(2,{emit=e.shade_level(),converter=G}),c.dp_numeric(2,{name="window_shade_command_state",converter=E,read_only=true,emit=e.shade_state()}),c.dp_numeric(3,{name="cover_position_state",converter=G,read_only=true,emit=e.shade_level()}),c.dp_numeric(3,{name="window_shade_state",converter=E,read_only=true,emit=e.shade_state()}),c.dp_enum(5,{name="ts0301_direction",converter=d.lookup_from_to{forward=0,back=1},emit=e.ts0301Direction()}),c.dp_battery(13,{emit=e.battery()})}
+local aj={profile="covers-ts0301-one",query_on_configure=false,time_start="off",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_enum(1,{name="cover_action_state",converter=n,read_only=true,emit=f.shade_state()}),c.dp_cover_position(2,{emit=f.shade_level(),converter=G}),c.dp_numeric(2,{name="window_shade_command_state",converter=E,read_only=true,emit=f.shade_state()}),c.dp_numeric(3,{name="cover_position_state",converter=G,read_only=true,emit=f.shade_level()}),c.dp_numeric(3,{name="window_shade_state",converter=E,read_only=true,emit=f.shade_state()}),c.dp_enum(5,{name="ts0301_direction",converter=d.lookup_from_to{forward=0,back=1},emit=f.ts0301Direction()}),c.dp_battery(13,{emit=f.battery()})}
 local function z(m,ac,j)
 if type(ac)=="table"then ac=ac.value end
 if ac>100 then return end
@@ -343,24 +140,22 @@ end
 return ac
 end
 local function A(m)
-return function(j,_,h)
+return function(j,_,i)
 local W=ap.WindowCovering.server.commands
-if h=="stop"then j:send(W.Stop(j):to_endpoint(1));return true end
-if m=="main"and type(h)=="string"then
-if h=="open"then j:send(W.UpOrOpen(j):to_endpoint(1))elseif h=="close"then j:send(W.DownOrClose(j):to_endpoint(1))
-else return false end
+if i=="stop"then j:send(W.Stop(j):to_endpoint(1));return true end
+if m=="main"and type(i)=="string"then
+if i=="open"then j:send(W.UpOrOpen(j):to_endpoint(1))elseif i=="close"then j:send(W.DownOrClose(j):to_endpoint(1))else return false end
 return true
 end
-if h=="open"then h=100 elseif h=="close"then h=0 end
-if type(h)~="number"then return false end
-local ax=h
-if m=="shade2"then ax=h==0 and 0 or 50+h/2
-elseif m=="shade3"then ax=(j.preferences.invertTopRail==true and 100-h or h)/2 end
+if i=="open"then i=100 elseif i=="close"then i=0 end
+if type(i)~="number"then return false end
+local ax=i
+if m=="shade2"then ax=i==0 and 0 or 50+i/2
+elseif m=="shade3"then ax=(j.preferences.invertTopRail==true and 100-i or i)/2 end
 j:send(W.GoToLiftPercentage(j,math.floor(math.max(0,math.min(100,ax))+0.5)):to_endpoint(1))return true
 end
 end
-local q={
-profile="covers-ts0301-combined-rail",magic_packet=false,query_on_configure=false,time_start="off",zcl_clusters={ay.battery{read_only=true}},
+local q={profile="covers-ts0301-combined-rail",magic_packet=false,query_on_configure=false,time_start="off",zcl_clusters={ay.battery{read_only=true}},
 configure=function(aA,j)
 j:send(ah.build_bind_request(j,258,aA.environment_info.hub_zigbee_eui,1))
 end
@@ -368,82 +163,10 @@ end
 local function S(j,ac)
 for _,m in ipairs{"main","shade2","shade3"}do
 local position=z(m,ac,j)if position~=nil then
-j:emit_component_event(j.profile.components[m],e.shade_level()(j,position))j:emit_component_event(j.profile.components[m],e.shade_state()(j,position==0 and"closed"or"open"))
-end
+j:emit_component_event(j.profile.components[m],f.shade_level()(j,position))j:emit_component_event(j.profile.components[m],f.shade_state()(j,position==0 and"closed"or"open"))end
 end
 end
 for _,m in ipairs{"main","shade2","shade3"}do
-local an=function(h,j)return z(m,h,j)end
-q.zcl_clusters[#q.zcl_clusters+1]=ay.cover_position{
-endpoint=1,component=m,sender=A(m),from_device=an,emit=S,read_only=false,write_only=m~="main",read_on_configure=false,minimum_interval=1,maximum_interval=65000,reportable_change=1}q.zcl_clusters[#q.zcl_clusters+1]=ay.cover_state{
-endpoint=1,component=m,sender=A(m),read_only=false}
-end
-local aa={
-profile="covers-cover",c.dp_enum(1,{
-name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{
-write_only=true}),c.dp_numeric(3,{
-name="cover_position_state",emit=e.shade_level(),read_only=true}),c.dp_numeric(3,{
-name="window_shade_state",emit=e.shade_state(),converter=f(),read_only=true})}local T={
-profile="covers-ts0301-dual-rail",query_on_configure=false,time_start="off",c.dp_battery(13,{emit=e.battery()}),c.dp_enum(109,{
-name="cover_state",component="main",converter=s,write_only=true}),c.dp_cover_position_inverted(101,{
-component="main",emit=e.shade_level()}),c.dp_numeric(102,{
-name="cover_position_state",component="main",emit=e.shade_level(),converter=d.cover_position_inverted(),read_only=true}),c.dp_numeric(102,{
-name="window_shade_state",component="main",emit=e.shade_state(),converter=i(),read_only=true}),c.dp_enum(1,{
-name="cover_state",component="shade2",converter=x,write_only=true}),c.dp_cover_position(2,{
-component="shade2",emit=e.shade_level()}),c.dp_numeric(3,{
-name="cover_position_state",component="shade2",emit=e.shade_level(),read_only=true}),c.dp_numeric(3,{
-name="window_shade_state",component="shade2",emit=e.shade_state(),converter=f(),read_only=true})}a(ab,b.create_fingerprints("TS0601",{
-"_TZE200_bqcqqjpb","_TZE200_gaj531w3","_TZE284_gaj531w3","_TZE200_en3wvcbx","_TZE200_g5wdnuow","_TZE200_udank5zs","_TZE200_nv6nxo0c","_TZE200_3ylew7b4","_TZE200_llm0epxg","_TZE200_n1aauwb4","_TZE204_guvc7pdy","_TZE204_57hjqelq","_TZE204_vvvtcehj","_TZE28C1000000_vvvtcehj","_TZE200_axgvo9jh","_TZE200_zxxfv8wi","_TZE204_lh3arisb","_TZE204_zuq5xxib","_TZE284_zuq5xxib","_TZE200_nueqqe6k","_TZE200_1fuxihti","_TZE204_1fuxihti","_TZE284_1fuxihti","_TZE28C1000000_1fuxihti","_TZE200_5zbp6j0u","_TZE200_nkoabg8w","_TZE200_4vobcgd3","_TZE284_4vobcgd3","_TZE200_m6lwazh9","_TZE200_swlgvdlh","_TZE200_fdtjuw7u","_TZE200_rmymn92d","_TZE200_feolm6rk","_TZE200_tvrvdj6o","_TZE200_b2u1drdv","_TZE200_ol5jlkkr","_TZE204_a2jcoyuk","_TZE200_yia0p3tr","_TZE200_rsj5pu8y","_TZE200_yrugsphv","_TZE204_yrugsphv","_TZE200_odlldrxx","_TZE204_odlldrxx","_TZE200_7shyddj3","_TZE284_udank5zs","_TZE284_b7kbnl6q","_TZE204_dpqsvdbi","_TZE204_ic7jtutb","_TZE204_m1wl5fvq","_TZE204_nladmfvf","_TZE204_tgl8i2np","_TZE200_2jwrgrro"}))a(ab,{
-b.create_fingerprint("HOBEIAN","ZG-301Z-MOTO"),{manufacturer="_TYST11_fzo2pocs",model="zo2pocs"..string.char(0)},{manufacturer="_TYST11_udank5zs",model="dank5zs"..string.char(0)}})a(ab,{
-b.create_fingerprint("Yushun","YS-MT750"),b.create_fingerprint("Yushun","YS-MT750L"),b.create_fingerprint("Zemismart","ZM79E-DT"),b.create_fingerprint("Binthen","BCM100D"),b.create_fingerprint("Binthen","CV01A"),b.create_fingerprint("Zemismart","M515EGB"),b.create_fingerprint("Oz Smart Things","ZM85EL-1Z"),b.create_fingerprint("Tuya","M515EGZT"),b.create_fingerprint("Tuya","DT82LEMA-1.2N"),b.create_fingerprint("Tuya","ZD82TN"),b.create_fingerprint("Larkkey","ZSTY-SM-1SRZG-EU"),b.create_fingerprint("Zemismart","AM43"),b.create_fingerprint("A-OK","AM25"),b.create_fingerprint("Alutech","AM/R-Sm"),b.create_fingerprint("Roximo","CRTZ01"),b.create_fingerprint("Quoya","AT8510-TY"),b.create_fingerprint("Somgoms","ZSTY-SM-1DMZG-US-W_1"),b.create_fingerprint("HUARUI","CMD900LE"),b.create_fingerprint("Novato","WPK"),b.create_fingerprint("Zemismart","ZMS1-TYZ")})a(o,b.create_fingerprints("TS0601",{
-"_TZE200_eegnwoyw","_TZE200_fu14oapz"}))a(o,b.create_fingerprints("TS0105",{
-"_TZE600_ogyg1y6b"}))a(aq,b.create_fingerprints("TS0601",{
-"_TZE200_68nvbio9","_TZE200_pw7mji0l","_TZE200_cf1sl3tj","_TZE200_nw1r9hp6","_TZE200_9p5xmj5r","_TZE200_eevqq1uv","_TZE204_ejh6owwz","_TZE200_ba69l9ol","_TZE200_68nvbi09","_TZE284_n73badib","_TZE200_vexa5o82","_TZE200_sfqyhvpv"}))a(o,{
-b.create_fingerprint("Zemismart","ZM16EL-03/33"),b.create_fingerprint("Zemismart","ZM25EL"),b.create_fingerprint("Zemismart","ZM85EL-2Z"),b.create_fingerprint("Hiladuo","B09M3R35GC"),b.create_fingerprint("Tuya","MYQ-RM25-1.3/25-BZ"),b.create_fingerprint("Shaman","25EB-1/30-TYZ")})a(o,b.create_fingerprints("TS0601",{
-"_TZE200_zah67ekd","_TZE200_icka1clh"}))a(al,b.create_fingerprints("TS130F",{
-"_TZE20C_xbexmf8h"}))a(o,{
-b.create_fingerprint("Moes","AM43-0.45/40-ES-EB")})a(o,b.create_fingerprints("TS0601",{
-"_TZE200_5sbebbzs","_TZE200_hsgrhjpf","_TZE200_ergbiejo","_TZE200_nhyj64w2","_TZE200_127x7wnl","_TZE204_5slehgeo","_TZE284_5slehgeo","_TZE200_fctwhugx","_TZE200_p6vz3wzt","_TZE204_p6vz3wzt","_TZE284_uqfph8ah","_TZE284_waa352qv"}))a(o,{
-b.create_fingerprint("Homeetec","37022483")})a(au,b.create_fingerprints("TS0601",{
-"_TZE200_cpbo62rn","_TZE200_libht6ua","_TZE284_libht6ua"}))a(o,b.create_fingerprints("TS0601",{
-"_TZE200_zvo63cmo"}))a(l,b.create_fingerprints("TS0601",{
-"_TZE204_r0jdjrvi","_TZE200_r0jdjrvi","_TZE200_g5xqosu7","_TZE204_g5xqosu7","_TZE200_fzo2pocs","_TZE284_fzo2pocs","_TZE200_9vpe3fl1","_TZE28C1000000_alh14edn"}))a(l,{
-b.create_fingerprint("Tuya","TS0601_alh14edn")})a(aD,b.create_fingerprints("TS0601",{
-"_TZE200_7eue9vhc","_TZE200_bv1jcqqu","_TZE200_wehza30a"}))a(o,b.create_fingerprints("TS0601",{
-"_TZE200_p2qzzazi"}))a(l,b.create_fingerprints("TS0601",{
-"_TZE204_xu4a5rhj","_TZE200_xu4a5rhj","_TZE204_q9xty0ad"}))a(o,b.create_fingerprints("TS0601",{
-"_TZE200_1vxgqfba","_TZE200_wdfurkoa","_TZE200_sq6affpe","_TZE284_wdfurkoa","_TZE284_6fopvb6v"}))a(o,b.create_fingerprints("TS0601",{
-"_TZE200_gubdgai2","_TZE200_vdiuwbkq"}))a(o,b.create_fingerprints("TS0601",{
-"_TZE200_yenbr4om","_TZE204_bdblidq3","_TZE200_bdblidq3"}))a(o,b.create_fingerprints("TS0601",{
-"_TZE200_mlglxwp3"}))a(ae,b.create_fingerprints("TS0601",{
-"_TZE200_a8z0g46u","_TZE204_a8z0g46u"}))a(O,b.create_fingerprints("TS0601",{
-"_TZE284_3mzb0sdz","_TZE2841000000_3mzb0sdz"}))a(ag,b.create_fingerprints("TS0601",{
-"_TZE284_zofmmt9s"}))a(l,b.create_fingerprints("TS0601",{
-"_TZE200_2odrmqwq","_TZE200_hojryzzd"}))a(av,b.create_fingerprints("TS0601",{
-"_TZE200_clm4gdw4","_TZE200_2vfxweng","_TZE200_gnw1rril","_TZE204_ycke4deo","_TZE284_clm4gdw4"}))a(Z,b.create_fingerprints("TS0601",{
-"_TZE200_cowvfni3"}))a(R,b.create_fingerprints("TS0601",{
-"_TZE200_rddyvrci"}))a(D,b.create_fingerprints("TS0601",{
-"_TZE284_r3szw0xr"}))a(l,b.create_fingerprints("TS0601",{
-"_TZE200_wmcdj3aq","_TZE200_xuzcvlku","_TZE200_xaabybja","_TZE200_zuz7f94z","_TZE200_3i3exuay","_TZE200_nogaemzt","_TZE200_dng9fn0k","_TZE200_zpzndjez"}))a(I,b.create_fingerprints("TS0601",{
-"_TZE200_jhkttplm"}))a(I,{
-b.create_fingerprint("Homeetec","37022493")})a(J,b.create_fingerprints("TS0601",{
-"_TZE200_5nldle7w"}))a(J,{
-b.create_fingerprint("Homeetec","37022173")})a(M,b.create_fingerprints("TS0601",{
-"_TZE204_trwaxi57"}))a(ak,b.create_fingerprints("TS0601",{
-"_TZE200_iossyxra","_TZE200_cxu0jkjk"}))a(Y,b.create_fingerprints("TS0601",{
-"_TZE200_eqpaxqdv"}))a(am,b.create_fingerprints("TS0601",{
-"_TZE200_fodv6bkr"}))a(ao,{
-b.create_fingerprint("_TZ3210_emqmwtym","TS0601")})a(X,b.create_fingerprints("TS0601",{
-"_TZE200_ax8a8ahx"}))a(V,b.create_fingerprints("TS0601",{
-"_TZE204_2rvvqjoa"}))a(af,b.create_fingerprints("TS0601",{
-"_TZE284_2gi1hy8s","_TZE2841000000_2gi1hy8s"}))a(ar,b.create_fingerprints("TS0601",{
-"_TZE200_zyrdrmno","_TZE200_osmxri8y"}))a(aj,b.create_fingerprints("TS0301",{
-"_TZE210_m6lwazh9"}))a(q,b.create_fingerprints("TS0301",{
-"_TZE200_eatmkx5j"}))a(aa,{
-b.create_fingerprint("Yoolax","Day-Night Shade")})a(T,b.create_fingerprints("TS0301",{
-"_TZE210_inpjmc0h","_TZE210_yqwse3h5"}))a(ai,{
-b.create_fingerprint("_TZE204_wzre8hu2","TS0601")})a(at,{
-b.create_fingerprint("_TZE200_pk0sfzvr","TS0601")})a(az,b.create_fingerprints("TS0601",{
-"_TZE200_bjzrowv2","_TZE204_bjzrowv2","_TZE284_bjzrowv2"}))ay.attach_reporting_capabilities(K,{
-{48,"rpt-trw"}})return{
-id="ef00.covers",registrations=K}
+local an=function(i,j)return z(m,i,j)end
+q.zcl_clusters[#q.zcl_clusters+1]=ay.cover_position{endpoint=1,component=m,sender=A(m),from_device=an,emit=S,read_only=false,write_only=m~="main",read_on_configure=false,minimum_interval=1,maximum_interval=65000,reportable_change=1}q.zcl_clusters[#q.zcl_clusters+1]=ay.cover_state{endpoint=1,component=m,sender=A(m),read_only=false}end
+local aa,T={profile="covers-cover",c.dp_enum(1,{name="cover_state",converter=g,write_only=true}),c.dp_cover_position(2,{write_only=true}),c.dp_numeric(3,{name="cover_position_state",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true})},{profile="covers-ts0301-dual-rail",query_on_configure=false,time_start="off",c.dp_battery(13,{emit=f.battery()}),c.dp_enum(109,{name="cover_state",component="main",converter=s,write_only=true}),c.dp_cover_position_inverted(101,{component="main",emit=f.shade_level()}),c.dp_numeric(102,{name="cover_position_state",component="main",emit=f.shade_level(),converter=d.cover_position_inverted(),read_only=true}),c.dp_numeric(102,{name="window_shade_state",component="main",emit=f.shade_state(),converter=h(),read_only=true}),c.dp_enum(1,{name="cover_state",component="shade2",converter=x,write_only=true}),c.dp_cover_position(2,{component="shade2",emit=f.shade_level()}),c.dp_numeric(3,{name="cover_position_state",component="shade2",emit=f.shade_level(),read_only=true}),c.dp_numeric(3,{name="window_shade_state",component="shade2",emit=f.shade_state(),converter=e(),read_only=true})}a(ab,b.create_fingerprints("TS0601",{"_TZE200_bqcqqjpb","_TZE200_gaj531w3","_TZE284_gaj531w3","_TZE200_en3wvcbx","_TZE200_g5wdnuow","_TZE200_udank5zs","_TZE200_nv6nxo0c","_TZE200_3ylew7b4","_TZE200_llm0epxg","_TZE200_n1aauwb4","_TZE204_guvc7pdy","_TZE204_57hjqelq","_TZE204_vvvtcehj","_TZE28C1000000_vvvtcehj","_TZE200_axgvo9jh","_TZE200_zxxfv8wi","_TZE204_lh3arisb","_TZE204_zuq5xxib","_TZE284_zuq5xxib","_TZE200_nueqqe6k","_TZE200_1fuxihti","_TZE204_1fuxihti","_TZE284_1fuxihti","_TZE28C1000000_1fuxihti","_TZE200_5zbp6j0u","_TZE200_nkoabg8w","_TZE200_4vobcgd3","_TZE284_4vobcgd3","_TZE200_m6lwazh9","_TZE200_swlgvdlh","_TZE200_fdtjuw7u","_TZE200_rmymn92d","_TZE200_feolm6rk","_TZE200_tvrvdj6o","_TZE200_b2u1drdv","_TZE200_ol5jlkkr","_TZE204_a2jcoyuk","_TZE200_yia0p3tr","_TZE200_rsj5pu8y","_TZE200_yrugsphv","_TZE204_yrugsphv","_TZE200_odlldrxx","_TZE204_odlldrxx","_TZE200_7shyddj3","_TZE284_udank5zs","_TZE284_b7kbnl6q","_TZE204_dpqsvdbi","_TZE204_ic7jtutb","_TZE204_m1wl5fvq","_TZE204_nladmfvf","_TZE204_tgl8i2np","_TZE200_2jwrgrro"}))a(ab,{b.create_fingerprint("HOBEIAN","ZG-301Z-MOTO"),{manufacturer="_TYST11_fzo2pocs",model="zo2pocs"..string.char(0)},{manufacturer="_TYST11_udank5zs",model="dank5zs"..string.char(0)}})a(ab,{b.create_fingerprint("Yushun","YS-MT750"),b.create_fingerprint("Yushun","YS-MT750L"),b.create_fingerprint("Zemismart","ZM79E-DT"),b.create_fingerprint("Binthen","BCM100D"),b.create_fingerprint("Binthen","CV01A"),b.create_fingerprint("Zemismart","M515EGB"),b.create_fingerprint("Oz Smart Things","ZM85EL-1Z"),b.create_fingerprint("Tuya","M515EGZT"),b.create_fingerprint("Tuya","DT82LEMA-1.2N"),b.create_fingerprint("Tuya","ZD82TN"),b.create_fingerprint("Larkkey","ZSTY-SM-1SRZG-EU"),b.create_fingerprint("Zemismart","AM43"),b.create_fingerprint("A-OK","AM25"),b.create_fingerprint("Alutech","AM/R-Sm"),b.create_fingerprint("Roximo","CRTZ01"),b.create_fingerprint("Quoya","AT8510-TY"),b.create_fingerprint("Somgoms","ZSTY-SM-1DMZG-US-W_1"),b.create_fingerprint("HUARUI","CMD900LE"),b.create_fingerprint("Novato","WPK"),b.create_fingerprint("Zemismart","ZMS1-TYZ")})a(o,b.create_fingerprints("TS0601",{"_TZE200_eegnwoyw","_TZE200_fu14oapz"}))a(o,b.create_fingerprints("TS0105",{"_TZE600_ogyg1y6b"}))a(aq,b.create_fingerprints("TS0601",{"_TZE200_68nvbio9","_TZE200_pw7mji0l","_TZE200_cf1sl3tj","_TZE200_nw1r9hp6","_TZE200_9p5xmj5r","_TZE200_eevqq1uv","_TZE204_ejh6owwz","_TZE200_ba69l9ol","_TZE200_68nvbi09","_TZE284_n73badib","_TZE200_vexa5o82","_TZE200_sfqyhvpv"}))a(o,{b.create_fingerprint("Zemismart","ZM16EL-03/33"),b.create_fingerprint("Zemismart","ZM25EL"),b.create_fingerprint("Zemismart","ZM85EL-2Z"),b.create_fingerprint("Hiladuo","B09M3R35GC"),b.create_fingerprint("Tuya","MYQ-RM25-1.3/25-BZ"),b.create_fingerprint("Shaman","25EB-1/30-TYZ")})a(o,b.create_fingerprints("TS0601",{"_TZE200_zah67ekd","_TZE200_icka1clh"}))a(al,b.create_fingerprints("TS130F",{"_TZE20C_xbexmf8h"}))a(o,{b.create_fingerprint("Moes","AM43-0.45/40-ES-EB")})a(o,b.create_fingerprints("TS0601",{"_TZE200_5sbebbzs","_TZE200_hsgrhjpf","_TZE200_ergbiejo","_TZE200_nhyj64w2","_TZE200_127x7wnl","_TZE204_5slehgeo","_TZE284_5slehgeo","_TZE200_fctwhugx","_TZE200_p6vz3wzt","_TZE204_p6vz3wzt","_TZE284_uqfph8ah","_TZE284_waa352qv"}))a(o,{b.create_fingerprint("Homeetec","37022483")})a(au,b.create_fingerprints("TS0601",{"_TZE200_cpbo62rn","_TZE200_libht6ua","_TZE284_libht6ua"}))a(o,b.create_fingerprints("TS0601",{"_TZE200_zvo63cmo"}))a(l,b.create_fingerprints("TS0601",{"_TZE204_r0jdjrvi","_TZE200_r0jdjrvi","_TZE200_g5xqosu7","_TZE204_g5xqosu7","_TZE200_fzo2pocs","_TZE284_fzo2pocs","_TZE200_9vpe3fl1","_TZE28C1000000_alh14edn"}))a(l,{b.create_fingerprint("Tuya","TS0601_alh14edn")})a(aD,b.create_fingerprints("TS0601",{"_TZE200_7eue9vhc","_TZE200_bv1jcqqu","_TZE200_wehza30a"}))a(o,b.create_fingerprints("TS0601",{"_TZE200_p2qzzazi"}))a(l,b.create_fingerprints("TS0601",{"_TZE204_xu4a5rhj","_TZE200_xu4a5rhj","_TZE204_q9xty0ad"}))a(o,b.create_fingerprints("TS0601",{"_TZE200_1vxgqfba","_TZE200_wdfurkoa","_TZE200_sq6affpe","_TZE284_wdfurkoa","_TZE284_6fopvb6v"}))a(o,b.create_fingerprints("TS0601",{"_TZE200_gubdgai2","_TZE200_vdiuwbkq"}))a(o,b.create_fingerprints("TS0601",{"_TZE200_yenbr4om","_TZE204_bdblidq3","_TZE200_bdblidq3"}))a(o,b.create_fingerprints("TS0601",{"_TZE200_mlglxwp3"}))a(ae,b.create_fingerprints("TS0601",{"_TZE200_a8z0g46u","_TZE204_a8z0g46u"}))a(O,b.create_fingerprints("TS0601",{"_TZE284_3mzb0sdz","_TZE2841000000_3mzb0sdz"}))a(ag,b.create_fingerprints("TS0601",{"_TZE284_zofmmt9s"}))a(l,b.create_fingerprints("TS0601",{"_TZE200_2odrmqwq","_TZE200_hojryzzd"}))a(av,b.create_fingerprints("TS0601",{"_TZE200_clm4gdw4","_TZE200_2vfxweng","_TZE200_gnw1rril","_TZE204_ycke4deo","_TZE284_clm4gdw4"}))a(Z,b.create_fingerprints("TS0601",{"_TZE200_cowvfni3"}))a(R,b.create_fingerprints("TS0601",{"_TZE200_rddyvrci"}))a(D,b.create_fingerprints("TS0601",{"_TZE284_r3szw0xr"}))a(l,b.create_fingerprints("TS0601",{"_TZE200_wmcdj3aq","_TZE200_xuzcvlku","_TZE200_xaabybja","_TZE200_zuz7f94z","_TZE200_3i3exuay","_TZE200_nogaemzt","_TZE200_dng9fn0k","_TZE200_zpzndjez"}))a(I,b.create_fingerprints("TS0601",{"_TZE200_jhkttplm"}))a(I,{b.create_fingerprint("Homeetec","37022493")})a(J,b.create_fingerprints("TS0601",{"_TZE200_5nldle7w"}))a(J,{b.create_fingerprint("Homeetec","37022173")})a(M,b.create_fingerprints("TS0601",{"_TZE204_trwaxi57"}))a(ak,b.create_fingerprints("TS0601",{"_TZE200_iossyxra","_TZE200_cxu0jkjk"}))a(Y,b.create_fingerprints("TS0601",{"_TZE200_eqpaxqdv"}))a(am,b.create_fingerprints("TS0601",{"_TZE200_fodv6bkr"}))a(ao,{b.create_fingerprint("_TZ3210_emqmwtym","TS0601")})a(X,b.create_fingerprints("TS0601",{"_TZE200_ax8a8ahx"}))a(V,b.create_fingerprints("TS0601",{"_TZE204_2rvvqjoa"}))a(af,b.create_fingerprints("TS0601",{"_TZE284_2gi1hy8s","_TZE2841000000_2gi1hy8s"}))a(ar,b.create_fingerprints("TS0601",{"_TZE200_zyrdrmno","_TZE200_osmxri8y"}))a(aj,b.create_fingerprints("TS0301",{"_TZE210_m6lwazh9"}))a(q,b.create_fingerprints("TS0301",{"_TZE200_eatmkx5j"}))a(aa,{b.create_fingerprint("Yoolax","Day-Night Shade")})a(T,b.create_fingerprints("TS0301",{"_TZE210_inpjmc0h","_TZE210_yqwse3h5"}))a(ai,{b.create_fingerprint("_TZE204_wzre8hu2","TS0601")})a(at,{b.create_fingerprint("_TZE200_pk0sfzvr","TS0601")})a(az,b.create_fingerprints("TS0601",{"_TZE200_bjzrowv2","_TZE204_bjzrowv2","_TZE284_bjzrowv2"}))ay.attach_reporting_capabilities(K,{{48,"rpt-trw"}})return{id="ef00.covers",registrations=K}

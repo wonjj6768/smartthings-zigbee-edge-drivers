@@ -1,6 +1,5 @@
-local function af(M)
-local O="__zcl_mapping_bucket"
-local ad=setmetatable({},{__mode="k"})local ab=setmetatable({},{__mode="k"})local R=setmetatable({},{__mode="k"})local S=require"runtime.capability_support".is_callable
+local function ag(M)
+local O,ae,ab,R,S="__zcl_mapping_bucket",setmetatable({},{__mode="k"}),setmetatable({},{__mode="k"}),setmetatable({},{__mode="k"}),require"runtime.capability_support".is_callable
 local function r(g)
 if type(g)~="number"or g%1~=0 then
 return nil
@@ -15,8 +14,7 @@ local e=b.component_id or b.component
 if type(e)=="string"and e~=""then
 return e
 end
-local g=r(b.endpoint or b.src_endpoint)
-if g~=nil and type(d.get_component_id_for_endpoint)=="function"then
+local g=r(b.endpoint or b.src_endpoint)if g~=nil and type(d.get_component_id_for_endpoint)=="function"then
 local G=d:get_component_id_for_endpoint(g)if type(G)=="string"and G~=""then
 return G
 end
@@ -33,18 +31,16 @@ end
 local e=b.component_id or b.component
 if type(e)=="string"and e~=""and type(d.get_endpoint_for_component_id)=="function"then
 local G=d:get_endpoint_for_component_id(e)if type(G)=="table"then
-G=G[1]
-end
-return r(G)
-end
+G=G[1]end
+return r(G)end
 return nil
 end
-local function w(a,ah)
-local Z=ad[a]if Z~=nil then
+local function w(a,ai)
+local Z=ae[a]if Z~=nil then
 return Z
 end
-local A=type(a.converter)=="table"and a.converter or nil
-local P=type(a.from_device)=="function"and a.from_device or nil
+local A,P=type(a.converter)=="table"and a.converter or nil,type(a.from_device)=="function"and a.from_device or nil
+
 local L=A and type(A.from)=="function"and A.from or nil
 local aa=a.prefer_typed_value==true or
 (A and A.prefer_typed_value==true)or
@@ -53,56 +49,38 @@ local B=S(a.data_type)and a.data_type or nil
 local K=S(a.write_type)and a.write_type or B
 local l
 if a.cluster_id~=nil and a.attribute_id~=nil and M.get_generated_attribute~=nil then
-l=M.get_generated_attribute(a.cluster_id,a.attribute_id)
-end
+l=M.get_generated_attribute(a.cluster_id,a.attribute_id)end
 if l==nil and a.cluster_id~=nil and a.attribute_id~=nil and M.build_dynamic_attribute~=nil then
 local Q=B or K
 if Q~=nil then
-l=M.build_dynamic_attribute(
-a.cluster_id,a.attribute_id,Q,a.read_only~=true,a.attribute_name,a.complex_type==true)
+l=M.build_dynamic_attribute(a.cluster_id,a.attribute_id,Q,a.read_only~=true,a.attribute_name,a.complex_type==true)end
 end
-end
-local ae={
-from_device=P or L,custom_from_device=P~=nil,converter_from_device=L~=nil,prefer_typed_value=aa,prefer_plain_attribute_write=a.prefer_plain_attribute_write==true,
-to_device=type(a.to_device)=="function"and a.to_device or
-(A and type(A.to)=="function"and A.to or nil),
-emit=type(a.emit)=="function"and a.emit or nil,
-handler=type(a.handler)=="function"and a.handler or nil,
-sender=type(a.sender)=="function"and a.sender or nil,
-command_id=type(a.command_id)=="number"and a.command_id or nil,
-command_extractor=type(a.command_extractor)=="function"and a.command_extractor or nil,
-tx_command_id=type(a.tx_command_id)=="number"and a.tx_command_id or nil,tx_command_direction=a.tx_command_direction=="client"and"client"or"server",
-endpoint=(type(a.endpoint)=="number"or type(a.endpoint)=="function")and a.endpoint or nil,
-component=(type(a.component)=="string"or type(a.component)=="function")and a.component or nil,
-read_only=a.read_only==true,write_only=a.write_only==true,minimum_interval=a.minimum_interval,maximum_interval=a.maximum_interval,reportable_change=a.reportable_change,reporting_defaults=a.reporting_defaults,physical_reportable_change=type(a.physical_reportable_change)=="number"and
-a.physical_reportable_change or nil,read_on_configure=a.read_on_configure==true,read_on_refresh=a.read_on_refresh,poll_interval=type(a.poll_interval)=="number"and a.poll_interval or nil,ias_configure_method=a.ias_configure_method,mfg_code=type(a.mfg_code)=="number"and a.mfg_code or nil,profile_id=type(a.profile_id)=="number"and a.profile_id or nil,metering_kind=type(a.metering_kind)=="string"and a.metering_kind or nil,scale=type(a.scale)=="number"and a.scale or nil,ignore_reported_scaler=a.ignore_reported_scaler==true,attribute_def=l,data_type=B or
+local af={from_device=P or L,custom_from_device=P~=nil,converter_from_device=L~=nil,prefer_typed_value=aa,prefer_plain_attribute_write=a.prefer_plain_attribute_write==true,to_device=type(a.to_device)=="function"and a.to_device or
+(A and type(A.to)=="function"and A.to or nil),emit=type(a.emit)=="function"and a.emit or nil,handler=type(a.handler)=="function"and a.handler or nil,sender=type(a.sender)=="function"and a.sender or nil,command_id=type(a.command_id)=="number"and a.command_id or nil,command_extractor=type(a.command_extractor)=="function"and a.command_extractor or nil,tx_command_id=type(a.tx_command_id)=="number"and a.tx_command_id or nil,tx_command_direction=a.tx_command_direction=="client"and"client"or"server",endpoint=(type(a.endpoint)=="number"or type(a.endpoint)=="function")and a.endpoint or nil,component=(type(a.component)=="string"or type(a.component)=="function")and a.component or nil,read_only=a.read_only==true,write_only=a.write_only==true,minimum_interval=a.minimum_interval,maximum_interval=a.maximum_interval,reportable_change=a.reportable_change,reporting_defaults=a.reporting_defaults,physical_reportable_change=type(a.physical_reportable_change)=="number"and
+a.physical_reportable_change or nil,read_on_configure=a.read_on_configure==true,read_on_refresh=a.read_on_refresh,poll_interval=type(a.poll_interval)=="number"and a.poll_interval or nil,ias_configure_method=a.ias_configure_method,mfg_code=type(a.mfg_code)=="number"and a.mfg_code or nil,profile_id=type(a.profile_id)=="number"and a.profile_id or nil,metering_kind=type(a.metering_kind)=="string"and a.metering_kind or nil,scale=type(a.scale)=="number"and a.scale or nil,ignore_reported_scaler=a.ignore_reported_scaler==true,use_reported_unity_scaler=a.use_reported_unity_scaler==true,attribute_def=l,data_type=B or
 (l and l.base_type or nil),write_type=K or
-(l and l.base_type or nil),name=a.name,cluster_id=a.cluster_id,attribute_id=a.attribute_id}
-if ah~=false then ad[a]=ae end
-return ae
+(l and l.base_type or nil),name=a.name,cluster_id=a.cluster_id,attribute_id=a.attribute_id}if ai~=false then ae[a]=af end
+return af
 end
 local function t(d,a,b)
-local ae=w(a)local g=ae.endpoint
+local af=w(a)local g=af.endpoint
 if type(g)=="function"then
-g=g(d,a,b)
-end
+g=g(d,a,b)end
 return r(g)
 end
 local function o(d,a,b)
-local ae=w(a)local e=ae.component
+local af=w(a)local e=af.component
 if type(e)=="function"then
-e=e(d,a,b)
-end
+e=e(d,a,b)end
 if type(e)=="string"and e~=""then
 return e
 end
 return nil
 end
-local function W(d,a,b,al)
-local f={
-mapping=a,value=al}if type(b)=="table"then
-for ai,am in pairs(b)do
-f[ai]=am
+local function W(d,a,b,am)
+local f={mapping=a,value=am}if type(b)=="table"then
+for aj,an in pairs(b)do
+f[aj]=an
 end
 end
 if f.cluster_id==nil and type(a)=="table"then
@@ -112,13 +90,12 @@ if f.attribute_id==nil and type(a)=="table"then
 f.attribute_id=a.attribute_id
 end
 local g=t(d,a,f)if g==nil then
-g=k(d,f)
-end
-local e=o(d,a,f)if e==nil then
+g=k(d,f)end
+local e,ad=o(d,a,f),d.profile and d.profile.components
+if e==nil or(ad and ad[e]==nil)then
 if g~=nil and type(d.get_component_id_for_endpoint)=="function"then
 e=d:get_component_id_for_endpoint(g)else
-e=n(d,f)
-end
+e=n(d,f)end
 end
 f.endpoint=g
 f.component_id=e
@@ -129,14 +106,12 @@ local function u(a,d,b)
 if type(a)~="table"or d==nil then
 return 0
 end
-local x=t(d,a,b)local z=o(d,a,b)local H=w(a).mfg_code
-local v=k(d,b)local m=n(d,b)local ac=type(b)=="table"and b.mfg_code or nil
+local x,z,H,v,m,ac=t(d,a,b),o(d,a,b),w(a).mfg_code,k(d,b),n(d,b),type(b)=="table"and b.mfg_code or nil
+
 if v==nil and m~=nil then
-v=k(d,{component_id=m})
-end
+v=k(d,{component_id=m})end
 if m==nil and v~=nil and type(d.get_component_id_for_endpoint)=="function"then
-m=d:get_component_id_for_endpoint(v)
-end
+m=d:get_component_id_for_endpoint(v)end
 if x~=nil and v~=x then
 return-1
 end
@@ -144,8 +119,7 @@ local N=x~=nil and type(b)=="table"and b.zb_rx~=nil
 if z~=nil and m~=z and not N then
 return-1
 end
-local T=type(b)=="table"and(
-b.mfg_code~=nil or
+local T=type(b)=="table"and(b.mfg_code~=nil or
 b.zb_rx~=nil or
 b.command_id~=nil)if T and H~=nil and ac~=H then
 return-1
@@ -165,17 +139,16 @@ end
 local function I(j)
 return type(j)=="table"and j[O]==true
 end
-local function U(q,ai,a)
-local X=q[ai]if X==nil then
-q[ai]=a
+local function U(q,aj,a)
+local X=q[aj]if X==nil then
+q[aj]=a
 return
 end
 if I(X)then
 X[#X+1]=a
 return
 end
-q[ai]={
-[O]=true,X,a}
+q[aj]={[O]=true,X,a}
 end
 local function D(j,d,b)
 if j==nil then
@@ -188,8 +161,7 @@ end
 return nil
 end
 if d==nil then
-return j[1]
-end
+return j[1]end
 local J
 local p=-1
 for _,a in ipairs(j)do
@@ -202,14 +174,11 @@ return J
 end
 local function F(j,d,b)
 if j==nil then
-return{}
-end
+return{}end
 if not I(j)then
 if d==nil or u(j,d,b)>=0 then
-return{j}
-end
-return{}
-end
+return{j}end
+return{}end
 local J={}local p
 for _,a in ipairs(j)do
 local C=d==nil and 0 or u(a,d,b)if C>=0 then
@@ -229,10 +198,10 @@ end
 local Z=ab[c]if Z~=nil then
 return Z
 end
-local s={}local ag={}local V={}local Y={}for _,a in ipairs(c)do
+local s,ah,V,Y={},{},{},{}for _,a in ipairs(c)do
 if type(a)=="table"then
-local h=a.cluster_id
-local y=a.attribute_id
+local h,y=a.cluster_id,a.attribute_id
+
 if h~=nil and y~=nil then
 s[h]=s[h]or{}U(s[h],y,a)if not Y[h]then
 Y[h]=true
@@ -240,20 +209,18 @@ V[#V+1]=h
 end
 end
 if a.name~=nil then
-U(ag,a.name,a)
+U(ah,a.name,a)end
 end
 end
-end
-local q={
-by_cluster_attribute=s,by_name=ag,cluster_ids=V}ab[c]=q
+local q={by_cluster_attribute=s,by_name=ah,cluster_ids=V}ab[c]=q
 return q
 end
 M.normalize_endpoint=r
-function M.mapping_meta(a,ah)
+function M.mapping_meta(a,ai)
 if type(a)~="table"then
 return nil
 end
-return w(a,ah)
+return w(a,ai)
 end
 M.resolve_context_component_id=n
 M.resolve_context_endpoint=k
@@ -269,8 +236,7 @@ return c
 end
 if not R[c]then
 R[c]=true
-i(c)
-end
+i(c)end
 return c
 end
 function M.find_mapping(c,h,y,d,b)
@@ -284,21 +250,19 @@ return D(E[y],d,b)
 end
 function M.find_mappings(c,h,y,d,b)
 local q=i(c)if q==nil then
-return{}
-end
+return{}end
 local E=q.by_cluster_attribute[h]if E==nil then
-return{}
-end
+return{}end
 return F(E[y],d,b)
 end
-function M.find_mapping_by_name(c,ak,d,b)
-if c==nil or ak==nil then
+function M.find_mapping_by_name(c,al,d,b)
+if c==nil or al==nil then
 return nil
 end
 local q=i(c)if q==nil then
 return nil
 end
-return D(q.by_name[ak],d,b)
+return D(q.by_name[al],d,b)
 end
 function M.has_cluster(c,h)
 if c==nil then
@@ -308,15 +272,13 @@ local q=i(c)return q~=nil and q.by_cluster_attribute[h]~=nil
 end
 function M.get_cluster_ids(c)
 if c==nil then
-return{}
-end
+return{}end
 local q=i(c)if q==nil then
-return{}
+return{}end
+local ak={}for _,h in ipairs(q.cluster_ids)do
+ak[#ak+1]=h
 end
-local aj={}for _,h in ipairs(q.cluster_ids)do
-aj[#aj+1]=h
-end
-return aj
+return ak
 end
 end
-return af
+return ag

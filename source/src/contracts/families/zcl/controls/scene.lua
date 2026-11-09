@@ -2,7 +2,6 @@ local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
 local emit = require "capabilities.events.all"
 local capabilities = require "st.capabilities"
--- Battery refresh is provided by the protocol facade.
 local device_management = require "st.zigbee.device_management"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()

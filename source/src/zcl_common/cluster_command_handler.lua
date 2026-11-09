@@ -1,5 +1,3 @@
--- ZCL cluster command 수신 핸들러
--- 매핑 메타(command_id/command_extractor) 기반 cluster command를 공통 처리합니다.
 
 local function load_cluster_command_handler(zcl)
 
@@ -17,6 +15,7 @@ local function load_cluster_command_handler(zcl)
   local default_response = require "st.zigbee.zcl.global_commands.default_response"
   local zigbee_constants = require "st.zigbee.constants"
   local log = require "log"
+  local on_off_ack = require "zcl_common.on_off_ack"
   -- BUILD_FEATURE zcl_dynamic_commands BEGIN
   -- COMMAND_SURFACE ias_ace_alias
   local IASACE = generated_clusters.IASACE
@@ -787,6 +786,31 @@ local function load_cluster_command_handler(zcl)
 
   function zcl.build_zigbee_global_handlers(get_preset)
     return require("zcl_common.reporting").global_handlers(zcl, {
+      [zcl.CLUSTER_ON_OFF] = {
+        [0x0B] = function(_, device, zb_rx)
+          local header = zb_rx.body.zcl_header
+          local control = header.frame_ctrl
+          if control:is_cluster_specific_set() or control:is_mfg_specific_set() or control:get_direction() ~= 1 then return end
+          local endpoint = extract_source_endpoint(zb_rx)
+          local pending = on_off_ack.get(device, endpoint)
+          local response = zb_rx.body.zcl_body
+          if pending == nil or pending.command ~= response.cmd.value
+              or pending.profile ~= zb_rx.address_header.profile.value then return end
+          local preset = get_preset(device)
+          local mappings = preset and preset.zcl_clusters
+          local context = {
+            zb_rx = zb_rx, endpoint = endpoint, src_endpoint = endpoint,
+            zcl_clusters = mappings, command_result = true,
+          }
+          local matched = false
+          for _, mapping in ipairs(zcl.find_mappings(mappings, zcl.CLUSTER_ON_OFF, zcl.ATTR_ON_OFF, device, context)) do
+            if mapping == pending.mapping then matched = true; break end
+          end
+          on_off_ack.clear(device, endpoint)
+          if not matched or response.status.value ~= Status.SUCCESS then return end
+          zcl.apply_attribute(device, mappings, zcl.CLUSTER_ON_OFF, zcl.ATTR_ON_OFF, response.cmd.value == 1, context)
+        end,
+      },
   -- BUILD_FEATURE zcl_dynamic_commands BEGIN
   -- COMMAND_SURFACE basic_write
       [0x0000] = {

@@ -1,6 +1,3 @@
--- Capability emit 헬퍼
--- dp_* 프리셋의 emit 옵션에 전달하여 SmartThings capability 이벤트 자동 생성
--- 사용법: tuya.dp_on_off(1, { emit = emit.switch() })
 
 local capabilities = require "st.capabilities"
 local custom_capabilities = require "runtime.capability_metadata"
@@ -143,7 +140,6 @@ function emit.all(...)
   end
 end
 
--- ── 바이너리 (on/off) ──
 
 function emit.switch()
   return function(_, value)
@@ -288,7 +284,6 @@ function emit.alarm()
   end
 end
 
--- ── 숫자 ──
 
 function emit.temperature(unit)
   unit = unit or "C"
@@ -301,7 +296,7 @@ end
 
 function emit.humidity()
   return function(_, value)
-    if value ~= nil then
+    if type(value) == "number" and value >= 0 and value <= 100 then
       return capabilities.relativeHumidityMeasurement.humidity({ value = value })
     end
   end
@@ -469,7 +464,7 @@ function emit.level()
   return function(_, value)
     if value ~= nil then
       local clamped = value < 0 and 0 or (value > 100 and 100 or value)
-      return capabilities.switchLevel.level(clamped)
+      return capabilities.switchLevel.level(math.floor(clamped + 0.5))
     end
   end
 end
@@ -516,8 +511,6 @@ function emit.cooling_setpoint(unit)
   end
 end
 
--- ── 커스텀 capability ──
--- 표준 SmartThings capability가 없는 값은 여기서만 별도 관리
 
 function emit.soil_moisture()
   return function(_, value)
@@ -709,7 +702,6 @@ function emit.driver_message()
   end
 end
 
--- ── enum / string ──
 
 function emit.thermostat_mode()
   return function(_, value)
@@ -770,9 +762,7 @@ function emit.shade_state()
   end
 end
 
--- ── 범용 ──
 
--- 단순 값 패스스루: emit.value(capabilities.xxx.yyy)
 function emit.value(capability_attr, unit)
   return function(_, value)
     if value ~= nil then
@@ -785,7 +775,6 @@ function emit.value(capability_attr, unit)
   end
 end
 
--- 바이너리 범용: emit.binary(cap_attr, "on", "off")
 function emit.binary(capability_attr, true_val, false_val)
   return function(_, value)
     if value then

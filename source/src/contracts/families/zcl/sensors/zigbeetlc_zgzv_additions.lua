@@ -1,4 +1,3 @@
--- ZigbeeTLC ZG-204ZV source-only additions.
 local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"

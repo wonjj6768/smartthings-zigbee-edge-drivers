@@ -1,4 +1,3 @@
--- SONOFF advanced presence sensor contracts.
 -- Oracle: zigbee-herdsman-converters 26.106.0, FETCH_HEAD e2aa714 (sonoff.ts).
 -- Exact identity and live attribute types/ranges:
 -- https://github.com/zigpy/zha-device-handlers/pull/4714

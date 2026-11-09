@@ -125,7 +125,7 @@ local schneider_heating_thermostat = {
     zcl.energy({ endpoint = 2 }),
   },
 }
-local salus_fcu_thermostat = build_thermostat("thermostats-fcu-thermostat", { endpoint = 9, fan = true })
+local salus_fcu_thermostat = build_thermostat("thermostats-fcu-thermostat", { endpoint = 9, component = "main", fan = true })
 local hive_dual_thermostat = {
   profile = "thermostats-hive-dual-thermostat-pending",
   zcl_clusters = {},

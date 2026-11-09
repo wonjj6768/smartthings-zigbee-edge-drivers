@@ -334,7 +334,9 @@ local motion_illuminance_temp_humidity_tamper_sensor = {
 local sunricher_4in1_sensor = {
   profile = "safety-occupancy-illuminance-temp-humidity-battery",
   zcl_clusters = {
-    zcl.occupancy(),
+    zcl.occupancy({ from_device = function(value)
+      return ((type(value) == "table" and value.value or value) & 1) ~= 0
+    end }),
     zcl.illuminance(),
     zcl.temperature(),
     zcl.humidity(),

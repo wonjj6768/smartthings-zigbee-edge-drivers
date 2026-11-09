@@ -1,24 +1,11 @@
-local aK=require"st.capabilities"
-local r=require"runtime.capability_metadata"
-local ac=require"runtime.capability_support"
-local aY=require"runtime.utf8_text"
-local aQ=require"log"
-local bz=require"protocol.tuya"
-local bx=require"protocol.zcl"
-local d="main"
-local B="__initialCustomStateQueryRequested"
-local S="__unknown_profile__"
-local C={}local H=r.numeric
-local Q=r.enum
-local as=r.text
-local l=r.driver_message
-local au={
-{kind="numeric",definitions=H},{kind="enum",definitions=Q},{kind="text",definitions=as}}local aW={
-{kind="numeric",definitions=H},{kind="enum",definitions=Q},{kind="text",definitions=as}}
+local aK,r,ac,aY,aQ,bz,bx,d,B,S,C=require"st.capabilities",require"runtime.capability_metadata",require"runtime.capability_support",require"runtime.utf8_text",require"log",require"protocol.tuya",require"protocol.zcl","main","__initialCustomStateQueryRequested","__unknown_profile__",{}local H,Q,as,l=r.numeric,r.enum,r.text,r.driver_message
+
+
+
+local au,aW={{kind="numeric",definitions=H},{kind="enum",definitions=Q},{kind="text",definitions=as}},{{kind="numeric",definitions=H},{kind="enum",definitions=Q},{kind="text",definitions=as}}
 local function u(b)
 if type(b)~="table"then
-return"device"
-end
+return"device"end
 return b.label or b.id or"device"
 end
 local function aZ(b)
@@ -42,8 +29,7 @@ local aP=ac.is_callable
 local function aa(j,J)
 local D=aK[j]local f=D and D[J]or nil
 if not aP(f)and D and type(D.attributes)=="table"then
-f=D.attributes[J]
-end
+f=D.attributes[J]end
 return D,f
 end
 local function o(b,c,j)
@@ -51,23 +37,19 @@ return ac.supports(b,j,c)
 end
 local function N(q,bj,aD)
 local a=r.by_range_key[bj]if a==nil and type(aD)=="table"then
-a={
-range_key=bj,default_range=aD}
-end
+a={range_key=bj,default_range=aD}end
 return r.resolve_range(q,a)
 end
 local function Y(q,a)
-local p=N(q,a.range_key,{
-allowed_values=a.supported_values})return type(p)=="table"and p.allowed_values or a.supported_values
+local p=N(q,a.range_key,{allowed_values=a.supported_values})return type(p)=="table"and p.allowed_values or a.supported_values
 end
 local function ba(i,w,aS)
 if type(aS)~="number"or aS<=0 then
 return i
 end
 local bs=type(w)=="number"and w or 0
-local br=math.floor(((i-bs)/aS)+0.5)local an=bs+(br*aS)local bc=tostring(aS):match"%.(%d+)"if bc~=nil then
-an=tonumber(string.format("%."..tostring(#bc).."f",an))
-end
+local br=math.floor(((i-bs)/aS)+0.5)local an,bc=bs+(br*aS),tostring(aS):match"%.(%d+)"if bc~=nil then
+an=tonumber(string.format("%."..tostring(#bc).."f",an))end
 return an
 end
 local function ay(i,e)
@@ -132,20 +114,17 @@ local function K(b,c,bn)
 c=c or d
 if c==d then
 b:emit_event(bn)else
-b:emit_component_event({id=c},bn)
-end
+b:emit_component_event({id=c},bn)end
 end
 local function I(Z)
 for _,aF in ipairs(au)do
-Z(aF.definitions,aF.kind)
-end
+Z(aF.definitions,aF.kind)end
 end
 local function E(b,x,c,Z)
 c=c or d
 for _,a in ipairs(x)do
 if o(b,c,a.capability_id)then
-Z(a,c)
-end
+Z(a,c)end
 end
 end
 local function X(a,w,A)
@@ -173,7 +152,7 @@ end
 return false
 end
 local function bt(am)
-local aE=assert(am and am.get_preset,"custom capability runtime requires get_preset")local bm=assert(am and am.send,"custom capability runtime requires send")local ag=assert(am and am.resolve_definition,"custom capability runtime requires resolve_definition")
+local aE,bm,ag=assert(am and am.get_preset,"custom capability runtime requires get_preset"),assert(am and am.send,"custom capability runtime requires send"),assert(am and am.resolve_definition,"custom capability runtime requires resolve_definition")
 local function G(b,a,aU)
 if type(b)~="table"or type(a)~="table"then
 return
@@ -182,10 +161,8 @@ local bj=string.format("__custom_driver_missing__:%s:%s",a.capability_id or"unkn
 return
 end
 if b.set_field~=nil then
-b:set_field(bj,true,{persist=false})
-end
-aQ.error(string.format(
-"[%s] Custom capability driver binding missing (%s): %s.%s",u(b),aU or"unknown",a.capability_id or"unknown",a.attribute_name or"unknown"))
+b:set_field(bj,true,{persist=false})end
+aQ.error(string.format("[%s] Custom capability driver binding missing (%s): %s.%s",u(b),aU or"unknown",a.capability_id or"unknown",a.attribute_name or"unknown"))
 end
 local function g(b,a,J,bg)
 local D,f=aa(a.capability_id,J)if aP(f)then
@@ -194,16 +171,14 @@ end
 if bg then
 if D==nil then
 G(b,a,"capability")else
-G(b,a,"attribute")
-end
+G(b,a,"attribute")end
 end
 return nil
 end
 local function U(b,q,a,c,aD)
 local aJ
 local n=aE(b)if n~=nil and type(n.zcl_clusters)=="table"and type(a.mapping_name)=="string"and a.mapping_name~=""then
-local m=bx.find_mapping_by_name(n.zcl_clusters,a.mapping_name,b,{
-component_id=c or d})if type(m)=="table"and type(m.numeric_range)=="table"then
+local m=bx.find_mapping_by_name(n.zcl_clusters,a.mapping_name,b,{component_id=c or d})if type(m)=="table"and type(m.numeric_range)=="table"then
 aJ=m.numeric_range
 end
 end
@@ -215,15 +190,11 @@ end
 local function ap(b,c,v)
 local n=aE(b)local be=n
 and(n.named_mappings_by_name or n.named_mappings or n.datapoints)local m=be and be[v]if m==nil and n and n.datapoints then
-m=bz.build_named_map(n.datapoints,"name")[v]
-end
+m=bz.build_named_map(n.datapoints,"name")[v]end
 if m==nil and n and n.zcl_clusters then
-m=bx.find_mapping_by_name(n.zcl_clusters,v,b,{
-component_id=c or d})
-end
+m=bx.find_mapping_by_name(n.zcl_clusters,v,b,{component_id=c or d})end
 if m==nil and n and n.protocol_writers then
-m=n.protocol_writers[v]
-end
+m=n.protocol_writers[v]end
 return m
 end
 local function F(b,c,v)
@@ -239,8 +210,7 @@ end
 if not o(b,d,l.capability_id)then
 return
 end
-local f=g(
-b,l,l.attribute_name,true)if f==nil then
+local f=g(b,l,l.attribute_name,true)if f==nil then
 return
 end
 local L=l.maximum_length or 512
@@ -268,8 +238,7 @@ end
 aQ.info(string.format("[%s] Custom enum emit requested: %s=%s",u(b),a.capability_id,tostring(i)))K(b,c,f{value=i})
 end
 local function ax(b,c,a,i)
-if type(a)~="table"or type(a.attribute_name)~="string"
-or type(i)~="string"then
+if type(a)~="table"or type(a.attribute_name)~="string"or type(i)~="string"then
 return
 end
 local f=g(b,a,a.attribute_name,true)if f==nil then
@@ -284,7 +253,7 @@ end
 local P=al(b)if P.__complete==true then
 return
 end
-local bu={}local ad=false
+local bu,ad={},false
 local function bi(j)
 if type(j)~="string"or j==""or bu[j]then
 return
@@ -304,8 +273,7 @@ P[j]=true
 end
 I(function(x)
 for _,a in ipairs(x)do
-bi(a.capability_id)
-end
+bi(a.capability_id)end
 end)
 bi(l.capability_id)if not ad then
 P.__complete=true
@@ -313,21 +281,17 @@ end
 end
 local function az(b,q)
 E(b,H,d,function(a)
-local p=U(b,q,a,d)local av=g(b,a,a.range_attribute_name,false)if p~=nil and av~=nil then
-local aM={
-value={
-minimum=p.minimum,maximum=p.maximum,step=p.step}}if p.unit~=nil then
+local p,av=U(b,q,a,d),g(b,a,a.range_attribute_name,false)if p~=nil and av~=nil then
+local aM={value={minimum=p.minimum,maximum=p.maximum,step=p.step}}if p.unit~=nil then
 aM.unit=p.unit
 end
-K(b,d,av(aM))
-end
+K(b,d,av(aM))end
 end)
 end
 local function aL(b,q)
 E(b,Q,d,function(a)
-local f=g(b,a,a.supported_attribute_name,false)local e=Y(q,a)if f~=nil and type(e)=="table"and e[1]~=nil then
-K(b,d,f{value=e})
-end
+local f,e=g(b,a,a.supported_attribute_name,false),Y(q,a)if f~=nil and type(e)=="table"and e[1]~=nil then
+K(b,d,f{value=e})end
 end)
 end
 local function aN(b)
@@ -342,13 +306,11 @@ end
 local f=g(b,a,a.attribute_name,true)if f==nil then
 return
 end
-aQ.info(string.format(
-"[%s] Custom capability ready: %s.%s",u(b),a.capability_id,a.attribute_name))
+aQ.info(string.format("[%s] Custom capability ready: %s.%s",u(b),a.capability_id,a.attribute_name))
 end
 I(function(x)
 for _,a in ipairs(x)do
-aq(a)
-end
+aq(a)end
 end)
 aq(l)
 end
@@ -396,11 +358,8 @@ return i
 end
 local ah=c or d
 for _,m in ipairs(aT)do
-if type(m)=="table"
-and(m.name==v or m.key==v)and(m.component==nil or m.component==ah)
-and type(m.optimistic_value)=="function"then
-local ok,bf=pcall(
-m.optimistic_value,i,b,{component_id=ah,mapping=m})if ok and type(bf)=="number"then
+if type(m)=="table"and(m.name==v or m.key==v)and(m.component==nil or m.component==ah)and type(m.optimistic_value)=="function"then
+local ok,bf=pcall(m.optimistic_value,i,b,{component_id=ah,mapping=m})if ok and type(bf)=="number"then
 return bf
 end
 return i
@@ -418,14 +377,12 @@ local c=z.component or d
 if not ap(b,c,a.mapping_name)then
 y(b,a,"is not supported by this device.")return
 end
-local k=z.args and z.args[a.argument_name]or nil
-local q=ag(b)local p=U(b,q,a,c)local s,an=W(
-k,p and p.minimum or nil,p and p.maximum or nil,p and p.step or nil,p and p.allowed_values or nil)if s==nil then
+local k,q=z.args and z.args[a.argument_name]or nil,ag(b)
+local p=U(b,q,a,c)local s,an=W(k,p and p.minimum or nil,p and p.maximum or nil,p and p.step or nil,p and p.allowed_values or nil)if s==nil then
 y(b,a,"value is invalid.")return
 end
 if an then
-h(b,string.format("%s adjusted from %s to %s.",a.label,tostring(k),tostring(s)))
-end
+h(b,string.format("%s adjusted from %s to %s.",a.label,tostring(k),tostring(s)))end
 local aC,T=pcall(bm,b,z,a.mapping_name,s)if not aC then
 y(b,a,"command failed.")aQ.error(string.format("[%s] Failed to send %s: %s",u(b),a.capability_id,tostring(T)))return
 end
@@ -435,18 +392,15 @@ end
 if F(b,c,a.mapping_name)then
 return
 end
-local aR=R(
-b,c,a.mapping_name,s)ak(
-b,c,a,aR,aj(a,p))
+local aR=R(b,c,a.mapping_name,s)ak(b,c,a,aR,aj(a,p))
 end
 end
 local function aA(t,a)
 t[a.capability_id]=t[a.capability_id]or{}
 t[a.capability_id][a.command_name]=function(_,b,z)
-local q=ag(b)local k=z.args and z.args[a.argument_name]or nil
+local q,k=ag(b),z.args and z.args[a.argument_name]or nil
 local e=Y(q,a)local s=ae(k,e)if s==nil then
-local aV=type(e)=="table"and table.concat(e,", ")or"none"
-h(b,string.format("%s value is invalid. Supported values: %s.",a.label,aV))return
+local aV=type(e)=="table"and table.concat(e,", ")or"none"h(b,string.format("%s value is invalid. Supported values: %s.",a.label,aV))return
 end
 local aC,T=pcall(bm,b,z,a.mapping_name,s)if not aC then
 h(b,string.format("%s command failed. No change applied.",a.label))aQ.error(string.format("[%s] Failed to send %s: %s",u(b),a.capability_id,tostring(T)))return
@@ -464,13 +418,13 @@ end
 local function aB(t,a)
 t[a.capability_id]=t[a.capability_id]or{}
 t[a.capability_id][a.command_name]=function(_,b,z)
-local c=z.component or d
-local k=z.args and z.args[a.argument_name]or nil
+local c,k=z.component or d,z.args and z.args[a.argument_name]or nil
+
 if type(k)~="string"then
 return
 end
-local L=a.maximum_length
-local ao=aY.length(k)if ao==nil
+local L,ao=a.maximum_length,aY.length(k)
+if ao==nil
 or(type(L)=="number"and ao>L)then
 return
 end
@@ -491,22 +445,18 @@ end
 end
 local function aO(t)
 for _,aF in ipairs(aW)do
-local x=aF.definitions
-local bl=aF.kind
+local x,bl=aF.definitions,aF.kind
+
 for _,a in ipairs(x)do
-if type(a.command_name)=="string"and a.command_name~=""
-and type(a.mapping_name)=="string"and a.mapping_name~=""then
+if type(a.command_name)=="string"and a.command_name~=""and type(a.mapping_name)=="string"and a.mapping_name~=""then
 if bl=="numeric"then
 ar(t,a)elseif bl=="enum"then
 aA(t,a)elseif bl=="text"then
-aB(t,a)
+aB(t,a)end
 end
 end
 end
 end
+return{diagnose_bindings=aN,emit_driver_message=h,emit_enum_metadata=aL,emit_numeric_metadata=az,maybe_request_initial_custom_state=M,refresh_definitions=af,register_handlers=aO}
 end
-return{
-diagnose_bindings=aN,emit_driver_message=h,emit_enum_metadata=aL,emit_numeric_metadata=az,maybe_request_initial_custom_state=M,refresh_definitions=af,register_handlers=aO}
-end
-return{
-create=bt}
+return{create=bt}

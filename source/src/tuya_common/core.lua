@@ -72,7 +72,6 @@ local function resolve_cluster_endpoint(device, cluster_id, field_name)
   return endpoint
 end
 
--- Zigbee 수신 객체에서 body bytes 추출
 local function extract_payload(message)
   if type_check(message) == "string" then
     return message
@@ -85,7 +84,6 @@ local function extract_payload(message)
   return message.body and message.body.zcl_body and message.body.zcl_body.body_bytes or nil
 end
 
--- Zigbee 수신 객체에서 command id 추출
 local function extract_command_id(message)
   if type_check(message) ~= "table" then
     return nil
@@ -197,7 +195,6 @@ local function pack_bitmap(value)
   return nil
 end
 
--- field persist 옵션 생성
 local function persist_opt(persist)
   if persist then
     return { persist = true }
@@ -227,7 +224,6 @@ local function normalize_transaction(transaction)
   return normalized
 end
 
--- 수신 프레임에서 transaction id 추출
 local function extract_transaction(message)
   local payload = extract_payload(message)
   if payload and string_len(payload) >= 2 then

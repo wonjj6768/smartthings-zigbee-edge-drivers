@@ -1,12 +1,8 @@
 local function i(z)
-local A=require"capabilities.events.all"
-local y=require"st.zigbee.data_types"
-local u=require"st.zigbee.constants"
-local x=require"st.utils.safe_xy_to_hsv"
+local A,y,u,x=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function g(d,t)
 if type(d)~="table"then
-d={}
-end
+d={}end
 if type(t)~="table"then
 return d
 end
@@ -30,24 +26,21 @@ local function e(b,p)
 local c={}if type(b)=="string"then
 c.name=b
 else
-g(c,b)
-end
+g(c,b)end
 g(c,p)return c
 end
 local function j(n,m,k)
-return{
-minimum_interval=n,maximum_interval=m,reportable_change=k,read_on_configure=true}
+return{minimum_interval=n,maximum_interval=m,reportable_change=k,read_on_configure=true}
 end
 local function o(...)
 local s={}for _,a in ipairs{...}do
-f(s,a)
-end
+f(s,a)end
 return s
 end
 local function q(B,w,l)
 z[B]=function(b,p)
-local c=e(b,p)local h=c.configure_reporting
-local a=l(c)c.configure_reporting=nil
+local c=e(b,p)local h,a=c.configure_reporting,l(c)
+c.configure_reporting=nil
 if h==false then
 a.minimum_interval=nil
 a.maximum_interval=nil
@@ -59,9 +52,7 @@ f(c,a)return w(c)
 end
 end
 q("battery",z.power_configuration_battery,function()
-return o(
-{
-emit=A.battery(),scale=2},j(300,21600,2))
+return o({emit=A.battery(),scale=2},j(300,21600,2))
 end)
 end
 return i

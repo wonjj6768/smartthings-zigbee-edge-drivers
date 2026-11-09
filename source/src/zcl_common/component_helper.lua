@@ -1,5 +1,3 @@
--- ZCL component/endpoint authoring helper
--- 멀티채널 기기 정의 반복을 줄이기 위한 유틸입니다.
 
 local function load_component_helper(zcl)
 

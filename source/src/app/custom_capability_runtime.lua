@@ -250,7 +250,6 @@ local function create(options)
   local send = assert(options and options.send, "custom capability runtime requires send")
   local resolve_definition = assert(options and options.resolve_definition, "custom capability runtime requires resolve_definition")
 
-  -- Binding and state helpers
 
   local function log_missing_custom_binding(device, metadata, reason)
     if type(device) ~= "table" or type(metadata) ~= "table" then
@@ -342,7 +341,6 @@ local function create(options)
       and device:get_latest_state(component_id, metadata.capability_id, metadata.attribute_name) == nil
   end
 
-  -- Event emitters
 
   local function emit_driver_message(device, message)
     if type(message) ~= "string" or message == "" then
@@ -416,7 +414,6 @@ local function create(options)
     emit_event(device, component_id, attribute({ value = value }))
   end
 
-  -- Metadata and diagnostics
 
   local function refresh_profile_definitions(device)
     if type(device) ~= "table" then
@@ -533,7 +530,6 @@ local function create(options)
     inspect_metadata(driver_message_definition)
   end
 
-  -- Initial state helpers
 
   local function has_missing_state_in_group(device, definitions)
     for _, metadata in ipairs(definitions) do
@@ -617,7 +613,6 @@ local function create(options)
     emit_driver_message(device, string.format("%s %s No change applied.", metadata.label, reason))
   end
 
-  -- Command handlers
 
   local function register_numeric_handler(handlers, metadata)
     handlers[metadata.capability_id] = handlers[metadata.capability_id] or {}

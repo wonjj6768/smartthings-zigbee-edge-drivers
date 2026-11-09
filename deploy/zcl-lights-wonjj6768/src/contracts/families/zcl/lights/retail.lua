@@ -1,174 +1,74 @@
-local f=require"protocol.zcl"
-local v=require"capabilities.events.all"
-local a=require"contracts.helpers.family"
-local q=require"contracts.helpers.zcl"
-local r=require"st.zigbee.device_management"
-local y=require"st.capabilities"
-local h=require"st.zigbee.data_types"
-local p,b=a.definition_registry()
+local f,v,a,q,r,y,h=require"protocol.zcl",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.zcl",require"st.zigbee.device_management",require"st.capabilities",require"st.zigbee.data_types"local p,b=a.definition_registry()
 local function c(A,G)
 local s={}for _,H in ipairs(G)do
-s[#s+1]=a.create_fingerprint(A,H)
-end
+s[#s+1]=a.create_fingerprint(A,H)end
 return s
 end
-local g={
-profile="lights-dimmer",zcl_clusters={
-f.switch(),f.level()}}local n={
-profile="lights-dimmer-power-voltage-current",zcl_clusters={
-f.switch(),f.level(),f.power(),f.voltage(),f.current(),f.energy()},
+local g={profile="lights-dimmer",zcl_clusters={f.switch(),f.level()}}local n={profile="lights-dimmer-power-voltage-current",zcl_clusters={f.switch(),f.level(),f.power(),f.voltage(),f.current(),f.energy()},
 configure=function(z,m)
-for _,C in ipairs{
-f.CLUSTER_ON_OFF,f.CLUSTER_LEVEL_CONTROL,f.CLUSTER_ELECTRICAL_MEASUREMENT,f.CLUSTER_SIMPLE_METERING}do
-m:send(r.build_bind_request(
-m,C,z.environment_info.hub_zigbee_eui,1))
-end
+for _,C in ipairs{f.CLUSTER_ON_OFF,f.CLUSTER_LEVEL_CONTROL,f.CLUSTER_ELECTRICAL_MEASUREMENT,f.CLUSTER_SIMPLE_METERING}do
+m:send(r.build_bind_request(m,C,z.environment_info.hub_zigbee_eui,1))end
 end
 }
 local function o(e,F,E)
-e=tonumber(e)
-if e==nil then return nil end
+e=tonumber(e)if e==nil then return nil end
 return math.max(F,math.min(E,math.floor(e+0.5)))
 end
 local function j(e)
-e=tonumber(e)
-if e==nil then return nil end
+e=tonumber(e)if e==nil then return nil end
 return e/10
 end
 local function k(e)
 if e=="disabled"then return 65535 end
-e=tonumber(e)
-if e==nil then return nil end
+e=tonumber(e)if e==nil then return nil end
 if e>=6553.5 then return 65535 end
 return math.max(0,math.min(65534,math.floor((e*10)+0.5)))
 end
-local w={
-profile="lights-candeo-rd1p-dpm",capability_commands={
-{
-capability_id="concertmirror08464.candeoRd1pDpmOnLevel",command_name="usePreviousOnLevel",mapping_name="candeo_rd1p_dpm_on_level",value="previous"},{
-capability_id="concertmirror08464.candeoRd1pDpmStartupLevel",command_name="useMinimumStartupLevel",mapping_name="candeo_rd1p_dpm_startup_level",value="minimum"},{
-capability_id="concertmirror08464.candeoRd1pDpmStartupLevel",command_name="usePreviousStartupLevel",mapping_name="candeo_rd1p_dpm_startup_level",value="previous"},{
-capability_id="concertmirror08464.candeoRd1pDpmOnTransitionTime",command_name="disableOnTransitionTime",mapping_name="candeo_rd1p_dpm_on_transition_time",value="disabled"},{
-capability_id="concertmirror08464.candeoRd1pDpmOffTransitionTime",command_name="disableOffTransitionTime",mapping_name="candeo_rd1p_dpm_off_transition_time",value="disabled"}},advanced_remote=true,unprefixed_remote_actions=true,remote_action_emit_name="candeoRd1pDpmAction",standard_command_action_resolver=q.resolve_rd1p_rotary_action,zcl_clusters={
-f.switch{
-endpoint=1,minimum_interval=0,maximum_interval=65000},f.level{
-endpoint=1,minimum_interval=1,maximum_interval=3600,reportable_change=1},f.power{
-endpoint=1,minimum_interval=5,maximum_interval=300,reportable_change=10},f.voltage{
-endpoint=1,minimum_interval=5,maximum_interval=600,reportable_change=500},f.current{
-endpoint=1,minimum_interval=5,maximum_interval=900,reportable_change=10},f.energy{
-endpoint=1,minimum_interval=5,maximum_interval=1800,reportable_change=50},f.cluster_attribute(f.CLUSTER_ON_OFF,16387,{
-name="candeo_rd1p_dpm_power_on_behavior",emit=v.candeoRd1pDpmPowerBehavior(),endpoint=1,
+local w={profile="lights-candeo-rd1p-dpm",capability_commands={{capability_id="concertmirror08464.candeoRd1pDpmOnLevel",command_name="usePreviousOnLevel",mapping_name="candeo_rd1p_dpm_on_level",value="previous"},{capability_id="concertmirror08464.candeoRd1pDpmStartupLevel",command_name="useMinimumStartupLevel",mapping_name="candeo_rd1p_dpm_startup_level",value="minimum"},{capability_id="concertmirror08464.candeoRd1pDpmStartupLevel",command_name="usePreviousStartupLevel",mapping_name="candeo_rd1p_dpm_startup_level",value="previous"},{capability_id="concertmirror08464.candeoRd1pDpmOnTransitionTime",command_name="disableOnTransitionTime",mapping_name="candeo_rd1p_dpm_on_transition_time",value="disabled"},{capability_id="concertmirror08464.candeoRd1pDpmOffTransitionTime",command_name="disableOffTransitionTime",mapping_name="candeo_rd1p_dpm_off_transition_time",value="disabled"}},advanced_remote=true,unprefixed_remote_actions=true,remote_action_emit_name="candeoRd1pDpmAction",standard_command_action_resolver=q.resolve_rd1p_rotary_action,zcl_clusters={f.switch{endpoint=1,minimum_interval=0,maximum_interval=65000},f.level{endpoint=1,minimum_interval=1,maximum_interval=3600,reportable_change=1},f.power{endpoint=1,minimum_interval=5,maximum_interval=300,reportable_change=10},f.voltage{endpoint=1,minimum_interval=5,maximum_interval=600,reportable_change=500},f.current{endpoint=1,minimum_interval=5,maximum_interval=900,reportable_change=10},f.energy{endpoint=1,minimum_interval=5,maximum_interval=1800,reportable_change=50},f.cluster_attribute(f.CLUSTER_ON_OFF,16387,{name="candeo_rd1p_dpm_power_on_behavior",emit=v.candeoRd1pDpmPowerBehavior(),endpoint=1,
 from_device=function(e)
 return({[0]="off",[1]="on",[2]="toggle",[255]="previous"})[e]
 end,
 to_device=function(e)
 return({off=0,on=1,toggle=2,previous=255})[e]
 end,
-data_type=h.Enum8,write_type=h.Enum8,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,17,{
-name="candeo_rd1p_dpm_on_level",emit=v.candeoRd1pDpmOnLevel(),endpoint=1,
+data_type=h.Enum8,write_type=h.Enum8,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,17,{name="candeo_rd1p_dpm_on_level",emit=v.candeoRd1pDpmOnLevel(),endpoint=1,
 from_device=function(e)return o(e,0,255)end,
 to_device=function(e)
 if e=="previous"then return 255 end
 return o(e,1,255)
 end,
-numeric_range={minimum=0,maximum=255,step=1},data_type=h.Uint8,write_type=h.Uint8,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,16384,{
-name="candeo_rd1p_dpm_startup_level",emit=v.candeoRd1pDpmStartupLevel(),endpoint=1,
+numeric_range={minimum=0,maximum=255,step=1},data_type=h.Uint8,write_type=h.Uint8,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,16384,{name="candeo_rd1p_dpm_startup_level",emit=v.candeoRd1pDpmStartupLevel(),endpoint=1,
 from_device=function(e)return o(e,0,255)end,
 to_device=function(e)
 if e=="minimum"then return 0 end
 if e=="previous"then return 255 end
 return o(e,0,255)
 end,
-numeric_range={minimum=0,maximum=255,step=1},data_type=h.Uint8,write_type=h.Uint8,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,18,{
-name="candeo_rd1p_dpm_on_transition_time",emit=v.candeoRd1pDpmOnTransitionTime(),endpoint=1,from_device=j,to_device=k,numeric_range={minimum=0,maximum=6553.5,step=0.1,unit="s"},data_type=h.Uint16,write_type=h.Uint16,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,19,{
-name="candeo_rd1p_dpm_off_transition_time",emit=v.candeoRd1pDpmOffTransitionTime(),endpoint=1,from_device=j,to_device=k,numeric_range={minimum=0,maximum=6553.5,step=0.1,unit="s"},data_type=h.Uint16,write_type=h.Uint16,read_on_configure=true})},
+numeric_range={minimum=0,maximum=255,step=1},data_type=h.Uint8,write_type=h.Uint8,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,18,{name="candeo_rd1p_dpm_on_transition_time",emit=v.candeoRd1pDpmOnTransitionTime(),endpoint=1,from_device=j,to_device=k,numeric_range={minimum=0,maximum=6553.5,step=0.1,unit="s"},data_type=h.Uint16,write_type=h.Uint16,read_on_configure=true}),f.cluster_attribute(f.CLUSTER_LEVEL_CONTROL,19,{name="candeo_rd1p_dpm_off_transition_time",emit=v.candeoRd1pDpmOffTransitionTime(),endpoint=1,from_device=j,to_device=k,numeric_range={minimum=0,maximum=6553.5,step=0.1,unit="s"},data_type=h.Uint16,write_type=h.Uint16,read_on_configure=true})},
 configure=function(z,m)
-for _,B in ipairs{
-{endpoint=1,cluster_id=f.CLUSTER_ON_OFF},{endpoint=1,cluster_id=f.CLUSTER_LEVEL_CONTROL},{endpoint=1,cluster_id=f.CLUSTER_ELECTRICAL_MEASUREMENT},{endpoint=1,cluster_id=f.CLUSTER_SIMPLE_METERING},{endpoint=2,cluster_id=f.CLUSTER_ON_OFF},{endpoint=2,cluster_id=f.CLUSTER_LEVEL_CONTROL}}do
-m:send(r.build_bind_request(
-m,B.cluster_id,z.environment_info.hub_zigbee_eui,B.endpoint))
+for _,B in ipairs{{endpoint=1,cluster_id=f.CLUSTER_ON_OFF},{endpoint=1,cluster_id=f.CLUSTER_LEVEL_CONTROL},{endpoint=1,cluster_id=f.CLUSTER_ELECTRICAL_MEASUREMENT},{endpoint=1,cluster_id=f.CLUSTER_SIMPLE_METERING},{endpoint=2,cluster_id=f.CLUSTER_ON_OFF},{endpoint=2,cluster_id=f.CLUSTER_LEVEL_CONTROL}}do
+m:send(r.build_bind_request(m,B.cluster_id,z.environment_info.hub_zigbee_eui,B.endpoint))end
 end
-end
-}local l={
-profile="lights-dimmer-2-zcl-basic",zcl_clusters={}}for _,x in ipairs(f.multi_switch(2,{component_prefix="switch"}))do
+}local l={profile="lights-dimmer-2-zcl-basic",zcl_clusters={}}for _,x in ipairs(f.multi_switch(2,{component_prefix="switch"}))do
 l.zcl_clusters[#l.zcl_clusters+1]=x
 end
 for _,x in ipairs(f.multi_level(2,{component_prefix="switch"}))do
 l.zcl_clusters[#l.zcl_clusters+1]=x
 end
-local i={
-profile="lights-color-temperature",zcl_clusters={
-f.switch(),f.level(),f.color_temperature()}}local u={
-profile="lights-color",zcl_clusters={
-f.switch(),f.level(),f.color_hue(),f.color_saturation(),f.color()}}local d={
-profile="lights-color-temperature-color",zcl_clusters={
-f.switch(),f.level(),f.color_temperature(),f.color_hue(),f.color_saturation(),f.color()}}local t={
-profile="lights-ledvance-a60-rgbw-t",auto_on_before_light_command=false,color_temperature_range={minimum=2703,maximum=6536},zcl_clusters={
-f.switch{endpoint=1,configure_reporting=false},f.level{endpoint=1,configure_reporting=false},f.color_temperature{
-endpoint=1,configure_reporting=false,
+local i,u,d={profile="lights-color-temperature",zcl_clusters={f.switch(),f.level(),f.color_temperature()}},{profile="lights-color",zcl_clusters={f.switch(),f.level(),f.color_hue(),f.color_saturation(),f.color()}},{profile="lights-color-temperature-color",zcl_clusters={f.switch(),f.level(),f.color_temperature(),f.color_hue(),f.color_saturation(),f.color()}}local t={profile="lights-ledvance-a60-rgbw-t",auto_on_before_light_command=false,color_temperature_range={minimum=2703,maximum=6536},zcl_clusters={f.switch{endpoint=1,configure_reporting=false},f.level{endpoint=1,configure_reporting=false},f.color_temperature{endpoint=1,configure_reporting=false,
 to_device=function(e)return math.max(153,math.min(370,math.floor(1000000/e+0.5)))end
-},f.color_hue{endpoint=1,configure_reporting=false},f.color_saturation{endpoint=1,configure_reporting=false},f.color{endpoint=1},f.cluster_attribute(6,16387,{
-name="ledvance_a60_power_behavior",endpoint=1,emit=v.ledvanceA60PowerBehavior(),
+},f.color_hue{endpoint=1,configure_reporting=false},f.color_saturation{endpoint=1,configure_reporting=false},f.color{endpoint=1},f.cluster_attribute(6,16387,{name="ledvance_a60_power_behavior",endpoint=1,emit=v.ledvanceA60PowerBehavior(),
 from_device=function(e)
 e=type(e)=="table"and e.value or e
 return({[0]="off",[1]="on",[2]="toggle",[255]="previous"})[e]
 end,
 to_device=function(e)return({off=0,on=1,toggle=2,previous=255})[e]end,
-data_type=h.Enum8,write_type=h.Enum8}),f.cluster_attribute(3,65535,{
-name="ledvance_a60_effect",endpoint=1,write_only=true,emit=v.ledvanceA60Effect(),sender=f.send_light_effect})},
+data_type=h.Enum8,write_type=h.Enum8}),f.cluster_attribute(3,65535,{name="ledvance_a60_effect",endpoint=1,write_only=true,emit=v.ledvanceA60Effect(),sender=f.send_light_effect})},
 configure=function(_,m)
 for _,D in ipairs{16394,16395,16396}do
-f.read_mapping(m,f.cluster_attribute(768,D,{endpoint=1}))
-end
+f.read_mapping(m,f.cluster_attribute(768,D,{endpoint=1}))end
 end,
 runtime_start=function(m)
-m:emit_component_event({id="main"},y.colorTemperature.colorTemperatureRange{
-value={minimum=2703,maximum=6536},unit="K"})return true
+m:emit_component_event({id="main"},y.colorTemperature.colorTemperatureRange{value={minimum=2703,maximum=6536},unit="K"})return true
 end
-}q.append_clusters(t.zcl_clusters,f.color_xy{endpoint=1})b(g,{
-a.create_fingerprint("Candeo","C203"),a.create_fingerprint("Candeo","C204"),a.create_fingerprint("Candeo","C210"),a.create_fingerprint("Candeo","HK-LN-DIM-A")})b(g,{
-a.create_fingerprint("Philips","929003822801"),a.create_fingerprint("Philips","929003845801"),a.create_fingerprint("Philips","929003845901")})b(g,{
-a.create_fingerprint("MLI","ZBT-DimmableLight")})b(g,{
-a.create_fingerprint("Paulmann Licht GmbH","Dimmable"),a.create_fingerprint("Paulmann lamp","Dimmable Light")})b(g,{
-a.create_fingerprint("Sunricher","HK-SL-DIM-A")})b(g,{
-a.create_fingerprint("Namron","4512751"),a.create_fingerprint("Sunricher","SR-ZG9040A-S")})b(g,{
-a.create_fingerprint("CTM Lyng","CTM_DimmerPille"),a.create_fingerprint("Paulmann","984.43"),a.create_fingerprint("Philips","929003711301"),a.create_fingerprint("Philips","929003711401")})b(w,{
-a.create_fingerprint("Candeo","C-ZB-RD1P-DPM")})b(l,{
-a.create_fingerprint("Sunricher","DIM")})b(i,{
-a.create_fingerprint("TERNCY","DL001"),a.create_fingerprint("TERNCY","CL001")})b(i,{
-a.create_fingerprint("Philips","5633030P9"),a.create_fingerprint("Philips","929003099302"),a.create_fingerprint("Philips","929003777201")})b(i,{
-a.create_fingerprint("Philips","929003823001"),a.create_fingerprint("Philips","929003823101"),a.create_fingerprint("Philips","929003823201"),a.create_fingerprint("Philips","929003823301"),a.create_fingerprint("Philips","929003823401"),a.create_fingerprint("Philips","929003846001"),a.create_fingerprint("Philips","929003846101"),a.create_fingerprint("Philips","929003846401"),a.create_fingerprint("Philips","929003846501")})b(i,{
-a.create_fingerprint("MLI","Bulb white")})b(i,{
-a.create_fingerprint("DOMRAEM","WW/CW"),a.create_fingerprint("LDS","ZBT-CCTLight-GU100904"),a.create_fingerprint("_TZ3210_6pwpez2j","TS0502C")})b(i,{
-a.create_fingerprint("Paulmann Licht GmbH","CCT")})b(d,{
-a.create_fingerprint("Third Reality","3RCB02070Z")})b(i,{
-a.create_fingerprint("Third Reality, Inc","3RSL011Z"),a.create_fingerprint("Third Reality, Inc","3RSL012Z")})b(d,{
-a.create_fingerprint("Philips","8720169264212"),a.create_fingerprint("Philips","8720169264274"),a.create_fingerprint("Philips","9290012574"),a.create_fingerprint("Philips","929003115901"),a.create_fingerprint("Philips","929003116201"),a.create_fingerprint("Philips","929003853701")})b(d,{
-a.create_fingerprint("Philips","929003823601"),a.create_fingerprint("Philips","929003823701"),a.create_fingerprint("Philips","929003823801"),a.create_fingerprint("Philips","929003823901"),a.create_fingerprint("Philips","929003824001"),a.create_fingerprint("Philips","929003846201"),a.create_fingerprint("Philips","929003846301"),a.create_fingerprint("Philips","929003846601"),a.create_fingerprint("Philips","929003846701")})b(d,{
-a.create_fingerprint("Philips","929004608003"),a.create_fingerprint("Philips","929004608004"),a.create_fingerprint("Philips","929004608101"),a.create_fingerprint("Philips","929004608103"),a.create_fingerprint("Philips","929004608201")})b(d,{
-a.create_fingerprint("MLI","Bulb white+color"),a.create_fingerprint("MLI","Candle white+color"),a.create_fingerprint("MLI","Ceiling light"),a.create_fingerprint("MLI","Desk lamp"),a.create_fingerprint("MLI","GU10 white+color")})b(d,{
-a.create_fingerprint("MLI","Garden light"),a.create_fingerprint("MLI","LED Strip")})b(i,{
-a.create_fingerprint("HEIMAN","TemperLight")})b(d,{
-a.create_fingerprint("HEIMAN","ColorLight")})b(n,c("Sunricher",{
-"HK-SL-DIM-UK","ZG2837RAC-K4","HK-SL-DIM-AU-K-A","HK-SL-DIM-US-A","Micro Smart Dimmer","SM311","HK-SL-RDIM-A","HK-SL-DIM-EU-A","HK-SL-DIM-AU-R-A"}))b(n,{
-a.create_fingerprint("Candeo","C-ZB-DM204V2"),a.create_fingerprint("Candeo","C-ZB-DM204v2")})b(g,c("Sunricher",{
-"HK-SL-DIM-CLN","ZG9101SAC-HP","HK-ZD-DIM-A","HK-DIM"}))b(i,c("Sunricher",{
-"HK-ZD-CCT-A","CCT Lighting","3986"}))b(g,c("LEDVANCE",{
-"LEDVANCE DIM","A60 DIM T","B40 DIM T","PAR16 DIM T","P40 DIM T","DR_ZBD_NFC_P_45W_220-240V_1A2","A60 FIL DIM T","EDISON60 FIL DIM T","GLOBE60 FIL DIM T","Connected Tube Value II"}))b(i,c("LEDVANCE",{
-"A60S TW","Panel TW Z3","PL HCL300x1200 01","PL_HCL600_01","PL_HCL625_01","PAR16S TW","B40 TW Z3","P40S TW","B40S TW","P40 TW Value","Undercabinet TW Z3","Tibea TW Z3","CLA60 TW Value","A60 TW T","P40 TW T","PAR16 TW T","B40 TW T"}))b(d,c("LEDVANCE",{
-"Panel Light 2x2 TW","Panel TW 620 UGR19","A60 RGBW Value II","PAR16 RGBW Value","PAR16S RGBW","PAR16 RGBW T","FLEX RGBW Z3","Outdoor FLEX RGBW Z3","Gardenpole Mini RGBW Z3","CLA60 RGBW JP","A60S RGBW","GARDENPOLE RGBW T","A60 RGBW B22D T","FLEX RGBW T","OUTDOOR FLEX RGBW T"}))b(t,c("LEDVANCE",{"A60 RGBW T"}))b(u,c("OSRAM",{
-"Gardenspot RGB"}))b(g,c("OSRAM",{
-"PAR16 DIM Z3","A60 DIM Z3","Classic A60 W clear - LIGHTIFY","LIGHTIFY PAR38 ON/OFF/DIM","Gardenspot W","B40 DIM Z3","SubstiTube","Connected Tube Z3"}))b(i,c("OSRAM",{
-"A60 TW Z3","CLA60 TW OSRAM","LIGHTIFY A19 Tunable White","Classic A60 TW","PAR16 50 TW","PAR16 TW Z3","Classic B40 TW - LIGHTIFY","Ceiling TW OSRAM","Surface Light TW","ZLO-CeilingTW-OS","Control box TW","MR16 TW OSRAM","Panel TW 595 UGR22","Zigbee 3.0 DALI CONV LI","LIGHTIFY Under Cabinet TW"}))b(d,c("OSRAM",{
-"Outdoor Lantern W RGBW OSRAM","Outdoor Lantern B50 RGBW OSRAM","LIGHTIFY RT RGBW","Classic A60 RGBW","CLA60 RGBW OSRAM","CLA60 RGBW Z3","CLA60 RGBW II Z3","Flex RGBW","LIGHTIFY Indoor Flex RGBW","LIGHTIFY Flex RGBW","LIGHTIFY Outdoor Flex RGBW","LIGHTIFY FLEX OUTDOOR RGBW","Flex Outdoor RGBW","Gardenpole RGBW-Lightify","Gardenpole RGBW Z3","Gardenpole Mini RGBW OSRAM","PAR 16 50 RGBW - LIGHTIFY","PAR16 RGBW Z3"}))b(d,{
-a.create_fingerprint("DOMRAEM","RGBWC"),a.create_fingerprint("Letsleds China","RGBW Down Light"),a.create_fingerprint("Light","01F"),a.create_fingerprint("Seastar Intelligence","07073L"),a.create_fingerprint("eWeLight","ZB-CL02"),a.create_fingerprint("eWeLink","Z102LG03-1")})b(d,{
-a.create_fingerprint("Paulmann Licht","RGBW Controller")})b(d,{
-a.create_fingerprint("Iluminize","RGBW-CCT"),a.create_fingerprint("Iluminize","RGBWW Lighting")})b(i,{
-a.create_fingerprint("GLEDOPTO","GL-B-002P"),a.create_fingerprint("GLEDOPTO","GL-B-004P"),a.create_fingerprint("GLEDOPTO","GL-C-004P")})b(i,{
-a.create_fingerprint("Innr","AE 270 T"),a.create_fingerprint("Innr","AE 270 T-2"),a.create_fingerprint("Innr","RB 178 T"),a.create_fingerprint("Innr","RB 272 T"),a.create_fingerprint("Innr","RB 278 T"),a.create_fingerprint("Innr","RB 279 T"),a.create_fingerprint("Innr","RCL 231 T"),a.create_fingerprint("Innr","RF 271 T"),a.create_fingerprint("Innr","RF 273 T"),a.create_fingerprint("Innr","RF 274 T")})b(d,{
-a.create_fingerprint("GLEDOPTO","GL-B-001P"),a.create_fingerprint("GLEDOPTO","GL-B-001Z"),a.create_fingerprint("GLEDOPTO","GL-B-001ZS"),a.create_fingerprint("GLEDOPTO","GL-B-003P"),a.create_fingerprint("GLEDOPTO","GL-B-007P"),a.create_fingerprint("GLEDOPTO","GL-B-007Z"),a.create_fingerprint("GLEDOPTO","GL-B-007ZS"),a.create_fingerprint("GLEDOPTO","GL-B-008P"),a.create_fingerprint("GLEDOPTO","GL-B-008Z"),a.create_fingerprint("GLEDOPTO","GL-B-008ZS"),a.create_fingerprint("GLEDOPTO","GL-D-001P"),a.create_fingerprint("GLEDOPTO","GL-D-002P"),a.create_fingerprint("GLEDOPTO","GL-D-003P"),a.create_fingerprint("GLEDOPTO","GL-D-003Z"),a.create_fingerprint("GLEDOPTO","GL-D-003ZS"),a.create_fingerprint("GLEDOPTO","GL-D-004P"),a.create_fingerprint("GLEDOPTO","GL-D-004Z"),a.create_fingerprint("GLEDOPTO","GL-D-004ZS"),a.create_fingerprint("GLEDOPTO","GL-D-005P"),a.create_fingerprint("GLEDOPTO","GL-D-005Z"),a.create_fingerprint("GLEDOPTO","GL-D-005ZS"),a.create_fingerprint("GLEDOPTO","GL-D-006P"),a.create_fingerprint("GLEDOPTO","GL-D-007P"),a.create_fingerprint("GLEDOPTO","GL-D-008P"),a.create_fingerprint("GLEDOPTO","GL-D-009P"),a.create_fingerprint("GLEDOPTO","GL-D-010P"),a.create_fingerprint("GLEDOPTO","GL-D-013P"),a.create_fingerprint("GLEDOPTO","GL-D-015P"),a.create_fingerprint("GLEDOPTO","GL-FL-001P"),a.create_fingerprint("GLEDOPTO","GL-FL-004P"),a.create_fingerprint("GLEDOPTO","GL-FL-004TZ"),a.create_fingerprint("GLEDOPTO","GL-FL-004TZP"),a.create_fingerprint("GLEDOPTO","GL-FL-004TZS"),a.create_fingerprint("GLEDOPTO","GL-FL-005P"),a.create_fingerprint("GLEDOPTO","GL-FL-005TZ"),a.create_fingerprint("GLEDOPTO","GL-FL-005TZP"),a.create_fingerprint("GLEDOPTO","GL-FL-005TZS"),a.create_fingerprint("GLEDOPTO","GL-FL-006P"),a.create_fingerprint("GLEDOPTO","GL-FL-006TZ"),a.create_fingerprint("GLEDOPTO","GL-FL-006TZP"),a.create_fingerprint("GLEDOPTO","GL-FL-006TZS"),a.create_fingerprint("GLEDOPTO","GL-FL-007P"),a.create_fingerprint("GLEDOPTO","GL-G-003P"),a.create_fingerprint("GLEDOPTO","GL-G-004P"),a.create_fingerprint("GLEDOPTO","GL-G-005P"),a.create_fingerprint("GLEDOPTO","GL-S-004P"),a.create_fingerprint("GLEDOPTO","GL-S-004Z"),a.create_fingerprint("GLEDOPTO","GL-S-004ZS"),a.create_fingerprint("GLEDOPTO","GL-S-005P"),a.create_fingerprint("GLEDOPTO","GL-S-005Z"),a.create_fingerprint("GLEDOPTO","GL-S-007P"),a.create_fingerprint("GLEDOPTO","GL-S-007Z"),a.create_fingerprint("GLEDOPTO","GL-S-007Z(lk)"),a.create_fingerprint("GLEDOPTO","GL-S-007ZS"),a.create_fingerprint("GLEDOPTO","GL-S-008Z"),a.create_fingerprint("GLEDOPTO","GL-S-014P")})b(d,{
-a.create_fingerprint("Innr","AE 280 C"),a.create_fingerprint("Innr","AE 282 C"),a.create_fingerprint("Innr","AE 287 C"),a.create_fingerprint("Innr","BB 282 C"),a.create_fingerprint("Innr","BB 287 C"),a.create_fingerprint("Innr","BB 287 C-2"),a.create_fingerprint("Innr","BY 178 T"),a.create_fingerprint("Innr","BY 185 C"),a.create_fingerprint("Innr","BY 285 C"),a.create_fingerprint("Innr","BY 286 C"),a.create_fingerprint("Innr","FL 122 C"),a.create_fingerprint("Innr","FL 230 C"),a.create_fingerprint("Innr","FL 250 C"),a.create_fingerprint("Innr","OFL 120 C"),a.create_fingerprint("Innr","OFL 122 C"),a.create_fingerprint("Innr","OFL 140 C"),a.create_fingerprint("Innr","OFL 142 C"),a.create_fingerprint("Innr","OGL 130 C"),a.create_fingerprint("Innr","OPL 130 C"),a.create_fingerprint("Innr","RB 185 C"),a.create_fingerprint("Innr","RB 246 T"),a.create_fingerprint("Innr","RB 250 C"),a.create_fingerprint("Innr","RB 251 C"),a.create_fingerprint("Innr","RB 252 C"),a.create_fingerprint("Innr","RB 255 C"),a.create_fingerprint("Innr","RB 256 C"),a.create_fingerprint("Innr","RB 282 C"),a.create_fingerprint("Innr","RB 285 C"),a.create_fingerprint("Innr","RB 286 C"),a.create_fingerprint("Innr","RB 287 C"),a.create_fingerprint("Innr","RCL 232 C")})b(u,{
-a.create_fingerprint("GLEDOPTO","GL-S-003Z")})b(g,{
-a.create_fingerprint("Innr","AE 260"),a.create_fingerprint("Innr","AE 262"),a.create_fingerprint("Innr","AE 264"),a.create_fingerprint("Innr","BB 262"),a.create_fingerprint("Innr","BE 220"),a.create_fingerprint("Innr","BF 263"),a.create_fingerprint("Innr","BF 265"),a.create_fingerprint("Innr","BY 165"),a.create_fingerprint("Innr","BY 265"),a.create_fingerprint("Innr","BY 266"),a.create_fingerprint("Innr","OLS 210"),a.create_fingerprint("Innr","PL 110"),a.create_fingerprint("Innr","PL 115"),a.create_fingerprint("Innr","RB 162"),a.create_fingerprint("Innr","RB 165"),a.create_fingerprint("Innr","RB 172 W"),a.create_fingerprint("Innr","RB 175 W"),a.create_fingerprint("Innr","RB 262"),a.create_fingerprint("Innr","RB 265"),a.create_fingerprint("Innr","RB 266"),a.create_fingerprint("Innr","RB 267"),a.create_fingerprint("Innr","RCL 110"),a.create_fingerprint("Innr","RF 261"),a.create_fingerprint("Innr","RF 262"),a.create_fingerprint("Innr","RF 263"),a.create_fingerprint("Innr","RF 264"),a.create_fingerprint("Innr","RF 265"),a.create_fingerprint("Innr","RSL 110"),a.create_fingerprint("Innr","RSL 115"),a.create_fingerprint("Innr","ST 110"),a.create_fingerprint("Innr","UC 110")})f.attach_reporting_capabilities(p,{
-{1,"rpt-tmf"},{2,"rpt-tmf"},{3,"rpt-tmf"},{4,"rpt-tmf"},{5,"rpt-tmf"},{6,"rpt-tmf"},{7,"rpt-tmf"},{8,"rpt-cxt"},{9,"rpt-tww",{zr000600001="Switch",zr000600002="SwitchTwo",zr000800001="Level",zr000800002="LevelTwo"}},{10,"rpt-txx"},{11,"rpt-txx"},{12,"rpt-txx"},{13,"rpt-txx"},{14,"rpt-txx"},{15,"rpt-txx"},{16,"rpt-tkj"},{17,"rpt-txx"},{18,"rpt-tkj"},{19,"rpt-tkj"},{20,"rpt-tkj"},{21,"rpt-tkj"},{22,"rpt-tkj"},{23,"rpt-txx"},{24,"rpt-tkj"},{25,"rpt-hll"},{26,"rpt-hll"},{27,"rpt-tmf"},{28,"rpt-txx"},{29,"rpt-tmf"},{30,"rpt-txx"},{31,"rpt-tkj"},{33,"rpt-tot"},{34,"rpt-tmf"},{35,"rpt-txx"},{36,"rpt-tkj"},{37,"rpt-tkj"},{38,"rpt-tkj"},{39,"rpt-tkj"},{40,"rpt-txx"},{41,"rpt-txx"},{42,"rpt-tkj"},{43,"rpt-tkj"},{44,"rpt-tot"},{45,"rpt-tmf"}})return{
-id="zcl.lights.retail",registrations=p}
+}q.append_clusters(t.zcl_clusters,f.color_xy{endpoint=1})b(g,{a.create_fingerprint("Candeo","C203"),a.create_fingerprint("Candeo","C204"),a.create_fingerprint("Candeo","C210"),a.create_fingerprint("Candeo","HK-LN-DIM-A")})b(g,{a.create_fingerprint("Philips","929003822801"),a.create_fingerprint("Philips","929003845801"),a.create_fingerprint("Philips","929003845901")})b(g,{a.create_fingerprint("MLI","ZBT-DimmableLight")})b(g,{a.create_fingerprint("Paulmann Licht GmbH","Dimmable"),a.create_fingerprint("Paulmann lamp","Dimmable Light")})b(g,{a.create_fingerprint("Sunricher","HK-SL-DIM-A")})b(g,{a.create_fingerprint("Namron","4512751"),a.create_fingerprint("Sunricher","SR-ZG9040A-S")})b(g,{a.create_fingerprint("CTM Lyng","CTM_DimmerPille"),a.create_fingerprint("Paulmann","984.43"),a.create_fingerprint("Philips","929003711301"),a.create_fingerprint("Philips","929003711401")})b(w,{a.create_fingerprint("Candeo","C-ZB-RD1P-DPM")})b(l,{a.create_fingerprint("Sunricher","DIM")})b(i,{a.create_fingerprint("TERNCY","DL001"),a.create_fingerprint("TERNCY","CL001")})b(i,{a.create_fingerprint("Philips","5633030P9"),a.create_fingerprint("Philips","929003099302"),a.create_fingerprint("Philips","929003777201")})b(i,{a.create_fingerprint("Philips","929003823001"),a.create_fingerprint("Philips","929003823101"),a.create_fingerprint("Philips","929003823201"),a.create_fingerprint("Philips","929003823301"),a.create_fingerprint("Philips","929003823401"),a.create_fingerprint("Philips","929003846001"),a.create_fingerprint("Philips","929003846101"),a.create_fingerprint("Philips","929003846401"),a.create_fingerprint("Philips","929003846501")})b(i,{a.create_fingerprint("MLI","Bulb white")})b(i,{a.create_fingerprint("DOMRAEM","WW/CW"),a.create_fingerprint("LDS","ZBT-CCTLight-GU100904"),a.create_fingerprint("_TZ3210_6pwpez2j","TS0502C")})b(i,{a.create_fingerprint("Paulmann Licht GmbH","CCT")})b(d,{a.create_fingerprint("Third Reality","3RCB02070Z")})b(i,{a.create_fingerprint("Third Reality, Inc","3RSL011Z"),a.create_fingerprint("Third Reality, Inc","3RSL012Z")})b(d,{a.create_fingerprint("Philips","8720169264212"),a.create_fingerprint("Philips","8720169264274"),a.create_fingerprint("Philips","9290012574"),a.create_fingerprint("Philips","929003115901"),a.create_fingerprint("Philips","929003116201"),a.create_fingerprint("Philips","929003853701")})b(d,{a.create_fingerprint("Philips","929003823601"),a.create_fingerprint("Philips","929003823701"),a.create_fingerprint("Philips","929003823801"),a.create_fingerprint("Philips","929003823901"),a.create_fingerprint("Philips","929003824001"),a.create_fingerprint("Philips","929003846201"),a.create_fingerprint("Philips","929003846301"),a.create_fingerprint("Philips","929003846601"),a.create_fingerprint("Philips","929003846701")})b(d,{a.create_fingerprint("Philips","929004608003"),a.create_fingerprint("Philips","929004608004"),a.create_fingerprint("Philips","929004608101"),a.create_fingerprint("Philips","929004608103"),a.create_fingerprint("Philips","929004608201")})b(d,{a.create_fingerprint("MLI","Bulb white+color"),a.create_fingerprint("MLI","Candle white+color"),a.create_fingerprint("MLI","Ceiling light"),a.create_fingerprint("MLI","Desk lamp"),a.create_fingerprint("MLI","GU10 white+color")})b(d,{a.create_fingerprint("MLI","Garden light"),a.create_fingerprint("MLI","LED Strip")})b(i,{a.create_fingerprint("HEIMAN","TemperLight")})b(d,{a.create_fingerprint("HEIMAN","ColorLight")})b(n,c("Sunricher",{"HK-SL-DIM-UK","ZG2837RAC-K4","HK-SL-DIM-AU-K-A","HK-SL-DIM-US-A","Micro Smart Dimmer","SM311","HK-SL-RDIM-A","HK-SL-DIM-EU-A","HK-SL-DIM-AU-R-A"}))b(n,{a.create_fingerprint("Candeo","C-ZB-DM204V2"),a.create_fingerprint("Candeo","C-ZB-DM204v2")})b(g,c("Sunricher",{"HK-SL-DIM-CLN","ZG9101SAC-HP","HK-ZD-DIM-A","HK-DIM"}))b(i,c("Sunricher",{"HK-ZD-CCT-A","CCT Lighting","3986"}))b(g,c("LEDVANCE",{"LEDVANCE DIM","A60 DIM T","B40 DIM T","PAR16 DIM T","P40 DIM T","DR_ZBD_NFC_P_45W_220-240V_1A2","A60 FIL DIM T","EDISON60 FIL DIM T","GLOBE60 FIL DIM T","Connected Tube Value II"}))b(i,c("LEDVANCE",{"A60S TW","Panel TW Z3","PL HCL300x1200 01","PL_HCL600_01","PL_HCL625_01","PAR16S TW","B40 TW Z3","P40S TW","B40S TW","P40 TW Value","Undercabinet TW Z3","Tibea TW Z3","CLA60 TW Value","A60 TW T","P40 TW T","PAR16 TW T","B40 TW T"}))b(d,c("LEDVANCE",{"Panel Light 2x2 TW","Panel TW 620 UGR19","A60 RGBW Value II","PAR16 RGBW Value","PAR16S RGBW","PAR16 RGBW T","FLEX RGBW Z3","Outdoor FLEX RGBW Z3","Gardenpole Mini RGBW Z3","CLA60 RGBW JP","A60S RGBW","GARDENPOLE RGBW T","A60 RGBW B22D T","FLEX RGBW T","OUTDOOR FLEX RGBW T"}))b(t,c("LEDVANCE",{"A60 RGBW T"}))b(u,c("OSRAM",{"Gardenspot RGB"}))b(g,c("OSRAM",{"PAR16 DIM Z3","A60 DIM Z3","Classic A60 W clear - LIGHTIFY","LIGHTIFY PAR38 ON/OFF/DIM","Gardenspot W","B40 DIM Z3","SubstiTube","Connected Tube Z3"}))b(i,c("OSRAM",{"A60 TW Z3","CLA60 TW OSRAM","LIGHTIFY A19 Tunable White","Classic A60 TW","PAR16 50 TW","PAR16 TW Z3","Classic B40 TW - LIGHTIFY","Ceiling TW OSRAM","Surface Light TW","ZLO-CeilingTW-OS","Control box TW","MR16 TW OSRAM","Panel TW 595 UGR22","Zigbee 3.0 DALI CONV LI","LIGHTIFY Under Cabinet TW"}))b(d,c("OSRAM",{"Outdoor Lantern W RGBW OSRAM","Outdoor Lantern B50 RGBW OSRAM","LIGHTIFY RT RGBW","Classic A60 RGBW","CLA60 RGBW OSRAM","CLA60 RGBW Z3","CLA60 RGBW II Z3","Flex RGBW","LIGHTIFY Indoor Flex RGBW","LIGHTIFY Flex RGBW","LIGHTIFY Outdoor Flex RGBW","LIGHTIFY FLEX OUTDOOR RGBW","Flex Outdoor RGBW","Gardenpole RGBW-Lightify","Gardenpole RGBW Z3","Gardenpole Mini RGBW OSRAM","PAR 16 50 RGBW - LIGHTIFY","PAR16 RGBW Z3"}))b(d,{a.create_fingerprint("DOMRAEM","RGBWC"),a.create_fingerprint("Letsleds China","RGBW Down Light"),a.create_fingerprint("Light","01F"),a.create_fingerprint("Seastar Intelligence","07073L"),a.create_fingerprint("eWeLight","ZB-CL02"),a.create_fingerprint("eWeLink","Z102LG03-1")})b(d,{a.create_fingerprint("Paulmann Licht","RGBW Controller")})b(d,{a.create_fingerprint("Iluminize","RGBW-CCT"),a.create_fingerprint("Iluminize","RGBWW Lighting")})b(i,{a.create_fingerprint("GLEDOPTO","GL-B-002P"),a.create_fingerprint("GLEDOPTO","GL-B-004P"),a.create_fingerprint("GLEDOPTO","GL-C-004P")})b(i,{a.create_fingerprint("Innr","AE 270 T"),a.create_fingerprint("Innr","AE 270 T-2"),a.create_fingerprint("Innr","RB 178 T"),a.create_fingerprint("Innr","RB 272 T"),a.create_fingerprint("Innr","RB 278 T"),a.create_fingerprint("Innr","RB 279 T"),a.create_fingerprint("Innr","RCL 231 T"),a.create_fingerprint("Innr","RF 271 T"),a.create_fingerprint("Innr","RF 273 T"),a.create_fingerprint("Innr","RF 274 T")})b(d,{a.create_fingerprint("GLEDOPTO","GL-B-001P"),a.create_fingerprint("GLEDOPTO","GL-B-001Z"),a.create_fingerprint("GLEDOPTO","GL-B-001ZS"),a.create_fingerprint("GLEDOPTO","GL-B-003P"),a.create_fingerprint("GLEDOPTO","GL-B-007P"),a.create_fingerprint("GLEDOPTO","GL-B-007Z"),a.create_fingerprint("GLEDOPTO","GL-B-007ZS"),a.create_fingerprint("GLEDOPTO","GL-B-008P"),a.create_fingerprint("GLEDOPTO","GL-B-008Z"),a.create_fingerprint("GLEDOPTO","GL-B-008ZS"),a.create_fingerprint("GLEDOPTO","GL-D-001P"),a.create_fingerprint("GLEDOPTO","GL-D-002P"),a.create_fingerprint("GLEDOPTO","GL-D-003P"),a.create_fingerprint("GLEDOPTO","GL-D-003Z"),a.create_fingerprint("GLEDOPTO","GL-D-003ZS"),a.create_fingerprint("GLEDOPTO","GL-D-004P"),a.create_fingerprint("GLEDOPTO","GL-D-004Z"),a.create_fingerprint("GLEDOPTO","GL-D-004ZS"),a.create_fingerprint("GLEDOPTO","GL-D-005P"),a.create_fingerprint("GLEDOPTO","GL-D-005Z"),a.create_fingerprint("GLEDOPTO","GL-D-005ZS"),a.create_fingerprint("GLEDOPTO","GL-D-006P"),a.create_fingerprint("GLEDOPTO","GL-D-007P"),a.create_fingerprint("GLEDOPTO","GL-D-008P"),a.create_fingerprint("GLEDOPTO","GL-D-009P"),a.create_fingerprint("GLEDOPTO","GL-D-010P"),a.create_fingerprint("GLEDOPTO","GL-D-013P"),a.create_fingerprint("GLEDOPTO","GL-D-015P"),a.create_fingerprint("GLEDOPTO","GL-FL-001P"),a.create_fingerprint("GLEDOPTO","GL-FL-004P"),a.create_fingerprint("GLEDOPTO","GL-FL-004TZ"),a.create_fingerprint("GLEDOPTO","GL-FL-004TZP"),a.create_fingerprint("GLEDOPTO","GL-FL-004TZS"),a.create_fingerprint("GLEDOPTO","GL-FL-005P"),a.create_fingerprint("GLEDOPTO","GL-FL-005TZ"),a.create_fingerprint("GLEDOPTO","GL-FL-005TZP"),a.create_fingerprint("GLEDOPTO","GL-FL-005TZS"),a.create_fingerprint("GLEDOPTO","GL-FL-006P"),a.create_fingerprint("GLEDOPTO","GL-FL-006TZ"),a.create_fingerprint("GLEDOPTO","GL-FL-006TZP"),a.create_fingerprint("GLEDOPTO","GL-FL-006TZS"),a.create_fingerprint("GLEDOPTO","GL-FL-007P"),a.create_fingerprint("GLEDOPTO","GL-G-003P"),a.create_fingerprint("GLEDOPTO","GL-G-004P"),a.create_fingerprint("GLEDOPTO","GL-G-005P"),a.create_fingerprint("GLEDOPTO","GL-S-004P"),a.create_fingerprint("GLEDOPTO","GL-S-004Z"),a.create_fingerprint("GLEDOPTO","GL-S-004ZS"),a.create_fingerprint("GLEDOPTO","GL-S-005P"),a.create_fingerprint("GLEDOPTO","GL-S-005Z"),a.create_fingerprint("GLEDOPTO","GL-S-007P"),a.create_fingerprint("GLEDOPTO","GL-S-007Z"),a.create_fingerprint("GLEDOPTO","GL-S-007Z(lk)"),a.create_fingerprint("GLEDOPTO","GL-S-007ZS"),a.create_fingerprint("GLEDOPTO","GL-S-008Z"),a.create_fingerprint("GLEDOPTO","GL-S-014P")})b(d,{a.create_fingerprint("Innr","AE 280 C"),a.create_fingerprint("Innr","AE 282 C"),a.create_fingerprint("Innr","AE 287 C"),a.create_fingerprint("Innr","BB 282 C"),a.create_fingerprint("Innr","BB 287 C"),a.create_fingerprint("Innr","BB 287 C-2"),a.create_fingerprint("Innr","BY 178 T"),a.create_fingerprint("Innr","BY 185 C"),a.create_fingerprint("Innr","BY 285 C"),a.create_fingerprint("Innr","BY 286 C"),a.create_fingerprint("Innr","FL 122 C"),a.create_fingerprint("Innr","FL 230 C"),a.create_fingerprint("Innr","FL 250 C"),a.create_fingerprint("Innr","OFL 120 C"),a.create_fingerprint("Innr","OFL 122 C"),a.create_fingerprint("Innr","OFL 140 C"),a.create_fingerprint("Innr","OFL 142 C"),a.create_fingerprint("Innr","OGL 130 C"),a.create_fingerprint("Innr","OPL 130 C"),a.create_fingerprint("Innr","RB 185 C"),a.create_fingerprint("Innr","RB 246 T"),a.create_fingerprint("Innr","RB 250 C"),a.create_fingerprint("Innr","RB 251 C"),a.create_fingerprint("Innr","RB 252 C"),a.create_fingerprint("Innr","RB 255 C"),a.create_fingerprint("Innr","RB 256 C"),a.create_fingerprint("Innr","RB 282 C"),a.create_fingerprint("Innr","RB 285 C"),a.create_fingerprint("Innr","RB 286 C"),a.create_fingerprint("Innr","RB 287 C"),a.create_fingerprint("Innr","RCL 232 C")})b(u,{a.create_fingerprint("GLEDOPTO","GL-S-003Z")})b(g,{a.create_fingerprint("Innr","AE 260"),a.create_fingerprint("Innr","AE 262"),a.create_fingerprint("Innr","AE 264"),a.create_fingerprint("Innr","BB 262"),a.create_fingerprint("Innr","BE 220"),a.create_fingerprint("Innr","BF 263"),a.create_fingerprint("Innr","BF 265"),a.create_fingerprint("Innr","BY 165"),a.create_fingerprint("Innr","BY 265"),a.create_fingerprint("Innr","BY 266"),a.create_fingerprint("Innr","OLS 210"),a.create_fingerprint("Innr","PL 110"),a.create_fingerprint("Innr","PL 115"),a.create_fingerprint("Innr","RB 162"),a.create_fingerprint("Innr","RB 165"),a.create_fingerprint("Innr","RB 172 W"),a.create_fingerprint("Innr","RB 175 W"),a.create_fingerprint("Innr","RB 262"),a.create_fingerprint("Innr","RB 265"),a.create_fingerprint("Innr","RB 266"),a.create_fingerprint("Innr","RB 267"),a.create_fingerprint("Innr","RCL 110"),a.create_fingerprint("Innr","RF 261"),a.create_fingerprint("Innr","RF 262"),a.create_fingerprint("Innr","RF 263"),a.create_fingerprint("Innr","RF 264"),a.create_fingerprint("Innr","RF 265"),a.create_fingerprint("Innr","RSL 110"),a.create_fingerprint("Innr","RSL 115"),a.create_fingerprint("Innr","ST 110"),a.create_fingerprint("Innr","UC 110")})f.attach_reporting_capabilities(p,{{1,"rpt-tmf"},{2,"rpt-tmf"},{3,"rpt-tmf"},{4,"rpt-tmf"},{5,"rpt-tmf"},{6,"rpt-tmf"},{7,"rpt-tmf"},{8,"rpt-cxt"},{9,"rpt-tww",{zr000600001="Switch",zr000600002="SwitchTwo",zr000800001="Level",zr000800002="LevelTwo"}},{10,"rpt-txx"},{11,"rpt-txx"},{12,"rpt-txx"},{13,"rpt-txx"},{14,"rpt-txx"},{15,"rpt-txx"},{16,"rpt-tkj"},{17,"rpt-txx"},{18,"rpt-tkj"},{19,"rpt-tkj"},{20,"rpt-tkj"},{21,"rpt-tkj"},{22,"rpt-tkj"},{23,"rpt-txx"},{24,"rpt-tkj"},{25,"rpt-hll"},{26,"rpt-hll"},{27,"rpt-tmf"},{28,"rpt-txx"},{29,"rpt-tmf"},{30,"rpt-txx"},{31,"rpt-tkj"},{33,"rpt-tot"},{34,"rpt-tmf"},{35,"rpt-txx"},{36,"rpt-tkj"},{37,"rpt-tkj"},{38,"rpt-tkj"},{39,"rpt-tkj"},{40,"rpt-txx"},{41,"rpt-txx"},{42,"rpt-tkj"},{43,"rpt-tkj"},{44,"rpt-tot"},{45,"rpt-tmf"}})return{id="zcl.lights.retail",registrations=p}

@@ -1,12 +1,8 @@
 local function j(A)
-local y=require"capabilities.events.all"
-local z=require"st.zigbee.data_types"
-local u=require"st.zigbee.constants"
-local x=require"st.utils.safe_xy_to_hsv"
+local y,z,u,x=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
 local function i(e,t)
 if type(e)~="table"then
-e={}
-end
+e={}end
 if type(t)~="table"then
 return e
 end
@@ -30,24 +26,21 @@ local function g(b,f)
 local c={}if type(b)=="string"then
 c.name=b
 else
-i(c,b)
-end
+i(c,b)end
 i(c,f)return c
 end
 local function k(o,n,l)
-return{
-minimum_interval=o,maximum_interval=n,reportable_change=l,read_on_configure=true}
+return{minimum_interval=o,maximum_interval=n,reportable_change=l,read_on_configure=true}
 end
 local function p(...)
 local s={}for _,a in ipairs{...}do
-h(s,a)
-end
+h(s,a)end
 return s
 end
 local function q(B,w,m)
 A[B]=function(b,f)
-local c=g(b,f)local d=c.configure_reporting
-local a=m(c)c.configure_reporting=nil
+local c=g(b,f)local d,a=c.configure_reporting,m(c)
+c.configure_reporting=nil
 if d==false then
 a.minimum_interval=nil
 a.maximum_interval=nil
@@ -62,12 +55,8 @@ q("switch",A.on_off,function(f)
 local d=f.configure_reporting
 f.configure_reporting=nil
 if d==false then
-return{
-emit=y.switch()}
-end
-return p(
-{
-emit=y.switch()},k(0,300,nil))
+return{emit=y.switch()}end
+return p({emit=y.switch()},k(0,300,nil))
 end)
 end
 return j

@@ -1,4 +1,3 @@
--- Wave19 Heiman/PLAID environmental sensor source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/heiman.ts:2250-2277,3541-3646
 --   src/lib/heiman.ts:115-127

@@ -165,7 +165,7 @@ local classic_trv = {
     emit = emit.classicTrvValveDetection(),
     converter = converter.lookup_from_to({ off = false, on = true }),
   }),
-  tuya.dp_battery(21, {}),                                                -- 프로파일 미포함
+  tuya.dp_battery(21, {}),
   tuya.dp_local_temperature_calibration(44, {
     scale = 10,
     emit = emit.classicTrvTempCalibration(),
@@ -213,8 +213,8 @@ local classic_trv = {
     emit = emit.classicTrvWeek(),
     converter = converter.lookup_from_to({ ["5_2"] = 0, ["6_1"] = 1, ["7"] = 2 }),
   }),
-  tuya.dp_raw(112, { name = "schedule_workday" }),                        -- 프로파일 미포함
-  tuya.dp_raw(113, { name = "schedule_holiday" }),                        -- 프로파일 미포함
+  tuya.dp_raw(112, { name = "schedule_workday" }),
+  tuya.dp_raw(113, { name = "schedule_holiday" }),
   tuya.dp_numeric(114, { name = "away_temperature", emit = emit.classicTrvAwayTemperature() }),
   tuya.dp_binary(115, {
     name = "window_open",
@@ -362,7 +362,7 @@ register_device_definition(thermostat_tgm50, ef00_helpers.ts0601_fingerprints( {
   "_TZE284_cvub6xbb",
   "_TZE204_mwomyz5n",
 }))
-local thermostat_po_thco = {
+local thermostat_po_thco = thermostat_metadata.attach_setpoint_only({
   profile = "thermostats-thermostat-tbgecldg",
   package_group = "trv-1",
   time_start = "2000",
@@ -374,25 +374,40 @@ local thermostat_po_thco = {
     emit = emit.tbgePreset(),
     converter = converter.lookup_from_to({ auto = 0, manual = 1, holiday = 2 }),
   }),
-  tuya.dp_current_heating_setpoint(16, { scale = 2 }),
-  tuya.dp_local_temperature(24, { scale = 10 }),
-  tuya.dp_child_lock(30, { name = "child_lock", emit = emit.tbgeChildLock() }),
+  tuya.dp_current_heating_setpoint(16, {
+    converter = converter.from_to(converter.divide_by(2), function(value)
+      if type(value) ~= "number" or value < 0.5 or value > 29.5 or (value * 2) % 1 ~= 0 then
+        return nil
+      end
+      return value * 2
+    end),
+    emit = emit.heating_setpoint("C"),
+  }),
+  tuya.dp_local_temperature(24, { scale = 10, emit = emit.temperature("C") }),
+  tuya.dp_child_lock(30, {
+    name = "child_lock",
+    converter = converter.lookup_from_to({ unlock = false, lock = true }),
+    emit = emit.tbgeChildLock(),
+  }),
   tuya.dp_battery(34, { emit = emit.battery(), converter = converter.from_only(function(value) return math.max(0, math.min(100, (tonumber(value) or 50) - 50)) end) }),
-  tuya.dp_comfort_temperature(101, { scale = 2, emit = emit.tbgeComfortTemperature() }),
-  tuya.dp_eco_temperature(102, { scale = 2, emit = emit.tbgeEcoTemperature() }),
-  tuya.dp_holiday_temperature(103, { scale = 2, emit = emit.tbgeHolidayTemperature() }),
+  tuya.dp_comfort_temperature(101, { scale = 2, emit = emit.tbgeComfortTemperatureV2() }),
+  tuya.dp_eco_temperature(102, { scale = 2, emit = emit.tbgeEcoTemperatureV2() }),
+  tuya.dp_holiday_temperature(103, { scale = 2, emit = emit.tbgeHolidayTemperatureV2() }),
   tuya.dp_local_temperature_calibration(104, { scale = 10, emit = emit.tbgeLocalTempCalibration() }),
   tuya.dp_current_heating_setpoint(105, {
     name = "auto_temperature",
     scale = 2,
-    emit = emit.tbgeAutoTemperature(),
+    emit = emit.tbgeAutoTemperatureV2(),
   }),
-  tuya.dp_boost_heating(106, { emit = emit.tbgeBoostHeating() }),
+  tuya.dp_boost_heating(106, {
+    converter = converter.lookup_from_to({ off = false, on = true }),
+    emit = emit.tbgeBoostHeating(),
+  }),
   tuya.dp_window_open(107, { read_only = true, emit = emit.tbgeWindowOpenStatus() }),
   tuya.dp_open_window_temperature(116, { scale = 2, emit = emit.tbgeOpenWindowTemperature() }),
   tuya.dp_open_window_time(117, { emit = emit.tbgeOpenWindowTime() }),
   tuya.dp_boost_time(118, { emit = emit.tbgeBoostTime() }),
-}
+}, 0.5, 29.5, 0.5)
 register_device_definition(thermostat_po_thco, ef00_helpers.ts0601_fingerprints( {
   "_TZE204_tbgecldg",
   "_TZE284_tbgecldg",
@@ -996,13 +1011,13 @@ local thermostat_variant5 = {
     emit = emit.trv06bChildLock(),
     converter = converter.lookup_from_to({ unlock = false, lock = true }),
   }),
-  tuya.dp_raw(28, { name = "schedule_wednesday" }),                       -- 프로파일 미포함
-  tuya.dp_raw(29, { name = "schedule_thursday" }),                        -- 프로파일 미포함
-  tuya.dp_raw(30, { name = "schedule_friday" }),                          -- 프로파일 미포함
-  tuya.dp_raw(31, { name = "schedule_saturday" }),                        -- 프로파일 미포함
-  tuya.dp_raw(32, { name = "schedule_sunday" }),                          -- 프로파일 미포함
-  tuya.dp_raw(33, { name = "schedule_monday" }),                          -- 프로파일 미포함
-  tuya.dp_raw(34, { name = "schedule_tuesday" }),                         -- 프로파일 미포함
+  tuya.dp_raw(28, { name = "schedule_wednesday" }),
+  tuya.dp_raw(29, { name = "schedule_thursday" }),
+  tuya.dp_raw(30, { name = "schedule_friday" }),
+  tuya.dp_raw(31, { name = "schedule_saturday" }),
+  tuya.dp_raw(32, { name = "schedule_sunday" }),
+  tuya.dp_raw(33, { name = "schedule_monday" }),
+  tuya.dp_raw(34, { name = "schedule_tuesday" }),
   error_or_battery_low_dp(emit.trv06bError(), emit.trv06bBatteryLow()),
   tuya.dp_binary(36, {
     name = "frost_protection",

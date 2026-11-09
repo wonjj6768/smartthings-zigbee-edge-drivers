@@ -1,9 +1,4 @@
--- 커버/블라인드 디바이스 정의
 -- ZHA ts0601_cover.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
--- 현재는 핵심 커버 제어(open/close/pause + position)만 우선 지원합니다.
--- 캘리브레이션, 행정/중간 리밋, 배터리, 추가 모터 옵션은 기기별 편차가 커서
--- core capability와 직접 연결되는 DP만 먼저 등록합니다.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -217,9 +212,6 @@ local cover_switch_2_touch_panel = {
   query_on_configure = true,
 }
 
--- TS0601_cover_1 / TS0601_cover_2 / TS0601_cover_3 / TS0601_cover_4 /
--- TS0601_cover_5 / TS0601_cover_6 / TS0601_cover_7 / TS0601_cover_8 /
--- TS0601_cover_9 / TS0601_cover_12 / Zemismart ZM25RX-08/30
 local cover_core = {
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -235,7 +227,6 @@ local cover_core = {
   }),
 }
 
--- TS0601_cover_6 / TS0601_cover_8 / M3TYW-2.0-13
 local cover_core_position_reversed = {
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -272,7 +263,6 @@ local cover_six = {
   -- DP107 SET/raw wire contract is unresolved upstream.
 }
 
--- TS0601_cover_11
 local cover_core_reversed_position_alt = {
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -288,7 +278,6 @@ local cover_core_reversed_position_alt = {
   }),
 }
 
--- YY-LT500
 local function yy_position(value, device)
   return device.preferences.reverse == true and (100 - value) or value
 end
@@ -320,14 +309,14 @@ local cover_core_alt_dp = {
   }),
 }
 
--- ZM16B
 local cover_core_alt_position_8 = {
   tuya.dp_enum(1, {
     name = "cover_state",
     converter = cover_state_standard,
     write_only = true,
   }),
-  tuya.dp_cover_position(8, { emit = emit.shade_level() }),
+  tuya.dp_cover_position(9, { write_only = true }),
+  tuya.dp_cover_position(8, { name = "cover_position_report", emit = emit.shade_level(), read_only = true }),
   tuya.dp_numeric(8, {
     name = "window_shade_state",
     emit = emit.shade_state(),
@@ -423,6 +412,10 @@ local cover_model_zsm01 = {
     name = "control_back_mode",
     emit = emit.zsm01ControlBackMode(),
     converter = converter.lookup_from_to({ forward = 0, back = 1 }),
+    from_device = function(value)
+      if type(value) == "string" then return value == "back" and "back" or "forward" end
+      return ({ [0] = "forward", [1] = "back" })[value]
+    end,
   }),
   tuya.dp_numeric(19, {
     name = "position_best",
@@ -511,7 +504,6 @@ local cover_model_zsm01 = {
 
 
 
--- TuyaMoesCover0601_alt_controls
 local cover_core_alt_controls = {
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -527,7 +519,6 @@ local cover_core_alt_controls = {
   }),
 }
 
--- ZB-Sm tubular motor
 local cover_zb_sm = {
   profile = "covers-cover-zb-sm",
   tuya.dp_enum(1, {
@@ -603,7 +594,6 @@ local cover_zb_sm = {
   }),
 }
 
--- TS0601_cover_10
 local cover_core_reversed = {
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -653,7 +643,6 @@ local cover_ten = {
   -- DP5 direction is withheld pending resolution of the upstream BOOL/ENUM note.
 }
 
--- Zemismart ZM-AM02_cover
 local cover_core_am02 = {
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -661,8 +650,10 @@ local cover_core_am02 = {
     write_only = true,
   }),
   tuya.dp_cover_position(2, {
-    write_only = true,
+    emit = emit.shade_level(),
   }),
+  tuya.dp_numeric(2, { name = "window_shade_moving_state", emit = emit.shade_state(),
+    converter = window_shade_state_from_position(), read_only = true }),
   tuya.dp_numeric(3, {
     name = "cover_position_state",
     emit = emit.shade_level(),
@@ -676,7 +667,6 @@ local cover_core_am02 = {
   }),
 }
 
--- PIMS3028 / cover plug-in receiver multi STAK 3/STAS 3
 local cover_core_pims3028 = {
   profile = "covers-cover-pims3028",
   tuya.dp_enum(1, {
@@ -697,9 +687,9 @@ local cover_core_pims3028 = {
     converter = window_shade_state_from_position(),
     read_only = true,
   }),
-  -- Z2M maps DP3 to the same inverted position report as DP2 (tuya.ts:25832),
-  -- so it stays internal instead of becoming a second exposed position.
-  tuya.dp_cover_position_inverted(3, { name = "position_inverted" }),
+  tuya.dp_cover_position_inverted(3, { name = "position_inverted", emit = emit.shade_level(), read_only = true }),
+  tuya.dp_numeric(3, { name = "window_shade_state_report", emit = emit.shade_state(),
+    converter = window_shade_state_from_position_inverted(), read_only = true }),
   tuya.dp_enum(4, {
     name = "mode",
     emit = emit.pims3028Mode(),
@@ -752,15 +742,18 @@ local cover_core_pims3028 = {
   }),
   tuya.dp_enum(16, {
     name = "border",
-    emit = emit.pims3028Border(),
+    emit = emit.pims3028BorderV2(),
     converter = converter.lookup_from_to({
-      down_delete = 0,
-      remove_top_bottom = 1,
+      set_up = 0,
+      set_down = 1,
+      delete_up = 2,
+      delete_down = 3,
+      delete_both = 4,
     }),
   }),
   tuya.dp_numeric(19, {
     name = "position_best",
-    emit = emit.pims3028PositionBest(),
+    emit = emit.pims3028PositionBestV2(),
   }),
   tuya.dp_numeric(21, {
     name = "angle_horizontal",
@@ -1149,12 +1142,11 @@ local dream_blinds_tilt = {
   },
 }
 
--- ZM79E-DT / Pro Line curtain motor
 local cover_model_zm79e_dt = {
   profile = "covers-cover-zm79e-dt",
   tuya.dp_enum(1, {
     name = "cover_state",
-    converter = cover_state_reversed,
+    converter = cover_state_standard,
     write_only = true,
   }),
   tuya.dp_cover_position_inverted(2, { emit = emit.shade_level() }),
@@ -1200,9 +1192,9 @@ local cover_model_zm79e_dt = {
   }),
 }
 
--- BX82-TYZ1 cover motor
 local cover_model_bx82_tyz1 = {
   profile = "covers-cover-bx82-tyz1",
+  respond_to_mcu_version_response = true,
   tuya.dp_enum(1, {
     name = "cover_state",
     converter = cover_state_reversed,
@@ -1223,7 +1215,6 @@ local cover_model_bx82_tyz1 = {
   }),
 }
 
--- MB60L-ZG-ZT-TY battery blind motor
 local cover_model_mb60l = {
   profile = "covers-cover-battery-mb60l",
   tuya.dp_enum(1, {
@@ -1263,10 +1254,9 @@ local cover_model_mb60l = {
   }),
 }
 
--- EPJ-ZB / smart sliding window pusher
 local cover_epj_zb = {
   profile = "covers-cover-battery-epj-zb",
-  tuya.dp_enum(102, {
+  tuya.dp_numeric(102, {
     name = "cover_state",
     converter = cover_state_open_close_stop,
     command_id = tuya.SEND_DATA,
@@ -1284,8 +1274,9 @@ local cover_epj_zb = {
   }),
   tuya.dp_battery(4, { emit = emit.battery() }),
   tuya.dp_binary(105, { name = "charge_state" }),
-  tuya.dp_enum(106, {
+  tuya.dp_numeric(106, {
     name = "manual_mode",
+    command_id = tuya.SEND_DATA,
     emit = emit.manualModeEpjZbEnableDisable(),
     converter = converter.lookup_from_to({
       enable = 0,
@@ -1301,8 +1292,9 @@ local cover_epj_zb = {
     }),
   }),
   tuya.dp_numeric(108, { name = "countdown" }),
-  tuya.dp_enum(109, {
+  tuya.dp_numeric(109, {
     name = "motor_direction",
+    command_id = tuya.SEND_DATA,
     emit = emit.motorDirectionEpjZbSide(),
     converter = converter.lookup_from_to({
       right_side = 0,
@@ -1325,7 +1317,8 @@ local cover_epj_zb = {
   }),
   tuya.dp_enum(114, {
     name = "window_detection",
-    emit = emit.windowDetectionEpjZbState(),
+    read_only = true,
+    emit = emit.windowDetectionEpjZbStateV2(),
     converter = converter.lookup_from_to({
       opened = 0,
       closed = 1,

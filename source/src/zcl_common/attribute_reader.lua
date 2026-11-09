@@ -1,5 +1,3 @@
--- ZCL attribute read transport.
---
 -- This module is deliberately independent from command_sender. Receive-only
 -- packages need initial/configuration reads, but must not carry any writable
 -- command registry that can be restored by requiring another module.
@@ -79,7 +77,6 @@ local function load_attribute_reader(zcl)
     return read_plain_attribute(device, meta.cluster_id, meta.attribute_id, mapping_context.endpoint)
   end
 
-  --- Read a specific cluster attribute.
   ---@param device table SmartThings device object
   ---@param cluster_id number cluster ID
   ---@param attribute_id number attribute ID
@@ -114,7 +111,6 @@ local function load_attribute_reader(zcl)
     return read_mapping_attribute(device, mapping, zcl.build_mapping_context(device, mapping, context, nil))
   end
 
-  --- Read every readable attribute declared by zcl_clusters.
   ---@param device table SmartThings device object
   ---@param zcl_clusters table ZCL mapping list
   function zcl.read_all_attributes(device, zcl_clusters)
@@ -126,7 +122,7 @@ local function load_attribute_reader(zcl)
 
     for _, mapping in ipairs(zcl_clusters) do
       local meta = type(mapping) == "table" and zcl.mapping_meta(mapping) or nil
-      if meta ~= nil and not meta.write_only and meta.read_on_refresh ~= false and meta.cluster_id ~= nil and meta.attribute_id ~= nil then
+      if meta ~= nil and not meta.write_only and meta.name ~= "tuya_magic_packet" and meta.read_on_refresh ~= false and meta.cluster_id ~= nil and meta.attribute_id ~= nil then
         local mapping_context = zcl.build_mapping_context(device, mapping, nil)
         local key = string.format(
           "%04X:%04X:%s:%s",

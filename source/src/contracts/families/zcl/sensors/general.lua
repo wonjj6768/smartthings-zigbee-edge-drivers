@@ -1,4 +1,3 @@
--- ZCL 온습도 센서 정의
 -- zigbee-herdsman-converters 의 Tuya TS0201/TS0222 온습도 계열을 기준으로 포팅
 
 local zcl = require "protocol.zcl"
@@ -132,7 +131,6 @@ register_device_definition(build_temp_humidity_clusters({
   device_helpers.create_fingerprint("LINCUKOO", "SZT06"),
 })
 
--- TS0201 표준형
 register_device_definition(build_temp_humidity_clusters({
   profile = temp_humidity_battery_voltage_profile,
   battery_voltage = true,

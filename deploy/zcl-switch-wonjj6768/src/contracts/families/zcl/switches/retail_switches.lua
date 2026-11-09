@@ -1,13 +1,13 @@
-local j = require "protocol.zcl"
-local J = require "capabilities.events.all"
-local r = require "contracts.helpers.family"
-local e = r.create_fingerprint
-local o = require "contracts.helpers.zcl"
-local c = require "st.zigbee.data_types"
-local D = require "st.capabilities"
-local v = require "st.zigbee.device_management"
-local aa = require "st.zigbee.cluster_base"
-local au = require "st.zigbee.generic_body"
+local j,B,r=require "protocol.zcl",require "capabilities.events.all",require "contracts.helpers.family"
+
+
+local e,o,c,E,v,aa,au=r.create_fingerprint,require "contracts.helpers.zcl",require "st.zigbee.data_types",require "st.capabilities",require "st.zigbee.device_management",require "st.zigbee.cluster_base",require "st.zigbee.generic_body"
+
+
+
+
+
+
 
 local t, d = r.definition_registry()
 
@@ -30,12 +30,12 @@ local function b(S, T)
   return {
     profile = S,
     zcl_clusters = k,
-    configure = function(E, g)
+    configure = function(F, g)
       for _, endpoint in ipairs(T) do
         g:send(v.build_bind_request(
           g,
           j.CLUSTER_ON_OFF,
-          E.environment_info.hub_zigbee_eui,
+          F.environment_info.hub_zigbee_eui,
           endpoint
         ))
       end
@@ -43,45 +43,45 @@ local function b(S, T)
   }
 end
 
-local s = b("switches-switch-1", { 1 })
-local ad = b("switches-switch-2", { 1, 2 })
-local C = {minimum_interval=0,maximum_interval=3600}
-local x = {minimum_interval=300,maximum_interval=3600,reportable_change=1}
-local function u(S, ah)
+local s,ad,D,x=b("switches-switch-1", { 1 }),b("switches-switch-2", { 1, 2 }),{minimum_interval=0,maximum_interval=3600},{minimum_interval=300,maximum_interval=3600,reportable_change=1}
+
+
+
+local function u(S, ai)
   local k = {}
-  for endpoint = 1, ah do
+  for endpoint = 1, ai do
     k[#k+1] = j.switch{endpoint=endpoint,component=endpoint==1 and "main" or "switch"..endpoint,
       configure_reporting=false,read_on_configure=false,suppress_optimistic_state=true,data_type=c.Boolean,
-      reporting_defaults=ah==1 and C or nil}
+      reporting_defaults=ai==1 and D or nil}
   end
   k[#k+1] = j.cluster_attribute(2,0,{name="device_temperature",endpoint=1,component="main",
-    data_type=c.Int16,read_only=true,read_on_configure=false,emit=J.temperature"C",
+    data_type=c.Int16,read_only=true,read_on_configure=false,emit=B.temperature"C",
     reporting_defaults=x})
   return {profile=S,zcl_clusters=k,
-    configure=function(E,g)
-      local aC=E.environment_info.hub_zigbee_eui
-      for endpoint=1,ah do j.bind_cluster(g,6,aC,endpoint) end
+    configure=function(F,g)
+      local aC=F.environment_info.hub_zigbee_eui
+      for endpoint=1,ai do j.bind_cluster(g,6,aC,endpoint) end
       j.bind_cluster(g,2,aC,1)
       for _,p in ipairs(k) do
-        local B=p.reporting_defaults
-        if B then j.configure_reporting(g,{
+        local C=p.reporting_defaults
+        if C then j.configure_reporting(g,{
           cluster=p.cluster_id,attribute=p.attribute_id,data_type=p.data_type,
-          minimum_interval=B.minimum_interval,maximum_interval=B.maximum_interval,
-          reportable_change=B.reportable_change},p.endpoint,{defer_on_override=true}) end
+          minimum_interval=C.minimum_interval,maximum_interval=C.maximum_interval,
+          reportable_change=C.reportable_change},p.endpoint,{defer_on_override=true}) end
       end
     end
   }
 end
-local O = u("switches-heiman-one",1)
-local P = u("switches-heiman-two",2)
-local Q = u("switches-switch-3-device-temperature",3)
+local O,P,Q,V,W,X,am,ae,y=u("switches-heiman-one",1),u("switches-heiman-two",2),u("switches-switch-3-device-temperature",3),b("switches-switch-1", { 10 }),b("switches-switch-2", { 10, 11 }),b("switches-switch-3", { 10, 11, 12 }),b("switches-switch-4", { 1, 2, 3, 4 }),b("switches-switch-5", { 1, 2, 3, 4, 5 }),b("switches-switch-5-tuya-options", { 1, 2, 3, 4, 5 })
 
-local V = b("switches-switch-1", { 10 })
-local W = b("switches-switch-2", { 10, 11 })
-local X = b("switches-switch-3", { 10, 11, 12 })
-local am = b("switches-switch-4", { 1, 2, 3, 4 })
-local ae = b("switches-switch-5", { 1, 2, 3, 4, 5 })
-local y = b("switches-switch-5-tuya-options", { 1, 2, 3, 4, 5 })
+
+
+
+
+
+
+
+
 o.append_clusters(y.zcl_clusters,
   j.tuya_magic_packet(),
   j.tuya_power_outage_memory(),
@@ -97,20 +97,21 @@ local R = {
   }
 }
 local f = b("switches-switch-2-power-options", { 1, 2 })
-for _, ap in ipairs(o.metering_clusters{
+for _, af in ipairs(o.metering_clusters{
   endpoint = 3,
   include_switch = false,
   include_current = true
 }) do
-  f.zcl_clusters[#f.zcl_clusters + 1] = ap
+  af.use_reported_unity_scaler = true
+  f.zcl_clusters[#f.zcl_clusters + 1] = af
 end
 
-local function n(endpoint, aj)
+local function n(endpoint, ak)
   return j.cluster_attribute(j.CLUSTER_ON_OFF, 16387, {
     name = "candeo_sm30_power_on_behavior",
     endpoint = endpoint,
-    component = aj,
-    emit = J.candeoSm30PowerBehavior(),
+    component = ak,
+    emit = B.candeoSm30PowerBehavior(),
     from_device = function(a)
       a = type(a) == "table" and a.value or a
       return ({ [0] = "off", [1] = "on", [255] = "previous" })[a]
@@ -129,12 +130,12 @@ o.append_clusters(f.zcl_clusters,
   n(1, "main"),
   n(2, "switch2")
 )
-f.configure = function(E, g)
+f.configure = function(F, g)
   for _, endpoint in ipairs{ 1, 2 } do
     g:send(v.build_bind_request(
       g,
       j.CLUSTER_ON_OFF,
-      E.environment_info.hub_zigbee_eui,
+      F.environment_info.hub_zigbee_eui,
       endpoint
     ))
     g:send(aa.configure_reporting(
@@ -155,11 +156,11 @@ SONOFF functions, keeping their bytecode identities stable after the move.
 No plug registration or executable definition remains in this module.
 The package ownership boundary is enforced by the focused catalog test.
 ]]
-local h = 64529
-local N = 4742
-local H = "concertmirror08464.sonoffZbminir2"
+local h,N,I=64529,4742,"concertmirror08464.sonoffZbminir2"
 
-local function G(a)
+
+
+local function H(a)
   return (a == true or a == 1) and "on" or "off"
 end
 
@@ -167,51 +168,51 @@ local function K(a)
   return a == "on" or a == true
 end
 
-local function q(Z, aE, ak, z)
+local function q(Z, aE, ar, z)
   z = z or {}
   return j.cluster_attribute(h, Z, {
     name = aE,
-    emit = J[ak](),
+    emit = ar,
     data_type = z.data_type or c.Boolean,
     write_type = z.write_type or c.Boolean,
-    from_device = z.from_device or G,
+    from_device = z.from_device or H,
     to_device = z.to_device or K,
     read_on_configure = true
   })
 end
 
-local function l(g, suffix, ar)
-  local U = H .. suffix
-  local ai = suffix:sub(1, 1):lower() .. suffix:sub(2)
-  return g:get_latest_state("main", U, ai) or ar
+local function l(g, suffix, aq)
+  local U,aj=I .. suffix,suffix:sub(1, 1):lower() .. suffix:sub(2)
+
+  return g:get_latest_state("main", U, aj) or aq
 end
 
-local function m(g, p, a, aq)
-  local af = l(g, "InchingControl", "off")
-  local an = tonumber(l(g, "InchingTime", 0.5)) or 0.5
-  local av = l(g, "InchingMode", "off")
+local function m(g, p, a, ap)
+  local ag,an,av=l(g, "InchingControl", "off"),tonumber(l(g, "InchingTime", 0.5)) or 0.5,l(g, "InchingMode", "off")
+
+
 
   if p.name == "sonoff_zbmini_r2_inching_control" then
-    af = a
+    ag = a
   elseif p.name == "sonoff_zbmini_r2_inching_time" then
     an = tonumber(a) or an
   elseif p.name == "sonoff_zbmini_r2_inching_mode" then
     av = a
   end
 
-  local F = math.floor((math.max(0.5, math.min(3599.5, an)) * 2) + 0.5)
-  local al = (af == "on" and 128 or 0) + (av == "on" and 1 or 0)
-  local Y = { 1, 23, 7, 128, al, 0, F % 256, math.floor(F / 256), 0, 0 }
-  local I = 0
-  for _, aD in ipairs(Y) do I = bit32.bxor(I, aD) end
-  Y[#Y + 1] = I
+  local G,al=math.floor((math.max(0.5, math.min(3599.5, an)) * 2) + 0.5),(ag == "on" and 128 or 0) + (av == "on" and 1 or 0)
+
+  local Y,J={ 1, 23, 7, 128, al, 0, G % 256, math.floor(G / 256), 0, 0 },0
+
+  for _, aD in ipairs(Y) do J = J ~ aD end
+  Y[#Y + 1] = J
 
   return j.send_raw_cluster_command(
     g,
     h,
     1,
     string.char(table.unpack(Y)),
-    aq.endpoint,
+    ap.endpoint,
     nil,
     N
   )
@@ -223,7 +224,7 @@ local L = {
     j.switch(),
     j.cluster_attribute(j.CLUSTER_ON_OFF, 16387, {
       name = "sonoff_zbmini_r2_power_on_behavior",
-      emit = J.sonoffZbminir2PowerOnBehavior(),
+      emit = B.sonoffZbminir2PowerOnBehavior(),
       data_type = c.Enum8,
       write_type = c.Enum8,
       from_device = function(a)
@@ -236,24 +237,24 @@ local L = {
     }),
     j.cluster_attribute(j.CLUSTER_ON_OFF, j.ATTR_ON_OFF, {
       name = "sonoff_zbmini_r2_toggle",
-      emit = J.switch(),
+      emit = B.switch(),
       read_only = true,
       command_id = 2,
       command_extractor = function(_, g)
-        return g:get_latest_state("main", D.switch.ID, "switch") ~= "on"
+        return g:get_latest_state("main", E.switch.ID, "switch") ~= "on"
       end
     }),
-    q(1, "sonoff_zbmini_r2_network_indicator", "sonoffZbminir2NetworkIndicator"),
-    q(18, "sonoff_zbmini_r2_turbo_mode", "sonoffZbminir2TurboMode", {
+    q(1, "sonoff_zbmini_r2_network_indicator", B.sonoffZbminir2NetworkIndicator()),
+    q(18, "sonoff_zbmini_r2_turbo_mode", B.sonoffZbminir2TurboMode(), {
       data_type = c.Int16,
       write_type = c.Int16,
       from_device = function(a) return a == 20 and "on" or "off" end,
       to_device = function(a) return a == "on" and 20 or 9 end
     }),
-    q(20, "sonoff_zbmini_r2_delayed_power_on_state", "sonoffZbminir2DelayPowerState"),
+    q(20, "sonoff_zbmini_r2_delayed_power_on_state", B.sonoffZbminir2DelayPowerState()),
     j.cluster_attribute(h, 21, {
       name = "sonoff_zbmini_r2_delayed_power_on_time",
-      emit = J.sonoffZbminir2DelayPowerTime(),
+      emit = B.sonoffZbminir2DelayPowerTime(),
       data_type = c.Uint16,
       write_type = c.Uint16,
       from_device = function(a) return a / 2 end,
@@ -261,10 +262,10 @@ local L = {
       numeric_range = { minimum = 0.5, maximum = 3599.5, step = 0.5, unit = "s" },
       read_on_configure = true
     }),
-    q(23, "sonoff_zbmini_r2_detach_relay_mode", "sonoffZbminir2DetachRelayMode"),
+    q(23, "sonoff_zbmini_r2_detach_relay_mode", B.sonoffZbminir2DetachRelayMode()),
     j.cluster_attribute(h, 22, {
       name = "sonoff_zbmini_r2_external_trigger_mode",
-      emit = J.sonoffZbminir2ExtTriggerMode(),
+      emit = B.sonoffZbminir2ExtTriggerMode(),
       data_type = c.Uint8,
       write_type = c.Uint8,
       from_device = function(a) return ({ [0] = "edge", [1] = "pulse", [2] = "following_off", [130] = "following_on" })[a] end,
@@ -300,10 +301,10 @@ local M = {
         if button == nil then return nil end
         return { component = "button" .. button, action = a % 2 == 1 and "held" or "pushed" }
       end,
-      handler = function(g, ag)
+      handler = function(g, ah)
         g:emit_component_event(
-          { id = ag.component },
-          D.button.button(ag.action, { state_change = true })
+          { id = ah.component },
+          E.button.button(ah.action, { state_change = true })
         )
         j.schedule_battery_refresh_after_button(g)
       end

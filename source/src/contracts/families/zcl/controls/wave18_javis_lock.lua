@@ -1,4 +1,3 @@
--- Wave18 JAVIS JS-SLK2-ZB source-only exact lock candidate.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/javis.ts:12-65.
 
 local zcl = require "protocol.zcl"

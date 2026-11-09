@@ -1,6 +1,4 @@
--- 센서 디바이스 정의
 -- ZHA tuya_sensor.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
 -- 변수명 규칙: {category}_{variant}
 --   category: th   (온습도: 온도+습도+배터리)
 --             soil (토양: 수분+온도+배터리)
@@ -24,13 +22,6 @@
 --     pm25           PM2.5 primary (DP2=PM2.5)
 --     probe          외부 프로브
 --     warning        물 부족 경고
---   규칙:
---     - category 내 variant 간 차이나는 scale만 표기
---     - soil은 t, h 항상 명시
---     - 복수 차이점은 모두 표기
---     - bare 숫자 금지 (숫자 앞에 의미 문자 필수)
---     - 기능 알파벳순 배치
---     - 가독성 우선: 약어보다 풀네임 선호 (표준 약어 ec, co2, pm25, hcho, illum 유지)
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
@@ -62,11 +53,9 @@ local function register_sensor_definition(definitions_or_table, fingerprint_list
 end
 
 
--- 2-1. soil_t10_h1: 온도÷10, 수분÷1
 
 -- ZHA: _TZE284_aao3yzhs / Z2M: _TZE284_wckqztdq
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1 = {
 
@@ -112,7 +101,7 @@ local soil_t10_h1_brightness = {
     })),
   }),
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
@@ -167,19 +156,17 @@ register_sensor_definition({
   profile = "sensors-soil-temp-moisture-battery-state-unit-brightness-soil-scaled",
   datapoints = soil_t10_h1_brightness,
   query_on_configure = false,
+  time_start = "off",
 }, ef00_helpers.ts0601_fingerprints({
   "_TZE284_3urschql",
 }))
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-2. soil_t100_h1: 온도 raw, 수분÷1
 
 -- ZHA: _TZE200_myd45weu / Z2M: _TZE284_oitavov2
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t100_h1 = {
 
@@ -238,13 +225,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-3. soil_t10_h1_ec: 전기 전도도 + 비옥도
 
 -- ZHA: _TZE284_rqcuwlsa / Z2M: NAS-STH02B2
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_ec = {
 
@@ -349,13 +333,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-4. soil_t10_h1_alarm: 알람 (DPs 101-110)
 
 -- Z2M: _TZE284_g2e6cpnw (TS0601_soil_2)
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_alarm = {
 
@@ -437,13 +418,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-5. soil_t10_h1_illum: 조도레벨 enum
 
 -- Z2M: _TZE284_nt4pquef (SGS02Z)
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_illum = {
 
@@ -489,13 +467,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-6. soil_t10_h1_air_illum: 공기습도 + 조도
 
 -- Z2M: _TZE284_o9ofysmo (ZS-301Z, Arteco)
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_air_illum = {
 
@@ -539,13 +514,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-7. soil_t10_h1_air_warning: 공기습도 + 물부족경고 (리맵 DP)
 
 -- Z2M: _TZE200_wqashyqo (ZG-303Z)
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_air_warning = {
 
@@ -596,13 +568,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-7a. soil_t10_h1_air_warning_legacy: HOBEIAN ZG-303Z
 
 -- 실기기 기준 DP3/5/15 + DP109 조합
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_air_warning_legacy = {
 
@@ -617,9 +586,9 @@ local soil_t10_h1_air_warning_legacy = {
   tuya.dp_numeric(9, {
     name = "temperature_unit",
     converter = converter.lookup_from_to({ celsius = 0, fahrenheit = 1 }),
-  }),                                                            -- 프로파일 미포함
+  }),
 
-  tuya.dp_soil_calibration(102, {}),                             -- 지원필요없음
+  tuya.dp_soil_calibration(102, {}),
 
   tuya.dp_temperature_calibration(104, { emit = emit.tempCalibrationSoilWarnC2() }),
 
@@ -633,9 +602,9 @@ local soil_t10_h1_air_warning_legacy = {
 
   tuya.dp_numeric(110, { name = "soil_warning", emit = emit.soilWarningThresholdLegacy() }),
 
-  tuya.dp_numeric(111, { name = "humidity_sampling" }),          -- 프로파일 미포함
+  tuya.dp_numeric(111, { name = "humidity_sampling" }),
 
-  tuya.dp_soil_sampling(112, {}),                                -- 프로파일 미포함
+  tuya.dp_soil_sampling(112, {}),
 
 }
 
@@ -653,13 +622,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-8. soil_t10_h1_air_dry: 공기습도 + 건조감지
 
 -- Z2M: _TZE200_npj9bug3 (CS-201Z, COOLO)
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_air_dry = {
 
@@ -757,13 +723,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-9. soil_t10_h1_air_illum_warning: 공기습도 + 조도 + 물부족경고
 
 -- Z2M: _TZE284_k7p2q5d9 (ZS-300Z, Arteco)
 
--- ══════════════════════════════════════════════════════════════
 
 local function zs300z_calibration(scale)
   return converter.from_to(
@@ -777,7 +740,7 @@ end
 
 local soil_t10_h1_air_illum_warning = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_humidity(101, { emit = emit.humidity(), scale = 1, read_only = true }),
 
@@ -830,6 +793,7 @@ register_sensor_definition({
   profile = "sensors-soil-temp-humidity-moisture-illuminance-battery-warning",
   datapoints = soil_t10_h1_air_illum_warning,
   query_on_configure = false,
+  time_start = "off",
 }, ef00_helpers.ts0601_fingerprints( {
 
   "_TZE284_k7p2q5d9",
@@ -847,19 +811,17 @@ register_sensor_definition({
   profile = "sensors-soil-temp-humidity-moisture-illuminance-battery-warning",
   datapoints = soil_t10_h1_air_illum_warning,
   query_on_configure = false,
+  time_start = "off",
 }, {
   device_helpers.create_fingerprint("Arteco", "ZS-304Z"),
 })
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-10. soil_t10_h1_air_illum_fertility: 공기습도 + 조도 + 비옥도
 
 -- Z2M: A89G12C/Arteco (ZS-SF00) -- 비표준 핑거프린트 (model="Arteco", manufacturer="A89G12C")
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_air_illum_fertility = {
 
@@ -909,13 +871,10 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11. soil_t10_h1_air_illum_fertility_cal: 공기습도 + 조도 + 비옥도 + 비옥도교정
 
 -- Z2M: _TZE284_hdml1aav (ZS-300TF, Excellux)
 
--- ══════════════════════════════════════════════════════════════
 
 local soil_t10_h1_air_illum_fertility_cal = {
 

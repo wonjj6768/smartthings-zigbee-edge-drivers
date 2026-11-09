@@ -1,4 +1,3 @@
--- Undeployed passive/alarm families extracted from wave19_environment.
 local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"

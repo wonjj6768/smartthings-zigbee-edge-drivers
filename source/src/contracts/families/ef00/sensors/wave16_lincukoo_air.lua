@@ -1,4 +1,3 @@
--- Wave16 Lincukoo air-quality monitor source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/lincukoo.ts:492-651.
 
 local tuya = require "protocol.tuya"

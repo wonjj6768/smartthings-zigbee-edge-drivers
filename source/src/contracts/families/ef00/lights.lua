@@ -158,7 +158,8 @@ local function load_fans() local tuya = require "protocol.tuya"
       emit = emit.fanLightLawxFanSpeed(),
       converter = fan_switch_r32_speed,
     }),
-    tuya.dp_power_on_behavior(11, { emit = emit.fanLightHmqzPowerOnBehavior() }),
+    tuya.dp_enum(11, { name = "power_on_behavior", emit = emit.fanLightHmqzPowerOnBehavior(),
+      converter = converter.lookup_from_to({ off = 0, on = 1 }) }),
     tuya.dp_on_off(5, { name = "switch", component = "light", emit = emit.switch() }),
   }
 
@@ -273,11 +274,7 @@ local function load_fans() local tuya = require "protocol.tuya"
   return device_definitions end
 
 local function load_lights()
-  -- 디머/조명 디바이스 정의
   -- ZHA ts0601_dimmer.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
-  --
-  -- 현재는 단일/2채널 EF00 디머/조명을 우선 지원합니다.
-  -- fan/light 복합형은 이 catalog의 fan registration group에서 처리합니다.
 
   local capabilities = require "st.capabilities"
   local tuya = require "protocol.tuya"
@@ -329,14 +326,14 @@ local function load_lights()
   local function oa1odmga_brightness_pair()
     return converter.from_to(
       function(value, device)
-        local brightness = clamp((tonumber(value) or 0) * 100 / 254, 0, 100)
+        local brightness = clamp((tonumber(value) or 0) * 100 / 1000, 0, 100)
         device:set_field(OA1ODMGA_BRIGHTNESS_FIELD, brightness, { persist = false })
         return brightness
       end,
       function(value, device)
         local brightness = clamp(tonumber(value) or 0, 0, 100)
         device:set_field(OA1ODMGA_BRIGHTNESS_FIELD, brightness, { persist = false })
-        return round(brightness * 254 / 100)
+        return round(brightness * 1000 / 100)
       end
     )
   end
@@ -413,7 +410,7 @@ local function load_lights()
 
   -- Z2M issue #32498 external definition, reported fully working for
   -- _TZE284_oa1odmga: DP1 state, DP2 white/colour work mode, DP3 brightness
-  -- 0..254, DP4 color temperature in mireds and DP5 12-hex-digit HSV data.
+  -- wire 0..1000 (source UI 0..254), DP4 mireds and DP5 12-hex-digit HSV data.
   local oa1odmga_switch = tuya.dp_on_off(1, { name = "switch", emit = emit.switch() })
   local oa1odmga_brightness = tuya.dp_numeric(3, {
     name = "brightness",
@@ -873,7 +870,6 @@ local function load_lights()
     "_TZE200_dfxkcots",
   }))
 
-  -- TS0601_dimmer_1_gang_1
   local dimmer_model_ts0601_dimmer_1_gang_1 = {
     profile = "lights-dimmer-options-ts0601",
     minimum_brightness_capability = "tsd1MinimumBrightness",
@@ -1020,14 +1016,22 @@ local function load_lights()
     profile = "lights-dimmer-whpb9yts",
     tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
     tuya.dp_brightness(3, { name = "brightness", emit = emit.level() }),
-    tuya.dp_light_type(4, { name = "light_type", emit = emit.whpb9ytsLightType() }),
+    tuya.apply_fixed_send_policy(tuya.dp_numeric(4, {
+      name = "light_type",
+      converter = converter.light_type(),
+      emit = emit.whpb9ytsLightType(),
+    })),
     tuya.dp_max_brightness(5, {
       name = "max_brightness",
       value_max = 1000,
       emit = emit.whpb9ytsMaxBrightness(),
     }),
     tuya.dp_countdown(6, { name = "countdown", emit = emit.whpb9ytsCountdown() }),
-    tuya.dp_power_on_behavior(14, { emit = emit.whpb9ytsPowerOnBehavior() }),
+    tuya.apply_fixed_send_policy(tuya.dp_numeric(14, {
+      name = "power_on_behavior",
+      converter = converter.power_on_behavior(),
+      emit = emit.whpb9ytsPowerOnBehavior(),
+    })),
     tuya.dp_backlight_mode(21, { name = "backlight_mode", emit = emit.whpb9ytsBacklightMode() }),
   }
 
@@ -1042,14 +1046,18 @@ local function load_lights()
   -- device does not answer them, so they stay unexposed here as well.
   local dimmer_model_ts0601_dimmer_1_gang_3 = {
     profile = "lights-dimmer-qzaing2g",
+    mcu_version_request_on_configure = true,
+    time_start = "off",
     tuya.dp_backlight_mode_off_on(16, {
       name = "backlight_mode",
+      converter = converter.lookup_from_to({ off = false, on = true }),
       emit = emit.qzaing2gBacklightMode(),
     }),
     tuya.dp_current(21, { emit = emit.current() }),
     tuya.dp_power(22, { emit = emit.power() }),
     tuya.dp_voltage(23, { emit = emit.voltage() }),
-    tuya.dp_child_lock(101, { name = "child_lock", emit = emit.qzaing2gChildLock() }),
+    tuya.dp_child_lock(101, { name = "child_lock", emit = emit.qzaing2gChildLock(),
+      converter = converter.lookup_from_to({ unlocked = false, locked = true }) }),
     tuya.dp_on_off(141, { name = "switch", emit = emit.switch() }),
     tuya.dp_brightness(142, { name = "brightness", emit = emit.level() }),
   }
@@ -1133,7 +1141,6 @@ local function load_lights()
     device_helpers.create_fingerprint("Moes", "ZS-SR-EUD-2"),
   })
 
-  -- TS0601_dimmer_3
   local dimmer_model_ts0601_dimmer_3_gang = {
     profile = "lights-dimmer-3",
     tuya.dp_on_off(1, { name = "switch", component = "main", emit = emit.switch() }),
@@ -1229,7 +1236,7 @@ local function load_lights()
     }),
     tuya.dp_numeric(103, {
       name = "backlight_brightness",
-      emit = emit.dimmer3gBacklightBrightness(),
+      emit = emit.dimmer3gBacklightBrightnessV2(),
     }),
   }
 
@@ -1282,6 +1289,8 @@ local function load_lights()
   -- indicator mode none/relay/pos.  This exact has no max brightness DP.
   local dimmer_model_ts0601_dimmer_knob = {
     profile = "lights-dimmer-knob-p0gzbqct",
+    mcu_version_request_on_configure = true,
+    time_start = "off",
     tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
     tuya.dp_brightness(2, { name = "brightness", emit = emit.level() }),
     tuya.dp_min_brightness(3, {
@@ -1289,8 +1298,9 @@ local function load_lights()
       value_max = 1000,
       emit = emit.p0gzbqctMinBrightness(),
     }),
-    tuya.dp_light_type(4, { name = "light_type", emit = emit.p0gzbqctLightType() }),
+    tuya.dp_light_type(4, { datatype = tuya.DP_TYPE_VALUE, name = "light_type", emit = emit.p0gzbqctLightType() }),
     tuya.dp_indicator_mode_none_relay_pos(21, {
+      datatype = tuya.DP_TYPE_VALUE,
       name = "indicator_mode",
       emit = emit.p0gzbqctIndicatorMode(),
     }),
@@ -1300,21 +1310,50 @@ local function load_lights()
     "_TZE200_p0gzbqct",
   }))
 
-  -- TS0601_knob_dimmer_switch: dimmer knob with two light channels
   local dimmer_model_ts0601_knob_dimmer_switch = {
     profile = "lights-color-temperature",
+    mcu_version_request_on_configure = true,
+    time_start = "off",
+    color_temperature_range = { minimum = 2703, maximum = 6494 },
+    runtime_start = function(device)
+      device:emit_component_event({ id = "main" }, capabilities.colorTemperature.colorTemperatureRange({
+        value = { minimum = 2703, maximum = 6494 }, unit = "K",
+      }))
+      return true
+    end,
+    configure = function(_, device)
+      local body = require("st.zigbee.generic_body").GenericBody("")
+      body.ID = 0xF0
+      local request = require("st.zigbee.zcl.clusters").Basic:build_cluster_specific_command(device, body, "server"):to_endpoint(1)
+      request.body.zcl_header.frame_ctrl:set_disable_default_response()
+      device:send(request)
+      return true
+    end,
     tuya.dp_on_off(102, { name = "switch", emit = emit.switch() }),
     tuya.dp_brightness(103, { name = "brightness", emit = emit.level(), scale = 1000 }),
-    tuya.dp_color_temperature(107, { name = "color_temperature", emit = emit.color_temperature(), scale = 1000 }),
-    tuya.dp_enum(105, { name = "adjustment_mode" }),                       -- profile 미포함
-    tuya.dp_power_on_behavior(106, {}),                                    -- profile 미포함
-    tuya.dp_enum(111, { name = "action_1" }),                              -- profile 미포함
-    tuya.dp_enum(112, { name = "action_2" }),                              -- profile 미포함
-    tuya.dp_on_off(121, { name = "state_l1" }),                            -- profile 미포함
-    tuya.dp_on_off(122, { name = "state_l2" }),                            -- profile 미포함
-    tuya.dp_switch_mode(131, { name = "switch_mode_l1" }),                 -- profile 미포함
-    tuya.dp_switch_mode(132, { name = "switch_mode_l2" }),                 -- profile 미포함
-    tuya.dp_enum(141, { name = "mode" }),                                  -- profile 미포함
+    -- ZHC scale(154,370,0,1000) rounds the mired coordinate before its Kelvin projection.
+    tuya.dp_color_temperature(107, { name = "color_temperature", emit = emit.color_temperature(),
+      converter = converter.from_to(
+        function(value)
+          local mired = math.floor(154 + math.max(0, math.min(1000, value)) * 216 / 1000 + 0.5)
+          return math.floor(1000000 / mired + 0.5)
+        end,
+        function(value)
+          if type(value) ~= "number" or value <= 0 then return nil end
+          local mired = math.max(154, math.min(370, math.floor(1000000 / value + 0.5)))
+          return math.floor((mired - 154) * 1000 / 216 + 0.5)
+        end
+      ),
+    }),
+    tuya.dp_enum(105, { name = "adjustment_mode" }),
+    tuya.dp_power_on_behavior(106, { datatype = tuya.DP_TYPE_VALUE }),
+    tuya.dp_enum(111, { name = "action_1" }),
+    tuya.dp_enum(112, { name = "action_2" }),
+    tuya.dp_on_off(121, { name = "state_l1" }),
+    tuya.dp_on_off(122, { name = "state_l2" }),
+    tuya.dp_switch_mode(131, { name = "switch_mode_l1" }),
+    tuya.dp_switch_mode(132, { name = "switch_mode_l2" }),
+    tuya.dp_enum(141, { name = "mode" }),
   }
 
   register_device_definition(dimmer_model_ts0601_knob_dimmer_switch, device_helpers.create_fingerprints("TS0601", {

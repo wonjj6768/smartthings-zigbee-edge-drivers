@@ -1,4 +1,3 @@
--- Wave19 FrankEver/Lidl valve source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/frankever.ts:33-132
 --   src/devices/lidl.ts:41-222,404-531

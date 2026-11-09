@@ -71,7 +71,19 @@ deviceConfig:
       - component: main
         capability: currentMeasurement
         version: 1
+      - component: main
+        capability: concertmirror08464.qzaing2gBacklightMode
+        version: 1
+      - component: main
+        capability: concertmirror08464.qzaing2gChildLock
+        version: 1
     actions:
+      - component: main
+        capability: switch
+        version: 1
+      - component: main
+        capability: switchLevel
+        version: 1
       - component: main
         capability: concertmirror08464.qzaing2gBacklightMode
         version: 1

@@ -1,4 +1,3 @@
--- Protocol-neutral capability availability and callable checks.
 local capability_support = {}
 
 function capability_support.is_callable(value)

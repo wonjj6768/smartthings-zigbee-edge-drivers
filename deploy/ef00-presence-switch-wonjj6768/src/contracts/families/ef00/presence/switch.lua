@@ -1,50 +1,14 @@
-local a=require"protocol.tuya"
-local b=require"capabilities.events.all"
-local x=require"contracts.helpers.family"
-local w=require"contracts.helpers.ef00_presence"
-local h=a.converter
+local a,b,x,w=require"protocol.tuya",require"capabilities.events.all",require"contracts.helpers.family",require"contracts.helpers.ef00_presence"local h=a.converter
 local u,q=w.isolated_definition_registry(x.definition_registry)
 local function c(t,v,z)
-return w.register_presence_definition(
-q,t,v,z)
+return w.register_presence_definition(q,t,v,z)
 end
-local g=w.ts0601_fingerprints
-local f=h.lookup_from_to{
-off=0,all=1,ch1=2,ch2=3,ch3=4,ch1_2=5,ch2_3=6,ch1_3=7}local d=h.lookup_from_to{
-off=0,all=1,ch2=2,ch3=3,ch1_and_ch2=4,ch2_and_ch3=5,ch1_and_ch3=6}local i=h.lookup_from_to{ch1=0,ch2=1,ch3=2}local r=w.msa201_presence_converter
-local l={
-profile="switches-presence-switch-3-zg302zm",package_group="presence-switch",named_datapoints=true,a.dp_presence(1,{emit=b.presence(),converter=h.true_false1()}),a.dp_numeric(2,{name="sensitivity",emit=b.zg302zmSensitivity()}),a.dp_numeric(4,{
-name="distance",emit=b.zg302zmDistance(),converter=h.divide_by_pair(100)}),a.dp_on_off(101,{name="switch",component="main",emit=b.switch()}),a.dp_on_off(102,{name="switch",component="switch2",emit=b.switch()}),a.dp_on_off(103,{name="switch",component="switch3",emit=b.switch()}),a.dp_enum(108,{
-name="trigger_switch",emit=b.zg302zmTriggerSwitch(),converter=i}),a.dp_on_off(111,{name="backlight",emit=b.zg302zmBacklight()}),a.dp_power_outage_memory(112,{
-name="power_outage_memory",emit=b.zg302zmPowerOutage()}),a.dp_enum(113,{
-name="auto_on",emit=b.zg302zmAutoOnV2(),converter=f}),a.dp_numeric(114,{name="trigger_hold",emit=b.zg302zmTriggerHold()}),a.dp_enum(115,{
-name="auto_off",emit=b.zg302zmAutoOffV2(),converter=f})}c(l,g{
-"_TZE200_kccdzaeo","_TZE200_s7rsrtbg","_TZE200_tmszbtzq","_TZE200_bfmfhxra","_TZE200_ahpcyzth","_TZE200_kijxnb8q","HOBEIAN:ZG-302ZM"})local k={
-profile="switches-presence-switch-3-zg302zl",package_group="presence-switch",named_datapoints=true,a.dp_presence(101,{emit=b.presence(),converter=h.true_false1()}),a.dp_numeric(102,{name="sensitivity",emit=b.zg302zlSensitivity()}),a.dp_on_off(1,{name="switch",component="main",emit=b.switch()}),a.dp_on_off(2,{name="switch",component="switch2",emit=b.switch()}),a.dp_on_off(3,{name="switch",component="switch3",emit=b.switch()}),a.dp_on_off(16,{name="backlight",emit=b.zg302zlBacklight()}),a.dp_power_outage_memory(14,{
-name="power_outage_memory",emit=b.zg302zlPowerOutage()}),a.dp_numeric(103,{name="trigger_hold",emit=b.zg302zlTriggerHold()}),a.dp_enum(104,{
-name="auto_on",emit=b.zg302zlAutoOn(),converter=d}),a.dp_enum(105,{
-name="auto_off",emit=b.zg302zlAutoOff(),converter=d})}c(k,g{
-"_TZE200_khzbklyh","_TZE200_df04ghrb","_TZE200_toeldckg","_TZE200_cqtamhh5","_TZE200_xlnzk169","_TZE200_llvwkkde","HOBEIAN:ZG-302ZL"})local e=h.lookup_from_to{
-ON=true,OFF=false}local m=h.lookup_from_to{
-all=0,left=1,right=2}local p=h.lookup_from_to{
-low=0,medium=1,high=2,max=3}
+local g,f,d,i,r=w.ts0601_fingerprints,h.lookup_from_to{off=0,all=1,ch1=2,ch2=3,ch3=4,ch1_2=5,ch2_3=6,ch1_3=7},h.lookup_from_to{off=0,all=1,ch2=2,ch3=3,ch1_and_ch2=4,ch2_and_ch3=5,ch1_and_ch3=6},h.lookup_from_to{ch1=0,ch2=1,ch3=2},w.msa201_presence_converter
+
+local l={profile="switches-presence-switch-3-zg302zm",package_group="presence-switch",named_datapoints=true,a.dp_presence(1,{emit=b.presence(),converter=h.true_false1()}),a.dp_numeric(2,{name="sensitivity",emit=b.zg302zmSensitivity()}),a.dp_numeric(4,{name="distance",emit=b.zg302zmDistance(),converter=h.divide_by_pair(100)}),a.dp_on_off(101,{name="switch",component="main",emit=b.switch()}),a.dp_on_off(102,{name="switch",component="switch2",emit=b.switch()}),a.dp_on_off(103,{name="switch",component="switch3",emit=b.switch()}),a.dp_enum(108,{name="trigger_switch",emit=b.zg302zmTriggerSwitch(),converter=i}),a.dp_on_off(111,{name="backlight",emit=b.zg302zmBacklight()}),a.dp_power_outage_memory(112,{name="power_outage_memory",emit=b.zg302zmPowerOutage()}),a.dp_enum(113,{name="auto_on",emit=b.zg302zmAutoOnV2(),converter=f}),a.dp_numeric(114,{name="trigger_hold",emit=b.zg302zmTriggerHold()}),a.dp_enum(115,{name="auto_off",emit=b.zg302zmAutoOffV2(),converter=f})}c(l,g{"_TZE200_kccdzaeo","_TZE200_s7rsrtbg","_TZE200_tmszbtzq","_TZE200_bfmfhxra","_TZE200_ahpcyzth","_TZE200_kijxnb8q","HOBEIAN:ZG-302ZM"})local k={profile="switches-presence-switch-3-zg302zl",package_group="presence-switch",named_datapoints=true,a.dp_presence(101,{emit=b.presence(),converter=h.true_false1()}),a.dp_numeric(102,{name="sensitivity",emit=b.zg302zlSensitivity()}),a.dp_on_off(1,{name="switch",component="main",emit=b.switch()}),a.dp_on_off(2,{name="switch",component="switch2",emit=b.switch()}),a.dp_on_off(3,{name="switch",component="switch3",emit=b.switch()}),a.dp_on_off(16,{name="backlight",emit=b.zg302zlBacklight()}),a.dp_power_outage_memory(14,{name="power_outage_memory",emit=b.zg302zlPowerOutage()}),a.dp_numeric(103,{name="trigger_hold",emit=b.zg302zlTriggerHold()}),a.dp_enum(104,{name="auto_on",emit=b.zg302zlAutoOn(),converter=d}),a.dp_enum(105,{name="auto_off",emit=b.zg302zlAutoOff(),converter=d})}c(k,g{"_TZE200_khzbklyh","_TZE200_df04ghrb","_TZE200_toeldckg","_TZE200_cqtamhh5","_TZE200_xlnzk169","_TZE200_llvwkkde","HOBEIAN:ZG-302ZL"})local e,m,p=h.lookup_from_to{ON=true,OFF=false},h.lookup_from_to{all=0,left=1,right=2},h.lookup_from_to{low=0,medium=1,high=2,max=3}
 local function j(y)
-local s={
-a.dp_presence(1,{emit=b.presence(),converter=r}),a.dp_numeric(4,{name="detection_range",emit=b.zis03DetectionRange()}),a.dp_binary(102,{
-name="indicator",emit=b.zis03Indicator(),converter=e}),a.dp_illuminance(103,{emit=b.illuminance()}),a.dp_numeric(104,{name="fading_time",emit=b.zis03FadingTime()}),a.dp_numeric(106,{
-name="compensation_coefficient",emit=b.zis03Compensation()}),a.dp_on_off(107,{name="switch",component="main",emit=b.switch()}),a.dp_binary(108,{
-name="radar",emit=b.zis03Radar(),converter=e}),a.dp_enum(111,{
-name="detection_area",emit=b.zis03DetectionArea(),converter=m}),a.dp_binary(112,{
-name="state_reversal",emit=b.zis03StateReversal(),converter=e}),a.dp_enum(113,{
-name="sensitivity",emit=b.zis03Sensitivity(),converter=p})}if y.detection_distance then
-s[#s+1]=a.dp_numeric(101,{
-name="detection_distance",read_only=true,emit=b.zis04DetectionDistance()})
-end
+local s={a.dp_presence(1,{emit=b.presence(),converter=r}),a.dp_numeric(4,{name="detection_range",emit=b.zis03DetectionRange()}),a.dp_binary(102,{name="indicator",emit=b.zis03Indicator(),converter=e}),a.dp_illuminance(103,{emit=b.illuminance()}),a.dp_numeric(104,{name="fading_time",emit=b.zis03FadingTime()}),a.dp_numeric(106,{name="compensation_coefficient",emit=b.zis03Compensation()}),a.dp_on_off(107,{name="switch",component="main",emit=b.switch()}),a.dp_binary(108,{name="radar",emit=b.zis03Radar(),converter=e}),a.dp_enum(111,{name="detection_area",emit=b.zis03DetectionArea(),converter=m}),a.dp_binary(112,{name="state_reversal",emit=b.zis03StateReversal(),converter=e}),a.dp_enum(113,{name="sensitivity",emit=b.zis03Sensitivity(),converter=p})}if y.detection_distance then
+s[#s+1]=a.dp_numeric(101,{name="detection_distance",read_only=true,emit=b.zis04DetectionDistance()})end
 return s
 end
-local n={
-profile="safety-presence-switch-illuminance-zis03",package_group="presence-switch",named_datapoints=true,datapoints=j{}}c(n,g{
-"_TZE204_izy1g1mb"})local o={
-profile="safety-presence-switch-illuminance-zis04",package_group="presence-switch",named_datapoints=true,datapoints=j{detection_distance=true}}c(o,g{
-"_TZE204_f2rflfa6"})return{
-id="ef00.presence.switch",registrations=u}
+local n={profile="safety-presence-switch-illuminance-zis03",package_group="presence-switch",named_datapoints=true,datapoints=j{}}c(n,g{"_TZE204_izy1g1mb"})local o={profile="safety-presence-switch-illuminance-zis04",package_group="presence-switch",named_datapoints=true,datapoints=j{detection_distance=true}}c(o,g{"_TZE204_f2rflfa6"})return{id="ef00.presence.switch",registrations=u}

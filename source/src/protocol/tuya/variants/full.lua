@@ -1,4 +1,3 @@
--- Canonical full Tuya protocol facade for EF00-owned packages.
 
 local shared = require "tuya_common.core"
 local emit = require "capabilities.events.all"

@@ -1,4 +1,3 @@
--- Receive/read/configure-only ZCL facade for EF00-owned hybrid packages.
 
 local zcl = require "protocol.zcl.stub_base"()
 zcl.ATTR_MEASURED_VALUE = nil

@@ -1,4 +1,3 @@
--- energy package-owned DIN rail family definitions.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -16,10 +15,7 @@ local emit_power = emit.power()
 local ALARM_TRIP_SETTING = { ignore = 0, alarm = 1, trip = 2 }
 local CLOSED_ALARM_TRIP_SETTING = { closed = 0, alarm = 1, trip = 2 }
 
--- ══════════════════════════════════════════════════════════════
--- 1-1. din_rail_model_ts0601_din_1: 단일 스위치 + 계측
 -- Z2M: TS0601_din_1 / ZHA: TS0601 power meter 계열
--- ══════════════════════════════════════════════════════════════
 -- Z2M TS0601_din_1 (tuya.ts:10945): DP1 energy /100, DP6 phase variant 1
 -- voltage and current, DP16 switch, DP101 total energy /100, DP102 produced
 -- energy /100, DP103 power, DP105 AC frequency /100, DP109 reactive energy
@@ -80,10 +76,7 @@ register_device_definition(din_rail_model_ts0601_din_1, {
   device_helpers.create_fingerprint("Tuya", "RC-MCB"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-2. din_rail_model_ts0601_din_2: 단일 스위치 + 계측 + 임계값/미터ID
 -- Z2M: TS0601_din_2
--- ══════════════════════════════════════════════════════════════
 -- Z2M TS0601_din_2 (tuya.ts:11190): DP1 energy /100, DP6 phase variant 2,
 -- DP10 fault enum, DP16 switch, DP17 threshold pair, DP18 meter ID and DP20
 -- clear fault.  Z2M deliberately maps DP3, DP4, DP11 and DP21..DP24 to null
@@ -141,10 +134,7 @@ register_device_definition(din_rail_model_ts0601_din_2, {
   device_helpers.create_fingerprint("MatSee Plus", "DAC2161C"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-3. din_rail_model_ts0601_din_3: 단일 스위치 + 계측 + 생산전력/역방향에너지
 -- Z2M: TS0601_din_3
--- ══════════════════════════════════════════════════════════════
 -- Z2M TS0601_din_3 (tuya.ts:11256) shares the din_2 layout and adds DP2
 -- produced energy /100.  DP3, DP4, DP11 and DP21..DP24 are null in Z2M for the
 -- same reasons as din_2, so they stay internal.
@@ -198,10 +188,7 @@ register_device_definition(din_rail_model_ts0601_din_3, {
   device_helpers.create_fingerprint("XOCA", "DAC2161C"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-4. din_rail_model_ts0601_din_legacy: 레거시 단일 스위치 + 계측
 -- Z2M: TS0601_din
--- ══════════════════════════════════════════════════════════════
 local din_rail_model_ts0601_din_legacy = {
   package_group = "energy",
   tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
@@ -217,10 +204,7 @@ register_device_definition(din_rail_model_ts0601_din_legacy, device_helpers.crea
   "_TZE200_fsb6zw01",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-5. din_rail_model_ts0601_din_4: 단일 스위치 + 계측 + 누설/온도
 -- Z2M: TS0601_din_4
--- ══════════════════════════════════════════════════════════════
 -- Z2M TS0601_din_4 (tuya.ts:21123): DP1 energy /100, DP6 phase A voltage and
 -- current, DP9 circuit breaker fault bitmap, DP12 clear energy, DP15 leakage
 -- current in mA, DP16 switch, DP102 reclosing tries 0..30, DP103 temperature,
@@ -287,7 +271,6 @@ register_device_definition(din_rail_model_ts0601_din_4, device_helpers.create_fi
   "_TZE204_fhvdgeuh",
 }))
 
--- SMKG-2KNL-SD smart leakage protector
 -- Z2M SMKG-2KNL-SD (tuya.ts:25032): DP1 switch, DP17 energy /100, DP18 current
 -- /100 (not /1000), DP19 power /10, DP20 voltage /10, DP47 temperature raw,
 -- DP53 leakage current raw, DP41..DP45 writable thresholds and DP9 the circuit
@@ -329,10 +312,7 @@ register_device_definition(din_rail_model_leakage_protector, device_helpers.crea
   "_TZE284_5m4nchbm",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-10. din_rail_model_ts0601_rcbo: RCBO + 계측
 -- Z2M: TS0601_rcbo / ZJSBL7-100Z
--- ══════════════════════════════════════════════════════════════
 local emit_rcbo_trip = emit.zjsbl7Trip()
 local din_rail_model_ts0601_rcbo = {
   profile = "din-rail-switch-power-energy-voltage-current-rcbo",
@@ -497,39 +477,52 @@ register_device_definition(din_rail_model_ts0601_rcbo, {
   device_helpers.create_fingerprint("WDYK", "ZJSBL7-100Z"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-10a. din_rail_model_to_q_sys_jzt: 단상 스마트 미터 + RCBO 이벤트
 -- Z2M: TO-Q-SYS-JZT
--- ══════════════════════════════════════════════════════════════
 -- Z2M TO-Q-SYS-JZT (tuya.ts:19540) is a meter, not an RCBO.  DP108 is the
 -- control mode enum here, and there is no DP112 auto reclosing, DP113 restore
 -- default, DP117 leakage threshold or DP143..DP145 recloser block.  DP13 and
 -- DP125 are marked unknown upstream so they stay internal.
+local toqjzt_phase_metrics = emit_metric_bundle({ voltage = true, current = true })
+local function toqjzt_phase_events(device, value, info, context)
+  if type(value) ~= "table" then return nil end
+  local events = toqjzt_phase_metrics(device, value, info, context) or {}
+  if value.power ~= nil then
+    local power_events = emit_power(device, value.power)
+    if power_events[1] ~= nil then
+      for _, event in ipairs(power_events) do events[#events + 1] = event end
+    else
+      events[#events + 1] = power_events
+    end
+  end
+  return #events > 0 and events or nil
+end
+
 local din_rail_model_to_q_sys_jzt = {
   profile = "din-rail-switch-power-energy-voltage-current-toqjzt",
   package_group = "energy",
+  query_on_configure = true,
+  respond_to_mcu_version_response = true,
+  -- Use the existing host timer so a persisted user interval still takes priority.
+  default_power_poll_interval_seconds = 10,
   tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
   tuya.dp_phase_variant2(6, {
-    emit = emit_metric_bundle({
-      voltage = true,
-      current = true,
-      power = true,
-    }),
+    emit = toqjzt_phase_events,
   }),
-  tuya.dp_numeric(13, { name = "test1" }),                                -- 프로파일 미포함
+  tuya.dp_numeric(13, { name = "test1" }),
   tuya.dp_numeric(15, { name = "leakage_current", emit = emit.leakageCurrentToqJzt() }),
   tuya.dp_on_off(16, { name = "switch", emit = emit.switch() }),
   -- Z2M uses valueConverter.raw here, so this datapoint is already in Hz.
   tuya.dp_ac_frequency(32, {
     name = "ac_frequency",
-    scale = 1,
+    converter = converter.signed_number_pair(1),
     read_only = true,
-    emit = emit.toqjztAcFrequency(),
+    emit = emit.toqjztAcFrequencyV2(),
   }),
   tuya.dp_power_factor(50, {
     name = "power_factor",
+    converter = converter.signed_number_pair(1),
     read_only = true,
-    emit = emit.toqjztPowerFactor(),
+    emit = emit.toqjztPowerFactorV2(),
   }),
   tuya.dp_enum(102, {
     name = "over_voltage_setting",
@@ -577,14 +570,16 @@ local din_rail_model_to_q_sys_jzt = {
   tuya.dp_numeric(116, { name = "under_voltage_threshold", emit = emit.toqjztUnderVoltageThreshold() }),
   tuya.dp_temperature(118, {
     name = "temperature_threshold",
-    scale = 10,
+    converter = converter.signed_number_pair(10),
+    signed = true,
     emit = emit.toqjztTemperatureThreshold(),
   }),
   tuya.dp_numeric(119, { name = "over_power_threshold", emit = emit.toqjztOverPowerThreshold() }),
-  tuya.dp_numeric(125, { name = "test5" }),                                -- 프로파일 미포함
+  tuya.dp_numeric(125, { name = "test5" }),
   tuya.dp_temperature(131, {
     name = "temperature",
-    scale = 10,
+    converter = converter.signed_number_pair(10),
+    signed = true,
     read_only = true,
     emit = emit.temperature(),
   }),
@@ -594,10 +589,7 @@ register_device_definition(din_rail_model_to_q_sys_jzt, {
   device_helpers.create_fingerprint("_TZE284_6ocnqlhn", "TS0601"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-10aa. din_rail_model_towsmr1: Tongou TOWSMR1 RCBO
 -- Z2M: TOWSMR1
--- ══════════════════════════════════════════════════════════════
 -- Z2M TOWSMR1 (tuya.ts:19248) is a single phase RCBO.  It shares the setting and
 -- threshold datapoints with TO-Q-SYS-JZT but DP108 is the leakage protection
 -- setting rather than a control mode, and it adds DP112 auto reclosing, DP113
@@ -1040,16 +1032,13 @@ register_device_definition(din_rail_model_towsmr1, {
   device_helpers.create_fingerprint("Tongou", "TOWSMR1-20A-AC"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-10b. din_rail_model_zbn_jt_63: 전력 모니터링 DIN 스위치
 -- Z2M: ZBN-JT-63
--- ══════════════════════════════════════════════════════════════
 local din_rail_model_zbn_jt_63 = {
   profile = "din-rail-switch-power-energy-voltage-current-zbnjt63",
   package_group = "energy",
   tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
-  tuya.dp_numeric(3, { name = "monthly_energy" }),                        -- 프로파일 미포함
-  tuya.dp_numeric(4, { name = "daily_energy" }),                          -- 프로파일 미포함
+  tuya.dp_numeric(3, { name = "monthly_energy" }),
+  tuya.dp_numeric(4, { name = "daily_energy" }),
   tuya.dp_phase_variant3(6, {
     emit = emit_metric_bundle({
       voltage = true,
@@ -1096,10 +1085,7 @@ register_device_definition(din_rail_model_zbn_jt_63, device_helpers.create_finge
   "_TZE204_jcwbwckh",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-10c. din_rail_model_dds238_1_z1: 단상 DIN 에너지 미터 + 스위치
 -- Z2M: DDS238-1-Z1
--- ══════════════════════════════════════════════════════════════
 local din_rail_model_dds238_1_z1 = {
   profile = "din-rail-switch-power-energy-voltage-current",
   package_group = "energy",
@@ -1114,10 +1100,7 @@ register_device_definition(din_rail_model_dds238_1_z1, device_helpers.create_fin
   "_TZE204_byzdayie",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-10d. din_rail_model_rmdzb_1pnl63: 단상 DIN 에너지 미터 + 스위치
 -- Z2M: RMDZB-1PNL63
--- ══════════════════════════════════════════════════════════════
 -- Z2M RMDZB-1PNL63 (tuya.ts:10991) is single phase: DP1 energy /100, DP6
 -- phaseVariant2 phase A only, DP9 circuit breaker fault bitmap, DP16 switch and
 -- DP103 temperature as a raw degree value.  DP17/DP18 carry packed threshold
@@ -1142,8 +1125,8 @@ local din_rail_model_rmdzb_1pnl63 = {
     converter = circuit_breaker_faults_converter,
   }),
   tuya.dp_on_off(16, { name = "switch", emit = emit.switch() }),
-  tuya.dp_threshold(17, {}),                                               -- 프로파일 미포함
-  tuya.dp_threshold(18, {}),                                               -- 프로파일 미포함
+  tuya.dp_threshold(17, {}),
+  tuya.dp_threshold(18, {}),
   tuya.dp_temperature(103, {
     name = "temperature",
     scale = 1,
@@ -1160,10 +1143,7 @@ register_device_definition(din_rail_model_rmdzb_1pnl63, {
   device_helpers.create_fingerprint("TNCE", "RMDZB-1PNL63"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-10d-0. din_rail_model_stb3l_125_zj: 3상 DIN RCBO 에너지 미터
 -- Z2M: STB3L-125-ZJ (tuya.ts:11070)
--- ══════════════════════════════════════════════════════════════
 -- The wbhaespm exacts are a different model from RMDZB-1PNL63: they report all
 -- three phases through DP6/DP7/DP8, put temperature on DP102 with a /10 scale
 -- instead of DP103 raw, and add the DP21 leakage self test.  Sharing the single
@@ -1198,8 +1178,8 @@ local din_rail_model_stb3l_125_zj = {
     converter = circuit_breaker_faults_converter,
   }),
   tuya.dp_on_off(16, { name = "switch", emit = emit.switch() }),
-  tuya.dp_threshold(17, {}),                                               -- 프로파일 미포함
-  tuya.dp_threshold(18, {}),                                               -- 프로파일 미포함
+  tuya.dp_threshold(17, {}),
+  tuya.dp_threshold(18, {}),
   tuya.dp_on_off(21, {
     name = "leakage_test",
     emit = emit.stb3l125zjLeakageTest(),
@@ -1223,10 +1203,7 @@ register_device_definition(din_rail_model_stb3l_125_zj, {
   device_helpers.create_fingerprint("SUTON", "STB3L-125/ZJ"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-10d-1. din_rail_model_zbn_dj_63: smart circuit breaker
 -- Z2M: ZBN-DJ-63
--- ══════════════════════════════════════════════════════════════
 -- Z2M ZBN-DJ-63 (tuya.ts:1824) exposes far more than the shared DIN profile
 -- could reach: prepayment, recharge, reclosing, leakage and timer settings all
 -- live on plain scalar datapoints.  Only DP1/DP6/DP16 were visible before, so
@@ -1292,8 +1269,8 @@ local din_rail_model_zbn_dj_63 = {
     emit = emit.zbndj63LeakageCurrent(),
   }),
   tuya.dp_on_off(16, { name = "switch", emit = emit.switch() }),
-  tuya.dp_threshold(17, {}),                                              -- profile 미포함
-  tuya.dp_threshold(18, {}),                                              -- profile 미포함
+  tuya.dp_threshold(17, {}),
+  tuya.dp_threshold(18, {}),
   tuya.dp_numeric(102, { name = "recover_count", emit = emit.zbndj63RecoverCount() }),
   tuya.dp_temperature(103, {
     name = "temperature",
@@ -1315,9 +1292,9 @@ local din_rail_model_zbn_dj_63 = {
     emit = emit.zbndj63ReverseEnergy(),
   }),
   tuya.dp_numeric(119, { name = "power_on_delay", emit = emit.zbndj63PowerOnDelay() }),
-  tuya.dp_numeric(124, { name = "alarm_over_current_count" }),           -- profile 미포함
-  tuya.dp_numeric(125, { name = "alarm_low_current_count" }),            -- profile 미포함
-  tuya.dp_numeric(127, { name = "status" }),                             -- profile 미포함
+  tuya.dp_numeric(124, { name = "alarm_over_current_count" }),
+  tuya.dp_numeric(125, { name = "alarm_low_current_count" }),
+  tuya.dp_numeric(127, { name = "status" }),
   -- Z2M's plain numeric lookup sends VALUE, not Tuya ENUM.
   tuya.dp_numeric(134, {
     name = "relay_power_on_state",
@@ -1334,10 +1311,7 @@ register_device_definition(din_rail_model_zbn_dj_63, device_helpers.create_finge
   "_TZE204_lb0fsvba",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-10e. din_rail_model_toqcb2_80: Tongou 3-phase smart circuit breaker
 -- Z2M: TOQCB2-80
--- ══════════════════════════════════════════════════════════════
 local din_rail_model_toqcb2_80 = {
   profile = "din-rail-switch-power-energy-voltage-current-toqcb2",
   package_group = "energy",

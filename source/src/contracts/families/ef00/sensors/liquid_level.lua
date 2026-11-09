@@ -1,6 +1,4 @@
--- 센서 디바이스 정의
 -- ZHA tuya_sensor.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
 -- 변수명 규칙: {category}_{variant}
 --   category: th   (온습도: 온도+습도+배터리)
 --             soil (토양: 수분+온도+배터리)
@@ -24,13 +22,6 @@
 --     pm25           PM2.5 primary (DP2=PM2.5)
 --     probe          외부 프로브
 --     warning        물 부족 경고
---   규칙:
---     - category 내 variant 간 차이나는 scale만 표기
---     - soil은 t, h 항상 명시
---     - 복수 차이점은 모두 표기
---     - bare 숫자 금지 (숫자 앞에 의미 문자 필수)
---     - 기능 알파벳순 배치
---     - 가독성 우선: 약어보다 풀네임 선호 (표준 약어 ec, co2, pm25, hcho, illum 유지)
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
@@ -61,10 +52,7 @@ local function register_sensor_definition(definitions_or_table, fingerprint_list
 end
 
 
--- ══════════════════════════════════════════════════════════════
--- 2-12. liquid_level_872wz: 872WZ 수위 센서
 -- Z2M: _TZE204_7yyuo8sr
--- ══════════════════════════════════════════════════════════════
 local liquid_level_872wz = {
   profile = "sensors-liquid-level-872wz",
   force_time_updates = true,
@@ -283,10 +271,7 @@ local me202_emit_level = me201_level_emitter(
   emit.me202LiquidState(), emit.me202DepthV2(), emit.me202LevelPercent()
 )
 
--- ══════════════════════════════════════════════════════════════
--- 2-12a. liquid_level_me201wz: ME201WZ 수위 센서
 -- Z2M: _TZE284_kyyu8rbj
--- ══════════════════════════════════════════════════════════════
 local liquid_level_me201wz = {
   profile = "sensors-liquid-level-me201wz",
   force_time_updates = true,
@@ -347,10 +332,7 @@ register_sensor_definition(liquid_level_me201wz, {
   device_helpers.create_fingerprint("_TZE284_kyyu8rbj", "TS0601"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 2-12b. liquid_level_tlc2206: TLC2206 수위 센서
 -- Z2M: _TZE200_lvkk0hdg
--- ══════════════════════════════════════════════════════════════
 local liquid_level_tlc2206 = {
   profile = "sensors-liquid-level-tlc2206",
   force_time_updates = true,
@@ -397,10 +379,7 @@ register_sensor_definition(liquid_level_tlc2206, {
   device_helpers.create_fingerprint("_TZE200_lvkk0hdg", "TS0601"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 2-12c. liquid_level_me202wz: ME202WZ 수위 센서
 -- Z2M: _TZE284_mxujdmxo
--- ══════════════════════════════════════════════════════════════
 local liquid_level_me202wz = {
   profile = "sensors-liquid-level-me202wz",
   force_time_updates = true,

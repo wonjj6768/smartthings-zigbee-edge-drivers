@@ -1,4 +1,3 @@
--- 제조사 코드 → 디바이스 정의 라우터
 -- generated.package_registry가 manifest 순서대로 모든 package registration을 제공합니다.
 
 local registrations = require "generated.package_registry"

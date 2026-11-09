@@ -1,4 +1,3 @@
--- Wave15 cover families, source-only candidates.
 -- Frozen Zigbee2MQTT v26.99.0:
 --   src/devices/box.ts:221-257 (BOX ERC2206-Z)
 --   src/devices/tuya.ts:8874-8917 (Semicom three-shutter panel)

@@ -1,18 +1,9 @@
-local c=require"st.capabilities"
-local k=require"runtime.capability_metadata"
-local Y=require"runtime.battery_refresh"
-local ae=require"runtime.energy_reset"
-local S=require"runtime.utf8_text"
-local ar=require"log"
-local i={}local v=k.by_emit_name.last_power_response_time
-local q="_tuya_last_power_response_at"
-local x="waiting"
-local p=require"runtime.capability_support".is_callable
+local c,k,Y,ae,S,ar,i=require"st.capabilities",require"runtime.capability_metadata",require"runtime.battery_refresh",require"runtime.energy_reset",require"runtime.utf8_text",require"log",{}local v,q,x,p=k.by_emit_name.last_power_response_time,"_tuya_last_power_response_at","waiting",require"runtime.capability_support".is_callable
+
 local function h(w,M)
 local f=c[w]local m=f and f[M]or nil
 if not p(m)and f and type(f.attributes)=="table"then
-m=f.attributes[M]
-end
+m=f.attributes[M]end
 return f,m
 end
 local function s(m,am)
@@ -23,11 +14,9 @@ local af=m.schema
 if type(af.properties)~="table"or type(af.properties.value)~="table"then
 return nil
 end
-local T=af.properties.value
-local ad=am or"maximum"
+local T,ad=af.properties.value,am or"maximum"
 if type(T[ad])=="number"then
-return T[ad]
-end
+return T[ad]end
 return nil
 end
 local function Q(e,w)
@@ -62,10 +51,8 @@ local _,m=h(b.capability_id,b.attribute_name)if not p(m)then
 return nil
 end
 local U=os.time()if type(U)=="number"then
-e:set_field(q,U,{persist=false})
-end
-return m{
-value=E(e:get_field(q))}
+e:set_field(q,U,{persist=false})end
+return m{value=E(e:get_field(q))}
 end
 local function d(e,b,ak)
 if type(e)~="table"or type(b)~="table"then
@@ -75,10 +62,8 @@ local am=string.format("__custom_emit_missing__:%s:%s",b.capability_id or"unknow
 return
 end
 if e.set_field~=nil then
-e:set_field(am,true,{persist=false})
-end
-ar.error(string.format(
-"[%s] Custom capability emit binding missing (%s): %s.%s",e.label or e.id or"device",ak or"unknown",b.capability_id or"unknown",b.attribute_name or"unknown"))
+e:set_field(am,true,{persist=false})end
+ar.error(string.format("[%s] Custom capability emit binding missing (%s): %s.%s",e.label or e.id or"device",ak or"unknown",b.capability_id or"unknown",b.attribute_name or"unknown"))
 end
 function i.all(...)
 local al={...}
@@ -103,71 +88,62 @@ function i.switch()
 return function(_,a)
 if a then
 return c.switch.switch.on()else
-return c.switch.switch.off()
-end
+return c.switch.switch.off()end
 end
 end
 function i.contact()
 return function(_,a)
 if a then
 return c.contactSensor.contact.open()else
-return c.contactSensor.contact.closed()
-end
+return c.contactSensor.contact.closed()end
 end
 end
 function i.smoke()
 return function(_,a)
 if a then
 return c.smokeDetector.smoke.detected()else
-return c.smokeDetector.smoke.clear()
-end
+return c.smokeDetector.smoke.clear()end
 end
 end
 function i.carbon_monoxide()
 return function(_,a)
 if a then
 return c.carbonMonoxideDetector.carbonMonoxide.detected()else
-return c.carbonMonoxideDetector.carbonMonoxide.clear()
-end
+return c.carbonMonoxideDetector.carbonMonoxide.clear()end
 end
 end
 function i.tamper()
 return function(_,a)
 if a then
 return c.tamperAlert.tamper.detected()else
-return c.tamperAlert.tamper.clear()
-end
+return c.tamperAlert.tamper.clear()end
 end
 end
 function i.presence()
 return function(_,a)
 if a then
 return c.presenceSensor.presence.present()else
-return c.presenceSensor.presence.not_present()
-end
+return c.presenceSensor.presence.not_present()end
 end
 end
 function i.gas()
 return function(_,a)
 if a then
 return c.gasDetector.gas.detected()else
-return c.gasDetector.gas.clear()
-end
+return c.gasDetector.gas.clear()end
 end
 end
 function i.valve()
 return function(_,a)
 if a~=nil then
-return c.valve.valve(a)
-end
+return c.valve.valve(a)end
 end
 end
 function i.occupancy()
 return function(_,a)
 if a then
 return c.occupancySensor.occupancy.occupied()else
-return c.occupancySensor.occupancy.unoccupied()
-end
+return c.occupancySensor.occupancy.unoccupied()end
 end
 end
 function i.alarm()
@@ -177,67 +153,58 @@ return c.alarm.alarm.strobe()elseif a=="both"then
 return c.alarm.alarm.both()elseif a=="off"then
 return c.alarm.alarm.off()elseif a=="siren"or a then
 return c.alarm.alarm.siren()else
-return c.alarm.alarm.off()
-end
+return c.alarm.alarm.off()end
 end
 end
 function i.temperature(u)
 u=u or"C"
 return function(_,a)
 if a~=nil then
-return c.temperatureMeasurement.temperature{value=a,unit=u}
-end
+return c.temperatureMeasurement.temperature{value=a,unit=u}end
 end
 end
 function i.humidity()
 return function(_,a)
-if a~=nil then
-return c.relativeHumidityMeasurement.humidity{value=a}
-end
+if type(a)=="number"and a>=0 and a<=100 then
+return c.relativeHumidityMeasurement.humidity{value=a}end
 end
 end
 function i.battery()
 return function(e,a)
 if a~=nil then
-Y.note_report(e)local j=a<0 and 0 or(a>100 and 100 or a)local ao=math.floor(j+0.5)return c.battery.battery(ao)
-end
+Y.note_report(e)local j=a<0 and 0 or(a>100 and 100 or a)local ao=math.floor(j+0.5)return c.battery.battery(ao)end
 end
 end
 function i.illuminance()
 return function(_,a)
 if a~=nil then
-return c.illuminanceMeasurement.illuminance{value=a}
-end
+return c.illuminanceMeasurement.illuminance{value=a}end
 end
 end
 function i.co2()
 return function(_,a)
 if a~=nil then
-return c.carbonDioxideMeasurement.carbonDioxide{value=a,unit="ppm"}
-end
+return c.carbonDioxideMeasurement.carbonDioxide{value=a,unit="ppm"}end
 end
 end
 function i.voc(u)
 u=u or"ppb"
 return function(_,a)
 if a~=nil then
-return c.tvocMeasurement.tvocLevel{value=a,unit=u}
-end
+return c.tvocMeasurement.tvocLevel{value=a,unit=u}end
 end
 end
 function i.formaldehyde(u)
 u=u or"mg/m^3"
 return function(_,a)
 if a~=nil then
-return c.formaldehydeMeasurement.formaldehydeLevel{value=a,unit=u}
-end
+return c.formaldehydeMeasurement.formaldehydeLevel{value=a,unit=u}end
 end
 end
 function i.pm25()
 return function(_,a)
 if a~=nil then
-return c.fineDustSensor.fineDustLevel{value=a}
-end
+return c.fineDustSensor.fineDustLevel{value=a}end
 end
 end
 local function l(n)
@@ -247,9 +214,7 @@ end
 if type(n.component_id)=="string"and n.component_id~=""then
 return n.component_id
 end
-if type(n.component)=="table"
-and type(n.component.id)=="string"
-and n.component.id~=""then
+if type(n.component)=="table"and type(n.component.id)=="string"and n.component.id~=""then
 return n.component.id
 end
 return nil
@@ -263,12 +228,11 @@ end
 function i.power()
 return function(e,a,t,r)
 if a~=nil then
-local L=c.powerMeter.power{value=a,unit="W"}local B=F(e)if B~=nil then
+local L,B=c.powerMeter.power{value=a,unit="W"},F(e)if B~=nil then
 local y=l(r)or l(t)or o(r)or o(t)if y~=nil and y~="main"then
 e:emit_event(B)return L
 end
-return{L,B}
-end
+return{L,B}end
 return L
 end
 end
@@ -276,37 +240,31 @@ end
 function i.energy()
 return function(e,a,t,r)
 if a~=nil then
-local y=l(r)or l(t)or o(r)or o(t)return c.energyMeter.energy{
-value=ae.apply_report(e,a,y),unit="kWh"}
-end
+local y=l(r)or l(t)or o(r)or o(t)return c.energyMeter.energy{value=ae.apply_report(e,a,y),unit="kWh"}end
 end
 end
 function i.voltage()
 return function(_,a)
 if a~=nil then
-return c.voltageMeasurement.voltage{value=a,unit="V"}
-end
+return c.voltageMeasurement.voltage{value=a,unit="V"}end
 end
 end
 function i.current()
 return function(_,a)
 if a~=nil then
-return c.currentMeasurement.current{value=a,unit="A"}
-end
+return c.currentMeasurement.current{value=a,unit="A"}end
 end
 end
 function i.level()
 return function(_,a)
 if a~=nil then
-local j=a<0 and 0 or(a>100 and 100 or a)return c.switchLevel.level(j)
-end
+local j=a<0 and 0 or(a>100 and 100 or a)return c.switchLevel.level(math.floor(j+0.5))end
 end
 end
 function i.soil_moisture()
 return function(_,a)
 if a~=nil then
-local j=a<0 and 0 or(a>100 and 100 or a)return c["concertmirror08464.soilMoisture"].soilMoisture{value=j,unit="%"}
-end
+local j=a<0 and 0 or(a>100 and 100 or a)return c["concertmirror08464.soilMoisture"].soilMoisture{value=j,unit="%"}end
 end
 end
 local function P(b)
@@ -314,8 +272,8 @@ return function(e,a)
 if a==nil then
 return
 end
-local j=a
-local H=b.event_minimum or(b.default_range and b.default_range.minimum or nil)local G=b.event_maximum or(b.default_range and b.default_range.maximum or nil)local _,g=h(b.capability_id,b.attribute_name)local D=s(g,"minimum")local C=s(g)if type(D)=="number"then
+local j,H,G=a,b.event_minimum or(b.default_range and b.default_range.minimum or nil),b.event_maximum or(b.default_range and b.default_range.maximum or nil)
+local _,g=h(b.capability_id,b.attribute_name)local D,C=s(g,"minimum"),s(g)if type(D)=="number"then
 if type(H)~="number"or D>H then
 H=D
 end
@@ -332,29 +290,26 @@ if type(G)=="number"and j>G then
 j=G
 end
 local f=c[b.capability_id]if not p(g)and f and type(f.attributes)=="table"then
-g=f.attributes[b.attribute_name]
-end
+g=f.attributes[b.attribute_name]end
 if not p(g)then
 if f==nil then
 d(e,b,"capability")else
-d(e,b,"attribute")
-end
+d(e,b,"attribute")end
 return
 end
 local u=b.event_unit or(b.default_range and b.default_range.unit or nil)if u~=nil then
-return g{value=j,unit=u}
-end
+return g{value=j,unit=u}end
 return g{value=j}
 end
 end
 local function W(b)
 return function(e,a)
 if type(a)=="boolean"and type(b.supported_values)=="table"then
-local aj=false
-local ai=false
-local ab=false
-local ah=false
-local z=0
+local aj,ai,ab,ah,z=false,false,false,false,0
+
+
+
+
 for _,K in ipairs(b.supported_values)do
 z=z+1
 if K=="on"then
@@ -368,10 +323,8 @@ ah=true
 end
 end
 if aj and ai then
-a=a and"on"or"off"
-elseif z==2 and ab and ah then
-a=a and"low"or"normal"
-end
+a=a and"on"or"off"elseif z==2 and ab and ah then
+a=a and"low"or"normal"end
 end
 if type(a)~="string"or a==""then
 return
@@ -379,8 +332,7 @@ end
 local f,g=h(b.capability_id,b.attribute_name)if not p(g)then
 if f==nil then
 d(e,b,"capability")else
-d(e,b,"attribute")
-end
+d(e,b,"attribute")end
 return
 end
 return g{value=a}
@@ -394,8 +346,7 @@ end
 local f,g=h(b.capability_id,b.attribute_name)if not p(g)then
 if f==nil then
 d(e,b,"capability")else
-d(e,b,"attribute")
-end
+d(e,b,"attribute")end
 return
 end
 local A=b.maximum_length or S.length(a)local O=S.truncate(a,A)if O==nil then
@@ -426,51 +377,44 @@ local b=k.driver_message
 local f,g=h(b.capability_id,b.attribute_name)if not p(g)then
 if f==nil then
 d(e,b,"capability")else
-d(e,b,"attribute")
-end
+d(e,b,"attribute")end
 return
 end
 local A=b.maximum_length or 512
 local O=S.truncate(a,A)if O==nil then
 return
 end
-return g{value=O}
-end
+return g{value=O}end
 end
 end
 function i.thermostat_operating_state()
 return function(_,a)
 if a~=nil then
-return c.thermostatOperatingState.thermostatOperatingState(a)
-end
+return c.thermostatOperatingState.thermostatOperatingState(a)end
 end
 end
 function i.fan_mode()
 return function(_,a)
 if a~=nil then
-return c.fanMode.fanMode(a)
-end
+return c.fanMode.fanMode(a)end
 end
 end
 function i.color_temperature()
 return function(_,a)
 if a~=nil then
-local j=a<1 and 1 or(a>30000 and 30000 or a)return c.colorTemperature.colorTemperature(j)
-end
+local j=a<1 and 1 or(a>30000 and 30000 or a)return c.colorTemperature.colorTemperature(j)end
 end
 end
 function i.color_hue()
 return function(_,a)
 if a~=nil then
-local j=a<0 and 0 or(a>100 and 100 or a)return c.colorControl.hue(j)
-end
+local j=a<0 and 0 or(a>100 and 100 or a)return c.colorControl.hue(j)end
 end
 end
 function i.color_saturation()
 return function(_,a)
 if a~=nil then
-local j=a<0 and 0 or(a>100 and 100 or a)return c.colorControl.saturation(j)
-end
+local j=a<0 and 0 or(a>100 and 100 or a)return c.colorControl.saturation(j)end
 end
 end
 function i.value(I,u)
@@ -478,8 +422,7 @@ return function(_,a)
 if a~=nil then
 if u then
 return I{value=a,unit=u}else
-return I(a)
-end
+return I(a)end
 end
 end
 end

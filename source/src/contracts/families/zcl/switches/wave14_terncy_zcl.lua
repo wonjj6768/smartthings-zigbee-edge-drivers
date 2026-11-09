@@ -1,4 +1,3 @@
--- Wave14 TERNCY-WS07-D3 source-only candidate.  The parent Wave14 package is
 -- EF00-owned for the QA devices, but this registration is exact custom ZCL:
 -- manufacturer 0x1228, cluster 0xFCCC, plus three standard OnOff endpoints.
 -- Frozen Zigbee2MQTT v26.99.0: src/devices/terncy.ts:13-470,821-879.

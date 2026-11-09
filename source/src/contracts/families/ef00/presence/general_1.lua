@@ -1,4 +1,3 @@
--- presence-general-1 package-owned presence family definitions.
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -53,19 +52,11 @@ local raw_non_zero_converter = converter.from_only(function(value)
   return number_value ~= nil and number_value ~= 0
 end)
 local msa201_presence_converter = common.msa201_presence_converter
--- 참고:
---   이 파일의 "미구현" 표시는 세 가지로 남겨둔다.
---   1) calibration / sampling interval 같은 보조 설정
---   2) motion_state / fall_down_status 같은 read-only 진단 상태
---   3) 아직 공통 의미가 불명확한 family 전용 상태/제어
---   공통 capability 의미가 불명확한 항목은 억지로 합치지 않고 보류한다.
 
 
--- 2-1. presence_basic: 기본 존재감 (배터리 + 감도, 조도 없음)
 
 -- Z2M: _TZE284_debczeci (TS0601_human_presence / iHseno)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_basic = {
   profile = "safety-presence-basic-delay-battery",
@@ -99,13 +90,10 @@ register_presence_definition(presence_basic, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-2. presence_pir24g: PIR 24GHz (배터리 + 조도)
 
 -- Z2M: _TZE200_juzago6i (TS0601-PIR-Sensor)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_pir24g = {
   profile = "safety-presence-pir24g-dedicated-illuminance-battery",
@@ -142,7 +130,6 @@ register_presence_definition(presence_pir24g, ts0601_fingerprints({
 
 }))
 
--- 2-3a. presence_model_zg204zx: HOBEIAN ZG-204ZX 24GHz + T/H
 -- Z2M: _TZE200_w0ap83qu
 local presence_model_zg204zx = {
   profile = "safety-presence-illuminance-temp-humidity-battery-zg204zx",
@@ -189,13 +176,10 @@ register_presence_definition(presence_model_zg204zx, ts0601_fingerprints({
   "HOBEIAN:ZG-204ZX",
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-3b. presence_model_excellux_zg301a: PIR light presence sensor
 
 -- Z2M: C6B7KM9 / Excellux
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_excellux_zg301a = {
   profile = "safety-presence-excellux-zg301a",
@@ -226,13 +210,10 @@ register_presence_definition(presence_model_excellux_zg301a, {
 
 })
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-4. presence_model_mir_he200_ty: MIR-HE200-TY (AC, 조도, 낙상 감지)
 
 -- Z2M: _TZE200_lu01t0zl (MIR-HE200-TY)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_mir_he200_ty = {
   profile = "safety-presence-mirhe200-illuminance-fall",
@@ -310,13 +291,10 @@ register_presence_definition(presence_model_mir_he200_ty, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-6. presence_model_y1_in: Y1_IN (AC, 조도)
 
 -- Z2M: _TZE204_bmdsp6bs (Y1_IN)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_y1_in = {
 
@@ -356,13 +334,10 @@ register_device_definition(presence_model_y1_in, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-9. presence_model_wz_m100: WZ-M100 (AC, 조도 DP103)
 
 -- Z2M: _TZE204_laokfqwu (WZ-M100)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_wz_m100 = {
 
@@ -424,13 +399,10 @@ register_device_definition(presence_model_wz_m100, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-10. presence_hps: 레거시 (AC, 조도 없음)
 
 -- Z2M: _TZE200_0u3bj3rc (TS0601_human_presence_sensor)
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_hps = {
 
@@ -485,13 +457,10 @@ register_device_definition(presence_hps, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-11f. presence_model_gnpflcoq: TS0601_TZE284_gnpflcoq (배터리 + 조도 + 온습도)
 
 -- Contract: Tuya product gnpflcoq schema; issue #37 (Z2M DP2/102 mapping differs).
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_gnpflcoq = {
   profile = "safety-presence-gnpflcoq-illuminance-temp-humidity-battery",
@@ -544,13 +513,10 @@ register_device_definition(presence_model_gnpflcoq, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-24. pir_model_sp02_zb001: SP02-ZB001 PIR + tamper
 
 -- Z2M: _TZE200_mgxy2d9f
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_model_sp02_zb001 = {
 
@@ -579,13 +545,10 @@ register_device_definition(pir_model_sp02_zb001, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-25. presence_model_msa201z: MSA201Z 24GHz presence sensor
 
 -- Z2M: _TZE284_ajuasrmx / _TZE200_hyhl5y36 / _TZE284_ozf4e02o
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_msa201z = {
 
@@ -600,13 +563,13 @@ local presence_model_msa201z = {
 
     tuya.dp_illuminance(101, { emit = emit.illuminance() }),
 
-    tuya.dp_numeric(102, { name = "lux_difference_value" }),              -- profile 미포함
+    tuya.dp_numeric(102, { name = "lux_difference_value" }),
 
-    tuya.dp_enum(103, { name = "ai_self_learning" }),                     -- profile 미포함
+    tuya.dp_enum(103, { name = "ai_self_learning" }),
 
-    tuya.dp_enum(104, { name = "factory_reset" }),                        -- profile 미포함
+    tuya.dp_enum(104, { name = "factory_reset" }),
 
-    tuya.dp_enum(105, { name = "fast_setting" }),                         -- profile 미포함
+    tuya.dp_enum(105, { name = "fast_setting" }),
 
     tuya.dp_numeric(106, { name = "hold_delay_time", emit = emit.msa201zHoldDelayTime() }),
 
@@ -615,9 +578,9 @@ local presence_model_msa201z = {
       converter = on_off_bool_converter,
     }),
 
-    tuya.dp_enum(108, { name = "current_status" }),                       -- profile 미포함
+    tuya.dp_enum(108, { name = "current_status" }),
 
-    tuya.dp_binary(109, { name = "enable_sensor" }),                      -- profile 미포함
+    tuya.dp_binary(109, { name = "enable_sensor" }),
 
     tuya.dp_enum(110, {
       name = "sensitivity",
@@ -625,9 +588,9 @@ local presence_model_msa201z = {
       converter = converter.lookup_from_to({ low = 0, medium = 1, high = 2 }),
     }),
 
-    tuya.dp_binary(112, { name = "status_flip" }),                        -- profile 미포함
+    tuya.dp_binary(112, { name = "status_flip" }),
 
-    tuya.dp_raw(113, { name = "interference_positions" }),                -- profile 미포함
+    tuya.dp_raw(113, { name = "interference_positions" }),
 
     tuya.dp_numeric(114, {
       name = "forbidden_area",
@@ -635,7 +598,7 @@ local presence_model_msa201z = {
       emit = emit.msa201zForbiddenArea(),
     }),
 
-    tuya.dp_numeric(115, { name = "daylight_threshold" }),                -- profile 미포함
+    tuya.dp_numeric(115, { name = "daylight_threshold" }),
 
     tuya.dp_enum(116, {
       name = "sensor_mode",
@@ -643,23 +606,23 @@ local presence_model_msa201z = {
       converter = converter.lookup_from_to({ presence = 0, motion = 1 }),
     }),
 
-    tuya.dp_binary(117, { name = "single_mode" }),                        -- profile 미포함
+    tuya.dp_binary(117, { name = "single_mode" }),
 
-    tuya.dp_binary(118, { name = "find_device" }),                        -- profile 미포함
+    tuya.dp_binary(118, { name = "find_device" }),
 
-    tuya.dp_enum(119, { name = "lux_mode" }),                             -- profile 미포함
+    tuya.dp_enum(119, { name = "lux_mode" }),
 
-    tuya.dp_enum(120, { name = "lux_report_mode" }),                      -- profile 미포함
+    tuya.dp_enum(120, { name = "lux_report_mode" }),
 
-    tuya.dp_numeric(121, { name = "lux_difference_threshold" }),          -- profile 미포함
+    tuya.dp_numeric(121, { name = "lux_difference_threshold" }),
 
-    tuya.dp_numeric(122, { name = "lux_timed_interval" }),                -- profile 미포함
+    tuya.dp_numeric(122, { name = "lux_timed_interval" }),
 
-    tuya.dp_binary(123, { name = "absence_circling_report" }),            -- profile 미포함
+    tuya.dp_binary(123, { name = "absence_circling_report" }),
 
-    tuya.dp_numeric(124, { name = "absence_circling_interval" }),         -- profile 미포함
+    tuya.dp_numeric(124, { name = "absence_circling_interval" }),
 
-    tuya.dp_enum(125, { name = "home_environment" }),                     -- profile 미포함
+    tuya.dp_enum(125, { name = "home_environment" }),
 
   },
 
@@ -679,13 +642,10 @@ register_device_definition(presence_model_msa201z, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-26. presence_model_szr07u: SZR07U 24GHz radar
 
 -- Z2M: _TZE204_muvkrjr5
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_szr07u = {
 
@@ -712,7 +672,7 @@ local presence_model_szr07u = {
       converter = on_off_bool_converter,
     }),
 
-    tuya.dp_raw(102, { name = "presence_notification_toggle" }),          -- profile 미포함
+    tuya.dp_raw(102, { name = "presence_notification_toggle" }),
 
     tuya.dp_numeric(103, { name = "fading_time", emit = emit.szr07uFadingTime() }),
 
@@ -732,11 +692,8 @@ register_device_definition(presence_model_szr07u, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-27. presence_model_mtd285_zb: MTD285-ZB 24GHz mmWave
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_mtd285_zb_presence_converter = converter.from_only(function(value)
   local numeric_value = tonumber(value)
@@ -905,11 +862,8 @@ register_device_definition(presence_model_mtd285_zb, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-28. presence_model_pj3201a: PJ3201A human presence sensor
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_pj3201a = {
 
@@ -1000,11 +954,8 @@ register_device_definition(presence_model_pj3201a, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-29. presence_model_nas_ps09b2: NEO NAS-PS09B2 radar presence
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_nas_ps09b2 = {
 
@@ -1054,11 +1005,8 @@ register_device_definition(presence_model_nas_ps09b2, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-30. presence_model_rtsc11r: 5.8G presence sensor with relay
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_rtsc11r = {
 
@@ -1122,11 +1070,8 @@ register_device_definition(presence_model_rtsc11r, ts0601_fingerprints({
 
 }))
 
--- ══════════════════════════════════════════════════════════════
 
--- 2-31. presence_model_rd24g01: 24GHz presence sensor
 
--- ══════════════════════════════════════════════════════════════
 
 local presence_model_rd24g01 = {
 

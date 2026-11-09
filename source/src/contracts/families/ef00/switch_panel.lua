@@ -1,4 +1,3 @@
--- EF00 touch-panel and scene-panel families owned by the switch-panel package.
 local tuya = require "protocol.tuya"
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
@@ -109,7 +108,6 @@ register_device_definition(switch_eyzee_5gang, device_helpers.create_fingerprint
   "_TZE284_0kihjsys",
 }))
 
--- TS0601_4gang_7ytnacie: 4구 + colored backlight/countdown
 local switch_4gang_colored_backlight = {
   profile = "switches-switch-4-colored-backlight",
   package_group = "switch-panel",
@@ -163,7 +161,6 @@ register_device_definition(switch_4gang_colored_backlight, device_helpers.create
   "_TZE204_hewlydpz",
 }))
 
--- TS0601_3gang_rkbxtclc: 3구 + colored backlight/countdown
 local switch_3gang_colored_backlight = {
   profile = "switches-switch-3-colored-backlight",
   package_group = "switch-panel",
@@ -211,7 +208,6 @@ register_device_definition(switch_3gang_colored_backlight, device_helpers.create
   "_TZE204_rkbxtclc",
 }))
 
--- ZN2S-RS02E: 2구 + colored backlight/countdown
 local switch_2gang_colored_backlight = {
   profile = "switches-switch-2-colored-backlight",
   package_group = "switch-panel",
@@ -525,7 +521,6 @@ register_device_definition(switch_6gang_dp24_scene_panel, device_helpers.create_
   "_TZE200_rqhnxkqu",
 }))
 
--- M9-zigbee-SL: 8 channel mixed switch/scene/presence panel
 local switch_8gang_m9_motion_scene = {
   profile = "switches-switch-8-m9-sl",
   package_group = "switch-panel",
@@ -598,7 +593,6 @@ register_device_definition(switch_8gang_m9_motion_scene, device_helpers.create_f
   "_TZE284_nvodulvi",
 }))
 
--- M9-zigbee-SL-2: 4 relay + scene/presence panel
 local switch_4gang_m9_scene = {
   profile = "switches-switch-4-m9-sl",
   package_group = "switch-panel",
@@ -895,10 +889,7 @@ register_device_definition(switch_4gang_lcd_panel, device_helpers.create_fingerp
   "_TZE284_atuj3i0w",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-7. switch_model_zts_eu_1gang: Moes 터치 1구 + indicate_light + power_on_behavior
 -- Z2M: ZTS-EU_1gang
--- ══════════════════════════════════════════════════════════════
 local switch_model_zts_eu_1gang = {
   profile = "switches-switch-1-zts-eu",
   package_group = "switch-panel",
@@ -916,10 +907,7 @@ register_device_definition(switch_model_zts_eu_1gang, device_helpers.create_fing
   "_TZE200_tviaymwx",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-8. switch_model_zts_eu_2gang: Moes 터치 2구 + indicate_light + power_on_behavior
 -- Z2M: ZTS-EU_2gang
--- ══════════════════════════════════════════════════════════════
 local switch_model_zts_eu_2gang = {
   profile = "switches-switch-2-zts-eu",
   package_group = "switch-panel",
@@ -937,10 +925,7 @@ register_device_definition(switch_model_zts_eu_2gang, device_helpers.create_fing
   "_TZE200_g1ib5ldv",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-9. switch_model_zts_eu_3gang: Moes 터치 3구 + indicate_light + power_on_behavior
 -- Z2M: ZTS-EU_3gang
--- ══════════════════════════════════════════════════════════════
 local switch_model_zts_eu_3gang = {
   profile = "switches-switch-3-zts-eu",
   package_group = "switch-panel",
@@ -959,13 +944,19 @@ register_device_definition(switch_model_zts_eu_3gang, device_helpers.create_fing
   "_TZE200_tz32mtza",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-10. switch_model_zts_eu_4gang: Moes 터치 4구 + indicate_light + power_on_behavior
 -- Z2M: ZTS-EU_4gang
--- ══════════════════════════════════════════════════════════════
 local switch_model_zts_eu_4gang = {
   profile = "switches-switch-4-zts-eu",
   package_group = "switch-panel",
+  time_start = "off",
+  configure = function(driver, device)
+    local device_management = require "st.zigbee.device_management"
+    local present = { [1] = true }
+    for _, endpoint in pairs(device.zigbee_endpoints) do present[endpoint.id] = true end
+    for endpoint = 1, 4 do
+      if present[endpoint] then device:send(device_management.build_bind_request(device, 0x0006, driver.environment_info.hub_zigbee_eui, endpoint)) end
+    end
+  end,
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
   tuya.dp_on_off(2, { name = "switch", component = "switch2" }),
   tuya.dp_on_off(3, { name = "switch", component = "switch3" }),
@@ -982,10 +973,7 @@ register_device_definition(switch_model_zts_eu_4gang, device_helpers.create_fing
   "_TZE200_1ozguk6x",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-11. switch_model_zs_tyg3_sm_21z: 2구 + all state + countdown + backlight + power_on_behavior
 -- Z2M: ZS-TYG3-SM-21Z
--- ══════════════════════════════════════════════════════════════
 local switch_model_zs_tyg3_sm_21z = {
   profile = "switches-switch-2-tyg3-sm",
   package_group = "switch-panel",
@@ -1007,10 +995,7 @@ register_device_definition(switch_model_zs_tyg3_sm_21z, device_helpers.create_fi
   "_TZE200_wunufsil",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-12. switch_model_zs_tyg3_sm_31z: 3구 + all state + countdown + backlight + power_on_behavior
 -- Z2M: ZS-TYG3-SM-31Z
--- ══════════════════════════════════════════════════════════════
 local switch_model_zs_tyg3_sm_31z = {
   profile = "switches-switch-3-tyg3-sm",
   package_group = "switch-panel",
@@ -1034,10 +1019,7 @@ register_device_definition(switch_model_zs_tyg3_sm_31z, device_helpers.create_fi
   "_TZE200_vhy3iakz",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-13. switch_model_zs_tyg3_sm_41z: 4구 + all state + countdown + backlight + power_on_behavior
 -- Z2M: ZS-TYG3-SM-41Z
--- ══════════════════════════════════════════════════════════════
 local switch_model_zs_tyg3_sm_41z = {
   profile = "switches-switch-4-tyg3-sm",
   package_group = "switch-panel",
@@ -1069,10 +1051,7 @@ register_device_definition(switch_model_zs_tyg3_sm_41z, {
   device_helpers.create_fingerprint("Nova Digital", "FZB-4"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-14. switch_model_zs_tyg3_sm_61z: 4구 + 2 scene + all state + countdown + backlight + power_on_behavior
 -- Z2M: ZS-TYG3-SM-61Z
--- ══════════════════════════════════════════════════════════════
 local switch_model_zs_tyg3_sm_61z = {
   profile = "switches-switch-6-tyg3-sm",
   package_group = "switch-panel",
@@ -1103,10 +1082,7 @@ register_device_definition(switch_model_zs_tyg3_sm_61z, device_helpers.create_fi
   "_TZE200_h2rctifa",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-15. switch_model_ts0601_switch_4_gang_2: 4구 + backlight
 -- Z2M: TS0601_switch_4_gang_2
--- ══════════════════════════════════════════════════════════════
 local switch_model_ts0601_switch_4_gang_2 = {
   profile = "switches-switch-4-backlight-hewlydpz",
   package_group = "switch-panel",
@@ -1128,10 +1104,7 @@ register_device_definition(switch_model_ts0601_switch_4_gang_2, {
   device_helpers.create_fingerprint("Homeetec", "37022714"),
 })
 
--- ══════════════════════════════════════════════════════════════
--- 1-21. switch_16gang_pn16: PN16 16구 컨트롤러
 -- Z2M: PN16
--- ══════════════════════════════════════════════════════════════
 local switch_16gang_pn16 = {
   profile = "switches-switch-16-pn16",
   package_group = "switch-panel",
@@ -1190,10 +1163,7 @@ register_device_definition(switch_16gang_pn16, device_helpers.create_fingerprint
   "_TZE284_zqq3cipq",
 }))
 
--- ══════════════════════════════════════════════════════════════
--- 1-23. switch_model_ts0601_switch_8_2: 8구 + countdown + power_on_behavior
 -- Z2M: TS0601_switch_8_2
--- ══════════════════════════════════════════════════════════════
 local switch_model_ts0601_switch_8_2 = {
   profile = "switches-switch-8-adlblwab",
   package_group = "switch-panel",

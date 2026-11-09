@@ -1,9 +1,4 @@
--- 모션/존재감 디바이스 정의 (PIR, 레이더, mmWave)
 -- Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
--- 변수명 규칙: {category}_{variant}
---   category: pir      (PIR 모션센서, occupancy → motionSensor)
---             presence (mmWave/레이더, presence → presenceSensor)
 
 local tuya = require "protocol.tuya"
 local emit = require "capabilities.events.all"
@@ -121,21 +116,12 @@ local ts0601_fingerprints = ef00_helpers.ts0601_fingerprints
 
 
 
--- 참고:
---   이 파일의 "미구현" 표시는 세 가지로 남겨둔다.
---   1) calibration / sampling interval 같은 보조 설정
---   2) motion_state / fall_down_status 같은 read-only 진단 상태
---   3) 아직 공통 의미가 불명확한 family 전용 상태/제어
---   공통 capability 의미가 불명확한 항목은 억지로 합치지 않고 보류한다.
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-1. pir: 기본 PIR (occupancy + battery + illuminance)
 
 -- Z2M: _TZE200_f1pvdgoh (TS0601_pir)
 
--- ══════════════════════════════════════════════════════════════
 
 local pir = {
   profile = "safety-motion-pir-illuminance-battery",
@@ -160,13 +146,10 @@ register_device_definition(pir, pir_fingerprints)
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-2. pir_no_battery: PIR (occupancy + illuminance, 배터리 없음)
 
 -- Z2M: _TZE200_ghynnvos
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_no_battery = {
   profile = "safety-motion-pir-illuminance",
@@ -184,13 +167,10 @@ register_device_definition(pir_no_battery, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-3. pir_model_zg_204zl: ZG-204ZL (sensitivity + keep_time + illuminance)
 
 -- Z2M: _TZE200_3towulqd (ZG-204ZL)
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_model_zg_204zl = {
   profile = "safety-motion-zg204zl-keep-illuminance-battery",
@@ -238,13 +218,10 @@ register_device_definition(pir_model_zg_204zl, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-4. pir_model_zg_204zl_illuminance_dp101: ZG-204ZL 변형 (illuminance DP101)
 
 -- Z2M: _TZE200_s6hzw8g2
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_model_zg_204zl_illuminance_dp101 = {
   profile = "safety-motion-zg204zl-keep-illuminance-battery",
@@ -278,13 +255,10 @@ register_device_definition(pir_model_zg_204zl_illuminance_dp101, ts0601_fingerpr
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-5. pir_model_zpir_10: ZPIR-10 / HY-SZLUMPIR
 
 -- Z2M: _TZE200_ppuj1vem (ZPIR-10) / _TZE200_oc7xqqbs (HY-SZLUMPIR)
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_model_zpir_10_datapoints = {
   tuya.dp_occupancy(1, { emit = emit.motion(), read_only = true }),
@@ -311,16 +285,13 @@ register_device_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-6. pir_solar: 태양광 PIR (배터리 + 감도, 조도 없음)
 
 -- Z2M: _TZE284_tre6haif (TS0601_pir_solar)
 
 -- Z2M 기준 DP9은 pir_sensitivity {high=0, low=1} 2단계만 지원한다.
 -- family 전용 enum capability로 그대로 노출한다.
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_solar = {
   profile = "safety-motion-pir-solar-battery",
@@ -351,13 +322,10 @@ register_device_definition(pir_solar, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-7. pir_legacy: 레거시 모션 센서 (AC, 조도 포함)
 
 -- Z2M: _TZE200_auin8mzr (TS0601_motion_sensor)
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_legacy = {
   profile = "safety-motion-legacy-illuminance",
@@ -427,13 +395,10 @@ register_device_definition(pir_legacy, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-8. pir_bed: 침대 압력 존재감 센서
 
 -- Z2M: _TZE200_seq9cm6u (TS0601_bed_presence_sensor)
 
--- ══════════════════════════════════════════════════════════════
 
 local pir_bed = {
   profile = "safety-motion-bed-time-illuminance-battery",
@@ -474,7 +439,6 @@ register_device_definition(pir_bed, ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
 return {
   id = "ef00.motion.pir",

@@ -1,6 +1,4 @@
--- 센서 디바이스 정의
 -- ZHA tuya_sensor.py + Z2M zigbee-herdsman-converters 기반 DP 그룹핑
---
 -- 변수명 규칙: {category}_{variant}
 --   category: th   (온습도: 온도+습도+배터리)
 --             soil (토양: 수분+온도+배터리)
@@ -24,13 +22,6 @@
 --     pm25           PM2.5 primary (DP2=PM2.5)
 --     probe          외부 프로브
 --     warning        물 부족 경고
---   규칙:
---     - category 내 variant 간 차이나는 scale만 표기
---     - soil은 t, h 항상 명시
---     - 복수 차이점은 모두 표기
---     - bare 숫자 금지 (숫자 앞에 의미 문자 필수)
---     - 기능 알파벳순 배치
---     - 가독성 우선: 약어보다 풀네임 선호 (표준 약어 ec, co2, pm25, hcho, illum 유지)
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
@@ -137,13 +128,10 @@ local function register_sensor_definition(definitions_or_table, fingerprint_list
 end
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-1. th_unsigned_h10: unsigned 온도 인코딩, 습도÷10
 
 -- ZHA: _TZE200_bjawzodf
 
--- ══════════════════════════════════════════════════════════════
 
 local th_unsigned_h10 = {
 
@@ -190,13 +178,10 @@ register_sensor_definition(th_9ern5sfh, ef00_helpers.ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-2. th_unsigned: unsigned 온도 인코딩
 
 -- ZHA: _TZE200_bq5c8xfe
 
--- ══════════════════════════════════════════════════════════════
 
 local th_unsigned = {
 
@@ -247,15 +232,12 @@ register_sensor_definition(th_qyflbnbj, ef00_helpers.ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-3. th: 기본형
 
 -- ZHA: _TZE200_a8sdabtg / Z2M: _TZE200_t3xd7l44
 
 -- Z2M: ZG-227Z / ZG-227ZL family includes _TZE200_a8sdabtg, _TZE200_vs0skpuc, _TZE200_ehhrv2e3
 
--- ══════════════════════════════════════════════════════════════
 
 local zg227_calibration_datapoints = {
   tuya.dp_temperature(1, {
@@ -409,15 +391,12 @@ register_device_definition(th_rsh_hs06, ef00_helpers.ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-3a. pool_chlorine_meter: BLE-YL01
 
 -- Z2M exposes pool chemistry values; current ST surface keeps safe standard
 
 -- temperature + battery and preserves the rest as non-profile DPs.
 
--- ══════════════════════════════════════════════════════════════
 
 local zsn03p = {
 
@@ -530,13 +509,10 @@ register_device_definition(pool_chlorine_meter, ef00_helpers.ts0601_fingerprints
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-3b. heat_water_meter: ultrasonic heat/water meter
 
 -- Keep water/heat metering DPs hidden until a dedicated water-meter surface exists.
 
--- ══════════════════════════════════════════════════════════════
 
 local heat_water_meter = {
 
@@ -555,7 +531,7 @@ local heat_water_meter = {
       raw_bytes = 4,
       raw_from_tail = true,
       read_only = true,
-    }),                                                                    -- profile 미포함
+    }),
 
     tuya.dp_daily_consumption(3, {
       name = "daily_water_consumption",
@@ -563,12 +539,12 @@ local heat_water_meter = {
       raw_bytes = 4,
       raw_from_tail = true,
       read_only = true,
-    }),                                                                    -- profile 미포함
+    }),
 
     tuya.dp_enum(4, {
       name = "report_period",
       converter = converter.report_period_hours(),
-    }),                                                                    -- profile 미포함
+    }),
 
     tuya.dp_numeric(5, {
       name = "fault",
@@ -588,20 +564,20 @@ local heat_water_meter = {
         [2048] = "empty_pip_alarm",
         [4096] = "transduce_alarm",
       }, "OK", ", "),
-    }),                                                                    -- profile 미포함
+    }),
 
-    tuya.dp_binary(6, { name = "prepayment_switch" }),                     -- profile 미포함
+    tuya.dp_binary(6, { name = "prepayment_switch" }),
 
-    tuya.dp_cumulative_heat(7, { name = "cumulative_heat", read_only = true }), -- profile 미포함
+    tuya.dp_cumulative_heat(7, { name = "cumulative_heat", read_only = true }),
 
-    tuya.dp_meter_id(16, { read_only = true }),                             -- profile 미포함
+    tuya.dp_meter_id(16, { read_only = true }),
 
     tuya.dp_instantaneous_flow_rate(19, {
       raw = true,
       raw_bytes = 4,
       raw_from_tail = false,
       read_only = true,
-    }),                                                                    -- profile 미포함
+    }),
 
     tuya.dp_inlet_water_temperature(21, {
       name = "temperature",
@@ -612,13 +588,13 @@ local heat_water_meter = {
     tuya.dp_outlet_water_temperature(22, {
       name = "outlet_water_temperature",
       read_only = true,
-    }),                                                                    -- profile 미포함
+    }),
 
     tuya.dp_numeric(24, {
       name = "battery_voltage",
       read_only = true,
       converter = converter.from_only(converter.multiply_by(10)),
-    }),                                                                    -- profile 미포함
+    }),
 
   },
 
@@ -722,13 +698,10 @@ register_device_definition(ultrasonic_water_meter, ef00_helpers.ts0601_fingerpri
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-4. th_alarm: 알람 + 리포트
 
 -- ZHA: _TZE200_lve3dvpy / Z2M: _TZE284_cwyqwqbf / _TZE200_whkgqxse (JM-TRH-ZGB-V1)
 
--- ══════════════════════════════════════════════════════════════
 
 local function build_th_alarm_datapoints(options)
   local datapoints = {
@@ -990,13 +963,10 @@ register_device_definition(th_alarm_jm_trh, ef00_helpers.ts0601_fingerprints({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-5. th_2aaa: 2AAA 배터리 enum
 
 -- ZHA: _TZE200_upagmta9 / Z2M: _TZE204_d7lpruvi
 
--- ══════════════════════════════════════════════════════════════
 
 local th_2aaa = {
 
@@ -1086,13 +1056,10 @@ register_device_definition(th_2aaa, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-5a. th_excellux: Excellux 온습도 (modelID=Excellux)
 
 -- Z2M: DHT0001 / DHTA001
 
--- ══════════════════════════════════════════════════════════════
 
 local th_excellux = {
 
@@ -1185,13 +1152,10 @@ register_device_definition(th_excellux, {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-5b. th_excellux_probe: Excellux 온습도 + 프로브 (modelID=Excellux)
 
 -- Z2M: NTCHT01 (ZG-105NTH)
 
--- ══════════════════════════════════════════════════════════════
 
 local th_excellux_probe = {
 
@@ -1323,13 +1287,10 @@ register_device_definition(th_excellux_probe, {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-5c. th_temperature_battery: 온도 + 배터리 전용 (TS0201 non-TS)
 
 -- Z2M: THS317-ET-TY
 
--- ══════════════════════════════════════════════════════════════
 
 local th_temperature_battery = {
 
@@ -1537,13 +1498,10 @@ register_device_definition(th_temperature_battery, device_helpers.create_fingerp
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-6. th_alarm_neo: NAS-AB02B0 (온습도 + 전원상태)
 
 -- Z2M: _TZE200_d0yu2xgi (NAS-AB02B0)
 
--- ══════════════════════════════════════════════════════════════
 
 local neo_alarm_melody_lookup = {}
 for melody = 1, 18 do
@@ -1657,13 +1615,10 @@ register_device_definition(th_alarm_neo, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-7. th_illum: 조도 + 온도 + 습도 + 배터리
 
 -- Z2M: _TZE200_vzqtvljm (illum_th_sensor_1)
 
--- ══════════════════════════════════════════════════════════════
 
 local th_illum = {
 
@@ -1689,13 +1644,10 @@ register_device_definition(th_illum, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-8. th_illum_h10: 조도 + 온도 + 습도÷10 (배터리 없음)
 
 -- Z2M: _TZE200_rbbx5mfq (illum_th_sensor_2)
 
--- ══════════════════════════════════════════════════════════════
 
 local th_illum_h10 = {
 
@@ -1721,21 +1673,18 @@ register_device_definition(th_illum_h10, ef00_helpers.ts0601_fingerprints( {
 
 
 
--- ══════════════════════════════════════════════════════════════
 
--- 1-9. TZ-ZT01_GA4 / ZT08: 2AAA + 외부 프로브
 
 -- Z2M: _TZE284_8se38w3c (TZ-ZT01_GA4) / _TZE284_hodyryli (ZY-ZTH03PRO)
 
--- ══════════════════════════════════════════════════════════════
 
-local function probe_temperature(dp, emitter)
+local function probe_temperature(dp, emitter, numeric_converter)
   return tuya.dp_numeric(dp, {
     name = dp == 1 and "temperature" or "temperature_probe",
     emit = emitter,
     read_only = true,
     signed = true,
-    converter = converter.signed_number_pair(10),
+    converter = numeric_converter or converter.signed_number_pair(10),
   })
 end
 
@@ -1748,17 +1697,24 @@ local function probe_battery_state(emitter)
   })
 end
 
+local tzzt01_signed = converter.signed_number_pair(10)
+-- The upstream parser signs only the full32-bit value; Enum and short VALUE stay unsigned.
+local tzzt01_scalar = converter.from_to(function(value, device, _, context)
+  return tzzt01_signed.from(value, device, nil, context)
+end, tzzt01_signed.to)
+
 local tzzt01 = {
-  probe_temperature(1, emit.temperature("C")),
+  probe_temperature(1, emit.temperature("C"), tzzt01_scalar),
   tuya.dp_humidity(2, { emit = emit.humidity(), scale = 1, read_only = true }),
   probe_battery_state(emit.tzzt01BatteryState()),
-  probe_temperature(38, emit.temperatureProbe2aaa()),
+  probe_temperature(38, emit.tzzt01ProbeTemperature(), tzzt01_scalar),
 }
 
 register_sensor_definition({
   profile = "sensors-temp-humidity-probe-battery-state-tzzt01",
   datapoints = tzzt01,
   query_on_configure = false,
+  time_start = "off",
 }, ef00_helpers.ts0601_fingerprints({
   "_TZE284_8se38w3c",
 }))
@@ -1805,7 +1761,6 @@ register_sensor_definition({
 
 
 
--- ══════════════════════════════════════════════════════════════
 
 return {
   id = "ef00.sensors.temp_humidity",

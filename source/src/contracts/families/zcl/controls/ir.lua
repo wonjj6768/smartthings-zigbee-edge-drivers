@@ -15,7 +15,7 @@ local ir_controller_battery = {
   ir_controller = true,
   ir_endpoint = 1,
   zcl_clusters = {
-    zcl.battery(),
+    zcl.battery({minimum_interval = 3600, maximum_interval = 65000, reportable_change = 10}),
   },
 }
 

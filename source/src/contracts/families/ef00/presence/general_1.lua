@@ -164,7 +164,7 @@ local presence_model_zg204zx = {
       scale = 10,
       read_only = true,
     }),
-    tuya.dp_humidity(101, { emit = emit.humidity(), read_only = true }),
+    tuya.dp_humidity(101, { emit = emit.humidity(), scale = 1, read_only = true }),
   },
   query_on_configure = false,
 }

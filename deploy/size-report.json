@@ -59087,9 +59087,9 @@
   },
   {
     "name": "zcl-controls-wonjj6768",
-    "raw_size": 291213,
+    "raw_size": 291335,
     "under_limit": true,
-    "free_bytes": 233075,
+    "free_bytes": 232953,
     "meets_headroom": true,
     "profiles": [
       "buttons-button-1-battery",
@@ -59138,7 +59138,7 @@
       "rpt-ybg",
       "scene-switches-4-plus-4"
     ],
-    "fingerprints": 326,
+    "fingerprints": 327,
     "custom_capabilities": {
       "numeric": 13,
       "enum": 18,
@@ -62460,9 +62460,9 @@
         },
         "contracts/families/zcl/controls/remotes.lua": {
           "schemaVersion": 1,
-          "inputSha256": "be4575f70fc4328e925faf8f7d0cbba96042bc47ff7bbe1b3a91e9c2bf125fc4",
-          "outputSha256": "82fadb9e652d4e4683f7b00e43cbc87a5de18853a476dce16005f54ecc8e7b22",
-          "strippedBytecodeSha256": "14a779ad86f6ce874163f9a62d585100359674b37364d1d1e155b0789d9e3b70",
+          "inputSha256": "9305682e59e2206b630a7a1a61fa658032633cd2129ec5cc75dd37dfa7f4120e",
+          "outputSha256": "282323d09567c9a4605d0e03d6aab346c7e7f541ce5bb94317aa82255e855368",
+          "strippedBytecodeSha256": "bc4f98f6a63e19713340a57ca08f6483655aa659eaa82f0f2c962bffaa452a91",
           "luaVersion": "Lua 5.4",
           "aliases": {
             "register_device_definition": "a",
@@ -62507,12 +62507,12 @@
           },
           "numerals": [
             [
-              3627,
+              3646,
               "0x0001",
               "1"
             ],
             [
-              3629,
+              3648,
               "0x0021",
               "33"
             ]
@@ -62594,42 +62594,42 @@
               ""
             ],
             [
-              2867,
+              2886,
               ",",
               ""
             ],
             [
-              3095,
+              3114,
               ",",
               ""
             ],
             [
-              3418,
+              3437,
               ",",
               ""
             ],
             [
-              3475,
+              3494,
               ",",
               ""
             ],
             [
-              3551,
+              3570,
               ",",
               ""
             ],
             [
-              3822,
+              3841,
               ",",
               ""
             ],
             [
-              4191,
+              4210,
               ",",
               ""
             ],
             [
-              4565,
+              4584,
               ",",
               ""
             ]
@@ -62637,18 +62637,18 @@
           "savedBytes": 1981,
           "literalCalls": {
             "schemaVersion": 1,
-            "inputSha256": "df635ab52b380291e8a9b453ab9ee00d14d655cfd3220eb605a566b71705c283",
-            "outputSha256": "38160d0c5b662587200e5b253dd64153fa88446d811841f015535bc7c714535f",
+            "inputSha256": "df974045a83d7c61fab935c187f96b956639abf520affa2e9d600c22abf13e74",
+            "outputSha256": "997c868049de9062061ef8cb386550d11da0c4654569036a0c2e33bf4fed8686",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "df766622f46d6848684580b397cebd3ed0b8131780560221067781f529d8764e"
+                "strippedBytecodeSha256": "7b0d3dd4a2880b513a8b713674e90dfcc5468ccb72297ae116a6e0cc6aa0d03b"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "14a779ad86f6ce874163f9a62d585100359674b37364d1d1e155b0789d9e3b70"
+                "strippedBytecodeSha256": "bc4f98f6a63e19713340a57ca08f6483655aa659eaa82f0f2c962bffaa452a91"
               }
             },
             "rewrites": [
@@ -62707,18 +62707,18 @@
           },
           "declarations": {
             "schemaVersion": 1,
-            "inputSha256": "38160d0c5b662587200e5b253dd64153fa88446d811841f015535bc7c714535f",
-            "outputSha256": "82fadb9e652d4e4683f7b00e43cbc87a5de18853a476dce16005f54ecc8e7b22",
+            "inputSha256": "997c868049de9062061ef8cb386550d11da0c4654569036a0c2e33bf4fed8686",
+            "outputSha256": "282323d09567c9a4605d0e03d6aab346c7e7f541ce5bb94317aa82255e855368",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "df766622f46d6848684580b397cebd3ed0b8131780560221067781f529d8764e"
+                "strippedBytecodeSha256": "7b0d3dd4a2880b513a8b713674e90dfcc5468ccb72297ae116a6e0cc6aa0d03b"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "14a779ad86f6ce874163f9a62d585100359674b37364d1d1e155b0789d9e3b70"
+                "strippedBytecodeSha256": "bc4f98f6a63e19713340a57ca08f6483655aa659eaa82f0f2c962bffaa452a91"
               }
             },
             "rewrites": [
@@ -62733,7 +62733,7 @@
                 "local m,p,e,z,A,l,D,E=c\"buttons-button-1-battery\",c(\"buttons-button-1-battery-voltage\",true),c(\"buttons-button-1-battery-voltage\",true),c\"buttons-button-2-battery\",c\"buttons-button-3-battery\",c(\"buttons-button-4-battery-voltage\",true),c\"buttons-button-5-battery\",c\"buttons-button-6-battery\""
               ],
               [
-                4150,
+                4169,
                 "local u=f(\"buttons-button-1-battery\",1)local v=f(\"buttons-button-2-battery\",2)local w=f(\"buttons-button-3-battery\",3)",
                 "local u,v,w=f(\"buttons-button-1-battery\",1),f(\"buttons-button-2-battery\",2),f(\"buttons-button-3-battery\",3)"
               ]
@@ -164046,9 +164046,9 @@
   },
   {
     "name": "ef00-presence-general-1-wonjj6768",
-    "raw_size": 232905,
+    "raw_size": 232913,
     "under_limit": true,
-    "free_bytes": 291383,
+    "free_bytes": 291375,
     "meets_headroom": true,
     "profiles": [
       "safety-motion-nas-ps09b2",
@@ -165775,9 +165775,9 @@
         },
         "contracts/families/ef00/presence/general_1.lua": {
           "schemaVersion": 1,
-          "inputSha256": "a741022ed4dd387b9e72b58c1e4c631c3e11d01bffe5dc1a8e4bbc0a01ac7822",
-          "outputSha256": "da8f419d0714d4db9bf33864e1a0573b6b565c20f5c520056a435e21f3e2d1d3",
-          "strippedBytecodeSha256": "78148757bf89b1b4042393c1efd872bc1be736d51307ff3ee958de34ff014605",
+          "inputSha256": "b9ac2176b695c5fbc52db0b2313f2e5c9700110e87bdd61a2d209c47a2a3651f",
+          "outputSha256": "46a68a5b2fb6f511bf9dd90fb1b81396bc2cadfd0d1b5249b74f440de616ece5",
+          "strippedBytecodeSha256": "6c84c88508c4b645c3c64f24d99986695f76109dc26c6f5ee235443cce89c6a0",
           "luaVersion": "Lua 5.4",
           "aliases": {
             "tuya": "a",
@@ -165937,562 +165937,562 @@
               ""
             ],
             [
-              3953,
+              3961,
               ",",
               ""
             ],
             [
-              3979,
+              3987,
               ",",
               ""
             ],
             [
-              4052,
+              4060,
               ",",
               ""
             ],
             [
-              4307,
+              4315,
               ",",
               ""
             ],
             [
-              4777,
+              4785,
               ",",
               ""
             ],
             [
-              4803,
+              4811,
               ",",
               ""
             ],
             [
-              4851,
+              4859,
               ",",
               ""
             ],
             [
-              5278,
+              5286,
               ",",
               ""
             ],
             [
-              5432,
+              5440,
               ",",
               ""
             ],
             [
-              5623,
+              5631,
               ",",
               ""
             ],
             [
-              5626,
+              5634,
               ",",
               ""
             ],
             [
-              5875,
+              5883,
               ",",
               ""
             ],
             [
-              5878,
+              5886,
               ",",
               ""
             ],
             [
-              5973,
+              5981,
               ",",
               ""
             ],
             [
-              6052,
+              6060,
               ",",
               ""
             ],
             [
-              6154,
+              6162,
               ",",
               ""
             ],
             [
-              6718,
+              6726,
               ",",
               ""
             ],
             [
-              6720,
+              6728,
               ",",
               ""
             ],
             [
-              6746,
+              6754,
               ",",
               ""
             ],
             [
-              6772,
+              6780,
               ",",
               ""
             ],
             [
-              7126,
+              7134,
               ",",
               ""
             ],
             [
-              7225,
+              7233,
               ",",
               ""
             ],
             [
-              7343,
+              7351,
               ",",
               ""
             ],
             [
-              7576,
+              7584,
               ",",
               ""
             ],
             [
-              7672,
+              7680,
               ",",
               ""
             ],
             [
-              7674,
+              7682,
               ",",
               ""
             ],
             [
-              7700,
+              7708,
               ",",
               ""
             ],
             [
-              7726,
+              7734,
               ",",
               ""
             ],
             [
-              7938,
+              7946,
               ",",
               ""
             ],
             [
-              8034,
+              8042,
               ",",
               ""
             ],
             [
-              8124,
+              8132,
               ",",
               ""
             ],
             [
-              8193,
+              8201,
               ",",
               ""
             ],
             [
-              8195,
+              8203,
               ",",
               ""
             ],
             [
-              8221,
+              8229,
               ",",
               ""
             ],
             [
-              8286,
+              8294,
               ",",
               ""
             ],
             [
-              8549,
+              8557,
               ",",
               ""
             ],
             [
-              8708,
+              8716,
               ",",
               ""
             ],
             [
-              8885,
+              8893,
               ",",
               ""
             ],
             [
-              9190,
+              9198,
               ",",
               ""
             ],
             [
-              9318,
+              9326,
               ",",
               ""
             ],
             [
-              9320,
+              9328,
               ",",
               ""
             ],
             [
-              9346,
+              9354,
               ",",
               ""
             ],
             [
-              9372,
+              9380,
               ",",
               ""
             ],
             [
-              9625,
+              9633,
               ",",
               ""
             ],
             [
-              9650,
+              9658,
               ",",
               ""
             ],
             [
-              9676,
+              9684,
               ",",
               ""
             ],
             [
-              10263,
+              10271,
               ",",
               ""
             ],
             [
-              10458,
+              10466,
               ",",
               ""
             ],
             [
-              10623,
+              10631,
               ",",
               ""
             ],
             [
-              10782,
+              10790,
               ",",
               ""
             ],
             [
-              11175,
+              11183,
               ",",
               ""
             ],
             [
-              11200,
+              11208,
               ",",
               ""
             ],
             [
-              11264,
+              11272,
               ",",
               ""
             ],
             [
-              11673,
+              11681,
               ",",
               ""
             ],
             [
-              11732,
+              11740,
               ",",
               ""
             ],
             [
-              11851,
+              11859,
               ",",
               ""
             ],
             [
-              11876,
+              11884,
               ",",
               ""
             ],
             [
-              11902,
+              11910,
               ",",
               ""
             ],
             [
-              12321,
+              12329,
               ",",
               ""
             ],
             [
-              12475,
+              12483,
               ",",
               ""
             ],
             [
-              12533,
+              12541,
               ",",
               ""
             ],
             [
-              12638,
+              12646,
               ",",
               ""
             ],
             [
-              12817,
+              12825,
               ",",
               ""
             ],
             [
-              12896,
+              12904,
               ",",
               ""
             ],
             [
-              13205,
+              13213,
               ",",
               ""
             ],
             [
-              14612,
+              14620,
               ",",
               ""
             ],
             [
-              15093,
+              15101,
               ",",
               ""
             ],
             [
-              15165,
+              15173,
               ",",
               ""
             ],
             [
-              15397,
+              15405,
               ",",
               ""
             ],
             [
-              15481,
+              15489,
               ",",
               ""
             ],
             [
-              15875,
+              15883,
               ",",
               ""
             ],
             [
-              15901,
+              15909,
               ",",
               ""
             ],
             [
-              15946,
+              15954,
               ",",
               ""
             ],
             [
-              16328,
+              16336,
               ",",
               ""
             ],
             [
-              16617,
+              16625,
               ",",
               ""
             ],
             [
-              16710,
+              16718,
               ",",
               ""
             ],
             [
-              16803,
+              16811,
               ",",
               ""
             ],
             [
-              16894,
+              16902,
               ",",
               ""
             ],
             [
-              17019,
+              17027,
               ",",
               ""
             ],
             [
-              17152,
+              17160,
               ",",
               ""
             ],
             [
-              17287,
+              17295,
               ",",
               ""
             ],
             [
-              17406,
+              17414,
               ",",
               ""
             ],
             [
-              17521,
+              17529,
               ",",
               ""
             ],
             [
-              17523,
+              17531,
               ",",
               ""
             ],
             [
-              17549,
+              17557,
               ",",
               ""
             ],
             [
-              17575,
+              17583,
               ",",
               ""
             ],
             [
-              17743,
+              17751,
               ",",
               ""
             ],
             [
-              17883,
+              17891,
               ",",
               ""
             ],
             [
-              18271,
+              18279,
               ",",
               ""
             ],
             [
-              18273,
+              18281,
               ",",
               ""
             ],
             [
-              18299,
+              18307,
               ",",
               ""
             ],
             [
-              18325,
+              18333,
               ",",
               ""
             ],
             [
-              18505,
+              18513,
               ",",
               ""
             ],
             [
-              18609,
+              18617,
               ",",
               ""
             ],
             [
-              18703,
+              18711,
               ",",
               ""
             ],
             [
-              18860,
+              18868,
               ",",
               ""
             ],
             [
-              19024,
+              19032,
               ",",
               ""
             ],
             [
-              19126,
+              19134,
               ",",
               ""
             ],
             [
-              19128,
+              19136,
               ",",
               ""
             ],
             [
-              19154,
+              19162,
               ",",
               ""
             ],
             [
-              19180,
+              19188,
               ",",
               ""
             ],
             [
-              19437,
+              19445,
               ",",
               ""
             ],
             [
-              19440,
+              19448,
               ",",
               ""
             ],
             [
-              19520,
+              19528,
               ",",
               ""
             ],
             [
-              19598,
+              19606,
               ",",
               ""
             ],
             [
-              19710,
+              19718,
               ",",
               ""
             ],
             [
-              19790,
+              19798,
               ",",
               ""
             ],
             [
-              19870,
+              19878,
               ",",
               ""
             ],
             [
-              19872,
+              19880,
               ",",
               ""
             ],
             [
-              19897,
+              19905,
               ",",
               ""
             ],
             [
-              19923,
+              19931,
               ",",
               ""
             ],
             [
-              19977,
+              19985,
               ",",
               ""
             ]
@@ -166500,18 +166500,18 @@
           "savedBytes": 5991,
           "literalCalls": {
             "schemaVersion": 1,
-            "inputSha256": "53508e17e1b599bc6cab75f532ceaad73d1e6e2a90fc96a04fe4e81b5ef8297f",
-            "outputSha256": "b6d12749868aa3dd201a6564f183a9107db853f677beac64c6fbc7138cc39c1f",
+            "inputSha256": "68e2130eea96ca9bcbe1cb1911d8b32d4c382cc3b3b60cb87145716400663da1",
+            "outputSha256": "48aeacf390ca26f2ff1fd5e9d0680484b03dd717402f6a96f0d906e3f1b4b9e4",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "a3aaf0fe2b3470bda6ccb64d51c981b0bd4cb2177eeab9c1bd140076c5148175"
+                "strippedBytecodeSha256": "da1dba967af8461df5cafa22a531f75de0a873dff2ff7cee01671b5487d92855"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "78148757bf89b1b4042393c1efd872bc1be736d51307ff3ee958de34ff014605"
+                "strippedBytecodeSha256": "6c84c88508c4b645c3c64f24d99986695f76109dc26c6f5ee235443cce89c6a0"
               }
             },
             "rewrites": [
@@ -166596,332 +166596,332 @@
                 ""
               ],
               [
-                3969,
+                3977,
                 "(",
                 ""
               ],
               [
-                4036,
+                4044,
                 ")",
                 ""
               ],
               [
-                5540,
+                5548,
                 "(",
                 ""
               ],
               [
-                5605,
+                5613,
                 ")",
                 ""
               ],
               [
-                5815,
+                5823,
                 "(",
                 ""
               ],
               [
-                5855,
+                5863,
                 ")",
                 ""
               ],
               [
-                6036,
+                6044,
                 "(",
                 ""
               ],
               [
-                6132,
+                6140,
                 ")",
                 ""
               ],
               [
-                6728,
+                6736,
                 "(",
                 ""
               ],
               [
-                6748,
+                6756,
                 ")",
                 ""
               ],
               [
-                7680,
+                7688,
                 "(",
                 ""
               ],
               [
-                7700,
+                7708,
                 ")",
                 ""
               ],
               [
-                8200,
+                8208,
                 "(",
                 ""
               ],
               [
-                8258,
+                8266,
                 ")",
                 ""
               ],
               [
-                8611,
+                8619,
                 "(",
                 ""
               ],
               [
-                8614,
+                8622,
                 ")",
                 ""
               ],
               [
-                8828,
+                8836,
                 "(",
                 ""
               ],
               [
-                8851,
+                8859,
                 ")",
                 ""
               ],
               [
-                9318,
+                9326,
                 "(",
                 ""
               ],
               [
-                9338,
+                9346,
                 ")",
                 ""
               ],
               [
-                9620,
+                9628,
                 "(",
                 ""
               ],
               [
-                9640,
+                9648,
                 ")",
                 ""
               ],
               [
-                10395,
+                10403,
                 "(",
                 ""
               ],
               [
-                10418,
+                10426,
                 ")",
                 ""
               ],
               [
-                10719,
+                10727,
                 "(",
                 ""
               ],
               [
-                10740,
+                10748,
                 ")",
                 ""
               ],
               [
-                11164,
+                11172,
                 "(",
                 ""
               ],
               [
-                11222,
+                11230,
                 ")",
                 ""
               ],
               [
-                11838,
+                11846,
                 "(",
                 ""
               ],
               [
-                11858,
+                11866,
                 ")",
                 ""
               ],
               [
-                12104,
+                12112,
                 "(",
                 ""
               ],
               [
-                12124,
+                12132,
                 ")",
                 ""
               ],
               [
-                12148,
+                12156,
                 "(",
                 ""
               ],
               [
-                12160,
+                12168,
                 ")",
                 ""
               ],
               [
-                12184,
+                12192,
                 "(",
                 ""
               ],
               [
-                12204,
+                12212,
                 ")",
                 ""
               ],
               [
-                12228,
+                12236,
                 "(",
                 ""
               ],
               [
-                12269,
+                12277,
                 ")",
                 ""
               ],
               [
-                12293,
+                12301,
                 "(",
                 ""
               ],
               [
-                12323,
+                12331,
                 ")",
                 ""
               ],
               [
-                12347,
+                12355,
                 "(",
                 ""
               ],
               [
-                12356,
+                12364,
                 ")",
                 ""
               ],
               [
-                12380,
+                12388,
                 "(",
                 ""
               ],
               [
-                12417,
+                12425,
                 ")",
                 ""
               ],
               [
-                12441,
+                12449,
                 "(",
                 ""
               ],
               [
-                12473,
+                12481,
                 ")",
                 ""
               ],
               [
-                12497,
+                12505,
                 "(",
                 ""
               ],
               [
-                12576,
+                12584,
                 ")",
                 ""
               ],
               [
-                15843,
+                15851,
                 "(",
                 ""
               ],
               [
-                15882,
+                15890,
                 ")",
                 ""
               ],
               [
-                17319,
+                17327,
                 "(",
                 ""
               ],
               [
-                17338,
+                17346,
                 ")",
                 ""
               ],
               [
-                17432,
+                17440,
                 "(",
                 ""
               ],
               [
-                17451,
+                17459,
                 ")",
                 ""
               ],
               [
-                17485,
+                17493,
                 "(",
                 ""
               ],
               [
-                17505,
+                17513,
                 ")",
                 ""
               ],
               [
-                17770,
+                17778,
                 "(",
                 ""
               ],
               [
-                17794,
+                17802,
                 ")",
                 ""
               ],
               [
-                18231,
+                18239,
                 "(",
                 ""
               ],
               [
-                18251,
+                18259,
                 ")",
                 ""
               ],
               [
-                19084,
+                19092,
                 "(",
                 ""
               ],
               [
-                19104,
+                19112,
                 ")",
                 ""
               ],
               [
-                19317,
+                19325,
                 "(",
                 ""
               ],
               [
-                19359,
+                19367,
                 ")",
                 ""
               ],
               [
-                19823,
+                19831,
                 "(",
                 ""
               ],
               [
-                19843,
+                19851,
                 ")",
                 ""
               ]
@@ -166930,18 +166930,18 @@
           },
           "declarations": {
             "schemaVersion": 1,
-            "inputSha256": "b6d12749868aa3dd201a6564f183a9107db853f677beac64c6fbc7138cc39c1f",
-            "outputSha256": "da8f419d0714d4db9bf33864e1a0573b6b565c20f5c520056a435e21f3e2d1d3",
+            "inputSha256": "48aeacf390ca26f2ff1fd5e9d0680484b03dd717402f6a96f0d906e3f1b4b9e4",
+            "outputSha256": "46a68a5b2fb6f511bf9dd90fb1b81396bc2cadfd0d1b5249b74f440de616ece5",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "a3aaf0fe2b3470bda6ccb64d51c981b0bd4cb2177eeab9c1bd140076c5148175"
+                "strippedBytecodeSha256": "da1dba967af8461df5cafa22a531f75de0a873dff2ff7cee01671b5487d92855"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "78148757bf89b1b4042393c1efd872bc1be736d51307ff3ee958de34ff014605"
+                "strippedBytecodeSha256": "6c84c88508c4b645c3c64f24d99986695f76109dc26c6f5ee235443cce89c6a0"
               }
             },
             "rewrites": [
@@ -166961,7 +166961,7 @@
                 "local B,ab=V.msa201_presence_converter,{profile=\"safety-presence-basic-delay-battery\",package_group=\"presence-general-1\",datapoints={a.dp_presence(1,{emit=b.presence(),read_only=true,converter=c.true_false0()}),a.dp_battery(4,{emit=b.battery(),read_only=true}),a.dp_enum(9,{name=\"sensitivity\",emit=b.ihsenoPresenceSensitivity(),converter=c.lookup_from_to{low=0,middle=1,high=2}}),a.dp_enum(10,{name=\"delay_time\",emit=b.ihsenoPresenceDelayTime(),converter=c.lookup_from_to{[\"15s\"]=0,[\"30s\"]=1,[\"60s\"]=2}})},query_on_configure=false}\n"
               ],
               [
-                12025,
+                12033,
                 "local d=c.lookup_from_to{disable=0,enable=1}local g=c.lookup_from_to{off=0,on=1}local t=c.lookup_from_to{silence=0,status=1}local o=c.lookup_from_to{large_move=0,small_move=1,custom_move=2}local p=c.lookup_from_to{start=0,ongoing=1,complete=2}local r=c.lookup_from_to{start=0}local n=c.lookup_from_to{no_action=0,restart=1,reset_param=2}local j=c.lookup_from_to{high=0,medium=1,low=2,custom=3}local q=c.lookup_from_to{custom=0,toilet=1,kitchen=2,corridor=3,bedroom=4,living_room=5,meeting_room=6}",
                 "local d,g,t,o,p,r,n,j,q=c.lookup_from_to{disable=0,enable=1},c.lookup_from_to{off=0,on=1},c.lookup_from_to{silence=0,status=1},c.lookup_from_to{large_move=0,small_move=1,custom_move=2},c.lookup_from_to{start=0,ongoing=1,complete=2},c.lookup_from_to{start=0},c.lookup_from_to{no_action=0,restart=1,reset_param=2},c.lookup_from_to{high=0,medium=1,low=2,custom=3},c.lookup_from_to{custom=0,toilet=1,kitchen=2,corridor=3,bedroom=4,living_room=5,meeting_room=6}"
               ]

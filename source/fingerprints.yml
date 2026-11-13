@@ -1,4 +1,8 @@
 zigbeeManufacturer:
+  - id: "tuya-ts0043-7uglqmvv"
+    manufacturer: "_TZ3000_7uglqmvv"
+    model: "TS0043"
+    deviceProfileName: "buttons-button-3-battery"
   - id: "ikea-e1766"
     manufacturer: "IKEA of Sweden"
     model: "TRADFRI open/close remote"

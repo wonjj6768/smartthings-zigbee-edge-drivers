@@ -2013,6 +2013,17 @@
       "catalogModule": "contracts.families.zcl.switches",
       "profile": "switches-switch-3-device-temperature",
       "auditEvidence": "analysis/z2m_heiman_switches_20261023.md#exact-alias별-직접-감사"
+    },
+    {
+      "manufacturer": "_TZ3000_7uglqmvv",
+      "manufacturerUtf8Hex": "5f545a333030305f3775676c716d7676",
+      "model": "TS0043",
+      "modelUtf8Hex": "545330303433",
+      "owner": "zcl-controls-wonjj6768",
+      "catalogId": "zcl.controls",
+      "catalogModule": "contracts.families.zcl.controls",
+      "profile": "buttons-button-3-battery",
+      "auditEvidence": "analysis/github_simple_fixes_20261113.md#ts0043-fingerprint-only-alias"
     }
   ],
   "approvedNewFamilyExacts": [
@@ -15196,11 +15207,11 @@
     "newPackageCount": 27,
     "newCatalogCount": 115,
     "newExactCount": 991,
-    "fingerprintOnlyAliasCount": 120,
+    "fingerprintOnlyAliasCount": 121,
     "newFamilyExactCount": 5,
     "failClosedExactCount": 0,
     "restoredLegacyExactCount": 5,
-    "runtimeExactCount": 4391,
+    "runtimeExactCount": 4392,
     "movedCatalogCount": 62,
     "movedExactCount": 540,
     "historicalPartitionCount": 17

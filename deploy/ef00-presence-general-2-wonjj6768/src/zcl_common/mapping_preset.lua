@@ -1,68 +1,68 @@
-local function l(B)
-local z,A,v,y=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
-local function k(f,u)
-if type(f)~="table"then
-f={}end
-if type(u)~="table"then
-return f
+local function o(y)
+local t,B,w,A=require"capabilities.events.all",require"st.zigbee.data_types",require"st.zigbee.constants",require"st.utils.safe_xy_to_hsv"
+local function n(g,v)
+if type(g)~="table"then
+g={}end
+if type(v)~="table"then
+return g
 end
-for w,g in pairs(u)do
-f[w]=g
+for x,h in pairs(v)do
+g[x]=h
 end
-return f
+return g
 end
-local function j(f,a)
-if type(f)~="table"or type(a)~="table"then
-return f
+local function m(g,a)
+if type(g)~="table"or type(a)~="table"then
+return g
 end
-for w,g in pairs(a)do
-if f[w]==nil then
-f[w]=g
+for x,h in pairs(a)do
+if g[x]==nil then
+g[x]=h
 end
 end
-return f
+return g
 end
-local function i(b,h)
+local function l(b,k)
 local c={}if type(b)=="string"then
 c.name=b
 else
-k(c,b)end
-k(c,h)return c
+n(c,b)end
+n(c,k)return c
 end
 local function d()
 return{
-from=function(g)
-if type(g)~="number"then
-return g
+from=function(h)
+if type(h)~="number"then
+return h
 end
-if g<=0 then
+if h<=0 then
 return 0
 end
-local D=10 ^((g-1)/10000)return math.floor(D+0.5)
+local D=10 ^((h-1)/10000)return math.floor(D+0.5)
 end,
-to=function(g)
-if type(g)~="number"then
-return g
+to=function(h)
+if type(h)~="number"then
+return h
 end
-if g<=0 then
+if h<=0 then
 return 0
 end
-local E=10000*(math.log(g)/math.log(10))+1
+local E=10000*(math.log(h)/math.log(10))+1
 return math.floor(E+0.5)
 end
 }
 end
-local function m(q,p,n)
-return{minimum_interval=q,maximum_interval=p,reportable_change=n,read_on_configure=true}
+local function f(s,r,p)
+return{minimum_interval=s,maximum_interval=r,reportable_change=p,read_on_configure=true}
 end
-local function r(...)
-local t={}for _,a in ipairs{...}do
-j(t,a)end
-return t
+local function i(...)
+local u={}for _,a in ipairs{...}do
+m(u,a)end
+return u
 end
-local function s(C,x,o)
-B[C]=function(b,h)
-local c=i(b,h)local e,a=c.configure_reporting,o(c)
+local function j(C,z,q)
+y[C]=function(b,k)
+local c=l(b,k)local e,a=c.configure_reporting,q(c)
 c.configure_reporting=nil
 if e==false then
 a.minimum_interval=nil
@@ -71,15 +71,21 @@ a.reportable_change=nil
 a.physical_reportable_change=nil
 a.reporting_defaults=nil
 end
-j(c,a)return x(c)
+m(c,a)return z(c)
 end
 end
-s("illuminance",B.illuminance_measurement,function(h)
-local e=h.configure_reporting
-h.configure_reporting=nil
+j("temperature",y.temperature_measurement,function()
+return i({emit=t.temperature"C",scale=100},f(30,300,50))
+end)
+j("humidity",y.relative_humidity,function()
+return i({emit=t.humidity(),scale=100},f(30,300,100))
+end)
+j("illuminance",y.illuminance_measurement,function(k)
+local e=k.configure_reporting
+k.configure_reporting=nil
 if e==false then
-return{emit=z.illuminance(),converter=d(),read_on_configure=true}end
-return r({emit=z.illuminance(),converter=d()},m(30,300,100))
+return{emit=t.illuminance(),converter=d(),read_on_configure=true}end
+return i({emit=t.illuminance(),converter=d()},f(30,300,100))
 end)
 end
-return l
+return o

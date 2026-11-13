@@ -857,6 +857,10 @@ local function load_cluster_command_handler(zcl)
       return false
     end
 
+    if type(preset.ias_zone_enroll_response) == "function" then
+      return preset.ias_zone_enroll_response(device, zb_rx) ~= false
+    end
+
     local zone_enroll_response = generated_clusters.IASZone.server.commands.ZoneEnrollResponse(
       device,
       generated_clusters.IASZone.types.EnrollResponseCode(0x00),

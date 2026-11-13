@@ -160,6 +160,38 @@ local SONOFF_CLUSTER = 0xFC11
 local SONOFF_MFG_CODE = 0x1286
 local SONOFF_CAPABILITY = "concertmirror08464.sonoffZbminir2"
 
+local function read_sonoff_startup(device)
+  zcl.read_attribute(device, 0x0006, 0x4003, 1)
+end
+
+local function sonoff_settings_start(device, preset)
+  device.thread:call_with_delay(2, function()
+    zcl.read_configured_attributes(device, preset.zcl_clusters)
+    zcl.read_attribute(device, 0x0000, 0x0001, 1)
+    zcl.read_attribute(device, 0x0000, 0x4000, 1)
+  end, "SONOFF stored settings")
+end
+
+local function sonoff_settings_message(device, message)
+  local address = message.address_header
+  if address.profile.value == 0 and address.cluster.value == 0x0013 then
+    device.thread:call_with_delay(1, function()
+      read_sonoff_startup(device)
+      zcl.read_attribute(device, 0x0000, 0x0001, 1)
+      zcl.read_attribute(device, 0x0000, 0x4000, 1)
+    end, "SONOFF rejoin settings")
+  end
+end
+
+local function send_sonoff_startup(device, mapping, value)
+  local raw = mapping.to_device(value)
+  if raw == nil then return false end
+  local attribute = zcl.get_generated_attribute(0x0006, 0x4003)
+  device:send(attribute:write(device, data_types.Enum8(raw)):to_endpoint(1))
+  device.thread:call_with_delay(1, function() read_sonoff_startup(device) end, "SONOFF startup readback")
+  return true
+end
+
 local function on_off_from_device(value)
   return (value == true or value == 1) and "on" or "off"
 end
@@ -220,10 +252,15 @@ end
 
 local sonoff_zbmini_r2 = {
   profile = "switches-switch-1-sonoff-zbmini-r2",
+  runtime_start = sonoff_settings_start,
+  zigbee_message_handler = sonoff_settings_message,
   zcl_clusters = {
     zcl.switch(),
     zcl.cluster_attribute(zcl.CLUSTER_ON_OFF, 0x4003, {
       name = "sonoff_zbmini_r2_power_on_behavior",
+      endpoint = 1,
+      suppress_optimistic_state = true,
+      sender = send_sonoff_startup,
       emit = emit.sonoffZbminir2PowerOnBehavior(),
       data_type = data_types.Enum8,
       write_type = data_types.Enum8,

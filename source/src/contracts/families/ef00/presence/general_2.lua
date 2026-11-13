@@ -744,9 +744,31 @@ register_presence_definition(presence_model_zg_204ze, {
 -- Z2M: _TZE200_uli8wasj / _TZE200_grgol3xp / _TZE200_rhgsbacq / _TZE200_y8jijhba
 
 
+local function ay204t_report(mapping)
+  local from_device = mapping.from_device or (mapping.converter and mapping.converter.from)
+  mapping.from_device = function(value, device, context)
+    if device:get_manufacturer() ~= "AOYAN  " or device:get_model() ~= "AY204T"
+      or context.raw_value == 0xFFFF then return nil end
+    if from_device then return from_device(value, device, context, mapping) end
+    return value
+  end
+  return mapping
+end
+
 local presence_model_zg_204zv = {
   profile = "safety-presence-zg204zv-illuminance-temp-humidity-battery",
   package_group = "presence-general-2",
+
+  -- #49 confirms these EP1 reports only for the existing AY204T exact.
+  -- No standard reporting configuration or extra queries are established.
+  zcl_clusters = {
+    ay204t_report(zcl.temperature({endpoint=1, read_only=true, configure_reporting=false,
+      read_on_configure=false, read_on_refresh=false})),
+    ay204t_report(zcl.humidity({endpoint=1, read_only=true, configure_reporting=false,
+      read_on_configure=false, read_on_refresh=false})),
+    ay204t_report(zcl.illuminance({endpoint=1, read_only=true, configure_reporting=false,
+      read_on_configure=false, read_on_refresh=false})),
+  },
 
   tuya.dp_presence(1, { emit = emit.presence(), converter = converter.true_false1() }),
 

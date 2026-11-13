@@ -87,18 +87,38 @@ local display = {
   },
 }
 
+local function read_door_enrollment(device)
+  zcl.read_attribute(device, 0x0500, 0x0000, 1)
+  zcl.read_attribute(device, 0x0500, 0x0010, 1)
+end
+
+local function door_enroll_response(device, message)
+  if message.address_header.src_endpoint.value ~= 1 then return false end
+  local command = zcl.get_generated_server_command(0x0500, 0x00)
+  local response = command(device, 0, 0):to_endpoint(1)
+  response.body.zcl_header.seqno = message.body.zcl_header.seqno
+  device:send(response)
+  device.thread:call_with_delay(0.5, function() read_door_enrollment(device) end,
+    "Shelly door enrollment readback")
+  return true
+end
+
 local door = {
   profile = "safety-contact-illuminance-battery-low-handle-shelly",
   initial_custom_state_query = false,
   configure = function(driver, device)
+    device:remove_configured_attribute(0x0500, 0x0002)
+    device:set_field("shelly_door_expected_cie", driver.environment_info.hub_zigbee_eui)
     zcl.bind_cluster(device, 0x0500, driver.environment_info.hub_zigbee_eui, 1)
   end,
+  ias_zone_enroll_response = door_enroll_response,
   capability_commands = {
     {capability_id="concertmirror08464.shellyDoorIdentify", command_name="setIdentifyTime",
       argument_name="identifyTime", mapping_name="shelly_door_identify"},
   },
   zcl_clusters = {
-    zcl.contact_alarm_1_or_2({endpoint=1, read_only=true, read_on_configure=true, configure_reporting=false}),
+    zcl.contact_alarm_1_or_2({endpoint=1, read_only=true, read_on_configure=true, configure_reporting=false,
+      ias_configure_method=3}), -- SDK AUTO_ENROLL_REQUEST: wait for the device's request.
     zcl.shelly_handle_position({endpoint=1, read_only=true, read_on_configure=true, configure_reporting=false}),
     battery_low("shelly_door_battery_low", emit.shellyDoorBatteryLow(), 1),
     light_level("shelly_blu_door_light_level", emit.shellyBluDoorLightLevel()),
@@ -106,6 +126,22 @@ local door = {
     light_threshold("shelly_blu_door_bright_threshold", 0x0002, emit.shellyDoorBrightThreshold()),
     battery(1),
     identify("shelly_door_identify"),
+    zcl.cluster_attribute(0x0500, 0x0000, {
+      name="shelly_door_zone_state", endpoint=1, data_type=data_types.Enum8, read_only=true,
+      handler=function(device, value)
+        device:set_field("shelly_door_zone_state", value)
+      end,
+    }),
+    zcl.cluster_attribute(0x0500, 0x0010, {
+      name="shelly_door_cie_address", endpoint=1, data_type=data_types.IeeeAddress, read_only=true,
+      handler=function(device, value)
+        device:set_field("shelly_door_cie_address", value)
+        local expected = device:get_field("shelly_door_expected_cie")
+        if expected ~= nil then
+          device:set_field("shelly_door_cie_matches_hub", value == expected)
+        end
+      end,
+    }),
   },
 }
 

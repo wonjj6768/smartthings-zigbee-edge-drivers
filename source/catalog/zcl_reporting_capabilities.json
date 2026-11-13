@@ -9533,7 +9533,7 @@
             }
           ],
           "origin": {
-            "line": 317,
+            "line": 354,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9640,7 +9640,7 @@
             }
           ],
           "origin": {
-            "line": 324,
+            "line": 361,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9757,7 +9757,7 @@
             }
           ],
           "origin": {
-            "line": 328,
+            "line": 365,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9825,7 +9825,7 @@
             }
           ],
           "origin": {
-            "line": 333,
+            "line": 370,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9845,7 +9845,7 @@
             }
           ],
           "origin": {
-            "line": 346,
+            "line": 383,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9945,7 +9945,7 @@
             }
           ],
           "origin": {
-            "line": 358,
+            "line": 395,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9981,7 +9981,7 @@
             }
           ],
           "origin": {
-            "line": 383,
+            "line": 420,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -9997,7 +9997,7 @@
             }
           ],
           "origin": {
-            "line": 392,
+            "line": 429,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10025,7 +10025,7 @@
             }
           ],
           "origin": {
-            "line": 411,
+            "line": 448,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10097,7 +10097,7 @@
             }
           ],
           "origin": {
-            "line": 337,
+            "line": 374,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10341,7 +10341,7 @@
             }
           ],
           "origin": {
-            "line": 342,
+            "line": 379,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10454,7 +10454,7 @@
             }
           ],
           "origin": {
-            "line": 351,
+            "line": 388,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10526,7 +10526,7 @@
             }
           ],
           "origin": {
-            "line": 396,
+            "line": 433,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10637,7 +10637,7 @@
             }
           ],
           "origin": {
-            "line": 401,
+            "line": 438,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10785,7 +10785,7 @@
             }
           ],
           "origin": {
-            "line": 406,
+            "line": 443,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10892,7 +10892,7 @@
             }
           ],
           "origin": {
-            "line": 418,
+            "line": 455,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10916,7 +10916,7 @@
             }
           ],
           "origin": {
-            "line": 429,
+            "line": 466,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -10997,7 +10997,7 @@
             }
           ],
           "origin": {
-            "line": 422,
+            "line": 459,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -11078,7 +11078,7 @@
             }
           ],
           "origin": {
-            "line": 435,
+            "line": 472,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -11351,7 +11351,7 @@
             }
           ],
           "origin": {
-            "line": 442,
+            "line": 479,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -11569,7 +11569,7 @@
             }
           ],
           "origin": {
-            "line": 469,
+            "line": 506,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -11691,7 +11691,7 @@
             }
           ],
           "origin": {
-            "line": 473,
+            "line": 510,
             "source": "contracts/families/zcl/switches/retail_switches.lua"
           },
           "owner": {
@@ -95347,7 +95347,7 @@
             }
           ],
           "origin": {
-            "line": 149,
+            "line": 185,
             "source": "contracts/families/zcl/sensors/shelly_environment.lua"
           },
           "owner": {
@@ -95443,7 +95443,7 @@
             }
           ],
           "origin": {
-            "line": 152,
+            "line": 188,
             "source": "contracts/families/zcl/sensors/shelly_environment.lua"
           },
           "owner": {
@@ -95535,7 +95535,7 @@
             }
           ],
           "origin": {
-            "line": 156,
+            "line": 192,
             "source": "contracts/families/zcl/sensors/shelly_environment.lua"
           },
           "owner": {

@@ -1205,6 +1205,7 @@ local driver = ZigbeeDriver("tuya-universal", driver_template)
 local dispatcher = driver.zigbee_message_dispatcher
 local dispatch = dispatcher.dispatch
 function dispatcher:dispatch(driver, device, zb_rx, ...)
+  if zcl.retry_reporting_on_rx then zcl.retry_reporting_on_rx(device, zb_rx) end
   local preset = get_preset(device)
   if preset and preset.zigbee_message_handler then
     preset.zigbee_message_handler(device, zb_rx)

@@ -145,6 +145,22 @@ local door = {
   },
 }
 
+local function read_motion_enrollment(device)
+  zcl.read_attribute(device, 0x0500, 0x0000, 1)
+  zcl.read_attribute(device, 0x0500, 0x0010, 1)
+end
+
+local function motion_enroll_response(device, message)
+  if message.address_header.src_endpoint.value ~= 1 then return false end
+  local command = zcl.get_generated_server_command(0x0500, 0x00)
+  local response = command(device, 0, 0):to_endpoint(1)
+  response.body.zcl_header.seqno = message.body.zcl_header.seqno
+  device:send(response)
+  device.thread:call_with_delay(0.5, function() read_motion_enrollment(device) end,
+    "Shelly motion enrollment readback")
+  return true
+end
+
 local motion = {
   profile = "safety-motion-illuminance-battery-low-battery",
   capability_commands = {
@@ -155,14 +171,17 @@ local motion = {
   },
   configure = function(driver, device)
     device:remove_configured_attribute(0x0500, 0x0002)
+    device:set_field("shelly_motion_expected_cie", driver.environment_info.hub_zigbee_eui)
     zcl.bind_cluster(device, 0x0500, driver.environment_info.hub_zigbee_eui, 1)
   end,
+  ias_zone_enroll_response = motion_enroll_response,
   zcl_clusters = {
-    zcl.motion({ configure_reporting = false }),
+    zcl.motion({endpoint=1, read_only=true, read_on_configure=true, configure_reporting=false,
+      ias_configure_method=3}), -- SDK AUTO_ENROLL_REQUEST; no unsolicited response.
     light_level("shelly_blu_motion_light_level", emit.shellyBluMotionLightLevel()),
     light_threshold("shelly_blu_motion_dark_threshold", 0x0001, emit.shellyMotionDarkThresholdV2()),
     light_threshold("shelly_blu_motion_bright_threshold", 0x0002, emit.shellyMotionBrightThresholdV2()),
-    battery_low("shelly_motion_battery_low", emit.shellyMotionBatteryLow()),
+    battery_low("shelly_motion_battery_low", emit.shellyMotionBatteryLow(), 1),
     battery(),
     zcl.cluster_attribute(0x0500, 0x0013, {
       name = "shelly_blu_motion_sensitivity",
@@ -179,6 +198,18 @@ local motion = {
       end,
     }),
     identify("shelly_motion_identify"),
+    zcl.cluster_attribute(0x0500, 0x0000, {
+      name="shelly_motion_zone_state", endpoint=1, data_type=data_types.Enum8, read_only=true,
+      handler=function(device, value) device:set_field("shelly_motion_zone_state", value) end,
+    }),
+    zcl.cluster_attribute(0x0500, 0x0010, {
+      name="shelly_motion_cie_address", endpoint=1, data_type=data_types.IeeeAddress, read_only=true,
+      handler=function(device, value)
+        device:set_field("shelly_motion_cie_address", value)
+        local expected=device:get_field("shelly_motion_expected_cie")
+        if expected~=nil then device:set_field("shelly_motion_cie_matches_hub", value==expected) end
+      end,
+    }),
   },
 }
 

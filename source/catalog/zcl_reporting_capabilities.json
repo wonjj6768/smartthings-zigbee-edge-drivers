@@ -25671,7 +25671,7 @@
             }
           ],
           "origin": {
-            "line": 134,
+            "line": 151,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -25883,7 +25883,7 @@
             }
           ],
           "origin": {
-            "line": 159,
+            "line": 173,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -26054,7 +26054,7 @@
             }
           ],
           "origin": {
-            "line": 168,
+            "line": 182,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -26221,7 +26221,7 @@
             }
           ],
           "origin": {
-            "line": 175,
+            "line": 189,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -26437,7 +26437,7 @@
             }
           ],
           "origin": {
-            "line": 181,
+            "line": 195,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -26673,7 +26673,7 @@
             }
           ],
           "origin": {
-            "line": 191,
+            "line": 205,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -26897,7 +26897,7 @@
             }
           ],
           "origin": {
-            "line": 206,
+            "line": 220,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -27113,7 +27113,7 @@
             }
           ],
           "origin": {
-            "line": 218,
+            "line": 232,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -27280,7 +27280,7 @@
             }
           ],
           "origin": {
-            "line": 227,
+            "line": 241,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -27492,7 +27492,7 @@
             }
           ],
           "origin": {
-            "line": 234,
+            "line": 248,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -27716,7 +27716,7 @@
             }
           ],
           "origin": {
-            "line": 242,
+            "line": 256,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -27793,7 +27793,7 @@
             }
           ],
           "origin": {
-            "line": 255,
+            "line": 269,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -28003,7 +28003,7 @@
             }
           ],
           "origin": {
-            "line": 260,
+            "line": 274,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -28221,7 +28221,7 @@
             }
           ],
           "origin": {
-            "line": 265,
+            "line": 279,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -28431,7 +28431,7 @@
             }
           ],
           "origin": {
-            "line": 277,
+            "line": 291,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -28645,7 +28645,7 @@
             }
           ],
           "origin": {
-            "line": 285,
+            "line": 299,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -28855,7 +28855,7 @@
             }
           ],
           "origin": {
-            "line": 293,
+            "line": 307,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -29065,7 +29065,7 @@
             }
           ],
           "origin": {
-            "line": 301,
+            "line": 315,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -29320,7 +29320,7 @@
             }
           ],
           "origin": {
-            "line": 308,
+            "line": 322,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -29476,7 +29476,7 @@
             }
           ],
           "origin": {
-            "line": 317,
+            "line": 331,
             "source": "contracts/families/zcl/sensors/general.lua"
           },
           "owner": {
@@ -55159,7 +55159,7 @@
             }
           ],
           "origin": {
-            "line": 1826,
+            "line": 1870,
             "source": "contracts/families/ef00/covers.lua"
           },
           "owner": {
@@ -95347,7 +95347,7 @@
             }
           ],
           "origin": {
-            "line": 185,
+            "line": 216,
             "source": "contracts/families/zcl/sensors/shelly_environment.lua"
           },
           "owner": {
@@ -95443,7 +95443,7 @@
             }
           ],
           "origin": {
-            "line": 188,
+            "line": 219,
             "source": "contracts/families/zcl/sensors/shelly_environment.lua"
           },
           "owner": {
@@ -95535,7 +95535,7 @@
             }
           ],
           "origin": {
-            "line": 192,
+            "line": 223,
             "source": "contracts/families/zcl/sensors/shelly_environment.lua"
           },
           "owner": {

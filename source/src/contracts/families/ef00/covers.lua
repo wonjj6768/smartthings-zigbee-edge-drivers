@@ -949,25 +949,69 @@ local cover_three = {
 
 -- Z2M TS0601_cover_1 legacy contract: DP1 state, DP2/DP3 position,
 -- DP5 reverse direction and DP105 motor speed (0..255).
+local COVER_ONE_INVERT = "cover_one_position_invert"
+local COVER_ONE_RAW_POSITION = "cover_one_raw_position"
+local function cover_one_position(value, device)
+  value = tonumber(value)
+  if value == nil or value < 0 or value > 100 then return nil end
+  return device:get_field(COVER_ONE_INVERT) == "inverted" and (100 - value) or value
+end
+local function cover_one_position_from(value, device)
+  if cover_one_position(value, device) == nil then return nil end
+  if device:get_field(COVER_ONE_RAW_POSITION) ~= value then
+    device:set_field(COVER_ONE_RAW_POSITION, value, {persist=true})
+  end
+  return cover_one_position(value, device)
+end
+local cover_one_position_converter = converter.from_to(cover_one_position_from, cover_one_position)
+local cover_one_shade_state = converter.from_only(function(value, device)
+  local position = cover_one_position_from(value, device)
+  if position == nil then return nil end
+  return position == 0 and "closed" or position == 100 and "open" or "partially open"
+end)
+local function cover_one_set_position_invert(device, value)
+  if value ~= "normal" and value ~= "inverted" then return false end
+  local raw = device:get_field(COVER_ONE_RAW_POSITION)
+  if raw == nil then
+    raw = device:get_latest_state("main", "windowShadeLevel", "shadeLevel")
+    if raw ~= nil and device:get_field(COVER_ONE_INVERT) == "inverted" then raw = 100 - raw end
+  end
+  device:set_field(COVER_ONE_INVERT, value, {persist=true})
+  local position = cover_one_position(raw, device)
+  if position ~= nil then
+    device:set_field(COVER_ONE_RAW_POSITION, raw, {persist=true})
+    device:emit_component_event({id="main"}, emit.shade_level()(device, position))
+    device:emit_component_event({id="main"}, emit.shade_state()(device,
+      position == 0 and "closed" or position == 100 and "open" or "partially open"))
+  end
+  return true
+end
 local cover_one = {
   profile = "covers-cover-cover-one",
+  protocol_writers = {cover_one_position_invert=cover_one_set_position_invert},
+  runtime_start = function(device)
+    -- This is the driver's interpretation policy, not a measured motor state.
+    device:emit_component_event({id="main"},
+      emit.coverOnePositionInvert()(device, device:get_field(COVER_ONE_INVERT) or "normal"))
+  end,
   tuya.dp_enum(1, {
     name = "cover_state",
     converter = cover_state_standard,
     write_only = true,
   }),
-  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya.dp_cover_position(2, { emit = emit.shade_level(), converter=cover_one_position_converter }),
   tuya.dp_numeric(2, {
     name = "window_shade_state",
     emit = emit.shade_state(),
-    converter = window_shade_state_from_position(),
+    converter = cover_one_shade_state,
     read_only = true,
   }),
-  tuya.dp_cover_position(3, { name = "position_report", emit = emit.shade_level() }),
+  tuya.dp_cover_position(3, { name = "position_report", emit = emit.shade_level(),
+    converter=cover_one_position_converter }),
   tuya.dp_numeric(3, {
     name = "window_shade_state_report",
     emit = emit.shade_state(),
-    converter = window_shade_state_from_position(),
+    converter = cover_one_shade_state,
     read_only = true,
   }),
   tuya.dp_enum(5, {

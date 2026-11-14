@@ -10,6 +10,8 @@ components:
         version: 1
       - id: concertmirror08464.coverOneReverseDirection
         version: 1
+      - id: concertmirror08464.coverOnePositionInvert
+        version: 1
       - id: refresh
         version: 1
     categories:

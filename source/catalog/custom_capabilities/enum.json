@@ -21637,5 +21637,14 @@
       "sit",
       "sedentary"
     ]
+  ],
+  [
+    "coverOnePositionInvert",
+    true,
+    "cover_one_position_invert",
+    [
+      "normal",
+      "inverted"
+    ]
   ]
 ]

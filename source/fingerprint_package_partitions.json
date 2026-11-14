@@ -2024,6 +2024,17 @@
       "catalogModule": "contracts.families.zcl.controls",
       "profile": "buttons-button-3-battery",
       "auditEvidence": "analysis/github_simple_fixes_20261113.md#ts0043-fingerprint-only-alias"
+    },
+    {
+      "manufacturer": "_TZ32101000000_5oy7cysk",
+      "manufacturerUtf8Hex": "5f545a33323130313030303030305f356f79376379736b",
+      "model": "TS0210",
+      "modelUtf8Hex": "545330323130",
+      "owner": "zcl-sensors-2-wonjj6768",
+      "catalogId": "zcl.sensors.wave19_vibration",
+      "catalogModule": "contracts.families.zcl.sensors.wave19_vibration",
+      "profile": "safety-wave19-tuya-ts0210-quoted",
+      "auditEvidence": "analysis/issues24_54_55_20261114.md#issue55-exact-alias"
     }
   ],
   "approvedNewFamilyExacts": [
@@ -15207,11 +15218,11 @@
     "newPackageCount": 27,
     "newCatalogCount": 115,
     "newExactCount": 991,
-    "fingerprintOnlyAliasCount": 121,
+    "fingerprintOnlyAliasCount": 122,
     "newFamilyExactCount": 5,
     "failClosedExactCount": 0,
     "restoredLegacyExactCount": 5,
-    "runtimeExactCount": 4392,
+    "runtimeExactCount": 4393,
     "movedCatalogCount": 62,
     "movedExactCount": 540,
     "historicalPartitionCount": 17

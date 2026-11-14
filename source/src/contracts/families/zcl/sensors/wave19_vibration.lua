@@ -88,6 +88,8 @@ register_device_definition(ts0210, {
   -- The two apostrophes are literal Basic-cluster bytes in frozen Z2M. Do not
   -- normalize them away and do not add a model-only fallback.
   device_helpers.create_fingerprint("'_TZ32101000000_5oy7cysk'", "TS0210"),
+  -- Issue55 reports this separate Basic-cluster identity. No normalization.
+  device_helpers.create_fingerprint("_TZ32101000000_5oy7cysk", "TS0210"),
 })
 
 return {

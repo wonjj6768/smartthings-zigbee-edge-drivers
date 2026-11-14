@@ -4480,6 +4480,7 @@ local ATTRIBUTE_OVERRIDES = {
   zg210zTemperatureCalibration = "temperatureCalibration",
   zg210zHumidityCalibration = "humidityCalibration",
   tzzt01ProbeTemperature = "probeTemperature",
+  coverOnePositionInvert = "positionInvert",
 }
 
 local function attribute_name(capability_id)
@@ -8946,6 +8947,7 @@ local enum_rows = {
   {"iris3460Action",false,"iris3460_action",{"on","off"}},
   {"ikeaE1766Action",false,"ikea_e1766_action",{"open","close","stop"}},
   {"zg210zPressureState",false,"zg210z_pressure_state",{"none","sit","sedentary"}},
+  {"coverOnePositionInvert",true,"cover_one_position_invert",{"normal","inverted"}},
 }
 local text_rows = {
   {"zmsFourSwitchName",true,"zms206_switch_name",12},

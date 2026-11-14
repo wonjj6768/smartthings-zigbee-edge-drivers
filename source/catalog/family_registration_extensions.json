@@ -1110,7 +1110,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "e10781c25c7ccfc4d034f2d6a4ae26738edbd436375c864b28765f576b4864f1"
+      "dynamicEventMemberSha256": "111bb4fefb6d9d7b666c690cb77b2f6a2a1c97ab7eb09171ae93732056a58b7f"
     },
     "contracts.families.zcl.thermostats.wave19_sber": {
       "id": "zcl.thermostats.wave19.sber",

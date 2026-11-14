@@ -17854,5 +17854,9 @@
   [
     "tzzt01ProbeTemperature",
     "probeTemperature"
+  ],
+  [
+    "coverOnePositionInvert",
+    "positionInvert"
   ]
 ]

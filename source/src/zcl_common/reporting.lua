@@ -19,6 +19,8 @@ response_record.get_fields = function(record)
 end
 local reporting = {}
 local pending_by_device = setmetatable({}, {__mode = "k"})
+local pending_field = "zcl_reporting_pending"
+local retry_interval = 30
 local measurement_clusters = {[0x0408] = true, [0x040D] = true, [0x042A] = true, [0x042B] = true}
 local items = {
   [0x0000] = {[0] = "Heartbeat"},
@@ -69,8 +71,21 @@ end
 local function pending(device, key)
   local items = pending_by_device[device]
   local item = items and items[key]
-  if item and item.expires <= os.time() then items[key], item = nil, nil end
+  if item and item.expires and item.expires <= os.time() then items[key], item = nil, nil end
   return item
+end
+
+local function save_pending(device)
+  local saved = {}
+  for key, request in pairs(pending_by_device[device] or {}) do
+    if not request.expires and not request.failed then saved[key] = request.selected end
+  end
+  device:set_field(pending_field, next(saved) and saved or nil, {persist = true})
+end
+
+local function reject(device, request)
+  request.failed = true
+  save_pending(device)
 end
 
 local function overrides(device, descriptor, include_pending)
@@ -140,11 +155,14 @@ local function active_descriptor(zcl, device, entry, mapping_index)
 end
 
 function reporting.discard_unsupported(zcl, device)
+  local changed = false
   for key, request in pairs(pending_by_device[device] or {}) do
     if not active_descriptor(zcl, device, request.entry, request.mapping_index) then
       pending_by_device[device][key] = nil
+      changed = true
     end
   end
+  if changed then save_pending(device) end
 end
 
 local function emit_settings(zcl, device, entry)
@@ -164,6 +182,61 @@ local function emit_settings(zcl, device, entry)
           emit_value(device, capability_id, field[3], value, index < 3 and "s")
         end
       end
+    end
+  end
+end
+
+local function restore_pending(zcl, device, entry)
+  local saved = device:get_field(pending_field) or {}
+  pending_by_device[device] = pending_by_device[device] or {}
+  for _, item in ipairs(entry.reporting_settings) do
+    if saved[item.key] and not pending(device, item.key) and
+        active_descriptor(zcl, device, entry, item.mapping_index) then
+      pending_by_device[device][item.key] = {selected = saved[item.key], entry = entry,
+        mapping_index = item.mapping_index, targets = {}}
+    end
+  end
+end
+
+-- Family defaults are queued once for an exact device; explicit user settings win.
+function reporting.queue_defaults(zcl, device, entry, values)
+  restore_pending(zcl, device, entry)
+  for _, item in ipairs(entry.reporting_settings) do
+    if values[item.key] and not pending(device, item.key) and
+        device:get_field("zcl_reporting:" .. item.key) == nil and
+        active_descriptor(zcl, device, entry, item.mapping_index) then
+      pending_by_device[device][item.key] = {selected = values[item.key], entry = entry,
+        mapping_index = item.mapping_index, targets = {}, verify_first = true}
+    end
+  end
+  save_pending(device)
+end
+
+local function send_pending(zcl, device, key, request)
+  local descriptor = active_descriptor(zcl, device, request.entry, request.mapping_index)
+  if not descriptor then return end
+  request.targets = {}
+  local groups = {[descriptor.group] = {[key] = true}}
+  local sent, needs_scaler = pcall(reporting.send, zcl, device, request.entry.zcl_clusters, groups, false)
+  if not sent then pending_by_device[device][key] = nil; save_pending(device); return false end
+  if needs_scaler and zcl.read_metering_scalers then
+    zcl.read_metering_scalers(device, request.entry.zcl_clusters)
+  end
+  return true
+end
+
+function reporting.on_rx(zcl, device, rx)
+  if rx.address_header.profile.value == 0 then
+    if rx.address_header.cluster.value ~= 0x0013 then return end
+  else
+    local header = rx.body.zcl_header
+    if not header.frame_ctrl:is_cluster_specific_set() and header.cmd.value ~= 0x0A then return end
+  end
+  reporting.discard_unsupported(zcl, device)
+  for key, request in pairs(pending_by_device[device] or {}) do
+    if not request.expires and not request.failed and (request.last_retry == nil or os.time() - request.last_retry >= retry_interval) then
+      request.last_retry = os.time()
+      send_pending(zcl, device, key, request)
     end
   end
 end
@@ -189,17 +262,17 @@ function reporting.set(zcl, device, entry, mapping_index, field, value)
   if field == "reportable_change" and max_interval == 65535 then return false end
   pending_by_device[device] = pending_by_device[device] or {}
   pending_by_device[device][descriptor.key] = {selected = selected, entry = entry, mapping_index = mapping_index,
-    targets = {}, expires = os.time() + 30}
-  local groups = {[descriptor.group] = {[descriptor.key] = true}}
-  local sent, needs_scaler = pcall(reporting.send, zcl, device, entry.zcl_clusters, groups, false)
-  if not sent then
-    pending_by_device[device][descriptor.key] = nil
-    return false
-  end
-  if needs_scaler and zcl.read_metering_scalers then
-    zcl.read_metering_scalers(device, entry.zcl_clusters)
-  end
-  return true
+    targets = {}, expires = not device:supports_capability_by_id(capabilities.battery.ID) and os.time() + 30 or nil}
+  save_pending(device)
+  return send_pending(zcl, device, descriptor.key, pending(device, descriptor.key))
+end
+
+local function read_config(device, cluster, attribute, endpoint)
+  local read = require "st.zigbee.zcl.global_commands.read_reporting_configuration"
+  local tx = device_management.attr_refresh(device, cluster, attribute):to_endpoint(endpoint)
+  tx.body.zcl_body = read.ReadReportingConfiguration({read.ReadReportingConfigurationAttributeRecord(0, attribute)})
+  tx.body.zcl_header.cmd.value = 8
+  return tx
 end
 
 function reporting.send_config(device, key, config, endpoint)
@@ -207,6 +280,7 @@ function reporting.send_config(device, key, config, endpoint)
   local request = key and pending(device, key)
   if request and not request.failed then
     request.targets[config.cluster .. ":" .. endpoint] = {wire = tx.body.zcl_body:_serialize()}
+    if request.verify_first then tx = read_config(device, config.cluster, config.attribute, endpoint) end
   end
   device:send(tx)
 end
@@ -223,15 +297,18 @@ function reporting.global_handlers(zcl, handlers)
       if target then
         local attribute = string.unpack("<I2", target.wire, 2)
         if command == 7 then
-          local read = require "st.zigbee.zcl.global_commands.read_reporting_configuration"
-          local tx = device_management.attr_refresh(device, cluster, attribute):to_endpoint(endpoint)
-          tx.body.zcl_body = read.ReadReportingConfiguration({read.ReadReportingConfigurationAttributeRecord(0, attribute)})
-          tx.body.zcl_header.cmd.value = 8
+          local status = body.global_status and body.global_status.value
+          for _, record in ipairs(body.config_records or {}) do
+            if record.direction.value == 0 and record.attr_id.value == attribute then status = record.status.value end
+          end
+          if status ~= nil and status ~= 0 then reject(device, request) end
+          local tx = read_config(device, cluster, attribute, endpoint)
           if not pcall(device.send, device, tx) then
             pending_by_device[device][key] = nil
+            save_pending(device)
           end
         elseif command == 11 then
-          if (body.cmd.value == 6 or body.cmd.value == 8) and body.status.value ~= 0 then request.failed = true end
+          if (body.cmd.value == 6 or body.cmd.value == 8) and body.status.value ~= 0 then reject(device, request) end
         else
           for _, record in ipairs(body.read_reporting_records) do
             if getmetatable(record) == response_record and record.direction.value == 0 and record.attr_id.value == attribute then
@@ -242,10 +319,14 @@ function reporting.global_handlers(zcl, handlers)
                   device:set_field("zcl_reporting:" .. key, request.selected, {persist = true})
                   device:remove_configured_attribute(cluster, attribute)
                   pending_by_device[device][key] = nil
+                  save_pending(device)
                   emit_settings(zcl, device, request.entry)
                 end
-              else
-                request.failed = true
+              elseif request.verify_first and (record.status.value == 0 or record.status.value == 0x8B) then
+                request.verify_first = nil
+                send_pending(zcl, device, key, request)
+              elseif record.status.value ~= 0 then
+                reject(device, request)
               end
             end
           end
@@ -312,6 +393,7 @@ function reporting.attach(zcl, registrations, bindings)
     entry.runtime_start = function(device, ...)
       local result
       if previous_start then result = previous_start(device, ...) end
+      restore_pending(zcl, device, settings)
       emit_settings(zcl, device, settings)
       return result
     end
@@ -329,7 +411,7 @@ function reporting.groups(zcl, device, mappings)
   for _, mapping in ipairs(mappings or {}) do
     local descriptor = reporting.describe(zcl, mapping, device)
     if descriptor ~= nil then
-      if overrides(device, descriptor) ~= nil then
+      if overrides(device, descriptor, true) ~= nil then
         groups[descriptor.group] = true
       end
     end

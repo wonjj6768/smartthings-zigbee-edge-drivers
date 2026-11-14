@@ -17,6 +17,14 @@ local function load_configuration(zcl)
     return reporting.discard_unsupported(zcl, device)
   end
 
+  function zcl.queue_reporting_defaults(device, entry, values)
+    return reporting.queue_defaults(zcl, device, entry, values)
+  end
+
+  function zcl.retry_reporting_on_rx(device, rx)
+    return reporting.on_rx(zcl, device, rx)
+  end
+
   function zcl.bind_cluster(device, cluster_id, hub_eui, endpoint)
     device:send(device_management.build_bind_request(
       device,

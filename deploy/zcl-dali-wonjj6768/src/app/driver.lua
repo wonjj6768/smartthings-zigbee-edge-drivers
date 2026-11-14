@@ -1,4 +1,4 @@
-local aZ,F,bi,L,capabilities,cc,bB,ad,V,ak,ay,bR,at,bu,br=require"protocol.tuya",require"protocol.zcl",require"core.registry",require"runtime.capability_metadata",require"st.capabilities",require"st.device",require"st.zigbee.data_types",require"st.zigbee.generated.zcl_clusters",require"app.component_mapping",require"app.custom_capability_runtime",require"runtime.battery_refresh",require"runtime.energy_reset",require"app.switch_command_router",require"st.zigbee.defaults.switch_defaults.on",require"st.zigbee.defaults.switch_defaults.off"local g,q,p,T,aj,N,ao,o,B,R,S,aC,ba,G,W,C,A,ax,ag,aB,aM=L.by_emit_name.power_poll_interval,L.by_emit_name.learn_ir_code,L.by_emit_name.ir_code_to_send,"_presetLevel",50,"_tuya_power_poll_interval_seconds",300,5,3600,5,"s",1282,0,3,0,3,300,"statelessSwitchLevelStep","stepLevel",19,setmetatable({},{__mode="k"})
+local aZ,A,bi,L,capabilities,cc,bC,ad,V,ak,ay,bR,at,bv,br=require"protocol.tuya",require"protocol.zcl",require"core.registry",require"runtime.capability_metadata",require"st.capabilities",require"st.device",require"st.zigbee.data_types",require"st.zigbee.generated.zcl_clusters",require"app.component_mapping",require"app.custom_capability_runtime",require"runtime.battery_refresh",require"runtime.energy_reset",require"app.switch_command_router",require"st.zigbee.defaults.switch_defaults.on",require"st.zigbee.defaults.switch_defaults.off"local g,q,p,T,aj,N,ao,o,C,R,S,aC,ba,G,W,D,B,ax,ag,aB,aM=L.by_emit_name.power_poll_interval,L.by_emit_name.learn_ir_code,L.by_emit_name.ir_code_to_send,"_presetLevel",50,"_tuya_power_poll_interval_seconds",300,5,3600,5,"s",1282,0,3,0,3,300,"statelessSwitchLevelStep","stepLevel",19,setmetatable({},{__mode="k"})
 
 
 
@@ -15,13 +15,13 @@ local aZ,F,bi,L,capabilities,cc,bB,ad,V,ak,ay,bR,at,bu,br=require"protocol.tuya"
 
 
 local function aH()
-local by,z=bi.all(),{}for _,ci in pairs(by)do
+local bz,z=bi.all(),{}for _,ci in pairs(bz)do
 for _,e in pairs(ci)do
 for _,cd in ipairs(e.additional_zcl_profiles or{})do
 z[cd]=true
 end
 if e.zcl_clusters then
-F.register_attributes_from_mappings(e.zcl_clusters)F.register_cluster_commands_from_mappings(e.zcl_clusters)F.prepare_mappings(e.zcl_clusters)end
+A.register_attributes_from_mappings(e.zcl_clusters)A.register_cluster_commands_from_mappings(e.zcl_clusters)A.prepare_mappings(e.zcl_clusters)end
 end
 end
 return z
@@ -43,7 +43,7 @@ b[cq]=n
 end
 end
 if b.zcl_clusters then
-F.prepare_mappings(b.zcl_clusters)end
+A.prepare_mappings(b.zcl_clusters)end
 aM[a]=b
 return b
 end
@@ -55,22 +55,22 @@ return b:apply_announce(a)
 end
 ay.set_requester(function(a)
 local bW=h(a).zcl_clusters
-if F.find_mapping(bW,1,32)==nil then
-local bE=F.find_mapping(bW,1,33)if bE~=nil then
-return F.read_mapping(a,bE,{endpoint=a:get_endpoint(1)})end
+if A.find_mapping(bW,1,32)==nil then
+local bF=A.find_mapping(bW,1,33)if bF~=nil then
+return A.read_mapping(a,bF,{endpoint=a:get_endpoint(1)})end
 end
-return F.read_attribute(a,1,32,a:get_endpoint(1))
+return A.read_attribute(a,1,32,a:get_endpoint(1))
 end,function(a)
 local b=h(a)return b~=nil and b.zcl_clusters~=nil and
-F.has_cluster(b.zcl_clusters,F.CLUSTER_POWER_CONFIGURATION)
+A.has_cluster(b.zcl_clusters,A.CLUSTER_POWER_CONFIGURATION)
 end)
 local az=require"runtime.capability_support".is_callable
 local function ar(a,u)
 if type(a)~="table"or type(u)~="string"then
 return false
 end
-local bA=a.profile and a.profile.components or nil
-local cr=type(bA)=="table"and bA.main or nil
+local bB=a.profile and a.profile.components or nil
+local cr=type(bB)=="table"and bB.main or nil
 local aS=type(cr)=="table"and cr.capabilities or nil
 if type(aS)~="table"then
 return false
@@ -88,8 +88,8 @@ return nil
 end
 r=math.floor(r+0.5)if r<o then
 r=o
-elseif r>B then
-r=B
+elseif r>C then
+r=C
 end
 local bN=r%R
 if bN~=0 then
@@ -100,7 +100,7 @@ end
 end
 return r
 end
-local function D(a,b)
+local function E(a,b)
 return type(b)=="table"and b.zcl_clusters==nil
 and type(b.datapoints)=="table"and g~=nil
 and ar(a,g.capability_id)
@@ -109,7 +109,7 @@ local function I(a,b)
 local cm,bJ=x(a:get_field(N)),x(b and b.default_power_poll_interval_seconds)return cm or bJ or ao
 end
 local function U(a,b)
-if not D(a,b)then
+if not E(a,b)then
 return false
 end
 local s=capabilities[g.capability_id]local aR=s and s[g.attribute_name]or nil
@@ -122,11 +122,11 @@ local ab=s and s[g.range_attribute_name]or nil
 if not az(ab)and s and type(s.attributes)=="table"then
 ab=s.attributes[g.range_attribute_name]end
 if az(ab)then
-a:emit_event(ab{value={minimum=o,maximum=B,step=R},unit=S})end
+a:emit_event(ab{value={minimum=o,maximum=C,step=R},unit=S})end
 a:emit_event(aR{value=I(a,b),unit=S})return true
 end
 local function af(a,b)
-if not D(a,b)then
+if not E(a,b)then
 return false
 end
 b:start_query_timer(a,I(a,b))U(a,b)return true
@@ -138,14 +138,14 @@ local function H(a,f)
 f=f or"main"local ch=a:get_latest_state(f,capabilities.windowShadePreset.ID,"position")if type(ch)=="number"then
 return ch
 end
-local bG=a:get_field(an(f))if type(bG)~="number"then
-bG=a:get_field(T)end
+local bH=a:get_field(an(f))if type(bH)~="number"then
+bH=a:get_field(T)end
+if type(bH)=="number"then
+return bH
+end
+local bG=a.preferences and a.preferences.presetPosition or nil
 if type(bG)=="number"then
 return bG
-end
-local bF=a.preferences and a.preferences.presetPosition or nil
-if type(bF)=="number"then
-return bF
 end
 return aj
 end
@@ -159,10 +159,10 @@ local function bh(a,e)
 if type(e)~="table"or type(e.button_actions)~="table"then
 return
 end
-local bx=e.button_actions
+local by=e.button_actions
 for _,f in ipairs(V.sorted_profile_component_ids(a))do
 if a:supports_capability_by_id(capabilities.button.ID,f)then
-a:emit_component_event({id=f},capabilities.button.supportedButtonValues(bx))a:emit_component_event({id=f},capabilities.button.numberOfButtons{value=1})end
+a:emit_component_event({id=f},capabilities.button.supportedButtonValues(by))a:emit_component_event({id=f},capabilities.button.numberOfButtons{value=1})end
 end
 end
 local function K(_,a,bK)
@@ -170,8 +170,8 @@ local b=h(a)if b then
 b:apply_message(a,bK)end
 end
 local function aV()
-local i,bk={[aZ.EF00_CLUSTER]={[aZ.GET_DATA]=K,[aZ.SET_DATA_RESPONSE]=K,[aZ.REPORT_STATUS]=K,[aZ.ACTIVE_STATUS_REPORT]=K,[aZ.SET_TIME]=K,[aZ.CONNECTION_STATUS]=K,[aZ.MCU_VERSION_RESPONSE]=K}},F.build_zigbee_cluster_handlers(h)for be,bv in pairs(bk)do
-i[be]=i[be]or{}for cb,co in pairs(bv)do
+local i,bk={[aZ.EF00_CLUSTER]={[aZ.GET_DATA]=K,[aZ.SET_DATA_RESPONSE]=K,[aZ.REPORT_STATUS]=K,[aZ.ACTIVE_STATUS_REPORT]=K,[aZ.SET_TIME]=K,[aZ.CONNECTION_STATUS]=K,[aZ.MCU_VERSION_RESPONSE]=K}},A.build_zigbee_cluster_handlers(h)for be,bw in pairs(bk)do
+i[be]=i[be]or{}for cb,co in pairs(bw)do
 i[be][cb]=co
 end
 end
@@ -210,7 +210,7 @@ if b.datapoints then
 k=b:send_named_mapping(a,bq,n,{component_id=d.component})or k
 end
 if b.zcl_clusters then
-k=F.send_named_command(a,b.zcl_clusters,bq,n,{component_id=d.component,zcl_clusters=b.zcl_clusters,transition_time=bq=="brightness"and d.args and d.args.rate or nil})or k
+k=A.send_named_command(a,b.zcl_clusters,bq,n,{component_id=d.component,zcl_clusters=b.zcl_clusters,transition_time=bq=="brightness"and d.args and d.args.rate or nil})or k
 end
 if not k and b.protocol_writers and b.protocol_writers[bq]then
 k=b.protocol_writers[bq](a,n,d)==true
@@ -231,11 +231,11 @@ end
 return P(bc),bc
 end
 local function ah(j,a)
-local e,bc=al(j,a)local bw=e~=nil and e.allow_child_devices==true
-if bw and type(e.is_expected_child)=="function"then
-bw=e.is_expected_child(bc,a,e)==true
+local e,bc=al(j,a)local bx=e~=nil and e.allow_child_devices==true
+if bx and type(e.is_expected_child)=="function"then
+bx=e.is_expected_child(bc,a,e)==true
 end
-if not bw then return false end
+if not bx then return false end
 aM[a]=e
 if type(e.child_runtime_start)=="function"then
 e.child_runtime_start(a,e,bc)end
@@ -260,7 +260,7 @@ end
 cf()
 end
 local function aU(a)
-local b=h(a)return b~=nil and b.zcl_clusters~=nil and F.has_cluster(b.zcl_clusters,F.CLUSTER_ON_OFF)
+local b=h(a)return b~=nil and b.zcl_clusters~=nil and A.has_cluster(b.zcl_clusters,A.CLUSTER_ON_OFF)
 end
 local function aE(a,f)
 if type(a)~="table"or type(a.get_endpoint_for_component_id)~="function"then
@@ -274,7 +274,7 @@ end
 return aq
 end
 local function aA(a)
-local b=h(a)return b~=nil and b.zcl_clusters~=nil and F.has_cluster(b.zcl_clusters,aC)
+local b=h(a)return b~=nil and b.zcl_clusters~=nil and A.has_cluster(b.zcl_clusters,aC)
 end
 local function Y(a,f,n)
 local m=f or"main"if type(a)~="table"or not a:supports_capability_by_id(capabilities.alarm.ID,m)then
@@ -292,7 +292,7 @@ local function y(a,f,bX,bd,bY,cl)
 if not aA(a)then
 return false
 end
-local M=ad.IASWD.types.SirenConfiguration(0)M:set_warning_mode(bX)M:set_strobe(bd and 1 or 0)M:set_siren_level(bY)local aq,d=aE(a,f),ad.IASWD.server.commands.StartWarning(a,M,bB.Uint16(cl or 0),bB.Uint8(0),ad.IASWD.types.IaswdLevel(bd and C or W))a:send(d:to_endpoint(aq))return true
+local M=ad.IASWD.types.SirenConfiguration(0)M:set_warning_mode(bX)M:set_strobe(bd and 1 or 0)M:set_siren_level(bY)local aq,d=aE(a,f),ad.IASWD.server.commands.StartWarning(a,M,bC.Uint16(cl or 0),bC.Uint8(0),ad.IASWD.types.IaswdLevel(bd and D or W))a:send(d:to_endpoint(aq))return true
 end
 local l=ak.create{get_preset=h,send=aP,resolve_definition=P}
 local function ap(j,a,b)
@@ -302,20 +302,20 @@ end
 if type(b.configure)=="function"then
 b.configure(j,a)end
 b:start_configuration(a,j)if b.zcl_clusters and b.zcl_configure~=false then
-F.start_configuration(a,b.zcl_clusters)end
+A.start_configuration(a,b.zcl_clusters)end
 if type(b.zcl_initial_writes)=="table"then
 for _,cp in ipairs(b.zcl_initial_writes)do
-F.send_named_command(a,b.zcl_clusters,cp.name,cp.value)end
+A.send_named_command(a,b.zcl_clusters,cp.name,cp.value)end
 end
 end
 local function bj(a,b)
 if b and b.zcl_clusters then
-F.start_runtime(a,b.zcl_clusters)F.emit_power_polling_state(a,b.zcl_clusters)if F.emit_ir_state~=nil then
-F.emit_ir_state(a,b)end
+A.start_runtime(a,b.zcl_clusters)A.emit_power_polling_state(a,b.zcl_clusters)if A.emit_ir_state~=nil then
+A.emit_ir_state(a,b)end
 if a.thread~=nil and type(a.thread.call_with_delay)=="function"then
 a.thread:call_with_delay(2,function()
-F.emit_power_polling_state(a,b.zcl_clusters)if F.emit_ir_state~=nil then
-F.emit_ir_state(a,b)end
+A.emit_power_polling_state(a,b.zcl_clusters)if A.emit_ir_state~=nil then
+A.emit_ir_state(a,b)end
 end,"zcl initial power polling state")
 end
 else
@@ -326,8 +326,8 @@ b:start_query_timer(a)end
 if b~=nil and type(b.runtime_start)=="function"then
 b.runtime_start(a,b)end
 end
-local function ae(a,e,bs)
-l.refresh_definitions(a)if bs then
+local function ae(a,e,bt)
+l.refresh_definitions(a)if bt then
 l.diagnose_bindings(a)end
 bh(a,e)l.emit_numeric_metadata(a,e)l.emit_enum_metadata(a,e)
 end
@@ -340,7 +340,7 @@ return
 end
 a.thread:call_with_delay(bI or 2,function()
 for _,bV in ipairs(aD)do
-F.read_named_attribute(a,b.zcl_clusters,bV,{component_id=f})end
+A.read_named_attribute(a,b.zcl_clusters,bV,{component_id=f})end
 end,string.format("zcl delayed read %s",tostring(f or"main")))
 end
 local function aW(a,f,n)
@@ -397,7 +397,7 @@ local b=h(a)local aL=L.by_emit_name[
 b and b.minimum_brightness_capability or"ef00Ts0601MinimumBrightness"]if type(aL)~="table"or not a:supports_capability_by_id(aL.capability_id,m)then
 return 0
 end
-local bt=a:get_latest_state(m,aL.capability_id,aL.attribute_name)local aY=tonumber(bt)if aY==nil or aY<=0 then
+local bu=a:get_latest_state(m,aL.capability_id,aL.attribute_name)local aY=tonumber(bu)if aY==nil or aY<=0 then
 return 0
 end
 return ac(math.ceil(aY*100/aL.default_range.maximum))or 0
@@ -418,28 +418,28 @@ J=-100
 elseif J>100 then
 J=100
 end
-local E=ac(bf(a,f)+J)if E==nil then
+local F=ac(bf(a,f)+J)if F==nil then
 return
 end
-local bl=av(a,f)if E<bl then
-E=bl
+local bl=av(a,f)if F<bl then
+F=bl
 end
-if E>0 then
+if F>0 then
 aP(a,d,"switch",true)end
-local k=aP(a,d,"brightness",E)if E==0 then
+local k=aP(a,d,"brightness",F)if F==0 then
 k=aP(a,d,"switch",false)or k
 end
 if k then
-aQ(a,f,E)if E==0 then
+aQ(a,f,F)if F==0 then
 w(a,d,false)else
 w(a,d,true)end
 end
 end
 local function aF()
 local i={}for _,cg in ipairs(bn)do
-local bz,cmd_name,bU,as,bO=cg[1],cg[2],cg[3],cg[4],cg[5]if i[bz]==nil then
-i[bz]={}end
-i[bz][cmd_name]=function(_,a,d)
+local bA,cmd_name,bU,as,bO=cg[1],cg[2],cg[3],cg[4],cg[5]if i[bA]==nil then
+i[bA]={}end
+i[bA][cmd_name]=function(_,a,d)
 local n=as
 if type(as)=="function"then
 n=as(d)elseif type(as)=="string"and d.args and d.args[as]~=nil then
@@ -450,7 +450,7 @@ end
 if bO and(b==nil or b.auto_on_before_light_command~=false)then
 aP(a,d,"switch",true)end
 local k=aP(a,d,bU,n)if k then
-local bM=aK[bz ..":"..cmd_name]if bM~=nil then
+local bM=aK[bA ..":"..cmd_name]if bM~=nil then
 aO(a,d.component,bM,2)end
 end
 end
@@ -484,10 +484,10 @@ i[capabilities.switch.ID][capabilities.switch.commands.on.NAME]=function(j,a,d)
 if not v(h(a),a,"switch")then return end
 at.route{driver=j,device=a,command=d,value=true,uses_zcl_on_off=aU,send_named=aP,
 begin_power_poll_burst=function(bm)
-local b=h(bm)if b~=nil and b.zcl_clusters~=nil and F.begin_power_poll_burst~=nil then
-F.begin_power_poll_burst(bm,b.zcl_clusters)end
+local b=h(bm)if b~=nil and b.zcl_clusters~=nil and A.begin_power_poll_burst~=nil then
+A.begin_power_poll_burst(bm,b.zcl_clusters)end
 end,
-after_ef00_switch_command=w,default_handler=bu}
+after_ef00_switch_command=w,default_handler=bv}
 end
 i[capabilities.switch.ID][capabilities.switch.commands.off.NAME]=function(j,a,d)
 if not v(h(a),a,"switch")then return end
@@ -505,19 +505,19 @@ if k then
 Y(a,d.component,"off")end
 end,
 [capabilities.alarm.commands.siren.NAME]=function(_,a,d)
-local k=y(a,d.component,G,false,C,A)if not k then
+local k=y(a,d.component,G,false,D,B)if not k then
 k=Q(a,d,"siren")end
 if k then
 Y(a,d.component,"siren")end
 end,
 [capabilities.alarm.commands.strobe.NAME]=function(_,a,d)
-local k=y(a,d.component,G,true,W,A)if not k then
+local k=y(a,d.component,G,true,W,B)if not k then
 k=Q(a,d,"strobe")end
 if k then
 Y(a,d.component,"strobe")end
 end,
 [capabilities.alarm.commands.both.NAME]=function(_,a,d)
-local k=y(a,d.component,G,true,C,A)if not k then
+local k=y(a,d.component,G,true,D,B)if not k then
 k=Q(a,d,"both")end
 if k then
 Y(a,d.component,"both")end
@@ -554,7 +554,7 @@ b:send_state_request(a)end
 if b.zcl_clusters then
 if type(b.zcl_refresh_before_read_all)=="function"then
 b.zcl_refresh_before_read_all(a,b)end
-F.read_all_attributes(a,b.zcl_clusters)end
+A.read_all_attributes(a,b.zcl_clusters)end
 end
 }if g~=nil then
 i[g.capability_id]=i[g.capability_id]or{}
@@ -564,9 +564,9 @@ return
 end
 local n=d.args and d.args[g.argument_name]or nil
 if b.zcl_clusters~=nil then
-F.set_power_poll_interval(a,b.zcl_clusters,n)return
+A.set_power_poll_interval(a,b.zcl_clusters,n)return
 end
-if not D(a,b)then
+if not E(a,b)then
 return
 end
 local bT=x(n)if bT==nil then
@@ -583,8 +583,8 @@ return
 end
 local n=d.args and d.args[q.argument_name]or nil
 if n=="start"then
-F.start_ir_learning(a,b)elseif n=="stop"then
-F.stop_ir_learning(a,b)end
+A.start_ir_learning(a,b)elseif n=="stop"then
+A.stop_ir_learning(a,b)end
 end
 end
 if p~=nil then
@@ -599,12 +599,12 @@ end
 if type(n)~="string"or n==""then
 return
 end
-F.send_ir_code(a,b,n)
+A.send_ir_code(a,b,n)
 end
 end
 return i
 end
-local bD={supported_capabilities={},additional_zcl_profiles=z,zigbee_handlers={cluster=aV(),global=F.build_zigbee_global_handlers(h),attr=F.build_zigbee_attr_handlers(h),zdo={[aB]=aX}},lifecycle_handlers={
+local bE={supported_capabilities={},additional_zcl_profiles=z,zigbee_handlers={cluster=aV(),global=A.build_zigbee_global_handlers(h),attr=A.build_zigbee_attr_handlers(h),zdo={[aB]=aX}},lifecycle_handlers={
 init=function(j,a)
 if t(a)then
 if ah(j,a)then return end
@@ -649,20 +649,21 @@ local b=h(a)if e~=nil and type(e.preferences_changed)=="function"then
 e.preferences_changed(a,bo.old_st_store.preferences)end
 if b then
 b:apply_preferences_changed(a,bo.old_st_store.preferences)if b.zcl_clusters then
-F.emit_power_polling_state(a,b.zcl_clusters)else
+A.emit_power_polling_state(a,b.zcl_clusters)else
 U(a,b)end
 end
 ay.start_daily(a)O(a)ae(a,e,aT)
 end
-},capability_handlers=aF(),health_check=false}local bQ=require"st.zigbee"local j=bQ("tuya-universal",bD)local bC=j.zigbee_message_dispatcher
-local ck=bC.dispatch
-function bC:dispatch(j,a,bH,...)
+},capability_handlers=aF(),health_check=false}local bQ=require"st.zigbee"local j=bQ("tuya-universal",bE)local bD=j.zigbee_message_dispatcher
+local ck=bD.dispatch
+function bD:dispatch(j,a,bs,...)
+if A.retry_reporting_on_rx then A.retry_reporting_on_rx(a,bs)end
 local b=h(a)if b and b.zigbee_message_handler then
-b.zigbee_message_handler(a,bH)end
+b.zigbee_message_handler(a,bs)end
 if a:supports_capability_by_id(capabilities.signalStrength.ID,"main")then
-local ca={visibility={displayed=false}}a:emit_event(capabilities.signalStrength.lqi(bH.lqi.value,ca))if bH.rssi.value<=0 then
-a:emit_event(capabilities.signalStrength.rssi({value=bH.rssi.value,unit="dBm"},ca))end
+local ca={visibility={displayed=false}}a:emit_event(capabilities.signalStrength.lqi(bs.lqi.value,ca))if bs.rssi.value<=0 then
+a:emit_event(capabilities.signalStrength.rssi({value=bs.rssi.value,unit="dBm"},ca))end
 end
-return ck(self,j,a,bH,...)
+return ck(self,j,a,bs,...)
 end
 j:run()

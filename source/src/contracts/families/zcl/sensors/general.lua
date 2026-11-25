@@ -327,7 +327,7 @@ register_device_definition(build_temp_humidity_clusters({
   "_TYZB01_fi5yftwv",
 }))
 
--- TS0222 조도 + 배터리 전용 (ZG-106Z)
+-- TS0222 / ZG-106Z 조도 + 배터리 전용
 register_device_definition(build_illuminance_battery_clusters({
   profile = illuminance_battery_profile,
   tuya_magic = true,
@@ -342,6 +342,7 @@ register_device_definition(build_illuminance_battery_clusters({
   "_TZ3000_hy6ncvmw",
   "_TZ3000_7y90pany",
   "_TZ3000_j6adk9id",
+  "_TZ3000_7Y90pany:ZG-106Z",
 }))
 
 -- ZCL REPORTING CAPABILITIES BEGIN

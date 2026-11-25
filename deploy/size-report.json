@@ -38390,9 +38390,9 @@
   },
   {
     "name": "zcl-sensors-wonjj6768",
-    "raw_size": 487419,
+    "raw_size": 487533,
     "under_limit": true,
-    "free_bytes": 36869,
+    "free_bytes": 36755,
     "meets_headroom": true,
     "profiles": [
       "network-repeater",
@@ -38492,7 +38492,7 @@
       "sensors-temp-humidity-battery-voltage",
       "sensors-temp-humidity-pressure-battery-voltage"
     ],
-    "fingerprints": 407,
+    "fingerprints": 408,
     "custom_capabilities": {
       "numeric": 50,
       "enum": 24,
@@ -41606,9 +41606,9 @@
         },
         "contracts/families/zcl/sensors/general.lua": {
           "schemaVersion": 1,
-          "inputSha256": "17d6dbde1a5d9d21ad106e4eb060fcd557760fadc412570dbab5b4fe2ed9274e",
-          "outputSha256": "160e2279c04c6f2b7f21225f2bb8a6b304c8c64a11fb7bf71383aea40e84ed9f",
-          "strippedBytecodeSha256": "f40033450ac3302923d94f8174c8dea4cfd4d159ee3c034839173db6ce778fd2",
+          "inputSha256": "b09ad8360b75dfe2977afd1804788e8ac0d163d445165c21fe2c792c4abf494b",
+          "outputSha256": "9165dd079da2a38f3023617e7845fafa586a0a965461bb3b058aa3aec1eeb49e",
+          "strippedBytecodeSha256": "bce0ceab521fa81fe73a3cf58ddec9aa079bbdf3fae2725a9ca79ea4cde38ce2",
           "luaVersion": "Lua 5.4",
           "aliases": {
             "build_temp_humidity_clusters": "a",
@@ -41997,17 +41997,17 @@
               ""
             ],
             [
-              6008,
+              6035,
               ",",
               ""
             ],
             [
-              6355,
+              6382,
               ",",
               ""
             ],
             [
-              6404,
+              6431,
               ",",
               ""
             ]
@@ -42015,18 +42015,18 @@
           "savedBytes": 3342,
           "literalCalls": {
             "schemaVersion": 1,
-            "inputSha256": "5169269a88375f4185a2c80e703cd29f7d056e536c70471b802b29e1153d689b",
-            "outputSha256": "1f04d9c31fd0b808d609401b9a23a7a75e7bfcfc9095b6aeed07f2780855b78e",
+            "inputSha256": "c6628ac4610d3c625f1dfb5d8c61b8fcad18c9c0ac89a52e42b03def6b363e1d",
+            "outputSha256": "c2f413a1a6a9e1df023d70ca0dca9ca5fee82ba99ac36ab288be7410206ff19c",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "48c60d2a28ce594c9cf13292bbce5e53fa6e3e2c0da1481eb39a910a9f96f5a5"
+                "strippedBytecodeSha256": "24ce5d1506799dafd2ffc3e1c48fb47d4b20d22287a28d829651cd7c12ba934e"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "f40033450ac3302923d94f8174c8dea4cfd4d159ee3c034839173db6ce778fd2"
+                "strippedBytecodeSha256": "bce0ceab521fa81fe73a3cf58ddec9aa079bbdf3fae2725a9ca79ea4cde38ce2"
               }
             },
             "rewrites": [
@@ -42335,18 +42335,18 @@
           },
           "declarations": {
             "schemaVersion": 1,
-            "inputSha256": "1f04d9c31fd0b808d609401b9a23a7a75e7bfcfc9095b6aeed07f2780855b78e",
-            "outputSha256": "160e2279c04c6f2b7f21225f2bb8a6b304c8c64a11fb7bf71383aea40e84ed9f",
+            "inputSha256": "c2f413a1a6a9e1df023d70ca0dca9ca5fee82ba99ac36ab288be7410206ff19c",
+            "outputSha256": "9165dd079da2a38f3023617e7845fafa586a0a965461bb3b058aa3aec1eeb49e",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "48c60d2a28ce594c9cf13292bbce5e53fa6e3e2c0da1481eb39a910a9f96f5a5"
+                "strippedBytecodeSha256": "24ce5d1506799dafd2ffc3e1c48fb47d4b20d22287a28d829651cd7c12ba934e"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "f40033450ac3302923d94f8174c8dea4cfd4d159ee3c034839173db6ce778fd2"
+                "strippedBytecodeSha256": "bce0ceab521fa81fe73a3cf58ddec9aa079bbdf3fae2725a9ca79ea4cde38ce2"
               }
             },
             "rewrites": [

@@ -2035,6 +2035,17 @@
       "catalogModule": "contracts.families.zcl.sensors.wave19_vibration",
       "profile": "safety-wave19-tuya-ts0210-quoted",
       "auditEvidence": "analysis/issues24_54_55_20261114.md#issue55-exact-alias"
+    },
+    {
+      "manufacturer": "_TZ3000_7Y90pany",
+      "manufacturerUtf8Hex": "5f545a333030305f3759393070616e79",
+      "model": "ZG-106Z",
+      "modelUtf8Hex": "5a472d3130365a",
+      "owner": "zcl-sensors-wonjj6768",
+      "catalogId": "zcl.sensors",
+      "catalogModule": "contracts.families.zcl.sensors",
+      "profile": "sensors-illuminance-battery",
+      "auditEvidence": "analysis/family_capability_manual_audit.md#2026-11-25-zg-106z-실제-제보-식별자-추가"
     }
   ],
   "approvedNewFamilyExacts": [
@@ -15218,11 +15229,11 @@
     "newPackageCount": 27,
     "newCatalogCount": 115,
     "newExactCount": 991,
-    "fingerprintOnlyAliasCount": 122,
+    "fingerprintOnlyAliasCount": 123,
     "newFamilyExactCount": 5,
     "failClosedExactCount": 0,
     "restoredLegacyExactCount": 5,
-    "runtimeExactCount": 4393,
+    "runtimeExactCount": 4394,
     "movedCatalogCount": 62,
     "movedExactCount": 540,
     "historicalPartitionCount": 17

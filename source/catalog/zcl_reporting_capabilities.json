@@ -29473,6 +29473,10 @@
             {
               "manufacturer": "_TZ3000_j6adk9id",
               "model": "TS0222"
+            },
+            {
+              "manufacturer": "_TZ3000_7Y90pany",
+              "model": "ZG-106Z"
             }
           ],
           "origin": {
@@ -110387,6 +110391,14 @@
       },
       "oldProfile": "switches-switch-3",
       "profile": "rpt-lek"
+    },
+    {
+      "fingerprint": {
+        "manufacturer": "_TZ3000_7Y90pany",
+        "model": "ZG-106Z"
+      },
+      "oldProfile": "sensors-illuminance-battery",
+      "profile": "rpt-tuh"
     },
     {
       "fingerprint": {

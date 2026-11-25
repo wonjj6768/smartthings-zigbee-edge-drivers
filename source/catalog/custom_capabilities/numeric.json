@@ -17041,8 +17041,8 @@
     true,
     "ph_max",
     0,
-    14,
-    0.1,
+    140,
+    1,
     "pH"
   ],
   [
@@ -17050,8 +17050,8 @@
     true,
     "ph_min",
     0,
-    14,
-    0.1,
+    140,
+    1,
     "pH"
   ],
   [
@@ -17095,8 +17095,8 @@
     true,
     "free_chlorine_max",
     0,
-    4,
-    0.1,
+    40,
+    1,
     "mg/L"
   ],
   [
@@ -17104,8 +17104,8 @@
     true,
     "free_chlorine_min",
     0,
-    4,
-    0.1,
+    40,
+    1,
     "mg/L"
   ],
   [
@@ -20725,5 +20725,41 @@
     null,
     null,
     "C"
+  ],
+  [
+    "poolPhMaxLimit",
+    true,
+    "ph_max",
+    0,
+    14,
+    0.1,
+    "pH"
+  ],
+  [
+    "poolPhMinLimit",
+    true,
+    "ph_min",
+    0,
+    14,
+    0.1,
+    "pH"
+  ],
+  [
+    "poolChlorineMaxLimit",
+    true,
+    "free_chlorine_max",
+    0,
+    4,
+    0.1,
+    "mg/L"
+  ],
+  [
+    "poolChlorineMinLimit",
+    true,
+    "free_chlorine_min",
+    0,
+    4,
+    0.1,
+    "mg/L"
   ]
 ]

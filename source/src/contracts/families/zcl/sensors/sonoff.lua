@@ -224,6 +224,14 @@ register(snzb02d, {
 
 local snzb02ld = {
   profile = "sonoff-snzb02ld-temperature-display",
+  -- SONOFF specifies the probe at -40..115 C (the enclosure is -10..60 C).
+  -- The official presentation uses this attribute for routine input bounds;
+  -- without it the app falls back to -20..50 C, even for valid hotter reports.
+  runtime_start = function(device)
+    device:emit_event(capabilities.temperatureMeasurement.temperatureRange({
+      value = { minimum = -40, maximum = 115, step = 0.1 }, unit = "C",
+    }, { visibility = { displayed = false } }))
+  end,
   zcl_clusters = {
     temperature({ minimum_interval = 5, maximum_interval = 3600, reportable_change = 20 }),
     battery(),

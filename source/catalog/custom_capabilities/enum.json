@@ -21646,5 +21646,15 @@
       "normal",
       "inverted"
     ]
+  ],
+  [
+    "ts0210Ef00Sensitivity",
+    true,
+    "ts0210_ef00_sensitivity",
+    [
+      "low",
+      "middle",
+      "high"
+    ]
   ]
 ]

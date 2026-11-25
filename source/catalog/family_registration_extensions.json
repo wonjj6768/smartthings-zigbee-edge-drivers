@@ -1086,11 +1086,15 @@
         "protocol.zcl",
         "capabilities.events.all",
         "contracts.helpers.family",
-        "st.zigbee.data_types"
+        "st.zigbee.data_types",
+        "protocol.tuya",
+        "st.capabilities"
       ],
       "externalDependencies": [
         "protocol.zcl",
-        "st.zigbee.data_types"
+        "st.zigbee.data_types",
+        "protocol.tuya",
+        "st.capabilities"
       ],
       "contractHelpers": [
         "contracts/helpers/family.lua"
@@ -1107,10 +1111,16 @@
         ],
         "st.zigbee.data_types": [
           "data_types"
+        ],
+        "protocol.tuya": [
+          "tuya"
+        ],
+        "st.capabilities": [
+          "capabilities"
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "111bb4fefb6d9d7b666c690cb77b2f6a2a1c97ab7eb09171ae93732056a58b7f"
+      "dynamicEventMemberSha256": "4f7ecc9e51842799380b405a7e01156f7af7587db8aea978d399dc2d77c2add7"
     },
     "contracts.families.zcl.thermostats.wave19_sber": {
       "id": "zcl.thermostats.wave19.sber",
@@ -1320,7 +1330,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "264bfc02b87262f7c1b2724234ac28971c2d2aec94962aa5fba5c211701c525a"
+      "dynamicEventMemberSha256": "3cb97402eeec1205b8d4289115eff6037124e563cfdd8ddcdfd63fa613d2a6cf"
     },
     "contracts.families.zcl.sensors.hobeian": {
       "id": "zcl.sensors.hobeian",

@@ -17858,5 +17858,25 @@
   [
     "coverOnePositionInvert",
     "positionInvert"
+  ],
+  [
+    "poolPhMaxLimit",
+    "phMax"
+  ],
+  [
+    "poolPhMinLimit",
+    "phMin"
+  ],
+  [
+    "poolChlorineMaxLimit",
+    "chlorineMax"
+  ],
+  [
+    "poolChlorineMinLimit",
+    "chlorineMin"
+  ],
+  [
+    "ts0210Ef00Sensitivity",
+    "sensitivity"
   ]
 ]

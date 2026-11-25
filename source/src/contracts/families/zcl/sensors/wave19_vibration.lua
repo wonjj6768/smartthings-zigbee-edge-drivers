@@ -6,6 +6,8 @@ local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local data_types = require "st.zigbee.data_types"
+local tuya = require "protocol.tuya"
+local capabilities = require "st.capabilities"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -88,9 +90,67 @@ register_device_definition(ts0210, {
   -- The two apostrophes are literal Basic-cluster bytes in frozen Z2M. Do not
   -- normalize them away and do not add a model-only fallback.
   device_helpers.create_fingerprint("'_TZ32101000000_5oy7cysk'", "TS0210"),
-  -- Issue55 reports this separate Basic-cluster identity. No normalization.
-  device_helpers.create_fingerprint("_TZ32101000000_5oy7cysk", "TS0210"),
 })
+
+-- #55's unquoted device is an EF00 variant, not the frozen IAS-only alias.
+-- Hubitat 355d1d6 and ZHA #4908 report DP104 enum vibration and DP4 battery.
+-- A second captured firmware uses DP101 ENUM for vibration; DP101 VALUE is
+-- an axis reading on the first firmware and must never trigger acceleration.
+local function vibration_from_device(value, _, dp)
+  if dp.datatype ~= tuya.DP_TYPE_ENUM or (value ~= 0 and value ~= 1 and value ~= 3) then return nil end
+  return value ~= 0
+end
+
+local function vibration_event(_, value)
+  return capabilities.accelerationSensor.acceleration({ value = value and "active" or "inactive" },
+    { state_change = value == true })
+end
+
+local function schedule_ef00_vibration_clear(device, value)
+  if value then return schedule_vibration_clear(device, value) end
+  local previous = device:get_field(TIMER_FIELD)
+  if previous ~= nil and type(previous.cancel) == "function" then previous:cancel() end
+  device:set_field(TIMER_FIELD, nil, { persist = false })
+end
+
+local function vibration_dp(id)
+  return tuya.dp_enum(id, {
+    name = "vibration_event_" .. tostring(id), endpoint = 1, read_only = true,
+    converter = tuya.converter.from_only(vibration_from_device),
+    handler = schedule_ef00_vibration_clear, emit = vibration_event,
+  })
+end
+
+register_device_definition({
+  profile = "safety-tuya-ts0210-ef00",
+  package_group = "wave19-vibration",
+  magic_packet = true,
+  query_on_configure = false,
+  zcl_clusters = {
+    passive_rx(zcl.motion({ endpoint = 1, emit = vibration_event, handler = schedule_ef00_vibration_clear })),
+    passive_rx(zcl.tamper({ endpoint = 1 })),
+    zcl.battery({ endpoint = 1, read_only = true, minimum_interval = 3600,
+      maximum_interval = 65000, reportable_change = 10, from_device = reject_zcl_unknown }),
+    zcl.battery_voltage({ endpoint = 1, read_only = true, configure_reporting = false,
+      read_on_configure = true, from_device = reject_zcl_unknown }),
+  },
+  datapoints = {
+    tuya.dp_battery(4, { endpoint = 1, emit = emit.battery(), read_only = true }),
+    vibration_dp(101),
+    vibration_dp(104),
+    -- DP10 has conflicting unverified reports. This is the independently
+    -- implemented DP105 enum contract; do not send the old IAS numeric write.
+    tuya.dp_enum(105, { name = "ts0210_ef00_sensitivity", endpoint = 1,
+      converter = tuya.converter.lookup_from_to({ low = 0, middle = 1, high = 2 }),
+      emit = emit.ts0210Ef00Sensitivity() }),
+  },
+}, { device_helpers.create_fingerprint("_TZ32101000000_5oy7cysk", "TS0210") })
+
+-- ZCL REPORTING CAPABILITIES BEGIN
+zcl.attach_reporting_capabilities(device_definitions, {
+  {2, "rpt-txh"},
+})
+-- ZCL REPORTING CAPABILITIES END
 
 return {
   id = "zcl.sensors.wave19_vibration",

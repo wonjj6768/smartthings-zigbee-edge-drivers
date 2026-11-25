@@ -4481,6 +4481,11 @@ local ATTRIBUTE_OVERRIDES = {
   zg210zHumidityCalibration = "humidityCalibration",
   tzzt01ProbeTemperature = "probeTemperature",
   coverOnePositionInvert = "positionInvert",
+  poolPhMaxLimit = "phMax",
+  poolPhMinLimit = "phMin",
+  poolChlorineMaxLimit = "chlorineMax",
+  poolChlorineMinLimit = "chlorineMin",
+  ts0210Ef00Sensitivity = "sensitivity",
 }
 
 local function attribute_name(capability_id)
@@ -6417,14 +6422,14 @@ local numeric_rows = {
   {"ionDimmerMin",true,"ion_min_brightness",0,254,1,nil},
   {"ionDimmerMax",true,"ion_max_brightness",0,254,1,nil},
   {"ionDimmerCountdown",true,"ion_countdown",0,43200,1,"s"},
-  {"ylPoolPhMax",true,"ph_max",0,14,0.1,"pH"},
-  {"ylPoolPhMin",true,"ph_min",0,14,0.1,"pH"},
+  {"ylPoolPhMax",true,"ph_max",0,140,1,"pH"},
+  {"ylPoolPhMin",true,"ph_min",0,140,1,"pH"},
   {"ylPoolEcMax",true,"ec_max",0,20000,1,"µS/cm"},
   {"ylPoolEcMin",true,"ec_min",0,20000,1,"µS/cm"},
   {"ylPoolOrpMax",true,"orp_max",0,1200,1,"mV"},
   {"ylPoolOrpMin",true,"orp_min",0,1200,1,"mV"},
-  {"ylPoolChlorineMax",true,"free_chlorine_max",0,4,0.1,"mg/L"},
-  {"ylPoolChlorineMin",true,"free_chlorine_min",0,4,0.1,"mg/L"},
+  {"ylPoolChlorineMax",true,"free_chlorine_max",0,40,1,"mg/L"},
+  {"ylPoolChlorineMin",true,"free_chlorine_min",0,40,1,"mg/L"},
   {"ylPoolBacklight",true,"backlightvalue",0,1,1,nil},
   {"aqP1Interval",false,"aq_p_one_interval",2,65535,1,"s"},
   {"aqT1Interval",false,"aq_t_one_interval",2,65535,1,"s"},
@@ -6827,6 +6832,10 @@ local numeric_rows = {
   {"zg210zTemperatureCalibration",true,"zg210z_temperature_calibration",-2,2,nil,"C"},
   {"zg210zHumidityCalibration",true,"zg210z_humidity_calibration",-30,30,1,"%"},
   {"tzzt01ProbeTemperature",false,"temperature_probe",nil,nil,nil,"C"},
+  {"poolPhMaxLimit",true,"ph_max",0,14,0.1,"pH"},
+  {"poolPhMinLimit",true,"ph_min",0,14,0.1,"pH"},
+  {"poolChlorineMaxLimit",true,"free_chlorine_max",0,4,0.1,"mg/L"},
+  {"poolChlorineMinLimit",true,"free_chlorine_min",0,4,0.1,"mg/L"},
 }
 local enum_rows = {
   {"zmsFourBacklightSetting",true,"zms206_backlight_mode",{"OFF","ON"}},
@@ -8948,6 +8957,7 @@ local enum_rows = {
   {"ikeaE1766Action",false,"ikea_e1766_action",{"open","close","stop"}},
   {"zg210zPressureState",false,"zg210z_pressure_state",{"none","sit","sedentary"}},
   {"coverOnePositionInvert",true,"cover_one_position_invert",{"normal","inverted"}},
+  {"ts0210Ef00Sensitivity",true,"ts0210_ef00_sensitivity",{"low","middle","high"}},
 }
 local text_rows = {
   {"zmsFourSwitchName",true,"zms206_switch_name",12},

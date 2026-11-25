@@ -1,7 +1,7 @@
-local b,k,X,ab,Q,ak,i=require"st.capabilities",require"runtime.capability_metadata",require"runtime.battery_refresh",require"runtime.energy_reset",require"runtime.utf8_text",require"log",{}local u,q,w,p=k.by_emit_name.last_power_response_time,"_tuya_last_power_response_at","waiting",require"runtime.capability_support".is_callable
+local b,k,X,ab,R,ak,i=require"st.capabilities",require"runtime.capability_metadata",require"runtime.battery_refresh",require"runtime.energy_reset",require"runtime.utf8_text",require"log",{}local v,q,x,p=k.by_emit_name.last_power_response_time,"_tuya_last_power_response_at","waiting",require"runtime.capability_support".is_callable
 
-local function h(v,M)
-local f=b[v]local m=f and f[M]or nil
+local function h(w,M)
+local f=b[w]local m=f and f[M]or nil
 if not p(m)and f and type(f.attributes)=="table"then
 m=f.attributes[M]end
 return f,m
@@ -14,13 +14,13 @@ local ac=m.schema
 if type(ac.properties)~="table"or type(ac.properties.value)~="table"then
 return nil
 end
-local R,aa=ac.properties.value,ah or"maximum"
-if type(R[aa])=="number"then
-return R[aa]end
+local S,aa=ac.properties.value,ah or"maximum"
+if type(S[aa])=="number"then
+return S[aa]end
 return nil
 end
-local function P(e,v)
-if type(e)~="table"or type(v)~="string"then
+local function Q(e,w)
+if type(e)~="table"or type(w)~="string"then
 return false
 end
 local Y=e.profile and e.profile.components or nil
@@ -30,7 +30,7 @@ if type(J)~="table"then
 return false
 end
 for _,f in ipairs(J)do
-if type(f)=="table"and f.id==v then
+if type(f)=="table"and f.id==w then
 return true
 end
 end
@@ -38,13 +38,13 @@ return false
 end
 local function E(T)
 if type(T)~="number"or T<=0 then
-return w
+return x
 end
 return os.date("!%Y-%m-%d %H:%M:%S UTC",T)
 end
 local function F(e)
-local c=u
-if type(c)~="table"or not P(e,c.capability_id)then
+local c=v
+if type(c)~="table"or not Q(e,c.capability_id)then
 return nil
 end
 local _,m=h(c.capability_id,c.attribute_name)if not p(m)then
@@ -121,6 +121,13 @@ return b.presenceSensor.presence.present()else
 return b.presenceSensor.presence.not_present()end
 end
 end
+function i.gas()
+return function(_,a)
+if a then
+return b.gasDetector.gas.detected()else
+return b.gasDetector.gas.clear()end
+end
+end
 function i.valve()
 return function(_,a)
 if a~=nil then
@@ -151,11 +158,11 @@ return b.alarm.alarm.siren()else
 return b.alarm.alarm.off()end
 end
 end
-function i.temperature(D)
-D=D or"C"
+function i.temperature(u)
+u=u or"C"
 return function(_,a)
 if a~=nil then
-return b.temperatureMeasurement.temperature{value=a,unit=D}end
+return b.temperatureMeasurement.temperature{value=a,unit=u}end
 end
 end
 function i.humidity()
@@ -188,11 +195,18 @@ if a~=nil then
 return b.carbonDioxideMeasurement.carbonDioxide{value=a,unit="ppm"}end
 end
 end
-function i.formaldehyde(D)
-D=D or"mg/m^3"
+function i.voc(u)
+u=u or"ppb"
 return function(_,a)
 if a~=nil then
-return b.formaldehydeMeasurement.formaldehydeLevel{value=a,unit=D}end
+return b.tvocMeasurement.tvocLevel{value=a,unit=u}end
+end
+end
+function i.formaldehyde(u)
+u=u or"mg/m^3"
+return function(_,a)
+if a~=nil then
+return b.formaldehydeMeasurement.formaldehydeLevel{value=a,unit=u}end
 end
 end
 function i.pm25()
@@ -222,11 +236,11 @@ end
 function i.power()
 return function(e,a,t,r)
 if a~=nil then
-local L,A=b.powerMeter.power{value=a,unit="W"},F(e)if A~=nil then
-local x=l(r)or l(t)or o(r)or o(t)if x~=nil and x~="main"then
-e:emit_event(A)return L
+local L,B=b.powerMeter.power{value=a,unit="W"},F(e)if B~=nil then
+local y=l(r)or l(t)or o(r)or o(t)if y~=nil and y~="main"then
+e:emit_event(B)return L
 end
-return{L,A}end
+return{L,B}end
 return L
 end
 end
@@ -234,7 +248,7 @@ end
 function i.energy()
 return function(e,a,t,r)
 if a~=nil then
-local x=l(r)or l(t)or o(r)or o(t)return b.energyMeter.energy{value=ab.apply_report(e,a,x),unit="kWh"}end
+local y=l(r)or l(t)or o(r)or o(t)return b.energyMeter.energy{value=ab.apply_report(e,a,y),unit="kWh"}end
 end
 end
 function i.voltage()
@@ -255,20 +269,26 @@ if a~=nil then
 local j=a<0 and 0 or(a>100 and 100 or a)return b.switchLevel.level(math.floor(j+0.5))end
 end
 end
-local function O(c)
+function i.soil_moisture()
+return function(_,a)
+if a~=nil then
+local j=a<0 and 0 or(a>100 and 100 or a)return b["concertmirror08464.soilMoisture"].soilMoisture{value=j,unit="%"}end
+end
+end
+local function P(c)
 return function(e,a)
 if a==nil then
 return
 end
 local j,H,G=a,c.event_minimum or(c.default_range and c.default_range.minimum or nil),c.event_maximum or(c.default_range and c.default_range.maximum or nil)
-local _,g=h(c.capability_id,c.attribute_name)local C,B=s(g,"minimum"),s(g)if type(C)=="number"then
-if type(H)~="number"or C>H then
-H=C
+local _,g=h(c.capability_id,c.attribute_name)local D,C=s(g,"minimum"),s(g)if type(D)=="number"then
+if type(H)~="number"or D>H then
+H=D
 end
 end
-if type(B)=="number"then
-if type(G)~="number"or B<G then
-G=B
+if type(C)=="number"then
+if type(G)~="number"or C<G then
+G=C
 end
 end
 if type(H)=="number"and j<H then
@@ -285,21 +305,21 @@ d(e,c,"capability")else
 d(e,c,"attribute")end
 return
 end
-local D=c.event_unit or(c.default_range and c.default_range.unit or nil)if D~=nil then
-return g{value=j,unit=D}end
+local u=c.event_unit or(c.default_range and c.default_range.unit or nil)if u~=nil then
+return g{value=j,unit=u}end
 return g{value=j}
 end
 end
 local function V(c)
 return function(e,a)
 if type(a)=="boolean"and type(c.supported_values)=="table"then
-local af,ae,Z,ad,y=false,false,false,false,0
+local af,ae,Z,ad,z=false,false,false,false,0
 
 
 
 
 for _,K in ipairs(c.supported_values)do
-y=y+1
+z=z+1
 if K=="on"then
 af=true
 elseif K=="off"then
@@ -311,7 +331,7 @@ ad=true
 end
 end
 if af and ae then
-a=a and"on"or"off"elseif y==2 and Z and ad then
+a=a and"on"or"off"elseif z==2 and Z and ad then
 a=a and"low"or"normal"end
 end
 if type(a)~="string"or a==""then
@@ -337,7 +357,7 @@ d(e,c,"capability")else
 d(e,c,"attribute")end
 return
 end
-local z=c.maximum_length or Q.length(a)local N=Q.truncate(a,z)if N==nil then
+local A=c.maximum_length or R.length(a)local N=R.truncate(a,A)if N==nil then
 return
 end
 return g{value=N}
@@ -345,7 +365,7 @@ end
 end
 for _,c in ipairs(k.numeric)do
 i[c.emit_name]=function()
-return O(c)
+return P(c)
 end
 end
 for _,c in ipairs(k.enum)do
@@ -368,8 +388,8 @@ d(e,c,"capability")else
 d(e,c,"attribute")end
 return
 end
-local z=c.maximum_length or 512
-local N=Q.truncate(a,z)if N==nil then
+local A=c.maximum_length or 512
+local N=R.truncate(a,A)if N==nil then
 return
 end
 return g{value=N}end
@@ -405,11 +425,11 @@ if a~=nil then
 local j=a<0 and 0 or(a>100 and 100 or a)return b.colorControl.saturation(j)end
 end
 end
-function i.value(I,D)
+function i.value(I,u)
 return function(_,a)
 if a~=nil then
-if D then
-return I{value=a,unit=D}else
+if u then
+return I{value=a,unit=u}else
 return I(a)end
 end
 end

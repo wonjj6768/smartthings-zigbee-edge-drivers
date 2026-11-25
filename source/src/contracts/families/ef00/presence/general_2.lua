@@ -747,7 +747,9 @@ register_presence_definition(presence_model_zg_204ze, {
 local function ay204t_report(mapping)
   local from_device = mapping.from_device or (mapping.converter and mapping.converter.from)
   mapping.from_device = function(value, device, context)
-    if device:get_manufacturer() ~= "AOYAN  " or device:get_model() ~= "AY204T"
+    local manufacturer = device:get_manufacturer()
+    if (manufacturer ~= "AOYAN" and manufacturer ~= "AOYAN " and manufacturer ~= "AOYAN  ")
+      or device:get_model() ~= "AY204T"
       or context.raw_value == 0xFFFF then return nil end
     if from_device then return from_device(value, device, context, mapping) end
     return value
@@ -819,8 +821,16 @@ local presence_model_zg_204zv_fingerprints = ts0601_fingerprints({
 
 })
 
--- Z2M AY204T is a white-label of ZG-204ZV. Keep the two trailing spaces in
--- the manufacturer string; create_fingerprints() must not normalize it.
+-- The original Z2M identity and both #49 identities are explicit aliases.
+-- Preserve each raw string; do not trim arbitrary Basic-cluster values.
+presence_model_zg_204zv_fingerprints[#presence_model_zg_204zv_fingerprints + 1] = {
+  manufacturer = "AOYAN",
+  model = "AY204T",
+}
+presence_model_zg_204zv_fingerprints[#presence_model_zg_204zv_fingerprints + 1] = {
+  manufacturer = "AOYAN ",
+  model = "AY204T",
+}
 presence_model_zg_204zv_fingerprints[#presence_model_zg_204zv_fingerprints + 1] = {
   manufacturer = "AOYAN  ",
   model = "AY204T",

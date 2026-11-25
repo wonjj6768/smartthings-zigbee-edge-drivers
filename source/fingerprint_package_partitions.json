@@ -2026,17 +2026,6 @@
       "auditEvidence": "analysis/github_simple_fixes_20261113.md#ts0043-fingerprint-only-alias"
     },
     {
-      "manufacturer": "_TZ32101000000_5oy7cysk",
-      "manufacturerUtf8Hex": "5f545a33323130313030303030305f356f79376379736b",
-      "model": "TS0210",
-      "modelUtf8Hex": "545330323130",
-      "owner": "zcl-sensors-2-wonjj6768",
-      "catalogId": "zcl.sensors.wave19_vibration",
-      "catalogModule": "contracts.families.zcl.sensors.wave19_vibration",
-      "profile": "safety-wave19-tuya-ts0210-quoted",
-      "auditEvidence": "analysis/issues24_54_55_20261114.md#issue55-exact-alias"
-    },
-    {
       "manufacturer": "_TZ3000_7Y90pany",
       "manufacturerUtf8Hex": "5f545a333030305f3759393070616e79",
       "model": "ZG-106Z",
@@ -2046,6 +2035,28 @@
       "catalogModule": "contracts.families.zcl.sensors",
       "profile": "sensors-illuminance-battery",
       "auditEvidence": "analysis/family_capability_manual_audit.md#2026-11-25-zg-106z-실제-제보-식별자-추가"
+    },
+    {
+      "manufacturer": "AOYAN",
+      "manufacturerUtf8Hex": "414f59414e",
+      "model": "AY204T",
+      "modelUtf8Hex": "415932303454",
+      "owner": "ef00-presence-general-2-wonjj6768",
+      "catalogId": "ef00.presence.general.2",
+      "catalogModule": "contracts.families.ef00.presence.general_2",
+      "profile": "safety-presence-zg204zv-illuminance-temp-humidity-battery",
+      "auditEvidence": "analysis/issues40_41_49_55_57_20261126.md#issue49-exact-identities"
+    },
+    {
+      "manufacturer": "AOYAN ",
+      "manufacturerUtf8Hex": "414f59414e20",
+      "model": "AY204T",
+      "modelUtf8Hex": "415932303454",
+      "owner": "ef00-presence-general-2-wonjj6768",
+      "catalogId": "ef00.presence.general.2",
+      "catalogModule": "contracts.families.ef00.presence.general_2",
+      "profile": "safety-presence-zg204zv-illuminance-temp-humidity-battery",
+      "auditEvidence": "analysis/issues40_41_49_55_57_20261126.md#issue49-exact-identities"
     }
   ],
   "approvedNewFamilyExacts": [
@@ -2108,6 +2119,18 @@
       "baseProfile": "buttons-situo-four",
       "auditEvidence": "analysis/z2m_somfy_situo_integration_20261023.md",
       "profile": "rpt-snl"
+    },
+    {
+      "manufacturer": "_TZ32101000000_5oy7cysk",
+      "model": "TS0210",
+      "manufacturerUtf8Hex": "5f545a33323130313030303030305f356f79376379736b",
+      "modelUtf8Hex": "545330323130",
+      "owner": "zcl-sensors-2-wonjj6768",
+      "catalogId": "zcl.sensors.wave19_vibration",
+      "catalogModule": "contracts.families.zcl.sensors.wave19_vibration",
+      "baseProfile": "safety-tuya-ts0210-ef00",
+      "auditEvidence": "analysis/issues40_41_49_55_57_20261126.md",
+      "profile": "rpt-txh"
     }
   ],
   "approvedFailClosedExacts": [],
@@ -15229,11 +15252,11 @@
     "newPackageCount": 27,
     "newCatalogCount": 115,
     "newExactCount": 991,
-    "fingerprintOnlyAliasCount": 123,
-    "newFamilyExactCount": 5,
+    "fingerprintOnlyAliasCount": 124,
+    "newFamilyExactCount": 6,
     "failClosedExactCount": 0,
     "restoredLegacyExactCount": 5,
-    "runtimeExactCount": 4394,
+    "runtimeExactCount": 4396,
     "movedCatalogCount": 62,
     "movedExactCount": 540,
     "historicalPartitionCount": 17

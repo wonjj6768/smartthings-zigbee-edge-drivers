@@ -73800,6 +73800,83 @@
       ]
     },
     {
+      "baseProfile": "safety-tuya-ts0210-ef00",
+      "capabilities": [
+        "concertmirror08464.zclBatteryReportMin",
+        "concertmirror08464.zclBatteryReportMax",
+        "concertmirror08464.zclBatteryReportChange20"
+      ],
+      "contracts": [
+        {
+          "attribute": 33,
+          "attribute_name": "BatteryPercentageRemaining",
+          "byte_length": 1,
+          "change": 10,
+          "cluster": 1,
+          "component": "nil",
+          "control": "zr000100211",
+          "default_change": 10,
+          "default_maximum": 65000,
+          "default_minimum": 3600,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 3,
+          "item": "Battery",
+          "maximum": 65000,
+          "minimum": 3600,
+          "name": "battery",
+          "scale": 2,
+          "type": 32
+        }
+      ],
+      "controls": [
+        {
+          "attribute": 33,
+          "attribute_name": "BatteryPercentageRemaining",
+          "byte_length": 1,
+          "change": 10,
+          "cluster": 1,
+          "component": "nil",
+          "control": "zr000100211",
+          "default_change": 10,
+          "default_maximum": 65000,
+          "default_minimum": 3600,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 3,
+          "item": "Battery",
+          "maximum": 65000,
+          "minimum": 3600,
+          "name": "battery",
+          "scale": 2,
+          "type": 32
+        }
+      ],
+      "identity": "contracts.families.zcl.sensors.wave19_vibration:2",
+      "logicalItems": {},
+      "pending": [],
+      "prefix": "ts021Xhed",
+      "profile": "rpt-txh",
+      "registrations": [
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "_TZ32101000000_5oy7cysk",
+              "model": "TS0210"
+            }
+          ],
+          "origin": {
+            "line": 124,
+            "source": "contracts/families/zcl/sensors/wave19_vibration.lua"
+          },
+          "owner": {
+            "index": 2,
+            "module": "contracts.families.zcl.sensors.wave19_vibration"
+          }
+        }
+      ]
+    },
+    {
       "baseProfile": "sonoff-snzb02p-temp-humidity",
       "capabilities": [
         "concertmirror08464.zclTempReportMin",
@@ -74249,7 +74326,7 @@
             }
           ],
           "origin": {
-            "line": 244,
+            "line": 252,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -74461,7 +74538,7 @@
             }
           ],
           "origin": {
-            "line": 278,
+            "line": 286,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -74628,7 +74705,7 @@
             }
           ],
           "origin": {
-            "line": 291,
+            "line": 299,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -74796,7 +74873,7 @@
             }
           ],
           "origin": {
-            "line": 331,
+            "line": 339,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -74979,7 +75056,7 @@
             }
           ],
           "origin": {
-            "line": 516,
+            "line": 524,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -75146,7 +75223,7 @@
             }
           ],
           "origin": {
-            "line": 582,
+            "line": 590,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -75370,7 +75447,7 @@
             }
           ],
           "origin": {
-            "line": 688,
+            "line": 696,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -75504,7 +75581,7 @@
             }
           ],
           "origin": {
-            "line": 740,
+            "line": 748,
             "source": "contracts/families/zcl/sensors/sonoff.lua"
           },
           "owner": {
@@ -115359,6 +115436,14 @@
       },
       "oldProfile": "safety-motion-tamper-battery-low-battery-voltage",
       "profile": "rpt-tnd"
+    },
+    {
+      "fingerprint": {
+        "manufacturer": "_TZ32101000000_5oy7cysk",
+        "model": "TS0210"
+      },
+      "oldProfile": "safety-tuya-ts0210-ef00",
+      "profile": "rpt-txh"
     },
     {
       "fingerprint": {

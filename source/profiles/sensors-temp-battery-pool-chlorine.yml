@@ -18,9 +18,9 @@ components:
     version: 1
   - id: refresh
     version: 1
-  - id: concertmirror08464.ylPoolPhMax
+  - id: concertmirror08464.poolPhMaxLimit
     version: 1
-  - id: concertmirror08464.ylPoolPhMin
+  - id: concertmirror08464.poolPhMinLimit
     version: 1
   - id: concertmirror08464.ylPoolEcMax
     version: 1
@@ -30,9 +30,9 @@ components:
     version: 1
   - id: concertmirror08464.ylPoolOrpMin
     version: 1
-  - id: concertmirror08464.ylPoolChlorineMax
+  - id: concertmirror08464.poolChlorineMaxLimit
     version: 1
-  - id: concertmirror08464.ylPoolChlorineMin
+  - id: concertmirror08464.poolChlorineMinLimit
     version: 1
   - id: concertmirror08464.ylPoolBacklight
     version: 1
@@ -72,9 +72,9 @@ deviceConfig:
   - component: main
     capability: refresh
   - component: main
-    capability: concertmirror08464.ylPoolPhMax
+    capability: concertmirror08464.poolPhMaxLimit
   - component: main
-    capability: concertmirror08464.ylPoolPhMin
+    capability: concertmirror08464.poolPhMinLimit
   - component: main
     capability: concertmirror08464.ylPoolEcMax
   - component: main
@@ -84,9 +84,9 @@ deviceConfig:
   - component: main
     capability: concertmirror08464.ylPoolOrpMin
   - component: main
-    capability: concertmirror08464.ylPoolChlorineMax
+    capability: concertmirror08464.poolChlorineMaxLimit
   - component: main
-    capability: concertmirror08464.ylPoolChlorineMin
+    capability: concertmirror08464.poolChlorineMinLimit
   - component: main
     capability: concertmirror08464.ylPoolBacklight
   - component: main
@@ -110,9 +110,9 @@ deviceConfig:
     - component: main
       capability: battery
     - component: main
-      capability: concertmirror08464.ylPoolPhMax
+      capability: concertmirror08464.poolPhMaxLimit
     - component: main
-      capability: concertmirror08464.ylPoolPhMin
+      capability: concertmirror08464.poolPhMinLimit
     - component: main
       capability: concertmirror08464.ylPoolEcMax
     - component: main
@@ -122,9 +122,9 @@ deviceConfig:
     - component: main
       capability: concertmirror08464.ylPoolOrpMin
     - component: main
-      capability: concertmirror08464.ylPoolChlorineMax
+      capability: concertmirror08464.poolChlorineMaxLimit
     - component: main
-      capability: concertmirror08464.ylPoolChlorineMin
+      capability: concertmirror08464.poolChlorineMinLimit
     - component: main
       capability: concertmirror08464.ylPoolBacklight
     - component: main
@@ -133,9 +133,9 @@ deviceConfig:
       capability: signalStrength
     actions:
     - component: main
-      capability: concertmirror08464.ylPoolPhMax
+      capability: concertmirror08464.poolPhMaxLimit
     - component: main
-      capability: concertmirror08464.ylPoolPhMin
+      capability: concertmirror08464.poolPhMinLimit
     - component: main
       capability: concertmirror08464.ylPoolEcMax
     - component: main
@@ -145,8 +145,8 @@ deviceConfig:
     - component: main
       capability: concertmirror08464.ylPoolOrpMin
     - component: main
-      capability: concertmirror08464.ylPoolChlorineMax
+      capability: concertmirror08464.poolChlorineMaxLimit
     - component: main
-      capability: concertmirror08464.ylPoolChlorineMin
+      capability: concertmirror08464.poolChlorineMinLimit
     - component: main
       capability: concertmirror08464.ylPoolBacklight

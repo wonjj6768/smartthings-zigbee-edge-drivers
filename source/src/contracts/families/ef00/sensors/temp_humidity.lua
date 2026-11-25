@@ -25,7 +25,6 @@
 --   aq base 정의: unsigned temp, humidity/10, VOC raw, formaldehyde raw, DP2=CO2
 
 local tuya = require "protocol.tuya"
-local log = require "log"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local ef00_helpers = require "contracts.helpers.ef00"
@@ -63,7 +62,9 @@ local function note_pool_limit_scale(device, kind, scale)
   end
   scales[kind] = scale
   device:set_field(POOL_LIMIT_SCALE_FIELD, scales, { persist = true })
-  log.info(string.format("Pool meter %s limits use 1/%d units", kind, scale))
+  if device.log then
+    device.log.info(string.format("Pool meter %s limits use 1/%d units", kind, scale))
+  end
 end
 
 local function effective_pool_limit_scale(device, kind)
@@ -551,9 +552,9 @@ local pool_chlorine_meter = {
 
     tuya.dp_numeric(105, { name = "backlightvalue", emit = emit.ylPoolBacklight() }),
 
-    tuya.dp_numeric(106, { name = "ph_max", converter = pool_limit_decimal("ph", 14), emit = emit.ylPoolPhMax("pH") }),
+    tuya.dp_numeric(106, { name = "ph_max", converter = pool_limit_decimal("ph", 14), emit = emit.poolPhMaxLimit("pH") }),
 
-    tuya.dp_numeric(107, { name = "ph_min", converter = pool_limit_decimal("ph", 14), emit = emit.ylPoolPhMin("pH") }),
+    tuya.dp_numeric(107, { name = "ph_min", converter = pool_limit_decimal("ph", 14), emit = emit.poolPhMinLimit("pH") }),
 
     tuya.dp_numeric(108, { name = "ec_max", emit = emit.ylPoolEcMax("µS/cm") }),
 
@@ -563,9 +564,9 @@ local pool_chlorine_meter = {
 
     tuya.dp_numeric(111, { name = "orp_min", signed = true, converter = pool_orp_limit(), emit = emit.ylPoolOrpMin("mV") }),
 
-    tuya.dp_numeric(112, { name = "free_chlorine_max", converter = pool_limit_decimal("cl", 4), emit = emit.ylPoolChlorineMax("mg/L") }),
+    tuya.dp_numeric(112, { name = "free_chlorine_max", converter = pool_limit_decimal("cl", 4), emit = emit.poolChlorineMaxLimit("mg/L") }),
 
-    tuya.dp_numeric(113, { name = "free_chlorine_min", converter = pool_limit_decimal("cl", 4), emit = emit.ylPoolChlorineMin("mg/L") }),
+    tuya.dp_numeric(113, { name = "free_chlorine_min", converter = pool_limit_decimal("cl", 4), emit = emit.poolChlorineMinLimit("mg/L") }),
 
     tuya.dp_numeric(117, { name = "salinity", emit = emit.salinityChlorineMeter(), read_only = true }),
 

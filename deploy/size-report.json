@@ -187568,9 +187568,9 @@
   },
   {
     "name": "ef00-presence-advanced-wonjj6768",
-    "raw_size": 305274,
+    "raw_size": 305825,
     "under_limit": true,
-    "free_bytes": 219014,
+    "free_bytes": 218463,
     "meets_headroom": true,
     "profiles": [
       "rpt-tai",
@@ -187602,7 +187602,7 @@
     },
     "lua_local_compaction": {
       "schemaVersion": 1,
-      "savedBytes": 144847,
+      "savedBytes": 145252,
       "files": {
         "app/component_mapping.lua": {
           "schemaVersion": 1,
@@ -189304,9 +189304,9 @@
         },
         "contracts/families/ef00/presence/advanced.lua": {
           "schemaVersion": 1,
-          "inputSha256": "03eabfcf27f230c1cc4c3c8246a2c7e08cb6aeeff38a517b6b99e08562a6ffd7",
-          "outputSha256": "fd4227f6e88b4ba5caaf31ede82ea4a76a8e497e3ff98d3760569922d05e5b50",
-          "strippedBytecodeSha256": "07d7372208a040c5ce6d0fb688289ed360d9def0564108170dc94dbc92e195b8",
+          "inputSha256": "d7f640374c0dc1a3a2e132f28c98eb6b3b5573403272bd74497c4f68a02acdbb",
+          "outputSha256": "248c41f074b47efecc3a72d6929d7fda2faa3a54f41e4fda37ec7971d27e2432",
+          "strippedBytecodeSha256": "3ed2c8434801cb58a748f6fc482b54cb00123515b11d1cc5f4283312a962644e",
           "luaVersion": "Lua 5.4",
           "aliases": {
             "converter": "a",
@@ -189315,177 +189315,159 @@
             "register_presence_definition": "d",
             "ts0601_fingerprints": "e",
             "device_helpers": "f",
-            "events": "g",
-            "debug_mode_mtd085_converter": "h",
-            "register_device_definition": "i",
-            "build_zym24gv3_datapoints": "j",
-            "distance_report_mode_mtd085_converter": "k",
-            "sensor_state_mode_mtd085_converter": "l",
-            "on_off_enum1_converter": "m",
-            "presence_model_ctl_r1_ty_zigbee": "n",
-            "mapping_context": "o",
-            "presence_model_zy_m100_24gv3_a": "p",
-            "presence_model_zy_m100_24gv3_b": "q",
-            "zym100s3_sensitivity_converter": "r",
-            "scene_preset_mtd085_converter": "s",
-            "mtg_datapoints": "t",
-            "presence_model_zy_m100_24gv2": "u",
-            "zym100s3_keep_time_converter": "v",
-            "zym24gv3_presence_from_state": "w",
-            "device_definitions": "x",
-            "presence_model_mtg075_zb_rl": "y",
-            "presence_model_mtg235_zb_rl": "z",
-            "presence_model_mtg275_zb_rl": "A",
-            "sensor_state_mode_converter": "B",
-            "detection_method_converter": "C",
-            "presence_model_zy_m100_24g": "D",
-            "presence_model_zy_m100_s_3": "E",
-            "zg205z_presence_from_state": "F",
-            "datapoints": "G",
-            "radar_scene_yxz_converter": "H",
-            "presence_model_mtd085_zb": "I",
-            "presence_model_rt_zcz03z": "J",
-            "zym24gv3_state_converter": "K",
-            "presence_model_yxzbrb58": "L",
-            "presence_model_zg_205za": "M",
-            "presence_model_zg_205zl": "N",
-            "distance_report": "O",
-            "breaker_mode_converter": "P",
-            "presence_model_zg_205z": "Q",
-            "presence_model_zp_301z": "R",
-            "definitions_or_table": "S",
-            "max_range_emitter": "T",
-            "min_range_emitter": "U",
-            "fingerprint_list": "V",
-            "dp_info": "W",
-            "emitter": "X",
-            "common": "Y",
-            "device": "Z",
-            "polarity": "aa",
-            "ranges": "ac",
-            "zcl": "ad"
+            "mapping_context": "g",
+            "events": "h",
+            "device": "i",
+            "debug_mode_mtd085_converter": "j",
+            "register_device_definition": "l",
+            "build_zym24gv3_datapoints": "m",
+            "distance_report_mode_mtd085_converter": "n",
+            "dp_info": "o",
+            "emitter": "p",
+            "sensor_state_mode_mtd085_converter": "q",
+            "on_off_enum1_converter": "r",
+            "presence_model_ctl_r1_ty_zigbee": "s",
+            "presence_model_zy_m100_24gv3_a": "t",
+            "presence_model_zy_m100_24gv3_b": "u",
+            "zym100s3_sensitivity_converter": "v",
+            "zym24gv2_throttled_illuminance": "w",
+            "scene_preset_mtd085_converter": "x",
+            "zym24gv2_safe_target_distance": "y",
+            "mtg_datapoints": "z",
+            "presence_model_zy_m100_24gv2": "A",
+            "zym100s3_keep_time_converter": "B",
+            "zym24gv2_presence_from_state": "C",
+            "zym24gv3_presence_from_state": "D",
+            "device_definitions": "E",
+            "presence_model_mtg075_zb_rl": "F",
+            "presence_model_mtg235_zb_rl": "G",
+            "presence_model_mtg275_zb_rl": "H",
+            "sensor_state_mode_converter": "I",
+            "detection_method_converter": "J",
+            "presence_model_zy_m100_24g": "K",
+            "presence_model_zy_m100_s_3": "L",
+            "zg205z_presence_from_state": "M",
+            "datapoints": "N",
+            "radar_scene_yxz_converter": "O",
+            "presence_model_mtd085_zb": "P",
+            "presence_model_rt_zcz03z": "Q",
+            "zym24gv3_state_converter": "R",
+            "presence_model_yxzbrb58": "S",
+            "presence_model_zg_205za": "T",
+            "presence_model_zg_205zl": "U",
+            "distance_report": "V",
+            "breaker_mode_converter": "W",
+            "presence_model_zg_205z": "X",
+            "presence_model_zp_301z": "Y",
+            "definitions_or_table": "Z",
+            "max_range_emitter": "aa",
+            "min_range_emitter": "ab",
+            "fingerprint_list": "ac",
+            "interval_seconds": "ad",
+            "common": "ae",
+            "polarity": "af",
+            "last": "ag",
+            "now": "ah",
+            "ranges": "ai",
+            "zcl": "aj"
           },
           "upvalueAliases": {
             "a": "converter",
             "b": "emit",
             "c": "tuya",
-            "i": "register_device_definition",
-            "w": "zym24gv3_presence_from_state",
-            "B": "sensor_state_mode_converter",
-            "K": "zym24gv3_state_converter",
-            "P": "breaker_mode_converter",
-            "X": "emitter",
-            "Y": "common"
+            "l": "register_device_definition",
+            "p": "emitter",
+            "D": "zym24gv3_presence_from_state",
+            "I": "sensor_state_mode_converter",
+            "R": "zym24gv3_state_converter",
+            "W": "breaker_mode_converter",
+            "ad": "interval_seconds",
+            "ae": "common"
           },
           "numerals": [],
           "syntax": [
             [
-              545,
+              551,
               ",",
               ""
             ],
             [
-              659,
+              665,
               ",",
               ""
             ],
             [
-              1044,
+              1050,
               ",",
               ""
             ],
             [
-              1046,
+              1052,
               ",",
               ""
             ],
             [
-              1160,
+              1166,
               ",",
               ""
             ],
             [
-              1256,
+              1262,
               ",",
               ""
             ],
             [
-              1384,
+              1390,
               ",",
               ""
             ],
             [
-              1568,
+              1574,
               ",",
               ""
             ],
             [
-              1635,
+              1641,
               ",",
               ""
             ],
             [
-              1661,
+              1667,
               ",",
               ""
             ],
             [
-              1940,
+              2716,
               ",",
               ""
             ],
             [
-              1943,
+              2719,
               ",",
               ""
             ],
             [
-              2111,
+              2887,
               ",",
               ""
             ],
             [
-              2204,
+              2980,
               ",",
               ""
             ],
             [
-              2328,
+              3081,
               ",",
               ""
             ],
             [
-              2586,
+              3264,
               ",",
               ""
             ],
             [
-              2587,
-              ",",
-              ""
-            ],
-            [
-              2613,
-              ",",
-              ""
-            ],
-            [
-              2816,
-              ",",
-              ""
-            ],
-            [
-              2944,
-              ",",
-              ""
-            ],
-            [
-              3093,
-              ",",
-              ""
-            ],
-            [
-              3167,
+              3265,
               ",",
               ""
             ],
@@ -189495,1081 +189477,1131 @@
               ""
             ],
             [
-              3522,
+              3494,
               ",",
               ""
             ],
             [
-              3711,
+              3624,
               ",",
               ""
             ],
             [
-              3756,
+              3774,
               ",",
               ""
             ],
             [
-              3943,
+              3849,
               ",",
               ""
             ],
             [
-              3988,
+              3973,
               ",",
               ""
             ],
             [
-              4358,
+              4204,
               ",",
               ""
             ],
             [
-              4451,
+              4393,
               ",",
               ""
             ],
             [
-              4602,
+              4438,
               ",",
               ""
             ],
             [
-              4700,
+              4625,
               ",",
               ""
             ],
             [
-              4776,
+              4670,
               ",",
               ""
             ],
             [
-              4903,
+              5040,
               ",",
               ""
             ],
             [
-              4905,
+              5133,
               ",",
               ""
             ],
             [
-              4906,
+              5284,
               ",",
               ""
             ],
             [
-              4951,
+              5382,
               ",",
               ""
             ],
             [
-              5328,
+              5458,
               ",",
               ""
             ],
             [
-              5733,
+              5585,
               ",",
               ""
             ],
             [
-              5810,
+              5587,
               ",",
               ""
             ],
             [
-              5929,
+              5588,
               ",",
               ""
             ],
             [
-              5931,
+              5633,
               ",",
               ""
             ],
             [
-              6014,
+              6010,
               ",",
               ""
             ],
             [
-              6099,
+              6415,
               ",",
               ""
             ],
             [
-              6101,
+              6492,
               ",",
               ""
             ],
             [
-              6102,
+              6611,
               ",",
               ""
             ],
             [
-              6128,
+              6613,
               ",",
               ""
             ],
             [
-              6411,
+              6696,
               ",",
               ""
             ],
             [
-              6634,
+              6781,
               ",",
               ""
             ],
             [
-              6851,
+              6783,
               ",",
               ""
             ],
             [
-              6852,
+              6784,
               ",",
               ""
             ],
             [
-              6878,
+              6810,
               ",",
               ""
             ],
             [
-              8200,
+              7093,
               ",",
               ""
             ],
             [
-              8316,
+              7316,
               ",",
               ""
             ],
             [
-              8426,
+              7533,
               ",",
               ""
             ],
             [
-              8929,
+              7534,
               ",",
               ""
             ],
             [
-              8957,
+              7560,
               ",",
               ""
             ],
             [
-              9116,
+              8882,
               ",",
               ""
             ],
             [
-              9607,
+              8998,
               ",",
               ""
             ],
             [
-              9638,
+              9108,
               ",",
               ""
             ],
             [
-              9714,
+              9611,
               ",",
               ""
             ],
             [
-              9769,
+              9639,
               ",",
               ""
             ],
             [
-              10035,
+              9798,
               ",",
               ""
             ],
             [
-              10106,
+              10289,
               ",",
               ""
             ],
             [
-              10152,
+              10320,
               ",",
               ""
             ],
             [
-              10153,
+              10396,
               ",",
               ""
             ],
             [
-              10179,
+              10451,
               ",",
               ""
             ],
             [
-              10622,
+              10717,
               ",",
               ""
             ],
             [
-              10625,
+              10788,
               ",",
               ""
             ],
             [
-              10750,
+              10834,
               ",",
               ""
             ],
             [
-              10976,
+              10835,
               ",",
               ""
             ],
             [
-              11077,
+              10861,
               ",",
               ""
             ],
             [
-              11178,
+              11304,
               ",",
               ""
             ],
             [
-              11283,
+              11307,
               ",",
               ""
             ],
             [
-              11388,
+              11432,
               ",",
               ""
             ],
             [
-              11500,
+              11658,
               ",",
               ""
             ],
             [
-              11612,
+              11759,
               ",",
               ""
             ],
             [
-              11854,
+              11860,
               ",",
               ""
             ],
             [
-              11855,
+              11965,
               ",",
               ""
             ],
             [
-              11881,
+              12070,
               ",",
               ""
             ],
             [
-              12150,
+              12182,
               ",",
               ""
             ],
             [
-              12259,
+              12294,
               ",",
               ""
             ],
             [
-              12446,
+              12536,
               ",",
               ""
             ],
             [
-              12449,
+              12537,
               ",",
               ""
             ],
             [
-              12628,
+              12563,
               ",",
               ""
             ],
             [
-              12715,
+              12832,
               ",",
               ""
             ],
             [
-              12870,
+              12941,
               ",",
               ""
             ],
             [
-              12984,
+              13128,
               ",",
               ""
             ],
             [
-              13072,
+              13131,
               ",",
               ""
             ],
             [
-              13198,
+              13310,
               ",",
               ""
             ],
             [
-              13300,
+              13397,
               ",",
               ""
             ],
             [
-              13302,
+              13552,
               ",",
               ""
             ],
             [
-              13303,
+              13666,
               ",",
               ""
             ],
             [
-              13529,
+              13754,
               ",",
               ""
             ],
             [
-              13900,
+              13880,
               ",",
               ""
             ],
             [
-              13903,
+              13982,
               ",",
               ""
             ],
             [
-              14078,
+              13984,
               ",",
               ""
             ],
             [
-              14188,
+              13985,
               ",",
               ""
             ],
             [
-              14272,
+              14211,
               ",",
               ""
             ],
             [
-              14356,
+              14582,
               ",",
               ""
             ],
             [
-              14510,
+              14585,
               ",",
               ""
             ],
             [
-              14696,
+              14760,
               ",",
               ""
             ],
             [
-              14698,
+              14870,
               ",",
               ""
             ],
             [
-              14804,
+              14954,
               ",",
               ""
             ],
             [
-              14884,
+              15038,
               ",",
               ""
             ],
             [
-              15001,
+              15192,
               ",",
               ""
             ],
             [
-              15003,
+              15378,
               ",",
               ""
             ],
             [
-              15005,
+              15380,
               ",",
               ""
             ],
             [
-              15006,
+              15486,
               ",",
               ""
             ],
             [
-              15169,
+              15566,
               ",",
               ""
             ],
             [
-              15225,
+              15683,
               ",",
               ""
             ],
             [
-              15263,
+              15685,
               ",",
               ""
             ],
             [
-              15383,
+              15687,
               ",",
               ""
             ],
             [
-              15441,
+              15688,
               ",",
               ""
             ],
             [
-              15641,
+              15851,
               ",",
               ""
             ],
             [
-              15767,
+              15907,
               ",",
               ""
             ],
             [
-              15863,
+              15945,
               ",",
               ""
             ],
             [
-              15994,
+              16065,
               ",",
               ""
             ],
             [
-              16111,
+              16123,
               ",",
               ""
             ],
             [
-              16202,
+              16323,
               ",",
               ""
             ],
             [
-              16297,
+              16449,
               ",",
               ""
             ],
             [
-              16415,
+              16545,
               ",",
               ""
             ],
             [
-              16503,
+              16676,
               ",",
               ""
             ],
             [
-              16602,
+              16793,
               ",",
               ""
             ],
             [
-              16690,
+              16884,
               ",",
               ""
             ],
             [
-              16847,
+              16979,
               ",",
               ""
             ],
             [
-              16947,
+              17097,
               ",",
               ""
             ],
             [
-              17069,
+              17185,
               ",",
               ""
             ],
             [
-              17197,
+              17284,
               ",",
               ""
             ],
             [
-              17376,
+              17372,
               ",",
               ""
             ],
             [
-              17490,
+              17529,
               ",",
               ""
             ],
             [
-              17492,
+              17629,
               ",",
               ""
             ],
             [
-              17552,
+              17751,
               ",",
               ""
             ],
             [
-              17578,
+              17879,
               ",",
               ""
             ],
             [
-              17683,
+              18058,
               ",",
               ""
             ],
             [
-              18337,
+              18172,
               ",",
               ""
             ],
             [
-              18338,
+              18174,
               ",",
               ""
             ],
             [
-              18436,
+              18234,
               ",",
               ""
             ],
             [
-              18926,
+              18260,
               ",",
               ""
             ],
             [
-              18957,
+              18365,
               ",",
               ""
             ],
             [
-              19036,
+              19019,
               ",",
               ""
             ],
             [
-              19088,
+              19020,
+              ",",
+              ""
+            ],
+            [
+              19118,
+              ",",
+              ""
+            ],
+            [
+              19608,
+              ",",
+              ""
+            ],
+            [
+              19639,
+              ",",
+              ""
+            ],
+            [
+              19718,
+              ",",
+              ""
+            ],
+            [
+              19770,
               ",",
               ""
             ]
           ],
-          "savedBytes": 5190,
+          "savedBytes": 5595,
           "literalCalls": {
             "schemaVersion": 1,
-            "inputSha256": "5e5f07f10e5714d60350df7e5e654d5a1ca3db16355d190fcd125c6c53a070b2",
-            "outputSha256": "37f2c7fb305ac843bdf1b600f6ea53d4c68c9a7d19ed136246add5199fc6e1b5",
+            "inputSha256": "d0a853fbbd196fb7b410f4f2d9707cf6a781106116b7168f7262ae8b9ca41461",
+            "outputSha256": "cd33a87b1b0d15b6dfee7c030cfa27c0f02e84c1b4ccb3de874909630e0a2ec3",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "f0de02d8cec9c484a58935ac76222d9c28f4acb6e062d93ed743ebb260380306"
+                "strippedBytecodeSha256": "682fa8961e9232bc385fc11fd41ab11ab21275a99e67721c9dcbe2c9818fcde6"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "07d7372208a040c5ce6d0fb688289ed360d9def0564108170dc94dbc92e195b8"
+                "strippedBytecodeSha256": "3ed2c8434801cb58a748f6fc482b54cb00123515b11d1cc5f4283312a962644e"
               }
             },
             "rewrites": [
               [
-                404,
+                410,
                 "(",
                 ""
               ],
               [
-                416,
+                422,
                 ")",
                 ""
               ],
               [
-                440,
+                446,
                 "(",
                 ""
               ],
               [
-                464,
+                470,
                 ")",
                 ""
               ],
               [
-                488,
+                494,
                 "(",
                 ""
               ],
               [
-                541,
+                547,
                 ")",
                 ""
               ],
               [
-                565,
+                571,
                 "(",
                 ""
               ],
               [
-                591,
+                597,
                 ")",
                 ""
               ],
               [
-                615,
+                621,
                 "(",
                 ""
               ],
               [
-                651,
+                657,
                 ")",
                 ""
               ],
               [
-                1008,
+                1014,
                 "(",
                 ""
               ],
               [
-                1034,
+                1040,
                 ")",
                 ""
               ],
               [
-                1629,
+                1635,
                 "(",
                 ""
               ],
               [
-                1649,
+                1655,
                 ")",
                 ""
               ],
               [
-                1888,
+                1930,
                 "(",
                 ""
               ],
               [
-                1926,
+                1960,
                 ")",
                 ""
               ],
               [
-                2577,
+                2256,
                 "(",
                 ""
               ],
               [
-                2597,
+                2287,
                 ")",
                 ""
               ],
               [
-                2760,
+                2660,
                 "(",
                 ""
               ],
               [
-                2798,
+                2698,
                 ")",
                 ""
               ],
               [
-                3697,
+                3251,
                 "(",
                 ""
               ],
               [
-                3736,
+                3271,
                 ")",
                 ""
               ],
               [
-                3927,
+                3434,
                 "(",
                 ""
               ],
               [
-                3966,
+                3472,
                 ")",
                 ""
               ],
               [
-                4888,
+                4375,
                 "(",
                 ""
               ],
               [
-                4927,
+                4414,
                 ")",
                 ""
               ],
               [
-                5686,
+                4605,
                 "(",
                 ""
               ],
               [
-                5705,
+                4644,
                 ")",
                 ""
               ],
               [
-                5878,
+                5566,
                 "(",
                 ""
               ],
               [
-                5901,
+                5605,
                 ")",
                 ""
               ],
               [
-                6078,
+                6364,
                 "(",
                 ""
               ],
               [
-                6098,
+                6383,
                 ")",
                 ""
               ],
               [
-                6581,
+                6556,
                 "(",
                 ""
               ],
               [
-                6600,
+                6579,
                 ")",
                 ""
               ],
               [
-                6824,
+                6756,
                 "(",
                 ""
               ],
               [
-                6844,
+                6776,
                 ")",
                 ""
               ],
               [
-                7823,
+                7259,
                 "(",
                 ""
               ],
               [
-                7835,
+                7278,
                 ")",
                 ""
               ],
               [
-                7915,
+                7502,
                 "(",
                 ""
               ],
               [
-                7927,
+                7522,
                 ")",
                 ""
               ],
               [
-                8263,
+                8501,
                 "(",
                 ""
               ],
               [
-                8274,
+                8513,
                 ")",
                 ""
               ],
               [
-                8370,
+                8593,
                 "(",
                 ""
               ],
               [
-                8382,
+                8605,
                 ")",
                 ""
               ],
               [
-                8919,
+                8941,
                 "(",
                 ""
               ],
               [
-                9072,
+                8952,
                 ")",
                 ""
               ],
               [
-                9598,
+                9048,
                 "(",
                 ""
               ],
               [
-                9618,
+                9060,
                 ")",
                 ""
               ],
               [
-                9643,
+                9597,
                 "(",
                 ""
               ],
               [
-                9666,
+                9750,
                 ")",
                 ""
               ],
               [
-                9690,
+                10276,
                 "(",
                 ""
               ],
               [
-                9719,
+                10296,
                 ")",
                 ""
               ],
               [
-                10107,
+                10321,
                 "(",
                 ""
               ],
               [
-                10127,
+                10344,
                 ")",
                 ""
               ],
               [
-                10484,
+                10368,
                 "(",
                 ""
               ],
               [
-                10568,
+                10397,
                 ")",
                 ""
               ],
               [
-                10899,
+                10785,
                 "(",
                 ""
               ],
               [
-                10918,
+                10805,
                 ")",
                 ""
               ],
               [
-                11803,
+                11162,
                 "(",
                 ""
               ],
               [
-                11823,
+                11246,
                 ")",
                 ""
               ],
               [
-                12316,
+                11577,
                 "(",
                 ""
               ],
               [
-                12386,
+                11596,
                 ")",
                 ""
               ],
               [
-                12787,
+                12481,
                 "(",
                 ""
               ],
               [
-                12806,
+                12501,
                 ")",
                 ""
               ],
               [
-                13766,
+                12994,
                 "(",
                 ""
               ],
               [
-                13836,
+                13064,
                 ")",
                 ""
               ],
               [
-                14423,
+                13465,
                 "(",
                 ""
               ],
               [
-                14442,
+                13484,
                 ")",
                 ""
               ],
               [
-                14598,
+                14444,
                 "(",
                 ""
               ],
               [
-                14628,
+                14514,
                 ")",
                 ""
               ],
               [
-                14899,
+                15101,
                 "(",
                 ""
               ],
               [
-                14931,
+                15120,
                 ")",
                 ""
               ],
               [
-                15123,
+                15276,
                 "(",
                 ""
               ],
               [
-                15153,
+                15306,
                 ")",
                 ""
               ],
               [
-                15177,
+                15577,
                 "(",
                 ""
               ],
               [
-                15189,
+                15609,
                 ")",
                 ""
               ],
               [
-                15213,
+                15801,
                 "(",
                 ""
               ],
               [
-                15307,
+                15831,
                 ")",
                 ""
               ],
               [
-                15331,
+                15855,
                 "(",
                 ""
               ],
               [
-                15363,
+                15867,
                 ")",
                 ""
               ],
               [
-                17440,
+                15891,
                 "(",
                 ""
               ],
               [
-                17470,
+                15985,
                 ")",
                 ""
               ],
               [
-                18881,
+                16009,
                 "(",
                 ""
               ],
               [
-                18901,
+                16041,
+                ")",
+                ""
+              ],
+              [
+                18118,
+                "(",
+                ""
+              ],
+              [
+                18148,
+                ")",
+                ""
+              ],
+              [
+                19559,
+                "(",
+                ""
+              ],
+              [
+                19579,
                 ")",
                 ""
               ]
             ],
-            "savedBytes": 84
+            "savedBytes": 88
           },
           "declarations": {
             "schemaVersion": 1,
-            "inputSha256": "37f2c7fb305ac843bdf1b600f6ea53d4c68c9a7d19ed136246add5199fc6e1b5",
-            "outputSha256": "fd4227f6e88b4ba5caaf31ede82ea4a76a8e497e3ff98d3760569922d05e5b50",
+            "inputSha256": "cd33a87b1b0d15b6dfee7c030cfa27c0f02e84c1b4ccb3de874909630e0a2ec3",
+            "outputSha256": "248c41f074b47efecc3a72d6929d7fda2faa3a54f41e4fda37ec7971d27e2432",
             "compilers": {
               "53": {
                 "luaVersion": "Lua 5.3",
                 "equal": true,
-                "strippedBytecodeSha256": "f0de02d8cec9c484a58935ac76222d9c28f4acb6e062d93ed743ebb260380306"
+                "strippedBytecodeSha256": "682fa8961e9232bc385fc11fd41ab11ab21275a99e67721c9dcbe2c9818fcde6"
               },
               "54": {
                 "luaVersion": "Lua 5.4",
                 "equal": true,
-                "strippedBytecodeSha256": "07d7372208a040c5ce6d0fb688289ed360d9def0564108170dc94dbc92e195b8"
+                "strippedBytecodeSha256": "3ed2c8434801cb58a748f6fc482b54cb00123515b11d1cc5f4283312a962644e"
               }
             },
             "rewrites": [
               [
                 0,
-                "local c=require\"protocol.tuya\"local b=require\"capabilities.events.all\"local ad=require\"protocol.zcl\"local f=require\"contracts.helpers.family\"local Y=require\"contracts.helpers.ef00_presence\"",
-                "local c,b,ad,f,Y=require\"protocol.tuya\",require\"capabilities.events.all\",require\"protocol.zcl\",require\"contracts.helpers.family\",require\"contracts.helpers.ef00_presence\""
+                "local c=require\"protocol.tuya\"local b=require\"capabilities.events.all\"local aj=require\"protocol.zcl\"local f=require\"contracts.helpers.family\"local ae=require\"contracts.helpers.ef00_presence\"",
+                "local c,b,aj,f,ae=require\"protocol.tuya\",require\"capabilities.events.all\",require\"protocol.zcl\",require\"contracts.helpers.family\",require\"contracts.helpers.ef00_presence\""
               ],
               [
-                330,
-                "local e=Y.ts0601_fingerprints\nlocal m=a.lookup_from_to{on=1,off=0}local P=a.lookup_from_to{standard=0,[\"local\"]=1}local H=a.lookup_from_to{default=0,bathroom=1,bedroom=2,sleeping=3,unknown=4}local C=a.lookup_from_to{only_move=0,exist_move=1}local B=a.lookup_from_to{on=0,off=1,occupied=2,unoccupied=3}local D={profile=\"safety-presence-zym10024g-illuminance\",package_group=\"presence-advanced\",named_datapoints=true,c.dp_numeric(102,{name=\"illuminance_threshold_max\"}),c.dp_numeric(103,{name=\"illuminance_threshold_min\"}),c.dp_illuminance(104,{emit=b.illuminance()}),c.dp_enum(105,{name=\"state\",read_only=true,emit=b.zym10024gState(),converter=a.lookup_from_to{none=0,presence=1,move=2}}),c.dp_numeric(106,{name=\"move_sensitivity\",emit=b.zym10024gMoveSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_numeric(107,{name=\"max_range\",emit=b.zym10024gMaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name=\"target_distance\",read_only=true,emit=b.zym10024gTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(110,{name=\"presence_timeout\",emit=b.zym10024gTimeout()}),c.dp_numeric(111,{name=\"presence_sensitivity\",emit=b.zym10024gSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_presence(112,{emit=b.presence(),converter=a.true_false1()})}",
-                "local e,m,P,H,C,B,D=Y.ts0601_fingerprints,a.lookup_from_to{on=1,off=0},a.lookup_from_to{standard=0,[\"local\"]=1},a.lookup_from_to{default=0,bathroom=1,bedroom=2,sleeping=3,unknown=4},a.lookup_from_to{only_move=0,exist_move=1},a.lookup_from_to{on=0,off=1,occupied=2,unoccupied=3},{profile=\"safety-presence-zym10024g-illuminance\",package_group=\"presence-advanced\",named_datapoints=true,c.dp_numeric(102,{name=\"illuminance_threshold_max\"}),c.dp_numeric(103,{name=\"illuminance_threshold_min\"}),c.dp_illuminance(104,{emit=b.illuminance()}),c.dp_enum(105,{name=\"state\",read_only=true,emit=b.zym10024gState(),converter=a.lookup_from_to{none=0,presence=1,move=2}}),c.dp_numeric(106,{name=\"move_sensitivity\",emit=b.zym10024gMoveSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_numeric(107,{name=\"max_range\",emit=b.zym10024gMaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name=\"target_distance\",read_only=true,emit=b.zym10024gTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(110,{name=\"presence_timeout\",emit=b.zym10024gTimeout()}),c.dp_numeric(111,{name=\"presence_sensitivity\",emit=b.zym10024gSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_presence(112,{emit=b.presence(),converter=a.true_false1()})}\n"
+                335,
+                "local e=ae.ts0601_fingerprints\nlocal r=a.lookup_from_to{on=1,off=0}local W=a.lookup_from_to{standard=0,[\"local\"]=1}local O=a.lookup_from_to{default=0,bathroom=1,bedroom=2,sleeping=3,unknown=4}local J=a.lookup_from_to{only_move=0,exist_move=1}local I=a.lookup_from_to{on=0,off=1,occupied=2,unoccupied=3}local K={profile=\"safety-presence-zym10024g-illuminance\",package_group=\"presence-advanced\",named_datapoints=true,c.dp_numeric(102,{name=\"illuminance_threshold_max\"}),c.dp_numeric(103,{name=\"illuminance_threshold_min\"}),c.dp_illuminance(104,{emit=b.illuminance()}),c.dp_enum(105,{name=\"state\",read_only=true,emit=b.zym10024gState(),converter=a.lookup_from_to{none=0,presence=1,move=2}}),c.dp_numeric(106,{name=\"move_sensitivity\",emit=b.zym10024gMoveSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_numeric(107,{name=\"max_range\",emit=b.zym10024gMaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name=\"target_distance\",read_only=true,emit=b.zym10024gTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(110,{name=\"presence_timeout\",emit=b.zym10024gTimeout()}),c.dp_numeric(111,{name=\"presence_sensitivity\",emit=b.zym10024gSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_presence(112,{emit=b.presence(),converter=a.true_false1()})}",
+                "local e,r,W,O,J,I,K=ae.ts0601_fingerprints,a.lookup_from_to{on=1,off=0},a.lookup_from_to{standard=0,[\"local\"]=1},a.lookup_from_to{default=0,bathroom=1,bedroom=2,sleeping=3,unknown=4},a.lookup_from_to{only_move=0,exist_move=1},a.lookup_from_to{on=0,off=1,occupied=2,unoccupied=3},{profile=\"safety-presence-zym10024g-illuminance\",package_group=\"presence-advanced\",named_datapoints=true,c.dp_numeric(102,{name=\"illuminance_threshold_max\"}),c.dp_numeric(103,{name=\"illuminance_threshold_min\"}),c.dp_illuminance(104,{emit=b.illuminance()}),c.dp_enum(105,{name=\"state\",read_only=true,emit=b.zym10024gState(),converter=a.lookup_from_to{none=0,presence=1,move=2}}),c.dp_numeric(106,{name=\"move_sensitivity\",emit=b.zym10024gMoveSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_numeric(107,{name=\"max_range\",emit=b.zym10024gMaxRange(),converter=a.divide_by_pair(100)}),c.dp_numeric(109,{name=\"target_distance\",read_only=true,emit=b.zym10024gTargetDistance(),converter=a.divide_by_from_only(100)}),c.dp_numeric(110,{name=\"presence_timeout\",emit=b.zym10024gTimeout()}),c.dp_numeric(111,{name=\"presence_sensitivity\",emit=b.zym10024gSensitivity(),converter=a.divide_by_from_only(10)}),c.dp_presence(112,{emit=b.presence(),converter=a.true_false1()})}\n"
               ],
               [
-                9569,
-                "local r=a.lookup_from_to{low=0,medium=1,high=2}local v=a.lookup_from_to{[\"30\"]=0,[\"60\"]=1,[\"120\"]=2}",
-                "local r,v=a.lookup_from_to{low=0,medium=1,high=2},a.lookup_from_to{[\"30\"]=0,[\"60\"]=1,[\"120\"]=2}"
+                1842,
+                "local ah=os.time()local ag=i:get_field\"zym24gv2_last_illuminance_at\"",
+                "local ah,ag=os.time(),i:get_field\"zym24gv2_last_illuminance_at\""
               ],
               [
-                15044,
-                "local l=a.lookup_from_to{on=0,occupied=1,unoccupied=2}local h=a.lookup_from_to{OFF=0,ON=1}local s=a.lookup_from_to{custom=0,toilet=1,kitchen=2,hallway=3,bedroom=4,livingroom=5,meetingroom=6,factory_default=7}local k=a.lookup_from_to{normal=0,occupancy_detection=1}",
-                "local l,h,s,k=a.lookup_from_to{on=0,occupied=1,unoccupied=2},a.lookup_from_to{OFF=0,ON=1},a.lookup_from_to{custom=0,toilet=1,kitchen=2,hallway=3,bedroom=4,livingroom=5,meetingroom=6,factory_default=7},a.lookup_from_to{normal=0,occupancy_detection=1}"
+                10242,
+                "local v=a.lookup_from_to{low=0,medium=1,high=2}local B=a.lookup_from_to{[\"30\"]=0,[\"60\"]=1,[\"120\"]=2}",
+                "local v,B=a.lookup_from_to{low=0,medium=1,high=2},a.lookup_from_to{[\"30\"]=0,[\"60\"]=1,[\"120\"]=2}"
+              ],
+              [
+                15717,
+                "local q=a.lookup_from_to{on=0,occupied=1,unoccupied=2}local j=a.lookup_from_to{OFF=0,ON=1}local x=a.lookup_from_to{custom=0,toilet=1,kitchen=2,hallway=3,bedroom=4,livingroom=5,meetingroom=6,factory_default=7}local n=a.lookup_from_to{normal=0,occupancy_detection=1}",
+                "local q,j,x,n=a.lookup_from_to{on=0,occupied=1,unoccupied=2},a.lookup_from_to{OFF=0,ON=1},a.lookup_from_to{custom=0,toilet=1,kitchen=2,hallway=3,bedroom=4,livingroom=5,meetingroom=6,factory_default=7},a.lookup_from_to{normal=0,occupancy_detection=1}"
               ]
             ],
-            "savedBytes": 70
+            "savedBytes": 75
           }
         },
         "contracts/helpers/ef00.lua": {

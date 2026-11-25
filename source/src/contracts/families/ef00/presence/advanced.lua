@@ -104,12 +104,43 @@ register_presence_definition(presence_model_zy_m100_24g, ts0601_fingerprints({
 -- Z2M: _TZE204_7gclukjs (ZY-M100-24GV2)
 
 
--- Z2M Tuya ZY-M100-24GV2 (tuya.ts:17987)
--- Unlike V3, presence is its own DP104 trueFalse1 and DP1 only carries the
--- three-state label.  DP2 motion sensitivity 0..10, DP3/DP4 min/max range
+-- ZY-M100-24GV2: issue56's tested firmware uses DP1 as the authoritative
+-- state; its separate DP104 stream can contradict that state.
+-- DP2 motion sensitivity 0..10, DP3/DP4 min/max range
 -- /100 with 0..8.25 / 0.75..9.0 step 0.75, DP9 target distance /10,
 -- DP102 presence sensitivity 0..10, DP103 illuminance, DP105 fade time
--- 1..1500 s.  The state DP was previously parsed but never exposed.
+-- 1..1500 s.  Event controls below apply only to this registration.
+local function zym24gv2_presence_from_state()
+  local emitter = emit.presence()
+  return function(device, value, dp_info, mapping_context)
+    return emitter(device, value == "presence" or value == "move", dp_info, mapping_context)
+  end
+end
+
+local function zym24gv2_throttled_illuminance(interval_seconds)
+  local emitter = emit.illuminance()
+  return function(device, value, dp_info, mapping_context)
+    if value == nil then return nil end
+    local now = os.time()
+    local last = device:get_field("zym24gv2_last_illuminance_at")
+    if last == nil or now - last >= interval_seconds or now < last then
+      device:set_field("zym24gv2_last_illuminance_at", now, { persist = false })
+      return emitter(device, value, dp_info, mapping_context)
+    end
+    return nil
+  end
+end
+
+local function zym24gv2_safe_target_distance()
+  local emitter = emit.zym24gv2TargetDistance()
+  return function(device, value, dp_info, mapping_context)
+    if type(value) == "number" and value > 100 then value = 0 end
+    if device:get_field("zym24gv2_last_target_distance") == value then return nil end
+    device:set_field("zym24gv2_last_target_distance", value, { persist = false })
+    return emitter(device, value, dp_info, mapping_context)
+  end
+end
+
 local presence_model_zy_m100_24gv2 = {
 
   profile = "safety-presence-zym10024gv2-move-range-illuminance",
@@ -122,7 +153,7 @@ local presence_model_zy_m100_24gv2 = {
     tuya.dp_enum(1, {
       name = "state",
       read_only = true,
-      emit = emit.zym24gv2State(),
+      emit = emit.all(emit.zym24gv2State(), zym24gv2_presence_from_state()),
       converter = converter.from_only(converter.lookup_value({
         [0] = "none",
         [1] = "presence",
@@ -147,15 +178,13 @@ local presence_model_zy_m100_24gv2 = {
     tuya.dp_numeric(9, {
       name = "target_distance",
       read_only = true,
-      emit = emit.zym24gv2TargetDistance(),
+      emit = zym24gv2_safe_target_distance(),
       converter = converter.divide_by_from_only(10),
     }),
 
     tuya.dp_numeric(102, { name = "presence_sensitivity", emit = emit.zym24gv2Sensitivity() }),
 
-    tuya.dp_illuminance(103, { emit = emit.illuminance() }),
-
-    tuya.dp_presence(104, { emit = emit.presence(), converter = converter.true_false1() }),
+    tuya.dp_illuminance(103, { emit = zym24gv2_throttled_illuminance(60) }),
 
     tuya.dp_numeric(105, { name = "presence_timeout", emit = emit.zym24gv2Timeout() }),
 

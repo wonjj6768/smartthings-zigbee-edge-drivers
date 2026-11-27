@@ -1,0 +1,74 @@
+local a,H={},{"C","%","sonoffUlComfortTempMin","sonoffUlComfortTempMax","sonoffUlComfortHumidityMin","sonoffUlComfortHumidityMax","sonoffUlTempCal","sonoffUlHumidityCal","sonoffUlRemoteTemp","sonoffUlRemoteHumidity","sonoffUlRemotePressure","sonoffUlVpd","sonoffUlTempUnits","celsius","fahrenheit","sonoffUlRemoteMode","enable","disable","sonoffUlWeather","sunny","partly_cloudy","overcast","rain","snow","windy","lastPowerResponseTime"}
+local function b(g)
+if type(g)=="number"then return H[g]end
+return g
+end
+local function p(g)local suffix=b(g);if suffix==nil then return nil end;return"concertmirror08464."..suffix end
+local t={}
+local function q(k)
+if type(k)~="number"then return{}end
+local x=t[k]if x~=nil then return x end
+local n={}t[k]=n
+return n
+end
+local function s(D,k)
+if type(D)~="table"then return nil end
+local n=q(k)for A,g in ipairs(D)do n[A]=b(g)end
+return n
+end
+local function i(g,E)
+if g==nil then return E end
+if g==0 then return nil end
+return b(g)
+end
+local function m(attribute_name)
+if type(attribute_name)~="string"or attribute_name==""then return nil end
+return"set"..attribute_name:sub(1,1):upper()..attribute_name:sub(2)
+end
+local function J(g)
+if type(g)~="table"then return nil end
+local n=q(g[6])n.minimum=g[1]n.maximum=g[2]n.step=g[3]n.unit=b(g[4])n.allowed_values=s(g[5],g[7])return n
+end
+local function w(j,k)
+if j==nil and k==nil then return nil end
+local n=q(k)n.allowed_values=j
+return n
+end
+local function G(f)
+local attribute_name=b(f[4])return{kind="numeric",emit_name=b(f[1]),range_key=b(f[2]),capability_id=p(f[3]),attribute_name=attribute_name,range_attribute_name=b(f[5]),command_name=i(f[6],m(attribute_name)),argument_name=i(f[7],attribute_name),mapping_name=b(f[8]),label=b(f[9]),default_range=J(f[10]),event_minimum=f[11],event_maximum=f[12],event_unit=b(f[13])}
+end
+local function K(f)
+local attribute_name,u,r=b(f[4]),s(f[10],f[12]),s(f[11],f[14])local d=w(r,f[13])return{kind="enum",emit_name=b(f[1]),range_key=b(f[2]),capability_id=p(f[3]),attribute_name=attribute_name,supported_attribute_name=b(f[5]),command_name=i(f[6],m(attribute_name)),argument_name=i(f[7],attribute_name),mapping_name=b(f[8]),label=b(f[9]),supported_values=u,default_range=d}
+end
+local function M(f)
+local attribute_name=b(f[3])return{kind="text",emit_name=b(f[1]),capability_id=p(f[2]),attribute_name=attribute_name,command_name=i(f[4],m(attribute_name)),argument_name=i(f[5],attribute_name),mapping_name=b(f[6]),label=b(f[7]),maximum_length=f[8]}
+end
+local function z(L,F)
+local n={}for _,f in ipairs(L)do n[#n+1]=F(f)end
+return n
+end
+a.numeric=z({{3,nil,3,"comfortTempMin",nil,nil,nil,"sonoff_ul_comfortTempMin","Sonoff Ul Comfort Temp Min",{0,50,0.1,1,nil,1},nil,nil,1},{4,nil,4,"comfortTempMax",nil,nil,nil,"sonoff_ul_comfortTempMax","Sonoff Ul Comfort Temp Max",{0,50,0.1,1,nil,2},nil,nil,1},{5,nil,5,"comfortHumidityMin",nil,nil,nil,"sonoff_ul_comfortHumidityMin","Sonoff Ul Comfort Humidity Min",{5,95,0.1,2,nil,3},nil,nil,2},{6,nil,6,"comfortHumidityMax",nil,nil,nil,"sonoff_ul_comfortHumidityMax","Sonoff Ul Comfort Humidity Max",{5,95,0.1,2,nil,4},nil,nil,2},{7,nil,7,"temperatureCalibration",nil,nil,nil,"sonoff_ul_temperatureCalibration","Sonoff Ul Temp Cal",{-50,50,0.1,1,nil,5},nil,nil,1},{8,nil,8,"humidityCalibration",nil,nil,nil,"sonoff_ul_humidityCalibration","Sonoff Ul Humidity Cal",{-50,50,0.1,2,nil,6},nil,nil,2},{9,nil,9,"remoteTemperature",nil,nil,nil,"sonoff_ul_remoteTemperature","Sonoff Ul Remote Temp",{-20,60,0.1,1,nil,7},nil,nil,1},{10,nil,10,"remoteHumidity",nil,nil,nil,"sonoff_ul_remoteHumidity","Sonoff Ul Remote Humidity",{5,95,1,2,nil,8},nil,nil,2},{11,nil,11,"remotePressure",nil,nil,nil,"sonoff_ul_remotePressure","Sonoff Ul Remote Pressure",{700,1100,0.1,"hPa",nil,9},nil,nil,"hPa"},{12,nil,12,"vpd",nil,0,0,"sonoff_ul_vpd","Sonoff Ul Vpd",{nil,nil,nil,"kPa",nil,10},nil,nil,"kPa"}},G)a.enum=z({{13,nil,13,"temperatureUnits",nil,nil,nil,"sonoff_ul_temperatureUnits","Sonoff Ul Temp Units",{14,15},{14,15},11,12,11},{16,nil,16,"remoteMode",nil,nil,nil,"sonoff_ul_remoteMode","Sonoff Ul Remote Mode",{17,18},{17,18},13,14,13},{19,nil,19,"weatherIcon",nil,nil,nil,"sonoff_ul_weatherIcon","Sonoff Ul Weather",{20,21,22,23,24,25},{20,21,22,23,24,25},15,16,15}},K)a.text=z({{"last_power_response_time",26,26,0,0,nil,"Last power response time",64}},M)a.driver_message={attribute_name="driverMessage",capability_id="concertmirror08464.driverMessage",emit_name="driver_message",label="Driver message",maximum_length=512}a.by_range_key={}a.by_emit_name={}a.by_capability_id={}
+local function o(y)
+for _,e in ipairs(y)do
+a.by_emit_name[e.emit_name]=e
+if type(e.capability_id)=="string"and e.capability_id~=""then a.by_capability_id[e.capability_id]=e end
+if type(e.range_key)=="string"and e.range_key~=""then a.by_range_key[e.range_key]=e end
+end
+end
+o(a.numeric)o(a.enum)o(a.text)a.by_emit_name[a.driver_message.emit_name]=a.driver_message
+a.by_capability_id[a.driver_message.capability_id]=a.driver_message
+local function l(j)
+if type(j)~="table"then return nil end
+local B={}for A,g in ipairs(j)do B[A]=g end
+return B
+end
+function a.resolve_range(v,e)
+if type(e)~="table"then return nil end
+local d,C=type(e.default_range)=="table"and e.default_range or nil,type(v)=="table"and v.presence_capability_ranges or nil
+
+local h=type(C)=="table"and C[e.range_key]or nil
+if type(h)~="table"then h=d end
+if type(h)~="table"then return nil end
+return{minimum=type(h.minimum)=="number"and h.minimum or(d and d.minimum or nil),maximum=type(h.maximum)=="number"and h.maximum or(d and d.maximum or nil),step=type(h.step)=="number"and h.step or(d and d.step or nil),unit=type(h.unit)=="string"and h.unit or(d and d.unit or nil),allowed_values=type(h.allowed_values)=="table"and l(h.allowed_values)or l(d and d.allowed_values or nil)}
+end
+return a

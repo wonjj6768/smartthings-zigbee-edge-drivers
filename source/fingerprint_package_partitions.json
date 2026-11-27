@@ -507,6 +507,12 @@
       "newOwner": "zcl-thermostat-wonjj6768"
     },
     {
+      "catalogId": "zcl.sensors.sonoff_ul",
+      "catalogModule": "contracts.families.zcl.sensors.sonoff_ul",
+      "oldOwner": "zcl-sensors-5-wonjj6768",
+      "newOwner": "zcl-sensors-5-wonjj6768"
+    },
+    {
       "catalogId": "zcl.sensors.zg204zl",
       "catalogModule": "contracts.families.zcl.sensors.zg204zl",
       "oldOwner": "zcl-sensors-2-wonjj6768",
@@ -15243,20 +15249,53 @@
           ]
         }
       ]
+    },
+    {
+      "package": "zcl-sensors-5-wonjj6768",
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.sensors.sonoff_ul",
+          "id": "zcl.sensors.sonoff_ul"
+        }
+      ],
+      "exactCount": 1,
+      "catalogMigrations": [
+        {
+          "catalogId": "zcl.sensors.sonoff_ul",
+          "catalogModule": "contracts.families.zcl.sensors.sonoff_ul",
+          "oldOwner": "zcl-sensors-5-wonjj6768",
+          "newOwner": "zcl-sensors-5-wonjj6768",
+          "moved": false,
+          "exactCount": 1,
+          "exacts": [
+            {
+              "manufacturer": "SONOFF",
+              "manufacturerUtf8Hex": "534f4e4f4646",
+              "model": "SNZB-02UL",
+              "modelUtf8Hex": "534e5a422d3032554c",
+              "profile": "rpt-sgl",
+              "oldOwner": "zcl-sensors-5-wonjj6768",
+              "newOwner": "zcl-sensors-5-wonjj6768",
+              "catalogId": "zcl.sensors.sonoff_ul",
+              "catalogModule": "contracts.families.zcl.sensors.sonoff_ul"
+            }
+          ]
+        }
+      ]
     }
   ],
   "summary": {
     "legacyPackageCount": 27,
     "legacyExactCount": 3280,
     "legacyOwnerChangeCount": 0,
-    "newPackageCount": 27,
-    "newCatalogCount": 115,
-    "newExactCount": 991,
+    "newPackageCount": 28,
+    "newCatalogCount": 116,
+    "newExactCount": 992,
     "fingerprintOnlyAliasCount": 124,
     "newFamilyExactCount": 6,
     "failClosedExactCount": 0,
     "restoredLegacyExactCount": 5,
-    "runtimeExactCount": 4396,
+    "runtimeExactCount": 4397,
     "movedCatalogCount": 62,
     "movedExactCount": 540,
     "historicalPartitionCount": 17

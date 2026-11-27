@@ -18026,3 +18026,8 @@ zigbeeManufacturer:
     manufacturer: "_TZE200_ihizzpzn"
     model: "ZG-210Z"
     deviceProfileName: "safety-pressure-zg210z-core"
+  - id: "sonoff-snzb02ul"
+    deviceLabel: "SONOFF AirGuard E-Ink"
+    manufacturer: "SONOFF"
+    model: "SNZB-02UL"
+    deviceProfileName: "rpt-sgl"

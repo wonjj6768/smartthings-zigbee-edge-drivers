@@ -2555,6 +2555,79 @@
       },
       "converterDeclarations": 0,
       "dynamicEventMemberSha256": "a1a6985c211948526660c3804b137d1d0fa95e62447d9bfb8114cfdddf658592"
+    },
+    "contracts.families.zcl.sensors.sonoff_ul": {
+      "id": "zcl.sensors.sonoff_ul",
+      "sourceRelativeToSrc": "contracts/families/zcl/sensors/sonoff_ul.lua",
+      "requiredModules": [
+        "protocol.zcl",
+        "capabilities.events.all",
+        "contracts.helpers.family",
+        "st.capabilities",
+        "st.zigbee.data_types",
+        "st.zigbee.cluster_base",
+        "st.zigbee.device_management",
+        "st.zigbee.messages",
+        "st.zigbee.zcl",
+        "st.zigbee.generic_body",
+        "st.zigbee.constants",
+        "log"
+      ],
+      "externalDependencies": [
+        "protocol.zcl",
+        "st.capabilities",
+        "st.zigbee.data_types",
+        "st.zigbee.cluster_base",
+        "st.zigbee.device_management",
+        "st.zigbee.messages",
+        "st.zigbee.zcl",
+        "st.zigbee.generic_body",
+        "st.zigbee.constants",
+        "log"
+      ],
+      "contractHelpers": [
+        "contracts/helpers/family.lua"
+      ],
+      "aliasBindings": {
+        "protocol.zcl": [
+          "zcl"
+        ],
+        "capabilities.events.all": [
+          "emit"
+        ],
+        "contracts.helpers.family": [
+          "helpers"
+        ],
+        "st.capabilities": [
+          "caps"
+        ],
+        "st.zigbee.data_types": [
+          "types"
+        ],
+        "st.zigbee.cluster_base": [
+          "base"
+        ],
+        "st.zigbee.device_management": [
+          "management"
+        ],
+        "st.zigbee.messages": [
+          "messages"
+        ],
+        "st.zigbee.zcl": [
+          "zcl_messages"
+        ],
+        "st.zigbee.generic_body": [
+          "generic_body"
+        ],
+        "st.zigbee.constants": [
+          "constants"
+        ],
+        "log": [
+          "log"
+        ]
+      },
+      "converterDeclarations": 0,
+      "dynamicEventMemberSha256": "4a5aff32adaf53a338b7d65961a4c8fac082ada5717eadc9630296c748a1cc0c"
     }
   },
   "composers": {}

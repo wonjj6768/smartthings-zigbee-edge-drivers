@@ -17878,5 +17878,57 @@
   [
     "ts0210Ef00Sensitivity",
     "sensitivity"
+  ],
+  [
+    "sonoffUlComfortTempMin",
+    "comfortTempMin"
+  ],
+  [
+    "sonoffUlComfortTempMax",
+    "comfortTempMax"
+  ],
+  [
+    "sonoffUlComfortHumidityMin",
+    "comfortHumidityMin"
+  ],
+  [
+    "sonoffUlComfortHumidityMax",
+    "comfortHumidityMax"
+  ],
+  [
+    "sonoffUlTempCal",
+    "temperatureCalibration"
+  ],
+  [
+    "sonoffUlHumidityCal",
+    "humidityCalibration"
+  ],
+  [
+    "sonoffUlRemoteTemp",
+    "remoteTemperature"
+  ],
+  [
+    "sonoffUlRemoteHumidity",
+    "remoteHumidity"
+  ],
+  [
+    "sonoffUlRemotePressure",
+    "remotePressure"
+  ],
+  [
+    "sonoffUlVpd",
+    "vpd"
+  ],
+  [
+    "sonoffUlTempUnits",
+    "temperatureUnits"
+  ],
+  [
+    "sonoffUlRemoteMode",
+    "remoteMode"
+  ],
+  [
+    "sonoffUlWeather",
+    "weatherIcon"
   ]
 ]

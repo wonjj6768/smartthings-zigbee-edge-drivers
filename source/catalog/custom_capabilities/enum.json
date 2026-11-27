@@ -21656,5 +21656,36 @@
       "middle",
       "high"
     ]
+  ],
+  [
+    "sonoffUlTempUnits",
+    true,
+    "sonoff_ul_temperatureUnits",
+    [
+      "celsius",
+      "fahrenheit"
+    ]
+  ],
+  [
+    "sonoffUlRemoteMode",
+    true,
+    "sonoff_ul_remoteMode",
+    [
+      "enable",
+      "disable"
+    ]
+  ],
+  [
+    "sonoffUlWeather",
+    true,
+    "sonoff_ul_weatherIcon",
+    [
+      "sunny",
+      "partly_cloudy",
+      "overcast",
+      "rain",
+      "snow",
+      "windy"
+    ]
   ]
 ]

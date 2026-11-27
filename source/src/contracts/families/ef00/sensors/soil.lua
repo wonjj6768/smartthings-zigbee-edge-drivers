@@ -59,7 +59,7 @@ end
 
 local soil_t10_h1 = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
@@ -170,7 +170,7 @@ register_sensor_definition({
 
 local soil_t100_h1 = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 1, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(1), read_only = true }),
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
@@ -232,7 +232,7 @@ register_sensor_definition({
 
 local soil_t10_h1_ec = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
@@ -342,7 +342,7 @@ local soil_t10_h1_alarm = {
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_enum(14, {
     name = "battery_state",
@@ -440,7 +440,7 @@ local soil_t10_h1_illum = {
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_enum(9, {
     name = "temperature_unit",
@@ -474,7 +474,7 @@ register_sensor_definition({
 
 local soil_t10_h1_air_illum = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_humidity(101, { emit = emit.humidity(), scale = 1, read_only = true }),  -- 공기습도 → 표준 capa
 
@@ -493,7 +493,7 @@ local soil_t10_h1_air_illum = {
     })),
   }),
 
-  tuya.dp_numeric(103, { name = "humidity_calibration", emit = emit.humidityCalibrationZs301z() }),
+  tuya.dp_humidity_calibration(103, { emit = emit.humidityCalibrationZs301z() }),
 
   tuya.dp_report_interval(104, { emit = emit.zs301ReportInterval() }),
 
@@ -521,7 +521,7 @@ register_sensor_definition({
 
 local soil_t10_h1_air_warning = {
 
-  tuya.dp_temperature(103, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(103, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_humidity(109, { emit = emit.humidity(), scale = 1, read_only = true }),  -- 공기습도 → 표준 capa
 
@@ -629,7 +629,7 @@ register_sensor_definition({
 
 local soil_t10_h1_air_dry = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_humidity(109, { emit = emit.humidity(), scale = 1, read_only = true }),
 
@@ -666,7 +666,7 @@ local soil_t10_h1_air_dry = {
 
 local soil_t10_h1_dry = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_soil_moisture(3, { emit = emit.soil_moisture(), read_only = true }),
 
@@ -825,7 +825,7 @@ register_sensor_definition({
 
 local soil_t10_h1_air_illum_fertility = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_humidity(101, { emit = emit.humidity(), scale = 1, read_only = true }),
 
@@ -878,7 +878,7 @@ register_sensor_definition({
 
 local soil_t10_h1_air_illum_fertility_cal = {
 
-  tuya.dp_temperature(5, { emit = emit.temperature("C"), scale = 10, read_only = true }),
+  tuya.dp_temperature(5, { emit = emit.temperature("C"), converter = converter.signed_number_pair(10), read_only = true }),
 
   tuya.dp_humidity(101, { emit = emit.humidity(), scale = 1, read_only = true }),
 

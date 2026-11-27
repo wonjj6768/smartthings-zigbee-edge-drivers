@@ -4486,6 +4486,19 @@ local ATTRIBUTE_OVERRIDES = {
   poolChlorineMaxLimit = "chlorineMax",
   poolChlorineMinLimit = "chlorineMin",
   ts0210Ef00Sensitivity = "sensitivity",
+  sonoffUlComfortTempMin = "comfortTempMin",
+  sonoffUlComfortTempMax = "comfortTempMax",
+  sonoffUlComfortHumidityMin = "comfortHumidityMin",
+  sonoffUlComfortHumidityMax = "comfortHumidityMax",
+  sonoffUlTempCal = "temperatureCalibration",
+  sonoffUlHumidityCal = "humidityCalibration",
+  sonoffUlRemoteTemp = "remoteTemperature",
+  sonoffUlRemoteHumidity = "remoteHumidity",
+  sonoffUlRemotePressure = "remotePressure",
+  sonoffUlVpd = "vpd",
+  sonoffUlTempUnits = "temperatureUnits",
+  sonoffUlRemoteMode = "remoteMode",
+  sonoffUlWeather = "weatherIcon",
 }
 
 local function attribute_name(capability_id)
@@ -6836,6 +6849,16 @@ local numeric_rows = {
   {"poolPhMinLimit",true,"ph_min",0,14,0.1,"pH"},
   {"poolChlorineMaxLimit",true,"free_chlorine_max",0,4,0.1,"mg/L"},
   {"poolChlorineMinLimit",true,"free_chlorine_min",0,4,0.1,"mg/L"},
+  {"sonoffUlComfortTempMin",true,"sonoff_ul_comfortTempMin",0,50,0.1,"C"},
+  {"sonoffUlComfortTempMax",true,"sonoff_ul_comfortTempMax",0,50,0.1,"C"},
+  {"sonoffUlComfortHumidityMin",true,"sonoff_ul_comfortHumidityMin",5,95,0.1,"%"},
+  {"sonoffUlComfortHumidityMax",true,"sonoff_ul_comfortHumidityMax",5,95,0.1,"%"},
+  {"sonoffUlTempCal",true,"sonoff_ul_temperatureCalibration",-50,50,0.1,"C"},
+  {"sonoffUlHumidityCal",true,"sonoff_ul_humidityCalibration",-50,50,0.1,"%"},
+  {"sonoffUlRemoteTemp",true,"sonoff_ul_remoteTemperature",-20,60,0.1,"C"},
+  {"sonoffUlRemoteHumidity",true,"sonoff_ul_remoteHumidity",5,95,1,"%"},
+  {"sonoffUlRemotePressure",true,"sonoff_ul_remotePressure",700,1100,0.1,"hPa"},
+  {"sonoffUlVpd",false,"sonoff_ul_vpd",nil,nil,nil,"kPa"},
 }
 local enum_rows = {
   {"zmsFourBacklightSetting",true,"zms206_backlight_mode",{"OFF","ON"}},
@@ -8958,6 +8981,9 @@ local enum_rows = {
   {"zg210zPressureState",false,"zg210z_pressure_state",{"none","sit","sedentary"}},
   {"coverOnePositionInvert",true,"cover_one_position_invert",{"normal","inverted"}},
   {"ts0210Ef00Sensitivity",true,"ts0210_ef00_sensitivity",{"low","middle","high"}},
+  {"sonoffUlTempUnits",true,"sonoff_ul_temperatureUnits",{"celsius","fahrenheit"}},
+  {"sonoffUlRemoteMode",true,"sonoff_ul_remoteMode",{"enable","disable"}},
+  {"sonoffUlWeather",true,"sonoff_ul_weatherIcon",{"sunny","partly_cloudy","overcast","rain","snow","windy"}},
 }
 local text_rows = {
   {"zmsFourSwitchName",true,"zms206_switch_name",12},

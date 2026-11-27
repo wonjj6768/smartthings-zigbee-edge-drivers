@@ -1065,6 +1065,20 @@
           "id": "zcl.sensors.passive_alarm_additions"
         }
       ]
+    },
+    {
+      "name": "zcl-sensors-5-wonjj6768",
+      "display_name": "ZCL Sensors 5 wonjj6768",
+      "description": "SONOFF SNZB-02UL temperature and humidity sensor with E-ink display controls.",
+      "protocol": "zcl",
+      "generic_ids": [],
+      "runtime_features": [],
+      "catalogs": [
+        {
+          "module": "contracts.families.zcl.sensors.sonoff_ul",
+          "id": "zcl.sensors.sonoff_ul"
+        }
+      ]
     }
   ]
 }

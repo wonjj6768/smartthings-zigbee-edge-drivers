@@ -98842,6 +98842,173 @@
           }
         }
       ]
+    },
+    {
+      "baseProfile": "sonoff-snzb02ul-environment",
+      "capabilities": [
+        "concertmirror08464.zclTempReportMin",
+        "concertmirror08464.zclTempReportMax",
+        "concertmirror08464.zclTempReportChange29",
+        "concertmirror08464.zclHumidityReportMin",
+        "concertmirror08464.zclHumidityReportMax",
+        "concertmirror08464.zclHumidityReportChange21",
+        "concertmirror08464.zclBatteryReportMin",
+        "concertmirror08464.zclBatteryReportMax",
+        "concertmirror08464.zclBatteryReportChange20"
+      ],
+      "contracts": [
+        {
+          "attribute": 0,
+          "attribute_name": "MeasuredValue",
+          "byte_length": 2,
+          "change": 20,
+          "cluster": 1026,
+          "component": "nil",
+          "control": "zr040200001",
+          "default_change": 20,
+          "default_maximum": 1800,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 1,
+          "item": "Temp",
+          "maximum": 1800,
+          "minimum": 5,
+          "name": "temperature",
+          "scale": 100,
+          "type": 41
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "MeasuredValue",
+          "byte_length": 2,
+          "change": 100,
+          "cluster": 1029,
+          "component": "nil",
+          "control": "zr040500001",
+          "default_change": 100,
+          "default_maximum": 1800,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 2,
+          "item": "Humidity",
+          "maximum": 1800,
+          "minimum": 5,
+          "name": "humidity",
+          "scale": 100,
+          "type": 33
+        },
+        {
+          "attribute": 33,
+          "attribute_name": "BatteryPercentageRemaining",
+          "byte_length": 1,
+          "change": 10,
+          "cluster": 1,
+          "component": "nil",
+          "control": "zr000100211",
+          "default_change": 10,
+          "default_maximum": 65000,
+          "default_minimum": 3600,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 3,
+          "item": "Battery",
+          "maximum": 65000,
+          "minimum": 3600,
+          "name": "battery",
+          "scale": 2,
+          "type": 32
+        }
+      ],
+      "controls": [
+        {
+          "attribute": 0,
+          "attribute_name": "MeasuredValue",
+          "byte_length": 2,
+          "change": 20,
+          "cluster": 1026,
+          "component": "nil",
+          "control": "zr040200001",
+          "default_change": 20,
+          "default_maximum": 1800,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 1,
+          "item": "Temp",
+          "maximum": 1800,
+          "minimum": 5,
+          "name": "temperature",
+          "scale": 100,
+          "type": 41
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "MeasuredValue",
+          "byte_length": 2,
+          "change": 100,
+          "cluster": 1029,
+          "component": "nil",
+          "control": "zr040500001",
+          "default_change": 100,
+          "default_maximum": 1800,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 2,
+          "item": "Humidity",
+          "maximum": 1800,
+          "minimum": 5,
+          "name": "humidity",
+          "scale": 100,
+          "type": 33
+        },
+        {
+          "attribute": 33,
+          "attribute_name": "BatteryPercentageRemaining",
+          "byte_length": 1,
+          "change": 10,
+          "cluster": 1,
+          "component": "nil",
+          "control": "zr000100211",
+          "default_change": 10,
+          "default_maximum": 65000,
+          "default_minimum": 3600,
+          "discrete": false,
+          "endpoint": 1,
+          "index": 3,
+          "item": "Battery",
+          "maximum": 65000,
+          "minimum": 3600,
+          "name": "battery",
+          "scale": 2,
+          "type": 32
+        }
+      ],
+      "identity": "contracts.families.zcl.sensors.sonoff_ul:1",
+      "logicalItems": {},
+      "pending": [],
+      "prefix": "snzb0Glsf",
+      "profile": "rpt-sgl",
+      "registrations": [
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "SONOFF",
+              "model": "SNZB-02UL"
+            }
+          ],
+          "origin": {
+            "line": 226,
+            "source": "contracts/families/zcl/sensors/sonoff_ul.lua"
+          },
+          "owner": {
+            "index": 1,
+            "module": "contracts.families.zcl.sensors.sonoff_ul"
+          }
+        }
+      ]
     }
   ],
   "profileChanges": [
@@ -107252,6 +107419,14 @@
       },
       "oldProfile": "sonoff-snzb02p-temp-humidity",
       "profile": "rpt-slf"
+    },
+    {
+      "fingerprint": {
+        "manufacturer": "SONOFF",
+        "model": "SNZB-02UL"
+      },
+      "oldProfile": "sonoff-snzb02ul-environment",
+      "profile": "rpt-sgl"
     },
     {
       "fingerprint": {

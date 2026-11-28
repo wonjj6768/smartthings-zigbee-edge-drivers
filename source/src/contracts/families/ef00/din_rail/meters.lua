@@ -6,6 +6,16 @@ local common = require "contracts.helpers.ef00_din_rail"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 local converter = tuya.converter
+
+-- These produced-energy counters retain their full unsigned32 carrier. The
+-- common VALUE parser remains signed32 for temperature/calibration reports.
+local function unsigned_phase_energy(value, _, datapoint)
+  if datapoint and datapoint.datatype == 2 and type(datapoint.int_value) == "number" then
+    value = datapoint.int_value
+  end
+  return value / 100
+end
+
 local emit_metric_bundle = common.emit_metric_bundle
 local circuit_breaker_faults_converter = common.circuit_breaker_faults_converter
 local BREAKER_EVENT_LOOKUP = common.BREAKER_EVENT_LOOKUP
@@ -48,11 +58,11 @@ local power_meter_model_sdm01 = {
   tuya.dp_power(110, { name = "power_c", scale = 1, component = "l3", emit = emit.power() }),
   tuya.dp_power(111, { scale = 1, emit = emit.power() }),
   tuya.dp_energy(112, { name = "energy_a", scale = 100, component = "l1", emit = emit.energy() }),
-  tuya.dp_energy(113, { name = "produced_energy_a", scale = 100, component = "l1", read_only = true, emit = emit.sdm01PhaseAEnergy("kWh") }),
+  tuya.dp_energy(113, { name = "produced_energy_a", scale = 100, component = "l1", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01PhaseAEnergy("kWh") }),
   tuya.dp_energy(114, { name = "energy_b", scale = 100, component = "l2", emit = emit.energy() }),
-  tuya.dp_energy(115, { name = "produced_energy_b", scale = 100, component = "l2", read_only = true, emit = emit.sdm01PhaseBEnergy("kWh") }),
+  tuya.dp_energy(115, { name = "produced_energy_b", scale = 100, component = "l2", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01PhaseBEnergy("kWh") }),
   tuya.dp_energy(116, { name = "energy_c", scale = 100, component = "l3", emit = emit.energy() }),
-  tuya.dp_energy(117, { name = "produced_energy_c", scale = 100, component = "l3", read_only = true, emit = emit.sdm01PhaseCEnergy("kWh") }),
+  tuya.dp_energy(117, { name = "produced_energy_c", scale = 100, component = "l3", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01PhaseCEnergy("kWh") }),
   tuya.dp_power_factor(118, { name = "power_factor_a", component = "l1", read_only = true, emit = emit.sdm01PhaseAFactor("%") }),
   tuya.dp_power_factor(119, { name = "power_factor_b", component = "l2", read_only = true, emit = emit.sdm01PhaseBFactor("%") }),
   tuya.dp_power_factor(120, { name = "power_factor_c", component = "l3", read_only = true, emit = emit.sdm01PhaseCFactor("%") }),
@@ -148,14 +158,14 @@ local power_meter_model_nous_d4z = {
   }),
   tuya.dp_voltage(102, { name = "voltage_a", component = "l1", emit = emit.voltage() }),
   tuya.dp_current(103, { name = "current_a", component = "l1", emit = emit.current() }),
-  tuya.dp_power(104, { name = "power_a", component = "l1", emit = emit.power() }),
+  tuya.dp_power(104, {  scale = 1, name = "power_a", component = "l1", emit = emit.power() }),
   tuya.dp_voltage(105, { name = "voltage_b", component = "l2", emit = emit.voltage() }),
   tuya.dp_current(106, { name = "current_b", component = "l2", emit = emit.current() }),
-  tuya.dp_power(107, { name = "power_b", component = "l2", emit = emit.power() }),
+  tuya.dp_power(107, {  scale = 1, name = "power_b", component = "l2", emit = emit.power() }),
   tuya.dp_voltage(108, { name = "voltage_c", component = "l3", emit = emit.voltage() }),
   tuya.dp_current(109, { name = "current_c", component = "l3", emit = emit.current() }),
-  tuya.dp_power(110, { name = "power_c", component = "l3", emit = emit.power() }),
-  tuya.dp_power(111, { emit = emit.power() }),
+  tuya.dp_power(110, {  scale = 1, name = "power_c", component = "l3", emit = emit.power() }),
+  tuya.dp_power(111, {  scale = 1, emit = emit.power() }),
   tuya.dp_energy(112, { name = "energy_a", scale = 100, component = "l1", emit = emit.energy() }),
   tuya.dp_energy(113, { name = "energy_produced_a", scale = 100 }),
   tuya.dp_energy(114, { name = "energy_b", scale = 100, component = "l2", emit = emit.energy() }),
@@ -306,19 +316,19 @@ local power_meter_model_spm02v3 = {
   tuya.dp_power(105, { scale = 1, name = "power_a", component = "l1", emit = emit.power() }),
   tuya.dp_power_factor(108, { name = "power_factor_a", component = "l1", read_only = true, emit = emit.spm02v3PhaseAFactor("%") }),
   tuya.dp_energy(109, { name = "energy_a", scale = 100, component = "l1", emit = emit.energy() }),
-  tuya.dp_energy(110, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, emit = emit.spm02v3PhaseAEnergy("kWh") }),
+  tuya.dp_energy(110, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, from_device = unsigned_phase_energy, emit = emit.spm02v3PhaseAEnergy("kWh") }),
   tuya.dp_voltage(112, { name = "voltage_b", component = "l2", emit = emit.voltage() }),
   tuya.dp_current(113, { name = "current_b", component = "l2", emit = emit.current() }),
   tuya.dp_power(114, { scale = 1, name = "power_b", component = "l2", emit = emit.power() }),
   tuya.dp_power_factor(117, { name = "power_factor_b", component = "l2", read_only = true, emit = emit.spm02v3PhaseBFactor("%") }),
   tuya.dp_energy(118, { name = "energy_b", scale = 100, component = "l2", emit = emit.energy() }),
-  tuya.dp_energy(119, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, emit = emit.spm02v3PhaseBEnergy("kWh") }),
+  tuya.dp_energy(119, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, from_device = unsigned_phase_energy, emit = emit.spm02v3PhaseBEnergy("kWh") }),
   tuya.dp_voltage(121, { name = "voltage_c", component = "l3", emit = emit.voltage() }),
   tuya.dp_current(122, { name = "current_c", component = "l3", emit = emit.current() }),
   tuya.dp_power(123, { scale = 1, name = "power_c", component = "l3", emit = emit.power() }),
   tuya.dp_power_factor(126, { name = "power_factor_c", component = "l3", read_only = true, emit = emit.spm02v3PhaseCFactor("%") }),
   tuya.dp_energy(127, { name = "energy_c", scale = 100, component = "l3", emit = emit.energy() }),
-  tuya.dp_energy(128, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, emit = emit.spm02v3PhaseCEnergy("kWh") }),
+  tuya.dp_energy(128, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, from_device = unsigned_phase_energy, emit = emit.spm02v3PhaseCEnergy("kWh") }),
 }
 
 register_device_definition(power_meter_model_spm02v3, device_helpers.create_fingerprints("TS0601", {
@@ -375,9 +385,9 @@ local power_meter_model_spm02v1gt = {
   tuya.dp_energy(53, { name = "energy_a", scale = 100, component = "l1", emit = emit.energy() }),
   tuya.dp_energy(54, { name = "energy_b", scale = 100, component = "l2", emit = emit.energy() }),
   tuya.dp_energy(55, { name = "energy_c", scale = 100, component = "l3", emit = emit.energy() }),
-  tuya.dp_energy(57, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, emit = emit.spm02v1gtPhaseAEnergy("kWh") }),
-  tuya.dp_energy(58, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, emit = emit.spm02v1gtPhaseBEnergy("kWh") }),
-  tuya.dp_energy(59, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, emit = emit.spm02v1gtPhaseCEnergy("kWh") }),
+  tuya.dp_energy(57, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, from_device = unsigned_phase_energy, emit = emit.spm02v1gtPhaseAEnergy("kWh") }),
+  tuya.dp_energy(58, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, from_device = unsigned_phase_energy, emit = emit.spm02v1gtPhaseBEnergy("kWh") }),
+  tuya.dp_energy(59, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, from_device = unsigned_phase_energy, emit = emit.spm02v1gtPhaseCEnergy("kWh") }),
   tuya.dp_on_off(101, {
     name = "device_locating",
     emit = emit.spm02v1gtDeviceLocating(),
@@ -441,9 +451,9 @@ local power_meter_model_sdm01v1gt = {
   tuya.dp_energy(53, { name = "energy_a", scale = 100, component = "l1", emit = emit.energy() }),
   tuya.dp_energy(54, { name = "energy_b", scale = 100, component = "l2", emit = emit.energy() }),
   tuya.dp_energy(55, { name = "energy_c", scale = 100, component = "l3", emit = emit.energy() }),
-  tuya.dp_energy(57, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, emit = emit.sdm01v1gtPhaseAEnergy("kWh") }),
-  tuya.dp_energy(58, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, emit = emit.sdm01v1gtPhaseBEnergy("kWh") }),
-  tuya.dp_energy(59, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, emit = emit.sdm01v1gtPhaseCEnergy("kWh") }),
+  tuya.dp_energy(57, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01v1gtPhaseAEnergy("kWh") }),
+  tuya.dp_energy(58, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01v1gtPhaseBEnergy("kWh") }),
+  tuya.dp_energy(59, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01v1gtPhaseCEnergy("kWh") }),
   tuya.dp_on_off(101, {
     name = "device_locating",
     emit = emit.sdm01v1gtDeviceLocating(),
@@ -472,7 +482,7 @@ local power_meter_model_ts0601_3_phase_clamp_meter = {
   profile = "meters-power-energy-voltage-current-clamp3phase",
   package_group = "meters",
   tuya.dp_energy(1, { emit = emit.energy(), scale = 100 }),
-  tuya.dp_power(9, { emit = emit.power() }),
+  tuya.dp_power(9, {  scale = 1, emit = emit.power() }),
   tuya.dp_energy(101, { name = "energy_a", component = "l1", scale = 1000, emit = emit.energy() }),
   tuya.dp_power_factor(102, { name = "power_factor", component = "l1", emit = emit.powerFactorClamp3PhasePercent() }),
   tuya.dp_energy(111, { name = "energy_b", component = "l2", scale = 1000, emit = emit.energy() }),
@@ -539,7 +549,7 @@ local power_meter_model_ts0601_3_phase_clamp_meter_relay = {
     emit = emit.clamp3RelayProducedEnergy(),
   }),
   tuya.dp_on_off(16, { name = "switch", emit = emit.switch() }),
-  tuya.dp_power(9, { emit = emit.power() }),
+  tuya.dp_power(9, {  scale = 1, emit = emit.power() }),
   tuya.dp_phase_variant2(6, {
     signed_power = true,
     phase = "a",
@@ -640,7 +650,7 @@ local power_meter_model_spm01v2 = {
   }),
   tuya.dp_voltage(102, { emit = emit.voltage() }),
   tuya.dp_current(103, { emit = emit.current() }),
-  tuya.dp_power(104, { emit = emit.power() }),
+  tuya.dp_power(104, {  scale = 1, emit = emit.power() }),
 }
 
 register_device_definition(power_meter_model_spm01v2, device_helpers.create_fingerprints("TS0601", {
@@ -688,6 +698,7 @@ local power_meter_model_spm01v25 = {
     name = "produced_energy",
     scale = 100,
     read_only = true,
+    from_device = unsigned_phase_energy,
     emit = emit.spm01v25ReverseEnergy(),
   }),
   tuya.dp_ac_frequency(32, {
@@ -768,7 +779,7 @@ local power_meter_model_pc311 = {
     read_only = true,
     emit = emit.pc311ProducedEnergy(),
   }),
-  tuya.dp_power(9, { emit = emit.power() }),
+  tuya.dp_power(9, {  scale = 1, emit = emit.power() }),
   tuya.dp_energy(101, { name = "energy_a", component = "ct1", scale = 100, emit = emit.energy() }),
   tuya.dp_energy(103, { name = "energy_b", component = "ct2", scale = 100, emit = emit.energy() }),
   tuya.dp_energy(102, {
@@ -788,12 +799,12 @@ local power_meter_model_pc311 = {
   tuya.dp_current(105, { emit = emit.current(), scale = 1000 }),
   tuya.dp_voltage(106, { emit = emit.voltage(), scale = 10 }),
   tuya.dp_current(107, { name = "current_a", component = "ct1", scale = 1000, emit = emit.current() }),
-  tuya.dp_power(108, { name = "power_a", component = "ct1", emit = emit.power() }),
+  tuya.dp_power(108, {  scale = 1, name = "power_a", component = "ct1", emit = emit.power() }),
   tuya.dp_power_factor(109, { name = "power_factor", component = "ct1", emit = emit.powerFactorPc311Percent() }),
   tuya.dp_current(110, { name = "current_b", component = "ct2", scale = 1000, emit = emit.current() }),
-  tuya.dp_power(111, { name = "power_b", component = "ct2", emit = emit.power() }),
+  tuya.dp_power(111, {  scale = 1, name = "power_b", component = "ct2", emit = emit.power() }),
   tuya.dp_power_factor(112, { name = "power_factor", component = "ct2", emit = emit.powerFactorPc311Percent() }),
-  tuya.dp_ac_frequency(113, { name = "ac_frequency", emit = emit.acFrequencyPc311() }),
+  tuya.dp_ac_frequency(113, { name = "ac_frequency",  scale = 1, emit = emit.acFrequencyPc311() }),
 }
 
 register_device_definition(power_meter_model_pc311, device_helpers.create_fingerprints("TS0601", {
@@ -1219,7 +1230,7 @@ local power_meter_model_sdm02v1gt = {
     component = "l2",
     emit = emit_metric_bundle({ voltage = true, current = true, power = true }),
   }),
-  tuya.dp_power(29, { emit = emit.power() }),
+  tuya.dp_power(29, {  scale = 1, emit = emit.power() }),
   tuya.dp_ac_frequency(32, {
     name = "ac_frequency",
     read_only = true,
@@ -1282,19 +1293,19 @@ local power_meter_model_sdm01v15 = {
   tuya.dp_power(105, { name = "power_a", component = "l1", emit = emit.power(), scale = 1 }),
   tuya.dp_power_factor(108, { name = "power_factor_a", component = "l1", read_only = true, emit = emit.sdm01v15PhaseAFactor("%") }),
   tuya.dp_energy(109, { name = "energy_a", scale = 100, component = "l1", emit = emit.energy() }),
-  tuya.dp_energy(110, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, emit = emit.sdm01v15PhaseAEnergy("kWh") }),
+  tuya.dp_energy(110, { name = "energy_produced_a", scale = 100, component = "l1", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01v15PhaseAEnergy("kWh") }),
   tuya.dp_voltage(112, { name = "voltage_b", component = "l2", emit = emit.voltage(), scale = 10 }),
   tuya.dp_current(113, { name = "current_b", component = "l2", emit = emit.current(), scale = 1000 }),
   tuya.dp_power(114, { name = "power_b", component = "l2", emit = emit.power(), scale = 1 }),
   tuya.dp_power_factor(117, { name = "power_factor_b", component = "l2", read_only = true, emit = emit.sdm01v15PhaseBFactor("%") }),
   tuya.dp_energy(118, { name = "energy_b", scale = 100, component = "l2", emit = emit.energy() }),
-  tuya.dp_energy(119, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, emit = emit.sdm01v15PhaseBEnergy("kWh") }),
+  tuya.dp_energy(119, { name = "energy_produced_b", scale = 100, component = "l2", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01v15PhaseBEnergy("kWh") }),
   tuya.dp_voltage(121, { name = "voltage_c", component = "l3", emit = emit.voltage(), scale = 10 }),
   tuya.dp_current(122, { name = "current_c", component = "l3", emit = emit.current(), scale = 1000 }),
   tuya.dp_power(123, { name = "power_c", component = "l3", emit = emit.power(), scale = 1 }),
   tuya.dp_power_factor(126, { name = "power_factor_c", component = "l3", read_only = true, emit = emit.sdm01v15PhaseCFactor("%") }),
   tuya.dp_energy(127, { name = "energy_c", scale = 100, component = "l3", emit = emit.energy() }),
-  tuya.dp_energy(128, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, emit = emit.sdm01v15PhaseCEnergy("kWh") }),
+  tuya.dp_energy(128, { name = "energy_produced_c", scale = 100, component = "l3", read_only = true, from_device = unsigned_phase_energy, emit = emit.sdm01v15PhaseCEnergy("kWh") }),
 }
 
 register_device_definition(power_meter_model_sdm01v15, device_helpers.create_fingerprints("TS0601", {

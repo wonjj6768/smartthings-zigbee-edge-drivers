@@ -46,10 +46,10 @@ end
 local function build_mixed_scene_switch(profile, relay_count, scene_count, extra)
   local zcl_clusters = copy_list(zcl.multi_switch(relay_count, { component_prefix = "switch" }))
   table.insert(zcl_clusters, 1, zcl.tuya_magic_packet())
-  zcl_device_helpers.append_clusters(zcl_clusters,
-    zcl.power_on_behavior(),
-    zcl.switch_mode()
-  )
+  local power_behavior = zcl.cluster_attribute(0xE001, 0xD010, zcl.power_on_behavior())
+  local switch_mode = zcl.cluster_attribute(0xE001, 0xD020, zcl.switch_mode())
+  switch_mode.mfg_code = nil
+  zcl_device_helpers.append_clusters(zcl_clusters, power_behavior, switch_mode)
   local definition = {
     profile = profile,
     scene_switch = true,

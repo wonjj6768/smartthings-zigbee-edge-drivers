@@ -746,8 +746,7 @@ local soil_t10_h1_air_illum_warning = {
 
   tuya.dp_soil_moisture(3, { emit = emit.zs300zSoilMoisture(), read_only = true }),
 
-  tuya.dp_illuminance(102, { emit = emit.illuminance(), read_only = true,
-    converter = converter.from_only(function(value) return value * 10 end) }),
+  tuya.dp_illuminance(102, { emit = emit.illuminance(), read_only = true }),
 
   tuya.dp_enum(14, {
     name = "battery_state",

@@ -6,8 +6,8 @@ r={}end
 if type(G)~="table"then
 return r
 end
-for K,f in pairs(G)do
-r[K]=f
+for K,e in pairs(G)do
+r[K]=e
 end
 return r
 end
@@ -15,9 +15,9 @@ local function n(r,j)
 if type(r)~="table"or type(j)~="table"then
 return r
 end
-for K,f in pairs(j)do
+for K,e in pairs(j)do
 if r[K]==nil then
-r[K]=f
+r[K]=e
 end
 end
 return r
@@ -36,67 +36,67 @@ v(i,k)return i
 end
 local function o()
 return{
-from=function(f)
-if type(f)~="number"then
-return f
+from=function(e)
+if type(e)~="number"then
+return e
 end
-if f<=0 then
+if e<=0 then
 return 0
 end
-local N=10 ^((f-1)/10000)return math.floor(N+0.5)
+local N=10 ^((e-1)/10000)return math.floor(N+0.5)
 end,
-to=function(f)
-if type(f)~="number"then
-return f
+to=function(e)
+if type(e)~="number"then
+return e
 end
-if f<=0 then
+if e<=0 then
 return 0
 end
-local O=10000*(math.log(f)/math.log(10))+1
+local O=10000*(math.log(e)/math.log(10))+1
 return math.floor(O+0.5)
 end
 }
 end
 local function h(I)
 return{
-from=function(f)
-if type(f)=="table"then
+from=function(e)
+if type(e)=="table"then
 if I==1 then
-if type(f.is_alarm1_set)=="function"and f:is_alarm1_set()then
+if type(e.is_alarm1_set)=="function"and e:is_alarm1_set()then
 return true
 end
-if type(f.is_alarm2_set)=="function"and f:is_alarm2_set()then
+if type(e.is_alarm2_set)=="function"and e:is_alarm2_set()then
 return true
 end
-elseif I==4 and type(f.is_tamper_set)=="function"then
-return f:is_tamper_set()elseif f.value~=nil then
-f=f.value
+elseif I==4 and type(e.is_tamper_set)=="function"then
+return e:is_tamper_set()elseif e.value~=nil then
+e=e.value
 else
-return f
+return e
 end
 end
-if type(f)~="number"then
-return f
+if type(e)~="number"then
+return e
 end
-return(f&I)~=0
+return(e&I)~=0
 end
 }
 end
 local function t()
 return{
-from=function(f)
+from=function(e)
 local u
 local x
-if type(f)=="table"then
-if type(f.is_alarm1_set)=="function"then u=f:is_alarm1_set()end
-if type(f.is_alarm2_set)=="function"then x=f:is_alarm2_set()end
-if u==nil and f.value~=nil then f=f.value end
+if type(e)=="table"then
+if type(e.is_alarm1_set)=="function"then u=e:is_alarm1_set()end
+if type(e.is_alarm2_set)=="function"then x=e:is_alarm2_set()end
+if u==nil and e.value~=nil then e=e.value end
 end
-if type(f)=="number"then
-u=(f&1)~=0
-x=(f&2)~=0
+if type(e)=="number"then
+u=(e&1)~=0
+x=(e&2)~=0
 end
-if u==nil or x==nil then return f end
+if u==nil or x==nil then return e end
 if not u and not x then return"closed"end
 if u and not x then return"tilted"end
 return"open"
@@ -120,9 +120,9 @@ return F
 end
 local function d(J,y,A)
 p[J]=function(l,k)
-local i=q(l,k)local e,j=i.configure_reporting,A(i)
+local i=q(l,k)local f,j=i.configure_reporting,A(i)
 i.configure_reporting=nil
-if e==false then
+if f==false then
 j.minimum_interval=nil
 j.maximum_interval=nil
 j.reportable_change=nil
@@ -145,16 +145,16 @@ d("battery_voltage",p.power_configuration_battery_voltage,function()
 return c({emit=m.voltage(),scale=10},a(300,21600,1))
 end)
 d("switch",p.on_off,function(k)
-local e=k.configure_reporting
+local f=k.configure_reporting
 k.configure_reporting=nil
-if e==false then
+if f==false then
 return{emit=m.switch()}end
 return c({emit=m.switch()},a(0,300,nil))
 end)
 d("illuminance",p.illuminance_measurement,function(k)
-local e=k.configure_reporting
+local f=k.configure_reporting
 k.configure_reporting=nil
-if e==false then
+if f==false then
 return{emit=m.illuminance(),converter=o(),read_on_configure=true}end
 return c({emit=m.illuminance(),converter=o()},a(30,300,100))
 end)
@@ -162,15 +162,19 @@ d("pressure",p.pressure_measurement,function()
 return c({emit=m.atmospheric_pressure(),scale=10},a(30,300,1))
 end)
 p.occupancy=function(l,k)
-local i=q(l,k)local H,e=i.ias_zone==true,i.configure_reporting
+local i=q(l,k)local H,f=i.ias_zone==true,i.configure_reporting
 
 i.ias_zone=nil
 i.configure_reporting=nil
 if H then
 n(i,c({name="occupancy",emit=m.occupancy(),converter=h(1),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b},a(30,300,nil)))return p.ias_zone(i)end
-if e==false then
-n(i,{emit=m.occupancy(),read_on_configure=true})return p.occupancy_sensing(i)end
-n(i,c({emit=m.occupancy()},a(0,300,nil)))return p.occupancy_sensing(i)
+if f==false then
+n(i,{emit=m.occupancy(),
+converter={from=function(e)return e==true or(type(e)=="number"and(e&1)~=0)end},
+read_on_configure=true})return p.occupancy_sensing(i)end
+n(i,c({emit=m.occupancy(),
+converter={from=function(e)return e==true or(type(e)=="number"and(e&1)~=0)end}
+},a(0,300,nil)))return p.occupancy_sensing(i)
 end
 d("power",p.electrical_measurement_power,function()
 return c({emit=m.power(),metering_kind="power",poll_interval=300},a(5,300,1))
@@ -209,9 +213,9 @@ d("carbon_monoxide",p.ias_zone,function()
 return c({name="carbon_monoxide",emit=m.carbon_monoxide(),converter=h(1),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b},a(0,180,nil))
 end)
 d("motion",p.ias_zone,function(k)
-local e=k.configure_reporting
+local f=k.configure_reporting
 k.configure_reporting=nil
-local j={name="motion",emit=m.motion(),converter=h(1),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b,read_on_configure=true}if e==false then
+local j={name="motion",emit=m.motion(),converter=h(1),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b,read_on_configure=true}if f==false then
 return j
 end
 return c(j,a(30,300,nil))
@@ -220,9 +224,9 @@ d("tamper",p.ias_zone,function()
 return c({name="tamper",emit=m.tamper(),converter=h(4),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b},a(0,300,nil))
 end)
 d("battery_low",p.ias_zone,function(k)
-local e=k.configure_reporting
+local f=k.configure_reporting
 k.configure_reporting=nil
-local j={name="battery_low",emit=D"battery_low",converter=h(8),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b,read_on_configure=true}if e==false then
+local j={name="battery_low",emit=D"battery_low",converter=h(8),ias_configure_method=g.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b,read_on_configure=true}if f==false then
 return j
 end
 return c(j,a(0,300,nil))

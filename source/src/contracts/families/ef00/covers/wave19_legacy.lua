@@ -21,7 +21,7 @@ local function position_converter()
     function(value, device)
       local numeric = tonumber(value)
       if numeric == nil then return nil end
-      numeric = bit32.band(numeric, 0xFF)
+      numeric = ((numeric) & (0xFF))
       return reverse_enabled(device) and 100 - numeric or numeric
     end,
     function(value, device)

@@ -21687,5 +21687,51 @@
       "snow",
       "windy"
     ]
+  ],
+  [
+    "floorSixPreset",
+    true,
+    "preset",
+    [
+      "manual",
+      "auto"
+    ]
+  ],
+  [
+    "floorSixChildLock",
+    true,
+    "child_lock",
+    [
+      "unlock",
+      "lock"
+    ]
+  ],
+  [
+    "poBocoPreset",
+    true,
+    "preset",
+    [
+      "auto",
+      "manual",
+      "holiday"
+    ]
+  ],
+  [
+    "poBocoChildLock",
+    true,
+    "child_lock",
+    [
+      "unlock",
+      "lock"
+    ]
+  ],
+  [
+    "poBocoWindowDetection",
+    true,
+    "window_detection",
+    [
+      "off",
+      "on"
+    ]
   ]
 ]

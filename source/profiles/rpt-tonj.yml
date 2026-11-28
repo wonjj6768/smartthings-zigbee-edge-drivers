@@ -1,4 +1,4 @@
-name: rpt-ton
+name: rpt-tonj
 components:
 - id: main
   capabilities:
@@ -32,7 +32,7 @@ components:
     version: 1
   - id: concertmirror08464.overCurrentBreaker
     version: 1
-  - id: concertmirror08464.overVoltageThreshold
+  - id: concertmirror08464.ts011fDinOverVoltageThreshold
     version: 1
   - id: concertmirror08464.overVoltageBreaker
     version: 1

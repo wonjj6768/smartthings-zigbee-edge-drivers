@@ -160,7 +160,7 @@ end
 
 local function lumi_motion_timer(device, timeout)
   local previous = device:get_field("__lumi_motion_timer")
-  if previous then previous:cancel() end
+  if previous then device.thread:cancel_timer(previous) end
   device:set_field("__lumi_motion_timer", nil)
   if timeout > 0 then
     device:set_field("__lumi_motion_timer", device.thread:call_with_delay(timeout, function()

@@ -228,8 +228,15 @@ local function load_runtime(zcl)
       actual_component_id = device:get_component_id_for_endpoint(actual_endpoint)
     end
 
+    local explicit_endpoint = type(context) == "table" and
+      normalize_endpoint(context.endpoint or context.src_endpoint) or nil
     if expected_endpoint ~= nil and actual_endpoint ~= expected_endpoint then
-      return -1
+      if explicit_endpoint ~= nil then return -1 end
+      local target_component = expected_component_id
+      if target_component == nil and type(device.get_component_id_for_endpoint) == "function" then
+        target_component = device:get_component_id_for_endpoint(expected_endpoint)
+      end
+      if actual_component_id == nil or target_component ~= actual_component_id then return -1 end
     end
 
     -- An inbound endpoint can host several measurements exposed in separate
@@ -251,14 +258,17 @@ local function load_runtime(zcl)
     end
 
     local score = 0
+    -- Keep component/manufacturer specificity, then prefer an exact endpoint
+    -- over another endpoint accepted through the same component (e.g. children).
     if expected_endpoint ~= nil then
-      score = score + 2
+      score = score + 4
+      if expected_endpoint == actual_endpoint then score = score + 1 end
     end
     if expected_component_id ~= nil then
-      score = score + 1
+      score = score + 2
     end
     if strict_mfg_match and expected_mfg_code ~= nil then
-      score = score + 4
+      score = score + 8
     end
 
     return score

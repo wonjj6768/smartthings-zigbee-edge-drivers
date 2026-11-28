@@ -6,8 +6,8 @@ m={}end
 if type(B)~="table"then
 return m
 end
-for E,c in pairs(B)do
-m[E]=c
+for E,a in pairs(B)do
+m[E]=a
 end
 return m
 end
@@ -15,65 +15,65 @@ local function h(m,d)
 if type(m)~="table"or type(d)~="table"then
 return m
 end
-for E,c in pairs(d)do
+for E,a in pairs(d)do
 if m[E]==nil then
-m[E]=c
+m[E]=a
 end
 end
 return m
 end
 local function l(e,k)
-local a={}if type(e)=="string"then
-a.name=e
+local b={}if type(e)=="string"then
+b.name=e
 else
-r(a,e)end
-r(a,k)return a
+r(b,e)end
+r(b,k)return b
 end
 local function i()
 return{
-from=function(c)
-if type(c)~="number"then
-return c
+from=function(a)
+if type(a)~="number"then
+return a
 end
-if c<=0 then
+if a<=0 then
 return 0
 end
-local J=10 ^((c-1)/10000)return math.floor(J+0.5)
+local J=10 ^((a-1)/10000)return math.floor(J+0.5)
 end,
-to=function(c)
-if type(c)~="number"then
-return c
+to=function(a)
+if type(a)~="number"then
+return a
 end
-if c<=0 then
+if a<=0 then
 return 0
 end
-local K=10000*(math.log(c)/math.log(10))+1
+local K=10000*(math.log(a)/math.log(10))+1
 return math.floor(K+0.5)
 end
 }
 end
 local function q(D)
 return{
-from=function(c)
-if type(c)=="table"then
+from=function(a)
+if type(a)=="table"then
 if D==1 then
-if type(c.is_alarm1_set)=="function"and c:is_alarm1_set()then
+if type(a.is_alarm1_set)=="function"and a:is_alarm1_set()then
 return true
 end
-if type(c.is_alarm2_set)=="function"and c:is_alarm2_set()then
+if type(a.is_alarm2_set)=="function"and a:is_alarm2_set()then
 return true
 end
-elseif D==4 and type(c.is_tamper_set)=="function"then
-return c:is_tamper_set()elseif c.value~=nil then
-c=c.value
+elseif D==4 and type(a.is_tamper_set)=="function"then
+return a:is_tamper_set()elseif a.value~=nil then
+a=a.value
 else
-return c
+return a
 end
 end
-if type(c)~="number"then
-return c
+if type(a)~="number"then
+return a
 end
-return(c&D)~=0
+return(a&D)~=0
 end
 }
 end
@@ -94,43 +94,47 @@ return A
 end
 local function o(I,F,u)
 y[I]=function(e,k)
-local a=l(e,k)local b,d=a.configure_reporting,u(a)
-a.configure_reporting=nil
-if b==false then
+local b=l(e,k)local c,d=b.configure_reporting,u(b)
+b.configure_reporting=nil
+if c==false then
 d.minimum_interval=nil
 d.maximum_interval=nil
 d.reportable_change=nil
 d.physical_reportable_change=nil
 d.reporting_defaults=nil
 end
-h(a,d)return F(a)
+h(b,d)return F(b)
 end
 end
 o("battery",y.power_configuration_battery,function()
 return j({emit=v.battery(),scale=2},f(300,21600,2))
 end)
 o("illuminance",y.illuminance_measurement,function(k)
-local b=k.configure_reporting
+local c=k.configure_reporting
 k.configure_reporting=nil
-if b==false then
+if c==false then
 return{emit=v.illuminance(),converter=i(),read_on_configure=true}end
 return j({emit=v.illuminance(),converter=i()},f(30,300,100))
 end)
 y.occupancy=function(e,k)
-local a=l(e,k)local C,b=a.ias_zone==true,a.configure_reporting
+local b=l(e,k)local C,c=b.ias_zone==true,b.configure_reporting
 
-a.ias_zone=nil
-a.configure_reporting=nil
+b.ias_zone=nil
+b.configure_reporting=nil
 if C then
-h(a,j({name="occupancy",emit=v.occupancy(),converter=q(1),ias_configure_method=p.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=g},f(30,300,nil)))return y.ias_zone(a)end
-if b==false then
-h(a,{emit=v.occupancy(),read_on_configure=true})return y.occupancy_sensing(a)end
-h(a,j({emit=v.occupancy()},f(0,300,nil)))return y.occupancy_sensing(a)
+h(b,j({name="occupancy",emit=v.occupancy(),converter=q(1),ias_configure_method=p.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=g},f(30,300,nil)))return y.ias_zone(b)end
+if c==false then
+h(b,{emit=v.occupancy(),
+converter={from=function(a)return a==true or(type(a)=="number"and(a&1)~=0)end},
+read_on_configure=true})return y.occupancy_sensing(b)end
+h(b,j({emit=v.occupancy(),
+converter={from=function(a)return a==true or(type(a)=="number"and(a&1)~=0)end}
+},f(0,300,nil)))return y.occupancy_sensing(b)
 end
 o("motion",y.ias_zone,function(k)
-local b=k.configure_reporting
+local c=k.configure_reporting
 k.configure_reporting=nil
-local d={name="motion",emit=v.motion(),converter=q(1),ias_configure_method=p.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=g,read_on_configure=true}if b==false then
+local d={name="motion",emit=v.motion(),converter=q(1),ias_configure_method=p.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=g,read_on_configure=true}if c==false then
 return d
 end
 return j(d,f(30,300,nil))

@@ -36,7 +36,7 @@ if not c.expires and not c.failed then ag[key]=c.selected end
 end
 a:set_field(aa,next(ag)and ag or nil,{persist=true})
 end
-local function aw(a,c)
+local function ax(a,c)
 c.failed=true
 u(a)
 end
@@ -54,8 +54,8 @@ local f,p,k=descriptor.meta,descriptor.defaults,R(a,descriptor,true)
 
 if A~=nil then
 local an=type(A)=="table"and A.value or A
-a:set_field("zcl_reporting_default:"..descriptor.key,an)local aD=a:get_field("zcl_reporting_change:"..descriptor.key)if aD and(k==nil or k.reportable_change==nil)then
-al(a,aD,"reportableChange",an)end
+a:set_field("zcl_reporting_default:"..descriptor.key,an)local aE=a:get_field("zcl_reporting_change:"..descriptor.key)if aE and(k==nil or k.reportable_change==nil)then
+al(a,aE,"reportableChange",an)end
 end
 local W=k or{}local t,B=W.maximum_interval or p.maximum_interval or 300,W.reportable_change
 
@@ -77,21 +77,21 @@ return{cluster=f.cluster_id,attribute=f.attribute_id,data_type=f.data_type,minim
 end
 local function m(j,a,h,q)
 local o=h.zcl_clusters[q]local descriptor=e.describe(j,o,a)if descriptor then return descriptor end
-local au=e.describe(j,o)if au then
-for _,aH in ipairs(h.zcl_clusters)do
-descriptor=e.describe(j,aH,a)if descriptor and descriptor.key==au.key then return descriptor end
+local av=e.describe(j,o)if av then
+for _,aI in ipairs(h.zcl_clusters)do
+descriptor=e.describe(j,aI,a)if descriptor and descriptor.key==av.key then return descriptor end
 end
 end
 end
 function e.discard_unsupported(j,a)
-local aB=false
+local aC=false
 for key,c in pairs(d[a]or{})do
 if not m(j,a,c.entry,c.mapping_index)then
 d[a][key]=nil
-aB=true
+aC=true
 end
 end
-if aB then u(a)end
+if aC then u(a)end
 end
 local function H(j,a,h)
 for _,item in ipairs(h.reporting_settings)do
@@ -134,8 +134,9 @@ function e.on_rx(j,a,rx)
 if rx.address_header.profile.value==0 then
 if rx.address_header.cluster.value~=19 then return end
 else
-local aI=rx.body.zcl_header
-if not aI.frame_ctrl:is_cluster_specific_set()and aI.cmd.value~=10 then return end
+local au=rx.body.zcl_header
+if au==nil then return end
+if not au.frame_ctrl:is_cluster_specific_set()and au.cmd.value~=10 then return end
 end
 e.discard_unsupported(j,a)for key,c in pairs(d[a]or{})do
 if not c.expires and not c.failed and(c.last_retry==nil or os.time()-c.last_retry>=ao)then
@@ -145,13 +146,13 @@ end
 function e.set(j,a,h,q,field,r)
 local descriptor=m(j,a,h,q)if descriptor==nil or type(r)~="number"or r~=r or r<0 then return false end
 local Q=descriptor.meta.data_type
-local at,aF=field=="reportable_change"and Q.ID==57,field=="minimum_interval"and 65534 or 65535
+local at,aG=field=="reportable_change"and Q.ID==57,field=="minimum_interval"and 65534 or 65535
 
 if field=="reportable_change"then
 if not descriptor.analog then return false end
 local aS=Q.ID>=40 and Q.ID<=47
-aF=at and 3.4028234663852886e38 or(2 ^(8*Q.byte_length-(aS and 1 or 0))-1)end
-if r>aF or(not at and r%1~=0)then return false end
+aG=at and 3.4028234663852886e38 or(2 ^(8*Q.byte_length-(aS and 1 or 0))-1)end
+if r>aG or(not at and r%1~=0)then return false end
 local k={}for key,aW in pairs(R(a,descriptor,true)or{})do k[key]=aW end
 k[field]=r
 local aM,t=k.minimum_interval or descriptor.defaults.minimum_interval or 0,k.maximum_interval or descriptor.defaults.maximum_interval or 300
@@ -171,35 +172,35 @@ end
 a:send(tx)
 end
 function e.global_handlers(j,G)
-local function ax(_,a,rx)
+local function ay(_,a,rx)
 local y,endpoint,F,ai=rx.address_header.cluster.value,rx.address_header.src_endpoint.value,rx.body.zcl_header.cmd.value,rx.body.zcl_body
 
-local aA=y..":"..endpoint
+local aB=y..":"..endpoint
 e.discard_unsupported(j,a)for key in pairs(d[a]or{})do
-local c=J(a,key)local az=c and c.targets[aA]if az then
-local v=string.unpack("<I2",az.wire,2)if F==7 then
-local ay=ai.global_status and ai.global_status.value
+local c=J(a,key)local aA=c and c.targets[aB]if aA then
+local v=string.unpack("<I2",aA.wire,2)if F==7 then
+local az=ai.global_status and ai.global_status.value
 for _,g in ipairs(ai.config_records or{})do
-if g.direction.value==0 and g.attr_id.value==v then ay=g.status.value end
+if g.direction.value==0 and g.attr_id.value==v then az=g.status.value end
 end
-if ay~=nil and ay~=0 then aw(a,c)end
+if az~=nil and az~=0 then ax(a,c)end
 local tx=ah(a,y,v,endpoint)if not pcall(a.send,a,tx)then
 d[a][key]=nil
 u(a)end
 elseif F==11 then
-if(ai.cmd.value==6 or ai.cmd.value==8)and ai.status.value~=0 then aw(a,c)end
+if(ai.cmd.value==6 or ai.cmd.value==8)and ai.status.value~=0 then ax(a,c)end
 else
 for _,g in ipairs(ai.read_reporting_records)do
 if getmetatable(g)==x and g.direction.value==0 and g.attr_id.value==v then
-if g:_serialize():sub(2)==az.wire then
-c.targets[aA]=nil
+if g:_serialize():sub(2)==aA.wire then
+c.targets[aB]=nil
 if not next(c.targets)then
 a:set_field("zcl_reporting:"..key,c.selected,{persist=true})a:remove_configured_attribute(y,v)d[a][key]=nil
 u(a)H(j,a,c.entry)end
 elseif c.verify_first and(g.status.value==0 or g.status.value==139)then
 c.verify_first=nil
 P(j,a,key,c)elseif g.status.value~=0 then
-aw(a,c)end
+ax(a,c)end
 end
 end
 end
@@ -208,12 +209,12 @@ end
 end
 for y in pairs(af)do
 G[y]=G[y]or{}for _,F in ipairs{7,9,11}do
-local av=G[y][F]if av~=nil then
+local aw=G[y][F]if aw~=nil then
 G[y][F]=function(...)
-local O=av(...)ax(...)return O
+local O=aw(...)ay(...)return O
 end
 else
-G[y][F]=ax
+G[y][F]=ay
 end
 end
 end
@@ -268,17 +269,17 @@ end
 return U
 end
 function e.send(j,a,aj,U,aO)
-local K,aE,X,C={},{},{},false
+local K,aF,X,C={},{},{},false
 for _,o in ipairs(aj or{})do
 local descriptor=e.describe(j,o,a)local k=descriptor and U[descriptor.group]if descriptor~=nil and k and(k==true or k[descriptor.key])and
 not(aO and descriptor.meta.reporting_defaults~=nil)then
-local f,aC,s=descriptor.meta,j.build_mapping_context(a,o),{}
+local f,aD,s=descriptor.meta,j.build_mapping_context(a,o),{}
 if f.reporting_defaults and f.reporting_defaults.all_endpoints then
 for _,endpoint in pairs(a.zigbee_endpoints or{})do
 if a:supports_server_cluster(f.cluster_id,endpoint.id)then s[#s+1]=endpoint.id end
 end
-table.sort(s)elseif aC.endpoint~=nil then
-s[1]=aC.endpoint
+table.sort(s)elseif aD.endpoint~=nil then
+s[1]=aD.endpoint
 elseif f.reporting_defaults~=nil then
 s[1]=a:get_endpoint(f.cluster_id)else
 for _,endpoint in ipairs(a.zigbee_endpoints or{})do
@@ -289,8 +290,8 @@ end
 local z=e.configuration(j,a,o)if z==nil then C=f.physical_reportable_change~=nil or C end
 for _,endpoint in ipairs(s)do
 local key=descriptor.group..":"..endpoint
-local E,g=aE[key],{config=z,endpoint=endpoint,explicit=f.endpoint~=nil,key=descriptor.key}if E==nil then
-aE[key]=#K+1
+local E,g=aF[key],{config=z,endpoint=endpoint,explicit=f.endpoint~=nil,key=descriptor.key}if E==nil then
+aF[key]=#K+1
 K[#K+1]=g
 elseif g.explicit and not K[E].explicit then
 K[E]=g

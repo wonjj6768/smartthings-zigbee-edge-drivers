@@ -172,7 +172,7 @@ local blitzwolf_bw_is3_core = {
       end,
       emit=function(device,value)
         local previous=device:get_field("__bwis3_core_timer")
-        if previous then previous:cancel() end
+        if previous then device.thread:cancel_timer(previous) end
         device:set_field("__bwis3_core_timer",device.thread:call_with_delay(90,function()
           device:set_field("__bwis3_core_timer",nil)
           device:emit_event(emit.motion()(device,false))
@@ -217,7 +217,10 @@ local zy_n1 = {
   query_on_announce = false,
   time_start = "off",
   datapoints = {
-    tuya.dp_numeric(1, {name="zy_n1_noise_level",read_only=true,emit=emit.zyN1NoiseLevel()}),
+    tuya.dp_numeric(1, {
+      name="zy_n1_noise_level",read_only=true,emit=emit.zyN1NoiseLevel(),
+      from_device=function(value,_,datapoint) return datapoint and datapoint.int_value or value end,
+    }),
     tuya.dp_enum(8, {
       name="zy_n1_noise_status",read_only=true,emit=emit.zyN1NoiseStatus(),
       converter=converter.lookup_from_to({no_noise=0,noise_normal=1,noise=2}),

@@ -19,7 +19,7 @@ end
 
 local function programming_mode(value)
   local raw = scalar(value)
-  return bit32.band(raw, 4) ~= 0 and "eco" or bit32.band(raw, 1) ~= 0 and "schedule" or "setpoint"
+  return ((raw) & (4)) ~= 0 and "eco" or ((raw) & (1)) ~= 0 and "schedule" or "setpoint"
 end
 
 local function read_edge(device, attribute)
@@ -147,7 +147,7 @@ local function week_schedule(rx, device)
   if type(bytes) ~= "string" or #bytes ~= 32 then return nil end
   local entries = {}
   for offset = 1, 29, 4 do
-    local temperature = (bit32.band(bytes:byte(offset + 2), 0x0F) * 256 + bytes:byte(offset + 3)) / 10
+    local temperature = (((bytes:byte(offset + 2)) & (0x0F)) * 256 + bytes:byte(offset + 3)) / 10
     if device:get_field("nam_edge_display_unit") == "fahrenheit" then
       temperature = math.floor((temperature - 32) * 5 / 9 * 2 + 0.5) / 2
     end
@@ -205,7 +205,7 @@ local namron_edge = {
       emit = emit.thermostat_operating_state(),
       from_device = function(value)
         local raw = scalar(value)
-        return bit32.band(raw, 1) ~= 0 and "heating" or bit32.band(raw, 2) ~= 0 and "cooling" or "idle"
+        return ((raw) & (1)) ~= 0 and "heating" or ((raw) & (2)) ~= 0 and "cooling" or "idle"
       end,
     }),
     zcl.humidity({ endpoint = 1, read_only = true, minimum_interval = 10, maximum_interval = 300, reportable_change = 100 }),
@@ -273,7 +273,7 @@ local namron_edge = {
       from_device = function(value)
         local bits = {}
         local raw = scalar(value)
-        for bit = 0, 7 do if bit32.band(raw, 2 ^ bit) ~= 0 then bits[#bits + 1] = FAULTS[bit] end end
+        for bit = 0, 7 do if ((raw) & (2 ^ bit)) ~= 0 then bits[#bits + 1] = FAULTS[bit] end end
         return #bits > 0 and table.concat(bits, ",") or "none"
       end,
     }),

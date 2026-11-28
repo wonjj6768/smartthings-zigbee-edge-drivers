@@ -245,7 +245,7 @@ local water_leak_alarm_zg226z = {
   profile = "safety-water-leak-alarm-battery-zg226z",
   tuya.dp_water_leak(1, { emit = emit.water(), converter = converter.true_false0() }),
   tuya.dp_on_off(101, { name = "alarm", emit = emit.alarm() }),
-  tuya.dp_on_off(7, { name = "muffling", emit = emit.mufflingWaterLeak() }),
+  tuya.dp_on_off(7, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "muffling", emit = emit.mufflingWaterLeak() }),
   tuya.dp_battery(4, { emit = emit.battery() }),
   tuya.dp_numeric(102, { name = "duration", emit = emit.alarmDurationSiren() }),
   tuya.dp_enum(104, { name = "alarm_volume", emit = emit.alarmVolumeHobeian(), converter = hobeian_alarm_volume_converter }),
@@ -270,7 +270,7 @@ local vibration_alarm_zg228z = {
     emit = emit.zg228zAlarmMode(),
     converter = converter.lookup_from_to({ beep = 0, ring = 1, stop = 2 }),
   }),
-  tuya.dp_on_off(102, { name = "muffling", emit = emit.mufflingSiren() }),
+  tuya.dp_on_off(102, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "muffling", emit = emit.mufflingSiren() }),
   tuya.dp_battery(4, { emit = emit.battery() }),
   tuya.dp_numeric(106, { name = "duration", emit = emit.alarmDurationSiren() }),
   tuya.dp_numeric(6, { name = "sensitivity", emit = emit.vibrationSensitivityZgFifty() }),
@@ -295,8 +295,8 @@ local siren_alarm_zg229z = {
       normal = 3,
     }),
   }),
-  tuya.dp_on_off(102, { name = "doorbell", emit = emit.doorbellSirenHobeian() }),
-  tuya.dp_on_off(16, { name = "muffling", emit = emit.mufflingSiren() }),
+  tuya.dp_on_off(102, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "doorbell", emit = emit.doorbellSirenHobeian() }),
+  tuya.dp_on_off(16, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "muffling", emit = emit.mufflingSiren() }),
   tuya.dp_battery(15, { emit = emit.battery() }),
   tuya.dp_numeric(7, { name = "duration", emit = emit.alarmDurationSiren() }),
   tuya.dp_enum(5, { name = "alarm_volume", emit = emit.alarmVolumeHobeian(), converter = hobeian_alarm_volume_converter }),
@@ -1233,7 +1233,7 @@ local th_contact = {
   tuya.dp_contact(1, { emit = emit.contact(), inverted = true }),
   tuya.dp_battery(2, { emit = emit.battery() }),
   tuya.dp_temperature(7, { emit = emit.temperature("C"), scale = 10 }),
-  tuya.dp_humidity(8, { emit = emit.humidity() }),
+  tuya.dp_humidity(8, {  scale = 1, emit = emit.humidity() }),
 }
 
 register_device_definition(th_contact, device_helpers.create_fingerprints("TS0601", {
@@ -1301,7 +1301,7 @@ local contact_window_handle_s8 = {
   profile = "safety-contact-temp-humidity-battery-s8",
   tuya.dp_battery(3, { emit = emit.battery() }),
   tuya.dp_temperature(8, { emit = emit.temperature("C"), scale = 10 }),
-  tuya.dp_humidity(101, { emit = emit.humidity() }),
+  tuya.dp_humidity(101, {  scale = 1, emit = emit.humidity() }),
   tuya.dp_enum(102, {
     name = "alarm",
     emit = emit.s8AlarmState(),

@@ -11,10 +11,10 @@ local alecto_on_off = converter.lookup_from_to({ off = false, on = true })
 local alecto_smart_heat10 = {
   profile = "thermostats-alecto-smart-heat10",
   package_group = "trv-1",
-  tuya.dp_current_heating_setpoint(2, { scale = 10 }),
-  tuya.dp_local_temperature(3, { scale = 10 }),
+  tuya.dp_current_heating_setpoint(2, {  emit = emit.heating_setpoint("C"), scale = 10 }),
+  tuya.dp_local_temperature(3, {  emit = emit.temperature("C"), scale = 10 }),
   tuya.dp_system_mode(4, {
-    converter = converter.lookup_from_to({ off = 0, auto = 1, heat = 2 }),
+     emit = emit.thermostat_mode(), converter = converter.lookup_from_to({ off = 0, auto = 1, heat = 2 }),
   }),
   tuya.dp_binary(7, {
     name = "alecto_child_lock",
@@ -43,7 +43,7 @@ local saswell_legacy = {
     },
   },
   tuya.dp_running_state(3, {
-    converter = converter.lookup_from_to({ heat = 1, idle = 0 }),
+     emit = emit.thermostat_operating_state(), converter = converter.lookup_from_to({  heating  = 1, idle = 0 }),
   }),
   tuya.dp_binary(8, {
     name = "window_detection",
@@ -66,8 +66,8 @@ local saswell_legacy = {
     emit = emit.saswellChildLock(),
     converter = converter.lookup_from_to({ unlock = false, lock = true }),
   }),
-  tuya.dp_local_temperature(102, { scale = 10 }),
-  tuya.dp_current_heating_setpoint(103, { scale = 10 }),
+  tuya.dp_local_temperature(102, {  emit = emit.temperature("C"), scale = 10 }),
+  tuya.dp_current_heating_setpoint(103, {  emit = emit.heating_setpoint("C"), scale = 10 }),
   tuya.dp_binary(105, {
     name = "battery_low",
     read_only = true,
@@ -138,8 +138,8 @@ local thermostat_etop_legacy = {
     ),
     emit = emit.thermostat_mode(),
   }),
-  tuya.dp_current_heating_setpoint(2, { scale = 10 }),
-  tuya.dp_local_temperature(3, { scale = 10 }),
+  tuya.dp_current_heating_setpoint(2, {  emit = emit.heating_setpoint("C"), scale = 10 }),
+  tuya.dp_local_temperature(3, {  emit = emit.temperature("C"), scale = 10 }),
   tuya.dp_enum(4, {
     name = "system_mode",
     from_device = thermostat_common.enum_mode_from_device(
@@ -152,7 +152,7 @@ local thermostat_etop_legacy = {
     emit = emit.thermostat_mode(),
     read_only = true,
   }),
-  tuya.dp_child_lock(7, { name = "child_lock", emit = emit.etopChildLock() }),
+  tuya.dp_child_lock(7, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), name = "child_lock", emit = emit.etopChildLock() }),
   tuya.dp_numeric(13, {
     name = "error_status",
     read_only = true,

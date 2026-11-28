@@ -1275,7 +1275,8 @@ local function load_lights()
     }),
     tuya.dp_countdown(6, { name = "countdown", emit = emit.dcnsggvzCountdown() }),
     tuya.dp_power_on_behavior(14, { emit = emit.dcnsggvzPowerOnBehavior() }),
-    tuya.dp_switch_type(57, { emit = emit.dcnsggvzSwitchType() }),
+    tuya.dp_switch_type(57, { emit = emit.dcnsggvzSwitchType()  ,
+      converter = converter.lookup_from_to({ toggle = 0, state = 1, momentary = 2 }) }),
   }
 
   register_device_definition(dimmer_model_ts0601_dimmer_1_gang_switch_type, device_helpers.create_fingerprints("TS0601", {
@@ -1366,7 +1367,7 @@ local function load_lights()
   local light_model_ts0601_light = {
     profile = "lights-dimmer-ts0601-light",
     tuya.dp_on_off(1, { name = "switch", emit = emit.switch() }),
-    tuya.dp_power_on_behavior(2, { emit = emit.ts0601LightPowerOnBehavior() }),
+    tuya.dp_power_on_behavior(2, {  datatype = tuya.DP_TYPE_VALUE, emit = emit.ts0601LightPowerOnBehavior() }),
     tuya.dp_brightness(3, { name = "brightness", emit = emit.level() }),
   }
 

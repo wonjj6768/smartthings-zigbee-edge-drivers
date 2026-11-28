@@ -525,7 +525,7 @@ local sunricher_terncy_dc01 = {
       from_device = function(_, _, context)
         -- ZHC wally U02I007C01: EP1 notifications only; alarm1 means open.
         if context.command_id ~= 0x00 then return nil end
-        return bit32.band(context.raw_value, 0x0001) ~= 0
+        return ((context.raw_value) & (0x0001)) ~= 0
       end,
     })),
     zcl.cluster_attribute(zcl.CLUSTER_POWER_CONFIGURATION, zcl.ATTR_BATTERY_PERCENTAGE_REMAINING, {

@@ -859,7 +859,7 @@ local function ias_notification_motion(endpoint, timed, mask)
     end, emit=function(device, active)
       if timed then
         local previous = device:get_field("__core_ias_motion_timer")
-        if previous then previous:cancel() end
+        if previous then device.thread:cancel_timer(previous) end
         device:set_field("__core_ias_motion_timer",device.thread:call_with_delay(90,function()
           device:set_field("__core_ias_motion_timer",nil)
           device:emit_event(caps.motionSensor.motion.inactive())
@@ -2237,7 +2237,7 @@ local aqara_high_precision_core = {
         if type(value)=="table" then value=value.value end
         if value~=1 then return end
         local previous=device:get_field("__aqara_high_precision_timer")
-        if previous then previous:cancel() end
+        if previous then device.thread:cancel_timer(previous) end
         local interval=device:get_field("__aqara_high_precision_interval") or 60
         device:set_field("__aqara_high_precision_timer",device.thread:call_with_delay(interval+2,function()
           device:set_field("__aqara_high_precision_timer",nil)

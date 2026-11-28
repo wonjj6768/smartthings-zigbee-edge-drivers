@@ -13,7 +13,7 @@ return 100
 end
 return T
 end
-local U={profile="buttons-button-4-battery-voltage-remote-action",button_actions={"pushed"},advanced_remote=true,button_count=4,tuya_action_map={[1]="scene_1",[2]="scene_2",[3]="scene_3",[4]="scene_4"},tuya_action_components={[1]="main",[2]="button2",[3]="button3",[4]="button4"},tuya_action_button_events={[1]="pushed",[2]="pushed",[3]="pushed",[4]="pushed"},zcl_clusters={k.tuya_magic_packet(),k.battery(),k.cluster_attribute(k.CLUSTER_POWER_CONFIGURATION,k.ATTR_BATTERY_VOLTAGE,{name="battery",endpoint=1,emit=Q.battery(),scale=10,from_device=j,read_on_configure=true}),k.cluster_attribute(k.CLUSTER_POWER_CONFIGURATION,k.ATTR_BATTERY_VOLTAGE,{name="battery_voltage",endpoint=1,emit=Q.voltage(),scale=10})},
+local U={profile="buttons-button-4-battery-voltage-remote-action",button_actions={"pushed"},advanced_remote=true,button_count=4,tuya_action_value_offset=3,tuya_action_map={[1]="scene_1",[2]="scene_2",[3]="scene_3",[4]="scene_4"},tuya_action_components={[1]="main",[2]="button2",[3]="button3",[4]="button4"},tuya_action_button_events={[1]="pushed",[2]="pushed",[3]="pushed",[4]="pushed"},zcl_clusters={k.tuya_magic_packet(),k.battery(),k.cluster_attribute(k.CLUSTER_POWER_CONFIGURATION,k.ATTR_BATTERY_VOLTAGE,{name="battery",endpoint=1,emit=Q.battery(),scale=10,from_device=j,read_on_configure=true}),k.cluster_attribute(k.CLUSTER_POWER_CONFIGURATION,k.ATTR_BATTERY_VOLTAGE,{name="battery_voltage",endpoint=1,emit=Q.voltage(),scale=10})},
 configure=function(w,b)
 for _,aa in ipairs{k.CLUSTER_ON_OFF,k.CLUSTER_LEVEL_CONTROL}do
 b:send(n.build_bind_request(b,aa,w.environment_info.hub_zigbee_eui,1))end

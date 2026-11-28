@@ -30,7 +30,7 @@ local function r(value,aN,aM)
 return math.max(aN,math.min(aM,math.floor(value)))
 end
 local function encode_uint16_le(value)
-return string.char(bit32.band(value,255))..string.char(bit32.rshift(bit32.band(value,65280),8))
+return string.char(value&255)..string.char((value&65280)>>8)
 end
 local function S(c,i,d)
 if type(c)~="number"or type(i)~="table"then
@@ -57,6 +57,9 @@ if type(d)~="table"then
 return false
 end
 if d.prefer_plain_attribute_write==true then
+return true
+end
+if d.attribute_def~=nil and d.attribute_def.cluster~=nil then
 return true
 end
 if d.mfg_code~=nil then

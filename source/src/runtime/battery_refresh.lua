@@ -18,7 +18,7 @@ local function cancel_timer(device)
   local timer = device:get_field(BATTERY_REFRESH_TIMER_FIELD)
   if timer ~= nil and type(timer.cancel) == "function" then
     pcall(function()
-      timer:cancel()
+      device.thread:cancel_timer(timer)
     end)
   end
   device:set_field(BATTERY_REFRESH_TIMER_FIELD, nil, { persist = false })

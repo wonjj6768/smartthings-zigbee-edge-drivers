@@ -245,7 +245,7 @@ local function sthree_schedule_writer(field, other_field, is_weekday)
     local other = device:get_field(other_field)
     local payload = is_weekday and sthree_schedule_payload(value, other) or sthree_schedule_payload(other, value)
     if payload == nil then return nil end
-    return { { dp = 109, datatype = tuya.DP_TYPE_RAW, value = payload } }
+    return { { dp = 67, datatype = tuya.DP_TYPE_RAW, value = payload } }
   end
 end
 
@@ -278,7 +278,7 @@ local sthree = {
   wave12.raw(67, "moes_zht_sthree_schedule_weekday", "moesZhtSthreeScheduleWeekday", converter.from_only(function(value, device)
     return sthree_schedule_part(value, 0, 6, device, STHREE_WEEKDAY_FIELD)
   end), true),
-  wave12.raw(68, "moes_zht_sthree_schedule_holiday", "moesZhtSthreeScheduleHoliday", converter.from_only(function(value, device)
+  wave12.raw(67, "moes_zht_sthree_schedule_holiday", "moesZhtSthreeScheduleHoliday", converter.from_only(function(value, device)
     return sthree_schedule_part(value, 6, 2, device, STHREE_HOLIDAY_FIELD)
   end), true),
   wave12.numeric(109, "moes_zht_sthree_temp_calibration", "moesZhtSthreeTempCalibration", 10, false, { signed = true }),
@@ -370,7 +370,9 @@ local pilot = {
   wave12.enum(46, "moes_pilot_temp_unit", "moesPilotTempUnit", { c = 0, f = 1 }),
   tuya.dp_current_heating_setpoint(50, { scale = 10, emit = emit.heating_setpoint("C") }),
   wave12.numeric(102, "moes_pilot_boost_duration", "moesPilotBoostDuration", 1, false),
-  wave12.numeric(103, "moes_pilot_electricity", "moesPilotElectricity", 10, true),
+  wave12.numeric(103, "moes_pilot_electricity", "moesPilotElectricity", 10, true, {
+    from_device = function(value, _, datapoint) return (datapoint and datapoint.int_value or value) / 10 end,
+  }),
   wave12.numeric(104, "moes_pilot_daily_energy", "moesPilotDailyEnergy", 1, true),
   wave12.numeric(105, "moes_pilot_monthly_energy", "moesPilotMonthlyEnergy", 1, true),
   wave12.numeric(106, "moes_pilot_yearly_energy", "moesPilotYearlyEnergy", 1, true),

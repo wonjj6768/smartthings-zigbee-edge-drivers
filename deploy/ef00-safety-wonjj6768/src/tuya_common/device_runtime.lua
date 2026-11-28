@@ -138,7 +138,7 @@ end
 function l.stop_query_timer(a)
 local aN=a:get_field(w)if aN and aN.cancel then
 pcall(function()
-aN:cancel()
+a.thread:cancel_timer(aN)
 end)
 end
 a:set_field(w,nil,v)return true

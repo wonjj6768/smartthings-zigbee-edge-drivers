@@ -376,6 +376,10 @@
     "overCurrentThreshold"
   ],
   [
+    "ts011fDinOverVoltageThreshold",
+    "overVoltageThreshold"
+  ],
+  [
     "ts011fDinUnderVoltageThreshold",
     "underVoltageThreshold"
   ],
@@ -17930,5 +17934,37 @@
   [
     "sonoffUlWeather",
     "weatherIcon"
+  ],
+  [
+    "floorSixPreset",
+    "preset"
+  ],
+  [
+    "floorSixChildLock",
+    "childLock"
+  ],
+  [
+    "floorSixDeadzoneTemperature",
+    "deadzoneTemperature"
+  ],
+  [
+    "floorSixDeviceTemperature",
+    "deviceTemperature"
+  ],
+  [
+    "poBocoPreset",
+    "preset"
+  ],
+  [
+    "poBocoChildLock",
+    "childLock"
+  ],
+  [
+    "poBocoTempCalibration",
+    "temperatureCalibration"
+  ],
+  [
+    "poBocoWindowDetection",
+    "windowDetection"
   ]
 ]

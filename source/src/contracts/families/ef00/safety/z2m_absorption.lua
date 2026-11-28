@@ -91,6 +91,7 @@ local co_model_moes_zc_hm = {
     name = "moes_zc_hm_co",
     emit = emit.moesZcHmCo(),
     read_only = true,
+    from_device = function(value, _, datapoint) return datapoint and datapoint.int_value or value end,
   }),
   tuya.dp_numeric(9, {
     name = "moes_zc_hm_self_test_result",

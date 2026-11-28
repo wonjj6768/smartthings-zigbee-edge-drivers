@@ -1,5 +1,5 @@
-local function z(p,L)
-local e,P,w,E,y,K=L.type_check,L.copy_keys,L.merge_options,p.converter,{"name","key","preference","field","fields","emit","handler","endpoint","component","persist","read_only","write_only","command_id","transaction","signed","batch_key","match_transaction","response_dp","response_dps","match_response","skip","value","optimistic_value","suppress_optimistic_state","converter","from_device","to_device"},{"command_id","transaction","batch_key","match_transaction","response_dp","response_dps","match_response"}
+local function A(p,L)
+local e,P,w,z,y,K=L.type_check,L.copy_keys,L.merge_options,p.converter,{"name","key","preference","field","fields","emit","handler","endpoint","component","persist","read_only","write_only","command_id","transaction","signed","batch_key","match_transaction","response_dp","response_dps","match_response","skip","value","optimistic_value","suppress_optimistic_state","converter","from_device","to_device"},{"command_id","transaction","batch_key","match_transaction","response_dp","response_dps","match_response"}
 
 
 
@@ -7,43 +7,43 @@ local e,P,w,E,y,K=L.type_check,L.copy_keys,L.merge_options,p.converter,{"name","
 local function x(O)
 return e(O)=="table"and(e(O.from)=="function"or e(O.to)=="function")
 end
-local function A(c,a,f)
+local function B(d,b,f)
 local r
 local k
-local b={}if e(c)=="string"then
-r=c
+local a={}if e(d)=="string"then
+r=d
 else
-w(b,c)end
-if e(a)=="function"then
-b.from_device=a
-elseif x(a)then
-k=a
+w(a,d)end
+if e(b)=="function"then
+a.from_device=b
+elseif x(b)then
+k=b
 else
-w(b,a)end
-w(b,f)if x(b.converter)then
-k=b.converter
+w(a,b)end
+w(a,f)if x(a.converter)then
+k=a.converter
 end
-return r,k,b
+return r,k,a
 end
-local function h(s,J,c,a,f)
-local r,k,b=
-A(c,a,f)local d={dp=s,datatype=b.datatype or J}P(d,b,y)if e(b.send_policy)=="table"then
+local function h(s,J,d,b,f)
+local r,k,a=
+B(d,b,f)local c={dp=s,datatype=a.datatype or J}P(c,a,y)if e(a.send_policy)=="table"then
 for _,U in ipairs(K)do
-if d[U]==nil and b.send_policy[U]~=nil then
-d[U]=b.send_policy[U]end
+if c[U]==nil and a.send_policy[U]~=nil then
+c[U]=a.send_policy[U]end
 end
 end
-if d.name==nil and r~=nil then
-d.name=r
+if c.name==nil and r~=nil then
+c.name=r
 end
-local u=d.name or d.key
-if d.field==nil and d.fields==nil and u~=nil then
-d.field=u
+local u=c.name or c.key
+if c.field==nil and c.fields==nil and u~=nil then
+c.field=u
 end
-if k~=nil and d.converter==nil and d.from_device==nil and d.to_device==nil then
-d.converter=k
+if k~=nil and c.converter==nil and c.from_device==nil and c.to_device==nil then
+c.converter=k
 end
-return d,b
+return c,a
 end
 local function q(l)
 if e(l)~="table"then
@@ -58,7 +58,7 @@ return nil
 end
 return m
 end
-local function B(l)
+local function C(l)
 if e(l)~="table"then
 return nil
 end
@@ -71,40 +71,42 @@ return nil
 end
 return s
 end
-function p.dp_binary(s,c,a,f)
-local d,b=h(s,p.DP_TYPE_BOOL,c,a,f)if d.converter==nil and d.from_device==nil and d.to_device==nil then
-local C,false_value=b.true_value,b.false_value
+function p.dp_binary(s,d,b,f)
+local c,a=h(s,p.DP_TYPE_BOOL,d,b,f)if c.converter==nil and c.from_device==nil and c.to_device==nil then
+local D,false_value=a.true_value,a.false_value
 
-if C~=nil or false_value~=nil then
-d.converter=E.bool_pair(C==nil and true or C,false_value==nil and false or false_value)end
+if D~=nil or false_value~=nil then
+c.converter=z.bool_pair(D==nil and true or D,false_value==nil and false or false_value)end
 end
-return d
+return c
 end
-function p.dp_raw(s,c,a,f)
-local d=h(s,p.DP_TYPE_RAW,c,a,f)return d
+function p.dp_raw(s,d,b,f)
+local c=h(s,p.DP_TYPE_RAW,d,b,f)return c
 end
-function p.dp_numeric(s,c,a,f)
-local d=h(s,p.DP_TYPE_VALUE,c,a,f)return d
+function p.dp_numeric(s,d,b,f)
+local c,a=h(s,p.DP_TYPE_VALUE,d,b,f)if c.converter==nil and c.from_device==nil and c.to_device==nil and a.scale~=nil then
+c.converter=z.divide_by_pair(a.scale)end
+return c
 end
-function p.dp_string(s,c,a,f)
-local d=h(s,p.DP_TYPE_STRING,c,a,f)return d
+function p.dp_string(s,d,b,f)
+local c=h(s,p.DP_TYPE_STRING,d,b,f)return c
 end
-function p.dp_enum(s,c,a,f)
-local d,b=h(s,p.DP_TYPE_ENUM,c,a,f)if d.converter==nil and d.from_device==nil and d.to_device==nil and b.lookup~=nil then
-d.converter=E.lookup_from_to(b.lookup)end
-return d
+function p.dp_enum(s,d,b,f)
+local c,a=h(s,p.DP_TYPE_ENUM,d,b,f)if c.converter==nil and c.from_device==nil and c.to_device==nil and a.lookup~=nil then
+c.converter=z.lookup_from_to(a.lookup)end
+return c
 end
-function p.dp_bitmap(s,c,a,f)
-local d=h(s,p.DP_TYPE_BITMAP,c,a,f)return d
+function p.dp_bitmap(s,d,b,f)
+local c=h(s,p.DP_TYPE_BITMAP,d,b,f)return c
 end
-function p.dp_light(s,c,a,f)
-local d,b=h(s,p.DP_TYPE_VALUE,c,a,f)if d.converter==nil and d.from_device==nil and d.to_device==nil then
-local W,V,T,S=b.raw_min or 0,b.raw_max or 1000,b.value_min or 0,b.value_max or 100
+function p.dp_light(s,d,b,f)
+local c,a=h(s,p.DP_TYPE_VALUE,d,b,f)if c.converter==nil and c.from_device==nil and c.to_device==nil then
+local W,V,T,S=a.raw_min or 0,a.raw_max or 1000,a.value_min or 0,a.value_max or 100
 
 
 
-d.converter=E.scale_pair(W,V,T,S)end
-return d
+c.converter=z.scale_pair(W,V,T,S)end
+return c
 end
 function p.build_component_by_endpoint(F,g)
 return function(Q,l)
@@ -119,7 +121,7 @@ end
 end
 function p.build_component_by_dp(R,g)
 return function(Q,l)
-local s=B(l)if s==nil or e(R)~="table"then
+local s=C(l)if s==nil or e(R)~="table"then
 return g
 end
 local n=R[s]if e(n)=="string"and n~=""then
@@ -170,14 +172,14 @@ local g,j=f.default_component,f.index_offset
 if e(j)~="number"or j%1~=0 then
 j=0
 end
-local D,v=f.first_is_main~=false,{}
+local E,v=f.first_is_main~=false,{}
 if e(M)=="table"then
 for N,s in ipairs(M)do
 if e(s)=="number"and s%1==0 and s>=0 then
-if N==1 and D then
+if N==1 and E then
 v[s]=i
 else
-local G=D and(N-1+j)or(N+j)if G>=1 then
+local G=E and(N-1+j)or(N+j)if G>=1 then
 v[s]=t..tostring(G)end
 end
 end
@@ -186,4 +188,4 @@ end
 return p.build_component_by_dp(v,g)
 end
 end
-return z
+return A

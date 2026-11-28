@@ -72,7 +72,21 @@ local centralite_thermostat = build_thermostat("thermostats-centralite-thermosta
   cooling = true,
   fan = true,
 })
-local schneider_room_thermostat = build_thermostat("thermostats-schneider-room-thermostat-pending", {
+ for _, mapping in ipairs(centralite_thermostat.zcl_clusters) do
+  if mapping.name == "fan_mode" then
+    mapping.emit = function(_, value)
+      return capabilities.airConditionerFanMode.fanMode(value)
+    end
+  end
+end
+centralite_thermostat.capability_commands = {
+  { capability_id = "airConditionerFanMode", command_name = "setFanMode", mapping_name = "fan_mode", argument_name = "fanMode" },
+}
+centralite_thermostat.runtime_start = function(device)
+  device:emit_component_event({ id = "main" }, capabilities.airConditionerFanMode.supportedAcFanModes(
+    { "auto", "on" }, { visibility = { displayed = false } }
+  ))
+end local schneider_room_thermostat = build_thermostat("thermostats-schneider-room-thermostat-pending", {
   battery = true,
   battery_scale = 1,
   battery_voltage = true,
@@ -166,7 +180,8 @@ register(centralite_thermostat, {
 
 register(thermostat, {
   fp("Danfoss", "devi_f"),
-  fp("Sinopé", "TH1320ZB-04"),
+  fp( "devi", "devi_f"),
+  fp( "Sinopé", "TH1320ZB-04"),
   fp("computime", "PUMM01102"),
 })
 
@@ -202,7 +217,7 @@ register(salus_fcu_thermostat, {
 zcl.attach_reporting_capabilities(device_definitions, {
   {1, "rpt-sxb"},
   {2, "rpt-sxb"},
-  {3, "rpt-zjo"},
+  {3, "rpt-zjoj"},
   {4, "rpt-dsh"},
   {5, "rpt-tza"},
   {6, "rpt-tpd"},

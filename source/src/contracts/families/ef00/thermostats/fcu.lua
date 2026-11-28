@@ -74,7 +74,7 @@ local thermostat_bac003 = {
     emit = emit.bac003TempCalibration(),
   }),
   bac003_fan_mode,
-  tuya.dp_child_lock(40, { emit = emit.bac003ChildLock() }),
+  tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.bac003ChildLock() }),
 }
 register_device_definition(thermostat_bac003, ef00_helpers.ts0601_fingerprints( {
   "_TZE200_dzuqwsyg",
@@ -94,30 +94,42 @@ local l2_fan_mode = tuya.dp_fan_mode(49, {
 })
 local thermostat_l2_t_f_mf = {
   profile = "thermostats-fcu-thermostat-l2-t-f-mf",
-  tuya.dp_on_off(1, { name = "state" }),
-  tuya.dp_system_mode(2, {
-    converter = converter.lookup_from_to({
+   named_mapping = {
+    named_mappings = {
+      system_mode = power_mode_write (1, 2, {
       cool = 0,
       heat = 1,
-      fanonly = 2,
+      fanonly = 2 }),
+    },
+  },
+  tuya.dp_binary(1, {
+    name = "state",
+    from_device = power_mode_from_device("l2_power", "l2_mode", "fanonly"),
+    emit = emit.thermostat_mode(),
+  }),
+  tuya.dp_system_mode(2, {
+    read_only = true,
+    from_device = enum_mode_from_device("l2_power", "l2_mode", {
+      [0] = "cool", [1] = "heat", [2] = "fanonly" ,
     }),
     emit = emit.thermostat_mode(),
   }),
   tuya.dp_local_temperature(16, { scale = 10, emit = emit.temperature("C") }),
   tuya.dp_min_temperature_limit(18, { scale = 10, emit = emit.l2tfMinTemperatureLimit() }),
   tuya.dp_max_temperature_limit(34, { scale = 10, emit = emit.l2tfMaxTemperatureLimit() }),
-  tuya.dp_child_lock(39, { emit = emit.l2tfChildLock() }),
+  tuya.dp_child_lock(39, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.l2tfChildLock() }),
   l2_fan_mode,
-  tuya.dp_current_heating_setpoint(50, { scale = 10 }),
+  tuya.dp_current_heating_setpoint(50, {  emit = emit.heating_setpoint("C"), scale = 10 }),
   tuya.dp_numeric(101, { name = "display_brightness", emit = emit.screenBrightnessL2TFMfLevel9() }),
   tuya.dp_local_temperature_calibration(102, { scale = 1, emit = emit.l2tfLocalTempCalibration() }),
   tuya.dp_deadzone_temperature(104, { scale = 10, emit = emit.l2tfDeadzoneTemperature() }),
   tuya.dp_eco_temperature(107, {
     name = "eco_temperature_heating",
-    emit = emit.l2tfEcoTemperatureHeating(),
+     scale = 1, emit = emit.l2tfEcoTemperatureHeating(),
   }),
   tuya.dp_eco_temperature(109, {
-    name = "eco_temperature_cooling",
+    name = "eco_temperature_cooling" ,
+    scale = 1 ,
     emit = emit.l2tfEcoTemperatureCooling(),
   }),
 }
@@ -138,14 +150,14 @@ local ac_system_mode = converter.lookup_from_to({
 local thermostat_aetz01_ac = {
   profile = "thermostats-fcu-thermostat-aetz01-ac",
   tuya.dp_on_off(1, { name = "state", emit = emit.switch() }),
-  tuya.dp_current_heating_setpoint(2, { scale = 1 }),
-  tuya.dp_local_temperature(3, { scale = 1 }),
-  tuya.dp_system_mode(4, { converter = ac_system_mode }),
+  tuya.dp_current_heating_setpoint(2, {  emit = emit.heating_setpoint("C"), scale = 1 }),
+  tuya.dp_local_temperature(3, {  emit = emit.temperature("C"), scale = 1 }),
+  tuya.dp_system_mode(4, {  emit = emit.thermostat_mode(), converter = ac_system_mode }),
   tuya.dp_fan_mode(5, { converter = ac_fan_mode, emit = emit.fan_mode() }),
-  tuya.dp_binary(25, { name = "sleep", emit = emit.snfdSleep() }),
-  tuya.dp_binary(30, { name = "swing_mode", emit = emit.snfdSwingMode() }),
-  tuya.dp_binary(102, { name = "turbo", emit = emit.snfdTurbo() }),
-  tuya.dp_binary(103, { name = "quiet", emit = emit.snfdQuiet() }),
+  tuya.dp_binary(25, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "sleep", emit = emit.snfdSleep() }),
+  tuya.dp_binary(30, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "swing_mode", emit = emit.snfdSwingMode() }),
+  tuya.dp_binary(102, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "turbo", emit = emit.snfdTurbo() }),
+  tuya.dp_binary(103, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "quiet", emit = emit.snfdQuiet() }),
   -- Z2M reads DP116 and DP117 raw (tuya.ts:25252), not scaled.
   tuya.dp_power(116, { name = "power", scale = 1, emit = emit.power() }),
   tuya.dp_energy(117, { name = "energy", scale = 1, emit = emit.energy() }),
@@ -178,7 +190,7 @@ local function acmelec_definition(profile, child_lock_emit, extra)
     tuya.dp_system_mode(2, { converter = acmelec_system_mode, emit = emit.thermostat_mode() }),
     tuya.dp_current_heating_setpoint(16, { scale = 1, emit = emit.heating_setpoint("C") }),
     tuya.dp_fan_mode(28, { converter = acmelec_fan_mode, emit = emit.fan_mode() }),
-    tuya.dp_child_lock(40, { emit = child_lock_emit }),
+    tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = child_lock_emit }),
   }
   for _, mapping in ipairs(extra or {}) do
     definition[#definition + 1] = mapping
@@ -270,7 +282,7 @@ local thermostat_xz_akt101 = {
     emit = emit.temperature("C"),
   }),
   xz_akt101_fan_mode,
-  tuya.dp_child_lock(40, { emit = emit.xzakt101ChildLock() }),
+  tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.xzakt101ChildLock() }),
   -- Z2M XZ-AKT101 (tuya.ts:23187) reads DP101 as boost hours divided by ten.
   tuya.dp_numeric(101, {
     name = "boost_time",
@@ -326,14 +338,18 @@ local thermostat_tybac006 = {
     emit = emit.thermostat_mode(),
     read_only = true,
   }),
-  tuya.dp_eco_mode(4, { emit = emit.tybacEcoMode() }),
+  tuya.dp_eco_mode(4, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), emit = emit.tybacEcoMode() }),
   tybac_setpoint,
   tuya.dp_max_temperature_limit(19, { scale = 10, emit = emit.maxTempLimitTybacCToThirty() }),
   tuya.dp_local_temperature(24, { scale = 10, emit = emit.temperature("C") }),
   tuya.dp_min_temperature_limit(26, { scale = 10, emit = emit.minTempLimitTybacCToThirty() }),
   -- Z2M TYBAC-006 (tuya.ts:18808) reads DP27 through localTemperatureCalibration
   -- and DP103 raw.
-  tuya.dp_local_temperature_calibration(27, { scale = 1, emit = emit.tybacTempCalibration() }),
+  tuya. dp_numeric (27, {  name  =  "local_temperature_calibration",
+    converter = converter.from_to(
+      function(value) return value > 4000 and value - 4096 or value end,
+      function(value) return value < 0 and 4096 + value or value end
+    ) , emit = emit.tybacTempCalibration()  , }),
   tybac_fan_mode,
   tuya.dp_binary(36, {
     name = "valve",
@@ -341,7 +357,7 @@ local thermostat_tybac006 = {
     emit = emit.tybacValve(),
     converter = converter.lookup_from_to({ open = false, close = true }),
   }),
-  tuya.dp_child_lock(40, { emit = emit.tybacChildLock() }),
+  tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.tybacChildLock() }),
   tuya.dp_binary(101, {
     name = "manual_mode",
     converter = converter.lookup_from_to({ on = true, off = false }),
@@ -418,20 +434,20 @@ local thermostat_hhst001 = {
     emit = emit.hhstMinTemperature(),
   }),
   hhst_fan_mode,
-  tuya.dp_child_lock(40, { emit = emit.hhstChildLock() }),
+  tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.hhstChildLock() }),
   tuya.dp_temperature_unit(46, {
     name = "temperature_scale",
     emit = emit.hhstTemperatureScale(),
   }),
   tuya.dp_binary(101, {
-    name = "manual_mode",
+     datatype = tuya.DP_TYPE_ENUM, name = "manual_mode",
     converter = converter.lookup_from_to({ auto = 0, manual = 1, temporary = 2 }),
     emit = emit.manualModeHhstAutoManualTemp(),
   }),
   -- Z2M reads DP102 with divideBy10 (tuya.ts:21883) and DP104 raw.
   tuya.dp_local_temperature_calibration(102, { scale = 10, emit = emit.hhstTempCalibration() }),
   tuya.dp_deadzone_temperature(104, { scale = 1, emit = emit.hhstDeadzoneTemperature() }),
-  tuya.dp_humidity(113, { emit = emit.humidity() }),
+  tuya.dp_humidity(113, {  scale = 1, emit = emit.humidity() }),
 }
 register_device_definition(thermostat_hhst001, ef00_helpers.ts0601_fingerprints( {
   "_TZE204_q12rv9gj",
@@ -500,8 +516,12 @@ local thermostat_xixlazkg = {
       return (value == false or value == 0) and "low" or "normal"
     end),
   }),
-  tuya.dp_child_lock(40, { emit = emit.xixlChildLock() }),
-  tuya.dp_local_temperature_calibration(44, { scale = 10, emit = emit.xixlTempCalibration() }),
+  tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.xixlChildLock() }),
+  tuya. dp_numeric (44, {  name  =  "local_temperature_calibration",
+    converter = converter.from_to(
+      function(value) return value > 4000 and value - 4096 or value end,
+      function(value) return value < 0 and 4096 + value or value end
+    ) , emit = emit.xixlTempCalibration()  , }),
   tuya.dp_numeric(45, { name = "error", read_only = true, emit = emit.xixlError() }),
 }
 register_device_definition(thermostat_xixlazkg, ef00_helpers.ts0601_fingerprints( {

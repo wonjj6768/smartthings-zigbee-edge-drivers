@@ -69,7 +69,7 @@ end
 profile="sensors-smartthings-tagv4-core",magic_packet=false,parent_refresh=function()end,
 zcl_clusters={c.cluster_attribute(15,85,{name="tagv4_heartbeat",endpoint=1,data_type=f.Boolean,read_only=true,read_on_configure=false,minimum_interval=10,maximum_interval=60,reportable_change=true,
 emit=function(b)
-local aa="tagv4_presence_timer";local cu=b:get_field(aa)if cu then cu:cancel()end
+local aa="tagv4_presence_timer";local cu=b:get_field(aa)if cu then b.thread:cancel_timer(cu)end
 b:set_field(aa,b.thread:call_with_delay(100,function()
 b:set_field(aa,nil);b:emit_event(j.presence()(b,false))
 end,"Tagv4 absent"))
@@ -136,7 +136,7 @@ if type(a)=="table"then a=a.value end
 return(a&1)~=0
 end,handler=function(b,_,context)
 if context.command_id~=0 then return end
-local aa="ts0210_core_clear_timer"local cu=b:get_field(aa)if cu then cu:cancel()end
+local aa="ts0210_core_clear_timer"local cu=b:get_field(aa)if cu then b.thread:cancel_timer(cu)end
 b:set_field(aa,b.thread:call_with_delay(90,function()
 b:set_field(aa,nil)b:emit_event(j.acceleration()(b,false))
 end,"TS0210 clear"))
@@ -383,7 +383,7 @@ end})
 local function bi()
 local w=t(false)
 w.emit=function(b,a)
-local G=b:get_field"__imou_motion_timer"if G then G:cancel()end
+local G=b:get_field"__imou_motion_timer"if G then b.thread:cancel_timer(G)end
 b:set_field("__imou_motion_timer",b.thread:call_with_delay(90,function()
 b:set_field("__imou_motion_timer",nil)b:emit_event(d.motionSensor.motion.inactive())
 end,"Motion reset"))
@@ -516,7 +516,7 @@ if context.command_id~=66 then return nil end
 local cF,cB,G=bp.on_off_control.value,bp.on_time.value/10,b:get_field"__tradfri_core_timer"
 
 if(cF&1)~=0 and not G then return nil end
-if G then G:cancel()end
+if G then b.thread:cancel_timer(G)end
 b:set_field("__tradfri_core_timer",nil)if cB~=0 then
 b:set_field("__tradfri_core_timer",b.thread:call_with_delay(cB,function()
 b:set_field("__tradfri_core_timer",nil)b:emit_event(d.motionSensor.motion.inactive())
@@ -724,7 +724,7 @@ end,
 emit=function(b,a,context)
 if context.command_id~=0 then return nil end
 local aa="__konke_motion_timer_"..context.src_endpoint
-local G=b:get_field(aa)if G then G:cancel()end
+local G=b:get_field(aa)if G then b.thread:cancel_timer(G)end
 b:set_field(aa,b.thread:call_with_delay(90,function()
 b:set_field(aa,nil)b:emit_event(d.motionSensor.motion.inactive())
 end,"Motion reset"))

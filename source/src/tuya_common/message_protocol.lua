@@ -283,7 +283,7 @@ build_value_bytes = function(datatype, value, signed)
     end
 
     local int_value = math_floor(value + 0.5)
-    if signed then
+    if signed or int_value < 0 then
       if int_value < -0x80000000 then int_value = -0x80000000 end
       if int_value > 0x7FFFFFFF then int_value = 0x7FFFFFFF end
       if int_value < 0 then
@@ -370,6 +370,7 @@ parse_value = function(datatype, value_bytes)
     log.warn(string.format("Tuya BOOL payload expects 0x00 or 0x01, got %s", tostring(bool_value)))
     return nil
   elseif datatype == DP_TYPE_VALUE then
+    if #value_bytes == 4 then return parse_int(value_bytes) end
     return parse_uint(value_bytes)
   elseif datatype == DP_TYPE_ENUM then
     return string_byte(value_bytes, 1)

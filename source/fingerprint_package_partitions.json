@@ -844,6 +844,17 @@
       "auditEvidence": "analysis/z2m_absorption_internal_audit/sonoff_easy_sensors_internal_audit.md#fingerprint-only-exact-aliases"
     },
     {
+      "manufacturer": "devi",
+      "manufacturerUtf8Hex": "64657669",
+      "model": "devi_f",
+      "modelUtf8Hex": "646576695f66",
+      "owner": "zcl-sensors-wonjj6768",
+      "catalogId": "zcl.sensors",
+      "catalogModule": "contracts.families.zcl.sensors",
+      "profile": "thermostats-thermostat",
+      "auditEvidence": "analysis/confirmed_audit_20261128.md#devi-manufacturer"
+    },
+    {
       "manufacturer": "_TZE28C1000000_i8sdouy0",
       "manufacturerUtf8Hex": "5f545a45323843313030303030305f693873646f757930",
       "model": "TS0601",
@@ -15291,11 +15302,11 @@
     "newPackageCount": 28,
     "newCatalogCount": 116,
     "newExactCount": 992,
-    "fingerprintOnlyAliasCount": 124,
+    "fingerprintOnlyAliasCount": 125,
     "newFamilyExactCount": 6,
     "failClosedExactCount": 0,
     "restoredLegacyExactCount": 5,
-    "runtimeExactCount": 4397,
+    "runtimeExactCount": 4398,
     "movedCatalogCount": 62,
     "movedExactCount": 540,
     "historicalPartitionCount": 17

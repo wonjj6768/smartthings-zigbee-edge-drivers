@@ -334,7 +334,7 @@ local R = {
       from_device = function(b)
         b = type(b) == "table" and b.value or b
         local button = ({ [2] = 1, [4] = 2, [8] = 3, [16] = 4,
-          [32] = 5, [64] = 6, [128] = 7, [256] = 8 })[bit32.band(b, 510)]
+          [32] = 5, [64] = 6, [128] = 7, [256] = 8 })[((b) & (510))]
         if button == nil then return nil end
         return { component = "button" .. button, action = b % 2 == 1 and "held" or "pushed" }
       end,

@@ -211,7 +211,7 @@ function tuya.stop_query_timer(device)
   local timer = device:get_field(QUERY_INTERVAL_TIMER_FIELD)
   if timer and timer.cancel then
     pcall(function()
-      timer:cancel()
+      device.thread:cancel_timer(timer)
     end)
   end
 

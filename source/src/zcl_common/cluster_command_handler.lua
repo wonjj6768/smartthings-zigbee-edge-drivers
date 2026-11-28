@@ -882,7 +882,12 @@ local function load_cluster_command_handler(zcl)
       if zcl_body.value ~= nil then
         raw_value = zcl_body.value.value or zcl_body.value
       elseif type(zcl_body.body_bytes) == "string" and #zcl_body.body_bytes >= 1 then
-        raw_value = string.byte(zcl_body.body_bytes, 1)
+  -- BUILD_FEATURE zcl_dynamic_commands BEGIN
+  -- COMMAND_SURFACE tuya_value_offset
+        raw_value = string.byte(zcl_body.body_bytes, preset.tuya_action_value_offset or 1)
+  -- BUILD_FEATURE zcl_dynamic_commands FALLBACK
+        --| raw_value = string.byte(zcl_body.body_bytes, 1)
+  -- BUILD_FEATURE zcl_dynamic_commands END
       end
     end
 
@@ -892,7 +897,7 @@ local function load_cluster_command_handler(zcl)
       local scene_key = type(preset.scene_action_map) == "table" and (preset.scene_action_map[src_endpoint] or preset.scene_action_map[raw_value]) or src_endpoint or raw_value
       if scene_key ~= nil then
         local action_name_map = type(preset.scene_action_name_map) == "table" and preset.scene_action_name_map or nil
-        local action = type(action_name_map) == "table" and action_name_map[scene_key] or nil
+        local action = type(action_name_map) == "table" and (action_name_map[src_endpoint] or action_name_map[scene_key]) or nil
         if type(action) ~= "string" or action == "" then
           action = "scene_" .. tostring(scene_key)
         end

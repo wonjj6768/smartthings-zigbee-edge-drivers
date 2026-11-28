@@ -148,14 +148,15 @@ end
 
 local function bit_state(mask, active, clear)
   return converter.from_only(function(value)
-    return bit32.band(tonumber(value) or 0, mask) ~= 0 and active or clear
+    return  ( (tonumber(value) or 0 ) & (  mask ) ) ~= 0 and active or clear
   end)
 end
 
 local immax = lifecycle("thermostats-wave19-immax-07703l", {
   tuya.dp_binary(1, {
     name = "immax_trv_power_mode_report", read_only = true,
-    from_device = function(value) return bool(value) and nil or "off" end,
+    from_device = function(value)  if not  bool(value)  then return "off" end
+      return  nil  end,
     emit = emit.thermostat_mode(),
   }),
   tuya.dp_bitmap(13, { name = "immax_trv_high_temperature", read_only = true, converter = bit_state(0x01, "ON", "OFF") }),

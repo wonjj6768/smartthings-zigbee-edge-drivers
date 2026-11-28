@@ -3,6 +3,9 @@ local device_helpers = require "contracts.helpers.family"
 local emit = require "capabilities.events.all"
 local device_management = require "st.zigbee.device_management"
 local data_types = require "st.zigbee.data_types"
+local tuya_dimmer_brightness = require "contracts.helpers.tuya_dimmer_brightness"
+local tuya_dimmer_minimum = require "contracts.helpers.tuya_dimmer_minimum"
+local tuya_dimmer_settings = require "contracts.helpers.tuya_dimmer_settings"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -192,6 +195,9 @@ local single_min = build_single_dimmer("lights-dimmer-ts110-min", { min_brightne
 local dual_power_switch_minmax = build_dual_dimmer("lights-dimmer-2-options-ts110", {
   power_on_behavior = true, switch_type = true, min_brightness = true, max_brightness = true,
 })
+local dual_tuya_power_switch_minmax = build_dual_dimmer("lights-ts110e-dual-f0", {
+  power_on_behavior = true, switch_type = true, min_brightness = true, max_brightness = true,
+})
 local dual_power_switch = build_dual_dimmer("lights-dimmer-2-ts110-power-switch", {
   power_on_behavior = true, switch_type = true,
 })
@@ -259,7 +265,7 @@ register_device_definition(dual_power_switch_minmax, device_helpers.create_finge
   "_TZ3210_wdexaypg",
 }))
 
-register_device_definition(dual_power_switch_minmax, device_helpers.create_fingerprints("TS110E", {
+register_device_definition(dual_tuya_power_switch_minmax, device_helpers.create_fingerprints("TS110E", {
   "_TZ3210_pagajpog",
   "_TZ3210_4ubylghk",
   "_TZ3210_vfwhhldz",
@@ -281,13 +287,17 @@ register_device_definition(dual_power_switch_min, device_helpers.create_fingerpr
   "_TZ3000_sfibawtr",
 }))
 
+tuya_dimmer_brightness.apply(device_definitions)
+tuya_dimmer_minimum.apply(device_definitions)
+tuya_dimmer_settings.apply(device_definitions)
+
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(device_definitions, {
   {1, "rpt-tmf"},
   {2, "rpt-tww", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
   {3, "rpt-tif", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
-  {4, "rpt-tmj"},
-  {5, "rpt-tzm", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
+  {4, "rpt-tmjp"},
+  {5, "rpt-tjg", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
   {6, "rpt-twd"},
   {7, "rpt-twk"},
   {8, "rpt-txs"},
@@ -296,7 +306,7 @@ zcl.attach_reporting_capabilities(device_definitions, {
   {11, "rpt-tqn"},
   {12, "rpt-txw"},
   {13, "rpt-tcs", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
-  {14, "rpt-tcs", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
+  {14, "rpt-taw", {zr000600001 = "Switch", zr000600002 = "SwitchTwo"}},
   {15, "rpt-tvt", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
   {16, "rpt-tjg", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},
   {17, "rpt-tslv", {zr000600001 = "Switch", zr000600002 = "SwitchTwo", zr000800001 = "Level", zr000800002 = "LevelTwo"}},

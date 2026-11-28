@@ -211,7 +211,7 @@ local smartthings_tagv4_core = {
       read_only=true,read_on_configure=false,minimum_interval=10,maximum_interval=60,reportable_change=true,
       emit=function(device)
         local key="tagv4_presence_timer";local old=device:get_field(key)
-        if old then old:cancel() end
+        if old then device.thread:cancel_timer(old) end
         device:set_field(key,device.thread:call_with_delay(100,function()
           device:set_field(key,nil);device:emit_event(emit.presence()(device,false))
         end,"Tagv4 absent"))
@@ -314,7 +314,7 @@ local tuya_ts0210_vibration_core = {
       if context.command_id~=0 then return end
       local key="ts0210_core_clear_timer"
       local old=device:get_field(key)
-      if old then old:cancel() end
+      if old then device.thread:cancel_timer(old) end
       device:set_field(key,device.thread:call_with_delay(90,function()
         device:set_field(key,nil)
         device:emit_event(emit.acceleration()(device,false))
@@ -835,7 +835,7 @@ local function imou_motion_mapping()
   local mapping=motion_mapping(false)
   mapping.emit=function(device,value)
     local previous=device:get_field("__imou_motion_timer")
-    if previous then previous:cancel() end
+    if previous then device.thread:cancel_timer(previous) end
     device:set_field("__imou_motion_timer",device.thread:call_with_delay(90,function()
       device:set_field("__imou_motion_timer",nil)
       device:emit_event(capabilities.motionSensor.motion.inactive())
@@ -1194,7 +1194,7 @@ local ikea_tradfri_motion_core = {
         local timeout=body.on_time.value/10
         local previous=device:get_field("__tradfri_core_timer")
         if (control & 1)~=0 and not previous then return nil end
-        if previous then previous:cancel() end
+        if previous then device.thread:cancel_timer(previous) end
         device:set_field("__tradfri_core_timer",nil)
         if timeout~=0 then
           device:set_field("__tradfri_core_timer",device.thread:call_with_delay(timeout,function()
@@ -1604,7 +1604,7 @@ local konke_kkbsj01w_core = {
         if context.command_id~=0 then return nil end
         local key="__konke_motion_timer_"..context.src_endpoint
         local previous=device:get_field(key)
-        if previous then previous:cancel() end
+        if previous then device.thread:cancel_timer(previous) end
         device:set_field(key,device.thread:call_with_delay(90,function()
           device:set_field(key,nil)
           device:emit_event(capabilities.motionSensor.motion.inactive())

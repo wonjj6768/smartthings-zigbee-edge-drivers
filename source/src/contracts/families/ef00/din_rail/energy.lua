@@ -37,7 +37,7 @@ local din_rail_model_ts0601_din_1 = {
     emit = emit.din1TotalEnergy(),
   }),
   tuya.dp_energy(102, { name = "produced_energy", scale = 100, emit = emit.producedEnergyDin() }),
-  tuya.dp_power(103, { emit = emit.power() }),
+  tuya.dp_power(103, {  scale = 1, emit = emit.power() }),
   tuya.dp_ac_frequency(105, {
     scale = 100,
     read_only = true,
@@ -364,7 +364,10 @@ local din_rail_model_ts0601_rcbo = {
       read_only = true,
       emit = emit.temperature(),
     }),
-    tuya.dp_energy(113, { emit = emit.energy(), scale = 100, read_only = true }),
+    tuya.dp_energy(113, {
+      emit = emit.energy(), scale = 100, read_only = true,
+      from_device = function(value, _, datapoint) return (datapoint and datapoint.int_value or value) / 100 end,
+    }),
     tuya.dp_string(114, { name = "meter_number", read_only = true, emit = emit.zjsbl7MeterNumber(),
       from_device = function(value) return value:match("^%s*(.-)%s*$") end,
     }),
@@ -1072,10 +1075,14 @@ local din_rail_model_zbn_jt_63 = {
     name = "meter_id",
     read_only = true,
     emit = emit.zbnjt63MeterId(),
-    converter = converter.raw_identifier(),
+    converter = converter. from_only ( function(value)
+      if type(value) ~= "string" or #value < 4 then return nil end
+      local meter_id = string.unpack(">I4", value)
+      return tostring(meter_id)
+    end ),
   }),
   tuya.dp_power_outage_memory(23, {
-    name = "power_outage_memory",
+     datatype = tuya.DP_TYPE_VALUE, name = "power_outage_memory",
     emit = emit.zbnjt63PowerOutageMemory(),
     converter = converter.lookup_from_to({ on = 0, off = 1, restore = 2 }),
   }),

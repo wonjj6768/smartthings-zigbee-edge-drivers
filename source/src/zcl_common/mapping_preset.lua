@@ -1101,6 +1101,7 @@ local function load_mapping_preset(zcl)
     if configure_reporting == false then
       apply_defaults(resolved, {
         emit = emit.occupancy(),
+        converter = { from = function(value) return value == true or (type(value) == "number" and (value & 1) ~= 0) end },
         read_on_configure = true,
       })
       return zcl.occupancy_sensing(resolved)
@@ -1109,6 +1110,7 @@ local function load_mapping_preset(zcl)
     apply_defaults(resolved, merge_defaults(
       {
         emit = emit.occupancy(),
+        converter = { from = function(value) return value == true or (type(value) == "number" and (value & 1) ~= 0) end },
       },
       reporting_defaults(0, 300, nil)
     ))
@@ -1451,7 +1453,7 @@ local function load_mapping_preset(zcl)
       device:set_field(prefix .. mapping.name, value)
       local x, y = device:get_field(prefix .. "color_x"), device:get_field(prefix .. "color_y")
       local mode = device:get_field(prefix .. "color_mode")
-      if x ~= nil and y ~= nil and (mode == nil or mode == 0) then
+      if x ~= nil and y ~= nil and (mode == nil or mode == 1) then
         local hue, saturation = safe_xy_to_hsv(x, y)
         local component = context.component or { id = context.component_id or "main" }
         device:emit_component_event(component, emit.color_hue()(device, hue))

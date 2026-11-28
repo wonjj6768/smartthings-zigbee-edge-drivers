@@ -75,7 +75,7 @@ local function d(b)
 return type(b)=="table"and b.value or b
 end
 local function V(a,Q)
-local Z=a:get_field"__lumi_motion_timer"if Z then Z:cancel()end
+local Z=a:get_field"__lumi_motion_timer"if Z then a.thread:cancel_timer(Z)end
 a:set_field("__lumi_motion_timer",nil)if Q>0 then
 a:set_field("__lumi_motion_timer",a.thread:call_with_delay(Q,function()
 a:set_field("__lumi_motion_timer",nil)a:emit_event(e.motionSensor.motion.inactive())

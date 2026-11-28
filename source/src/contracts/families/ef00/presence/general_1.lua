@@ -34,7 +34,7 @@ local function start_hourly_hps_time_updates(device, preset)
     return false
   end
   local previous_timer = device:get_field(HPS_FORCE_TIME_FIELD)
-  if previous_timer ~= nil and type(previous_timer.cancel) == "function" then previous_timer:cancel() end
+  if previous_timer ~= nil and type(previous_timer.cancel) == "function" then  device.thread:cancel_timer( previous_timer) end
   local schedule_next
   schedule_next = function()
     local timer = device.thread:call_with_delay(HPS_FORCE_TIME_INTERVAL, function()
@@ -65,12 +65,12 @@ local presence_basic = {
     tuya.dp_presence(1, { emit = emit.presence(), read_only = true, converter = converter.true_false0() }),
     tuya.dp_battery(4, { emit = emit.battery(), read_only = true }),
     tuya.dp_enum(9, {
-      name = "sensitivity",
+       datatype = tuya.DP_TYPE_VALUE, name = "sensitivity",
       emit = emit.ihsenoPresenceSensitivity(),
       converter = converter.lookup_from_to({ low = 0, middle = 1, high = 2 }),
     }),
     tuya.dp_enum(10, {
-      name = "delay_time",
+       datatype = tuya.DP_TYPE_VALUE, name = "delay_time",
       emit = emit.ihsenoPresenceDelayTime(),
       converter = converter.lookup_from_to({ ["15s"] = 0, ["30s"] = 1, ["60s"] = 2 }),
     }),
@@ -155,7 +155,7 @@ local presence_model_zg204zx = {
       converter = on_off_bool_converter,
     }),
     tuya.dp_temperature_unit(109, {
-      emit = zg204zx_temperature_binding.unit_emitter,
+       datatype = tuya.DP_TYPE_VALUE, emit = zg204zx_temperature_binding.unit_emitter,
       converter = zg204zx_temperature_binding.converter,
     }),
     tuya.dp_battery(110, { emit = emit.battery(), read_only = true }),
@@ -228,7 +228,7 @@ local presence_model_mir_he200_ty = {
   tuya.dp_illuminance(103, { emit = emit.illuminance() }),
 
   tuya.dp_enum(105, {
-    name = "tumble_switch",
+     datatype = tuya.DP_TYPE_VALUE, name = "tumble_switch",
     emit = emit.mirhe200TumbleSwitch(),
     converter = tumble_switch_converter,
   }),
@@ -236,7 +236,7 @@ local presence_model_mir_he200_ty = {
   tuya.dp_numeric(106, { name = "tumble_alarm_time", emit = emit.mirhe200TumbleAlarmTime() }),
 
   tuya.dp_enum(112, {
-    name = "radar_scene",
+     datatype = tuya.DP_TYPE_VALUE, name = "radar_scene",
     emit = emit.mirhe200RadarScene(),
     converter = radar_scene_mir_converter,
   }),
@@ -287,7 +287,25 @@ register_presence_definition(presence_model_mir_he200_ty, ts0601_fingerprints({
 
   "_TZE200_jkbljri7",
 
-  "_TZE204_bvfld3xc",
+   }))
+
+
+
+local presence_model_zhps01_24g = {
+  profile = "safety-presence-zy-zhps01-24g",
+  package_group = "presence-general-1",
+  datapoints = {
+    tuya.dp_presence(101, {
+      name = "presence", read_only = true, emit = emit.presence(),
+      from_device = function(value)
+        if type(value) == "string" then value = string.byte(value, 1) end
+        return tonumber(value) == 0
+      end,
+    }),
+    tuya.dp_illuminance(12, { name = "illuminance", read_only = true, emit = emit.illuminance() }),
+  },
+}
+register_presence_definition(presence_model_zhps01_24g, ts0601_fingerprints({ "_TZE204_bvfld3xc"
 
 }))
 
@@ -585,7 +603,7 @@ local presence_model_msa201z = {
     tuya.dp_enum(110, {
       name = "sensitivity",
       emit = emit.msa201zSensitivity(),
-      converter = converter.lookup_from_to({ low = 0, medium = 1, high = 2 }),
+      converter = converter.lookup_from_to({ low =  3 , medium =  2 , high =  1  }),
     }),
 
     tuya.dp_binary(112, { name = "status_flip" }),
@@ -600,10 +618,10 @@ local presence_model_msa201z = {
 
     tuya.dp_numeric(115, { name = "daylight_threshold" }),
 
-    tuya.dp_enum(116, {
+    tuya. dp_numeric (116, {
       name = "sensor_mode",
       emit = emit.msa201zSensorMode(),
-      converter = converter.lookup_from_to({ presence = 0, motion = 1 }),
+      converter = converter.lookup_from_to({ presence =  1 , motion =  2  }),
     }),
 
     tuya.dp_binary(117, { name = "single_mode" }),
@@ -929,13 +947,13 @@ local presence_model_pj3201a = {
 
     -- Z2M maps DP106/DP107 with an inverted lookup: ON is wire false.
     tuya.dp_enum(106, {
-      name = "restore_factory",
+       datatype = tuya.DP_TYPE_BOOL, name = "restore_factory",
       emit = emit.pj3201aRestoreFactory(),
       converter = converter.lookup_from_to({ on = false, off = true }),
     }),
 
     tuya.dp_enum(107, {
-      name = "led_indicator",
+       datatype = tuya.DP_TYPE_BOOL, name = "led_indicator",
       emit = emit.pj3201aLedIndicator(),
       converter = converter.lookup_from_to({ on = false, off = true }),
     }),

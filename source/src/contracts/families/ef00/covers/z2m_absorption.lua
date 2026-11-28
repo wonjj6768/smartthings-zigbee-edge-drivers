@@ -104,10 +104,10 @@ local cover_model_gm25teq = {
     converter = window_shade_state_from_position_inverted(),
     read_only = true,
   }),
-  tuya.dp_numeric(11, {
+  tuya.dp_numeric(11, { datatype = tuya.DP_TYPE_ENUM,
     name = "motor_direction",
     emit = emit.gm25TeqMotorDirection(),
-    -- ZHC 26.107 sends VALUE; older firmware also reports textual direction.
+    -- ZHC 26.137 tubularMotorDirection writes ENUM; keep legacy VALUE/text RX.
     converter = converter.from_to(function(value)
       return (value == 1 or value == "back" or value == "reversed") and "reversed" or "normal"
     end, function(value)

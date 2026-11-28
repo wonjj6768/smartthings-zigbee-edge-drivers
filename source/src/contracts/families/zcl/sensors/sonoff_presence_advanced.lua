@@ -25,7 +25,7 @@ end
 local function occupancy_from_device(value)
   value = type(value) == "table" and value.value or value
   if type(value) ~= "number" then return nil end
-  return bit32.band(value, 0x01) ~= 0
+  return ((value) & (0x01)) ~= 0
 end
 
 local function passive_report(mapping)

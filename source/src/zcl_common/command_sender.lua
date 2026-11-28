@@ -108,8 +108,8 @@ local function load_command_sender(zcl)
   end
 
   local function encode_uint16_le(value)
-    return string.char(bit32.band(value, 0xFF))
-      .. string.char(bit32.rshift(bit32.band(value, 0xFF00), 8))
+    return string.char(value & 0xFF)
+      .. string.char((value & 0xFF00) >> 8)
   end
 
   local function clamp_encoded_for_write_type(encoded, write_type, meta)
@@ -168,6 +168,12 @@ local function load_command_sender(zcl)
     end
 
     if meta.prefer_plain_attribute_write == true then
+      return true
+    end
+
+    -- SDK dynamic attributes rebuild their scalar payload in :write().
+    -- Use the plain writer so a typed value is constructed exactly once.
+    if meta.attribute_def ~= nil and meta.attribute_def.cluster ~= nil then
       return true
     end
 

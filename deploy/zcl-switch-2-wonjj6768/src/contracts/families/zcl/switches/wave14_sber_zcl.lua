@@ -299,7 +299,7 @@ from_device=function(f)return 100-f end,
 emit=bV.shade_level(),sender=bt}))m(d,aN.cluster_attribute(h,ae,{name=c.."_cover_state_rx",endpoint=3,component="cover",read_only=true,data_type=e.Uint8,
 from_device=function(f)return f==100 and"closed"or"open"end,
 emit=bV.shade_state()}))m(d,aN.cluster_attribute(h,nil,{name="cover_state",endpoint=3,component="cover",write_only=true,sender=bL}))m(d,t(h,at,c.."_cover_mode",capability_prefix.."CoverMode",e.Bitmap8,{endpoint=3,component="cover",sender=z,
-from_device=function(f)return f%2==1 and"reversed"or"normal"end,
+from_device=function(f)if type(f)=="table"then f=f.value end return f%2==1 and"reversed"or"normal"end,
 to_device=function(f)return f=="reversed"and 1 or 0 end
 }))m(d,t(h,aF,c.."_calibration_time",capability_prefix.."CalibrationTime",e.Uint16,{endpoint=3,component="cover",mfg_code=g,sender=z,
 from_device=function(f)return f*0.1 end,
@@ -374,7 +374,7 @@ end
 local function bS()
 local c,capability_prefix,d,J="sber_202","sber202",{},{}m(d,aN.switch{endpoint=1,component="main",configure_reporting=false,read_on_configure=false})aH(d,J,c,capability_prefix,1,"main",3)aj(d,c,capability_prefix,1,"main")V(d,c,capability_prefix,1,"main",1,1,false)ak(d,c,capability_prefix,1,"main",false)for _,item in ipairs{{"EmergencyOvervoltage","emergency_overvoltage",1},{"EmergencyUndervoltage","emergency_undervoltage",2},{"EmergencyOvercurrent","emergency_overcurrent",4},{"EmergencyOverheat","emergency_overheat",8}}do
 m(d,y(bw,c.."_"..item[2],capability_prefix..item[1],e.Bitmap16,{endpoint=1,component="main",read_only=true,
-from_device=function(f)return bit32.band(f,item[3])~=0 and"active"or"clear"end
+from_device=function(f)return((f)&(item[3]))~=0 and"active"or"clear"end
 }))end
 m(d,aN.cluster_attribute(I,0,{name="device_temperature",endpoint=1,component="main",read_only=true,data_type=e.Int16,emit=bV.temperature"C"}))m(d,aN.cluster_attribute(k,aQ,{name="voltage",endpoint=1,component="main",read_only=true,mfg_code=g,data_type=e.Uint32,
 from_device=function(f)return f*0.001 end,emit=bV.voltage()

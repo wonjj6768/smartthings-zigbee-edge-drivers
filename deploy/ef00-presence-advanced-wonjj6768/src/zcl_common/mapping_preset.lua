@@ -6,8 +6,8 @@ d={}end
 if type(w)~="table"then
 return d
 end
-for A,b in pairs(w)do
-d[A]=b
+for A,a in pairs(w)do
+d[A]=a
 end
 return d
 end
@@ -15,42 +15,42 @@ local function e(d,k)
 if type(d)~="table"or type(k)~="table"then
 return d
 end
-for A,b in pairs(k)do
+for A,a in pairs(k)do
 if d[A]==nil then
-d[A]=b
+d[A]=a
 end
 end
 return d
 end
 local function i(c,t)
-local a={}if type(c)=="string"then
-a.name=c
+local b={}if type(c)=="string"then
+b.name=c
 else
-l(a,c)end
-l(a,t)return a
+l(b,c)end
+l(b,t)return b
 end
 local function s(z)
 return{
-from=function(b)
-if type(b)=="table"then
+from=function(a)
+if type(a)=="table"then
 if z==1 then
-if type(b.is_alarm1_set)=="function"and b:is_alarm1_set()then
+if type(a.is_alarm1_set)=="function"and a:is_alarm1_set()then
 return true
 end
-if type(b.is_alarm2_set)=="function"and b:is_alarm2_set()then
+if type(a.is_alarm2_set)=="function"and a:is_alarm2_set()then
 return true
 end
-elseif z==4 and type(b.is_tamper_set)=="function"then
-return b:is_tamper_set()elseif b.value~=nil then
-b=b.value
+elseif z==4 and type(a.is_tamper_set)=="function"then
+return a:is_tamper_set()elseif a.value~=nil then
+a=a.value
 else
-return b
+return a
 end
 end
-if type(b)~="number"then
-return b
+if type(a)~="number"then
+return a
 end
-return(b&z)~=0
+return(a&z)~=0
 end
 }
 end
@@ -70,15 +70,19 @@ e(v,k)end
 return v
 end
 B.occupancy=function(c,t)
-local a=i(c,t)local y,m=a.ias_zone==true,a.configure_reporting
+local b=i(c,t)local y,m=b.ias_zone==true,b.configure_reporting
 
-a.ias_zone=nil
-a.configure_reporting=nil
+b.ias_zone=nil
+b.configure_reporting=nil
 if y then
-e(a,j({name="occupancy",emit=x.occupancy(),converter=s(1),ias_configure_method=r.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=f},h(30,300,nil)))return B.ias_zone(a)end
+e(b,j({name="occupancy",emit=x.occupancy(),converter=s(1),ias_configure_method=r.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=f},h(30,300,nil)))return B.ias_zone(b)end
 if m==false then
-e(a,{emit=x.occupancy(),read_on_configure=true})return B.occupancy_sensing(a)end
-e(a,j({emit=x.occupancy()},h(0,300,nil)))return B.occupancy_sensing(a)
+e(b,{emit=x.occupancy(),
+converter={from=function(a)return a==true or(type(a)=="number"and(a&1)~=0)end},
+read_on_configure=true})return B.occupancy_sensing(b)end
+e(b,j({emit=x.occupancy(),
+converter={from=function(a)return a==true or(type(a)=="number"and(a&1)~=0)end}
+},h(0,300,nil)))return B.occupancy_sensing(b)
 end
 end
 return n

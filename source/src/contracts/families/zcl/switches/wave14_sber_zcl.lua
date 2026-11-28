@@ -720,7 +720,7 @@ local function dynamic_definition(model, profile, extras)
       endpoint = 3,
       component = "cover",
       sender = window_attribute_sender,
-      from_device = function(value) return value % 2 == 1 and "reversed" or "normal" end,
+      from_device = function(value)  if type(value) == "table" then value = value.value end return value % 2 == 1 and "reversed" or "normal" end,
       to_device = function(value) return value == "reversed" and 1 or 0 end,
     }
   ))
@@ -960,7 +960,7 @@ local function socket_definition()
         endpoint = 1,
         component = "main",
         read_only = true,
-        from_device = function(value) return bit32.band(value, item[3]) ~= 0 and "active" or "clear" end,
+        from_device = function(value) return  ( (value ) & (  item[3] ) ) ~= 0 and "active" or "clear" end,
       }
     ))
   end

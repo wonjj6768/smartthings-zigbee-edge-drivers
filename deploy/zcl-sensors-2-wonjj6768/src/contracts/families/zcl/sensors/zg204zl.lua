@@ -1,7 +1,7 @@
 local h,b=require"protocol.zcl",require"contracts.helpers.family"local d,i=b.definition_registry()local a={profile="zg204zl-ias-motion-battery",magic_packet=false,zcl_clusters={h.motion{endpoint=1,read_only=true,read_on_configure=false,
 from_device=function(c)
 if type(c)=="table"then c=c.value end
-return bit32.band(c,1)~=0
+return((c)&(1))~=0
 end
 },h.battery{endpoint=1,read_only=true,minimum_interval=3600,maximum_interval=65000,reportable_change=0,
 from_device=function(c,_,f)

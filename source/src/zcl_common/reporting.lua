@@ -230,6 +230,8 @@ function reporting.on_rx(zcl, device, rx)
     if rx.address_header.cluster.value ~= 0x0013 then return end
   else
     local header = rx.body.zcl_header
+    -- Non-ZCL APS profiles arrive as an SDK GenericBody, with no ZCL header.
+    if header == nil then return end
     if not header.frame_ctrl:is_cluster_specific_set() and header.cmd.value ~= 0x0A then return end
   end
   reporting.discard_unsupported(zcl, device)

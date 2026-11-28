@@ -58,16 +58,20 @@ local function sber_mapping(attribute, name, capability_id, data_type, options)
   return manufacturer_mapping(CLUSTER_SBER, attribute, name, capability_id, data_type, options)
 end
 
+local function  scalar(value)
+  return type(value) == "table" and value.value or value
+end
+
 local function active_bit(mask)
   return function(value)
-    return bit32.band(tonumber(value) or 0, mask) ~= 0 and "active" or "clear"
+    return  ( (tonumber( scalar( value ) ) or 0 ) & (  mask ) ) ~= 0 and "active" or "clear"
   end
 end
 
 local function lookup(from)
   local to = {}
   for raw, value in pairs(from) do to[value] = raw end
-  return function(value) return from[tonumber(value)] end,
+  return function(value) return from[tonumber( scalar( value ) )] end,
     function(value) return to[value] end
 end
 
@@ -180,9 +184,9 @@ local function weekly_response(day_mask)
     local day = zcl_body and scalar(zcl_body.day_of_week) or nil
     local mode = zcl_body and scalar(zcl_body.mode) or nil
     local parsed = zcl_body and zcl_body.transitions_list or nil
-    if count ~= nil and day ~= nil and mode ~= nil and type(parsed) == "table" then
-      if count % 1 ~= 0 or count < 0 or count > 10 or bit32.band(day, day_mask) == 0
-        or bit32.band(mode, 0x01) == 0 or count > #parsed then return nil end
+     if count == 0 and parsed == nil then parsed = {} end if count ~= nil and day ~= nil and mode ~= nil and type(parsed) == "table" then
+      if count % 1 ~= 0 or count < 0 or count > 10 or  ( (day ) & (  day_mask ) ) == 0
+        or  ( (mode ) & (  0x01 ) ) == 0 or count > #parsed then return nil end
       for index = 1, count do
         local transition = parsed[index]
         local minutes = transition and scalar(transition.transition_time) or nil
@@ -196,10 +200,10 @@ local function weekly_response(day_mask)
     else
       -- Retain a raw-body fallback for runtimes which have not decoded command 0x00.
       local body = zcl_body and zcl_body.body_bytes or nil
-      if type(body) ~= "string" or #body < 3 or bit32.band(string.byte(body, 2), day_mask) == 0 then return nil end
+      if type(body) ~= "string" or #body < 3 or  ( (string.byte(body, 2) ) & (  day_mask ) ) == 0 then return nil end
       count = string.byte(body, 1)
       mode = string.byte(body, 3)
-      if count > 10 or bit32.band(mode, 0x01) == 0 or #body < 3 + count * 4 then return nil end
+      if count > 10 or  ( (mode ) & (  0x01 ) ) == 0 or #body < 3 + count * 4 then return nil end
       for index = 0, count - 1 do
         local offset = 4 + index * 4
         local minutes = string.byte(body, offset) + string.byte(body, offset + 1) * 0x100
@@ -271,7 +275,7 @@ append(mappings, zcl.cluster_attribute(CLUSTER_THERMOSTAT, 0x001C, {
 append(mappings, zcl.cluster_attribute(CLUSTER_THERMOSTAT, 0x0029, {
   name = "thermostat_operating_state", endpoint = 1, read_only = true,
   emit = emit.thermostat_operating_state(), data_type = data_types.Bitmap16,
-  from_device = function(value) return bit32.band(tonumber(value) or 0, 0x01) ~= 0 and "heating" or "idle" end,
+  from_device = function(value) return  ( (tonumber( scalar( value ) ) or 0 ) & (  0x01 ) ) ~= 0 and "heating" or "idle" end,
   read_on_configure = false,
 }))
 append(mappings, mapping(CLUSTER_THERMOSTAT, 0x0010, "sber_therm_local_calibration", "sber205Calibration", data_types.Int8, {
@@ -317,7 +321,7 @@ commands[#commands + 1] = {
 for index, day in ipairs(DAYS) do
   local name = "sber_therm_" .. day[2] .. "_schedule"
   append(mappings, zcl.cluster_attribute(CLUSTER_THERMOSTAT, 0xF200 + index, {
-    name = name, endpoint = 1, emit = custom("sberTherm" .. day[1] .. "Schedule"),
+    name = name, endpoint = 1, emit =  emit[ "sberTherm" .. day[1] .. "Schedule" ]({ allow_empty = true } ),
     read_only = false, data_type = data_types.CharString, write_type = data_types.CharString,
     sender = weekly_sender(day[3]), command_id = 0x00,
     command_extractor = weekly_response(day[3]), read_on_configure = false,

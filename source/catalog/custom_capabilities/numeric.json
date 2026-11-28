@@ -369,6 +369,15 @@
     "A"
   ],
   [
+    "ts011fDinOverVoltageThreshold",
+    true,
+    "ts011f_din_over_voltage_threshold",
+    90,
+    265,
+    1,
+    "V"
+  ],
+  [
     "ts011fDinUnderVoltageThreshold",
     true,
     "ts011f_din_under_voltage_threshold",
@@ -20851,5 +20860,32 @@
     null,
     null,
     "kPa"
+  ],
+  [
+    "floorSixDeadzoneTemperature",
+    true,
+    "deadzone_temperature",
+    0.5,
+    5,
+    0.5,
+    "C"
+  ],
+  [
+    "floorSixDeviceTemperature",
+    false,
+    "device_temperature",
+    -50,
+    120,
+    0.1,
+    "C"
+  ],
+  [
+    "poBocoTempCalibration",
+    true,
+    "local_temperature_calibration",
+    -5.5,
+    5.5,
+    0.5,
+    "C"
   ]
 ]

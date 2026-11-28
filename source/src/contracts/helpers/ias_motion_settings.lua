@@ -42,7 +42,7 @@ function M.battery_alarm(emitter)
     read_only = true, read_on_configure = false, emit = emitter,
     from_device = function(value)
       if type(value) == "table" then value = value.value end
-      return bit32.band(value, 0x00F03C0F) ~= 0
+      return  ( (value ) & (  0x00F03C0F ) ) ~= 0
     end,
   })
 end
@@ -53,7 +53,7 @@ function M.keep_alive(emitter)
     if context.command_id ~= 0x00 then return end
     local key = "__ih012_rt01_keep_alive"
     local previous = device:get_field(key)
-    if previous then previous:cancel() end
+    if previous then  device.thread:cancel_timer( previous) end
     device:set_field(key, nil)
     if active then
       device:set_field(key, device.thread:call_with_delay(125, function()
@@ -80,7 +80,7 @@ function M.vibration_timeout(emitter)
     if context.command_id ~= 0x00 then return end
     local key = "__ts0210_vibration_timeout"
     local previous = device:get_field(key)
-    if previous then previous:cancel() end
+    if previous then  device.thread:cancel_timer( previous) end
     device:set_field(key, nil)
     local timeout = tonumber(device.preferences.vibrationTimeout) or 90
     if timeout > 0 then

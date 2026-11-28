@@ -1,6 +1,7 @@
 -- 스위치/아웃렛 디바이스 정의
 
 local zcl = require "protocol.zcl"
+local lumi_metering = require "contracts.helpers.lumi_metering"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local fps = device_helpers.create_fingerprints
@@ -1072,7 +1073,7 @@ register(zemismart_dual_outlet, fps("TS011F", {
   "_TZ3000_gazjngjl",
 }))
 
-register(metered_dual_plug, {
+register(lumi_metering.adapt(metered_dual_plug, false, "plugs-lumi-metering-two"), {
   fp("LUMI", "lumi.plug.acn005"),
   fp("LUMI", "lumi.plug.sacn03"),
 })

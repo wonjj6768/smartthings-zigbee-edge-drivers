@@ -1,6 +1,7 @@
 
 local zcl = require "protocol.zcl"
 local device_helpers = require "contracts.helpers.family"
+local nous_b4z = require "contracts.helpers.nous_b4z"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -11,10 +12,10 @@ local device_definitions, register_device_definition = device_helpers.definition
 local function standard_cover_position_converter()
   return {
     from = function(value)
-      if type(value) ~= "number" then
-        return value
+      if type(value) ~= "number"  or value < 0 or value > 100 then
+        return  nil 
       end
-      return 100 - math.max(0, math.min(100, value))
+      return 100 -  value
     end,
     to = function(value)
       if type(value) ~= "number" then
@@ -28,8 +29,8 @@ end
 local function standard_window_shade_state_converter()
   return {
     from = function(value)
-      if type(value) ~= "number" then
-        return value
+      if type(value) ~= "number"  or value < 0 or value > 100 then
+        return  nil 
       end
       if value <= 0 then
         return "open"
@@ -51,6 +52,8 @@ local ts130f_cover = {
     zcl.cover_state(),
   },
 }
+
+nous_b4z.apply(ts130f_cover)
 
 local ts130f_dual_cover = {
   profile = "covers-cover-2",

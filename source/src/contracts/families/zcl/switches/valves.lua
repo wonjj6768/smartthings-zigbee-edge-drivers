@@ -2,6 +2,7 @@ local zcl = require "protocol.zcl"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local device_management = require "st.zigbee.device_management"
+local tuya_dimmer_settings = require "contracts.helpers.tuya_dimmer_settings"
 
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
@@ -201,6 +202,8 @@ register_device_definition(lyai14_valve, device_helpers.create_fingerprints("TS0
 register_device_definition(multi_zone_valve, device_helpers.create_fingerprints("TS011F", {
   "_TZ3000_j0ktmul1",
 }))
+
+tuya_dimmer_settings.apply(device_definitions)
 
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(device_definitions, {

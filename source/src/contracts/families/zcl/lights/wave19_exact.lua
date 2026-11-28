@@ -116,7 +116,7 @@ local candeo = {
       write_type = data_types.Uint8,
       read_on_configure = true,
     }),
-    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0x0010, {
+    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 18, {
       name = "candeoRotaryDim_on_transition",
       endpoint = 1,
       emit = custom("candeoRotaryDimOnTransition"),
@@ -127,7 +127,7 @@ local candeo = {
       write_type = data_types.Uint16,
       read_on_configure = true,
     }),
-    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 0x0012, {
+    zcl.cluster_attribute(zcl.CLUSTER_LEVEL_CONTROL, 19, {
       name = "candeoRotaryDim_off_transition",
       endpoint = 1,
       emit = custom("candeoRotaryDimOffTransition"),

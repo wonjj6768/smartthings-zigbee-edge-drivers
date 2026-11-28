@@ -7,6 +7,12 @@ local converter = tuya.converter
 local emit_metric_bundle = din_common.emit_metric_bundle
 local device_definitions, register_device_definition = device_helpers.definition_registry()
 
+local function zwpm16_unsigned(divisor)
+  return function(value, _, datapoint)
+    return (datapoint and datapoint.int_value or value) / divisor
+  end
+end
+
 -- Z2M v26.99.0: AVATTO ZWPM16 single-line energy meter.
 local power_meter_model_zwpm16 = {
   profile = "meters-zwpm16",
@@ -17,21 +23,26 @@ local power_meter_model_zwpm16 = {
   refresh_state_query = false,
   tuya.dp_current(18, {
     emit = emit.current(), converter = converter.divide_by_pair(1000), read_only = true,
+    from_device = zwpm16_unsigned(1000),
   }),
   tuya.dp_power(19, {
     emit = emit.power(), converter = converter.divide_by_pair(10), read_only = true,
+    from_device = zwpm16_unsigned(10),
   }),
   tuya.dp_voltage(20, {
     emit = emit.voltage(), converter = converter.divide_by_pair(10), read_only = true,
+    from_device = zwpm16_unsigned(10),
   }),
   tuya.dp_energy(104, {
     emit = emit.energy(), converter = converter.divide_by_pair(1000), read_only = true,
+    from_device = zwpm16_unsigned(1000),
   }),
   tuya.dp_numeric(105, {
     name = "daily_energy",
     converter = converter.divide_by_pair(1000),
     read_only = true,
     emit = emit.zwpm16DailyEnergy(),
+    from_device = zwpm16_unsigned(1000),
   }),
   query_on_configure = false,
   time_start = "off",

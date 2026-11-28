@@ -142,7 +142,7 @@ local function lidl_color_payload(device, hue, saturation, brightness)
   local requested_hue = false
   local degrees = 360
   local hue_value = tonumber(hue)
-  if hue_value ~= nil and hue_value ~= 0 then
+  if hue_value ~= nil  then
     degrees = hue_value * 3.6
     requested_hue = true
   else
@@ -154,7 +154,7 @@ local function lidl_color_payload(device, hue, saturation, brightness)
 
   local saturation_value = tonumber(saturation)
   local saturation_raw = 1000
-  if saturation_value ~= nil and saturation_value ~= 0 then
+  if saturation_value ~= nil  then
     saturation_raw = round(clamp(saturation_value, 0, 100) * 10)
   else
     local latest_saturation = lidl_latest(
@@ -208,7 +208,8 @@ local function lidl_saturation_write(device, value)
 end
 
 local lidl_datapoints = {
-  tuya.dp_enum(2, { name = "lidl_change_mode", read_only = true, transaction = 1 }),
+  tuya. dp_on_off(1, { name = "switch", read_only = true, transaction = 1, emit = emit.switch() }),
+  tuya. dp_enum(2, { name = "lidl_change_mode", read_only = true, transaction = 1 }),
   tuya.dp_numeric(3, { name = "lidl_brightness_report", read_only = true, transaction = 1, converter = converter.from_only(lidl_white_brightness_from_device), emit = emit.level() }),
   tuya.dp_string(5, { name = "lidl_hue_report", read_only = true, transaction = 1, converter = converter.from_only(lidl_hue_from_device), emit = emit.color_hue() }),
   tuya.dp_string(5, { name = "lidl_saturation_report", read_only = true, transaction = 1, converter = converter.from_only(lidl_saturation_from_device), emit = emit.color_saturation() }),

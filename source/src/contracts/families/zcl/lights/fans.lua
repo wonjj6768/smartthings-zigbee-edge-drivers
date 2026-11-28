@@ -107,6 +107,22 @@ local ac_fan_controller = {
   end,
 }
 
+for _, mapping in ipairs(ac_fan_controller.zcl_clusters) do
+  if mapping.name == "fan_mode" then
+    mapping.emit = function(_, value)
+      return capabilities.airConditionerFanMode.fanMode(value)
+    end
+  end
+end
+ac_fan_controller.capability_commands = {
+  { capability_id = "airConditionerFanMode", command_name = "setFanMode", mapping_name = "fan_mode", argument_name = "fanMode" },
+}
+ac_fan_controller.runtime_start = function(device)
+  device:emit_component_event({ id = "main" }, capabilities.airConditionerFanMode.supportedAcFanModes(
+    { "off", "low", "medium", "high", "on" }, { visibility = { displayed = false } }
+  ))
+end
+
 register_device_definition(ac_fan_controller, device_helpers.create_fingerprints("TS0501", {
   "_TZ3210_lzqq3u4r",
   "_TZ3210_4whigl8i",
@@ -168,7 +184,7 @@ register_device_definition(fan_light_switch, device_helpers.create_fingerprints(
 
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(device_definitions, {
-  {1, "rpt-tse"},
+  {1, "rpt-tsee"},
   {2, "rpt-tmfs"},
 })
 -- ZCL REPORTING CAPABILITIES END

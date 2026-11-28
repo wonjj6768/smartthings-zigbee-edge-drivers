@@ -42,7 +42,7 @@ end
 local function schedule_vibration_clear(device, value)
   local previous = device:get_field(TIMER_FIELD)
   if previous ~= nil and type(previous.cancel) == "function" then
-    previous:cancel()
+    device.thread:cancel_timer(previous)
   end
   device:set_field(TIMER_FIELD, nil, { persist = false })
 
@@ -109,7 +109,7 @@ end
 local function schedule_ef00_vibration_clear(device, value)
   if value then return schedule_vibration_clear(device, value) end
   local previous = device:get_field(TIMER_FIELD)
-  if previous ~= nil and type(previous.cancel) == "function" then previous:cancel() end
+  if previous ~= nil and type(previous.cancel) == "function" then device.thread:cancel_timer(previous) end
   device:set_field(TIMER_FIELD, nil, { persist = false })
 end
 

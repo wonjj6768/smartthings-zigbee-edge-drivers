@@ -10,7 +10,7 @@ end
 local function j(k)
 k=type(k)=="table"and k.value or k
 if type(k)~="number"then return nil end
-return bit32.band(k,1)~=0
+return((k)&(1))~=0
 end
 local function n(g)
 g.minimum_interval=nil

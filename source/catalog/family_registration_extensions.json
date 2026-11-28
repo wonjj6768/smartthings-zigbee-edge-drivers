@@ -32,7 +32,7 @@
           "zcl"
         ]
       },
-      "dynamicEventMemberSha256": "c5182adede9fa0c2eb9797b6cc311bcbfdf92f65137e4be177c6f924fb764535"
+      "dynamicEventMemberSha256": "975bcf08f8f7a09e688c38c8b2e60392680ab8cf003c331c289ebd6dc7f18345"
     },
     "contracts.families.ef00.din_rail.meters_z2m_absorption": {
       "id": "ef00.din_rail.meters.z2m_absorption",
@@ -65,7 +65,7 @@
           "din_common"
         ]
       },
-      "dynamicEventMemberSha256": "19242ca090a5c343e5cf87979629ecf60afb3181726ee846a9b37623bb677b92"
+      "dynamicEventMemberSha256": "871f61ab3d1fef1088df8a814fc021618b3665218db604bdc7775d74b0e2b558"
     },
     "contracts.families.ef00.lights.z2m_absorption": {
       "id": "ef00.lights.z2m_absorption",
@@ -98,7 +98,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "b8b0b171cb5ad9b009ef0ac82c2353a1c1a5dce687051adccd432e96738cb171"
+      "dynamicEventMemberSha256": "a5b04275f49ba3edd6e4d04d627eb250d7025ff0661532c16794de668ca50442"
     },
     "contracts.families.ef00.presence.z2m_absorption": {
       "id": "ef00.presence.z2m_absorption",
@@ -164,7 +164,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "e556bbef4992c408a5a202f8cbd33a8c4e2abe1cb778caf4ac39e3cbce9f48c7"
+      "dynamicEventMemberSha256": "27ea2f50fb174ba70d62439760f9081a96c887bbc74e336576cb9bbbf9569b08"
     },
     "contracts.families.ef00.screen_switch_z2m_absorption": {
       "id": "ef00.screen_switch.z2m_absorption",
@@ -229,7 +229,7 @@
           "capabilities"
         ]
       },
-      "dynamicEventMemberSha256": "77993fe9ca056060ee6bfb9d278a81f153b76ce2b7f2d93e02d07ce5dff4ba76"
+      "dynamicEventMemberSha256": "9b621d28f2e321e5ee6fb1ac3f79e3c4963be58059291bfd61f87ebf35a8b9b5"
     },
     "contracts.families.ef00.switch_basic_z2m_absorption": {
       "id": "ef00.switch.basic.z2m_absorption",
@@ -257,7 +257,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "caa8cc242fbcafadfb73709812f81d81b07507cedfaa4b026fc9b3967ace9551"
+      "dynamicEventMemberSha256": "594ede42db43d7160d5ef602392cd91c21e4e809a52dd9f02fb37d370507c9af"
     },
     "contracts.families.ef00.switch_panel_z2m_absorption": {
       "id": "ef00.switch.panel.z2m_absorption",
@@ -634,7 +634,7 @@
           "device_helpers"
         ]
       },
-      "dynamicEventMemberSha256": "4d171145d0a5bcee155d64a81d1479a2290fd4128352070bcff68cef612050de"
+      "dynamicEventMemberSha256": "31ec17184400f81c21228a215d08dc2a1f52b677e0a49f2bb99549a547651e1e"
     },
     "contracts.families.ef00.din_rail.wave19_energy": {
       "id": "ef00.din_rail.wave19_energy",
@@ -710,7 +710,7 @@
         ]
       },
       "converterDeclarations": 1,
-      "dynamicEventMemberSha256": "2885d2db32d8ba270498b4ef4dac5259c805dab2fbddcba02657fe7e6bbb2509"
+      "dynamicEventMemberSha256": "ac6cbd2d10db8877be7aacbfb48513e2f465bbdc4fd2cecbcd20406db02426ce"
     },
     "contracts.families.ef00.presence.wave19_sensors": {
       "id": "ef00.presence.wave19.sensors",
@@ -771,7 +771,7 @@
         ]
       },
       "converterDeclarations": 1,
-      "dynamicEventMemberSha256": "30f491f43184cb871531a1177313ed2311263ad075a50934dc5278c67bfd5689"
+      "dynamicEventMemberSha256": "a66691c9d8c5a6f16a36b2d251ea117886a33145497fc465dbb04586d46c1268"
     },
     "contracts.families.ef00.valves.wave19": {
       "id": "ef00.valves.wave19",
@@ -809,7 +809,7 @@
           "zcl_clusters"
         ]
       },
-      "dynamicEventMemberSha256": "f9ef2be785223654a311f451e90b50b8fd54c1288478b7d818a79632d7a0939c"
+      "dynamicEventMemberSha256": "f0d3059467bae6e3d2d16be09f5ccc469e71fcaed864ae47762e6c4e05e0df0c"
     },
     "contracts.families.zcl.bridges_wave19": {
       "id": "zcl.bridges.wave19",
@@ -933,7 +933,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "0c7ff4fab8cc445dedcc22af0dbdffcce5edf858654e4522144545e3b60ea264"
+      "dynamicEventMemberSha256": "91263794b6ac1021a99033766fa5ded3528545f720cd4e8cacf87f7f7b0b0407"
     },
     "contracts.families.zcl.sensors.wave19_environment": {
       "id": "zcl.sensors.wave19_environment",
@@ -991,7 +991,7 @@
           "clusters"
         ]
       },
-      "dynamicEventMemberSha256": "4c43359296012e688d59682c79a12e9b5dd5436bb41341f3cda0a65a85e62483"
+      "dynamicEventMemberSha256": "ce81a4320aaea4538896239eeed2c4b54775873fa940fecd250b159c65c5551e"
     },
     "contracts.families.zcl.sensors.wave19_hvac": {
       "id": "zcl.sensors.wave19_hvac",
@@ -1120,7 +1120,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "4f7ecc9e51842799380b405a7e01156f7af7587db8aea978d399dc2d77c2add7"
+      "dynamicEventMemberSha256": "6c8e34757fb5fc0a7d94d60abf036856d922650fca6b060e29739d6f1b7aa62b"
     },
     "contracts.families.zcl.thermostats.wave19_sber": {
       "id": "zcl.thermostats.wave19.sber",
@@ -1163,7 +1163,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "afa8b347f8367bb74566a18d0974f875623f644eb0277714d25757c9b374a505"
+      "dynamicEventMemberSha256": "3156bd18d5bfa8bdcc0bdbb90c6b6db620adc4a3ad9dbf6c0f2a5b65cefbcfc2"
     },
     "contracts.families.ef00.thermostats.wave19_exact_aliases": {
       "id": "ef00.thermostats.wave19_exact_aliases",
@@ -1196,7 +1196,7 @@
         ]
       },
       "converterDeclarations": 1,
-      "dynamicEventMemberSha256": "7ee16d55601b33970a88609c23919c26309306ec5e8c795fb5adbcb038e7ded1"
+      "dynamicEventMemberSha256": "a97d472dba7076b3fc3688be3078972cfa68f8623a4945f4439da3c298559806"
     },
     "contracts.families.zcl.lights.wave19_exact_aliases": {
       "id": "zcl.lights.wave19_exact_aliases",
@@ -1364,7 +1364,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "e5db0b5c58fb7bc08f224d6de0f4b44fa6def01cf1448fdeb1fe2db79d022018"
+      "dynamicEventMemberSha256": "50a398cae89a41bbce722ccf78df19d83fa0ff916921eeda8b005df12635fa13"
     },
     "contracts.families.zcl.sensors.zg204zl": {
       "id": "zcl.sensors.zg204zl",
@@ -1388,7 +1388,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "27cd2bca7ce7693d9659dc3f89510cb73a5cd42ac2d73fb70f56fea1be21b494"
+      "dynamicEventMemberSha256": "bdf536f6309eb37950425cac775dbf465c342145f40b474982f335a06f81e215"
     },
     "contracts.families.zcl.sensors.sonoff_safety": {
       "id": "zcl.sensors.sonoff_safety",
@@ -1464,7 +1464,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "0a87f402c7a00956bf5d13a3b765fd888e3060ef611408816d56debaa79f6995"
+      "dynamicEventMemberSha256": "cf1fd303ae55cef575ea4395c96fce96b1f98cc68becb846f6d53ed2556da1cd"
     },
     "contracts.families.zcl.sensors.simple_sensors": {
       "id": "zcl.sensors.simple_sensors",
@@ -1522,7 +1522,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "ed0abe761577f328dfd419c21731caff2fb5fae160e05db3011b8143b2fc58ee"
+      "dynamicEventMemberSha256": "ac92072a998e18b166f07c8247f58b8db06a5345046af124ce660b871dcb2a99"
     },
     "contracts.families.ef00.presence.simple_sensors": {
       "id": "ef00.presence.simple_sensors",
@@ -1712,7 +1712,7 @@
         ]
       },
       "converterDeclarations": 0,
-      "dynamicEventMemberSha256": "10f06d9c901284c62581388c359f6c2ac4fd0bdd92a2a45ed807ae1329f15060"
+      "dynamicEventMemberSha256": "e5f6004727150033b23ee537663b59f279bf5e40afe4672e00f93f2bba1506af"
     },
     "contracts.families.zcl.plugs.futurehome": {
       "id": "zcl.plugs.futurehome",
@@ -1980,7 +1980,7 @@
           "json"
         ]
       },
-      "dynamicEventMemberSha256": "519ccbe473acf85eb406cdf7eed0efa941cd2e3c7dce41ea37fa4541a12c21c7"
+      "dynamicEventMemberSha256": "f439360a571b31e1f931e71e6a472fc16b2a3c84a3ef637e42f7989049dc98b4"
     },
     "contracts.families.zcl.sensors.multir_mirsr100": {
       "id": "zcl.sensors.multir_mirsr100",

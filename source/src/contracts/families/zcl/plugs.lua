@@ -1,4 +1,5 @@
 local zcl = require "protocol.zcl"
+local lumi_metering = require "contracts.helpers.lumi_metering"
 local emit = require "capabilities.events.all"
 local device_helpers = require "contracts.helpers.family"
 local zcl_device_helpers = require "contracts.helpers.zcl"
@@ -616,7 +617,7 @@ register_device_definition(tuya_metered_plug_core, {
   { manufacturer = "AOYAN  ", model = "TS011F" },
 })
 
-register_device_definition(metered_plug, {
+register_device_definition(lumi_metering.adapt(metered_plug, false, "plugs-lumi-metering"), {
   device_helpers.create_fingerprint("LUMI", "lumi.ctrl_86plug"),
   device_helpers.create_fingerprint("LUMI", "lumi.ctrl_86plug.aq1"),
   device_helpers.create_fingerprint("LUMI", "lumi.plug"),
@@ -624,10 +625,9 @@ register_device_definition(metered_plug, {
   device_helpers.create_fingerprint("LUMI", "lumi.plug.mitw01"),
 })
 
-register_device_definition(metered_plug_current, {
+register_device_definition(lumi_metering.adapt(metered_plug_current, true, "plugs-lumi-metering-current"), {
   device_helpers.create_fingerprint("LUMI", "lumi.plug.aeu001"),
   device_helpers.create_fingerprint("LUMI", "lumi.plug.macn01"),
-  device_helpers.create_fingerprint("LUMI", "lumi.plug.maeu01"),
   device_helpers.create_fingerprint("LUMI", "lumi.plug.maus01"),
   device_helpers.create_fingerprint("LUMI", "lumi.plug.mmeu01"),
   device_helpers.create_fingerprint("LUMI", "lumi.plug.sacn02"),
@@ -910,6 +910,10 @@ end
 
 register_device_definition(somfy_metered_plug, {device_helpers.create_fingerprint("SOMFY", "1822647")})
 
+register_device_definition(metered_plug_current, {
+  device_helpers.create_fingerprint("LUMI", "lumi.plug.maeu01"),
+})
+
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(device_definitions, {
   {1, "rpt-zvs"},
@@ -926,8 +930,8 @@ zcl.attach_reporting_capabilities(device_definitions, {
   {12, "rpt-txn"},
   {13, "rpt-trp"},
   {14, "rpt-tcb"},
-  {15, "rpt-lsu"},
-  {16, "rpt-tcb"},
+  {15, "rpt-lsuxk"},
+  {16, "rpt-tpp"},
   {17, "rpt-sho"},
   {18, "rpt-sbv"},
   {19, "rpt-tcb"},
@@ -947,6 +951,7 @@ zcl.attach_reporting_capabilities(device_definitions, {
   {33, "rpt-toma"},
   {34, "rpt-txe"},
   {35, "rpt-zay"},
+  {36, "rpt-tcb"},
 })
 -- ZCL REPORTING CAPABILITIES END
 

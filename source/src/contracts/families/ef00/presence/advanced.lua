@@ -557,7 +557,11 @@ local function mtg_datapoints(events, polarity, distance_report)
     tuya.dp_numeric(3, { name = "shield_range", emit = events[2], converter = converter.divide_by_pair(100) }),
     tuya.dp_numeric(4, { name = "detection_range", emit = events[3], converter = converter.divide_by_pair(100) }),
     tuya.dp_numeric(6, { name = "equipment_status", read_only = true }),
-    tuya.dp_numeric(9, { name = "target_distance", read_only = true, emit = events[4], converter = converter.divide_by_from_only(100) }),
+    tuya.dp_numeric(9, {
+      name = "target_distance", read_only = true, emit = events[4],
+      converter = converter.divide_by_from_only(100),
+      from_device = function(value, _, datapoint) return (datapoint and datapoint.int_value or value) / 100 end,
+    }),
     tuya.dp_numeric(101, { name = "entry_filter_time", emit = events[5], converter = converter.divide_by_pair(10) }),
     tuya.dp_numeric(102, { name = "departure_delay", emit = events[6] }),
     tuya.dp_illuminance(104, { emit = emit.illuminance(), converter = converter.divide_by_from_only(10) }),

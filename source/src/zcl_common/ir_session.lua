@@ -19,6 +19,8 @@ local function load_ir_session(zcl)
   local IR_LEARNING_FIELD = "__ir_learning"
   local IR_NEXT_SEQ_FIELD = "__ir_next_seq"
   local IR_OUTGOING_FIELD = "__ir_outgoing_messages"
+  local IR_QUEUE_FIELD = "__ir_send_queue"
+  local IR_TIMEOUT_FIELD = "__ir_send_timeout"
   local IR_INCOMING_FIELD = "__ir_incoming_bytes"
   local IR_INCOMING_LENGTH_FIELD = "__ir_incoming_length"
   local IR_INCOMING_SEQ_FIELD = "__ir_incoming_seq"
@@ -250,6 +252,16 @@ local function load_ir_session(zcl)
     return send_ir_command(device, IR_CONTROL_CLUSTER, 0x00, '{"study":1}', get_endpoint(preset))
   end
 
+  local function next_ir_send(device)
+    local timer = device:get_field(IR_TIMEOUT_FIELD)
+    if timer ~= nil then device.thread:cancel_timer(timer) end
+    device:set_field(IR_TIMEOUT_FIELD, nil, {persist = false})
+    local queue = device:get_field(IR_QUEUE_FIELD) or {}
+    local request = table.remove(queue, 1)
+    device:set_field(IR_QUEUE_FIELD, #queue > 0 and queue or nil, {persist = false})
+    if request then zcl.send_ir_code(device, request.preset, request.code) end
+  end
+
   function zcl.send_ir_code(device, preset, code)
     if zcl.send_raw_cluster_command == nil or type(code) ~= "string" or code == "" then
       return false
@@ -257,11 +269,24 @@ local function load_ir_session(zcl)
 
     local payload = normalize_ir_message(code)
     if payload == nil then return false end
+    if next(get_outgoing_messages(device)) ~= nil then
+      local queue = device:get_field(IR_QUEUE_FIELD) or {}
+      queue[#queue + 1] = {preset = preset, code = code}
+      device:set_field(IR_QUEUE_FIELD, queue, {persist = false})
+      return true
+    end
     local seq = next_seq(device)
     clear_incoming(device)
     device:set_field(IR_OUTGOING_FIELD, {[seq] = payload}, {persist = false})
     device:set_field(IR_LAST_SENT_FIELD, code, { persist = false })
     emit_code_to_send(device, code)
+    device:set_field(IR_TIMEOUT_FIELD, device.thread:call_with_delay(8, function()
+      local outgoing = get_outgoing_messages(device)
+      if outgoing[seq] ~= nil then
+        outgoing[seq] = nil
+        next_ir_send(device)
+      end
+    end, "IR send timeout"), {persist = false})
 
     return send_ir_command(
       device,
@@ -439,7 +464,11 @@ local function load_ir_session(zcl)
         get_endpoint(preset)
       )
       if sent then
-        get_outgoing_messages(device)[seq] = nil
+        local outgoing = get_outgoing_messages(device)
+        if outgoing[seq] ~= nil then
+          outgoing[seq] = nil
+          next_ir_send(device)
+        end
         if device:get_field(IR_INCOMING_SEQ_FIELD) == seq then clear_incoming(device) end
       end
       return sent

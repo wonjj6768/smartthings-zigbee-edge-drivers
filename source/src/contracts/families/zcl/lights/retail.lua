@@ -651,7 +651,19 @@ register(dimmer_light, create_model_fingerprints("OSRAM", {
   "Connected Tube Z3",
 }))
 
-register(cct_light, create_model_fingerprints("OSRAM", {
+local function osram_dali_endpoint(device)
+  if device:get_model() == "Zigbee 3.0 DALI CONV LI" then return 10 end
+end
+
+register({
+  profile = cct_light.profile,
+  component_to_endpoint = osram_dali_endpoint,
+  zcl_clusters = {
+    zcl.switch({ endpoint = osram_dali_endpoint }),
+    zcl.level({ endpoint = osram_dali_endpoint }),
+    zcl.color_temperature({ endpoint = osram_dali_endpoint }),
+  },
+}, create_model_fingerprints("OSRAM", {
   "A60 TW Z3",
   "CLA60 TW OSRAM",
   "LIGHTIFY A19 Tunable White",
@@ -826,7 +838,13 @@ register(color_cct_light, {
   device_helpers.create_fingerprint("Innr", "RCL 232 C"),
 })
 
-register(color_light, {
+register({
+  profile = color_light.profile,
+  zcl_clusters = color_light.zcl_clusters,
+  component_to_endpoint = function(device)
+    return device.zigbee_endpoints[12] ~= nil and 12 or 11
+  end,
+}, {
   device_helpers.create_fingerprint("GLEDOPTO", "GL-S-003Z"),
 })
 

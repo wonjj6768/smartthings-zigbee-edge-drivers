@@ -186,7 +186,7 @@ local function receive(device,rx)
     local percentage=values[0x21]
     if percentage~=nil and percentage<255 then
       publish_scalar(device,fields.raw_battery,percentage/2)
-      if percentage<=200 and percentage%2==0 then publish(device,capabilities.battery.battery,percentage/2,"%") end
+      if percentage<=200 then publish(device,capabilities.battery.battery,math.floor(percentage/2+0.5),"%") end
     end
     local voltage=values[0x20]
     if voltage~=nil and voltage<255 then publish(device,capabilities.voltageMeasurement.voltage,voltage/10,"V") end

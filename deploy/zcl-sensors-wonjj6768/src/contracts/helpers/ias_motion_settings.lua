@@ -27,14 +27,14 @@ function M.battery_alarm(b)
 return q.cluster_attribute(1,62,{name="battery_alarm_state",endpoint=1,data_type=d.Bitmap32,read_only=true,read_on_configure=false,emit=b,
 from_device=function(c)
 if type(c)=="table"then c=c.value end
-return bit32.band(c,15744015)~=0
+return((c)&(15744015))~=0
 end
 })
 end
 function M.keep_alive(b)
 return function(a,t,e)
 if e.command_id~=0 then return end
-local i="__ih012_rt01_keep_alive"local f=a:get_field(i)if f then f:cancel()end
+local i="__ih012_rt01_keep_alive"local f=a:get_field(i)if f then a.thread:cancel_timer(f)end
 a:set_field(i,nil)if t then
 a:set_field(i,a.thread:call_with_delay(125,function()
 a:set_field(i,nil)a:emit_event(b(a,false))
@@ -52,7 +52,7 @@ end
 function M.vibration_timeout(b)
 return function(a,_,e)
 if e.command_id~=0 then return end
-local i="__ts0210_vibration_timeout"local f=a:get_field(i)if f then f:cancel()end
+local i="__ts0210_vibration_timeout"local f=a:get_field(i)if f then a.thread:cancel_timer(f)end
 a:set_field(i,nil)local m=tonumber(a.preferences.vibrationTimeout)or 90
 if m>0 then
 a:set_field(i,a.thread:call_with_delay(m,function()

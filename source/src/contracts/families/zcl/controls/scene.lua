@@ -32,6 +32,7 @@ local scene_remote_4 = {
   button_actions = { "pushed" },
   advanced_remote = true,
   button_count = 4,
+  tuya_action_value_offset = 3,
   tuya_action_map = {
     [1] = "scene_1",
     [2] = "scene_2",

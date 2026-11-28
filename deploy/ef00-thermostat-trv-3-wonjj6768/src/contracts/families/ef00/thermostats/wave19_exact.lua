@@ -81,11 +81,12 @@ return nil
 end
 local function n(al,af,aj)
 return c.from_only(function(a)
-return bit32.band(tonumber(a)or 0,al)~=0 and af or aj
+return((tonumber(a)or 0)&(al))~=0 and af or aj
 end)
 end
 local J=H("thermostats-wave19-immax-07703l",{b.dp_binary(1,{name="immax_trv_power_mode_report",read_only=true,
-from_device=function(a)return ag(a)and nil or"off"end,
+from_device=function(a)if not ag(a)then return"off"end
+return nil end,
 emit=t.thermostat_mode()}),b.dp_bitmap(13,{name="immax_trv_high_temperature",read_only=true,converter=n(1,"ON","OFF")}),b.dp_bitmap(13,{name="immax_trv_low_temperature",read_only=true,converter=n(2,"ON","OFF")}),b.dp_bitmap(13,{name="immax_trv_internal_sensor_error",read_only=true,converter=n(4,"ON","OFF")}),b.dp_bitmap(13,{name="immax_trv_external_sensor_error",read_only=true,converter=n(8,"ON","OFF")}),b.dp_bitmap(13,{name="immaxTrv_battery_low",read_only=true,converter=n(16,"low","normal"),emit=f"immaxTrvBatteryLow"}),b.dp_bitmap(13,{name="immax_trv_device_offline",read_only=true,converter=n(32,"ON","OFF")}),b.dp_child_lock(7,{name="immaxTrv_child_lock",converter=c.lookup_from_to{LOCK=true,UNLOCK=false},emit=f"immaxTrvChildLock"}),b.dp_current_heating_setpoint(2,{scale=10,emit=t.heating_setpoint"C"}),b.dp_local_temperature(3,{scale=10,read_only=true,emit=t.temperature"C"}),b.dp_enum(4,{name="system_mode",read_only=true,
 converter=c.from_only(function(a)return({[0]="heat",[1]="heat",[2]="auto"})[tonumber(a)]end),
 emit=t.thermostat_mode()}),b.dp_enum(4,{name="immaxTrv_away_mode",read_only=true,

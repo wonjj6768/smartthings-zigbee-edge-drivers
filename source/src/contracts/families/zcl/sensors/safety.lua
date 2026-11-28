@@ -132,7 +132,7 @@ local heiman_pirill_sensor = {
       minimum_interval = 0, maximum_interval = 3600, reportable_change = 0,
       from_device = function(value)
         if type(value) == "table" then value = value.value end
-        return bit32.band(value, 1) ~= 0
+        return ((value) & (1)) ~= 0
       end}),
     ias_settings.battery(true),
   },
@@ -335,7 +335,8 @@ local sunricher_4in1_sensor = {
   profile = "safety-occupancy-illuminance-temp-humidity-battery",
   zcl_clusters = {
     zcl.occupancy({ from_device = function(value)
-      return ((type(value) == "table" and value.value or value) & 1) ~= 0
+      if type(value) == "table" then value = value.value end
+      return value == true or (type(value) == "number" and (value & 1) ~= 0)
     end }),
     zcl.illuminance(),
     zcl.temperature(),

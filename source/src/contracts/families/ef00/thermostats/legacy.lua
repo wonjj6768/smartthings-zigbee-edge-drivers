@@ -29,8 +29,8 @@ local saswell_legacy = {
     },
   },
   tuya.dp_running_state(3, {
-    converter = converter.lookup_from_to({
-      heat = 1,
+     emit = emit.thermostat_operating_state(), converter = converter.lookup_from_to({
+       heating  = 1,
       idle = 0,
     }),
   }),
@@ -58,8 +58,8 @@ local saswell_legacy = {
     emit = emit.saswellChildLock(),
     converter = converter.lookup_from_to({ unlock = false, lock = true }),
   }),
-  tuya.dp_local_temperature(102, { scale = 10 }),
-  tuya.dp_current_heating_setpoint(103, { scale = 10 }),
+  tuya.dp_local_temperature(102, {  emit = emit.temperature("C"), scale = 10 }),
+  tuya.dp_current_heating_setpoint(103, {  emit = emit.heating_setpoint("C"), scale = 10 }),
   tuya.dp_binary(105, {
     name = "battery_low",
     read_only = true,
@@ -186,8 +186,8 @@ local thermostat_etop_legacy = {
     from_device = power_mode_from_device(ETOP_POWER_FIELD, ETOP_MODE_FIELD, "heat"),
     emit = emit.thermostat_mode(),
   }),
-  tuya.dp_current_heating_setpoint(2, { scale = 10 }),
-  tuya.dp_local_temperature(3, { scale = 10 }),
+  tuya.dp_current_heating_setpoint(2, {  emit = emit.heating_setpoint("C"), scale = 10 }),
+  tuya.dp_local_temperature(3, {  emit = emit.temperature("C"), scale = 10 }),
   tuya.dp_enum(4, {
     name = "system_mode",
     from_device = enum_mode_from_device(ETOP_POWER_FIELD, ETOP_MODE_FIELD, {
@@ -198,7 +198,7 @@ local thermostat_etop_legacy = {
     emit = emit.thermostat_mode(),
     read_only = true,
   }),
-  tuya.dp_child_lock(7, { name = "child_lock", emit = emit.etopChildLock() }),
+  tuya.dp_child_lock(7, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), name = "child_lock", emit = emit.etopChildLock() }),
   tuya.dp_numeric(13, {
     name = "error_status",
     read_only = true,
@@ -246,7 +246,7 @@ local thermostat_sas936 = {
     emit = emit.thermostat_operating_state(),
     read_only = true,
   }),
-  tuya.dp_child_lock(40, { emit = emit.sas936ChildLock() }),
+  tuya.dp_child_lock(40, {  converter = tuya.converter.lookup_from_to({["unlock"] = false, ["lock"] = true}), emit = emit.sas936ChildLock() }),
   tuya.dp_system_mode(101, {
     converter = converter.lookup_from_to({
       heat = true,
@@ -254,8 +254,8 @@ local thermostat_sas936 = {
     }),
     emit = emit.thermostat_mode(),
   }),
-  tuya.dp_local_temperature(102, { scale = 10 }),
-  tuya.dp_current_heating_setpoint(103, { scale = 10 }),
+  tuya.dp_local_temperature(102, {  emit = emit.temperature("C"), scale = 10 }),
+  tuya.dp_current_heating_setpoint(103, {  emit = emit.heating_setpoint("C"), scale = 10 }),
   tuya.dp_binary(106, {
     name = "temporary_leaving",
     emit = emit.sas936TemporaryLeaving(),
@@ -280,18 +280,18 @@ local thermostat_twc_r01 = {
     emit = emit.pilotWireModeTwcR01(),
   }),
   tuya.dp_power(11, { name = "power", scale = 10, emit = emit.power() }),
-  tuya.dp_local_temperature(16, { scale = 10 }),
+  tuya.dp_local_temperature(16, {  emit = emit.temperature("C"), scale = 10 }),
   -- Z2M reads DP19 raw here (tuya.ts:24534), not divided by ten.
   tuya.dp_local_temperature_calibration(19, { scale = 1, emit = emit.twcr01TempCalibration() }),
   tuya.dp_numeric(20, { name = "fault", read_only = true, emit = emit.twcr01Fault() }),
-  tuya.dp_eco_mode(40, { emit = emit.twcr01EcoMode() }),
-  tuya.dp_open_window(110, { emit = emit.twcr01OpenWindow() }),
+  tuya.dp_eco_mode(40, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), emit = emit.twcr01EcoMode() }),
+  tuya.dp_open_window(110, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), emit = emit.twcr01OpenWindow() }),
   tuya.dp_temperature(111, {
     name = "open_window_temperature",
     scale = 1,
     emit = emit.twcr01OpenWindowTemperature(),
   }),
-  tuya.dp_binary(114, { name = "device_mode_type", emit = emit.twcr01DeviceModeType() }),
+  tuya.dp_binary(114, {  converter = tuya.converter.lookup_from_to({["off"] = false, ["on"] = true}), name = "device_mode_type", emit = emit.twcr01DeviceModeType() }),
   tuya.dp_voltage(115, { name = "voltage", scale = 10, emit = emit.voltage() }),
   tuya.dp_current(116, { name = "current", scale = 10, emit = emit.current() }),
   tuya.dp_energy(117, { name = "energy", scale = 10, emit = emit.energy() }),

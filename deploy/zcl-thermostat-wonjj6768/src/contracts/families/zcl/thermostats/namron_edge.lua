@@ -4,7 +4,7 @@ if type(a)=="table"then return a.value end
 return a
 end
 local function x(a)
-local k=j(a)return bit32.band(k,4)~=0 and"eco"or bit32.band(k,1)~=0 and"schedule"or"setpoint"
+local k=j(a)return((k)&(4))~=0 and"eco"or((k)&(1))~=0 and"schedule"or"setpoint"
 end
 local function z(b,o)
 b:send(p.read_attribute(b,c.ClusterId(513),c.AttributeId(o)):to_endpoint(1))
@@ -77,7 +77,7 @@ local function Q(rx,b)
 local H=rx.body.zcl_body.body_bytes
 if type(H)~="string"or #H~=32 then return nil end
 local I={}for D=1,29,4 do
-local A=(bit32.band(H:byte(D+2),15)*256+H:byte(D+3))/10
+local A=(((H:byte(D+2))&(15))*256+H:byte(D+3))/10
 if b:get_field"nam_edge_display_unit"=="fahrenheit"then
 A=math.floor((A-32)*5/9*2+0.5)/2
 end
@@ -107,7 +107,7 @@ l(b,28,c.Enum8(k))e(b,"system_mode",a)return true
 end
 },g.thermostat_running_state{endpoint=1,name="thermostat_operating_state",read_only=true,read_on_configure=true,emit=f.thermostat_operating_state(),
 from_device=function(a)
-local k=j(a)return bit32.band(k,1)~=0 and"heating"or bit32.band(k,2)~=0 and"cooling"or"idle"
+local k=j(a)return((k)&(1))~=0 and"heating"or((k)&(2))~=0 and"cooling"or"idle"
 end
 },g.humidity{endpoint=1,read_only=true,minimum_interval=10,maximum_interval=300,reportable_change=100},g.cluster_attribute(2820,1291,{endpoint=1,name="power",emit=f.power(),data_type=c.Int16,metering_kind="power",scale=1,read_only=true,read_on_configure=true}),g.cluster_attribute(2820,1288,{endpoint=1,name="current",emit=f.current(),data_type=c.Uint16,metering_kind="current",scale=1,read_only=true,read_on_configure=true}),g.cluster_attribute(1794,0,{endpoint=1,name="energy",emit=f.energy(),data_type=c.Uint48,metering_kind="energy",scale=1,read_only=true,read_on_configure=true}),g.cluster_attribute(513,16,{endpoint=1,name="nam_edge_temperature_calibration",emit=f.namEdgeTemperatureCalibration(),data_type=c.Int8,read_on_configure=true,
 from_device=function(a)return a/10 end,
@@ -134,7 +134,7 @@ from_device=function(a,b,i)return e(b,"sensor_mode",v[j(a)],i)end,
 to_device=function(a)for k,name in pairs(v)do if a==name then return k end end end
 }),g.cluster_attribute(513,32773,{endpoint=1,name="nam_edge_panel_brightness",emit=f.namEdgePanelBrightness(),data_type=c.Uint8,read_on_configure=true,sender=d}),g.cluster_attribute(513,32774,{endpoint=1,name="nam_edge_fault",emit=f.namEdgeFault(),data_type=c.Bitmap32,read_on_configure=true,read_only=true,
 from_device=function(a)
-local W,k={},j(a)for aj=0,7 do if bit32.band(k,2 ^ aj)~=0 then W[#W+1]=af[aj]end end
+local W,k={},j(a)for aj=0,7 do if((k)&(2 ^ aj))~=0 then W[#W+1]=af[aj]end end
 return #W>0 and table.concat(W,",")or"none"
 end
 }),g.cluster_attribute(513,32775,{endpoint=1,name="nam_edge_regulator_cycle",emit=f.namEdgeRegulatorCycleStatus(),data_type=c.Uint8,read_on_configure=true,read_only=true}),g.cluster_attribute(513,32771,{endpoint=1,name="nam_edge_week_program",emit=f.namEdgeWeekProgram(),data_type=c.Enum8,read_on_configure=true,read_only=true,poll_interval=900,

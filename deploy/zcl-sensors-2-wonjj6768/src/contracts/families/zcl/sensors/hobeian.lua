@@ -3,7 +3,7 @@ local function e(u)
 return function(c)
 if type(c)=="table"then c=c.value end
 if type(c)~="number"then return nil end
-return bit32.band(c,u)~=0
+return((c)&(u))~=0
 end
 end
 local function b(i)

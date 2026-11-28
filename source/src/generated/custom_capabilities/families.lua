@@ -110,6 +110,7 @@ local ATTRIBUTE_OVERRIDES = {
   ws90Precipitation = "wsNinetyPrecipitation",
   ts011fDinIndicatorMode = "indicatorMode",
   ts011fDinOverCurrentThreshold = "overCurrentThreshold",
+  ts011fDinOverVoltageThreshold = "overVoltageThreshold",
   ts011fDinUnderVoltageThreshold = "underVoltageThreshold",
   bacchusPumpDuration = "pumpDuration",
   bacchusBeeperOnLeak = "beeperOnLeak",
@@ -4499,6 +4500,14 @@ local ATTRIBUTE_OVERRIDES = {
   sonoffUlTempUnits = "temperatureUnits",
   sonoffUlRemoteMode = "remoteMode",
   sonoffUlWeather = "weatherIcon",
+  floorSixPreset = "preset",
+  floorSixChildLock = "childLock",
+  floorSixDeadzoneTemperature = "deadzoneTemperature",
+  floorSixDeviceTemperature = "deviceTemperature",
+  poBocoPreset = "preset",
+  poBocoChildLock = "childLock",
+  poBocoTempCalibration = "temperatureCalibration",
+  poBocoWindowDetection = "windowDetection",
 }
 
 local function attribute_name(capability_id)
@@ -4583,6 +4592,7 @@ local numeric_rows = {
   {"bacchusPumpDuration",true,"bacchus_pump_duration",0,600,1,"s"},
   {"nousA11zCountdown",true,"nous_a11z_countdown",0,43200,1,"s"},
   {"ts011fDinOverCurrentThreshold",true,"ts011f_din_over_current_threshold",1,65,1,"A"},
+  {"ts011fDinOverVoltageThreshold",true,"ts011f_din_over_voltage_threshold",90,265,1,"V"},
   {"ts011fDinUnderVoltageThreshold",true,"ts011f_din_under_voltage_threshold",75,240,1,"V"},
   {"haozeeHzWt02WaterCountdown",true,"haozee_hz_wt02_water_countdown",1,1440,1,"min"},
   {"easyiotSp1000PlayVoice",true,"easyiot_sp1000_play_voice",1,999,1,nil},
@@ -6859,6 +6869,9 @@ local numeric_rows = {
   {"sonoffUlRemoteHumidity",true,"sonoff_ul_remoteHumidity",5,95,1,"%"},
   {"sonoffUlRemotePressure",true,"sonoff_ul_remotePressure",700,1100,0.1,"hPa"},
   {"sonoffUlVpd",false,"sonoff_ul_vpd",nil,nil,nil,"kPa"},
+  {"floorSixDeadzoneTemperature",true,"deadzone_temperature",0.5,5,0.5,"C"},
+  {"floorSixDeviceTemperature",false,"device_temperature",-50,120,0.1,"C"},
+  {"poBocoTempCalibration",true,"local_temperature_calibration",-5.5,5.5,0.5,"C"},
 }
 local enum_rows = {
   {"zmsFourBacklightSetting",true,"zms206_backlight_mode",{"OFF","ON"}},
@@ -8984,6 +8997,11 @@ local enum_rows = {
   {"sonoffUlTempUnits",true,"sonoff_ul_temperatureUnits",{"celsius","fahrenheit"}},
   {"sonoffUlRemoteMode",true,"sonoff_ul_remoteMode",{"enable","disable"}},
   {"sonoffUlWeather",true,"sonoff_ul_weatherIcon",{"sunny","partly_cloudy","overcast","rain","snow","windy"}},
+  {"floorSixPreset",true,"preset",{"manual","auto"}},
+  {"floorSixChildLock",true,"child_lock",{"unlock","lock"}},
+  {"poBocoPreset",true,"preset",{"auto","manual","holiday"}},
+  {"poBocoChildLock",true,"child_lock",{"unlock","lock"}},
+  {"poBocoWindowDetection",true,"window_detection",{"off","on"}},
 }
 local text_rows = {
   {"zmsFourSwitchName",true,"zms206_switch_name",12},

@@ -7,7 +7,7 @@ local function j()
 return n.from_to(
 function(e,c)
 local a=tonumber(e)if a==nil then return nil end
-a=bit32.band(a,255)return f(c)and 100-a or a
+a=((a)&(255))return f(c)and 100-a or a
 end,
 function(e,c)
 local a=tonumber(e)if a==nil or a<0 or a>100 then return nil end

@@ -297,7 +297,7 @@ end
 function k.color_xy(e)
 local function av(value,p,A,mapping)
 value=type(value)=="table"and value.value or value
-local V="_zcl_color_xy_"..tostring(A.endpoint or 1).."_"p:set_field(V..mapping.name,value)local x,y,aw=p:get_field(V.."color_x"),p:get_field(V.."color_y"),p:get_field(V.."color_mode")if x~=nil and y~=nil and(aw==nil or aw==0)then
+local V="_zcl_color_xy_"..tostring(A.endpoint or 1).."_"p:set_field(V..mapping.name,value)local x,y,aw=p:get_field(V.."color_x"),p:get_field(V.."color_y"),p:get_field(V.."color_mode")if x~=nil and y~=nil and(aw==nil or aw==1)then
 local ar,z=Z(x,y)local aa=A.component or{id=A.component_id or"main"}p:emit_component_event(aa,t.color_hue()(p,ar))p:emit_component_event(aa,t.color_saturation()(p,z))end
 end
 local Q={}for _,ao in ipairs{{"color_x",3},{"color_y",4},{"color_mode",8}}do

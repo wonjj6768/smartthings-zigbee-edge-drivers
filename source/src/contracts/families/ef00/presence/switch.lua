@@ -59,7 +59,7 @@ local presence_switch_model_zg_302zm = {
     converter = presence_switch_trigger_channel_converter,
   }),
 
-  tuya.dp_on_off(111, { name = "backlight", emit = emit.zg302zmBacklight() }),
+  tuya.dp_on_off(111, { converter = tuya.converter.lookup_from_to({["ON"] = true, ["OFF"] = false}), name = "backlight", emit = emit.zg302zmBacklight() }),
 
   tuya.dp_power_outage_memory(112, {
     name = "power_outage_memory",
@@ -128,7 +128,7 @@ local presence_switch_model_zg_302zl = {
 
   tuya.dp_on_off(3, { name = "switch", component = "switch3", emit = emit.switch() }),
 
-  tuya.dp_on_off(16, { name = "backlight", emit = emit.zg302zlBacklight() }),
+  tuya.dp_on_off(16, { converter = tuya.converter.lookup_from_to({["ON"] = true, ["OFF"] = false}), name = "backlight", emit = emit.zg302zlBacklight() }),
 
   tuya.dp_power_outage_memory(14, {
     name = "power_outage_memory",

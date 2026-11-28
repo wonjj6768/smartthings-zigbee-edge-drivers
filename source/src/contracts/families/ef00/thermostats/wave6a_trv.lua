@@ -360,7 +360,7 @@ local nedis = {
     converter = converter.lookup_from_to({ LOCK = true, UNLOCK = false }),
     emit = emit.nedisHtrChildLock(),
   }),
-  tuya.dp_system_mode(101, {
+  tuya.dp_system_mode(101, { datatype = tuya.DP_TYPE_BOOL,
     name = "system_mode",
     converter = converter.lookup_from_to({ heat = true, off = false }),
     emit = emit.thermostat_mode(),

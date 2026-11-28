@@ -98,7 +98,7 @@ local illum_battery_report_interval_aaeasoll = {
     tuya.dp_illuminance(2, { emit = emit.illuminance() }),
     tuya.dp_battery(4, { emit = emit.battery() }),
     tuya.dp_enum(101, {
-      name = "report_interval",
+       datatype = tuya.DP_TYPE_VALUE, name = "report_interval",
       emit = emit.aaeasollReportInterval(),
       converter = aaeasoll_report_interval_converter,
     }),
@@ -115,7 +115,7 @@ local pressure_temp = {
   profile = "sensors-pressure-temp-display",
   datapoints = {
     tuya.dp_temperature(8, { emit = emit.temperature("C"), scale = 100 }),
-    tuya.dp_numeric(101, { name = "pressure", emit = emit.atmospheric_pressure(), scale = 10 }),
+    tuya.dp_numeric(101, { name = "pressure", emit = emit.atmospheric_pressure(),  converter  =  tuya.converter.divide_by_pair(100)  }),
     tuya.dp_numeric(102, { name = "display_brightness", emit = emit.displayBrightnessPressureLevel8() }),
   },
 }

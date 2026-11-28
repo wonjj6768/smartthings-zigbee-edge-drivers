@@ -237,7 +237,7 @@ if type(a)=="table"then a=a.value end
 return(a&(dL or 1))~=0
 end,emit=function(e,dD)
 if dI then
-local aN=e:get_field"__core_ias_motion_timer"if aN then aN:cancel()end
+local aN=e:get_field"__core_ias_motion_timer"if aN then e.thread:cancel_timer(aN)end
 e:set_field("__core_ias_motion_timer",e.thread:call_with_delay(90,function()
 e:set_field("__core_ias_motion_timer",nil)e:emit_event(B.motionSensor.motion.inactive())
 end,"Motion reset"))
@@ -486,7 +486,7 @@ local aC={profile="safety-motion-aqara-high-precision-core",magic_packet=false,z
 emit=function(e,a)
 if type(a)=="table"then a=a.value end
 if a~=1 then return end
-local aN=e:get_field"__aqara_high_precision_timer"if aN then aN:cancel()end
+local aN=e:get_field"__aqara_high_precision_timer"if aN then e.thread:cancel_timer(aN)end
 local dA=e:get_field"__aqara_high_precision_interval"or 60
 e:set_field("__aqara_high_precision_timer",e.thread:call_with_delay(dA+2,function()
 e:set_field("__aqara_high_precision_timer",nil)e:emit_event(B.motionSensor.motion.inactive())

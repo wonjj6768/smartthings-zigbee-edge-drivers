@@ -81,7 +81,7 @@ local futurehome = {
   package_group = "wall",
   query_on_configure = false,
   time_start = "2000",
-  tuya.dp_system_mode(1, {
+  tuya.dp_system_mode(1, { datatype = tuya.DP_TYPE_BOOL,
     name = "system_mode",
     converter = converter.lookup_from_to({ off = false, heat = true }),
     emit = emit.thermostat_mode(),

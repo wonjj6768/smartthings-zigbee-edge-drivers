@@ -58,7 +58,7 @@ return string.format("__wave19_lidl_slot_%d_%s",k,aE)
 end
 local V,day_capability_suffix,slot_words={"monday","tuesday","wednesday","thursday","friday","saturday","sunday"},{"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"},{"One","Two","Three","Four","Five","Six"}
 local function O(a)
-local t=g(a,i)if t~=nil and type(t.cancel)=="function"then t:cancel()end
+local t=g(a,i)if t~=nil and type(t.cancel)=="function"then a.thread:cancel_timer(t)end
 c(a,i,nil,false)
 end
 local function Y(a,b)
@@ -111,7 +111,7 @@ local function G(b,a)
 local aF,y=v(b,1),v(b,2)if aF==nil or y==nil then return nil end
 local P=aF==0
 local ac=y==0 and"OFF"or(P and"WEEKDAY"or"PERIODIC")c(a,l,ac,false)c(a,u,P and 0 or y,false)for W,day in ipairs(V)do
-local x=P and bit32.band(y,2 ^(W-1))~=0
+local x=P and((y)&(2 ^(W-1)))~=0
 c(a,C(day),x and"ON"or"OFF",false)end
 return{mode=ac,periodic=P and 0 or y}
 end

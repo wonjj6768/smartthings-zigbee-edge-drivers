@@ -11,7 +11,7 @@ local zg204zl_ias = {
       endpoint = 1, read_only = true, read_on_configure = false,
       from_device = function(value)
         if type(value) == "table" then value = value.value end
-        return bit32.band(value, 0x0001) ~= 0
+        return ((value) & (0x0001)) ~= 0
       end,
     }),
     zcl.battery({

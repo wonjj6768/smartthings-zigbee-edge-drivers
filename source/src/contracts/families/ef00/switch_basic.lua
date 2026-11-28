@@ -41,12 +41,12 @@ local switch_1gang_temperature = {
   package_group = "switch-basic",
   datapoints = {
     tuya.dp_on_off(2, { name = "switch", component = "main" }),
-    tuya.dp_temperature(27, { name = "temperature" }),
+    tuya.dp_temperature(27, {  emit = emit.temperature("C"), name = "temperature" }),
     tuya.dp_temperature_calibration(30, {scale = 2, emit = emit.sciTempCalibration()}),
     tuya.dp_temperature(29, {name = "temperature_range", scale = 10, emit = emit.sciTempRange()}),
     tuya.dp_on_off(9, {name = "auto_work", converter = panel_off_on_converter, emit = emit.sciTempAuto()}),
     tuya.dp_temperature(22, {name = "temperature_target", signed = true, converter = converter.signed_number_pair(10), emit = emit.sciTempTarget()}),
-    tuya.dp_enum(8, {name = "mode", converter = converter.lookup_from_to({heating = 0, cooling = 2}), emit = emit.sciTempMode()}),
+    tuya.dp_enum(8, { datatype = tuya.DP_TYPE_VALUE, name = "mode", converter = converter.lookup_from_to({heating = 0, cooling = 2}), emit = emit.sciTempMode()}),
     tuya.dp_on_off(56, {name = "delay", converter = panel_off_on_converter, emit = emit.sciTempDelay()}),
     tuya.dp_numeric(55, {name = "delay_time", emit = emit.sciTempDelayTime()}),
   },
@@ -59,8 +59,8 @@ local switch_1gang_temperature_humidity_scimagic = {
   package_group = "switch-basic",
   datapoints = {
     tuya.dp_on_off(2, { name = "switch", component = "main" }),
-    tuya.dp_temperature(27, { name = "temperature", scale = 10 }),
-    tuya.dp_humidity(46, { name = "humidity", scale = 1 }),
+    tuya.dp_temperature(27, {  emit = emit.temperature("C"), name = "temperature", scale = 10 }),
+    tuya.dp_humidity(46, {  emit = emit.humidity(), name = "humidity", scale = 1 }),
     -- Z2M (tuya.ts:23692) reads DP30 with divideBy2, DP8 as
     -- heating/dehumidify/cooling/wet and also exposes the DP41/42/47 humidity
     -- target, range and calibration that were missing here.
@@ -82,7 +82,7 @@ local switch_1gang_temperature_humidity_scimagic = {
       emit = emit.sciThTarget(),
     }),
     tuya.dp_enum(8, {
-      name = "mode",
+       datatype = tuya.DP_TYPE_VALUE, name = "mode",
       emit = emit.scimagicMode(),
       converter = converter.lookup_from_to({
         heating = 0,
@@ -151,7 +151,7 @@ local switch_1gang_smart_temperature = {
       scale = 10,
       emit = emit.rjvxTempCSetpoint(),
     }),
-    tuya.dp_temperature(27, { name = "temperature", scale = 10, read_only = true }),
+    tuya.dp_temperature(27, {  emit = emit.temperature("C"), name = "temperature", scale = 10, read_only = true }),
     tuya.dp_temperature(28, {
       name = "temperature_f",
       scale = 10,
@@ -190,9 +190,9 @@ local switch_model_mg_gpo04zslp = {
     tuya.dp_on_off(2, { name = "switch", component = "switch2" }),
     tuya.dp_on_off(3, { name = "switch", component = "switch3" }),
     tuya.dp_on_off(1, { name = "switch", component = "switch4" }),
-    tuya.dp_current(21, {}),
-    tuya.dp_energy(22, { scale = 1000 }),
-    tuya.dp_voltage(23, {}),
+    tuya.dp_current(21, { emit = emit.current(), }),
+    tuya.dp_energy(22, {  emit = emit.energy(), scale = 1000 }),
+    tuya.dp_voltage(23, { emit = emit.voltage(), }),
   },
   query_on_configure = true,
 }
@@ -210,8 +210,8 @@ local switch_1gang_temperature_humidity = {
   profile = "switches-switch-1-temp-humidity",
   package_group = "switch-basic",
   datapoints = {
-    tuya.dp_temperature(102, { name = "temperature" }),
-    tuya.dp_humidity(103, { name = "humidity" }),
+    tuya.dp_temperature(102, {  emit = emit.temperature("C"), name = "temperature" }),
+    tuya.dp_humidity(103, {  emit = emit.humidity(),  scale = 1, name = "humidity" }),
   },
   zcl_clusters = {
     zcl.switch({ read_only = false }),
@@ -232,8 +232,8 @@ local switch_4gang_temperature_humidity = {
   profile = "switches-switch-4-temp-humidity",
   package_group = "switch-basic",
   datapoints = {
-    tuya.dp_temperature(102, { name = "temperature" }),
-    tuya.dp_humidity(103, { name = "humidity" }),
+    tuya.dp_temperature(102, {  emit = emit.temperature("C"), name = "temperature" }),
+    tuya.dp_humidity(103, {  emit = emit.humidity(),  scale = 1, name = "humidity" }),
   },
   zcl_clusters = {
     zcl.switch({ endpoint = 1, component = "main", read_only = false }),
@@ -440,10 +440,10 @@ local switch_1gang_power_monitoring = {
     -- 0..120 minute countdown. Metering DP20..23 are state-only; DP20/21 are
     -- divided by 100/1000 while DP22/23 are raw.
     tuya.dp_countdown(7, { name = "countdown", emit = emit.apiuCountdown() }),
-    tuya.dp_energy(20, { read_only = true }),
-    tuya.dp_current(21, { read_only = true }),
-    tuya.dp_power(22, { scale = 1, read_only = true }),
-    tuya.dp_voltage(23, { scale = 1, read_only = true }),
+    tuya.dp_energy(20, {  emit = emit.energy(), read_only = true }),
+    tuya.dp_current(21, {  emit = emit.current(), read_only = true }),
+    tuya.dp_power(22, {  emit = emit.power(), scale = 1, read_only = true }),
+    tuya.dp_voltage(23, {  emit = emit.voltage(), scale = 1, read_only = true }),
   },
   magic_packet = true,
   query_on_configure = false,
@@ -497,9 +497,9 @@ local switch_4gang_metered_usb = {
       emit = emit.usb4gBacklight(),
       converter = panel_off_on_converter,
     }),
-    tuya.dp_current(21, { scale = 10, read_only = true }),
-    tuya.dp_power(22, { read_only = true }),
-    tuya.dp_voltage(23, { read_only = true }),
+    tuya.dp_current(21, {  emit = emit.current(), scale = 10, read_only = true }),
+    tuya.dp_power(22, {  emit = emit.power(), read_only = true }),
+    tuya.dp_voltage(23, {  emit = emit.voltage(), read_only = true }),
     tuya.dp_energy(105, {
       name = "produced_energy",
       scale = 10,
@@ -531,9 +531,9 @@ local switch_6gang_power = {
     tuya.dp_on_off(4, { name = "switch", component = "switch4" }),
     tuya.dp_on_off(5, { name = "switch", component = "switch5" }),
     tuya.dp_on_off(6, { name = "switch", component = "switch6" }),
-    tuya.dp_current(21, {}),
-    tuya.dp_power(22, {}),
-    tuya.dp_voltage(23, {}),
+    tuya.dp_current(21, { emit = emit.current(), }),
+    tuya.dp_power(22, { emit = emit.power(), }),
+    tuya.dp_voltage(23, { emit = emit.voltage(), }),
   },
   query_on_configure = true,
 }
@@ -549,7 +549,7 @@ local switch_1gang_model_mg_zg01w = {
   -- Z2M MG-ZG01W (tuya.ts:6170): DP21 current /1000, DP22 power /10, DP23 voltage /10.
   tuya.dp_on_off(1, { name = "switch", component = "main" }),
   tuya.dp_countdown(7, { name = "countdown", emit = emit.mgzgCountdown1() }),
-  tuya.dp_power_on_behavior(14, { emit = emit.mgzgPowerOnBehavior() }),
+  tuya.dp_power_on_behavior(14, {  datatype = tuya.DP_TYPE_VALUE, emit = emit.mgzgPowerOnBehavior() }),
   tuya.dp_backlight_mode_off_on(16, {
     emit = emit.mgzgBacklightMode(),
     converter = panel_off_on_converter,

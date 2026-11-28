@@ -11,7 +11,7 @@ local function status_bit(mask)
   return function(value)
     if type(value) == "table" then value = value.value end
     if type(value) ~= "number" then return nil end
-    return bit32.band(value, mask) ~= 0
+    return ((value) & (mask)) ~= 0
   end
 end
 

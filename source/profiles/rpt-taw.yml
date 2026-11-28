@@ -1,4 +1,4 @@
-name: rpt-tzm
+name: rpt-taw
 components:
 - id: main
   capabilities:
@@ -6,7 +6,13 @@ components:
     version: 1
   - id: switchLevel
     version: 1
-  - id: concertmirror08464.minBrightnessZclThousand
+  - id: concertmirror08464.powerOnBehavior
+    version: 1
+  - id: concertmirror08464.switchType
+    version: 1
+  - id: concertmirror08464.minimumBrightnessTsOneTenMax
+    version: 1
+  - id: concertmirror08464.maxBrightnessTsOneTenMax
     version: 1
   - id: refresh
     version: 1
@@ -18,18 +24,6 @@ components:
     version: 1
   - id: concertmirror08464.zclSwitchTwoReportMax
     version: 1
-  - id: concertmirror08464.zclLevelReportMin
-    version: 1
-  - id: concertmirror08464.zclLevelReportMax
-    version: 1
-  - id: concertmirror08464.zclLevelReportChange20
-    version: 1
-  - id: concertmirror08464.zclLevelTwoReportMin
-    version: 1
-  - id: concertmirror08464.zclLevelTwoReportMax
-    version: 1
-  - id: concertmirror08464.zclLevelTwoReportChange20
-    version: 1
   categories:
   - name: Light
 - id: switch2
@@ -38,7 +32,11 @@ components:
     version: 1
   - id: switchLevel
     version: 1
-  - id: concertmirror08464.minBrightnessZclThousand
+  - id: concertmirror08464.switchType
+    version: 1
+  - id: concertmirror08464.minimumBrightnessTsOneTenMax
+    version: 1
+  - id: concertmirror08464.maxBrightnessTsOneTenMax
     version: 1
   categories:
   - name: Light

@@ -36,7 +36,7 @@ if w<=0 then return"closed"end
 if w>=100 then return"open"end
 return"partially open"
 end)
-local t={profile="covers-cover-gm25teq",b.dp_enum(1,{name="cover_state",converter=g,write_only=true}),b.dp_enum(1,{name="cover_action_state",emit=f.shade_state(),converter=h,read_only=true}),b.dp_cover_position_inverted(9,{emit=f.shade_level()}),b.dp_numeric(9,{name="window_shade_state_command_position",emit=f.shade_state(),converter=e(),read_only=true}),b.dp_cover_position_inverted(8,{name="cover_position_state",emit=f.shade_level(),read_only=true}),b.dp_numeric(8,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),b.dp_numeric(11,{name="motor_direction",emit=f.gm25TeqMotorDirection(),
+local t={profile="covers-cover-gm25teq",b.dp_enum(1,{name="cover_state",converter=g,write_only=true}),b.dp_enum(1,{name="cover_action_state",emit=f.shade_state(),converter=h,read_only=true}),b.dp_cover_position_inverted(9,{emit=f.shade_level()}),b.dp_numeric(9,{name="window_shade_state_command_position",emit=f.shade_state(),converter=e(),read_only=true}),b.dp_cover_position_inverted(8,{name="cover_position_state",emit=f.shade_level(),read_only=true}),b.dp_numeric(8,{name="window_shade_state",emit=f.shade_state(),converter=e(),read_only=true}),b.dp_numeric(11,{datatype=b.DP_TYPE_ENUM,name="motor_direction",emit=f.gm25TeqMotorDirection(),
 converter=d.from_to(function(a)
 return(a==1 or a=="back"or a=="reversed")and"reversed"or"normal"
 end,function(a)

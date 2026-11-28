@@ -233,7 +233,7 @@ local szlr_eight_t = {
     }),
     tuya.dp_enum(106, {
       name = "szlr_eight_t_relay_mode",
-      converter = converter.lookup_from_to({ auto = 0, manual = 1 }),
+      converter = converter.lookup_from_to({ manual = 0, auto = 1 }),
       emit = emit.szlrEightTRelayMode(),
     }),
     tuya.dp_enum(107, {

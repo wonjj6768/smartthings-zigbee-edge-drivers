@@ -61,22 +61,6 @@ local function load_read_only_datapoints(tuya, allow_enum)
     return value
   end
 
-  local function parse_value(datatype, value_bytes)
-    if datatype == DP_TYPE_BOOL then
-      local value = string.byte(value_bytes, 1)
-      if value == 0 then return false end
-      if value == 1 then return true end
-      return nil
-    end
-    if datatype == DP_TYPE_VALUE then
-      return parse_uint(value_bytes)
-    end
-    if allow_enum and datatype == 0x04 and #value_bytes == 1 then
-      return string.byte(value_bytes, 1)
-    end
-    return nil
-  end
-
   local function parse_int(buffer)
     local unsigned = parse_uint(buffer)
     if unsigned == nil then
@@ -87,6 +71,23 @@ local function load_read_only_datapoints(tuya, allow_enum)
       return unsigned - maximum
     end
     return unsigned
+  end
+
+  local function parse_value(datatype, value_bytes)
+    if datatype == DP_TYPE_BOOL then
+      local value = string.byte(value_bytes, 1)
+      if value == 0 then return false end
+      if value == 1 then return true end
+      return nil
+    end
+    if datatype == DP_TYPE_VALUE then
+      if #value_bytes == 4 then return parse_int(value_bytes) end
+      return parse_uint(value_bytes)
+    end
+    if allow_enum and datatype == 0x04 and #value_bytes == 1 then
+      return string.byte(value_bytes, 1)
+    end
+    return nil
   end
 
   local function parse_datapoint(payload, cursor)

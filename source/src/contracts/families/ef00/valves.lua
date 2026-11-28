@@ -595,7 +595,7 @@ local ultrasonic_water_meter_valve = {
     emit = emit.vuwtqx0tDailyConsumption(),
   }),
   -- Z2M lookup returns a plain number, so writes use Tuya VALUE rather than ENUM.
-  tuya.dp_numeric(4, {
+  tuya.dp_numeric(4, { datatype = tuya.DP_TYPE_ENUM,
     name = "report_period",
     converter = converter.report_period_hours(),
     emit = emit.vuwtqx0tReportPeriod(),

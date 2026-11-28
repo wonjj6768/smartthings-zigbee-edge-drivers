@@ -4,7 +4,7 @@ components:
     capabilities:
       - id: switch
         version: 1
-      - id: fanMode
+      - id: airConditionerFanMode
         version: 1
       - id: concertmirror08464.fanModeSequenceAcController
         version: 1
@@ -21,7 +21,7 @@ deviceConfig:
         group: main
         composite: true
       - component: main
-        capability: fanMode
+        capability: airConditionerFanMode
         version: 1
     actions:
       - component: main
@@ -37,7 +37,7 @@ deviceConfig:
       capability: switch
       version: 1
     - component: main
-      capability: fanMode
+      capability: airConditionerFanMode
       version: 1
     - component: main
       capability: concertmirror08464.fanModeSequenceAcController
@@ -51,7 +51,7 @@ deviceConfig:
         capability: switch
         version: 1
       - component: main
-        capability: fanMode
+        capability: airConditionerFanMode
         version: 1
       - component: main
         capability: concertmirror08464.fanModeSequenceAcController
@@ -61,7 +61,7 @@ deviceConfig:
         capability: switch
         version: 1
       - component: main
-        capability: fanMode
+        capability: airConditionerFanMode
         version: 1
       - component: main
         capability: concertmirror08464.fanModeSequenceAcController

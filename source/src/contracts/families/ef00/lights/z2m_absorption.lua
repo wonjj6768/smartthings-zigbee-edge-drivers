@@ -75,13 +75,13 @@ end
   end
 
   local function wz5_color_payload(device, hue, saturation, brightness)
-    -- Z2M fillInHSB defaults to 360/1000/1000 and only replaces hue or
-    -- saturation when the supplied value is truthy. Preserve that zero-value
-    -- behavior while translating SmartThings' 0..100 hue to degrees.
+    -- An explicit zero hue/saturation is a requested value. Only an omitted
+    -- channel falls back to the cached value while translating the
+    -- SmartThings 0..100 hue to degrees.
     local degrees = 360
     local requested_hue = false
     local hue_value = tonumber(hue)
-    if hue_value ~= nil and hue_value ~= 0 then
+    if hue_value ~= nil then
       degrees = hue_value * 3.6
       requested_hue = true
     else
@@ -93,7 +93,7 @@ end
 
     local saturation_raw = 1000
     local saturation_value = tonumber(saturation)
-    if saturation_value ~= nil and saturation_value ~= 0 then
+    if saturation_value ~= nil then
       saturation_raw = round(clamp(saturation_value, 0, 100) * 10)
     else
       local latest_saturation = wz5_latest(

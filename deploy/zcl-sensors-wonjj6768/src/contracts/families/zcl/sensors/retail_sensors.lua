@@ -92,7 +92,7 @@ end
 }),b.temperature{scale=10},b.cluster_attribute(b.CLUSTER_POWER_CONFIGURATION,b.ATTR_BATTERY_PERCENTAGE_REMAINING,{name="battery",emit=h.battery(),data_type=a.Uint8,scale=1,minimum_interval=300,maximum_interval=21600,reportable_change=1})}}local N={profile="safety-contact-battery",zcl_clusters={j(b.contact{endpoint=1,read_only=true,read_on_refresh=false,
 from_device=function(_,_,i)
 if i.command_id~=0 then return nil end
-return bit32.band(i.raw_value,1)~=0
+return((i.raw_value)&(1))~=0
 end
 }),b.cluster_attribute(b.CLUSTER_POWER_CONFIGURATION,b.ATTR_BATTERY_PERCENTAGE_REMAINING,{name="battery",emit=h.battery(),data_type=a.Uint8,scale=2,
 from_device=function(d,_,i)

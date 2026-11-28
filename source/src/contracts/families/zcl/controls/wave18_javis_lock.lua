@@ -69,7 +69,7 @@ local function schedule_delayed_lock(device, _, mapping_context)
   if type(endpoint_timers) ~= "table" then endpoint_timers = {} end
   local previous = endpoint_timers[endpoint]
   if previous ~= nil and type(previous.cancel) == "function" then
-    previous:cancel()
+    device.thread:cancel_timer(previous)
   end
   local timer
   timer = device.thread:call_with_delay(2, function()

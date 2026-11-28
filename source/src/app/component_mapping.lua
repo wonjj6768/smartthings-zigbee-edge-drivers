@@ -12,6 +12,13 @@ local function normalize_endpoint_value(endpoint)
   return endpoint
 end
 
+local function default_endpoint(device)
+  if device and type(device.get_endpoint) == "function" then
+    return normalize_endpoint_value(device:get_endpoint()) or 1
+  end
+  return 1
+end
+
 local function sorted_profile_component_ids(device)
   local component_ids = {}
   local seen = {}
@@ -58,8 +65,8 @@ local function sorted_device_endpoints(device)
     end
   end
 
-  if not seen[1] then
-    endpoints[#endpoints + 1] = 1
+  if #endpoints == 0 then
+    endpoints[1] = default_endpoint(device)
   end
 
   table.sort(endpoints)
@@ -144,12 +151,22 @@ local function build_component_maps(device, definition, explicit_component_fn, e
   derive_maps_from_component_fn(device, explicit_component_fn, endpoint_to_component, component_to_endpoint)
   derive_maps_from_endpoint_fn(device, explicit_endpoint_fn, endpoint_to_component, component_to_endpoint)
 
+  -- Several wire endpoints may report to one component. Such reverse entries
+  -- must not replace an explicitly selected command endpoint.
+  if type(explicit_component_map) == "table" then
+    for component_id, endpoint in pairs(explicit_component_map) do
+      endpoint = normalize_endpoint_value(endpoint)
+      if endpoint ~= nil then component_to_endpoint[component_id] = endpoint end
+    end
+  end
+
   local remaining_components = {}
   for _, component_id in ipairs(sorted_profile_component_ids(device)) do
     if component_to_endpoint[component_id] == nil then
       local endpoint = nil
       if component_id == "main" then
-        endpoint = endpoint_to_component[1] == nil and 1 or nil
+        local fallback = default_endpoint(device)
+        endpoint = endpoint_to_component[fallback] == nil and fallback or nil
       else
         endpoint = normalize_endpoint_value(tonumber(component_id:match("(%d+)$")))
         if endpoint ~= nil and endpoint_to_component[endpoint] ~= nil then
@@ -181,10 +198,11 @@ local function build_component_maps(device, definition, explicit_component_fn, e
     assign_component_mapping(endpoint_to_component, component_to_endpoint, endpoint, component_id)
   end
 
-  if component_to_endpoint.main == nil and endpoint_to_component[1] == nil then
-    assign_component_mapping(endpoint_to_component, component_to_endpoint, 1, "main")
-  elseif endpoint_to_component[1] == nil then
-    endpoint_to_component[1] = "main"
+  local fallback = default_endpoint(device)
+  if component_to_endpoint.main == nil and endpoint_to_component[fallback] == nil then
+    assign_component_mapping(endpoint_to_component, component_to_endpoint, fallback, "main")
+  elseif endpoint_to_component[fallback] == nil then
+    endpoint_to_component[fallback] = "main"
   end
 
   return endpoint_to_component, component_to_endpoint
@@ -208,12 +226,12 @@ function component_mapping.apply(device, definition)
         return endpoint
       end
 
-      endpoint = component_to_endpoint[component_id] or 1
+      endpoint = component_to_endpoint[component_id] or default_endpoint(device)
       return endpoint
     end)
   else
     device:set_component_to_endpoint_fn(function(_, component_id)
-      local endpoint = component_to_endpoint[component_id] or 1
+      local endpoint = component_to_endpoint[component_id] or default_endpoint(device)
       return endpoint
     end)
   end

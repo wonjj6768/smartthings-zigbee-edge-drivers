@@ -128,7 +128,8 @@ local function livarno_led_sender(device, mapping, value, context)
   local name = mapping.name
   if name == "color_temperature" then
     local mired = math.max(153, math.min(500, math.floor(1000000 / value + 0.5)))
-    local encoded = math.floor((500 - mired) * 254 / 346 + 0.5)
+    local encoded =  device:get_manufacturer() == "_TZ3210_iystcadi" and mired
+      or math.floor((500 - mired) * 254 / 346 + 0.5)
     zcl.send_raw_cluster_command(device, 0x0300, 0xF0, string.char(0), endpoint)
     zcl.send_raw_cluster_command(device, 0x0300, 0x0A, string.char(encoded % 256, math.floor(encoded / 256), 0, 0, 0, 0), endpoint)
     zcl.send_raw_cluster_command(device, 0x0008, 0x00, string.char(brightness, 0, 0, 0, 0), endpoint)
@@ -380,7 +381,7 @@ register_device_definition(color_light, device_helpers.create_fingerprints("TS05
 }))
 
 register_device_definition(color_cct_light, device_helpers.create_fingerprints("TS0505A", {
-  "_TZ3000_sosdczdl",
+  
   "_TZ3000_odygigth",
   "_TZ3000_kdpxju99",
   "_TZ3000_dbou1ap4",
@@ -584,6 +585,20 @@ register_device_definition(color_cct_light, {
   device_helpers.create_fingerprint("Candeo", "C-ZB-LC20v2-RGBCCT"),
   device_helpers.create_fingerprint("Candeo", "C-ZB-LC20-RGBW"),
   device_helpers.create_fingerprint("Candeo", "C-ZB-LC20v2-RGBW"),
+})
+
+local tuya_ts0505a_led = {
+  profile = "lights-color-temperature-color",
+  auto_on_before_light_command = false,
+  color_temperature_range = lidl_livarno_rgbcct.color_temperature_range,
+  runtime_start = lidl_livarno_rgbcct.runtime_start,
+  zcl_clusters = {},
+}
+for index = 1, 8 do
+  tuya_ts0505a_led.zcl_clusters[index] = lidl_livarno_rgbcct.zcl_clusters[index]
+end
+register_device_definition(tuya_ts0505a_led, {
+  device_helpers.create_fingerprint("_TZ3000_sosdczdl", "TS0505A"),
 })
 
 -- ZCL REPORTING CAPABILITIES BEGIN

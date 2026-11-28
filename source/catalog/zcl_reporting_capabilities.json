@@ -58,7 +58,7 @@
             }
           ],
           "origin": {
-            "line": 821,
+            "line": 822,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -202,7 +202,7 @@
             }
           ],
           "origin": {
-            "line": 822,
+            "line": 823,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -358,7 +358,7 @@
             }
           ],
           "origin": {
-            "line": 823,
+            "line": 824,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -643,7 +643,7 @@
             }
           ],
           "origin": {
-            "line": 833,
+            "line": 834,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -659,7 +659,7 @@
             }
           ],
           "origin": {
-            "line": 865,
+            "line": 866,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -966,7 +966,7 @@
             }
           ],
           "origin": {
-            "line": 857,
+            "line": 858,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1034,7 +1034,7 @@
             }
           ],
           "origin": {
-            "line": 869,
+            "line": 870,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1066,7 +1066,7 @@
             }
           ],
           "origin": {
-            "line": 896,
+            "line": 897,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1090,7 +1090,7 @@
             }
           ],
           "origin": {
-            "line": 972,
+            "line": 973,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1118,7 +1118,7 @@
             }
           ],
           "origin": {
-            "line": 978,
+            "line": 979,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1142,7 +1142,7 @@
             }
           ],
           "origin": {
-            "line": 1000,
+            "line": 1001,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1158,7 +1158,7 @@
             }
           ],
           "origin": {
-            "line": 1019,
+            "line": 1020,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1226,7 +1226,7 @@
             }
           ],
           "origin": {
-            "line": 873,
+            "line": 874,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1250,7 +1250,7 @@
             }
           ],
           "origin": {
-            "line": 958,
+            "line": 959,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1266,7 +1266,7 @@
             }
           ],
           "origin": {
-            "line": 996,
+            "line": 997,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1290,7 +1290,7 @@
             }
           ],
           "origin": {
-            "line": 1340,
+            "line": 1341,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1418,7 +1418,7 @@
             }
           ],
           "origin": {
-            "line": 877,
+            "line": 878,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1434,7 +1434,7 @@
             }
           ],
           "origin": {
-            "line": 985,
+            "line": 986,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1462,7 +1462,7 @@
             }
           ],
           "origin": {
-            "line": 989,
+            "line": 990,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1498,7 +1498,7 @@
             }
           ],
           "origin": {
-            "line": 1010,
+            "line": 1011,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1578,7 +1578,7 @@
             }
           ],
           "origin": {
-            "line": 904,
+            "line": 905,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1646,7 +1646,7 @@
             }
           ],
           "origin": {
-            "line": 911,
+            "line": 912,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1754,7 +1754,7 @@
             }
           ],
           "origin": {
-            "line": 915,
+            "line": 916,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1822,7 +1822,7 @@
             }
           ],
           "origin": {
-            "line": 929,
+            "line": 930,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1898,7 +1898,7 @@
             }
           ],
           "origin": {
-            "line": 933,
+            "line": 934,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -1978,7 +1978,7 @@
             }
           ],
           "origin": {
-            "line": 939,
+            "line": 940,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2046,7 +2046,7 @@
             }
           ],
           "origin": {
-            "line": 946,
+            "line": 947,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2114,7 +2114,7 @@
             }
           ],
           "origin": {
-            "line": 950,
+            "line": 951,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2182,7 +2182,7 @@
             }
           ],
           "origin": {
-            "line": 954,
+            "line": 955,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2266,7 +2266,7 @@
             }
           ],
           "origin": {
-            "line": 964,
+            "line": 965,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2282,7 +2282,7 @@
             }
           ],
           "origin": {
-            "line": 1027,
+            "line": 1028,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2487,7 +2487,7 @@
             }
           ],
           "origin": {
-            "line": 1006,
+            "line": 1007,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2555,7 +2555,7 @@
             }
           ],
           "origin": {
-            "line": 1023,
+            "line": 1024,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2659,7 +2659,7 @@
             }
           ],
           "origin": {
-            "line": 1080,
+            "line": 1081,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2727,7 +2727,7 @@
             }
           ],
           "origin": {
-            "line": 1031,
+            "line": 1032,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -2795,7 +2795,7 @@
             }
           ],
           "origin": {
-            "line": 1035,
+            "line": 1036,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -3039,7 +3039,7 @@
             }
           ],
           "origin": {
-            "line": 1039,
+            "line": 1040,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -3283,7 +3283,7 @@
             }
           ],
           "origin": {
-            "line": 1043,
+            "line": 1044,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -3531,7 +3531,7 @@
             }
           ],
           "origin": {
-            "line": 1047,
+            "line": 1048,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -3775,7 +3775,7 @@
             }
           ],
           "origin": {
-            "line": 1052,
+            "line": 1053,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -4019,7 +4019,7 @@
             }
           ],
           "origin": {
-            "line": 1056,
+            "line": 1057,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -4271,7 +4271,7 @@
             }
           ],
           "origin": {
-            "line": 1060,
+            "line": 1061,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -4519,7 +4519,7 @@
             }
           ],
           "origin": {
-            "line": 1066,
+            "line": 1067,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -4626,7 +4626,7 @@
             }
           ],
           "origin": {
-            "line": 1071,
+            "line": 1072,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -4637,18 +4637,12 @@
       ]
     },
     {
-      "baseProfile": "plugs-switch-2-power-energy-voltage",
+      "baseProfile": "plugs-lumi-metering-two",
       "capabilities": [
         "concertmirror08464.zclSwitchReportMin",
         "concertmirror08464.zclSwitchReportMax",
         "concertmirror08464.zclSwitchTwoReportMin",
-        "concertmirror08464.zclSwitchTwoReportMax",
-        "concertmirror08464.zclPowerReportMin",
-        "concertmirror08464.zclPowerReportMax",
-        "concertmirror08464.zclPowerReportChange29",
-        "concertmirror08464.zclVoltageReportMin",
-        "concertmirror08464.zclVoltageReportMax",
-        "concertmirror08464.zclVoltageReportChange21"
+        "concertmirror08464.zclSwitchTwoReportMax"
       ],
       "contracts": [
         {
@@ -4684,48 +4678,6 @@
           "minimum": 0,
           "name": "switch",
           "type": 16
-        },
-        {
-          "attribute": 1291,
-          "attribute_name": "ActivePower",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b04050b1",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": 1,
-          "index": 3,
-          "item": "Power",
-          "kind": "power",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "power",
-          "type": 41
-        },
-        {
-          "attribute": 1285,
-          "attribute_name": "RMSVoltage",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b0405051",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": 1,
-          "index": 4,
-          "item": "Voltage",
-          "kind": "voltage",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "voltage",
-          "type": 33
         }
       ],
       "controls": [
@@ -4762,48 +4714,6 @@
           "minimum": 0,
           "name": "switch",
           "type": 16
-        },
-        {
-          "attribute": 1291,
-          "attribute_name": "ActivePower",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b04050b1",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": 1,
-          "index": 3,
-          "item": "Power",
-          "kind": "power",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "power",
-          "type": 41
-        },
-        {
-          "attribute": 1285,
-          "attribute_name": "RMSVoltage",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b0405051",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": 1,
-          "index": 4,
-          "item": "Voltage",
-          "kind": "voltage",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "voltage",
-          "type": 33
         }
       ],
       "identity": "contracts.families.zcl.switches.switches:43",
@@ -4827,7 +4737,7 @@
             }
           ],
           "origin": {
-            "line": 1075,
+            "line": 1076,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5018,7 +4928,7 @@
             }
           ],
           "origin": {
-            "line": 1106,
+            "line": 1107,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5042,7 +4952,7 @@
             }
           ],
           "origin": {
-            "line": 1242,
+            "line": 1243,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5078,7 +4988,7 @@
             }
           ],
           "origin": {
-            "line": 1248,
+            "line": 1249,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5098,7 +5008,7 @@
             }
           ],
           "origin": {
-            "line": 1261,
+            "line": 1262,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5298,7 +5208,7 @@
             }
           ],
           "origin": {
-            "line": 1131,
+            "line": 1132,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5505,7 +5415,7 @@
             }
           ],
           "origin": {
-            "line": 1149,
+            "line": 1150,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5521,7 +5431,7 @@
             }
           ],
           "origin": {
-            "line": 1178,
+            "line": 1179,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5537,7 +5447,7 @@
             }
           ],
           "origin": {
-            "line": 1182,
+            "line": 1183,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5693,7 +5603,7 @@
             }
           ],
           "origin": {
-            "line": 1194,
+            "line": 1195,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5709,7 +5619,7 @@
             }
           ],
           "origin": {
-            "line": 1233,
+            "line": 1234,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5729,7 +5639,7 @@
             }
           ],
           "origin": {
-            "line": 1237,
+            "line": 1238,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5745,7 +5655,7 @@
             }
           ],
           "origin": {
-            "line": 1257,
+            "line": 1258,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5852,7 +5762,7 @@
             }
           ],
           "origin": {
-            "line": 1186,
+            "line": 1187,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -5959,7 +5869,7 @@
             }
           ],
           "origin": {
-            "line": 1190,
+            "line": 1191,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6082,7 +5992,7 @@
             }
           ],
           "origin": {
-            "line": 1279,
+            "line": 1280,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6378,7 +6288,7 @@
             }
           ],
           "origin": {
-            "line": 1287,
+            "line": 1288,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6394,7 +6304,7 @@
             }
           ],
           "origin": {
-            "line": 1336,
+            "line": 1337,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6438,7 +6348,7 @@
             }
           ],
           "origin": {
-            "line": 1392,
+            "line": 1393,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6594,7 +6504,7 @@
             }
           ],
           "origin": {
-            "line": 1329,
+            "line": 1330,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6775,7 +6685,7 @@
             }
           ],
           "origin": {
-            "line": 1365,
+            "line": 1366,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -6811,7 +6721,7 @@
             }
           ],
           "origin": {
-            "line": 1379,
+            "line": 1380,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -7066,7 +6976,7 @@
             }
           ],
           "origin": {
-            "line": 1375,
+            "line": 1376,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -7247,7 +7157,7 @@
             }
           ],
           "origin": {
-            "line": 1388,
+            "line": 1389,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -7473,7 +7383,7 @@
             }
           ],
           "origin": {
-            "line": 1403,
+            "line": 1404,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -7695,7 +7605,7 @@
             }
           ],
           "origin": {
-            "line": 1409,
+            "line": 1410,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -7727,7 +7637,7 @@
             }
           ],
           "origin": {
-            "line": 1414,
+            "line": 1415,
             "source": "contracts/families/zcl/switches/switches.lua"
           },
           "owner": {
@@ -7956,7 +7866,7 @@
             }
           ],
           "origin": {
-            "line": 156,
+            "line": 167,
             "source": "contracts/families/zcl/switches/din_rail.lua"
           },
           "owner": {
@@ -8028,7 +7938,7 @@
             }
           ],
           "origin": {
-            "line": 166,
+            "line": 177,
             "source": "contracts/families/zcl/switches/din_rail.lua"
           },
           "owner": {
@@ -8152,7 +8062,7 @@
             }
           ],
           "origin": {
-            "line": 171,
+            "line": 182,
             "source": "contracts/families/zcl/switches/din_rail.lua"
           },
           "owner": {
@@ -8229,7 +8139,7 @@
             }
           ],
           "origin": {
-            "line": 175,
+            "line": 186,
             "source": "contracts/families/zcl/switches/din_rail.lua"
           },
           "owner": {
@@ -8469,7 +8379,7 @@
       "logicalItems": {},
       "pending": [],
       "prefix": "ts011Xjgf",
-      "profile": "rpt-txj",
+      "profile": "rpt-txjg",
       "registrations": [
         {
           "fingerprints": [
@@ -8503,7 +8413,7 @@
             }
           ],
           "origin": {
-            "line": 179,
+            "line": 190,
             "source": "contracts/families/zcl/switches/din_rail.lua"
           },
           "owner": {
@@ -8698,7 +8608,7 @@
       "logicalItems": {},
       "pending": [],
       "prefix": "ts011Onjv",
-      "profile": "rpt-ton",
+      "profile": "rpt-tonj",
       "registrations": [
         {
           "fingerprints": [
@@ -8716,7 +8626,7 @@
             }
           ],
           "origin": {
-            "line": 189,
+            "line": 200,
             "source": "contracts/families/zcl/switches/din_rail.lua"
           },
           "owner": {
@@ -8784,7 +8694,7 @@
             }
           ],
           "origin": {
-            "line": 157,
+            "line": 158,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -8804,7 +8714,7 @@
             }
           ],
           "origin": {
-            "line": 161,
+            "line": 162,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -8852,7 +8762,7 @@
             }
           ],
           "origin": {
-            "line": 166,
+            "line": 167,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -8868,7 +8778,7 @@
             }
           ],
           "origin": {
-            "line": 178,
+            "line": 179,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -8993,7 +8903,7 @@
             }
           ],
           "origin": {
-            "line": 182,
+            "line": 183,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -9009,7 +8919,7 @@
             }
           ],
           "origin": {
-            "line": 189,
+            "line": 190,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -9122,7 +9032,7 @@
             }
           ],
           "origin": {
-            "line": 193,
+            "line": 194,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -9235,7 +9145,7 @@
             }
           ],
           "origin": {
-            "line": 197,
+            "line": 198,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -9453,7 +9363,7 @@
             }
           ],
           "origin": {
-            "line": 201,
+            "line": 202,
             "source": "contracts/families/zcl/switches/valves.lua"
           },
           "owner": {
@@ -11836,7 +11746,7 @@
             }
           ],
           "origin": {
-            "line": 507,
+            "line": 508,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -11856,7 +11766,7 @@
             }
           ],
           "origin": {
-            "line": 511,
+            "line": 512,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -11884,7 +11794,7 @@
             }
           ],
           "origin": {
-            "line": 547,
+            "line": 548,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -11960,7 +11870,7 @@
             }
           ],
           "origin": {
-            "line": 519,
+            "line": 520,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12131,7 +12041,7 @@
             }
           ],
           "origin": {
-            "line": 525,
+            "line": 526,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12203,7 +12113,7 @@
             }
           ],
           "origin": {
-            "line": 529,
+            "line": 530,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12307,7 +12217,7 @@
             }
           ],
           "origin": {
-            "line": 534,
+            "line": 535,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12387,7 +12297,7 @@
             }
           ],
           "origin": {
-            "line": 554,
+            "line": 555,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12455,7 +12365,7 @@
             }
           ],
           "origin": {
-            "line": 561,
+            "line": 562,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12677,7 +12587,7 @@
             }
           ],
           "origin": {
-            "line": 565,
+            "line": 566,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -12990,7 +12900,7 @@
             }
           ],
           "origin": {
-            "line": 570,
+            "line": 571,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -13006,7 +12916,7 @@
             }
           ],
           "origin": {
-            "line": 614,
+            "line": 615,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -13259,7 +13169,7 @@
             }
           ],
           "origin": {
-            "line": 601,
+            "line": 602,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -13464,7 +13374,7 @@
             }
           ],
           "origin": {
-            "line": 610,
+            "line": 611,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -13475,16 +13385,10 @@
       ]
     },
     {
-      "baseProfile": "plugs-switch-power-energy-voltage",
+      "baseProfile": "plugs-lumi-metering",
       "capabilities": [
         "concertmirror08464.zclSwitchReportMin",
-        "concertmirror08464.zclSwitchReportMax",
-        "concertmirror08464.zclPowerReportMin",
-        "concertmirror08464.zclPowerReportMax",
-        "concertmirror08464.zclPowerReportChange29",
-        "concertmirror08464.zclVoltageReportMin",
-        "concertmirror08464.zclVoltageReportMax",
-        "concertmirror08464.zclVoltageReportChange21"
+        "concertmirror08464.zclSwitchReportMax"
       ],
       "contracts": [
         {
@@ -13503,48 +13407,6 @@
           "minimum": 0,
           "name": "switch",
           "type": 16
-        },
-        {
-          "attribute": 1291,
-          "attribute_name": "ActivePower",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b04050bauto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 2,
-          "item": "Power",
-          "kind": "power",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "power",
-          "type": 41
-        },
-        {
-          "attribute": 1285,
-          "attribute_name": "RMSVoltage",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b040505auto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 3,
-          "item": "Voltage",
-          "kind": "voltage",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "voltage",
-          "type": 33
         }
       ],
       "controls": [
@@ -13564,55 +13426,13 @@
           "minimum": 0,
           "name": "switch",
           "type": 16
-        },
-        {
-          "attribute": 1291,
-          "attribute_name": "ActivePower",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b04050bauto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 2,
-          "item": "Power",
-          "kind": "power",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "power",
-          "type": 41
-        },
-        {
-          "attribute": 1285,
-          "attribute_name": "RMSVoltage",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b040505auto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 3,
-          "item": "Voltage",
-          "kind": "voltage",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "voltage",
-          "type": 33
         }
       ],
       "identity": "contracts.families.zcl.plugs:15",
       "logicalItems": {},
       "pending": [],
       "prefix": "lumicSuxk",
-      "profile": "rpt-lsu",
+      "profile": "rpt-lsuxk",
       "registrations": [
         {
           "fingerprints": [
@@ -13638,7 +13458,7 @@
             }
           ],
           "origin": {
-            "line": 619,
+            "line": 620,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
@@ -13649,19 +13469,10 @@
       ]
     },
     {
-      "baseProfile": "plugs-switch-power-energy-voltage-current",
+      "baseProfile": "plugs-lumi-metering-current",
       "capabilities": [
         "concertmirror08464.zclSwitchReportMin",
-        "concertmirror08464.zclSwitchReportMax",
-        "concertmirror08464.zclPowerReportMin",
-        "concertmirror08464.zclPowerReportMax",
-        "concertmirror08464.zclPowerReportChange29",
-        "concertmirror08464.zclVoltageReportMin",
-        "concertmirror08464.zclVoltageReportMax",
-        "concertmirror08464.zclVoltageReportChange21",
-        "concertmirror08464.zclCurrentReportMin",
-        "concertmirror08464.zclCurrentReportMax",
-        "concertmirror08464.zclCurrentReportChange21"
+        "concertmirror08464.zclSwitchReportMax"
       ],
       "contracts": [
         {
@@ -13680,70 +13491,6 @@
           "minimum": 0,
           "name": "switch",
           "type": 16
-        },
-        {
-          "attribute": 1291,
-          "attribute_name": "ActivePower",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b04050bauto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 2,
-          "item": "Power",
-          "kind": "power",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "power",
-          "type": 41
-        },
-        {
-          "attribute": 1285,
-          "attribute_name": "RMSVoltage",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b040505auto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 3,
-          "item": "Voltage",
-          "kind": "voltage",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "voltage",
-          "type": 33
-        },
-        {
-          "attribute": 1288,
-          "attribute_name": "RMSCurrent",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b040508auto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 4,
-          "item": "Current",
-          "kind": "current",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "current",
-          "scale": 1000,
-          "type": 33
         }
       ],
       "controls": [
@@ -13763,77 +13510,13 @@
           "minimum": 0,
           "name": "switch",
           "type": 16
-        },
-        {
-          "attribute": 1291,
-          "attribute_name": "ActivePower",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b04050bauto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 2,
-          "item": "Power",
-          "kind": "power",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "power",
-          "type": 41
-        },
-        {
-          "attribute": 1285,
-          "attribute_name": "RMSVoltage",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b040505auto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 3,
-          "item": "Voltage",
-          "kind": "voltage",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "voltage",
-          "type": 33
-        },
-        {
-          "attribute": 1288,
-          "attribute_name": "RMSCurrent",
-          "byte_length": 2,
-          "change": 1,
-          "cluster": 2820,
-          "component": "nil",
-          "control": "zr0b040508auto",
-          "default_change": 1,
-          "default_maximum": 300,
-          "default_minimum": 5,
-          "discrete": false,
-          "endpoint": "nil",
-          "index": 4,
-          "item": "Current",
-          "kind": "current",
-          "maximum": 300,
-          "minimum": 5,
-          "name": "current",
-          "scale": 1000,
-          "type": 33
         }
       ],
       "identity": "contracts.families.zcl.plugs:16",
       "logicalItems": {},
       "pending": [],
       "prefix": "lumipAmfn",
-      "profile": "rpt-tcb",
+      "profile": "rpt-tpp",
       "registrations": [
         {
           "fingerprints": [
@@ -13844,10 +13527,6 @@
             {
               "manufacturer": "LUMI",
               "model": "lumi.plug.macn01"
-            },
-            {
-              "manufacturer": "LUMI",
-              "model": "lumi.plug.maeu01"
             },
             {
               "manufacturer": "LUMI",
@@ -13863,75 +13542,11 @@
             }
           ],
           "origin": {
-            "line": 627,
+            "line": 628,
             "source": "contracts/families/zcl/plugs.lua"
           },
           "owner": {
             "index": 16,
-            "module": "contracts.families.zcl.plugs"
-          }
-        },
-        {
-          "fingerprints": [
-            {
-              "manufacturer": "Third Reality, Inc",
-              "model": "3RSP02028BZ"
-            },
-            {
-              "manufacturer": "Third Reality, Inc",
-              "model": "3RSPE01044BZ"
-            }
-          ],
-          "origin": {
-            "line": 660,
-            "source": "contracts/families/zcl/plugs.lua"
-          },
-          "owner": {
-            "index": 22,
-            "module": "contracts.families.zcl.plugs"
-          }
-        },
-        {
-          "fingerprints": [
-            {
-              "manufacturer": "Heiman",
-              "model": "SmartPlug"
-            },
-            {
-              "manufacturer": "HEIMAN",
-              "model": "SmartPlug"
-            },
-            {
-              "manufacturer": "HEIMAN",
-              "model": "SmartPlug-EF-3.0"
-            }
-          ],
-          "origin": {
-            "line": 665,
-            "source": "contracts/families/zcl/plugs.lua"
-          },
-          "owner": {
-            "index": 23,
-            "module": "contracts.families.zcl.plugs"
-          }
-        },
-        {
-          "fingerprints": [
-            {
-              "manufacturer": "LEDVANCE",
-              "model": "PLUG COMPACT OUTDOOR EU EM T"
-            },
-            {
-              "manufacturer": "LEDVANCE",
-              "model": "PLUG COMPACT EU EM T"
-            }
-          ],
-          "origin": {
-            "line": 678,
-            "source": "contracts/families/zcl/plugs.lua"
-          },
-          "owner": {
-            "index": 25,
             "module": "contracts.families.zcl.plugs"
           }
         }
@@ -14459,6 +14074,275 @@
           },
           "owner": {
             "index": 20,
+            "module": "contracts.families.zcl.plugs"
+          }
+        }
+      ]
+    },
+    {
+      "baseProfile": "plugs-switch-power-energy-voltage-current",
+      "capabilities": [
+        "concertmirror08464.zclSwitchReportMin",
+        "concertmirror08464.zclSwitchReportMax",
+        "concertmirror08464.zclPowerReportMin",
+        "concertmirror08464.zclPowerReportMax",
+        "concertmirror08464.zclPowerReportChange29",
+        "concertmirror08464.zclVoltageReportMin",
+        "concertmirror08464.zclVoltageReportMax",
+        "concertmirror08464.zclVoltageReportChange21",
+        "concertmirror08464.zclCurrentReportMin",
+        "concertmirror08464.zclCurrentReportMax",
+        "concertmirror08464.zclCurrentReportChange21"
+      ],
+      "contracts": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "nil",
+          "control": "zr00060000auto",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": "nil",
+          "index": 1,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        },
+        {
+          "attribute": 1291,
+          "attribute_name": "ActivePower",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 2820,
+          "component": "nil",
+          "control": "zr0b04050bauto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 2,
+          "item": "Power",
+          "kind": "power",
+          "maximum": 300,
+          "minimum": 5,
+          "name": "power",
+          "type": 41
+        },
+        {
+          "attribute": 1285,
+          "attribute_name": "RMSVoltage",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 2820,
+          "component": "nil",
+          "control": "zr0b040505auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 3,
+          "item": "Voltage",
+          "kind": "voltage",
+          "maximum": 300,
+          "minimum": 5,
+          "name": "voltage",
+          "type": 33
+        },
+        {
+          "attribute": 1288,
+          "attribute_name": "RMSCurrent",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 2820,
+          "component": "nil",
+          "control": "zr0b040508auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 4,
+          "item": "Current",
+          "kind": "current",
+          "maximum": 300,
+          "minimum": 5,
+          "name": "current",
+          "scale": 1000,
+          "type": 33
+        }
+      ],
+      "controls": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "nil",
+          "control": "zr00060000auto",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": "nil",
+          "index": 1,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        },
+        {
+          "attribute": 1291,
+          "attribute_name": "ActivePower",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 2820,
+          "component": "nil",
+          "control": "zr0b04050bauto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 2,
+          "item": "Power",
+          "kind": "power",
+          "maximum": 300,
+          "minimum": 5,
+          "name": "power",
+          "type": 41
+        },
+        {
+          "attribute": 1285,
+          "attribute_name": "RMSVoltage",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 2820,
+          "component": "nil",
+          "control": "zr0b040505auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 3,
+          "item": "Voltage",
+          "kind": "voltage",
+          "maximum": 300,
+          "minimum": 5,
+          "name": "voltage",
+          "type": 33
+        },
+        {
+          "attribute": 1288,
+          "attribute_name": "RMSCurrent",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 2820,
+          "component": "nil",
+          "control": "zr0b040508auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 5,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 4,
+          "item": "Current",
+          "kind": "current",
+          "maximum": 300,
+          "minimum": 5,
+          "name": "current",
+          "scale": 1000,
+          "type": 33
+        }
+      ],
+      "identity": "contracts.families.zcl.plugs:22",
+      "logicalItems": {},
+      "pending": [],
+      "prefix": "z3rspDfqv",
+      "profile": "rpt-tcb",
+      "registrations": [
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "Third Reality, Inc",
+              "model": "3RSP02028BZ"
+            },
+            {
+              "manufacturer": "Third Reality, Inc",
+              "model": "3RSPE01044BZ"
+            }
+          ],
+          "origin": {
+            "line": 660,
+            "source": "contracts/families/zcl/plugs.lua"
+          },
+          "owner": {
+            "index": 22,
+            "module": "contracts.families.zcl.plugs"
+          }
+        },
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "Heiman",
+              "model": "SmartPlug"
+            },
+            {
+              "manufacturer": "HEIMAN",
+              "model": "SmartPlug"
+            },
+            {
+              "manufacturer": "HEIMAN",
+              "model": "SmartPlug-EF-3.0"
+            }
+          ],
+          "origin": {
+            "line": 665,
+            "source": "contracts/families/zcl/plugs.lua"
+          },
+          "owner": {
+            "index": 23,
+            "module": "contracts.families.zcl.plugs"
+          }
+        },
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "LEDVANCE",
+              "model": "PLUG COMPACT OUTDOOR EU EM T"
+            },
+            {
+              "manufacturer": "LEDVANCE",
+              "model": "PLUG COMPACT EU EM T"
+            }
+          ],
+          "origin": {
+            "line": 678,
+            "source": "contracts/families/zcl/plugs.lua"
+          },
+          "owner": {
+            "index": 25,
+            "module": "contracts.families.zcl.plugs"
+          }
+        },
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "LUMI",
+              "model": "lumi.plug.maeu01"
+            }
+          ],
+          "origin": {
+            "line": 913,
+            "source": "contracts/families/zcl/plugs.lua"
+          },
+          "owner": {
+            "index": 36,
             "module": "contracts.families.zcl.plugs"
           }
         }
@@ -16022,7 +15906,7 @@
             }
           ],
           "origin": {
-            "line": 258,
+            "line": 259,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16082,7 +15966,7 @@
             }
           ],
           "origin": {
-            "line": 265,
+            "line": 266,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16098,7 +15982,7 @@
             }
           ],
           "origin": {
-            "line": 280,
+            "line": 281,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16114,7 +15998,7 @@
             }
           ],
           "origin": {
-            "line": 284,
+            "line": 285,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16130,7 +16014,7 @@
             }
           ],
           "origin": {
-            "line": 362,
+            "line": 363,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16146,7 +16030,7 @@
             }
           ],
           "origin": {
-            "line": 366,
+            "line": 367,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16202,7 +16086,7 @@
             }
           ],
           "origin": {
-            "line": 491,
+            "line": 492,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16222,7 +16106,7 @@
             }
           ],
           "origin": {
-            "line": 505,
+            "line": 506,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16242,7 +16126,7 @@
             }
           ],
           "origin": {
-            "line": 510,
+            "line": 511,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16266,7 +16150,7 @@
             }
           ],
           "origin": {
-            "line": 515,
+            "line": 516,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16286,7 +16170,7 @@
             }
           ],
           "origin": {
-            "line": 521,
+            "line": 522,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16306,7 +16190,7 @@
             }
           ],
           "origin": {
-            "line": 526,
+            "line": 527,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16338,7 +16222,7 @@
             }
           ],
           "origin": {
-            "line": 531,
+            "line": 532,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16492,7 +16376,7 @@
             }
           ],
           "origin": {
-            "line": 288,
+            "line": 289,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16536,7 +16420,7 @@
             }
           ],
           "origin": {
-            "line": 292,
+            "line": 293,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16604,7 +16488,7 @@
             }
           ],
           "origin": {
-            "line": 303,
+            "line": 304,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16724,7 +16608,7 @@
             }
           ],
           "origin": {
-            "line": 320,
+            "line": 321,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16740,7 +16624,7 @@
             }
           ],
           "origin": {
-            "line": 370,
+            "line": 371,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16768,7 +16652,7 @@
             }
           ],
           "origin": {
-            "line": 539,
+            "line": 540,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16788,7 +16672,7 @@
             }
           ],
           "origin": {
-            "line": 546,
+            "line": 547,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -16942,7 +16826,7 @@
             }
           ],
           "origin": {
-            "line": 350,
+            "line": 351,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17096,7 +16980,7 @@
             }
           ],
           "origin": {
-            "line": 354,
+            "line": 355,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17250,7 +17134,7 @@
             }
           ],
           "origin": {
-            "line": 358,
+            "line": 359,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17447,7 +17331,7 @@
             }
           ],
           "origin": {
-            "line": 374,
+            "line": 375,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17463,7 +17347,7 @@
             }
           ],
           "origin": {
-            "line": 378,
+            "line": 379,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17483,7 +17367,7 @@
             }
           ],
           "origin": {
-            "line": 551,
+            "line": 552,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17507,7 +17391,7 @@
             }
           ],
           "origin": {
-            "line": 556,
+            "line": 557,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17527,7 +17411,7 @@
             }
           ],
           "origin": {
-            "line": 567,
+            "line": 568,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17762,10 +17646,6 @@
         {
           "fingerprints": [
             {
-              "manufacturer": "_TZ3000_sosdczdl",
-              "model": "TS0505A"
-            },
-            {
               "manufacturer": "_TZ3000_odygigth",
               "model": "TS0505A"
             },
@@ -17799,7 +17679,7 @@
             }
           ],
           "origin": {
-            "line": 382,
+            "line": 383,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17823,7 +17703,7 @@
             }
           ],
           "origin": {
-            "line": 394,
+            "line": 395,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -17851,7 +17731,7 @@
             }
           ],
           "origin": {
-            "line": 400,
+            "line": 401,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -18123,7 +18003,7 @@
             }
           ],
           "origin": {
-            "line": 423,
+            "line": 424,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -18143,7 +18023,7 @@
             }
           ],
           "origin": {
-            "line": 562,
+            "line": 563,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -18183,7 +18063,7 @@
             }
           ],
           "origin": {
-            "line": 572,
+            "line": 573,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -18211,7 +18091,7 @@
             }
           ],
           "origin": {
-            "line": 582,
+            "line": 583,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -18467,7 +18347,7 @@
             }
           ],
           "origin": {
-            "line": 415,
+            "line": 416,
             "source": "contracts/families/zcl/lights/lights.lua"
           },
           "owner": {
@@ -18590,7 +18470,7 @@
             }
           ],
           "origin": {
-            "line": 203,
+            "line": 209,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -18785,7 +18665,7 @@
             }
           ],
           "origin": {
-            "line": 210,
+            "line": 216,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -18980,7 +18860,7 @@
             }
           ],
           "origin": {
-            "line": 213,
+            "line": 219,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19081,7 +18961,7 @@
       "logicalItems": {},
       "pending": [],
       "prefix": "ts110Mjpr",
-      "profile": "rpt-tmj",
+      "profile": "rpt-tmjp",
       "registrations": [
         {
           "fingerprints": [
@@ -19091,7 +18971,7 @@
             }
           ],
           "origin": {
-            "line": 217,
+            "line": 223,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19276,7 +19156,7 @@
       },
       "pending": [],
       "prefix": "ts110Zmfu",
-      "profile": "rpt-tzm",
+      "profile": "rpt-tjg",
       "registrations": [
         {
           "fingerprints": [
@@ -19286,7 +19166,7 @@
             }
           ],
           "origin": {
-            "line": 221,
+            "line": 227,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19358,7 +19238,7 @@
             }
           ],
           "origin": {
-            "line": 225,
+            "line": 231,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19426,7 +19306,7 @@
             }
           ],
           "origin": {
-            "line": 230,
+            "line": 236,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19502,7 +19382,7 @@
             }
           ],
           "origin": {
-            "line": 234,
+            "line": 240,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19574,7 +19454,7 @@
             }
           ],
           "origin": {
-            "line": 240,
+            "line": 246,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19642,7 +19522,7 @@
             }
           ],
           "origin": {
-            "line": 245,
+            "line": 251,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19714,7 +19594,7 @@
             }
           ],
           "origin": {
-            "line": 249,
+            "line": 255,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19782,7 +19662,7 @@
             }
           ],
           "origin": {
-            "line": 254,
+            "line": 260,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -19977,14 +19857,105 @@
             }
           ],
           "origin": {
-            "line": 258,
+            "line": 264,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
             "index": 13,
             "module": "contracts.families.zcl.lights.dimmers"
           }
+        }
+      ]
+    },
+    {
+      "baseProfile": "lights-ts110e-dual-f0",
+      "capabilities": [
+        "concertmirror08464.zclSwitchReportMin",
+        "concertmirror08464.zclSwitchReportMax",
+        "concertmirror08464.zclSwitchTwoReportMin",
+        "concertmirror08464.zclSwitchTwoReportMax"
+      ],
+      "contracts": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "function",
+          "control": "zr000600001",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": 1,
+          "index": 2,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
         },
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "function",
+          "control": "zr000600002",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": 2,
+          "index": 3,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        }
+      ],
+      "controls": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "function",
+          "control": "zr000600001",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": 1,
+          "index": 2,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "function",
+          "control": "zr000600002",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": 2,
+          "index": 3,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        }
+      ],
+      "identity": "contracts.families.zcl.lights.dimmers:14",
+      "logicalItems": {
+        "zr000600001": "Switch",
+        "zr000600002": "SwitchTwo"
+      },
+      "pending": [],
+      "prefix": "ts110Awhd",
+      "profile": "rpt-taw",
+      "registrations": [
         {
           "fingerprints": [
             {
@@ -20009,7 +19980,7 @@
             }
           ],
           "origin": {
-            "line": 262,
+            "line": 268,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -20204,7 +20175,7 @@
             }
           ],
           "origin": {
-            "line": 270,
+            "line": 276,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -20399,7 +20370,7 @@
             }
           ],
           "origin": {
-            "line": 274,
+            "line": 280,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -20602,7 +20573,7 @@
             }
           ],
           "origin": {
-            "line": 278,
+            "line": 284,
             "source": "contracts/families/zcl/lights/dimmers.lua"
           },
           "owner": {
@@ -20895,7 +20866,7 @@
       "logicalItems": {},
       "pending": [],
       "prefix": "ts050Seey",
-      "profile": "rpt-tse",
+      "profile": "rpt-tsee",
       "registrations": [
         {
           "fingerprints": [
@@ -20909,7 +20880,7 @@
             }
           ],
           "origin": {
-            "line": 110,
+            "line": 126,
             "source": "contracts/families/zcl/lights/fans.lua"
           },
           "owner": {
@@ -20977,7 +20948,7 @@
             }
           ],
           "origin": {
-            "line": 165,
+            "line": 181,
             "source": "contracts/families/zcl/lights/fans.lua"
           },
           "owner": {
@@ -21484,7 +21455,7 @@
             }
           ],
           "origin": {
-            "line": 833,
+            "line": 851,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -22409,78 +22380,6 @@
         {
           "fingerprints": [
             {
-              "manufacturer": "OSRAM",
-              "model": "A60 TW Z3"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "CLA60 TW OSRAM"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "LIGHTIFY A19 Tunable White"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Classic A60 TW"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "PAR16 50 TW"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "PAR16 TW Z3"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Classic B40 TW - LIGHTIFY"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Ceiling TW OSRAM"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Surface Light TW"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "ZLO-CeilingTW-OS"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Control box TW"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "MR16 TW OSRAM"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Panel TW 595 UGR22"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "Zigbee 3.0 DALI CONV LI"
-            },
-            {
-              "manufacturer": "OSRAM",
-              "model": "LIGHTIFY Under Cabinet TW"
-            }
-          ],
-          "origin": {
-            "line": 654,
-            "source": "contracts/families/zcl/lights/retail.lua"
-          },
-          "owner": {
-            "index": 35,
-            "module": "contracts.families.zcl.lights.retail"
-          }
-        },
-        {
-          "fingerprints": [
-            {
               "manufacturer": "GLEDOPTO",
               "model": "GL-B-002P"
             },
@@ -22494,7 +22393,7 @@
             }
           ],
           "origin": {
-            "line": 717,
+            "line": 729,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -22546,7 +22445,7 @@
             }
           ],
           "origin": {
-            "line": 723,
+            "line": 735,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -23126,7 +23025,7 @@
             }
           ],
           "origin": {
-            "line": 672,
+            "line": 684,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -23162,7 +23061,7 @@
             }
           ],
           "origin": {
-            "line": 693,
+            "line": 705,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -23178,7 +23077,7 @@
             }
           ],
           "origin": {
-            "line": 702,
+            "line": 714,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -23198,7 +23097,7 @@
             }
           ],
           "origin": {
-            "line": 712,
+            "line": 724,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -23434,7 +23333,7 @@
             }
           ],
           "origin": {
-            "line": 736,
+            "line": 748,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -23570,7 +23469,7 @@
             }
           ],
           "origin": {
-            "line": 795,
+            "line": 807,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -24074,7 +23973,398 @@
             "index": 33,
             "module": "contracts.families.zcl.lights.retail"
           }
+        }
+      ]
+    },
+    {
+      "baseProfile": "lights-color-temperature",
+      "capabilities": [
+        "concertmirror08464.zclSwitchReportMin",
+        "concertmirror08464.zclSwitchReportMax",
+        "concertmirror08464.zclLevelReportMin",
+        "concertmirror08464.zclLevelReportMax",
+        "concertmirror08464.zclLevelReportChange20",
+        "concertmirror08464.zclColorTempReportMin",
+        "concertmirror08464.zclColorTempReportMax",
+        "concertmirror08464.zclColorTempReportChange21"
+      ],
+      "contracts": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "nil",
+          "control": "zr00060000auto",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": "function",
+          "index": 1,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
         },
+        {
+          "attribute": 0,
+          "attribute_name": "CurrentLevel",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 8,
+          "component": "nil",
+          "control": "zr00080000auto",
+          "default_change": 1,
+          "default_maximum": 3600,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "function",
+          "index": 2,
+          "item": "Level",
+          "maximum": 3600,
+          "minimum": 1,
+          "name": "brightness",
+          "type": 32
+        },
+        {
+          "attribute": 7,
+          "attribute_name": "ColorTemperatureMireds",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 768,
+          "component": "nil",
+          "control": "zr03000007auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "function",
+          "index": 3,
+          "item": "ColorTemp",
+          "maximum": 300,
+          "minimum": 1,
+          "name": "color_temperature",
+          "type": 33
+        }
+      ],
+      "controls": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "nil",
+          "control": "zr00060000auto",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": "function",
+          "index": 1,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "CurrentLevel",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 8,
+          "component": "nil",
+          "control": "zr00080000auto",
+          "default_change": 1,
+          "default_maximum": 3600,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "function",
+          "index": 2,
+          "item": "Level",
+          "maximum": 3600,
+          "minimum": 1,
+          "name": "brightness",
+          "type": 32
+        },
+        {
+          "attribute": 7,
+          "attribute_name": "ColorTemperatureMireds",
+          "byte_length": 2,
+          "change": 1,
+          "cluster": 768,
+          "component": "nil",
+          "control": "zr03000007auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "function",
+          "index": 3,
+          "item": "ColorTemp",
+          "maximum": 300,
+          "minimum": 1,
+          "name": "color_temperature",
+          "type": 33
+        }
+      ],
+      "identity": "contracts.families.zcl.lights.retail:35",
+      "logicalItems": {},
+      "pending": [],
+      "prefix": "a60twDyiz",
+      "profile": "rpt-txx",
+      "registrations": [
+        {
+          "fingerprints": [
+            {
+              "manufacturer": "OSRAM",
+              "model": "A60 TW Z3"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "CLA60 TW OSRAM"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "LIGHTIFY A19 Tunable White"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Classic A60 TW"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "PAR16 50 TW"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "PAR16 TW Z3"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Classic B40 TW - LIGHTIFY"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Ceiling TW OSRAM"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Surface Light TW"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "ZLO-CeilingTW-OS"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Control box TW"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "MR16 TW OSRAM"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Panel TW 595 UGR22"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "Zigbee 3.0 DALI CONV LI"
+            },
+            {
+              "manufacturer": "OSRAM",
+              "model": "LIGHTIFY Under Cabinet TW"
+            }
+          ],
+          "origin": {
+            "line": 658,
+            "source": "contracts/families/zcl/lights/retail.lua"
+          },
+          "owner": {
+            "index": 35,
+            "module": "contracts.families.zcl.lights.retail"
+          }
+        }
+      ]
+    },
+    {
+      "baseProfile": "lights-color",
+      "capabilities": [
+        "concertmirror08464.zclSwitchReportMin",
+        "concertmirror08464.zclSwitchReportMax",
+        "concertmirror08464.zclLevelReportMin",
+        "concertmirror08464.zclLevelReportMax",
+        "concertmirror08464.zclLevelReportChange20",
+        "concertmirror08464.zclHueReportMin",
+        "concertmirror08464.zclHueReportMax",
+        "concertmirror08464.zclHueReportChange20",
+        "concertmirror08464.zclSatReportMin",
+        "concertmirror08464.zclSatReportMax",
+        "concertmirror08464.zclSatReportChange20"
+      ],
+      "contracts": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "nil",
+          "control": "zr00060000auto",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": "nil",
+          "index": 1,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "CurrentLevel",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 8,
+          "component": "nil",
+          "control": "zr00080000auto",
+          "default_change": 1,
+          "default_maximum": 3600,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 2,
+          "item": "Level",
+          "maximum": 3600,
+          "minimum": 1,
+          "name": "brightness",
+          "type": 32
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "CurrentHue",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 768,
+          "component": "nil",
+          "control": "zr03000000auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 3,
+          "item": "Hue",
+          "maximum": 300,
+          "minimum": 1,
+          "name": "color_hue",
+          "type": 32
+        },
+        {
+          "attribute": 1,
+          "attribute_name": "CurrentSaturation",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 768,
+          "component": "nil",
+          "control": "zr03000001auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 4,
+          "item": "Sat",
+          "maximum": 300,
+          "minimum": 1,
+          "name": "color_saturation",
+          "type": 32
+        }
+      ],
+      "controls": [
+        {
+          "attribute": 0,
+          "attribute_name": "OnOff",
+          "cluster": 6,
+          "component": "nil",
+          "control": "zr00060000auto",
+          "default_maximum": 300,
+          "default_minimum": 0,
+          "discrete": true,
+          "endpoint": "nil",
+          "index": 1,
+          "item": "Switch",
+          "maximum": 300,
+          "minimum": 0,
+          "name": "switch",
+          "type": 16
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "CurrentLevel",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 8,
+          "component": "nil",
+          "control": "zr00080000auto",
+          "default_change": 1,
+          "default_maximum": 3600,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 2,
+          "item": "Level",
+          "maximum": 3600,
+          "minimum": 1,
+          "name": "brightness",
+          "type": 32
+        },
+        {
+          "attribute": 0,
+          "attribute_name": "CurrentHue",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 768,
+          "component": "nil",
+          "control": "zr03000000auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 3,
+          "item": "Hue",
+          "maximum": 300,
+          "minimum": 1,
+          "name": "color_hue",
+          "type": 32
+        },
+        {
+          "attribute": 1,
+          "attribute_name": "CurrentSaturation",
+          "byte_length": 1,
+          "change": 1,
+          "cluster": 768,
+          "component": "nil",
+          "control": "zr03000001auto",
+          "default_change": 1,
+          "default_maximum": 300,
+          "default_minimum": 1,
+          "discrete": false,
+          "endpoint": "nil",
+          "index": 4,
+          "item": "Sat",
+          "maximum": 300,
+          "minimum": 1,
+          "name": "color_saturation",
+          "type": 32
+        }
+      ],
+      "identity": "contracts.families.zcl.lights.retail:44",
+      "logicalItems": {},
+      "pending": [],
+      "prefix": "gls00Ohps",
+      "profile": "rpt-tot",
+      "registrations": [
         {
           "fingerprints": [
             {
@@ -24083,7 +24373,7 @@
             }
           ],
           "origin": {
-            "line": 829,
+            "line": 841,
             "source": "contracts/families/zcl/lights/retail.lua"
           },
           "owner": {
@@ -29680,7 +29970,7 @@
             }
           ],
           "origin": {
-            "line": 599,
+            "line": 600,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -29724,7 +30014,7 @@
             }
           ],
           "origin": {
-            "line": 604,
+            "line": 605,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -29910,7 +30200,7 @@
             }
           ],
           "origin": {
-            "line": 615,
+            "line": 616,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30120,7 +30410,7 @@
             }
           ],
           "origin": {
-            "line": 621,
+            "line": 622,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30280,7 +30570,7 @@
             }
           ],
           "origin": {
-            "line": 633,
+            "line": 634,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30431,7 +30721,7 @@
             }
           ],
           "origin": {
-            "line": 637,
+            "line": 638,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30447,7 +30737,7 @@
             }
           ],
           "origin": {
-            "line": 767,
+            "line": 768,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30463,7 +30753,7 @@
             }
           ],
           "origin": {
-            "line": 771,
+            "line": 772,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30641,7 +30931,7 @@
             }
           ],
           "origin": {
-            "line": 645,
+            "line": 646,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -30819,7 +31109,7 @@
             }
           ],
           "origin": {
-            "line": 649,
+            "line": 650,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31013,7 +31303,7 @@
             }
           ],
           "origin": {
-            "line": 653,
+            "line": 654,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31207,7 +31497,7 @@
             }
           ],
           "origin": {
-            "line": 657,
+            "line": 658,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31223,7 +31513,7 @@
             }
           ],
           "origin": {
-            "line": 676,
+            "line": 677,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31247,7 +31537,7 @@
             }
           ],
           "origin": {
-            "line": 740,
+            "line": 741,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31471,7 +31761,7 @@
             }
           ],
           "origin": {
-            "line": 665,
+            "line": 666,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31487,7 +31777,7 @@
             }
           ],
           "origin": {
-            "line": 696,
+            "line": 697,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31621,7 +31911,7 @@
             }
           ],
           "origin": {
-            "line": 685,
+            "line": 686,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31743,7 +32033,7 @@
             }
           ],
           "origin": {
-            "line": 692,
+            "line": 693,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31831,7 +32121,7 @@
             }
           ],
           "origin": {
-            "line": 700,
+            "line": 701,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -31946,7 +32236,7 @@
             }
           ],
           "origin": {
-            "line": 704,
+            "line": 705,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -32068,7 +32358,7 @@
             }
           ],
           "origin": {
-            "line": 708,
+            "line": 709,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -32362,7 +32652,7 @@
             }
           ],
           "origin": {
-            "line": 712,
+            "line": 713,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -32610,7 +32900,7 @@
             }
           ],
           "origin": {
-            "line": 723,
+            "line": 724,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -32723,7 +33013,7 @@
             }
           ],
           "origin": {
-            "line": 727,
+            "line": 728,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -32874,7 +33164,7 @@
             }
           ],
           "origin": {
-            "line": 731,
+            "line": 732,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -32906,7 +33196,7 @@
             }
           ],
           "origin": {
-            "line": 917,
+            "line": 918,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33043,7 +33333,7 @@
             }
           ],
           "origin": {
-            "line": 735,
+            "line": 736,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33162,7 +33452,7 @@
             }
           ],
           "origin": {
-            "line": 746,
+            "line": 747,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33300,7 +33590,7 @@
             }
           ],
           "origin": {
-            "line": 750,
+            "line": 751,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33498,7 +33788,7 @@
             }
           ],
           "origin": {
-            "line": 762,
+            "line": 763,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33685,7 +33975,7 @@
             }
           ],
           "origin": {
-            "line": 775,
+            "line": 776,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33705,7 +33995,7 @@
             }
           ],
           "origin": {
-            "line": 796,
+            "line": 797,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33741,7 +34031,7 @@
             }
           ],
           "origin": {
-            "line": 801,
+            "line": 802,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -33890,7 +34180,7 @@
             }
           ],
           "origin": {
-            "line": 788,
+            "line": 789,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34068,7 +34358,7 @@
             }
           ],
           "origin": {
-            "line": 810,
+            "line": 811,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34219,7 +34509,7 @@
             }
           ],
           "origin": {
-            "line": 814,
+            "line": 815,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34415,7 +34705,7 @@
             }
           ],
           "origin": {
-            "line": 818,
+            "line": 819,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34534,7 +34824,7 @@
             }
           ],
           "origin": {
-            "line": 822,
+            "line": 823,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34702,7 +34992,7 @@
             }
           ],
           "origin": {
-            "line": 827,
+            "line": 828,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34861,7 +35151,7 @@
             }
           ],
           "origin": {
-            "line": 833,
+            "line": 834,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -34976,7 +35266,7 @@
             }
           ],
           "origin": {
-            "line": 839,
+            "line": 840,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35113,7 +35403,7 @@
             }
           ],
           "origin": {
-            "line": 843,
+            "line": 844,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35334,7 +35624,7 @@
             }
           ],
           "origin": {
-            "line": 848,
+            "line": 849,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35516,7 +35806,7 @@
             }
           ],
           "origin": {
-            "line": 874,
+            "line": 875,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35667,7 +35957,7 @@
             }
           ],
           "origin": {
-            "line": 879,
+            "line": 880,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35773,7 +36063,7 @@
             }
           ],
           "origin": {
-            "line": 883,
+            "line": 884,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35861,7 +36151,7 @@
             }
           ],
           "origin": {
-            "line": 887,
+            "line": 888,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35967,7 +36257,7 @@
             }
           ],
           "origin": {
-            "line": 891,
+            "line": 892,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -35983,7 +36273,7 @@
             }
           ],
           "origin": {
-            "line": 913,
+            "line": 914,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -36105,7 +36395,7 @@
             }
           ],
           "origin": {
-            "line": 895,
+            "line": 896,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -36235,7 +36525,7 @@
             }
           ],
           "origin": {
-            "line": 903,
+            "line": 904,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -36368,7 +36658,7 @@
             }
           ],
           "origin": {
-            "line": 925,
+            "line": 926,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -36478,7 +36768,7 @@
             }
           ],
           "origin": {
-            "line": 929,
+            "line": 930,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -36635,7 +36925,7 @@
             }
           ],
           "origin": {
-            "line": 934,
+            "line": 935,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -36786,7 +37076,7 @@
             }
           ],
           "origin": {
-            "line": 944,
+            "line": 945,
             "source": "contracts/families/zcl/sensors/safety.lua"
           },
           "owner": {
@@ -37552,7 +37842,7 @@
             }
           ],
           "origin": {
-            "line": 143,
+            "line": 157,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -37612,7 +37902,7 @@
             }
           ],
           "origin": {
-            "line": 147,
+            "line": 161,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -37928,7 +38218,7 @@
       "logicalItems": {},
       "pending": [],
       "prefix": "z3157Joju",
-      "profile": "rpt-zjo",
+      "profile": "rpt-zjoj",
       "registrations": [
         {
           "fingerprints": [
@@ -37942,7 +38232,7 @@
             }
           ],
           "origin": {
-            "line": 162,
+            "line": 176,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -38139,6 +38429,10 @@
               "model": "devi_f"
             },
             {
+              "manufacturer": "devi",
+              "model": "devi_f"
+            },
+            {
               "manufacturer": "Sinopé",
               "model": "TH1320ZB-04"
             },
@@ -38148,7 +38442,7 @@
             }
           ],
           "origin": {
-            "line": 167,
+            "line": 181,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -38443,7 +38737,7 @@
             }
           ],
           "origin": {
-            "line": 173,
+            "line": 188,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -38774,7 +39068,7 @@
             }
           ],
           "origin": {
-            "line": 177,
+            "line": 192,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -39021,7 +39315,7 @@
             }
           ],
           "origin": {
-            "line": 181,
+            "line": 196,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -39368,7 +39662,7 @@
             }
           ],
           "origin": {
-            "line": 186,
+            "line": 201,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -39741,7 +40035,7 @@
             }
           ],
           "origin": {
-            "line": 193,
+            "line": 208,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -39977,7 +40271,7 @@
             }
           ],
           "origin": {
-            "line": 197,
+            "line": 212,
             "source": "contracts/families/zcl/sensors/thermostats.lua"
           },
           "owner": {
@@ -48349,7 +48643,7 @@
             }
           ],
           "origin": {
-            "line": 78,
+            "line": 81,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48373,7 +48667,7 @@
             }
           ],
           "origin": {
-            "line": 99,
+            "line": 102,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48389,7 +48683,7 @@
             }
           ],
           "origin": {
-            "line": 105,
+            "line": 108,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48574,7 +48868,7 @@
             }
           ],
           "origin": {
-            "line": 109,
+            "line": 112,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48714,7 +49008,7 @@
             }
           ],
           "origin": {
-            "line": 119,
+            "line": 122,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48730,7 +49024,7 @@
             }
           ],
           "origin": {
-            "line": 123,
+            "line": 126,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48758,7 +49052,7 @@
             }
           ],
           "origin": {
-            "line": 127,
+            "line": 130,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -48910,7 +49204,7 @@
             }
           ],
           "origin": {
-            "line": 152,
+            "line": 155,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -49005,7 +49299,7 @@
             }
           ],
           "origin": {
-            "line": 167,
+            "line": 170,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -49145,7 +49439,7 @@
             }
           ],
           "origin": {
-            "line": 171,
+            "line": 174,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -49165,7 +49459,7 @@
             }
           ],
           "origin": {
-            "line": 175,
+            "line": 178,
             "source": "contracts/families/zcl/covers.lua"
           },
           "owner": {
@@ -50744,7 +51038,7 @@
             }
           ],
           "origin": {
-            "line": 372,
+            "line": 373,
             "source": "contracts/families/zcl/controls/scene.lua"
           },
           "owner": {
@@ -50821,7 +51115,7 @@
             }
           ],
           "origin": {
-            "line": 376,
+            "line": 377,
             "source": "contracts/families/zcl/controls/scene.lua"
           },
           "owner": {
@@ -50902,7 +51196,7 @@
             }
           ],
           "origin": {
-            "line": 384,
+            "line": 385,
             "source": "contracts/families/zcl/controls/scene.lua"
           },
           "owner": {
@@ -50983,7 +51277,7 @@
             }
           ],
           "origin": {
-            "line": 389,
+            "line": 390,
             "source": "contracts/families/zcl/controls/scene.lua"
           },
           "owner": {
@@ -55149,10 +55443,10 @@
           "type": 32
         }
       ],
-      "identity": "contracts.families.ef00.covers:48",
+      "identity": "contracts.families.ef00.covers:51",
       "logicalItems": {},
       "pending": [],
-      "prefix": "ts030Rwsa",
+      "prefix": "ts030Ymmg",
       "profile": "rpt-trw",
       "registrations": [
         {
@@ -55163,11 +55457,11 @@
             }
           ],
           "origin": {
-            "line": 1870,
+            "line": 1890,
             "source": "contracts/families/ef00/covers.lua"
           },
           "owner": {
-            "index": 48,
+            "index": 51,
             "module": "contracts.families.ef00.covers"
           }
         }
@@ -78478,7 +78772,7 @@
             }
           ],
           "origin": {
-            "line": 483,
+            "line": 487,
             "source": "contracts/families/zcl/thermostats/wave19_sber.lua"
           },
           "owner": {
@@ -100034,7 +100328,7 @@
         "model": "3157100"
       },
       "oldProfile": "thermostats-centralite-thermostat",
-      "profile": "rpt-zjo"
+      "profile": "rpt-zjoj"
     },
     {
       "fingerprint": {
@@ -100042,7 +100336,7 @@
         "model": "3157100-E"
       },
       "oldProfile": "thermostats-centralite-thermostat",
-      "profile": "rpt-zjo"
+      "profile": "rpt-zjoj"
     },
     {
       "fingerprint": {
@@ -104601,16 +104895,16 @@
         "manufacturer": "LUMI",
         "model": "lumi.ctrl_86plug"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage",
-      "profile": "rpt-lsu"
+      "oldProfile": "plugs-lumi-metering",
+      "profile": "rpt-lsuxk"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.ctrl_86plug.aq1"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage",
-      "profile": "rpt-lsu"
+      "oldProfile": "plugs-lumi-metering",
+      "profile": "rpt-lsuxk"
     },
     {
       "fingerprint": {
@@ -104913,15 +105207,15 @@
         "manufacturer": "LUMI",
         "model": "lumi.plug"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage",
-      "profile": "rpt-lsu"
+      "oldProfile": "plugs-lumi-metering",
+      "profile": "rpt-lsuxk"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.acn005"
       },
-      "oldProfile": "plugs-switch-2-power-energy-voltage",
+      "oldProfile": "plugs-lumi-metering-two",
       "profile": "rpt-lvk"
     },
     {
@@ -104929,24 +105223,24 @@
         "manufacturer": "LUMI",
         "model": "lumi.plug.aeu001"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage-current",
-      "profile": "rpt-tcb"
+      "oldProfile": "plugs-lumi-metering-current",
+      "profile": "rpt-tpp"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.aq1"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage",
-      "profile": "rpt-lsu"
+      "oldProfile": "plugs-lumi-metering",
+      "profile": "rpt-lsuxk"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.macn01"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage-current",
-      "profile": "rpt-tcb"
+      "oldProfile": "plugs-lumi-metering-current",
+      "profile": "rpt-tpp"
     },
     {
       "fingerprint": {
@@ -104961,39 +105255,39 @@
         "manufacturer": "LUMI",
         "model": "lumi.plug.maus01"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage-current",
-      "profile": "rpt-tcb"
+      "oldProfile": "plugs-lumi-metering-current",
+      "profile": "rpt-tpp"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.mitw01"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage",
-      "profile": "rpt-lsu"
+      "oldProfile": "plugs-lumi-metering",
+      "profile": "rpt-lsuxk"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.mmeu01"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage-current",
-      "profile": "rpt-tcb"
+      "oldProfile": "plugs-lumi-metering-current",
+      "profile": "rpt-tpp"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.sacn02"
       },
-      "oldProfile": "plugs-switch-power-energy-voltage-current",
-      "profile": "rpt-tcb"
+      "oldProfile": "plugs-lumi-metering-current",
+      "profile": "rpt-tpp"
     },
     {
       "fingerprint": {
         "manufacturer": "LUMI",
         "model": "lumi.plug.sacn03"
       },
-      "oldProfile": "plugs-switch-2-power-energy-voltage",
+      "oldProfile": "plugs-lumi-metering-two",
       "profile": "rpt-lvk"
     },
     {
@@ -109866,7 +110160,7 @@
         "model": "TS110F"
       },
       "oldProfile": "lights-dimmer-min",
-      "profile": "rpt-tmj"
+      "profile": "rpt-tmjp"
     },
     {
       "fingerprint": {
@@ -109970,7 +110264,7 @@
         "model": "TS110F"
       },
       "oldProfile": "lights-dimmer-2-min",
-      "profile": "rpt-tzm"
+      "profile": "rpt-tjg"
     },
     {
       "fingerprint": {
@@ -110314,7 +110608,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold-no-temp",
-      "profile": "rpt-ton"
+      "profile": "rpt-tonj"
     },
     {
       "fingerprint": {
@@ -110338,7 +110632,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -111282,7 +111576,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -112146,7 +112440,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold-no-temp",
-      "profile": "rpt-ton"
+      "profile": "rpt-tonj"
     },
     {
       "fingerprint": {
@@ -112690,7 +112984,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -113706,7 +114000,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -113947,14 +114241,6 @@
       },
       "oldProfile": "switches-switch-1-countdown-switch-type",
       "profile": "rpt-tss"
-    },
-    {
-      "fingerprint": {
-        "manufacturer": "_TZ3000_sosdczdl",
-        "model": "TS0505A"
-      },
-      "oldProfile": "lights-color-temperature-color",
-      "profile": "rpt-tkj"
     },
     {
       "fingerprint": {
@@ -114698,7 +114984,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -114834,7 +115120,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold-no-temp",
-      "profile": "rpt-ton"
+      "profile": "rpt-tonj"
     },
     {
       "fingerprint": {
@@ -114898,7 +115184,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -114914,7 +115200,7 @@
         "model": "TS011F"
       },
       "oldProfile": "din-rail-switch-power-energy-voltage-current-threshold",
-      "profile": "rpt-txj"
+      "profile": "rpt-txjg"
     },
     {
       "fingerprint": {
@@ -115673,16 +115959,16 @@
         "manufacturer": "_TZ3210_3mpwqzuu",
         "model": "TS110E"
       },
-      "oldProfile": "lights-dimmer-2-options-ts110",
-      "profile": "rpt-tcs"
+      "oldProfile": "lights-ts110e-dual-f0",
+      "profile": "rpt-taw"
     },
     {
       "fingerprint": {
         "manufacturer": "_TZ3210_4ubylghk",
         "model": "TS110E"
       },
-      "oldProfile": "lights-dimmer-2-options-ts110",
-      "profile": "rpt-tcs"
+      "oldProfile": "lights-ts110e-dual-f0",
+      "profile": "rpt-taw"
     },
     {
       "fingerprint": {
@@ -115698,7 +115984,7 @@
         "model": "TS0501"
       },
       "oldProfile": "fans-switch-fan-mode",
-      "profile": "rpt-tse"
+      "profile": "rpt-tsee"
     },
     {
       "fingerprint": {
@@ -116330,7 +116616,7 @@
         "model": "TS0501"
       },
       "oldProfile": "fans-switch-fan-mode",
-      "profile": "rpt-tse"
+      "profile": "rpt-tsee"
     },
     {
       "fingerprint": {
@@ -116369,8 +116655,8 @@
         "manufacturer": "_TZ3210_mt5xjoy6",
         "model": "TS110E"
       },
-      "oldProfile": "lights-dimmer-2-options-ts110",
-      "profile": "rpt-tcs"
+      "oldProfile": "lights-ts110e-dual-f0",
+      "profile": "rpt-taw"
     },
     {
       "fingerprint": {
@@ -116473,8 +116759,8 @@
         "manufacturer": "_TZ3210_pagajpog",
         "model": "TS110E"
       },
-      "oldProfile": "lights-dimmer-2-options-ts110",
-      "profile": "rpt-tcs"
+      "oldProfile": "lights-ts110e-dual-f0",
+      "profile": "rpt-taw"
     },
     {
       "fingerprint": {
@@ -116761,8 +117047,8 @@
         "manufacturer": "_TZ3210_vfwhhldz",
         "model": "TS110E"
       },
-      "oldProfile": "lights-dimmer-2-options-ts110",
-      "profile": "rpt-tcs"
+      "oldProfile": "lights-ts110e-dual-f0",
+      "profile": "rpt-taw"
     },
     {
       "fingerprint": {
@@ -117304,6 +117590,14 @@
       "fingerprint": {
         "manufacturer": "computime",
         "model": "PUMM01102"
+      },
+      "oldProfile": "thermostats-thermostat",
+      "profile": "rpt-dsh"
+    },
+    {
+      "fingerprint": {
+        "manufacturer": "devi",
+        "model": "devi_f"
       },
       "oldProfile": "thermostats-thermostat",
       "profile": "rpt-dsh"

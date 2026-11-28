@@ -157,7 +157,7 @@ local function start_pool_chlorine_keepalive(device)
 
   local previous_timer = device:get_field(POOL_CHLORINE_KEEPALIVE_FIELD)
   if previous_timer ~= nil and type(previous_timer.cancel) == "function" then
-    previous_timer:cancel()
+    device.thread:cancel_timer(previous_timer)
   end
 
   schedule_pool_chlorine_keepalive(device)
@@ -175,7 +175,7 @@ local function start_hourly_th_time_updates(device, preset)
 
   local previous_timer = device:get_field(TH_FORCE_TIME_FIELD)
   if previous_timer ~= nil and type(previous_timer.cancel) == "function" then
-    previous_timer:cancel()
+    device.thread:cancel_timer(previous_timer)
   end
 
   local schedule_next
@@ -539,7 +539,11 @@ local pool_chlorine_meter = {
       read_only = true,
     }),
 
-    tuya.dp_numeric(11, { name = "ec", emit = emit.ylPoolConductivity(), read_only = true }),
+    tuya.dp_numeric(11, {
+      name = "ec", emit = emit.ylPoolConductivity(), read_only = true,
+      -- BLE-YL01 conductivity is a nonnegative unsigned32 raw counter.
+      from_device = function(value, _, datapoint) return datapoint and datapoint.int_value or value end,
+    }),
 
     tuya.dp_numeric(101, { name = "orp", emit = emit.poolOrpChlorineMeter(), read_only = true }),
 

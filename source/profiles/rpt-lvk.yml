@@ -24,18 +24,6 @@ components:
     version: 1
   - id: concertmirror08464.zclSwitchTwoReportMax
     version: 1
-  - id: concertmirror08464.zclPowerReportMin
-    version: 1
-  - id: concertmirror08464.zclPowerReportMax
-    version: 1
-  - id: concertmirror08464.zclPowerReportChange29
-    version: 1
-  - id: concertmirror08464.zclVoltageReportMin
-    version: 1
-  - id: concertmirror08464.zclVoltageReportMax
-    version: 1
-  - id: concertmirror08464.zclVoltageReportChange21
-    version: 1
   categories:
   - name: SmartPlug
 - id: switch2
@@ -101,18 +89,6 @@ deviceConfig:
     capability: concertmirror08464.zclSwitchTwoReportMin
   - component: main
     capability: concertmirror08464.zclSwitchTwoReportMax
-  - component: main
-    capability: concertmirror08464.zclPowerReportMin
-  - component: main
-    capability: concertmirror08464.zclPowerReportMax
-  - component: main
-    capability: concertmirror08464.zclPowerReportChange29
-  - component: main
-    capability: concertmirror08464.zclVoltageReportMin
-  - component: main
-    capability: concertmirror08464.zclVoltageReportMax
-  - component: main
-    capability: concertmirror08464.zclVoltageReportChange21
   automation:
     conditions:
     - component: main
@@ -141,18 +117,6 @@ deviceConfig:
       capability: concertmirror08464.zclSwitchTwoReportMin
     - component: main
       capability: concertmirror08464.zclSwitchTwoReportMax
-    - component: main
-      capability: concertmirror08464.zclPowerReportMin
-    - component: main
-      capability: concertmirror08464.zclPowerReportMax
-    - component: main
-      capability: concertmirror08464.zclPowerReportChange29
-    - component: main
-      capability: concertmirror08464.zclVoltageReportMin
-    - component: main
-      capability: concertmirror08464.zclVoltageReportMax
-    - component: main
-      capability: concertmirror08464.zclVoltageReportChange21
     actions:
     - component: main
       capability: switch
@@ -174,15 +138,3 @@ deviceConfig:
       capability: concertmirror08464.zclSwitchTwoReportMin
     - component: main
       capability: concertmirror08464.zclSwitchTwoReportMax
-    - component: main
-      capability: concertmirror08464.zclPowerReportMin
-    - component: main
-      capability: concertmirror08464.zclPowerReportMax
-    - component: main
-      capability: concertmirror08464.zclPowerReportChange29
-    - component: main
-      capability: concertmirror08464.zclVoltageReportMin
-    - component: main
-      capability: concertmirror08464.zclVoltageReportMax
-    - component: main
-      capability: concertmirror08464.zclVoltageReportChange21

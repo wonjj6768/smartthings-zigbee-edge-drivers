@@ -7,7 +7,7 @@ end
 local function k(a)
 local o=a:get_field(c)if o~=nil and type(o.cancel)=="function"then
 pcall(function()
-o:cancel()
+a.thread:cancel_timer(o)
 end)
 end
 a:set_field(c,nil,{persist=false})

@@ -1,5 +1,5 @@
 local aj,e,H,ax,w,J,az=require"contracts.helpers.family",require"st.capabilities",require"capabilities.events.all",require"st.zigbee.zcl.clusters",require"st.zigbee.data_types",require"st.zigbee.device_management",require"st.json"local D=ax.DoorLock
-local ah,aC=aj.definition_registry()local P,B,K,aK,ag,aE,am,aq,aB,ai,W,t="yrd410:",{persist=false},{persist=true},{[0]="keypad",[1]="rf",[2]="manual",[3]="rfid",[4]="fingerprint"},{[0]="available",[1]="enabled",[3]="disabled"},{unrestricted=0,year_day_schedule=1,week_day_schedule=2,master=3,non_access=4},{[0]="silent_mode",[1]="low_volume",[2]="high_volume"},{[0]="unknown","lock","unlock","lock_failure_invalid_pin_or_id","lock_failure_invalid_schedule","unlock_failure_invalid_pin_or_id","unlock_failure_invalid_schedule","one_touch_lock","key_lock","key_unlock","auto_lock","schedule_lock","schedule_unlock","manual_lock","manual_unlock","non_access_user_operational_event"},{[0]="unknown","master_code_changed","pin_code_added","pin_code_deleted","pin_code_changed","rfid_code_added","rfid_code_deleted"},{[0]="open","closed","error_jammed","error_forced_open","error_unspecified",[255]="undefined"},{[0]="not_fully_locked","locked","unlocked"},{relock=H.yrd410RelockTime(),volume=H.yrd410SoundVolume(),action=H.yrd410Action(),user=H.yrd410ActionUser(),source=H.yrd410ActionSource(),source_name=H.yrd410ActionSourceName(),raw_lock=H.yrd410LockState(),door=H.yrd410DoorState(),raw_battery=H.yrd410BatteryPercent()}
+local ah,aC=aj.definition_registry()local P,B,K,aK,ag,aE,am,aq,aB,ai,W,s="yrd410:",{persist=false},{persist=true},{[0]="keypad",[1]="rf",[2]="manual",[3]="rfid",[4]="fingerprint"},{[0]="available",[1]="enabled",[3]="disabled"},{unrestricted=0,year_day_schedule=1,week_day_schedule=2,master=3,non_access=4},{[0]="silent_mode",[1]="low_volume",[2]="high_volume"},{[0]="unknown","lock","unlock","lock_failure_invalid_pin_or_id","lock_failure_invalid_schedule","unlock_failure_invalid_pin_or_id","unlock_failure_invalid_schedule","one_touch_lock","key_lock","key_unlock","auto_lock","schedule_lock","schedule_unlock","manual_lock","manual_unlock","non_access_user_operational_event"},{[0]="unknown","master_code_changed","pin_code_added","pin_code_deleted","pin_code_changed","rfid_code_added","rfid_code_deleted"},{[0]="open","closed","error_jammed","error_forced_open","error_unspecified",[255]="undefined"},{[0]="not_fully_locked","locked","unlocked"},{relock=H.yrd410RelockTime(),volume=H.yrd410SoundVolume(),action=H.yrd410Action(),user=H.yrd410ActionUser(),source=H.yrd410ActionSource(),source_name=H.yrd410ActionSourceName(),raw_lock=H.yrd410LockState(),door=H.yrd410DoorState(),raw_battery=H.yrd410BatteryPercent()}
 local function aF(d,aI,aG)
 return type(d)=="number"and d==d and d%1==0 and d>=aI and d<=aG
 end
@@ -70,12 +70,12 @@ end
 local function S(c)
 k(c,e.lockCodes.lockCodes,az.encode(c:get_field(P.."names")or{}))
 end
-local function N(c,s,aN)
-local f,status=s.user_id.value,s.user_status.value
+local function N(c,r,aN)
+local f,status=r.user_id.value,r.user_status.value
 local key,as=tostring(f),c:get_field(P.."users")or{}as[key]=ag[status]or"not_supported_"..status
 c:set_field(P.."users",as,K)k(c,e["concertmirror08464.yrd410UserStatus"].userStatus,az.encode(as))if not aN then return end
-local v=s.code.value
-if c.preferences.yrd410ExposePin==true and s.code.byte_length~=255 then
+local v=r.code.value
+if c.preferences.yrd410ExposePin==true and r.code.byte_length~=255 then
 local aA=c:get_field(P.."pins")or{}aA[key]=v;c:set_field(P.."pins",aA,B)k(c,e["concertmirror08464.yrd410PinCode"].pinCode,az.encode(aA))end
 local j=c:get_field(P.."pending")or{}local g,A=j[f],c:get_field(P.."names")or{}if status==0 then A[key]=nil
 elseif status==1 or status==3 then
@@ -87,33 +87,33 @@ c:emit_event(x);l(c,f,g)end
 end
 local function aJ(c,rx)
 if rx.address_header.src_endpoint.value~=1 then return end
-local u,V,s=rx.address_header.cluster.value,rx.body.zcl_header,rx.body.zcl_body
+local u,V,r=rx.address_header.cluster.value,rx.body.zcl_header,rx.body.zcl_body
 
 if V.mfg_code~=nil then return end
 local i=V.cmd.value
 if(V.frame_ctrl.value&3)==1 and u==257 then
-if i==6 then N(c,s,true)elseif i==10 then N(c,s,false)elseif i==32 or i==33 then
+if i==6 then N(c,r,true)elseif i==10 then N(c,r,false)elseif i==32 or i==33 then
 local M=i==32
-local v,av=M and s.operation_event_code.value or s.program_event_code.value,M and s.operation_event_source.value or s.program_event_source.value
+local v,av=M and r.operation_event_code.value or r.program_event_code.value,M and r.operation_event_source.value or r.program_event_source.value
 
-h(c,t.action,(M and aq or aB)[v],true)h(c,t.user,s.user_id.value,true)h(c,t.source,av,true)h(c,t.source_name,aK[av],true)end
+h(c,s.action,(M and aq or aB)[v],true)h(c,s.user,r.user_id.value,true)h(c,s.source,av,true)h(c,s.source_name,aK[av],true)end
 return
 end
-if(V.frame_ctrl.value&3)~=0 or(i~=1 and i~=10)or not s.attr_records then return end
-local q={}for _,G in ipairs(s.attr_records)do
+if(V.frame_ctrl.value&3)~=0 or(i~=1 and i~=10)or not r.attr_records then return end
+local p={}for _,G in ipairs(r.attr_records)do
 if(G.status==nil or G.status.value==0)and G.data and type(G.data.value)=="number"then
-q[G.attr_id.value]=G.data.value
+p[G.attr_id.value]=G.data.value
 end
 end
 if u==257 then
-if q[0]~=nil then
-k(c,e.lock.lock,q[0]==1 and"locked"or"unlocked")h(c,t.raw_lock,W[q[0]])end
-h(c,t.relock,q[35])h(c,t.volume,am[q[36]])h(c,t.door,ai[q[3]])elseif u==1 then
-local o=q[33]if o~=nil and o<255 then
-h(c,t.raw_battery,o/2)if o<=200 and o%2==0 then k(c,e.battery.battery,o/2,"%")end
+if p[0]~=nil then
+k(c,e.lock.lock,p[0]==1 and"locked"or"unlocked")h(c,s.raw_lock,W[p[0]])end
+h(c,s.relock,p[35])h(c,s.volume,am[p[36]])h(c,s.door,ai[p[3]])elseif u==1 then
+local t=p[33]if t~=nil and t<255 then
+h(c,s.raw_battery,t/2)if t<=200 then k(c,e.battery.battery,math.floor(t/2+0.5),"%")end
 end
-local ab=q[32]if ab~=nil and ab<255 then k(c,e.voltageMeasurement.voltage,ab/10,"V")end
-local aD=q[62]if aD~=nil then k(c,e["concertmirror08464.yrd410BatteryLow"].batteryLow,(aD&15744015)~=0)end
+local ab=p[32]if ab~=nil and ab<255 then k(c,e.voltageMeasurement.voltage,ab/10,"V")end
+local aD=p[62]if aD~=nil then k(c,e["concertmirror08464.yrd410BatteryLow"].batteryLow,(aD&15744015)~=0)end
 end
 end
 local function Q(c,ao,v)
@@ -178,9 +178,9 @@ local R={}for key,v in pairs(d)do
 local f=type(key)=="string"and tonumber(key:match"^code(%d+)$")if not U(f)or not C(v,false)then return false end
 R[#R+1]={f,v}end
 table.sort(R,function(a,b)return a[1]<b[1]end)
-for _,p in ipairs(R)do
+for _,o in ipairs(R)do
 local ok
-if p[2]==""or p[2]=="0"then ok=ac(c,p[1])else ok=aa(c,p[1],p[2],"unrestricted",true)end
+if o[2]==""or o[2]=="0"then ok=ac(c,o[1])else ok=aa(c,o[1],o[2],"unrestricted",true)end
 if not ok then return false end
 end
 return true
@@ -190,9 +190,9 @@ local function au(aM,c)
 for _,u in ipairs{257,1}do
 if not z(c,J.build_bind_request(c,u,aM.environment_info.hub_zigbee_eui,1))then return false end
 end
-for _,p in ipairs{{257,0,w.Enum8,0,3600},{1,33,w.Uint8,3600,65000},{1,62,w.Bitmap32,3600,65000}}do
-if not z(c,J.attr_config(c,{cluster=p[1],attribute=p[2],data_type=p[3],minimum_interval=p[4],maximum_interval=p[5],reportable_change=0}))then return false end
-if p[1]==1 then af(c,1,p[2])end
+for _,o in ipairs{{257,0,w.Enum8,0,3600},{1,33,w.Uint8,3600,65000},{1,62,w.Bitmap32,3600,65000}}do
+if not z(c,J.attr_config(c,{cluster=o[1],attribute=o[2],data_type=o[3],minimum_interval=o[4],maximum_interval=o[5],reportable_change=0}))then return false end
+if o[1]==1 then af(c,1,o[2])end
 end
 return true
 end
@@ -201,7 +201,7 @@ runtime_start=function(c)
 k(c,e.lock.supportedLockValues,{"locked","unlocked"})k(c,e.lock.supportedLockCommands,{"lock","unlock"})k(c,e.lockCodes.maxCodes,250)return true
 end,
 parent_refresh=function(c)
-for _,p in ipairs{{257,0},{257,35},{257,36},{1,33},{1,62}}do af(c,p[1],p[2])end
+for _,o in ipairs{{257,0},{257,35},{257,36},{1,33},{1,62}}do af(c,o[1],o[2])end
 return true
 end
 },{aj.create_fingerprint("Yale:8104:05D1","YRD410-PB")})return{id="zcl.controls.yale_yrd410",registrations=ah}

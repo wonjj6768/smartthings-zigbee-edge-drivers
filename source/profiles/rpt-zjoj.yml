@@ -1,4 +1,4 @@
-name: rpt-zjo
+name: rpt-zjoj
 components:
 - id: main
   capabilities:
@@ -12,7 +12,7 @@ components:
     version: 1
   - id: temperatureMeasurement
     version: 1
-  - id: fanMode
+  - id: airConditionerFanMode
     version: 1
   - id: battery
     version: 1

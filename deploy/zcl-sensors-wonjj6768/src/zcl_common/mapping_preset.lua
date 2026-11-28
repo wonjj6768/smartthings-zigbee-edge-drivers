@@ -247,8 +247,12 @@ i.configure_reporting=nil
 if S then
 o(i,c({name="occupancy",emit=j.occupancy(),converter=g(1),ias_configure_method=f.IAS_ZONE_CONFIGURE_TYPE.AUTO_ENROLL_RESPONSE,command_id=0,command_extractor=b},a(30,300,nil)))return n.ias_zone(i)end
 if h==false then
-o(i,{emit=j.occupancy(),read_on_configure=true})return n.occupancy_sensing(i)end
-o(i,c({emit=j.occupancy()},a(0,300,nil)))return n.occupancy_sensing(i)
+o(i,{emit=j.occupancy(),
+converter={from=function(e)return e==true or(type(e)=="number"and(e&1)~=0)end},
+read_on_configure=true})return n.occupancy_sensing(i)end
+o(i,c({emit=j.occupancy(),
+converter={from=function(e)return e==true or(type(e)=="number"and(e&1)~=0)end}
+},a(0,300,nil)))return n.occupancy_sensing(i)
 end
 d("power",n.electrical_measurement_power,function()
 return c({emit=j.power(),metering_kind="power",poll_interval=300},a(5,300,1))

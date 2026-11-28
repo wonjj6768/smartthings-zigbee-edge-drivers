@@ -28,7 +28,7 @@ end
 local function n(a,_,j)
 local x,b=type(j)=="table"and j.endpoint or"unknown",a:get_field(l)if type(b)~="table"then b={}end
 local c=b[x]if c~=nil and type(c.cancel)=="function"then
-c:cancel()end
+a.thread:cancel_timer(c)end
 local G
 G=a.thread:call_with_delay(2,function()
 local o=a:get_field(l)if type(o)~="table"or o[x]~=G then return end

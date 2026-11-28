@@ -255,7 +255,7 @@ local presence_model_zd24 = {
     }),
 
     -- Z2M maps DP102 with valueConverter.raw, so the wire value is the enum index.
-    tuya.dp_enum(102, {
+    tuya.dp_enum(102, { datatype = tuya.DP_TYPE_VALUE,
       name = "motion_detection_mode",
       emit = emit.zd24MotionDetectionMode(),
       converter = converter.lookup_from_to({
@@ -793,7 +793,7 @@ local presence_model_zg_204zv = {
     converter = on_off_bool_converter,
   }),
 
-  tuya.dp_temperature_unit(109, {
+  tuya.dp_temperature_unit(109, { datatype = tuya.DP_TYPE_VALUE,
     emit = zg204zv_temperature_binding.unit_emitter,
     converter = zg204zv_temperature_binding.converter,
   }),
@@ -885,7 +885,7 @@ local presence_model_zg_204zh = {
     converter = on_off_bool_converter,
   }),
 
-  tuya.dp_temperature_unit(109, { emit = emit.zg204zhTemperatureUnit() }),
+  tuya.dp_temperature_unit(109, { datatype = tuya.DP_TYPE_VALUE, emit = emit.zg204zhTemperatureUnit() }),
 
   tuya.dp_battery(110, { emit = emit.battery() }),
 
@@ -939,7 +939,7 @@ local presence_model_zg_204zq = {
 
   tuya.dp_indicator(108, { emit = emit.zg204zqIndicator(), converter = on_off_bool_converter }),
 
-  tuya.dp_temperature_unit(109, {
+  tuya.dp_temperature_unit(109, { datatype = tuya.DP_TYPE_VALUE,
     emit = emit.zg204zqTemperatureUnit(),
     converter = converter.lookup_from_to({ celsius = 0, fahrenheit = 1 }),
   }),

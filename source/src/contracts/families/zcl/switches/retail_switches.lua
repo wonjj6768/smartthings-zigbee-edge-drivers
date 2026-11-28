@@ -334,7 +334,7 @@ local zunzunbee_sswz8t = {
       from_device = function(value)
         value = type(value) == "table" and value.value or value
         local button = ({ [2] = 1, [4] = 2, [8] = 3, [16] = 4,
-          [32] = 5, [64] = 6, [128] = 7, [256] = 8 })[bit32.band(value, 0x01FE)]
+          [32] = 5, [64] = 6, [128] = 7, [256] = 8 })[((value) & (0x01FE))]
         if button == nil then return nil end
         return { component = "button" .. button, action = value % 2 == 1 and "held" or "pushed" }
       end,

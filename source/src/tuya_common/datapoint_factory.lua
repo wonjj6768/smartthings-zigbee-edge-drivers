@@ -165,7 +165,10 @@ local function load_datapoint_factory(tuya, shared)
   end
 
   function tuya.dp_numeric(dp, name_or_options, converter_or_options, options)
-    local mapping = build_factory_mapping(dp, tuya.DP_TYPE_VALUE, name_or_options, converter_or_options, options)
+    local mapping, resolved_options = build_factory_mapping(dp, tuya.DP_TYPE_VALUE, name_or_options, converter_or_options, options)
+    if mapping.converter == nil and mapping.from_device == nil and mapping.to_device == nil and resolved_options.scale ~= nil then
+      mapping.converter = converter.divide_by_pair(resolved_options.scale)
+    end
     return mapping
   end
 

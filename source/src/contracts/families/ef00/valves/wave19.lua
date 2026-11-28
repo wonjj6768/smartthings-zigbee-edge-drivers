@@ -175,7 +175,7 @@ local slot_words = { "One", "Two", "Three", "Four", "Five", "Six" }
 
 local function cancel_lidl_timer(device)
   local timer = get_field(device, LIDL_SCHEDULE_TIMER_FIELD)
-  if timer ~= nil and type(timer.cancel) == "function" then timer:cancel() end
+  if timer ~= nil and type(timer.cancel) == "function" then  device.thread:cancel_timer( timer) end
   set_field(device, LIDL_SCHEDULE_TIMER_FIELD, nil, false)
 end
 
@@ -296,7 +296,7 @@ local function decode_schedule(value, device)
   set_field(device, LIDL_SCHEDULE_MODE_FIELD, schedule_mode, false)
   set_field(device, LIDL_SCHEDULE_PERIODIC_FIELD, is_weekday and 0 or schedule_value, false)
   for index, day in ipairs(day_names) do
-    local enabled = is_weekday and bit32.band(schedule_value, 2 ^ (index - 1)) ~= 0
+    local enabled = is_weekday and  ( (schedule_value ) & (  2 ^ (index - 1 ) )) ~= 0
     set_field(device, weekday_field(day), enabled and "ON" or "OFF", false)
   end
   return { mode = schedule_mode, periodic = is_weekday and 0 or schedule_value }

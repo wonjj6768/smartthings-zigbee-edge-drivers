@@ -15,17 +15,17 @@ local function build_metering_clusters()
   })
 end
 
-local function ts011f_din_indicator_mode()
+local function ts011f_din_indicator_mode( legacy )
   return zcl.cluster_attribute(zcl.CLUSTER_ON_OFF, 0x8001, {
     name = "ts011f_din_indicator_mode",
     emit = emit.ts011fDinIndicatorMode(),
     data_type = data_types.Enum8,
     write_type = data_types.Enum8,
     from_device = function(value)
-      return ({ [0] = "off", [1] = "off_on", [2] = "on_off" })[value]
+      return ({ [0] = "off", [1] =  legacy and "on_off" or "off_on", [2] =  legacy and "off_on" or "on_off" })[value]
     end,
     to_device = function(value)
-      return ({ off = 0, off_on = 1, on_off = 2 })[value]
+      return ({ off = 0, off_on =  legacy and 2 or 1, on_off =  legacy and 1 or 2 })[value]
     end,
     read_on_configure = true,
   })
@@ -39,8 +39,8 @@ local function ts011f_threshold_breaker_to_device(key, capability_id, attribute_
     return string.char(
       key,
       value == "on" and 1 or 0,
-      bit32.band(bit32.rshift(threshold, 8), 0xFF),
-      bit32.band(threshold, 0xFF)
+      ( ((( (threshold ) & 0xFFFFFFFF) >> (  8) )) & (  0xFF) ) ,
+       ( (threshold ) & (  0xFF ) )
     )
   end
 end
@@ -49,7 +49,7 @@ local metered_din_clusters = build_metering_clusters()
 zcl_device_helpers.append_clusters(metered_din_clusters,
   zcl.tuya_magic_packet(),
   zcl.tuya_power_outage_memory(),
-  ts011f_din_indicator_mode()
+  ts011f_din_indicator_mode( true )
 )
 
 local metered_din_relay = {
@@ -63,7 +63,7 @@ local unmetered_din_relay = {
     zcl_device_helpers.switch_cluster(),
     zcl.tuya_magic_packet(),
     zcl.tuya_power_outage_memory(),
-    ts011f_din_indicator_mode(),
+    ts011f_din_indicator_mode( true ),
   },
   configure = function(driver, device)
     device:send(device_management.build_bind_request(
@@ -120,8 +120,19 @@ local function build_threshold_din_relay(profile, include_temperature)
         "overCurrentThreshold"
       ),
     }),
-    zcl.over_voltage_threshold(),
-    zcl.over_voltage_breaker(),
+    zcl.over_voltage_threshold( {
+      name = "ts011f_din_over_voltage_threshold",
+      emit = emit.ts011fDinOverVoltageThreshold(),
+      numeric_range = { minimum = 90, maximum = 265, step = 1, unit = "V" },
+    } ),
+    zcl.over_voltage_breaker( {
+      to_device = function(value, device)
+        local threshold = tonumber(device:get_latest_state("main",
+          "concertmirror08464.ts011fDinOverVoltageThreshold", "overVoltageThreshold")) or 0
+        threshold = math.max(0, math.min(0xFFFF, math.floor(threshold + 0.5)))
+        return string.pack(">BBI2", 0x03, value == "on" and 1 or 0, threshold)
+      end,
+    } ),
     zcl.under_voltage_threshold({
       name = "ts011f_din_under_voltage_threshold",
       emit = emit.ts011fDinUnderVoltageThreshold(),
@@ -198,8 +209,8 @@ zcl.attach_reporting_capabilities(device_definitions, {
   {2, "rpt-tun"},
   {3, "rpt-epv"},
   {4, "rpt-eqg"},
-  {5, "rpt-txj"},
-  {6, "rpt-ton"},
+  {5, "rpt-txjg"},
+  {6, "rpt-tonj"},
 })
 -- ZCL REPORTING CAPABILITIES END
 

@@ -259,7 +259,10 @@ local cover_six = {
   tuya.dp_battery(13, {emit = emit.battery(), read_only = true}),
   tuya.dp_enum(101, {name = "cover_six_direction", converter = converter.lookup_from_to({left = 0, right = 1}), emit = emit.coverSixDirection()}),
   tuya.dp_enum(102, {name = "cover_six_upper_limit", converter = converter.lookup_from_to({start = 1, stop = 0}), emit = emit.coverSixUpperLimit()}),
-  tuya.dp_numeric(104, {name = "cover_six_illumination", emit = emit.coverSixIllumination(), read_only = true}),
+  tuya.dp_numeric(104, {
+    name = "cover_six_illumination", emit = emit.coverSixIllumination(), read_only = true,
+    from_device = function(value, _, datapoint) return datapoint and datapoint.int_value or value end,
+  }),
   -- DP107 SET/raw wire contract is unresolved upstream.
 }
 
@@ -526,17 +529,20 @@ local cover_zb_sm = {
     converter = cover_state_standard,
     write_only = true,
   }),
-  tuya.dp_cover_position(2, { emit = emit.shade_level() }),
+  tuya. dp_cover_position_inverted (2, { emit = emit.shade_level() }),
   tuya.dp_numeric(2, {
     name = "window_shade_state",
     emit = emit.shade_state(),
-    converter = window_shade_state_from_position(),
+    converter =  window_shade_state_from_position_inverted (),
     read_only = true,
   }),
   -- Z2M legacy fz.zb_sm_cover (legacy.ts:1503) treats DP3 as the arrived
   -- position report for the same shade level, so it stays internal rather than
   -- becoming a second exposed position.
-  tuya.dp_numeric(3, { name = "arrived_position" }),
+  tuya. dp_cover_position_inverted (3, { name = "arrived_position"  , emit = function(device, value)
+      local state = value <= 0 and "closed" or value >= 100 and "open" or "partially open"
+      return { emit.shade_level()(device, value), emit.shade_state()(device, state) }
+    end }),
   tuya.dp_enum(5, {
     name = "motor_direction",
     emit = emit.motorDirectionZbSmNormalRev(),
@@ -951,10 +957,14 @@ local cover_three = {
 -- DP5 reverse direction and DP105 motor speed (0..255).
 local COVER_ONE_INVERT = "cover_one_position_invert"
 local COVER_ONE_RAW_POSITION = "cover_one_raw_position"
+local function  cover_one_invert_value(device)
+  return device:get_field(COVER_ONE_INVERT) or
+    (device:get_manufacturer() == "_TZE200_rmymn92d" and "inverted" or "normal")
+end
 local function cover_one_position(value, device)
   value = tonumber(value)
   if value == nil or value < 0 or value > 100 then return nil end
-  return device:get_field(COVER_ONE_INVERT) == "inverted" and (100 - value) or value
+  return  cover_one_invert_value( device) == "inverted" and (100 - value) or value
 end
 local function cover_one_position_from(value, device)
   if cover_one_position(value, device) == nil then return nil end
@@ -974,7 +984,7 @@ local function cover_one_set_position_invert(device, value)
   local raw = device:get_field(COVER_ONE_RAW_POSITION)
   if raw == nil then
     raw = device:get_latest_state("main", "windowShadeLevel", "shadeLevel")
-    if raw ~= nil and device:get_field(COVER_ONE_INVERT) == "inverted" then raw = 100 - raw end
+    if raw ~= nil and  cover_one_invert_value( device) == "inverted" then raw = 100 - raw end
   end
   device:set_field(COVER_ONE_INVERT, value, {persist=true})
   local position = cover_one_position(raw, device)
@@ -992,7 +1002,7 @@ local cover_one = {
   runtime_start = function(device)
     -- This is the driver's interpretation policy, not a measured motor state.
     device:emit_component_event({id="main"},
-      emit.coverOnePositionInvert()(device, device:get_field(COVER_ONE_INVERT) or "normal"))
+      emit.coverOnePositionInvert()(device,  cover_one_invert_value( device) ))
   end,
   tuya.dp_enum(1, {
     name = "cover_state",
@@ -1229,10 +1239,10 @@ local cover_model_zm79e_dt = {
     emit = emit.zm79eSetUpperLimit(),
     converter = converter.lookup_from_to({ stop = 0, start = 1 }),
   }),
-  tuya.dp_enum(107, {
+  tuya. dp_binary (107, {
     name = "factory_reset",
     emit = emit.zm79eFactoryReset(),
-    converter = converter.lookup_from_to({ set = 0 }),
+    converter = converter.lookup_from_to({ set =  true  }),
   }),
 }
 
@@ -1670,10 +1680,7 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
   "_TZE200_5sbebbzs",
   "_TZE200_hsgrhjpf",
   "_TZE200_ergbiejo",
-  "_TZE200_nhyj64w2",
-  "_TZE200_127x7wnl",
-  "_TZE204_5slehgeo",
-  "_TZE284_5slehgeo",
+  
   "_TZE200_fctwhugx",
   "_TZE200_p6vz3wzt",
   "_TZE204_p6vz3wzt",
@@ -1720,10 +1727,25 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
   "_TZE200_p2qzzazi",
 }))
 
-register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+register_device_definition( cover_core , device_helpers.create_fingerprints("TS0601", {
   "_TZE204_xu4a5rhj",
   "_TZE200_xu4a5rhj",
-  "_TZE204_q9xty0ad",
+   }))
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", { "_TZE204_q9xty0ad" ,
+}))
+
+register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_nhyj64w2",
+  "_TZE200_127x7wnl",
+  "_TZE204_5slehgeo",
+  "_TZE284_5slehgeo",
+}))
+
+register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+  "_TZE200_zuz7f94z",
+  "_TZE200_3i3exuay",
+  "_TZE200_zpzndjez" ,
 }))
 
 register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
@@ -1734,7 +1756,7 @@ register_device_definition(cover_core, device_helpers.create_fingerprints("TS060
   "_TZE284_6fopvb6v",
 }))
 
-register_device_definition(cover_core, device_helpers.create_fingerprints("TS0601", {
+register_device_definition( cover_core_position_reversed , device_helpers.create_fingerprints("TS0601", {
   "_TZE200_gubdgai2",
   "_TZE200_vdiuwbkq",
 }))
@@ -1773,7 +1795,7 @@ register_device_definition(cover_model_zsm01, device_helpers.create_fingerprints
 
 
 
-register_device_definition(cover_core_position_reversed, device_helpers.create_fingerprints("TS0601", {
+register_device_definition( cover_core , device_helpers.create_fingerprints("TS0601", {
   "_TZE200_2odrmqwq",
   "_TZE200_hojryzzd",
 }))
@@ -1802,11 +1824,9 @@ register_device_definition(cover_core_position_reversed, device_helpers.create_f
   "_TZE200_wmcdj3aq",
   "_TZE200_xuzcvlku",
   "_TZE200_xaabybja",
-  "_TZE200_zuz7f94z",
-  "_TZE200_3i3exuay",
+  
   "_TZE200_nogaemzt",
   "_TZE200_dng9fn0k",
-  "_TZE200_zpzndjez",
 }))
 
 register_device_definition(cover_with_1_switch, device_helpers.create_fingerprints("TS0601", {
@@ -1896,7 +1916,7 @@ register_device_definition(cover15, device_helpers.create_fingerprints("TS0601",
 
 -- ZCL REPORTING CAPABILITIES BEGIN
 zcl.attach_reporting_capabilities(device_definitions, {
-  {48, "rpt-trw"},
+  {51, "rpt-trw"},
 })
 -- ZCL REPORTING CAPABILITIES END
 

@@ -10,8 +10,8 @@ local MAKEGOOD_ENERGY_FIELD = "__makegood_incremental_energy_total"
 -- MakeGood DP20 is a positive energy increment in Wh/1000, not a running
 -- meter. Preserve the accumulated kWh across driver restarts and seed it from
 -- the last standard energyMeter state when the persisted field is absent.
-local function makegood_incremental_energy_from_device(value, device)
-  local raw = tonumber(value)
+local function makegood_incremental_energy_from_device(value, device, datapoint)
+  local raw = tonumber(datapoint and datapoint.int_value or value)
   if raw == nil then return nil end
 
   local previous = tonumber(device:get_field(MAKEGOOD_ENERGY_FIELD))
